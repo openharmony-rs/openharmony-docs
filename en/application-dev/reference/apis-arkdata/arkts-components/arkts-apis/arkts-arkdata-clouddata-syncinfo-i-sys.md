@@ -1,5 +1,9 @@
 # SyncInfo (System API)
 
+```TypeScript
+interface SyncInfo
+```
+
 Represents information about the last device-cloud sync.
 
 **Since:** 12

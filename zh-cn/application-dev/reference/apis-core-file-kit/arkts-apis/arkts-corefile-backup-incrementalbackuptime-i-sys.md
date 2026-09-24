@@ -1,5 +1,9 @@
 # IncrementalBackupTime（系统接口）
 
+```TypeScript
+interface IncrementalBackupTime
+```
+
 记录最后一次增量备份时间，用于描述备份增量的时间点。
 
 @interface IncrementalBackupTime

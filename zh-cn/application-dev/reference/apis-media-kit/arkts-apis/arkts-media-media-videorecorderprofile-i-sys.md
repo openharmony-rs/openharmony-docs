@@ -1,5 +1,9 @@
 # VideoRecorderProfile（系统接口）
 
+```TypeScript
+interface VideoRecorderProfile
+```
+
 视频录制的配置文件。
 
 **起始版本：** 9

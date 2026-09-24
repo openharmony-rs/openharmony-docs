@@ -1,5 +1,9 @@
 # ScannerSyncMode
 
+```TypeScript
+enum ScannerSyncMode
+```
+
 Enumerates the scanner sync codes.
 
 **Since:** 20

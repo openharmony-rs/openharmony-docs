@@ -1,5 +1,9 @@
 # ImsRegState (System API)
 
+```TypeScript
+export enum ImsRegState
+```
+
 Obtains IMS registration status.
 
 **Since:** 9

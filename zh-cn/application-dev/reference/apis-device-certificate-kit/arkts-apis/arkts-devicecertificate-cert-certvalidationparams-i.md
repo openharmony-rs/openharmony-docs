@@ -1,5 +1,9 @@
 # CertValidationParams
 
+```TypeScript
+interface CertValidationParams
+```
+
 证书验证的参数。
 
 **起始版本：** 26.0.0

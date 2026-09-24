@@ -1,5 +1,9 @@
 # MaximizeOptions
 
+```TypeScript
+interface MaximizeOptions
+```
+
 最大化窗口时的可选配置。
 
 **起始版本：** 26.0.0

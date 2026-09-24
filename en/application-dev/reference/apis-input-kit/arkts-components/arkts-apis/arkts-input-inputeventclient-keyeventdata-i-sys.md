@@ -1,5 +1,9 @@
 # KeyEventData (System API)
 
+```TypeScript
+interface KeyEventData
+```
+
 Defines the key event to inject.
 
 **Since:** 11

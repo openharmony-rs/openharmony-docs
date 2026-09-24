@@ -1,5 +1,9 @@
 # SmartRotateEvent (System API)
 
+```TypeScript
+interface SmartRotateEvent
+```
+
 The basic data structure of the smart rotate sensor event.
 
 **Since:** 26.0.0

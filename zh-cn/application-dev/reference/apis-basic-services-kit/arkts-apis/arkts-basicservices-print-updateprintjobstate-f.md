@@ -36,9 +36,9 @@ function updatePrintJobState(jobId: string, state: PrintJobState, subState: Prin
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application<br>**适用版本：** 10 - 23 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call this function. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application<br>**适用版本：** 10 - 23 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -59,21 +59,8 @@ print.updatePrintJobState(jobId, state, subState, (error: BusinessError) => {
 })
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// jobId可通过打印扩展能力PrintExtensionAbility的onStartPrintJob回调获得
-let jobId : string = 'jobId';
-let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
-let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
-print.updatePrintJobState(jobId, state, subState).then(() => {
-    console.info('update print job state success');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to updatePrintJobState. Code: ${error.code}, message: ${error.message}`);
-})
-```
-
+<a id="updateprintjobstate-1"></a>
 
 ## updatePrintJobState
 
@@ -109,10 +96,23 @@ function updatePrintJobState(jobId: string, state: PrintJobState, subState: Prin
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application<br>**适用版本：** 10 - 23 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application<br>**适用版本：** 10 - 23 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
-参见 updatePrintJobState
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// jobId可通过打印扩展能力PrintExtensionAbility的onStartPrintJob回调获得
+let jobId : string = 'jobId';
+let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
+let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
+print.updatePrintJobState(jobId, state, subState).then(() => {
+    console.info('update print job state success');
+}).catch((error: BusinessError) => {
+    console.error(`Failed to updatePrintJobState. Code: ${error.code}, message: ${error.message}`);
+})
+```

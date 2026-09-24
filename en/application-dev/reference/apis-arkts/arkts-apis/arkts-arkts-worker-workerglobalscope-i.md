@@ -1,5 +1,9 @@
 # WorkerGlobalScope
 
+```TypeScript
+declare interface WorkerGlobalScope extends EventTarget
+```
+
 Specifies the worker thread running environment, which is isolated from the host thread environment.
 
 **Inheritance/Implementation:** WorkerGlobalScope extends [EventTarget](arkts-arkts-worker-eventtarget-i.md)

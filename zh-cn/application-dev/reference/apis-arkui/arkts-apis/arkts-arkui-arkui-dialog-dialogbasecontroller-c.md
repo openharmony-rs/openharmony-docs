@@ -1,8 +1,12 @@
 # DialogBaseController
 
+```TypeScript
+export class DialogBaseController
+```
+
 用于控制对话框的类。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,11 +24,11 @@ close(): void
 
 关闭相应的对话框。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,11 +40,11 @@ constructor()
 
 构造函数。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,11 +56,11 @@ getState(): DialogState
 
 获取状态。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

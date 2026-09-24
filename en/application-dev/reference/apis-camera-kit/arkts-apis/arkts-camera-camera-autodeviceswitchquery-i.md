@@ -1,5 +1,9 @@
 # AutoDeviceSwitchQuery
 
+```TypeScript
+interface AutoDeviceSwitchQuery
+```
+
 **AutoDeviceSwitchQuery** is used to check whether a device supports automatic camera switch.
 
 [Automatic Camera Switching](arkts-camera-camera-autodeviceswitch-i.md#enableautodeviceswitch) is supported only on foldable devices. For details about how to enable this capability, see [enableAutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md#enableautodeviceswitch).
@@ -39,3 +43,15 @@ Checks whether the device supports automatic camera switch.
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage.<br>**Applicable version:** 13 - 17 |
+
+**Examples**
+
+```TypeScript
+// Check whether the foldable device supports automatic camera switch.
+// If the sample code returns **true**, you can continue to use enableAutoDeviceSwitch to enable automatic camera switching.
+function isAutoDeviceSwitchSupported(session: camera.PhotoSession): boolean {
+  let isSupported = false;
+  isSupported = session.isAutoDeviceSwitchSupported();
+  return isSupported;
+}
+```

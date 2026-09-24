@@ -8,6 +8,8 @@ typedef struct OH_Drawing_TextTab OH_Drawing_TextTab
 
 Defines a struct used to manage text tabs.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Related module**: [Drawing](capi-drawing.md)

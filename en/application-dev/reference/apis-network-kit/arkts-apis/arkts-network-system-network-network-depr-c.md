@@ -1,5 +1,9 @@
 # Network
 
+```TypeScript
+export default class Network
+```
+
 **Since:** 3
 
 **System capability:** SystemCapability.Communication.NetManager.Core

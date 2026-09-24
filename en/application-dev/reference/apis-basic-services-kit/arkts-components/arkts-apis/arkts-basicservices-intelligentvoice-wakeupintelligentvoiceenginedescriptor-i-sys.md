@@ -1,5 +1,9 @@
 # WakeupIntelligentVoiceEngineDescriptor (System API)
 
+```TypeScript
+interface WakeupIntelligentVoiceEngineDescriptor
+```
+
 Describes wakeup intelligent voice engine. @typedef WakeupIntelligentVoiceEngineDescriptor
 
 **Since:** 10

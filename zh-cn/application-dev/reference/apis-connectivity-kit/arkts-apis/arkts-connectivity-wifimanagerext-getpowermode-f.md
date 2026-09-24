@@ -30,8 +30,8 @@ function getPowerMode(): Promise<PowerMode>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2701000](../errorcode-wifi.md#2701000-ap扩展模块异常) | Operation failed. |
 
 **示例**
@@ -52,24 +52,8 @@ async function getWifiPowerMode() {
 }
 ```
 
-```TypeScript
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 
-  wifiManagerExt.getPowerMode((err, data:wifiManagerExt.PowerMode) => {
-      if (err) {
-          console.error("Failed to get linked information");
-          return;
-      }
-      console.info("get power mode info: " + JSON.stringify(data));
-  });
-
-  wifiManagerExt.getPowerMode().then(data => {
-      console.info("get power mode info: " + JSON.stringify(data));
-  }).catch((error:number) => {
-      console.error("get power mode error");
-  });
-```
-
+<a id="getpowermode-1"></a>
 
 ## getPowerMode
 
@@ -95,10 +79,26 @@ function getPowerMode(callback: AsyncCallback<PowerMode>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2701000](../errorcode-wifi.md#2701000-ap扩展模块异常) | Operation failed. |
 
 **示例**
 
-参见 getPowerMode
+```TypeScript
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+
+  wifiManagerExt.getPowerMode((err, data:wifiManagerExt.PowerMode) => {
+      if (err) {
+          console.error("Failed to get linked information");
+          return;
+      }
+      console.info("get power mode info: " + JSON.stringify(data));
+  });
+
+  wifiManagerExt.getPowerMode().then(data => {
+      console.info("get power mode info: " + JSON.stringify(data));
+  }).catch((error:number) => {
+      console.error("get power mode error");
+  });
+```

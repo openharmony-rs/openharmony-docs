@@ -1,5 +1,9 @@
 # Result (System API)
 
+```TypeScript
+interface Result<T>
+```
+
 Represents the device-cloud sharing result.
 
 **Since:** 11

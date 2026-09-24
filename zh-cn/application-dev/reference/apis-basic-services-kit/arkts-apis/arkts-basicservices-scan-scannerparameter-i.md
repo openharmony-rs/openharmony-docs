@@ -1,5 +1,9 @@
 # ScannerParameter
 
+```TypeScript
+interface ScannerParameter
+```
+
 定义扫描仪参数的接口。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # ClientCert
 
+```TypeScript
+export interface ClientCert
+```
+
 客户端证书类型。
 
 **起始版本：** 11

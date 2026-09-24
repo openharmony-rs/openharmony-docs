@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="publish-2"></a>
+
 ## publish
 
 ```TypeScript
@@ -36,10 +38,10 @@ function publish(request: NotificationRequest, userId: number, callback: AsyncCa
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The device does not support geofencing.<br>**适用版本：** 23+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | The device does not support geofencing.<br>**适用版本：** 23+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -60,54 +62,6 @@ function publish(request: NotificationRequest, userId: number, callback: AsyncCa
 | [2300007](../../apis-network-kit/errorcode-net-http.md#2300007-无法连接到服务器) | Network unreachable.<br>**适用版本：** 11+ |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// publish回调
-let publishCallback = (err: BusinessError): void => {
-  if (err) {
-    console.error(`Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info(`Succeeded in publishing notification.`);
-  }
-}
-// 通知Request对象
-let notificationRequest: notificationManager.NotificationRequest = {
-  id: 1,
-  content: {
-    notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-    normal: {
-      title: 'test_title',
-      text: 'test_text',
-      additionalText: 'test_additionalText'
-    }
-  }
-};
-notificationManager.publish(notificationRequest, publishCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 通知Request对象
-let notificationRequest: notificationManager.NotificationRequest = {
-  id: 1,
-  content: {
-    notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-    normal: {
-      title: 'test_title',
-      text: 'test_text',
-      additionalText: 'test_additionalText'
-    }
-  }
-};
-notificationManager.publish(notificationRequest).then(() => {
-  console.info(`Succeeded in publishing notification.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -137,31 +91,8 @@ let notificationRequest: notificationManager.NotificationRequest = {
 notificationManager.publish(notificationRequest, userId, publishCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let notificationRequest: notificationManager.NotificationRequest = {
-    id: 1,
-    content: {
-        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-        normal: {
-            title: 'test_title',
-            text: 'test_text',
-            additionalText: 'test_additionalText'
-        }
-    }
-};
-
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 1;
-
-notificationManager.publish(notificationRequest, userId).then(() => {
-    console.info('publish success');
-}).catch((err: BusinessError) => {
-    console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="publish-3"></a>
 
 ## publish
 
@@ -198,10 +129,10 @@ function publish(request: NotificationRequest, userId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The device does not support geofencing.<br>**适用版本：** 23+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | The device does not support geofencing.<br>**适用版本：** 23+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -223,4 +154,27 @@ function publish(request: NotificationRequest, userId: number): Promise<void>
 
 **示例**
 
-参见 [publish](#publish)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let notificationRequest: notificationManager.NotificationRequest = {
+    id: 1,
+    content: {
+        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        normal: {
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
+        }
+    }
+};
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: number = 1;
+
+notificationManager.publish(notificationRequest, userId).then(() => {
+    console.info('publish success');
+}).catch((err: BusinessError) => {
+    console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
+});
+```

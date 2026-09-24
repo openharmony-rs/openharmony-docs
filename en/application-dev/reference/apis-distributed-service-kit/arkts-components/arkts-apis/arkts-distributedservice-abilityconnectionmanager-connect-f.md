@@ -40,6 +40,19 @@ Sets up a UIAbility connection after a collaboration session is created and the 
 
 **Examples**
 
-```TypeScript
 After an application sets up a collaboration session and obtains the session ID on device A, it calls connect() to set up a UIAbility connection and start the application on device B.
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let sessionId = 100;
+abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
+  if (!ConnectResult.isConnected) {
+    hilog.info(0x0000, 'testTag', 'connect failed');
+    return;
+  }
+}).catch(() => {
+  hilog.error(0x0000, 'testTag', "connect failed");
+})
 ```

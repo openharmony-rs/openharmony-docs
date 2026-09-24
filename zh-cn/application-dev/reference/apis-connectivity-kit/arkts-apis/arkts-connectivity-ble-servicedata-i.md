@@ -1,5 +1,9 @@
 # ServiceData
 
+```TypeScript
+interface ServiceData
+```
+
 描述BLE广播报文中的服务数据内容。
 
 **起始版本：** 10

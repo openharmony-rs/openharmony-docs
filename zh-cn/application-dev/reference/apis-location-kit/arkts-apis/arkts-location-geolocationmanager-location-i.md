@@ -1,5 +1,9 @@
 # Location
 
+```TypeScript
+export interface Location
+```
+
 位置信息。
 
 **起始版本：** 9

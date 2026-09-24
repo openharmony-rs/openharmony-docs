@@ -46,8 +46,8 @@ function deleteVlanIp(ifName: string, vlanId: number, address: LinkAddress): Pro
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Nonsystem applications use system APIs. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Nonsystem applications use system APIs. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [2100400](../errorcode-net-connection.md#2100400-传入网卡名不正确非以太网) | The input network interface name is incorrect. |

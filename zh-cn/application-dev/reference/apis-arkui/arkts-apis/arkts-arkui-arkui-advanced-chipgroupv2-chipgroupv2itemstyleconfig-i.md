@@ -1,5 +1,9 @@
 # ChipGroupV2ItemStyleConfig
 
+```TypeScript
+export interface ChipGroupV2ItemStyleConfig
+```
+
 ChipGroupV2ItemStyleConfig定义了ChipV2的共通属性配置。
 
 **起始版本：** 26.0.0
@@ -20,7 +24,7 @@ backgroundColor?: ColorMetrics
 
 ChipV2背景颜色。
 
-默认值：&#36;r('sys.color.ohos_id_color_button_normal')
+默认值：$r('sys.color.ohos_id_color_button_normal')
 
 值为undefined时，按默认值处理。
 
@@ -40,7 +44,7 @@ ChipV2背景颜色。
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色backgroundColor、边框颜色borderColor、边框宽度borderWidth、阴影shadow效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-commonmethod-c.md#materialfilter)。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)。
 
 默认值：undefined，不应用材质样式。
 
@@ -62,7 +66,7 @@ fontColor?: ColorMetrics
 
 ChipV2文字颜色。
 
-默认值：&#36;r('sys.color.ohos_id_color_text_primary')
+默认值：$r('sys.color.ohos_id_color_text_primary')
 
 值为undefined时，按默认值处理。
 
@@ -84,7 +88,7 @@ selectedBackgroundColor?: ColorMetrics
 
 ChipV2选中时的背景颜色。设置后，当ChipV2被选中时，背景会填充此颜色，替代未选中状态下的backgroundColor。
 
-默认值：&#36;r('sys.color.ohos_id_color_emphasize')
+默认值：$r('sys.color.ohos_id_color_emphasize')
 
 值为undefined时，按默认值处理。
 
@@ -104,7 +108,7 @@ ChipV2选中时的背景颜色。设置后，当ChipV2被选中时，背景会�
 selectedBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件选中状态下的系统材质样式。设置后，当ChipV2被选中时，应用此材质样式，替代未选中状态下的backgroundSystemMaterial。不同材质具有不同的效果，能够影响组件的背景色backgroundColor、边框颜色borderColor、边框宽度borderWidth、阴影shadow效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-commonmethod-c.md#materialfilter)。
+设置组件选中状态下的系统材质样式。设置后，当ChipV2被选中时，应用此材质样式，替代未选中状态下的backgroundSystemMaterial。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)。
 
 默认值：undefined，不应用材质样式。
 
@@ -126,7 +130,7 @@ selectedFontColor?: ColorMetrics
 
 ChipV2选中时的文字颜色。设置后，当ChipV2被选中时，label文本会显示此颜色，替代未选中状态下的fontColor。
 
-默认值：&#36;r('sys.color.ohos_id_color_text_primary_contrary')
+默认值：$r('sys.color.ohos_id_color_text_primary_contrary')
 
 值为undefined时，按默认值处理。
 

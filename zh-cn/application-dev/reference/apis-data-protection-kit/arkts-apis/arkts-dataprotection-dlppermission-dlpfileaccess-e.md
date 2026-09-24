@@ -1,5 +1,9 @@
 # DLPFileAccess
 
+```TypeScript
+export enum DLPFileAccess
+```
+
 DLP文件授权类型的枚举。
 
 **起始版本：** 10

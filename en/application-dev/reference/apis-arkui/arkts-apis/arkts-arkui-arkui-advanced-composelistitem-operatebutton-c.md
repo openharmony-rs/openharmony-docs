@@ -1,5 +1,9 @@
 # OperateButton
 
+```TypeScript
+export declare class OperateButton
+```
+
 Defines the type of the button element on the right of the **ComposeListItem** component.
 
 **Since:** 10

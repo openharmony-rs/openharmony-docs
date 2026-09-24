@@ -1,5 +1,9 @@
 # XmlSAXParser
 
+```TypeScript
+class XmlSAXParser
+```
+
 The XmlSAXParser provides the capability of parsing XML in a streaming manner.
 
 **Since:** 24

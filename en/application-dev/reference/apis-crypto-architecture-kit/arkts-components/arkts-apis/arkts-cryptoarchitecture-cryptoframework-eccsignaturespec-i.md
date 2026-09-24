@@ -1,5 +1,9 @@
 # EccSignatureSpec
 
+```TypeScript
+interface EccSignatureSpec
+```
+
 Represents the ECC/SM2 signature data that contains (r, s).
 
 > **NOTE:** 

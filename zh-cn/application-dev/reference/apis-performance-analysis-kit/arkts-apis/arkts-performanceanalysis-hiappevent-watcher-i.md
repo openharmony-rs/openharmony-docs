@@ -1,5 +1,9 @@
 # Watcher
 
+```TypeScript
+interface Watcher
+```
+
 提供事件观察者的参数选项。用于配置和管理事件的观察者，实现对特定事件的监听和处理。
 
 > **说明：** 

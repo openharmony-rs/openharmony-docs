@@ -1,5 +1,9 @@
 # AccessStatus
 
+```TypeScript
+export enum AccessStatus
+```
+
 Enumerates the statuses for requesting access permissions for sensitive data under the lock screen.
 
 **Since:** 12

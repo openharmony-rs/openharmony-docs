@@ -1,5 +1,9 @@
 # GeomagneticResponse
 
+```TypeScript
+interface GeomagneticResponse
+```
+
 Describes a geomagnetic response object.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # LocaleResponse
 
+```TypeScript
+export interface LocaleResponse
+```
+
 @interface LocaleResponse
 
 **起始版本：** 12

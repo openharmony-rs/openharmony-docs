@@ -1,5 +1,9 @@
 # AudioRecordingManager
 
+```TypeScript
+interface AudioRecordingManager
+```
+
 Provides recording strategy management, including collaborative recording and recording control capabilities.
 
 **Since:** 26.0.0

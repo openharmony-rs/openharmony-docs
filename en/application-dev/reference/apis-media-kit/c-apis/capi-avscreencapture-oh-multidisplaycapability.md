@@ -8,6 +8,8 @@ typedef struct OH_MultiDisplayCapability {...} OH_MultiDisplayCapability
 
 Defines a struct for the multi-screen recording capability. It includes whether the multi-screen supports joint recording and the width and height of the screen for joint recording.
 
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
 **Since**: 24
 
 **Related module**: [AVScreenCapture](capi-avscreencapture.md)

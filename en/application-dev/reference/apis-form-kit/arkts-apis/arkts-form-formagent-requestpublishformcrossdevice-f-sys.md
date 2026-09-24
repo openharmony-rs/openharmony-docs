@@ -15,7 +15,7 @@ function requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostSer
 
 Requests to publish a form to the form host service of the remote device.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.AGENT_REQUIRE_FORM
 

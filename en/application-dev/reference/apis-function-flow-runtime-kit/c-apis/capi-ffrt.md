@@ -4,6 +4,8 @@
 
 Provides Function Flow Runtime (FFRT) C APIs.<br> FFRT is a task-based concurrent runtime library that automatically schedules tasks according to their dependencies, eliminating the need for manual thread management.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 10
 
 ## Files

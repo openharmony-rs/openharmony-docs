@@ -1,5 +1,9 @@
 # InterceptorType
 
+```TypeScript
+export enum InterceptorType
+```
+
 HTTP拦截器的类型枚举。
 
 | 名称 | 值 |说明 |  

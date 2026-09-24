@@ -8,6 +8,8 @@ struct WebSocket_RequestOptions {...}
 
 Defines the parameters for the connection between the WebSocket client and server.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 11
 
 **Related module**: [netstack](capi-netstack.md)

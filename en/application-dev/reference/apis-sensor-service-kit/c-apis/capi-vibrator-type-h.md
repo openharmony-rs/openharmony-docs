@@ -40,6 +40,8 @@ enum Vibrator_ErrorCode
 
 Enumerates the vibrator error codes.
 
+**System capability**: SystemCapability.Sensors.MiscDevice
+
 **Since**: 11
 
 | Enum item | Description |
@@ -58,6 +60,8 @@ enum Vibrator_Usage
 **Description**
 
 Enumerates the vibration scenarios.
+
+**System capability**: SystemCapability.Sensors.MiscDevice
 
 **Since**: 11
 

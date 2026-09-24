@@ -1,5 +1,9 @@
 # PropertyKey
 
+```TypeScript
+enum PropertyKey
+```
+
 Enumerates the types of Exchangeable Image File Format (Exif) data of an image.
 
 - The key in the format example is **image.PropertyKey.*XXX*** (where *XXX* is the name of an enumeration name, for  

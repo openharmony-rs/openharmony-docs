@@ -34,9 +34,9 @@ function sendMms(context: Context, mmsParams: MmsParams, callback: AsyncCallback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -44,14 +44,82 @@ function sendMms(context: Context, mmsParams: MmsParams, callback: AsyncCallback
 
 **示例**
 
-```TypeScript
 FA模型示例：
-```
 
 ```TypeScript
-Stage模型示例：
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common, featureAbility } from '@kit.AbilityKit';
+
+// 获取context
+let context: common.BaseContext = featureAbility.getContext();
+
+// 彩信pdu存储路径，pdu来源于编码接口
+const sandBoxPath: string = '/data/storage/el2/base/files/';
+let filePath: string  = sandBoxPath + 'SendReq.mms';
+
+// 发送彩信参数(mmsc以联通卡为例)
+let mmsPars: sms.MmsParams = {
+  slotId : 0,
+  mmsc: 'http://mmsc.myuni.com.cn',
+  data: filePath,
+  mmsConfig: {
+   userAgent:'ua',
+   userAgentProfile: 'uaprof'
+  }
+};
+
+// 调用发送接口
+sms.sendMms(context, mmsPars, async(err: BusinessError) =>{
+  if (err) {
+      console.error(`sendMms fail, err : ${JSON.stringify(err)}`);
+      return;
+  }
+  console.info(`sendMms Success`);
+})
 ```
 
+Stage模型示例：
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+// 彩信pdu存储路径，pdu来源于编码接口
+const sandBoxPath = '/data/storage/el2/base/files/';
+let filePath  = sandBoxPath + 'SendReq.mms';
+
+// 彩信用户代理、用户代理描述配置。根据运营商要求配置，默认ua，uaprof
+let mmsConf: sms.MmsConfig = {
+  userAgent:'ua',
+  userAgentProfile: 'uaprof'
+};
+
+// 发送彩信参数(mmsc以联通卡为例)
+let mmsPars: sms.MmsParams = {
+  slotId : 0,
+  mmsc: 'http://mmsc.myuni.com.cn',
+  data: filePath,
+  mmsConfig: mmsConf
+};
+
+class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+    sms.sendMms(this.context, mmsPars, async(err: BusinessError) =>{
+        if (err) {
+            console.error(`sendMms fail, err : ${JSON.stringify(err)}`);
+            return;
+        }
+        console.info(`sendMms Success`);
+        })
+    }
+}
+```
+
+
+<a id="sendmms-1"></a>
 
 ## sendMms
 
@@ -86,9 +154,9 @@ function sendMms(context: Context, mmsParams: MmsParams): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -96,4 +164,74 @@ function sendMms(context: Context, mmsParams: MmsParams): Promise<void>
 
 **示例**
 
-参见 [sendMms](#sendmms)
+FA模型示例：
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common, featureAbility } from '@kit.AbilityKit';
+
+// 获取context
+let context: common.BaseContext = featureAbility.getContext();
+
+// 彩信pdu存储路径，pdu来源于编码接口
+const sandBoxPath: string = '/data/storage/el2/base/files/';
+let filePath: string = sandBoxPath + 'SendReq.mms';
+
+// 发送彩信参数(mmsc以联通卡为例)
+let mmsPars: sms.MmsParams = {
+  slotId: 0,
+  mmsc: 'http://mmsc.myuni.com.cn',
+  data: filePath,
+  mmsConfig: {
+   userAgent:'ua',
+   userAgentProfile: 'uaprof'
+  }
+};
+
+// 调用发送接口
+let promise = sms.sendMms(context, mmsPars);
+promise.then(() => {
+    console.info(`sendMms success`);
+}).catch((err: BusinessError) => {
+    console.error(`sendMms failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+Stage模型示例：
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+// 彩信pdu存储路径，pdu来源于编码接口
+const sandBoxPath = '/data/storage/el2/base/files/';
+let filePath  = sandBoxPath + 'SendReq.mms';
+
+// 彩信用户代理、用户代理描述配置。根据运营商要求配置，默认ua，uaprof
+let mmsConf: sms.MmsConfig = {
+  userAgent:'ua',
+  userAgentProfile: 'uaprof'
+};
+
+// 发送彩信参数(mmsc以联通卡为例)
+let mmsPars: sms.MmsParams = {
+  slotId : 0,
+  mmsc: 'http://mmsc.myuni.com.cn',
+  data: filePath,
+  mmsConfig: mmsConf
+};
+
+class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+    let promise = sms.sendMms(this.context, mmsPars);
+    promise.then(() => {
+        console.info(`sendMms success`);
+    }).catch((err: BusinessError) => {
+        console.error(`sendMms failed, promise: err->${JSON.stringify(err)}`);
+    });
+    }
+}
+```

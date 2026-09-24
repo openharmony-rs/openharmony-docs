@@ -39,7 +39,7 @@ function decompressFile(inFile: string, outFile: string, options: Options, callb
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [900001](../errorcode-zlib.md#900001-传入的源文件错误) | The input source file is invalid. |
 | [900002](../errorcode-zlib.md#900002-传入的目标文件错误) | The input destination file is invalid. |
 | [900003](../errorcode-zlib.md#900003-传入的源文件格式错误或者已损坏) | The input source file is not in ZIP format or is damaged.<br>**适用版本：** 10+ |
@@ -72,51 +72,8 @@ try {
 }
 ```
 
-```TypeScript
-// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
-import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let inFile = '/data/storage/el2/base/temp/xxx.zip';
-let outFileDir = '/data/storage/el2/base/temp';
-let options: zlib.Options = {
-  level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
-};
-
-try {
-  zlib.decompressFile(inFile, outFileDir, options).then((data: void) => {
-    console.info('decompressFile success. data: ' + JSON.stringify(data));
-  }).catch((errData: BusinessError) => {
-    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-  })
-} catch (errData) {
-  let code = (errData as BusinessError).code;
-  let message = (errData as BusinessError).message;
-  console.error(`errData is errCode:${code}  message:${message}`);
-}
-```
-
-```TypeScript
-// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
-import { zlib, BusinessError } from '@kit.BasicServicesKit';
-
-let inFile = '/data/storage/el2/base/temp/xxx.zip';
-let outFileDir = '/data/storage/el2/base/temp';
-
-try {
-  zlib.decompressFile(inFile, outFileDir, (errData: BusinessError) => {
-    if (errData) {
-      console.error(`decompressFile failed. code is ${errData.code}, message is ${errData.message}`);
-    } else {
-      console.info(`decompressFile success.`);
-    }
-  })
-} catch (errData) {
-  let code = (errData as BusinessError).code;
-  let message = (errData as BusinessError).message;
-  console.error(`decompressFile failed. code is ${code}, message is ${message}`);
-}
-```
-
+<a id="decompressfile-1"></a>
 
 ## decompressFile
 
@@ -150,15 +107,37 @@ function decompressFile(inFile: string, outFile: string, callback: AsyncCallback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [900001](../errorcode-zlib.md#900001-传入的源文件错误) | The input source file is invalid. |
 | [900002](../errorcode-zlib.md#900002-传入的目标文件错误) | The input destination file is invalid. |
 | [900003](../errorcode-zlib.md#900003-传入的源文件格式错误或者已损坏) | The input source file is not in ZIP format or is damaged. |
 
 **示例**
 
-参见 decompressFile
+```TypeScript
+// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
+import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
+let inFile = '/data/storage/el2/base/temp/xxx.zip';
+let outFileDir = '/data/storage/el2/base/temp';
+
+try {
+  zlib.decompressFile(inFile, outFileDir, (errData: BusinessError) => {
+    if (errData) {
+      console.error(`decompressFile failed. code is ${errData.code}, message is ${errData.message}`);
+    } else {
+      console.info(`decompressFile success.`);
+    }
+  })
+} catch (errData) {
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`decompressFile failed. code is ${code}, message is ${message}`);
+}
+```
+
+
+<a id="decompressfile-2"></a>
 
 ## decompressFile
 
@@ -198,11 +177,32 @@ function decompressFile(inFile: string, outFile: string, options?: Options): Pro
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [900001](../errorcode-zlib.md#900001-传入的源文件错误) | The input source file is invalid. |
 | [900002](../errorcode-zlib.md#900002-传入的目标文件错误) | The input destination file is invalid. |
 | [900003](../errorcode-zlib.md#900003-传入的源文件格式错误或者已损坏) | The input source file is not in ZIP format or is damaged.<br>**适用版本：** 10+ |
 
 **示例**
 
-参见 decompressFile
+```TypeScript
+// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
+import { zlib, BusinessError } from '@kit.BasicServicesKit';
+
+let inFile = '/data/storage/el2/base/temp/xxx.zip';
+let outFileDir = '/data/storage/el2/base/temp';
+let options: zlib.Options = {
+  level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+};
+
+try {
+  zlib.decompressFile(inFile, outFileDir, options).then((data: void) => {
+    console.info('decompressFile success. data: ' + JSON.stringify(data));
+  }).catch((errData: BusinessError) => {
+    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+  })
+} catch (errData) {
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
+}
+```

@@ -1,5 +1,9 @@
 # DescriptionOptions（系统接口）
 
+```TypeScript
+export interface DescriptionOptions
+```
+
 描述文件选项，用于指定描述文件的格式和语言。对象包含format(描述文件格式，可选STANDARD或SIMPLIFIED)和language(语言代码，如'zh-cn')字段。
 
 **起始版本：** 9

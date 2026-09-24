@@ -1,5 +1,9 @@
 # NotificationCheckRequest (System API)
 
+```TypeScript
+export interface NotificationCheckRequest
+```
+
 Describes the notification authentication information.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # ProtocolData
 
+```TypeScript
+interface ProtocolData
+```
+
 Describe the protocol data is received from remote host.
 
 **Since:** 23

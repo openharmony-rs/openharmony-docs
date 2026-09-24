@@ -1,5 +1,9 @@
 # StatusMonitor (System API)
 
+```TypeScript
+interface StatusMonitor
+```
+
 Status monitor object. It is used to listen for or obtain information such as the template status, continuous authentication status, and available device status. This object can be obtained by calling [getStatusMonitor](arkts-userauthentication-companiondeviceauth-getstatusmonitor-f-sys.md).
 
 **Since:** 23

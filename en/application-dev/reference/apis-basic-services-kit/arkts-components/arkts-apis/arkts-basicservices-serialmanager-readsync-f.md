@@ -50,8 +50,63 @@ Reads data from the serial port device synchronously. The read data is stored in
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > The following sample code shows the basic process for calling the readSync API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain the serial port list.
+async function readSyncExample() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
+
+  // Check whether the device can be accessed by the application.
+  if (!serialManager.hasSerialRight(portId)) {
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // If the app does not have the access permission and the user does not grant the permission, the app exits.
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
+  }
+
+  // Open a serial port device.
+  try {
+    serialManager.open(portId);
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+  }
+
+  // Read data synchronously.
+  let readSyncBuffer: Uint8Array = new Uint8Array(64);
+  try {
+    serialManager.readSync(portId, readSyncBuffer, 2000);
+    console.info('readSync usbSerial success, readSyncBuffer: ' + readSyncBuffer.toString());
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to readSync usbSerial. Code: ${err.code}, message: ${err.message}`);
+  }
+
+  // Close the serial port device.
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to close usbSerial. Code: ${err.code}, message: ${err.message}`);
+  }
+}
 ```

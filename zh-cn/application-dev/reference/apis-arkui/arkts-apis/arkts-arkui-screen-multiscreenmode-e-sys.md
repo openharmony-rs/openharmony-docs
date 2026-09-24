@@ -1,5 +1,9 @@
 # MultiScreenMode（系统接口）
 
+```TypeScript
+enum MultiScreenMode
+```
+
 屏幕模式枚举。
 
 **起始版本：** 13

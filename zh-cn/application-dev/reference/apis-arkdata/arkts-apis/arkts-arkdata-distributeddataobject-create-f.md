@@ -35,14 +35,59 @@ function create(context: Context, source: object): DataObject
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例**
 
-```TypeScript
 FA模型示例：
-```
 
 ```TypeScript
+// 导入模块
+import { featureAbility } from '@kit.AbilityKit';
+// 获取context
+let context = featureAbility.getContext();
+class SourceObject {
+  name: string
+  age: number
+  isVis: boolean
+
+  constructor(name: string, age: number, isVis: boolean) {
+    this.name = name;
+    this.age = age;
+    this.isVis = isVis;
+  }
+}
+
+let source: SourceObject = new SourceObject('jack', 18, false);
+let g_object: distributedDataObject.DataObject = distributedDataObject.create(context, source);
+```
+
 Stage模型示例：
+
+```TypeScript
+// 导入模块
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+let g_object: distributedDataObject.DataObject|null = null;
+
+class SourceObject {
+  name: string
+  age: number
+  isVis: boolean
+
+  constructor(name: string, age: number, isVis: boolean) {
+    this.name = name;
+    this.age = age;
+    this.isVis = isVis;
+  }
+}
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let source: SourceObject = new SourceObject('jack', 18, false);
+    g_object = distributedDataObject.create(this.context, source);
+  }
+}
 ```

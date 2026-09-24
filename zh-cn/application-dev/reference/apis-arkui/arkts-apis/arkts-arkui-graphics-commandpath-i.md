@@ -1,5 +1,9 @@
 # CommandPath
 
+```TypeScript
+export interface CommandPath
+```
+
 用于设置路径绘制的指令。
 
 **起始版本：** 12
@@ -12,7 +16,7 @@
 commands: string
 ```
 
-路径绘制的指令字符串。像素单位的转换方法请参考像素单位。
+路径绘制的指令字符串。像素单位的转换方法请参考[像素单位](../arkts-components/arkts-arkui-common-comp.md#common)。
 
 单位：px
 

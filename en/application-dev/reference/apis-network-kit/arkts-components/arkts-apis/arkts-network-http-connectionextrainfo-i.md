@@ -1,5 +1,9 @@
 # ConnectionExtraInfo
 
+```TypeScript
+export interface ConnectionExtraInfo
+```
+
 Defines the detailed information about the HTTP request interaction.
 
 **Since:** 24

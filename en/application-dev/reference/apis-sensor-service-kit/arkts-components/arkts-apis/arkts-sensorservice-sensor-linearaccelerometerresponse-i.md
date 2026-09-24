@@ -1,5 +1,9 @@
 # LinearAccelerometerResponse
 
+```TypeScript
+interface LinearAccelerometerResponse extends Response
+```
+
 Describes the linear acceleration sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** LinearAccelerometerResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

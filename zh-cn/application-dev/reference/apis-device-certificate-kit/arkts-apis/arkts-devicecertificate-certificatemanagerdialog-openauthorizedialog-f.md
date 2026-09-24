@@ -38,9 +38,9 @@ function openAuthorizeDialog(context: common.Context): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. A mandatory parameter is left unspecified. 2. Incorrect parameter type. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The certificate management application Hap is not preinstalled in the system, and the capability is not supported.<br>**适用版本：** 26.0.0+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. A mandatory parameter is left unspecified. 2. Incorrect parameter type. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | The certificate management application Hap is not preinstalled in the system, and the capability is not supported.<br>**适用版本：** 26.0.0+ |
 | [29700001](../errorcode-certManagerDialog.md#29700001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 | [29700002](../errorcode-certManagerDialog.md#29700002-操作取消) | The user cancels the authorization. |
 
@@ -68,36 +68,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManagerDialog, certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-import { UIContext } from '@kit.ArkUI';
 
-/* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
-let context: common.Context = new UIContext().getHostContext() as common.Context;
-let certTypes: Array<certificateManagerDialog.CertificateType> = [
-  certificateManagerDialog.CertificateType.CREDENTIAL_USER,
-  certificateManagerDialog.CertificateType.CREDENTIAL_APP,
-  certificateManagerDialog.CertificateType.CREDENTIAL_UKEY
-];
-let certPurpose: certificateManager.CertificatePurpose = certificateManager.CertificatePurpose.PURPOSE_DEFAULT;
-let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: certTypes, certPurpose: certPurpose };
-try {
-  certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest)
-    .then((certReference: certificateManagerDialog.CertReference) => {
-    let reference = certReference;
-    console.info(`Succeeded in opening authorize dialog.`);
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="openauthorizedialog-1"></a>
 
 ## openAuthorizeDialog
 
@@ -132,8 +104,8 @@ function openAuthorizeDialog(context: common.Context, authorizeRequest: Authoriz
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [29700001](../errorcode-certManagerDialog.md#29700001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error; 4. Call other service failed. Please try again. |
 | [29700002](../errorcode-certManagerDialog.md#29700002-操作取消) | The user cancels the authorization. |
 | [29700006](../errorcode-certManagerDialog.md#29700006-入参校验失败) | Indicates that the input parameters validation failed. for example, the parameter format is incorrect or the value range is invalid. |
@@ -141,4 +113,32 @@ function openAuthorizeDialog(context: common.Context, authorizeRequest: Authoriz
 
 **示例**
 
-参见 openAuthorizeDialog
+```TypeScript
+import { certificateManagerDialog, certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+import { UIContext } from '@kit.ArkUI';
+
+/* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
+let context: common.Context = new UIContext().getHostContext() as common.Context;
+let certTypes: Array<certificateManagerDialog.CertificateType> = [
+  certificateManagerDialog.CertificateType.CREDENTIAL_USER,
+  certificateManagerDialog.CertificateType.CREDENTIAL_APP,
+  certificateManagerDialog.CertificateType.CREDENTIAL_UKEY
+];
+let certPurpose: certificateManager.CertificatePurpose = certificateManager.CertificatePurpose.PURPOSE_DEFAULT;
+let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: certTypes, certPurpose: certPurpose };
+try {
+  certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest)
+    .then((certReference: certificateManagerDialog.CertReference) => {
+    let reference = certReference;
+    console.info(`Succeeded in opening authorize dialog.`);
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
+}
+```

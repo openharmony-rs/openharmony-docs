@@ -1,5 +1,9 @@
 # ScreenShape
 
+```TypeScript
+enum ScreenShape
+```
+
 显示设备的屏幕形状枚举。
 
 **起始版本：** 18

@@ -8,6 +8,8 @@ typedef struct OH_AbilityRuntime_ModularObjectExtensionInstance OH_AbilityRuntim
 
 定义OH_AbilityRuntime_ModObjExtensionInstance结构体。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)

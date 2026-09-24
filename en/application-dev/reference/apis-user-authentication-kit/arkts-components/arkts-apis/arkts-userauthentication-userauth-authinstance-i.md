@@ -1,5 +1,9 @@
 # AuthInstance
 
+```TypeScript
+interface AuthInstance
+```
+
 Implements user authentication.
 
 **Since:** 9

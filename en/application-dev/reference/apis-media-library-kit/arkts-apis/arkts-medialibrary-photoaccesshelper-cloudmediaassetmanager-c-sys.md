@@ -1,5 +1,9 @@
 # CloudMediaAssetManager (System API)
 
+```TypeScript
+class CloudMediaAssetManager
+```
+
 A class used for cloud media asset management. It is used to manage download tasks for media assets stored in the cloud and delete local data and files pertaining to these cloud-based assets.
 
 **Since:** 14

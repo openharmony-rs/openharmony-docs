@@ -1,5 +1,9 @@
 # InterceptedRecord（系统接口）
 
+```TypeScript
+interface InterceptedRecord
+```
+
 拦截记录。
 
 **起始版本：** 14

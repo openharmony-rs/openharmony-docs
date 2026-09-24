@@ -8,6 +8,8 @@ struct OH_AudioSuite_SpaceRenderExtensionParams {...}
 
 Space rendering extension mode parameters.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 23
 
 **Related module**: [OHAudioSuite](capi-ohaudiosuite.md)

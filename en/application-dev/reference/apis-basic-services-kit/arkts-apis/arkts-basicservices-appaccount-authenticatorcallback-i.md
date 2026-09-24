@@ -1,5 +1,9 @@
 # AuthenticatorCallback
 
+```TypeScript
+interface AuthenticatorCallback
+```
+
 Provides OAuth authenticator callbacks.
 
 > **NOTE:** 

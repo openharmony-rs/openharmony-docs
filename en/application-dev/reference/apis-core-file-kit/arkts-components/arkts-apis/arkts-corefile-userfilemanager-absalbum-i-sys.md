@@ -1,5 +1,9 @@
 # AbsAlbum (System API)
 
+```TypeScript
+interface AbsAlbum
+```
+
 Defines the AbsAlbum.
 
 **Since:** 9
@@ -50,6 +54,8 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 | Error Code ID | Error Message |
 | --- | --- |
 | 13900020 | if type options is not FetchOptions |
+
+<a id="getphotoassets-1"></a>
 
 ## getPhotoAssets
 

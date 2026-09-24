@@ -1,5 +1,9 @@
 # ResolvedNumberFormatOptions
 
+```TypeScript
+interface ResolvedNumberFormatOptions
+```
+
 ## Modules to Import
 
 ```TypeScript

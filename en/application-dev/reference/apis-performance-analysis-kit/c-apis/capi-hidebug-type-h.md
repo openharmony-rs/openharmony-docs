@@ -109,6 +109,8 @@ enum HiDebug_ErrorCode
 
 Enumerates the error codes used in the HiDebug module.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 12
 
 | Enum item | Description |
@@ -143,8 +145,8 @@ Enumerates the error codes used in the HiDebug module.
 | HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428 |  |
 | HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429 |  |
 | HIDEBUG_RES_PROF_FAILURE = 11400430 |  |
-| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | Invalid maximum asynchronous nesting depth.<br>**Since**: 26.1.0 |
-| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | Invalid maximum asynchronous task stack depth.<br>**Since**: 26.1.0 |
+| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | Invalid maximum asynchronous nesting depth.<br>**Since**: 26.0.1 |
+| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | Invalid maximum asynchronous task stack depth.<br>**Since**: 26.0.1 |
 
 ### HiDebug_TraceFlag
 
@@ -155,6 +157,8 @@ enum HiDebug_TraceFlag
 **Description**
 
 Enumerates the thread types for trace collection.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 12
 
@@ -173,6 +177,8 @@ enum HiDebug_StackFrameType
 
 Enumerates the stack frame types.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 20
 
 | Enum item | Description |
@@ -189,6 +195,8 @@ enum HiDebug_CrashObjType
 **Description**
 
 Enumerates the data types of debugging information.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 23
 
@@ -211,6 +219,8 @@ enum OH_HiDebug_ResourceType
 
 Enumerates the resource profiling types.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 24
 
 | Enum item | Description |
@@ -220,9 +230,9 @@ Enumerates the resource profiling types.
 | OH_RES_TYPE_NATIVE |  |
 | OH_RES_TYPE_GPU |  |
 | OH_RES_TYPE_GLOBAL_HANDLE |  |
-| OH_RES_TYPE_DMA | DMA memory.<br>**Since**: 26.1.0 |
-| OH_RES_TYPE_ASHMEM | Anonymous Shared Memory.<br>**Since**: 26.1.0 |
-| OH_RES_TYPE_COMPOSITE_HEAP | Composite heap.<br>**Since**: 26.1.0 |
+| OH_RES_TYPE_DMA | DMA memory.<br>**Since**: 26.0.1 |
+| OH_RES_TYPE_ASHMEM | Anonymous Shared Memory.<br>**Since**: 26.0.1 |
+| OH_RES_TYPE_COMPOSITE_HEAP | Composite heap.<br>**Since**: 26.0.1 |
 
 ### OH_HiDebug_MemListenerType
 
@@ -233,6 +243,8 @@ enum OH_HiDebug_MemListenerType
 **Description**
 
 Enumerates the memory listener callback types. You can process the related logic based on the callback type.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 26.0.0
 
@@ -255,6 +267,8 @@ typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, con
 
 Triggered for the trace collection request.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 24
 
 **Parameters**:
@@ -273,6 +287,8 @@ typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)
 **Description**
 
 Triggered for the resource profiling.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 24
 

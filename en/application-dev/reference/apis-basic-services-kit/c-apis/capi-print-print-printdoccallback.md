@@ -8,6 +8,8 @@ typedef struct Print_PrintDocCallback {...} Print_PrintDocCallback
 
 Defines a struct for the print job state callback.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 13
 
 **Related module**: [Print](capi-print.md)

@@ -28,7 +28,7 @@ Declares the modular object extension context.
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbility(OH_AbilityRuntime_ModObjExtensionContextHandle context, const AbilityBase_Want *want)](#oh_abilityruntime_modobjextensioncontext_startselfuiability) | Starts the self UIAbility. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbilityWithStartOptions(OH_AbilityRuntime_ModObjExtensionContextHandle context, const AbilityBase_Want *want, const AbilityRuntime_StartOptions *options)](#oh_abilityruntime_modobjextensioncontext_startselfuiabilitywithstartoptions) | Starts the self UIAbility with start options. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_TerminateSelf(OH_AbilityRuntime_ModObjExtensionContextHandle context)](#oh_abilityruntime_modobjextensioncontext_terminateself) | Destroys the modular object extension. |
-| [OHIPCRemoteStub* OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub(OH_AbilityRuntime_ModObjExtensionContextHandle context, const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallback destroyCallback, void *userData)](#oh_abilityruntime_modobjextensioncontext_createipcremotestub) | Creates an <b>OHIPCRemoteStub</b> object with callbacks running on the extension's designated thread. The requestCallback and destroyCallback are invoked serially on the thread determined by the extension's {@link OH_AbilityRuntime_ThreadMode}. After calling [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub), no new requestCallback<br>invocations will occur, and any in-flight requestCallback will complete before destroyCallback is invoked.<br>The caller is responsible for destroying the returned object by calling<br>[OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub) to avoid memory leaks. |
+| [OHIPCRemoteStub* OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub(OH_AbilityRuntime_ModObjExtensionContextHandle context, const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallback destroyCallback, void *userData)](#oh_abilityruntime_modobjextensioncontext_createipcremotestub) | Creates an <b>OHIPCRemoteStub</b> object with callbacks running on the extension's designated thread. The requestCallback and destroyCallback are invoked serially on the thread determined by the extension's [OH_AbilityRuntime_ThreadMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_threadmode). After calling [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub), no new requestCallback invocations will occur, and any in-flight requestCallback will complete before destroyCallback is invoked.<br> The caller is responsible for destroying the returned object by calling [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub) to avoid memory leaks. |
 | [void OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub(OH_AbilityRuntime_ModObjExtensionContextHandle context, OHIPCRemoteStub *stub)](#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub) | Destroys an <b>OHIPCRemoteStub</b> object. |
 
 ## Function description
@@ -43,6 +43,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_GetBaseContext
 
 Gets the base context from the modular object extension context.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -56,7 +58,7 @@ Gets the base context from the modular object extension context.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.          {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} success.<br>        {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} parameter check failed. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.          [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) success.          [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) parameter check failed. |
 
 ### OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbility()
 
@@ -67,6 +69,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbi
 **Description**
 
 Starts the self UIAbility.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Required permission**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -83,7 +87,7 @@ Starts the self UIAbility.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.           {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the call is successful.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED} if the caller has no correct permission.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided is invalid.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED} if the device does not support starting self UIAbility.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY} if the target ability does not exist.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE} if the ability type is incorrect.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED} if the crowdtesting application expires.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE} if the ability cannot be started in Wukong mode.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_CONTROLLED} if the app is controlled.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED} if the app is controlled by EDM.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_CROSS_APP} if the caller tries to start a different application.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_INTERNAL} if an internal error occurs.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY} if the caller is not top ability.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED} if the app clone or multi-instance is<br>            not supported.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY} if the app instance key is invalid.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED} if the number of app instances has reached<br>            the limit.<br>         {@link ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED} if multi-instance is not supported.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED} if the APP_INSTANCE_KEY cannot            be specified. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.           [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the call is successful.           [ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the caller has no correct permission.           [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided is invalid.           [ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the device does not support starting self UIAbility.           [ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the target ability does not exist.           [ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the ability type is incorrect.           [ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the crowdtesting application expires.           [ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the ability cannot be started in Wukong mode.           [ABILITY_RUNTIME_ERROR_CODE_CONTROLLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the app is controlled.           [ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the app is controlled by EDM.           [ABILITY_RUNTIME_ERROR_CODE_CROSS_APP](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the caller tries to start a different application.           [ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if an internal error occurs.           [ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the caller is not top ability.           [ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the app clone or multi-instance is            not supported.           [ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the app instance key is invalid.           [ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the number of app instances has reached            the limit.           [ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if multi-instance is not supported.           [ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the APP_INSTANCE_KEY cannot            be specified. |
 
 ### OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbilityWithStartOptions()
 
@@ -94,6 +98,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbi
 **Description**
 
 Starts the self UIAbility with start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Required permission**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -111,7 +117,7 @@ Starts the self UIAbility with start options.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.           {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the call is successful.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED} if the caller has no correct permission.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided are invalid.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED} if the device does not support starting self UIAbility.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY} if the target ability does not exist.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE} if the ability type is incorrect.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED} if the crowdtesting application expires.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE} if the ability cannot be started in Wukong mode.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_CONTROLLED} if the app is controlled.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED} if the app is controlled by EDM.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_CROSS_APP} if the caller tries to start a different application.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_INTERNAL} if an internal error occurs.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY} if the caller is not a foreground process.<br>         {@link ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED} if setting visibility is disabled.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED} if the app clone or multi-instance is<br>            not supported.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY} if the app instance key is invalid.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED} if the number of app instances has reached<br>            the limit.<br>         {@link ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED} if multi-instance is not supported.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED} if the APP_INSTANCE_KEY cannot            be specified. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.           [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the call is successful.           [ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the caller has no correct permission.           [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid.           [ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the device does not support starting self UIAbility.           [ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the target ability does not exist.           [ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the ability type is incorrect.           [ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the crowdtesting application expires.           [ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the ability cannot be started in Wukong mode.           [ABILITY_RUNTIME_ERROR_CODE_CONTROLLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the app is controlled.           [ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the app is controlled by EDM.           [ABILITY_RUNTIME_ERROR_CODE_CROSS_APP](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the caller tries to start a different application.           [ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if an internal error occurs.           [ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the caller is not a foreground process.           [ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if setting visibility is disabled.           [ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the app clone or multi-instance is            not supported.           [ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the app instance key is invalid.           [ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the number of app instances has reached            the limit.           [ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if multi-instance is not supported.           [ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the APP_INSTANCE_KEY cannot            be specified. |
 
 ### OH_AbilityRuntime_ModObjExtensionContext_TerminateSelf()
 
@@ -122,6 +128,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_TerminateSelf(
 **Description**
 
 Destroys the modular object extension.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -135,7 +143,7 @@ Destroys the modular object extension.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>       <li>{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the call is successful.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided are invalid.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE} if the ability cannot be terminated in Wukong mode.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST} if the context does not exist.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_INTERNAL} if an internal error occurs.</li>       </ul> |
+| AbilityRuntime_ErrorCode | <ul>       <li>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the call is successful.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the ability cannot be terminated in Wukong mode.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the context does not exist.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if an internal error occurs.</li>       </ul> |
 
 ### OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub()
 
@@ -145,7 +153,9 @@ OHIPCRemoteStub* OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub(OH
 
 **Description**
 
-Creates an <b>OHIPCRemoteStub</b> object with callbacks running on the extension's designated thread. The requestCallback and destroyCallback are invoked serially on the thread determined by the extension's {@link OH_AbilityRuntime_ThreadMode}. After calling [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub), no new requestCallback<br>invocations will occur, and any in-flight requestCallback will complete before destroyCallback is invoked.<br>The caller is responsible for destroying the returned object by calling<br>[OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub) to avoid memory leaks.
+Creates an <b>OHIPCRemoteStub</b> object with callbacks running on the extension's designated thread. The requestCallback and destroyCallback are invoked serially on the thread determined by the extension's [OH_AbilityRuntime_ThreadMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_threadmode). After calling [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub), no new requestCallback invocations will occur, and any in-flight requestCallback will complete before destroyCallback is invoked.<br> The caller is responsible for destroying the returned object by calling [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub) to avoid memory leaks.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -174,6 +184,8 @@ void OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub(OH_AbilityRun
 **Description**
 
 Destroys an <b>OHIPCRemoteStub</b> object.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 

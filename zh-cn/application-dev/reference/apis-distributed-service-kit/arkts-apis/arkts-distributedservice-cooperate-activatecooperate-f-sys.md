@@ -34,9 +34,9 @@ function activateCooperate(targetNetworkId: string, inputDeviceId: number, callb
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [20900001](../errorcode-devicestatus.md#20900001-操作输入设备失败) | Service exception. Possible causes:<br>1. A system error, such as null pointer, container-related exception, or IPC exception. <br>2. N-API invocation exception or invalid N-API status. |
 
 **示例**
@@ -59,22 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let targetNetworkId = "networkId";
-let inputDeviceId = 0;
-try {
-  cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {
-    console.info(`Start Keyboard mouse crossing success.`);
-  }, (error: BusinessError) => {
-    console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-  });
-} catch (error) {
-  console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-}
-```
-
+<a id="activatecooperate-1"></a>
 
 ## activateCooperate
 
@@ -97,7 +83,7 @@ function activateCooperate(targetNetworkId: string, inputDeviceId: number): Prom
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | targetNetworkId | string | 是 | 键鼠穿越目标设备描述符。 |
-| inputDeviceId | number | 是 | Identifier of the input device for screen hopping. |
+| inputDeviceId | number | 是 | 待穿越输入设备标识符。 |
 
 **返回值：**
 
@@ -109,11 +95,25 @@ function activateCooperate(targetNetworkId: string, inputDeviceId: number): Prom
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [20900001](../errorcode-devicestatus.md#20900001-操作输入设备失败) | Service exception. Possible causes:<br>1. A system error, such as null pointer, container-related exception, or IPC exception. <br>2. N-API invocation exception or invalid N-API status. |
 
 **示例**
 
-参见 [activateCooperate](#activatecooperate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let targetNetworkId = "networkId";
+let inputDeviceId = 0;
+try {
+  cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {
+    console.info(`Start Keyboard mouse crossing success.`);
+  }, (error: BusinessError) => {
+    console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```

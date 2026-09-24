@@ -1,5 +1,9 @@
 # NetHandle
 
+```TypeScript
+export interface NetHandle
+```
+
 网络句柄。
 
 在调用NetHandle的方法之前，需要先获取NetHandle对象。例如可通过[getDefaultNet](arkts-network-connection-getdefaultnet-f.md)获取系统当前默认网络的网络句柄。
@@ -37,7 +41,7 @@ bindSocket(socketParam: TCPSocket | UDPSocket, callback: AsyncCallback<void>): v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
@@ -104,6 +108,43 @@ interface Data {
 })
 ```
 
+<a id="bindsocket-1"></a>
+
+## bindSocket
+
+```TypeScript
+bindSocket(socketParam: TCPSocket | UDPSocket): Promise<void>
+```
+
+将TCPSocket或UDPSocket绑定到当前NetHandle对应的网络。使用Promise异步回调。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| socketParam | [TCPSocket](arkts-network-connection-tcpsocket-t.md) &#124; [UDPSocket](arkts-network-connection-udpsocket-t.md) | 是 | 待绑定的TCPSocket或UDPSocket对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
+| [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
+| [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+
+**示例**
+
 ```TypeScript
 import { connection, socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -159,43 +200,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-## bindSocket
-
-```TypeScript
-bindSocket(socketParam: TCPSocket | UDPSocket): Promise<void>
-```
-
-将TCPSocket或UDPSocket绑定到当前NetHandle对应的网络。使用Promise异步回调。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| socketParam | [TCPSocket](arkts-network-connection-tcpsocket-t.md) &#124; [UDPSocket](arkts-network-connection-udpsocket-t.md) | 是 | 待绑定的TCPSocket或UDPSocket对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
-| [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
-| [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
-
-**示例**
-
-参见 [bindSocket](#bindsocket)
-
 ## getAddressByName
 
 ```TypeScript
@@ -221,8 +225,8 @@ getAddressByName(host: string, callback: AsyncCallback<NetAddress>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
@@ -249,20 +253,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
-    return;
-  }
-  let host = "www.example.com";
-  netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
-    console.info("Succeeded to get data: " + JSON.stringify(data));
-  });
-});
-```
+<a id="getaddressbyname-1"></a>
 
 ## getAddressByName
 
@@ -294,15 +285,28 @@ getAddressByName(host: string): Promise<NetAddress>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
 **示例**
 
-参见 [getAddressByName](#getaddressbyname)
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    return;
+  }
+  let host = "www.example.com";
+  netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
+    console.info("Succeeded to get data: " + JSON.stringify(data));
+  });
+});
+```
 
 ## getAddressesByName
 
@@ -331,8 +335,8 @@ getAddressesByName(host: string, callback: AsyncCallback<Array<NetAddress>>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
@@ -359,20 +363,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
-    return;
-  }
-  let host = "www.example.com";
-  netHandle.getAddressesByName(host).then((data: connection.NetAddress[]) => {
-    console.info("Succeeded to get data: " + JSON.stringify(data));
-  });
-});
-```
+<a id="getaddressesbyname-1"></a>
 
 ## getAddressesByName
 
@@ -406,33 +397,13 @@ getAddressesByName(host: string): Promise<Array<NetAddress>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
 **示例**
-
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
-    return;
-  }
-  let host = "www.example.com";
-  netHandle.getAddressesByName(host, (error: BusinessError, data: connection.NetAddress[]) => {
-    if (error) {
-      console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
-      return;
-    }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
-  });
-});
-```
 
 ```TypeScript
 import { connection } from '@kit.NetworkKit';
@@ -482,7 +453,7 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise<Arra
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |

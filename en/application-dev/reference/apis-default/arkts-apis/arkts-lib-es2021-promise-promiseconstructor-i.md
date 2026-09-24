@@ -1,5 +1,9 @@
 # PromiseConstructor
 
+```TypeScript
+interface PromiseConstructor
+```
+
 Represents the completion of an asynchronous operation
 
 ## Modules to Import
@@ -26,6 +30,8 @@ The any function returns a promise that is fulfilled by the first given promise 
 | Type | Description |
 | --- | --- |
 | Promise&lt;Awaited&lt;T[number]&gt;&gt; | A new Promise. |
+
+<a id="any-1"></a>
 
 ## any
 

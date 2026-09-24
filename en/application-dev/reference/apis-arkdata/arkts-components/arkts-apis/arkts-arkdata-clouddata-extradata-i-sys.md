@@ -1,5 +1,9 @@
 # ExtraData (System API)
 
+```TypeScript
+interface ExtraData
+```
+
 Represents the transparently transmitted data, which contains information required for a data change notification.
 
 **Since:** 11

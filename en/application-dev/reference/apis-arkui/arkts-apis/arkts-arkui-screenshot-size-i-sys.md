@@ -1,5 +1,9 @@
 # Size (System API)
 
+```TypeScript
+interface Size
+```
+
 Describes the size of the screen region to capture.
 
 **Since:** 7

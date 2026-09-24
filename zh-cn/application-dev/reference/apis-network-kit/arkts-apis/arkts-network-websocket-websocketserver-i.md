@@ -1,5 +1,9 @@
 # WebSocketServer
 
+```TypeScript
+export interface WebSocketServer
+```
+
 在调用WebSocketServer方法前，需要先通过[webSocket.createWebSocketServer](arkts-network-websocket-createwebsocketserver-f.md)创建一个WebSocketServer。
 
 **起始版本：** 19
@@ -43,7 +47,7 @@ close(connection: WebSocketConnection, options?: webSocket.WebSocketCloseOptions
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2302006](../errorcode-net-webSocket.md#2302006-websocketserver连接不存在) | websocket connection does not exist. |
 
 **示例**
@@ -110,7 +114,7 @@ listAllConnections(): WebSocketConnection[]
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
 
@@ -175,6 +179,16 @@ off(type: 'connect', callback?: Callback<WebSocketConnection>): void
 | type | 'connect' | 是 | 事件回调类型，支持的事件为'connect'，当offconnect()调用完成，取消监听连接事件成功。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WebSocketConnection](arkts-network-websocket-websocketconnection-i.md)&gt; | 否 | 回调函数。连接的客户端信息。 |
 
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+localServer.off('connect');
+```
+
 ## off('messageReceive')
 
 ```TypeScript
@@ -197,6 +211,16 @@ off(type: 'messageReceive', callback?: Callback<WebSocketMessage>): void
 | --- | --- | --- | --- |
 | type | 'messageReceive' | 是 | 事件回调类型，支持的事件为'messageReceive'，当offmessageReceive()调用完成，取消订阅接收客户端消息成功。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WebSocketMessage](arkts-network-websocket-websocketmessage-i.md)&gt; | 否 | 从指定客户端接收到的消息，包括客户端的信息和数据。<br>- clientconnection：客户端信息。<br>- data：客户端发送的消息。 |
+
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+localServer.off('messageReceive');
+```
 
 ## off('close')
 
@@ -221,6 +245,16 @@ off(type: 'close', callback?: ClientConnectionCloseCallback): void
 | type | 'close' | 是 | 事件回调类型，支持的事件为'close'，当offclose()调用完成，取消订阅连接关闭事件成功。 |
 | callback | [ClientConnectionCloseCallback](arkts-network-websocket-clientconnectionclosecallback-t.md) | 否 | 回调函数。<br>close：close错误码；reason：错误码说明。 |
 
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+localServer.off('close');
+```
+
 ## off('error')
 
 ```TypeScript
@@ -244,6 +278,16 @@ off(type: 'error', callback?: ErrorCallback): void
 | type | 'error' | 是 | 事件回调类型，支持的事件为'error'，当offerror()调用完成，取消订阅error事件成功。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 回调函数。默认值：200。 |
 
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+localServer.off('error');
+```
+
 ## on('connect')
 
 ```TypeScript
@@ -262,6 +306,18 @@ on(type: 'connect', callback: Callback<WebSocketConnection>): void
 | --- | --- | --- | --- |
 | type | 'connect' | 是 | 事件回调类型，支持的事件为'connect'，当onconnect()调用完成，客户端与服务端建链成功。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WebSocketConnection](arkts-network-websocket-websocketconnection-i.md)&gt; | 是 | 回调函数。连接的客户端信息。 |
+
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+localServer.on('connect', (connection: webSocket.WebSocketConnection) => {
+  console.info(`New client connected! Client ip: ${connection.clientIP}, Client port: ${connection.clientPort}`);
+});
+```
 
 ## on('messageReceive')
 
@@ -282,6 +338,18 @@ on(type: 'messageReceive', callback: Callback<WebSocketMessage>): void
 | type | 'messageReceive' | 是 | 事件回调类型，支持的事件为'messageReceive'，当onmessageReceive()调用完成，接收到客户端消息成功。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WebSocketMessage](arkts-network-websocket-websocketmessage-i.md)&gt; | 是 | 回调函数。<br>clientconnection:客户端信息，data:客户端发送的数据消息。 |
 
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
+  console.info(`on message received, client: ${message.clientConnection}, data: ${message.data}`);
+});
+```
+
 ## on('close')
 
 ```TypeScript
@@ -301,6 +369,18 @@ on(type: 'close', callback: ClientConnectionCloseCallback): void
 | type | 'close' | 是 | 事件回调类型，支持的事件为'close'，当onclose()调用完成，连接关闭成功。 |
 | callback | [ClientConnectionCloseCallback](arkts-network-websocket-clientconnectionclosecallback-t.md) | 是 | 回调函数。<br>close：close错误码；reason：错误码说明。 |
 
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
+  console.info(`client close, client: ${clientConnection}, closeReason: Code: ${closeReason.code}, reason: ${closeReason.reason}`);
+});
+```
+
 ## on('error')
 
 ```TypeScript
@@ -319,6 +399,18 @@ on(type: 'error', callback: ErrorCallback): void
 | --- | --- | --- | --- |
 | type | 'error' | 是 | 事件回调类型，支持的事件为'error'，当onerror()调用完成，error事件发生。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 回调函数。 |
+
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wsServer: webSocket.WebSocketServer = webSocket.createWebSocketServer();
+wsServer.on('error', (err: BusinessError) => {
+  console.error(`error. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## send
 
@@ -355,7 +447,7 @@ send(data: string | ArrayBuffer, connection: WebSocketConnection): Promise<boole
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2302006](../errorcode-net-webSocket.md#2302006-websocketserver连接不存在) | websocket connection does not exist. |
 
 **示例**
@@ -431,7 +523,7 @@ start(config: WebSocketServerConfig): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2302002](../errorcode-net-webSocket.md#2302002-websocket-证书不存在) | Websocket certificate file does not exist. |
 | [2302004](../errorcode-net-webSocket.md#2302004-websocketserver-无法在指定的nic网络接口上进行网络监听) | Can't listen on the given NIC. |
 | [2302005](../errorcode-net-webSocket.md#2302005-websocketserver-无法在指定的端口上进行网络监听) | Can't listen on the given Port. |
@@ -487,7 +579,7 @@ stop(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
 

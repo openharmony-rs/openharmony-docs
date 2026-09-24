@@ -6,7 +6,9 @@ typedef struct OH_WifiLinkedInfo {...} OH_WifiLinkedInfo
 
 ## Overview
 
-Represents the Wi-Fi connection information.<br> This structure describes the hotspot information of the current station connection. The information can be obtained by calling [OH_Wifi_GetLinkedInfo](capi-oh-wifi-h.md#oh_wifi_getlinkedinfo).
+Represents the Wi-Fi connection information.<br> This structure describes the hotspot information of the current station connection. The information can be obtained by calling {@link OH_Wifi_GetLinkedInfo}.
+
+**System capability**: SystemCapability.Communication.WiFi.STA
 
 **Since**: 24
 
@@ -34,11 +36,11 @@ Represents the Wi-Fi connection information.<br> This structure describes the ho
 | int32_t macType | MAC address type. 0 indicates random MAC address; 1 indicates device MAC address<br>**Since**: 24 |
 | char macAddress[WIFI_MAC_LEN] | MAC address of the device. When macType is 1 require ohos.permission.GET_WIFI_LOCAL_MAC permission format: "AA:BB:CC:DD:EE:FF" For the maximum length, see {@link WIFI_MAC_LEN}.<br>**Since**: 24 |
 | uint32_t ipAddress | IP address of the connected network.<br>**Since**: 24 |
-| [OH_WifiConnState](capi-oh-wifi-h.md#oh_wificonnstate) connState | Wi-Fi connection state. For details, see [OH_WifiConnState](capi-oh-wifi-h.md#oh_wificonnstate).<br>**Since**: 24 |
-| [OH_WifiChannelWidth](capi-oh-wifi-h.md#oh_wifichannelwidth) channelWidth | Current AP channel width. For details, see [OH_WifiChannelWidth](capi-oh-wifi-h.md#oh_wifichannelwidth).<br>**Since**: 24 |
-| [OH_WifiStandard](capi-oh-wifi-h.md#oh_wifistandard) wifiStandard | Wi-Fi standard. For details, see [OH_WifiStandard](capi-oh-wifi-h.md#oh_wifistandard).<br>**Since**: 24 |
-| [OH_WifiCategory](capi-oh-wifi-h.md#oh_wificategory) supportedWifiCategory | Supported Wi-Fi category. For details, see [OH_WifiCategory](capi-oh-wifi-h.md#oh_wificategory).<br>**Since**: 24 |
+| [OH_WifiConnState](capi-oh-wifi-h.md#oh_wificonnstate) connState | Wi-Fi connection state. For details, see {@link OH_WifiConnState}.<br>**Since**: 24 |
+| [OH_WifiChannelWidth](capi-oh-wifi-h.md#oh_wifichannelwidth) channelWidth | Current AP channel width. For details, see {@link OH_WifiChannelWidth}.<br>**Since**: 24 |
+| [OH_WifiStandard](capi-oh-wifi-h.md#oh_wifistandard) wifiStandard | Wi-Fi standard. For details, see {@link OH_WifiStandard}.<br>**Since**: 24 |
+| [OH_WifiCategory](capi-oh-wifi-h.md#oh_wificategory) supportedWifiCategory | Supported Wi-Fi category. For details, see {@link OH_WifiCategory}.<br>**Since**: 24 |
 | bool isHiLinkNetwork | Indicates whether the network is a HiLink network.<br>**Since**: 24 |
-| [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype) wifiLinkType | Wi-Fi link type. For details, see [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype).<br>**Since**: 24 |
+| [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype) wifiLinkType | Wi-Fi link type. For details, see {@link OH_WifiLinkType}.<br>**Since**: 24 |
 
 

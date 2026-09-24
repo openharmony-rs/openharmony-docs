@@ -1,5 +1,9 @@
 # PrintDirectionMode
 
+```TypeScript
+enum PrintDirectionMode
+```
+
 打印纸张方向的枚举。
 
 **起始版本：** 11

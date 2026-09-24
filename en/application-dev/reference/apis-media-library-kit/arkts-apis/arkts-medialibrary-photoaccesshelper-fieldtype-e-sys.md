@@ -1,5 +1,9 @@
 # FieldType (System API)
 
+```TypeScript
+enum FieldType
+```
+
 Enumerates related entity filed type.
 
 **Since:** 23

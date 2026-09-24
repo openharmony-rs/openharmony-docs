@@ -1,10 +1,14 @@
 # DialogStyleOptions
 
+```TypeScript
+declare interface DialogStyleOptions extends DialogBaseOptions
+```
+
 Options for the fixed-style dialog.
 
 **Inheritance/Implementation:** DialogStyleOptions extends [DialogBaseOptions](arkts-arkui-dialog-dialogbaseoptions-i.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,11 +30,11 @@ The arrangement of buttons.
 
 **Default:** DialogButtonOrientation.AUTO
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,11 +48,11 @@ Array of buttons in the dialog box. When provided, the dialog displays as an ale
 
 **Type:** Array&lt;[DialogButton](arkts-arkui-dialog-dialogbutton-i.md)&gt;
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,11 +66,11 @@ Grid count of dialog. The value should be an integer.
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,11 +84,11 @@ Message content and text style of the dialog box.
 
 **Type:** [DialogMessage](arkts-arkui-dialog-dialogmessage-i.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,11 +102,11 @@ Array of sheet items for action-sheet style. When provided, the dialog displays 
 
 **Type:** Array&lt;[DialogSheet](arkts-arkui-dialog-dialogsheet-i.md)&gt;
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,11 +120,11 @@ Subtitle of the dialog box.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,10 +138,10 @@ Title of the dialog box.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

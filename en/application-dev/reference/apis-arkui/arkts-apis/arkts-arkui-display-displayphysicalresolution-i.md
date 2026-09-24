@@ -1,5 +1,9 @@
 # DisplayPhysicalResolution
 
+```TypeScript
+interface DisplayPhysicalResolution
+```
+
 Describes the display mode of a device and the corresponding physical screen resolution information.
 
 **Since:** 12

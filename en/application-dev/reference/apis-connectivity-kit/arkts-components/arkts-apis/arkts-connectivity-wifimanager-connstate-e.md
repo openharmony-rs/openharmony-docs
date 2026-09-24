@@ -1,5 +1,9 @@
 # ConnState
 
+```TypeScript
+export enum ConnState
+```
+
 The state of Wi-Fi connection enumeration.
 
 @enum { int }

@@ -32,9 +32,9 @@ function getUserStorageStats(): Promise<StorageStats>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
@@ -49,41 +49,8 @@ storageStatistics.getUserStorageStats().then((storageStats: storageStatistics.St
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-storageStatistics.getUserStorageStats((error: BusinessError, storageStats: storageStatistics.StorageStats) => {
-  if (error) {
-    console.error(`getUserStorageStats failed with err, code is: ${error.code}, message is: ${error.message}`);
-  } else {
-    // do something
-    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
-  }
-});
-```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-let userId: number = 100;
-storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
-  console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
-}).catch((err: BusinessError) => {
-  console.error(`getUserStorageStats failed with err, code is: ${err.code}, message is: ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-let userId: number = 100;
-storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats) => {
-  if (error) {
-    console.error(`getUserStorageStats failed with err, code is: ${error.code}, message is: ${error.message}`);
-  } else {
-    // do something
-    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
-  }
-});
-```
-
+<a id="getuserstoragestats-1"></a>
 
 ## getUserStorageStats
 
@@ -111,16 +78,28 @@ function getUserStorageStats(callback: AsyncCallback<StorageStats>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
 **示例**
 
-参见 [getUserStorageStats](#getuserstoragestats)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getUserStorageStats((error: BusinessError, storageStats: storageStatistics.StorageStats) => {
+  if (error) {
+    console.error(`getUserStorageStats failed with err, code is: ${error.code}, message is: ${error.message}`);
+  } else {
+    // do something
+    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+  }
+});
+```
 
+
+<a id="getuserstoragestats-2"></a>
 
 ## getUserStorageStats
 
@@ -154,17 +133,27 @@ function getUserStorageStats(userId: number): Promise<StorageStats>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600009 | User if out of range. |
 | 13900042 | Unknown error. |
 
 **示例**
 
-参见 [getUserStorageStats](#getuserstoragestats)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let userId: number = 100;
+storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
+  console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+}).catch((err: BusinessError) => {
+  console.error(`getUserStorageStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+});
+```
 
+
+<a id="getuserstoragestats-3"></a>
 
 ## getUserStorageStats
 
@@ -193,13 +182,24 @@ function getUserStorageStats(userId: number, callback: AsyncCallback<StorageStat
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600009 | User if out of range. |
 | 13900042 | Unknown error. |
 
 **示例**
 
-参见 [getUserStorageStats](#getuserstoragestats)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let userId: number = 100;
+storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats) => {
+  if (error) {
+    console.error(`getUserStorageStats failed with err, code is: ${error.code}, message is: ${error.message}`);
+  } else {
+    // do something
+    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+  }
+});
+```

@@ -1,5 +1,9 @@
 # TimeType
 
+```TypeScript
+enum TimeType
+```
+
 Enumerates the types of time to obtain.
 
 **Since:** 10

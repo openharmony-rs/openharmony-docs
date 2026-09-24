@@ -8,6 +8,8 @@ typedef struct OH_Predicates {...} OH_Predicates
 
 Define the OH_Predicates structure type.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 10
 
 **Related module**: [RDB](capi-rdb.md)
@@ -50,7 +52,7 @@ Define the OH_Predicates structure type.
 | [OH_Predicates *(\*in)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#in) | Function pointer. Configure the predicate to match the specified field and the value within the given array range.<br> This method is similar IN the SQL statement. |
 | [OH_Predicates *(\*notIn)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#notin) | Function pointer. Configure the predicate to match the specified field and the value not within the given array range.<br> This method is similar NOT IN the SQL statement. |
 | [OH_Predicates *(\*clear)(OH_Predicates *predicates)](#clear) | Function pointer. Initialize OH_Predicates object. |
-| [int (\*destroy)(OH_Predicates *predicates)](#destroy) | Destroy the [OH_Predicates](capi-rdb-oh-predicates.md) object and reclaim the memory occupied by the object. |
+| [int (\*destroy)(OH_Predicates *predicates)](#destroy) | Destroy the {@link OH_Predicates} object and reclaim the memory occupied by the object. |
 
 ## Member function description
 
@@ -70,7 +72,7 @@ Function pointer. Restricts the value of the field to be equal to the specified 
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  const char *field | Indicates the column name in the database table. |
 |  OH_VObject *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 
@@ -101,7 +103,7 @@ Function pointer. Restricts the value of the field to be not equal to the specif
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  const char *field | Indicates the column name in the database table. |
 |  OH_VObject *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 
@@ -132,7 +134,7 @@ Function pointer. Add left parenthesis to predicate.<br> This method is similar 
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 
 **Returns**:
 
@@ -161,7 +163,7 @@ Function pointer. Add right parenthesis to predicate.<br> This method is similar
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 
 **Returns**:
 
@@ -190,7 +192,7 @@ Function pointer. Adds an or condition to the predicates.<br> This method is sim
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 
 **Returns**:
 
@@ -219,7 +221,7 @@ Function pointer. Adds an and condition to the predicates.<br> This method is si
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 
 **Returns**:
 
@@ -248,7 +250,7 @@ Function pointer. Restricts the value of the field which is null to the predicat
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  const char *field | Indicates the column name in the database table. |
 
 **Returns**:
@@ -278,7 +280,7 @@ Function pointer. Restricts the value of the field which is not null to the pred
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  const char *field | Indicates the column name in the database table. |
 
 **Returns**:
@@ -308,7 +310,7 @@ Function pointer. Restricts the value of the field to be like the specified valu
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  const char *field | Indicates the column name in the database table. |
 |  OH_VObject *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 
@@ -339,7 +341,7 @@ Function pointer. Restricts the value of the field to be between the specified v
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  const char *field | Indicates the column name in the database table. |
 |  OH_VObject *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 
@@ -370,7 +372,7 @@ Function pointer. Restricts the value of the field to be not between the specifi
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  const char *field | Indicates the column name in the database table. |
 |  OH_VObject *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 
@@ -401,7 +403,7 @@ Function pointer. Restricts the value of the field to be greater than the specif
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  const char *field | Indicates the column name in the database table. |
 |  OH_VObject *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 
@@ -432,7 +434,7 @@ Function pointer. Restricts the value of the field to be less than the specified
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  const char *field | Indicates the column name in the database table. |
 |  OH_VObject *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 
@@ -463,7 +465,7 @@ Function pointer. Restricts the value of the field to be greater than or equal t
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  const char *field | Indicates the column name in the database table. |
 |  OH_VObject *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 
@@ -494,7 +496,7 @@ Function pointer. Restricts the value of the field to be less than or equal to t
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  const char *field | Indicates the column name in the database table. |
 |  OH_VObject *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 
@@ -525,9 +527,9 @@ Function pointer. Restricts the ascending or descending order of the return list
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  const char *field | Indicates the column name in the database table. |
-|  [OH_OrderType](capi-oh-predicates-h.md#oh_ordertype) type | Indicates the sort [OH_OrderType](capi-oh-predicates-h.md#oh_ordertype) type. |
+|  [OH_OrderType](capi-oh-predicates-h.md#oh_ordertype) type | Indicates the sort {@link OH_OrderType} type. |
 
 **Returns**:
 
@@ -556,7 +558,7 @@ Function pointer. Configure predicates to filter duplicate records and retain on
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 
 **Returns**:
 
@@ -585,7 +587,7 @@ Function pointer. Predicate for setting the maximum number of data records.<br> 
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  unsigned int value | Indicates the maximum number of records. |
 
 **Returns**:
@@ -615,7 +617,7 @@ Function pointer. Configure the predicate to specify the starting position of th
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  unsigned int rowOffset | Indicates the number of rows to offset from the beginning. The value is a positive integer. |
 
 **Returns**:
@@ -645,7 +647,7 @@ Function pointer. Configure predicates to group query results by specified colum
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  char const *const *fields | Indicates the column names that the grouping depends on. |
 |  int length | Indicates the length of fields. |
 
@@ -676,7 +678,7 @@ Function pointer. Configure the predicate to match the specified field and the v
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  const char *field | Indicates the column name in the database table. |
 |  OH_VObject *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 
@@ -707,7 +709,7 @@ Function pointer. Configure the predicate to match the specified field and the v
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 |  const char *field | Indicates the column name in the database table. |
 |  OH_VObject *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 
@@ -738,7 +740,7 @@ Function pointer. Initialize OH_Predicates object.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 
 **Returns**:
 
@@ -759,7 +761,7 @@ int (*destroy)(OH_Predicates *predicates)
 
 **Description**
 
-Destroy the [OH_Predicates](capi-rdb-oh-predicates.md) object and reclaim the memory occupied by the object.
+Destroy the {@link OH_Predicates} object and reclaim the memory occupied by the object.
 
 **Since**: 10
 
@@ -767,7 +769,7 @@ Destroy the [OH_Predicates](capi-rdb-oh-predicates.md) object and reclaim the me
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {@link OH_Predicates} instance. |
 
 **Returns**:
 

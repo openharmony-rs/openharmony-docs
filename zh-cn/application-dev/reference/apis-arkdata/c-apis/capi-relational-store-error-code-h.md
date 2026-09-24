@@ -34,6 +34,8 @@ enum OH_Rdb_ErrCode
 
 表示错误码信息。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 | 枚举项 | 描述 |

@@ -1,8 +1,12 @@
 # FolderStack属性/事件
 
-In addition to the [universal events](arkts-arkui-commonmethod-c.md), the following events are supported.
+```TypeScript
+declare class FolderStackAttribute extends CommonMethod<FolderStackAttribute>
+```
 
-**继承/实现关系：** FolderStackAttribute extends CommonMethod&lt;FolderStackAttribute&gt;
+In addition to the [universal events](arkts-arkui-common-comp-commonmethod-c.md), the following events are supported.
+
+**继承/实现关系：** FolderStackAttribute extends CommonMethod<FolderStackAttribute>
 
 **起始版本：** 11
 
@@ -14,11 +18,11 @@ In addition to the [universal events](arkts-arkui-commonmethod-c.md), the follow
 alignContent(value: Alignment)
 ```
 
-设置子组件在容器内的对齐方式，调用后子组件按照指定的对齐方式在容器内排列。该属性与align同时设置时，后设置的属性生效。
+设置子组件在容器内的对齐方式，调用后子组件按照指定的对齐方式在容器内排列。该属性与[align](arkts-arkui-common-comp-commonmethod-c.md#align)同时设置时，后设置的属性生效。
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -46,7 +50,7 @@ autoHalfFold(value: boolean)
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -72,7 +76,7 @@ enableAnimation(value: boolean)
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -94,13 +98,13 @@ enableAnimation(value: boolean)
 onFolderStateChange(callback: OnFoldStatusChangeCallback)
 ```
 
-当前设备的折叠状态改变时触发回调&lt;!--RP3--&gt;（该回调仅在横屏状态下生效）&lt;!--RP3End--&gt;。
+当前设备的折叠状态改变时触发回调<!--RP3-->（该回调仅在横屏状态下生效）<!--RP3End-->。
 
 典型使用场景：根据折叠状态调整应用布局，例如在展开状态下显示双栏布局，在半折叠状态下调整上半屏和下半屏的内容分布。
 
 > **说明：** 
 > 
-> 从API version 20开始，该接口支持在attributeModifier中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -114,7 +118,7 @@ onFolderStateChange(callback: OnFoldStatusChangeCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnFoldStatusChangeCallback](arkts-arkui-onfoldstatuschangecallback-t.md) | 是 | 当前设备的折叠状态改变时触发的回调。<br>**适用版本：** 18 |
+| callback | [OnFoldStatusChangeCallback](arkts-arkui-folderstack-comp-onfoldstatuschangecallback-t.md) | 是 | 当前设备的折叠状态改变时触发的回调。<br>**适用版本：** 18 |
 
 ## onHoverStatusChange
 
@@ -128,7 +132,7 @@ onHoverStatusChange(handler: OnHoverStatusChangeCallback)
 
 > **说明：** 
 > 
-> 从API version 20开始，该接口支持在attributeModifier中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -142,4 +146,4 @@ onHoverStatusChange(handler: OnHoverStatusChangeCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [OnHoverStatusChangeCallback](arkts-arkui-onhoverstatuschangecallback-t.md) | 是 | 当前设备的悬停状态改变时触发的回调。<br>**适用版本：** 18 |
+| handler | [OnHoverStatusChangeCallback](arkts-arkui-folderstack-comp-onhoverstatuschangecallback-t.md) | 是 | 当前设备的悬停状态改变时触发的回调。<br>**适用版本：** 18 |

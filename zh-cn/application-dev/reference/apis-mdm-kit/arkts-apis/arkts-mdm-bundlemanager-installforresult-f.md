@@ -14,7 +14,7 @@ function installForResult(admin: Want, hapFilePaths: Array<string>, installParam
 
 安装指定路径下的应用包，并返回安装结果。使用Promise异步回调。
 
-此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md)接口查询应用自身的BundleInfo，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。
+此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md)接口查询应用自身的[BundleInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundleinfo-i.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。
 
 > **说明：** 
 > 
@@ -67,4 +67,4 @@ function installForResult(admin: Want, hapFilePaths: Array<string>, installParam
 | [9201037](../errorcode-enterpriseDeviceManager.md#9201037-数据代理权限配置错误导致应用安装失败) | Failed to install the HAP due to incorrect permission configuration in the data proxy. |
 | [9201038](../errorcode-enterpriseDeviceManager.md#9201038-代码签名验证失败导致应用安装失败) | Failed to install the HAP due to code signature verification failure. |
 | [9201039](../errorcode-enterpriseDeviceManager.md#9201039-企业设备验证失败导致应用安装失败) | Failed to install the HAP due to enterprise device verification failure. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |

@@ -8,6 +8,8 @@ typedef struct OH_AudioDeviceEnhanceManager OH_AudioDeviceEnhanceManager
 
 Defines the handle type of the audio device enhancement manager, which is used for enhanced audio device management functions.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 26.0.0
 
 **Related module**: [OHAudio](capi-ohaudio.md)

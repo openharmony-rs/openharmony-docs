@@ -8,6 +8,8 @@ typedef struct ArkUI_CustomProperty ArkUI_CustomProperty
 
 Defines custom property information.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

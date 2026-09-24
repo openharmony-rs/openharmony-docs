@@ -31,8 +31,8 @@ function createCertExtension(inStream: EncodingBlob, callback: AsyncCallback<Cer
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | This operation is not supported. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
@@ -69,36 +69,8 @@ cert.createCertExtension(encodingBlob, (error, _certExt) => {
 });
 ```
 
-```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 证书扩展域段二进制数据，需业务自行赋值。
-let extData = new Uint8Array([
-  0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
-  0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
-  0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
-  0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
-  0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
-  0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
-  0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
-  0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
-  0xD9, 0xE4
-]);
-
-let encodingBlob: cert.EncodingBlob = {
-  data: extData,
-  // 根据encodingData的格式进行赋值，仅支持FORMAT_DER。
-  encodingFormat: cert.EncodingFormat.FORMAT_DER
-};
-
-cert.createCertExtension(encodingBlob).then(_certExt => {
-  console.info('createCertExtension result: success.');
-}).catch((error: BusinessError) => {
-  console.error(`createCertExtension failed, errCode: ${error.code}, errMsg: ${error.message}`);
-});
-```
-
+<a id="createcertextension-1"></a>
 
 ## createCertExtension
 
@@ -130,11 +102,39 @@ function createCertExtension(inStream: EncodingBlob): Promise<CertExtension>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | This operation is not supported. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
 **示例**
 
-参见 createCertExtension
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 证书扩展域段二进制数据，需业务自行赋值。
+let extData = new Uint8Array([
+  0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
+  0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
+  0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
+  0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
+  0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
+  0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
+  0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
+  0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
+  0xD9, 0xE4
+]);
+
+let encodingBlob: cert.EncodingBlob = {
+  data: extData,
+  // 根据encodingData的格式进行赋值，仅支持FORMAT_DER。
+  encodingFormat: cert.EncodingFormat.FORMAT_DER
+};
+
+cert.createCertExtension(encodingBlob).then(_certExt => {
+  console.info('createCertExtension result: success.');
+}).catch((error: BusinessError) => {
+  console.error(`createCertExtension failed, errCode: ${error.code}, errMsg: ${error.message}`);
+});
+```

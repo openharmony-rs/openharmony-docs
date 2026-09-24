@@ -24,7 +24,7 @@ Checks whether the system supports the specified font file. You can use this API
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fontURL | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | Yes | Path of the font file to be checked. The path must be in the format of "**file://** + Absolute path of the font file" or **&#36;rawfile** (a file path relative to the **resources/rawfile** directory in the project, which includes the font file name). |
+| fontURL | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | Yes | Path of the font file to be checked. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the**resources/rawfile** directory in the project, which includes the font file name). |
 
 **Return value:**
 

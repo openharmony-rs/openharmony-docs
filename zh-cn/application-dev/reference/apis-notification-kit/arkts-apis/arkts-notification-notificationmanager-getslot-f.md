@@ -39,7 +39,7 @@ function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -61,17 +61,8 @@ let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL
 notificationManager.getSlot(slotType, getSlotCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
-notificationManager.getSlot(slotType).then((data: notificationManager.NotificationSlot) => {
-  console.info(`Succeeded in getting slot, data is ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get slot. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getslot-2"></a>
 
 ## getSlot
 
@@ -91,7 +82,7 @@ function getSlot(slotType: SlotType): Promise<NotificationSlot>
 
 [addSlot](arkts-notification-notificationmanager-addslot-f.md) 创建通知频道。
 
-[removeSlot](arkts-notification-notificationmanager-removeslot-f.md) 删除指定类型的通知渠道。
+[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot-1) 删除指定类型的通知渠道。
 
 [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md) 删除所有通知渠道。
 
@@ -111,11 +102,20 @@ function getSlot(slotType: SlotType): Promise<NotificationSlot>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
 **示例**
 
-参见 getSlot
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
+notificationManager.getSlot(slotType).then((data: notificationManager.NotificationSlot) => {
+  console.info(`Succeeded in getting slot, data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get slot. Code is ${err.code}, message is ${err.message}`);
+});
+```

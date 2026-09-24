@@ -1,5 +1,9 @@
 # SoundPool
 
+```TypeScript
+export declare interface SoundPool
+```
+
 Implements a sound pool that provides APIs for loading, unloading, playing, and stopping playing system sounds, setting the volume, and setting the number of loops. Before using these APIs, you must call [media.createSoundPool](arkts-media-media-createsoundpool-f.md) to create a SoundPool instance.
 
 > **NOTE:** 
@@ -62,6 +66,8 @@ This API cannot be used to load resources in the **rawfile** directory. Instead,
 | [5400103](../errorcode-media.md#5400103-io-error) | I/O error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
+<a id="load-1"></a>
+
 ## load
 
 ```TypeScript
@@ -104,6 +110,8 @@ This API cannot be used to load resources in the **rawfile** directory. Instead,
 | [5400103](../errorcode-media.md#5400103-io-error) | I/O error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
+<a id="load-2"></a>
+
 ## load
 
 ```TypeScript
@@ -140,6 +148,8 @@ This API uses an asynchronous callback to obtain the resource ID. For the input 
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400103](../errorcode-media.md#5400103-io-error) | I/O error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+
+<a id="load-3"></a>
 
 ## load
 
@@ -401,6 +411,8 @@ Plays a sound and obtains the stream ID. This API uses an asynchronous callback 
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
+<a id="play-1"></a>
+
 ## play
 
 ```TypeScript
@@ -427,6 +439,8 @@ Plays a sound using default parameters and obtains the stream ID. This API uses 
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+
+<a id="play-2"></a>
 
 ## play
 
@@ -484,6 +498,8 @@ Releases a **SoundPool** instance. This API uses an asynchronous callback to ret
 | Error Code ID | Error Message |
 | --- | --- |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+
+<a id="release-1"></a>
 
 ## release
 
@@ -557,6 +573,8 @@ Sets the loop mode. This API uses an asynchronous callback to return the result.
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
+<a id="setloop-1"></a>
+
 ## setLoop
 
 ```TypeScript
@@ -618,6 +636,8 @@ Sets the priority for an audio stream. This API uses an asynchronous callback to
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
+<a id="setpriority-1"></a>
+
 ## setPriority
 
 ```TypeScript
@@ -678,6 +698,8 @@ Sets the playback rate for an audio stream. This API uses an asynchronous callba
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+
+<a id="setrate-1"></a>
 
 ## setRate
 
@@ -741,6 +763,8 @@ Sets the volume for an audio stream. This API uses an asynchronous callback to r
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
+<a id="setvolume-1"></a>
+
 ## setVolume
 
 ```TypeScript
@@ -802,6 +826,8 @@ Stops audio playback. This API uses an asynchronous callback to return the resul
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
+<a id="stop-1"></a>
+
 ## stop
 
 ```TypeScript
@@ -860,6 +886,8 @@ Unloads a sound. This API uses an asynchronous callback to return the result.
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400103](../errorcode-media.md#5400103-io-error) | I/O error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+
+<a id="unload-1"></a>
 
 ## unload
 

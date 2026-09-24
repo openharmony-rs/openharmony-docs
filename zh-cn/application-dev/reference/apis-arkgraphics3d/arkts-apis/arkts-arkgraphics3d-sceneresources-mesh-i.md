@@ -1,5 +1,9 @@
 # Mesh
 
+```TypeScript
+export interface Mesh extends SceneResource
+```
+
 网格类型，继承自SceneResource。
 
 @extends SceneResource @interface Mesh

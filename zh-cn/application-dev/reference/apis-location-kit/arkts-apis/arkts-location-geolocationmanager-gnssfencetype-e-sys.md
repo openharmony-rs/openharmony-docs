@@ -1,5 +1,9 @@
 # GnssFenceType（系统接口）
 
+```TypeScript
+export enum GnssFenceType
+```
+
 GNSS围栏类型。
 
 **起始版本：** 26.0.0

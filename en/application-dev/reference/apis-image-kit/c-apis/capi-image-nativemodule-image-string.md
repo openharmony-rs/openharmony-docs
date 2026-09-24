@@ -8,6 +8,8 @@ typedef struct Image_String Image_MimeType
 
 Defines the image encode format.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)

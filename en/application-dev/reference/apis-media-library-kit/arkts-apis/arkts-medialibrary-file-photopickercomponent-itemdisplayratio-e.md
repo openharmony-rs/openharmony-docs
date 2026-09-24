@@ -1,5 +1,9 @@
 # ItemDisplayRatio
 
+```TypeScript
+export declare enum ItemDisplayRatio
+```
+
 Enumerates the aspect ratios for grid display in single-line display mode.
 
 **Since:** 20

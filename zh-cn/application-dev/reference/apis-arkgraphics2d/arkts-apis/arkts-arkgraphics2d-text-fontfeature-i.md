@@ -1,5 +1,9 @@
 # FontFeature
 
+```TypeScript
+interface FontFeature
+```
+
 文本字体特征。
 
 **起始版本：** 12

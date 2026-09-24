@@ -1,5 +1,9 @@
 # BundleStats
 
+```TypeScript
+export interface BundleStats
+```
+
 获取捆绑包统计信息。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # VideoProcessor
 
+```TypeScript
+interface VideoProcessor
+```
+
 Provides the VideoProcessor type, including AIHDR related functions.
 
 **Since:** 26.0.0

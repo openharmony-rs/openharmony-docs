@@ -38,7 +38,7 @@ function startPrint(job: PrintJobData): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
 
 **示例**
 

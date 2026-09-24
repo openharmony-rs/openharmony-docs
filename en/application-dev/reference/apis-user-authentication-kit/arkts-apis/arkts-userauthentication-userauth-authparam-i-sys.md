@@ -1,5 +1,9 @@
 # AuthParam
 
+```TypeScript
+interface AuthParam
+```
+
 Defines the user authentication parameters. This API is used to configure user authentication parameters, including the challenge value, authentication type list, authentication trust level, and authentication result reuse configuration. By properly configuring these parameters, you can meet authentication requirements in different service scenarios.
 
 **Since:** 10

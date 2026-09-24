@@ -1,5 +1,9 @@
 # ColorSpace
 
+```TypeScript
+enum ColorSpace
+```
+
 Enumerates the color spaces.
 
 **Since:** 8

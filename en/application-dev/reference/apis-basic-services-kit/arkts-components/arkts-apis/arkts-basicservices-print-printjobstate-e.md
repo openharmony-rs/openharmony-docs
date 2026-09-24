@@ -1,5 +1,9 @@
 # PrintJobState
 
+```TypeScript
+enum PrintJobState
+```
+
 Enumerates the print job states.
 
 **Since:** 14

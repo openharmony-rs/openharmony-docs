@@ -1,5 +1,9 @@
 # DataFlowType
 
+```TypeScript
+export enum DataFlowType
+```
+
 Defines the cellular data flow type.
 
 **Since:** 7

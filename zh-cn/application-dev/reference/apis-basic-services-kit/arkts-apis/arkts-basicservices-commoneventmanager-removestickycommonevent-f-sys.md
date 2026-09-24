@@ -33,9 +33,9 @@ function removeStickyCommonEvent(event: string, callback: AsyncCallback<void>): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1500004](../errorcode-CommonEventService.md#1500004-无法发送系统公共事件) | A third-party application cannot send system common events. |
 | [1500007](../errorcode-CommonEventService.md#1500007-ipc请求发送失败) | Failed to send the message to the common event service. |
 | [1500008](../errorcode-CommonEventService.md#1500008-公共事件服务端初始化失败) | Failed to initialize the common event service. |
@@ -54,16 +54,8 @@ commonEventManager.removeStickyCommonEvent('sticky_event', (err: BusinessError) 
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-commonEventManager.removeStickyCommonEvent('sticky_event').then(() => {
-  console.info(`removeStickyCommonEvent success`);
-}).catch((err: BusinessError) => {
-  console.error(`removeStickyCommonEvent failed, errCode: ${err.code}, errMsg: ${err.message}`);
-});
-```
-
+<a id="removestickycommonevent-1"></a>
 
 ## removeStickyCommonEvent
 
@@ -97,13 +89,21 @@ function removeStickyCommonEvent(event: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1500004](../errorcode-CommonEventService.md#1500004-无法发送系统公共事件) | A third-party application cannot send system common events. |
 | [1500007](../errorcode-CommonEventService.md#1500007-ipc请求发送失败) | Failed to send the message to the common event service. |
 | [1500008](../errorcode-CommonEventService.md#1500008-公共事件服务端初始化失败) | Failed to initialize the common event service. |
 
 **示例**
 
-参见 [removeStickyCommonEvent](#removestickycommonevent)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+commonEventManager.removeStickyCommonEvent('sticky_event').then(() => {
+  console.info(`removeStickyCommonEvent success`);
+}).catch((err: BusinessError) => {
+  console.error(`removeStickyCommonEvent failed, errCode: ${err.code}, errMsg: ${err.message}`);
+});
+```

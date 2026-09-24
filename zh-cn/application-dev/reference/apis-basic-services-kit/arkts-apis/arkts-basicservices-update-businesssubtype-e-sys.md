@@ -1,5 +1,9 @@
 # BusinessSubType（系统接口）
 
+```TypeScript
+export enum BusinessSubType
+```
+
 升级类型。
 
 **起始版本：** 9

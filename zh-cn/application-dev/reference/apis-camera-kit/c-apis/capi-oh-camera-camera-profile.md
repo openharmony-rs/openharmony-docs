@@ -8,6 +8,8 @@ typedef struct Camera_Profile {...} Camera_Profile
 
 相机流的配置文件。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

@@ -1,5 +1,9 @@
 # RotationInfoType
 
+```TypeScript
+enum RotationInfoType
+```
+
 旋转信息类型枚举。
 
 **起始版本：** 23

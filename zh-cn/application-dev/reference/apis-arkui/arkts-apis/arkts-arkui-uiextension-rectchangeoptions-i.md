@@ -1,5 +1,9 @@
 # RectChangeOptions
 
+```TypeScript
+interface RectChangeOptions
+```
+
 组件（EmbeddedComponent或UIExtensionComponent）矩形（位置及尺寸）变化返回的值及变化原因。
 
 **起始版本：** 14

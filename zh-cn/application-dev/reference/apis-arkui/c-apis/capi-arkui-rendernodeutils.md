@@ -4,6 +4,8 @@
 
 Provides RenderNode capabilities of ArkUI on the native side, such as RenderNode creation and destruction, tree node operations, and attribute setting.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 ## 文件汇总

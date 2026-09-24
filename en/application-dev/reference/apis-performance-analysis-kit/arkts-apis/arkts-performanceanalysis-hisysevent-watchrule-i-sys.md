@@ -1,5 +1,9 @@
 # WatchRule (System API)
 
+```TypeScript
+interface WatchRule
+```
+
 Defines event subscription rules.
 
 **Since:** 9

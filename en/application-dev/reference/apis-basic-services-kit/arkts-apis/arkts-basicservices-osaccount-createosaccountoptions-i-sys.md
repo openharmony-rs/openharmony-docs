@@ -1,5 +1,9 @@
 # CreateOsAccountOptions (System API)
 
+```TypeScript
+interface CreateOsAccountOptions
+```
+
 Represents the optional parameter used to create an OS account.
 
 **Since:** 12

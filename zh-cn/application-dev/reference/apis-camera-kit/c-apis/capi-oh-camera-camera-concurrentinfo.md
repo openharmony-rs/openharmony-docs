@@ -8,6 +8,8 @@ typedef struct Camera_ConcurrentInfo {...} Camera_ConcurrentInfo
 
 相机并发能力信息。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 18
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

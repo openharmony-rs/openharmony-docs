@@ -70,52 +70,8 @@ adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_
 });
 ```
 
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-let enterpriseInfo: adminManager.EnterpriseInfo = {
-  // Replace with actual values.
-  name: 'enterprise name',
-  description: 'enterprise description'
-};
-
-adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_TYPE_NORMAL, 100, (err) => {
-  if (err) {
-    console.error(`Failed to enable admin. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in enabling admin');
-});
-```
-
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-let enterpriseInfo: adminManager.EnterpriseInfo = {
-  // Replace with actual values.
-  name: 'enterprise name',
-  description: 'enterprise description'
-};
-
-adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_TYPE_NORMAL, 100).catch(
-  (err: BusinessError) => {
-    console.error(`Failed to enable admin. Code: ${err.code}, message: ${err.message}`);
-  });
-```
-
+<a id="enableadmin-1"></a>
 
 ## enableAdmin
 
@@ -158,8 +114,32 @@ Enables a device administrator application for a user (specified by **userId**).
 
 **Examples**
 
-See [enableAdmin](#enableadmin)
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
 
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let enterpriseInfo: adminManager.EnterpriseInfo = {
+  // Replace with actual values.
+  name: 'enterprise name',
+  description: 'enterprise description'
+};
+
+adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_TYPE_NORMAL, 100, (err) => {
+  if (err) {
+    console.error(`Failed to enable admin. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in enabling admin');
+});
+```
+
+
+<a id="enableadmin-2"></a>
 
 ## enableAdmin
 
@@ -207,4 +187,24 @@ Enables the device administrator application for the current or specified user. 
 
 **Examples**
 
-See [enableAdmin](#enableadmin)
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let enterpriseInfo: adminManager.EnterpriseInfo = {
+  // Replace with actual values.
+  name: 'enterprise name',
+  description: 'enterprise description'
+};
+
+adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_TYPE_NORMAL, 100).catch(
+  (err: BusinessError) => {
+    console.error(`Failed to enable admin. Code: ${err.code}, message: ${err.message}`);
+  });
+```

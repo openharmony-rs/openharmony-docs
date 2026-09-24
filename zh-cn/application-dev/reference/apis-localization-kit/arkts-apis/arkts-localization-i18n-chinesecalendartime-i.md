@@ -1,5 +1,9 @@
 # ChineseCalendarTime
 
+```TypeScript
+export interface ChineseCalendarTime
+```
+
 农历时间对象。
 
 **起始版本：** 26.0.0

@@ -1,10 +1,14 @@
 # SecurityComponentMethod
 
+```TypeScript
+declare class SecurityComponentMethod<T>
+```
+
 The universal attributes module for security components enables unified configuration of universal attributes such as layout, size, text, icon, color, border, and interaction behaviors.
 
 This module is mainly used in the following scenarios:  
 - Set layout, size, text, icon, color, border, and interaction-related attributes for security components  
-such as PasteButton and SaveButton.  
+such as [PasteButton](../arkts-components/arkts-arkui-pastebutton-comp.md#paste_button) and [SaveButton](../arkts-components/arkts-arkui-savebutton-comp.md#save_button).  
 - Adjust the display effect and interaction experience of security components while ensuring compliance with  
 the security component specifications. For specific constraints, see [Constraints](../../../security/AccessToken/security-component-overview.md#constraints).  
 - Reuse the universal attribute capabilities of security components through chained calls.
@@ -177,7 +181,7 @@ Sets the alignment of the icon and text on the security component.
 alignRules(alignRule: AlignRuleOption): T
 ```
 
-Sets the alignment rules for child components within a relative container. This API takes effect only when the parent container is RelativeContainer.
+Sets the alignment rules for child components within a relative container. This API takes effect only when the parent container is [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container).
 
 **Since:** 15
 
@@ -191,7 +195,7 @@ Sets the alignment rules for child components within a relative container. This 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| alignRule | [AlignRuleOption](../arkts-components/arkts-arkui-alignruleoption-i.md) | Yes | Alignment rule configuration object that defines anchor alignment options (**top**, **bottom**, **left**, **right**, and **center**). Specifies the alignment position and method of the security component in RelativeContainer. |
+| alignRule | [AlignRuleOption](../arkts-components/arkts-arkui-common-comp-alignruleoption-i.md) | Yes | Alignment rule configuration object that defines anchor alignment options (**top**, **bottom**, **left**, **right**, and **center**). Specifies the alignment position and method of the security component in [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container). |
 
 **Return value:**
 
@@ -199,13 +203,15 @@ Sets the alignment rules for child components within a relative container. This 
 | --- | --- |
 | T | Attribute of the security component. |
 
+<a id="alignrules-1"></a>
+
 ## alignRules
 
 ```TypeScript
 alignRules(alignRule: LocalizedAlignRuleOptions): T
 ```
 
-Sets the alignment rules for child components within a relative container. This API takes effect only when the parent container is RelativeContainer. In the horizontal direction, this method replaces **left** and **right** in the [alignRules](#alignrules) above with **start** and **end**, respectively, allowing the layout to be mirrored in RTL mode. You are advised to use this method preferentially.
+Sets the alignment rules for child components within a relative container. This API takes effect only when the parent container is [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container). In the horizontal direction, this method replaces **left** and **right** in the [alignRules](#alignrules) above with **start** and **end**, respectively, allowing the layout to be mirrored in RTL mode. You are advised to use this method preferentially.
 
 **Since:** 15
 
@@ -219,7 +225,7 @@ Sets the alignment rules for child components within a relative container. This 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| alignRule | [LocalizedAlignRuleOptions](../arkts-components/arkts-arkui-localizedalignruleoptions-i.md) | Yes | Alignment rule configuration object that uses **start** and **end** in place of **left** and **right** to support RTL layout mirroring. Includes anchor alignment settings for **top**, **bottom**, **start**, **end**, and **center**, specifying the alignment position and method of the security component within RelativeContainer. |
+| alignRule | [LocalizedAlignRuleOptions](../arkts-components/arkts-arkui-common-comp-localizedalignruleoptions-i.md) | Yes | Alignment rule configuration object that uses **start** and **end** in place of **left** and **right** to support RTL layout mirroring. Includes anchor alignment settings for **top**, **bottom**, **start**, **end**, and **center**, specifying the alignment position and method of the security component within [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container). |
 
 **Return value:**
 
@@ -247,7 +253,7 @@ Sets the background color of the security component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](arkts-arkui-resourcecolor-t.md) | Yes | Background color of the security component.<br>Default value: &#36;r('sys.color.icon_emphasize'). <br>If the alpha value of the upper eight bits of the security component's background color is less than **0x1a** (for example, **0x1800ff00**), the system will forcibly adjust this alpha value to **0xff**. This ensures the security component remains sufficiently visible and prevents users from inadvertently triggering authorization due to an overly transparent component. |
+| value | [ResourceColor](arkts-arkui-resourcecolor-t.md) | Yes | Background color of the security component.<br>Default value: $r('sys.color.icon_emphasize'). <br>If the alpha value of the upper eight bits of the security component's background color is less than **0x1a** (for example, **0x1800ff00**), the system will forcibly adjust this alpha value to **0xff**. This ensures the security component remains sufficiently visible and prevents users from inadvertently triggering authorization due to an overly transparent component. |
 
 **Return value:**
 
@@ -312,6 +318,8 @@ The effect of **borderRadius** is influenced by **ButtonType**. When **ButtonTyp
 | Type | Description |
 | --- | --- |
 | T | Attribute of the security component. |
+
+<a id="borderradius-1"></a>
 
 ## borderRadius
 
@@ -405,7 +413,7 @@ Sets the border width of the security component.
 chainMode(direction: Axis, style: ChainStyle): T
 ```
 
-Sets the parameters of the chain in which the component is the head. This API takes effect only when the parent container is RelativeContainer.
+Sets the parameters of the chain in which the component is the head. This API takes effect only when the parent container is [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container).
 
 **Since:** 15
 
@@ -419,8 +427,8 @@ Sets the parameters of the chain in which the component is the head. This API ta
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| direction | [Axis](arkts-arkui-axis-e.md) | Yes | Direction of the chain layout. Specifies the arrangement direction of the chain headed by this component in the RelativeContainer. |
-| style | [ChainStyle](../arkts-components/arkts-arkui-chainstyle-e.md) | Yes | Style of the chain layout. Controls how child components are distributed within the chain, such as evenly distributed, aligned at both ends, or compactly arranged. For specific values and effects, see [ChainStyle](../arkts-components/arkts-arkui-chainstyle-e.md). |
+| direction | [Axis](arkts-arkui-axis-e.md) | Yes | Direction of the chain layout. Specifies the arrangement direction of the chain headed by this component in the [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container). |
+| style | [ChainStyle](../arkts-components/arkts-arkui-common-comp-chainstyle-e.md) | Yes | Style of the chain layout. Controls how child components are distributed within the chain, such as evenly distributed, aligned at both ends, or compactly arranged. For specific values and effects, see [ChainStyle](../arkts-components/arkts-arkui-common-comp-chainstyle-e.md). |
 
 **Return value:**
 
@@ -492,7 +500,7 @@ fallbackLineSpacing(enabled: boolean): T
 
 Enables adaptive line height based on the actual text height for multi-line text.
 
-The **fallbackLineSpacing** attribute is closely coupled with the **lineHeight** attribute of [RichEditorTextStyle](../arkts-components/arkts-arkui-richeditortextstyle-i.md). When the **lineHeight** value is less than the actual rendering height of the text at the current font size, the **fallbackLineSpacing** value determines whether the line height should adapt based on the actual text height.
+The **fallbackLineSpacing** attribute is closely coupled with the **lineHeight** attribute of [RichEditorTextStyle](../arkts-components/arkts-arkui-richeditor-comp-richeditortextstyle-i.md). When the **lineHeight** value is less than the actual rendering height of the text at the current font size, the **fallbackLineSpacing** value determines whether the line height should adapt based on the actual text height.
 
 **Since:** 26.0.0
 
@@ -562,7 +570,7 @@ Sets the font color of the text on the security component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](arkts-arkui-resourcecolor-t.md) | Yes | Font color of the text on the security component.<br>Default value: &#36;r('sys.color.font_on_primary'). |
+| value | [ResourceColor](arkts-arkui-resourcecolor-t.md) | Yes | Font color of the text on the security component.<br>Default value: $r('sys.color.font_on_primary'). |
 
 **Return value:**
 
@@ -618,7 +626,7 @@ Sets the font size of the text for the security component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Dimension](arkts-arkui-dimension-t.md) | Yes | Font size of the text on the security component.<br>When the unit is not explicitly specified, the unit is fp. <br>Default value: &#36;r('sys.float.ohos_id_text_size_button1')<br>Percentage strings are not supported.<br>This attribute does not take effect when it is set to an invalid value.<br> Note: When the security component text is not fully displayed, clicking it does not perform authorization. The **fontSize** setting determines whether the text can be fully displayed and thereby affects the authorization behavior of the security component. |
+| value | [Dimension](arkts-arkui-dimension-t.md) | Yes | Font size of the text on the security component.<br>When the unit is not explicitly specified, the unit is fp. <br>Default value: $r('sys.float.ohos_id_text_size_button1')<br>Percentage strings are not supported.<br>This attribute does not take effect when it is set to an invalid value.<br> Note: When the security component text is not fully displayed, clicking it does not perform authorization. The **fontSize** setting determines whether the text can be fully displayed and thereby affects the authorization behavior of the security component. |
 
 **Return value:**
 
@@ -760,7 +768,7 @@ Sets the icon color of the security component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](arkts-arkui-resourcecolor-t.md) | Yes | Icon color of the security component.<br>Default value: &#36;r('sys.color.icon_on_primary'). |
+| value | [ResourceColor](arkts-arkui-resourcecolor-t.md) | Yes | Icon color of the security component.<br>Default value: $r('sys.color.icon_on_primary'). |
 
 **Return value:**
 

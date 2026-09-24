@@ -34,9 +34,9 @@ function setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: Asy
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
@@ -69,28 +69,8 @@ ethernet.setIfaceConfig("eth0", config, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { ethernet } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let config: ethernet.InterfaceConfiguration = {
-  mode: 0,
-  ipAddr: "192.168.xx.xxx",
-  route: "192.168.xx.xxx",
-  gateway: "192.168.xx.xxx",
-  netMask: "255.255.255.0",
-  dnsServers: "1.1.1.1"
-};
-
-const setConfigPromise = ethernet.setIfaceConfig("eth0", config);
-
-setConfigPromise.then(() => {
-  console.info("setIfaceConfig promise ok");
-}).catch((error: BusinessError)  => {
-  console.error("setIfaceConfig promise error = " + JSON.stringify(error));
-});
-```
-
+<a id="setifaceconfig-1"></a>
 
 ## setIfaceConfig
 
@@ -125,9 +105,9 @@ function setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise<void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
@@ -138,4 +118,24 @@ function setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise<void
 
 **示例**
 
-参见 [setIfaceConfig](#setifaceconfig)
+```TypeScript
+import { ethernet } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let config: ethernet.InterfaceConfiguration = {
+  mode: 0,
+  ipAddr: "192.168.xx.xxx",
+  route: "192.168.xx.xxx",
+  gateway: "192.168.xx.xxx",
+  netMask: "255.255.255.0",
+  dnsServers: "1.1.1.1"
+};
+
+const setConfigPromise = ethernet.setIfaceConfig("eth0", config);
+
+setConfigPromise.then(() => {
+  console.info("setIfaceConfig promise ok");
+}).catch((error: BusinessError)  => {
+  console.error("setIfaceConfig promise error = " + JSON.stringify(error));
+});
+```

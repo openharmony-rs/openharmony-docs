@@ -1,5 +1,9 @@
 # ResponseCode
 
+```TypeScript
+export enum ResponseCode
+```
+
 发起请求返回的响应码。
 
 **起始版本：** 6

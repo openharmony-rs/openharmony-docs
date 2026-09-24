@@ -1,5 +1,9 @@
 # DataInfo
 
+```TypeScript
+interface DataInfo
+```
+
 Represents the received data information, including the channel ID and data.
 
 **Since:** 20

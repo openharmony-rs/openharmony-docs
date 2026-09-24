@@ -1,5 +1,9 @@
 # Vector2T
 
+```TypeScript
+interface Vector2T<T>
+```
+
 Represents a vector of the T type that contains two values: x and y.
 
 **Since:** 12

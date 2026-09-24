@@ -1,5 +1,9 @@
 # PbesEncryptionAlgorithm
 
+```TypeScript
+enum PbesEncryptionAlgorithm
+```
+
 Enumerates password-based encryption scheme (PBES) algorithms.
 
 **Since:** 21

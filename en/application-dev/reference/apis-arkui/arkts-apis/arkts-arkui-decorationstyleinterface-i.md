@@ -1,5 +1,9 @@
 # DecorationStyleInterface
 
+```TypeScript
+declare interface DecorationStyleInterface
+```
+
 Describes the API object for text decoration line styles.
 
 > **NOTE:** 

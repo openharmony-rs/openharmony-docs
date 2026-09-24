@@ -1,5 +1,9 @@
 # HuksReturnResult
 
+```TypeScript
+export interface HuksReturnResult
+```
+
 Represents the result returned.
 
 **Since:** 9
@@ -24,6 +28,8 @@ Certificate chain information. The default value is **undefined**.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -39,6 +45,8 @@ Challenge obtained after the [initSession](arkts-universalkeystore-huks-initsess
 **Type:** Uint8Array
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -56,6 +64,8 @@ Challenge obtained after the [initSession](arkts-universalkeystore-huks-initsess
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -71,6 +81,8 @@ Shared key.
 **Type:** Uint8Array
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 

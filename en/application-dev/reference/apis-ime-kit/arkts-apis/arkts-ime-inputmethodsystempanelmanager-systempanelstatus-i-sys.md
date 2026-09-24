@@ -1,5 +1,9 @@
 # SystemPanelStatus (System API)
 
+```TypeScript
+interface SystemPanelStatus
+```
+
 System panel status.
 
 **Since:** 26.0.0

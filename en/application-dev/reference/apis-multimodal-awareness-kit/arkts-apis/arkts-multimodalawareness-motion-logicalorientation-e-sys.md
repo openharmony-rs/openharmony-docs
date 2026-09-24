@@ -1,5 +1,9 @@
 # LogicalOrientation (System API)
 
+```TypeScript
+export enum LogicalOrientation
+```
+
 Enum for logical orientation calculated by smart algorithms.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # PermissionUsedTypeInfo (System API)
 
+```TypeScript
+interface PermissionUsedTypeInfo
+```
+
 Represents detailed information about the use of a permission.
 
 **Since:** 12
@@ -26,6 +30,8 @@ Name of the sensitive permission accessed.
 
 **Since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -42,6 +48,8 @@ Token ID of the application that accesses the sensitive permission.
 
 **Since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -57,6 +65,8 @@ Usage type of the sensitive permission.
 **Type:** [PermissionUsedType](arkts-ability-privacymanager-permissionusedtype-e-sys.md)
 
 **Since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 

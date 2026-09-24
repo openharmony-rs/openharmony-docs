@@ -1,5 +1,9 @@
 # CollatorOptions
 
+```TypeScript
+interface CollatorOptions
+```
+
 ## Modules to Import
 
 ```TypeScript

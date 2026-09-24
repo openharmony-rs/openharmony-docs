@@ -8,6 +8,8 @@ typedef struct CaptureSession_Callbacks {...} CaptureSession_Callbacks
 
 The struct describes the callbacks related to a capture session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

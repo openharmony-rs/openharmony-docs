@@ -1,5 +1,9 @@
 # PhotoAccessHelper
 
+```TypeScript
+interface PhotoAccessHelper
+```
+
 提供访问照片和相册的功能。
 
 **起始版本：** 10
@@ -44,9 +48,13 @@ applyChanges(mediaChangeRequest: MediaChangeRequest): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | System inner fail |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The mediaChangeRequest parameter is not a valid MediaChangeRequest object; <br>2.Server returned an error during applyChanges, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs; <br>3.The resource change operation for the current request type is not supported. |
+
+**示例**
+
+该接口依赖于[MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest)对象，详细代码示例请参见[MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md)和[MediaAlbumChangeRequest](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md)中的接口示例。
 
 ## checkPhotoUrisReadPermission
 
@@ -81,6 +89,32 @@ checkPhotoUrisReadPermission(uris: string[]): Promise<Map<string, MediaAssetPerm
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario-specific parameters are incorrect. Possible causes are as follows:<br>1. The length of the input parameter queue is greater than 500. <br>2. The input parameter is null or undefined. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('checkPhotoUrisReadPermissionDemo');
+
+  try {
+    let uris: string[] = [
+      'file://fileUriDemo1', // 实际场景请使用真实的URI。
+      'file://fileUriDemo2'
+    ];
+    let permissionMap: Map<string, photoAccessHelper.MediaAssetPermissionState> =
+      await phAccessHelper.checkPhotoUrisReadPermission(uris);
+  } catch (err) {
+    const error = err as BusinessError;
+    console.error(`checkPhotoUrisReadPermission failed, error: ${error.code}, ${error.message}`);
+  }
+}
+```
+
+<a id="createasset-4"></a>
+
 ## createAsset
 
 ```TypeScript
@@ -112,17 +146,36 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied<br>**适用版本：** 11+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 11+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**适用版本：** 10 |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs; <br>2.The number of arguments is invalid; <br>3.The argument list is empty; <br>4.The object is not a valid instance; <br>5.PhotoAccessHelper object is not a valid instance obtained through the proper API; <br>6.The callback parameter type does not match, expected AsyncCallback; <br>7.Failed to get the photoType parameter, please check the parameter type; <br>8.The photoType parameter is not a valid number type; <br>9.Invalid file type, must be IMAGE or VIDEO; <br>10.Failed to parse the extension parameter, please check if it is a valid string; <br>11.Failed to get the options parameter type, please check if it is an object; <br>12.Failed to parse CreateOptions, please check the options parameter; <br>13.Server returned an invalid argument error; <br>14.Failed to get the photoType parameter. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The photoType parameter is not a valid PhotoType enum value, must be IMAGE or VIDEO; <br>2.The extension parameter is not a valid string, please check if it is a valid file extension; <br>3.The options parameter is invalid, please check if it is a valid CreateOptions object; <br>4.Failed to create the asset, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例**
 
-```TypeScript
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('createAssetDemo');
+  let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
+  let extension:string = 'jpg';
+  let options: photoAccessHelper.CreateOptions = {
+    title: 'testPhoto'
+  }
+  phAccessHelper.createAsset(photoType, extension, options, (err, uri) => {
+    if (uri !== undefined) {
+      console.info('createAsset uri' + uri);
+      console.info('createAsset successfully');
+    } else {
+      console.error(`createAsset failed, error: ${err.code}, ${err.message}`);
+    }
+  });
+}
 ```
+
+<a id="createasset-5"></a>
 
 ## createAsset
 
@@ -154,17 +207,33 @@ createAsset(photoType: PhotoType, extension: string, callback: AsyncCallback<str
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied<br>**适用版本：** 11+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 11+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**适用版本：** 10 |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs <br>2.The number of arguments is invalid; <br>3.The argument list is empty; <br>4.The object is not a valid instance; <br>5.PhotoAccessHelper object is not a valid instance obtained through the proper API; <br>6.The callback parameter type does not match, expected AsyncCallback; <br>7.Failed to get the photoType parameter, please check the parameter type; <br>8.The photoType parameter is not a valid number type; <br>9.Invalid file type, must be IMAGE or VIDEO; <br>10.Failed to parse the extension parameter, please check if it is a valid string; <br>11.Failed to get parameter type, please check the parameter; <br>12.Failed to get the photoType parameter; <br>13.Server returned an invalid argument error. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The photoType parameter is not a valid PhotoType enum value, must be IMAGE or VIDEO; <br>2.The extension parameter is not a valid string, please check if it is a valid file extension; <br>3.Failed to create the asset, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例**
 
-```TypeScript
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('createAssetDemo');
+  let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
+  let extension: string = 'jpg';
+  phAccessHelper.createAsset(photoType, extension, (err, uri) => {
+    if (uri !== undefined) {
+      console.info('createAsset uri' + uri);
+      console.info('createAsset successfully');
+    } else {
+      console.error(`createAsset failed, error: ${err.code}, ${err.message}`);
+    }
+  });
+}
 ```
+
+<a id="createasset-6"></a>
 
 ## createAsset
 
@@ -202,16 +271,32 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied<br>**适用版本：** 11+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 11+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**适用版本：** 10 |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.System internal error, possible causes:1. System internal error. Possible: 1. File system exception; 3. IPC timeout. Please retry and check logs <br>2.The number of arguments is invalid; <br>3.The argument list is empty; <br>4.The object is not a valid instance; <br>5.PhotoAccessHelper object is not a valid instance obtained through the proper API; <br>6.The callback parameter type does not match, expected AsyncCallback; <br>7.Failed to get the photoType parameter, please check the parameter type; <br>8.The photoType parameter is not a valid number type; <br>9.Invalid file type, must be IMAGE or VIDEO; <br>10.Failed to parse the extension parameter, please check if it is a valid string; <br>11.Failed to get the options parameter type, please check if it is an object; <br>12.Failed to parse CreateOptions, please check the options parameter; <br>13.Server returned an invalid argument error; <br>14.Failed to get the photoType parameter. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The photoType parameter is not a valid PhotoType enum value, must be IMAGE or VIDEO; <br>2.The extension parameter is not a valid string, please check if it is a valid file extension; <br>3.The options parameter is invalid, please check if it is a valid CreateOptions object; <br>4.Failed to create the asset, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例**
 
-```TypeScript
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('createAssetDemo');
+  try {
+    let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
+    let extension: string = 'jpg';
+    let options: photoAccessHelper.CreateOptions = {
+      title: 'testPhoto'
+    }
+    let uri: string = await phAccessHelper.createAsset(photoType, extension, options);
+    console.info('createAsset uri' + uri);
+    console.info('createAsset successfully');
+  } catch (err) {
+    console.error(`createAsset failed, error: ${err.code}, ${err.message}`);
+  }
+}
 ```
 
 ## createAssetWithShortTermPermission
@@ -246,9 +331,51 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+    console.info('createAssetWithShortTermPermissionDemo.');
+    
+    try {
+        let photoCreationConfig: photoAccessHelper.PhotoCreationConfig = {
+            title: '123456', 
+            fileNameExtension: 'jpg',
+            photoType: photoAccessHelper.PhotoType.IMAGE,
+            subtype: photoAccessHelper.PhotoSubtype.DEFAULT, 
+        };
+
+        let resultUri: string = await phAccessHelper.createAssetWithShortTermPermission(photoCreationConfig);
+        let resultFile: fileIo.File = fileIo.openSync(resultUri, fileIo.OpenMode.READ_WRITE);
+        // 实际场景请使用真实的URI和文件大小。
+        let srcFile:  fileIo.File = fileIo.openSync("file://test.jpg", fileIo.OpenMode.READ_ONLY);
+        let bufSize: number = 2000000;
+        let readSize: number = 0;
+        let buf = new ArrayBuffer(bufSize);
+        let readLen = fileIo.readSync(srcFile.fd, buf, {
+            offset: readSize,
+            length: bufSize
+        });
+        if (readLen > 0) {
+            readSize += readLen;
+            fileIo.writeSync(resultFile.fd, buf, { length: readLen });
+        }
+        fileIo.closeSync(srcFile);
+        fileIo.closeSync(resultFile);
+    } catch (err) {
+        console.error(`createAssetWithShortTermPermission failed. Code: ${err.code}, message: ${err.message}`);
+    }
+    
+}
+```
 
 ## createAssetWithShortTermPermissionEx
 
@@ -288,89 +415,8 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| 14000011 | Internal system error |
-
-## createDeleteRequest
-
-```TypeScript
-createDeleteRequest(uriList: Array<string>, callback: AsyncCallback<void>): void
-```
-
-创建一个弹出框来删除照片，删除的文件进入到回收站，使用callback方式返回结果。
-
-> **说明：** 
-> 
-> 从API version 10开始支持，从API version 11开始废弃。
-
-**起始版本：** 10
-
-**废弃版本：** 11
-
-**替代接口：** [deleteAssets](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c.md#deleteassets)
-
-**需要权限：** ohos.permission.WRITE_IMAGEVIDEO
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| uriList | Array&lt;string&gt; | 是 | 待删除的媒体文件uri数组，最大删除数量300。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | callback返回void。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 13900012 | Permission denied |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
-
-## createDeleteRequest
-
-```TypeScript
-createDeleteRequest(uriList: Array<string>): Promise<void>
-```
-
-创建一个弹出框来删除照片，删除的文件进入到回收站，使用Promise方式返回结果。
-
-> **说明：** 
-> 
-> 从API version 10开始支持，从API version 11开始废弃。
-
-**起始版本：** 10
-
-**废弃版本：** 11
-
-**替代接口：** [deleteAssets](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c.md#deleteassets)
-
-**需要权限：** ohos.permission.WRITE_IMAGEVIDEO
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| uriList | Array&lt;string&gt; | 是 | 待删除的媒体文件uri数组，最大删除数量300。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象，返回void。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 13900012 | Permission denied |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Internal error in dialog, please retry; <br>2.Dialog result missing required parameters, system internal error; <br>3.Dialog operation failed, please retry; <br>4.Callback processing failed, system internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 ## createPhotoAsset
 
@@ -410,9 +456,29 @@ createPhotoAsset(photoType: PhotoType, extension: string, title?: string): Promi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The extension format is unsupported <br>2. Title contains unsupported character, such as . .. \ / : * ? " ' ` &lt; &gt; &#124; { } [ ] <br>3. The title is an empty string <br>4. The total length of title and extension is more than 255 |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Invalid parameter. Possible causes:<br>1.The number of parameters is invalid, expected 2 or 3 parameters; <br>2.The photoType parameter must be a number; <br>3.The photoType must be IMAGE(1) or VIDEO(2); <br>4.The extension parameter must be a string; <br>5.The extension does not match the photoType; <br>6.The title parameter must be a string (when provided); <br>7.The title contains invalid characters or exceeds the length limit; <br>8.The server returned an invalid argument error. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | MediaLibrary inner fail. Possible causes:<br>1.Server returned an invalid argument error. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('createPhotoAssetDemo');
+  try {
+    let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
+    let extension: string = 'jpg';
+    let title: string = 'testPhoto';
+    let uri: string = await phAccessHelper.createPhotoAsset(photoType, extension, title);
+    console.info('createPhotoAsset uri' + uri);
+    console.info('createPhotoAsset successfully');
+  } catch (err) {
+    console.error(`createPhotoAsset failed, error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## getAlbumIdByLpath
 
@@ -448,8 +514,28 @@ getAlbumIdByLpath(lpath: string): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The lpath is invalid, such as null, undefined and empty. |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes:<br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Invalid parameter. Possible causes:<br>1.The number of parameters is not 1; <br>2.The value is not a string or the string fails to be read; <br>3.The lpath is an empty string or its length exceeds the maximum limit (255); <br>4.The lpath is not in the allowed list of MEDIA_DIRS (excluding /DCIM/Camera, /Pictures/Screenshots, and /Pictures/Screenrecords); <br>5.The IPC call returns a server error code. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | MediaLibrary inner fail. Possible causes:<br>1.System internal error, failed to create boolean value, please retry; <br>2.The IPC call returns a server error code; <br>3.Failed to initialize error Field / Failed to initialize data Field. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getAlbumIdByLpath');
+
+  try {
+      let albumId: number = await phAccessHelper.getAlbumIdByLpath('/DCIM/Camera');
+      console.info('requestFile:: albumId: ', albumId);
+
+      console.info('getAlbumIdByLpath completed.');
+      console.info(`albumId : ${albumId}`);
+    } catch (err) {
+      console.error(`getAlbumIdByLpath failed: ${err.code}, ${err.message}`);
+    }
+}
+```
 
 ## getAlbums
 
@@ -485,11 +571,45 @@ getAlbums(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**适用版本：** 10 - 11 |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters is invalid, expected 0 to 4 parameters; <br>2.The callback parameter must be of type AsyncCallback; <br>3.The type parameter must be a number; <br>4.The type must be a valid AlbumType (USER, SYSTEM, SMART, or SOURCE); <br>5.The subtype parameter must be a number; <br>6.The subtype must be a valid AlbumSubtype; <br>7.The fetchColumns contain invalid column names. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The type parameter is not a valid number, must be a valid AlbumType enum value; <br>2.The subtype parameter is not a valid number, must be a valid AlbumSubtype enum value; <br>3.The FetchOptions parameter is invalid, the predicates contain invalid content or the fetchColumns contain unknown column names; <br>4.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs; <br>5.The query result is empty, the IPC or database query returned no albums (not caused by permission or system app errors). |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  // 示例代码中为获取相册名为newAlbumName的相册。
+  console.info('getAlbumsDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  predicates.equalTo('album_name', 'newAlbumName');
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`getAlbumsCallback failed with err: ${err.code}, ${err.message}`);
+      return;
+    }
+    if (fetchResult === undefined) {
+      console.error('getAlbumsCallback fetchResult is undefined');
+      return;
+    }
+    let album = await fetchResult.getFirstObject();
+    console.info('getAlbumsCallback successfully, albumName: ' + album.albumName);
+    fetchResult.close();
+  });
+}
+```
+
+<a id="getalbums-1"></a>
 
 ## getAlbums
 
@@ -519,11 +639,37 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, callback: AsyncCallback<FetchR
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**适用版本：** 10 - 11 |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters is invalid, expected 0 to 4 parameters; <br>2.The callback parameter must be of type AsyncCallback; <br>3.The type parameter must be a number; <br>4.The type must be a valid AlbumType (USER, SYSTEM, SMART, or SOURCE); <br>5.The subtype parameter must be a number; <br>6.The subtype must be a valid AlbumSubtype. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The type parameter is not a valid number, must be a valid AlbumType enum value; <br>2.The subtype parameter is not a valid number, must be a valid AlbumSubtype enum value; <br>3.The query result is empty, the IPC or database query returned no albums (not caused by permission or system app errors); <br>4.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  // 示例代码中为获取系统相册VIDEO，默认已预置。
+  console.info('getAlbumsDemo');
+  phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.VIDEO, async (err, fetchResult) => {
+    if (err) {
+      console.error(`getAlbumsCallback failed with err: ${err.code}, ${err.message}`);
+      return;
+    }
+    if (fetchResult === undefined) {
+      console.error('getAlbumsCallback fetchResult is undefined');
+      return;
+    }
+    let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+    console.info('getAlbumsCallback successfully, albumUri: ' + album.albumUri);
+    fetchResult.close();
+  });
+}
+```
+
+<a id="getalbums-2"></a>
 
 ## getAlbums
 
@@ -559,11 +705,42 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options?: FetchOptions): Promi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**适用版本：** 10 - 11 |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters is invalid, expected 0 to 4 parameters; <br>2.The callback parameter must be of type AsyncCallback; <br>3.The type parameter must be a number; <br>4.The type must be a valid AlbumType (USER, SYSTEM, SMART, or SOURCE); <br>5.The subtype parameter must be a number; <br>6.The subtype must be a valid AlbumSubtype; <br>7.The fetchColumns contain invalid column names. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The type parameter is not a valid number, must be a valid AlbumType enum value; <br>2.The subtype parameter is not a valid number, must be a valid AlbumSubtype enum value; <br>3.The FetchOptions parameter is invalid, the predicates contain invalid content or the fetchColumns contain unknown column names; <br>4.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs; <br>5.The query result is empty, the IPC or database query returned no albums (not caused by permission or system app errors). |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  // 示例代码中为获取相册名为newAlbumName的相册。
+  console.info('getAlbumsDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  predicates.equalTo('album_name', 'newAlbumName');
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions).then( async (fetchResult) => {
+    if (fetchResult === undefined) {
+      console.error('getAlbumsPromise fetchResult is undefined');
+      return;
+    }
+    let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+    console.info('getAlbumsPromise successfully, albumName: ' + album.albumName);
+    fetchResult.close();
+  }).catch((err: BusinessError) => {
+    console.error(`getAlbumsPromise failed with err: ${err.code}, ${err.message}`);
+  });
+}
+```
 
 ## getAssets
 
@@ -590,11 +767,46 @@ getAssets(options: FetchOptions, callback: AsyncCallback<FetchResult<PhotoAsset>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**适用版本：** 10 - 11 |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.Invalid number of arguments; <br>2.The options parameter is null or undefined; <br>3.Parameter parsing failed, please check parameter count and types; <br>4.Object is not a valid object; <br>5.PhotoAccessHelper object is not a valid object. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The FetchOptions parameter is invalid, the predicates property is not a valid data predicates object; <br>2.The predicates in FetchOptions contain invalid content or operations, please check if the predicates are valid; <br>3.The fetchColumns in FetchOptions contain invalid column names, please refer to PhotoKeys for valid column names; <br>4.Database query failed, possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs; <br>5.Query returned an empty result set. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getAssets');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+
+  phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`fetchResult fail with error: ${err.code}, ${err.message}`);
+      return;
+    }
+    if (fetchResult !== undefined) {
+      console.info('fetchResult success');
+      let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      if (photoAsset !== undefined) {
+        console.info('photoAsset.displayName : ' + photoAsset.displayName);
+      }
+    } else {
+      console.error(`fetchResult fail with error: ${err.code}, ${err.message}`);
+    }
+  });
+}
+```
+
+<a id="getassets-1"></a>
 
 ## getAssets
 
@@ -628,10 +840,39 @@ getAssets(options: FetchOptions): Promise<FetchResult<PhotoAsset>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied<br>**适用版本：** 20+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 20+ |
 | 13900012 | Permission denied<br>**适用版本：** 10 - 19 |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs <br>2.The number of arguments is invalid; <br>3.The argument list is empty; <br>4.The object is not a valid instance; <br>5.PhotoAccessHelper object is not a valid instance obtained through the proper API; <br>6.The callback parameter type does not match, expected AsyncCallback; <br>7.Invalid ffetchColumns: contains unknown column name. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The FetchOptions parameter is invalid, the predicates property is not a valid data predicates object; <br>2.The predicates in FetchOptions contain invalid content or operations, please check if the predicates are valid; <br>3.The fetchColumns in FetchOptions contain invalid column names, please refer to PhotoKeys for valid column names; <br>4.Database query failed, possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs; <br>5.Query returned an empty result set. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getAssets');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    if (fetchResult !== undefined) {
+      console.info('fetchResult success');
+      let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      if (photoAsset !== undefined) {
+        console.info('photoAsset.displayName :' + photoAsset.displayName);
+      }
+    }
+  } catch (err) {
+    console.error(`getAssets failed, error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## getBurstAssets
 
@@ -666,8 +907,40 @@ getBurstAssets(burstKey: string, options: FetchOptions): Promise<FetchResult<Pho
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| 14000011 | Internal system error |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Failed to check predicates property; <br>2.Failed to get predicates property; <br>3.The object is not a valid instance; <br>4.The predicates parameter is invalid, not of predicates type; <br>5.Invalid predicate, please check the predicates in FetchOptions content or operation; <br>6.Failed to parse ffetchColumns array; <br>7.Failed to create boolean result; <br>8.Sandbox query failed: internal error; <br>9.File operation failed; <br>10.Failed to parse arguments for getBurstAssets. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getBurstAssets');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  // burstKey为36位的uuid，可以根据photoAccessHelper.PhotoKeys获取。
+  let burstKey: string = "e719d696-09fa-44f8-8e9e-ec3f215aa62a";
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await 
+      phAccessHelper.getBurstAssets(burstKey, fetchOptions);
+    if (fetchResult !== undefined) {
+      console.info('fetchResult success');
+      let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      if (photoAsset !== undefined) {
+        console.info('photoAsset.displayName :' + photoAsset.displayName);
+      }
+    }
+  } catch (err) {
+    console.error(`getBurstAssets failed, error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## getPhotoPickerComponentDefaultAlbumName
 
@@ -695,6 +968,24 @@ getPhotoPickerComponentDefaultAlbumName(): Promise<string>
 | --- | --- |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. The IPC request timed out. <br>2. system running error |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import {photoAccessHelper} from '@kit.MediaLibraryKit';
+
+async function example(context: Context) {
+  console.info('getPhotoPickerComponentDefaultAlbumNameDemo');
+  let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+
+  phAccessHelper.getPhotoPickerComponentDefaultAlbumName().then((defaultAlbumName) => {
+    console.info('getPhotoPickerComponentDefaultAlbumName success, defaultAlbumName is ' + defaultAlbumName);
+  }).catch((err: BusinessError) => {
+    console.error(`getPhotoPickerComponentDefaultAlbumName failed with error: ${err.code}, ${err.message}`);
+  });
+}
+```
+
 ## getRecentPhotoInfo
 
 ```TypeScript
@@ -720,6 +1011,29 @@ getRecentPhotoInfo(options?: RecentPhotoOptions): Promise<RecentPhotoInfo>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[RecentPhotoInfo](arkts-medialibrary-photoaccesshelper-recentphotoinfo-c.md)&gt; | Promise对象，返回最近图片信息。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { photoAccessHelper, PhotoSource, RecentPhotoOptions} from '@kit.MediaLibraryKit';
+
+async function example(context: Context) {
+  console.info('getRecentPhotoInfoDemo');
+  let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+  let recentPhotoOptions: RecentPhotoOptions = {
+    period: 60 * 60,
+    MIMEType: photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE,
+    photoSource: PhotoSource.ALL
+  }
+
+  phAccessHelper.getRecentPhotoInfo(recentPhotoOptions).then((recentPhotoInfo) => {
+    console.info('getRecentPhotoInfo success, recentPhotoInfo is ' + JSON.stringify(recentPhotoInfo));
+  }).catch((err: BusinessError) => {
+    console.error(`getRecentPhotoInfo failed with error: ${err.code}, ${err.message}`);
+  });
+}
+```
 
 ## getSupportedPhotoFormats
 
@@ -749,8 +1063,39 @@ getSupportedPhotoFormats(photoType: PhotoType): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error. It is recommended to retry and check the logs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.invalid photoType; <br>2.Failed to create string; <br>3.Failed to set element. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, photoTypeNumber: number){
+  console.info('getSupportedPhotoFormatsDemo.');
+
+  try {
+    let outputText: string;
+    if (photoTypeNumber !== photoAccessHelper.PhotoType.IMAGE && photoTypeNumber !== photoAccessHelper.PhotoType.VIDEO) {
+      outputText = 'Does not support querying formats other than images or videos';
+      return;
+    }
+    outputText = 'The supported types are:\n';
+    let imageFormat  = await phAccessHelper.getSupportedPhotoFormats(photoAccessHelper.PhotoType.IMAGE);
+    let result = "";
+    for (let i = 0; i < imageFormat.length; i++) {
+      result += imageFormat[i];
+      if (i !== imageFormat.length - 1) {
+        result += ', ';
+      }
+    }
+    outputText += result;
+    console.info('getSupportedPhotoFormats success, data is ' + outputText);
+  } catch (error) {
+    console.error('getSupportedPhotoFormats failed, errCode is', error);
+  }
+}
+```
 
 ## off('photoChange')
 
@@ -777,9 +1122,43 @@ off(type: 'photoChange', callback?: Callback<PhotoAssetChangeInfos>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes:<br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Invalid parameter. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | MediaLibrary inner fail. Possible causes:<br>1.Data service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is properly initialized and retry <br>2.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+// 注册photoChange监听后，取消指定callback监听，演示取消监听的使用方法。
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('offPhotoChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.on('photoChange', onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.on('photoChange', onCallback2);
+
+    // 关闭onCallback1监听，onCallback2继续监听。
+    phAccessHelper.off('photoChange', onCallback1);
+  } catch (error) {
+    console.error('offPhotoChangeDemo failed, errCode is', error);
+  }
+}
+```
 
 ## off('photoAlbumChange')
 
@@ -806,9 +1185,43 @@ off(type: 'photoAlbumChange', callback?: Callback<AlbumChangeInfos>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs.<br>Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Invalid parameter. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | MediaLibrary inner fail. Possible causes:<br>1.Data service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is properly initialized and retry <br>2.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+// 注册photoAlbumChange监听后，取消指定callback监听，演示取消监听的使用方法。
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onPhotoAlbumChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.on('photoAlbumChange', onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.on('photoAlbumChange', onCallback2);
+
+    // 关闭onCallback1监听，onCallback2继续监听。
+    phAccessHelper.off('photoAlbumChange', onCallback1);
+  } catch (error) {
+    console.error('onPhotoAlbumChangeDemo failed, errCode is', error);
+  }
+}
+```
 
 ## offMediaLibraryAvailability
 
@@ -836,8 +1249,34 @@ offMediaLibraryAvailability(callback? : Callback<MediaLibraryAvailability>):void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+class MediaLibraryExample {
+  private helper: photoAccessHelper.PhotoAccessHelper;
+  private handleMediaLibraryChange?: (changeData: photoAccessHelper.MediaLibraryAvailability) => void;
+
+  constructor(context: common.Context) {
+    this.helper = photoAccessHelper.getPhotoAccessHelper(context);
+  }
+
+  offMediaLibraryAvailability = async () => {
+    try {
+      // 先注册媒体库可用性监听，然后取消注册，演示取消监听的使用方法。
+      this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
+      this.helper.offMediaLibraryAvailability(this.handleMediaLibraryChange);
+      console.info('媒体库监听解除成功');
+    } catch (err) {
+      console.error(`offMediaLibraryAvailability failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
+    }
+  };
+}
+```
 
 ## offSinglePhotoAlbumChange
 
@@ -868,9 +1307,64 @@ offSinglePhotoAlbumChange(album?: Album, callback?: Callback<AlbumChangeInfos>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes:<br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Invalid parameter. Possible causes:<br>1.One or two parameters are required; <br>2.Invalid parameter; <br>3.The first parameter is not an object or the second parameter is not a function; <br>4.Object is not a valid object; <br>5.Album object is not a valid object; <br>6.Ordinary album invalid; <br>7.Failed to create callback reference; <br>8.No observer has ever been registered; <br>9.Observer list is empty. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | MediaLibrary inner fail. Possible causes:<br>1.Data service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is properly initialized and retry <br>2.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+let onCallback3 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback3 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+
+// 获取相册后，注册单个相册变化监听，然后演示不同方式取消监听的使用方法。
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onSinglePhotoChangeDemo.');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+
+    if (albumFetchResult.isAfterLast()) {
+      console.error('lack of album to be moved into');
+      return;
+    }
+    // 注册onCallback1监听。
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback2);
+    // 注册onCallback3监听。
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback3);
+
+    // 解注册onCallback1监听。
+    phAccessHelper.offSinglePhotoAlbumChange(album, onCallback1);
+    // 解注册album下所有callback。
+    phAccessHelper.offSinglePhotoAlbumChange(album);
+    // 解注册所有singlePhotoAlbumChange类型监听。
+    phAccessHelper.offSinglePhotoAlbumChange();
+  } catch (error) {
+    console.error('offSinglePhotoAlbumChangeDemo failed, errCode is', error);
+  }
+}
+```
 
 ## offSinglePhotoChange
 
@@ -901,9 +1395,66 @@ offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback<PhotoAssetChangeInf
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes:<br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Invalid parameter. Possible causes:<br>1.The object is not a valid instance; <br>2.The parameter type is invalid; <br>3.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | MediaLibrary inner fail. Possible causes:<br>1.Data service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is properly initialized and retry <br>2.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+let onCallback3 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback3 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+
+// 获取相册和资产后，注册单个资产变化监听，然后演示不同方式取消监听的使用方法。
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onSinglePhotoChangeDemo.');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOptions);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+
+    if (albumFetchResult.isAfterLast()) {
+      console.error('lack of album to be moved into');
+      return;
+    }
+    // 注册onCallback1监听。
+    phAccessHelper.onSinglePhotoChange(asset, onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onSinglePhotoChange(asset, onCallback2);
+    // 注册onCallback3监听。
+    phAccessHelper.onSinglePhotoChange(asset, onCallback3);
+
+    // 解注册onCallback1监听。
+    phAccessHelper.offSinglePhotoChange(asset, onCallback1);
+    // 解注册asset下所有callback。
+    phAccessHelper.offSinglePhotoChange(asset);
+    // 解注册所有singlePhotoAssetChange类型监听。
+    phAccessHelper.offSinglePhotoChange();
+  } catch (error) {
+    console.error('offSinglePhotoChangeDemo failed, errCode is', error);
+  }
+}
+```
 
 ## on('photoChange')
 
@@ -930,9 +1481,40 @@ on(type: 'photoChange', callback: Callback<PhotoAssetChangeInfos>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs.<br>Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Invalid parameter. Possible causes:<br>1.Scenario parameter verification failed; <br>2.Invalid parameter. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | MediaLibrary inner fail. Possible causes:<br>1.Data service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is properly initialized and retry <br>2.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+// 注册photoChange监听，用于监听媒体资产的变化，可以注册多个不同的callback。
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onPhotoChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.on('photoChange', onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.on('photoChange', onCallback2);
+  } catch (error) {
+    console.error('onPhotoChangeDemo failed, errCode is', error);
+  }
+}
+```
 
 ## on('photoAlbumChange')
 
@@ -959,9 +1541,40 @@ on(type: 'photoAlbumChange', callback: Callback<AlbumChangeInfos>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes:<br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Invalid parameter. Possible causes:<br>1.Scenario parameter verification failed; <br>2.Invalid parameter. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | MediaLibrary inner fail. Possible causes:<br>1.Data service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is properly initialized and retry <br>2.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+// 注册photoAlbumChange监听，用于监听相册的变化，可以注册多个不同的callback。
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onPhotoAlbumChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.on('photoAlbumChange', onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.on('photoAlbumChange', onCallback2);
+  } catch (error) {
+    console.error('onPhotoAlbumChangeDemo failed, errCode is', error);
+  }
+}
+```
 
 ## onMediaLibraryAvailability
 
@@ -989,9 +1602,43 @@ onMediaLibraryAvailability(callback: Callback<MediaLibraryAvailability>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario-specific parameters are incorrect. Possible causes are as follows:<br>1. The input parameter is null or undefined. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+class MediaLibraryExample {
+  private helper: photoAccessHelper.PhotoAccessHelper;
+  private handleMediaLibraryChange?: (changeData: photoAccessHelper.MediaLibraryAvailability) => void;
+
+  constructor(context: common.Context) {
+    this.helper = photoAccessHelper.getPhotoAccessHelper(context);
+  }
+
+  onMediaLibraryAvailability = async () => {
+    try {
+      // 定义媒体库可用性变化的回调处理函数。
+      this.handleMediaLibraryChange = (
+        changeData: photoAccessHelper.MediaLibraryAvailability
+      ) => {
+        // 获取媒体库的可用状态和不可用原因。
+        const availabilityStatus = changeData.availabilityStatus;
+        const unavailabilityReason = changeData.unavailabilityReason;
+        console.info(`媒体库状态变化: 状态=${availabilityStatus}, 原因=${unavailabilityReason}`);
+      };
+      // 注册媒体库可用性监听。
+      this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
+      console.info('媒体库监听注册成功');
+    } catch (err) {
+      console.error(`onMediaLibraryAvailability failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
+    }
+  };
+}
+```
 
 ## onSinglePhotoAlbumChange
 
@@ -1018,9 +1665,51 @@ onSinglePhotoAlbumChange(album: Album, callback: Callback<AlbumChangeInfos>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes:<br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Invalid parameter. Possible causes:<br>1.One or two parameters are required; <br>2.Invalid parameter; <br>3.Album object is not a valid object; <br>4.The PhotoAsset is not a valid PhotoAsset object; <br>5.Check whether it is a hidden or recycled album; <br>6.Ordinary album invalid; <br>7.Failed to get URI from photo album; <br>8.Registration has reached the limit (&gt;= 50); <br>9.Failed to create a reference for the callback; <br>10.The listener for this resource has been registered with the same callback. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | MediaLibrary inner fail. Possible causes:<br>1.Data service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is properly initialized and retry <br>2.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+
+// 获取相册后，注册单个相册变化监听，演示onSinglePhotoAlbumChange的使用方法。
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onSinglePhotoAlbumChangeDemo.');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+
+    if (albumFetchResult.isAfterLast()) {
+      console.error('lack of album to be moved into');
+      return;
+    }
+    // 注册onCallback1监听。
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback2);
+  } catch (error) {
+    console.error('onSinglePhotoAlbumChangeDemo failed, errCode is', error);
+  }
+}
+```
 
 ## onSinglePhotoChange
 
@@ -1047,9 +1736,53 @@ onSinglePhotoChange(asset: PhotoAsset, callback: Callback<PhotoAssetChangeInfos>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes:<br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Invalid parameter. Possible causes:<br>1.One or two parameters are required; <br>2.3.The first parameter is not an object or the second parameter is not a function; <br>3.The object is not a valid instance to get asset object; <br>4.The PhotoAsset is not a valid PhotoAsset object; <br>5.Check whether it is a hidden or recycled album; <br>6.Check whether it Iis not a MEDIA_TYPE_IMAGE or MEDIA_TYPE_VIDEO; <br>7.Ordinary assets invalid; <br>8.Registration has reached the limit; <br>9.Failed to create a reference for the callback; <br>10.The listener for this resource has been registered with the same callback; <br>11.Failed to get photo asset from parameter; <br>12.Failed to get file asset instance; <br>13.Failed to get fileId from photo asset. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | MediaLibrary inner fail. Possible causes:<br>1.Data service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is properly initialized and retry <br>2.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
+  // 触发回调时，具体的操作。
+}
+
+// 获取相册和资产后，注册单个资产变化监听，演示onSinglePhotoChange的使用方法。
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onSinglePhotoChangeDemo.');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOptions);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+
+    if (albumFetchResult.isAfterLast()) {
+      console.error('lack of album to be moved into');
+      return;
+    }
+    // 注册onCallback1监听。
+    phAccessHelper.onSinglePhotoChange(asset, onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onSinglePhotoChange(asset, onCallback2);
+  } catch (error) {
+    console.error('onSinglePhotoChangeDemo failed, errCode is', error);
+  }
+}
+```
 
 ## registerChange
 
@@ -1075,9 +1808,49 @@ registerChange(uri: string, forChildUris: boolean, callback: Callback<ChangeData
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
-| 13900020 | Invalid argument |
+| 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters is invalid, expected 3 parameters; <br>2.The uri parameter must be a string; <br>3.The forChildUris parameter must be a boolean; <br>4.The callback parameter must be a function; <br>5.The uri string extraction failed; <br>6.The forChildUris boolean value extraction failed; <br>7.The callback is already registered for this uri, duplicate registration is not allowed; <br>8.The object is not a valid instance. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('registerChangeDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+  let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+  if (photoAsset !== undefined) {
+    console.info('photoAsset.displayName : ' + photoAsset.displayName);
+    } else {
+      console.error('photoAsset is undefined');
+      return;
+    }
+  let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
+      console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    // file had changed, do something.
+  }
+  let onCallback2 = (changeData: photoAccessHelper.ChangeData) => {
+      console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    // file had changed, do something.
+  }
+  // 注册onCallback1监听。
+  phAccessHelper.registerChange(photoAsset.uri, false, onCallback1);
+  // 注册onCallback2监听。
+  phAccessHelper.registerChange(photoAsset.uri, false, onCallback2);
+
+  await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
+}
+```
 
 ## release
 
@@ -1103,9 +1876,28 @@ release(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters exceeds the maximum limit; <br>2.The current object is invalid; <br>3.The PhotoAccessHelper object is not a valid object. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.PhotoAccessHelper has been released, no need to release again; <br>2.System internal error, possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('releaseDemo');
+  phAccessHelper.release((err) => {
+    if (err !== undefined) {
+      console.error(`release failed. error: ${err.code}, ${err.message}`);
+    } else {
+      console.info('release ok.');
+    }
+  });
+}
+```
+
+<a id="release-1"></a>
 
 ## release
 
@@ -1131,9 +1923,25 @@ release(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters exceeds the maximum limit; <br>2.The current object is invalid; <br>3.The PhotoAccessHelper object is not a valid object. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.PhotoAccessHelper has been released, no need to release again; <br>2.System internal error, possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('releaseDemo');
+  try {
+    await phAccessHelper.release();
+    console.info('release ok.');
+  } catch (err) {
+    console.error(`release failed. error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## requestPhotoUrisReadPermission
 
@@ -1141,7 +1949,7 @@ release(): Promise<void>
 requestPhotoUrisReadPermission(srcFileUris: Array<string>): Promise<Array<string>>
 ```
 
-&lt;!--RP1--&gt;&lt;!--RP1End--&gt;调用接口给未授权的URI进行授权，返回已创建并授予保存权限的URI列表。
+<!--RP1--><!--RP1End-->调用接口给未授权的URI进行授权，返回已创建并授予保存权限的URI列表。
 
 **起始版本：** 14
 
@@ -1165,8 +1973,29 @@ requestPhotoUrisReadPermission(srcFileUris: Array<string>): Promise<Array<string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Internal error in dialog, please retry; <br>2.Dialog result missing required parameters, system internal error; <br>3.Dialog operation failed, please retry; <br>4.Callback processing failed, system internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('requestPhotoUrisReadPermissionDemo.');
+
+  try {
+    // 获取需要进行授权的图片/视频URI。
+    let srcFileUris: Array<string> = [
+      'file://fileUriDemo1' // 实际场景请使用真实的URI。
+    ];
+    let desFileUris: Array<string> = await phAccessHelper.requestPhotoUrisReadPermission(srcFileUris);
+    console.info('requestPhotoUrisReadPermission success, data is ' + desFileUris);
+  } catch (err) {
+    console.error(`requestPhotoUrisReadPermission failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
 
 ## requestPhotoUrisReadPermissionEx
 
@@ -1202,7 +2031,32 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array<string>): Promise<RequestRea
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out; <br>4. This operation is not supported for assets in shared albums. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+console.info('requestPhotoUrisReadPermissionExDemo.');
+
+  try {
+    // 获取需要进行授权的图片/视频URI。
+    let srcFileUris: Array<string> = [
+      'file://fileUriDemo1' // 实际场景请使用真实的URI。
+    ];
+    let requestReadPermissionResult: photoAccessHelper.RequestReadPermissionResult = await phAccessHelper.requestPhotoUrisReadPermissionEx(srcFileUris);
+    console.info('requestPhotoUrisReadPermissionEx success, data is ' + requestReadPermissionResult);
+  } catch (err) {
+    console.error(`requestPhotoUrisReadPermissionEx failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+<a id="setassetcompatiblecapability-1"></a>
 
 ## setAssetCompatibleCapability
 
@@ -1236,13 +2090,24 @@ setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise<voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The capability is invalid. |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Invalid parameter. Possible causes:<br>1.The number of parameters is invalid, expected 1 or 2 parameters; <br>2.The bundleName parameter must be a non-empty string; <br>3.The config parameter must be an object; <br>4.The supportedHighResolution attribute must be a boolean; <br>5.The supportedMimeType attribute must be an array of strings; <br>6.The supportedMimeType array contains unsupported MIME types, only image/jpeg and image/png are supported; <br>7.The supportedMimeTypes array size exceeds the limit (max 2 after deduplication); <br>8.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | MediaLibrary inner fail. Possible causes:<br>1.Parameter is not an array type; <br>2.Failed to get array length; <br>3.Server returned an invalid argument error. |
 
 **示例**
 
-```TypeScript
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let capability : photoAccessHelper.AssetCompatibleCapability = {
+        supportedHighResolution : true,
+    };
+    await phAccessHelper.setAssetCompatibleCapability(capability);
+  } catch (error) {
+    console.error('failed to setAssetCompatibleCapability err', error);
+  }
+}
 ```
 
 ## showAssetsCreationDialog
@@ -1282,8 +2147,36 @@ showAssetsCreationDialog(srcFileUris: Array<string>, photoCreationConfigs: Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('ShowAssetsCreationDialogDemo.');
+
+  try {
+    // 获取需要保存到媒体库的位于应用沙箱的图片/视频URI。
+    let srcFileUris: Array<string> = [
+      'file://fileUriDemo1' // 实际场景请使用真实的URI。
+    ];
+    let photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig> = [
+      {
+        title: 'test2', // 可选。
+        fileNameExtension: 'jpg',
+        photoType: photoAccessHelper.PhotoType.IMAGE,
+        subtype: photoAccessHelper.PhotoSubtype.DEFAULT, // 可选。
+      }
+    ];
+    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
+    console.info('showAssetsCreationDialog success, data is ' + desFileUris);
+  } catch (err) {
+    console.error(`showAssetsCreationDialog failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
 
 ## showAssetsCreationDialogEx
 
@@ -1326,7 +2219,35 @@ showAssetsCreationDialogEx(srcFileUris: Array<string>, creationSettings: Array<C
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | MediaLibrary inner fail. Possible causes:<br>1.Internal error in dialog, please retry; <br>2.Dialog result missing required parameters, system internal error; <br>3.Callback processing failed, system internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) { 
+  console.info('ShowAssetsCreationDialogExDemo.'); 
+
+  try {
+    // 获取需要保存到媒体库的位于应用沙箱的图片/视频URI。
+    let srcFileUris: Array<string> = [
+      'file://fileUriDemo1' // 实际场景请使用真实的URI。
+    ];
+    let creationConfigs: Array<photoAccessHelper.CreationSetting> = [
+      {
+        title: 'test2', // 可选。
+        fileNameExtension: 'jpg',
+        photoType: photoAccessHelper.PhotoType.IMAGE
+      }
+    ];
+    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, creationConfigs);
+    console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);
+  } catch (err) {
+    console.error(`showAssetsCreationDialogEx failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
 
 ## showSingleAssetCreationDialogEx
 
@@ -1370,7 +2291,32 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | MediaLibrary inner fail. Possible causes:<br>1.Internal error in dialog, please retry; <br>2.Dialog result missing required parameters, system internal error; <br>3.Callback processing failed, system internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('ShowSingleAssetCreationDialogExDemo.');
+
+  try {
+    // 获取需要保存到媒体库的位于应用沙箱的图片/视频URI。
+    let srcFileUri: string = 'file://fileUriDemo1'; // 实际场景请使用真实的URI。
+    let photoCreationConfig: photoAccessHelper.CreationSetting = {
+      title: 'test2', // 可选。
+      fileNameExtension: 'jpg',
+      photoType: photoAccessHelper.PhotoType.IMAGE
+    }
+    let isImageFullyDisplayed: boolean = true
+    let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUri, photoCreationConfig, isImageFullyDisplayed);
+    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUri);
+  } catch (err) {
+    console.error(`showSingleAssetCreationDialogEx failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
 
 ## unRegisterChange
 
@@ -1395,6 +2341,198 @@ unRegisterChange(uri: string, callback?: Callback<ChangeData>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
-| 13900020 | Invalid argument |
+| 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters is invalid, expected 1 or 2 parameters; <br>2.The uri parameter must be a string; <br>3.The uri string extraction failed; <br>4.The callback parameter must be a function; <br>5.The object is not a valid instance. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('offDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+  let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+  if (photoAsset !== undefined) {
+    console.info('photoAsset.displayName : ' + photoAsset.displayName);
+    } else {
+      console.error('photoAsset is undefined');
+      return;
+    }
+  let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
+    console.info('onCallback1 on');
+  }
+  let onCallback2 = (changeData: photoAccessHelper.ChangeData) => {
+    console.info('onCallback2 on');
+  }
+  // 注册onCallback1监听。
+  phAccessHelper.registerChange(photoAsset.uri, false, onCallback1);
+  // 注册onCallback2监听。
+  phAccessHelper.registerChange(photoAsset.uri, false, onCallback2);
+  // 关闭onCallback1监听，onCallback2 继续监听。
+  phAccessHelper.unRegisterChange(photoAsset.uri, onCallback1);
+  await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
+}
+```
+
+## createDeleteRequest
+
+```TypeScript
+createDeleteRequest(uriList: Array<string>, callback: AsyncCallback<void>): void
+```
+
+创建一个弹出框来删除照片，删除的文件进入到回收站，使用callback方式返回结果。
+
+> **说明：** 
+> 
+> 从API version 10开始支持，从API version 11开始废弃。
+
+**起始版本：** 10
+
+**废弃版本：** 11
+
+**替代接口：** [deleteAssets](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c.md#deleteassets)
+
+**需要权限：** ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| uriList | Array&lt;string&gt; | 是 | 待删除的媒体文件uri数组，最大删除数量300。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | callback返回void。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 13900012 | Permission denied. Possible causes:<br>1.Not have ohos.permission.WRITE_IMAGEVIDEO; <br>2.User deny. |
+| 13900020 | Invalid parameter. Possible causes:<br>1.The context parameter is invalid, failed to convert to AbilityContext; <br>2.Failed to create the dialog, system internal error, please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The delete operation failed, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs; <br>2.The uriList parameter contains invalid URIs, please check if each URI is a valid file URI obtained from a valid query result; <br>3.The UI extension component reported an error, please retry. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('createDeleteRequestDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | undefined = undefined;
+  try {
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('asset not exist');
+      return;
+    }
+    phAccessHelper.createDeleteRequest([asset.uri], (err) => {
+      if (err) {
+        console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
+      } else {
+        console.info('createDeleteRequest successfully');
+      }
+    });
+  } catch (err) {
+    console.error(`fetch failed, error: ${err.code}, ${err.message}`);
+  } finally {
+    // 使用完毕后需要释放资源。
+    fetchResult?.close();
+  }
+}
+```
+
+<a id="createdeleterequest-1"></a>
+
+## createDeleteRequest
+
+```TypeScript
+createDeleteRequest(uriList: Array<string>): Promise<void>
+```
+
+创建一个弹出框来删除照片，删除的文件进入到回收站，使用Promise方式返回结果。
+
+> **说明：** 
+> 
+> 从API version 10开始支持，从API version 11开始废弃。
+
+**起始版本：** 10
+
+**废弃版本：** 11
+
+**替代接口：** [deleteAssets](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c.md#deleteassets)
+
+**需要权限：** ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| uriList | Array&lt;string&gt; | 是 | 待删除的媒体文件uri数组，最大删除数量300。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，返回void。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 13900012 | Permission denied. Possible causes:<br>1.Not have ohos.permission.WRITE_IMAGEVIDEO; <br>2.User deny. |
+| 13900020 | Invalid parameter. Possible causes:<br>1.The context parameter is invalid, failed to convert to AbilityContext; <br>2.Failed to create the dialog, system internal error, please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The delete operation failed, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs; <br>2.The uriList parameter contains invalid URIs, please check if each URI is a valid file URI obtained from a valid query result; <br>3.The UI extension component reported an error, please retry. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('createDeleteRequestDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | undefined = undefined;
+  try {
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('asset not exist');
+      return;
+    }
+    await phAccessHelper.createDeleteRequest([asset.uri]);
+    console.info('createDeleteRequest successfully');
+  } catch (err) {
+    console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
+  } finally {
+    // 使用完毕后需要释放资源。
+    fetchResult?.close();
+  }
+}
+```

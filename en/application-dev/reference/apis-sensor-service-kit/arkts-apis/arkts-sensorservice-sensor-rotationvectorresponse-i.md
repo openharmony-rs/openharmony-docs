@@ -1,5 +1,9 @@
 # RotationVectorResponse
 
+```TypeScript
+interface RotationVectorResponse extends Response
+```
+
 Describes the rotation vector sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** RotationVectorResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

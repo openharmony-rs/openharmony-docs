@@ -1,5 +1,9 @@
 # SkipIntervals
 
+```TypeScript
+enum SkipIntervals
+```
+
 表示session支持的快进快退时间间隔的枚举。
 
 | 名称 | 值 | 说明 |  

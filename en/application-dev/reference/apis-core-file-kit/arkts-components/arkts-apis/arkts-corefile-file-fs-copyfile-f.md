@@ -58,6 +58,8 @@ Copies a file. This API uses a promise to return the result.
 | 13900044 | Network is unreachable<br>**Applicable version:** 12 and later |
 
 
+<a id="copyfile-1"></a>
+
 ## copyFile
 
 ```TypeScript
@@ -102,6 +104,8 @@ Copies a file. This API overwrites the file with the same name in the destinatio
 | 13900038 | Value too large for defined data type |
 | 13900042 | Unknown error |
 
+
+<a id="copyfile-2"></a>
 
 ## copyFile
 

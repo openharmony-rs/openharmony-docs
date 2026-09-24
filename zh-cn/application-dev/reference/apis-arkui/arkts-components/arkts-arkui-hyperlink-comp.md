@@ -2,7 +2,11 @@
 
 超链接组件，支持文本和图片两种展示形式，在组件宽高范围内点击可实现跳转到指定网页。适用于应用内打开外部网页链接的场景，该组件仅支持与系统浏览器配合使用。
 
-> **说明：** > > - 该组件仅支持与系统浏览器配合使用。
+> **说明：** 
+> 
+> - 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> - 该组件仅支持与系统浏览器配合使用。
 
 ## 需要权限
 
@@ -10,7 +14,7 @@
 
 ## 子组件
 
-可以包含Image子组件。
+可以包含[Image](arkts-arkui-image-comp.md#image)子组件。
 
 ## Hyperlink
 
@@ -29,12 +33,34 @@ Hyperlink(address: string | Resource, content?: string | Resource)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | address | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | Hyperlink组件跳转的网页地址。 |
-| content | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 否 | Hyperlink组件中超链接显示文本。<br>默认值：''。若不传该参数且组件内无子组件时，默认显示address参数值。<br>**说明：** <br>组件内有子组件时，不显示超链接文本。 |
+| content | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 否 | Hyperlink组件显示的文本。<br>默认值：''。若不传该参数且组件内无子组件时，默认显示address参数值。<br>**说明：** <br>组件内有子组件时，不显示超链接文本。 |
 
 ## 汇总
 
 ## 示例
 
-```TypeScript
 该示例展示了超链接图片和文本跳转的效果。
+
+```TypeScript
+@Entry
+@Component
+struct HyperlinkExample {
+  build() {
+    Column() {
+      Column() {
+        Hyperlink('https://example.com/') {
+          // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
+          Image($r('app.media.bg'))
+            .width(200)
+            .height(100)
+        }
+      }
+
+      Column() {
+        Hyperlink('https://example.com/', 'Go to the developer website')
+        .color(Color.Blue)
+      }
+    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+  }
+}
 ```

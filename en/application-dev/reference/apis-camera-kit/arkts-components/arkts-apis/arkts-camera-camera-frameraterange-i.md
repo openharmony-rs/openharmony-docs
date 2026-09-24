@@ -1,5 +1,9 @@
 # FrameRateRange
 
+```TypeScript
+interface FrameRateRange
+```
+
 Describes the frame rate range.
 
 **Since:** 10

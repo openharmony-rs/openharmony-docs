@@ -1,5 +1,9 @@
 # ConditionType (System API)
 
+```TypeScript
+interface ConditionType
+```
+
 Provides the ConditionType type,including timeout, killSignal, maxBuffer.
 
 **Since:** 10

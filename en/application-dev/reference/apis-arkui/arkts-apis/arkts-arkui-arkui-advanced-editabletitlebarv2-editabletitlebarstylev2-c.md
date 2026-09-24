@@ -1,5 +1,9 @@
 # EditableTitleBarStyleV2
 
+```TypeScript
+export declare class EditableTitleBarStyleV2
+```
+
 Declaration of the title bar style configuration.
 
 **Since:** 26.0.0
@@ -44,7 +48,7 @@ public backgroundBlurStyle?: BlurStyle
 
 Background blur style.
 
-**Type:** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**Type:** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **Since:** 26.0.0
 
@@ -104,7 +108,7 @@ public safeAreaEdges?: Array<SafeAreaEdge>
 
 Indicates the edges of the safe area.
 
-**Type:** Array&lt;[SafeAreaEdge](../arkts-components/arkts-arkui-safeareaedge-e.md)&gt;
+**Type:** Array&lt;[SafeAreaEdge](../arkts-components/arkts-arkui-common-comp-safeareaedge-e.md)&gt;
 
 **Since:** 26.0.0
 
@@ -124,7 +128,7 @@ public safeAreaTypes?: Array<SafeAreaType>
 
 Indicates the types of the safe area.
 
-**Type:** Array&lt;[SafeAreaType](../arkts-components/arkts-arkui-safeareatype-e.md)&gt;
+**Type:** Array&lt;[SafeAreaType](../arkts-components/arkts-arkui-common-comp-safeareatype-e.md)&gt;
 
 **Since:** 26.0.0
 

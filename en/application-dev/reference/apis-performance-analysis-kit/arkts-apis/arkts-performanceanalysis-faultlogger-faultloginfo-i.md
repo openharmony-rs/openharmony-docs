@@ -1,5 +1,9 @@
 # FaultLogInfo
 
+```TypeScript
+interface FaultLogInfo
+```
+
 Defines the data structure of the fault log information.
 
 **Since:** 8

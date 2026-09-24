@@ -1,5 +1,9 @@
 # Reader
 
+```TypeScript
+export interface Reader
+```
+
 Obtains the SE supported by the device. If eSE, SIM, and SIM2 are supported, three instances will be returned. SIM2 is supported since API version 22. You can use [SEService.getReaders](arkts-connectivity-omapi-seservice-i.md#getreaders) to obtain a **Reader** instance.
 
 **Since:** 10

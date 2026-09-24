@@ -1,5 +1,9 @@
 # PerformanceClassLevel
 
+```TypeScript
+export enum PerformanceClassLevel
+```
+
 Enumerates the device capability levels.
 
 **Since:** 19

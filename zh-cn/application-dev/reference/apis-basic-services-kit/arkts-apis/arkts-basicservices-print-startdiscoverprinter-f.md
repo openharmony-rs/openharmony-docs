@@ -33,8 +33,8 @@ function startDiscoverPrinter(extensionList: Array<string>, callback: AsyncCallb
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application<br>**适用版本：** 10 - 19 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application<br>**适用版本：** 10 - 19 |
 
 **示例**
 
@@ -55,21 +55,8 @@ print.startDiscoverPrinter(extensionList, (error: BusinessError) => {
 })
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 加载所有打印扩展能力
-let extensionList: string[] = [];
-// 通过指定自己应用的包名，在发现时加载自己的打印扩展能力
-// let extensionList: string[] = ['com.myapplication.test'];
-print.startDiscoverPrinter(extensionList).then(() => {
-    console.info('start Discovery success');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to startDiscoverPrinter. Code: ${error.code}, message: ${error.message}`);
-})
-```
-
+<a id="startdiscoverprinter-1"></a>
 
 ## startDiscoverPrinter
 
@@ -103,9 +90,22 @@ function startDiscoverPrinter(extensionList: Array<string>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application<br>**适用版本：** 10 - 19 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application<br>**适用版本：** 10 - 19 |
 
 **示例**
 
-参见 startDiscoverPrinter
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 加载所有打印扩展能力
+let extensionList: string[] = [];
+// 通过指定自己应用的包名，在发现时加载自己的打印扩展能力
+// let extensionList: string[] = ['com.myapplication.test'];
+print.startDiscoverPrinter(extensionList).then(() => {
+    console.info('start Discovery success');
+}).catch((error: BusinessError) => {
+    console.error(`Failed to startDiscoverPrinter. Code: ${error.code}, message: ${error.message}`);
+})
+```

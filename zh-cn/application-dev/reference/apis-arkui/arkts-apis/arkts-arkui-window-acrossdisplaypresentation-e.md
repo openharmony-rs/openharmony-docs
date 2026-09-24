@@ -1,5 +1,9 @@
 # AcrossDisplayPresentation
 
+```TypeScript
+enum AcrossDisplayPresentation
+```
+
 在可折叠的2in1设备的半折叠状态下，最大化窗口时用于控制瀑布流模式切换策略的枚举。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # AlbumKeys
 
+```TypeScript
+enum AlbumKeys
+```
+
 Enumerates the album keys.
 
 **Since:** 10

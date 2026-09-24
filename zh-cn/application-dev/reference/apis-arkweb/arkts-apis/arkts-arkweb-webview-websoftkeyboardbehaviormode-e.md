@@ -1,5 +1,9 @@
 # WebSoftKeyboardBehaviorMode
 
+```TypeScript
+enum WebSoftKeyboardBehaviorMode
+```
+
 Web软键盘自动控制模式。
 
 **起始版本：** 22

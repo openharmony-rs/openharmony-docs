@@ -1,5 +1,9 @@
 # DesktopLyricState
 
+```TypeScript
+interface DesktopLyricState
+```
+
 Desktop lyric state definition.
 
 **Since:** 23

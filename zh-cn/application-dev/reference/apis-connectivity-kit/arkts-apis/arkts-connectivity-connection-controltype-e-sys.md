@@ -1,5 +1,9 @@
 # ControlType（系统接口）
 
+```TypeScript
+enum ControlType
+```
+
 枚举，控制类型。
 
 **起始版本：** 15

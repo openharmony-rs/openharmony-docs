@@ -1,5 +1,9 @@
 # DisplayState
 
+```TypeScript
+enum DisplayState
+```
+
 Enumerates the states of a display.
 
 **Since:** 7

@@ -1,10 +1,12 @@
 # RelateType
 
-RelateType enumeration description
+```TypeScript
+declare enum RelateType
+```
 
-@enum { number }
+定义子组件的填充方式。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -14,9 +16,11 @@ RelateType enumeration description
 FILL
 ```
 
-Scales the current component to fill the parent component.
+缩放当前子组件以填充满父组件。
 
-**起始版本：** 11
+**起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -28,9 +32,11 @@ Scales the current component to fill the parent component.
 FIT
 ```
 
-Scales the current component to fit the parent component.
+缩放当前子组件以自适应父组件。
 
-**起始版本：** 11
+**起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

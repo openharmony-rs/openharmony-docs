@@ -1,5 +1,9 @@
 # TreeListenType
 
+```TypeScript
+export declare enum TreeListenType
+```
+
 定义树视图节点的监听事件类型。
 
 **起始版本：** 10

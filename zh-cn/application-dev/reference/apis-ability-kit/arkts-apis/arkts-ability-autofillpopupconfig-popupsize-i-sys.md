@@ -1,5 +1,9 @@
 # PopupSize（系统接口）
 
+```TypeScript
+export interface PopupSize
+```
+
 表示气泡弹窗的宽和高。
 
 **起始版本：** 12

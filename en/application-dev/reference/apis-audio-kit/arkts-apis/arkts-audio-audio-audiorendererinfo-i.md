@@ -1,5 +1,9 @@
 # AudioRendererInfo
 
+```TypeScript
+interface AudioRendererInfo
+```
+
 Describes audio renderer information.
 
 **Since:** 8

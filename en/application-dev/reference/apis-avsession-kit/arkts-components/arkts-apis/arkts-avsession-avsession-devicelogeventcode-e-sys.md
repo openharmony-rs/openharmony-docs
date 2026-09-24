@@ -1,5 +1,9 @@
 # DeviceLogEventCode (System API)
 
+```TypeScript
+enum DeviceLogEventCode
+```
+
 Enumerates device log event code.
 
 **Since:** 13

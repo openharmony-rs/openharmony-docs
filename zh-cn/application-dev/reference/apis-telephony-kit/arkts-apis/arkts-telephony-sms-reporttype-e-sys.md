@@ -1,5 +1,9 @@
 # ReportType（系统接口）
 
+```TypeScript
+export enum ReportType
+```
+
 报告类型。
 
 **起始版本：** 8

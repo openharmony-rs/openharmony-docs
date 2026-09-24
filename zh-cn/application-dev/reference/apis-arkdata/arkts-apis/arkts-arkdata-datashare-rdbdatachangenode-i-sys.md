@@ -1,5 +1,9 @@
 # RdbDataChangeNode（系统接口）
 
+```TypeScript
+interface RdbDataChangeNode
+```
+
 订阅/取消订阅RDB数据变更的结果，回调支持传输不大于10MB的数据。
 
 **起始版本：** 10

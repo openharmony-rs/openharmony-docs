@@ -12,7 +12,7 @@ import { telephonyManager } from '@kit.MDMKit';
 function removeIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: Array<string>): void
 ```
 
-Removes the trustlist or blocklist for incoming calls. If the list is not set, the removal fails. For example, an enterprise can use this API when lifting incoming call restrictions and restoring employees' normal answering permissions.
+Removes the trustlist or blocklist for incoming calls. If the list is not set, the removal fails. For example, an enterprise can use this API when lifting incoming call restrictions and restoring employees' normal answeringpermissions.
 
 A policy conflict is reported when this API is called in the following scenario:
 

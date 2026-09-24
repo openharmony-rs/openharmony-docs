@@ -1,5 +1,9 @@
 # CoordinateSystemType
 
+```TypeScript
+export enum CoordinateSystemType
+```
+
 Enum for coordinate system type.
 
 **Since:** 12

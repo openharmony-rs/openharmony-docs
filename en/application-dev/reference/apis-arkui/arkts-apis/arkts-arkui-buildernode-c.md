@@ -1,12 +1,16 @@
 # BuilderNode
 
+```TypeScript
+export class BuilderNode<Args extends Object[]>
+```
+
 The **BuilderNode** module provides APIs for a BuilderNode – a custom node that can be used to mount built-in components. A BuilderNode can be used only as a leaf node. For details, see [BuilderNode Development](../../../ui/arkts-user-defined-arktsNode-builderNode.md). For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012).
 
 Compared with **BuilderNode**, **ReactiveBuilderNode** can generate a component tree through the stateless UI method @Builder with multiple parameters.
 
 > **NOTE:** 
 > 
-> - If the root node of the provided Builder is a syntax node ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)...),Span, ContainerSpan,SymbolSpan, or a custom component, an additional FrameNode is generated and displayed as BuilderProxyNode in the node tree. This structural change affects the propagation of certain events. For details, see [BuilderProxyNode in BuilderNode Causes Tree Structure Changes](../../../ui/arkts-user-defined-arktsNode-builderNode.md#builderproxynode-in-buildernode-causes-tree-structure-changes).
+> - If the root node of the provided Builder is a syntax node ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)...),[Span](../arkts-components/arkts-arkui-span-comp.md#span), [ContainerSpan](../arkts-components/arkts-arkui-containerspan-comp-attribute.md#containerspanattribute),[SymbolSpan](../arkts-components/arkts-arkui-symbolspan-comp-attribute.md#symbolspanattribute), or a custom component, an additional [FrameNode](arkts-arkui-typenode-n.md) is generated and displayed as BuilderProxyNode in the node tree. This structural change affects the propagation of certain events. For details, see [BuilderProxyNode in BuilderNode Causes Tree Structure Changes](../../../ui/arkts-user-defined-arktsNode-builderNode.md#builderproxynode-in-buildernode-causes-tree-structure-changes).
 > 
 > - If you encounter display issues when reusing a BuilderNode across pages, see [Cross-Page Reuse Considerations](../../../ui/arkts-user-defined-arktsNode-builderNode.md#cross-page-reuse-considerations)for guidance.
 > 
@@ -48,7 +52,7 @@ Custom components are allowed.
 > 
 > - The build parameter uses the pass-by-value semantics. To implement state updates, you must explicitly use the [update](#update) API.
 > 
-> - To operate objects in a BuilderNode, ensure that the reference to the BuilderNode is not garbage collected.When a BuilderNode object is garbage collected by the virtual machine, the associated FrameNode and [RenderNode](arkts-arkui-rendernode-c.md) objects are also dereferenced from the backend node tree. This means that any FrameNode objects obtained from a BuilderNode will no longer correspond to any actual node if the BuilderNode is garbage collected.
+> - To operate objects in a BuilderNode, ensure that the reference to the BuilderNode is not garbage collected.When a BuilderNode object is garbage collected by the virtual machine, the associated [FrameNode](arkts-arkui-typenode-n.md) and [RenderNode](arkts-arkui-rendernode-c.md) objects are also dereferenced from the backend node tree. This means that any FrameNode objects obtained from a BuilderNode will no longer correspond to any actual node if the BuilderNode is garbage collected.
 > 
 > - The BuilderNode object maintains references to its underlying entity nodes. When the BuilderNode frontend object is no longer required for managing backend nodes, call the [dispose](#dispose) API to release node references and unbind frontend and backend nodes.
 
@@ -64,7 +68,7 @@ Custom components are allowed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [WrappedBuilder](../arkts-components/arkts-arkui-wrappedbuilder-c.md)&lt;Args&gt; | Yes | Stateless UI method [@Builder](../../../ui/state-management/arkts-builder.md) required for creating a component tree. |
+| builder | [WrappedBuilder](../arkts-components/arkts-arkui-common-comp-wrappedbuilder-c.md)&lt;Args&gt; | Yes | Stateless UI method [@Builder](../../../ui/state-management/arkts-builder.md) required for creating a component tree. |
 | arg | Object | No | Argument of the builder. Only one input parameter is supported, and the type of the input parameter must be consistent with the type defined by @Builder.<br>Default value: **undefined**. |
 
 **Examples**
@@ -130,6 +134,8 @@ struct Index {
 }
 ```
 
+<a id="build-1"></a>
+
 ## build
 
 ```TypeScript
@@ -158,7 +164,7 @@ Custom components are allowed. Compared with the [build(builder: WrappedBuilder\
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [WrappedBuilder](../arkts-components/arkts-arkui-wrappedbuilder-c.md)&lt;Args&gt; | Yes | Stateless UI method [@Builder](../../../ui/state-management/arkts-builder.md) required for creating a component tree. |
+| builder | [WrappedBuilder](../arkts-components/arkts-arkui-common-comp-wrappedbuilder-c.md)&lt;Args&gt; | Yes | Stateless UI method [@Builder](../../../ui/state-management/arkts-builder.md) required for creating a component tree. |
 | arg | Object | Yes | Argument of the builder. Only one input parameter is supported, and the type of the input parameter must be consistent with the type defined by @Builder. |
 | options | [BuildOptions](arkts-arkui-buildernode-buildoptions-i.md) | Yes | Build options, which determine whether to support nesting @Builder within @ Builder. |
 
@@ -278,7 +284,7 @@ Immediately releases the reference relationship between this BuilderNode object 
 getFrameNode(): FrameNode | null
 ```
 
-Obtains the FrameNode from the BuilderNode. The FrameNode is generated only after the BuilderNode executes the build operation.
+Obtains the [FrameNode](arkts-arkui-typenode-n.md) from the BuilderNode. The FrameNode is generated only after the BuilderNode executes the build operation.
 
 **Since:** 11
 
@@ -325,8 +331,205 @@ Sets whether the current **BuilderNode** object inherits the freeze policy from 
 
 **Examples**
 
-```TypeScript
 The following example illustrates how to configure the BuilderNode to inherit the freeze policy from its parent component's custom components (that is, set enabled to true), resulting in the following behavior: It automatically freezes when in inactive state and thaws and updates cached data when in active state.
+
+```TypeScript
+import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+// Define the class for passing parameters.
+class Params {
+  count: number = 0;
+
+  constructor(count: number) {
+    this.count = count;
+  }
+}
+
+@Builder
+// Builder component
+function buildText(params: Params) {
+
+  Column() {
+    TextBuilder({ message: params.count })
+  }
+}
+
+// Implement a custom textNode controller by extending NodeController.
+class TextNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private textNode: BuilderNode<[Params]> | null = null;
+  private count: number = 0;
+
+  makeNode(context: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(context);
+    this.textNode = new BuilderNode(context, { selfIdealSize: { width: 150, height: 150 } });
+    this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.count)); // Create a BuilderNode node.
+    this.textNode.inheritFreezeOptions(true); // Configure the BuilderNode to inherit the freeze policy from its parent component.
+    if (this.rootNode !== null) {
+      this.rootNode.appendChild(this.textNode.getFrameNode()); // Mount the BuilderNode to the component tree.
+    }
+    return this.rootNode;
+  }
+
+  update(): void {
+    if (this.textNode !== null) {
+      this.count += 1;
+      this.textNode.update(new Params(this.count)); // Update the BuilderNode data, which triggers logs.
+    }
+
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
+}
+
+const textNodeController: TextNodeController = new TextNodeController();
+
+@Entry
+@Component
+struct MyNavigationTestStack {
+  @Provide('pageInfo') pageInfo: NavPathStack = new NavPathStack();
+  @State message: number = 0;
+  @State logNumber: number = 0;
+
+  @Builder
+  PageMap(name: string) {
+    if (name === 'pageOne') {
+      PageOneStack({ message: this.message, logNumber: this.logNumber })
+    } else if (name === 'pageTwo') {
+      PageTwoStack({ message: this.message, logNumber: this.logNumber })
+    }
+  }
+
+  build() {
+    Column() {
+      Button('update builderNode') // Clicking the button updates BuilderNode.
+        .onClick(() => {
+          textNodeController.update();
+        })
+      Navigation(this.pageInfo) {
+        Column() {
+          Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+            .width('80%')
+            .height(40)
+            .margin(20)
+            .onClick(() => {
+              this.pageInfo.pushPath({ name: 'pageOne' }); // Push the navigation destination page specified by name to the navigation stack.
+            })
+        }
+      }.title('NavIndex')
+      .navDestination(this.PageMap)
+      .mode(NavigationMode.Stack)
+    }
+  }
+}
+
+@Component
+struct PageOneStack { // Page 1
+  @Consume('pageInfo') pageInfo: NavPathStack;
+  @State index: number = 1;
+  @Link message: number;
+  @Link logNumber: number;
+
+  build() {
+    NavDestination() {
+      Column() {
+        NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule }) // Navigate to page 2.
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pushPathByName('pageTwo', null);
+          })
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule }) // Return to the home page.
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pop();
+          })
+      }.width('100%').height('100%')
+    }.title('pageOne')
+    .onBackPressed(() => {
+      this.pageInfo.pop();
+      return true;
+    })
+  }
+}
+
+@Component
+struct PageTwoStack { // Page 2
+  @Consume('pageInfo') pageInfo: NavPathStack;
+  @State index: number = 2;
+  @Link message: number;
+  @Link logNumber: number;
+
+  build() {
+    NavDestination() {
+      Column() {
+        NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
+        Text('BuilderNode is frozen')
+          .fontWeight(FontWeight.Bold)
+          .margin({ top: 48, bottom: 48 })
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule }) // Return to page 1.
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pop();
+          })
+      }.width('100%').height('100%')
+    }.title('pageTwo')
+    .onBackPressed(() => {
+      this.pageInfo.pop();
+      return true;
+    })
+  }
+}
+
+@Component({ freezeWhenInactive: true })
+  // Set the freeze policy to inactive freeze.
+struct NavigationContentMsgStack {
+  @Link message: number;
+  @Link index: number;
+  @Link logNumber: number;
+
+  build() {
+    Column() {
+      if (this.index === 1) {
+        NodeContainer(textNodeController)
+      }
+    }
+  }
+}
+
+@Component({ freezeWhenInactive: true })
+  // Set the freeze policy to inactive freeze.
+struct TextBuilder {
+  @Prop @Watch('info') message: number = 0;
+  @State count: number = 0;
+
+  info() {
+    this.count++;
+    console.info(`freeze-test TextBuilder message callback change time ${this.count}`); // Log printed when message content changes, used to check for freezes.
+    console.info(`freeze-test TextBuilder message callback change message ${this.message}`); // Log printed when message content changes, used to check for freezes.
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(`Update content: ${this.message}`)
+          .fontWeight(FontWeight.Bold)
+          .margin({ top: 48, bottom: 48 })
+        Text(`Update count: ${this.count}`)
+          .fontWeight(FontWeight.Bold)
+          .margin({ top: 48, bottom: 48 })
+      }
+    }
+  }
+}
 ```
 
 ## isDisposed
@@ -353,8 +556,116 @@ Checks whether this BuilderNode object has released its reference to its backend
 
 **Examples**
 
-```TypeScript
 The following example shows how to verify a BuilderNode's state using the [isDisposed](#isdisposed) API before and after node release. This API returns false before node release and true after node release.
+
+```TypeScript
+import { FrameNode, NodeController, BuilderNode } from '@kit.ArkUI';
+
+// Custom component
+@Component
+struct TestComponent {
+  build() {
+    Column() {
+      Text('This is a BuilderNode.')
+        .fontSize(25)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width('100%')
+    .height(30)
+    .backgroundColor(Color.Gray)
+  }
+
+  aboutToAppear() {
+    console.info('aboutToAppear');
+  }
+
+  aboutToDisappear() {
+    console.info('aboutToDisappear');
+  }
+}
+
+@Builder
+function buildComponent() {
+  TestComponent()
+}
+
+// Implement a custom UI controller by extending NodeController.
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private builderNode: BuilderNode<[]> | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.builderNode = new BuilderNode(uiContext, { selfIdealSize: { width: 200, height: 100 } });
+    this.builderNode.build(new WrappedBuilder(buildComponent));
+
+    const rootRenderNode = this.rootNode!.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.size = { width: 300, height: 300 };
+      rootRenderNode.backgroundColor = 0xffd5d5d5;
+      rootRenderNode.appendChild(this.builderNode!.getFrameNode()!.getRenderNode());
+    }
+
+    return this.rootNode;
+  }
+
+  // Release the builderNode.
+  dispose() {
+    if (this.builderNode !== null) {
+      this.builderNode.dispose();
+    }
+  }
+
+  // Check whether the builderNode has been released.
+  isDisposed(): string {
+    if (this.builderNode !== null) {
+      if (this.builderNode.isDisposed()) {
+        return 'builderNode isDisposed is true';
+      } else {
+        return 'builderNode isDisposed is false';
+      }
+    }
+    return 'builderNode is null';
+  }
+
+  removeBuilderNode() {
+    const rootRenderNode = this.rootNode!.getRenderNode();
+    if (rootRenderNode !== null && this.builderNode !== null && this.builderNode.getFrameNode() !== null) {
+      rootRenderNode.removeChild(this.builderNode!.getFrameNode()!.getRenderNode());
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State text: string = '';
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 4 }) {
+      NodeContainer(this.myNodeController)
+      Button('BuilderNode dispose')
+        .onClick(() => {
+          this.myNodeController.removeBuilderNode();
+          this.myNodeController.dispose();
+          this.text = '';
+        })
+        .width(200)
+        .height(50)
+      Button('BuilderNode isDisposed')
+        .onClick(() => {
+          this.text = this.myNodeController.isDisposed();
+        })
+        .width(200)
+        .height(50)
+      Text(this.text)
+        .fontSize(25)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## postInputEvent
@@ -373,9 +684,9 @@ Dispatches the specified input event to the target node.
 > 
 > - The passed coordinates must be converted to the unit of px. The sample code below demonstrates how to perform such coordinate conversion.
 > 
-> - Mouse left-click events are automatically converted to touch events. Avoid binding both touch and mouse events at the outer layer, as this may cause coordinate offsets. This is because the **SourceType** remains unchanged during event conversion. For details, see onTouch.
+> - Mouse left-click events are automatically converted to touch events. Avoid binding both touch and mouse events at the outer layer, as this may cause coordinate offsets. This is because the **SourceType** remains unchanged during event conversion. For details, see [onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch).
 > 
-> - When an [axis event](../arkts-components/arkts-arkui-axisevent-i.md) event is injected, it cannot trigger rotation gestures, because the axis event does not include rotation axis information.
+> - When an [axis event](../arkts-components/arkts-arkui-common-comp-axisevent-i.md) event is injected, it cannot trigger [rotation gestures](../arkts-components/arkts-arkui-gesturecontrol-n.md), because the axis event does not include rotation axis information.
 > 
 > - A forwarded event undergoes touch testing in the target component's subtree and triggers corresponding gestures. The original event also triggers gestures in the source component tree. There is no guaranteed outcome for gesture competition between these two types of gestures.
 > 
@@ -411,9 +722,7 @@ Dispatches the specified input event to the target node.
 
 **Examples**
 
-```TypeScript
 See Example 1: Handling Mouse Events in BuilderNode, Example 2: Handling Touch Events in BuilderNode, and Example 3: Handling Axis Events in BuilderNode.
-```
 
 ## postInputEventWithStrategy
 
@@ -431,9 +740,9 @@ Before calling this API, you need to convert the value of **event** to the corre
 > 
 > - The passed coordinates must be converted to the unit of px. The sample code below demonstrates how to perform such coordinate conversion.
 > 
-> - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because [TouchType](arkts-arkui-touchtype-e.md) does not change during the event conversion. For details about the specifications, see onTouch.
+> - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because [TouchType](arkts-arkui-touchtype-e.md) does not change during the event conversion. For details about the specifications, see [onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch).
 > 
-> - When an [axis event](../arkts-components/arkts-arkui-axisevent-i.md) event is injected, it cannot trigger rotation gestures, because the axis event does not include rotation axis information.
+> - When an [axis event](../arkts-components/arkts-arkui-common-comp-axisevent-i.md) event is injected, it cannot trigger [rotation gestures](../arkts-components/arkts-arkui-gesturecontrol-n.md), because the axis event does not include rotation axis information.
 > 
 > - The forwarded event is posted to the target component and its child components for processing, and triggers the corresponding gesture. You can use input parameters to control whether the gestures of the current component and the target component are in a competitive relationship.
 > 
@@ -465,9 +774,7 @@ Before calling this API, you need to convert the value of **event** to the corre
 
 **Examples**
 
-```TypeScript
 For details, see Example 16: Handling Mouse Events with Competition Strategies in BuilderNode, Example 17: Handling Touch Events with Competition Strategies in BuilderNode, and Example 18: Handling Axis Events with Competition Strategies in BuilderNode.
-```
 
 ## postTouchEvent
 
@@ -503,7 +810,7 @@ Posts a raw touch event to the FrameNode created by this BuilderNode.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [TouchEvent](../arkts-components/arkts-arkui-touchevent-i.md) | Yes | Touch event. |
+| event | [TouchEvent](../arkts-components/arkts-arkui-common-comp-touchevent-i.md) | Yes | Touch event. |
 
 **Return value:**
 

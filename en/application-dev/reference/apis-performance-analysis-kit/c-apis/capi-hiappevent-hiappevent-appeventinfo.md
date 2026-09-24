@@ -8,6 +8,8 @@ typedef struct HiAppEvent_AppEventInfo {...} HiAppEvent_AppEventInfo
 
 Defines a struct for the information about a single event, including the domain, name, type, and custom parameter list in JSON string format.
 
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
 **Since**: 12
 
 **Related module**: [HiAppEvent](capi-hiappevent.md)

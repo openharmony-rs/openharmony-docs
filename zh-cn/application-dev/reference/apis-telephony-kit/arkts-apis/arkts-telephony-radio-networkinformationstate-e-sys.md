@@ -1,5 +1,9 @@
 # NetworkInformationState（系统接口）
 
+```TypeScript
+export enum NetworkInformationState
+```
+
 Obtains network information status.
 
 **起始版本：** 6

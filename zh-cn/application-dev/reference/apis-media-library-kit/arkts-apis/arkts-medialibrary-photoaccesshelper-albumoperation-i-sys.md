@@ -1,5 +1,9 @@
 # AlbumOperation（系统接口）
 
+```TypeScript
+interface AlbumOperation
+```
+
 相册操作信息。
 
 **起始版本：** 26.0.0

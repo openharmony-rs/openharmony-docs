@@ -1,5 +1,9 @@
 # SegmentButtonIconItem
 
+```TypeScript
+interface SegmentButtonIconItem
+```
+
 图标按钮信息。
 
 > **说明：** 

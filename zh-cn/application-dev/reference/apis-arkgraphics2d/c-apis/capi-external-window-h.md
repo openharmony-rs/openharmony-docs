@@ -89,6 +89,8 @@ enum NativeWindowOperation
 
 OH_NativeWindow_NativeWindowHandleOpt函数中的操作码。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 | 枚举项 | 描述 |
@@ -130,6 +132,8 @@ enum OHScalingMode
 
 Indicates Scaling Mode.
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 9
 
 **废弃版本：** 10
@@ -153,6 +157,8 @@ enum OHScalingModeV2
 
 Indicates Scaling Mode.
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -173,6 +179,8 @@ enum OHHDRMetadataKey
 
 Enumerates the HDR metadata keys.
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 9
 
 **废弃版本：** 10
@@ -189,6 +197,8 @@ enum OHSurfaceSource
 **描述：**
 
 本地窗口内容来源类型枚举。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 12
 

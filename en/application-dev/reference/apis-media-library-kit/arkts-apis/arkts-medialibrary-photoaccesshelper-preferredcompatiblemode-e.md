@@ -1,5 +1,9 @@
 # PreferredCompatibleMode
 
+```TypeScript
+enum PreferredCompatibleMode
+```
+
 Preferred compatible mode.
 
 **Since:** 26.0.0

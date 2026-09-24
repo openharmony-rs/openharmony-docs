@@ -1,5 +1,9 @@
 # Position
 
+```TypeScript
+export interface Position
+```
+
 窗口或组件的位置。
 
 **起始版本：** 20

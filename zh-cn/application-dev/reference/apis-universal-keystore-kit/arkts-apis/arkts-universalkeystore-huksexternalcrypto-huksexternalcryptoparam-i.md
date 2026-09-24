@@ -1,5 +1,9 @@
 # HuksExternalCryptoParam
 
+```TypeScript
+export interface HuksExternalCryptoParam
+```
+
 表示调用接口使用的param数组的类型。
 
 **起始版本：** 22

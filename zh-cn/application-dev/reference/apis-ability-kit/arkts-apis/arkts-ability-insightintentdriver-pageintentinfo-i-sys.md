@@ -1,5 +1,9 @@
 # PageIntentInfo（系统接口）
 
+```TypeScript
+interface PageIntentInfo
+```
+
 PageIntentInfo用于描述[@InsightIntentPage](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)装饰器支持的参数，例如目标页面的[NavDestination](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)名称。
 
 **起始版本：** 20

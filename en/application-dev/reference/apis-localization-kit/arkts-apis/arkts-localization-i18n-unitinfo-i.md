@@ -1,5 +1,9 @@
 # UnitInfo
 
+```TypeScript
+export interface UnitInfo
+```
+
 Defines the measurement unit information.
 
 **Since:** 8

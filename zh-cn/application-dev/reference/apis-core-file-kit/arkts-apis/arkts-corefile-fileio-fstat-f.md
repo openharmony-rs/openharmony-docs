@@ -34,6 +34,8 @@ declare function fstat(fd: number): Promise<Stat>
 | Promise&lt;[Stat](arkts-corefile-fileio-stat-depr-i.md)&gt; | Promise对象。返回表示文件状态的具体信息。 |
 
 
+<a id="fstat-1"></a>
+
 ## fstat
 
 ```TypeScript

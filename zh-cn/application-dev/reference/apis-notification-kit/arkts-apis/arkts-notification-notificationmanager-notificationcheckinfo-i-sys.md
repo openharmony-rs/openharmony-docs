@@ -1,5 +1,9 @@
 # NotificationCheckInfo（系统接口）
 
+```TypeScript
+export interface NotificationCheckInfo
+```
+
 通知校验参数。
 
 **起始版本：** 10

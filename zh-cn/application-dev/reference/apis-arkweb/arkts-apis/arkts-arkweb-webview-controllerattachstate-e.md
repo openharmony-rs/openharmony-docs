@@ -1,5 +1,9 @@
 # ControllerAttachState
 
+```TypeScript
+enum ControllerAttachState
+```
+
 WebviewController与Web组件的绑定状态。
 
 **起始版本：** 20

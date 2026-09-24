@@ -1,5 +1,9 @@
 # URL
 
+```TypeScript
+class URL
+```
+
 The interface of URL is used to parse, construct, normalize, and encode URLs.
 
 **Since:** 7
@@ -51,6 +55,8 @@ new url.URL('/path/path1'); // Raises a TypeError exception as '/path/path1' is 
 new url.URL('https://www.example.com', ); // Output https://www.example.com/
 new url.URL('https://www.example.com', b); // Output https://www.example.com/
 ```
+
+<a id="constructor-1"></a>
 
 ## constructor
 

@@ -8,6 +8,8 @@ typedef struct OH_NativeXComponent_KeyEvent OH_NativeXComponent_KeyEvent
 
 Provides an encapsulated <b>OH_NativeXComponent_KeyEvent</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 10
 
 **Related module**: [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)

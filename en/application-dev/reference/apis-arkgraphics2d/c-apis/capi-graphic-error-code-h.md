@@ -32,6 +32,8 @@ enum OHNativeErrorCode
 
 native error code.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **Since**: 12
 
 | Enum item | Description |

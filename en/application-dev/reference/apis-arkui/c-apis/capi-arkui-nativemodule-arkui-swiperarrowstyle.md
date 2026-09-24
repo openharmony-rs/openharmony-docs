@@ -8,6 +8,8 @@ typedef struct ArkUI_SwiperArrowStyle ArkUI_SwiperArrowStyle
 
 Defines the arrow style for the swiper.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

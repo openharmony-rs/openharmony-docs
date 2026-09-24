@@ -1,5 +1,9 @@
 # CallbackParam
 
+```TypeScript
+export interface CallbackParam
+```
+
 Declare CallbackParam
 
 **Since:** 10

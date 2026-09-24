@@ -1,5 +1,9 @@
 # OverlayManager
 
+```TypeScript
+export class OverlayManager
+```
+
 Provides the capability to draw overlays.
 
 > **NOTE:** 
@@ -52,6 +56,100 @@ Adds a specified **ComponentContent** node to the **OverlayManager**.
 | content | [ComponentContent](arkts-arkui-componentcontent-c.md) | Yes | Content to add to the target node on the **OverlayManager**.<br> **NOTE:** <br> By default, the new node is centered on the page and stacked according to its stacking level. |
 | index | number | No |  |
 
+**Examples**
+
+```TypeScript
+import { ComponentContent, OverlayManager } from '@kit.ArkUI';
+
+class Params {
+  text: string = "";
+  offset: Position;
+
+  constructor(text: string, offset: Position) {
+    this.text = text;
+    this.offset = offset;
+  }
+}
+
+@Builder
+function builderText(params: Params) {
+  Column() {
+    Text(params.text)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+  }.offset(params.offset)
+}
+
+@Entry
+@Component
+struct OverlayExample {
+  @State message: string = 'ComponentContent';
+  private uiContext: UIContext = this.getUIContext();
+  private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
+  @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
+  @StorageLink('componentContentIndex') componentContentIndex: number = 0;
+  @StorageLink('arrayIndex') arrayIndex: number = 0;
+  @StorageLink("componentOffset") componentOffset: Position = { x: 0, y: 110 };
+
+  build() {
+    Column({ space: 5 }) {
+      Button("++componentContentIndex: " + this.componentContentIndex).onClick(() => {
+        ++this.componentContentIndex;
+      })
+      Button("--componentContentIndex: " + this.componentContentIndex).onClick(() => {
+        --this.componentContentIndex;
+      })
+      Button("Add ComponentContent" + this.contentArray.length).onClick(() => {
+        let componentContent = new ComponentContent(
+          this.uiContext, wrapBuilder<[Params]>(builderText),
+          new Params(this.message + (this.contentArray.length), this.componentOffset)
+        );
+        this.contentArray.push(componentContent);
+        this.overlayNode.addComponentContent(componentContent, this.componentContentIndex);
+      })
+      Button("++arrayIndex: " + this.arrayIndex).onClick(() => {
+        ++this.arrayIndex;
+      })
+      Button("--arrayIndex: " + this.arrayIndex).onClick(() => {
+        --this.arrayIndex;
+      })
+      Button("Delete ComponentContent" + this.arrayIndex).onClick(() => {
+        if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
+          let componentContent = this.contentArray.splice(this.arrayIndex, 1);
+          this.overlayNode.removeComponentContent(componentContent.pop());
+        } else {
+          console.info("Invalid arrayIndex.");
+        }
+      })
+      Button("Show ComponentContent" + this.arrayIndex).onClick(() => {
+        if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
+          let componentContent = this.contentArray[this.arrayIndex];
+          this.overlayNode.showComponentContent(componentContent);
+        } else {
+          console.info("Invalid arrayIndex.");
+        }
+      })
+      Button("Hide ComponentContent" + this.arrayIndex).onClick(() => {
+        if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
+          let componentContent = this.contentArray[this.arrayIndex];
+          this.overlayNode.hideComponentContent(componentContent);
+        } else {
+          console.info("Invalid arrayIndex.");
+        }
+      })
+      Button("Show All ComponentContent").onClick(() => {
+        this.overlayNode.showAllComponentContents();
+      })
+      Button("Hide All ComponentContent").onClick(() => {
+        this.overlayNode.hideAllComponentContents();
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## addComponentContentWithOrder
 
 ```TypeScript
@@ -77,6 +175,87 @@ This API allows you to define the stacking order of the nodes when they are crea
 | content | [ComponentContent](arkts-arkui-componentcontent-c.md) | Yes | Content to add to the target node on the **OverlayManager**.<br>**NOTE:** <br> By default, the new node is centered on the page and stacked according to its stacking level. |
 | levelOrder | [LevelOrder](arkts-arkui-promptaction-levelorder-c.md) | No |  |
 
+**Examples**
+
+This example demonstrates how to use addComponentContentWithOrder to create an overlay node with the specified display order.
+
+```TypeScript
+import { ComponentContent, PromptAction, LevelOrder, UIContext, OverlayManager } from '@kit.ArkUI';
+
+class Params {
+  text: string = "";
+  offset: Position;
+  constructor(text: string, offset: Position) {
+    this.text = text;
+    this.offset = offset;
+  }
+}
+@Builder
+function builderText(params: Params) {
+  Column() {
+    Text(params.text)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+  }.offset(params.offset)
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Dialog box';
+  private ctx: UIContext = this.getUIContext();
+  private promptAction: PromptAction = this.ctx.getPromptAction();
+  private overlayNode: OverlayManager = this.ctx.getOverlayManager();
+  @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
+  @StorageLink('componentContentIndex') componentContentIndex: number = 0;
+  @StorageLink('arrayIndex') arrayIndex: number = 0;
+  @StorageLink("componentOffset") componentOffset: Position = { x: 0, y: 80 };
+
+  build() {
+    Row() {
+      Column({ space: 10 }) {
+        Button('OverlayManager Bottom Overlay')
+          .fontSize(20)
+          .onClick(() => {
+            let componentContent = new ComponentContent(
+              this.ctx, wrapBuilder<[Params]>(builderText),
+              new Params(this.message + (this.contentArray.length), this.componentOffset)
+            );
+            this.contentArray.push(componentContent);
+            this.overlayNode.addComponentContentWithOrder(componentContent, LevelOrder.clamp(100.1));
+            let topOrder: LevelOrder = this.promptAction.getTopOrder();
+            if (topOrder !== undefined) {
+              console.error('topOrder: ' + topOrder.getOrder());
+            }
+            let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
+            if (bottomOrder !== undefined) {
+              console.error('bottomOrder: ' + bottomOrder.getOrder());
+            }
+          })
+        Button('OverlayManager Top Overlay')
+          .fontSize(20)
+          .onClick(() => {
+            let componentContent = new ComponentContent(
+              this.ctx, wrapBuilder<[Params]>(builderText),
+              new Params(this.message + (this.contentArray.length), this.componentOffset)
+            );
+            this.contentArray.push(componentContent);
+            this.overlayNode.addComponentContentWithOrder(componentContent, LevelOrder.clamp(100.2));
+            let topOrder: LevelOrder = this.promptAction.getTopOrder();
+            if (topOrder !== undefined) {
+              console.error('topOrder: ' + topOrder.getOrder());
+            }
+            let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
+            if (bottomOrder !== undefined) {
+              console.error('bottomOrder: ' + bottomOrder.getOrder());
+            }
+          })
+      }.width('100%')
+    }.height('100%')
+  }
+}
+```
+
 ## hideAllComponentContents
 
 ```TypeScript
@@ -92,6 +271,10 @@ Hides all **ComponentContent** nodes on the **OverlayManager**.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Examples**
+
+See the example for [addComponentContent](#addcomponentcontent).
 
 ## hideComponentContent
 
@@ -114,6 +297,10 @@ Hides a specified **ComponentContent** node on the **OverlayManager**.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | content | [ComponentContent](arkts-arkui-componentcontent-c.md) | Yes | Content to hide on the **OverlayManager**. |
+
+**Examples**
+
+See the example for [addComponentContent](#addcomponentcontent).
 
 ## openOrderOverlay
 
@@ -172,6 +359,10 @@ Removes a specified node from the **OverlayManager**.
 | --- | --- | --- | --- |
 | content | [ComponentContent](arkts-arkui-componentcontent-c.md) | Yes | Content to remove from the **OverlayManager**. |
 
+**Examples**
+
+See the example for [addComponentContent](#addcomponentcontent).
+
 ## showAllComponentContents
 
 ```TypeScript
@@ -187,6 +378,10 @@ Shows all **ComponentContent** nodes on the **OverlayManager**.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Examples**
+
+See the example for [addComponentContent](#addcomponentcontent).
 
 ## showComponentContent
 
@@ -209,3 +404,7 @@ Shows a specified **ComponentContent** node on the **OverlayManager**.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | content | [ComponentContent](arkts-arkui-componentcontent-c.md) | Yes | Content to show on the **OverlayManager**. |
+
+**Examples**
+
+See the example for [addComponentContent](#addcomponentcontent).

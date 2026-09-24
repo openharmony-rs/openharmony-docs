@@ -16,6 +16,8 @@ Sets the output type for hilog for the domainID list.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.HiviewDFX.HiLog
@@ -45,8 +47,12 @@ hilog.info(0x0004, "testTag", 'sandbox log to share sandbox only');
 hilog.flush();
 ```
 
-```TypeScript
 Log result:
 
 Sandbox log output. The logs of domain 0x0004 are not printed.
+
+```TypeScript
+05-15 16:57:04.238 40518 40518 I A00001/testTag: sandbox log to share sandbox only
+05-15 16:57:04.238 40518 40518 I A00002/testTag: sandbox log to share sandbox only
+05-15 16:57:04.238 40518 40518 I A00003/testTag: sandbox log to share sandbox only
 ```

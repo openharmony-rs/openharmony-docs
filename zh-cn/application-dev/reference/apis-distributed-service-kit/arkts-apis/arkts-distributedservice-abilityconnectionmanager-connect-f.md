@@ -36,10 +36,23 @@ function connect(sessionId: number): Promise<ConnectResult>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例**
 
-```TypeScript
 设备A上创建协同会话成功并获得会话ID后，调用connect()方法启动UIAbility连接，并拉起设备B应用。
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let sessionId = 100;
+abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
+  if (!ConnectResult.isConnected) {
+    hilog.info(0x0000, 'testTag', 'connect failed');
+    return;
+  }
+}).catch(() => {
+  hilog.error(0x0000, 'testTag', "connect failed");
+})
 ```

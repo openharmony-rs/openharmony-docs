@@ -1,5 +1,9 @@
 # FileInfo (System API)
 
+```TypeScript
+interface FileInfo
+```
+
 Represents information about the recent file list.
 
 **Since:** 10

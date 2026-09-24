@@ -1,5 +1,9 @@
 # HuksHandle
 
+```TypeScript
+export interface HuksHandle
+```
+
 Defines the struct for a HUKS handle.
 
 > **NOTE:** 

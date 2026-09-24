@@ -30,7 +30,7 @@ Selects a contact. This API uses an asynchronous callback to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../errorcode-contacts.md#401-failed-to-open-the-contact-portrait-file) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **Examples**
 
@@ -48,42 +48,8 @@ contact.selectContacts((err: BusinessError, data) => {
 });
 ```
 
-```TypeScript
-import { contact } from '@kit.ContactsKit';
 
-// Open the contact selection UI.
-let promise = contact.selectContacts();
-promise.then((data) => {
-  console.info(`Succeeded in selecting Contacts. data->${JSON.stringify(data)}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { contact } from '@kit.ContactsKit';
-
-// Open the contact selection UI and select a contact.
-contact.selectContacts({
-  isMultiSelect:false
-}, (err: BusinessError, data) => {
-  if (err) {
-    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info(`Succeeded in selecting Contacts. data->${JSON.stringify(data)}`);
-});
-```
-
-```TypeScript
-import { contact } from '@kit.ContactsKit';
-
-// Open the contact selection UI to select a contact.
-let promise = contact.selectContacts({isMultiSelect:false});
-promise.then((data) => {
-  console.info(`Succeeded in selecting Contacts. data->${JSON.stringify(data)}`);
-});
-```
-
+<a id="selectcontacts-1"></a>
 
 ## selectContacts
 
@@ -107,8 +73,18 @@ Selects a contact. This API uses a promise to return the result.
 
 **Examples**
 
-See [selectContacts](#selectcontacts)
+```TypeScript
+import { contact } from '@kit.ContactsKit';
 
+// Open the contact selection UI.
+let promise = contact.selectContacts();
+promise.then((data) => {
+  console.info(`Succeeded in selecting Contacts. data->${JSON.stringify(data)}`);
+});
+```
+
+
+<a id="selectcontacts-2"></a>
 
 ## selectContacts
 
@@ -135,12 +111,28 @@ Selects a contact. (Filter criteria can be transferred during contact selection.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../errorcode-contacts.md#401-failed-to-open-the-contact-portrait-file) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **Examples**
 
-See [selectContacts](#selectcontacts)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { contact } from '@kit.ContactsKit';
 
+// Open the contact selection UI and select a contact.
+contact.selectContacts({
+  isMultiSelect:false
+}, (err: BusinessError, data) => {
+  if (err) {
+    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in selecting Contacts. data->${JSON.stringify(data)}`);
+});
+```
+
+
+<a id="selectcontacts-3"></a>
 
 ## selectContacts
 
@@ -172,8 +164,16 @@ Selects a contact. (Filter criteria can be transferred during contact selection.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../errorcode-contacts.md#401-failed-to-open-the-contact-portrait-file) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **Examples**
 
-See [selectContacts](#selectcontacts)
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+
+// Open the contact selection UI to select a contact.
+let promise = contact.selectContacts({isMultiSelect:false});
+promise.then((data) => {
+  console.info(`Succeeded in selecting Contacts. data->${JSON.stringify(data)}`);
+});
+```

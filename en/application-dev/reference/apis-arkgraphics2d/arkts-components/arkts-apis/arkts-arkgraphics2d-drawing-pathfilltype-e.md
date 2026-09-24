@@ -1,5 +1,9 @@
 # PathFillType
 
+```TypeScript
+enum PathFillType
+```
+
 Enumerates the fill types of a path.
 
 > **NOTE:** 

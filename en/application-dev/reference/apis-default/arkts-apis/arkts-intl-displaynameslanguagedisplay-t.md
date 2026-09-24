@@ -1,9 +1,7 @@
 # DisplayNamesLanguageDisplay
 
 ```TypeScript
-type DisplayNamesLanguageDisplay =
-        | "dialect"
-        | "standard"
+type DisplayNamesLanguageDisplay = | "dialect" | "standard"
 ```
 
 | Type | Description |

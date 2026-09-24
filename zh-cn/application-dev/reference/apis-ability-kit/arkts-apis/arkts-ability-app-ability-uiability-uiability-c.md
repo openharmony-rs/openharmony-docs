@@ -1,5 +1,9 @@
 # UIAbility
 
+```TypeScript
+declare class UIAbility extends Ability
+```
+
 表示包含UI界面的应用组件，提供组件创建、销毁、前后台切换等生命周期回调，同时也具备后台通信能力。
 
 **继承/实现关系：** UIAbility extends [Ability](arkts-ability-app-ability-ability-ability-c.md)
@@ -132,8 +136,7 @@ export default class MyAbility extends UIAbility {
 ## onContinue
 
 ```TypeScript
-onContinue(wantParam: Record<string, Object>):
-    AbilityConstant.OnContinueResult | Promise<AbilityConstant.OnContinueResult>
+onContinue(wantParam: Record<string, Object>):AbilityConstant.OnContinueResult | Promise<AbilityConstant.OnContinueResult>
 ```
 
 当UIAbility准备跨端迁移时触发，可以保存待迁移的业务数据。
@@ -165,12 +168,42 @@ onContinue(wantParam: Record<string, Object>):
 
 **示例**
 
-```TypeScript
 应用迁移时使用同步接口进行数据保存，示例如下：
-```
 
 ```TypeScript
+import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
+
+export default class MyUIAbility extends UIAbility {
+  onContinue(wantParam: Record<string, Object>) {
+    console.info('onContinue');
+    wantParam['myData'] = 'my1234567'; // 保存待迁移的业务数据
+    return AbilityConstant.OnContinueResult.AGREE;
+  }
+}
+```
+
 应用迁移时使用异步接口进行数据保存，示例如下：
+
+```TypeScript
+import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
+
+export default class MyUIAbility extends UIAbility {
+  async setWant(wantParams: Record<string, Object>) {
+    console.info('setWant start');
+    for (let time = 0; time < 1000; ++time) {
+      wantParams[time] = time;
+    }
+    console.info('setWant end');
+  }
+
+  async onContinue(wantParams: Record<string, Object>) {
+    console.info('onContinue');
+    // 异步保存待迁移数据
+    return this.setWant(wantParams).then(() => {
+      return AbilityConstant.OnContinueResult.AGREE;
+    });
+  }
+}
 ```
 
 ## onCreate
@@ -239,12 +272,32 @@ onDestroy(): void | Promise<void>
 
 **示例**
 
-```TypeScript
 同步回调示例如下：
-```
 
 ```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class MyUIAbility extends UIAbility {
+  onDestroy() {
+    hilog.info(0x0000, 'testTag', `onDestroy`);
+    // 调用同步函数...
+  }
+}
+```
+
 Promise异步回调示例如下：
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class MyUIAbility extends UIAbility {
+  async onDestroy() {
+    hilog.info(0x0000, 'testTag', `onDestroy`);
+    // 调用异步函数...
+  }
+}
 ```
 
 ## onDidBackground
@@ -337,9 +390,7 @@ UIAbility生命周期回调，应用转到前台后触发，在[onForeground](#o
 
 **示例**
 
-```TypeScript
 参考[onWillForeground](#onwillforeground)。
-```
 
 ## onDump
 

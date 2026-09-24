@@ -1,5 +1,9 @@
 # AppCloneIdentity
 
+```TypeScript
+export interface AppCloneIdentity
+```
+
 Describes the identity information of an application clone.
 
 **Since:** 14

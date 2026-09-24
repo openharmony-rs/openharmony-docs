@@ -1,5 +1,9 @@
 # Task
 
+```TypeScript
+class Task
+```
+
 调用Task中的任何接口前必须先使用构造函数创建Task对象。任务可以多次执行，也可以放入任务组、串行队列或异步队列执行，还支持添加依赖关系。
 
 **起始版本：** 9
@@ -91,8 +95,8 @@ Task的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考序列化支持类型。 |
-| args | Object[] | 是 | 任务执行函数的入参，支持的参数类型请参考序列化支持类型。默认值为**undefined**。 |
+| func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
+| args | Object[] | 是 | 任务执行函数的入参，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
 
 **错误码：**
 
@@ -112,17 +116,7 @@ function printArgs(args: string): string {
 let task: taskpool.Task = new taskpool.Task(printArgs, "this is my first Task");
 ```
 
-```TypeScript
-@Concurrent
-function printArgs(args: string): string {
-  console.info("printArgs: " + args);
-  return args;
-}
-
-let taskName: string = "taskName";
-let task: taskpool.Task = new taskpool.Task(taskName, printArgs, "this is my first Task");
-let name: string = task.name;
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -143,8 +137,8 @@ Task的构造函数用于创建任务，并可指定任务名称。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 任务名称。 |
-| func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考序列化支持类型。 |
-| args | Object[] | 是 | 任务执行函数的入参。支持的类型请参考序列化支持类型。默认值为**undefined**。 |
+| func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
+| args | Object[] | 是 | 任务执行函数的入参。支持的类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
 
 **错误码：**
 
@@ -153,16 +147,6 @@ Task的构造函数用于创建任务，并可指定任务名称。
 | [10200014](../errorcode-utils.md#10200014-非concurrent函数错误) | The function is not marked as concurrent. |
 
 **示例**
-
-```TypeScript
-@Concurrent
-function printArgs(args: string): string {
-  console.info("printArgs: " + args);
-  return args;
-}
-
-let task: taskpool.Task = new taskpool.Task(printArgs, "this is my first Task");
-```
 
 ```TypeScript
 @Concurrent
@@ -216,10 +200,40 @@ function inspectStatus(arg: number): number {
 }
 ```
 
-```TypeScript
 > 说明：
 > 
 > isCanceled方法需要和taskpool.cancel方法搭配使用，如果不调用cancel方法，isCanceled方法默认返回false。
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Concurrent
+function inspectStatus(arg: number): number {
+  // 第一次检查任务是否已经取消并作出响应
+  if (taskpool.Task.isCanceled()) {
+    console.info("task has been canceled before 2s sleep.");
+    return arg + 2;
+  }
+  // 延时2s
+  let t: number = Date.now();
+  while (Date.now() - t < 2000) {
+    continue;
+  }
+  // 第二次检查任务是否已经取消并作出响应
+  if (taskpool.Task.isCanceled()) {
+    console.info("task has been canceled after 2s sleep.");
+    return arg + 3;
+  }
+  return arg + 1;
+}
+
+let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
+taskpool.execute(task).then((res: Object) => {
+  console.info("Succeeded in executing task, result: " + res);
+}).catch((e: BusinessError) => {
+  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
+});
+// 不调用cancel，isCanceled()默认返回false，task执行的结果为101
 ```
 
 ## isDone
@@ -621,7 +635,7 @@ static sendData(...args: Object[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| args | Object[] | 是 | 作为已注册回调函数入参的数据，支持的参数类型请参考序列化支持类型。默认值为**undefined**。 |
+| args | Object[] | 是 | 作为已注册回调函数入参的数据，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
 
 **错误码：**
 
@@ -925,7 +939,7 @@ console.info("testTransfer view3 byteLength: " + view1.byteLength);
 arguments?: Object[]
 ```
 
-创建任务传入函数所需的参数，支持的参数类型请参考序列化支持类型。默认值为undefined。<br>从API version 11开始，该接口支持在原子化服务中使用。
+创建任务传入函数所需的参数，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为undefined。<br>从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** Object[]
 
@@ -959,7 +973,7 @@ cpuDuration: number
 function: Function
 ```
 
-待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰，支持的函数返回值类型请参考序列化支持类型。<br>从API version 11开始，该接口支持在原子化服务中使用。
+待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰，支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。<br>从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** Function
 

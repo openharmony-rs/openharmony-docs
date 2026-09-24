@@ -65,33 +65,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Set the mouse pointer size.
-            pointer.setPointerSize(3).then(() => {
-              console.info(`Succeeded in setting pointer size.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to set pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to set pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="setpointersize-1"></a>
 
 ## setPointerSize
 
@@ -128,4 +103,29 @@ Sets the mouse pointer size. This API uses a promise to return the result.
 
 **Examples**
 
-See [setPointerSize](#setpointersize)
+```TypeScript
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // Set the mouse pointer size.
+            pointer.setPointerSize(3).then(() => {
+              console.info(`Succeeded in setting pointer size.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to set pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

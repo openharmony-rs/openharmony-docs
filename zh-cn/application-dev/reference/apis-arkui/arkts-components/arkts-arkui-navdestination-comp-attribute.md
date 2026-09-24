@@ -1,10 +1,14 @@
 # NavDestination属性/事件
 
+```TypeScript
+declare class NavDestinationAttribute extends CommonMethod<NavDestinationAttribute>
+```
+
 支持通用属性。
 
 除支持通用事件外，还支持如下事件：
 
-**继承/实现关系：** NavDestinationAttribute extends CommonMethod&lt;NavDestinationAttribute&gt;
+**继承/实现关系：** NavDestinationAttribute extends CommonMethod<NavDestinationAttribute>
 
 **起始版本：** 9
 
@@ -20,7 +24,7 @@ backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier)
 
 > **说明：** 
 
-> - 从API version 12开始，该接口支持在attributeModifier中调用。
+> - 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 > 
 > - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
@@ -36,7 +40,9 @@ backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [PixelMap](arkts-arkui-pixelmap-t.md) &#124; [SymbolGlyphModifier](arkts-arkui-symbolglyphmodifier-t.md) | 是 | 标题栏返回键图标。<br>**适用版本：** 11 |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md) | 是 | 标题栏返回键图标。<br>**适用版本：** 11 |
+
+<a id="backbuttonicon-1"></a>
 
 ## backButtonIcon
 
@@ -48,7 +54,7 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibility
 
 > **说明：** 
 
-> - 该接口不支持在attributeModifier中调用。
+> - 该接口不支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 > 
 > - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
@@ -64,7 +70,7 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibility
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| icon | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [PixelMap](arkts-arkui-pixelmap-t.md) &#124; [SymbolGlyphModifier](arkts-arkui-symbolglyphmodifier-t.md) | 是 | 标题栏返回键图标。 |
+| icon | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md) | 是 | 标题栏返回键图标。 |
 | accessibilityText | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 否 | 返回键无障碍播报内容。<br>默认值：系统语言是中文时为“返回”，系统语言是英文时为“back”。 |
 
 ## bindToNestedScrollable
@@ -73,7 +79,7 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibility
 bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>)
 ```
 
-绑定NavDestination组件和嵌套的可滚动容器组件（支持List、Scroll、Grid、WaterFlow），当滑动父组件或子组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多个嵌套的可滚动容器组件绑定，嵌套的可滚动容器组件也可与多个NavDestination绑定。使用示例参见示例1。
+绑定NavDestination组件和嵌套的可滚动容器组件（支持List、Scroll、Grid、WaterFlow），当滑动父组件或子组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多个嵌套的可滚动容器组件绑定，嵌套的可滚动容器组件也可与多个NavDestination绑定。使用示例参见[示例1](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例1标题栏工具栏与可滚动类组件联动)。
 
 > **说明：** 
 
@@ -81,7 +87,7 @@ bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>)
 > 
 > - 当多个可滚动容器组件绑定了同一个NavDestination组件时，滚动任何一个容器都会触发标题栏和工具栏的显示或隐藏效果。且当任何一个可滚动容器组件滑动到底部或顶部位置时，会立即触发标题栏和工具栏的显示动效。因此，为了获得最佳用户体验，不建议同时触发多个可滚动容器组件的滚动事件。
 > 
-> - 从API version 22开始，该接口支持在attributeModifier中调用。
+> - 从API version 22开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 14
 
@@ -95,7 +101,7 @@ bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scrollInfos | Array&lt;[NestedScrollInfo](arkts-arkui-nestedscrollinfo-i.md)&gt; | 是 | 嵌套的可滚动容器组件的控制器。 |
+| scrollInfos | Array&lt;[NestedScrollInfo](arkts-arkui-navdestination-comp-nestedscrollinfo-i.md)&gt; | 是 | 嵌套的可滚动容器组件的控制器。 |
 
 ## bindToScrollable
 
@@ -103,7 +109,7 @@ bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>)
 bindToScrollable(scrollers: Array<Scroller>)
 ```
 
-绑定NavDestination组件和可滚动容器组件（支持List、Scroll、Grid、WaterFlow），当滑动可滚动容器组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多个可滚动容器组件绑定，一个可滚动容器组件也可与多个NavDestination绑定。使用示例参见示例1。
+绑定NavDestination组件和可滚动容器组件（支持List、Scroll、Grid、WaterFlow），当滑动可滚动容器组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多个可滚动容器组件绑定，一个可滚动容器组件也可与多个NavDestination绑定。使用示例参见[示例1](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例1标题栏工具栏与可滚动类组件联动)。
 
 > **说明：** 
 
@@ -111,7 +117,7 @@ bindToScrollable(scrollers: Array<Scroller>)
 > 
 > - 当多个可滚动容器组件绑定了同一个NavDestination组件时，滚动任何一个容器都会触发标题栏和工具栏的显示或隐藏效果。且当任何一个可滚动容器组件滑动到底部或顶部位置时，会立即触发标题栏和工具栏的显示动效。因此，为了获得最佳用户体验，不建议同时触发多个可滚动容器组件的滚动事件。
 > 
-> - 从API version 22开始，该接口支持在attributeModifier中调用。
+> - 从API version 22开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 14
 
@@ -125,7 +131,7 @@ bindToScrollable(scrollers: Array<Scroller>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scrollers | Array&lt;[Scroller](arkts-arkui-scroller-c.md)&gt; | 是 | 可滚动容器组件的控制器。<br>生效前提：NavDestination的标题栏或工具栏需设置为可见状态。 |
+| scrollers | Array&lt;[Scroller](arkts-arkui-scroll-comp-scroller-c.md)&gt; | 是 | 可滚动容器组件的控制器。<br>生效前提：NavDestination的标题栏或工具栏需设置为可见状态。 |
 
 ## customTransition
 
@@ -137,7 +143,7 @@ customTransition(delegate: NavDestinationTransitionDelegate)
 
 > **说明：** 
 
-> - 该接口不支持在attributeModifier中调用。
+> - 该接口不支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 > 
 > - 该属性与[systemTransition](#systemtransition)同时设置时，后设置的属性生效。
 
@@ -153,7 +159,7 @@ customTransition(delegate: NavDestinationTransitionDelegate)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| delegate | [NavDestinationTransitionDelegate](arkts-arkui-navdestinationtransitiondelegate-t.md) | 是 | NavDestination自定义动画的代理函数。 |
+| delegate | [NavDestinationTransitionDelegate](arkts-arkui-navdestination-comp-navdestinationtransitiondelegate-t.md) | 是 | NavDestination自定义动画的代理函数。 |
 
 ## enableNavigationIndicator
 
@@ -183,7 +189,7 @@ enableNavigationIndicator(enabled: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 进入该NavDestination后，系统导航条的显示/隐藏状态。<br>默认值：false<br>true：显示导航条。<br>false：隐藏导航条。<br>undefined：不改变系统导航条的显示/隐藏状态。 |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 进入该NavDestination后，系统导航条的显示/隐藏状态。<br>默认值：false<br>true：显示导航条。<br>false：隐藏导航条。<br>undefined：不改变系统导航条的显示/隐藏状态。 |
 
 ## enableStatusBar
 
@@ -203,7 +209,7 @@ enableStatusBar(enabled: Optional<boolean>, animated?: boolean)
 > 
 > 3. NavDestination的大小占满整个Navigation组件；
 > 
-> 4. NavDestination类型为[NavDestinationMode](arkts-arkui-navdestinationmode-e.md).STANDARD。
+> 4. NavDestination类型为[NavDestinationMode](arkts-arkui-navdestination-comp-navdestinationmode-e.md).STANDARD。
 > 
 > - 设置系统状态栏的实际效果依赖于具体的设备支持情况，具体参考窗口的[setSpecificSystemBarEnabled](../arkts-apis/arkts-arkui-window-window-i.md#setspecificsystembarenabled)接口。
 
@@ -219,7 +225,7 @@ enableStatusBar(enabled: Optional<boolean>, animated?: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 进入该NavDestination后，系统状态栏的显示/隐藏状态。<br>默认值：false<br>true：显示状态栏。<br>false：隐藏状态栏。<br>undefined：不改变系统状态栏的显示/隐藏状态。 |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 进入该NavDestination后，系统状态栏的显示/隐藏状态。<br>默认值：false<br>true：显示状态栏。<br>false：隐藏状态栏。<br>undefined：不改变系统状态栏的显示/隐藏状态。 |
 | animated | boolean | 否 | 是否使用动画的方式显示/隐藏系统状态栏。<br>默认值：false<br>true：使用动画的方式显示/隐藏系统状态栏。<br>false：不使用动画的方式显示/隐藏系统状态栏。 |
 
 ## fullScreenOverlay
@@ -230,7 +236,7 @@ fullScreenOverlay(fullScreenOverlay: Optional<boolean>)
 
 设置NavDestination是否以全屏覆盖模式显示。
 
-当参数设置为true时，在Navigation分栏模式下，当前页面会覆盖整个Navigation容器，包括NavBar和内容区。该配置作用于当前NavDestination的所有实例；当路由栈中已有页面以全屏覆盖模式显示时，其后入栈的[DIALOG](arkts-arkui-navdestinationmode-e.md)页面与未将fullScreenOverlay为false的[STANDARD](arkts-arkui-navdestinationmode-e.md)页面也会继承为全屏覆盖显示。未通过该接口设置时，NavDestination默认是普通显示模式，遵循Navigation分栏显示规则。
+当参数设置为true时，在Navigation分栏模式下，当前页面会覆盖整个Navigation容器，包括NavBar和内容区。该配置作用于当前NavDestination的所有实例；当路由栈中已有页面以全屏覆盖模式显示时，其后入栈的[DIALOG](arkts-arkui-navdestination-comp-navdestinationmode-e.md)页面与未将fullScreenOverlay为false的[STANDARD](arkts-arkui-navdestination-comp-navdestinationmode-e.md)页面也会继承为全屏覆盖显示。未通过该接口设置时，NavDestination默认是普通显示模式，遵循Navigation分栏显示规则。
 
 **起始版本：** 26.0.0
 
@@ -244,7 +250,7 @@ fullScreenOverlay(fullScreenOverlay: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fullScreenOverlay | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 是否以全屏覆盖模式显示。<br>true：全屏覆盖模式，覆盖整个Navigation容器。<br>false：普通显示模式，遵循Navigation分栏显示规则。指定为false的STANDARD类型页面不会继承全屏显示。<br>undefined：普通显示模式，遵循Navigation分栏显示规则。指定为undefined的页面会继承全屏显示。 |
+| fullScreenOverlay | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 是否以全屏覆盖模式显示。<br>true：全屏覆盖模式，覆盖整个Navigation容器。<br>false：普通显示模式，遵循Navigation分栏显示规则。指定为false的STANDARD类型页面不会继承全屏显示。<br>undefined：普通显示模式，遵循Navigation分栏显示规则。指定为undefined的页面会继承全屏显示。 |
 
 ## hideBackButton
 
@@ -266,7 +272,7 @@ hideBackButton(hide: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hide | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 是否隐藏标题栏中的返回键。<br>默认值：false<br>true：隐藏返回键。<br>false：显示返回键。 |
+| hide | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 是否隐藏标题栏中的返回键。<br>默认值：false<br>true：隐藏返回键。<br>false：显示返回键。 |
 
 ## hideTitleBar
 
@@ -287,6 +293,8 @@ hideTitleBar(value: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否隐藏标题栏。<br>默认值：false<br>true：隐藏标题栏。<br>false：显示标题栏。 |
+
+<a id="hidetitlebar-1"></a>
 
 ## hideTitleBar
 
@@ -348,7 +356,7 @@ ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafe
 > 
 > - 若组件扩展到非安全区域内，此时在非安全区域里触发的事件（例如：点击事件）等可能会被系统拦截，优先响应状态栏等系统组件。
 > 
-> - 组件想要扩展到非安全区域内，需隐藏或者设置标题栏和工具栏为[STACK](arkts-arkui-barstyle-e.md)模式。
+> - 组件想要扩展到非安全区域内，需隐藏或者设置标题栏和工具栏为[STACK](arkts-arkui-navigation-comp-barstyle-e.md)模式。
 
 **起始版本：** 12
 
@@ -362,8 +370,8 @@ ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| types | Array&lt;[LayoutSafeAreaType](arkts-arkui-layoutsafeareatype-e.md)&gt; | 否 | 配置扩展安全区域的类型。<br>默认值：<br>[LayoutSafeAreaType.SYSTEM] |
-| edges | Array&lt;[LayoutSafeAreaEdge](arkts-arkui-layoutsafeareaedge-e.md)&gt; | 否 | 配置扩展安全区域的方向。<br> 默认值：<br> [LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM]。<br>默认扩展顶部和底部方向，用于避让系统状态栏和导航栏的安全区域。 |
+| types | Array&lt;[LayoutSafeAreaType](arkts-arkui-common-comp-layoutsafeareatype-e.md)&gt; | 否 | 配置扩展安全区域的类型。<br>默认值：<br>[LayoutSafeAreaType.SYSTEM] |
+| edges | Array&lt;[LayoutSafeAreaEdge](arkts-arkui-common-comp-layoutsafeareaedge-e.md)&gt; | 否 | 配置扩展安全区域的方向。<br> 默认值：<br> [LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM]。<br>默认扩展顶部和底部方向，用于避让系统状态栏和导航栏的安全区域。 |
 
 ## menus
 
@@ -371,11 +379,11 @@ ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafe
 menus(value: Array<NavigationMenuItem> | CustomBuilder)
 ```
 
-设置页面右上角菜单。不设置时不显示菜单项。使用Array&lt;[NavigationMenuItem](arkts-arkui-navigationmenuitem-i.md)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
+设置页面右上角菜单。不设置时不显示菜单项。使用Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
 > **说明：** 
 
-> - 从API version 14开始，该接口支持在attributeModifier中调用。
+> - 从API version 14开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 > 
 > - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
@@ -391,7 +399,9 @@ menus(value: Array<NavigationMenuItem> | CustomBuilder)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array&lt;[NavigationMenuItem](arkts-arkui-navigationmenuitem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-custombuilder-t.md) | 是 | 页面右上角菜单。 |
+| value | Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | 是 | 页面右上角菜单。 |
+
+<a id="menus-1"></a>
 
 ## menus
 
@@ -399,11 +409,11 @@ menus(value: Array<NavigationMenuItem> | CustomBuilder)
 menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions)
 ```
 
-设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus)相比，新增菜单选项。使用Array&lt;[NavigationMenuItem](arkts-arkui-navigationmenuitem-i.md)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
+设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus)相比，新增菜单选项。使用Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
 > **说明：** 
 
-> - 该接口不支持在attributeModifier中调用。
+> - 该接口不支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 > 
 > - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
@@ -419,8 +429,8 @@ menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | Array&lt;[NavigationMenuItem](arkts-arkui-navigationmenuitem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-custombuilder-t.md) | 是 | 页面右上角菜单。 |
-| options | [NavigationMenuOptions](arkts-arkui-navigationmenuoptions-i.md) | 否 | 页面右上角菜单选项。<br>默认值：不设置时使用菜单默认配置。 |
+| items | Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | 是 | 页面右上角菜单。 |
+| options | [NavigationMenuOptions](arkts-arkui-navigation-comp-navigationmenuoptions-i.md) | 否 | 页面右上角菜单选项。<br>默认值：不设置时使用菜单默认配置。 |
 
 ## mode
 
@@ -432,7 +442,7 @@ mode(value: NavDestinationMode)
 
 > **说明：** 
 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -446,7 +456,7 @@ mode(value: NavDestinationMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [NavDestinationMode](arkts-arkui-navdestinationmode-e.md) | 是 | NavDestination类型。<br>默认值：NavDestinationMode.STANDARD |
+| value | [NavDestinationMode](arkts-arkui-navdestination-comp-navdestinationmode-e.md) | 是 | NavDestination类型。<br>默认值：NavDestinationMode.STANDARD |
 
 ## onActive
 
@@ -454,11 +464,11 @@ mode(value: NavDestinationMode)
 onActive(callback: Optional<Callback<NavDestinationActiveReason>>)
 ```
 
-NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）时，触发该回调。使用示例参见示例5。
+NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）时，触发该回调。使用示例参见[示例5](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例5navdestination的onactive与oninactive生命周期)。
 
 > **说明：** 
 
-> 从API version 22开始，该接口支持在attributeModifier中调用。
+> 从API version 22开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 17
 
@@ -472,7 +482,7 @@ NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-optional-t.md)&lt;Callback&lt;[NavDestinationActiveReason](arkts-arkui-navdestinationactivereason-e.md)&gt;&gt; | 是 | Indicates callback when destination is active. |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;[NavDestinationActiveReason](arkts-arkui-navdestination-comp-navdestinationactivereason-e.md)&gt;&gt; | 是 | Indicates callback when destination is active. |
 
 ## onBackPressed
 
@@ -516,7 +526,7 @@ onHidden(callback: Callback<VisibilityChangeReason>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[VisibilityChangeReason](arkts-arkui-visibilitychangereason-e.md)&gt; | 是 | 当该NavDestination页面隐藏时触发此回调。<br>在API version 21之前，当NavDestination页面隐藏时触发回调。<br>从API version 21开始，该回调会提供入参VisibilityChangeReason以说明onHidden触发的原因。<br>**适用版本：** 21 |
+| callback | Callback&lt;[VisibilityChangeReason](arkts-arkui-navdestination-comp-visibilitychangereason-e.md)&gt; | 是 | 当该NavDestination页面隐藏时触发此回调。<br>在API version 21之前，当NavDestination页面隐藏时触发回调。<br>从API version 21开始，该回调会提供入参VisibilityChangeReason以说明onHidden触发的原因。<br>**适用版本：** 21 |
 
 ## onInactive
 
@@ -524,11 +534,11 @@ onHidden(callback: Callback<VisibilityChangeReason>)
 onInactive(callback: Optional<Callback<NavDestinationActiveReason>>)
 ```
 
-NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）时，触发该回调。使用示例参见示例5。
+NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）时，触发该回调。使用示例参见[示例5](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例5navdestination的onactive与oninactive生命周期)。
 
 > **说明：** 
 
-> 从API version 22开始，该接口支持在attributeModifier中调用。
+> 从API version 22开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 17
 
@@ -542,7 +552,7 @@ NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-optional-t.md)&lt;Callback&lt;[NavDestinationActiveReason](arkts-arkui-navdestinationactivereason-e.md)&gt;&gt; | 是 | Indicates callback when destination is inactive. |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;[NavDestinationActiveReason](arkts-arkui-navdestination-comp-navdestinationactivereason-e.md)&gt;&gt; | 是 | Indicates callback when destination is inactive. |
 
 ## onNewParam
 
@@ -554,9 +564,9 @@ onNewParam(callback: Optional<Callback<ESObject>>)
 
 > **说明：** 
 
-> - replacePath、[replaceDestination](arkts-arkui-navpathstack-c.md#replacedestination)不会触发该回调。
+> - [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath)、[replaceDestination](arkts-arkui-navigation-comp-navpathstack-c.md#replacedestination)不会触发该回调。
 > 
-> - 从API version 22开始，该接口支持在attributeModifier中调用。
+> - 从API version 22开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 19
 
@@ -570,7 +580,7 @@ onNewParam(callback: Optional<Callback<ESObject>>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-optional-t.md)&lt;Callback&lt;ESObject&gt;&gt; | 是 | Indicates callback when destination be pushed with singleton mode. |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;ESObject&gt;&gt; | 是 | Indicates callback when destination be pushed with singleton mode. |
 
 ## onReady
 
@@ -582,7 +592,7 @@ onReady(callback: import('../api/@ohos.base').Callback<NavDestinationContext>)
 
 > **说明：** 
 
-> 从API version 20开始，该接口支持在attributeModifier中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -596,7 +606,7 @@ onReady(callback: import('../api/@ohos.base').Callback<NavDestinationContext>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | import('../api/@ohos.base').Callback&lt;[NavDestinationContext](arkts-arkui-navdestinationcontext-i.md)&gt; | 是 | 当NavDestination即将构建子组件之前会触发此回调。 |
+| callback | import('../api/@ohos.base').Callback&lt;[NavDestinationContext](arkts-arkui-navdestination-comp-navdestinationcontext-i.md)&gt; | 是 | 当NavDestination即将构建子组件之前会触发此回调。 |
 
 ## onRestoreState
 
@@ -620,7 +630,7 @@ onRestoreState(callback: Optional<RestoreStateCallback>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-optional-t.md)&lt;[RestoreStateCallback](arkts-arkui-restorestatecallback-t.md)&gt; | 是 | 自定义状态恢复回调 |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[RestoreStateCallback](arkts-arkui-navdestination-comp-restorestatecallback-t.md)&gt; | 是 | 自定义状态恢复回调 |
 
 ## onResult
 
@@ -632,7 +642,7 @@ NavDestination返回时触发该回调。
 
 > **说明：** 
 
-> 从API version 22开始，该接口支持在attributeModifier中调用。
+> 从API version 22开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 15
 
@@ -646,7 +656,7 @@ NavDestination返回时触发该回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-optional-t.md)&lt;Callback&lt;ESObject&gt;&gt; | 是 | Indicates callback when pop to the navDestination with result. |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;ESObject&gt;&gt; | 是 | Indicates callback when pop to the navDestination with result. |
 
 ## onSaveState
 
@@ -670,7 +680,7 @@ onSaveState(callback: Optional<SaveStateCallback>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-optional-t.md)&lt;[SaveStateCallback](arkts-arkui-savestatecallback-t.md)&gt; | 是 | 自定义状态保存回调 |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[SaveStateCallback](arkts-arkui-navdestination-comp-savestatecallback-t.md)&gt; | 是 | 自定义状态保存回调 |
 
 ## onShown
 
@@ -692,7 +702,7 @@ onShown(callback: Callback<VisibilityChangeReason>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[VisibilityChangeReason](arkts-arkui-visibilitychangereason-e.md)&gt; | 是 | 当该NavDestination页面显示时触发此回调。<br>在API version 21之前，当NavDestination页面显示时触发回调。<br>从API version 21开始，回调会提供入参VisibilityChangeReason以说明onShown触发的原因。<br>**适用版本：** 21 |
+| callback | Callback&lt;[VisibilityChangeReason](arkts-arkui-navdestination-comp-visibilitychangereason-e.md)&gt; | 是 | 当该NavDestination页面显示时触发此回调。<br>在API version 21之前，当NavDestination页面显示时触发回调。<br>从API version 21开始，回调会提供入参VisibilityChangeReason以说明onShown触发的原因。<br>**适用版本：** 21 |
 
 ## onWillAppear
 
@@ -704,7 +714,7 @@ onWillAppear(callback: Callback<void>)
 
 > **说明：** 
 
-> 从API version 20开始，该接口支持在attributeModifier中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -730,7 +740,7 @@ onWillDisappear(callback: Callback<void>)
 
 > **说明：** 
 
-> 从API version 20开始，该接口支持在attributeModifier中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -756,7 +766,7 @@ onWillHide(callback: Callback<void>)
 
 > **说明：** 
 
-> 从API version 20开始，该接口支持在attributeModifier中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -782,7 +792,7 @@ onWillShow(callback: Callback<void>)
 
 > **说明：** 
 
-> 从API version 20开始，该接口支持在attributeModifier中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -814,7 +824,7 @@ preferredOrientation(orientation: Optional<Orientation>)
 > 
 > 2. NavDestination所属的Navigation的大小占满整个应用页面；
 > 
-> 3. NavDestination类型为[NavDestinationMode](arkts-arkui-navdestinationmode-e.md).STANDARD。
+> 3. NavDestination类型为[NavDestinationMode](arkts-arkui-navdestination-comp-navdestinationmode-e.md).STANDARD。
 > 
 > - 设置显示方向的实际效果依赖于具体的设备支持情况，具体参考窗口的[setPreferredOrientation](../arkts-apis/arkts-arkui-window-window-i.md#setpreferredorientation)接口。
 
@@ -830,7 +840,7 @@ preferredOrientation(orientation: Optional<Orientation>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| orientation | [Optional](arkts-arkui-optional-t.md)&lt;[Orientation](arkts-arkui-orientation-t.md)&gt; | 是 | NavDestination页面的显示方向。转场到该NavDestination后，系统会将应用主窗口切换到该显示方向。 |
+| orientation | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[Orientation](arkts-arkui-navdestination-comp-orientation-t.md)&gt; | 是 | NavDestination页面的显示方向。转场到该NavDestination后，系统会将应用主窗口切换到该显示方向。 |
 
 ## recoverable
 
@@ -838,11 +848,11 @@ preferredOrientation(orientation: Optional<Orientation>)
 recoverable(recoverable: Optional<boolean>)
 ```
 
-配置NavDestination是否可恢复。如配置为可恢复，当应用进程异常退出并重新冷启动时，可自动创建该NavDestination。该功能需NavDestination对应的Navigation也配置了可恢复属性。
+配置NavDestination是否可恢复。如配置为可恢复，当应用进程异常退出并重新冷启动时，可自动创建该NavDestination。该功能需NavDestination对应的Navigation也配置了[可恢复属性](arkts-arkui-navigation-comp-attribute.md#recoverable)。
 
 > **说明：** 
 
-> 该接口需要配合Navigation的recoverable接口使用。
+> 该接口需要配合Navigation的[recoverable](arkts-arkui-navigation-comp-attribute.md#recoverable)接口使用。
 
 **起始版本：** 14
 
@@ -854,7 +864,7 @@ recoverable(recoverable: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| recoverable | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | NavDestination是否可恢复，默认为不可恢复。<br>默认值：false<br>true：路由栈可恢复，需配合Navigation的recoverable属性使用。<br>false：路由栈不可恢复。 |
+| recoverable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | NavDestination是否可恢复，默认为不可恢复。<br>默认值：false<br>true：路由栈可恢复，需配合Navigation的recoverable属性使用。<br>false：路由栈不可恢复。 |
 
 ## systemBarStyle
 
@@ -868,9 +878,9 @@ systemBarStyle(style: Optional<SystemBarStyle>)
 
 > - 必须配合Navigation使用，作为其Navigation目的页面的根节点时才能生效。
 > 
-> - 其他使用限制请参考Navigation对应的systemBarStyle属性说明。
+> - 其他使用限制请参考Navigation对应的[systemBarStyle](arkts-arkui-navigation-comp-attribute.md#systembarstyle)属性说明。
 > 
-> - 从API version 20开始，该接口支持在attributeModifier中调用。
+> - 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -884,7 +894,7 @@ systemBarStyle(style: Optional<SystemBarStyle>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-optional-t.md)&lt;SystemBarStyle&gt; | 是 | 系统状态栏样式。设置后进入该NavDestination时，系统状态栏会切换到对应样式。 |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;SystemBarStyle&gt; | 是 | 系统状态栏样式。设置后进入该NavDestination时，系统状态栏会切换到对应样式。 |
 
 ## systemTransition
 
@@ -906,7 +916,7 @@ systemTransition(type: NavigationSystemTransitionType)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [NavigationSystemTransitionType](arkts-arkui-navigationsystemtransitiontype-e.md) | 是 | 系统转场动画类型。<br>默认值：NavigationSystemTransitionType.DEFAULT |
+| type | [NavigationSystemTransitionType](arkts-arkui-navdestination-comp-navigationsystemtransitiontype-e.md) | 是 | 系统转场动画类型。<br>默认值：NavigationSystemTransitionType.DEFAULT |
 
 ## title
 
@@ -919,7 +929,7 @@ title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestination
 
 > **说明：** 
 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 9
 
@@ -931,8 +941,8 @@ title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestination
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string &#124; [CustomBuilder](arkts-arkui-custombuilder-t.md) &#124; [NavDestinationCommonTitle](arkts-arkui-navdestinationcommontitle-i.md) &#124; [NavDestinationCustomTitle](arkts-arkui-navdestinationcustomtitle-i.md) &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 页面标题。<br>**适用版本：** 9 - 13 |
-| options | [NavigationTitleOptions](arkts-arkui-navigationtitleoptions-i.md) | 否 | 标题栏选项。<br>默认值：不设置时使用标题栏默认配置。**模型约束：** 此接口仅可在Stage模型下使用。<br>**适用版本：** 12 |
+| value | string &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; [NavDestinationCommonTitle](arkts-arkui-navdestination-comp-navdestinationcommontitle-i.md) &#124; [NavDestinationCustomTitle](arkts-arkui-navdestination-comp-navdestinationcustomtitle-i.md) &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 页面标题。<br>**适用版本：** 9 - 13 |
+| options | [NavigationTitleOptions](arkts-arkui-navigation-comp-navigationtitleoptions-i.md) | 否 | 标题栏选项。<br>默认值：不设置时使用标题栏默认配置。**模型约束：** 此接口仅可在Stage模型下使用。<br>**适用版本：** 12 |
 
 ## toolbarConfiguration
 
@@ -944,7 +954,7 @@ toolbarConfiguration(toolbarParam: Array<ToolbarItem> | CustomBuilder, options?:
 
 > **说明：** 
 
-> - 从API version 20开始，该接口支持在attributeModifier中调用。
+> - 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 > 
 > - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
@@ -960,5 +970,5 @@ toolbarConfiguration(toolbarParam: Array<ToolbarItem> | CustomBuilder, options?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| toolbarParam | Array&lt;[ToolbarItem](arkts-arkui-toolbaritem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-custombuilder-t.md) | 是 | 工具栏内容。<br>使用Array&lt;[ToolbarItem](arkts-arkui-toolbaritem-i.md)&gt;写法设置的工具栏有如下特性：<br>-底部工具栏的每个选项均分宽度，用于显示文本和图标。<br>-竖屏模式最多支持显示5个图标，多余的图标会被放入自动生成的更多图标中，点击更多图标可以展示剩余内容。横屏模式时，如果为[Split](arkts-arkui-navigationmode-e.md)模式，仍按照竖屏模式显示，如果为[Stack](arkts-arkui-navigationmode-e.md)模式需配合[menus](#menus)属性的Array&lt;[NavigationMenuItem](arkts-arkui-navigationmenuitem-i.md)&gt;使用，底部工具栏会自动隐藏，同时底部工具栏所有选项移动至页面右上角菜单。<br>使用[CustomBuilder](arkts-arkui-custombuilder-t.md)写法为用户自定义工具栏选项，不具备以上功能。 |
-| options | [NavigationToolbarOptions](arkts-arkui-navigationtoolbaroptions-i.md) | 否 | 工具栏选项，用于自定义工具栏显示样式。包含工具栏背景颜色、工具栏背景模糊样式及模糊选项、工具栏背景属性、工具栏布局方式、是否隐藏工具栏的文本、工具栏更多图标的菜单选项。当需要自定义工具栏样式时传入，不传入时使用默认工具栏样式。 |
+| toolbarParam | Array&lt;[ToolbarItem](arkts-arkui-navigation-comp-toolbaritem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | 是 | 工具栏内容。<br>使用Array&lt;[ToolbarItem](arkts-arkui-navigation-comp-toolbaritem-i.md)&gt;写法设置的工具栏有如下特性：<br>-底部工具栏的每个选项均分宽度，用于显示文本和图标。<br>-竖屏模式最多支持显示5个图标，多余的图标会被放入自动生成的更多图标中，点击更多图标可以展示剩余内容。横屏模式时，如果为[Split](arkts-arkui-navigation-comp-navigationmode-e.md)模式，仍按照竖屏模式显示，如果为[Stack](arkts-arkui-navigation-comp-navigationmode-e.md)模式需配合[menus](#menus)属性的Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt;使用，底部工具栏会自动隐藏，同时底部工具栏所有选项移动至页面右上角菜单。<br>使用[CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)写法为用户自定义工具栏选项，不具备以上功能。 |
+| options | [NavigationToolbarOptions](arkts-arkui-navigation-comp-navigationtoolbaroptions-i.md) | 否 | 工具栏选项，用于自定义工具栏显示样式。包含工具栏背景颜色、工具栏背景模糊样式及模糊选项、工具栏背景属性、工具栏布局方式、是否隐藏工具栏的文本、工具栏更多图标的菜单选项。当需要自定义工具栏样式时传入，不传入时使用默认工具栏样式。 |

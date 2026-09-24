@@ -1,5 +1,9 @@
 # LocaleItem（系统接口）
 
+```TypeScript
+export interface LocaleItem
+```
+
 语言或国家地区的组合信息。
 
 **起始版本：** 10

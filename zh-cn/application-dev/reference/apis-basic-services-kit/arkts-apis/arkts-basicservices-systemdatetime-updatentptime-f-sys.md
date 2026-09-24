@@ -30,7 +30,7 @@ function updateNtpTime(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [13000001](../errorcode-time.md#13000001-网络或操作系统异常) | Network connection error or OS error. |
 
 **示例**

@@ -1,5 +1,9 @@
 # DeleteValue
 
+```TypeScript
+declare interface DeleteValue
+```
+
 Provides an interface for deleting value from text.
 
 **Since:** 12

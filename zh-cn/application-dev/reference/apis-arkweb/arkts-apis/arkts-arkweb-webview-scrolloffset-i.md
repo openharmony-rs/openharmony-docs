@@ -1,5 +1,9 @@
 # ScrollOffset
 
+```TypeScript
+interface ScrollOffset
+```
+
 网页当前的滚动偏移量。
 
 **起始版本：** 13

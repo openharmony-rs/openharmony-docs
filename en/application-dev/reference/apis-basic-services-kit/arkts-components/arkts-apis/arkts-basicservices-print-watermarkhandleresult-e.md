@@ -1,5 +1,9 @@
 # WatermarkHandleResult
 
+```TypeScript
+enum WatermarkHandleResult
+```
+
 Watermark handling result.
 
 **Since:** 24

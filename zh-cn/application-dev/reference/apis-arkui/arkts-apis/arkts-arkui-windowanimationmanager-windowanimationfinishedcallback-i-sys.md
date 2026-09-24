@@ -1,5 +1,9 @@
 # WindowAnimationFinishedCallback（系统接口）
 
+```TypeScript
+export interface WindowAnimationFinishedCallback
+```
+
 动画完成后的回调。
 
 **起始版本：** 9
@@ -30,6 +34,4 @@ onAnimationFinish(): void
 
 **示例**
 
-```TypeScript
 请参考windowAnimationManager.setController的示例代码。
-```

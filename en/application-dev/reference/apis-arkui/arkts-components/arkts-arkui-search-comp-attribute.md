@@ -1,5 +1,9 @@
 # Search properties/events
 
+```TypeScript
+declare class SearchAttribute extends CommonMethod<SearchAttribute>
+```
+
 In addition to the [universal attributes](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), the following attributes are supported.
 
 In addition to the [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md), the following events are supported.
@@ -54,7 +58,7 @@ The default icon size on wearable devices is 18 fp.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [CancelButtonOptions](arkts-arkui-cancelbuttonoptions-i.md) &#124; [CancelButtonSymbolOptions](arkts-arkui-cancelbuttonsymboloptions-i.md) | Yes | Style of the cancel button on the right.<br> Default value:<br>{<br>style: CancelButtonStyle.INPUT,<br>icon: {<br>size: '16vp',<br>color: '#99ffffff',<br> src: ' '<br>}<br>}<br>When style is set to **CancelButtonStyle.CONSTANT**, the cancel button is displayed in a default style.<br>**Since:** 12 |
+| value | [CancelButtonOptions](arkts-arkui-search-comp-cancelbuttonoptions-i.md) &#124; [CancelButtonSymbolOptions](arkts-arkui-search-comp-cancelbuttonsymboloptions-i.md) | Yes | Style of the cancel button on the right.<br> Default value:<br>{<br>style: CancelButtonStyle.INPUT,<br>icon: {<br>size: '16vp',<br>color: '#99ffffff',<br> src: ' '<br>}<br>}<br>When style is set to **CancelButtonStyle.CONSTANT**, the cancel button is displayed in a default style.<br>**Since:** 12 |
 
 ## caretStyle
 
@@ -104,7 +108,7 @@ Sets whether to enable leading punctuation compression.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable leading punctuation compression.<br>**true**: Leading punctuation compression is enabled. **false**: Leading punctuation compression is disabled. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable leading punctuation compression.<br>**true**: Leading punctuation compression is enabled. **false**: Leading punctuation compression is disabled. |
 
 ## copyOption
 
@@ -144,15 +148,15 @@ The custom keyboard is presented by overlaying the original screen. It is not co
 
 The custom keyboard cannot obtain focus, but it blocks gesture events.
 
-By default, the custom keyboard is closed when the input component loses focus. You can also use the [stopEditing](arkts-arkui-searchcontroller-c.md#stopediting) API to close the keyboard.
+By default, the custom keyboard is closed when the input component loses focus. You can also use the [stopEditing](arkts-arkui-search-comp-searchcontroller-c.md#stopediting) API to close the keyboard.
 
-When setting a custom keyboard, you can bind the [onKeyPreIme](arkts-arkui-commonmethod-c.md#onkeypreime) event to prevent input from the physical keyboard.
+When setting a custom keyboard, you can bind the [onKeyPreIme](arkts-arkui-common-comp-commonmethod-c.md#onkeypreime) event to prevent input from the physical keyboard.
 
 From API version 23, the [setCustomKeyboardContinueFeature](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23) API can be used to enable the continuation feature for custom keyboards. When switching between custom keyboards, the system changes the keyboard directly without triggering the close and open animations.
 
 > **NOTE:** 
 > 
-> This API cannot be called within attributeModifier.
+> This API cannot be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 10
 
@@ -166,8 +170,8 @@ From API version 23, the [setCustomKeyboardContinueFeature](../../../reference/a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [CustomBuilder](arkts-arkui-custombuilder-t.md) &#124; ComponentContent &#124; undefined | Yes | Custom keyboard. If the value is **undefined**, the custom keyboard is closed.<br>**Since:** 22 |
-| options | [KeyboardOptions](arkts-arkui-keyboardoptions-i.md) | No | Whether to support keyboard avoidance.<br>**Since:** 12 |
+| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; ComponentContent &#124; undefined | Yes | Custom keyboard. If the value is **undefined**, the custom keyboard is closed.<br>**Since:** 22 |
+| options | [KeyboardOptions](arkts-arkui-richeditor-comp-keyboardoptions-i.md) | No | Whether to support keyboard avoidance.<br>**Since:** 12 |
 
 ## decoration
 
@@ -189,7 +193,7 @@ Sets the color, type, and style of the text decorative line.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [TextDecorationOptions](arkts-arkui-textdecorationoptions-i.md) | Yes | Text decorative line options.<br>Default value: {<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID <br>} |
+| value | [TextDecorationOptions](arkts-arkui-common-comp-textdecorationoptions-i.md) | Yes | Text decorative line options.<br>Default value: {<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID <br>} |
 
 ## dividerColor
 
@@ -211,7 +215,7 @@ Sets the color of the text box divider.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-optional-t.md)&lt;ColorMetrics&gt; | Yes | Divider color.<br>By default, system theme colors are used: 0x33000000 in light mode (appears as light black), 0x33FFFFFF in dark mode (appears as light white). |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Divider color.<br>By default, system theme colors are used: 0x33000000 in light mode (appears as light black), 0x33FFFFFF in dark mode (appears as light white). |
 
 ## editMenuOptions
 
@@ -223,7 +227,7 @@ Sets the extended options of the custom menu, including the text content, icon, 
 
 When [disableMenuItems](../../../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) or
 
-[disableSystemServiceMenuItems](../../../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) is used to disable system service menu items in the text selection menu, the disabled menu options will be excluded from the parameter list in the onCreateMenu callback of **editMenuOptions**.
+[disableSystemServiceMenuItems](../../../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) is used to disable system service menu items in the text selection menu, the disabled menu options will be excluded from the parameter list in the [onCreateMenu](../arkts-apis/arkts-arkui-editmenuoptions-i.md#oncreatemenu) callback of **editMenuOptions**.
 
 **Since:** 12
 
@@ -259,7 +263,7 @@ Sets whether to enable automatic spacing between Chinese and Western characters.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable automatic spacing between Chinese and Western characters.<br>**true**: Enabled. **false**: Disabled.<br>Default value: **false** |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable automatic spacing between Chinese and Western characters.<br>**true**: Enabled. **false**: Disabled.<br>Default value: **false** |
 
 ## enableHapticFeedback
 
@@ -379,7 +383,7 @@ Sets the type of the Enter key.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [EnterKeyType](arkts-arkui-enterkeytype-e.md) | Yes | Type of the Enter key.<br>Default value: **EnterKeyType.Search** |
+| value | [EnterKeyType](arkts-arkui-textinput-comp-enterkeytype-e.md) | Yes | Type of the Enter key.<br>Default value: **EnterKeyType.Search** |
 
 ## fallbackLineSpacing
 
@@ -401,7 +405,7 @@ Adapts the line height to the actual text height for overlapped multi-line text.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height is adapted to the actual text height.<br>**true**: Line height is adapted to the actual text height. **false**: Line height is not adapted to the actual text height. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height is adapted to the actual text height.<br>**true**: Line height is adapted to the actual text height. **false**: Line height is not adapted to the actual text height. |
 
 ## fontColor
 
@@ -475,7 +479,7 @@ Enables half leading for text, which splits the leading equally between the top 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| halfLeading | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether half leading is enabled. Half leading refers to splitting the leading in half and applying it equally to the top and bottom of the line.<br>**true**: Half leading is enabled. **false**: Half leading is not enabled.<br>Default value: **false** |
+| halfLeading | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether half leading is enabled. Half leading refers to splitting the leading in half and applying it equally to the top and bottom of the line.<br>**true**: Half leading is enabled. **false**: Half leading is not enabled.<br>Default value: **false** |
 
 ## includeFontPadding
 
@@ -497,7 +501,7 @@ Sets whether to add spacing to the first and last lines to avoid text truncation
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| include | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to add spacing to the first and last lines to avoid text truncation.<br>**true**: Spacing is added to the first and last lines. **false**: Spacing is not added to the first and last lines. |
+| include | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to add spacing to the first and last lines to avoid text truncation.<br>**true**: Spacing is added to the first and last lines. **false**: Spacing is not added to the first and last lines. |
 
 ## inputFilter
 
@@ -546,7 +550,7 @@ Sets the keyboard appearance for the text box. This setting takes effect only af
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appearance | [Optional](arkts-arkui-optional-t.md)&lt;[KeyboardAppearance](../arkts-apis/arkts-arkui-keyboardappearance-e.md)&gt; | Yes | Appearance of the keyboard.<br>Default value: **KeyboardAppearance.NONE_IMMERSIVE** |
+| appearance | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[KeyboardAppearance](../arkts-apis/arkts-arkui-keyboardappearance-e.md)&gt; | Yes | Appearance of the keyboard.<br>Default value: **KeyboardAppearance.NONE_IMMERSIVE** |
 
 ## letterSpacing
 
@@ -616,7 +620,7 @@ Sets the maximum font scale factor for text.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Maximum font scale factor for text. The **undefined** type is supported.<br>Value range: [1, +∞)<br>**NOTE:** <br>A value less than 1 is handled as **1**. Abnormal values are ineffective by default.<br>After the **maxFontScale** attribute is set, the content of the **Search** component can be scaled up to 2 times at most.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 19: Setting the Minimum and Maximum Font Scale Factors](../../../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#example-19-setting-the-minimum-and-maximum-font-scale-factors). |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Maximum font scale factor for text. The **undefined** type is supported.<br>Value range: [1, +∞)<br>**NOTE:** <br>A value less than 1 is handled as **1**. Abnormal values are ineffective by default.<br>After the **maxFontScale** attribute is set, the content of the **Search** component can be scaled up to 2 times at most.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 19: Setting the Minimum and Maximum Font Scale Factors](../../../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#example-19-setting-the-minimum-and-maximum-font-scale-factors). |
 
 ## maxFontSize
 
@@ -688,7 +692,7 @@ Sets the minimum font scale factor for text.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Minimum font scale factor for text. The **undefined** type is supported.<br>Value range: [0, 1]<br>**NOTE:** <br>A value less than 0 is handled as **0**. A value greater than 1 is handled as **1**. Abnormal values are ineffective by default.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 19: Setting the Minimum and Maximum Font Scale Factors](../../../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#example-19-setting-the-minimum-and-maximum-font-scale-factors). |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Minimum font scale factor for text. The **undefined** type is supported.<br>Value range: [0, 1]<br>**NOTE:** <br>A value less than 0 is handled as **0**. A value greater than 1 is handled as **1**. Abnormal values are ineffective by default.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 19: Setting the Minimum and Maximum Font Scale Factors](../../../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#example-19-setting-the-minimum-and-maximum-font-scale-factors). |
 
 ## minFontSize
 
@@ -908,6 +912,8 @@ Called when the search icon, search button, or soft keyboard search button is cl
 | --- | --- | --- | --- |
 | callback | Callback&lt;string&gt; | Yes | Search submission callback, which returns the text content currently in the search box.<br>**Since:** 18 |
 
+<a id="onsubmit-1"></a>
+
 ## onSubmit
 
 ```TypeScript
@@ -928,7 +934,7 @@ Invoked when the search icon, search button, or soft keyboard search button is c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [SearchSubmitCallback](arkts-arkui-searchsubmitcallback-t.md) | Yes | Callback invoked when the search icon, search button, or soft keyboard search button is clicked. |
+| callback | [SearchSubmitCallback](arkts-arkui-search-comp-searchsubmitcallback-t.md) | Yes | Callback invoked when the search icon, search button, or soft keyboard search button is clicked. |
 
 ## onTextSelectionChange
 
@@ -970,7 +976,7 @@ From API version 22, the [setExtraConfig](../arkts-apis/arkts-arkui-imeclient-i.
 
 > **NOTE:** 
 > 
-> This API cannot be called within attributeModifier.
+> This API cannot be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 20
 
@@ -1161,7 +1167,7 @@ The default font size on wearable devices is 18 fp.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Text on the search button located next to the search text box.<br>The Resource type is supported since API version 20.<br>**Since:** 20 |
-| option | [SearchButtonOptions](arkts-arkui-searchbuttonoptions-i.md) | No | Text style of the search button located next to the search text box.<br> Default value:<br>{<br>fontSize: '16fp',<br>fontColor: '#ff3f97e9'<br>}<br>**Since:** 10 |
+| option | [SearchButtonOptions](arkts-arkui-search-comp-searchbuttonoptions-i.md) | No | Text style of the search button located next to the search text box.<br> Default value:<br>{<br>fontSize: '16fp',<br>fontColor: '#ff3f97e9'<br>}<br>**Since:** 10 |
 
 ## searchIcon
 
@@ -1185,7 +1191,7 @@ The default icon size on wearable devices is 16 vp.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [IconOptions](arkts-arkui-iconoptions-i.md) &#124; [SymbolGlyphModifier](arkts-arkui-symbolglyphmodifier-t.md) | Yes | Style of the search icon on the left.&lt;!--RP1--&gt;<br>Default value in light mode:<br>{<br>size: '16vp',<br>color: '#99182431',<br>src: ' '<br>}<br>Default value in dark mode:<br>{<br>size: '16vp',<br>color: '#99ffffff',<br>src: ' '<br>} &lt;!--RP1End--&gt;<br>**Since:** 12 |
+| value | [IconOptions](arkts-arkui-search-comp-iconoptions-i.md) &#124; [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md) | Yes | Style of the search icon on the left.&lt;!--RP1--&gt;<br>Default value in light mode:<br>{<br>size: '16vp',<br>color: '#99182431',<br>src: ' '<br>}<br>Default value in dark mode:<br>{<br>size: '16vp',<br>color: '#99ffffff',<br>src: ' '<br>} &lt;!--RP1End--&gt;<br>**Since:** 12 |
 
 ## selectedBackgroundColor
 
@@ -1295,7 +1301,7 @@ Sets whether to prevent the back key event from being propagated.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isStopped | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to prevent the back key event from being propagated.<br>**true**: Propagation is prevented. **false**: Propagation is allowed.<br>Default value: **true** The default value is used for abnormal values. |
+| isStopped | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to prevent the back key event from being propagated.<br>**true**: Propagation is prevented. **false**: Propagation is allowed.<br>Default value: **true** The default value is used for abnormal values. |
 
 ## strokeColor
 
@@ -1317,7 +1323,7 @@ Sets the text stroke color.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Stroke color. Default value: font color. Invalid values are treated as the default value. |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Stroke color. Default value: font color. Invalid values are treated as the default value. |
 
 ## strokeJoinStyle
 
@@ -1361,7 +1367,7 @@ Sets the text stroke width.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| width | [Optional](arkts-arkui-optional-t.md)&lt;LengthMetrics&gt; | Yes | Text stroke width. When the unit of **LengthMetrics** is px:<br>Values &lt;0: solid text.<br>Values &gt; 0: outlined text.<br>Default value: **0** (no stroke) |
+| width | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | Yes | Text stroke width. When the unit of **LengthMetrics** is px:<br>Values &lt;0: solid text.<br>Values &gt; 0: outlined text.<br>Default value: **0** (no stroke) |
 
 ## textAlign
 
@@ -1471,4 +1477,4 @@ Different **SearchType** values trigger corresponding keyboard types and enforce
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SearchType](arkts-arkui-searchtype-e.md) | Yes | Text box type.<br>Default value: **SearchType.NORMAL** |
+| value | [SearchType](arkts-arkui-search-comp-searchtype-e.md) | Yes | Text box type.<br>Default value: **SearchType.NORMAL** |

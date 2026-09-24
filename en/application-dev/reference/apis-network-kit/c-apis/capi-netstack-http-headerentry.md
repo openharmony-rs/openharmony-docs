@@ -8,6 +8,8 @@ typedef struct Http_HeaderEntry {...} Http_HeaderEntry
 
 Defines all key-value pairs in the request or response header.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Related module**: [netstack](capi-netstack.md)
@@ -21,7 +23,7 @@ Defines all key-value pairs in the request or response header.
 | Name | Description |
 | -- | -- |
 | char *key | Key in the request or response header. |
-| [Http_HeaderValue](capi-netstack-http-headervalue.md) *value | Value of the key in the request or response header. For details, see [Http_HeaderValue](capi-netstack-http-headervalue.md). |
+| [Http_HeaderValue](capi-netstack-http-headervalue.md) *value | Value of the key in the request or response header. For details, see {@link Http_HeaderValue}. |
 | struct [Http_HeaderEntry](capi-netstack-http-headerentry.md) *next | Pointer to Pointer to the next **Http_HeaderEntry**. |
 
 

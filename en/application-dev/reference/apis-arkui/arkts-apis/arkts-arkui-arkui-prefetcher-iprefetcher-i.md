@@ -1,5 +1,9 @@
 # IPrefetcher
 
+```TypeScript
+export interface IPrefetcher
+```
+
 Provides the prefetching capability. It works with **LazyForEach** to prefetch data items when users swipe through container components such as **List** and **Grid**, improving user browsing experience.
 
 **Since:** 12

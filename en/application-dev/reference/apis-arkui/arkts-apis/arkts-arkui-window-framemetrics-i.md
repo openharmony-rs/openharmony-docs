@@ -1,5 +1,9 @@
 # FrameMetrics
 
+```TypeScript
+interface FrameMetrics
+```
+
 Enumerates the metrics for frame performance.
 
 **Since:** 22

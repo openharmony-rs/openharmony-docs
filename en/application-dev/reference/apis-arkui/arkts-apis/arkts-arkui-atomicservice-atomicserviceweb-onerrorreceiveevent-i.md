@@ -1,5 +1,9 @@
 # OnErrorReceiveEvent
 
+```TypeScript
+export declare interface OnErrorReceiveEvent
+```
+
 Represents the callback invoked when an error occurs during web page loading.
 
 **Since:** 12
@@ -20,7 +24,7 @@ error: WebResourceError
 
 Web resource error of event.
 
-**Type:** [WebResourceError](../../apis-arkweb/arkts-components/arkts-arkweb-webresourceerror-c.md)
+**Type:** [WebResourceError](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-webresourceerror-c.md)
 
 **Since:** 12
 
@@ -36,7 +40,7 @@ request: WebResourceRequest
 
 Web resource request of event.
 
-**Type:** [WebResourceRequest](../../apis-arkweb/arkts-components/arkts-arkweb-webresourcerequest-c.md)
+**Type:** [WebResourceRequest](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-webresourcerequest-c.md)
 
 **Since:** 12
 

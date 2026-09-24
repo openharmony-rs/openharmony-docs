@@ -53,6 +53,22 @@ Configuration items vary depending on events. Currently, only the following even
 
 **Examples**
 
-```TypeScript
 The following example sets the collection stack parameters of the MAIN_THREAD_JANK event:
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let params: Record<string, hiAppEvent.ParamType> = {
+  "log_type": "1",
+  "sample_interval": "100",
+  "ignore_startup_time": "11",
+  "sample_count": "21",
+  "report_times_per_app": "3"
+};
+hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
+  hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
+});
 ```

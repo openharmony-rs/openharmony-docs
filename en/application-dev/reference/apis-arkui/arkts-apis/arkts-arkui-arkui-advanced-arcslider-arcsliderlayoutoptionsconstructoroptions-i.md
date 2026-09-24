@@ -1,5 +1,9 @@
 # ArcSliderLayoutOptionsConstructorOptions
 
+```TypeScript
+interface ArcSliderLayoutOptionsConstructorOptions
+```
+
 Defines the construction information for **ArcSliderLayoutValueOptions**.
 
 **Since:** 18

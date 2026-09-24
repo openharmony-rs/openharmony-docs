@@ -48,6 +48,8 @@ enum ResourceManager_ErrorCode
 
 Enumerates resource manager error codes.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 | Enum item | Description |
@@ -76,6 +78,8 @@ enum ResourceManager_Direction
 
 Enumerates screen orientations.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 | Enum item | Description |
@@ -93,6 +97,8 @@ enum ResourceManager_ColorMode
 
 Enumerates color modes.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 | Enum item | Description |
@@ -109,6 +115,8 @@ enum ResourceManager_DeviceType
 **Description**
 
 Enumerates device types.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 
@@ -131,6 +139,8 @@ enum ScreenDensity
 **Description**
 
 Enumerates the screen density types.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 

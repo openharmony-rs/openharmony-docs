@@ -1,5 +1,9 @@
 # OrientationResult
 
+```TypeScript
+interface OrientationResult
+```
+
 设置窗口显示方向的执行结果。
 
 **起始版本：** 26.0.0

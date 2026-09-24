@@ -1,5 +1,9 @@
 # EvaluationResultCode (System API)
 
+```TypeScript
+enum EvaluationResultCode
+```
+
 Enumerates evaluation result code. @enum {number}
 
 **Since:** 12

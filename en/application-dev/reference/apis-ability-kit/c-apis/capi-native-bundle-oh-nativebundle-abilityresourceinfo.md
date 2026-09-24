@@ -8,6 +8,8 @@ struct OH_NativeBundle_AbilityResourceInfo
 
 The struct describes the ability resource information.
 
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
 **Since**: 21
 
 **Related module**: [Native_Bundle](capi-native-bundle.md)

@@ -35,11 +35,11 @@ import { fileShare } from '@kit.CoreFileKit';
 | [getPersistentPolicy](arkts-corefile-fileshare-getpersistentpolicy-f-sys.md) | 获取应用程序的持久化授权策略，使用Promise异步回调。 |
 | [getSharedDirectoryInfo](arkts-corefile-fileshare-getshareddirectoryinfo-f-sys.md) | 获取所有应用捐献的沙箱目录。使用Promise异步回调。 |
 | [grantSharedDirectoryPermission](arkts-corefile-fileshare-grantshareddirectorypermission-f-sys.md) | 授予应用捐献目录的临时访问权限。使用Promise异步回调。 |
-| [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md) | 为应用授予公共目录文件URI的临时访问权限，使用Callback异步回调。 |
-| [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md) | 为应用授予公共目录文件URI的临时访问权限，使用Promise异步回调。 |
-| [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md) | 给应用授予目标文件临时权限，使用Promise异步回调。 |
-| [revokePermission](arkts-corefile-fileshare-revokepermission-f-sys.md) | 撤销指定应用的全部持久化文件授权，使用Promise异步回调。 |
-| [revokePermission](arkts-corefile-fileshare-revokepermission-f-sys.md) | 撤销指定应用对URI的持久化授权，使用Promise异步回调。 |
+| [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md#granturipermission) | 为应用授予公共目录文件URI的临时访问权限，使用Callback异步回调。 |
+| [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md#granturipermission-1) | 为应用授予公共目录文件URI的临时访问权限，使用Promise异步回调。 |
+| [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md#granturipermission-2) | 给应用授予目标文件临时权限，使用Promise异步回调。 |
+| [revokePermission](arkts-corefile-fileshare-revokepermission-f-sys.md#revokepermission-1) | 撤销指定应用的全部持久化文件授权，使用Promise异步回调。 |
+| [revokePermission](arkts-corefile-fileshare-revokepermission-f-sys.md#revokepermission-2) | 撤销指定应用对URI的持久化授权，使用Promise异步回调。 |
 | [revokeSharedDirectoryPermission](arkts-corefile-fileshare-revokeshareddirectorypermission-f-sys.md) | 撤销应用的捐献目录临时访问权限。使用Promise异步回调。 |
 <!--DelEnd-->
 

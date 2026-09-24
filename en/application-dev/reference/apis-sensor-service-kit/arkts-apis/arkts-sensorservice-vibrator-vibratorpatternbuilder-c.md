@@ -1,5 +1,9 @@
 # VibratorPatternBuilder
 
+```TypeScript
+class VibratorPatternBuilder
+```
+
 Provide methods for adding long or short vibration events and generate VibratorPattern objects.
 
 **Since:** 18

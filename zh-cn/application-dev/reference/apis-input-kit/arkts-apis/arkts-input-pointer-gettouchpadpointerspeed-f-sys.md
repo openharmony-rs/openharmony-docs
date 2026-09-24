@@ -30,8 +30,8 @@ function getTouchpadPointerSpeed(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | SystemAPI permission error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -64,6 +64,38 @@ struct Index {
 }
 ```
 
+
+<a id="gettouchpadpointerspeed-1"></a>
+
+## getTouchpadPointerSpeed
+
+```TypeScript
+function getTouchpadPointerSpeed(): Promise<number>
+```
+
+获取触控板光标移动速度，使用Promise异步回调。
+
+**起始版本：** 10
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;number&gt; | Promise对象，返回触控板光标移动速度，speed取值范围[1,11]。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | SystemAPI permission error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
 ```TypeScript
 import { pointer } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -90,35 +122,3 @@ struct Index {
   }
 }
 ```
-
-
-## getTouchpadPointerSpeed
-
-```TypeScript
-function getTouchpadPointerSpeed(): Promise<number>
-```
-
-获取触控板光标移动速度，使用Promise异步回调。
-
-**起始版本：** 10
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
-
-**系统接口：** 此接口为系统接口。
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回触控板光标移动速度，speed取值范围[1,11]。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**示例**
-
-参见 [getTouchpadPointerSpeed](#gettouchpadpointerspeed)

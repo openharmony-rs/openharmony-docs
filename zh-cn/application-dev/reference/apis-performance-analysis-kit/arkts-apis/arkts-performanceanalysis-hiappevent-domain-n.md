@@ -1,5 +1,9 @@
 # domain(应用事件打点)
 
+```TypeScript
+namespace domain
+```
+
 提供域名常量。
 
 |名称|类型|只读|描述|  

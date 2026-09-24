@@ -8,6 +8,8 @@ typedef struct NativeDisplayManager_WaterfallDisplayAreaRects {...} NativeDispla
 
 The struct describes the curved area on a waterfall display.
 
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
 **Since**: 12
 
 **Related module**: [OH_DisplayManager](capi-oh-displaymanager.md)

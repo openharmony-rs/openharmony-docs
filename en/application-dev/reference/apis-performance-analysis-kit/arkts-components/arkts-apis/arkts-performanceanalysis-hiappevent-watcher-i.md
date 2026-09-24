@@ -1,5 +1,9 @@
 # Watcher
 
+```TypeScript
+interface Watcher
+```
+
 Defines parameters for a **Watcher** object. This API is used to configure and manage event watchers to subscribe to and process specified events.
 
 > **NOTE:** 

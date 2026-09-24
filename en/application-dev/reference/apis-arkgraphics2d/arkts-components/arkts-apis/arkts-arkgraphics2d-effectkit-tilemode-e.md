@@ -1,5 +1,9 @@
 # TileMode
 
+```TypeScript
+enum TileMode
+```
+
 Enumerates the tile modes of the shader effect.
 
 > **NOTE:** 

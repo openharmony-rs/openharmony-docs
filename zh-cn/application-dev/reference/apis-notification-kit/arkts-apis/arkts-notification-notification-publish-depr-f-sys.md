@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="publish-2"></a>
+
 ## publish
 
 ```TypeScript
@@ -33,6 +35,8 @@ function publish(request: NotificationRequest, userId: number, callback: AsyncCa
 | userId | number | 是 | 用户ID。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 被指定的回调方法。 |
 
+
+<a id="publish-3"></a>
 
 ## publish
 

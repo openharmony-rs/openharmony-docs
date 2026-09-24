@@ -8,6 +8,8 @@ typedef struct BufferHandle {...} BufferHandle
 
 Buffer handle used to transfer and obtain information about the buffer.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **Since**: 8
 
 **Related module**: [NativeWindow](capi-nativewindow.md)

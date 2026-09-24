@@ -1,5 +1,9 @@
 # AVTranscoder
 
+```TypeScript
+interface AVTranscoder
+```
+
 视频转码管理类，用于视频转码。在调用AVTranscoder的方法前，需要先通过[createAVTranscoder()](arkts-media-media-createavtranscoder-f.md)构建一个AVTranscoder实例。
 
 视频转码demo可参考：[视频转码开发指导](../../../media/media/using-avtranscoder-for-transcodering.md)
@@ -54,6 +58,52 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | The parameter check failed, parameter value out of range. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { image } from '@kit.ImageKit';
+
+async function test(context: Context) {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  
+  // 配置水印参数。
+  let watermarkConfig: media.WatermarkConfiguration = {
+      // 根据实际需求配置水印参数，单位为像素（px）。
+      top: 40,
+      left: 40,
+      width: 200,
+      height: 300,
+  };
+
+  // 获取资源管理器。
+  let resourceManager = context.resourceManager;
+  // 获取rawfile中水印图片的描述符，'img.png'可替换为实际水印图片文件名。
+  let rawFileDescriptor = resourceManager.getRawFdSync('img.png');
+  // 根据文件描述符创建ImageSource。
+  let watermarkImageSource = image.createImageSource(rawFileDescriptor.fd);
+
+  // 创建水印PixelMap。
+  const decodingOptions: image.DecodingOptions = {
+    // 可编辑像素。
+    editable: true,
+    // 像素格式。
+    desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+  };
+  const watermarkPixelMap = await watermarkImageSource.createPixelMap(decodingOptions);
+  console.info('PixelMap created for watermark');
+
+  // 添加水印。
+  avTranscoder.addWatermark(watermarkPixelMap, watermarkConfig).then((watermarkId: number) => {
+    console.info('addWatermark success, watermarkId: ' + watermarkId);
+  }).catch((err: BusinessError) => {
+    console.error('addWatermark failed and catch error is ' + err.message);
+  });
+}
+```
+
 ## cancel
 
 ```TypeScript
@@ -83,6 +133,23 @@ cancel(): Promise<void>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.cancel().then(() => {
+    console.info('cancel AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('cancel AVTranscoder failed and catch error is ' + err.message);
+  });
+}
+```
 
 ## off('complete')
 
@@ -126,6 +193,18 @@ off(type:'error', callback?: ErrorCallback):void
 | type | 'error' | 是 | 转码错误事件回调类型'error'。<br>- 'error'：转码过程中发生错误，触发该事件。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 错误事件回调方法。 |
 
+**示例**
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.off('error');
+}
+```
+
 ## off('progressUpdate')
 
 ```TypeScript
@@ -146,6 +225,18 @@ off(type:'progressUpdate', callback?: Callback<number>):void
 | --- | --- | --- | --- |
 | type | 'progressUpdate' | 是 | 进度更新事件回调类型，支持的事件：'progressUpdate'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 已注册的进度更新事件回调。由于当前回调注册时，仅会保留最后一次注册的回调，建议此参数缺省。 |
+
+**示例**
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.off('progressUpdate');
+}
+```
 
 ## on('complete')
 
@@ -169,6 +260,27 @@ on(type:'complete', callback: Callback<void>):void
 | --- | --- | --- | --- |
 | type | 'complete' | 是 | 完成事件回调类型，支持的事件：'complete'，在转码过程中系统会自动触发此事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数，返回完成事件回调方法。 |
+
+**示例**
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  let avTranscoder: media.AVTranscoder | undefined = undefined;
+  // 创建转码实例。
+  avTranscoder = await media.createAVTranscoder();
+  avTranscoder.on('complete', async () => {
+    console.info('avTranscoder complete');
+    if (avTranscoder != undefined) {
+      // 开发者须在此监听转码完成事件。
+      // 须等待avTranscoder.release()释放转码实例之后，再对转码后的文件进行转发、上传、转存等处理。
+      await avTranscoder.release();
+      avTranscoder = undefined;
+    }
+  });
+}
+```
 
 ## on('error')
 
@@ -197,14 +309,29 @@ on(type:'error', callback: ErrorCallback):void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. |
 | [5400104](../errorcode-media.md#5400104-操作超时) | Time out. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.on('error', (err: BusinessError) => {
+    console.error('case avTranscoder.on(error) called, errMessage is ' + err.message);
+  });
+}
+```
 
 ## on('progressUpdate')
 
@@ -226,6 +353,20 @@ on(type:'progressUpdate', callback: Callback<number>):void
 | --- | --- | --- | --- |
 | type | 'progressUpdate' | 是 | 进度更新事件回调类型，支持的事件：'progressUpdate'，在转码过程中系统会自动触发此事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数，返回进度更新事件，函数中的参数number，表示当前转码百分比进度。 |
+
+**示例**
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.on('progressUpdate', (progress: number) => {
+    console.info('avTranscoder progressUpdate = ' + progress);
+  });
+}
+```
 
 ## pause
 
@@ -257,6 +398,23 @@ pause(): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.pause().then(() => {
+    console.info('pause AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('pause AVTranscoder failed and catch error is ' + err.message);
+  });
+}
+```
+
 ## prepare
 
 ```TypeScript
@@ -275,7 +433,7 @@ prepare(config: AVTranscoderConfig): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [AVTranscoderConfig](arkts-media-media-avtranscoderconfig-i.md) | 是 | 配置视频转码的相关参数。 &lt;!--RP1--&gt;&lt;!--RP1End--&gt; |
+| config | [AVTranscoderConfig](arkts-media-media-avtranscoderconfig-i.md) | 是 | 配置视频转码的相关参数。<!--RP1--><!--RP1End--> |
 
 **返回值：**
 
@@ -287,11 +445,37 @@ prepare(config: AVTranscoderConfig): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Return by promise. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  // 配置参数以实际硬件设备支持的范围为准。
+  let avTranscoderConfig: media.AVTranscoderConfig = {
+    audioBitrate : 200000,
+    audioCodec : media.CodecMimeType.AUDIO_AAC,
+    fileFormat : media.ContainerFormatType.CFT_MPEG_4,
+    videoBitrate : 3000000,
+    videoCodec : media.CodecMimeType.VIDEO_AVC,
+  };
+
+  avTranscoder.prepare(avTranscoderConfig).then(() => {
+    console.info('prepare success');
+  }).catch((err: BusinessError) => {
+    console.error('prepare failed and catch error is ' + err.message);
+  });
+}
+```
 
 ## release
 
@@ -321,6 +505,23 @@ release(): Promise<void>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.release().then(() => {
+    console.info('release AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('release AVTranscoder failed and catch error is ' + err.message);
+  });
+}
+```
 
 ## resume
 
@@ -352,6 +553,23 @@ resume(): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.resume().then(() => {
+    console.info('resume AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('resume AVTranscoder failed and catch error is ' + err.message);
+  });
+}
+```
+
 ## start
 
 ```TypeScript
@@ -381,6 +599,23 @@ start(): Promise<void>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.start().then(() => {
+    console.info('start AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('start AVTranscoder failed and catch error is ' + err.message);
+  });
+}
+```
 
 ## fdDst
 

@@ -1,5 +1,9 @@
 # PrintAttributes
 
+```TypeScript
+interface PrintAttributes
+```
+
 Defines the print attributes.
 
 **Since:** 11

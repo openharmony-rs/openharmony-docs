@@ -1,5 +1,9 @@
 # PolygonMode
 
+```TypeScript
+export enum PolygonMode
+```
+
 控制多边形绘制模式的枚举。
 
 @enum { int }

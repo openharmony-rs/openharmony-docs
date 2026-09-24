@@ -1,5 +1,9 @@
 # LocaleOptions
 
+```TypeScript
+export interface LocaleOptions
+```
+
 Options for initializing the **Locale** object. Since API version 9, the **LocaleOptions** attribute is changed from mandatory to optional.
 
 > **NOTE:** 
@@ -28,7 +32,7 @@ calendar?: string
 
 Calendar parameter. The value can be:
 
-"buddhist", "chinese", "coptic", "dangi", "ethioaa", "ethiopic", "gregory", "hebrew", "indian", "islamic", "islamic-umalqura", "islamic-tbla", "islamic-civil", "islamic-rgsa", "iso8601", "japanese", "persian", "roc", or "islamicc".
+"buddhist", "chinese", "coptic", "dangi", "ethioaa", "ethiopic", "gregory", "hebrew", "indian", "islamic", "islamic-umalqura", "islamic-tbla", "islamic-civil", "islamic-rgsa", "iso8601", "japanese", "persian", "roc",or "islamicc".
 
 **Type:** string
 

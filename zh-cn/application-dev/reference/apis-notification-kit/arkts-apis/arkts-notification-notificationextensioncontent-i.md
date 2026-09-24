@@ -1,5 +1,9 @@
 # NotificationExtensionContent
 
+```TypeScript
+export interface NotificationExtensionContent
+```
+
 通知扩展内容。
 
 **起始版本：** 22

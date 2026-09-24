@@ -1,5 +1,9 @@
 # StyledStringChangeValue
 
+```TypeScript
+interface StyledStringChangeValue
+```
+
 属性字符串的文本变化信息。
 
 **起始版本：** 12

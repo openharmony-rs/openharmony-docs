@@ -1,5 +1,9 @@
 # AlbumAttributeInfo (System API)
 
+```TypeScript
+interface AlbumAttributeInfo
+```
+
 Album attribute info.
 
 **Since:** 26.0.0

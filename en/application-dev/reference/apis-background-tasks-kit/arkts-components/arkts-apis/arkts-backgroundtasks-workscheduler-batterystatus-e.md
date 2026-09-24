@@ -1,5 +1,9 @@
 # BatteryStatus
 
+```TypeScript
+export enum BatteryStatus
+```
+
 Enumerates the battery status that triggers the deferred task callback.
 
 **Since:** 9

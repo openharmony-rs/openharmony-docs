@@ -1,5 +1,9 @@
 # DisposedRule（系统接口）
 
+```TypeScript
+export interface DisposedRule
+```
+
 标识拦截规则。
 
 **起始版本：** 11

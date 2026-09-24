@@ -1,5 +1,9 @@
 # PressureLevel
 
+```TypeScript
+enum PressureLevel
+```
+
 Enumerates the memory pressure levels. When an application clears the cache occupied by the **Web** component, the **Web** kernel releases the cache based on the memory pressure level.
 
 **Since:** 14

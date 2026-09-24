@@ -1,5 +1,9 @@
 # NetworkState
 
+```TypeScript
+export interface NetworkState
+```
+
 Defines the network status.
 
 **Since:** 6

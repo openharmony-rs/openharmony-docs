@@ -8,6 +8,8 @@ typedef struct ta_caller_info {...} caller_info
 
 Defines the caller information.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)

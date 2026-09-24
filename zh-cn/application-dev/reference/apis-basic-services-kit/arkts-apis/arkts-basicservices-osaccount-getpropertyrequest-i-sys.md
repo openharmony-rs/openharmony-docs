@@ -1,5 +1,9 @@
 # GetPropertyRequest（系统接口）
 
+```TypeScript
+interface GetPropertyRequest
+```
+
 提供获取属性请求的信息。
 
 **起始版本：** 8

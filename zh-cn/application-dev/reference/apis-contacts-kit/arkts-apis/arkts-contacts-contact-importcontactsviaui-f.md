@@ -41,7 +41,7 @@ function importContactsViaUI(context: Context, contacts: Array<Contact>): Promis
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The specified SystemCapability name was not found. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
 | [16700002](../errorcode-contacts.md#16700002-参数检查失败) | Invalid parameter value. |
 | [16700004](../errorcode-contacts.md#16700004-联系人数量超过限制) | The number of contacts exceeds the limit. |
@@ -49,8 +49,28 @@ function importContactsViaUI(context: Context, contacts: Array<Contact>): Promis
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let contactList: contact.Contact[] = [];
+let contactInfo: contact.Contact = {
+  name: {
+    fullName: 'xxx'
+  },
+  phoneNumbers: [{
+    phoneNumber: '138xxxxxx'
+  }]
+}
+contactList.push(contactInfo);
+let promise = contact.importContactsViaUI(context, contactList);
+promise.then((data) => {
+  console.info(`Succeeded in importing Contact via UI: data -> ${JSON.stringify(data)}`);
+});
 ```

@@ -1,5 +1,9 @@
 # ContinuationMode
 
+```TypeScript
+export enum ContinuationMode
+```
+
 Enumerates the continuation modes provided by the device selection module.
 
 **Since:** 8

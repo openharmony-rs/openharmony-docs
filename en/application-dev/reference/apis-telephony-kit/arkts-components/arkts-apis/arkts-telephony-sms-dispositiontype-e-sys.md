@@ -1,5 +1,9 @@
 # DispositionType (System API)
 
+```TypeScript
+export enum DispositionType
+```
+
 Enumerates disposition types.
 
 **Since:** 8

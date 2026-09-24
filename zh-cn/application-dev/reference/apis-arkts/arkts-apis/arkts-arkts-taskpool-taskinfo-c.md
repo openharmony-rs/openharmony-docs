@@ -1,5 +1,9 @@
 # TaskInfo
 
+```TypeScript
+class TaskInfo
+```
+
 任务的内部信息。
 
 **起始版本：** 10

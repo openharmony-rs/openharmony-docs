@@ -8,6 +8,8 @@ typedef struct AbilityRuntime_NativeAbilityWrapper AbilityRuntime_NativeAbilityW
 
 定义AbilityRuntime_NativeAbilityWrapper结构体类型，用于封装{@link UIAbility}的相关信息。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)

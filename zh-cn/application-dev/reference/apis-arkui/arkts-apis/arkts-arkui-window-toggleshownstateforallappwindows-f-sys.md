@@ -30,8 +30,8 @@ function toggleShownStateForAllAppWindows(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities.<br>**适用版本：** 12+ |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -49,17 +49,8 @@ window.toggleShownStateForAllAppWindows((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = window.toggleShownStateForAllAppWindows();
-promise.then(() => {
-  console.info('Succeeded in toggling shown state for all app windows.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to toggle shown state for all app windows. Cause code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="toggleshownstateforallappwindows-1"></a>
 
 ## toggleShownStateForAllAppWindows
 
@@ -85,10 +76,19 @@ function toggleShownStateForAllAppWindows(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities.<br>**适用版本：** 12+ |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
 
-参见 [toggleShownStateForAllAppWindows](#toggleshownstateforallappwindows)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = window.toggleShownStateForAllAppWindows();
+promise.then(() => {
+  console.info('Succeeded in toggling shown state for all app windows.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to toggle shown state for all app windows. Cause code: ${err.code}, message: ${err.message}`);
+});
+```

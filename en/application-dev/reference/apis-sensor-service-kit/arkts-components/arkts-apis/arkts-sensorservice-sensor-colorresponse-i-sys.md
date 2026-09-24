@@ -1,5 +1,9 @@
 # ColorResponse (System API)
 
+```TypeScript
+interface ColorResponse extends Response
+```
+
 Describes the color sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** ColorResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

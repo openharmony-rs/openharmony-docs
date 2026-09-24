@@ -1,5 +1,9 @@
 # ToolBarSymbolGlyphOptions
 
+```TypeScript
+export interface ToolBarSymbolGlyphOptions
+```
+
 Defines the icon symbol options.
 
 **Since:** 13
@@ -20,7 +24,7 @@ activated?: SymbolGlyphModifier
 
 Icon symbol of the toolbar item in activated state.
 
-Default value: **fontColor: &#36;r('sys.color.icon_emphasize'), fontSize: 24vp**
+Default value: **fontColor: $r('sys.color.icon_emphasize'), fontSize: 24vp**
 
 **Type:** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
@@ -40,7 +44,7 @@ normal?: SymbolGlyphModifier
 
 Icon symbol of the toolbar item in normal state.
 
-Default value: **fontColor: &#36;r('sys.color.icon_primary'), fontSize: 24vp**
+Default value: **fontColor: $r('sys.color.icon_primary'), fontSize: 24vp**
 
 **Type:** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 

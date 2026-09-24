@@ -1,5 +1,9 @@
 # ColorEffectQuery（系统接口）
 
+```TypeScript
+interface ColorEffectQuery
+```
+
 Provides the API to obtain the color effects supported.
 
 **起始版本：** 12
@@ -38,7 +42,7 @@ Obtains the supported color effects.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
 **示例**

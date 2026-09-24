@@ -1,5 +1,9 @@
 # PersistentStorage
 
+```TypeScript
+declare class PersistentStorage
+```
+
 For details about how to use PersistentStorage on the UI, see [PersistentStorage: Persisting Application State](../../../ui/state-management/arkts-persiststorage.md).
 
 > **NOTE:** 
@@ -23,6 +27,8 @@ Performs the reverse operation of [PersistProp](#persistprop). Specifically, thi
 **Deprecated since:** 10
 
 **Substitutes:** [deleteProp](#deleteprop)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,6 +83,8 @@ Returns an array of all persisted property names.
 **Deprecated since:** 10
 
 **Substitutes:** [keys](#keys)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,6 +153,8 @@ According to the preceding initialization process, if the property exists in App
 
 **Substitutes:** [persistProp](#persistprop)
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -196,9 +206,7 @@ According to the preceding initialization process, if the property exists in App
 
 **Examples**
 
-```TypeScript
 For details about how to use persistProp, see [Accessing a PersistentStorage-Initialized Property from AppStorage](../../../ui/state-management/arkts-persiststorage.md#accessing-a-persistentstorage-initialized-property-from-appstorage).
-```
 
 ## PersistProps
 
@@ -218,6 +226,8 @@ Persists multiple properties. This API is similar to [PersistProp](#persistprop)
 **Deprecated since:** 10
 
 **Substitutes:** [PersistProps](#persistprops)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

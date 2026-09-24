@@ -27,7 +27,7 @@
 
 > **说明：** 
 > 
-> - 针对系统能力SystemCapability.Window.SessionManager，请先使用canIUse()接口判断当前设备是否支持此syscap及对应接口。
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../../../reference/common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 > 
 > - 本模块接口仅可在Stage模型下使用。
 

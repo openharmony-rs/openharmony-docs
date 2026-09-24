@@ -1,5 +1,9 @@
 # SimShortMessage (System API)
 
+```TypeScript
+export interface SimShortMessage
+```
+
 Defines a SIM message.
 
 **Since:** 7

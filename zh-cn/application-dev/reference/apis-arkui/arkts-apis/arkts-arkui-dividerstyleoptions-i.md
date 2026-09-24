@@ -1,5 +1,9 @@
 # DividerStyleOptions
 
+```TypeScript
+declare interface DividerStyleOptions
+```
+
 分割线样式属性集合，用于描述分割线相关信息。
 
 **起始版本：** 12

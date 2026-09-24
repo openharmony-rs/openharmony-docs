@@ -54,24 +54,8 @@ try {
 }
 ```
 
-```TypeScript
-import missionManager from '@ohos.application.missionManager';
-import { BusinessError } from '@ohos.base';
 
-let testMissionId = 2;
-try {
-  // Lock the specified mission.
-  missionManager.lockMission(testMissionId).then((data) => {
-    console.info(`lockMission successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`lockMission failed. Code: ${error.code}, message: ${error.message}.`);
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`lockMission sync failed. Code: ${err.code}, message: ${err.message}.`);
-}
-```
-
+<a id="lockmission-1"></a>
 
 ## lockMission
 
@@ -107,4 +91,20 @@ Locks a given mission. This API uses a promise to return the result.
 
 **Examples**
 
-See [lockMission](#lockmission)
+```TypeScript
+import missionManager from '@ohos.application.missionManager';
+import { BusinessError } from '@ohos.base';
+
+let testMissionId = 2;
+try {
+  // Lock the specified mission.
+  missionManager.lockMission(testMissionId).then((data) => {
+    console.info(`lockMission successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`lockMission failed. Code: ${error.code}, message: ${error.message}.`);
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`lockMission sync failed. Code: ${err.code}, message: ${err.message}.`);
+}
+```

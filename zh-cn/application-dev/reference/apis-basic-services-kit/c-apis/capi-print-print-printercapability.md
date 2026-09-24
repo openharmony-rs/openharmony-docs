@@ -8,6 +8,8 @@ typedef struct Print_PrinterCapability {...} Print_PrinterCapability
 
 表示打印机能力。
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 12
 
 **相关模块：** [Print](capi-print.md)

@@ -8,6 +8,8 @@ typedef struct ArkUI_CircleShape ArkUI_CircleShapeOption
 
 Defines a circle shape option.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

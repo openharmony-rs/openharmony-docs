@@ -1,5 +1,9 @@
 # GattService
 
+```TypeScript
+interface GattService
+```
+
 描述service的接口参数定义。
 
 从API version 9开始支持，从API version 10开始废弃。

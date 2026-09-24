@@ -1,5 +1,9 @@
 # Vector4
 
+```TypeScript
+interface Vector4
+```
+
 Defines a vector that contains the x, y, z, and w coordinate values.
 
 **Since:** 26.0.0

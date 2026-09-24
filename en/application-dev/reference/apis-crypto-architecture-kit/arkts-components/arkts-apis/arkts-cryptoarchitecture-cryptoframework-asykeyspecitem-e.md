@@ -1,5 +1,9 @@
 # AsyKeySpecItem
 
+```TypeScript
+enum AsyKeySpecItem
+```
+
 Enumerates the asymmetric key parameters.
 
 **Since:** 10

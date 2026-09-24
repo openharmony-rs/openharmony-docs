@@ -35,8 +35,8 @@ function stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -62,24 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { distributedMissionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  distributedMissionManager.stopSyncRemoteMissions(
-    {
-      deviceId: ""
-    }).then(() => {
-      console.info('stopSyncRemoteMissions finished successfully');
-    }).catch((error: BusinessError) => {
-    console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="stopsyncremotemissions-1"></a>
 
 ## stopSyncRemoteMissions
 
@@ -115,9 +99,25 @@ function stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
-参见 [stopSyncRemoteMissions](#stopsyncremotemissions)
+```TypeScript
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedMissionManager.stopSyncRemoteMissions(
+    {
+      deviceId: ""
+    }).then(() => {
+      console.info('stopSyncRemoteMissions finished successfully');
+    }).catch((error: BusinessError) => {
+    console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
+}
+```

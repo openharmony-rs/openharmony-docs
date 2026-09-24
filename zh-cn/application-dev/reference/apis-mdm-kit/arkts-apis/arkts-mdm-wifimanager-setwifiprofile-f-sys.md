@@ -42,9 +42,9 @@ function setWifiProfile(admin: Want, profile: WifiProfile, callback: AsyncCallba
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -73,30 +73,8 @@ wifiManager.setWifiProfile(wantTemp, profile, (err) => {
 });
 ```
 
-```TypeScript
-import { wifiManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-let profile: wifiManager.WifiProfile = {
-  // 需根据实际情况进行替换
-  'ssid': 'name',
-  'preSharedKey': 'passwd',
-  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_PSK
-};
-
-wifiManager.setWifiProfile(wantTemp, profile).then(() => {
-  console.info('Succeeded in setting wifi profile');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set wifi profile. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="setwifiprofile-1"></a>
 
 ## setWifiProfile
 
@@ -139,10 +117,32 @@ function setWifiProfile(admin: Want, profile: WifiProfile): Promise<void>
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
-参见 [setWifiProfile](#setwifiprofile)
+```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let profile: wifiManager.WifiProfile = {
+  // 需根据实际情况进行替换
+  'ssid': 'name',
+  'preSharedKey': 'passwd',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_PSK
+};
+
+wifiManager.setWifiProfile(wantTemp, profile).then(() => {
+  console.info('Succeeded in setting wifi profile');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set wifi profile. Code: ${err.code}, message: ${err.message}`);
+});
+```

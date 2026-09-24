@@ -1,8 +1,7 @@
 # Usage
 
 ```TypeScript
-type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication' |
-  'touch' | 'media' | 'physicalFeedback' | 'simulateReality'
+type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication''touch' | 'media' | 'physicalFeedback' | 'simulateReality'
 ```
 
 Enumerates the vibration scenarios.

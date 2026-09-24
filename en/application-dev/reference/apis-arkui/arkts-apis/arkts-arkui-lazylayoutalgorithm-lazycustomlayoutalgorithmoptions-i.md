@@ -1,5 +1,9 @@
 # LazyCustomLayoutAlgorithmOptions
 
+```TypeScript
+interface LazyCustomLayoutAlgorithmOptions
+```
+
 LazyCustomLayoutAlgorithm constructor options.
 
 **Since:** 26.0.0

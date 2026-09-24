@@ -8,6 +8,8 @@ typedef struct OH_AVMediaSourceLoader OH_AVMediaSourceLoader
 
 Declares the media source loader type, which is implemented by the application.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 23
 
 **Related module**: [AVMediaSource](capi-avmediasource.md)

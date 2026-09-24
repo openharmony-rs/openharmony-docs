@@ -65,37 +65,8 @@ audio.createAudioRenderer(audioRendererOptions,(err, data) => {
 });
 ```
 
-```TypeScript
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let audioStreamInfo: audio.AudioStreamInfo = {
-  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
-  channels: audio.AudioChannel.CHANNEL_2, // Channel.
-  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
-  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
-};
-
-let audioRendererInfo: audio.AudioRendererInfo = {
-  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
-  rendererFlags: 0 // AudioRenderer flag.
-};
-
-let audioRendererOptions: audio.AudioRendererOptions = {
-  streamInfo: audioStreamInfo,
-  rendererInfo: audioRendererInfo
-};
-
-let audioRenderer: audio.AudioRenderer;
-
-audio.createAudioRenderer(audioRendererOptions).then((data) => {
-  audioRenderer = data;
-  console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
-}).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
-});
-```
-
+<a id="createaudiorenderer-2"></a>
 
 ## createAudioRenderer
 
@@ -129,4 +100,33 @@ If you want to use AudioRenderer api to implement a music playback application, 
 
 **Examples**
 
-See [createAudioRenderer](#createaudiorenderer)
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
+  channels: audio.AudioChannel.CHANNEL_2, // Channel.
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
+};
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
+  rendererFlags: 0 // AudioRenderer flag.
+};
+
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
+};
+
+let audioRenderer: audio.AudioRenderer;
+
+audio.createAudioRenderer(audioRendererOptions).then((data) => {
+  audioRenderer = data;
+  console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
+}).catch((err: BusinessError) => {
+  console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
+});
+```

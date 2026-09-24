@@ -1,8 +1,12 @@
 # RemoteGrantStatus (System API)
 
+```TypeScript
+enum RemoteGrantStatus
+```
+
 Remote grant status.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -16,7 +20,9 @@ ENABLE = 0x01
 
 Enable remote grant.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -30,7 +36,9 @@ DISABLE = 0x02
 
 Disable remote grant.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 

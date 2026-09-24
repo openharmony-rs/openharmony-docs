@@ -8,6 +8,8 @@ typedef struct ArkUI_ContextCallback {...} ArkUI_ContextCallback
 
 Defines the event callback type.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

@@ -8,6 +8,8 @@ typedef struct ArkUI_UIInputEvent ArkUI_UIInputEvent
 
 Defines a UI input event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_EventModule](capi-arkui-eventmodule.md)

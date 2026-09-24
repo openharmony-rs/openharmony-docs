@@ -1,5 +1,9 @@
 # RenderingMode (System API)
 
+```TypeScript
+enum RenderingMode
+```
+
 Enumerates the rendering modes supported by the widget.
 
 **Since:** 18

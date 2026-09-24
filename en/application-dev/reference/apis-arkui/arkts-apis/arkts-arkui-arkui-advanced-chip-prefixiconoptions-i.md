@@ -1,5 +1,9 @@
 # PrefixIconOptions
 
+```TypeScript
+export interface PrefixIconOptions extends IconCommonOptions
+```
+
 Defines the prefix icon options.
 
 Inherits from [IconCommonOptions](arkts-arkui-arkui-advanced-chip-iconcommonoptions-i.md).

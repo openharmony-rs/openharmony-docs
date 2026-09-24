@@ -6,7 +6,9 @@ typedef struct OH_UdmfRecord OH_UdmfRecord
 
 ## Overview
 
-Describes the record type in the unified data.
+Defines a struct for a data record in a unified data object.
+
+**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 

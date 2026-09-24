@@ -1,5 +1,9 @@
 # WebHeader
 
+```TypeScript
+export declare interface WebHeader
+```
+
 Web组件返回的请求/响应头对象。
 
 **起始版本：** 12

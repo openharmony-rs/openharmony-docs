@@ -8,6 +8,8 @@ typedef struct VkMemoryGetNativeBufferInfoOHOS {...} VkMemoryGetNativeBufferInfo
 
 Defines a struct used to obtain an <b>OH_NativeBuffer</b> from the Vulkan memory.
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Related module**: [Vulkan](capi-vulkan.md)

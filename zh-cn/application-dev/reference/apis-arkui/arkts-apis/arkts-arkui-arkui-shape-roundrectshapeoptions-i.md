@@ -1,5 +1,9 @@
 # RoundRectShapeOptions
 
+```TypeScript
+interface RoundRectShapeOptions extends ShapeSize
+```
+
 RectShape 带有圆角半径的构造函数参数。
 
 继承自[ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md)。

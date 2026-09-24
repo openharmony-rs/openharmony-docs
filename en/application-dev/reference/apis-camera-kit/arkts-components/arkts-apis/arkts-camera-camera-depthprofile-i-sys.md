@@ -1,5 +1,9 @@
 # DepthProfile (System API)
 
+```TypeScript
+interface DepthProfile
+```
+
 Describes the profile of depth data. It inherits from [Profile](arkts-camera-camera-profile-i.md).
 
 **Since:** 13

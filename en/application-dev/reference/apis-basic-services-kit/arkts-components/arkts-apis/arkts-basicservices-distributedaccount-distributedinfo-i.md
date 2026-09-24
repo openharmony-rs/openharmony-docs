@@ -1,5 +1,9 @@
 # DistributedInfo
 
+```TypeScript
+interface DistributedInfo
+```
+
 Represents the distributed account information about an OS account.
 
 **Since:** 7

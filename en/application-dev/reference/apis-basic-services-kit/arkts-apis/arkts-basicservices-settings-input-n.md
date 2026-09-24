@@ -1,5 +1,9 @@
 # input
 
+```TypeScript
+namespace input
+```
+
 Provides methods for setting information about input methods, including automatic capitalization, automatic punctuation, autocorrect, password presentation, input method engine, and input method subtypes.
 
 @namespace input

@@ -8,6 +8,8 @@ typedef struct Asset_SyncResult {...} Asset_SyncResult
 
 Represents the sync result of an asset.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 20
 
 **Related module**: [AssetType](capi-assettype.md)

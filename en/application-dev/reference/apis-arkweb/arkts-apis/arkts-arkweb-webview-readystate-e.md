@@ -1,5 +1,9 @@
 # ReadyState
 
+```TypeScript
+enum ReadyState
+```
+
 Enumerates the cache states of the player.
 
 **Since:** 12

@@ -8,6 +8,8 @@ typedef struct ArkUI_KeyframeAnimateOption ArkUI_KeyframeAnimateOption
 
 定义关键帧动画参数对象，作为关键帧动画接口的输入参数使用。相关接口需要在主线程上调用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

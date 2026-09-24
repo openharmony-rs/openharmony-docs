@@ -1,6 +1,10 @@
 # ExpandedRegionLayoutOptions
 
-Layout information for the expanded state.
+```TypeScript
+export interface ExpandedRegionLayoutOptions
+```
+
+Defines layout information for the expanded state.
 
 **Since:** 12
 
@@ -18,9 +22,9 @@ import { ExtraRegionPosition, ExpandedRegionLayoutOptions, HoverModeRegionLayout
 extraRegionPosition?: ExtraRegionPosition
 ```
 
-Position information of the extra region. This setting takes effect only when **isExtraRegionPerpendicular** is set to **false**.
+Position of the expanded area. The options are **TOP** (upper half) and **BOTTOM** (lower half). This field takes effect when **isExtraRegionPerpendicular** is set to **false** and **extra** is valid.
 
-Default value: **ExtraRegionPosition.top**.
+Default value: `ExtraRegionPosition.TOP`
 
 **Type:** [ExtraRegionPosition](arkts-arkui-arkui-advanced-foldsplitcontainer-extraregionposition-e.md)
 
@@ -38,7 +42,9 @@ Default value: **ExtraRegionPosition.top**.
 horizontalSplitRatio?: number
 ```
 
-Width ratio between the primary and extra regions. This setting takes effect only when **extra** is effective. The value should be an integer. Default value: {@link.PresetSplitRatio}.LAYOUT_3V2.
+Ratio of the primary area width to the expanded area width. The value can be a preset value of **PresetSplitRatio** or a custom value. The value range is (0, +∞). If a value less than or equal to 0 is passed, the default value is used. This field takes effect only when **extra** is valid.
+
+Default value: [PresetSplitRatio](arkts-arkui-arkui-advanced-foldsplitcontainer-presetsplitratio-e.md).LAYOUT_3V2
 
 **Type:** number
 
@@ -56,9 +62,9 @@ Width ratio between the primary and extra regions. This setting takes effect onl
 isExtraRegionPerpendicular?: boolean
 ```
 
-Whether the extra region extends perpendicularly through the entire component from top to bottom. The value **true** means that the extra region extends perpendicularly through the entire component from top to bottom, and **false** means the opposite. This setting takes effect only when **extra** is effective.
+Whether the expanded area runs through the entire component from top to bottom. The value **true** means the expanded area runs through the entire component, and **false** means the opposite. This field takes effect only when **extra** is valid.
 
-Default value: **true**.
+Default value: **true**
 
 **Type:** boolean
 
@@ -76,7 +82,9 @@ Default value: **true**.
 verticalSplitRatio?: number
 ```
 
-Height ratio between the primary and extra regions. The value range is all integers. Default value: {@link.PresetSplitRatio}.LAYOUT_1V1.
+Ratio of the primary area height to the secondary area height. The value can be a preset value of **PresetSplitRatio** or a custom value. The value range is (0, +∞). If a value less than or equal to 0 is passed, the default value is used. For example, when the value is 1.5, the primary area height is 1.5 times the secondary area height (that is, a 3:2 ratio).
+
+Default value: [PresetSplitRatio](arkts-arkui-arkui-advanced-foldsplitcontainer-presetsplitratio-e.md).LAYOUT_1V1
 
 **Type:** number
 

@@ -36,7 +36,7 @@ function insertData(options: Options, data: UnifiedData, callback: AsyncCallback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **示例**
 
@@ -69,33 +69,8 @@ try {
 }
 ```
 
-```TypeScript
-import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let plainText: uniformDataStruct.PlainText = {
-  uniformDataType: 'general.plain-text',
-  textContent: 'This is a plain text example',
-  abstract: 'This is abstract'
-};
-let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
-let unifiedData = new unifiedDataChannel.UnifiedData(text);
-
-let options: unifiedDataChannel.Options = {
-  intention: unifiedDataChannel.Intention.DATA_HUB
-};
-try {
-  unifiedDataChannel.insertData(options, unifiedData).then((key) => {
-    console.info(`Succeeded in inserting data. key = ${key}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  let error: BusinessError = e as BusinessError;
-  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
-}
-```
-
+<a id="insertdata-1"></a>
 
 ## insertData
 
@@ -130,8 +105,33 @@ function insertData(options: Options, data: UnifiedData): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **示例**
 
-参见 insertData
+```TypeScript
+import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let plainText: uniformDataStruct.PlainText = {
+  uniformDataType: 'general.plain-text',
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
+let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
+let unifiedData = new unifiedDataChannel.UnifiedData(text);
+
+let options: unifiedDataChannel.Options = {
+  intention: unifiedDataChannel.Intention.DATA_HUB
+};
+try {
+  unifiedDataChannel.insertData(options, unifiedData).then((key) => {
+    console.info(`Succeeded in inserting data. key = ${key}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
+}
+```

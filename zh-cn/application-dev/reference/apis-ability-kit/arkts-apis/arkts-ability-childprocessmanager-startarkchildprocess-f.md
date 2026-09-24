@@ -47,18 +47,80 @@ function startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16000061](../errorcode-ability.md#16000061-不支持的操作) | Operation not supported. |
 | [16000062](../errorcode-ability.md#16000062-子进程数量超出上限) | The number of child processes exceeds the upper limit.<br>**适用版本：** 13+ |
 
 **示例**
 
-```TypeScript
 子进程部分：
-```
 
 ```TypeScript
+// 在module1模块的src/main/ets/process下创建DemoProcess.ets子进程类：
+// module1/src/main/ets/process/DemoProcess.ets
+import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
+
+export default class DemoProcess extends ChildProcess {
+
+  onStart(args?: ChildProcessArgs) {
+    let entryParams = args?.entryParams;
+    let fd = args?.fds?.key1;
+    // ..
+  }
+}
+```
+
 主进程部分，示例中的context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)：
+
+```TypeScript
+// 使用childProcessManager.startArkChildProcess方法启动子进程：
+// module1/src/main/ets/tool/Tool.ets
+import { common, ChildProcessArgs, ChildProcessOptions, childProcessManager } from '@kit.AbilityKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import DemoProcess from '../process/DemoProcess';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('Click')
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            try {
+              DemoProcess.toString(); // 这里要调用下DemoProcess类的任意方法，防止没有引用到而被构建工具优化掉
+              let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+              let path = context.filesDir + "/test.txt";
+              let file = fileIo.openSync(path, fileIo.OpenMode.READ_ONLY | fileIo.OpenMode.CREATE);
+              let args: ChildProcessArgs = {
+                entryParams: "testParam",
+                fds: {
+                  "key1": file.fd
+                }
+              };
+              let options: ChildProcessOptions = {
+                isolationMode: false
+              };
+              childProcessManager.startArkChildProcess("module1/ets/process/DemoProcess.ets", args, options)
+                .then((pid) => {
+                  console.info(`startArkChildProcess success, pid: ${pid}`);
+                })
+                .catch((err: BusinessError) => {
+                  console.error(`startArkChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
+                })
+            } catch (err: BusinessError) {
+              console.error(`startArkChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+            }
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
 ```

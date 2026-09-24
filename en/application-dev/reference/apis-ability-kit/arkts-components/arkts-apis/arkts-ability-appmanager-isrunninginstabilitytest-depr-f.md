@@ -48,17 +48,8 @@ appManager.isRunningInStabilityTest((error, flag) => {
 });
 ```
 
-```TypeScript
-import appManager from '@ohos.application.appManager';
-import { BusinessError } from '@ohos.base';
 
-appManager.isRunningInStabilityTest().then((flag) => {
-  console.info(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
-}).catch((error: BusinessError) => {
-  console.error(`error: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="isrunninginstabilitytest-1"></a>
 
 ## isRunningInStabilityTest
 
@@ -91,4 +82,13 @@ Checks whether the system is undergoing a stability test. This API uses a promis
 
 **Examples**
 
-See [isRunningInStabilityTest](#isrunninginstabilitytest)
+```TypeScript
+import appManager from '@ohos.application.appManager';
+import { BusinessError } from '@ohos.base';
+
+appManager.isRunningInStabilityTest().then((flag) => {
+  console.info(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
+}).catch((error: BusinessError) => {
+  console.error(`error: ${JSON.stringify(error)}`);
+});
+```

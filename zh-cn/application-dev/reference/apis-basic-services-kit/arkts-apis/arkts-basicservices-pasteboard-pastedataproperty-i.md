@@ -1,5 +1,9 @@
 # PasteDataProperty
 
+```TypeScript
+interface PasteDataProperty
+```
+
 定义剪贴板中所有内容条目的属性，包含时间戳、数据类型、粘贴范围以及一些附加数据等，该属性必须通过[setProperty](arkts-basicservices-pasteboard-pastedata-i.md#setproperty)方法，才能设置到剪贴板中。
 
 **起始版本：** 7

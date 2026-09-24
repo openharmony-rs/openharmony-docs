@@ -1,5 +1,9 @@
 # ToneCustomizedType (System API)
 
+```TypeScript
+enum ToneCustomizedType
+```
+
 Enum for tone customized type.
 
 **Since:** 12

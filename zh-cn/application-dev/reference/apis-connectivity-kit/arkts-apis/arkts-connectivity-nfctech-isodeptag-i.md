@@ -1,5 +1,9 @@
 # IsoDepTag
 
+```TypeScript
+export interface IsoDepTag extends TagSession
+```
+
 IsoDepTag 提供对ISO-DEP(ISO 14443-4)技术的属性和I/O操作的访问，继承自TagSession。
 
 TagSession是所有NFC Tag技术类型的基类， 提供建立连接和发送数据等共同接口。具体请参见[TagSession](arkts-connectivity-tagsession-tagsession-i.md)。
@@ -100,8 +104,8 @@ isExtendedApduSupported(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [3100201](../errorcode-nfc.md#3100201-nfc服务读写tag错误) | The tag running state is abnormal in the service. |
 | [3100204](../errorcode-nfc.md#3100204-nfc芯片io异常) | The tag I/O operation failed.<br>**适用版本：** 12+ |
 
@@ -133,33 +137,7 @@ function nfcTechDemo() {
 }
 ```
 
-```TypeScript
-import { tag } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 isoDep
-function nfcTechDemo() {
-    // 如果没有连接Tag，请先连接
-    if (!isoDep.isTagConnected()) {
-        if (!isoDep.connectTag()) {
-            console.error("isoDep connectTag failed.");
-            return;
-        }
-    }
-
-    try {
-        isoDep.isExtendedApduSupported((err: BusinessError, response: boolean) => {
-            if (err) {
-                console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${err.code}, message: ${err. message}`);
-            } else {
-                console.info("isoDep isExtendedApduSupported AsyncCallback response: " + response);
-            }
-        });
-    } catch (businessError) {
-        console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${(businessError as Business).code}, message: ${(businessError as Business).message}`);
-    }
-}
-```
+<a id="isextendedapdusupported-1"></a>
 
 ## isExtendedApduSupported
 
@@ -187,11 +165,37 @@ isExtendedApduSupported(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [3100201](../errorcode-nfc.md#3100201-nfc服务读写tag错误) | The tag running state is abnormal in the service. |
 | [3100204](../errorcode-nfc.md#3100204-nfc芯片io异常) | The Tag I/O operation failed.<br>**适用版本：** 12+ |
 
 **示例**
 
-参见 [isExtendedApduSupported](#isextendedapdusupported)
+```TypeScript
+import { tag } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 isoDep
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!isoDep.isTagConnected()) {
+        if (!isoDep.connectTag()) {
+            console.error("isoDep connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        isoDep.isExtendedApduSupported((err: BusinessError, response: boolean) => {
+            if (err) {
+                console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${err.code}, message: ${err. message}`);
+            } else {
+                console.info("isoDep isExtendedApduSupported AsyncCallback response: " + response);
+            }
+        });
+    } catch (businessError) {
+        console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${(businessError as Business).code}, message: ${(businessError as Business).message}`);
+    }
+}
+```

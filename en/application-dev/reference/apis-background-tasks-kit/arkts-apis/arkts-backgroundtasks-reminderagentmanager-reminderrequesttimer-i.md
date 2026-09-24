@@ -1,5 +1,9 @@
 # ReminderRequestTimer
 
+```TypeScript
+interface ReminderRequestTimer extends ReminderRequest
+```
+
 ReminderRequestTimer extends ReminderRequest
 
 Defines a reminder for a scheduled timer.

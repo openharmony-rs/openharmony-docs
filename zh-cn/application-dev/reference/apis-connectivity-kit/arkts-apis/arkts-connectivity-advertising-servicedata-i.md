@@ -1,5 +1,9 @@
 # ServiceData
 
+```TypeScript
+interface ServiceData
+```
+
 表示服务相关数据。
 
 **起始版本：** 26.0.0

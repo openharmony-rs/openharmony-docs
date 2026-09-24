@@ -1,5 +1,9 @@
 # PolicyErrorCode
 
+```TypeScript
+export enum PolicyErrorCode
+```
+
 枚举授予或激活权限策略失败的URI对应的错误码。
 
 @enum { int } PolicyErrorCode

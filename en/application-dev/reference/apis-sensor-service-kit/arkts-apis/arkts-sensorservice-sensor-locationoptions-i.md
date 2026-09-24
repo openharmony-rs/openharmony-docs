@@ -1,5 +1,9 @@
 # LocationOptions
 
+```TypeScript
+interface LocationOptions
+```
+
 Describes the geographical location.
 
 **Since:** 8

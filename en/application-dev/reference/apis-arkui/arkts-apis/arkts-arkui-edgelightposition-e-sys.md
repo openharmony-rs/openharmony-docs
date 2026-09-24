@@ -1,5 +1,9 @@
 # EdgeLightPosition (System API)
 
+```TypeScript
+declare enum EdgeLightPosition
+```
+
 Defines the position of the edge light effect.
 
 **Since:** 26.0.0

@@ -8,6 +8,8 @@ typedef struct OH_CryptoKdf OH_CryptoKdf
 
 KDF structure, representing a KDF context.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Related module**: [CryptoKdfApi](capi-cryptokdfapi.md)

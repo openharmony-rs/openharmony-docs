@@ -1,6 +1,10 @@
 # LayoutAlgorithm
 
-动态布局容器DynamicLayout的布局算法基础类型。
+```TypeScript
+export interface LayoutAlgorithm
+```
+
+动态布局容器[DynamicLayout](../arkts-components/arkts-arkui-dynamiclayout-comp-attribute.md)的布局算法基础类型。
 
 > **说明：** 
 > 

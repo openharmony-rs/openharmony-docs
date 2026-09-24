@@ -1,5 +1,9 @@
 # DescriptionInfo（系统接口）
 
+```TypeScript
+export interface DescriptionInfo
+```
+
 版本描述文件信息。
 
 **起始版本：** 9

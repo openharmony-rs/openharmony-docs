@@ -1,5 +1,9 @@
 # ParseReturnType
 
+```TypeScript
+const enum ParseReturnType
+```
+
 The return types for parsing.
 
 **Since:** 12

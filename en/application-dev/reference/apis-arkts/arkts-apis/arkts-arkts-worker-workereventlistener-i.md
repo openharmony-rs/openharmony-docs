@@ -1,5 +1,9 @@
 # WorkerEventListener
 
+```TypeScript
+export interface WorkerEventListener
+```
+
 Implements event listening.
 
 **Since:** 9
@@ -38,3 +42,19 @@ Specifies the callback function to be invoked.
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker-instance-is-not-running) | The Worker instance is not running. |
 | [10200005](../errorcode-utils.md#10200005-api-not-supported-in-the-worker-thread) | The called API is not supported in the worker thread. |
+
+**Examples**
+
+```TypeScript
+// Index.ets
+import { worker, Event } from "@kit.ArkTS"
+
+const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
+
+workerInstance.addEventListener("alert", (event: Event) => {
+  console.info("event type is: ", JSON.stringify(event.type));
+});
+
+const eventToDispatch : Event = { type: "alert", timeStamp: 0 }; // timeStamp is not supported.
+workerInstance.dispatchEvent(eventToDispatch);
+```

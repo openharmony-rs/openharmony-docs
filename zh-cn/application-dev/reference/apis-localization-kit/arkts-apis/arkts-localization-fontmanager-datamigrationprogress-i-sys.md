@@ -1,5 +1,9 @@
 # DataMigrationProgress（系统接口）
 
+```TypeScript
+interface DataMigrationProgress
+```
+
 描述数据迁移的进度信息，包含进度百分比和预估剩余时间。该接口为数据迁移回调onProgress方法的参数类型。
 
 **起始版本：** 23

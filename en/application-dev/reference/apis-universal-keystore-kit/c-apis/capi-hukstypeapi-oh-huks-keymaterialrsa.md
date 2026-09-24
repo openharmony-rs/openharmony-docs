@@ -8,6 +8,8 @@ typedef struct OH_Huks_KeyMaterialRsa {...} OH_Huks_KeyMaterialRsa
 
 Defines the struct for an RSA key.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 **Related module**: [HuksTypeApi](capi-hukstypeapi.md)

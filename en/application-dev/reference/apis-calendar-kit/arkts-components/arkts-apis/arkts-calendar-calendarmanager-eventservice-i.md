@@ -1,5 +1,9 @@
 # EventService
 
+```TypeScript
+export interface EventService
+```
+
 Describes the event service.
 
 **Since:** 10

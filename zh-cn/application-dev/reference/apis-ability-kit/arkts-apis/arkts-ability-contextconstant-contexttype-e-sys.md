@@ -1,5 +1,9 @@
 # ContextType
 
+```TypeScript
+export enum ContextType
+```
+
 上下文类型
 
 **起始版本：** 26.0.0

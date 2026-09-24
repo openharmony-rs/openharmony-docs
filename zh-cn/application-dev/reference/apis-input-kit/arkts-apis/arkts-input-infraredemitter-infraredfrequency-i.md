@@ -1,5 +1,9 @@
 # InfraredFrequency
 
+```TypeScript
+interface InfraredFrequency
+```
+
 红外信号的频率范围。
 
 **起始版本：** 15

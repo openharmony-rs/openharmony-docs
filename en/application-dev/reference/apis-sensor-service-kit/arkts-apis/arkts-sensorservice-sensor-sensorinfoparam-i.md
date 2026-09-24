@@ -1,5 +1,9 @@
 # SensorInfoParam
 
+```TypeScript
+interface SensorInfoParam
+```
+
 Defines sensor parameters, including **deviceId** and **sensorIndex**.
 
 **Since:** 19

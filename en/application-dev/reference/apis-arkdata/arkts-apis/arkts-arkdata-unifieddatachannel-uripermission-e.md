@@ -1,5 +1,9 @@
 # UriPermission
 
+```TypeScript
+export const enum UriPermission
+```
+
 URI authorization policy in drag-and-drop scenarios.
 
 > **NOTE:** 

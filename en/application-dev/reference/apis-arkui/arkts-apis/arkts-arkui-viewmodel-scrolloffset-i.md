@@ -1,5 +1,9 @@
 # ScrollOffset
 
+```TypeScript
+export interface ScrollOffset
+```
+
 ScrollOffset
 
 @interface ScrollOffset

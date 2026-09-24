@@ -1,5 +1,9 @@
 # VerticalType (System API)
 
+```TypeScript
+export enum VerticalType
+```
+
 Provides vertical type definition.
 
 @enum { string } VerticalType

@@ -8,6 +8,8 @@ typedef struct Camera_Location {...} Camera_Location
 
 拍照位置。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

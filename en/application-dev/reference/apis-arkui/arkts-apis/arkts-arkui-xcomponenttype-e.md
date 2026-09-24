@@ -1,5 +1,9 @@
 # XComponentType
 
+```TypeScript
+declare enum XComponentType
+```
+
 The type of XComponent
 
 @enum { number }
@@ -76,7 +80,7 @@ Node type.
 
 **Deprecated since:** 20
 
-**Substitutes:** ContentSlot
+**Substitutes:** [ContentSlot](../arkts-components/arkts-arkui-contentslot-comp.md#contentslot)
 
 **Model restriction:** This API can be used only in the stage model.
 

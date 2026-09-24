@@ -1,5 +1,9 @@
 # NavDestinationInfo
 
+```TypeScript
+export interface NavDestinationInfo
+```
+
 Information about the **NavDestination** component, returned by the system to developers.
 
 **Since:** 11
@@ -38,7 +42,7 @@ mode?: NavDestinationMode
 
 Mode of the **NavDestination** component. Default value: NavDestinationMode.Standard.
 
-**Type:** [NavDestinationMode](../arkts-components/arkts-arkui-navdestinationmode-e.md)
+**Type:** [NavDestinationMode](../arkts-components/arkts-arkui-navdestination-comp-navdestinationmode-e.md)
 
 **Since:** 15
 

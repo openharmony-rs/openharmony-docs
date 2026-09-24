@@ -1,5 +1,9 @@
 # WindowChangeOptions
 
+```TypeScript
+declare interface WindowChangeOptions
+```
+
 Describes the extended configuration of window change event listening, which is used to specify the listening process configuration and event filtering conditions.
 
 **Since:** 22

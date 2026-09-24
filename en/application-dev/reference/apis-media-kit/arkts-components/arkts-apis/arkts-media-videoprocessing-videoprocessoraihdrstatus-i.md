@@ -1,5 +1,9 @@
 # VideoProcessorAiHdrStatus
 
+```TypeScript
+interface VideoProcessorAiHdrStatus
+```
+
 Provides the AIHDR feature status.
 
 **Since:** 26.0.0

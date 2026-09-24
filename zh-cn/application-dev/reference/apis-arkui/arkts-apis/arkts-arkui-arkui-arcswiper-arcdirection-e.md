@@ -1,5 +1,9 @@
 # ArcDirection
 
+```TypeScript
+export enum ArcDirection
+```
+
 弧形方向。
 
 **起始版本：** 18

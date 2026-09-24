@@ -40,9 +40,9 @@ function getRunningFormInfoById(formId: string): Promise<formInfo.RunningFormInf
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permissions denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
@@ -65,58 +65,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formInfo, formObserver } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
-try {
-  formObserver.getRunningFormInfoById(formId, true).then((data: formInfo.RunningFormInfo) => {
-    console.info(`formObserver getRunningFormInfoById success, formId: ${data.formId}`);
-  }).catch((error: BusinessError) => {
-    console.error(`error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
-```TypeScript
-import { formInfo, formObserver } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let formId: string = '12400633174999288';
-try {
-  formObserver.getRunningFormInfoById(formId, (error: BusinessError, data: formInfo.RunningFormInfo) => {
-    if (error) {
-      console.error(`error, code: ${error.code}, message: ${error.message}`);
-    } else {
-      console.info(`formObserver getRunningFormInfoById, formId: ${data.formId}`);
-    }
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
-```TypeScript
-import { formInfo, formObserver } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let formId: string = '12400633174999288';
-try {
-  formObserver.getRunningFormInfoById(formId, true, (error: BusinessError, data: formInfo.RunningFormInfo) => {
-    if (error) {
-      console.error(`error, code: ${error.code}, message: ${error.message}`);
-    } else {
-      console.info(`formObserver getRunningFormInfoById, formId: ${data.formId}`);
-    }
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
+<a id="getrunningforminfobyid-1"></a>
 
 ## getRunningFormInfoById
 
@@ -153,17 +103,33 @@ function getRunningFormInfoById(formId: string, isUnusedIncluded: boolean): Prom
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permissions denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
 **示例**
 
-参见 [getRunningFormInfoById](#getrunningforminfobyid)
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let formId: string = '12400633174999288';
+try {
+  formObserver.getRunningFormInfoById(formId, true).then((data: formInfo.RunningFormInfo) => {
+    console.info(`formObserver getRunningFormInfoById success, formId: ${data.formId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+
+<a id="getrunningforminfobyid-2"></a>
 
 ## getRunningFormInfoById
 
@@ -194,17 +160,35 @@ function getRunningFormInfoById(formId: string, callback: AsyncCallback<formInfo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permissions denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
 **示例**
 
-参见 [getRunningFormInfoById](#getrunningforminfobyid)
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let formId: string = '12400633174999288';
+try {
+  formObserver.getRunningFormInfoById(formId, (error: BusinessError, data: formInfo.RunningFormInfo) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info(`formObserver getRunningFormInfoById, formId: ${data.formId}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+
+<a id="getrunningforminfobyid-3"></a>
 
 ## getRunningFormInfoById
 
@@ -240,13 +224,29 @@ function getRunningFormInfoById(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permissions denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
 **示例**
 
-参见 [getRunningFormInfoById](#getrunningforminfobyid)
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+try {
+  formObserver.getRunningFormInfoById(formId, true, (error: BusinessError, data: formInfo.RunningFormInfo) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info(`formObserver getRunningFormInfoById, formId: ${data.formId}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```

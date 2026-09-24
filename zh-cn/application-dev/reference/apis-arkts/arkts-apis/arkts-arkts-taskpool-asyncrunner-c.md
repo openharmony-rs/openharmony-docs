@@ -1,5 +1,9 @@
 # AsyncRunner
 
+```TypeScript
+export class AsyncRunner
+```
+
 表示异步队列。可以指定任务执行的并发度和排队策略。
 
 **起始版本：** 18
@@ -39,9 +43,7 @@ AsyncRunner的构造函数，用于创建一个**AsyncRunner**实例。构造一
 let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner(5);
 ```
 
-```TypeScript
-let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -72,10 +74,6 @@ AsyncRunner的构造函数，用于创建一个**AsyncRunner**实例。构造一
 | waitingCapacity | number | 否 | 指定等待任务的列表容量，该值必须大于等于0。如果传入负数，会报错；如果传入非整数，会向下取整。默认值为**0**，表示等待任务列表的容量没有限制。如果传入大于0的值，则表示排队策略为丢弃策略，当加入的任务数量超过该值时，等待列表中处于队头的任务会被丢弃。 |
 
 **示例**
-
-```TypeScript
-let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner(5);
-```
 
 ```TypeScript
 let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);

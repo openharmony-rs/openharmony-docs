@@ -38,6 +38,8 @@ enum DDK_RetCode
 
 Enumerates error codes used in the BASE DDK.
 
+**System capability**: SystemCapability.Driver.DDK.Extension
+
 **Since**: 12
 
 | Enum item | Description |

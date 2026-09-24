@@ -1,5 +1,9 @@
 # MmsAcknowledgeInd（系统接口）
 
+```TypeScript
+export interface MmsAcknowledgeInd
+```
+
 彩信确认索引。
 
 **起始版本：** 8

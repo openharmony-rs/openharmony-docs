@@ -1,5 +1,9 @@
 # PublishFormErrorCode (System API)
 
+```TypeScript
+enum PublishFormErrorCode
+```
+
 Enumerates the result codes that may be used for the operation of adding a widget to the home screen.
 
 **Since:** 12
@@ -80,7 +84,7 @@ NOT_SUPPORT = 4
 
 Indicates that the host does not support the form.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -96,7 +100,7 @@ HOST_FORM_LIMIT = 5
 
 Indicates that the number of forms added to the host exceeds the upper limit.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

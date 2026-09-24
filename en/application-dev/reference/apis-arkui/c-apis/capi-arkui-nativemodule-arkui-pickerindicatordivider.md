@@ -8,6 +8,8 @@ typedef struct ArkUI_PickerIndicatorDivider {...} ArkUI_PickerIndicatorDivider
 
 Defines the style parameter of the divider-style indicator.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

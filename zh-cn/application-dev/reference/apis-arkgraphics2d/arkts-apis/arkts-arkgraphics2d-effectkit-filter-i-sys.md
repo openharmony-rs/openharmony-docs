@@ -1,5 +1,9 @@
 # Filter
 
+```TypeScript
+interface Filter
+```
+
 图像效果类，用于通过链式调用将指定效果添加到效果链表中，适用于图片滤镜处理、视觉效果增强、图像美化等场景。在调用Filter的方法前，需要先通过[createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md)创建一个Filter实例。在添加效果后，需调用[getEffectPixelMap](arkts-arkgraphics2d-effectkit-filter-i.md#geteffectpixelmap)获取处理后的图像。
 
 **起始版本：** 9
@@ -48,7 +52,7 @@ ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
 
 **示例**
 

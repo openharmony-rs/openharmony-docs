@@ -1,5 +1,9 @@
 # GroupConfig
 
+```TypeScript
+interface GroupConfig
+```
+
 Describes group configuration options for download tasks.
 
 **Since:** 15

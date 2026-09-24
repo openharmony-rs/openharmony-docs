@@ -1,5 +1,9 @@
 # ProfileId
 
+```TypeScript
+export enum ProfileId
+```
+
 枚举，表示蓝牙Profile协议的标识。
 
 **起始版本：** 10

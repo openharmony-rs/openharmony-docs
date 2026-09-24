@@ -1,5 +1,9 @@
 # ManufacturerData
 
+```TypeScript
+interface ManufacturerData
+```
+
 表示厂商数据。
 
 **起始版本：** 26.0.0

@@ -8,6 +8,8 @@ struct WebSocket_CloseOption {...}
 
 Defines the parameters for the proactive connection closure initiated by the WebSocket client.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 11
 
 **Related module**: [netstack](capi-netstack.md)

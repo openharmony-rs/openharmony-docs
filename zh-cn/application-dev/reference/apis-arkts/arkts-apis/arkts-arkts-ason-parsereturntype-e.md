@@ -1,5 +1,9 @@
 # ParseReturnType
 
+```TypeScript
+const enum ParseReturnType
+```
+
 定义解析结果的返回类型。
 
 **起始版本：** 12

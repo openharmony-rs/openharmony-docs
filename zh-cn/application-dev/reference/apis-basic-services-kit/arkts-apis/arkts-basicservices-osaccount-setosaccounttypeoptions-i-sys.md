@@ -1,5 +1,9 @@
 # SetOsAccountTypeOptions（系统接口）
 
+```TypeScript
+interface SetOsAccountTypeOptions
+```
+
 设置系统账号类型的选项。
 
 **起始版本：** 24

@@ -1,5 +1,9 @@
 # SmartGestureAction
 
+```TypeScript
+declare enum SmartGestureAction
+```
+
 智慧手势操作类型枚举。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # UserGesturesData（系统接口）
 
+```TypeScript
+export interface UserGesturesData extends UserFacesData
+```
+
 表示用户手势数据。
 
 **继承/实现关系：** UserGesturesData extends [UserFacesData](arkts-multimodalawareness-userstatus-userfacesdata-i-sys.md)

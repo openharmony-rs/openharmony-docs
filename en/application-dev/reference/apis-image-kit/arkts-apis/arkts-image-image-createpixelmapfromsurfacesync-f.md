@@ -56,20 +56,8 @@ function createPixelMapFromSurfaceSync(surfaceId: string) {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-function createPixelMapFromSurfaceSync(surfaceId: string) {
-  try {
-    let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId);
-    console.info('Succeeded in creating the PixelMap from Surface.');
-  } catch (e) {
-    const err = e as BusinessError;
-    console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
-  }
-}
-```
-
+<a id="createpixelmapfromsurfacesync-1"></a>
 
 ## createPixelMapFromSurfaceSync
 
@@ -105,4 +93,16 @@ Creates a PixelMap object from surface id.
 
 **Examples**
 
-See [createPixelMapFromSurfaceSync](#createpixelmapfromsurfacesync)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function createPixelMapFromSurfaceSync(surfaceId: string) {
+  try {
+    let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId);
+    console.info('Succeeded in creating the PixelMap from Surface.');
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```

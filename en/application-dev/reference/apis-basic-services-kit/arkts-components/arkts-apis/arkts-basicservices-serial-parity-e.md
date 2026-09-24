@@ -1,5 +1,9 @@
 # Parity
 
+```TypeScript
+enum Parity
+```
+
 Enumerates the number of parity bits.
 
 **Since:** 26.0.0

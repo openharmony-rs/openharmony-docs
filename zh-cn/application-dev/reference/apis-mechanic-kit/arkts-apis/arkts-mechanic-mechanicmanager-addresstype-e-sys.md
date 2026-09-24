@@ -1,5 +1,9 @@
 # AddressType（系统接口）
 
+```TypeScript
+export enum AddressType
+```
+
 具身设备地址类型
 
 **起始版本：** 26.0.0

@@ -28,7 +28,7 @@ function getSensorList(callback: AsyncCallback<Array<Sensor>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**
@@ -54,25 +54,8 @@ try {
 }
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 使用try catch对可能出现的异常进行捕获
-try {
-  sensor.getSensorList().then((data: Array<sensor.Sensor>) => {
-    for (let i = 0; i < data.length; i++) {
-      console.info('Succeeded in getting data[' + i + ']: ' + JSON.stringify(data[i]));
-    }
-  }, (err: BusinessError) => {
-    console.error(`Failed to get sensorList. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
-}
-```
-
+<a id="getsensorlist-1"></a>
 
 ## getSensorList
 
@@ -96,9 +79,26 @@ function getSensorList(): Promise<Array<Sensor>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**
 
-参见 getSensorList
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  sensor.getSensorList().then((data: Array<sensor.Sensor>) => {
+    for (let i = 0; i < data.length; i++) {
+      console.info('Succeeded in getting data[' + i + ']: ' + JSON.stringify(data[i]));
+    }
+  }, (err: BusinessError) => {
+    console.error(`Failed to get sensorList. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
+}
+```

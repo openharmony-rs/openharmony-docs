@@ -1,5 +1,9 @@
 # BackupExtensionAbility
 
+```TypeScript
+declare class BackupExtensionAbility
+```
+
 Class to be override for backup extension ability.
 
 **Since:** 10

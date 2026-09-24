@@ -1,5 +1,9 @@
 # AxisModel
 
+```TypeScript
+declare enum AxisModel
+```
+
 Enumerates the axis types for focus axis events.
 
 **Since:** 15

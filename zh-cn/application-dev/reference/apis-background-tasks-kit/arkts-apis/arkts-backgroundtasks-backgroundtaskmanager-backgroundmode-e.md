@@ -1,5 +1,9 @@
 # BackgroundMode
 
+```TypeScript
+export enum BackgroundMode
+```
+
 长时任务类型。
 
 **起始版本：** 9
@@ -18,7 +22,7 @@ DATA_TRANSFER = 1
 
 **说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。
 
-更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md)中的示例。
+更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-2)中的示例。
 
 **起始版本：** 9
 

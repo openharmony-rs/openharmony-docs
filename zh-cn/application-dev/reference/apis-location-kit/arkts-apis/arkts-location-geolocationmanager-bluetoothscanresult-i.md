@@ -1,5 +1,9 @@
 # BluetoothScanResult
 
+```TypeScript
+export interface BluetoothScanResult
+```
+
 蓝牙扫描结果。
 
 **起始版本：** 16

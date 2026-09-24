@@ -1,5 +1,9 @@
 # FocusDrivenType (System API)
 
+```TypeScript
+enum FocusDrivenType
+```
+
 Enumerates the focus drive types.
 
 **Since:** 15

@@ -1,5 +1,9 @@
 # DeviceIdType (System API)
 
+```TypeScript
+enum DeviceIdType
+```
+
 Enumerates device ID types. They are used to define the device service identifier type. System-defined types and vendor-defined types are supported.
 
 **Since:** 23

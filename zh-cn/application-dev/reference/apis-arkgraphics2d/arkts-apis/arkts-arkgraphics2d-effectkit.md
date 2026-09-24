@@ -1,8 +1,8 @@
-# @ohos.effectKit
+# @ohos.effectKit(图像效果)
 
 图像效果模块提供了处理图像的基础能力，包括亮度调节、模糊化、灰度调节和智能取色等，适用于图片编辑应用中添加滤镜效果、应用启动页背景图模糊处理、UI主题色自动提取、图片配色分析等场景。
 
-本模块用于离线处理image.PixelMap以获得视觉效果，而uiEffect（UI效果服务）则实时接入渲染服务，针对屏幕帧缓存进行处理以获得动态视觉效果。
+本模块用于离线处理[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)以获得视觉效果，而uiEffect（UI效果服务）则实时接入渲染服务，针对屏幕帧缓存进行处理以获得动态视觉效果。
 
 该模块提供以下图像效果相关的常用功能：
 
@@ -26,10 +26,10 @@ import { effectKit } from '@kit.ArkGraphics2D';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md) | 通过传入的PixelMap创建ColorPicker实例，使用Promise异步回调。 |
-| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md) | 通过传入的PixelMap创建选定取色区域的ColorPicker实例，使用Promise异步回调。 |
-| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md) | 通过传入的PixelMap创建ColorPicker实例，使用callback异步回调。 |
-| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md) | 通过传入的PixelMap创建选定取色区域的ColorPicker实例，使用callback异步回调。 |
+| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker) | 通过传入的PixelMap创建ColorPicker实例，使用Promise异步回调。 |
+| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker-1) | 通过传入的PixelMap创建选定取色区域的ColorPicker实例，使用Promise异步回调。 |
+| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker-2) | 通过传入的PixelMap创建ColorPicker实例，使用callback异步回调。 |
+| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker-3) | 通过传入的PixelMap创建选定取色区域的ColorPicker实例，使用callback异步回调。 |
 | [createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md) | 通过传入的PixelMap创建Filter实例。后续可通过链式调用添加各种图像效果，最终通过[getEffectPixelMap](arkts-arkgraphics2d-effectkit-filter-i.md#geteffectpixelmap)获取处理后的图像。 |
 
 ### 接口
@@ -49,6 +49,15 @@ import { effectKit } from '@kit.ArkGraphics2D';
 | [Filter](arkts-arkgraphics2d-effectkit-filter-i-sys.md) | 图像效果类，用于通过链式调用将指定效果添加到效果链表中，适用于图片滤镜处理、视觉效果增强、图像美化等场景。在调用Filter的方法前，需要先通过[createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md)创建一个Filter实例。在添加效果后，需调用[getEffectPixelMap](arkts-arkgraphics2d-effectkit-filter-i.md#geteffectpixelmap)获取处理后的图像。 |
 <!--DelEnd-->
 
+<!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [EllipticalMaskCenter](arkts-arkgraphics2d-effectkit-ellipticalmaskcenter-t-sys.md) | 定义椭圆形遮罩的中心点。 |
+| [EllipticalMaskRadius](arkts-arkgraphics2d-effectkit-ellipticalmaskradius-t-sys.md) | 定义椭圆形遮罩的半径。 |
+<!--DelEnd-->
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -63,13 +72,4 @@ import { effectKit } from '@kit.ArkGraphics2D';
 | [PictureComplexityDegree](arkts-arkgraphics2d-effectkit-picturecomplexitydegree-e-sys.md) | 图片内容复杂度的枚举。 |
 | [PictureLightDegree](arkts-arkgraphics2d-effectkit-picturelightdegree-e-sys.md) | 图片颜色明亮度的枚举。 |
 | [PictureShadeDegree](arkts-arkgraphics2d-effectkit-pictureshadedegree-e-sys.md) | 图片颜色深浅度的枚举。 |
-<!--DelEnd-->
-
-<!--Del-->
-### 类型（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [EllipticalMaskCenter](arkts-arkgraphics2d-effectkit-ellipticalmaskcenter-t-sys.md) | 定义椭圆形遮罩的中心点。 |
-| [EllipticalMaskRadius](arkts-arkgraphics2d-effectkit-ellipticalmaskradius-t-sys.md) | 定义椭圆形遮罩的半径。 |
 <!--DelEnd-->

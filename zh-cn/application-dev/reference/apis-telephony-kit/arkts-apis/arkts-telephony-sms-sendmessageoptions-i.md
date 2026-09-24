@@ -1,5 +1,9 @@
 # SendMessageOptions
 
+```TypeScript
+export interface SendMessageOptions
+```
+
 发送短信的参数和回调。根据SendMessageOptions中的可选参数content的值判断短信类型。
 
 **起始版本：** 6

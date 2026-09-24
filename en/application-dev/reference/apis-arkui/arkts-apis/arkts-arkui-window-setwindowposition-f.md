@@ -22,7 +22,7 @@ The supported adjustments are as follows:
 
 Setting the global topmost state requires the ohos.permission.WINDOW_TOPMOST permission.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.WINDOW_TOPMOST
 

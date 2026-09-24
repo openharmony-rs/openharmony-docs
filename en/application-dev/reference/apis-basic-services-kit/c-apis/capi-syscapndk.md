@@ -4,6 +4,8 @@
 
 Provides APIs for querying system capabilities.
 
+**System capability**: SystemCapability.Startup.SystemInfo
+
 **Since**: 10
 
 ## Files

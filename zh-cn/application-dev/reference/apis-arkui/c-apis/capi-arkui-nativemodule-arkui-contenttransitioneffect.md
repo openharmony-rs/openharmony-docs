@@ -8,6 +8,8 @@ typedef struct ArkUI_ContentTransitionEffect ArkUI_ContentTransitionEffect
 
 设置与内容转场效果相关的类型和参数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 21
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

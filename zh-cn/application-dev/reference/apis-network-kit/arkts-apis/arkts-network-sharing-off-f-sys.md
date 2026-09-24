@@ -33,9 +33,19 @@ function off(type: 'sharingStateChange', callback?: Callback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { sharing } from '@kit.NetworkKit';
+
+sharing.off('sharingStateChange', (data: boolean) => {
+  console.info(JSON.stringify(data));
+});
+```
 
 
 ## off('interfaceSharingStateChange')
@@ -65,9 +75,19 @@ function off(type: 'interfaceSharingStateChange', callback?: Callback<InterfaceS
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { sharing } from '@kit.NetworkKit';
+
+sharing.off('interfaceSharingStateChange', (data: object) => {
+  console.info(JSON.stringify(data));
+});
+```
 
 
 ## off('sharingUpstreamChange')
@@ -97,6 +117,16 @@ function off(type: 'sharingUpstreamChange', callback?: Callback<NetHandle>): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { sharing } from '@kit.NetworkKit';
+
+sharing.off('sharingUpstreamChange', (data: object) => {
+  console.info(JSON.stringify(data));
+});
+```

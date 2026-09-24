@@ -1,5 +1,9 @@
 # HoverHandDetectionArea (System API)
 
+```TypeScript
+export interface HoverHandDetectionArea
+```
+
 The basic data structure of the hover hand detection area.
 
 **Since:** 26.0.0

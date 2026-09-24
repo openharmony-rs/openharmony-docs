@@ -1,5 +1,9 @@
 # ChannelInfo
 
+```TypeScript
+interface ChannelInfo
+```
+
 Input parameters of the function for opening a proxy channel, including the link type of the proxy channel, the MAC address of the peer device, and the UUID of the listening service.
 
 **Since:** 20

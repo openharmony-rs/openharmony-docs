@@ -1,5 +1,9 @@
 # MediaKeySystemDescription
 
+```TypeScript
+interface MediaKeySystemDescription
+```
+
 Defines the DRM plugin information.
 
 **Since:** 12

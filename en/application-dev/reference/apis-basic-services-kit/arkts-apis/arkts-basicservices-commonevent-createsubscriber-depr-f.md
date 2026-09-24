@@ -58,6 +58,39 @@ let createCallBack = (err:Base.BusinessError, commonEventSubscriber:CommonEventM
 commonEvent.createSubscriber(subscribeInfo, createCallBack);
 ```
 
+
+<a id="createsubscriber-1"></a>
+
+## createSubscriber
+
+```TypeScript
+function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>
+```
+
+Creates a subscriber. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-1)(subscribeInfo: CommonEventSubscribeInfo)
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| subscribeInfo | [CommonEventSubscribeInfo](arkts-basicservices-commoneventsubscribeinfo-commoneventsubscribeinfo-i.md) | Yes | Subscriber information. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md)&gt; | Promise used to return the subscriber object. |
+
+**Examples**
+
 ```TypeScript
 import Base from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
@@ -77,36 +110,3 @@ commonEvent.createSubscriber(subscribeInfo).then((commonEventSubscriber:CommonEv
     console.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-
-## createSubscriber
-
-```TypeScript
-function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>
-```
-
-Creates a subscriber. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md)(subscribeInfo: CommonEventSubscribeInfo)
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| subscribeInfo | [CommonEventSubscribeInfo](arkts-basicservices-commoneventsubscribeinfo-commoneventsubscribeinfo-i.md) | Yes | Subscriber information. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md)&gt; | Promise used to return the subscriber object. |
-
-**Examples**
-
-See [createSubscriber](#createsubscriber)

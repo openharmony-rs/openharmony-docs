@@ -1,5 +1,9 @@
 # StreamUsage
 
+```TypeScript
+enum StreamUsage
+```
+
 Enumerates the types of audio streams played.
 
 **Since:** 7

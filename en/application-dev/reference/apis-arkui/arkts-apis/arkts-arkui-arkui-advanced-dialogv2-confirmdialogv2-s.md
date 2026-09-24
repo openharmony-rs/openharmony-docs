@@ -1,5 +1,9 @@
 # ConfirmDialogV2
 
+```TypeScript
+export declare struct ConfirmDialogV2
+```
+
 Declare CustomDialog ConfirmDialogV2
 
 @struct { ConfirmDialogV2 }

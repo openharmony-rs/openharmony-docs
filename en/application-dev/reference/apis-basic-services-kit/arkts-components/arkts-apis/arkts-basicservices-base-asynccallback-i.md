@@ -1,5 +1,9 @@
 # AsyncCallback
 
+```TypeScript
+export interface AsyncCallback<T, E = void>
+```
+
 Defines a common callback that carries an error parameter and asynchronous return value. It is used to return error information or success data when an asynchronous operation is complete.
 
 The error parameter is of the [BusinessError](arkts-basicservices-base-businesserror-i.md) type.

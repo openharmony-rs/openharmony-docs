@@ -1,5 +1,9 @@
 # worker(Worker Thread Management)
 
+```TypeScript
+declare namespace worker
+```
+
 JS cross-thread communication tool
 
 **Since:** 7

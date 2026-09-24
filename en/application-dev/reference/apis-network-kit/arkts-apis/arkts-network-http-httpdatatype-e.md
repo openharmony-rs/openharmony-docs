@@ -1,5 +1,9 @@
 # HttpDataType
 
+```TypeScript
+export enum HttpDataType
+```
+
 Enumerates HTTP data types.
 
 | Name| Value| Description |  

@@ -22,14 +22,14 @@ function createPbapServerProfile(): PbapServerProfile
 
 | 类型 | 说明 |
 | --- | --- |
-| PbapServerProfile | 返回PSE实例。该类继承于[BaseProfile](arkts-connectivity-pbap-baseprofile-t.md)，因此可以使用其父类中的方法。和该实例角色相对应的是PCE角色。 |
+| [PbapServerProfile](arkts-connectivity-pbap-pbapserverprofile-i-sys.md) | 返回PSE实例。该类继承于[BaseProfile](arkts-connectivity-pbap-baseprofile-t.md)，因此可以使用其父类中的方法。和该实例角色相对应的是PCE角色。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 

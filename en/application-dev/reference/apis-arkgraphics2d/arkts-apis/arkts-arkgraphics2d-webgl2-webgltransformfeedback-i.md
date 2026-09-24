@@ -1,5 +1,9 @@
 # WebGLTransformFeedback
 
+```TypeScript
+interface WebGLTransformFeedback
+```
+
 WebGL 2.0
 
 **Since:** 7

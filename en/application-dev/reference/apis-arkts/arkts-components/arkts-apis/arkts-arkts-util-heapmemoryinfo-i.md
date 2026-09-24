@@ -1,5 +1,9 @@
 # HeapMemoryInfo
 
+```TypeScript
+interface HeapMemoryInfo
+```
+
 Describes heap memory information of either an ArkTS-VM, or the shared heap memory of current process.
 
 **Since:** 24

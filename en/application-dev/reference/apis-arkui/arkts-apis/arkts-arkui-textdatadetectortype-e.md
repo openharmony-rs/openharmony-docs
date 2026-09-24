@@ -1,5 +1,9 @@
 # TextDataDetectorType
 
+```TypeScript
+declare enum TextDataDetectorType
+```
+
 Defines the text data detector type.
 
 **Since:** 11

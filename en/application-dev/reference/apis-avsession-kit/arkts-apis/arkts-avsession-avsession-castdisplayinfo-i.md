@@ -1,5 +1,9 @@
 # CastDisplayInfo
 
+```TypeScript
+interface CastDisplayInfo
+```
+
 Define the information for extended display screen.
 
 **Since:** 12

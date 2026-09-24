@@ -1,5 +1,9 @@
 # DBSwitchInfo (System API)
 
+```TypeScript
+interface DBSwitchInfo
+```
+
 Defines the switch information of a device-cloud synergy database.
 
 **Since:** 23

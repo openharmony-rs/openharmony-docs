@@ -1,5 +1,9 @@
 # AVMetricsEvent
 
+```TypeScript
+interface AVMetricsEvent
+```
+
 描述一个指标事件的信息。
 
 **起始版本：** 23

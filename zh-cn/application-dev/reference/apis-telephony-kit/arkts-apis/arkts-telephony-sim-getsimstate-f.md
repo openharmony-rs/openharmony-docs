@@ -29,7 +29,7 @@ function getSimState(slotId: number, callback: AsyncCallback<SimState>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -50,17 +50,8 @@ sim.getSimState(0, (err: BusinessError, data: sim.SimState) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getSimState(0).then((data: sim.SimState) => {
-    console.info(`getSimState success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getSimState failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getsimstate-1"></a>
 
 ## getSimState
 
@@ -90,7 +81,7 @@ function getSimState(slotId: number): Promise<SimState>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -98,4 +89,13 @@ function getSimState(slotId: number): Promise<SimState>
 
 **示例**
 
-参见 getSimState
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getSimState(0).then((data: sim.SimState) => {
+    console.info(`getSimState success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getSimState failed, promise: err->${JSON.stringify(err)}`);
+});
+```

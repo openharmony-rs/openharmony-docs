@@ -1,5 +1,9 @@
 # PluralRulesOptions
 
+```TypeScript
+export interface PluralRulesOptions
+```
+
 创建单复数对象时可设置的配置项。从API version 9开始，PluralRulesOptions的属性由必填改为可选。
 
 **起始版本：** 8

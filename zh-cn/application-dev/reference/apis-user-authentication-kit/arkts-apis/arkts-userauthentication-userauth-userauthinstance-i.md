@@ -1,5 +1,9 @@
 # UserAuthInstance
 
+```TypeScript
+interface UserAuthInstance
+```
+
 用于执行用户身份认证，并支持使用统一用户身份认证控件。该接口提供了完整的用户认证能力，包括订阅认证结果、订阅认证中间状态、启动认证和取消认证等操作。通过统一认证控件，可以为用户提供标准化的认证界面和一致的认证体验。
 
 使用以下接口前，需先通过[getUserAuthInstance](arkts-userauthentication-userauth-getuserauthinstance-f.md)方法获取UserAuthInstance对象。
@@ -42,8 +46,8 @@ cancel(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Incorrect parameter types. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
 **示例**
@@ -118,8 +122,52 @@ off(type: 'result', callback?: IAuthCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+try {
+  const rand = cryptoFramework.createRandom();
+  const len: number = 16;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while (retryCount < 3) {
+    randData = rand?.generateRandomSync(len)?.data;
+    if (randData) {
+      break;
+    }
+    retryCount++;
+  }
+  if (!randData) {
+    return;
+  }
+  const authParam: userAuth.AuthParam = {
+    challenge: randData,
+    authType: [userAuth.UserAuthType.PIN],
+    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+  };
+  const widgetParam: userAuth.WidgetParam = {
+    title: '请输入密码',
+  };
+  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+  console.info('get userAuth instance successfully.');
+  userAuthInstance.off('result', {
+    onResult: (result) => {
+      console.info(`auth off result = ${result.result}`);
+    }
+  });
+  console.info('auth off successfully.');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
+}
+```
 
 ## off('authTip')
 
@@ -151,6 +199,48 @@ off(type: 'authTip', callback?: AuthTipCallback): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+try {
+  const rand = cryptoFramework.createRandom();
+  const len: number = 16;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while (retryCount < 3) {
+    randData = rand?.generateRandomSync(len)?.data;
+    if (randData) {
+      break;
+    }
+    retryCount++;
+  }
+  if (!randData) {
+    return;
+  }
+  const authParam: userAuth.AuthParam = {
+    challenge: randData,
+    authType: [userAuth.UserAuthType.PIN],
+    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+  };
+  const widgetParam: userAuth.WidgetParam = {
+    title: '请输入密码',
+  };
+  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+  console.info('get userAuth instance successfully.');
+  userAuthInstance.off('authTip', (authTipInfo: userAuth.AuthTipInfo) => {
+    console.info('userAuthInstance callback');
+  });
+  console.info('auth off successfully.');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
+}
+```
 
 ## on('result')
 
@@ -184,7 +274,7 @@ on(type: 'result', callback: IAuthCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
 ## on('authTip')
@@ -221,6 +311,51 @@ on(type: 'authTip', callback: AuthTipCallback): void
 | --- | --- |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+try {
+  const rand = cryptoFramework.createRandom();
+  const len: number = 16;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while (retryCount < 3) {
+    randData = rand?.generateRandomSync(len)?.data;
+    if (randData) {
+      break;
+    }
+    retryCount++;
+  }
+  if (!randData) {
+    return;
+  }
+  const authParam: userAuth.AuthParam = {
+    challenge: randData,
+    authType: [userAuth.UserAuthType.PIN],
+    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+  };
+  const widgetParam: userAuth.WidgetParam = {
+    title: '请输入密码',
+  };
+  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+  console.info('get userAuth instance successfully.');
+  // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onAuthTip获取到认证中间状态。
+  userAuthInstance.on('authTip', (authTipInfo: userAuth.AuthTipInfo) => {
+    console.info('userAuthInstance callback.');
+  });
+  console.info('auth on successfully.');
+  userAuthInstance.start();
+  console.info('auth start successfully.');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
 ## start
 
 ```TypeScript
@@ -247,8 +382,8 @@ start(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Possible causes:<br>1. No permission to access biometric. <br>2. No permission to start authentication from background. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Possible causes:<br>1. No permission to access biometric. <br>2. No permission to start authentication from background. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Incorrect parameter types. |
 | [12500001](../errorcode-useriam.md#12500001-认证不通过) | Authentication failed.<br>**适用版本：** 10 - 19 |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 | [12500003](../errorcode-useriam.md#12500003-认证被取消) | Authentication canceled. |

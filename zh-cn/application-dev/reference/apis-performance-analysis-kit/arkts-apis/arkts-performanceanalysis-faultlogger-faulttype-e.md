@@ -1,5 +1,9 @@
 # FaultType
 
+```TypeScript
+enum FaultType
+```
+
 故障类型枚举。
 
 **起始版本：** 8

@@ -8,6 +8,8 @@ typedef struct OH_HiDebug_ProfilingResult {...} OH_HiDebug_ProfilingResult
 
 封装单次资源采集的结果。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 24
 
 **相关模块：** [HiDebug](capi-hidebug.md)

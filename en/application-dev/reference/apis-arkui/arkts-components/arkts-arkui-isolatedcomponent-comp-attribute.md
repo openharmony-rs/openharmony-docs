@@ -1,8 +1,12 @@
 # IsolatedComponent properties/events
 
-Only the width, height, and backgroundColor universal attributes are supported.
+```TypeScript
+declare class IsolatedComponentAttribute extends CommonMethod<IsolatedComponentAttribute>
+```
 
-The universal events are not supported.
+Only the [width](arkts-arkui-common-comp-commonmethod-c.md#width), [height](arkts-arkui-common-comp-commonmethod-c.md#height), and [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor) universal attributes are supported.
+
+The [universal events](arkts-arkui-common-comp.md#common) are not supported.
 
 Events are asynchronously passed to the restricted Worker thread after coordinate conversion.
 

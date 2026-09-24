@@ -1,5 +1,9 @@
 # RangingParams
 
+```TypeScript
+interface RangingParams
+```
+
 测距参数，用于指定主动测距的目标设备和测距类型。
 
 **起始版本：** 26.0.0

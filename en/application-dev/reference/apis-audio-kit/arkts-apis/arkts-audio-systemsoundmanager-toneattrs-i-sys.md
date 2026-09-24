@@ -1,5 +1,9 @@
 # ToneAttrs (System API)
 
+```TypeScript
+interface ToneAttrs
+```
+
 Tone attributes.
 
 **Since:** 12

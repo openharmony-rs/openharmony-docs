@@ -1,5 +1,9 @@
 # RelativePosition
 
+```TypeScript
+interface RelativePosition
+```
+
 相对坐标系下的坐标位置，以displayId对应的屏幕左上角为原点。
 
 **起始版本：** 20

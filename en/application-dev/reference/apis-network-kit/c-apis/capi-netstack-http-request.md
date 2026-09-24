@@ -8,6 +8,8 @@ typedef struct Http_Request {...} Http_Request
 
 Defines an HTTP request.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Related module**: [netstack](capi-netstack.md)
@@ -22,6 +24,6 @@ Defines an HTTP request.
 | -- | -- |
 | uint32_t requestId | ID of an HTTP request. |
 | char *url | Pointer to the HTTP request URL. |
-| [Http_RequestOptions](capi-netstack-http-requestoptions.md) *options | Pointer to the HTTP request configuration. For details, see [Http_RequestOptions](capi-netstack-http-requestoptions.md). |
+| [Http_RequestOptions](capi-netstack-http-requestoptions.md) *options | Pointer to the HTTP request configuration. For details, see {@link Http_RequestOptions}. |
 
 

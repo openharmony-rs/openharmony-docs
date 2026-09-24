@@ -1,5 +1,9 @@
 # AlertDialog
 
+```TypeScript
+export declare struct AlertDialog
+```
+
 Declare CustomDialog AlertDialog
 
 **Since:** 18
@@ -148,7 +152,7 @@ themeColorMode?: ThemeColorMode
 
 Sets the AlertDialog dark or light Mode.
 
-**Type:** [ThemeColorMode](../arkts-components/arkts-arkui-themecolormode-e.md)
+**Type:** [ThemeColorMode](../arkts-components/arkts-arkui-common-comp-themecolormode-e.md)
 
 **Since:** 12
 

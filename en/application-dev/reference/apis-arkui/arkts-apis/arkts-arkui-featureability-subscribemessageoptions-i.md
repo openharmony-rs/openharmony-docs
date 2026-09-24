@@ -1,5 +1,9 @@
 # SubscribeMessageOptions
 
+```TypeScript
+export interface SubscribeMessageOptions
+```
+
 @typedef SubscribeMessageOptions
 
 **Since:** 5

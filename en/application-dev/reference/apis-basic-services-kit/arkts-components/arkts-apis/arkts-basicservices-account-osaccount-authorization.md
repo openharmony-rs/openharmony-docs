@@ -13,7 +13,7 @@ Provides OS local account authorization management capabilities. You can use the
 > [AUTHORIZATION_NOT_SUPPORTED](arkts-basicservices-authorization-authorizationresultcode-e.md#authorization_not_supported) means
 > the configuration for the privilege is not deployed in the current system version.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

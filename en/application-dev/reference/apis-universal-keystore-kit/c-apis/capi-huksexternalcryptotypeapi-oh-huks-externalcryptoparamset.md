@@ -8,6 +8,8 @@ typedef struct OH_Huks_ExternalCryptoParamSet {...} OH_Huks_ExternalCryptoParamS
 
 Defines an external cryptographic parameter set.
 
+**System capability**: SystemCapability.Security.Huks.CryptoExtension
+
 **Since**: 22
 
 **Related module**: [HuksExternalCryptoTypeApi](capi-huksexternalcryptotypeapi.md)

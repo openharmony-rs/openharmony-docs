@@ -1,5 +1,9 @@
 # DecodeToStringOptions
 
+```TypeScript
+interface DecodeToStringOptions
+```
+
 描述 **decodeToString** 方法在解码字节流时的行为参数。
 
 **起始版本：** 12

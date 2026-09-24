@@ -1,5 +1,9 @@
 # PinRequiredParam
 
+```TypeScript
+interface PinRequiredParam
+```
+
 Describes the bond key param.
 
 **Since:** 8

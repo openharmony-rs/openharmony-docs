@@ -14,9 +14,11 @@ export function generateControllerDevicePackage(remoteUserAuthResult: RemoteUser
 
 Generates an authorization package for the controller device. This function generates a remote authorization package based on the remote user authorization results. The generated package can be sent to the controlled device for permission verification.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.QUERY_TOOL_PERMISSIONS
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -32,7 +34,7 @@ Generates an authorization package for the controller device. This function gene
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[RemoteAuthPackage](arkts-ability-abilitytoolaccessctrl-remoteauthpackage-i-sys.md)[]&gt; | Promise used to return &#36;{RemoteAuthPackage[]}. |
+| Promise&lt;[RemoteAuthPackage](arkts-ability-abilitytoolaccessctrl-remoteauthpackage-i-sys.md)[]&gt; | Promise used to return ${RemoteAuthPackage[]}. |
 
 **Error codes:**
 

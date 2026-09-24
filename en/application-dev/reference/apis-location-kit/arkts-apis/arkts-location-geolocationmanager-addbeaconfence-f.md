@@ -39,7 +39,7 @@ Add a beacon fence.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call &#36;{geoLocationManager.addBeaconFence} due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call ${geoLocationManager.addBeaconFence} due to limited device capabilities. |
 | [3501100](../errorcode-geoLocationManager.md#3501100-failed-to-add-a-beacon-fence-because-the-location-switch-is-turned-off) | Failed to add a beacon fence because the location switch is off. |
 | [3501101](../errorcode-geoLocationManager.md#3501101-failed-to-add-a-beacon-fence-because-bluetooth-is-disabled) | Failed to add a beacon fence because the bluetooth switch is off. |
 | [3501601](../errorcode-geoLocationManager.md#3501601-failed-to-add-a-beacon-fence-because-the-maximum-number-is-exceeded) | The number of beacon fences exceeds the maximum. |

@@ -8,6 +8,8 @@ struct OH_ImagePackerNative
 
 The struct describes the image packer, which is used to perform operations related to an image packer.
 
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
+
 **Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)

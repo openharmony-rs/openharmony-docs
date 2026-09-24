@@ -8,6 +8,8 @@ typedef struct ResourceManager_Configuration {...} ResourceManager_Configuration
 
 设备状态的结构体。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **相关模块：** [resourcemanager](capi-resourcemanager.md)

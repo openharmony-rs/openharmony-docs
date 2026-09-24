@@ -1,5 +1,9 @@
 # NavDestinationState
 
+```TypeScript
+export enum NavDestinationState
+```
+
 Describes the state of the **NavDestination** component.
 
 **Since:** 11

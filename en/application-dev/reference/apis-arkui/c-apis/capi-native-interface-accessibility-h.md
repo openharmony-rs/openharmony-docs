@@ -122,6 +122,8 @@ enum ArkUI_Accessibility_ActionType
 
 Defines an enum for accessibility action types.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 | Enum item | Description |
@@ -151,6 +153,8 @@ enum ArkUI_AccessibilityEventType
 **Description**
 
 Defines an enum for accessibility event types.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -182,6 +186,8 @@ enum ArkUI_AcessbilityErrorCode
 
 Enumerates the accessibility error codes.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 | Enum item | Description |
@@ -200,6 +206,8 @@ enum ArkUI_AccessibilitySearchMode
 **Description**
 
 Defines an enum for the accessibility search modes.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -221,6 +229,8 @@ enum ArkUI_AccessibilityFocusType
 
 Defines an enum for the accessibility focus types.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 | Enum item | Description |
@@ -238,6 +248,8 @@ enum ArkUI_AccessibilityFocusMoveDirection
 **Description**
 
 Enumerates the directions for moving the accessibility focus.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -264,6 +276,8 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvid
 
 Registers a callback for this <b>ArkUI_AccessibilityProvider</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -288,6 +302,8 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* i
 **Description**
 
 Registers a callback with instance for this <b>ArkUI_AccessibilityProvider</b> instance.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -315,6 +331,8 @@ void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider,
 
 Sends accessibility event information.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -334,6 +352,8 @@ ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI
 **Description**
 
 Adds and obtains the pointer to an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -358,6 +378,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElement
 **Description**
 
 Sets the element ID for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -384,6 +406,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetParentId(ArkUI_AccessibilityElementI
 
 Sets the parent ID for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -408,6 +432,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetComponentType(ArkUI_AccessibilityEle
 **Description**
 
 Sets the component type for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -434,6 +460,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetContents(ArkUI_AccessibilityElementI
 
 Sets the component content for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -458,6 +486,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementI
 **Description**
 
 Sets the hint text for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -484,6 +514,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_Accessibilit
 
 Sets the accessibility text for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -509,6 +541,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(ArkUI_Acces
 
 Sets the accessibility description for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -533,6 +567,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElem
 **Description**
 
 Set the number of child nodes and child node IDs for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -560,6 +596,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_Accessibility
 
 Sets the operation actions for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -586,6 +624,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetScreenRect(ArkUI_AccessibilityElemen
 
 Sets the screen area for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -610,6 +650,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElement
 **Description**
 
 Sets whether the element is checkable for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -636,6 +678,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementIn
 
 Sets whether the element is checked for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -660,6 +704,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElement
 **Description**
 
 Sets whether the element is focusable for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -686,6 +732,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetFocused(ArkUI_AccessibilityElementIn
 
 Sets whether the element is focused for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -710,6 +758,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetVisible(ArkUI_AccessibilityElementIn
 **Description**
 
 Sets whether the element is visible for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -736,6 +786,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_Accessibi
 
 Sets the accessibility focus state for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -760,6 +812,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementI
 **Description**
 
 Sets whether the element is selected for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -786,6 +840,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElement
 
 Sets whether the element is clickable for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -810,6 +866,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityEle
 **Description**
 
 Sets whether the element is long clickable for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -836,6 +894,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEnabled(ArkUI_AccessibilityElementIn
 
 Sets whether the element is enabled for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -860,6 +920,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElemen
 **Description**
 
 Sets whether the element is a password for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -886,6 +948,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElemen
 
 Sets whether the element is scrollable for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -910,6 +974,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementI
 **Description**
 
 Sets whether the element is editable for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -936,6 +1002,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInf
 
 Sets whether the element is a hint for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -960,6 +1028,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElement
 **Description**
 
 Sets the range information for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -986,6 +1056,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementI
 
 Sets the grid information for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -1010,6 +1082,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElem
 **Description**
 
 Sets the grid item for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1036,6 +1110,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_Accessibilit
 
 Sets the starting index of the selected text for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -1060,6 +1136,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityE
 **Description**
 
 Sets the end index of the selected text for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1086,6 +1164,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_Accessibility
 
 Sets the index of the currently selected item for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -1110,6 +1190,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityEl
 **Description**
 
 Sets the index of the first item for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1136,6 +1218,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElem
 
 Sets the index of the last item for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -1160,6 +1244,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElement
 **Description**
 
 Sets the number of items for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1186,6 +1272,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_Accessibil
 
 Sets the offset for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -1210,6 +1298,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_Accessibili
 **Description**
 
 Sets the accessibility group for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1236,6 +1326,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_Accessibili
 
 Sets the accessibility level for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -1260,6 +1352,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInf
 **Description**
 
 Sets the z-index for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1286,6 +1380,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_Accessibi
 
 Sets the opacity for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -1310,6 +1406,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityE
 **Description**
 
 Sets the background color for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1336,6 +1434,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityE
 
 Sets the background image for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -1360,6 +1460,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo*
 **Description**
 
 Sets the blur effect for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1386,6 +1488,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityE
 
 Sets the hit test behavior for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -1411,6 +1515,8 @@ ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)
 
 Creates an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Returns**:
@@ -1428,6 +1534,8 @@ void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* el
 **Description**
 
 Destroys an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1447,6 +1555,8 @@ ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)
 
 Creates an <b>ArkUI_AccessibilityEventInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Returns**:
@@ -1465,6 +1575,8 @@ void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventI
 
 Destroys an <b>ArkUI_AccessibilityEventInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -1482,6 +1594,8 @@ int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* ev
 **Description**
 
 Sets the event type for an <b>ArkUI_AccessibilityEventInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1508,6 +1622,8 @@ int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_Access
 
 Sets the text announced for accessibility for an <b>ArkUI_AccessibilityEventInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -1532,6 +1648,8 @@ int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInf
 **Description**
 
 Sets the request focus ID for an <b>ArkUI_AccessibilityEventInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1558,6 +1676,8 @@ int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* 
 
 Sets the element information for an <b>ArkUI_AccessibilityEventInfo</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Parameters**:
@@ -1582,6 +1702,8 @@ int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionA
 **Description**
 
 Obtains the value of a key from an <b>ArkUI_AccessibilityActionArguments</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1609,6 +1731,8 @@ int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* n
 
 Obtains the pointer to the <b> ArkUI_AccessibilityProvider</b> instance of this <b>ArkUI_NodeHandle</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 **Parameters**:
@@ -1633,6 +1757,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_Accessibil
 **Description**
 
 Sets the component identifier for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 

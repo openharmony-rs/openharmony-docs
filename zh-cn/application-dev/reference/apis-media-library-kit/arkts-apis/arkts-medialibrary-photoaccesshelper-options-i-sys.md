@@ -1,5 +1,9 @@
 # Options（系统接口）
 
+```TypeScript
+interface Options
+```
+
 可选参数
 
 **起始版本：** 23

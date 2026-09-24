@@ -1,4 +1,4 @@
-# @ohos.app.form.LiveFormExtensionAbility(LiveFormExtensionAbility)
+# @ohos.app.form.LiveFormExtensionAbility(互动卡片扩展能力-LiveFormExtensionAbility)
 
 ## 导入模块
 

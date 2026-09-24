@@ -32,9 +32,9 @@ import { webview } from '@kit.ArkWeb';
 | [GeolocationPermissions](arkts-arkweb-webview-geolocationpermissions-c.md) | GeolocationPermissions是Web组件的地理位置权限管理对象，提供对Web组件中已保存的地理位置权限状态的查询、授权、删除等管理能力。通过GeolocationPermissions，应用可以在网页发起地理位置请求之前预先授权特定源的访问权限，也可以主动查询或清除已保存的权限记录，而无需依赖网页请求时的弹窗授权流程。 |
 | [JsMessageExt](arkts-arkweb-webview-jsmessageext-c.md) | JsMessageExt是ArkWeb框架中用于封装[runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext)接口执行JavaScript脚本后返回结果的数据类。与常规的runJavaScript接口不同，runJavaScriptExt支持更丰富的返回值类型，JsMessageExt则为这些多样化的返回结果提供了类型安全的访问方式。开发者通过JsMessageExt的getType方法先获取数据类型，再调用对应的get方法获取具体值。 |
 | [MediaSourceInfo](arkts-arkweb-webview-mediasourceinfo-c.md) | MediaSourceInfo 是表示媒体源信息的数据类。在 Web 媒体播放场景中，MediaSourceInfo 类封装了媒体源的基本信息，帮助应用了解媒体源的类型、地址和格式，应用根据这些信息创建自定义播放器并开始播放。 |
-| [NativeMediaPlayerSurfaceInfo](arkts-arkweb-webview-nativemediaplayersurfaceinfo-c.md) | NativeMediaPlayerSurfaceInfo 使用enableNativeMediaPlayer来进行同层渲染的surface 信息配置。该类允许应用接管网页媒体播放功能，通过配置 surface 的 id 和位置信息，实现网页媒体内容与应用界面的同层渲染融合，提升媒体播放体验。 |
+| [NativeMediaPlayerSurfaceInfo](arkts-arkweb-webview-nativemediaplayersurfaceinfo-c.md) | NativeMediaPlayerSurfaceInfo 使用[enableNativeMediaPlayer](../arkts-components/arkts-arkweb-web-comp-attribute.md#enablenativemediaplayer)来进行同层渲染的surface 信息配置。该类允许应用接管网页媒体播放功能，通过配置 surface 的 id 和位置信息，实现网页媒体内容与应用界面的同层渲染融合，提升媒体播放体验。 |
 | [PdfData](arkts-arkweb-webview-pdfdata-c.md) | PdfData是Web组件用于封装网页生成的PDF数据流的类。当应用需要将Web组件加载的网页内容以PDF格式保存时，通过[WebviewController](arkts-arkweb-webview-webviewcontroller-c.md)的[createPdf](arkts-arkweb-webview-webviewcontroller-c.md#createpdf)方法将网页内容转换为PDF数据流，该方法在回调或Promise中以PdfData对象返回。应用再通过PdfData的pdfArrayBuffer方法获取Uint8Array格式的数据流，结合文件IO接口将数据写入本地PDF文件。 |
-| [PrefetchOptions](arkts-arkweb-webview-prefetchoptions-c.md) | PrefetchOptions是ArkWeb框架中用于自定义网页预取行为的配置类，通过[prefetchPage](arkts-arkweb-webview-webviewcontroller-c.md#prefetchpage)的预取相关接口设置，自定义内容包括是否忽略响应头中的Cache-Control: no-store和设置两次预取间的最小时间间隔。 |
+| [PrefetchOptions](arkts-arkweb-webview-prefetchoptions-c.md) | PrefetchOptions是ArkWeb框架中用于自定义网页预取行为的配置类，通过[prefetchPage](arkts-arkweb-webview-webviewcontroller-c.md#prefetchpage-1)的预取相关接口设置，自定义内容包括是否忽略响应头中的Cache-Control: no-store和设置两次预取间的最小时间间隔。 |
 | [ProxyConfig](arkts-arkweb-webview-proxyconfig-c.md) | ProxyConfig是ArkWeb框架中用于配置网络代理规则的类，配合[ProxyController](arkts-arkweb-webview-proxycontroller-c.md)实现对应用中所有Web组件网络请求的代理控制。通过ProxyConfig，开发者可以灵活定义多种代理规则：指定特定URL使用特定代理服务器、指定某些URL直连服务器、定义绕过代理的规则等。 |
 | [ProxyController](arkts-arkweb-webview-proxycontroller-c.md) | ProxyController是ArkWeb框架中用于管理应用中所有Web组件代理配置的静态类。通过ProxyController，开发者可以统一为应用中的所有Web请求设置或移除代理配置，适用于需要将Web流量路由到特定代理服务器的场景（如企业网络环境、内容过滤、流量监控等）。 |
 | [ProxyRule](arkts-arkweb-webview-proxyrule-c.md) | ProxyRule是ArkWeb框架中代理规则只读信息的类，通过[getProxyRules](arkts-arkweb-webview-proxyconfig-c.md#getproxyrules)方法获取。当开发者通过ProxyConfig配置了代理规则后，可通过getProxyRules获取已配置的规则列表，每条规则对应一个ProxyRule对象，用于查询规则的详细信息。 |
@@ -47,7 +47,7 @@ import { webview } from '@kit.ArkWeb';
 | [WebDownloadManager](arkts-arkweb-webview-webdownloadmanager-c.md) | WebDownloadManager是ArkWeb框架下Web组件下载任务的静态管理类，负责管理所有通过Web组件触发的文件下载流程。开发者可以通过该类设置下载委托以接收下载进度回调，以及恢复失败的下载任务。该类的所有方法均为静态方法，在整个应用范围内全局生效。 |
 | [WebHttpBodyStream](arkts-arkweb-webview-webhttpbodystream-c.md) | WebHttpBodyStream是HTTP请求体数据流对象，用于在自定义scheme拦截场景中读取POST、PUT等请求的请求体数据。该对象通过WebSchemeHandlerRequest的getHttpBodyStream方法获取，支持BYTES、FILE、BLOB、CHUNKED类型的数据。开发者可以通过该接口在自定义协议拦截器中读取上行数据，实现对请求体的检视或转发。注意本类中的其他接口需要在[initialize](arkts-arkweb-webview-webhttpbodystream-c.md#initialize)成功后才能调用。 |
 | [WebMessageExt](arkts-arkweb-webview-webmessageext-c.md) | WebMessageExt是[WebMessagePort](arkts-arkweb-webview-webmessageport-i.md)接口中用于接收和发送的拓展数据对象，支持多种数据类型：字符串（STRING）、数值（NUMBER）、布尔值（BOOLEAN）、二进制数据（ARRAY_BUFFER）、数组（ARRAY）和错误对象（ERROR）。该类为ArkTS侧与HTML5侧之间的跨语言消息通信提供了结构化的数据载体，通过setType/getType设置和获取数据类型，再通过对应的setter/getter方法读写具体数据。 |
-| [WebResourceHandler](arkts-arkweb-webview-webresourcehandler-c.md) | WebResourceHandler是自定义scheme拦截场景中用于向Web组件返回拦截请求结果的处理器。当WebSchemeHandler决定拦截一个请求后，开发者通过WebResourceHandler向Web组件提供自定义的响应头（didReceiveResponse）、响应体数据（didReceiveResponseBody），并通知请求完成（didFinish）或失败（didFail）。其中didFail支持重载方法（API version 2 0+）以简化错误处理流程。该接口实现了应用层对网络请求的完全自定义响应。 |
+| [WebResourceHandler](arkts-arkweb-webview-webresourcehandler-c.md) | WebResourceHandler是自定义scheme拦截场景中用于向Web组件返回拦截请求结果的处理器。当WebSchemeHandler决定拦截一个请求后，开发者通过WebResourceHandler向Web组件提供自定义的响应头（didReceiveResponse）、响应体数据（didReceiveResponseBody），并通知请求完成（didFinish）或失败（didFail）。其中didFail支持重载方法（API version 20+）以简化错误处理流程。该接口实现了应用层对网络请求的完全自定义响应。 |
 | [WebSchemeHandler](arkts-arkweb-webview-webschemehandler-c.md) | WebSchemeHandler是用于拦截指定scheme（协议）的网络请求的拦截器类，支持自定义协议处理、本地资源替换、特定请求拦截等场景。开发者通过实现onRequestStart回调来决定是否拦截某个请求，被拦截的请求可通过WebResourceHandler自定义响应内容。通过WebviewController的[setWebSchemeHandler](arkts-arkweb-webview-webviewcontroller-c.md#setwebschemehandler)方法将WebSchemeHandler实例注册到指定的scheme上，从而实现对该scheme所有请求的截获和处理。 |
 | [WebSchemeHandlerRequest](arkts-arkweb-webview-webschemehandlerrequest-c.md) | WebSchemeHandlerRequest类模块定义了通过WebSchemeHandler拦截到的资源请求的封装对象。当开发者注册自定义协议处理器（WebSchemeHandler）后，Web内核在拦截到匹配协议的请求时会创建WebSchemeHandlerRequest实例并传递给回调方法。该对象提供以下请求信息查询方法：获取请求头信息、请求URL、请求方法、来源URL、判断是否为主框架请求、是否关联用户手势、获取请求体流、资源类型以及触发该请求的Frame URL，从而据此决定是否拦截该请求并构造相应响应。 |
 | [WebSchemeHandlerResponse](arkts-arkweb-webview-webschemehandlerresponse-c.md) | WebSchemeHandlerResponse是自定义scheme拦截场景中用于构造HTTP响应数据的类。开发者通过该类创建Response对象，设置HTTP状态码、状态文本、媒体类型、字符集、自定义响应头、网络错误码以及重定向URL等属性，然后通过WebResourceHandler将自定义响应返回给Web组件。该类是自定义资源拦截的核心数据载体。 |
@@ -81,6 +81,14 @@ import { webview } from '@kit.ArkWeb';
 | [WebHttpCookie](arkts-arkweb-webview-webhttpcookie-i.md) | cookie的相关字段。 |
 | [WebMessagePort](arkts-arkweb-webview-webmessageport-i.md) | WebMessagePort是Web组件中用于应用侧（ArkTS）与HTML5侧（JavaScript）之间双向通信的消息端口接口。通过createWebMessagePorts创建一对关联的端口，将一个端口发送到HTML5侧，另一个保留在应用侧，实现跨运行时消息传递。WebMessagePort支持两种消息协议：基础协议使用WebMessage作为消息载体（postMessageEvent/onMessageEvent），扩展协议使用WebMessageExt支持更丰富的数据类型（postMessageEventExt/onMessageEventExt）。 |
 | [WebStorageOrigin](arkts-arkweb-webview-webstorageorigin-i.md) | 提供Web SQL数据库的使用信息。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md) | [onCreateNativeMediaPlayer](arkts-arkweb-webview-webviewcontroller-c.md#oncreatenativemediaplayer)方法的参数。一个回调函数，在网页需要播放媒体时被调用，用于创建一个播放器接管网页中的媒体播放。通过接管机制，应用可以使用自定义播放器实现特殊功能或优化性能。 |
+| [OnProxyConfigChangeCallback](arkts-arkweb-webview-onproxyconfigchangecallback-t.md) | 回调函数，在代理配置发生改变时被调用，回调成功表示代理设置成功。 |
+| [WebMessage](arkts-arkweb-webview-webmessage-t.md) | 用于描述[WebMessagePort](arkts-arkweb-webview-webmessageport-i.md)所支持的数据类型。 |
 
 ### 枚举
 
@@ -118,11 +126,3 @@ import { webview } from '@kit.ArkWeb';
 | [WebMessageType](arkts-arkweb-webview-webmessagetype-e.md) | [WebMessagePort](arkts-arkweb-webview-webmessageport-i.md)接口所支持的数据类型。 |
 | [WebResourceType](arkts-arkweb-webview-webresourcetype-e.md) | 资源请求的资源类型。 |
 | [WebSoftKeyboardBehaviorMode](arkts-arkweb-webview-websoftkeyboardbehaviormode-e.md) | Web软键盘自动控制模式。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md) | [onCreateNativeMediaPlayer](arkts-arkweb-webview-webviewcontroller-c.md#oncreatenativemediaplayer)方法的参数。一个回调函数，在网页需要播放媒体时被调用，用于创建一个播放器接管网页中的媒体播放。通过接管机制，应用可以使用自定义播放器实现特殊功能或优化性能。 |
-| [OnProxyConfigChangeCallback](arkts-arkweb-webview-onproxyconfigchangecallback-t.md) | 回调函数，在代理配置发生改变时被调用，回调成功表示代理设置成功。 |
-| [WebMessage](arkts-arkweb-webview-webmessage-t.md) | 用于描述[WebMessagePort](arkts-arkweb-webview-webmessageport-i.md)所支持的数据类型。 |

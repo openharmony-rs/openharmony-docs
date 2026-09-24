@@ -1,5 +1,9 @@
 # TcpState
 
+```TypeScript
+export enum TcpState
+```
+
 TCP状态。
 
 **起始版本：** 24

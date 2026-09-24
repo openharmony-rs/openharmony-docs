@@ -45,17 +45,8 @@ formHost.requestForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
-```TypeScript
-import Base from '@ohos.base';
 
-let formId: string = '12400633174999288';
-formHost.requestForm(formId).then(() => {
-  console.info('formHost requestForm success');
-}).catch((error: Base.BusinessError) => {
-  console.error(`formHost requestForm, error: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="requestform-1"></a>
 
 ## requestForm
 
@@ -91,4 +82,13 @@ function requestForm(formId: string): Promise<void>
 
 **示例**
 
-参见 [requestForm](#requestform)
+```TypeScript
+import Base from '@ohos.base';
+
+let formId: string = '12400633174999288';
+formHost.requestForm(formId).then(() => {
+  console.info('formHost requestForm success');
+}).catch((error: Base.BusinessError) => {
+  console.error(`formHost requestForm, error: ${JSON.stringify(error)}`);
+});
+```

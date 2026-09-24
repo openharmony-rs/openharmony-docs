@@ -8,6 +8,8 @@ typedef struct OH_HiDebug_ResProfilerConfig {...} OH_HiDebug_ResProfilerConfig
 
 Defines a struct for the resource collection configurations.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 24
 
 **Related module**: [HiDebug](capi-hidebug.md)

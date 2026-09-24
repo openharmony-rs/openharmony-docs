@@ -1,5 +1,9 @@
 # BatteryHealthState
 
+```TypeScript
+export enum BatteryHealthState
+```
+
 Enumerates battery health states.
 
 **Since:** 6

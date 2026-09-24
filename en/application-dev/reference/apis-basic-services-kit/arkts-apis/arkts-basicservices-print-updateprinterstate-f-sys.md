@@ -55,19 +55,8 @@ print.updatePrinterState(printerId, state, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let printerId : string = '1212';
-let state : print.PrinterState = print.PrinterState.PRINTER_CONNECTED;
-print.updatePrinterState(printerId, state).then(() => {
-    console.info('update printer state success');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to update printer state. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="updateprinterstate-1"></a>
 
 ## updatePrinterState
 
@@ -108,4 +97,15 @@ Updates the printer state. This API uses a promise to return the result.
 
 **Examples**
 
-See [updatePrinterState](#updateprinterstate)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let printerId : string = '1212';
+let state : print.PrinterState = print.PrinterState.PRINTER_CONNECTED;
+print.updatePrinterState(printerId, state).then(() => {
+    console.info('update printer state success');
+}).catch((error: BusinessError) => {
+    console.error(`Failed to update printer state. Code: ${error.code}, message: ${error.message}`);
+});
+```

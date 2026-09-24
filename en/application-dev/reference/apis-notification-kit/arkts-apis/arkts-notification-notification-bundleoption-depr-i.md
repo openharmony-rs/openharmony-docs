@@ -1,5 +1,9 @@
 # BundleOption
 
+```TypeScript
+export interface BundleOption
+```
+
 Describes the **BundleOption** information, that is, the bundle information of an application.
 
 **Since:** 7

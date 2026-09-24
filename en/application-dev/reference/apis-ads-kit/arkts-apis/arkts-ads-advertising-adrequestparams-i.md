@@ -1,5 +1,9 @@
 # AdRequestParams
 
+```TypeScript
+export interface AdRequestParams
+```
+
 Defines the ad request parameters.
 
 **Since:** 11

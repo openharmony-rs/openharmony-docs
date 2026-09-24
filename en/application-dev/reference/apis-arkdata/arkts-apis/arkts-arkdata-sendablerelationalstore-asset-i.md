@@ -1,8 +1,12 @@
 # Asset
 
+```TypeScript
+interface Asset extends lang.ISendable
+```
+
 Represent the asset (such as a document, image, or video). **Asset** inherits from [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md) and is used to implement cross-thread transfer of asset data. The asset data does not support **Datashare** APIs. Use [sendableRelationalStore.toSendableAsset](arkts-arkdata-sendablerelationalstore-tosendableasset-f.md) to create an **Asset** instance.
 
-**Inheritance/Implementation:** Asset extends lang.ISendable
+**Inheritance/Implementation:** Asset extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
 
 **Since:** 12
 

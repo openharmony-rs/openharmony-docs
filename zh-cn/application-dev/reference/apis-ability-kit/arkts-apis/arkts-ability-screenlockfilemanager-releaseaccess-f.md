@@ -30,7 +30,7 @@ function releaseAccess(): ReleaseStatus
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The specified SystemCapability name was not found. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | The specified SystemCapability name was not found. |
 | [29300002](../errorcode-screenLockFileManager.md#29300002-系统服务工作异常) | The system ability works abnormally. |
 | [29300003](../errorcode-screenLockFileManager.md#29300003-应用未开启锁屏敏感数据保护功能) | The application is not enabled the data protection under lock screen. |
 | [29300005](../errorcode-screenLockFileManager.md#29300005-未申请锁屏敏感数据访问权限) | File access was not acquired. |
@@ -46,24 +46,6 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
     // 释放访问权限
     let releaseStatus = screenLockFileManager.releaseAccess();
-    if (releaseStatus === screenLockFileManager.ReleaseStatus.RELEASE_GRANTED) {
-        hilog.info(0x0000, 'testTag', 'releaseAccess successfully.');
-    }
-} catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'releaseAccess failed: %{public}s', message);
-}
-```
-
-```TypeScript
-// 释放锁屏下媒体类型数据的访问权限
-import { screenLockFileManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-    // 释放访问权限
-    let releaseStatus = screenLockFileManager.releaseAccess(screenLockFileManager.DataType.MEDIA_DATA);
     if (releaseStatus === screenLockFileManager.ReleaseStatus.RELEASE_GRANTED) {
         hilog.info(0x0000, 'testTag', 'releaseAccess successfully.');
     }

@@ -37,7 +37,7 @@ function attachGroup(gid: string, tids: string[]): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode. |
 | [21900006](../errorcode-request.md#21900006-操作不存在的任务错误) | Task removed or not found. |

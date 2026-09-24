@@ -10,7 +10,7 @@
  >
  > - 该组件仅可在Stage模型下使用。
  >
- > - 如果DialogV2设置通用属性和通用事件，编译工具链会额
+ > - 如果DialogV2设置[通用属性](../arkts-components/arkts-arkui-common-comp.md#common)和[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)，编译工具链会额
  > 外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到DialogV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议DialogV2设置通用属性和通用事
  > 件。
 
@@ -59,64 +59,489 @@ import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, A
 
 ## 示例
 
-```TypeScript
 ### 示例1（上图下文弹出框）
 
 上图下文弹出框，包含imageRes、content等内容。
 
 
-```
 
 ```TypeScript
+import { TipsDialogV2, AdvancedDialogV2Button, UIContext } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local checked: boolean = false;
+
+  @Builder
+  dialogBuilder(): void {
+    // 构建提示弹出框，配置图片、内容、勾选状态和操作按钮
+    TipsDialogV2({
+      imageRes: $r('sys.media.ohos_ic_public_voice'),
+      content: '想要卸载这个APP吗?',
+      title: 'TipsDialogV2',
+      checkTips: '不再提示',
+      checked: this.checked,
+      primaryButton: new AdvancedDialogV2Button({
+        content: '取消',
+        action: () => {
+          console.info('Callback when the first button is clicked');
+        },
+      }),
+      secondaryButton: new AdvancedDialogV2Button({
+        content: '删除',
+        role: ButtonRole.ERROR,
+        action: () => {
+          console.info('Callback when the second button is clicked');
+        }
+      }),
+      onCheckedChange: (checked: boolean) => {
+        console.info('Callback when the checkbox is clicked');
+        this.checked = checked;
+      }
+    })
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          Button("打开TipsDialogV2弹出框")
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              let uiContext: UIContext = this.getUIContext();
+              uiContext.getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.dialogBuilder();
+                },
+              });
+            })
+        }.margin({ bottom: 300 })
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+    .backgroundImageSize({ width: '100%', height: '100%' })
+    .height('100%')
+  }
+}
+```
+
 ### 示例2（纯列表弹出框）
 
 纯列表弹出框，包含selectedIndex、radioContent等内容。
 
 
-```
 
 ```TypeScript
+import { SelectDialogV2, AdvancedDialogV2Button ,UIContext  } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local radioIndex: number = 0;
+  @Builder
+  dialogBuilder(): void {
+    // 构建选择弹出框，配置标题、选中项、底部按钮和选项列表
+    SelectDialogV2({
+      title: '文本标题',
+      selectedIndex: this.radioIndex,
+      confirm: new AdvancedDialogV2Button({
+        content: '取消',
+        action: () => {},
+      }),
+      radioContent: [
+        {
+          title: '文本文本文本文本文本',
+          action: () => {
+            this.radioIndex = 0
+          }
+        },
+        {
+          title: '文本文本文本文本',
+          action: () => {
+            this.radioIndex = 1
+          }
+        },
+        {
+          title: '文本文本文本文本',
+          action: () => {
+            this.radioIndex = 2
+          }
+        },
+      ]
+    })
+  }
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          Button("纯列表弹出框")
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              let uiContext: UIContext = this.getUIContext();
+              uiContext.getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.dialogBuilder();
+                }
+              })
+            })
+        }.margin({ bottom: 300 })
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+    .backgroundImageSize({ width: '100%', height: '100%' })
+    .height('100%')
+  }
+}
+```
+
 ### 示例3（文本与勾选弹出框）
 
 文本与勾选弹出框，包含content、checkTips等内容。
 
 
-```
 
 ```TypeScript
+import { ConfirmDialogV2, AdvancedDialogV2Button, UIContext  } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local checked: boolean = false;
+
+  @Builder
+  dialogBuilder(): void {
+    // 构建信息确认弹出框，配置标题、内容、勾选状态和操作按钮
+    ConfirmDialogV2({
+      title: '文本标题',
+      content: '文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本',
+      checked: this.checked,
+      checkTips: '禁止后不再提示',
+      primaryButton: new AdvancedDialogV2Button({
+        content: '禁止',
+        action: () => {
+          console.info('Callback when the primary button is clicked');
+        },
+      }),
+      secondaryButton: new AdvancedDialogV2Button({
+        content: '允许',
+        action: () => {
+          this.checked = false
+          console.info('Callback when the second button is clicked');
+        }
+      }),
+      onCheckedChange: (checked: boolean) => {
+        console.info('Callback when the checkbox is clicked');
+        this.checked = checked;
+      },
+    })
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          Button("打开ConfirmDialogV2弹出框")
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              let uiContext: UIContext = this.getUIContext();
+              uiContext.getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.dialogBuilder();
+                },
+                alignment: DialogAlignment.Bottom
+              });
+            })
+        }.margin({ bottom: 300 })
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+    .backgroundImageSize({ width: '100%', height: '100%' })
+    .height('100%')
+  }
+}
+```
+
 ### 示例4（纯文本弹出框）
 
 纯文本弹出框，包含primaryTitle、secondaryTitle、content等内容。
 
 
-```
 
 ```TypeScript
+import { AlertDialogV2, AdvancedDialogV2Button, UIContext } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Builder
+  dialogBuilder(): void {
+    // 构建操作确认弹出框，配置标题、内容和操作按钮
+    AlertDialogV2({
+      primaryTitle: '弹框一级标题',
+      secondaryTitle: '弹框二级标题',
+      content: '文本文本文本文本文本',
+      primaryButton: new AdvancedDialogV2Button({
+        content: '取消',
+        action: () => {
+          console.info('Callback when the primary button is clicked');
+        },
+      }),
+      secondaryButton: new AdvancedDialogV2Button({
+        content: '确认',
+        role: ButtonRole.ERROR,
+        action: () => {
+          console.info('Callback when the second button is clicked');
+        }
+      }),
+    })
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          Button("打开AlertDialogV2弹出框")
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              let uiContext: UIContext = this.getUIContext();
+              uiContext.getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.dialogBuilder();
+                }
+              });
+            })
+        }.margin({ bottom: 300 })
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+    .backgroundImageSize({ width: '100%', height: '100%' })
+    .height('100%')
+  }
+}
+```
+
 ### 示例5（进度加载类弹出框）
 
 进度加载类弹出框，包含content等内容。
 
 
-```
 
 ```TypeScript
+import { LoadingDialogV2, UIContext  } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Builder
+  dialogBuilder(): void {
+    // 构建进度加载弹出框，配置提示内容
+    LoadingDialogV2({
+      content: '文本文本文本文本文本...',
+    })
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          Button("打开LoadingDialogV2弹出框")
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              let uiContext: UIContext = this.getUIContext();
+              uiContext.getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.dialogBuilder();
+                }
+              });
+            })
+        }.margin({ bottom: 300 })
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+    .backgroundImageSize({ width: '100%', height: '100%' })
+    .height('100%')
+  }
+}
+```
+
 ### 示例6（使用WithTheme自定义主题的弹出框）
 
 使用WithTheme自定义主题的弹出框，通过WithTheme包装LoadingDialogV2实现主题风格定制。
 
 
-```
 
 ```TypeScript
+import { CustomColors, CustomTheme, LoadingDialogV2, UIContext } from '@kit.ArkUI';
+
+class CustomThemeImpl implements CustomTheme {
+  colors?: CustomColors;
+
+  constructor(colors: CustomColors) {
+    this.colors = colors;
+  }
+}
+
+class CustomThemeColors implements CustomColors {
+  fontPrimary = '#ffd0a300';
+  iconSecondary = '#ffd000cd';
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Builder
+  dialogBuilder(): void {
+    WithTheme({ theme: new CustomThemeImpl(new CustomThemeColors()) }) {
+      LoadingDialogV2({
+        content: '文本文本文本文本文本...',
+      })
+    }
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          Button("打开LoadingDialogV2弹出框")
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              let uiContext: UIContext = this.getUIContext();
+              uiContext.getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.dialogBuilder();
+                }
+              });
+            })
+        }.margin({ bottom: 300 })
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+    .backgroundImageSize({ width: '100%', height: '100%' })
+    .height('100%')
+  }
+}
+```
+
 ### 示例7（自定义内容弹出框）
 
 支持自定义内容弹出框，包含contentBuilder、buttons等内容。
 
 
-```
 
 ```TypeScript
+import { CustomContentDialogV2, AdvancedDialogV2Button, UIContext } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Builder
+  dialogBuilder(): void {
+    // 构建自定义内容弹出框，配置标题、内容构建器和操作区按钮
+    CustomContentDialogV2({
+      primaryTitle: '标题',
+      secondaryTitle: '辅助文本',
+      contentBuilder: () => {
+        this.buildContent();
+      },
+      buttons: [
+        new AdvancedDialogV2Button({
+          content: '按钮1', buttonStyle: ButtonStyleMode.TEXTUAL,
+          action: () => {
+            console.info('Callback when the button is clicked');
+          }
+        }),
+        new AdvancedDialogV2Button({
+          content: '按钮2', buttonStyle: ButtonStyleMode.TEXTUAL, role: ButtonRole.ERROR,
+        })
+      ],
+    })
+  }
+
+  build() {
+    Column() {
+      Button("打开CustomContentDialogV2弹出框")
+        .onClick(() => {
+            let uiContext: UIContext = this.getUIContext();
+            uiContext.getPromptAction().openCustomDialog({
+            builder: () => {
+              this.dialogBuilder();
+            }
+          })
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+
+  @Builder
+  buildContent(): void {
+    Column() {
+      Text('内容区')
+    }
+  }
+}
+```
+
 ### 示例8（跟手弹出框）
 
 跟手弹出框（警告弹出框为例），包含visible、popover、targetBuilder等内容。
+
+```TypeScript
+import { AlertDialogV2, PopoverDialogV2, PopoverDialogV2Options, AdvancedDialogV2Button} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local isShow: boolean = false;
+  @Local popoverOptions: PopoverDialogV2Options = {
+    builder: () => {
+      this.dialogBuilder();
+    }
+  }
+
+  @Builder dialogBuilder() {
+    AlertDialogV2({
+      content: '跟手弹出框',
+      primaryButton: new AdvancedDialogV2Button({
+        content: '取消',
+        action: () => {
+          this.isShow = false;
+        },
+      }),
+      secondaryButton: new AdvancedDialogV2Button({
+        content: '确认',
+        action: () => {
+          this.isShow = false;
+        },
+      }),
+    });
+  }
+
+  @Builder buttonBuilder() {
+    Button('跟手弹出框目标组件').onClick(() => {
+      this.isShow = true;
+    });
+  }
+
+  build() {
+    Column() {
+      // 构建跟手弹出框，配置显示状态、弹出选项和目标组件
+      PopoverDialogV2({
+        visible: this.isShow!!,
+        popover: this.popoverOptions,
+        targetBuilder: () => {
+          this.buttonBuilder();
+        },
+      })
+    }
+  }
+}
 ```

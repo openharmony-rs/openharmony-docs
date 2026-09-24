@@ -1,5 +1,9 @@
 # Binding
 
+```TypeScript
+export declare class Binding<T>
+```
+
 Represents the generic class for read-only data binding, which can bind data of any type.
 
 **Since:** 20

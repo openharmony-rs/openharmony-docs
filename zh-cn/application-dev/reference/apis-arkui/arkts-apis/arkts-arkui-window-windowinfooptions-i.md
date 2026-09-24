@@ -1,5 +1,9 @@
 # WindowInfoOptions
 
+```TypeScript
+interface WindowInfoOptions
+```
+
 窗口布局信息过滤选项。
 
 **起始版本：** 26.0.0

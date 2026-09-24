@@ -1,5 +1,9 @@
 # GestureShortcut
 
+```TypeScript
+declare enum GestureShortcut
+```
+
 Define the smart gesture shortcut priority enumeration.
 
 **Since:** 26.0.0

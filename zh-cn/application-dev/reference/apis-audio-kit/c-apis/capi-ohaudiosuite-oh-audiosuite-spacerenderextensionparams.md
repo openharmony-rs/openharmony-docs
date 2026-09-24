@@ -8,6 +8,8 @@ typedef struct OH_AudioSuite_SpaceRenderExtensionParams {...} OH_AudioSuite_Spac
 
 定义空间渲染效果节点扩展模式配置参数。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 23
 
 **相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)

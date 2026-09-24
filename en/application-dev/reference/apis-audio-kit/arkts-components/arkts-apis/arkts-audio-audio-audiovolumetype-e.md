@@ -1,5 +1,9 @@
 # AudioVolumeType
 
+```TypeScript
+enum AudioVolumeType
+```
+
 Enumerates the audio volume types.
 
 **Since:** 7

@@ -37,14 +37,50 @@ Obtains a **Preferences** instance. This API uses an asynchronous callback to re
 
 **Examples**
 
-```TypeScript
 FA model:
-```
 
 ```TypeScript
-Stage model:
+import { featureAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let context = featureAbility.getContext();
+let dataPreferences: preferences.Preferences | null = null;
+
+preferences.getPreferences(context, 'myStore', (err: BusinessError, val: preferences.Preferences) => {
+  if (err) {
+    console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
+    return;
+  }
+  dataPreferences = val;
+  console.info("Succeeded in getting preferences.");
+})
 ```
 
+Stage model:
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+let dataPreferences: preferences.Preferences | null = null;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    preferences.getPreferences(this.context, 'myStore', (err: BusinessError, val: preferences.Preferences) => {
+      if (err) {
+        console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
+        return;
+      }
+      dataPreferences = val;
+      console.info("Succeeded in getting preferences.");
+    })
+  }
+}
+```
+
+
+<a id="getpreferences-1"></a>
 
 ## getPreferences
 
@@ -80,8 +116,53 @@ Obtains a **Preferences** instance. This API uses an asynchronous callback to re
 
 **Examples**
 
-See [getPreferences](#getpreferences)
+FA model:
 
+```TypeScript
+// Obtain the context.
+import { featureAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let context = featureAbility.getContext();
+let dataPreferences: preferences.Preferences | null = null;
+
+let options: preferences.Options = { name: 'myStore' };
+preferences.getPreferences(context, options, (err: BusinessError, val: preferences.Preferences) => {
+  if (err) {
+    console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
+    return;
+  }
+  dataPreferences = val;
+  console.info("Succeeded in getting preferences.");
+})
+```
+
+Stage model:
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+let dataPreferences: preferences.Preferences | null = null;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let options: preferences.Options = { name: 'myStore' };
+    preferences.getPreferences(this.context, options, (err: BusinessError, val: preferences.Preferences) => {
+      if (err) {
+        console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
+        return;
+      }
+      dataPreferences = val;
+      console.info("Succeeded in getting preferences.");
+    })
+  }
+}
+```
+
+
+<a id="getpreferences-2"></a>
 
 ## getPreferences
 
@@ -119,8 +200,49 @@ Obtains a **Preferences** instance. This API uses a promise to return the result
 
 **Examples**
 
-See [getPreferences](#getpreferences)
+FA model:
 
+```TypeScript
+// Obtain the context.
+import { featureAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let context = featureAbility.getContext();
+
+let dataPreferences: preferences.Preferences | null = null;
+let sp = preferences.getPreferences(context, 'myStore');
+sp.then((object: preferences.Preferences) => {
+  dataPreferences = object;
+  console.info("Succeeded in getting preferences.");
+}).catch((err: BusinessError) => {
+  console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
+})
+```
+
+Stage model:
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+let dataPreferences: preferences.Preferences | null = null;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let sp = preferences.getPreferences(this.context, 'myStore');
+    sp.then((object: preferences.Preferences) => {
+      dataPreferences = object;
+      console.info("Succeeded in getting preferences.");
+    }).catch((err: BusinessError) => {
+      console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
+    })
+  }
+}
+```
+
+
+<a id="getpreferences-3"></a>
 
 ## getPreferences
 
@@ -161,4 +283,45 @@ Obtains a **Preferences** instance. This API uses a promise to return the result
 
 **Examples**
 
-See [getPreferences](#getpreferences)
+FA model:
+
+```TypeScript
+// Obtain the context.
+import { featureAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let context = featureAbility.getContext();
+
+let dataPreferences: preferences.Preferences | null = null;
+let options: preferences.Options = { name: 'myStore' };
+let sp = preferences.getPreferences(context, options);
+sp.then((object: preferences.Preferences) => {
+  dataPreferences = object;
+  console.info("Succeeded in getting preferences.");
+}).catch((err: BusinessError) => {
+  console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
+})
+```
+
+Stage model:
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+let dataPreferences: preferences.Preferences | null = null;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let options: preferences.Options = { name: 'myStore' };
+    let sp = preferences.getPreferences(this.context, options);
+    sp.then((object: preferences.Preferences) => {
+      dataPreferences = object;
+      console.info("Succeeded in getting preferences.");
+    }).catch((err: BusinessError) => {
+      console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
+    })
+  }
+}
+```

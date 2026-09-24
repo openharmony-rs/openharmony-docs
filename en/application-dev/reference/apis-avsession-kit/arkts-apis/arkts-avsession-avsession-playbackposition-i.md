@@ -1,5 +1,9 @@
 # PlaybackPosition
 
+```TypeScript
+interface PlaybackPosition
+```
+
 Playback position definition
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # DomainAccountAuthOptions（系统接口）
 
+```TypeScript
+interface DomainAccountAuthOptions
+```
+
 表示域账号认证的选项。
 
 **起始版本：** 24

@@ -31,8 +31,8 @@ function getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCa
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
@@ -59,68 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = 'bundleName';
-
-try {
-  appManager.getRunningProcessInfoByBundleName(bundleName).then((data) => {
-    console.info('getRunningProcessInfoByBundleName success.');
-  }).catch((err: BusinessError) => {
-    console.error(`getRunningProcessInfoByBundleName fail, err: ${JSON.stringify(err)}`);
-  });
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
-}
-```
-
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'bundleName';
-let userId = 0;
-function getRunningProcessInfoByBundleNameCallback(err: BusinessError, data: Array<appManager.ProcessInformation>) {
-  if (err) {
-    console.error(`getRunningProcessInfoByBundleNameCallback fail, err: ${JSON.stringify(err)}`);
-  } else {
-    console.info('getRunningProcessInfoByBundleNameCallback success.');
-  }
-}
-
-try {
-  appManager.getRunningProcessInfoByBundleName(bundleName, userId, getRunningProcessInfoByBundleNameCallback);
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
-}
-```
-
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'bundleName';
-let userId = 0;
-
-try {
-  appManager.getRunningProcessInfoByBundleName(bundleName, userId).then((data) => {
-    console.info('getRunningProcessInfoByBundleName success.');
-  }).catch((err: BusinessError) => {
-    console.error(`getRunningProcessInfoByBundleName fail, err: ${JSON.stringify(err)}`);
-  });
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
-}
-```
-
+<a id="getrunningprocessinfobybundlename-1"></a>
 
 ## getRunningProcessInfoByBundleName
 
@@ -148,14 +88,37 @@ function getRunningProcessInfoByBundleName(bundleName: string, userId: number, c
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
 
-参见 [getRunningProcessInfoByBundleName](#getrunningprocessinfobybundlename)
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let bundleName = 'bundleName';
+let userId = 0;
+function getRunningProcessInfoByBundleNameCallback(err: BusinessError, data: Array<appManager.ProcessInformation>) {
+  if (err) {
+    console.error(`getRunningProcessInfoByBundleNameCallback fail, err: ${JSON.stringify(err)}`);
+  } else {
+    console.info('getRunningProcessInfoByBundleNameCallback success.');
+  }
+}
+
+try {
+  appManager.getRunningProcessInfoByBundleName(bundleName, userId, getRunningProcessInfoByBundleNameCallback);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
+
+<a id="getrunningprocessinfobybundlename-2"></a>
 
 ## getRunningProcessInfoByBundleName
 
@@ -187,14 +150,33 @@ function getRunningProcessInfoByBundleName(bundleName: string): Promise<Array<Pr
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
 
-参见 [getRunningProcessInfoByBundleName](#getrunningprocessinfobybundlename)
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let bundleName = 'bundleName';
+
+try {
+  appManager.getRunningProcessInfoByBundleName(bundleName).then((data) => {
+    console.info('getRunningProcessInfoByBundleName success.');
+  }).catch((err: BusinessError) => {
+    console.error(`getRunningProcessInfoByBundleName fail, err: ${JSON.stringify(err)}`);
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
+
+<a id="getrunningprocessinfobybundlename-3"></a>
 
 ## getRunningProcessInfoByBundleName
 
@@ -227,10 +209,28 @@ function getRunningProcessInfoByBundleName(bundleName: string, userId: number): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
 
-参见 [getRunningProcessInfoByBundleName](#getrunningprocessinfobybundlename)
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'bundleName';
+let userId = 0;
+
+try {
+  appManager.getRunningProcessInfoByBundleName(bundleName, userId).then((data) => {
+    console.info('getRunningProcessInfoByBundleName success.');
+  }).catch((err: BusinessError) => {
+    console.error(`getRunningProcessInfoByBundleName fail, err: ${JSON.stringify(err)}`);
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```

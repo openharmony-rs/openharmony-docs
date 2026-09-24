@@ -1,5 +1,9 @@
 # SessionBackup (System API)
 
+```TypeScript
+class SessionBackup
+```
+
 Control class for backup procedure.
 
 **Since:** 10
@@ -102,68 +106,6 @@ let generalCallbacks: backup.GeneralCallbacks = {
   }
 };
 let sessionBackup = new backup.SessionBackup(generalCallbacks); // Create a backup process.
-try {
-  let backupApps: Array<string> = [
-    "com.example.hiworld",
-  ];
-  sessionBackup.appendBundles(backupApps, (err: BusinessError) => {
-    if (err) {
-      console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('appendBundles success');
-  });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo, backup } from '@kit.CoreFileKit';
-
-let generalCallbacks: backup.GeneralCallbacks = {
-  onFileReady: (err: BusinessError, file: backup.File) => {
-    if (err) {
-      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onFileReady success');
-    fileIo.closeSync(file.fd);
-  },
-  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleBegin success');
-  },
-  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleEnd success');
-  },
-  onAllBundlesEnd: (err: BusinessError) => {
-    if (err) {
-      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onAllBundlesEnd success');
-  },
-  onBackupServiceDied: () => {
-    console.info('service died');
-  },
-  onResultReport: (bundleName: string, result: string) => {
-    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-  },
-  onProcess: (bundleName: string, process: string) => {
-    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-  }
-};
-let sessionBackup = new backup.SessionBackup(generalCallbacks); // Create a backup process.
 async function appendBundles() {
   try {
     let backupApps: Array<string> = [
@@ -221,6 +163,8 @@ async function appendBundles() {
   }
 }
 ```
+
+<a id="appendbundles-1"></a>
 
 ## appendBundles
 
@@ -318,109 +262,6 @@ try {
 } catch (error) {
   let err: BusinessError = error as BusinessError;
   console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo, backup } from '@kit.CoreFileKit';
-
-let generalCallbacks: backup.GeneralCallbacks = {
-  onFileReady: (err: BusinessError, file: backup.File) => {
-    if (err) {
-      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onFileReady success');
-    fileIo.closeSync(file.fd);
-  },
-  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleBegin success');
-  },
-  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleEnd success');
-  },
-  onAllBundlesEnd: (err: BusinessError) => {
-    if (err) {
-      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onAllBundlesEnd success');
-  },
-  onBackupServiceDied: () => {
-    console.info('service died');
-  },
-  onResultReport: (bundleName: string, result: string) => {
-    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-  },
-  onProcess: (bundleName: string, process: string) => {
-    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-  }
-};
-let sessionBackup = new backup.SessionBackup(generalCallbacks); // Create a backup process.
-async function appendBundles() {
-  try {
-    let backupApps: Array<string> = [
-      "com.example.hiworld",
-      "com.example.myApp"
-    ];
-    await sessionBackup.appendBundles(backupApps);
-    console.info('appendBundles success');
-    // Application information is carried. In the following, infos, details, and type are fixed parameters.
-    let infos: Array<string> = [
-      `
-      {
-      "infos": [
-          {
-              "details": [
-                  {
-                      "detail": [
-                          {
-                              "key1": "value1",
-                              "key2": "value2"
-                          }
-                      ]
-                  }
-              ],
-              "type": "unicast",
-              "bundleName": "com.example.hiworld"
-          }
-      ]
-  },
-  {
-      "infos": [
-          {
-              "details": [
-                  {
-                      "detail": [
-                          {
-                              "key1": "value1",
-                              "key2": "value2"
-                          }
-                      ]
-                  }
-              ],
-              "type": "unicast",
-              "bundleName": "com.example.myApp"
-          }
-      ]
-  }
-    `
-  ]
-    await sessionBackup.appendBundles(backupApps, infos);
-    console.info('appendBundles success');
-  } catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-  }
 }
 ```
 
@@ -812,8 +653,24 @@ try {
 }
 ```
 
-```TypeScript
 Example of a JSON string returned asynchronously:
+
+```TypeScript
+{
+ "scanned": [ // Scanned application. The result will not be returned in the next callback.
+     {
+         "name": "com.example.hiworld", // Application name.
+         "dataSize": 1006060, // Data size.
+         "incDataSize":-1 // Incremental data size. The value is -1 for full scan and inaccurate scan, and is the actual incremental data size for incremental accurate scan.
+     },
+     {
+         "name": "com.example.myAPP",
+         "dataSize": 5000027,
+         "incDataSize": -1
+     }
+ ],
+ "scanning": "com.example.smartAPP" // Application that is being scanned. This field is empty when the last result is returned.
+}
 ```
 
 ## getCompatibilityInfo
@@ -1058,8 +915,23 @@ async function getLocalCapabilitiesTest() {
 }
 ```
 
-```TypeScript
 The capability file can be obtained by using fileIo.stat of the [@ohos.file.fs](arkts-corefile-fileio-n.md) module. The following is an example of the capability file.
+
+```TypeScript
+{
+ "backupVersion" : "16.0",
+ "bundleInfos" :[{
+   "allToBackup" : true,
+   "extensionName" : "BackupExtensionAbility",
+   "name" : "com.example.hiworld",
+   "needToInstall" : false,
+   "spaceOccupied" : 0,
+   "versionCode" : 1000000,
+   "versionName" : "1.0.0"
+   }],
+ "deviceType" : "default",
+ "systemFullName" : "OpenHarmony-4.0.0.0"
+}
 ```
 
 ## release

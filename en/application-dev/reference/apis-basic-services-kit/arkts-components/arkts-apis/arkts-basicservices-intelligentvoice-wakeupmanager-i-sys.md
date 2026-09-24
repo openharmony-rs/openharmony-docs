@@ -1,5 +1,9 @@
 # WakeupManager (System API)
 
+```TypeScript
+interface WakeupManager
+```
+
 Implements wakeup management. @typedef WakeupManager
 
 **Since:** 12

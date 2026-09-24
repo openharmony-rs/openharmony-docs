@@ -40,9 +40,9 @@ function move(logType: string, logName: string, dest: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [21300001](../errorcode-loglibrary-sys.md#21300001-指定文件不存在) | Source file does not exists |
 
 **示例**
@@ -70,25 +70,8 @@ try {
 }
 ```
 
-```TypeScript
-import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
-try {
-  let logFiles = logLibrary.list('FAULTLOG');
-  if (logFiles.length > 0) {
-    logLibrary.move('FAULTLOG', logFiles[0].name, 'dir1/dir2', (error, moveResult) => {
-      if (error) {
-        console.error(`Failed to move log file. Code: ${error.code}, message: ${error.message}`);
-      } else {
-        // move success.
-      }
-    });
-  }
-} catch (error) {
-    console.error(`Failed to call logLibrary API. Code: ${error?.code}, message: ${error?.message}`);
-}
-```
-
+<a id="move-1"></a>
 
 ## move
 
@@ -119,11 +102,28 @@ function move(logType: string, logName: string, dest: string, callback: AsyncCal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [21300001](../errorcode-loglibrary-sys.md#21300001-指定文件不存在) | Source file does not exists |
 
 **示例**
 
-参见 [move](#move)
+```TypeScript
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+
+try {
+  let logFiles = logLibrary.list('FAULTLOG');
+  if (logFiles.length > 0) {
+    logLibrary.move('FAULTLOG', logFiles[0].name, 'dir1/dir2', (error, moveResult) => {
+      if (error) {
+        console.error(`Failed to move log file. Code: ${error.code}, message: ${error.message}`);
+      } else {
+        // move success.
+      }
+    });
+  }
+} catch (error) {
+    console.error(`Failed to call logLibrary API. Code: ${error?.code}, message: ${error?.message}`);
+}
+```

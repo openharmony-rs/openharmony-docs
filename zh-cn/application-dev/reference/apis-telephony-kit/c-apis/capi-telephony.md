@@ -4,6 +4,8 @@
 
 为电话蜂窝数据定义C接口。
 
+**系统能力：** SystemCapability.Telephony.CellularData
+
 **起始版本：** 13
 
 ## 文件汇总

@@ -1,5 +1,9 @@
 # BundleStatsInfo
 
+```TypeScript
+interface BundleStatsInfo
+```
+
 应用包统计信息。
 
 **起始版本：** 26.0.0

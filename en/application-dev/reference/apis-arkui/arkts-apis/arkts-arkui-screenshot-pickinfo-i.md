@@ -1,5 +1,9 @@
 # PickInfo
 
+```TypeScript
+interface PickInfo
+```
+
 Describes the screenshot options.
 
 **Since:** 12

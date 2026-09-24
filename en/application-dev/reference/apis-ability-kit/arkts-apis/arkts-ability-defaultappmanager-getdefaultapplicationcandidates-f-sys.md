@@ -14,7 +14,7 @@ function getDefaultApplicationCandidates(type: ApplicationType, abilityFlags: nu
 
 Obtains the list of applications that can be set as the default application of the specified type. Currently, only the **BROWSER** type is supported. Applications that have not been granted the ohos.permission.DEFAULT_WEB_BROWSER permission are excluded from the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 

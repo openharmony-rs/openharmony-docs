@@ -8,6 +8,8 @@ typedef struct OH_NativeColorSpaceManager OH_NativeColorSpaceManager
 
 Provides the declaration of an **OH_NativeColorSpaceManager** struct.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Related module**: [Drawing](capi-drawing.md)

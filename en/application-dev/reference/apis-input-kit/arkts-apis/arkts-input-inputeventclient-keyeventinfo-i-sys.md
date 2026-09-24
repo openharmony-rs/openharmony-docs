@@ -1,5 +1,9 @@
 # KeyEventInfo (System API)
 
+```TypeScript
+interface KeyEventInfo
+```
+
 Defines the key event information injected by the user.
 
 **Since:** 23

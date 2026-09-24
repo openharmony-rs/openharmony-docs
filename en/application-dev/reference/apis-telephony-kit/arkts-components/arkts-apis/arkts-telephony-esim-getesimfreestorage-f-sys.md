@@ -18,6 +18,8 @@ This API is used to obtain the remaining storage space of the eUICC hardware. Th
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_ESIM_STATE
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.

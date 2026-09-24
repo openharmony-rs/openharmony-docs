@@ -1,5 +1,9 @@
 # Content
 
+```TypeScript
+export abstract class Content
+```
+
 Defines the base class for ComponentContent and [NodeContent](arkts-arkui-nodecontent-c.md).
 
 **Since:** 12

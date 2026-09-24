@@ -1,5 +1,9 @@
 # AudioEffectManager (System API)
 
+```TypeScript
+interface AudioEffectManager
+```
+
 Implements audio effect management. @typedef AudioEffectManager
 
 **Since:** 18

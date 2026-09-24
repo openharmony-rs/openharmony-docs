@@ -1,5 +1,9 @@
 # DialogOptions
 
+```TypeScript
+interface DialogOptions extends BaseDialogOptions
+```
+
 自定义弹窗的内容，继承自[BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md)，用于配置自定义弹窗的显示参数和行为。
 
 **继承/实现关系：** DialogOptions extends [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md)
@@ -22,7 +26,7 @@ backgroundBlurStyle?: BlurStyle
 
 弹窗背板模糊材质。<br>默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT_ULTRA_THICK。<br>**说明：** <br>设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。
 
-**类型：** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**类型：** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **默认值：** BlurStyle.COMPONENT_ULTRA_THICK
 

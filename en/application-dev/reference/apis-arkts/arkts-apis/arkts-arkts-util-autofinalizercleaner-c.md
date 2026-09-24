@@ -1,5 +1,9 @@
 # AutoFinalizerCleaner
 
+```TypeScript
+class AutoFinalizerCleaner<T>
+```
+
 A cleaner for releasing resources managed by developers through a developer-defined callback.
 
 **Since:** 22

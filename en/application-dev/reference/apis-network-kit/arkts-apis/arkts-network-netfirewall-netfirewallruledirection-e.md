@@ -1,5 +1,9 @@
 # NetFirewallRuleDirection
 
+```TypeScript
+enum NetFirewallRuleDirection
+```
+
 Enumerates the firewall rule directions, including inbound and outbound.
 
 **Since:** 15

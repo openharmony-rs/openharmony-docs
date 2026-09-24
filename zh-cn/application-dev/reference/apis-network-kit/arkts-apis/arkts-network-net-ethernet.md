@@ -27,18 +27,18 @@ import { ethernet } from '@kit.NetworkKit';
 | --- | --- |
 | [disableEthernetInterface](arkts-network-ethernet-disableethernetinterface-f-sys.md) | 禁用以太网接口。 |
 | [enableEthernetInterface](arkts-network-ethernet-enableethernetinterface-f-sys.md) | 启用以太网接口。 |
-| [getAllActiveIfaces](arkts-network-ethernet-getallactiveifaces-f-sys.md) | 获取活动的网络接口，使用callback异步回调。 |
-| [getAllActiveIfaces](arkts-network-ethernet-getallactiveifaces-f-sys.md) | 获取活动的网络接口，使用Promise异步回调。 |
+| [getAllActiveIfaces](arkts-network-ethernet-getallactiveifaces-f-sys.md#getallactiveifaces) | 获取活动的网络接口，使用callback异步回调。 |
+| [getAllActiveIfaces](arkts-network-ethernet-getallactiveifaces-f-sys.md#getallactiveifaces-1) | 获取活动的网络接口，使用Promise异步回调。 |
 | [getEthernetDeviceInfos](arkts-network-ethernet-getethernetdeviceinfos-f-sys.md) | 获取本机以太网卡的设备信息（如供应商名称、产品名称、最大连接速率等）使用Promise异步回调。 |
-| [getIfaceConfig](arkts-network-ethernet-getifaceconfig-f-sys.md) | 获取指定网络接口信息，使用callback异步回调。 |
-| [getIfaceConfig](arkts-network-ethernet-getifaceconfig-f-sys.md) | 获取指定网络接口信息，使用Promise异步回调。 |
+| [getIfaceConfig](arkts-network-ethernet-getifaceconfig-f-sys.md#getifaceconfig) | 获取指定网络接口信息，使用callback异步回调。 |
+| [getIfaceConfig](arkts-network-ethernet-getifaceconfig-f-sys.md#getifaceconfig-1) | 获取指定网络接口信息，使用Promise异步回调。 |
 | [isEthernetEnabled](arkts-network-ethernet-isethernetenabled-f-sys.md) | 检查全局以太网开关是否启用。 |
-| [isIfaceActive](arkts-network-ethernet-isifaceactive-f-sys.md) | 判断接口是否已激活，使用callback异步回调。 |
-| [isIfaceActive](arkts-network-ethernet-isifaceactive-f-sys.md) | 判断接口是否已激活，使用Promise异步回调。 |
+| [isIfaceActive](arkts-network-ethernet-isifaceactive-f-sys.md#isifaceactive) | 判断接口是否已激活，使用callback异步回调。 |
+| [isIfaceActive](arkts-network-ethernet-isifaceactive-f-sys.md#isifaceactive-1) | 判断接口是否已激活，使用Promise异步回调。 |
 | [off](arkts-network-ethernet-off-f-sys.md#offinterfacestatechange) | 注销网卡热插拔事件，使用callback异步回调。 |
 | [on](arkts-network-ethernet-on-f-sys.md#oninterfacestatechange) | 注册网卡热插拔事件，使用callback异步回调。 |
-| [setIfaceConfig](arkts-network-ethernet-setifaceconfig-f-sys.md) | 设置网络接口配置信息，使用callback异步回调。 |
-| [setIfaceConfig](arkts-network-ethernet-setifaceconfig-f-sys.md) | 设置网络接口配置信息，使用Promise异步回调。 |
+| [setIfaceConfig](arkts-network-ethernet-setifaceconfig-f-sys.md#setifaceconfig) | 设置网络接口配置信息，使用callback异步回调。 |
+| [setIfaceConfig](arkts-network-ethernet-setifaceconfig-f-sys.md#setifaceconfig-1) | 设置网络接口配置信息，使用Promise异步回调。 |
 <!--DelEnd-->
 
 ### 接口
@@ -57,6 +57,12 @@ import { ethernet } from '@kit.NetworkKit';
 | [InterfaceStateInfo](arkts-network-ethernet-interfacestateinfo-i-sys.md) | 监听以太网卡状态变化。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [HttpProxy](arkts-network-ethernet-httpproxy-t.md) | 网络代理配置信息。 |
+
 <!--Del-->
 ### 枚举（系统接口）
 
@@ -65,9 +71,3 @@ import { ethernet } from '@kit.NetworkKit';
 | [DeviceConnectionType](arkts-network-ethernet-deviceconnectiontype-e-sys.md) | 以太网设备连接模式。 |
 | [IPSetMode](arkts-network-ethernet-ipsetmode-e-sys.md) | 以太网连接模式。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [HttpProxy](arkts-network-ethernet-httpproxy-t.md) | 网络代理配置信息。 |

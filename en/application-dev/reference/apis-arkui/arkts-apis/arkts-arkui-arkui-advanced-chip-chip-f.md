@@ -12,7 +12,7 @@ import { Chip, ChipOptions, ChipSize, IconCommonOptions, LabelMarginOptions, Lab
 export declare function Chip(options: ChipOptions): void
 ```
 
-Build function of Chip.
+Creates a **Chip** component.
 
 **Since:** 11
 
@@ -28,4 +28,4 @@ Build function of Chip.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ChipOptions](arkts-arkui-arkui-advanced-chip-chipoptions-i.md) | Yes | Parameters of the chip. |
+| options | [ChipOptions](arkts-arkui-arkui-advanced-chip-chipoptions-i.md) | Yes | Parameters of the **Chip** component, including size, enabled state, activated state, prefix/suffix icons, text content, background color, rounded corners, accessibility attributes, etc., used to customize the style and behavior of the **Chip** component. |

@@ -1,5 +1,9 @@
 # CooperateMsg (System API)
 
+```TypeScript
+enum CooperateMsg
+```
+
 Represents a screen hopping message notification.
 
 **Since:** 10

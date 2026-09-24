@@ -27,7 +27,7 @@ Subscribes to data receive events. This API uses an asynchronous callback to ret
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'receiveData' | Yes | Event type. The value **receiveData** indicates the data receiving event. |
-| channelId | number | Yes | Channel ID obtained when opening a proxy channel. The value range is 1 to 2147483647. Using an invalid or closed channelId returns error code 32390004. If the value is out of range, error code 3239 0006 is returned. The channelId takes effect only when the proxy channel is available, and becomes unavailable after the channel is closed or disconnected. |
+| channelId | number | Yes | Channel ID obtained when opening a proxy channel. The value range is 1 to 2147483647. Using an invalid or closed channelId returns error code 32390004. If the value is out of range, error code 32390006 is returned. The channelId takes effect only when the proxy channel is available, and becomes unavailable after the channel is closed or disconnected. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DataInfo](arkts-distributedservice-proxychannelmanager-datainfo-i.md)&gt; | Yes | Callback invoked to return the data received through the proxy channel. The callback parameter is a [DataInfo](arkts-distributedservice-proxychannelmanager-datainfo-i.md) object, which contains channelId (channel ID) and data (received byte data). Data can be received only after a proxy channel is opened by calling openProxyChannel. If registered multiple times, only the last registration takes effect. |
 
 **Error codes:**
@@ -39,6 +39,35 @@ Subscribes to data receive events. This API uses an asynchronous callback to ret
 | [32390006](../errorcode-proxyChannelManager.md#32390006-parameter-verification-error) | Parameter error. |
 | [32390100](../errorcode-proxyChannelManager.md#32390100-internal-error) | Internal error. |
 | [32390101](../errorcode-proxyChannelManager.md#32390101-call-restricted) | Call is restricted. |
+
+**Examples**
+
+```TypeScript
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button('Test')
+        .onClick(() => {
+          const receiveDataCallback = (dataInfo: proxyChannelManager.DataInfo) => {
+          };
+          try {
+            proxyChannelManager.on('receiveData', channelId, receiveDataCallback); // Obtain channelId from the promise returned by openProxyChannel.
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`Failed to register receiveData callback. Code: ${error.code}, message: ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 
 ## on('channelStateChange')
@@ -74,3 +103,32 @@ Subscribes to channel state events. This API uses an asynchronous callback to re
 | [32390006](../errorcode-proxyChannelManager.md#32390006-parameter-verification-error) | Parameter error. |
 | [32390100](../errorcode-proxyChannelManager.md#32390100-internal-error) | Internal error. |
 | [32390101](../errorcode-proxyChannelManager.md#32390101-call-restricted) | Call is restricted. |
+
+**Examples**
+
+```TypeScript
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button('Test')
+        .onClick(() => {
+          const channelStateChangeCallback = (channelStateInfo: proxyChannelManager.ChannelStateInfo) => {
+          };
+          try {
+            proxyChannelManager.on('channelStateChange', channelId, channelStateChangeCallback); // Obtain channelId from the promise returned by openProxyChannel.
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`Failed to register channelStateChange callback. Code: ${error.code}, message: ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```

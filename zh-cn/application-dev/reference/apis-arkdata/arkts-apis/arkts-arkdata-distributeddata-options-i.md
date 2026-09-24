@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+interface Options
+```
+
 用于提供创建数据库的配置信息。
 
 **起始版本：** 7

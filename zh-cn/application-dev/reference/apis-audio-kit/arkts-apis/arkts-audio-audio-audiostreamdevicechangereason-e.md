@@ -1,5 +1,9 @@
 # AudioStreamDeviceChangeReason
 
+```TypeScript
+enum AudioStreamDeviceChangeReason
+```
+
 表示流设备变更原因的枚举。
 
 **起始版本：** 11

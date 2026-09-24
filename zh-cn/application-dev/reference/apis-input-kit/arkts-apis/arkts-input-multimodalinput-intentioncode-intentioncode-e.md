@@ -1,5 +1,9 @@
 # IntentionCode
 
+```TypeScript
+export declare enum IntentionCode
+```
+
 意图事件枚举值。
 
 **起始版本：** 10

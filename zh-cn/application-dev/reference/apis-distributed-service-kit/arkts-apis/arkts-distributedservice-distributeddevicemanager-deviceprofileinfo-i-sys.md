@@ -1,5 +1,9 @@
 # DeviceProfileInfo（系统接口）
 
+```TypeScript
+interface DeviceProfileInfo
+```
+
 设备信息。
 
 **起始版本：** 15

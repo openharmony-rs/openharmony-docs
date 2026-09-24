@@ -1,5 +1,9 @@
 # WebSchemeHandlerResponse
 
+```TypeScript
+class WebSchemeHandlerResponse
+```
+
 WebSchemeHandlerResponse is a class used to construct HTTP response data in custom scheme interception scenarios. Developers use this class to create a Response object, set properties such as HTTP status code, status text, MIME type, character set, custom response headers, network error code, and redirection URL, and then return the custom response to the Web component through WebResourceHandler. This class is the core data carrier for custom resource interception.
 
 WebSchemeHandlerResponse is used together with WebResourceHandler: the developer constructs a WebSchemeHandlerResponse object and fills in the response properties, and then sends the response header to the intercepted request through the didReceiveResponse method of WebResourceHandler.
@@ -28,6 +32,48 @@ Constructs a **Response** object.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('response').onClick(() => {
+        let response = new webview.WebSchemeHandlerResponse();
+        try {
+          response.setUrl("http://www.example.com")
+          response.setStatus(200)
+          response.setStatusText("OK")
+          response.setMimeType("text/html")
+          response.setEncoding("utf-8")
+          response.setHeaderByName("header1", "value1", false)
+          response.setNetErrorCode(WebNetErrorList.NET_OK)
+          console.info("[schemeHandler] getUrl:" + response.getUrl())
+          console.info("[schemeHandler] getStatus:" + response.getStatus())
+          console.info("[schemeHandler] getStatusText:" + response.getStatusText())
+          console.info("[schemeHandler] getMimeType:" + response.getMimeType())
+          console.info("[schemeHandler] getEncoding:" + response.getEncoding())
+          console.info("[schemeHandler] getHeaderByName:" + response.getHeaderByName("header1"))
+          console.info("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
+
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getCustomErrorCode
 
 ```TypeScript
@@ -36,7 +82,7 @@ getCustomErrorCode(): number
 
 Get the custom error code of the Web response.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -68,6 +114,10 @@ Obtains the character encoding format of the response.
 | --- | --- |
 | string | Character encoding format of the response content, such as 'utf-8', 'gbk', etc. |
 
+**Examples**
+
+For details about the sample code, see [constructor](#constructor).
+
 ## getHeaderByName
 
 ```TypeScript
@@ -94,6 +144,10 @@ Obtains the value of a response header field by name.
 | --- | --- |
 | string | Value of the response header field with the specified name. |
 
+**Examples**
+
+For details about the sample code, see [constructor](#constructor).
+
 ## getMimeType
 
 ```TypeScript
@@ -113,6 +167,10 @@ Obtains the MIME type of this response.
 | Type | Description |
 | --- | --- |
 | string | MIME type string of the response content, for example, 'text/html' or 'application/json'. |
+
+**Examples**
+
+For details about the sample code, see [constructor](#constructor).
 
 ## getNetErrorCode
 
@@ -134,6 +192,10 @@ Obtains the network error code of the response.
 | --- | --- |
 | [WebNetErrorList](arkts-arkweb-web-neterrorlist-webneterrorlist-e.md) | Network error code returned for the Response. |
 
+**Examples**
+
+For details about the sample code, see [constructor](#constructor).
+
 ## getStatus
 
 ```TypeScript
@@ -154,6 +216,10 @@ Obtains the HTTP status code of the response.
 | --- | --- |
 | number | Returns the HTTP status code of the Response. |
 
+**Examples**
+
+For details about the sample code, see [constructor](#constructor).
+
 ## getStatusText
 
 ```TypeScript
@@ -173,6 +239,10 @@ Obtains the status text of this response.
 | Type | Description |
 | --- | --- |
 | string | Status text. |
+
+**Examples**
+
+For details about the sample code, see [constructor](#constructor).
 
 ## getUrl
 
@@ -196,6 +266,10 @@ Risk warning: To obtain a URL for JavaScriptProxy communication API authenticati
 | --- | --- |
 | string | URL after redirection or HSTS change. |
 
+**Examples**
+
+For details about the sample code, see [constructor](#constructor).
+
 ## setCustomErrorCode
 
 ```TypeScript
@@ -204,7 +278,7 @@ setCustomErrorCode(customErrorCode: number): void
 
 Set the custom error code for the Web response.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -242,6 +316,10 @@ Sets the character encoding format for the current response.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
+**Examples**
+
+For details about the sample code, see [constructor](#constructor).
+
 ## setHeaderByName
 
 ```TypeScript
@@ -270,6 +348,10 @@ Sets the header information for this response.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
+**Examples**
+
+For details about the sample code, see [constructor](#constructor).
+
 ## setMimeType
 
 ```TypeScript
@@ -295,6 +377,10 @@ Sets the MIME type for the current response. For example, set it to text/html wh
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. |
+
+**Examples**
+
+For details about the sample code, see [constructor](#constructor).
 
 ## setNetErrorCode
 
@@ -322,6 +408,10 @@ Sets the network error code for this response.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
+**Examples**
+
+For details about the sample code, see [constructor](#constructor).
+
 ## setStatus
 
 ```TypeScript
@@ -347,6 +437,10 @@ Sets the HTTP status code for this response.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. |
+
+**Examples**
+
+For details about the sample code, see [constructor](#constructor).
 
 ## setStatusText
 
@@ -374,6 +468,10 @@ Sets the status text for this response.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
+**Examples**
+
+For details about the sample code, see [constructor](#constructor).
+
 ## setUrl
 
 ```TypeScript
@@ -399,3 +497,7 @@ Sets the redirection URL or the URL changed due to HSTS for this response. After
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. |
+
+**Examples**
+
+For details about the sample code, see [constructor](#constructor).

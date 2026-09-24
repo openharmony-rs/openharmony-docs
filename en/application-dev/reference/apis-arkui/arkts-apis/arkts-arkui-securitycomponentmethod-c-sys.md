@@ -1,10 +1,14 @@
 # SecurityComponentMethod
 
+```TypeScript
+declare class SecurityComponentMethod<T>
+```
+
 The universal attributes module for security components enables unified configuration of universal attributes such as layout, size, text, icon, color, border, and interaction behaviors.
 
 This module is mainly used in the following scenarios:  
 - Set layout, size, text, icon, color, border, and interaction-related attributes for security components  
-such as PasteButton and SaveButton.  
+such as [PasteButton](../arkts-components/arkts-arkui-pastebutton-comp.md#paste_button) and [SaveButton](../arkts-components/arkts-arkui-savebutton-comp.md#save_button).  
 - Adjust the display effect and interaction experience of security components while ensuring compliance with  
 the security component specifications. For specific constraints, see [Constraints](../../../security/AccessToken/security-component-overview.md#constraints).  
 - Reuse the universal attribute capabilities of security components through chained calls.

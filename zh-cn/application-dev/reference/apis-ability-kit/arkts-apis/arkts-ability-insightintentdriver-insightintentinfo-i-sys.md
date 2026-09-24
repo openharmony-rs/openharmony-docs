@@ -1,5 +1,9 @@
 # InsightIntentInfo（系统接口）
 
+```TypeScript
+interface InsightIntentInfo
+```
+
 意图信息，表示设备中意图的具体参数配置。
 
 **起始版本：** 20

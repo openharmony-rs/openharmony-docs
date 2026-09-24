@@ -1,10 +1,14 @@
 # Column属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性：
+```TypeScript
+declare class ColumnAttribute extends CommonMethod<ColumnAttribute>
+```
 
-支持[通用事件](arkts-arkui-commonmethod-c.md)。
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
 
-**继承/实现关系：** ColumnAttribute extends CommonMethod&lt;ColumnAttribute&gt;
+支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
+
+**继承/实现关系：** ColumnAttribute extends CommonMethod<ColumnAttribute>
 
 **起始版本：** 7
 
@@ -52,7 +56,7 @@ justifyContent(value: FlexAlign)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [FlexAlign](../arkts-apis/arkts-arkui-flexalign-e.md) | 是 | 子组件在垂直方向上的对齐格式。<br>默认值：FlexAlign.Start <br>**说明：** 若子组件不设置[flexShrink](arkts-arkui-commonmethod-c.md#flexshrink)，FlexAlign.Center和FlexAlign.End可能失效，详见下方说明。设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时，[space](arkts-arkui-columnoptions-i.md)属性不生效。 |
+| value | [FlexAlign](../arkts-apis/arkts-arkui-flexalign-e.md) | 是 | 子组件在垂直方向上的对齐格式。<br>默认值：FlexAlign.Start <br>**说明：** 若子组件不设置[flexShrink](arkts-arkui-common-comp-commonmethod-c.md#flexshrink)，FlexAlign.Center和FlexAlign.End可能失效，详见下方说明。设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时，[space](arkts-arkui-column-comp-columnoptions-i.md)属性不生效。 |
 
 ## reverse
 
@@ -76,4 +80,4 @@ reverse(isReversed: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isReversed | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 子组件在垂直方向上的排列是否反转。<br>默认值：true。设置true表示子组件在垂直方向上反转排列，设置false表示子组件在垂直方向上正序排列。 |
+| isReversed | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 子组件在垂直方向上的排列是否反转。<br>默认值：true。设置true表示子组件在垂直方向上反转排列，设置false表示子组件在垂直方向上正序排列。 |

@@ -27,8 +27,14 @@ Obtains the **UIScrollEvent** object associated with the **Scroll** node for con
 
 | Type | Description |
 | --- | --- |
-| [UIScrollEvent](../arkts-components/arkts-arkui-uiscrollevent-i.md) &#124; undefined | **UIScrollEvent** object for the **Scroll** node, or **undefined** if it fails to be obtained. |
+| [UIScrollEvent](../arkts-components/arkts-arkui-scroll-comp-uiscrollevent-i.md) &#124; undefined | **UIScrollEvent** object for the **Scroll** node, or **undefined** if it fails to be obtained. |
 
+**Examples**
+
+See Scroll Event Example.
+
+
+<a id="getevent-1"></a>
 
 ## getEvent
 
@@ -57,8 +63,14 @@ Obtains the **UIListEvent** object associated with the **List** node for configu
 
 | Type | Description |
 | --- | --- |
-| [UIListEvent](../arkts-components/arkts-arkui-uilistevent-i.md) &#124; undefined | **UIListEvent** object for the **List** node, or **undefined** if it fails to be obtained. |
+| [UIListEvent](../arkts-components/arkts-arkui-list-comp-uilistevent-i.md) &#124; undefined | **UIListEvent** object for the **List** node, or **undefined** if it fails to be obtained. |
 
+**Examples**
+
+See Scroll Event Example.
+
+
+<a id="getevent-2"></a>
 
 ## getEvent
 
@@ -87,8 +99,14 @@ Obtains the **UIWaterFlowEvent** object associated with the [WaterFlow](arkts-ar
 
 | Type | Description |
 | --- | --- |
-| [UIWaterFlowEvent](../arkts-components/arkts-arkui-uiwaterflowevent-i.md) &#124; undefined | **UIWaterFlowEvent** object for the **WaterFlow** node, or **undefined** if it fails to be obtained. |
+| [UIWaterFlowEvent](../arkts-components/arkts-arkui-waterflow-comp-uiwaterflowevent-i.md) &#124; undefined | **UIWaterFlowEvent** object for the **WaterFlow** node, or **undefined** if it fails to be obtained. |
 
+**Examples**
+
+See Scroll Event Example.
+
+
+<a id="getevent-3"></a>
 
 ## getEvent
 
@@ -117,4 +135,8 @@ Obtains the **UIGridEvent** object associated with the **Grid** node for configu
 
 | Type | Description |
 | --- | --- |
-| [UIGridEvent](../arkts-components/arkts-arkui-uigridevent-i.md) &#124; undefined | **UIGridEvent** object for the **Grid** node, or **undefined** if it fails to be obtained. |
+| [UIGridEvent](../arkts-components/arkts-arkui-grid-comp-uigridevent-i.md) &#124; undefined | **UIGridEvent** object for the **Grid** node, or **undefined** if it fails to be obtained. |
+
+**Examples**
+
+See Scroll Event Example.

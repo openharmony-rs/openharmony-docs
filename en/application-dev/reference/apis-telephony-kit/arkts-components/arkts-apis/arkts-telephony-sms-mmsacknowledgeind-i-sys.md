@@ -1,5 +1,9 @@
 # MmsAcknowledgeInd (System API)
 
+```TypeScript
+export interface MmsAcknowledgeInd
+```
+
 Defines an MMS confirmation index.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # BundleInstaller (System API)
 
+```TypeScript
+export interface BundleInstaller
+```
+
 The module provides APIs for you to install, uninstall, and recover bundles on devices.
 
 **Since:** 7

@@ -12,7 +12,7 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 function getShortcutInfoSync(bundleName: string): Array<ShortcutInfo>
 ```
 
-Obtains the shortcut information of the current user based on the given bundle name of a main application. To obtain shortcut information about an application clone, use [getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md).
+Obtains the [shortcut information](arkts-ability-shortcutinfo-i.md) of the current user based on the given bundle name of a main application. To obtain shortcut information about an application clone, use [getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md).
 
 No permission is required for obtaining the caller's own information.
 
@@ -34,7 +34,7 @@ No permission is required for obtaining the caller's own information.
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t.md)&gt; | Array of the ShortcutInfo objects obtained. |
+| Array&lt;[ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t.md)&gt; | Array of the [ShortcutInfo](arkts-ability-shortcutinfo-i.md) objects obtained. |
 
 **Error codes:**
 
@@ -63,20 +63,8 @@ try {
 }
 ```
 
-```TypeScript
-import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let data = launcherBundleManager.getShortcutInfoSync("com.example.demo", 100);
-  console.info('data is ' + JSON.stringify(data));
-} catch (errData) {
-  let code = (errData as BusinessError).code;
-  let message = (errData as BusinessError).message;
-  console.error(`errData is errCode:${code}  message:${message}`);
-}
-```
-
+<a id="getshortcutinfosync-1"></a>
 
 ## getShortcutInfoSync
 
@@ -84,7 +72,7 @@ try {
 function getShortcutInfoSync(bundleName: string, userId: number): Array<ShortcutInfo>
 ```
 
-Obtains the shortcut information of the specified user based on the given bundle name of a main application. To obtain shortcut information about an application clone, use [getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md).
+Obtains the [shortcut information](arkts-ability-shortcutinfo-i.md) of the specified user based on the given bundle name of a main application. To obtain shortcut information about an application clone, use [getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md).
 
 No permission is required for obtaining the caller's own information.
 
@@ -107,7 +95,7 @@ No permission is required for obtaining the caller's own information.
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t.md)&gt; | Array of the ShortcutInfo objects obtained. |
+| Array&lt;[ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t.md)&gt; | Array of the [ShortcutInfo](arkts-ability-shortcutinfo-i.md) objects obtained. |
 
 **Error codes:**
 
@@ -123,4 +111,16 @@ No permission is required for obtaining the caller's own information.
 
 **Examples**
 
-See [getShortcutInfoSync](#getshortcutinfosync)
+```TypeScript
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = launcherBundleManager.getShortcutInfoSync("com.example.demo", 100);
+  console.info('data is ' + JSON.stringify(data));
+} catch (errData) {
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
+}
+```

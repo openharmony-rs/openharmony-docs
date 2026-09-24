@@ -1,5 +1,9 @@
 # InputMethodSetting
 
+```TypeScript
+interface InputMethodSetting
+```
+
 In the following API examples, you must first use [getSetting](arkts-ime-inputmethod-getsetting-f.md) to obtain an **InputMethodSetting** instance, and then call the APIs using the obtained instance.
 
 **Since:** 8
@@ -18,7 +22,7 @@ import { inputMethod } from '@kit.IMEKit';
 enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState): Promise<void>
 ```
 
-Enables or disables an input method. This API uses a promise to return the result. <br> <br>**Example** <br> <br>```ts <br>import { BusinessError } from '@kit.BasicServicesKit'; <br> <br>function enableInputMethodSafely() {<br> const currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(); <br> if (!currentIme) {<br> console.error("Failed to get current input method"); <br> return; <br> } <br> <br> inputMethod.getSetting() <br> .enableInputMethod(currentIme.name, currentIme.id, inputMethod.EnabledState.BASIC_MODE) <br> .then(() =&gt; {<br> console.info('Succeeded in enable inputmethod.'); <br> }) <br> .catch((err: BusinessError) =&gt; {<br> console.error(`Failed to enableInputMethod. Code: &#36;{err.code}, message: &#36;{err.message}`); <br> }); <br>} <br> <br>enableInputMethodSafely(); <br>```
+Enables or disables an input method. This API uses a promise to return the result. <br> <br>**Example** <br> <br>```ts <br>import { BusinessError } from '@kit.BasicServicesKit'; <br> <br>function enableInputMethodSafely() {<br> const currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(); <br> if (!currentIme) {<br> console.error("Failed to get current input method"); <br> return; <br> } <br> <br> inputMethod.getSetting() <br> .enableInputMethod(currentIme.name, currentIme.id, inputMethod.EnabledState.BASIC_MODE) <br> .then(() =&gt; {<br> console.info('Succeeded in enable inputmethod.'); <br> }) <br> .catch((err: BusinessError) =&gt; {<br> console.error(`Failed to enableInputMethod. Code: ${err.code}, message: ${err.message}`); <br> }); <br>} <br> <br>enableInputMethodSafely(); <br>```
 
 **Since:** 20
 
@@ -81,15 +85,7 @@ function enableInputMethodSafely() {
 enableInputMethodSafely();
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputMethod.getSetting().enableInputMethod('com.example.keyboard', 'InputMethodExtAbility', inputMethod.EnabledState.FULL_EXPERIENCE_MODE, 100).then(() => {
-  console.info('Succeeded in enabling input method.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to enableInputMethod, code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="enableinputmethod-1"></a>
 
 ## enableInputMethod
 
@@ -140,7 +136,17 @@ Change the enabled state of an input method of a specified user.
 
 **Examples**
 
-See [enableInputMethod](#enableinputmethod)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getSetting().enableInputMethod('com.example.keyboard', 'InputMethodExtAbility', inputMethod.EnabledState.FULL_EXPERIENCE_MODE, 100).then(() => {
+  console.info('Succeeded in enabling input method.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to enableInputMethod, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+<a id="getallinputmethodssync-1"></a>
 
 ## getAllInputMethodsSync
 
@@ -184,10 +190,6 @@ Get all input methods sync of a specified user.
 **Examples**
 
 ```TypeScript
-let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync();
-```
-
-```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -205,7 +207,7 @@ try {
 getCursorInfo(userId?: number): CursorInfo
 ```
 
-Obtains the cursor information of a specified user. If the edit box does not notify the input method service of the cursor information, all attribute values returned are **0**. <br> <br>**Example** <br> <br>```ts <br>import { BusinessError } from '@kit.BasicServicesKit'; <br> <br>try {<br> let cursorInfo: inputMethod.CursorInfo = inputMethod.getSetting().getCursorInfo(); <br> console.info(`get cursorInfo success, left: &#36;{cursorInfo.left}, top: &#36;{cursorInfo.top}, width: &#36;{cursorInfo.width}, height: &#36;{cursorInfo.height}, displayId: &#36;{cursorInfo.displayId}`); <br>} catch (err) {<br> let error = err as BusinessError; <br> console.error(`Failed to get cursorInfo. Code: &#36;{error.code}, message: &#36;{error.message}`); <br>} <br>```
+Obtains the cursor information of a specified user. If the edit box does not notify the input method service of the cursor information, all attribute values returned are **0**. <br> <br>**Example** <br> <br>```ts <br>import { BusinessError } from '@kit.BasicServicesKit'; <br> <br>try {<br> let cursorInfo: inputMethod.CursorInfo = inputMethod.getSetting().getCursorInfo(); <br> console.info(`get cursorInfo success, left: ${cursorInfo.left}, top: ${cursorInfo.top}, width: ${cursorInfo.width}, height: ${cursorInfo.height}, displayId: ${cursorInfo.displayId}`); <br>} catch (err) {<br> let error = err as BusinessError; <br> console.error(`Failed to get cursorInfo. Code: ${error.code}, message: ${error.message}`); <br>} <br>```
 
 **Since:** 26.0.0
 
@@ -258,7 +260,7 @@ try {
 getDefaultInputMethodAbility(): InputMethodProperty
 ```
 
-Obtains the default input method capabilities. To optimize performance, the returned **InputMethodProperty** object ensures that only the `name` and `id` attributes that uniquely identify the input method capability are correct. Other attributes may be empty. <br> <br>**Example** <br> <br>```ts <br>try {<br> const defaultAbility: inputMethod.InputMethodProperty = inputMethod.getSetting().getDefaultInputMethodAbility(); <br> console.info('Succeeded in getting default input method ability, name: ' + defaultAbility.name + ', id: ' + defaultAbility.id); <br>} catch (err) {<br> console.error(`Failed to getDefaultInputMethodAbility. Code: &#36;{err.code}, message: &#36;{err.message}`); <br>} <br>```
+Obtains the default input method capabilities. To optimize performance, the returned **InputMethodProperty** object ensures that only the `name` and `id` attributes that uniquely identify the input method capability are correct. Other attributes may be empty. <br> <br>**Example** <br> <br>```ts <br>try {<br> const defaultAbility: inputMethod.InputMethodProperty = inputMethod.getSetting().getDefaultInputMethodAbility(); <br> console.info('Succeeded in getting default input method ability, name: ' + defaultAbility.name + ', id: ' + defaultAbility.id); <br>} catch (err) {<br> console.error(`Failed to getDefaultInputMethodAbility. Code: ${err.code}, message: ${err.message}`); <br>} <br>```
 
 **Since:** 26.0.0
 
@@ -294,6 +296,8 @@ try {
   console.error(`Failed to getDefaultInputMethodAbility. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="getinputmethodssync-1"></a>
 
 ## getInputMethodsSync
 
@@ -336,10 +340,6 @@ List enabled or disabled input methods sync of a specified user.
 | [12800025](../errorcode-inputmethod-framework.md#12800025-cross-user-operation-denied) | cross-user operation denied. Only user 0 applications are authorized for this operation. |
 
 **Examples**
-
-```TypeScript
-let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getInputMethodsSync(true);
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -461,22 +461,7 @@ try {
 }
 ```
 
-```TypeScript
-import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
-
-let displayId: number = 10;
-let info: PanelInfo = {
-  type: PanelType.SOFT_KEYBOARD,
-  flag: PanelFlag.FLAG_FIXED
-}
-
-try {
-  let result: boolean = inputMethod.getSetting().isPanelShown(info, displayId);
-  console.info('Succeeded in querying isPanelShown, result: ' + result);
-} catch (err) {
-  console.error(`Failed to query isPanelShown. Code: ${err.code}, message: ${err.message}`);
-}
-```
+<a id="ispanelshown-1"></a>
 
 ## isPanelShown
 
@@ -516,7 +501,22 @@ Checks whether the input method panel of a specified type is shown on a specifie
 
 **Examples**
 
-See [isPanelShown](#ispanelshown)
+```TypeScript
+import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
+
+let displayId: number = 10;
+let info: PanelInfo = {
+  type: PanelType.SOFT_KEYBOARD,
+  flag: PanelFlag.FLAG_FIXED
+}
+
+try {
+  let result: boolean = inputMethod.getSetting().isPanelShown(info, displayId);
+  console.info('Succeeded in querying isPanelShown, result: ' + result);
+} catch (err) {
+  console.error(`Failed to query isPanelShown. Code: ${err.code}, message: ${err.message}`);
+}
+```
 
 ## off('imeShow')
 
@@ -539,6 +539,12 @@ Unsubscribes from the soft keyboard show event of the [input method panel](arkts
 | type | 'imeShow' | Yes | Event type, which is **'imeShow'**. |
 | callback | (info: Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;) =&gt; void | No | Callback to unregister.<br>If this parameter is not specified, this API unregisters all callbacks for the specified event type. |
 
+**Examples**
+
+```TypeScript
+inputMethod.getSetting().off('imeShow');
+```
+
 ## off('imeHide')
 
 ```TypeScript
@@ -559,6 +565,12 @@ Unsubscribes from the soft keyboard hide event of the [input method panel](arkts
 | --- | --- | --- | --- |
 | type | 'imeHide' | Yes | Event type, which is **'imeHide'**. |
 | callback | (info: Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;) =&gt; void | No | Callback to unregister.<br>If this parameter is not specified, this API unregisters all callbacks for the specified event type. |
+
+**Examples**
+
+```TypeScript
+inputMethod.getSetting().off('imeHide');
+```
 
 ## offImeChangeWithUserId
 
@@ -621,6 +633,14 @@ Subscribes to the soft keyboard show event of the [input method panel](arkts-ime
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+**Examples**
+
+```TypeScript
+inputMethod.getSetting().on('imeShow', (info: Array<inputMethod.InputWindowInfo>) => {
+  console.info('Succeeded in subscribing imeShow event.');
+});
+```
+
 ## on('imeHide')
 
 ```TypeScript
@@ -647,6 +667,14 @@ Subscribes to the soft keyboard hide event of the [input method panel](arkts-ime
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+
+**Examples**
+
+```TypeScript
+inputMethod.getSetting().on('imeHide', (info: Array<inputMethod.InputWindowInfo>) => {
+  console.info('Succeeded in subscribing imeHide event.');
+});
+```
 
 ## onImeChangeWithUserId
 

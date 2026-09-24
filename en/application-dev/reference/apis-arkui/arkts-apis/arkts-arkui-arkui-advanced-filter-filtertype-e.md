@@ -1,5 +1,9 @@
 # FilterType
 
+```TypeScript
+export declare enum FilterType
+```
+
 Declare FilterType @enum { FilterType }
 
 **Since:** 22

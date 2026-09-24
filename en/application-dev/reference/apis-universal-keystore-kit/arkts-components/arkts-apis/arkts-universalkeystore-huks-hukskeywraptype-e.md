@@ -1,5 +1,9 @@
 # HuksKeyWrapType
 
+```TypeScript
+export enum HuksKeyWrapType
+```
+
 Enumerates the key encryption types (exporting or importing keys).
 
 **Since:** 20
@@ -15,6 +19,8 @@ HUKS_KEY_WRAP_TYPE_HUK_BASED = 2
 Hardware unique key encryption type. <!--Del-->(not supported currently)<!--DelEnd-->
 
 **Since:** 20
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 

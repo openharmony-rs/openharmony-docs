@@ -1,11 +1,22 @@
 # SegmentButtonOptions
 
+```TypeScript
+declare class SegmentButtonOptions
+```
+
 
 > **NOTE:** 
 > 
 > The component does not support custom font type settings.
 
 Provides initial data and custom properties for the **SegmentButton** component.
+
+> **NOTE:** 
+> 
+> Starting from API version 26.0.0, except for capsule-style multi-select buttons (where type is **"capsule"** and
+> **multiply** is **true**), when **backgroundSystemMaterial** is set to a system material with automatic color
+> inversion, **fontColor** and **selectedFontColor** use special system resources that support color inversion, and
+> the colors automatically adapt to the inverted material background color.
 
 **Since:** 11
 
@@ -25,7 +36,7 @@ import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray, Tab
 static capsule(options: CapsuleSegmentButtonConstructionOptions): SegmentButtonOptions
 ```
 
-Creates a **SegmentButtonOptions** object specifically for capsule-style segmented buttons.
+Creates a capsule-style **SegmentButtonOptions** instance, which is used to define capsule-style segment buttons.
 
 **Since:** 11
 
@@ -39,13 +50,13 @@ Creates a **SegmentButtonOptions** object specifically for capsule-style segment
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [CapsuleSegmentButtonConstructionOptions](arkts-arkui-arkui-advanced-segmentbutton-capsulesegmentbuttonconstructionoptions-i.md) | Yes | Configuration options for capsule-style segmented buttons. |
+| options | [CapsuleSegmentButtonConstructionOptions](arkts-arkui-arkui-advanced-segmentbutton-capsulesegmentbuttonconstructionoptions-i.md) | Yes | Configuration options for capsule-style segment buttons. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [SegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonoptions-c.md) | Options of the **SegmentButton** component. |
+| [SegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonoptions-c.md) | Segment button options for the capsule type. |
 
 ## constructor
 
@@ -67,7 +78,7 @@ Constructor.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [TabSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-tabsegmentbuttonoptions-i.md) &#124; [CapsuleSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-capsulesegmentbuttonoptions-i.md) | Yes | Configuration options for tab-style or capsule-style segmented buttons. |
+| options | [TabSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-tabsegmentbuttonoptions-i.md) &#124; [CapsuleSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-capsulesegmentbuttonoptions-i.md) | Yes | Configuration options for tab-style or capsule-style segment buttons. |
 
 ## tab
 
@@ -89,13 +100,13 @@ Creates a SegmentButtonOptions class to define tabs.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [TabSegmentButtonConstructionOptions](arkts-arkui-arkui-advanced-segmentbutton-tabsegmentbuttonconstructionoptions-i.md) | Yes | Configuration options for tab-style segmented buttons. |
+| options | [TabSegmentButtonConstructionOptions](arkts-arkui-arkui-advanced-segmentbutton-tabsegmentbuttonconstructionoptions-i.md) | Yes | Configuration options for tab-style segment buttons. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [SegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonoptions-c.md) | Options of the **SegmentButton** component. |
+| [SegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonoptions-c.md) | Options of the segment button, used to define a tab-type segment button. |
 
 ## backgroundBlurStyle
 
@@ -103,11 +114,13 @@ Creates a SegmentButtonOptions class to define tabs.
 backgroundBlurStyle: BlurStyle
 ```
 
-Background blur style of the component.
+Background blur material of the segment button component.
 
-If the value is **undefined**, it defaults to **BlurStyle.NONE**.
+Default value: **BlurStyle.NONE**
 
-**Type:** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+When the value is **undefined**, the default value is used.
+
+**Type:** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **Since:** 11
 
@@ -123,19 +136,19 @@ If the value is **undefined**, it defaults to **BlurStyle.NONE**.
 backgroundBorderRadius?: LengthMetrics
 ```
 
-Container border radius.
+Border radius of the overall container of the segment button.
 
 **NOTE:** 
 
-This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.
+This attribute takes effect only when **borderRadiusMode** is **BorderRadiusMode.CUSTOM**.
 
-For capsule-style multi-selection segmented buttons (with **type** being **"capsule"** and **multiply** being **true**), this attribute does not take effect and **itemBorderRadius** must be used to set the border radius.
+For capsule-type multi-selection segment buttons (**type** is **"capsule"** and **multiply** is **true**), this attribute does not take effect. Use **itemBorderRadius** to configure the corner radius instead.
 
-The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.
+The corner radius is limited by the component size. The maximum value is half of the component width or height. Percentage setting is not supported. When the value exceeds the maximum, it is automatically corrected to the maximum. When a percentage is used, the default value is used.
 
-Default value: **&#36;r('sys.float.segmentbutton_container_shape')**
+Default value: `$r('sys.float.segmentbutton_container_shape')`
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** LengthMetrics
 
@@ -153,9 +166,9 @@ If the value is **undefined**, the default value is used.
 backgroundColor: ResourceColor
 ```
 
-Background color of the component.
+Background color of the segment button component.
 
-If the value is **undefined**, the background color is &#36;r('sys.color.ohos_id_color_button_normal').
+When the value is **undefined**, the background color is **$r('sys.color.ohos_id_color_button_normal')**.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -173,7 +186,11 @@ If the value is **undefined**, the background color is &#36;r('sys.color.ohos_id
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-Set system-styled materials for the component. Different materials have different effects, which can influence the backgroundColor, border, shadow, and other visual attributes of the component.
+System material of the background of the segment button component. Different system materials have different properties and produce different effects. After a material is passed in, the animation effect of **SegmentButton** changes.
+
+For capsule-type multi-selection segment buttons (**type** is **"capsule"** and **multiply** is **true**), this attribute does not take effect.
+
+Default value: no material effect.
 
 **Type:** [uiMaterial.Material](arkts-arkui-uimaterial-material-c.md)
 
@@ -191,11 +208,11 @@ Set system-styled materials for the component. Different materials have differen
 borderRadiusMode?: BorderRadiusMode
 ```
 
-Border radius mode, used to control the border radius calculation method.
+Border radius mode, which controls how the corner radius is calculated.
 
 Default value: **BorderRadiusMode.DEFAULT**
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [BorderRadiusMode](arkts-arkui-arkui-advanced-segmentbutton-borderradiusmode-e.md)
 
@@ -215,13 +232,11 @@ If the value is **undefined**, the default value is used.
 buttonPadding: Padding | Dimension
 ```
 
-Button padding of the component.
+Button padding of the segment button component.
 
-When the value is **undefined**, the button padding settings are as follows:
+When the value is **undefined**, the padding for icon-only buttons and text-only buttons is: `{ top: 4, right: 8, bottom: 4, left: 8 }`
 
-Icon button and text button: **{ top: 4, right: 8, bottom: 4, left: 8 }**.
-
-Icon + text button: **{ top: 6, right: 8, bottom: 6, left: 8 }**.
+The padding for icon + text buttons is: `{ top: 6, right: 8, bottom: 6, left: 8 }`
 
 Unit: vp
 
@@ -241,7 +256,7 @@ Unit: vp
 buttons: SegmentButtonItemOptionsArray
 ```
 
-Button information of the component, including the icon and text.
+Button information of the segment button component, including icon and text information.
 
 **Type:** [SegmentButtonItemOptionsArray](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonitemoptionsarray-c.md)
 
@@ -259,11 +274,11 @@ Button information of the component, including the icon and text.
 direction?: Direction
 ```
 
-Layout direction of the component.
+Layout direction of the segment button component.
 
 Default value: **Direction.Auto**
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [Direction](arkts-arkui-direction-e.md)
 
@@ -281,9 +296,9 @@ If the value is **undefined**, the default value is used.
 fontColor: ResourceColor
 ```
 
-Text color of the unselected button.
+Text color of the segment button component in the unselected state.
 
-If the value is **undefined**, the color is &#36;r('sys.color.ohos_id_color_text_secondary').
+When the value is **undefined**, the color is **$r('sys.color.ohos_id_color_text_secondary')**.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -301,9 +316,11 @@ If the value is **undefined**, the color is &#36;r('sys.color.ohos_id_color_text
 fontSize: DimensionNoPercentage
 ```
 
-Font size of the unselected button. The value cannot be set in percentage.
+Font size of the segment button component in the unselected state. Percentage setting is not supported.
 
-If the value is **undefined**, the font size is &#36;r('sys.float.ohos_id_text_size_body2').
+Unit: fp
+
+When the value is **undefined**, the font size is **$r('sys.float.ohos_id_text_size_body2')**.
 
 **Type:** [DimensionNoPercentage](arkts-arkui-dimensionnopercentage-t.md)
 
@@ -321,9 +338,9 @@ If the value is **undefined**, the font size is &#36;r('sys.float.ohos_id_text_s
 fontWeight: FontWeight
 ```
 
-Font weight of the unselected button.
+Font weight of the segment button component in the unselected state.
 
-If the value is **undefined**, the font weight is **FontWeight.Regular**.
+When the value is **undefined**, the font weight is **FontWeight.Regular**.
 
 **Type:** [FontWeight](arkts-arkui-fontweight-e.md)
 
@@ -341,15 +358,15 @@ If the value is **undefined**, the font weight is **FontWeight.Regular**.
 imageSize: SizeOptions
 ```
 
-Image size of the component.
+Image size of the segment button component.
 
-When the value is **undefined**, the image size is { width: 24, height: 24 }.
+When the value is **undefined**, the image size is **{ width: 24, height: 24 }**.
 
 Unit: vp
 
 **NOTE:** 
 
-The **imageSize** property takes effect only for icon-only and icon-with-text buttons.
+The `imageSize` attribute takes effect only for icon-only buttons and icon + text buttons, and has no effect on text-only buttons.
 
 **Type:** [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
@@ -367,19 +384,19 @@ The **imageSize** property takes effect only for icon-only and icon-with-text bu
 itemBorderRadius?: LengthMetrics
 ```
 
-Individual button border radius.
+Border radius of the button items in the segment button.
 
 **NOTE:** 
 
-This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.
+This attribute takes effect only when **borderRadiusMode** is **BorderRadiusMode.CUSTOM**.
 
-For capsule-style multi-selection segmented buttons (with **type** being **"capsule"** and **multiply** being **true**), this attribute only affects end items.
+For capsule-type multi-selection segment buttons (**type** is **"capsule"** and **multiply** is **true**), only the corner radius of the items at both ends can be controlled.
 
-The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.
+The corner radius is limited by the component size. The maximum value is half of the component width or height. Percentage setting is not supported. When the value exceeds the maximum, it is automatically corrected to the maximum. When a percentage is used, the default value is used.
 
-Default value: **&#36;r('sys.float.segmentbutton_selected_background_shape')**
+Default value: `$r('sys.float.segmentbutton_selected_background_shape')`
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** LengthMetrics
 
@@ -397,15 +414,15 @@ If the value is **undefined**, the default value is used.
 localizedButtonPadding?: LocalizedPadding
 ```
 
-Button padding of the component.
+Button padding of the segment button component, which supports adaptation to the layout direction (LTR/RTL).
 
 Default value:
 
-Icon button and text button: **{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }**.
+For icon-only buttons and text-only buttons: `{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }`
 
-Icon + text button: **{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) **}.
+For icon + text buttons: `{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) }`
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [LocalizedPadding](arkts-arkui-localizedpadding-i.md)
 
@@ -423,11 +440,13 @@ If the value is **undefined**, the default value is used.
 localizedTextPadding?: LocalizedPadding
 ```
 
-Text padding.
+Text padding, which supports adaptation to the layout direction (LTR/RTL).
 
 Default value: **0**
 
-If the value is **undefined**, the default value is used.
+Unit: vp
+
+When the value is **undefined**, the default value is used.
 
 **Type:** [LocalizedPadding](arkts-arkui-localizedpadding-i.md)
 
@@ -445,13 +464,15 @@ If the value is **undefined**, the default value is used.
 multiply: boolean
 ```
 
-Whether multiple items can be selected.
+Whether the segment button component supports multi-selection.
 
-**true**: Multiple items can be selected.
+**true**: multi-selection is supported; **false**: multi-selection is not supported.
 
-**false**: Multiple items cannot be selected. For the **SegmentButton** component consisting of tab-style buttons, only one item can be selected. In this case, setting **multiply** to **true** does not take effect.
+For tab-type segment buttons (type is **"tab"**), **multiply** is forcibly set to **false**, and setting it to **true** does not take effect.
 
-If the value is **undefined**, the component does not support selection of multiple items.
+Default value: **false**
+
+When the value is **undefined**, the default value is used.
 
 **Type:** boolean
 
@@ -469,11 +490,11 @@ If the value is **undefined**, the component does not support selection of multi
 selectedBackgroundColor: ResourceColor
 ```
 
-Background color of the selected button.
+Background color of the segment button component in the selected state.
 
-When the value is **undefined** and **type** is **"tab"**, the background color is **&#36;r('sys.color.segment_button_checked_foreground_color')**.
+When the value is **undefined** and type is **"tab"**, the background color is `$r('sys.color.segment_button_checked_foreground_color')`.
 
-When **type** is **"capsule"**, the background color is **&#36;r('sys.color.ohos_id_color_emphasize')**.
+When type is **"capsule"**, the background color is `$r('sys.color.ohos_id_color_emphasize')`.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -491,11 +512,11 @@ When **type** is **"capsule"**, the background color is **&#36;r('sys.color.ohos
 selectedFontColor: ResourceColor
 ```
 
-Text color of the selected button.
+Text color of the segment button component in the selected state.
 
-If the value is **undefined**, the color is &#36;r('sys.color.ohos_id_color_text_primary') when type is set to **"tab"**.
+When the value is **undefined** and **type** is **"tab"**, the color is `$r('sys.color.ohos_id_color_text_primary')`.
 
-When type is set to **"capsule"**, the color is &#36;r('sys.color.ohos_id_color_foreground_contrary').
+When **type** is **"capsule"**, the color is `$r('sys.color.ohos_id_color_foreground_contrary')`.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -513,9 +534,11 @@ When type is set to **"capsule"**, the color is &#36;r('sys.color.ohos_id_color_
 selectedFontSize: DimensionNoPercentage
 ```
 
-Font size of the selected button. The value cannot be set in percentage.
+Font size of the segment button component in the selected state. Percentage setting is not supported.
 
-If the value is **undefined**, the font size is &#36;r('sys.float.ohos_id_text_size_body2').
+Unit: fp
+
+When the value is **undefined**, the font size is **$r('sys.float.ohos_id_text_size_body2')**.
 
 **Type:** [DimensionNoPercentage](arkts-arkui-dimensionnopercentage-t.md)
 
@@ -533,9 +556,9 @@ If the value is **undefined**, the font size is &#36;r('sys.float.ohos_id_text_s
 selectedFontWeight: FontWeight
 ```
 
-Font weight of the selected button.
+Font weight of the segment button component in the selected state.
 
-If the value is **undefined**, the font weight is **FontWeight.Medium**.
+When the value is **undefined**, the font weight is **FontWeight.Medium**.
 
 **Type:** [FontWeight](arkts-arkui-fontweight-e.md)
 
@@ -553,9 +576,9 @@ If the value is **undefined**, the font weight is **FontWeight.Medium**.
 textPadding: Padding | Dimension
 ```
 
-Text padding of the component.
+Text padding of the segment button component.
 
-When the value is **undefined**, the text padding is 0.
+When the value is **undefined**, the text padding is **0**.
 
 Unit: vp
 
@@ -575,13 +598,13 @@ Unit: vp
 type: "tab" | "capsule"
 ```
 
-Type of the **SegmentButton** component.
+Type of the segment button component.
 
-**NOTE:** 
+**Note:** 
 
-**"tab"**: tab-style segmented buttons, designed for page or content section switching.
+**"tab"**: tab-type segment button, suitable for switching between pages or content areas.
 
-**"capsule"**: capsule-style segmented buttons, suitable for single or multiple selection scenarios.
+**"capsule"**: capsule-type segment button, suitable for single-selection or multi-selection scenarios.
 
 **Type:** "tab" &#124; "capsule"
 

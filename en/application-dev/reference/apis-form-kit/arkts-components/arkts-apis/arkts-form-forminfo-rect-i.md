@@ -1,5 +1,9 @@
 # Rect
 
+```TypeScript
+interface Rect
+```
+
 Indicates rectangle, unit is vp.
 
 @typedef Rect

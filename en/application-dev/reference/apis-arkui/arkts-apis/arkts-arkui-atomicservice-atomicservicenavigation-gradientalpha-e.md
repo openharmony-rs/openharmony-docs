@@ -1,5 +1,9 @@
 # GradientAlpha
 
+```TypeScript
+export declare enum GradientAlpha
+```
+
 Enumerates the opacity levels of the navigation bar background.
 
 **Since:** 18

@@ -4,6 +4,8 @@
 
 QoS provides APIs.
 
+**System capability**: SystemCapability.Resourceschedule.QoS.Core
+
 **Since**: 12
 
 ## Files

@@ -1,5 +1,9 @@
 # SubtitleInfo
 
+```TypeScript
+interface SubtitleInfo
+```
+
 提供字幕信息。当订阅了字幕更新事件时，关于外部字幕的信息会通过回调返回。可以同步到AVPlayer#timeUpdate事件报告的时间
 
 **起始版本：** 12

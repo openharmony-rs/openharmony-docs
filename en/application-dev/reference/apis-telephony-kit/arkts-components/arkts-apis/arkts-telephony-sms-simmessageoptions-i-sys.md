@@ -1,5 +1,9 @@
 # SimMessageOptions (System API)
 
+```TypeScript
+export interface SimMessageOptions
+```
+
 Defines the SIM message options.
 
 **Since:** 7

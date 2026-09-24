@@ -1,5 +1,9 @@
 # HTML
 
+```TypeScript
+interface HTML
+```
+
 Represents data of the HTML type.
 
 **Since:** 12

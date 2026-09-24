@@ -1,5 +1,9 @@
 # TemplateStringsArray
 
+```TypeScript
+interface TemplateStringsArray extends ReadonlyArray<string>
+```
+
 ## Modules to Import
 
 ```TypeScript

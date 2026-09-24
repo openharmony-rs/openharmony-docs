@@ -1,5 +1,9 @@
 # AudioSpatializationManager
 
+```TypeScript
+interface AudioSpatializationManager
+```
+
 空间音频管理。在使用AudioSpatializationManager的接口前，需要使用[getSpatializationManager](arkts-audio-audio-audiomanager-i.md#getspatializationmanager)获取AudioSpatializationManager实例。
 
 @typedef AudioSpatializationManager
@@ -36,21 +40,21 @@ downloadPersonalizedHRTF(hrtfDescriptor: AudioHRTFAnonymousDescriptor): Promise<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hrtfDescriptor | [AudioHRTFAnonymousDescriptor](arkts-audio-audio-audiohrtfanonymousdescriptor-i-sys.md) | 是 | 个性化HRTF数据描述符，用于下载。 |
+| hrtfDescriptor | [AudioHRTFAnonymousDescriptor](arkts-audio-audio-audiohrtfanonymousdescriptor-i-sys.md) | 是 | 要下载的个性化HRTF数据描述符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise 对象，返回 void。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability is not supported in this device. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability is not supported in this device. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, hrtfDescriptor is invalid. |
 | [6800105](../errorcode-audio.md#6800105-处理超时) | Time out when saving HRTF on disk. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System internal error, fail to save HRTF on disk, like service died. |
@@ -61,7 +65,7 @@ downloadPersonalizedHRTF(hrtfDescriptor: AudioHRTFAnonymousDescriptor): Promise<
 getCurrentSpatialAudioSourceType(): SpatialAudioSourceType
 ```
 
-获取当前空间音频源类型。
+获取当前空间音频源类型。同步返回结果。
 
 **起始版本：** 24
 
@@ -75,13 +79,13 @@ getCurrentSpatialAudioSourceType(): SpatialAudioSourceType
 
 | 类型 | 说明 |
 | --- | --- |
-| [SpatialAudioSourceType](arkts-audio-audio-spatialaudiosourcetype-e-sys.md) | 当前设备的空间音频源类型。 |
+| [SpatialAudioSourceType](arkts-audio-audio-spatialaudiosourcetype-e-sys.md) | 返回当前空间音频源类型。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
 **示例**
 
@@ -122,7 +126,7 @@ getSpatializationSceneType(): AudioSpatializationSceneType
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
 **示例**
 
@@ -145,7 +149,7 @@ try {
 isAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean
 ```
 
-检查指定设备是否启用了自适应空间渲染。
+以同步方式查询指定设备是否开启了自适应空间音频渲染。
 
 **起始版本：** 24
 
@@ -157,19 +161,19 @@ isAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor): bool
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 目标设备，用于检查是否启用了自适应空间渲染。 |
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 待查询的设备描述符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 指定设备是否启用了自适应空间渲染。 |
+| boolean | 指定设备是否开启了自适应空间音频渲染。true表示自适应空间音频渲染开启；false表示自适应空间音频渲染关闭。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -201,6 +205,72 @@ try {
 } catch (err) {
   let error = err as BusinessError;
   console.error(`ERROR: ${error.code}, message: ${error.message}`);
+}
+```
+
+<a id="isheadtrackingenabled-1"></a>
+
+## isHeadTrackingEnabled
+
+```TypeScript
+isHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean
+```
+
+获取指定设备的头动跟踪是否开启，同步返回结果。
+
+**起始版本：** 12
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 指定设备的描述。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 返回指定设备的头动跟踪是否开启，true为开启，false为未开启。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let deviceDescriptor: audio.AudioDeviceDescriptor = {
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 1,
+  name : "",
+  address : "123",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : ""
+};
+
+try {
+  let isHeadTrackingEnabled: boolean = audioSpatializationManager.isHeadTrackingEnabled(deviceDescriptor);
+  console.info(`AudioSpatializationManager isHeadTrackingEnabled: ${isHeadTrackingEnabled}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
 }
 ```
 
@@ -238,7 +308,7 @@ isHeadTrackingEnabled(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
 **示例**
 
@@ -254,72 +324,6 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
-
-```TypeScript
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let deviceDescriptor: audio.AudioDeviceDescriptor = {
-  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
-  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
-  id : 1,
-  name : "",
-  address : "123",
-  sampleRates : [44100],
-  channelCounts : [2],
-  channelMasks : [0],
-  networkId : audio.LOCAL_NETWORK_ID,
-  interruptGroupId : 1,
-  volumeGroupId : 1,
-  displayName : ""
-};
-
-try {
-  let isHeadTrackingEnabled: boolean = audioSpatializationManager.isHeadTrackingEnabled(deviceDescriptor);
-  console.info(`AudioSpatializationManager isHeadTrackingEnabled: ${isHeadTrackingEnabled}`);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`ERROR: ${error}`);
-}
-```
-
-## isHeadTrackingEnabled
-
-```TypeScript
-isHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean
-```
-
-获取指定设备的头动跟踪是否开启，同步返回结果。
-
-**起始版本：** 12
-
-**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 指定设备的描述。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | 返回指定设备的头动跟踪是否开启，true为开启，false为未开启。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-
-**示例**
-
-参见 [isHeadTrackingEnabled](#isheadtrackingenabled)
 
 ## isHeadTrackingSupported
 
@@ -345,7 +349,7 @@ isHeadTrackingSupported(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
 **示例**
 
@@ -392,8 +396,8 @@ isHeadTrackingSupportedForDevice(deviceDescriptor: AudioDeviceDescriptor): boole
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -432,7 +436,7 @@ try {
 isPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor): boolean
 ```
 
-检查指定设备是否启用了个性化空间化功能。
+检查指定的设备是否启用了个性化空间化功能。
 
 **起始版本：** 26.0.0
 
@@ -452,13 +456,13 @@ isPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor):
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 如果个性化空间化成功启用，则返回 true，否则返回 false。 |
+| boolean | 如果成功启用个性化空间化处理，则返回 true，否则返回 false。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## isPersonalizedSpatializationSupported
@@ -487,58 +491,45 @@ isPersonalizedSpatializationSupported(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
+
+<a id="isspatializationenabled-1"></a>
 
 ## isSpatializationEnabled
 
 ```TypeScript
-isSpatializationEnabled(): boolean
+isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean
 ```
 
-获取空间音频渲染是否开启，同步返回结果。
+获取指定设备的空间音频渲染是否开启，同步返回结果。
 
-> **说明：** 
-> 
-> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isspatializationenabled-1)
-> 替代。
-
-**起始版本：** 11
-
-**废弃版本：** 12
-
-**替代接口：** [isSpatializationEnabled](#isspatializationenabled)
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
 **系统接口：** 此接口为系统接口。
 
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 指定设备的描述。 |
+
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回空间音频渲染是否开启，true为开启，false为未开启。 |
+| boolean | 返回指定设备的空间音频渲染是否开启，true为开启，false为未开启。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
-
-```TypeScript
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let isSpatializationEnabled: boolean = audioSpatializationManager.isSpatializationEnabled();
-  console.info(`AudioSpatializationManager isSpatializationEnabled: ${isSpatializationEnabled}`);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`ERROR: ${error}`);
-}
-```
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -571,40 +562,52 @@ try {
 ## isSpatializationEnabled
 
 ```TypeScript
-isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean
+isSpatializationEnabled(): boolean
 ```
 
-获取指定设备的空间音频渲染是否开启，同步返回结果。
+获取空间音频渲染是否开启，同步返回结果。
 
-**起始版本：** 12
+> **说明：** 
+> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
+> [isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isspatializationenabled-1)
+> 替代。
+
+**起始版本：** 11
+
+**废弃版本：** 12
+
+**替代接口：** [isSpatializationEnabled](#isspatializationenabled)
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
 **系统接口：** 此接口为系统接口。
 
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 指定设备的描述。 |
-
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回指定设备的空间音频渲染是否开启，true为开启，false为未开启。 |
+| boolean | 返回空间音频渲染是否开启，true为开启，false为未开启。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
 **示例**
 
-参见 [isSpatializationEnabled](#isspatializationenabled)
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isSpatializationEnabled: boolean = audioSpatializationManager.isSpatializationEnabled();
+  console.info(`AudioSpatializationManager isSpatializationEnabled: ${isSpatializationEnabled}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
+```
 
 ## isSpatializationSupported
 
@@ -630,7 +633,7 @@ isSpatializationSupported(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
 **示例**
 
@@ -676,8 +679,8 @@ isSpatializationSupportedForDevice(deviceDescriptor: AudioDeviceDescriptor): boo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -710,16 +713,111 @@ try {
 }
 ```
 
+## off('spatializationEnabledChangeForAnyDevice')
+
+```TypeScript
+off(type: 'spatializationEnabledChangeForAnyDevice', callback?: Callback<AudioSpatialEnabledStateForDevice>): void
+```
+
+取消监听空间音频渲染开关状态变化事件。
+
+**起始版本：** 12
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'spatializationEnabledChangeForAnyDevice' | 是 | 事件回调类型，支持的事件为'spatializationEnabledChangeForAnyDevice'。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioSpatialEnabledStateForDevice](arkts-audio-audio-audiospatialenabledstatefordevice-i-sys.md)&gt; | 否 | 待取消的空间音频渲染开关状态变化回调函数。不填写时取消该事件的所有回调。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+// 取消该事件的所有监听。
+audioSpatializationManager.off('spatializationEnabledChangeForAnyDevice');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let spatializationEnabledChangeForAnyDeviceCallback = (audioSpatialEnabledStateForDevice: audio.AudioSpatialEnabledStateForDevice) => {
+  console.info(`deviceDescriptor: ${audioSpatialEnabledStateForDevice.deviceDescriptor}`);
+  console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
+};
+
+audioSpatializationManager.on('spatializationEnabledChangeForAnyDevice', spatializationEnabledChangeForAnyDeviceCallback);
+
+audioSpatializationManager.off('spatializationEnabledChangeForAnyDevice', spatializationEnabledChangeForAnyDeviceCallback);
+```
+
+## off('headTrackingEnabledChangeForAnyDevice')
+
+```TypeScript
+off(type: 'headTrackingEnabledChangeForAnyDevice', callback?: Callback<AudioSpatialEnabledStateForDevice>): void
+```
+
+取消监听头动跟踪开关状态变化事件。
+
+**起始版本：** 12
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'headTrackingEnabledChangeForAnyDevice' | 是 | 事件回调类型，支持的事件为'headTrackingEnabledChangeForAnyDevice'。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioSpatialEnabledStateForDevice](arkts-audio-audio-audiospatialenabledstatefordevice-i-sys.md)&gt; | 否 | 待取消的头动跟踪开关状态变化回调函数。不填写时取消该事件的所有回调。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+// 取消该事件的所有监听。
+audioSpatializationManager.off('headTrackingEnabledChangeForAnyDevice');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let headTrackingEnabledChangeForAnyDeviceCallback = (audioSpatialEnabledStateForDevice: audio.AudioSpatialEnabledStateForDevice) => {
+  console.info(`deviceDescriptor: ${audioSpatialEnabledStateForDevice.deviceDescriptor}`);
+  console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
+};
+
+audioSpatializationManager.on('headTrackingEnabledChangeForAnyDevice', headTrackingEnabledChangeForAnyDeviceCallback);
+
+audioSpatializationManager.off('headTrackingEnabledChangeForAnyDevice', headTrackingEnabledChangeForAnyDeviceCallback);
+```
+
 ## off('spatializationEnabledChange')
 
 ```TypeScript
 off(type: 'spatializationEnabledChange', callback?: Callback<boolean>): void
 ```
 
-取消监听空间音频渲染开关状态变化事件。使用callback异步回调。
+取消监听空间音频渲染开关状态变化事件。
 
 > **说明：** 
-> 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
 > [off('spatializationEnabledChangeForAnyDevice')](#offspatializationenabledchangeforanydevice)
 > 替代。
@@ -738,45 +836,32 @@ off(type: 'spatializationEnabledChange', callback?: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'spatializationEnabledChange' | 是 | 事件回调类型，支持的事件为'spatializationEnabledChange'，当取消监听空间音频渲染开关状态变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 否 | 回调函数。返回true表示音频渲染已打开；返回false表示音频渲染已关闭。 |
+| type | 'spatializationEnabledChange' | 是 | 事件回调类型，支持的事件为'spatializationEnabledChange'。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 否 | 待取消的空间音频渲染开关状态变化回调函数。不填写时取消该事件的所有回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-## off('spatializationEnabledChangeForAnyDevice')
+**示例**
 
 ```TypeScript
-off(type: 'spatializationEnabledChangeForAnyDevice', callback?: Callback<AudioSpatialEnabledStateForDevice>): void
+// 取消该事件的所有监听。
+audioSpatializationManager.off('spatializationEnabledChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let spatializationEnabledChangeCallback = (isSpatializationEnabled: boolean) => {
+  console.info(`isSpatializationEnabled: ${isSpatializationEnabled}`);
+};
+
+audioSpatializationManager.on('spatializationEnabledChange', spatializationEnabledChangeCallback);
+
+audioSpatializationManager.off('spatializationEnabledChange', spatializationEnabledChangeCallback);
 ```
-
-取消监听空间音频渲染开关状态变化事件。使用callback异步回调。
-
-**起始版本：** 12
-
-**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'spatializationEnabledChangeForAnyDevice' | 是 | 事件回调类型，支持的事件为'spatializationEnabledChangeForAnyDevice'，当取消监听空间音频渲染开关状态变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioSpatialEnabledStateForDevice](arkts-audio-audio-audiospatialenabledstatefordevice-i-sys.md)&gt; | 否 | 回调函数，返回设备信息和空间音频渲染开关状态。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## off('headTrackingEnabledChange')
 
@@ -784,10 +869,9 @@ off(type: 'spatializationEnabledChangeForAnyDevice', callback?: Callback<AudioSp
 off(type: 'headTrackingEnabledChange', callback?: Callback<boolean>): void
 ```
 
-取消监听头动跟踪开关状态变化事件。使用callback异步回调。
+取消监听头动跟踪开关状态变化事件。
 
 > **说明：** 
-> 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
 > [off('headTrackingEnabledChangeForAnyDevice')](#offheadtrackingenabledchangeforanydevice)
 > 替代。
@@ -806,45 +890,34 @@ off(type: 'headTrackingEnabledChange', callback?: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'headTrackingEnabledChange' | 是 | 事件回调类型，支持的事件为'headTrackingEnabledChange'，当取消监听头动跟踪开关状态变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 否 | 回调函数。返回true表示头动跟踪已打开；返回false表示头动跟踪已关闭。 |
+| type | 'headTrackingEnabledChange' | 是 | 事件回调类型，支持的事件为'headTrackingEnabledChange'。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 否 | 待取消的头动跟踪开关状态变化回调函数。不填写时取消该事件的所有回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-## off('headTrackingEnabledChangeForAnyDevice')
+**示例**
 
 ```TypeScript
-off(type: 'headTrackingEnabledChangeForAnyDevice', callback?: Callback<AudioSpatialEnabledStateForDevice>): void
+import { audio } from '@kit.AudioKit';
+
+// 取消该事件的所有监听。
+audioSpatializationManager.off('headTrackingEnabledChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let headTrackingEnabledChangeCallback = (isHeadTrackingEnabled: boolean) => {
+  console.info(`isHeadTrackingEnabled: ${isHeadTrackingEnabled}`);
+};
+
+audioSpatializationManager.on('headTrackingEnabledChange', headTrackingEnabledChangeCallback);
+
+audioSpatializationManager.off('headTrackingEnabledChange', headTrackingEnabledChangeCallback);
 ```
-
-取消监听头动跟踪开关状态变化事件。使用callback异步回调。
-
-**起始版本：** 12
-
-**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'headTrackingEnabledChangeForAnyDevice' | 是 | 事件回调类型，支持的事件为'headTrackingEnabledChangeForAnyDevice'，当取消监听头动跟踪开关状态变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioSpatialEnabledStateForDevice](arkts-audio-audio-audiospatialenabledstatefordevice-i-sys.md)&gt; | 否 | 回调函数。返回true表示头动跟踪已打开；返回false表示头动跟踪已关闭。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## offAdaptiveSpatialRenderingEnabledChangeForAnyDevice
 
@@ -852,7 +925,7 @@ off(type: 'headTrackingEnabledChangeForAnyDevice', callback?: Callback<AudioSpat
 offAdaptiveSpatialRenderingEnabledChangeForAnyDevice(callback?: Callback<AudioSpatialEnabledStateForDevice>): void
 ```
 
-取消订阅指定设备的自适应空间渲染启用状态变更事件。
+取消订阅自适应空间音频渲染开关状态变化事件。
 
 **起始版本：** 24
 
@@ -864,13 +937,13 @@ offAdaptiveSpatialRenderingEnabledChangeForAnyDevice(callback?: Callback<AudioSp
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioSpatialEnabledStateForDevice](arkts-audio-audio-audiospatialenabledstatefordevice-i-sys.md)&gt; | 否 | 回调函数，用于通过指定设备获取自适应空间渲染的启用状态。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioSpatialEnabledStateForDevice](arkts-audio-audio-audiospatialenabledstatefordevice-i-sys.md)&gt; | 否 | 待取消的自适应空间音频渲染开关状态变化回调函数。不填写时取消该事件的所有回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -919,7 +992,7 @@ offPersonalizedSpatializationEnabledChangeForAnyDevice(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
 ## offSpatialAudioSourceTypeChange
 
@@ -927,7 +1000,7 @@ offPersonalizedSpatializationEnabledChangeForAnyDevice(
 offSpatialAudioSourceTypeChange(callback?: Callback<SpatialAudioSourceType>): void
 ```
 
-取消订阅空间音频源类型更改事件。
+取消订阅空间音频源类型变化事件。
 
 **起始版本：** 24
 
@@ -941,13 +1014,13 @@ offSpatialAudioSourceTypeChange(callback?: Callback<SpatialAudioSourceType>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SpatialAudioSourceType](arkts-audio-audio-spatialaudiosourcetype-e-sys.md)&gt; | 否 | 回调函数，用于接收当前空间音频源类型变更。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SpatialAudioSourceType](arkts-audio-audio-spatialaudiosourcetype-e-sys.md)&gt; | 否 | 待取消的空间音频源类型变化回调函数。不填写时取消该事件的所有回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -965,45 +1038,6 @@ let spatialAudioSourceTypeChangeCallback = (spatialAudioSourceType: audio.Spatia
 audioSpatializationManager.onSpatialAudioSourceTypeChange(spatialAudioSourceTypeChangeCallback);
 audioSpatializationManager.offSpatialAudioSourceTypeChange(spatialAudioSourceTypeChangeCallback);
 ```
-
-## on('spatializationEnabledChange')
-
-```TypeScript
-on(type: 'spatializationEnabledChange', callback: Callback<boolean>): void
-```
-
-监听空间音频渲染开关状态变化事件（当空间音频渲染开关状态发生变化时触发）。使用callback异步回调。
-
-> **说明：** 
-> 
-> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [on(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback&lt;AudioSpatialEnabledStateForDevice\&gt;): void](#onspatializationenabledchangeforanydevice)
-> 替代。
-
-**起始版本：** 11
-
-**废弃版本：** 12
-
-**替代接口：** on
-
-**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'spatializationEnabledChange' | 是 | 事件回调类型，支持的事件为'spatializationEnabledChange'，当空间音频渲染开关状态发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示音频渲染已打开；返回false表示音频渲染已关闭。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## on('spatializationEnabledChangeForAnyDevice')
 
@@ -1030,48 +1064,20 @@ on(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpat
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-## on('headTrackingEnabledChange')
+**示例**
 
 ```TypeScript
-on(type: 'headTrackingEnabledChange', callback: Callback<boolean>): void
+import { audio } from '@kit.AudioKit';
+
+audioSpatializationManager.on('spatializationEnabledChangeForAnyDevice', (audioSpatialEnabledStateForDevice: audio.AudioSpatialEnabledStateForDevice) => {
+  console.info(`deviceDescriptor: ${audioSpatialEnabledStateForDevice.deviceDescriptor}`);
+  console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
+});
 ```
-
-监听头动跟踪开关状态变化事件（当动跟踪开关状态发生变化时触发）。使用callback异步回调。
-
-> **说明：** 
-> 
-> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback&lt;AudioSpatialEnabledStateForDevice\&gt;): void](#onheadtrackingenabledchangeforanydevice)
-> 替代。
-
-**起始版本：** 11
-
-**废弃版本：** 12
-
-**替代接口：** on
-
-**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'headTrackingEnabledChange' | 是 | 事件回调类型，支持的事件为'headTrackingEnabledChange'，当动跟踪开关状态发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示头动跟踪已打开；返回false表示头动跟踪已关闭。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## on('headTrackingEnabledChangeForAnyDevice')
 
@@ -1098,9 +1104,116 @@ on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatia
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+audioSpatializationManager.on('headTrackingEnabledChangeForAnyDevice', (audioSpatialEnabledStateForDevice: audio.AudioSpatialEnabledStateForDevice) => {
+  console.info(`deviceDescriptor: ${audioSpatialEnabledStateForDevice.deviceDescriptor}`);
+  console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
+});
+```
+
+## on('spatializationEnabledChange')
+
+```TypeScript
+on(type: 'spatializationEnabledChange', callback: Callback<boolean>): void
+```
+
+监听空间音频渲染开关状态变化事件（当空间音频渲染开关状态发生变化时触发）。使用callback异步回调。
+
+> **说明：** 
+> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
+> [on(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback&lt;AudioSpatialEnabledStateForDevice\&gt;): void](#onspatializationenabledchangeforanydevice)
+> 替代。
+
+**起始版本：** 11
+
+**废弃版本：** 12
+
+**替代接口：** on
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'spatializationEnabledChange' | 是 | 事件回调类型，支持的事件为'spatializationEnabledChange'，当空间音频渲染开关状态发生变化时，触发该事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示音频渲染已打开；返回false表示音频渲染已关闭。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+audioSpatializationManager.on('spatializationEnabledChange', (isSpatializationEnabled: boolean) => {
+  console.info(`isSpatializationEnabled: ${isSpatializationEnabled}`);
+});
+```
+
+## on('headTrackingEnabledChange')
+
+```TypeScript
+on(type: 'headTrackingEnabledChange', callback: Callback<boolean>): void
+```
+
+监听头动跟踪开关状态变化事件（当动跟踪开关状态发生变化时触发）。使用callback异步回调。
+
+> **说明：** 
+> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
+> [on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback&lt;AudioSpatialEnabledStateForDevice\&gt;): void](#onheadtrackingenabledchangeforanydevice)
+> 替代。
+
+**起始版本：** 11
+
+**废弃版本：** 12
+
+**替代接口：** on
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'headTrackingEnabledChange' | 是 | 事件回调类型，支持的事件为'headTrackingEnabledChange'，当动跟踪开关状态发生变化时，触发该事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示头动跟踪已打开；返回false表示头动跟踪已关闭。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+audioSpatializationManager.on('headTrackingEnabledChange', (isHeadTrackingEnabled: boolean) => {
+  console.info(`isHeadTrackingEnabled: ${isHeadTrackingEnabled}`);
+});
+```
 
 ## onAdaptiveSpatialRenderingEnabledChangeForAnyDevice
 
@@ -1108,7 +1221,7 @@ on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatia
 onAdaptiveSpatialRenderingEnabledChangeForAnyDevice(callback: Callback<AudioSpatialEnabledStateForDevice>): void
 ```
 
-订阅指定设备的自适应空间渲染启用状态变更事件。当自适应空间渲染启用状态发生变化时，已注册的客户端将收到回调。
+订阅自适应空间音频渲染开关状态变化事件，当自适应空间音频渲染开关状态发生变化时，注册的回调将被调用。
 
 **起始版本：** 24
 
@@ -1120,13 +1233,13 @@ onAdaptiveSpatialRenderingEnabledChangeForAnyDevice(callback: Callback<AudioSpat
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioSpatialEnabledStateForDevice](arkts-audio-audio-audiospatialenabledstatefordevice-i-sys.md)&gt; | 是 | 回调函数，用于通过指定设备获取自适应空间渲染的启用状态。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioSpatialEnabledStateForDevice](arkts-audio-audio-audiospatialenabledstatefordevice-i-sys.md)&gt; | 是 | 回调函数，返回设备信息和自适应空间音频渲染开关状态。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -1167,7 +1280,7 @@ onPersonalizedSpatializationEnabledChangeForAnyDevice(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
 ## onSpatialAudioSourceTypeChange
 
@@ -1175,7 +1288,7 @@ onPersonalizedSpatializationEnabledChangeForAnyDevice(
 onSpatialAudioSourceTypeChange(callback: Callback<SpatialAudioSourceType>): void
 ```
 
-订阅空间音频源类型更改事件。当当前空间音频源类型发生变化时，注册的客户端将收到回调通知。
+订阅空间音频源类型变化事件。当前空间音频源类型发生变化时，注册的回调将被调用。
 
 **起始版本：** 24
 
@@ -1189,13 +1302,13 @@ onSpatialAudioSourceTypeChange(callback: Callback<SpatialAudioSourceType>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SpatialAudioSourceType](arkts-audio-audio-spatialaudiosourcetype-e-sys.md)&gt; | 是 | 回调函数，用于接收当前空间音频源类型。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SpatialAudioSourceType](arkts-audio-audio-spatialaudiosourcetype-e-sys.md)&gt; | 是 | 回调函数，返回变化后的空间音频源类型。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -1214,7 +1327,7 @@ audioSpatializationManager.onSpatialAudioSourceTypeChange((spatialAudioSourceTyp
 setAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise<void>
 ```
 
-设置指定设备是否启用自适应空间渲染。该方法使用 Promise 返回结果。当启用自适应空间渲染时，空间音频渲染将不会对立体声音频生效。
+设置指定设备的自适应空间音频渲染开关。使用Promise异步回调。当开启自适应空间音频渲染时，立体声音频将不会进行空间音频渲染。
 
 **起始版本：** 24
 
@@ -1228,22 +1341,22 @@ setAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor, enab
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 目标设备需启用自适应空间渲染功能。 |
-| enabled | boolean | 是 | 自适应空间渲染启用状态。 |
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 待设置的音频设备描述符。 |
+| enabled | boolean | 是 | 是否开启自适应空间音频渲染。true表示开启；false表示关闭。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，返回void。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Return by promise. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported on the device. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Return by promise. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported on the device. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -1276,25 +1389,17 @@ audioSpatializationManager.setAdaptiveSpatialRenderingEnabled(deviceDescriptor, 
 });
 ```
 
+<a id="setheadtrackingenabled-2"></a>
+
 ## setHeadTrackingEnabled
 
 ```TypeScript
-setHeadTrackingEnabled(enable: boolean, callback: AsyncCallback<void>): void
+setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise<void>
 ```
 
-根据输入指令，开启/关闭头动跟踪效果。使用callback异步回调。
+开启或关闭指定设备的头动跟踪效果。使用Promise异步回调。
 
-> **说明：** 
-> 
-> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\&lt;void&gt;](#setheadtrackingenabled-2)
-> 替代。
-
-**起始版本：** 11
-
-**废弃版本：** 12
-
-**替代接口：** [setHeadTrackingEnabled](#setheadtrackingenabled)
+**起始版本：** 12
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
@@ -1306,47 +1411,25 @@ setHeadTrackingEnabled(enable: boolean, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 表示开启/关闭头动跟踪。true为开启，false为关闭。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当开启/关闭头动跟踪效果成功，err为undefined，否则为错误对象。 |
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 待设置的音频设备描述符。 |
+| enabled | boolean | 是 | 表示开启/关闭头动跟踪。true为开启，false为关闭。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Return by callback. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Return by promise. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
-
-```TypeScript
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let enable: boolean = true;
-
-audioSpatializationManager.setHeadTrackingEnabled(enable, (err: BusinessError) => {
-  if (err) {
-    console.error(`Result ERROR: ${err}`);
-  } else {
-    console.info(`setHeadTrackingEnabled success`);
-  }
-});
-```
-
-```TypeScript
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let enable: boolean = true;
-
-audioSpatializationManager.setHeadTrackingEnabled(enable).then(() => {
-  console.info(`setHeadTrackingEnabled success`);
-}).catch((err: BusinessError) => {
-  console.error(`Result ERROR: ${err}`);
-});
-```
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -1378,13 +1461,72 @@ audioSpatializationManager.setHeadTrackingEnabled(deviceDescriptor, enable).then
 ## setHeadTrackingEnabled
 
 ```TypeScript
+setHeadTrackingEnabled(enable: boolean, callback: AsyncCallback<void>): void
+```
+
+开启或关闭头动跟踪效果。使用callback异步回调。
+
+> **说明：** 
+> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
+> [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\&lt;void&gt;](#setheadtrackingenabled-2)
+> 替代。
+
+**起始版本：** 11
+
+**废弃版本：** 12
+
+**替代接口：** [setHeadTrackingEnabled](#setheadtrackingenabled)
+
+**需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| enable | boolean | 是 | 表示开启/关闭头动跟踪。true为开启，false为关闭。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当开启/关闭头动跟踪效果成功，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Return by callback. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enable: boolean = true;
+
+audioSpatializationManager.setHeadTrackingEnabled(enable, (err: BusinessError) => {
+  if (err) {
+    console.error(`Result ERROR: ${err}`);
+  } else {
+    console.info(`setHeadTrackingEnabled success`);
+  }
+});
+```
+
+<a id="setheadtrackingenabled-1"></a>
+
+## setHeadTrackingEnabled
+
+```TypeScript
 setHeadTrackingEnabled(enable: boolean): Promise<void>
 ```
 
-根据输入指令，开启/关闭头动跟踪效果。使用Promise异步回调。
+开启或关闭头动跟踪效果。使用Promise异步回调。
 
 > **说明：** 
-> 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
 > [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\&lt;void&gt;](#setheadtrackingenabled-2)
 > 替代。
@@ -1411,61 +1553,30 @@ setHeadTrackingEnabled(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Return by promise. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Return by promise. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
-
-参见 [setHeadTrackingEnabled](#setheadtrackingenabled)
-
-## setHeadTrackingEnabled
 
 ```TypeScript
-setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise<void>
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enable: boolean = true;
+
+audioSpatializationManager.setHeadTrackingEnabled(enable).then(() => {
+  console.info(`setHeadTrackingEnabled success`);
+}).catch((err: BusinessError) => {
+  console.error(`Result ERROR: ${err}`);
+});
 ```
-
-根据输入指令，开启/关闭指定设备的头动跟踪效果。使用Promise异步回调。
-
-**起始版本：** 12
-
-**需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
-
-**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 设备描述符。 |
-| enabled | boolean | 是 | 表示开启/关闭头动跟踪。true为开启，false为关闭。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Return by promise. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-
-**示例**
-
-参见 [setHeadTrackingEnabled](#setheadtrackingenabled)
 
 ## setPersonalizedSpatializationEnabled
 
@@ -1497,35 +1608,27 @@ setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 承诺用于返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability is not supported in this device. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability is not supported in this device. |
+
+<a id="setspatializationenabled-2"></a>
 
 ## setSpatializationEnabled
 
 ```TypeScript
-setSpatializationEnabled(enable: boolean, callback: AsyncCallback<void>): void
+setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise<void>
 ```
 
-根据输入指令，开启/关闭空间音频渲染效果。使用callback异步回调。
+开启或关闭指定设备的空间音频渲染效果。使用Promise异步回调。
 
-> **说明：** 
-> 
-> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\&lt;void&gt;](#setspatializationenabled-2)
-> 替代。
-
-**起始版本：** 11
-
-**废弃版本：** 12
-
-**替代接口：** [setSpatializationEnabled](#setspatializationenabled)
+**起始版本：** 12
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
@@ -1537,47 +1640,25 @@ setSpatializationEnabled(enable: boolean, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 表示开启/关闭空间音频渲染。true为开启，false为关闭。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当开启/关闭空间音频渲染效果成功，err为undefined，否则为错误对象。 |
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 指定设备的描述。 |
+| enabled | boolean | 是 | 表示开启/关闭空间音频渲染。true为开启，false为关闭。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Return by callback. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Return by promise. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
-
-```TypeScript
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let enable: boolean = true;
-
-audioSpatializationManager.setSpatializationEnabled(enable, (err: BusinessError) => {
-  if (err) {
-    console.error(`Result ERROR: ${err}`);
-  } else {
-    console.info(`setSpatializationEnabled success`);
-  }
-});
-```
-
-```TypeScript
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let enable: boolean = true;
-
-audioSpatializationManager.setSpatializationEnabled(enable).then(() => {
-  console.info(`setSpatializationEnabled success`);
-}).catch((err: BusinessError) => {
-  console.error(`Result ERROR: ${err}`);
-});
-```
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -1609,13 +1690,73 @@ audioSpatializationManager.setSpatializationEnabled(deviceDescriptor, enabled).t
 ## setSpatializationEnabled
 
 ```TypeScript
-setSpatializationEnabled(enable: boolean): Promise<void>
+setSpatializationEnabled(enable: boolean, callback: AsyncCallback<void>): void
 ```
 
-根据输入指令，开启/关闭空间音频渲染效果。使用Promise异步回调。
+开启或关闭空间音频渲染效果。使用callback异步回调。
 
 > **说明：** 
 > 
+> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
+> [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\&lt;void&gt;](#setspatializationenabled-2)
+> 替代。
+
+**起始版本：** 11
+
+**废弃版本：** 12
+
+**替代接口：** [setSpatializationEnabled](#setspatializationenabled)
+
+**需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| enable | boolean | 是 | 表示开启/关闭空间音频渲染。true为开启，false为关闭。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当开启/关闭空间音频渲染效果成功，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Return by callback. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enable: boolean = true;
+
+audioSpatializationManager.setSpatializationEnabled(enable, (err: BusinessError) => {
+  if (err) {
+    console.error(`Result ERROR: ${err}`);
+  } else {
+    console.info(`setSpatializationEnabled success`);
+  }
+});
+```
+
+<a id="setspatializationenabled-1"></a>
+
+## setSpatializationEnabled
+
+```TypeScript
+setSpatializationEnabled(enable: boolean): Promise<void>
+```
+
+开启或关闭空间音频渲染效果。使用Promise异步回调。
+
+> **说明：** 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
 > [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\&lt;void&gt;](#setspatializationenabled-2)
 > 替代。
@@ -1648,55 +1789,24 @@ setSpatializationEnabled(enable: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Return by promise. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Return by promise. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
-
-参见 [setSpatializationEnabled](#setspatializationenabled)
-
-## setSpatializationEnabled
 
 ```TypeScript
-setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise<void>
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enable: boolean = true;
+
+audioSpatializationManager.setSpatializationEnabled(enable).then(() => {
+  console.info(`setSpatializationEnabled success`);
+}).catch((err: BusinessError) => {
+  console.error(`Result ERROR: ${err}`);
+});
 ```
-
-根据输入指令，开启/关闭指定设备的空间音频渲染效果。使用Promise异步回调。
-
-**起始版本：** 12
-
-**需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
-
-**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 指定设备的描述。 |
-| enabled | boolean | 是 | 表示开启/关闭空间音频渲染。true为开启，false为关闭。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Return by promise. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-
-**示例**
-
-参见 [setSpatializationEnabled](#setspatializationenabled)
 
 ## setSpatializationSceneType
 
@@ -1724,9 +1834,9 @@ setSpatializationSceneType(spatializationSceneType: AudioSpatializationSceneType
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -1770,9 +1880,9 @@ updateSpatialDeviceState(spatialDeviceState: AudioSpatialDeviceState): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**

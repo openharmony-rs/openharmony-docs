@@ -8,6 +8,8 @@ typedef struct VideoOutput_Callbacks {...} VideoOutput_Callbacks
 
 用于录像输出的回调。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

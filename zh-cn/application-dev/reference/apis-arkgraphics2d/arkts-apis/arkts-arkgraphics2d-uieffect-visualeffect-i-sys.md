@@ -1,5 +1,9 @@
 # VisualEffect
 
+```TypeScript
+interface VisualEffect
+```
+
 VisualEffect效果类，用于将背景颜色混合、边框光照、颜色渐变等效果添加到组件上。在调用VisualEffect的方法前，需要先通过[createEffect](arkts-arkgraphics2d-uieffect-createeffect-f.md)创建一个VisualEffect实例。
 
 **起始版本：** 12
@@ -86,7 +90,7 @@ borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIn
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
 
 **示例**
 
@@ -165,7 +169,7 @@ colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths:
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
 
 **示例**
 
@@ -234,7 +238,7 @@ backgroundEffect、brightness、blur等需要截屏的接口无法截取到正�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| distortionParam | [DistortionParam](../../apis-arkui/arkts-components/arkts-arkui-distortionparam-i-sys.md) | 是 | 非线性形变效果的参数。 |
+| distortionParam | [DistortionParam](../../apis-arkui/arkts-components/arkts-arkui-distortioncomponent-comp-distortionparam-i-sys.md) | 是 | 非线性形变效果的参数。 |
 
 **返回值：**
 
@@ -270,6 +274,41 @@ struct Index {
 }
 ```
 
+## glassMarbleEffect
+
+```TypeScript
+glassMarbleEffect(material: GlassMarbleMaterialParam, marbleShell: GlassMarbleSphereParam | Mask,
+      content?: GlassMarbleContentParam): VisualEffect
+```
+
+为组件添加玻璃弹珠效果。玻璃弹珠效果将玻璃弹珠与材质参数以及可选的内容层进行合成，产生具有折射、色散、光晕、阴影和发光的真实玻璃质感视觉效果。
+
+> **说明：** 
+> 
+> 作用于组件的背景层。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| material | [GlassMarbleMaterialParam](arkts-arkgraphics2d-uieffect-glassmarblematerialparam-i-sys.md) | 是 | 材质参数，控制背景色、透明度、反射贴图、阴影、焦散和形状缩放。 |
+| marbleShell | [GlassMarbleSphereParam](arkts-arkgraphics2d-uieffect-glassmarblesphereparam-i-sys.md) &#124; [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) | 是 | 必选的形状参数；可以是球体几何参数（圆心和半径），也可以是预置的资源图遮罩。 |
+| content | [GlassMarbleContentParam](arkts-arkgraphics2d-uieffect-glassmarblecontentparam-i-sys.md) | 否 | 可选的内容参数，包括内容遮罩、混合内容的着色颜色、缩放、饱和度和色散。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回附加了玻璃弹珠效果的VisualEffect。 |
+
 ## liquidMaterial
 
 ```TypeScript
@@ -304,7 +343,7 @@ liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMa
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
 
 **示例**
 

@@ -32,3 +32,15 @@ Subscribes to steady standing state events.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
 | [32500001](../errorcode-deviceStatus.md#32500001-abnormal-service) | Service exception. |
 | [32500002](../errorcode-deviceStatus.md#32500002-subscription-failed) | Subscription failed. |
+
+**Examples**
+
+```TypeScript
+try {
+   deviceStatus.on('steadyStandingDetect', (data:deviceStatus.SteadyStandingStatus) => {
+      console.info('succeed to get status, now status = ' + data);
+   });
+} catch (err) {
+   console.error('on failed, err = ' + err);
+}
+```

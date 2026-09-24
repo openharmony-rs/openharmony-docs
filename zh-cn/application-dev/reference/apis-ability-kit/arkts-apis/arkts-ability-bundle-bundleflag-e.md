@@ -1,5 +1,9 @@
 # BundleFlag
 
+```TypeScript
+enum BundleFlag
+```
+
 
 > **说明：** 
 > 

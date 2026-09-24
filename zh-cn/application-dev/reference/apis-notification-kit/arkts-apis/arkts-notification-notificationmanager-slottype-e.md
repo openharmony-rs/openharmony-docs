@@ -1,5 +1,9 @@
 # SlotType
 
+```TypeScript
+export enum SlotType
+```
+
 通知渠道类型。
 
 不同类型对应不同的SlotLevel，决定通知的提醒行为。

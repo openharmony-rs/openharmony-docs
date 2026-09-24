@@ -1,5 +1,9 @@
 # ApplicationInfoFlag (System API)
 
+```TypeScript
+export enum ApplicationInfoFlag
+```
+
 Enumerates the application information flag, which describes the status between an application and user.
 
 **Since:** 12

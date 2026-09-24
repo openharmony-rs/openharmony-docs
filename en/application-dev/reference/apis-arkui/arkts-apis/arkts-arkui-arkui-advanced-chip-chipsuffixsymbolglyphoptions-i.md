@@ -1,6 +1,10 @@
 # ChipSuffixSymbolGlyphOptions
 
-Defines the accessibility options of the symbol-type suffix icon.
+```TypeScript
+export interface ChipSuffixSymbolGlyphOptions
+```
+
+Defines the accessibility reading functional attributes and tap event callback of the symbol-type suffix icon.
 
 **Since:** 14
 
@@ -18,7 +22,9 @@ import { Chip, ChipOptions, ChipSize, IconCommonOptions, LabelMarginOptions, Lab
 action?: VoidCallback
 ```
 
-Action of the suffix icon.
+Callback for the suffix icon tap event, with no parameters and no return value. This callback is triggered when the user taps the suffix icon.
+
+When the value is **undefined**, no suffix icon event is set.
 
 Default value: **undefined**
 

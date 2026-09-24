@@ -43,6 +43,8 @@ enum UsbSerial_DdkRetCode
 
 定义USB Serial DDK使用的返回码。
 
+**系统能力：** SystemCapability.Driver.UsbSerial.Extension
+
 **起始版本：** 18
 
 | 枚举项 | 描述 |
@@ -67,6 +69,8 @@ enum UsbSerial_FlowControl
 
 定义USB Serial DDK中的流量控制。在使用USB串口进行数据传输时，需要根据通信场景选择合适的流量控制方式。例如，在高速大数据量传输场景下，建议使用硬件流控以避免数据丢失；在低速或对实时性要求不高的场景下， 可使用软件流控；在短距离、可靠的点对点通信场景下，可选择无流控。
 
+**系统能力：** SystemCapability.Driver.UsbSerial.Extension
+
 **起始版本：** 18
 
 | 枚举项 | 描述 |
@@ -84,6 +88,8 @@ enum UsbSerial_Parity
 **描述：**
 
 定义USB Serial DDK使用的校验参数枚举。在配置USB串口通信参数时，需要根据数据传输的可靠性要求选择合适的校验方式。例如，在对数据完整性要求较高的工业控制场景下，建议使用奇校验或偶校验来检测传输错误； 在高噪声干扰环境下，校验可以帮助识别错误数据；在短距离、可靠的通信场景下，为提高传输效率，可选择无校验。
+
+**系统能力：** SystemCapability.Driver.UsbSerial.Extension
 
 **起始版本：** 18
 

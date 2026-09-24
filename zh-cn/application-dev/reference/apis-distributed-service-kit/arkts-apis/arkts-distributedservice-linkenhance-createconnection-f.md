@@ -39,12 +39,27 @@ function createConnection(deviceId: string, name: string): Connection
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the linkEnhance function has been trimmed.<br>**适用版本：** 26.0.0+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because the linkEnhance function has been trimmed.<br>**适用版本：** 26.0.0+ |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例**
 
-```TypeScript
 在客户端设备上，应用需要主动调用createConnection()接口创建连接对象。
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let peerDeviceId: string = "00:11:22:33:44:55"; // BLE MAC地址，需通过蓝牙扫描获取，详见参数说明
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
+  let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+} catch (err) {
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
 ```

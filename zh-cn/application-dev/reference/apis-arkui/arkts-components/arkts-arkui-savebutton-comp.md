@@ -1,10 +1,9 @@
 # SaveButton
 
-安全控件的保存控件系统接口，适用于应用需要临时获取媒体库访问权限以保存图片或视频的场景，例如图片保存到相册、媒体内容导出等。应用集成保存控件后，用户首次使用该控件时，保存控件会展示弹窗供用户确认。用户点击允许后，应用获取访问媒体库接口的临时授权，相关接口请参见[Interface (PhotoAccessHelper)](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md)；用户拒绝或关闭弹窗时，本次
-* 不授权，应用不会获得媒体库接口访问权限。后续使用无需弹窗授权。
-在API version 19及之前的版本中，授权持续时间为10秒；在API version 20及之后的版本中，授权持续时间为1分钟。开发者应在授权有效期内调用媒体库接口获取文件句柄，并完成创建媒体资源等需要临时授权的操作。授权到期后，已通过授权获取的文件句柄仍可继续进行读写操作，不受授权时间限制。<br>**说明**</br> <ul><li>
+安全控件的保存控件系统接口，适用于应用需要临时获取媒体库访问权限以保存图片或视频的场景，例如图片保存到相册、媒体内容导出等。应用集成保存控件后，用户首次使用该控件时，保存控件会展示弹窗供用户确认。用户点击允许后，应用获取访问媒体库接口的临时授权，相关接口请参见[Interface (PhotoAccessHelper)](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md)；用户拒绝或关闭弹窗时，本次  
+* 不授权，应用不会获得媒体库接口访问权限。后续使用无需弹窗授权。在API version 19及之前的版本中，授权持续时间为10秒；在API version 20及之后的版本中，授权持续时间为1分钟。开发者应在授权有效期内调用媒体库接口获取文件句柄，并完成创建媒体资源等需要临时授权的操作。授权到期后，已通过授权获取的文件句柄仍可继续进行读写操作，不受授权时间限制。<br>**说明：** &lt;/br&gt; &lt;ul&gt;&lt;li&gt;
 
-## 核心枚举类型</li> <li></li> <li>**[SaveIconStyle](arkts-arkui-saveiconstyle-e.md)：** 保存控件图标风格枚举，用于指定控件展示的图标风格。</li> <li>**[SaveDescription](arkts-arkui-savedescription-e.md)：** 保存控件文本描述枚举，用于指定控件展示的文本描述。</li> <li>**[SaveButtonOnClickResult](arkts-arkui-savebuttononclickresult-e.md)：** 保存控件点击结果枚举，用于表示点击后授权是否成功。</li> <li></li> <li>###### 核心接口类型</li> <li></li> <li>**[SaveButtonOptions](arkts-arkui-savebuttonoptions-i.md)：** 保存控件配置对象，用于指定图标、文字和按钮类型等元素属性。</li> <li>**[SaveButtonCallback](arkts-arkui-savebuttoncallback-t.md)：** 保存控件点击回调类型，用于返回点击事件、授权结果和错误信息。</li> <li></li> <li>###### 子组件</li> <li></li> <li>不支持。</li></ul>
+## 核心枚举类型</li> <li></li> <li>**[SaveIconStyle](arkts-arkui-savebutton-comp-saveiconstyle-e.md)：** 保存控件图标风格枚举，用于指定控件展示的图标风格。</li> <li>**[SaveDescription](arkts-arkui-savebutton-comp-savedescription-e.md)：** 保存控件文本描述枚举，用于指定控件展示的文本描述。</li> <li>**[SaveButtonOnClickResult](arkts-arkui-savebutton-comp-savebuttononclickresult-e.md)：** 保存控件点击结果枚举，用于表示点击后授权是否成功。</li> <li></li> <li>###### 核心接口类型</li> <li></li> <li>**[SaveButtonOptions](arkts-arkui-savebutton-comp-savebuttonoptions-i.md)：** 保存控件配置对象，用于指定图标、文字和按钮类型等元素属性。</li> <li>**[SaveButtonCallback](arkts-arkui-savebutton-comp-savebuttoncallback-t.md)：** 保存控件点击回调类型，用于返回点击事件、授权结果和错误信息。</li> <li></li> <li>###### 子组件</li> <li></li> <li>不支持。</li></ul>
 
 ## SaveButton
 
@@ -42,7 +41,7 @@ SaveButton(options: SaveButtonOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [SaveButtonOptions](arkts-arkui-savebuttonoptions-i.md) | 是 | 保存控件的配置选项，用于指定图标、文本和按钮类型等元素属性。<br>建议至少显式设置 icon 或 text 中的一项，以确保用户能明确理解控件用途；若两者都不传，控件显示为默认样式。 |
+| options | [SaveButtonOptions](arkts-arkui-savebutton-comp-savebuttonoptions-i.md) | 是 | 保存控件的配置选项，用于指定图标、文本和按钮类型等元素属性。<br>建议至少显式设置 icon 或 text 中的一项，以确保用户能明确理解控件用途；若两者都不传，控件显示为默认样式。 |
 
 ## 汇总
 
@@ -50,18 +49,18 @@ SaveButton(options: SaveButtonOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [SaveButtonOptions](arkts-arkui-savebuttonoptions-i.md) | 用于设置保存控件的图标、文本、按钮类型等属性。 |
+| [SaveButtonOptions](arkts-arkui-savebutton-comp-savebuttonoptions-i.md) | 用于设置保存控件的图标、文本、按钮类型等属性。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [SaveButtonCallback](arkts-arkui-savebuttoncallback-t.md) | 点击保存控件触发该回调。 |
+| [SaveButtonCallback](arkts-arkui-savebutton-comp-savebuttoncallback-t.md) | 点击保存控件触发该回调。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [SaveButtonOnClickResult](arkts-arkui-savebuttononclickresult-e.md) | 保存控件点击后的授权结果。 |
-| [SaveDescription](arkts-arkui-savedescription-e.md) | 保存控件的文本描述。 |
-| [SaveIconStyle](arkts-arkui-saveiconstyle-e.md) | 保存控件的图标风格。 |
+| [SaveButtonOnClickResult](arkts-arkui-savebutton-comp-savebuttononclickresult-e.md) | 保存控件点击后的授权结果。 |
+| [SaveDescription](arkts-arkui-savebutton-comp-savedescription-e.md) | 保存控件的文本描述。 |
+| [SaveIconStyle](arkts-arkui-savebutton-comp-saveiconstyle-e.md) | 保存控件的图标风格。 |

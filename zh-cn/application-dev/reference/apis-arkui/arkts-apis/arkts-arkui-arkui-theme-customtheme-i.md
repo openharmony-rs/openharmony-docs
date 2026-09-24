@@ -1,5 +1,9 @@
 # CustomTheme
 
+```TypeScript
+export declare interface CustomTheme
+```
+
 自定义主题风格对象。
 
 **起始版本：** 12

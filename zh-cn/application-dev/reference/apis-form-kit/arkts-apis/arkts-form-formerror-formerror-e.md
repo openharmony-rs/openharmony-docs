@@ -1,5 +1,9 @@
 # FormError
 
+```TypeScript
+enum FormError
+```
+
 枚举，卡片错误码。
 
 **起始版本：** 8

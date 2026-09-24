@@ -8,6 +8,8 @@ typedef struct UsbDdkConfigDescriptor {...} UsbDdkConfigDescriptor
 
 配置描述符，包含标准配置描述符和接口描述符等信息。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **起始版本：** 10
 
 **相关模块：** [UsbDdk](capi-usbddk.md)

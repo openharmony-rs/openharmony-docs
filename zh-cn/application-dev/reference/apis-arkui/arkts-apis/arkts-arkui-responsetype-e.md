@@ -1,10 +1,12 @@
 # ResponseType
 
-ResponseType for contextMenu
+```TypeScript
+declare enum ResponseType
+```
 
-@enum { number }
+菜单显示的触发方式。
 
-**起始版本：** 11
+**起始版本：** 8
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -14,9 +16,11 @@ ResponseType for contextMenu
 RightClick = 0
 ```
 
-Right click.
+通过鼠标右键点击触发菜单弹出。
 
-**起始版本：** 11
+**起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -28,9 +32,11 @@ Right click.
 LongPress = 1
 ```
 
-Long press.
+通过长按触发菜单弹出。
 
-**起始版本：** 11
+**起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

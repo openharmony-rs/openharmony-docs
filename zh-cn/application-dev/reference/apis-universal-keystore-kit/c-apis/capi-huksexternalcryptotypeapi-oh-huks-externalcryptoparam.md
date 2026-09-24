@@ -8,6 +8,8 @@ typedef struct OH_Huks_ExternalCryptoParam {...} OH_Huks_ExternalCryptoParam
 
 定义参数集合中单个参数的结构体。
 
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
 **起始版本：** 22
 
 **相关模块：** [HuksExternalCryptoTypeApi](capi-huksexternalcryptotypeapi.md)

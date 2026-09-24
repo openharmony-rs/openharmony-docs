@@ -1,5 +1,9 @@
 # SystemLocaleManager (System API)
 
+```TypeScript
+export class SystemLocaleManager
+```
+
 Provide some functions for settings and startup guide to select language or region.
 
 **Since:** 10

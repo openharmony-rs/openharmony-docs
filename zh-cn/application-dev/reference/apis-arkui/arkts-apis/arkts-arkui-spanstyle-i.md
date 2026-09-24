@@ -1,5 +1,9 @@
 # SpanStyle
 
+```TypeScript
+declare interface SpanStyle
+```
+
 属性字符串样式。
 
 **起始版本：** 12
@@ -12,9 +16,7 @@
 length: number
 ```
 
-设置属性字符串样式的长度。
-
-当length的值小于0或超出字符串长度与start的差值时，按字符串长度与start的差值处理。
+匹配属性字符串样式的长度。
 
 **类型：** number
 
@@ -68,7 +70,7 @@ styledKey: StyledStringKey
 styledValue: StyledStringValue
 ```
 
-用于设置属性字符串样式的样式对象。
+用于匹配属性字符串样式的样式对象。
 
 **类型：** [StyledStringValue](arkts-arkui-styledstringvalue-t.md)
 

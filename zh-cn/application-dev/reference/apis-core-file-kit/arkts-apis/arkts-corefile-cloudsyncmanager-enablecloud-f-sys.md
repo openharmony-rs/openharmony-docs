@@ -39,9 +39,9 @@ function enableCloud(accountId: string, switches: Record<string, boolean>): Prom
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 **示例**
 
@@ -60,23 +60,8 @@ cloudSyncManager.enableCloud(accountId, switches).then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let accountId: string = "testAccount";
-let switches: Record<string, boolean> = {
-  'com.example.bundleName1': true,
-  'com.example.bundleName2': false
-}
-cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
-  if (err) {
-    console.error(`enableCloud failed with error message: ${err.message}, error code: ${err.code}`);
-  } else {
-    console.info("enableCloud successfully");
-  }
-});
-```
-
+<a id="enablecloud-1"></a>
 
 ## enableCloud
 
@@ -110,10 +95,25 @@ function enableCloud(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 **示例**
 
-参见 [enableCloud](#enablecloud)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let switches: Record<string, boolean> = {
+  'com.example.bundleName1': true,
+  'com.example.bundleName2': false
+}
+cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
+  if (err) {
+    console.error(`enableCloud failed with error message: ${err.message}, error code: ${err.code}`);
+  } else {
+    console.info("enableCloud successfully");
+  }
+});
+```

@@ -1,5 +1,9 @@
 # String
 
+```TypeScript
+interface String
+```
+
 ## Modules to Import
 
 ```TypeScript

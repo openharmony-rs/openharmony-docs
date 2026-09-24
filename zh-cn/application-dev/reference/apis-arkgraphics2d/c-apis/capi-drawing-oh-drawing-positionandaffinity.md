@@ -8,6 +8,8 @@ typedef struct OH_Drawing_PositionAndAffinity OH_Drawing_PositionAndAffinity
 
 用于接收文本的位置和光标的亲和性。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)

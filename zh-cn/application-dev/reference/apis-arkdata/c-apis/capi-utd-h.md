@@ -53,6 +53,8 @@ OH_Utd* OH_Utd_Create(const char* typeId)
 
 创建统一数据类型[OH_Utd](capi-udmf-oh-utd.md)指针及实例对象。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -82,6 +84,8 @@ void OH_Utd_Destroy(OH_Utd* pThis)
 
 销毁统一数据类型[OH_Utd](capi-udmf-oh-utd.md)指针指向的实例对象。销毁后指针失效，不可再使用，否则会导致未定义行为。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -104,6 +108,8 @@ const char* OH_Utd_GetTypeId(OH_Utd* pThis)
 **描述：**
 
 获取统一数据类型[OH_Utd](capi-udmf-oh-utd.md)中的类型ID。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -134,6 +140,8 @@ const char* OH_Utd_GetDescription(OH_Utd* pThis)
 
 获取统一数据类型[OH_Utd](capi-udmf-oh-utd.md)中的描述信息。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -162,6 +170,8 @@ const char* OH_Utd_GetReferenceUrl(OH_Utd* pThis)
 **描述：**
 
 获取统一数据类型[OH_Utd](capi-udmf-oh-utd.md)中的URL信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -192,6 +202,8 @@ const char* OH_Utd_GetIconFile(OH_Utd* pThis)
 
 获取统一数据类型[OH_Utd](capi-udmf-oh-utd.md)中的默认图标文件路径。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -220,6 +232,8 @@ const char** OH_Utd_GetBelongingToTypes(OH_Utd* pThis, unsigned int* count)
 **描述：**
 
 获取统一数据类型[OH_Utd](capi-udmf-oh-utd.md)中的归属关系结果集。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -251,6 +265,8 @@ const char** OH_Utd_GetFilenameExtensions(OH_Utd* pThis, unsigned int* count)
 
 获取统一数据类型[OH_Utd](capi-udmf-oh-utd.md)所关联的文件名后缀结果集。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -280,6 +296,8 @@ const char** OH_Utd_GetMimeTypes(OH_Utd* pThis, unsigned int* count)
 **描述：**
 
 获取[OH_Utd](capi-udmf-oh-utd.md)所关联的MIME类型结果集。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -311,6 +329,8 @@ const char** OH_Utd_GetTypesByFilenameExtension(const char* extension, unsigned 
 
 通过文件名后缀获取关联的统一标准数据描述类型结果集。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -335,6 +355,8 @@ const char** OH_Utd_GetTypesByMimeType(const char* mimeType, unsigned int* count
 **描述：**
 
 通过MIME类型获取所关联的标准数据类型结果集。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -361,6 +383,8 @@ bool OH_Utd_BelongsTo(const char* srcTypeId, const char* destTypeId)
 
 判断两个标准化数据描述类型是否存在归属关系。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -385,6 +409,8 @@ bool OH_Utd_IsLower(const char* srcTypeId, const char* destTypeId)
 **描述：**
 
 判断原标准化数据类型是否是目标标准化数据类型的低层级类型。例如TYPE_SCRIPT为SOURCE_CODE的低层级类型，TYPE_SCRIPT和SOURCE_CODE为PLAIN_TEXT的低层级类型。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -411,6 +437,8 @@ bool OH_Utd_IsHigher(const char* srcTypeId, const char* destTypeId)
 
 判断原标准化数据类型是否是目标标准化数据类型的高层级类型。例如SOURCE_CODE为TYPE_SCRIPT的高层级类型，PLAIN_TEXT为SOURCE_CODE和TYPE_SCRIPT的高层级类型。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -436,6 +464,8 @@ bool OH_Utd_Equals(OH_Utd* utd1, OH_Utd* utd2)
 
 判断两个标准化数据描述类型是否相等。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -460,6 +490,8 @@ void OH_Utd_DestroyStringList(const char** list, unsigned int count)
 **描述：**
 
 销毁标准数据描述类型结果集字符串列表。销毁后列表指针失效，不可再使用，否则会导致未定义行为。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 

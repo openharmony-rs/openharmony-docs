@@ -4,6 +4,8 @@
 
 Provides APIs for accelerating the Neural Network Runtime model inference.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 ## Files

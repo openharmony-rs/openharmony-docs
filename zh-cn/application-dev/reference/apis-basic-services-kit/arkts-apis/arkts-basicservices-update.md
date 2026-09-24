@@ -98,6 +98,14 @@ import { update } from '@kit.BasicServicesKit';
 <!--DelEnd-->
 
 <!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [UpgradeTaskCallback](arkts-basicservices-update-upgradetaskcallback-t-sys.md) | 事件回调。 |
+<!--DelEnd-->
+
+<!--Del-->
 ### 枚举（系统接口）
 
 | 名称 | 说明 |
@@ -116,12 +124,4 @@ import { update } from '@kit.BasicServicesKit';
 | [OtaMode](arkts-basicservices-update-otamode-e-sys.md) | 升级模式。 |
 | [UpgradeAction](arkts-basicservices-update-upgradeaction-e-sys.md) | 升级方式。 |
 | [UpgradeStatus](arkts-basicservices-update-upgradestatus-e-sys.md) | 升级状态。 |
-<!--DelEnd-->
-
-<!--Del-->
-### 类型（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [UpgradeTaskCallback](arkts-basicservices-update-upgradetaskcallback-t-sys.md) | 事件回调。 |
 <!--DelEnd-->

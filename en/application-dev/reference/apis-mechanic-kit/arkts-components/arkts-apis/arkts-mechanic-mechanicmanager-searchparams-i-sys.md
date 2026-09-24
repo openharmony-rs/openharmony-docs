@@ -1,5 +1,9 @@
 # SearchParams (System API)
 
+```TypeScript
+export interface SearchParams
+```
+
 Parameters for target searching.
 
 @typedef SearchParams

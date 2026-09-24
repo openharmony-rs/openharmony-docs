@@ -1,5 +1,9 @@
 # ConflictFiles
 
+```TypeScript
+export interface ConflictFiles
+```
+
 Defines conflicting file information used in **copyDir()** or **moveDir()**.
 
 **Since:** 10

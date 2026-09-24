@@ -1,5 +1,9 @@
 # CooperateMsg（系统接口）
 
+```TypeScript
+enum CooperateMsg
+```
+
 键鼠穿越的消息通知。
 
 **起始版本：** 10

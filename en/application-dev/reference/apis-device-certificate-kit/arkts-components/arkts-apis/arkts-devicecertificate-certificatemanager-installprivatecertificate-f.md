@@ -68,52 +68,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-/* The credential data to be installed must be assigned by the service. The data in this example is not the real credential data. */
-let keystore: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
-]);
-let keystorePwd: string = "123456";
-try {
-  certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test').then((cmResult) => {
-    let uri: string = cmResult?.uri ?? '';
-    console.info('Succeeded in installing private certificate.');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (error) {
-  console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-/* The data of the credential to be installed must be assigned based on the service. The data in this example is not the real credential data. */
-let keystore: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
-]);
-let keystorePwd: string = "123456";
-try {
-  /* The credential can be used after the device is unlocked for the first time. */
-  let level = certificateManager.AuthStorageLevel.EL2;
-  certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test', level).then((cmResult) => {
-    let uri: string = cmResult.uri ?? '';
-    console.info('Succeeded in installing private certificate.');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (error) {
-  console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="installprivatecertificate-1"></a>
 
 ## installPrivateCertificate
 
@@ -155,8 +111,30 @@ Installs a private credential. This API uses a promise to return the result.
 
 **Examples**
 
-See [installPrivateCertificate](#installprivatecertificate)
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+/* The credential data to be installed must be assigned by the service. The data in this example is not the real credential data. */
+let keystore: Uint8Array = new Uint8Array([
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+]);
+let keystorePwd: string = "123456";
+try {
+  certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test').then((cmResult) => {
+    let uri: string = cmResult?.uri ?? '';
+    console.info('Succeeded in installing private certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
+<a id="installprivatecertificate-2"></a>
 
 ## installPrivateCertificate
 
@@ -199,4 +177,26 @@ Installs a private credential and specifies its storage level. This API uses a p
 
 **Examples**
 
-See [installPrivateCertificate](#installprivatecertificate)
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/* The data of the credential to be installed must be assigned based on the service. The data in this example is not the real credential data. */
+let keystore: Uint8Array = new Uint8Array([
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+]);
+let keystorePwd: string = "123456";
+try {
+  /* The credential can be used after the device is unlocked for the first time. */
+  let level = certificateManager.AuthStorageLevel.EL2;
+  certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test', level).then((cmResult) => {
+    let uri: string = cmResult.uri ?? '';
+    console.info('Succeeded in installing private certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
+}
+```

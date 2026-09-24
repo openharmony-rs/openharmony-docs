@@ -1,5 +1,9 @@
 # CustomElement
 
+```TypeScript
+interface CustomElement extends OperResult
+```
+
 “我的主页”自定义元素的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。
 
 @extends OperResult @interface CustomElement

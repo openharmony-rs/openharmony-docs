@@ -1,5 +1,9 @@
 # PhotoAssetChangeInfos
 
+```TypeScript
+interface PhotoAssetChangeInfos
+```
+
 Describes the notification information about the change of a media asset.
 
 **Since:** 20

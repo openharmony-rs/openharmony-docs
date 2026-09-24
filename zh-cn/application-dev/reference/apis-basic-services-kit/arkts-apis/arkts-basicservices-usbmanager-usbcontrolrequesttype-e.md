@@ -1,5 +1,9 @@
 # USBControlRequestType
 
+```TypeScript
+export enum USBControlRequestType
+```
+
 控制请求类型，用于指定具体的USB控制请求命令（如获取描述符、设置地址等）。
 
 **起始版本：** 9

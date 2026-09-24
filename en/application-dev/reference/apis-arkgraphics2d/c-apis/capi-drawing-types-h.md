@@ -88,6 +88,8 @@ enum OH_Drawing_ColorFormat
 
 Defines an enum for the storage formats of bitmap pixels.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 | Enum item | Description |
@@ -109,6 +111,8 @@ enum OH_Drawing_AlphaFormat
 
 Defines an enum for the alpha formats of bitmap pixels.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 | Enum item | Description |
@@ -127,6 +131,8 @@ enum OH_Drawing_BlendMode
 **Description**
 
 Defines an enum for blend modes. In blend mode, each operation generates a new color from two colors (source color and destination color). These operations are the same for the red, green, and blue color channels (the alpha channel follows a different rule). For simplicity, the following description uses the alpha channel as an example rather than naming each channel individually. For brevity, the following abbreviations are used: **s**: source. **d**: destination. **sa**: source alpha. **da**: destination alpha. The following abbreviations are used in the calculation result: **r**: The calculation methods of the four channels are the same. **ra**: used when only the alpha channel is manipulated. **rc**: used when the other three color channels are manipulated.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -171,6 +177,8 @@ enum OH_Drawing_TextEncoding
 **Description**
 
 Defines an enum for the text encoding types.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 

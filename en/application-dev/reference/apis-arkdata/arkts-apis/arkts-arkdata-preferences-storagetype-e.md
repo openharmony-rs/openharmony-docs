@@ -1,5 +1,9 @@
 # StorageType
 
+```TypeScript
+enum StorageType
+```
+
 Enumerates the storage types of preferences.
 
 > **NOTE:** 

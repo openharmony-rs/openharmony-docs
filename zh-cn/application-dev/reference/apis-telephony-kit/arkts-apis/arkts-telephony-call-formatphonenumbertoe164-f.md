@@ -32,7 +32,7 @@ function formatPhoneNumberToE164(phoneNumber: string, countryCode: string, callb
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -52,16 +52,8 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN", (err: BusinessError, data: str
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
-    console.info(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`formatPhoneNumberToE164 fail, promise: err->Code${err.code}, message:${err.message}`);
-});
-```
-
+<a id="formatphonenumbertoe164-1"></a>
 
 ## formatPhoneNumberToE164
 
@@ -96,7 +88,7 @@ function formatPhoneNumberToE164(phoneNumber: string, countryCode: string): Prom
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -104,4 +96,12 @@ function formatPhoneNumberToE164(phoneNumber: string, countryCode: string): Prom
 
 **示例**
 
-参见 formatPhoneNumberToE164
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
+    console.info(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`formatPhoneNumberToE164 fail, promise: err->Code${err.code}, message:${err.message}`);
+});
+```

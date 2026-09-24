@@ -1,5 +1,9 @@
 # ScrollBarMargin
 
+```TypeScript
+declare interface ScrollBarMargin
+```
+
 滚动条边距。
 
 **起始版本：** 20

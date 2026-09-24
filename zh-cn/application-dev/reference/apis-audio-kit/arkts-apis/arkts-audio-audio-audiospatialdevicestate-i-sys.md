@@ -1,5 +1,9 @@
 # AudioSpatialDeviceState（系统接口）
 
+```TypeScript
+interface AudioSpatialDeviceState
+```
+
 空间化设备状态。
 
 **起始版本：** 11

@@ -14,7 +14,7 @@ function getTouchpadScrollDirection(callback: AsyncCallback<boolean>): void
 
 Obtains the touchpad scroll direction. This API uses an asynchronous callback to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -62,6 +62,36 @@ struct Index {
 }
 ```
 
+
+<a id="gettouchpadscrolldirection-1"></a>
+
+## getTouchpadScrollDirection
+
+```TypeScript
+function getTouchpadScrollDirection(): Promise<boolean>
+```
+
+Obtains the scroll direction of the touchpad. This API uses a promise to return the result.
+
+**Since:** 26.0.1
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the touchpad scroll direction matches the direction of finger movement, and the value **false** indicates the opposite. The default value is **true**. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permission error.<br>**Applicable version:** 10 - 26.0.0 |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
 ```TypeScript
 import { pointer } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -88,33 +118,3 @@ struct Index {
   }
 }
 ```
-
-
-## getTouchpadScrollDirection
-
-```TypeScript
-function getTouchpadScrollDirection(): Promise<boolean>
-```
-
-Obtains the scroll direction of the touchpad. This API uses a promise to return the result.
-
-**Since:** 26.1.0
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the touchpad scroll direction matches the direction of finger movement, and the value **false** indicates the opposite. The default value is **true**. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permission error.<br>**Applicable version:** 10 - 26.0.0 |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**Examples**
-
-See [getTouchpadScrollDirection](#gettouchpadscrolldirection)

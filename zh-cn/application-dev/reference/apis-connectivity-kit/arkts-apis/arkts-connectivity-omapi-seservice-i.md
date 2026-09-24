@@ -1,5 +1,9 @@
 # SEService
 
+```TypeScript
+export interface SEService
+```
+
 SEService表示可用于连接到系统中所有可用SE的连接（服务），通过[createService](arkts-connectivity-omapi-createservice-f.md)获取SEService实例。
 
 **起始版本：** 10
@@ -34,7 +38,7 @@ getReaders(): Reader[]
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 
@@ -84,7 +88,7 @@ getVersion(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 
@@ -127,7 +131,7 @@ isConnected(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 
@@ -168,7 +172,7 @@ shutdown(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 

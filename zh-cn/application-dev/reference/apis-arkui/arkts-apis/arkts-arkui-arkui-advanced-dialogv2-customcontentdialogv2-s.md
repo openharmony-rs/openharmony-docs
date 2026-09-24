@@ -1,5 +1,9 @@
 # CustomContentDialogV2
 
+```TypeScript
+export declare struct CustomContentDialogV2
+```
+
 自定义内容区弹出框，同时支持定义操作区按钮样式。适用于需要展示复杂或自定义内容的场景，如用户协议确认、表单输入等。
 
 **起始版本：** 18
@@ -62,7 +66,7 @@ contentBuilder: CustomBuilder
 
 弹出框内容。
 
-**类型：** [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md)
+**类型：** [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md)
 
 **起始版本：** 18
 

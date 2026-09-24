@@ -1,5 +1,9 @@
 # ProbeResultInfo
 
+```TypeScript
+export interface ProbeResultInfo
+```
+
 Defines the network probe result information.
 
 **Since:** 26.0.0

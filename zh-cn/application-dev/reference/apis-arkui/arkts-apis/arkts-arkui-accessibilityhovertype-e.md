@@ -1,8 +1,10 @@
 # AccessibilityHoverType
 
-Type of accessibility hover event.
+```TypeScript
+declare enum AccessibilityHoverType
+```
 
-@enum {number}
+辅助功能悬停事件的类型。
 
 **起始版本：** 12
 
@@ -14,7 +16,7 @@ Type of accessibility hover event.
 HOVER_ENTER = 0
 ```
 
-Hover enter type.
+手指按下时触发。
 
 **起始版本：** 12
 
@@ -30,7 +32,7 @@ Hover enter type.
 HOVER_MOVE = 1
 ```
 
-Hover move type.
+触摸移动时触发。
 
 **起始版本：** 12
 
@@ -46,7 +48,7 @@ Hover move type.
 HOVER_EXIT = 2
 ```
 
-Hover exit type.
+手指抬起时触发。
 
 **起始版本：** 12
 
@@ -62,7 +64,7 @@ Hover exit type.
 HOVER_CANCEL = 3
 ```
 
-Hover cancel type.
+打断取消当前触发的事件。
 
 **起始版本：** 12
 

@@ -1,5 +1,9 @@
 # BrightnessInfo
 
+```TypeScript
+interface BrightnessInfo
+```
+
 Describes the screen brightness information. The information comes from the underlying screen data.
 
 **Since:** 22

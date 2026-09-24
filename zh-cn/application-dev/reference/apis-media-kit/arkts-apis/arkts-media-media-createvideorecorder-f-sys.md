@@ -31,7 +31,7 @@ function createVideoRecorder(callback: AsyncCallback<VideoRecorder>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by callback. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -49,22 +49,8 @@ media.createVideoRecorder((error: BusinessError, video: media.VideoRecorder) => 
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let videoRecorder: media.VideoRecorder;
-media.createVideoRecorder().then((video: media.VideoRecorder) => {
-  if (video != null) {
-    videoRecorder = video;
-    console.info('video createVideoRecorder success');
-  } else {
-    console.error('video createVideoRecorder fail');
-  }
-}).catch((error: BusinessError) => {
-  console.error(`video catchCallback, error message:${error.message}`);
-});
-```
-
+<a id="createvideorecorder-2"></a>
 
 ## createVideoRecorder
 
@@ -91,8 +77,22 @@ function createVideoRecorder(): Promise<VideoRecorder>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
 **示例**
 
-参见 [createVideoRecorder](#createvideorecorder)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let videoRecorder: media.VideoRecorder;
+media.createVideoRecorder().then((video: media.VideoRecorder) => {
+  if (video != null) {
+    videoRecorder = video;
+    console.info('video createVideoRecorder success');
+  } else {
+    console.error('video createVideoRecorder fail');
+  }
+}).catch((error: BusinessError) => {
+  console.error(`video catchCallback, error message:${error.message}`);
+});
+```

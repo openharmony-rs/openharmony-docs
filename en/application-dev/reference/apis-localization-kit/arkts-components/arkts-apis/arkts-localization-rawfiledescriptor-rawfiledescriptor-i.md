@@ -1,5 +1,9 @@
 # RawFileDescriptor
 
+```TypeScript
+export interface RawFileDescriptor
+```
+
 This module provides file descriptor information of the HAP where the `rawfile` file is located, including the file descriptor, start offset, and file length.
 
 **Since:** 8

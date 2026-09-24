@@ -1,5 +1,9 @@
 # CmKeyPadding
 
+```TypeScript
+export enum CmKeyPadding
+```
+
 表示签名、验签使用的填充方式的枚举。
 
 **起始版本：** 11

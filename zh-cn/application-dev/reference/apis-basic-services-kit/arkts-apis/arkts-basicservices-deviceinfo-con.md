@@ -204,7 +204,7 @@ const deviceType: string
 
 设备类型。详细请参考[deviceTypes标签](../../../quick-start/module-configuration-file.md#devicetypes标签)。
 
-示例：&lt;!--RP1--&gt;wearable&lt;!--RP1End--&gt;
+示例：<!--RP1-->wearable<!--RP1End-->
 
 **类型：** string
 
@@ -244,7 +244,7 @@ const displayVersion: string
 
 产品版本。
 
-示例：&lt;!--RP8--&gt;XXX X.X.X.X&lt;!--RP8End--&gt;
+示例：<!--RP8-->XXX X.X.X.X<!--RP8End-->
 
 **类型：** string
 
@@ -260,7 +260,7 @@ const distributionOSApiName: string
 
 发行版系统API版本名称<!--Del-->，由发行方定义<!--DelEnd-->。
 
-&lt;!--RP16--&gt; **说明：** 不建议用于版本号判断。示例：5.0.1&lt;!--RP16End--&gt;
+<!--RP16--> **说明：** 不建议用于版本号判断。示例：5.0.1<!--RP16End-->
 
 **类型：** string
 
@@ -274,7 +274,7 @@ const distributionOSApiName: string
 const distributionOSApiVersion: number
 ```
 
-发行版系统API版本<!--Del-->，由发行方定义<!--DelEnd-->。&lt;!--RP15--&gt;&lt;!--RP15End--&gt;
+发行版系统API版本<!--Del-->，由发行方定义<!--DelEnd-->。<!--RP15--><!--RP15End-->
 
 示例：50001
 
@@ -322,7 +322,7 @@ const distributionOSReleaseType: string
 const distributionOSVersion: string
 ```
 
-发行版系统版本号<!--Del-->，由发行方定义<!--DelEnd-->。&lt;!--RP11--&gt;&lt;!--RP11End--&gt;
+发行版系统版本号<!--Del-->，由发行方定义<!--DelEnd-->。<!--RP11--><!--RP11End-->
 
 示例：5.0.0
 
@@ -372,33 +372,11 @@ const hardwareModel: string
 
 硬件版本号。
 
-示例：&lt;!--RP6--&gt;TASA00CVN1&lt;!--RP6End--&gt;
+示例：<!--RP6-->TASA00CVN1<!--RP6End-->
 
 **类型：** string
 
 **起始版本：** 6
-
-**系统能力：** SystemCapability.Startup.SystemInfo
-
-## hardwareProfile
-
-```TypeScript
-const hardwareProfile: string
-```
-
-硬件Profile。
-
-**说明：** 
-
-从API version 6 开始支持，从API version 9 开始废弃，建议使用[系统能力SystemCapability](../../../reference/syscap.md)替代。
-
-示例：default
-
-**类型：** string
-
-**起始版本：** 6
-
-**废弃版本：** 9
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -456,7 +434,7 @@ const marketName: string
 
 外部产品系列。
 
-示例：&lt;!--RP2--&gt;Mate XX&lt;!--RP2End--&gt;
+示例：<!--RP2-->Mate XX<!--RP2End-->
 
 **类型：** string
 
@@ -506,9 +484,9 @@ ODID（Open Developer Identifier，开发者匿名设备标识符）。
 const osFullName: string
 ```
 
-系统版本，版本格式&lt;!--RP12--&gt;OpenHarmony-x.x.x.x，其中x表示数字占位符。&lt;!--RP12End--&gt;如需获取版本号各段数值，建议直接使用majorVersion、seniorVersion、featureVersion、buildVersion字段，可提升效率，不建议解析osFullName获取。
+系统版本，版本格式<!--RP12-->OpenHarmony-x.x.x.x，其中x表示数字占位符。<!--RP12End-->如需获取版本号各段数值，建议直接使用majorVersion、seniorVersion、featureVersion、buildVersion字段，可提升效率，不建议解析osFullName获取。
 
-示例：&lt;!--RP10--&gt;OpenHarmony-5.0.0.1&lt;!--RP10End--&gt;
+示例：<!--RP10-->OpenHarmony-5.0.0.1<!--RP10End-->
 
 **类型：** string
 
@@ -532,7 +510,7 @@ const osReleaseType: string
 
 - Release：面向开发者公开发布的正式版本，承诺API稳定性。
 
-示例：&lt;!--RP9--&gt;Canary/Beta/Release&lt;!--RP9End--&gt;
+示例：<!--RP9-->Canary/Beta/Release<!--RP9End-->
 
 **类型：** string
 
@@ -566,7 +544,7 @@ const productModel: string
 
 认证型号。
 
-示例：&lt;!--RP4--&gt;TAS-AL00&lt;!--RP4End--&gt;
+示例：<!--RP4-->TAS-AL00<!--RP4End-->
 
 **类型：** string
 
@@ -602,7 +580,7 @@ const productSeries: string
 
 产品系列。
 
-示例：&lt;!--RP3--&gt;TAS&lt;!--RP3End--&gt;
+示例：<!--RP3-->TAS<!--RP3End-->
 
 **类型：** string
 
@@ -676,7 +654,7 @@ const securityPatchTag: string
 
 安全补丁级别。
 
-示例：&lt;!--RP7--&gt;2021/01/01&lt;!--RP7End--&gt;
+示例：<!--RP7-->2021/01/01<!--RP7End-->
 
 **类型：** string
 
@@ -730,7 +708,7 @@ const softwareModel: string
 
 内部软件子型号。
 
-示例：&lt;!--RP5--&gt;TAS-AL00&lt;!--RP5End--&gt;
+示例：<!--RP5-->TAS-AL00<!--RP5End-->
 
 **类型：** string
 
@@ -771,5 +749,27 @@ const versionId: string
 **类型：** string
 
 **起始版本：** 6
+
+**系统能力：** SystemCapability.Startup.SystemInfo
+
+## hardwareProfile
+
+```TypeScript
+const hardwareProfile: string
+```
+
+硬件Profile。
+
+**说明：** 
+
+从API version 6 开始支持，从API version 9 开始废弃，建议使用[系统能力SystemCapability](../../../reference/syscap.md)替代。
+
+示例：default
+
+**类型：** string
+
+**起始版本：** 6
+
+**废弃版本：** 9
 
 **系统能力：** SystemCapability.Startup.SystemInfo

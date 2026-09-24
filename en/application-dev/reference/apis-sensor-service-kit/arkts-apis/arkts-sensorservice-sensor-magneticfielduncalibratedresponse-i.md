@@ -1,5 +1,9 @@
 # MagneticFieldUncalibratedResponse
 
+```TypeScript
+interface MagneticFieldUncalibratedResponse extends Response
+```
+
 Describes the uncalibrated magnetic field sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** MagneticFieldUncalibratedResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

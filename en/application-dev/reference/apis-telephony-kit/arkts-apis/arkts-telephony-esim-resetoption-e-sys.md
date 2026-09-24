@@ -1,5 +1,9 @@
 # ResetOption (System API)
 
+```TypeScript
+export enum ResetOption
+```
+
 Defines the reset options.
 
 **Since:** 18

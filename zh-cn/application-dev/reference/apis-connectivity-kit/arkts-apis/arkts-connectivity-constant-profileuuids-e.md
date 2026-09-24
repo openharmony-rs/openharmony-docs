@@ -1,5 +1,9 @@
 # ProfileUuids
 
+```TypeScript
+export enum ProfileUuids
+```
+
 枚举，由蓝牙技术联盟（Bluetooth Special Interest Group）定义，使用通用唯一标识（Universally Unique Identifier，UUID）表示不同的蓝牙协议Profile。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # Channel
 
+```TypeScript
+export interface Channel
+```
+
 Channel的实例表示在某个Session实例上创建通道，可能为基础通道或逻辑通道。通过[Session.openBasicChannel](arkts-connectivity-omapi-session-i.md#openbasicchannel)或[Session.openLogicalChannel](arkts-connectivity-omapi-session-i.md#openlogicalchannel)获取Channel实例。
 
 **起始版本：** 10
@@ -28,7 +32,7 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 
@@ -68,7 +72,7 @@ getSelectResponse(): number[]
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 
@@ -109,7 +113,7 @@ getSession(): Session
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 
@@ -151,7 +155,7 @@ isBasicChannel(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 
@@ -192,7 +196,7 @@ isClosed(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 
@@ -239,8 +243,8 @@ transmit(command: number[]): Promise<number[]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session or channel that has been closed. |
 | [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the command is filtered by the security policy. |
 | [3300104](../errorcode-se.md#3300104-se芯片io异常) | IOError, there is a communication problem to the reader or the SE. |
@@ -267,27 +271,7 @@ try {
 }
 ```
 
-```TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { omapi } from '@kit.ConnectivityKit';
-
-let seChannel : omapi.Channel;
-
-// 在使用seChannel之前，需要对seChannel进行初始化
-let cmdData = [0x01, 0x02, 0x03, 0x04]; // 请更改为正确的data
-try {
-    seChannel.transmit(cmdData, (error, response) => {
-        if (error) {
-            hilog.error(0x0000, 'testTag', 'transmit error %{public}s', JSON.stringify(error));
-        } else {
-            // 若芯片捕获异常则response返回全0
-            hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
-        }
-    });
-} catch (exception) {
-    hilog.error(0x0000, 'testTag', 'transmit exception %{public}s', JSON.stringify(exception));
-}
-```
+<a id="transmit-1"></a>
 
 ## transmit
 
@@ -312,12 +296,32 @@ transmit(command: number[], callback: AsyncCallback<number[]>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session or channel that has been closed. |
 | [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the command is filtered by the security policy. |
 | [3300104](../errorcode-se.md#3300104-se芯片io异常) | IOError, there is a communication problem to the reader or the SE. |
 
 **示例**
 
-参见 [transmit](#transmit)
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { omapi } from '@kit.ConnectivityKit';
+
+let seChannel : omapi.Channel;
+
+// 在使用seChannel之前，需要对seChannel进行初始化
+let cmdData = [0x01, 0x02, 0x03, 0x04]; // 请更改为正确的data
+try {
+    seChannel.transmit(cmdData, (error, response) => {
+        if (error) {
+            hilog.error(0x0000, 'testTag', 'transmit error %{public}s', JSON.stringify(error));
+        } else {
+            // 若芯片捕获异常则response返回全0
+            hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
+        }
+    });
+} catch (exception) {
+    hilog.error(0x0000, 'testTag', 'transmit exception %{public}s', JSON.stringify(exception));
+}
+```

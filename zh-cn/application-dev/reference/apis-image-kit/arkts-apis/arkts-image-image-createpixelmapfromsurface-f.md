@@ -54,18 +54,8 @@ function createPixelMapFromSurface(surfaceId: string) {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-function createPixelMapFromSurface(surfaceId: string) {
-  image.createPixelMapFromSurface(surfaceId).then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in creating the PixelMap from Surface.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
-  });
-}
-```
-
+<a id="createpixelmapfromsurface-1"></a>
 
 ## createPixelMapFromSurface
 
@@ -95,10 +85,20 @@ Creates a PixelMap object from surface id.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [62980105](../errorcode-image.md#62980105-图片获取数据错误) | Failed to get the data. |
 | [62980178](../errorcode-image.md#62980178-pixelmap创建失败) | Failed to create the PixelMap. |
 
 **示例**
 
-参见 createPixelMapFromSurface
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function createPixelMapFromSurface(surfaceId: string) {
+  image.createPixelMapFromSurface(surfaceId).then((pixelMap: image.PixelMap) => {
+    console.info('Succeeded in creating the PixelMap from Surface.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```

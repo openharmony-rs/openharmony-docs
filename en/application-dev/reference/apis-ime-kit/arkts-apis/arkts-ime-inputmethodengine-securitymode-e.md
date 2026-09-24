@@ -1,5 +1,9 @@
 # SecurityMode
 
+```TypeScript
+export enum SecurityMode
+```
+
 Describes the security mode.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # StyledStringKey
 
+```TypeScript
+declare enum StyledStringKey
+```
+
 Sets the style for a range styled string.
 
 **Since:** 12

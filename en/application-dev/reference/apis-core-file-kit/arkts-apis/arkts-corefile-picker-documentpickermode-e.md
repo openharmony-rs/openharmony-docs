@@ -1,5 +1,9 @@
 # DocumentPickerMode
 
+```TypeScript
+export enum DocumentPickerMode
+```
+
 Enumerates the modes for saving documents.
 
 **Since:** 12

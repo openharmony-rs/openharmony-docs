@@ -1,12 +1,16 @@
 # XComponent属性/事件
 
+```TypeScript
+declare class XComponentAttribute extends CommonMethod<XComponentAttribute>
+```
+
 定义XComponentAttribute。
 
 除通用属性外，还支持以下属性。
 
-从API版本12开始，当type设置为**SURFACE**或**TEXTURE**时，支持通用事件。
+从API版本12开始，当type设置为**SURFACE**或**TEXTURE**时，支持[通用事件](arkts-arkui-common-comp.md#common)。
 
-**继承/实现关系：** XComponentAttribute extends CommonMethod&lt;XComponentAttribute&gt;
+**继承/实现关系：** XComponentAttribute extends CommonMethod<XComponentAttribute>
 
 **起始版本：** 8
 
@@ -86,6 +90,8 @@ hdrBrightness(brightness: number)
 | --- | --- | --- | --- |
 | brightness | number | 是 | HDR视频的亮度。<br>默认值：1.0<br>取值范围：[0.0, 1.0]。小于0.0的值按0.0处理，大于1.0的值按1.0处理，其他异常值按1.0处理。<br>0.0表示视频按照SDR亮度显示，1.0表示视频按照当前允许的最高HDR亮度显示。 |
 
+<a id="hdrbrightness-1"></a>
+
 ## hdrBrightness
 
 ```TypeScript
@@ -107,7 +113,7 @@ hdrBrightness(brightness: number, type?: HdrType)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | brightness | number | 是 | HDR视频的亮度。<br>默认值：1.0<br>取值范围：[0.0, 1.0]。小于0.0的值按0.0处理，大于1.0的值按1.0处理，其他异常值按1.0处理。<br>0.0表示视频按照SDR亮度显示，1.0表示视频按照当前允许的最高HDR亮度显示。 |
-| type | [HdrType](arkts-arkui-hdrtype-e.md) | 否 | 显示HDR内容时的HDR类型。<br>默认值：**HdrType.DEFAULT** |
+| type | [HdrType](arkts-arkui-xcomponent-comp-hdrtype-e.md) | 否 | 显示HDR内容时的HDR类型。<br>默认值：**HdrType.DEFAULT** |
 
 ## onDestroy
 
@@ -147,4 +153,4 @@ Native加载完成时回调事件。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnNativeLoadCallback](arkts-arkui-onnativeloadcallback-t.md) | 是 | Native加载完成时回调事件，用于获取XComponent实例对象的context。<br>**适用版本：** 18 |
+| callback | [OnNativeLoadCallback](arkts-arkui-xcomponent-comp-onnativeloadcallback-t.md) | 是 | Native加载完成时回调事件，用于获取XComponent实例对象的context。<br>**适用版本：** 18 |

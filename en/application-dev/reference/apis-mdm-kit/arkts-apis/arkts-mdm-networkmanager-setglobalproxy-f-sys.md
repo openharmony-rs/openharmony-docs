@@ -77,34 +77,8 @@ networkManager.setGlobalProxy(wantTemp, httpProxy, (err) => {
 });
 ```
 
-```TypeScript
-import { networkManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { connection } from '@kit.NetworkKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-// Replace with actual values.
-let exclusionStr: string = "192.168,baidu.com"
-let exclusionArray: Array<string> = exclusionStr.split(',');
-let httpProxy: connection.HttpProxy = {
-  host: "192.168.xx.xxx",
-  port: 8080,
-  exclusionList: exclusionArray
-};
-
-networkManager.setGlobalProxy(wantTemp, httpProxy).then(() => {
-  console.info(`Succeeded in setting network global proxy`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set network global proxy. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="setglobalproxy-1"></a>
 
 ## setGlobalProxy
 
@@ -153,4 +127,30 @@ Sets the global network proxy. This API uses a promise to return the result.
 
 **Examples**
 
-See [setGlobalProxy](#setglobalproxy)
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { connection } from '@kit.NetworkKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+// Replace with actual values.
+let exclusionStr: string = "192.168,baidu.com"
+let exclusionArray: Array<string> = exclusionStr.split(',');
+let httpProxy: connection.HttpProxy = {
+  host: "192.168.xx.xxx",
+  port: 8080,
+  exclusionList: exclusionArray
+};
+
+networkManager.setGlobalProxy(wantTemp, httpProxy).then(() => {
+  console.info(`Succeeded in setting network global proxy`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set network global proxy. Code: ${err.code}, message: ${err.message}`);
+});
+```

@@ -56,6 +56,74 @@ Exports the public key for the specified user. This API uses a promise to return
 
 **Examples**
 
-```TypeScript
 Prerequisites: see Example of generateKeyItemAsUser.
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from "@kit.BasicServicesKit"
+
+const rsaKeyAlias = 'test_rsaKeyAlias';
+const userId = 100;
+const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
+
+function GetRSA4096GenerateProperties(): Array<huks.HuksParam> {
+  return [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_RSA
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT |
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_ECB
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+    value: userIdStorageLevel,
+  }]
+}
+
+async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
+  const options: huks.HuksOptions = {
+    properties: genProperties
+  }
+  await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
+    console.info("Generated a key with alias of: " + keyAlias + "")
+  }).catch((err: BusinessError) => {
+    console.error("Failed to generate the key. Error code: " + err.code + " Error message: " + err.message)
+  })
+}
+
+async function ExportPublicKey(keyAlias: string) {
+  const options: huks.HuksOptions = {
+    properties: [{
+      tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+      value: userIdStorageLevel,
+    }]
+  }
+  await huks.exportKeyItemAsUser(userId, keyAlias, options).then((data) => {
+    console.info("Exported the public key with the alias of: " + keyAlias + ". The data length is " + data?.outData?.length)
+  }).catch((err: BusinessError) => {
+    console.error("Failed to export the key. Error code: " + err.code + " Error message: " + err.message)
+  })
+}
+
+async function ExportHuksTest() {
+  await GenerateKey(rsaKeyAlias, GetRSA4096GenerateProperties())
+  await ExportPublicKey(rsaKeyAlias)
+}
+
+export default function HuksAsUserTest() {
+  console.info('begin huks as user test')
+  ExportHuksTest()
+}
 ```

@@ -1,5 +1,9 @@
 # TelCallState
 
+```TypeScript
+export enum TelCallState
+```
+
 Enumerates call states.
 
 **Since:** 21

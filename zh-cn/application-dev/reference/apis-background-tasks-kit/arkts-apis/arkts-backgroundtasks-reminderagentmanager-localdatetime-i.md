@@ -1,5 +1,9 @@
 # LocalDateTime
 
+```TypeScript
+interface LocalDateTime
+```
+
 用于日历类提醒设置时指定时间信息。
 
 **起始版本：** 9

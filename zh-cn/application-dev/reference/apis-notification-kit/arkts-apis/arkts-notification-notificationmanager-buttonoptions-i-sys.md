@@ -1,5 +1,9 @@
 # ButtonOptions（系统接口）
 
+```TypeScript
+export interface ButtonOptions
+```
+
 描述触发按钮信息。
 
 **起始版本：** 11

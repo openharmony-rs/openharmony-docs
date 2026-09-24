@@ -8,6 +8,8 @@ typedef struct OH_AudioInfo {...} OH_AudioInfo
 
 The struct describes the audio information.
 
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
 **Since**: 10
 
 **Related module**: [AVScreenCapture](capi-avscreencapture.md)

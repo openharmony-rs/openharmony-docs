@@ -1,5 +1,9 @@
 # AVCastControlCommand
 
+```TypeScript
+interface AVCastControlCommand
+```
+
 The definition of cast command to be sent to the session
 
 **Since:** 10

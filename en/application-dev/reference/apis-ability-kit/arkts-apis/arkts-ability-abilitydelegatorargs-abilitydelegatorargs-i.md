@@ -1,5 +1,9 @@
 # AbilityDelegatorArgs
 
+```TypeScript
+export interface AbilityDelegatorArgs
+```
+
 The **AbilityDelegatorArgs** module provides APIs to obtain an **AbilityDelegatorArgs** object during the execution of test cases.
 
 > **NOTE:** 

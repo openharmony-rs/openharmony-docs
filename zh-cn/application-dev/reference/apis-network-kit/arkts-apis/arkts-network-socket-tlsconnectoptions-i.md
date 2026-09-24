@@ -1,5 +1,9 @@
 # TLSConnectOptions
 
+```TypeScript
+export interface TLSConnectOptions
+```
+
 TLS连接的操作。
 
 **起始版本：** 9

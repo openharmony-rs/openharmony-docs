@@ -1,5 +1,9 @@
 # AppDistributionType（系统接口）
 
+```TypeScript
+export enum AppDistributionType
+```
+
 标识应用[HarmonyAppProvision配置文件说明](../../../security/app-provision-structure.md)。
 
 **起始版本：** 12

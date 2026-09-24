@@ -44,8 +44,8 @@ function updateContinuationState(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16600001](../errorcode-DistributedSchedule.md#16600001-系统服务工作异常) | The system ability works abnormally. |
 | [16600002](../errorcode-DistributedSchedule.md#16600002-指定的token或callback未注册) | The specified token or callback is not registered. |
 
@@ -69,25 +69,8 @@ try {
 }
 ```
 
-```TypeScript
-import { continuationManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let token: number = 1;
-let deviceId: string = "test deviceId";
-try {
-  continuationManager.updateContinuationState(token, deviceId, continuationManager.DeviceConnectState.CONNECTED)
-    .then(() => {
-      console.info('updateContinuationState finished. ');
-    })
-    .catch((err: BusinessError) => {
-      console.error('updateContinuationState failed, cause: ' + JSON.stringify(err));
-    });
-} catch (err) {
-  console.error('updateContinuationState failed, cause: ' + JSON.stringify(err));
-}
-```
-
+<a id="updatecontinuationstate-1"></a>
 
 ## updateContinuationState
 
@@ -127,11 +110,28 @@ function updateContinuationState(token: number, deviceId: string, status: Device
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16600001](../errorcode-DistributedSchedule.md#16600001-系统服务工作异常) | The system ability works abnormally. |
 | [16600002](../errorcode-DistributedSchedule.md#16600002-指定的token或callback未注册) | The specified token or callback is not registered. |
 
 **示例**
 
-参见 updateContinuationState
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let token: number = 1;
+let deviceId: string = "test deviceId";
+try {
+  continuationManager.updateContinuationState(token, deviceId, continuationManager.DeviceConnectState.CONNECTED)
+    .then(() => {
+      console.info('updateContinuationState finished. ');
+    })
+    .catch((err: BusinessError) => {
+      console.error('updateContinuationState failed, cause: ' + JSON.stringify(err));
+    });
+} catch (err) {
+  console.error('updateContinuationState failed, cause: ' + JSON.stringify(err));
+}
+```

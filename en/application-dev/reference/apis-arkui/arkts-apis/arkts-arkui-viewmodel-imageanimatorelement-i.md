@@ -1,5 +1,9 @@
 # ImageAnimatorElement
 
+```TypeScript
+export interface ImageAnimatorElement
+```
+
 Image animator element @interface ImageAnimatorElement
 
 **Since:** 4

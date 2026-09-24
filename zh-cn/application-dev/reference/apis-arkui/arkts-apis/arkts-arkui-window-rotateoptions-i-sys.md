@@ -1,5 +1,9 @@
 # RotateOptions（系统接口）
 
+```TypeScript
+interface RotateOptions
+```
+
 旋转参数。
 
 **起始版本：** 9

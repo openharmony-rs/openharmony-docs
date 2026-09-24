@@ -1,5 +1,9 @@
 # MediaKeyType
 
+```TypeScript
+enum MediaKeyType
+```
+
 Enumerates the types of media keys.
 
 **Since:** 11

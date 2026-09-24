@@ -1,5 +1,9 @@
 # SymbolOptions
 
+```TypeScript
+export declare class SymbolOptions
+```
+
 Declare type SymbolOptions
 
 **Since:** 12
@@ -18,15 +22,15 @@ import { OperationOption, OperationType, SelectOptions, SubHeader, SymbolOptions
 effectStrategy?: SymbolEffectStrategy
 ```
 
-Effect strategy of the symbol glyph.
+Effect strategy of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
 
 Default value: **SymbolEffectStrategy.NONE**.
 
 **NOTE:** 
 
-For the resources referenced in **&#36;r('sys.symbol.ohos_*')**, only **ohos_wifi** supports the hierarchical effect.
+For the resources referenced in **$r('sys.symbol.ohos_*')**, only **ohos_wifi** supports the hierarchical effect.
 
-**Type:** [SymbolEffectStrategy](../arkts-components/arkts-arkui-symboleffectstrategy-e.md)
+**Type:** [SymbolEffectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-symboleffectstrategy-e.md)
 
 **Since:** 12
 
@@ -42,7 +46,7 @@ For the resources referenced in **&#36;r('sys.symbol.ohos_*')**, only **ohos_wif
 fontColor?: Array<ResourceColor>
 ```
 
-Color of the symbol glyph.
+Color of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
 
 Default value: depending on the rendering strategy
 
@@ -62,7 +66,7 @@ Default value: depending on the rendering strategy
 fontSize?: number | string | Resource
 ```
 
-Size of the symbol glyph.
+Size of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
 
 For the number type, the value must be greater than or equal to 0.
 
@@ -86,7 +90,7 @@ Default value: system default value
 fontWeight?: number | FontWeight | string
 ```
 
-Weight of the symbol glyph.
+Weight of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
 
 For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**.
 
@@ -110,15 +114,15 @@ Default value: **FontWeight.Normal**.
 renderingStrategy?: SymbolRenderingStrategy
 ```
 
-Rendering strategy of the symbol glyph.
+Rendering strategy of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
 
 Default value: **SymbolRenderingStrategy.SINGLE**.
 
 **NOTE:** 
 
-For the resources referenced in **&#36;r('sys.symbol.ohos_*')**, only **ohos_trash_circle**, **ohos_folder_badge_plus**, and **ohos_lungs** support the **MULTIPLE_COLOR** modes.
+For the resources referenced in **$r('sys.symbol.ohos_*')**, only **ohos_trash_circle**, **ohos_folder_badge_plus**, and **ohos_lungs** support the **MULTIPLE_COLOR** modes.
 
-**Type:** [SymbolRenderingStrategy](../arkts-components/arkts-arkui-symbolrenderingstrategy-e.md)
+**Type:** [SymbolRenderingStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md)
 
 **Since:** 12
 

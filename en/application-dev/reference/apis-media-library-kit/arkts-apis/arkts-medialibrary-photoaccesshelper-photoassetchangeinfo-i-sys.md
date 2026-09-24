@@ -1,5 +1,9 @@
 # PhotoAssetChangeInfo
 
+```TypeScript
+interface PhotoAssetChangeInfo
+```
+
 Describes the information about a media asset.
 
 **Since:** 20
@@ -206,7 +210,7 @@ The visibility of photo. The value should be an integer.
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -240,7 +244,7 @@ The date day of the share album asset to be shared. The value should be an integ
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -258,7 +262,7 @@ The group of the share album assets to be shared. The value should be an integer
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -276,7 +280,7 @@ The risk status of share album asset. The value should be an integer.
 
 **Type:** [ShareAlbumRiskStatus](arkts-medialibrary-photoaccesshelper-sharealbumriskstatus-e-sys.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

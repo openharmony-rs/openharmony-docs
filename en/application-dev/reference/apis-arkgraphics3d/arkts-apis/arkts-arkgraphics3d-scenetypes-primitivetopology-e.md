@@ -1,5 +1,9 @@
 # PrimitiveTopology
 
+```TypeScript
+export enum PrimitiveTopology
+```
+
 Enumerates the vertex processing methods.
 
 @enum { int }

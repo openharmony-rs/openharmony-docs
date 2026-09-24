@@ -1,5 +1,9 @@
 # BluetoothDevice
 
+```TypeScript
+export interface BluetoothDevice
+```
+
 **Since:** 6
 
 **System capability:** SystemCapability.Communication.Bluetooth.Lite

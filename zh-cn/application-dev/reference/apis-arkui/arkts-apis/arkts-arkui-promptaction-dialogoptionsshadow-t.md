@@ -18,5 +18,5 @@ declare type DialogOptionsShadow = ShadowOptions | ShadowStyle
 
 | 类型 | 说明 |
 | --- | --- |
-| [ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md) |  |
-| [ShadowStyle](../arkts-components/arkts-arkui-shadowstyle-e.md) |  |
+| [ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md) |  |
+| [ShadowStyle](../arkts-components/arkts-arkui-common-comp-shadowstyle-e.md) |  |

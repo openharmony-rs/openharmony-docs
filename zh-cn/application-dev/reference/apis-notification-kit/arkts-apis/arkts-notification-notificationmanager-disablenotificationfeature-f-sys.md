@@ -39,10 +39,10 @@ function disableNotificationFeature(disabled:boolean, bundleList: Array<string>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 
@@ -65,24 +65,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let disabled: boolean = true;
-let bundleList: Array<string> = ['com.example.myapplication'];
-let userId: number = 1;
-try {
-  notificationManager.disableNotificationFeature(disabled, bundleList, userId).then(() => {
-    hilog.info(0x0000, 'testTag', '%{public}s', `disableNotificationFeature success.`);
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', '%{public}s', `disableNotificationFeature failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
-  hilog.error(0x0000, 'testTag', '%{public}s', `testTag failed, code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="disablenotificationfeature-1"></a>
 
 ## disableNotificationFeature
 
@@ -118,11 +102,27 @@ function disableNotificationFeature(disabled: boolean, bundleList: Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 
 **示例**
 
-参见 [disableNotificationFeature](#disablenotificationfeature)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let disabled: boolean = true;
+let bundleList: Array<string> = ['com.example.myapplication'];
+let userId: number = 1;
+try {
+  notificationManager.disableNotificationFeature(disabled, bundleList, userId).then(() => {
+    hilog.info(0x0000, 'testTag', '%{public}s', `disableNotificationFeature success.`);
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', '%{public}s', `disableNotificationFeature failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (err) {
+  hilog.error(0x0000, 'testTag', '%{public}s', `testTag failed, code is ${err.code}, message is ${err.message}`);
+}
+```

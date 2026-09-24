@@ -1,5 +1,9 @@
 # DocumentSaveOptions
 
+```TypeScript
+class DocumentSaveOptions
+```
+
 Defines the options for saving documents.
 
 **Since:** 9

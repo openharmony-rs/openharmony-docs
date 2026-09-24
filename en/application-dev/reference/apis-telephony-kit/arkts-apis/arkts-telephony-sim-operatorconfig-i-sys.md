@@ -1,5 +1,9 @@
 # OperatorConfig (System API)
 
+```TypeScript
+export interface OperatorConfig
+```
+
 Defines the carrier configuration.
 
 **Since:** 8

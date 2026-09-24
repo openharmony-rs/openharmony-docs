@@ -1,5 +1,9 @@
 # KeyOptions
 
+```TypeScript
+declare interface KeyOptions
+```
+
 Represents the options for key operations.
 
 **Since:** 26.0.0
@@ -27,6 +31,8 @@ The first keyCode to press during the operation. If not set, no key event will b
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.Test.UiTest
@@ -44,6 +50,8 @@ The second KeyCode to press during the operation. If not set, no key event will 
 **Type:** number
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 

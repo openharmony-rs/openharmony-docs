@@ -33,32 +33,10 @@ function off(type: 'scanDeviceAdd', callback?: Callback<ScannerDevice>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
 **示例**
-
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
-let callback = (device: scan.ScannerDevice) => {
-    console.info('scan device found: ' + JSON.stringify(device));
-};
-scan.on('scanDeviceFound', callback);
-// 取消注册
-scan.off('scanDeviceFound', callback);
-```
-
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
-let callback = (device: scan.ScannerSyncDevice) => {
-    console.info('scan device sync: ' + JSON.stringify(device));
-};
-scan.on('scanDeviceSync', callback);
-// 取消注册
-scan.off('scanDeviceSync', callback);
-```
 
 ```TypeScript
 import { scan } from '@kit.BasicServicesKit';
@@ -69,17 +47,6 @@ let callback = (device: scan.ScannerDevice) => {
 scan.on('scanDeviceAdd', callback);
 // 取消注册
 scan.off('scanDeviceAdd', callback);
-```
-
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
-let callback = (device: scan.ScannerDevice) => {
-    console.info('scan device delete: ' + JSON.stringify(device));
-};
-scan.on('scanDeviceDel', callback);
-// 取消注册
-scan.off('scanDeviceDel', callback);
 ```
 
 
@@ -110,9 +77,18 @@ function off(type: 'scanDeviceDel', callback?: Callback<ScannerDevice>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
 **示例**
 
-参见 off
+```TypeScript
+import { scan } from '@kit.BasicServicesKit';
+
+let callback = (device: scan.ScannerDevice) => {
+    console.info('scan device delete: ' + JSON.stringify(device));
+};
+scan.on('scanDeviceDel', callback);
+// 取消注册
+scan.off('scanDeviceDel', callback);
+```

@@ -1,5 +1,9 @@
 # FunctionKey
 
+```TypeScript
+export interface FunctionKey
+```
+
 Describes the type of the input method function key.
 
 **Since:** 10

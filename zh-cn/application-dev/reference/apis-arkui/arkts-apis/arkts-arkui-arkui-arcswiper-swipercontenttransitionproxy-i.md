@@ -1,5 +1,9 @@
 # SwiperContentTransitionProxy
 
+```TypeScript
+declare interface SwiperContentTransitionProxy
+```
+
 ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象。开发者可通过该对象获取自定义动画视窗内的页面信息，同时，也可以通过调用该对象的finishTransition接口通知ArcSwiper组件页面自定义动画已结束。
 
 > **说明：** 

@@ -1,5 +1,9 @@
 # UpgradeOptions (System API)
 
+```TypeScript
+export interface UpgradeOptions
+```
+
 Defines the upgrade options, which are used to specify the upgrade operation type.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # StateChangeParam
 
+```TypeScript
+export interface StateChangeParam
+```
+
 Profile state change parameters.
 
 **Since:** 10

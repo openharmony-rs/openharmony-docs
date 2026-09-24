@@ -1,5 +1,9 @@
 # BigUint64ArrayConstructor
 
+```TypeScript
+interface BigUint64ArrayConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -17,6 +21,8 @@ new(length?: number): BigUint64Array
 | --- | --- | --- | --- |
 | length | number | No |  |
 
+<a id="construct-1"></a>
+
 ## [[Construct]]
 
 ```TypeScript
@@ -28,6 +34,8 @@ new(array: Iterable<bigint>): BigUint64Array
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | array | Iterable&lt;bigint&gt; | Yes |  |
+
+<a id="construct-2"></a>
 
 ## [[Construct]]
 
@@ -56,6 +64,8 @@ Creates an array from an array-like or iterable object.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | arrayLike | ArrayLike&lt;bigint&gt; | Yes |  |
+
+<a id="from-1"></a>
 
 ## from
 

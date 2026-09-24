@@ -8,6 +8,8 @@ typedef struct NativeChildProcess_Options {...} NativeChildProcess_Options
 
 启动子进程的配置选项。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 13
 
 **相关模块：** [ChildProcess](capi-childprocess.md)

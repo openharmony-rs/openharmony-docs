@@ -1,5 +1,9 @@
 # TextDisplayState
 
+```TypeScript
+enum TextDisplayState
+```
+
 Enumerates text display states. Native result after text typesetting, which is irrelevant to external display factors such as external canvas cropping and screen overflow.
 
 **Since:** 26.0.0

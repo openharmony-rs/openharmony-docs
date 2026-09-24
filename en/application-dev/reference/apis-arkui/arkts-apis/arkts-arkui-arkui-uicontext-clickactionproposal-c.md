@@ -1,6 +1,10 @@
 # ClickActionProposal
 
-Smart gesture click action handling. When dynamically customizing smart gesture behavior through the [registerMonitor](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor) API, setting the return value [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)'s **selectedProposal** to an object of this type triggers a click operation on the target component.
+```TypeScript
+export class ClickActionProposal extends TargetedGestureProposal
+```
+
+Smart gesture click action handling. When dynamically customizing smart gesture behavior through the [registerMonitor](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor) API, setting the return value [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)'s **selectedProposal** to an object of this typetriggers a click operation on the target component.
 
 > **NOTE:** 
 > 
@@ -44,3 +48,5 @@ Constructor for the smart gesture click action handling.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | Target node that responds to the click action. |
+
+**Examples**

@@ -1,5 +1,9 @@
 # SpringLoadingContext
 
+```TypeScript
+class SpringLoadingContext
+```
+
 Defines callback context information passed to applications during hover detection. It enables access to drag states, dynamic UI effect updates, and drag data for operation handling decisions.
 
 **Since:** 20
@@ -34,7 +38,7 @@ Terminates subsequent hover detection. This API does not trigger CANCEL state no
 updateConfiguration(config: DragSpringLoadingConfiguration): void
 ```
 
-Updates the hover detection configuration. This API is effective only when the hover detection state is BEGIN. Applications typically set the hover detection configuration when binding [onDragSpringLoading](../arkts-components/arkts-arkui-commonmethod-c.md#ondragspringloading) or use the default configuration. This API does not modify the original configuration set during binding, but updates dynamic configuration information for subsequent hover detection. Use this API with caution, as different drag data types may require different UX timing.
+Updates the hover detection configuration. This API is effective only when the hover detection state is BEGIN. Applications typically set the hover detection configuration when binding [onDragSpringLoading](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragspringloading) or use the default configuration. This API does not modify the original configuration set during binding, but updates dynamic configuration information for subsequent hover detection. Use this API with caution, as different drag data types may require different UX timing.
 
 **Since:** 20
 

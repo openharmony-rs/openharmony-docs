@@ -1,5 +1,9 @@
 # CodecInfo
 
+```TypeScript
+interface CodecInfo
+```
+
 蓝牙媒体音频使用的编解码器。
 
 **起始版本：** 11

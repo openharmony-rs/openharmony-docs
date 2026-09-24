@@ -1,5 +1,9 @@
 # PairingReason
 
+```TypeScript
+enum PairingReason
+```
+
 Enum for the pairing reason.
 
 **Since:** 26.0.0

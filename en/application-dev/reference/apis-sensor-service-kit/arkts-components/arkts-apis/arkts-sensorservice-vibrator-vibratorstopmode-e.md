@@ -1,6 +1,10 @@
 # VibratorStopMode
 
-Enumerates vibration stop modes. This parameter is required for [vibrator.stopVibration9+](arkts-sensorservice-vibrator-stopvibration-f.md) or [vibrator.stopVibration9+](arkts-sensorservice-vibrator-stopvibration-f.md). The stop mode must match that delivered in [VibrateEffect9+](arkts-sensorservice-vibrator-vibrateeffect-t.md).
+```TypeScript
+enum VibratorStopMode
+```
+
+Enumerates vibration stop modes. This parameter is required for [vibrator.stopVibration9+](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-1) or [vibrator.stopVibration9+](arkts-sensorservice-vibrator-stopvibration-f.md). The stop mode must match that delivered in [VibrateEffect9+](arkts-sensorservice-vibrator-vibrateeffect-t.md).
 
 **Since:** 8
 

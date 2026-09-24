@@ -1,5 +1,9 @@
 # ArcSwiperInterface
 
+```TypeScript
+interface ArcSwiperInterface
+```
+
 Provide an interface for ArcSwiper.
 
 **Since:** 18

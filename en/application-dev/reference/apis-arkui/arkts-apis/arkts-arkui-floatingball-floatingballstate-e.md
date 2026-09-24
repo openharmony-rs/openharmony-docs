@@ -1,5 +1,9 @@
 # FloatingBallState
 
+```TypeScript
+enum FloatingBallState
+```
+
 Enumerates the lifecycle states of the floating ball.
 
 **Since:** 20

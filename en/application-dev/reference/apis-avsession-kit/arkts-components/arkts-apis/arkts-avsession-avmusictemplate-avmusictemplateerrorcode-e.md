@@ -1,5 +1,9 @@
 # AVMusicTemplateErrorCode
 
+```TypeScript
+enum AVMusicTemplateErrorCode
+```
+
 Enumeration ErrorCode types, returns in BusinessError.code.
 
 @enum { int }

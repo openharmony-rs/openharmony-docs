@@ -1,5 +1,9 @@
 # CameraDevice
 
+```TypeScript
+interface CameraDevice
+```
+
 Describes the camera device information.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # PanoramaPhotoSession（系统接口）
 
+```TypeScript
+interface PanoramaPhotoSession extends Session, Focus, AutoExposure, WhiteBalance, ColorEffect
+```
+
 PanoramaPhotoSession extends Session, Focus, AutoExposure, WhiteBalance, ColorEffect Implements a panoramic photo session, which sets the parameters of the panoramic photo mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md).
 
 **继承/实现关系：** PanoramaPhotoSession extends [Session](arkts-camera-camera-session-i.md), [Focus](arkts-camera-camera-focus-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [WhiteBalance](arkts-camera-camera-whitebalance-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->
@@ -41,7 +45,15 @@ Unsubscribes from HighResolutionPhotoSession error events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterSessionError(panoramaPhotoSession: camera.PanoramaPhotoSession): void {
+  panoramaPhotoSession.off('error');
+}
+```
 
 ## off('focusStateChange')
 
@@ -68,7 +80,15 @@ Unsubscribes from focus state change events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterFocusStateChange(panoramaPhotoSession: camera.PanoramaPhotoSession): void {
+  panoramaPhotoSession.off('focusStateChange');
+}
+```
 
 ## on('error')
 
@@ -95,7 +115,21 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Panorama photo session error code: ${err.code}`);
+}
+
+function registerSessionError(panoramaPhotoSession: camera.PanoramaPhotoSession): void {
+  panoramaPhotoSession.on('error', callback);
+}
+```
 
 ## on('focusStateChange')
 
@@ -122,4 +156,22 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, focusState: camera.FocusState): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`Focus state: ${focusState}`);
+}
+
+function registerFocusStateChange(panoramaPhotoSession: camera.PanoramaPhotoSession): void {
+  panoramaPhotoSession.on('focusStateChange', callback);
+}
+```

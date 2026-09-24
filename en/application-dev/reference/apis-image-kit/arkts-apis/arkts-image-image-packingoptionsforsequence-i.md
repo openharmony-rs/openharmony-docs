@@ -1,5 +1,9 @@
 # PackingOptionsForSequence
 
+```TypeScript
+interface PackingOptionsForSequence
+```
+
 Defines the options for encoding animated images.
 
 **Since:** 18

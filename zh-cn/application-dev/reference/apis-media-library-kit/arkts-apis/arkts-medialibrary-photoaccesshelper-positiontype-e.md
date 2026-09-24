@@ -1,5 +1,9 @@
 # PositionType
 
+```TypeScript
+enum PositionType
+```
+
 枚举，文件位置，表示文件在本地或云端。
 
 **起始版本：** 16

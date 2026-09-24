@@ -8,6 +8,8 @@ typedef struct OH_Utd OH_Utd
 
 统一数据类型描述符。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **相关模块：** [UDMF](capi-udmf.md)

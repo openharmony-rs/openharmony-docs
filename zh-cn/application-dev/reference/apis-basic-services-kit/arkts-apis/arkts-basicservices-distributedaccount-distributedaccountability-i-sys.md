@@ -1,5 +1,9 @@
 # DistributedAccountAbility
 
+```TypeScript
+interface DistributedAccountAbility
+```
+
 提供查询和更新分布式账号登录状态方法（使用前需要先获取分布式账号的单实例对象）。
 
 **起始版本：** 7
@@ -41,8 +45,8 @@ getOsAccountDistributedInfoByLocalId(localId: number, callback: AsyncCallback<Di
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
@@ -68,23 +72,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
-try {
-  let localId: number = 100; // 示例值，实际使用时请获取真实的系统账号ID
-  accountAbility.getOsAccountDistributedInfoByLocalId(localId).then((
-    data: distributedAccount.DistributedInfo) => {
-    console.info('distributed information: ' + JSON.stringify(data));
-  }).catch((err: BusinessError) => {
-    console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getosaccountdistributedinfobylocalid-1"></a>
 
 ## getOsAccountDistributedInfoByLocalId
 
@@ -120,14 +108,30 @@ getOsAccountDistributedInfoByLocalId(localId: number): Promise<DistributedInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例**
 
-参见 [getOsAccountDistributedInfoByLocalId](#getosaccountdistributedinfobylocalid)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+try {
+  let localId: number = 100; // 示例值，实际使用时请获取真实的系统账号ID
+  accountAbility.getOsAccountDistributedInfoByLocalId(localId).then((
+    data: distributedAccount.DistributedInfo) => {
+    console.info('distributed information: ' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## setOsAccountDistributedInfoByLocalId
 
@@ -157,9 +161,9 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid distributedInfo. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account identified by localId or by distributedInfo not found. |
@@ -189,24 +193,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
-let accountInfo: distributedAccount.DistributedInfo =
-  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
-try {
-  let localId: number = 100; // 示例值，实际使用时请获取真实的系统账号ID
-  accountAbility.setOsAccountDistributedInfoByLocalId(localId, accountInfo).then(() => {
-    console.info('setOsAccountDistributedInfoByLocalId successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="setosaccountdistributedinfobylocalid-1"></a>
 
 ## setOsAccountDistributedInfoByLocalId
 
@@ -241,9 +228,9 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid distributedInfo. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account identified by localId or by distributedInfo not found. |
@@ -252,4 +239,21 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 
 **示例**
 
-参见 [setOsAccountDistributedInfoByLocalId](#setosaccountdistributedinfobylocalid)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+let accountInfo: distributedAccount.DistributedInfo =
+  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
+try {
+  let localId: number = 100; // 示例值，实际使用时请获取真实的系统账号ID
+  accountAbility.setOsAccountDistributedInfoByLocalId(localId, accountInfo).then(() => {
+    console.info('setOsAccountDistributedInfoByLocalId successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+}
+```

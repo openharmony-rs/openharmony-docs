@@ -1,5 +1,9 @@
 # ShortcutWant（系统接口）
 
+```TypeScript
+export interface ShortcutWant
+```
+
 
 > **说明：** 
 > 

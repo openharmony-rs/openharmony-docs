@@ -1,5 +1,9 @@
 # LockStatusResponse (System API)
 
+```TypeScript
+export interface LockStatusResponse
+```
+
 Defines the personalized lock information.
 
 **Since:** 7

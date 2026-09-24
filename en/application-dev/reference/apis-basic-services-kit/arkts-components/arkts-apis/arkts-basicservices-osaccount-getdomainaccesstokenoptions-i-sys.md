@@ -1,5 +1,9 @@
 # GetDomainAccessTokenOptions (System API)
 
+```TypeScript
+interface GetDomainAccessTokenOptions
+```
+
 Defines the options for obtaining a domain access token.
 
 **Since:** 10

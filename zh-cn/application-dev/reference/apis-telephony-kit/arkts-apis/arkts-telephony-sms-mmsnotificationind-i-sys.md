@@ -1,5 +1,9 @@
 # MmsNotificationInd（系统接口）
 
+```TypeScript
+export interface MmsNotificationInd
+```
+
 彩信通知索引。
 
 **起始版本：** 8

@@ -8,6 +8,8 @@ typedef struct GamePad_AxisEvent GamePad_AxisEvent
 
 定义手柄轴事件。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **相关模块：** [GameController](capi-gamecontroller.md)

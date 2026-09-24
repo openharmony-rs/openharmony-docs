@@ -1,5 +1,9 @@
 # CollectorRule (System API)
 
+```TypeScript
+interface CollectorRule
+```
+
 Provides the conditions of Collector.
 
 @typedef CollectorRule

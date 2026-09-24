@@ -1,5 +1,9 @@
 # ChipV2PrefixSymbolIcon
 
+```TypeScript
+export declare class ChipV2PrefixSymbolIcon extends ChipV2SymbolIcon
+```
+
 ChipV2PrefixSymbolIcon定义前缀Symbol图标类。
 
 继承自[ChipV2SymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2symbolicon-c.md)。

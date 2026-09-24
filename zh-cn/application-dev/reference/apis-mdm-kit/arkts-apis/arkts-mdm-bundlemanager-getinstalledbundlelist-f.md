@@ -41,7 +41,7 @@ function getInstalledBundleList(admin: Want, accountId: number): Promise<Array<B
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
@@ -64,27 +64,8 @@ bundleManager.getInstalledBundleList(wantTemp, accountId).then((result) => {
 });
 ```
 
-```TypeScript
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { bundleManager } from '@kit.MDMKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// 需根据实际情况进行替换
-let accountId: number = 100;
-let bundleInfoGetFlag: number = bundleManager.BundleInfoGetFlag.WITH_APPLICATION_INFO
-  | bundleManager.BundleInfoGetFlag.WITH_SIGNATURE_INFO;
-bundleManager.getInstalledBundleList(wantTemp, accountId, bundleInfoGetFlag).then((result) => {
-  console.info('Succeeded in getting installed bundle list.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get installed bundle list. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getinstalledbundlelist-1"></a>
 
 ## getInstalledBundleList
 
@@ -122,8 +103,27 @@ function getInstalledBundleList(admin: Want, accountId: number, bundleInfoGetFla
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
-参见 getInstalledBundleList
+```TypeScript
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 需根据实际情况进行替换
+let accountId: number = 100;
+let bundleInfoGetFlag: number = bundleManager.BundleInfoGetFlag.WITH_APPLICATION_INFO
+  | bundleManager.BundleInfoGetFlag.WITH_SIGNATURE_INFO;
+bundleManager.getInstalledBundleList(wantTemp, accountId, bundleInfoGetFlag).then((result) => {
+  console.info('Succeeded in getting installed bundle list.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get installed bundle list. Code is ${err.code}, message is ${err.message}`);
+});
+```

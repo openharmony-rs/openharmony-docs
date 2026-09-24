@@ -1,5 +1,9 @@
 # RotateState（系统接口）
 
+```TypeScript
+enum RotateState
+```
+
 定义设备的横竖屏状态枚举类型。
 
 **起始版本：** 14

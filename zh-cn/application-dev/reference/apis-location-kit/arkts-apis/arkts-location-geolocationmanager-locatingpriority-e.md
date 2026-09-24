@@ -1,5 +1,9 @@
 # LocatingPriority
 
+```TypeScript
+export enum LocatingPriority
+```
+
 单次位置请求中的优先级类型。
 
 **起始版本：** 12

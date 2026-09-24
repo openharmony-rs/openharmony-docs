@@ -1,5 +1,9 @@
 # ArcButtonPosition
 
+```TypeScript
+export declare enum ArcButtonPosition
+```
+
 Enumerates the types of arc buttons that can be set for **ArcButton**.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # SymbolSpan properties/events
 
+```TypeScript
+declare class SymbolSpanAttribute extends CommonMethod<SymbolSpanAttribute>
+```
+
 The [universal attributes](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md) are not supported. Only the following attributes are supported.
 
 The [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md) are not supported.
@@ -30,7 +34,7 @@ Creates an attribute modifier.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [AttributeModifier](arkts-arkui-attributemodifier-i.md)&lt;[SymbolSpanAttribute](arkts-arkui-symbolspan-comp-attribute.md)&gt; | Yes | Modifier for dynamically setting attributes on the current component. |
+| modifier | [AttributeModifier](arkts-arkui-common-comp-attributemodifier-i.md)&lt;[SymbolSpanAttribute](arkts-arkui-symbolspan-comp-attribute.md)&gt; | Yes | Modifier for dynamically setting attributes on the current component. |
 
 ## effectStrategy
 
@@ -42,7 +46,7 @@ Sets the symbol effect of the symbol span.
 
 > **NOTE:** 
 > 
-> This API can be called within attributeModifier since API version 12.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 12.
 
 **Since:** 11
 
@@ -58,7 +62,7 @@ Sets the symbol effect of the symbol span.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SymbolEffectStrategy](arkts-arkui-symboleffectstrategy-e.md) | Yes | Symbol effect of the symbol span.<br>Default value: **SymbolEffectStrategy.NONE** |
+| value | [SymbolEffectStrategy](arkts-arkui-symbolglyph-comp-symboleffectstrategy-e.md) | Yes | Symbol effect of the symbol span.<br>Default value: **SymbolEffectStrategy.NONE** |
 
 ## fontColor
 
@@ -70,7 +74,7 @@ Sets the color of the symbol span.
 
 > **NOTE:** 
 > 
-> This API can be called within attributeModifier since API version 12.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 12.
 
 **Since:** 11
 
@@ -98,7 +102,7 @@ Sets the size of the symbol span. When using the string type, numeric string val
 
 > **NOTE:** 
 > 
-> This API can be called within attributeModifier since API version 12.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 12.
 
 **Since:** 11
 
@@ -128,7 +132,7 @@ The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 
 > **NOTE:** 
 > 
-> This API can be called within attributeModifier since API version 12.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 12.
 
 **Since:** 11
 
@@ -145,6 +149,8 @@ The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | Yes | Weight of the symbol span.<br>Default value: **FontWeight.Normal** |
+
+<a id="fontweight-1"></a>
 
 ## fontWeight
 
@@ -181,7 +187,7 @@ Sets the rendering strategy of the symbol span.
 
 > **NOTE:** 
 > 
-> This API can be called within attributeModifier since API version 12.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 12.
 
 **Since:** 11
 
@@ -197,4 +203,4 @@ Sets the rendering strategy of the symbol span.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SymbolRenderingStrategy](arkts-arkui-symbolrenderingstrategy-e.md) | Yes | Rendering strategy of the symbol span.<br>Default value: **SymbolRenderingStrategy.SINGLE** |
+| value | [SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md) | Yes | Rendering strategy of the symbol span.<br>Default value: **SymbolRenderingStrategy.SINGLE** |

@@ -65,24 +65,8 @@ notificationSlotArray[0] = notificationSlot;
 notificationManager.addSlots(notificationSlotArray, addSlotsCallBack);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// NotificationSlot object
-let notificationSlot: notificationManager.NotificationSlot = {
-    notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
-};
-// NotificationSlotArray object
-let notificationSlotArray: notificationManager.NotificationSlot[] = new Array();
-notificationSlotArray[0] = notificationSlot;
-
-notificationManager.addSlots(notificationSlotArray).then(() => {
-    console.info("addSlots success");
-}).catch((err: BusinessError) => {
-    console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="addslots-1"></a>
 
 ## addSlots
 
@@ -126,4 +110,20 @@ Adds an array of notification slots. This API uses a promise to return the resul
 
 **Examples**
 
-See [addSlots](#addslots)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// NotificationSlot object
+let notificationSlot: notificationManager.NotificationSlot = {
+    notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
+};
+// NotificationSlotArray object
+let notificationSlotArray: notificationManager.NotificationSlot[] = new Array();
+notificationSlotArray[0] = notificationSlot;
+
+notificationManager.addSlots(notificationSlotArray).then(() => {
+    console.info("addSlots success");
+}).catch((err: BusinessError) => {
+    console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # SelectMode
 
+```TypeScript
+export declare enum SelectMode
+```
+
 Enumerates the selection modes.
 
 **Since:** 12

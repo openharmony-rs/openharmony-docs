@@ -1,5 +1,9 @@
 # WindowAnimationTarget（系统接口）
 
+```TypeScript
+export interface WindowAnimationTarget
+```
+
 动画目标窗口，用来实现动画。
 
 **起始版本：** 9

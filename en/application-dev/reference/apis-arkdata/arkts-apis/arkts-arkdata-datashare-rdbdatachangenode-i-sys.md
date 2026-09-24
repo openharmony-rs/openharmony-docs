@@ -1,5 +1,9 @@
 # RdbDataChangeNode (System API)
 
+```TypeScript
+interface RdbDataChangeNode
+```
+
 Represents the RDB data change result. The data returned by the callback is not larger than 10 MB in size.
 
 **Since:** 10

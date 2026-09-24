@@ -4,7 +4,7 @@
 export type OnHoverStatusChangeHandler = (status: HoverModeStatus) => void
 ```
 
-Implements a handler for the **onHoverStatusChange** event.
+Defines an event handler for hover state changes.
 
 **Since:** 12
 
@@ -18,4 +18,4 @@ Implements a handler for the **onHoverStatusChange** event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| status | [HoverModeStatus](arkts-arkui-arkui-advanced-foldsplitcontainer-hovermodestatus-i.md) | Yes | Callback function triggered when the foldable device enters or exits the semi-folded state. |
+| status | [HoverModeStatus](arkts-arkui-arkui-advanced-foldsplitcontainer-hovermodestatus-i.md) | Yes | Status information when the foldable screen enters or exits hover mode. |

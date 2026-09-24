@@ -1,5 +1,9 @@
 # SubscribedAbstractProperty
 
+```TypeScript
+declare abstract class SubscribedAbstractProperty<T>
+```
+
 Represents a synchronized property from [AppStorage](../../../ui/state-management/arkts-appstorage.md) or [LocalStorage](../../../ui/state-management/arkts-localstorage.md).
 
 **Since:** 9
@@ -29,6 +33,8 @@ abstract get(): T
 Reads the data of the synchronized property from [AppStorage](../../../ui/state-management/arkts-appstorage.md) or [LocalStorage](../../../ui/state-management/arkts-localstorage.md).
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -76,6 +82,8 @@ Sets the data of the synchronized property in [AppStorage](../../../ui/state-man
 > **undefined**, and union types.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

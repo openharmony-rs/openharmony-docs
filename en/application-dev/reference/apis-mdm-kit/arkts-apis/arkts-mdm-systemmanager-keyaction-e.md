@@ -1,5 +1,9 @@
 # KeyAction
 
+```TypeScript
+enum KeyAction
+```
+
 Enumerates key actions.
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # FrameInfo
 
+```TypeScript
+interface FrameInfo
+```
+
 Defines the frame info when fetch picture form a video.
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # MemberPurchaseInfo
 
+```TypeScript
+interface MemberPurchaseInfo
+```
+
 The definition of member purchase information.
 
 @interface MemberPurchaseInfo

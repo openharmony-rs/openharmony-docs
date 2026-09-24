@@ -1,5 +1,9 @@
 # IUserAuthCallback (System API)
 
+```TypeScript
+interface IUserAuthCallback
+```
+
 Provides callbacks for user authentication.
 
 **Since:** 8
@@ -35,6 +39,22 @@ Called to acquire identity authentication information.
 | module | number | Yes |  |
 | acquire | number | Yes |  |
 | extraInfo | Uint8Array | Yes |  |
+
+**Examples**
+
+```TypeScript
+let authCallback: osAccount.IUserAuthCallback = {
+  onResult: (result: number, extraInfo: osAccount.AuthResult) => {
+    console.info('auth result = ' + result)
+    console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
+  },
+  onAcquireInfo: (module: number, acquire: number, extraInfo: Uint8Array) => {
+    console.info('auth module = ' + module);
+    console.info('auth acquire = ' + acquire);
+    console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
+  }
+};
+```
 
 ## onResult
 

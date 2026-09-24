@@ -1,5 +1,9 @@
 # StyleOptions
 
+```TypeScript
+declare interface StyleOptions
+```
+
 属性字符串样式。
 
 **起始版本：** 12
@@ -13,6 +17,8 @@ length?: number
 ```
 
 设置属性字符串样式的长度。
+
+默认值：字符串长度与start的差值。
 
 当length的值小于0或超出字符串长度与start的差值时，按字符串长度与start的差值处理。
 
@@ -33,6 +39,8 @@ start?: number
 ```
 
 设置属性字符串样式的开始位置。
+
+默认值：0
 
 当start的值小于0或超出字符串长度时，按0处理。
 

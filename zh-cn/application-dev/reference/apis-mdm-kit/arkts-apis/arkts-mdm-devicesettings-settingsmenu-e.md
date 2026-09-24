@@ -1,5 +1,9 @@
 # SettingsMenu
 
+```TypeScript
+enum SettingsMenu
+```
+
 设置项列表。
 
 **起始版本：** 24

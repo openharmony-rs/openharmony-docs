@@ -8,6 +8,8 @@ typedef struct ArkUI_GridItemSize {...} ArkUI_GridItemSize
 
 Defines the return value for the **onGetIrregularSizeByIndex** callback in **Grid** layout options.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

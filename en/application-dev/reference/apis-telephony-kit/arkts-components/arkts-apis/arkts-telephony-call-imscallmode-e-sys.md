@@ -1,5 +1,9 @@
 # ImsCallMode (System API)
 
+```TypeScript
+export enum ImsCallMode
+```
+
 Enumerates IMS call modes.
 
 **Since:** 8

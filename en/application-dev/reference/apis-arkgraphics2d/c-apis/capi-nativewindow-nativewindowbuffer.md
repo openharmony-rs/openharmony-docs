@@ -8,6 +8,8 @@ typedef struct NativeWindowBuffer OHNativeWindowBuffer
 
 define the new type name OHNativeWindowBuffer for struct NativeWindowBuffer.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **Since**: 8
 
 **Related module**: [NativeWindow](capi-nativewindow.md)

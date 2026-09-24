@@ -1,5 +1,9 @@
 # DisconnectedDetails (System API)
 
+```TypeScript
+export interface DisconnectedDetails
+```
+
 Defines the call disconnection cause.
 
 **Since:** 9

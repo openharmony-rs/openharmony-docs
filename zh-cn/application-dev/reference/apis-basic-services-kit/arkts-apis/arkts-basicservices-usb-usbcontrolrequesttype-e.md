@@ -1,5 +1,9 @@
 # USBControlRequestType
 
+```TypeScript
+export enum USBControlRequestType
+```
+
 控制请求类型。
 
 **起始版本：** 8

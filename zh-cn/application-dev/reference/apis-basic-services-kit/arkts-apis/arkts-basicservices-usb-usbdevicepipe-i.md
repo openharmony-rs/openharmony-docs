@@ -1,5 +1,9 @@
 # USBDevicePipe
 
+```TypeScript
+interface USBDevicePipe
+```
+
 USB设备消息传输通道，用于确定设备。
 
 **起始版本：** 8

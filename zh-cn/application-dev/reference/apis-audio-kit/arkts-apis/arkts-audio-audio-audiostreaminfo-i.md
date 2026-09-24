@@ -1,5 +1,9 @@
 # AudioStreamInfo
 
+```TypeScript
+interface AudioStreamInfo
+```
+
 音频流信息。
 
 **起始版本：** 8
@@ -74,7 +78,7 @@ sampleFormat: AudioSampleFormat
 samplingRate: AudioSamplingRate | number
 ```
 
-音频文件的采样率，单位为赫兹（Hz）。支持传入[AudioSamplingRate](arkts-audio-audio-audiosamplingrate-e.md)。
+音频文件的采样率，单位为Hz。支持传入[AudioSamplingRate](arkts-audio-audio-audiosamplingrate-e.md)。
 
 从API版本26.0.0开始：
 

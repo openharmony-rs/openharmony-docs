@@ -1,5 +1,9 @@
 # UserAuth（系统接口）
 
+```TypeScript
+class UserAuth
+```
+
 用户认证类。
 
 **起始版本：** 8
@@ -54,8 +58,8 @@ auth(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid challenge, authType or authTrustLevel. |
 | [12300013](../errorcode-account.md#12300013-网络异常) | Network exception.<br>**适用版本：** 12+ |
@@ -75,7 +79,7 @@ auth(
 | [12300117](../errorcode-account.md#12300117-pin码过期) | PIN is expired.<br>**适用版本：** 12+ |
 | 12300119 | Multi-factor authentication failed.<br>**适用版本：** 20+ |
 | [12300120](../errorcode-account.md#12300120-凭据已失效) | The credentials are no longer valid.<br>**适用版本：** 23+ |
-| 12300211 | Server unreachable.<br>**适用版本：** 12+ |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -99,28 +103,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userAuth = new osAccount.UserAuth();
-let challenge: Uint8Array = new Uint8Array([0]);
-let authType: osAccount.AuthType = osAccount.AuthType.PIN;
-let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
-let options: osAccount.AuthOptions = {
-  accountId: 100
-};
-try {
-  userAuth.auth(challenge, authType, authTrustLevel, options, {
-    onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-      console.info('auth result = ' + result);
-      console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="auth-1"></a>
 
 ## auth
 
@@ -164,8 +147,8 @@ auth(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid challenge, authType, authTrustLevel or options. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -186,29 +169,9 @@ auth(
 | [12300117](../errorcode-account.md#12300117-pin码过期) | PIN is expired. |
 | 12300119 | Multi-factor authentication failed.<br>**适用版本：** 20+ |
 | [12300120](../errorcode-account.md#12300120-凭据已失效) | The credentials are no longer valid.<br>**适用版本：** 23+ |
-| 12300211 | Server unreachable. |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userAuth = new osAccount.UserAuth();
-let challenge: Uint8Array = new Uint8Array([0]);
-let authType: osAccount.AuthType = osAccount.AuthType.PIN;
-let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
-try {
-  userAuth.auth(challenge, authType, authTrustLevel, {
-    onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-      console.info('auth result = ' + result);
-      console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
-}
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -275,8 +238,8 @@ authUser(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid challenge, authType or authTrustLevel. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
@@ -297,7 +260,7 @@ authUser(
 | [12300117](../errorcode-account.md#12300117-pin码过期) | PIN is expired.<br>**适用版本：** 12+ |
 | 12300119 | Multi-factor authentication failed.<br>**适用版本：** 20+ |
 | [12300120](../errorcode-account.md#12300120-凭据已失效) | The credentials are no longer valid.<br>**适用版本：** 23+ |
-| 12300211 | Server unreachable.<br>**适用版本：** 12+ |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -348,9 +311,9 @@ cancelAuth(contextID: Uint8Array): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid contextId. |
 
@@ -394,7 +357,7 @@ constructor()
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
 **示例**
 
@@ -435,9 +398,9 @@ getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType or authTrustLevel. |
 | [12300117](../errorcode-account.md#12300117-pin码过期) | PIN is expired. |
@@ -486,8 +449,8 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback<ExecutorPropert
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid request. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
@@ -522,30 +485,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userAuth = new osAccount.UserAuth();
-let keys: Array<osAccount.GetPropertyType> = [
-  osAccount.GetPropertyType.AUTH_SUB_TYPE,
-  osAccount.GetPropertyType.REMAIN_TIMES,
-  osAccount.GetPropertyType.FREEZING_TIME
-];
-let request: osAccount.GetPropertyRequest = {
-  authType: osAccount.AuthType.PIN,
-  keys: keys
-};
-try {
-  userAuth.getProperty(request).then((result: osAccount.ExecutorProperty) => {
-    console.info('getProperty result = ' + JSON.stringify(result));
-  }).catch((err: BusinessError) => {
-    console.error(`getProperty error = code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getProperty exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getproperty-1"></a>
 
 ## getProperty
 
@@ -579,8 +519,8 @@ getProperty(request: GetPropertyRequest): Promise<ExecutorProperty>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid request. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
@@ -588,7 +528,30 @@ getProperty(request: GetPropertyRequest): Promise<ExecutorProperty>
 
 **示例**
 
-参见 [getProperty](#getproperty)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userAuth = new osAccount.UserAuth();
+let keys: Array<osAccount.GetPropertyType> = [
+  osAccount.GetPropertyType.AUTH_SUB_TYPE,
+  osAccount.GetPropertyType.REMAIN_TIMES,
+  osAccount.GetPropertyType.FREEZING_TIME
+];
+let request: osAccount.GetPropertyRequest = {
+  authType: osAccount.AuthType.PIN,
+  keys: keys
+};
+try {
+  userAuth.getProperty(request).then((result: osAccount.ExecutorProperty) => {
+    console.info('getProperty result = ' + JSON.stringify(result));
+  }).catch((err: BusinessError) => {
+    console.error(`getProperty error = code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getProperty exception = code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## getPropertyByCredentialId
 
@@ -623,8 +586,8 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array<GetPropertyType>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid keys. |
 | 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
@@ -693,7 +656,7 @@ getVersion(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
 **示例**
 
@@ -735,8 +698,8 @@ prepareRemoteAuth(remoteNetworkId: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid remoteNetworkId. |
 | 12300090 | Cross-device capability not supported.<br>**适用版本：** 20+ |
@@ -795,9 +758,9 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid request. |
 
@@ -826,26 +789,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userAuth = new osAccount.UserAuth();
-let request: osAccount.SetPropertyRequest = {
-  authType: osAccount.AuthType.PIN,
-  key: osAccount.SetPropertyType.INIT_ALGORITHM,
-  setInfo: new Uint8Array([0])
-};
-try {
-  userAuth.setProperty(request).then(() => {
-    console.info('setProperty successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`setProperty failed, error = code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`setProperty exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="setproperty-1"></a>
 
 ## setProperty
 
@@ -879,12 +823,31 @@ setProperty(request: SetPropertyRequest): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid request. |
 
 **示例**
 
-参见 [setProperty](#setproperty)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userAuth = new osAccount.UserAuth();
+let request: osAccount.SetPropertyRequest = {
+  authType: osAccount.AuthType.PIN,
+  key: osAccount.SetPropertyType.INIT_ALGORITHM,
+  setInfo: new Uint8Array([0])
+};
+try {
+  userAuth.setProperty(request).then(() => {
+    console.info('setProperty successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`setProperty failed, error = code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setProperty exception = code is ${err.code}, message is ${err.message}`);
+}
+```

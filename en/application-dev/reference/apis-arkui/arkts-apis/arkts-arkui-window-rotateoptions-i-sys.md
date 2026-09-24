@@ -1,5 +1,9 @@
 # RotateOptions (System API)
 
+```TypeScript
+interface RotateOptions
+```
+
 Describes the rotation parameters.
 
 **Since:** 9

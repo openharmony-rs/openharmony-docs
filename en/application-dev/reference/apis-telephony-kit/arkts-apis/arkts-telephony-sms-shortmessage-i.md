@@ -1,5 +1,9 @@
 # ShortMessage
 
+```TypeScript
+export interface ShortMessage
+```
+
 Defines an SMS message instance.
 
 **Since:** 6

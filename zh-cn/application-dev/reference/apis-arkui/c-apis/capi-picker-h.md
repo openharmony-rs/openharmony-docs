@@ -64,6 +64,8 @@ enum ArkUI_DatePickerMode
 
 定义日期选择器列显示模式的枚举值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 18
 
 | 枚举项 | 描述 |
@@ -81,6 +83,8 @@ enum ArkUI_TextPickerRangeType
 **描述：**
 
 定义滑动选择文本选择器输入类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -101,6 +105,8 @@ enum ArkUI_CalendarAlignment
 
 日历选择器与入口组件对齐方式。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -118,6 +124,8 @@ enum ArkUI_PickerIndicatorType
 **描述：**
 
 选择器的选中指示器类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -138,6 +146,8 @@ ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(i
 **描述：**
 
 创建[ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)数组的对象，用于构建单列滑动数据选择器的数据列表， 常见于日期选择、时间选择、列表选择等场景。 创建后必须在使用完毕后调用OH_ArkUI_TextPickerRangeContentArray_Destroy释放资源，否则会导致内存泄漏。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -163,6 +173,8 @@ void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeCo
 
 设置ArkUI_TextPickerRangeContentArray数组指定位置的icon数据，用于在单列文本选择器中设置带图标的选项， 常见于图文混排列表、带图标提示的选项列表等场景。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **参数：**
@@ -182,6 +194,8 @@ void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeCo
 **描述：**
 
 设置ArkUI_TextPickerRangeContentArray数组指定位置的text数据，用于在数据选择器中设置文本内容， 是构建选择器选项的必备步骤。 常见于日期选择器设置日期文本、城市选择器设置城市名称、产品分类选择器设置分类名称等场景。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -203,6 +217,8 @@ void OH_ArkUI_TextPickerRangeContentArray_Destroy(ArkUI_TextPickerRangeContentAr
 
 销毁ArkUI_TextPickerRangeContentArray数组对象。 此方法必须与OH_ArkUI_TextPickerRangeContentArray_Create配对使用，用于释放创建的数组对象资源。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **参数：**
@@ -220,6 +236,8 @@ ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContent
 **描述：**
 
 创建[ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)数组对象，用于构建多列联动数据选择器， 常见于年月日联动选择、省市区三级联动选择等场景。 创建后必须在使用完毕后调用OH_ArkUI_TextCascadePickerRangeContentArray_Destroy释放资源，否则会导致内存泄漏。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -245,6 +263,8 @@ void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex(ArkUI_TextCascad
 
 设置ArkUI_TextCascadePickerRangeContentArray数组指定位置的text数据，用于设置多列联动选择器的文本内容。 常见于省市区三级联动选择器设置省份名称、年月日联动选择器设置年份、品牌车型联动选择器设置品牌名称等场景。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **参数：**
@@ -264,6 +284,8 @@ void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex(ArkUI_TextCasca
 **描述：**
 
 设置ArkUI_TextCascadePickerRangeContentArray数组指定位置的child数据，用于设置多列联动选择器的子级数据， 实现联动效果。 常见于省市区三级联动选择器设置省份对应的市级数据、年月日联动选择器设置月份对应的日期数据、 品牌车型联动选择器设置品牌对应的车型列表等场景。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -285,6 +307,8 @@ void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy(ArkUI_TextCascadePicker
 
 销毁ArkUI_TextCascadePickerRangeContentArray数组对象。 此方法必须与OH_ArkUI_TextCascadePickerRangeContentArray_Create配对使用，用于释放创建的数组对象资源。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **参数：**
@@ -302,6 +326,8 @@ ArkUI_PickerIndicatorStyle* OH_ArkUI_PickerIndicatorStyle_Create(ArkUI_PickerInd
 **描述：**
 
 创建选中项指示器的样式实例，用于高亮显示用户当前选中的选项，提升用户交互体验。 创建后必须在使用完毕后调用OH_ArkUI_PickerIndicatorStyle_Dispose释放资源，否则会导致内存泄漏。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -326,6 +352,8 @@ void OH_ArkUI_PickerIndicatorStyle_Dispose(ArkUI_PickerIndicatorStyle* style)
 **描述：**
 
 销毁选中项指示器的样式实例。此方法必须与OH_ArkUI_PickerIndicatorStyle_Create配对使用， 用于释放创建的样式实例资源。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 

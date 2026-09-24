@@ -1,5 +1,9 @@
 # CertReference
 
+```TypeScript
+export interface CertReference
+```
+
 表示证书凭据的引用信息。
 
 **起始版本：** 22

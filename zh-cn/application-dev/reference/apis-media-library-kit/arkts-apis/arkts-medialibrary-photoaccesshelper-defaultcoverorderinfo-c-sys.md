@@ -1,5 +1,9 @@
 # DefaultCoverOrderInfo（系统接口）
 
+```TypeScript
+export class DefaultCoverOrderInfo
+```
+
 相册默认封面选择规则信息。
 
 **起始版本：** 26.0.0

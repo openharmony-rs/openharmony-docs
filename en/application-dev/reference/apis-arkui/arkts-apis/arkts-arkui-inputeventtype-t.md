@@ -16,6 +16,6 @@ Defines the type of input event to be dispatched. For details, see [postInputEve
 
 | Type | Description |
 | --- | --- |
-| [TouchEvent](../arkts-components/arkts-arkui-touchevent-i.md) | Touch event. |
-| [MouseEvent](../arkts-components/arkts-arkui-mouseevent-i.md) | Mouse event. |
-| [AxisEvent](../arkts-components/arkts-arkui-axisevent-i.md) | Axis event. |
+| [TouchEvent](../arkts-components/arkts-arkui-common-comp-touchevent-i.md) | Touch event. |
+| [MouseEvent](../arkts-components/arkts-arkui-common-comp-mouseevent-i.md) | Mouse event. |
+| [AxisEvent](../arkts-components/arkts-arkui-common-comp-axisevent-i.md) | Axis event. |

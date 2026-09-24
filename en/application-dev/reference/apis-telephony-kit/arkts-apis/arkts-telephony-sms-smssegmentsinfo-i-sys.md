@@ -1,5 +1,9 @@
 # SmsSegmentsInfo (System API)
 
+```TypeScript
+export interface SmsSegmentsInfo
+```
+
 Defines the SMS message segment information.
 
 **Since:** 8

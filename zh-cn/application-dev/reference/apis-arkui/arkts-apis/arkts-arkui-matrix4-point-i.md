@@ -1,5 +1,9 @@
 # Point
 
+```TypeScript
+export interface Point
+```
+
 坐标点的数据结构。
 
 **起始版本：** 12

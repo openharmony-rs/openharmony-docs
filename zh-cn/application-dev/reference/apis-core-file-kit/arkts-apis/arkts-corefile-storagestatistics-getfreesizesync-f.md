@@ -32,8 +32,8 @@ function getFreeSizeSync(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.<br>**适用版本：** 10 - 14 |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application.<br>**适用版本：** 10 - 14 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.<br>**适用版本：** 10 - 14 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application.<br>**适用版本：** 10 - 14 |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 

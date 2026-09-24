@@ -1,5 +1,9 @@
 # SwitchKey
 
+```TypeScript
+enum SwitchKey
+```
+
 Enumerates switch names.
 
 **Since:** 26.0.0

@@ -8,6 +8,8 @@ typedef struct NetConn_NetHandle {...} NetConn_NetHandle
 
 Defines network handles for network IDs.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 11
 
 **Related module**: [NetConnection](capi-netconnection.md)

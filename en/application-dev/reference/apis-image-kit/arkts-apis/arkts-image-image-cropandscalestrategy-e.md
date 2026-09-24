@@ -1,5 +1,9 @@
 # CropAndScaleStrategy
 
+```TypeScript
+enum CropAndScaleStrategy
+```
+
 Enumerates the order of cropping and scaling.
 
 If the **cropAndScaleStrategy** parameter is not specified in [DecodingOptions](arkts-image-image-decodingoptions-i.md) and both **desiredRegion** and **desiredSize** are set, the final decoding result may vary slightly due to differences in decoding algorithms used for different image formats.

@@ -1,5 +1,9 @@
 # SslType
 
+```TypeScript
+enum SslType
+```
+
 表示安全通信协议的枚举。
 
 **起始版本：** 21

@@ -1,5 +1,9 @@
 # CrownSensitivity
 
+```TypeScript
+declare enum CrownSensitivity
+```
+
 Enumerates the sensitivity levels for crown rotation.
 
 **Since:** 18

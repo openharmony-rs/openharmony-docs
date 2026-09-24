@@ -1,5 +1,9 @@
 # Matrix4Transit
 
+```TypeScript
+interface Matrix4Transit
+```
+
 Implements a **Matrix4Transit** object.
 
 **Since:** 7

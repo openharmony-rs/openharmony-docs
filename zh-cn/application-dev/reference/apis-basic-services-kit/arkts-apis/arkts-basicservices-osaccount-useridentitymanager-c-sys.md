@@ -1,5 +1,9 @@
 # UserIdentityManager（系统接口）
 
+```TypeScript
+class UserIdentityManager
+```
+
 获取用户身份管理类。
 
 **起始版本：** 8
@@ -41,8 +45,8 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid credentialInfo, i.e. authType or authSubType. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
@@ -117,9 +121,9 @@ cancel(challenge: Uint8Array): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid challenge. |
 
@@ -164,9 +168,9 @@ closeSession(accountId?: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types.<br>**适用版本：** 12+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types.<br>**适用版本：** 12+ |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally.<br>**适用版本：** 12+ |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted account.<br>**适用版本：** 12+ |
@@ -197,7 +201,7 @@ constructor()
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
 **示例**
 
@@ -233,9 +237,9 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid credentialId. |
 | [12300101](../errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
@@ -289,9 +293,9 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300101](../errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
 
@@ -341,8 +345,8 @@ getAuthInfo(callback: AsyncCallback<Array<EnrolledCredInfo>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
 
@@ -366,60 +370,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userIDM = new osAccount.UserIdentityManager();
-try {
-  userIDM.getAuthInfo(osAccount.AuthType.PIN,
-    (err: BusinessError, result: osAccount.EnrolledCredInfo[]) => {
-    if (err) {
-      console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('getAuthInfo result = ' + JSON.stringify(result));
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userIDM = new osAccount.UserIdentityManager();
-try {
-  userIDM.getAuthInfo(osAccount.AuthType.PIN).then((result: osAccount.EnrolledCredInfo[]) => {
-    console.info('getAuthInfo result = ' + JSON.stringify(result))
-  }).catch((err: BusinessError) => {
-    console.error(`getAuthInfo error = code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userIDM = new osAccount.UserIdentityManager();
-let options: osAccount.GetAuthInfoOptions = {
-  authType: osAccount.AuthType.PIN,
-  accountId: 100,
-};
-try {
-  userIDM.getAuthInfo(options).then((result: osAccount.EnrolledCredInfo[]) => {
-    console.info('getAuthInfo result = ' + JSON.stringify(result))
-  }).catch((err: BusinessError) => {
-    console.error(`getAuthInfo error = code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getauthinfo-1"></a>
 
 ## getAuthInfo
 
@@ -448,15 +399,34 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback<Array<EnrolledCredInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType. |
 | 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
 
 **示例**
 
-参见 [getAuthInfo](#getauthinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userIDM = new osAccount.UserIdentityManager();
+try {
+  userIDM.getAuthInfo(osAccount.AuthType.PIN,
+    (err: BusinessError, result: osAccount.EnrolledCredInfo[]) => {
+    if (err) {
+      console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('getAuthInfo result = ' + JSON.stringify(result));
+    }
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
+}
+```
+
+<a id="getauthinfo-2"></a>
 
 ## getAuthInfo
 
@@ -490,15 +460,31 @@ getAuthInfo(authType: AuthType): Promise<Array<EnrolledCredInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType. |
 | 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
 
 **示例**
 
-参见 [getAuthInfo](#getauthinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userIDM = new osAccount.UserIdentityManager();
+try {
+  userIDM.getAuthInfo(osAccount.AuthType.PIN).then((result: osAccount.EnrolledCredInfo[]) => {
+    console.info('getAuthInfo result = ' + JSON.stringify(result))
+  }).catch((err: BusinessError) => {
+    console.error(`getAuthInfo error = code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
+}
+```
+
+<a id="getauthinfo-3"></a>
 
 ## getAuthInfo
 
@@ -532,8 +518,8 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise<Array<EnrolledCredInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid options. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -541,7 +527,25 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise<Array<EnrolledCredInfo>>
 
 **示例**
 
-参见 [getAuthInfo](#getauthinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userIDM = new osAccount.UserIdentityManager();
+let options: osAccount.GetAuthInfoOptions = {
+  authType: osAccount.AuthType.PIN,
+  accountId: 100,
+};
+try {
+  userIDM.getAuthInfo(options).then((result: osAccount.EnrolledCredInfo[]) => {
+    console.info('getAuthInfo result = ' + JSON.stringify(result))
+  }).catch((err: BusinessError) => {
+    console.error(`getAuthInfo error = code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## getEnrolledId
 
@@ -576,8 +580,8 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -631,8 +635,8 @@ offCredentialChanged(callback?: Callback<CredentialChangeInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
@@ -696,8 +700,8 @@ onCredentialChanged(credentialTypes: AuthType[], callback: Callback<CredentialCh
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | One or more credential types are invalid. |
 | [12300106](../errorcode-account.md#12300106-认证类型不支持) | One or more credential types are not supported. |
@@ -754,9 +758,9 @@ openSession(callback: AsyncCallback<Uint8Array>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
@@ -779,22 +783,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userIDM = new osAccount.UserIdentityManager();
-let accountId = 100;
-try {
-  userIDM.openSession(accountId).then((challenge: Uint8Array) => {
-    console.info('openSession challenge = ' + JSON.stringify(challenge));
-  }).catch((err: BusinessError) => {
-    console.error(`openSession error = code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`openSession exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="opensession-1"></a>
 
 ## openSession
 
@@ -828,15 +817,30 @@ openSession(accountId?: number): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted account.<br>**适用版本：** 12+ |
 
 **示例**
 
-参见 [openSession](#opensession)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userIDM = new osAccount.UserIdentityManager();
+let accountId = 100;
+try {
+  userIDM.openSession(accountId).then((challenge: Uint8Array) => {
+    console.info('openSession challenge = ' + JSON.stringify(challenge));
+  }).catch((err: BusinessError) => {
+    console.error(`openSession error = code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`openSession exception = code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## updateCredential
 
@@ -865,8 +869,8 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid credentialInfo, i.e. authType or authSubType. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |

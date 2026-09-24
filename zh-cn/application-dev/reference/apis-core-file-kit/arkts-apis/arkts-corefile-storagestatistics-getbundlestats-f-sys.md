@@ -34,40 +34,14 @@ function getBundleStats(packageName: string, callback: AsyncCallback<BundleStats
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
 **示例**
-
-```TypeScript
-import { bundleResourceManager } from '@kit.AbilityKit';
-import { storageStatistics } from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let bundleName = "com.example.myapplication";
-let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
-try {
-  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
-  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
-
-  let packageName:string = bundleName;
-  let index:number = resourceInfo.appIndex;
-  storageStatistics.getBundleStats(packageName, index).then((bundleStats: storageStatistics.BundleStats) => {
-    hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(bundleStats));
-  }).catch((err: BusinessError) => {
-    console.error(`getBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
-  });
-
-} catch (err) {
-  let message = (err as BusinessError).message;
-  console.error(`getBundleResourceInfo failed with err, message is: ${message}`);
-}
-```
 
 ```TypeScript
 import { bundleResourceManager } from '@kit.AbilityKit';
@@ -97,6 +71,8 @@ try {
 }
 ```
 
+
+<a id="getbundlestats-1"></a>
 
 ## getBundleStats
 
@@ -131,13 +107,37 @@ function getBundleStats(packageName: string, index?: number): Promise<BundleStat
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
 **示例**
 
-参见 [getBundleStats](#getbundlestats)
+```TypeScript
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = "com.example.myapplication";
+let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
+  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+
+  let packageName:string = bundleName;
+  let index:number = resourceInfo.appIndex;
+  storageStatistics.getBundleStats(packageName, index).then((bundleStats: storageStatistics.BundleStats) => {
+    hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(bundleStats));
+  }).catch((err: BusinessError) => {
+    console.error(`getBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+
+} catch (err) {
+  let message = (err as BusinessError).message;
+  console.error(`getBundleResourceInfo failed with err, message is: ${message}`);
+}
+```

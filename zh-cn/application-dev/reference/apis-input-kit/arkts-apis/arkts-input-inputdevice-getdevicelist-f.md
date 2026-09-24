@@ -28,7 +28,7 @@ function getDeviceList(callback: AsyncCallback<Array<number>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -61,6 +61,29 @@ struct Index {
 }
 ```
 
+
+<a id="getdevicelist-1"></a>
+
+## getDeviceList
+
+```TypeScript
+function getDeviceList(): Promise<Array<number>>
+```
+
+获取所有输入设备的ID列表，使用Promise异步回调。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
+
+**示例**
+
 ```TypeScript
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -87,26 +110,3 @@ struct Index {
   }
 }
 ```
-
-
-## getDeviceList
-
-```TypeScript
-function getDeviceList(): Promise<Array<number>>
-```
-
-获取所有输入设备的ID列表，使用Promise异步回调。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
-
-**示例**
-
-参见 getDeviceList

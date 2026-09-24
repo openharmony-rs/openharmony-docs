@@ -1,5 +1,9 @@
 # TCPConnectOptions
 
+```TypeScript
+export interface TCPConnectOptions
+```
+
 Defines TCP socket connection parameters.
 
 **Since:** 7

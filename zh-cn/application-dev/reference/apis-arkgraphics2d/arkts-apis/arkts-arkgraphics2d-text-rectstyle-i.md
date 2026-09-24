@@ -1,5 +1,9 @@
 # RectStyle
 
+```TypeScript
+interface RectStyle
+```
+
 矩形框样式。
 
 **起始版本：** 12

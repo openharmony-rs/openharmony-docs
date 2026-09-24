@@ -1,5 +1,9 @@
 # ToolBarV2ItemTextOptions
 
+```TypeScript
+export interface ToolBarV2ItemTextOptions
+```
+
 Declare the options of ToolBarV2ItemText
 
 **Since:** 18

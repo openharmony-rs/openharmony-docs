@@ -51,19 +51,8 @@ policy.getBackgroundPolicyByUid(11111, (error: BusinessError, data: policy.NetBa
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .getBackgroundPolicyByUid(11111)
-  .then((data: policy.NetBackgroundPolicy) => {
-    console.info(JSON.stringify(data));
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
-```
-
+<a id="getbackgroundpolicybyuid-1"></a>
 
 ## getBackgroundPolicyByUid
 
@@ -106,4 +95,15 @@ Obtains whether the UID can access the network of the background. This API uses 
 
 **Examples**
 
-See [getBackgroundPolicyByUid](#getbackgroundpolicybyuid)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+policy
+  .getBackgroundPolicyByUid(11111)
+  .then((data: policy.NetBackgroundPolicy) => {
+    console.info(JSON.stringify(data));
+  })
+  .catch((error: BusinessError) => {
+    console.error(JSON.stringify(error));
+  });
+```

@@ -1,5 +1,9 @@
 # BlendMode
 
+```TypeScript
+enum BlendMode
+```
+
 混合模式枚举。混合模式会将两种颜色（源色、目标色）以特定的方式混合生成一种新的颜色，通常用于叠加、滤镜和遮罩等图形操作场景。混合操作会分别作用于红、绿、蓝三个颜色通道，采用相同的混合逻辑，而透明度（Alpha通道）则根据各模式的定义另行处理。为简洁起见，我们使用以下缩写：
 
 s : source 源的缩写；d : destination 目标的缩写；sa : source alpha 源透明度的缩写；da : destination alpha 目标透明度的缩写。

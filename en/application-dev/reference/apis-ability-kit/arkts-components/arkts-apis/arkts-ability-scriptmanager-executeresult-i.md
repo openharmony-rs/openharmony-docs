@@ -1,5 +1,9 @@
 # ExecuteResult
 
+```TypeScript
+interface ExecuteResult
+```
+
 Result of arkTS script execution.
 
 **Since:** 26.0.0

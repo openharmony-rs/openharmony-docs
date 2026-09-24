@@ -8,6 +8,8 @@ typedef struct HiCollie_SetTimerParam {...} HiCollie_SetTimerParam
 
 Defines the input parameters of the **OH_HiCollie_SetTimer** function.
 
+**System capability**: SystemCapability.HiviewDFX.HiCollie
+
 **Since**: 18
 
 **Related module**: [HiCollie](capi-hicollie.md)

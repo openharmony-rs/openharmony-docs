@@ -1,5 +1,9 @@
 # HostDeviceType
 
+```TypeScript
+enum HostDeviceType
+```
+
 Enumerates the remote camera types.
 
 **Since:** 15
@@ -45,5 +49,21 @@ Tablet.
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+## GLASSES
+
+```TypeScript
+GLASSES = 0xA31
+```
+
+Glasses.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Multimedia.Camera.Core

@@ -1,5 +1,9 @@
 # GetDownloadableProfilesResult (System API)
 
+```TypeScript
+export interface GetDownloadableProfilesResult
+```
+
 Obtains the list of default downloadable profiles.
 
 **Since:** 18

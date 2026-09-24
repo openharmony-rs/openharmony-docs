@@ -1,5 +1,9 @@
 # PersistPropsOptions
 
+```TypeScript
+declare interface PersistPropsOptions
+```
+
 用于指定持久化属性及其默认值的键值对对象，作为[persistProps](arkts-arkui-persistentstorage-c.md#persistprops)参数传入。
 
 **起始版本：** 10

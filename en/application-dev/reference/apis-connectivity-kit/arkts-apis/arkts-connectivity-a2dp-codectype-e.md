@@ -1,5 +1,9 @@
 # CodecType
 
+```TypeScript
+enum CodecType
+```
+
 Describes the codec type.
 
 **Since:** 11

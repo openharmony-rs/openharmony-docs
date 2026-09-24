@@ -1,5 +1,9 @@
 # StyledStringKey
 
+```TypeScript
+declare enum StyledStringKey
+```
+
 范围属性字符串样式。
 
 **起始版本：** 12

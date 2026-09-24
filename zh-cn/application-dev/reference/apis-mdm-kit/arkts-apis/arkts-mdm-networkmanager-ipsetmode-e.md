@@ -1,5 +1,9 @@
 # IpSetMode
 
+```TypeScript
+enum IpSetMode
+```
+
 以太网连接模式。
 
 **起始版本：** 23

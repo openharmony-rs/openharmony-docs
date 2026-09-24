@@ -41,6 +41,8 @@ int OH_Cursor_GetFloatVectorCount(OH_Cursor *cursor, int32_t columnIndex, size_t
 
 获取当前行中指定列的浮点数数组大小。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 18
 
 **参数：**
@@ -66,6 +68,8 @@ int OH_Cursor_GetFloatVector(OH_Cursor *cursor, int32_t columnIndex, float *val,
 **描述：**
 
 以浮点数数组的形式获取当前行中指定列的值。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 

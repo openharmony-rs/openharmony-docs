@@ -34,11 +34,18 @@ function setMinLogLevel(level: LogLevel): void
 
 **示例**
 
-```TypeScript
 以全局日志级别为INFO下，打印5条不同级别的hilog日志，在打印过程中调用两次setMinLogLevel接口为例：
-```
 
 ```TypeScript
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 1);
+hilog.setMinLogLevel(hilog.LogLevel.WARN);
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 2);
+hilog.error(0x0001, "testTag", 'this is an error level log, id: %{public}d', 3);
+hilog.setMinLogLevel(hilog.LogLevel.DEBUG);
+hilog.debug(0x0001, "testTag", 'this is a debug level log, id: %{public}d', 4);
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
+```
+
 由于全局日志起始为INFO，第一条日志可以正常打印。
 
 在设置进程最低可打印日志级别为WARN后，第二条日志不符合该日志级别，第二条日志打印失败，第三条日志可以正常打印。
@@ -46,4 +53,9 @@ function setMinLogLevel(level: LogLevel): void
 在设置进程最低日志级别为DEBUG后，但是此时全局日志级别为INFO，所以第四条日志不满足全局日志级别，打印失败，第五条日志可以打印。
 
 最终打印结果如下所示：
+
+```TypeScript
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 1
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  E     this is an error level log, id: 3
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 5
 ```

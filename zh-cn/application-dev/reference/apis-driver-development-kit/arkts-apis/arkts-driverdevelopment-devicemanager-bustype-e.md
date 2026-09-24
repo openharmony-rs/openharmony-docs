@@ -1,5 +1,9 @@
 # BusType
 
+```TypeScript
+export enum BusType
+```
+
 设备总线类型。
 
 **起始版本：** 10

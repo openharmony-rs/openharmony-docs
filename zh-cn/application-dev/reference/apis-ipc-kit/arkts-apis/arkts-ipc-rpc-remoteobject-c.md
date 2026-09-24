@@ -1,5 +1,9 @@
 # RemoteObject
 
+```TypeScript
+class RemoteObject extends IRemoteObject
+```
+
 实现远程对象。服务提供者必须继承此类。
 
 **继承/实现关系：** RemoteObject extends [IRemoteObject](arkts-ipc-rpc-iremoteobject-c.md)
@@ -12,57 +16,6 @@
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
-```
-
-## attachLocalInterface
-
-```TypeScript
-attachLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
-```
-
-此接口用于把接口描述符和IRemoteBroker对象绑定。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [modifyLocalInterface](#modifylocalinterface)(localInterface: IRemoteBroker, descriptor: string)
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| localInterface | [IRemoteBroker](arkts-ipc-rpc-iremotebroker-i.md) | 是 | 将与描述符绑定的IRemoteBroker对象。 |
-| descriptor | string | 是 | 用于与IRemoteBroker对象绑定的描述符。 |
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class MyDeathRecipient implements rpc.DeathRecipient {
-  onRemoteDied() {
-    hilog.info(0x0000, 'testTag', 'server died');
-  }
-}
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-    this.attachLocalInterface(this, descriptor);
-  }
-  addDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
-    // 方法逻辑需开发者根据业务需要实现
-    return true;
-  }
-  removeDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
-    // 方法逻辑需开发者根据业务需要实现
-    return true;
-  }
-}
-let testRemoteObject = new TestRemoteObject('testObject');
 ```
 
 ## constructor
@@ -231,54 +184,6 @@ try {
 }
 ```
 
-## getInterfaceDescriptor
-
-```TypeScript
-getInterfaceDescriptor(): string
-```
-
-查询接口描述符。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [getDescriptor](arkts-ipc-rpc-iremoteobject-c.md#getdescriptor)()
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| string | 返回接口描述符。 |
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): boolean | Promise<boolean> {
-    // 根据业务实际逻辑，进行相应处理
-    return true;
-  }
-}
-
-try {
-  let testRemoteObject = new TestRemoteObject('testObject');
-  let descriptor = testRemoteObject.getInterfaceDescriptor();
-  hilog.info(0x0000, 'testTag', 'RpcServer: descriptor is: ' + descriptor);
-} catch (error) {
-  hilog.error(0x0000, 'testTag', 'error ' + error);
-}
-```
-
 ## getLocalInterface
 
 ```TypeScript
@@ -307,7 +212,7 @@ getLocalInterface(descriptor: string): IRemoteBroker
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The string length is greater than or equal to 40960; 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The string length is greater than or equal to 40960; 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 **示例**
 
@@ -359,7 +264,7 @@ modifyLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The string length is greater than or equal to 40960; 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The string length is greater than or equal to 40960; 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 **示例**
 
@@ -427,6 +332,134 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
 | data | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 是 | 携带客户端调用参数的MessageSequence对象。 |
 | reply | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 是 | 写入结果的MessageSequence对象。 |
 | options | [MessageOption](arkts-ipc-rpc-messageoption-c.md) | 是 | 指示操作是同步还是异步。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean &#124; Promise&lt;boolean&gt; | 若在onRemoteMessageRequest中同步处理请求，则返回一个布尔值。返回true表示操作成功，返回false表示操作失败。<br>- 若在onRemoteMessageRequest中异步处理请求，则返回一个Promise对象。返回true表示操作成功，返回false表示操作失败。 |
+
+**示例**
+
+```TypeScript
+// 重写onRemoteMessageRequest方法同步处理请求
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): boolean {
+    if (code === 1) {
+      hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
+      return true;
+    } else {
+      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+      return false;
+    }
+  }
+}
+```
+
+```TypeScript
+// 重写onRemoteMessageRequest方法异步处理请求
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+
+  async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): Promise<boolean> {
+    if (code === 1) {
+      hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
+    } else {
+      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+      return false;
+    }
+    await new Promise((resolve: (data: rpc.RequestResult) => void) => {
+      setTimeout(resolve, 100);
+    })
+    return true;
+  }
+}
+```
+
+```TypeScript
+// 同时重写onRemoteMessageRequest和onRemoteRequest方法同步处理请求
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+
+  onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+    if (code === 1) {
+      hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
+      return true;
+    } else {
+      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+      return false;
+    }
+  }
+    // 同时调用仅会执行onRemoteMessageRequest
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): boolean | Promise<boolean> {
+    if (code === 1) {
+      hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
+    } else {
+      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+      return false;
+    }
+    return true;
+  }
+}
+```
+
+<a id="onremotemessagerequest-1"></a>
+
+## onRemoteMessageRequest
+
+```TypeScript
+onRemoteMessageRequest(
+      code: number,
+      data: MessageSequence,
+      reply: MessageSequence,
+      options: MessageOption,
+      callingInfo?: CallingInfo
+    ): boolean | Promise<boolean>
+```
+
+sendMessageRequest请求的响应处理函数，服务端在该函数里同步或异步地处理请求，回复结果，该接口可从入参callingInfo中获取IPC上下文信息。
+
+> **说明：** 
+> 
+> 开发者应优先选择重写带有CallingInfo参数的onRemoteMessageRequest方法，其中可以自由实现同步和异步的消息处理。
+> 
+> 开发者同时重写onRemoteRequest和onRemoteMessageRequest方法时，仅onRemoteMessageRequest方法生效。
+
+**起始版本：** 23
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| code | number | 是 | 对端发送的服务请求码。 |
+| data | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 是 | 携带客户端调用参数的MessageSequence对象。 |
+| reply | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 是 | 写入结果的MessageSequence对象。 |
+| options | [MessageOption](arkts-ipc-rpc-messageoption-c.md) | 是 | 指示操作是同步还是异步。 |
+| callingInfo | [CallingInfo](arkts-ipc-rpc-callinginfo-c.md) | 否 | 获取IPC上下文信息。不传此参数时，默认为undefined。当需要获取调用者的PID、UID、TokenId或设备ID等信息时传入此参数，可通过callingInfo.callerPid等方式获取。不传入时无法直接获取IPC上下文信息，需通过rpc.IPCSkeleton其他方法（如getCallingPid、getCallingUid等）获取。 |
 
 **返回值：**
 
@@ -521,109 +554,20 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 ```
 
-```TypeScript
-// 重写onRemoteMessageRequest方法同步处理请求
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): boolean {
-    if (code === 1) {
-      hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
-      return true;
-    } else {
-      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-      return false;
-    }
-  }
-}
-```
+## sendMessageRequest
 
 ```TypeScript
-// 重写onRemoteMessageRequest方法异步处理请求
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): Promise<boolean> {
-    if (code === 1) {
-      hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
-    } else {
-      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-      return false;
-    }
-    await new Promise((resolve: (data: rpc.RequestResult) => void) => {
-      setTimeout(resolve, 100);
-    })
-    return true;
-  }
-}
-```
-
-```TypeScript
-// 同时重写onRemoteMessageRequest和onRemoteRequest方法同步处理请求
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
-    if (code === 1) {
-      hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
-      return true;
-    } else {
-      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-      return false;
-    }
-  }
-    // 同时调用仅会执行onRemoteMessageRequest
-  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): boolean | Promise<boolean> {
-    if (code === 1) {
-      hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
-    } else {
-      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-      return false;
-    }
-    return true;
-  }
-}
-```
-
-## onRemoteMessageRequest
-
-```TypeScript
-onRemoteMessageRequest(
+sendMessageRequest(
       code: number,
       data: MessageSequence,
       reply: MessageSequence,
-      options: MessageOption,
-      callingInfo?: CallingInfo
-    ): boolean | Promise<boolean>
+      options: MessageOption
+    ): Promise<RequestResult>
 ```
 
-sendMessageRequest请求的响应处理函数，服务端在该函数里同步或异步地处理请求，回复结果，该接口可从入参callingInfo中获取IPC上下文信息。
+以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则发送请求的响应结果立即返回，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则发送请求的响应结果将在sendMessageRequest返回时返回，回复内容在reply报文里。使用Promise异步回调。
 
-> **说明：** 
-> 
-> 开发者应优先选择重写带有CallingInfo参数的onRemoteMessageRequest方法，其中可以自由实现同步和异步的消息处理。
-> 
-> 开发者同时重写onRemoteRequest和onRemoteMessageRequest方法时，仅onRemoteMessageRequest方法生效。
-
-**起始版本：** 23
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -631,21 +575,249 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| code | number | 是 | 对端发送的服务请求码。 |
-| data | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 是 | 携带客户端调用参数的MessageSequence对象。 |
-| reply | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 是 | 写入结果的MessageSequence对象。 |
-| options | [MessageOption](arkts-ipc-rpc-messageoption-c.md) | 是 | 指示操作是同步还是异步。 |
-| callingInfo | [CallingInfo](arkts-ipc-rpc-callinginfo-c.md) | 否 | 获取IPC上下文信息。不传此参数时，默认为undefined。当需要获取调用者的PID、UID、TokenId或设备ID等信息时传入此参数，可通过callingInfo.callerPid等方式获取。不传入时无法直接获取IPC上下文信息，需通过rpc.IPCSkeleton其他方法（如getCallingPid、getCallingUid等）获取。 |
+| code | number | 是 | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+| data | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 是 | 保存待发送数据的MessageSequence对象。 |
+| reply | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 是 | 接收应答数据的MessageSequence对象。 |
+| options | [MessageOption](arkts-ipc-rpc-messageoption-c.md) | 是 | 本次请求的同异步模式，默认同步调用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean &#124; Promise&lt;boolean&gt; | 若在onRemoteMessageRequest中同步处理请求，则返回一个布尔值。返回true表示操作成功，返回false表示操作失败。<br>- 若在onRemoteMessageRequest中异步处理请求，则返回一个Promise对象。返回true表示操作成功，返回false表示操作失败。 |
+| Promise&lt;[RequestResult](arkts-ipc-rpc-requestresult-i.md)&gt; | Promise对象，返回发送请求的响应结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain the passed object instance. |
 
 **示例**
 
-参见 [onRemoteMessageRequest](#onremotemessagerequest)
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): boolean | Promise<boolean> {
+    // 根据业务实际逻辑，进行相应处理
+    return true;
+  }
+}
+try {
+  let testRemoteObject = new TestRemoteObject('testObject');
+  let option = new rpc.MessageOption();
+  let data = rpc.MessageSequence.create();
+  let reply = rpc.MessageSequence.create();
+  data.writeInt(1);
+  data.writeString('hello');
+  testRemoteObject.sendMessageRequest(1, data, reply, option)
+    .then((result: rpc.RequestResult) => {
+      if (result.errCode === 0) {
+        hilog.info(0x0000, 'testTag', 'sendMessageRequest got result');
+        let num = result.reply.readInt();
+        let msg = result.reply.readString();
+        hilog.info(0x0000, 'testTag', 'reply num: ' + num);
+        hilog.info(0x0000, 'testTag', 'reply msg: ' + msg);
+      } else {
+        hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, errCode: ' + result.errCode);
+      }
+    }).catch((e: Error) => {
+      hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + JSON.stringify(e));
+    }).finally (() => {
+      hilog.info(0x0000, 'testTag', 'sendMessageRequest ends, reclaim parcel');
+      data.reclaim();
+      reply.reclaim();
+    });
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + error);
+}
+```
+
+<a id="sendmessagerequest-1"></a>
+
+## sendMessageRequest
+
+```TypeScript
+sendMessageRequest(
+      code: number,
+      data: MessageSequence,
+      reply: MessageSequence,
+      options: MessageOption,
+      callback: AsyncCallback<RequestResult>
+    ): void
+```
+
+以同步或异步方式向对端进程发送MessageSequence消息。使用callback异步回调。如果为选项设置了异步模式，则立即收到回调，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则将在sendMessageRequest返回时收到回调，回复内容在reply报文里。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| code | number | 是 | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+| data | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 是 | 保存待发送数据的MessageSequence对象。 |
+| reply | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 是 | 接收应答数据的MessageSequence对象。 |
+| options | [MessageOption](arkts-ipc-rpc-messageoption-c.md) | 是 | 本次请求的同异步模式，默认同步调用。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RequestResult](arkts-ipc-rpc-requestresult-i.md)&gt; | 是 | 回调函数。当消息发送成功时，可从RequestResult中读取服务端返回的数据。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain the passed object instance. |
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): boolean | Promise<boolean> {
+    // 根据业务实际逻辑，进行相应处理
+    return true;
+  }
+}
+try {
+  let testRemoteObject = new TestRemoteObject('testObject');
+  let option = new rpc.MessageOption();
+  let data = rpc.MessageSequence.create();
+  let reply = rpc.MessageSequence.create();
+  data.writeInt(1);
+  data.writeString('hello');
+  testRemoteObject.sendMessageRequest(1, data, reply, option)
+    .then((result: rpc.RequestResult) => {
+      if (result.errCode === 0) {
+        hilog.info(0x0000, 'testTag', 'sendMessageRequest got result');
+        let num = result.reply.readInt();
+        let msg = result.reply.readString();
+        hilog.info(0x0000, 'testTag', 'reply num: ' + num);
+        hilog.info(0x0000, 'testTag', 'reply msg: ' + msg);
+      } else {
+        hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, errCode: ' + result.errCode);
+      }
+    }).catch((e: Error) => {
+      hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + JSON.stringify(e));
+    }).finally (() => {
+      hilog.info(0x0000, 'testTag', 'sendMessageRequest ends, reclaim parcel');
+      data.reclaim();
+      reply.reclaim();
+    });
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + error);
+}
+```
+
+## attachLocalInterface
+
+```TypeScript
+attachLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
+```
+
+此接口用于把接口描述符和IRemoteBroker对象绑定。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [modifyLocalInterface](#modifylocalinterface)(localInterface: IRemoteBroker, descriptor: string)
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| localInterface | [IRemoteBroker](arkts-ipc-rpc-iremotebroker-i.md) | 是 | 将与描述符绑定的IRemoteBroker对象。 |
+| descriptor | string | 是 | 用于与IRemoteBroker对象绑定的描述符。 |
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class MyDeathRecipient implements rpc.DeathRecipient {
+  onRemoteDied() {
+    hilog.info(0x0000, 'testTag', 'server died');
+  }
+}
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+    this.attachLocalInterface(this, descriptor);
+  }
+  addDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
+    // 方法逻辑需开发者根据业务需要实现
+    return true;
+  }
+  removeDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
+    // 方法逻辑需开发者根据业务需要实现
+    return true;
+  }
+}
+let testRemoteObject = new TestRemoteObject('testObject');
+```
+
+## getInterfaceDescriptor
+
+```TypeScript
+getInterfaceDescriptor(): string
+```
+
+查询接口描述符。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [getDescriptor](arkts-ipc-rpc-iremoteobject-c.md#getdescriptor)()
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| string | 返回接口描述符。 |
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): boolean | Promise<boolean> {
+    // 根据业务实际逻辑，进行相应处理
+    return true;
+  }
+}
+
+try {
+  let testRemoteObject = new TestRemoteObject('testObject');
+  let descriptor = testRemoteObject.getInterfaceDescriptor();
+  hilog.info(0x0000, 'testTag', 'RpcServer: descriptor is: ' + descriptor);
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'error ' + error);
+}
+```
 
 ## onRemoteRequest
 
@@ -752,170 +924,6 @@ try {
 }
 ```
 
-## sendMessageRequest
-
-```TypeScript
-sendMessageRequest(
-      code: number,
-      data: MessageSequence,
-      reply: MessageSequence,
-      options: MessageOption
-    ): Promise<RequestResult>
-```
-
-以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则发送请求的响应结果立即返回，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则发送请求的响应结果将在sendMessageRequest返回时返回，回复内容在reply报文里。使用Promise异步回调。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| code | number | 是 | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
-| data | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 是 | 保存待发送数据的MessageSequence对象。 |
-| reply | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 是 | 接收应答数据的MessageSequence对象。 |
-| options | [MessageOption](arkts-ipc-rpc-messageoption-c.md) | 是 | 本次请求的同异步模式，默认同步调用。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[RequestResult](arkts-ipc-rpc-requestresult-i.md)&gt; | Promise对象，返回发送请求的响应结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain the passed object instance. |
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): boolean | Promise<boolean> {
-    // 根据业务实际逻辑，进行相应处理
-    return true;
-  }
-}
-try {
-  let testRemoteObject = new TestRemoteObject('testObject');
-  let option = new rpc.MessageOption();
-  let data = rpc.MessageSequence.create();
-  let reply = rpc.MessageSequence.create();
-  data.writeInt(1);
-  data.writeString('hello');
-  testRemoteObject.sendMessageRequest(1, data, reply, option)
-    .then((result: rpc.RequestResult) => {
-      if (result.errCode === 0) {
-        hilog.info(0x0000, 'testTag', 'sendMessageRequest got result');
-        let num = result.reply.readInt();
-        let msg = result.reply.readString();
-        hilog.info(0x0000, 'testTag', 'reply num: ' + num);
-        hilog.info(0x0000, 'testTag', 'reply msg: ' + msg);
-      } else {
-        hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, errCode: ' + result.errCode);
-      }
-    }).catch((e: Error) => {
-      hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + JSON.stringify(e));
-    }).finally (() => {
-      hilog.info(0x0000, 'testTag', 'sendMessageRequest ends, reclaim parcel');
-      data.reclaim();
-      reply.reclaim();
-    });
-} catch (error) {
-  hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + error);
-}
-```
-
-## sendMessageRequest
-
-```TypeScript
-sendMessageRequest(
-      code: number,
-      data: MessageSequence,
-      reply: MessageSequence,
-      options: MessageOption,
-      callback: AsyncCallback<RequestResult>
-    ): void
-```
-
-以同步或异步方式向对端进程发送MessageSequence消息。使用callback异步回调。如果为选项设置了异步模式，则立即收到回调，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则将在sendMessageRequest返回时收到回调，回复内容在reply报文里。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| code | number | 是 | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
-| data | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 是 | 保存待发送数据的MessageSequence对象。 |
-| reply | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 是 | 接收应答数据的MessageSequence对象。 |
-| options | [MessageOption](arkts-ipc-rpc-messageoption-c.md) | 是 | 本次请求的同异步模式，默认同步调用。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RequestResult](arkts-ipc-rpc-requestresult-i.md)&gt; | 是 | 回调函数。当消息发送成功时，可从RequestResult中读取服务端返回的数据。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain the passed object instance. |
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): boolean | Promise<boolean> {
-    // 根据业务实际逻辑，进行相应处理
-    return true;
-  }
-}
-try {
-  let testRemoteObject = new TestRemoteObject('testObject');
-  let option = new rpc.MessageOption();
-  let data = rpc.MessageSequence.create();
-  let reply = rpc.MessageSequence.create();
-  data.writeInt(1);
-  data.writeString('hello');
-  testRemoteObject.sendMessageRequest(1, data, reply, option)
-    .then((result: rpc.RequestResult) => {
-      if (result.errCode === 0) {
-        hilog.info(0x0000, 'testTag', 'sendMessageRequest got result');
-        let num = result.reply.readInt();
-        let msg = result.reply.readString();
-        hilog.info(0x0000, 'testTag', 'reply num: ' + num);
-        hilog.info(0x0000, 'testTag', 'reply msg: ' + msg);
-      } else {
-        hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, errCode: ' + result.errCode);
-      }
-    }).catch((e: Error) => {
-      hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + JSON.stringify(e));
-    }).finally (() => {
-      hilog.info(0x0000, 'testTag', 'sendMessageRequest ends, reclaim parcel');
-      data.reclaim();
-      reply.reclaim();
-    });
-} catch (error) {
-  hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + error);
-}
-```
-
 ## sendRequest
 
 ```TypeScript
@@ -983,49 +991,7 @@ try {
 }
 ```
 
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-  onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
-    // 根据业务实际逻辑，进行相应处理
-    return true;
-  }
-}
-try {
-  let testRemoteObject = new TestRemoteObject('testObject');
-  let option = new rpc.MessageOption();
-  let data = rpc.MessageParcel.create();
-  let reply = rpc.MessageParcel.create();
-  data.writeInt(1);
-  data.writeString('hello');
-  let a = testRemoteObject.sendRequest(1, data, reply, option) as Object;
-  let b = a as Promise<rpc.SendRequestResult>;
-  b.then((result: rpc.SendRequestResult) => {
-    if (result.errCode === 0) {
-      hilog.info(0x0000, 'testTag', 'sendRequest got result');
-      let num = result.reply.readInt();
-      let msg = result.reply.readString();
-      hilog.info(0x0000, 'testTag', 'reply num: ' + num);
-      hilog.info(0x0000, 'testTag', 'reply msg: ' + msg);
-    } else {
-      hilog.error(0x0000, 'testTag', 'sendRequest failed, errCode: ' + result.errCode);
-    }
-  }).catch((e: Error) => {
-    hilog.error(0x0000, 'testTag', 'sendRequest failed, error: ' + JSON.stringify(e));
-  }).finally (() => {
-    hilog.info(0x0000, 'testTag', 'sendRequest ends, reclaim parcel');
-    data.reclaim();
-    reply.reclaim();
-  });
-} catch (error) {
-  hilog.error(0x0000, 'testTag', 'error: ' + error);
-}
-```
+<a id="sendrequest-1"></a>
 
 ## sendRequest
 
@@ -1070,40 +1036,6 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class TestRemoteObject extends rpc.RemoteObject {
-  onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
-    option: rpc.MessageOption): boolean {
-    // 根据业务实际逻辑，进行相应处理
-    return true;
-  }
-}
-try {
-  let testRemoteObject = new TestRemoteObject('testObject');
-  let option = new rpc.MessageOption();
-  let data = rpc.MessageParcel.create();
-  let reply = rpc.MessageParcel.create();
-  data.writeInt(1);
-  data.writeString('hello');
-  let ret: boolean = testRemoteObject.sendRequest(1, data, reply, option);
-  if (ret) {
-    hilog.info(0x0000, 'testTag', 'sendRequest got result');
-    let msg = reply.readString();
-    hilog.info(0x0000, 'testTag', 'reply msg: ' + msg);
-  } else {
-    hilog.error(0x0000, 'testTag', 'sendRequest failed');
-  }
-  hilog.info(0x0000, 'testTag', 'sendRequest ends, reclaim parcel');
-  data.reclaim();
-  reply.reclaim();
-} catch (error) {
-  hilog.error(0x0000, 'testTag', 'error ' + error);
-}
-```
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
   constructor(descriptor: string) {
     super(descriptor);
   }
@@ -1142,6 +1074,8 @@ try {
   hilog.error(0x0000, 'testTag', 'error: ' + error);
 }
 ```
+
+<a id="sendrequest-2"></a>
 
 ## sendRequest
 

@@ -37,6 +37,7 @@
     - [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)
     - [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md)
     - [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)
+    - [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
     - [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)
     - [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)
     - [OH_UdsHtml](capi-udmf-oh-udshtml.md)

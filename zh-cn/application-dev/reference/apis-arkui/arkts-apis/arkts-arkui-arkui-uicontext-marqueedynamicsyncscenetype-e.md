@@ -1,5 +1,9 @@
 # MarqueeDynamicSyncSceneType
 
+```TypeScript
+export const enum MarqueeDynamicSyncSceneType
+```
+
 Marquee的动态帧率场景的类型枚举
 
 **起始版本：** 14

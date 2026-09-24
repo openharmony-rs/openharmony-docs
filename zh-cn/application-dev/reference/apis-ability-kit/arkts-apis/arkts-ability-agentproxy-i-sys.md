@@ -1,5 +1,9 @@
 # AgentProxy（系统接口）
 
+```TypeScript
+export interface AgentProxy
+```
+
 AgentExtensionAbility的代理对象，用于向AgentExtensionAbility等发送消息。
 
 @interface AgentProxy

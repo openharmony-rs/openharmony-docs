@@ -1,5 +1,9 @@
 # FontStyle
 
+```TypeScript
+declare enum FontStyle
+```
+
 Font style.
 
 **Since:** 7

@@ -28,16 +28,18 @@ import { systemManager } from '@kit.MDMKit';
 | [addAllowedPrinterIPAddressesForDevice](arkts-mdm-systemmanager-addallowedprinteripaddressesfordevice-f.md) | 添加打印机IP地址白名单 |
 | [addDisallowedNearLinkProtocols](arkts-mdm-systemmanager-adddisallowednearlinkprotocols-f.md) | 为指定用户添加禁用的星闪协议名单。NearLink Kit（星闪服务）提供一种低功耗、高速率的短距离通信服务，支持星闪设备之间的连接、数据交互。本接口对键盘、手写笔等系统服务和系统应用不生效。 |
 | [addKeyEventPolicies](arkts-mdm-systemmanager-addkeyeventpolicies-f.md) | 添加按键事件处理策略。系统触发按键事件时，若匹配下发的按键事件策略，将通过[EnterpriseAdminExtensionAbility.onKeyEvent](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onkeyevent)回调通知MDM应用，并携带匹配策略的按键事件信息。 |
+| [createExactTimer](arkts-mdm-systemmanager-createexacttimer-f.md) | 创建精确定时器。该接口使用promise返回定时器ID。 |
+| [destroyExactTimer](arkts-mdm-systemmanager-destroyexacttimer-f.md) | 销毁一个精确的计时器。该接口使用promise返回结果。 |
 | [finishLogCollected](arkts-mdm-systemmanager-finishlogcollected-f.md) | 删除本MDM应用在当前用户下收集到的设备日志。 |
 | [getAllowedPrinterIPAddressesForAccount](arkts-mdm-systemmanager-getallowedprinteripaddressesforaccount-f.md) | 查询用户级打印机IP地址白名单 |
 | [getAllowedPrinterIPAddressesForDevice](arkts-mdm-systemmanager-getallowedprinteripaddressesfordevice-f.md) | 查询打印机IP地址白名单 |
-| [getAutoUnlockAfterReboot](arkts-mdm-systemmanager-getautounlockafterreboot-f.md) | 获取设备是否重启自动解锁。适用于需要验证设备重启解锁策略是否正确配置的场景，帮助企业管理员确认设备自动解锁功能状态。 |
-| [getAutoUnlockAfterReboot](arkts-mdm-systemmanager-getautounlockafterreboot-f.md) | 获取设备是否重启自动解锁。适用于需要验证设备重启解锁策略是否正确配置的场景，帮助企业管理员确认设备自动解锁功能状态。 |
+| [getAutoUnlockAfterReboot](arkts-mdm-systemmanager-getautounlockafterreboot-f.md#getautounlockafterreboot) | 获取设备是否重启自动解锁。适用于需要验证设备重启解锁策略是否正确配置的场景，帮助企业管理员确认设备自动解锁功能状态。 |
+| [getAutoUnlockAfterReboot](arkts-mdm-systemmanager-getautounlockafterreboot-f.md#getautounlockafterreboot-1) | 获取设备是否重启自动解锁。适用于需要验证设备重启解锁策略是否正确配置的场景，帮助企业管理员确认设备自动解锁功能状态。 |
 | [getDisallowedNearLinkProtocols](arkts-mdm-systemmanager-getdisallowednearlinkprotocols-f.md) | 获取指定用户下禁用的星闪协议名单。适用于需要查询用户当前星闪协议访问限制的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。 |
 | [getInstallLocalEnterpriseAppEnabled](arkts-mdm-systemmanager-getinstalllocalenterpriseappenabled-f.md) | 查询是否支持本地安装企业应用。适用于需要验证设备本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保设备能够正常安装企业应用。 |
 | [getInstallLocalEnterpriseAppEnabledForAccount](arkts-mdm-systemmanager-getinstalllocalenterpriseappenabledforaccount-f.md) | 查询指定用户是否支持本地安装企业应用。适用于需要验证特定用户本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保用户能够正常安装企业应用。 |
-| [getKeyEventPolicies](arkts-mdm-systemmanager-getkeyeventpolicies-f.md) | 获取按键事件处理策略。适用于需要查询当前按键事件处理策略配置的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。 |
-| [getKeyEventPolicies](arkts-mdm-systemmanager-getkeyeventpolicies-f.md) | 获取按键事件处理策略。适用于需要查询当前按键事件处理策略配置的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。 |
+| [getKeyEventPolicies](arkts-mdm-systemmanager-getkeyeventpolicies-f.md#getkeyeventpolicies) | 获取按键事件处理策略。适用于需要查询当前按键事件处理策略配置的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。 |
+| [getKeyEventPolicies](arkts-mdm-systemmanager-getkeyeventpolicies-f.md#getkeyeventpolicies-1) | 获取按键事件处理策略。适用于需要查询当前按键事件处理策略配置的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。 |
 | [getNTPServer](arkts-mdm-systemmanager-getntpserver-f.md) | 获取NTP时间服务器信息。适用于需要查询当前设备配置的NTP服务器地址的场景，用于验证时间同步配置是否正确，或在进行策略调整前获取当前配置。 |
 | [getOtaUpdatePolicy](arkts-mdm-systemmanager-getotaupdatepolicy-f.md) | 查询升级策略。适用于需要获取当前设备OTA升级策略配置的场景，用于验证策略是否正确下发，或在进行策略调整前获取当前策略配置。 |
 | [getUpdateAuthData](arkts-mdm-systemmanager-getupdateauthdata-f.md) | 获取系统更新的鉴权数据，用于校验系统更新信息。使用Promise异步回调。适用于内网升级场景，企业管理员可以通过鉴权数据验证系统更新包的合法性和完整性，防止恶意更新包，提升系统安全性。 |
@@ -57,6 +59,14 @@ import { systemManager } from '@kit.MDMKit';
 | [setOtaUpdateNonceEnable](arkts-mdm-systemmanager-setotaupdatenonceenable-f.md) | 设置OTA更新时Nonce的启用状态（默认为启用状态）。启用后，系统将在OTA更新过程中校验Nonce的有效性，从而防止重放攻击，提升系统安全性。 |
 | [setOtaUpdatePolicy](arkts-mdm-systemmanager-setotaupdatepolicy-f.md) | 设置升级策略。设置成功后，系统将按照指定的策略类型进行OTA升级处理，不同策略类型对应不同的升级行为。内网升级场景下，需要先调用[systemManager.notifyUpdatePackages](arkts-mdm-systemmanager-notifyupdatepackages-f.md)接口通知系统更新包，再调用该接口设置升级策略。 |
 | [startCollectLog](arkts-mdm-systemmanager-startcollectlog-f.md) | 开始收集设备上已生成并存储至硬盘的[FaultType](../../apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-faultlogger-faulttype-e.md)类型的faultlog日志，不支持收集未存储至硬盘的faultlog日志、应用业务日志和系统运行日志。 |
+| [startExactTimer](arkts-mdm-systemmanager-startexacttimer-f.md) | 启动精确的计时器。该接口使用promise返回结果。 |
+| [stopExactTimer](arkts-mdm-systemmanager-stopexacttimer-f.md) | 停止精确计时器。该接口使用promise返回结果。 |
+
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [ExactTimerConfig](arkts-mdm-systemmanager-exacttimerconfig-c.md) | 创建精准定时器的的初始化选项 |
 
 ### 接口
 

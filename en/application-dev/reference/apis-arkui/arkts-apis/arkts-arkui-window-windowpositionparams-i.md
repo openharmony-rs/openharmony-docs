@@ -1,8 +1,12 @@
 # WindowPositionParams
 
+```TypeScript
+interface WindowPositionParams
+```
+
 Describes the position of a main window to adjust its z-order.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -22,7 +26,7 @@ Position to adjust to. If the value is greater than 0, it is the ID of another m
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -38,7 +42,7 @@ ID of the main window whose z-order is to be adjusted. The window must be a main
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

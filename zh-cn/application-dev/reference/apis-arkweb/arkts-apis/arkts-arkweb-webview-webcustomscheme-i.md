@@ -1,5 +1,9 @@
 # WebCustomScheme
 
+```TypeScript
+interface WebCustomScheme
+```
+
 自定义协议配置。
 
 @interface WebCustomScheme [since 9 - 11]

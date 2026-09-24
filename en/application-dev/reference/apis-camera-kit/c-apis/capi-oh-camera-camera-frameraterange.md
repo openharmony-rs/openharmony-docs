@@ -8,6 +8,8 @@ typedef struct Camera_FrameRateRange {...} Camera_FrameRateRange
 
 The struct describes the frame rate range.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

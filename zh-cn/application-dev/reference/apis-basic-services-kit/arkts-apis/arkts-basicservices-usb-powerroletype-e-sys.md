@@ -1,5 +1,9 @@
 # PowerRoleType（系统接口）
 
+```TypeScript
+export enum PowerRoleType
+```
+
 电源角色类型。
 
 **起始版本：** 9

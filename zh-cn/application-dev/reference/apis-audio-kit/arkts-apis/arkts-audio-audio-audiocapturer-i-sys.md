@@ -1,5 +1,9 @@
 # AudioCapturer
 
+```TypeScript
+interface AudioCapturer
+```
+
 提供音频采集的相关接口。在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md)获取AudioCapturer实例。
 
 **起始版本：** 8
@@ -38,7 +42,7 @@ offReadMicInData(callback?: Callback<AudioCapturerMicInData>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permitted at running state. |
 
@@ -74,7 +78,7 @@ onReadMicInData(callback: Callback<AudioCapturerMicInData>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permitted at running state. |
 
 ## setInputDeviceToAccessory
@@ -95,5 +99,5 @@ setInputDeviceToAccessory(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permit at current state. |

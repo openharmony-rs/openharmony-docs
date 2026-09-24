@@ -1,5 +1,9 @@
 # Image
 
+```TypeScript
+export declare class Image
+```
+
 You can create an Image object by calling new Image().
 
 **Since:** 11

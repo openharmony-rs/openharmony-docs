@@ -1,5 +1,9 @@
 # SubscribeType
 
+```TypeScript
+enum SubscribeType
+```
+
 订阅类型枚举。
 
 **起始版本：** 7

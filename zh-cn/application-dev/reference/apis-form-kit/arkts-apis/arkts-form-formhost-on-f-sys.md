@@ -35,8 +35,8 @@ function on(type: "formUninstall", callback: Callback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
 
 ## on('formOverflow')
@@ -64,7 +64,22 @@ function on(type: 'formOverflow', callback: Callback<formInfo.OverflowRequest>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+
+**示例**
+
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.on('formOverflow', (request: formInfo.OverflowRequest) => {
+    console.info(`formHost on formOverflow, formId is ${request.formId}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
 
 
 ## on('changeSceneAnimationState')
@@ -93,7 +108,22 @@ function on(type: 'changeSceneAnimationState',
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+
+**示例**
+
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.on('changeSceneAnimationState', (request: formInfo.ChangeSceneAnimationStateRequest): void => {
+    console.info(`formHost on changeSceneAnimationState, formId is ${request.formId}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
 
 
 ## on('getFormRect')
@@ -121,7 +151,32 @@ function on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+
+**示例**
+
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.on('getFormRect', (formId: string): Promise<formInfo.Rect> => {
+    // 卡片使用方需要对查询请求进行处理，计算并返回卡片尺寸、位置信息
+    return new Promise<formInfo.Rect>((resolve: Function) => {
+      console.info(`formHost on getFormRect, formId is ${formId}`);
+      let formRect: formInfo.Rect = {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      };
+      resolve(formRect);
+    })
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
 
 
 ## on('getLiveFormStatus')
@@ -149,4 +204,4 @@ Listens to the event of get live form status.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |

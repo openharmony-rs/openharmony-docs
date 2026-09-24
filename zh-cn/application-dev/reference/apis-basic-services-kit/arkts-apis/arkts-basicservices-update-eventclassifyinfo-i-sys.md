@@ -1,5 +1,9 @@
 # EventClassifyInfo（系统接口）
 
+```TypeScript
+export interface EventClassifyInfo
+```
+
 事件信息。
 
 **起始版本：** 9

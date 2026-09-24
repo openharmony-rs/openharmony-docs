@@ -1,5 +1,9 @@
 # SubscribeProximityOptions
 
+```TypeScript
+export interface SubscribeProximityOptions
+```
+
 Defines the type of data to return for a subscription to data changes of the proximity sensor.
 
 **Since:** 3

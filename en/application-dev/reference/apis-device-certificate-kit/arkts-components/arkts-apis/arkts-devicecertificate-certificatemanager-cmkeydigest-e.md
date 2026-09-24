@@ -1,5 +1,9 @@
 # CmKeyDigest
 
+```TypeScript
+export enum CmKeyDigest
+```
+
 Enumerates the digest algorithms that can be used for signing and signature verification.
 
 **Since:** 11

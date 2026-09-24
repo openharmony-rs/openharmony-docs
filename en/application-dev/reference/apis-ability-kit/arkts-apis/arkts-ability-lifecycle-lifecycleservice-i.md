@@ -1,5 +1,9 @@
 # LifecycleService
 
+```TypeScript
+export declare interface LifecycleService
+```
+
 interface of service lifecycle.
 
 @interface LifecycleService

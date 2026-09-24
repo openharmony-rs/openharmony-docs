@@ -1,5 +1,9 @@
 # RationalNumber
 
+```TypeScript
+class RationalNumber
+```
+
 提供比较有理数、获取分子和分母的 API。例如，可以使用 **toString()** API 将有理数转换为字符串。
 
 **起始版本：** 8
@@ -48,42 +52,26 @@ console.info("result = " + result);
 // 输出结果：result = -1
 ```
 
-## compareTo
+<a id="constructor-1"></a>
+
+## constructor
 
 ```TypeScript
-compareTo(another: RationalNumber): number
+constructor()
 ```
 
-将当前的 RationalNumber 对象与给定对象进行比较。
+用于创建 **RationalNumber** 对象的构造函数。
 
-**起始版本：** 8
+**起始版本：** 9
 
-**废弃版本：** 9
-
-**替代接口：** compare
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| another | [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 是 | 表示其他有理数的对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| number | 根据比较结果返回 0、1 或 -1。 |
 
 **示例**
 
 ```TypeScript
-let rationalNumber = new util.RationalNumber(1,2);
-let rational = util.RationalNumber.createRationalFromString("3/4");
-let result = rationalNumber.compareTo(rational);
-console.info("result = " + result);
-// 输出结果：result = -1
+let rationalNumber = new util.RationalNumber();
 ```
 
 ## constructor
@@ -110,34 +98,6 @@ constructor(numerator: number, denominator: number)
 | denominator | number | 是 | 分母，为整数。 |
 
 **示例**
-
-```TypeScript
-let rationalNumber = new util.RationalNumber();
-```
-
-```TypeScript
-let rationalNumber = new util.RationalNumber(1,2);
-```
-
-## constructor
-
-```TypeScript
-constructor()
-```
-
-用于创建 **RationalNumber** 对象的构造函数。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**示例**
-
-```TypeScript
-let rationalNumber = new util.RationalNumber();
-```
 
 ```TypeScript
 let rationalNumber = new util.RationalNumber(1,2);
@@ -216,38 +176,15 @@ console.info("result = " + result);
 // 输出结果：result = false
 ```
 
-```TypeScript
 API 9及以上建议使用以下写法：
-```
-
-## getCommonDivisor
 
 ```TypeScript
-static getCommonDivisor(number1: number, number2: number): number
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let rational = util.RationalNumber.createRationalFromString("3/4");
+let result = rationalNumber.equals(rational);
+console.info("result = " + result);
+// 输出结果：result = false
 ```
-
-获取两个指定整数的最大公约数。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [getCommonFactor](#getcommonfactor)
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| number1 | number | 是 | 用于获取最大公约数的第一个整数。 |
-| number2 | number | 是 | 用于获取最大公约数的第二个整数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| number | 获取到的最大公约数。 |
 
 ## getCommonFactor
 
@@ -318,8 +255,13 @@ console.info("result = " + result);
 // 输出结果：result = 2
 ```
 
-```TypeScript
 API 9及以上建议使用以下写法：
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2)
+let result = rationalNumber.getDenominator();
+console.info("result = " + result);
+// 输出结果：result = 2
 ```
 
 ## getNumerator
@@ -351,8 +293,13 @@ console.info("result = " + result);
 // 输出结果：result = 1
 ```
 
-```TypeScript
 API 9及以上建议使用以下写法：
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let result = rationalNumber.getNumerator();
+console.info("result = " + result);
+// 输出结果：result = 1
 ```
 
 ## isFinite
@@ -384,8 +331,13 @@ console.info("result = " + result);
 // 输出结果：result = true
 ```
 
-```TypeScript
 API 9及以上建议使用以下写法：
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let result = rationalNumber.isFinite();
+console.info("result = " + result);
+// 输出结果：result = true
 ```
 
 ## isNaN
@@ -417,8 +369,13 @@ console.info("result = " + result);
 // 输出结果：result = false
 ```
 
-```TypeScript
 API 9及以上建议使用以下写法：
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let result = rationalNumber.isNaN();
+console.info("result = " + result);
+// 输出结果：result = false
 ```
 
 ## isZero
@@ -450,8 +407,13 @@ console.info("result = " + result);
 // 输出结果：result = false
 ```
 
-```TypeScript
 API 9及以上建议使用以下写法：
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let result = rationalNumber.isZero();
+console.info("result = " + result);
+// 输出结果：result = false
 ```
 
 ## parseRationalNumber
@@ -521,8 +483,13 @@ console.info("result = " + result);
 // 输出结果：result = 1/2
 ```
 
-```TypeScript
 API 9及以上建议使用以下写法：
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let result = rationalNumber.toString();
+console.info("result = " + result);
+// 输出结果：result = 1/2
 ```
 
 ## valueOf
@@ -554,6 +521,78 @@ console.info("result = " + result);
 // 输出结果：result = 0.5
 ```
 
-```TypeScript
 API 9及以上建议使用以下写法：
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let result = rationalNumber.valueOf();
+console.info("result = " + result);
+// 输出结果：result = 0.5
 ```
+
+## compareTo
+
+```TypeScript
+compareTo(another: RationalNumber): number
+```
+
+将当前的 RationalNumber 对象与给定对象进行比较。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** compare
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| another | [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 是 | 表示其他有理数的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 根据比较结果返回 0、1 或 -1。 |
+
+**示例**
+
+```TypeScript
+let rationalNumber = new util.RationalNumber(1,2);
+let rational = util.RationalNumber.createRationalFromString("3/4");
+let result = rationalNumber.compareTo(rational);
+console.info("result = " + result);
+// 输出结果：result = -1
+```
+
+## getCommonDivisor
+
+```TypeScript
+static getCommonDivisor(number1: number, number2: number): number
+```
+
+获取两个指定整数的最大公约数。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [getCommonFactor](#getcommonfactor)
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| number1 | number | 是 | 用于获取最大公约数的第一个整数。 |
+| number2 | number | 是 | 用于获取最大公约数的第二个整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 获取到的最大公约数。 |

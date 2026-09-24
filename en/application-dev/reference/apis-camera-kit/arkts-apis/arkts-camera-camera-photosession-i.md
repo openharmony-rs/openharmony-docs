@@ -1,5 +1,10 @@
 # PhotoSession
 
+```TypeScript
+interface PhotoSession extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, ColorManagement,
+      AutoDeviceSwitch, Macro, ManualExposure, ManualFocus, ManualIso, OIS, Aperture
+```
+
 **PhotoSession** inherits from [Session](arkts-camera-camera-session-i.md), [Flash](arkts-camera-camera-flash-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [WhiteBalance](arkts-camera-camera-whitebalance-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md), [ColorManagement](arkts-camera-camera-colormanagement-i.md), [AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md), [Macro](arkts-camera-camera-macro-i.md), [ManualExposure](arkts-camera-camera-manualexposure-i.md), [ManualFocus](arkts-camera-camera-manualfocus-i.md), [ManualIso](arkts-camera-camera-manualiso-i.md), [OIS](arkts-camera-camera-ois-i.md), and [Aperture](arkts-camera-camera-aperture-i.md).
 
 It implements a photo session, which provides operations on the flash, exposure, white balance, focus, zoom, color space, macro mode, manual exposure, manual focus, manual ISO setting, optical image stabilization (OIS), and aperture.
@@ -53,6 +58,23 @@ Checks whether this session supports a preconfigured resolution.
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testCanPreconfig(photoSession: camera.PhotoSession, preconfigType: camera.PreconfigType,
+  preconfigRatio: camera.PreconfigRatio): void {
+  try {
+    let result = photoSession.canPreconfig(preconfigType, preconfigRatio);
+    console.info(`canPreconfig ${preconfigType} ${preconfigRatio} result is : ${result}`);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The canPreconfig call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## off('error')
 
 ```TypeScript
@@ -73,6 +95,14 @@ Unsubscribes from **PhotoSession** error events. This API uses a callback to ret
 | --- | --- | --- | --- |
 | type | 'error' | Yes | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
+
+**Examples**
+
+```TypeScript
+function unregisterSessionError(photoSession: camera.PhotoSession): void {
+  photoSession.off('error');
+}
+```
 
 ## off('focusStateChange')
 
@@ -95,6 +125,14 @@ Unsubscribes from focus state change events.
 | type | 'focusStateChange' | Yes | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
 
+**Examples**
+
+```TypeScript
+function unregisterFocusStateChange(photoSession: camera.PhotoSession): void {
+  photoSession.off('focusStateChange');
+}
+```
+
 ## off('smoothZoomInfoAvailable')
 
 ```TypeScript
@@ -115,6 +153,14 @@ Unsubscribes from smooth zoom state change events.
 | --- | --- | --- | --- |
 | type | 'smoothZoomInfoAvailable' | Yes | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
+
+**Examples**
+
+```TypeScript
+function unregisterSmoothZoomInfo(photoSession: camera.PhotoSession): void {
+  photoSession.off('smoothZoomInfoAvailable');
+}
+```
 
 ## off('macroStatusChanged')
 
@@ -143,6 +189,14 @@ Unsubscribes from macro state change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 11 - 19 |
 
+**Examples**
+
+```TypeScript
+function unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
+  photoSession.off('macroStatusChanged');
+}
+```
+
 ## off('autoDeviceSwitchStatusChange')
 
 ```TypeScript
@@ -164,6 +218,14 @@ Unsubscribes from automatic camera switch status change events.
 | type | 'autoDeviceSwitchStatusChange' | Yes | Event type. The value is fixed at **'autoDeviceSwitchStatusChange'**. The event can be listened for when a session is created. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AutoDeviceSwitchStatus](arkts-camera-camera-autodeviceswitchstatus-i.md)&gt; | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
 
+**Examples**
+
+```TypeScript
+function unregisterSmoothZoomInfo(photoSession: camera.PhotoSession): void {
+  photoSession.off('autoDeviceSwitchStatusChange');
+}
+```
+
 ## off('systemPressureLevelChange')
 
 ```TypeScript
@@ -184,6 +246,36 @@ Unsubscribes from system pressure level change events.
 | --- | --- | --- | --- |
 | type | 'systemPressureLevelChange' | Yes | Event type. The value is fixed at **'systemPressureLevelChange'**. The event can be listened for when a session is created. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SystemPressureLevel](arkts-camera-camera-systempressurelevel-e.md)&gt; | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
+
+**Examples**
+
+```TypeScript
+function unregisterSystemPressureLevelChangeCallback(photoSession: camera.PhotoSession): void {
+  photoSession.off('systemPressureLevelChange');
+}
+```
+
+## offCameraSwitchRequest
+
+```TypeScript
+offCameraSwitchRequest(callback?: Callback<CameraDevice>): void
+```
+
+Unsubscribes camera switch request event callback.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CameraDevice](arkts-camera-camera-cameradevice-i.md)&gt; | No | Callback used to get the target camera device. |
 
 ## offExposureInfoChange
 
@@ -207,6 +299,14 @@ Unsubscribes from exposure information change events. If you have subscribed to 
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ExposureInfo](arkts-camera-camera-exposureinfo-i.md)&gt; | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
 
+**Examples**
+
+```TypeScript
+function offExposureInfoChange(photoSession: camera.PhotoSession): void {
+  photoSession.offExposureInfoChange();
+}
+```
+
 ## offIsoInfoChange
 
 ```TypeScript
@@ -228,6 +328,14 @@ Unsubscribes from ISO information change events.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[IsoInfo](arkts-camera-camera-isoinfo-i.md)&gt; | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
+
+**Examples**
+
+```TypeScript
+function offIsoInfoChange(photoSession: camera.PhotoSession): void {
+  photoSession.offIsoInfoChange();
+}
+```
 
 ## on('error')
 
@@ -254,6 +362,20 @@ Subscribes to **PhotoSession** error events. This API uses an asynchronous callb
 | type | 'error' | Yes | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-camera-camera-session-i.md#beginconfig), [commitConfig](arkts-camera-camera-session-i.md#commitconfig), and [addInput](arkts-camera-camera-session-i.md#addinput). |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | Yes | Callback used to return an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md). |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Photo session error code: ${err.code}`);
+}
+
+function registerSessionError(photoSession: camera.PhotoSession): void {
+  photoSession.on('error', callback);
+}
+```
+
 ## on('focusStateChange')
 
 ```TypeScript
@@ -279,6 +401,24 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 | type | 'focusStateChange' | Yes | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in autofocus mode. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | Yes | Callback used to return the focus state change. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, focusState: camera.FocusState): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`Focus state: ${focusState}`);
+}
+
+function registerFocusStateChange(photoSession: camera.PhotoSession): void {
+  photoSession.on('focusStateChange', callback);
+}
+```
+
 ## on('smoothZoomInfoAvailable')
 
 ```TypeScript
@@ -303,6 +443,24 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 | --- | --- | --- | --- |
 | type | 'smoothZoomInfoAvailable' | Yes | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | Yes | Callback used to return the smooth zoom state change. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, smoothZoomInfo: camera.SmoothZoomInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`The duration of smooth zoom: ${smoothZoomInfo.duration}`);
+}
+
+function registerSmoothZoomInfo(photoSession: camera.PhotoSession): void {
+  photoSession.on('smoothZoomInfoAvailable', callback);
+}
+```
 
 ## on('macroStatusChanged')
 
@@ -331,6 +489,24 @@ Subscribes to macro state change events. This API uses an asynchronous callback 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 11 - 19 |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, macroStatus: boolean): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`Macro state: ${macroStatus}`);
+}
+
+function registerMacroStatusChanged(photoSession: camera.PhotoSession): void {
+  photoSession.on('macroStatusChanged', callback);
+}
+```
+
 ## on('autoDeviceSwitchStatusChange')
 
 ```TypeScript
@@ -355,6 +531,24 @@ Subscribes to automatic camera switch status change events. This API uses an asy
 | --- | --- | --- | --- |
 | type | 'autoDeviceSwitchStatusChange' | Yes | Event type. The value is fixed at **'autoDeviceSwitchStatusChange'**. The event can be listened for when a session is created. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AutoDeviceSwitchStatus](arkts-camera-camera-autodeviceswitchstatus-i.md)&gt; | Yes | Callback function, which is used to obtain the status of automatic camera switch. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, autoDeviceSwitchStatus: camera.AutoDeviceSwitchStatus): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`isDeviceSwitched: ${autoDeviceSwitchStatus.isDeviceSwitched}, isDeviceCapabilityChanged: ${autoDeviceSwitchStatus.isDeviceCapabilityChanged}`);
+}
+
+function registerAutoDeviceSwitchStatus(photoSession: camera.PhotoSession): void {
+  photoSession.on('autoDeviceSwitchStatusChange', callback);
+}
+```
 
 ## on('systemPressureLevelChange')
 
@@ -381,6 +575,46 @@ Subscribes to system pressure level change events. This API uses an asynchronous
 | type | 'systemPressureLevelChange' | Yes | Event type. The value is fixed at **'systemPressureLevelChange'**. The event can be listened for when a session is created. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SystemPressureLevel](arkts-camera-camera-systempressurelevel-e.md)&gt; | Yes | Callback used to return the current system pressure level. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, systemPressureLevel: camera.SystemPressureLevel): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`systemPressureLevel: ${systemPressureLevel}`);
+}
+
+function registerSystemPressureLevelChangeCallback(photoSession: camera.PhotoSession): void {
+    photoSession.on('systemPressureLevelChange', callback);
+}
+```
+
+## onCameraSwitchRequest
+
+```TypeScript
+onCameraSwitchRequest(callback: Callback<CameraDevice>): void
+```
+
+Subscribes camera switch request event callback.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CameraDevice](arkts-camera-camera-cameradevice-i.md)&gt; | Yes | Callback used to get the target camera device. |
+
 ## onExposureInfoChange
 
 ```TypeScript
@@ -403,6 +637,16 @@ Subscribes to exposure information change events. After the exposure parameters 
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ExposureInfo](arkts-camera-camera-exposureinfo-i.md)&gt; | Yes | Callback used to obtain the exposure information. |
 
+**Examples**
+
+```TypeScript
+function onExposureInfoChange(photoSession: camera.PhotoSession): void {
+  photoSession.onExposureInfoChange((exposureInfo: camera.ExposureInfo) => {
+    console.info(`Exposure info changed, exposureTime: ${exposureInfo.exposureTime}`);
+  });
+}
+```
+
 ## onIsoInfoChange
 
 ```TypeScript
@@ -424,6 +668,16 @@ Subscribes to ISO information change events.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[IsoInfo](arkts-camera-camera-isoinfo-i.md)&gt; | Yes | Callback used to obtain the ISO information. |
+
+**Examples**
+
+```TypeScript
+function onIsoInfoChange(photoSession: camera.PhotoSession): void {
+  photoSession.onIsoInfoChange((isoInfo: camera.IsoInfo) => {
+    console.info(`ISO info changed, iso: ${isoInfo.iso}`);
+  });
+}
+```
 
 ## preconfig
 
@@ -451,3 +705,20 @@ Preconfigures this session.
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testPreconfig(photoSession: camera.PhotoSession, preconfigType: camera.PreconfigType,
+  preconfigRatio: camera.PreconfigRatio): void {
+  try {
+    photoSession.preconfig(preconfigType, preconfigRatio);
+    console.info(`preconfig success preconfigType: ${preconfigType}, preconfigRatio: ${preconfigRatio}`);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The preconfig call failed. error code: ${err.code}`);
+  }
+}
+```

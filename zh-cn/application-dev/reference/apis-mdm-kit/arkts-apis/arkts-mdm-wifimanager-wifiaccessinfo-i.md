@@ -1,5 +1,9 @@
 # WifiAccessInfo
 
+```TypeScript
+interface WifiAccessInfo
+```
+
 Wi-Fi的SSID和BSSID信息。
 
 **起始版本：** 19

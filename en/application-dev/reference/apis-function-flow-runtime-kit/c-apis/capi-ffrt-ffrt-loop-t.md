@@ -8,6 +8,8 @@ typedef void* ffrt_loop_t
 
 Loop handle, which identifies different loops.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 12
 
 **Related module**: [FFRT](capi-ffrt.md)

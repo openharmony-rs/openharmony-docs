@@ -1,5 +1,9 @@
 # DlpFeatureStatus (System API)
 
+```TypeScript
+export enum DlpFeatureStatus
+```
+
 Enumerates DLP statuses.
 
 **Since:** 26.0.0

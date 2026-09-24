@@ -1,5 +1,9 @@
 # TextClock properties/events
 
+```TypeScript
+declare class TextClockAttribute extends CommonMethod<TextClockAttribute>
+```
+
 In addition to the [universal attributes](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), the following attributes are supported.
 
 In addition to the [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md), the following events are supported.
@@ -30,7 +34,7 @@ Creates a content modifier.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[TextClockConfiguration](arkts-arkui-textclockconfiguration-i.md)&gt; | Yes | Content modifier to apply to the text clock.<br> **modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[TextClockConfiguration](arkts-arkui-textclock-comp-textclockconfiguration-i.md)&gt; | Yes | Content modifier to apply to the text clock.<br> **modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API. |
 
 ## dateTimeOptions
 
@@ -54,7 +58,7 @@ Sets whether to display a leading zero for the hour.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| dateTimeOptions | [Optional](arkts-arkui-optional-t.md)&lt;[DateTimeOptions](arkts-arkui-datetimeoptions-t.md)&gt; | Yes | Whether to display leading zeros in the hour. It only supports setting the **hour** parameter. When the parameter value is **{hour: "2-digit"}**, a leading zero is displayed. When the parameter value is **{hour: "numeric"}**, no leading zero is displayed.<br>Default value: **undefined**. By default, leading zeros are displayed in 24-hour format, but not displayed in 12-hour format. |
+| dateTimeOptions | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[DateTimeOptions](arkts-arkui-timepicker-comp-datetimeoptions-t.md)&gt; | Yes | Whether to display leading zeros in the hour. It only supports setting the **hour** parameter. When the parameter value is **{hour: "2-digit"}**, a leading zero is displayed. When the parameter value is **{hour: "numeric"}**, no leading zero is displayed.<br>Default value: **undefined**. By default, leading zeros are displayed in 24-hour format, but not displayed in 12-hour format. |
 
 ## fontColor
 
@@ -338,4 +342,4 @@ Sets the text shadow. It supports input parameters in an array to implement mult
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ShadowOptions](arkts-arkui-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-shadowoptions-i.md)&gt; | Yes | Font shadow of the text. |
+| value | [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | Yes | Font shadow of the text. |

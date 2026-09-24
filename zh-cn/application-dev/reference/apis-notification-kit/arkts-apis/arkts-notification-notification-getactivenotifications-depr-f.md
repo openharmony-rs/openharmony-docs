@@ -28,6 +28,8 @@ function getActiveNotifications(callback: AsyncCallback<Array<NotificationReques
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)&gt;&gt; | 是 | 获取当前应用通知列表回调函数。 |
 
 
+<a id="getactivenotifications-1"></a>
+
 ## getActiveNotifications
 
 ```TypeScript

@@ -8,6 +8,8 @@ typedef struct OH_Drawing_LineMetrics {...} OH_Drawing_LineMetrics
 
 This struct describes the measurement information about a line of text.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

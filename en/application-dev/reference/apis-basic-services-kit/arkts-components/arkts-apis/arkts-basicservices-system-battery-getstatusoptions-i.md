@@ -1,5 +1,9 @@
 # GetStatusOptions
 
+```TypeScript
+export interface GetStatusOptions
+```
+
 Object that contains the API calling result.
 
 **Since:** 3
@@ -26,6 +30,8 @@ Called when an API call is complete.
 
 **Deprecated since:** 6
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Lite
 
 ## fail
@@ -39,6 +45,8 @@ Called when an API call has failed. **data** indicates the error information, an
 **Since:** 3
 
 **Deprecated since:** 6
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Lite
 
@@ -60,6 +68,8 @@ Called when an API call is successful. **data** is a return value of the [Batter
 **Since:** 3
 
 **Deprecated since:** 6
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Lite
 

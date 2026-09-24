@@ -1,5 +1,9 @@
 # AuxiliaryPictureType
 
+```TypeScript
+enum AuxiliaryPictureType
+```
+
 Enumerates the auxiliary pictures types.
 
 Auxiliary pictures do not directly participate in image display, and not all images contain auxiliary pictures.

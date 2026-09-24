@@ -1,5 +1,9 @@
 # SupportWindowMode
 
+```TypeScript
+export enum SupportWindowMode
+```
+
 Enumerates the window modes supported by the ability.
 
 **Since:** 9

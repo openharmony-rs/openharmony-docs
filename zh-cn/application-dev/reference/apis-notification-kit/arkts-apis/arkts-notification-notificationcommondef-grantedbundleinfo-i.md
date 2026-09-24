@@ -1,5 +1,9 @@
 # GrantedBundleInfo
 
+```TypeScript
+export interface GrantedBundleInfo
+```
+
 描述已授权的包信息。
 
 **起始版本：** 22

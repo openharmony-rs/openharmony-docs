@@ -8,6 +8,8 @@ typedef struct WhitePointArray {...} WhitePointArray
 
 Provides a white point array structure. The white point is the coordinate that represents white in the current color space.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
 **Since**: 13
 
 **Related module**: [NativeColorSpaceManager](capi-nativecolorspacemanager.md)

@@ -40,6 +40,33 @@ Unsubscribes from data receive events and no longer receives data through the ca
 | [32390100](../errorcode-proxyChannelManager.md#32390100-internal-error) | Internal error. |
 | [32390101](../errorcode-proxyChannelManager.md#32390101-call-restricted) | Call is restricted. |
 
+**Examples**
+
+```TypeScript
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button('Test')
+        .onClick(() => {
+          try {
+            proxyChannelManager.off('receiveData', channelId); // Obtain channelId from the promise returned by openProxyChannel.
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`Failed to unregister receiveData callback. Code: ${error.code}, message: ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 
 ## off('channelStateChange')
 
@@ -74,3 +101,30 @@ Unsubscribes from channel state events. This is applicable to scenarios where th
 | [32390006](../errorcode-proxyChannelManager.md#32390006-parameter-verification-error) | Parameter error. |
 | [32390100](../errorcode-proxyChannelManager.md#32390100-internal-error) | Internal error. |
 | [32390101](../errorcode-proxyChannelManager.md#32390101-call-restricted) | Call is restricted. |
+
+**Examples**
+
+```TypeScript
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button('Test')
+        .onClick(() => {
+          try {
+            proxyChannelManager.off('channelStateChange', channelId); // Obtain channelId from the promise returned by openProxyChannel.
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`Failed to unregister channelStateChange callback. Code: ${error.code}, message: ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```

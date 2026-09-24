@@ -1,5 +1,9 @@
 # AdsorbState (System API)
 
+```TypeScript
+export enum AdsorbState
+```
+
 Mechanic device state. The state indicates whether the device is adsorbed or unadsorbed.
 
 **Since:** 26.2.0

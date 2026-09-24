@@ -8,6 +8,8 @@ typedef struct OH_PixelmapNative OH_PixelmapNative
 
 Declares a pixel map object defined by the image framework.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **Related module**: [effectKit](capi-effectkit.md)

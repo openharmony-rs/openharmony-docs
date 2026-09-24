@@ -1,14 +1,18 @@
 # Swiper属性/事件
 
+```TypeScript
+declare class SwiperAttribute extends CommonMethod<SwiperAttribute>
+```
+
 除支持通用属性外，还支持以下属性：
 
 除支持通用事件外，还支持以下事件：
 
 > **说明：** 
 
-> Swiper组件通用属性clip的默认值为true。
+> Swiper组件通用属性[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)的默认值为true。
 
-**继承/实现关系：** SwiperAttribute extends CommonMethod&lt;SwiperAttribute&gt;
+**继承/实现关系：** SwiperAttribute extends CommonMethod<SwiperAttribute>
 
 **起始版本：** 7
 
@@ -38,6 +42,8 @@ autoPlay(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 子组件是否自动播放。<br>true：自动播放；false：不自动播放。<br>传入非法值时，按false处理。 |
 
+<a id="autoplay-1"></a>
+
 ## autoPlay
 
 ```TypeScript
@@ -63,7 +69,7 @@ autoPlay(autoPlay: boolean, options: AutoPlayOptions)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | autoPlay | boolean | 是 | 子组件是否自动播放。<br>true：自动播放；false：不自动播放。<br>传入非法值时，按false处理。 |
-| options | [AutoPlayOptions](arkts-arkui-autoplayoptions-i.md) | 是 | 配置手指或鼠标按下屏幕时子组件是否停止自动播放。当stopWhenTouched设置为true时，多指按下场景中任意一个手指抬起后，将自动继续播放。<br>默认值：{ stopWhenTouched: true }，停止自动播放。 |
+| options | [AutoPlayOptions](arkts-arkui-swiper-comp-autoplayoptions-i.md) | 是 | 配置手指或鼠标按下屏幕时子组件是否停止自动播放。当stopWhenTouched设置为true时，多指按下场景中任意一个手指抬起后，将自动继续播放。<br>默认值：{ stopWhenTouched: true }，停止自动播放。 |
 
 ## cachedCount
 
@@ -94,6 +100,8 @@ cachedCount(value: number)
 | --- | --- | --- | --- |
 | value | number | 是 | 预加载子组件个数。<br>默认值：1<br>取值范围：[0, +∞)，设置小于0的值时，按照默认值处理。 |
 
+<a id="cachedcount-1"></a>
+
 ## cachedCount
 
 ```TypeScript
@@ -122,6 +130,8 @@ cachedCount(count: number, isShown: boolean)
 | --- | --- | --- | --- |
 | count | number | 是 | 预加载子组件个数。<br>默认值：1<br>取值范围：[0, +∞)，设置小于0的值时，按照默认值处理。 |
 | isShown | boolean | 是 | 预加载范围内的节点是否进行绘制，不下渲染树。<br>true：预加载范围内的节点进行绘制；false：预加载范围内的节点不进行绘制。<br>传入非法值时，按false处理。 |
+
+<a id="cachedcount-2"></a>
 
 ## cachedCount
 
@@ -154,7 +164,7 @@ cachedCount(count: number, options: CachedCountOptions)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | count | number | 是 | 预加载子组件个数。<br>。<br>取值范围：[0, +∞)。 |
-| options | [CachedCountOptions](arkts-arkui-cachedcountoptions-i.md) | 是 | 预加载子组件的配置选项。对象属性包括：isShown（预加载范围内的节点是否进行绘制）和independent（是否按实际子组件个数计算）。 |
+| options | [CachedCountOptions](arkts-arkui-swiper-comp-cachedcountoptions-i.md) | 是 | 预加载子组件的配置选项。对象属性包括：isShown（预加载范围内的节点是否进行绘制）和independent（是否按实际子组件个数计算）。 |
 
 ## curve
 
@@ -190,7 +200,7 @@ customContentTransition(transition: SwiperContentAnimatedTransition)
 
 1、循环场景下，设置prevMargin和nextMargin属性，使得Swiper前后端显示同一页面时，该接口不生效。
 
-2、在页面跟手滑动和离手后执行切换动画的过程中，会对视窗内所有页面逐帧触发[SwiperContentTransitionProxy](arkts-arkui-swipercontenttransitionproxy-i.md)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。
+2、在页面跟手滑动和离手后执行切换动画的过程中，会对视窗内所有页面逐帧触发[SwiperContentTransitionProxy](arkts-arkui-swiper-comp-swipercontenttransitionproxy-i.md)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。
 
 3、设置displayCount属性的swipeByGroup参数为true时，若同组中至少有一个页面在视窗内时，则会对同组中所有页面触发回调，若同组所有页面均不在视窗内时，则会一起下渲染树。
 
@@ -211,7 +221,7 @@ customContentTransition(transition: SwiperContentAnimatedTransition)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| transition | [SwiperContentAnimatedTransition](arkts-arkui-swipercontentanimatedtransition-i.md) | 是 | Swiper自定义切换动画相关信息。对象属性包括：timeout（超时时间）和transition（自定义切换动画具体内容回调）。 |
+| transition | [SwiperContentAnimatedTransition](arkts-arkui-swiper-comp-swipercontentanimatedtransition-i.md) | 是 | Swiper自定义切换动画相关信息。对象属性包括：timeout（超时时间）和transition（自定义切换动画具体内容回调）。 |
 
 ## disableSwipe
 
@@ -259,7 +269,7 @@ displayArrow(value: ArrowStyle | boolean, isHoverShow?: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ArrowStyle](arkts-arkui-arrowstyle-i.md) &#124; boolean | 是 | 支持设置箭头和底板样式，异常场景使用ArrowStyle对象中的默认值。设置为false不显示箭头和底板，true显示默认的箭头和底板样式。<br>默认值：false |
+| value | [ArrowStyle](arkts-arkui-swiper-comp-arrowstyle-i.md) &#124; boolean | 是 | 支持设置箭头和底板样式，异常场景使用ArrowStyle对象中的默认值。设置为false不显示箭头和底板，true显示默认的箭头和底板样式。<br>默认值：false |
 | isHoverShow | boolean | 否 | 设置鼠标悬停时是否显示箭头。<br>默认值：false<br>**说明：** <br>1. isHoverShow为false时，常驻显示箭头。<br>2. isHoverShow为true时，有导航点时鼠标悬停在导航点和箭头范围内显示箭头，无导航点时鼠标悬停在Swiper显示范围内显示箭头。<br>3. 箭头显示时，支持点击翻页。 |
 
 ## displayCount
@@ -286,9 +296,9 @@ displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean)
 > 
 > - displayCount设置为'auto'时，若设置swipeByGroup为true，则单个子元素按组翻页，一次只能翻一页。在此情况下，建议开发者不设置swipeByGroup或者设置swipeByGroup为false。
 > 
-> - 从API version 18开始，该接口支持在attributeModifier中调用。
+> - 从API version 18开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
-当导航点样式设定为圆形导航点，视窗内显示子元素数量大于1（多页场景）&lt;!--RP1--&gt;&lt;!--RP1End--&gt;，显示导航点数量情况如下表：
+当导航点样式设定为圆形导航点，视窗内显示子元素数量大于1（多页场景）<!--RP1--><!--RP1End-->，显示导航点数量情况如下表：
 
 | 子元素总数量是否大于视窗内显示的子元素数量 | 是否按组翻页 | 是否循环 | 圆形导航点显示数量 | 说明 |  
 | ------------------------------------------ | ------------ | --------------- | ------------------------------------------------------------ | ---------------------------------------- |  
@@ -311,8 +321,10 @@ displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [SwiperAutoFill](arkts-arkui-swiperautofill-i.md) | 是 | 视窗内显示的子元素个数。<br> 默认值：1<br>取值范围：(0, +∞)，设置小于等于0的值时，按照默认值处理。<br>**适用版本：** 8 - 9 |
+| value | number &#124; string &#124; [SwiperAutoFill](arkts-arkui-swiper-comp-swiperautofill-i.md) | 是 | 视窗内显示的子元素个数。<br> 默认值：1<br>取值范围：(0, +∞)，设置小于等于0的值时，按照默认值处理。<br>**适用版本：** 8 - 9 |
 | swipeByGroup | boolean | 否 | 是否按组进行翻页。如果设为true，在翻页时会按组进行翻页，每组内子元素的数量为displayCount value的值；如果为false，则为默认翻页行为，即按照子元素进行翻页。<br> 默认值：false<br>**适用版本：** 11 |
+
+<a id="displaycount-1"></a>
 
 ## displayCount
 
@@ -346,7 +358,7 @@ displayCount(value: number | string | SwiperAutoFill | ItemFillPolicy, swipeByGr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [SwiperAutoFill](arkts-arkui-swiperautofill-i.md) &#124; [ItemFillPolicy](../arkts-apis/arkts-arkui-itemfillpolicy-i.md) | 是 | 视窗内显示的子元素个数。<br> 取值范围：(0, +∞)，设置小于等于0的值时，按照1处理。 |
+| value | number &#124; string &#124; [SwiperAutoFill](arkts-arkui-swiper-comp-swiperautofill-i.md) &#124; [ItemFillPolicy](../arkts-apis/arkts-arkui-itemfillpolicy-i.md) | 是 | 视窗内显示的子元素个数。<br> 取值范围：(0, +∞)，设置小于等于0的值时，按照1处理。 |
 | swipeByGroup | boolean | 否 | 是否按组进行翻页。如果设为true，在翻页时会按组进行翻页，每组内子元素的数量为displayCount的值；如果为false，则为默认翻页行为，即按照子元素进行翻页。<br> 默认值：false |
 
 ## displayMode
@@ -369,7 +381,7 @@ displayMode(value: SwiperDisplayMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [SwiperDisplayMode](arkts-arkui-swiperdisplaymode-e.md) | 是 | 主轴方向上元素排列的模式。<br>默认值：SwiperDisplayMode.STRETCH |
+| value | [SwiperDisplayMode](arkts-arkui-swiper-comp-swiperdisplaymode-e.md) | 是 | 主轴方向上元素排列的模式。<br>默认值：SwiperDisplayMode.STRETCH |
 
 ## duration
 
@@ -401,7 +413,7 @@ curve默认曲线为[interpolatingSpring](../arkts-apis/arkts-arkui-curves-inter
 effectMode(value: EdgeEffect)
 ```
 
-设置边缘滑动效果，[loop](#loop)为false或Swiper视窗内一屏显示所有子节点时生效。调用[SwiperController.changeIndex()](arkts-arkui-swipercontroller-c.md#changeindex)、[SwiperController.showNext()](arkts-arkui-swipercontroller-c.md#shownext)和[SwiperController.showPrevious()](arkts-arkui-swipercontroller-c.md#showprevious)接口跳转至首尾页时不生效回弹。
+设置边缘滑动效果，[loop](#loop)为false或Swiper视窗内一屏显示所有子节点时生效。调用[SwiperController.changeIndex()](arkts-arkui-swiper-comp-swipercontroller-c.md#changeindex)、[SwiperController.showNext()](arkts-arkui-swiper-comp-swipercontroller-c.md#shownext)和[SwiperController.showPrevious()](arkts-arkui-swiper-comp-swipercontroller-c.md#showprevious)接口跳转至首尾页时不生效回弹。
 
 **起始版本：** 8
 
@@ -425,7 +437,7 @@ index(value: number)
 
 设置当前在容器中显示的子组件的索引值。
 
-从API version 10开始，该属性支持[&#36;&#36;](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 **起始版本：** 7
 
@@ -461,7 +473,9 @@ indicator(value: DotIndicator | DigitIndicator | boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [DotIndicator](arkts-arkui-dotindicator-c.md) &#124; [DigitIndicator](arkts-arkui-digitindicator-c.md) &#124; boolean | 是 | 导航点指示器样式。<br> - DotIndicator：圆点指示器样式，适用于展示简洁的位置提示。<br> - DigitIndicator：数字指示器样式，适用于需要明确显示当前位置的场景。<br> - boolean：是否启用导航点指示器。设置为true启用，false不启用。<br>默认值：true<br>默认类型：DotIndicator<br>**适用版本：** 7 - 9 |
+| value | [DotIndicator](arkts-arkui-swiper-comp-dotindicator-c.md) &#124; [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) &#124; boolean | 是 | 导航点指示器样式。<br> - DotIndicator：圆点指示器样式，适用于展示简洁的位置提示。<br> - DigitIndicator：数字指示器样式，适用于需要明确显示当前位置的场景。<br> - boolean：是否启用导航点指示器。设置为true启用，false不启用。<br>默认值：true<br>默认类型：DotIndicator<br>**适用版本：** 7 - 9 |
+
+<a id="indicator-1"></a>
 
 ## indicator
 
@@ -489,7 +503,7 @@ indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicato
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| indicator | [IndicatorComponentController](arkts-arkui-indicatorcomponentcontroller-c.md) &#124; [DotIndicator](arkts-arkui-dotindicator-c.md) &#124; [DigitIndicator](arkts-arkui-digitindicator-c.md) &#124; boolean | 是 | 可选导航点指示器样式。<br>- IndicatorComponentController：单独导航点指示器控制器。当使用单独导航点指示器控制器时，可以与外部单独导航点进行绑定，但是绑定的单独导航点和内置导航点不能同时存在。<br> - DotIndicator：圆点指示器样式。<br> - DigitIndicator：数字指示器样式。<br> - boolean：是否启用导航点指示器。设置为true启用，false不启用。<br>默认值：true <br>默认类型：DotIndicator |
+| indicator | [IndicatorComponentController](arkts-arkui-indicatorcomponent-comp-indicatorcomponentcontroller-c.md) &#124; [DotIndicator](arkts-arkui-swiper-comp-dotindicator-c.md) &#124; [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) &#124; boolean | 是 | 可选导航点指示器样式。<br>- IndicatorComponentController：单独导航点指示器控制器。当使用单独导航点指示器控制器时，可以与外部单独导航点进行绑定，但是绑定的单独导航点和内置导航点不能同时存在。<br> - DotIndicator：圆点指示器样式。<br> - DigitIndicator：数字指示器样式。<br> - boolean：是否启用导航点指示器。设置为true启用，false不启用。<br>默认值：true <br>默认类型：DotIndicator |
 
 ## indicatorInteractive
 
@@ -512,33 +526,6 @@ indicatorInteractive(value: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | boolean | 是 | 导航点是否可交互。<br>true：导航点可交互；false：导航点不可交互。<br>传入参数非法时，按true处理。 |
-
-## indicatorStyle
-
-```TypeScript
-indicatorStyle(value?: IndicatorStyle)
-```
-
-设置导航点样式。
-
-> **说明：** 
-
-> 从API version 8开始支持，从API version 10开始废弃，建议使用
-> [indicator](#indicator)替代。
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**替代接口：** [indicator](#indicator)(value: DotIndicator | DigitIndicator | boolean)
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | [IndicatorStyle](arkts-arkui-indicatorstyle-i.md) | 否 | 导航点样式。 |
 
 ## interval
 
@@ -614,7 +601,7 @@ loop(value: boolean)
 maintainVisibleContentPosition(enabled: boolean)
 ```
 
-设置显示区域上方或前方插入或删除数据时是否保持可见内容位置不变。适用于使用单一[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)作为Swiper子节点的情况，通过LazyForEach的[onDataAdd](arkts-arkui-datachangelistener-i.md#ondataadd)、[onDataDelete](arkts-arkui-datachangelistener-i.md#ondatadelete)等接口修改数据源。其他场景下，显示区域上方或前方插入或删除数据，可见内容位置会变化。
+设置显示区域上方或前方插入或删除数据时是否保持可见内容位置不变。适用于使用单一[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)作为Swiper子节点的情况，通过LazyForEach的[onDataAdd](arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondataadd)、[onDataDelete](arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondatadelete)等接口修改数据源。其他场景下，显示区域上方或前方插入或删除数据，可见内容位置会变化。
 
 在[displayCount](#displaycount)属性的swipeByGroup参数设置为true，即按组翻页生效时，一次在显示区域上方或前方插入或删除数据，且插入或删除的是一组节点数量倍数的数据量时，才能保持可见内容位置不变，否则可见内容位置可能会随每组数据重新分组改变。
 
@@ -659,7 +646,7 @@ nestedScroll(value: SwiperNestedScrollMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [SwiperNestedScrollMode](arkts-arkui-swipernestedscrollmode-e.md) | 是 | Swiper组件和父组件的嵌套滚动模式。<br>传入非法值时，按SwiperNestedScrollMode.SELF_ONLY处理。 |
+| value | [SwiperNestedScrollMode](arkts-arkui-swiper-comp-swipernestedscrollmode-e.md) | 是 | Swiper组件和父组件的嵌套滚动模式。<br>传入非法值时，按SwiperNestedScrollMode.SELF_ONLY处理。 |
 
 ## nextMargin
 
@@ -667,17 +654,17 @@ nestedScroll(value: SwiperNestedScrollMode)
 nextMargin(value: Length, ignoreBlank?: boolean)
 ```
 
-设置后边距，用于露出后一项的一小部分，使用效果可以参考示例1设置导航点交互及翻页动效。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
+设置后边距，用于露出后一项的一小部分，使用效果可以参考[示例1设置导航点交互及翻页动效](../../../reference/apis-arkui/arkui-ts/ts-container-swiper.md#示例1设置导航点交互及翻页动效)。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
 
 当主轴方向为横向布局时，nextMargin或prevMargin中任意一个大于子组件测算的宽度，nextMargin和prevMargin均不显示。
 
 当主轴方向为纵向布局时，nextMargin或prevMargin中任意一个大于子组件测算的高度，nextMargin和prevMargin均不显示。
 
-使用nextMargin/prevMargin接口时，不要对子组件进行尺寸范围限制，否则子节点主轴将不会被拉伸到预期长度，边距失去效果。
+使用nextMargin/prevMargin接口时，不要对子组件进行[尺寸范围限制](arkts-arkui-common-comp-commonmethod-c.md#constraintsize)，否则子节点主轴将不会被拉伸到预期长度，边距失去效果。
 
 > **说明：** 
 
-> 该接口不支持在attributeModifier中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 10
 
@@ -716,7 +703,7 @@ onAnimationEnd(event: OnSwiperAnimationEndCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [OnSwiperAnimationEndCallback](arkts-arkui-onswiperanimationendcallback-t.md) | 是 | 切换动画结束时触发的回调。<br>**适用版本：** 18 |
+| event | [OnSwiperAnimationEndCallback](arkts-arkui-swiper-comp-onswiperanimationendcallback-t.md) | 是 | 切换动画结束时触发的回调。<br>**适用版本：** 18 |
 
 ## onAnimationStart
 
@@ -745,7 +732,7 @@ onAnimationStart(event: OnSwiperAnimationStartCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [OnSwiperAnimationStartCallback](arkts-arkui-onswiperanimationstartcallback-t.md) | 是 | 切换动画开始时触发的回调。<br>**适用版本：** 18 |
+| event | [OnSwiperAnimationStartCallback](arkts-arkui-swiper-comp-onswiperanimationstartcallback-t.md) | 是 | 切换动画开始时触发的回调。<br>**适用版本：** 18 |
 
 ## onChange
 
@@ -788,7 +775,7 @@ onContentDidScroll(handler: ContentDidScrollCallback)
 
 1、循环场景下，设置prevMargin和nextMargin属性，使得Swiper前后端显示同一页面时，该接口不生效。
 
-2、在页面滑动过程中，会对视窗内所有页面逐帧触发[ContentDidScrollCallback](arkts-arkui-contentdidscrollcallback-t.md)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。
+2、在页面滑动过程中，会对视窗内所有页面逐帧触发[ContentDidScrollCallback](arkts-arkui-swiper-comp-contentdidscrollcallback-t.md)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。
 
 3、设置displayCount属性的swipeByGroup参数为true时，若同组中至少有一个页面在视窗内时，则会对同组中所有页面触发回调。
 
@@ -804,7 +791,7 @@ onContentDidScroll(handler: ContentDidScrollCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [ContentDidScrollCallback](arkts-arkui-contentdidscrollcallback-t.md) | 是 | Swiper滑动时触发的回调，返回true表示允许滑动，false表示不允许滑动。 |
+| handler | [ContentDidScrollCallback](arkts-arkui-swiper-comp-contentdidscrollcallback-t.md) | 是 | Swiper滑动时触发的回调，返回true表示允许滑动，false表示不允许滑动。 |
 
 ## onContentWillScroll
 
@@ -834,7 +821,7 @@ Swiper滑动行为拦截事件，在滑动前触发。Swiper会依据该事件�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [ContentWillScrollCallback](arkts-arkui-contentwillscrollcallback-t.md) | 是 | Swiper滑动时触发的回调。 |
+| handler | [ContentWillScrollCallback](arkts-arkui-swiper-comp-contentwillscrollcallback-t.md) | 是 | Swiper滑动时触发的回调。 |
 
 ## onGestureSwipe
 
@@ -856,7 +843,7 @@ onGestureSwipe(event: OnSwiperGestureSwipeCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [OnSwiperGestureSwipeCallback](arkts-arkui-onswipergestureswipecallback-t.md) | 是 | 在页面跟手滑动过程中，逐帧触发的回调。onGestureSwipe回调触发时机在onTouch之后，如果需要在离手后执行操作建议使用[onAnimationStart](#onanimationstart)。<br>**适用版本：** 18 |
+| event | [OnSwiperGestureSwipeCallback](arkts-arkui-swiper-comp-onswipergestureswipecallback-t.md) | 是 | 在页面跟手滑动过程中，逐帧触发的回调。onGestureSwipe回调触发时机在onTouch之后，如果需要在离手后执行操作建议使用[onAnimationStart](#onanimationstart)。<br>**适用版本：** 18 |
 
 ## onScrollStateChanged
 
@@ -880,7 +867,7 @@ Swiper滑动状态变化事件回调，在跟手滑动、离手动画、停止�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback&lt;[ScrollState](arkts-arkui-scrollstate-e.md)&gt; | 是 | 滑动状态变化的回调。 |
+| event | Callback&lt;[ScrollState](arkts-arkui-list-comp-scrollstate-e.md)&gt; | 是 | 滑动状态变化的回调。 |
 
 ## onSelected
 
@@ -952,7 +939,7 @@ pageFlipMode(mode: Optional<PageFlipMode>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [Optional](arkts-arkui-optional-t.md)&lt;[PageFlipMode](../arkts-apis/arkts-arkui-pageflipmode-e.md)&gt; | 是 | 鼠标滚轮翻页模式。<br>取undefined时，按取值为PageFlipMode.CONTINUOUS处理。 |
+| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PageFlipMode](../arkts-apis/arkts-arkui-pageflipmode-e.md)&gt; | 是 | 鼠标滚轮翻页模式。<br>取undefined时，按取值为PageFlipMode.CONTINUOUS处理。 |
 
 ## prevMargin
 
@@ -960,17 +947,17 @@ pageFlipMode(mode: Optional<PageFlipMode>)
 prevMargin(value: Length, ignoreBlank?: boolean)
 ```
 
-设置前边距，用于露出前一项的一小部分，使用效果可以参考示例1设置导航点交互及翻页动效。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
+设置前边距，用于露出前一项的一小部分，使用效果可以参考[示例1设置导航点交互及翻页动效](../../../reference/apis-arkui/arkui-ts/ts-container-swiper.md#示例1设置导航点交互及翻页动效)。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
 
 当主轴方向为横向布局时，nextMargin/prevMargin中任意一个大于子组件测算的宽度，nextMargin和prevMargin均不显示。
 
 当主轴方向为纵向布局时，nextMargin/prevMargin中任意一个大于子组件测算的高度，nextMargin和prevMargin均不显示。
 
-使用nextMargin/prevMargin接口时，不要对子组件进行尺寸范围限制，否则子节点主轴将不会被拉伸到预期长度，边距失去效果。
+使用nextMargin/prevMargin接口时，不要对子组件进行[尺寸范围限制](arkts-arkui-common-comp-commonmethod-c.md#constraintsize)，否则子节点主轴将不会被拉伸到预期长度，边距失去效果。
 
 > **说明：** 
 
-> 该接口不支持在attributeModifier中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 10
 
@@ -1008,3 +995,30 @@ vertical(value: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否为纵向滑动。true为纵向滑动，false为横向滑动。<br>默认值：false |
+
+## indicatorStyle
+
+```TypeScript
+indicatorStyle(value?: IndicatorStyle)
+```
+
+设置导航点样式。
+
+> **说明：** 
+
+> 从API version 8开始支持，从API version 10开始废弃，建议使用
+> [indicator](#indicator)替代。
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**替代接口：** [indicator](#indicator)(value: DotIndicator | DigitIndicator | boolean)
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [IndicatorStyle](arkts-arkui-swiper-comp-indicatorstyle-i.md) | 否 | 导航点样式。 |

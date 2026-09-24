@@ -1,5 +1,9 @@
 # AvoidArea
 
+```TypeScript
+interface AvoidArea
+```
+
 Describes the area to avoid for window content.
 
 When adapting window content for an [immersive layout](../../../windowmanager/window-terminology.md#immersive-layout), you should adjust the content based on the corresponding **AvoidArea** specified by [AvoidAreaType](arkts-arkui-window-avoidareatype-e.md).

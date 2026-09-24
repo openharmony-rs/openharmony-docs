@@ -1,5 +1,9 @@
 # MmsConfig（系统接口）
 
+```TypeScript
+export interface MmsConfig
+```
+
 彩信配置文件。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # EventPolicy
 
+```TypeScript
+interface EventPolicy
+```
+
 提供系统事件配置策略的定义，用于使用[configEventPolicy](arkts-performanceanalysis-hiappevent-configeventpolicy-f.md)设置事件配置策略。
 
 **起始版本：** 22
@@ -24,6 +28,8 @@ addressSanitizerPolicy?: AddressSanitizerPolicy
 
 **起始版本：** 24
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
@@ -40,6 +46,8 @@ appCrashPolicy?: AppCrashPolicy
 
 **起始版本：** 24
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
@@ -55,6 +63,8 @@ appFreezePolicy?: AppFreezePolicy
 **类型：** [AppFreezePolicy](arkts-performanceanalysis-hiappevent-appfreezepolicy-i.md)
 
 **起始版本：** 24
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
@@ -103,6 +113,8 @@ resourceOverlimitPolicy?: ResourceOverlimitPolicy
 **类型：** [ResourceOverlimitPolicy](arkts-performanceanalysis-hiappevent-resourceoverlimitpolicy-i.md)
 
 **起始版本：** 24
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 

@@ -1,5 +1,9 @@
 # NetworkType
 
+```TypeScript
+export enum NetworkType
+```
+
 Enumerates network types.
 
 **Since:** 6

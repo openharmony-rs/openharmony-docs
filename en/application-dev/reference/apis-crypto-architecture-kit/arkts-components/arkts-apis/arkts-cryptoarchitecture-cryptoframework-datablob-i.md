@@ -1,5 +1,9 @@
 # DataBlob
 
+```TypeScript
+interface DataBlob
+```
+
 Encapsulates binary data. The core field **data** is of the Uint8Array type.
 
 > **NOTE:** 

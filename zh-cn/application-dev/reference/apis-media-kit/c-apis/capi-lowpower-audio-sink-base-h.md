@@ -21,7 +21,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) | OH_LowPowerAudioSink | LowPowerAudioSink的声明。 |
-| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) | OH_LowPowerAudioSinkCallback | 包含了LowPowerAudioSink回调函数指针的集合。<br> 应用需注册此实例结构体到[OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)实例中，并对回调上报的信息进行处理， 保证LowPowerAudioSink的正常运行。 |
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) | OH_LowPowerAudioSinkCallback | 包含了LowPowerAudioSink回调函数指针的集合。<br> 应用需注册此实例结构体到{@link OH_LowPowerAudioSink}实例中，并对回调上报的信息进行处理， 保证LowPowerAudioSink的正常运行。 |
 
 ### 函数
 
@@ -57,6 +57,8 @@ typedef void (*OH_LowPowerAudioSink_OnError)(OH_LowPowerAudioSink* sink, OH_AVEr
 
 LowPowerAudioSink发生错误时调用该方法。
 
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **起始版本：** 20
 
 **参数：**
@@ -64,7 +66,7 @@ LowPowerAudioSink发生错误时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)\* sink | 指向OH_LowPowerAudioSink实例的指针。 |
-| OH_AVErrCode errCode | 发生错误时上报的错误码。请参考{@link OH_AVErrCode} |
+| OH_AVErrCode errCode | 发生错误时上报的错误码。请参考[OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) |
 | const char\* errorMsg | 错误描述信息。 |
 | void\* userData | 用户自定义数据。 |
 
@@ -77,6 +79,8 @@ typedef void (*OH_LowPowerAudioSink_OnPositionUpdated)(OH_LowPowerAudioSink* sin
 **描述：**
 
 LowPowerAudioSink进度更新时调用该方法。
+
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **起始版本：** 20
 
@@ -98,6 +102,8 @@ typedef void (*OH_LowPowerAudioSink_OnDataNeeded)(OH_LowPowerAudioSink* sink, OH
 
 LowPowerAudioSink需要数据时调用该方法。
 
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **起始版本：** 20
 
 **参数：**
@@ -117,6 +123,8 @@ typedef void (*OH_LowPowerAudioSink_OnInterrupted)(OH_LowPowerAudioSink* sink, O
 **描述：**
 
 LowPowerAudioSink音频焦点被打断时调用该方法。
+
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **起始版本：** 20
 
@@ -139,6 +147,8 @@ typedef void (*OH_LowPowerAudioSink_OnDeviceChanged)(OH_LowPowerAudioSink* sink,
 
 LowPowerAudioSink 设备切换时调用该方法。
 
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **起始版本：** 20
 
 **参数：**
@@ -158,6 +168,8 @@ typedef void (*OH_LowPowerAudioSink_OnEos)(OH_LowPowerAudioSink* sink, void* use
 **描述：**
 
 LowPowerAudioSink播放完成时调用该方法。
+
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **起始版本：** 20
 

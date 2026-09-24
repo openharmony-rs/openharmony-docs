@@ -1,5 +1,9 @@
 # BundleNotificationStatistics (System API)
 
+```TypeScript
+export interface BundleNotificationStatistics
+```
+
 Describes the notification statistics of a specified application.
 
 **Since:** 26.0.0

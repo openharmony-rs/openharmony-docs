@@ -1,5 +1,9 @@
 # Entry
 
+```TypeScript
+interface Entry
+```
+
 Provides key-value pairs stored in the distributedKVStore.
 
 **Since:** 9

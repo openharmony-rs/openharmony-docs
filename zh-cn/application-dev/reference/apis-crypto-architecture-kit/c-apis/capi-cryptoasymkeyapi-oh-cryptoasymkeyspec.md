@@ -8,6 +8,8 @@ typedef struct OH_CryptoAsymKeySpec OH_CryptoAsymKeySpec
 
 非对称密钥规格结构体，表示非对称密钥规格。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **相关模块：** [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)

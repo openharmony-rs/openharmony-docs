@@ -6,7 +6,9 @@ struct OhosImageSource {...}
 
 ## Overview
 
-Defines the input resource of the image source. It is obtained by calling [OH_ImageSource_Create](capi-image-source-mdk-h.md#oh_imagesource_create). Only one type of resource is accepted at a time.
+Defines the input resource of the image source. It is obtained by calling {@link OH_ImageSource_Create}. Only one type of resource is accepted at a time.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 10
 

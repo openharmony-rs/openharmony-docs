@@ -1,5 +1,9 @@
 # StyledString
 
+```TypeScript
+declare class StyledString
+```
+
 属性字符串。
 
 **起始版本：** 12
@@ -65,9 +69,38 @@ equals(other: StyledString): boolean
 static fromHtml(html: string): Promise<StyledString>
 ```
 
-将HTML格式字符串转换成属性字符串，HTML标签将映射为对应的属性字符串样式（如加粗类标签映射为TextStyle、装饰类标签映射为DecorationStyle）。当前支持转换的HTML标签范围：\<p>、\&lt;span&gt;、\&lt;img&gt;、\
+将HTML格式字符串转换成属性字符串，HTML标签将映射为对应的属性字符串样式（如加粗类标签映射为TextStyle、装饰类标签映射为DecorationStyle）。支持的HTML标签范围详见下方表格，不同标签支持的起始API版本不同。
 
-、\&lt;strong&gt;、\&lt;b&gt;、\&lt;a&gt;、\&lt;i&gt;、\&lt;em&gt;、\&lt;s&gt;、\&lt;u&gt;、\&lt;del&gt;、\&lt;sup&gt;、\&lt;sub&gt;、\&lt;cite&gt;、\&lt;dfn&gt;、\&lt;small&gt;、\&lt;h1&gt;、\&lt;h2&gt;、\&lt;h3&gt;、\&lt;h4&gt;、\&lt;h5 &gt;、\
+使用方法参考[示例12（fromHtml和toHtml互相转换）](../../../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#示例12fromhtml和tohtml互相转换)和[示例18（fromHtml转换）](../../../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#示例18fromhtml转换)。
+
+| 标签名称 | 说明 |  
+| ------------- | ---------------------------- |  
+| \&lt;p\&gt; | 段落，分隔文本段落。 |
+| \&lt;span\&gt; | 行内文本，支持样式设置。API version 17及之前，\&lt;span\&gt;设置的background-color属性转换不生效。 |
+| \&lt;img\&gt; | 插入图片。 |
+| \&lt;strong\&gt; | 加粗文本。 |
+| <br>&lt;sup&gt;20+&lt;/sup&gt; | 换行。 |
+| \&lt;b\&gt;&lt;sup&gt;20+&lt;/sup&gt; | 加粗文本。 |
+| \&lt;a\&gt;&lt;sup&gt;20+&lt;/sup&gt; | 超链接。 |
+| \&lt;i\&gt;&lt;sup&gt;20+&lt;/sup&gt; | 斜体文本。 |
+| \&lt;em\&gt;&lt;sup&gt;20+&lt;/sup&gt; | 斜体文本。 |
+| \&lt;s\&gt;&lt;sup&gt;20+&lt;/sup&gt; | 删除线（中划线）。 |
+| \&lt;u\&gt;&lt;sup&gt;20+&lt;/sup&gt; | 下划线。 |
+| \&lt;del\&gt;&lt;sup&gt;20+&lt;/sup&gt; | 删除线（中划线）。 |
+| \&lt;sup\&gt;&lt;sup&gt;20+&lt;/sup&gt; | 上标文本。 |
+| \&lt;sub\&gt;&lt;sup&gt;20+&lt;/sup&gt; | 下标文本。 |
+| \&lt;cite\&gt; | 斜体文本。 |
+| \&lt;dfn\&gt; | 斜体文本。 |
+| \&lt;small\&gt; | 缩小字号标签。字号缩放为父容器字号属性的0.8倍，支持嵌套叠加。 |
+| \&lt;h1\&gt; | 一级标题。 |
+| \&lt;h2\&gt; | 二级标题。 |
+| \&lt;h3\&gt; | 三级标题。 |
+| \&lt;h4\&gt; | 四级标题。 |
+| \&lt;h5\&gt; | 五级标题。 |
+| \&lt;h6\&gt; | 六级标题。 |
+| \&lt;ol\&gt; | 有序列表。 |
+| \&lt;ul\&gt; | 无序列表。 |
+| \&lt;li\&gt; | 列表项。 |
 
 **起始版本：** 12
 
@@ -93,7 +126,7 @@ static fromHtml(html: string): Promise<StyledString>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [170001](../errorcode-styled-string.md#170001-转换错误) | Convert Error. |
 
 ## getString
@@ -154,7 +187,7 @@ getStyles(start: number, length: number, styledKey?: StyledStringKey): Array<Spa
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## subStyledString
 
@@ -189,7 +222,7 @@ subStyledString(start: number, length?: number): StyledString
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## toHtml
 
@@ -199,7 +232,7 @@ static toHtml(styledString: StyledString): string
 
 将属性字符串转换成HTML格式字符串，属性字符串样式将映射为对应的HTML标签（如TextStyle映射为含style属性的span标签、ImageAttachment映射为img标签）。支持转换的属性字符串[StyledStringKey](arkts-arkui-styledstringkey-e.md)包括：StyledStringKey.FONT、StyledStringKey.DECORATION、StyledStringKey.LETTER_SPACING、StyledStringKey.TEXT_SHADOW、StyledStringKey.LINE_HEIGHT、StyledStringKey.IMAGE。
 
-使用方法参考[示例12（fromHtml和toHtml互相转换）](arkts-arkui-styledstring-c.md)。
+使用方法参考[示例12（fromHtml和toHtml互相转换）](../../../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#示例12fromhtml和tohtml互相转换)。
 
 **起始版本：** 14
 
@@ -225,7 +258,7 @@ static toHtml(styledString: StyledString): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## length
 

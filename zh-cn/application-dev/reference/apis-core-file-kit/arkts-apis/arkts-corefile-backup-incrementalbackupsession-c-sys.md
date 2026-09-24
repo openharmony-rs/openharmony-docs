@@ -1,5 +1,9 @@
 # IncrementalBackupSession（系统接口）
 
+```TypeScript
+class IncrementalBackupSession
+```
+
 增量备份流程对象，用于支撑应用增量备份流程。
 
 **起始版本：** 12
@@ -46,9 +50,9 @@ appendBundles(bundlesToBackup: Array<IncrementalBackupData>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13600001 | IPC error |
 | 13900001 | Operation not permitted |
 | 13900005 | I/O error |
@@ -116,104 +120,7 @@ incrementalBackupSession.appendBundles(incrementalBackupDataArray).then(() => {
 }); // 添加需要增量备份的应用
 ```
 
-```TypeScript
-import { fileIo, backup} from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let generalCallbacks: backup.GeneralCallbacks = {
-  onFileReady: (err: BusinessError, file: backup.File) => {
-    if (err) {
-      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onFileReady success');
-    fileIo.closeSync(file.fd);
-  },
-  onBundleBegin: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleBegin success');
-  },
-  onBundleEnd: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleEnd success');
-  },
-  onAllBundlesEnd: (err: BusinessError) => {
-    if (err) {
-      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onAllBundlesEnd success');
-  },
-  onBackupServiceDied: () => {
-    console.info('service died');
-  },
-  onResultReport: (bundleName: string, result: string) => {
-    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-  },
-  onProcess: (bundleName: string, process: string) => {
-    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-  }
-};
-let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
-let incrementalBackupData: backup.IncrementalBackupData = {
-  bundleName: 'com.example.hiworld',
-  lastIncrementalTime: 1700107870, // 调用者传递上一次备份的时间戳
-  manifestFd: fileIo.openSync('/data/storage/el2/base/backup/manifest.json').fd // 调用者传递上一次备份的manifest文件句柄
-}
-    let infos: Array<string> = [
-      `
-      {
-      "infos": [
-          {
-              "details": [
-                  {
-                      "detail": [
-                          {
-                              "key1": "value1",
-                              "key2": "value2"
-                          }
-                      ]
-                  }
-              ],
-              "type": "unicast",
-              "bundleName": "com.example.hiworld"
-          }
-      ]
-  },
-  {
-      "infos": [
-          {
-              "details": [
-                  {
-                      "detail": [
-                          {
-                              "key1": "value1",
-                              "key2": "value2"
-                          }
-                      ]
-                  }
-              ],
-              "type": "unicast",
-              "bundleName": "com.example.myApp"
-          }
-      ]
-  }
-    `
-  ]
-let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
-// 添加需要增量备份的应用
-incrementalBackupSession.appendBundles(incrementalBackupDataArray, infos).then(() => {
-  console.info('appendBundles success');
-}).catch((err: BusinessError) => {
-  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="appendbundles-1"></a>
 
 ## appendBundles
 
@@ -248,9 +155,9 @@ appendBundles(bundlesToAppend: Array<IncrementalBackupData>, infos: string[]): P
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. This error code is usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. This error code is usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 13600001 | IPC error |
 | 13900001 | Operation not permitted |
 | 13900005 | I/O error |
@@ -259,64 +166,6 @@ appendBundles(bundlesToAppend: Array<IncrementalBackupData>, infos: string[]): P
 | 13900042 | Unknown error |
 
 **示例**
-
-```TypeScript
-import { fileIo, backup} from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let generalCallbacks: backup.GeneralCallbacks = {
-  onFileReady: (err: BusinessError, file: backup.File) => {
-    if (err) {
-      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onFileReady success');
-    fileIo.closeSync(file.fd);
-  },
-  onBundleBegin: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleBegin success');
-  },
-  onBundleEnd: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleEnd success');
-  },
-  onAllBundlesEnd: (err: BusinessError) => {
-    if (err) {
-      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onAllBundlesEnd success');
-  },
-  onBackupServiceDied: () => {
-    console.info('service died');
-  },
-  onResultReport: (bundleName: string, result: string) => {
-    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-  },
-  onProcess: (bundleName: string, process: string) => {
-    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-  }
-};
-let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
-let incrementalBackupData: backup.IncrementalBackupData = {
-  bundleName: 'com.example.hiworld',
-  lastIncrementalTime: 1700107870, // 调用者传递上一次备份的时间戳
-  manifestFd: fileIo.openSync('/data/storage/el2/base/backup/manifest.json').fd // 调用者传递上一次备份的manifest文件句柄
-}
-let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
-incrementalBackupSession.appendBundles(incrementalBackupDataArray).then(() => {
-  console.info('appendBundles success');
-}).catch((err: BusinessError) => {
-  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-}); // 添加需要增量备份的应用
-```
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -449,9 +298,9 @@ cancel(bundleName: string): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例**
 
@@ -549,8 +398,8 @@ cleanBundleTempDir(bundleName: string): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 
 **示例**
 
@@ -644,9 +493,9 @@ constructor(callbacks: GeneralCallbacks)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例**
 
@@ -730,9 +579,9 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13600001 | IPC error |
 | 13900001 | Operation not permitted |
 | 13900020 | Invalid argument |
@@ -826,8 +675,24 @@ try {
 }
 ```
 
-```TypeScript
 异步返回JSON串示例：
+
+```TypeScript
+{
+ "scanned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
+     {
+         "name": "com.example.hiworld", // 应用名称
+         "dataSize": 1006060, // 数据量大小
+         "incDataSize": 50800 // 增量数据量大小
+     },
+     {
+         "name": "com.example.myAPP",
+         "dataSize": 5000027,
+         "incDataSize": 232344
+     }
+ ],
+ "scanning" :"com.example.smartAPP" // 正在扫描的应用，在最后一次结果返回时，该字段为空
+}
 ```
 
 ## getCompatibilityInfo
@@ -863,8 +728,8 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 
 **示例**
 
@@ -957,8 +822,8 @@ getLocalCapabilities(): Promise<FileData>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 | 13600001 | IPC error |
 | 13900001 | Operation not permitted |
 | 13900020 | Invalid argument |
@@ -1073,8 +938,23 @@ async function getLocalCapabilitiesTest() {
 }
 ```
 
-```TypeScript
 能力文件可以通过[@ohos.file.fs](arkts-corefile-fileio-n.md)提供的fileIo.stat等相关接口获取，能力文件内容示例：
+
+```TypeScript
+{
+ "backupVersion" : "16.0",
+ "bundleInfos" : [{
+   "allToBackup" : true,
+   "extensionName" : "BackupExtensionAbility",
+   "name" : "com.example.hiworld",
+   "needToInstall" : false,
+   "spaceOccupied" : 0,
+   "versionCode" : 1000000,
+   "versionName" : "1.0.0"
+   }],
+ "deviceType" : "default",
+ "systemFullName" : "OpenHarmony-4.0.0.0"
+}
 ```
 
 ## release
@@ -1103,9 +983,9 @@ release(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13600001 | IPC error |
 | 13900001 | Operation not permitted |
 | 13900005 | I/O error |

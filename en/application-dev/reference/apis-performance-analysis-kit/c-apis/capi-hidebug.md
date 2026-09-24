@@ -4,6 +4,8 @@
 
 Provides debug code define.<br> For example, you can use these code for check result or parameter of HiDebug function.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 12
 
 ## Files

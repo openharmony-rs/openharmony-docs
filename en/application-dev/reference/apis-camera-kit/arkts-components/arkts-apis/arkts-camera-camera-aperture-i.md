@@ -1,5 +1,9 @@
 # Aperture
 
+```TypeScript
+interface Aperture extends ApertureQuery
+```
+
 Provides the APIs for aperture settings. It inherits from [ApertureQuery](arkts-camera-camera-aperturequery-i.md).
 
 **Inheritance/Implementation:** Aperture extends [ApertureQuery](arkts-camera-camera-aperturequery-i.md)

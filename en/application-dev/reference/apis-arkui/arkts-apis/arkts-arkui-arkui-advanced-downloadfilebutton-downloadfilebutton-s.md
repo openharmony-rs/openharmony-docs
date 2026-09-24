@@ -1,5 +1,9 @@
 # DownloadFileButton
 
+```TypeScript
+export declare struct DownloadFileButton
+```
+
 Declare Component DownloadFileButton
 
 **Since:** 12

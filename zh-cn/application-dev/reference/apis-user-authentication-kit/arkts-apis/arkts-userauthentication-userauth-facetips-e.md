@@ -1,5 +1,9 @@
 # FaceTips
 
+```TypeScript
+enum FaceTips
+```
+
 表示人脸认证过程中提示码的枚举。
 
 **起始版本：** 8

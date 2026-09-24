@@ -8,6 +8,8 @@ typedef struct Ability_ChildProcessConfigs Ability_ChildProcessConfigs
 
 The struct describes the configuration information about a child process, including the child process name and the sharing mode of the data sandbox and network environment.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 20
 
 **Related module**: [ChildProcess](capi-childprocess.md)

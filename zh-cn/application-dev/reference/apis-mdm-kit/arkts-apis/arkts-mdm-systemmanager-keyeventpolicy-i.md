@@ -1,5 +1,9 @@
 # KeyEventPolicy
 
+```TypeScript
+interface KeyEventPolicy
+```
+
 按键事件处理策略。按键事件发生时，仅拦截响应已下发按键事件处理策略的按键。对于未下发按键事件处理策略的按键事件，系统执行原先的响应逻辑。
 
 **起始版本：** 23

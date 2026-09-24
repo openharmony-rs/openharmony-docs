@@ -1,5 +1,9 @@
 # InputMethodInputType (System API)
 
+```TypeScript
+export enum InputMethodInputType
+```
+
 Enumerates input types, which are used to identify the input modes supported by the system panel. Different input types correspond to different input scenarios and panel layouts.
 
 **Since:** 26.0.0

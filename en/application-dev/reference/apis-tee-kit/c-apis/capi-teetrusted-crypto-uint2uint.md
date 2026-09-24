@@ -8,6 +8,8 @@ typedef struct crypto_uint2uint {...} crypto_uint2uint
 
 Defines the data used for conversion of integers.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)

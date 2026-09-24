@@ -1,5 +1,9 @@
 # Emotion
 
+```TypeScript
+enum Emotion
+```
+
 Enumerates the types of emotions in the detected human face information.
 
 **Since:** 26.0.0

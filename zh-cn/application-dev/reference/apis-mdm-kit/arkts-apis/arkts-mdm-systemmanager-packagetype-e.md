@@ -1,5 +1,9 @@
 # PackageType
 
+```TypeScript
+enum PackageType
+```
+
 系统更新包类型。
 
 **起始版本：** 12

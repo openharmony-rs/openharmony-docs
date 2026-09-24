@@ -1,5 +1,9 @@
 # EulerAngles (System API)
 
+```TypeScript
+export interface EulerAngles
+```
+
 Absolute euler angles relative to the home position.
 
 @typedef EulerAngles

@@ -4,6 +4,8 @@
 
 Provides internationalization APIs for application localization, and relies on libohi18n.z.so when used.
 
+**System capability**: SystemCapability.Global.I18n
+
 **Since**: 22
 
 ## Files

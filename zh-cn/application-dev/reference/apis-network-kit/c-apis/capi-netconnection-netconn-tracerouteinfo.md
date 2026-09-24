@@ -8,6 +8,8 @@ struct NetConn_TraceRouteInfo {...}
 
 定义跟踪路由信息。
 
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
 **起始版本：** 20
 
 **相关模块：** [NetConnection](capi-netconnection.md)

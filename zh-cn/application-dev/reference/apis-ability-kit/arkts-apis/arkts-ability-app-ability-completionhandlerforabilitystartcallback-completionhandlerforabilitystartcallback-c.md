@@ -1,5 +1,9 @@
 # CompletionHandlerForAbilityStartCallback
 
+```TypeScript
+export class CompletionHandlerForAbilityStartCallback
+```
+
 CompletionHandlerForAbilityStartCallback提供了onRequestSuccess和onRequestFailure两个回调函数属性，分别在拉起指定类型的Ability组件成功和失败时回调。
 
 **起始版本：** 21

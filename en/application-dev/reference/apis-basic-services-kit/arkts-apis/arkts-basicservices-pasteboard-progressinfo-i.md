@@ -1,5 +1,9 @@
 # ProgressInfo
 
+```TypeScript
+interface ProgressInfo
+```
+
 Defines the progress information. This information is reported only when [ProgressIndicator](arkts-basicservices-pasteboard-progressindicator-e.md) is set to **NONE**.
 
 **Since:** 15

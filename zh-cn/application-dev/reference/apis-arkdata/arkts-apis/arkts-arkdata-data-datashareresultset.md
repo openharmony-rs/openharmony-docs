@@ -17,7 +17,7 @@
  let context = this.context;
  dataShare.createDataShareHelper(context, uri, (err:BusinessError, data:dataShare.DataShareHelper) =&gt; {
  if (err != undefined) {
- console.error(`Failed to create DataShareHelper. Code: &#36;{err.code}, message: &#36;{err.message}`);
+ console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
  } else {
  console.info("createDataShareHelper end, data : " + data);
  dataShareHelper = data;
@@ -31,7 +31,7 @@
  console.info("query end, data : " + data);
  resultSet = data;
  }).catch((err: BusinessError) =&gt; {
- console.error(`Failed to query. Code: &#36;{err.code}, message: &#36;{err.message}`);
+ console.error(`Failed to query. Code: ${err.code}, message: ${err.message}`);
  });
  }
  });

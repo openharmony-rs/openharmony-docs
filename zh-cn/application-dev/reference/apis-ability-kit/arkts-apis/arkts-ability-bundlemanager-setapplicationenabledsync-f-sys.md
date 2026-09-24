@@ -33,9 +33,9 @@ function setApplicationEnabledSync(bundleName: string, isEnabled: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
 **示例**
@@ -56,26 +56,8 @@ try {
 }
 ```
 
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-// 需要替换为要设置的应用Bundle名称、应用索引、是否启用应用和禁用应用时是否退出应用进程
-let bundleName: string = 'com.example.myapplication';
-let appIndex: number = 0;
-let isEnabled: boolean = true;
-let killProcess: boolean = false;
-
-try {
-  bundleManager.setApplicationEnabledSync(bundleName, appIndex, isEnabled, killProcess);
-  hilog.info(0x0000, 'testTag', 'setApplicationEnabledSync successfully');
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'setApplicationEnabledSync failed: %{public}s', message);
-}
-```
-
+<a id="setapplicationenabledsync-1"></a>
 
 ## setApplicationEnabledSync
 
@@ -108,11 +90,29 @@ function setApplicationEnabledSync(bundleName: string, appIndex: number, isEnabl
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Non-system APP calling system API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied. Non-system APP calling system API. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle is not found. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
 
 **示例**
 
-参见 [setApplicationEnabledSync](#setapplicationenabledsync)
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 需要替换为要设置的应用Bundle名称、应用索引、是否启用应用和禁用应用时是否退出应用进程
+let bundleName: string = 'com.example.myapplication';
+let appIndex: number = 0;
+let isEnabled: boolean = true;
+let killProcess: boolean = false;
+
+try {
+  bundleManager.setApplicationEnabledSync(bundleName, appIndex, isEnabled, killProcess);
+  hilog.info(0x0000, 'testTag', 'setApplicationEnabledSync successfully');
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setApplicationEnabledSync failed: %{public}s', message);
+}
+```

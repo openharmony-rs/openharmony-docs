@@ -1,5 +1,9 @@
 # RenderParameters
 
+```TypeScript
+export interface RenderParameters
+```
+
 Describes the rendering parameters.
 
 @interface RenderParameters

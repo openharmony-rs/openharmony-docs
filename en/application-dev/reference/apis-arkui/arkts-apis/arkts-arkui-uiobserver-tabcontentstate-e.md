@@ -1,5 +1,9 @@
 # TabContentState
 
+```TypeScript
+export enum TabContentState
+```
+
 TabContent state.
 
 **Since:** 12

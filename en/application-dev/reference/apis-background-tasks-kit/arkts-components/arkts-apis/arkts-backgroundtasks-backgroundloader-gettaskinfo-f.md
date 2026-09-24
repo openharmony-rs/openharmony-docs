@@ -14,7 +14,7 @@ function getTaskInfo(taskId: number): Promise<TaskInfo>
 
 Obtains the information of a background load task. This API returns the result via a promise.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -40,4 +40,4 @@ Obtains the information of a background load task. This API returns the result v
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [9700003](../errorcode-workScheduler.md#9700003-system-service-failure) | System service operation failed. |
-| [9700004](../errorcode-workScheduler.md#9700004-workinfo-verification-failure) | Check on taskId failed. |
+| [9700004](../errorcode-workScheduler.md#9700004-parameter-verification-failed) | Check on taskId failed. |

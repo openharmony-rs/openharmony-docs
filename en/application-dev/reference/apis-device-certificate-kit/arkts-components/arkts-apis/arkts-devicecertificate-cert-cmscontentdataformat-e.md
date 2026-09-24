@@ -1,5 +1,9 @@
 # CmsContentDataFormat
 
+```TypeScript
+enum CmsContentDataFormat
+```
+
 Enumerates the CMS message formats.
 
 **Since:** 18

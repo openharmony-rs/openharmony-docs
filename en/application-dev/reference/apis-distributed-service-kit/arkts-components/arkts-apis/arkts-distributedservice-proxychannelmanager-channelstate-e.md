@@ -1,5 +1,9 @@
 # ChannelState
 
+```TypeScript
+enum ChannelState
+```
+
 Enumerates the connection states of the proxy channel.
 
 **Since:** 20

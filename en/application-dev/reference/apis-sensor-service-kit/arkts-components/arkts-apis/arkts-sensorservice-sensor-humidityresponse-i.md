@@ -1,5 +1,9 @@
 # HumidityResponse
 
+```TypeScript
+interface HumidityResponse extends Response
+```
+
 Describes the humidity sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** HumidityResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

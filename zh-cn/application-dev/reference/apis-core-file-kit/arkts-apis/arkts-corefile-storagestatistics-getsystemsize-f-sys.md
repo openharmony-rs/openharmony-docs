@@ -32,22 +32,13 @@ function getSystemSize(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:Mandatory parameters are left unspecified; |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:Mandatory parameters are left unspecified; |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-storageStatistics.getSystemSize().then((number: number) => {
-  console.info("getSystemSize successfully:" + number);
-}).catch((err: BusinessError) => {
-  console.error(`getSystemSize failed with err, code is: ${err.code}, message is: ${err.message}`);
-});
-```
 
 ```TypeScript
 import { storageStatistics } from '@kit.CoreFileKit';
@@ -62,6 +53,8 @@ storageStatistics.getSystemSize((error: BusinessError, number: number) => {
 });
 ```
 
+
+<a id="getsystemsize-1"></a>
 
 ## getSystemSize
 
@@ -89,12 +82,19 @@ function getSystemSize(): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:Mandatory parameters are left unspecified; |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:Mandatory parameters are left unspecified; |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
 **示例**
 
-参见 [getSystemSize](#getsystemsize)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getSystemSize().then((number: number) => {
+  console.info("getSystemSize successfully:" + number);
+}).catch((err: BusinessError) => {
+  console.error(`getSystemSize failed with err, code is: ${err.code}, message is: ${err.message}`);
+});
+```

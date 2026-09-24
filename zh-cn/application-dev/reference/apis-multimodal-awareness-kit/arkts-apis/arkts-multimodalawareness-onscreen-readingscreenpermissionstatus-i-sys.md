@@ -1,5 +1,9 @@
 # ReadingScreenPermissionStatus（系统接口）
 
+```TypeScript
+export interface ReadingScreenPermissionStatus
+```
+
 读取屏幕信息的授权状态。
 
 **起始版本：** 23

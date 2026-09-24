@@ -1,5 +1,9 @@
 # FamilyType
 
+```TypeScript
+export enum FamilyType
+```
+
 需要查询的具体IP地址类型。
 
 **起始版本：** 23

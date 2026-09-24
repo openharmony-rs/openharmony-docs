@@ -1,5 +1,9 @@
 # SubscribeLocationOption
 
+```TypeScript
+export interface SubscribeLocationOption
+```
+
 **Since:** 3
 
 **Deprecated since:** 9

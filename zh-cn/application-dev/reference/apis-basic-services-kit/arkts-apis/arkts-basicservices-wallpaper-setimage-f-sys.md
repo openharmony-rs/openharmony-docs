@@ -34,9 +34,9 @@ function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | permission verification failed, application which is not a system application uses system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | permission verification failed, application which is not a system application uses system API. |
 
 **示例**
 
@@ -75,37 +75,8 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
 
-// source类型为string
-let wallpaperPath = '/data/storage/el2/base/haps/entry/files/js.jpeg';
-wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
-    console.info(`success to setImage.`);
-}).catch((error: BusinessError) => {
-    console.error(`Failed to setImage. Code: ${error.code}, Message: ${error.message}`);
-});
-
-// source类型为image.PixelMap
-let imageSource = image.createImageSource('file://' + wallpaperPath);
-let opts: image.DecodingOptions = {
-    desiredSize: {
-        height: 3648,
-        width: 2736
-    }
-};
-imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
-    wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
-        console.info(`success to setImage.`);
-    }).catch((error: BusinessError) => {
-        console.error(`Failed to setImage. Code: ${error.code}, Message: ${error.message}`);
-    });
-}).catch((error: BusinessError) => {
-    console.error(`Failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
-});
-```
-
+<a id="setimage-1"></a>
 
 ## setImage
 
@@ -140,10 +111,39 @@ function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | permission verification failed, application which is not a system application uses system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | permission verification failed, application which is not a system application uses system API. |
 
 **示例**
 
-参见 [setImage](#setimage)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+// source类型为string
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/js.jpeg';
+wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
+    console.info(`success to setImage.`);
+}).catch((error: BusinessError) => {
+    console.error(`Failed to setImage. Code: ${error.code}, Message: ${error.message}`);
+});
+
+// source类型为image.PixelMap
+let imageSource = image.createImageSource('file://' + wallpaperPath);
+let opts: image.DecodingOptions = {
+    desiredSize: {
+        height: 3648,
+        width: 2736
+    }
+};
+imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
+    wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
+        console.info(`success to setImage.`);
+    }).catch((error: BusinessError) => {
+        console.error(`Failed to setImage. Code: ${error.code}, Message: ${error.message}`);
+    });
+}).catch((error: BusinessError) => {
+    console.error(`Failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
+});
+```

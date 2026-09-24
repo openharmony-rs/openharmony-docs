@@ -1,5 +1,9 @@
 # Orientation
 
+```TypeScript
+enum Orientation
+```
+
 显示设备当前显示的方向枚举。
 
 **起始版本：** 10

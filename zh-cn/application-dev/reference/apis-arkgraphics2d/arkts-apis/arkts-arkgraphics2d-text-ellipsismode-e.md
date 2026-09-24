@@ -1,5 +1,9 @@
 # EllipsisMode
 
+```TypeScript
+enum EllipsisMode
+```
+
 省略号类型枚举。
 
 EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。

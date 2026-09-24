@@ -34,12 +34,6 @@ Checks whether a contact is included in my card. This API uses an asynchronous c
 **Examples**
 
 ```TypeScript
-> NOTE
-> 
-> In the examples in this document, the UIAbilityContext is obtained through this.context, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
-```
-
-```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { contact } from '@kit.ContactsKit';
 
@@ -53,22 +47,8 @@ contact.isMyCard(1, (err: BusinessError, data) => {
 });
 ```
 
-```TypeScript
-> NOTE
-> 
-> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
-```
 
-```TypeScript
-import { contact } from '@kit.ContactsKit';
-
-// Check whether the contact with ID 1 is "my card".
-let promise = contact.isMyCard(1);
-promise.then((data) => {
-  console.info(`Succeeded in isMyCard. data->${JSON.stringify(data)}`);
-});
-```
-
+<a id="ismycard-1"></a>
 
 ## isMyCard
 
@@ -97,12 +77,32 @@ Checks whether a contact is included in my card. This API uses an asynchronous c
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../errorcode-contacts.md#401-failed-to-open-the-contact-portrait-file) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **Examples**
 
-See [isMyCard](#ismycard)
+> NOTE
+> 
+> In the examples in this document, the UIAbilityContext is obtained through this.context, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
+  import { common } from '@kit.AbilityKit';
+
+  // Obtain the context in the component.
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  contact.isMyCard(context, 1, (err: BusinessError, data) => {
+    if (err) {
+      console.error(`Failed to isMyCard. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`Succeeded in isMyCard. data->${JSON.stringify(data)}`);
+  });
+```
+
+
+<a id="ismycard-2"></a>
 
 ## isMyCard
 
@@ -136,8 +136,18 @@ Checks whether a contact is included in my card. This API uses a promise to retu
 
 **Examples**
 
-See [isMyCard](#ismycard)
+```TypeScript
+import { contact } from '@kit.ContactsKit';
 
+// Check whether the contact with ID 1 is "my card".
+let promise = contact.isMyCard(1);
+promise.then((data) => {
+  console.info(`Succeeded in isMyCard. data->${JSON.stringify(data)}`);
+});
+```
+
+
+<a id="ismycard-3"></a>
 
 ## isMyCard
 
@@ -171,8 +181,22 @@ Checks whether a contact is included in my card. This API uses a promise to retu
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../errorcode-contacts.md#401-failed-to-open-the-contact-portrait-file) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **Examples**
 
-See [isMyCard](#ismycard)
+> NOTE
+> 
+> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+  import { common } from '@kit.AbilityKit';
+
+  // Obtain the context in the component.
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let promise = contact.isMyCard(context, 1);
+  promise.then((data) => {
+    console.info(`Succeeded in isMyCard. data->${JSON.stringify(data)}`);
+  });
+```

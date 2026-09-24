@@ -1,5 +1,9 @@
 # GnssGeofenceRequest
 
+```TypeScript
+export interface GnssGeofenceRequest
+```
+
 Configuring parameters in GNSS geofence requests.
 
 **Since:** 12

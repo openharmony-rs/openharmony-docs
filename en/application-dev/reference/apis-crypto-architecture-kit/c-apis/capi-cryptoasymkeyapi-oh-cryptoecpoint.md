@@ -8,6 +8,8 @@ typedef struct OH_CryptoEcPoint OH_CryptoEcPoint
 
 Elliptic curve point structure, representing a point on the elliptic curve.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Related module**: [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)

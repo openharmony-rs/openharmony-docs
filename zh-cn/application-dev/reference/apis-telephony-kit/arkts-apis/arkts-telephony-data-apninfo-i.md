@@ -1,5 +1,9 @@
 # ApnInfo
 
+```TypeScript
+interface ApnInfo
+```
+
 APN信息。
 
 **起始版本：** 16

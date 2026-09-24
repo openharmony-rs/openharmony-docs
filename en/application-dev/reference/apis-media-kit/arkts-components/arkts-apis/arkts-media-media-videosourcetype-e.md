@@ -1,5 +1,9 @@
 # VideoSourceType
 
+```TypeScript
+enum VideoSourceType
+```
+
 Enumerates the video source types for video recording.
 
 **Since:** 9

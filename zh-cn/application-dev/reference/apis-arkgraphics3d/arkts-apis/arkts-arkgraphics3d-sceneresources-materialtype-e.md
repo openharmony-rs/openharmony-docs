@@ -1,5 +1,9 @@
 # MaterialType
 
+```TypeScript
+export enum MaterialType
+```
+
 场景中物体材质类型枚举，定义材质的渲染方式。
 
 @enum { int }

@@ -1,5 +1,9 @@
 # PowerKeyFilteringStrategy
 
+```TypeScript
+export enum PowerKeyFilteringStrategy
+```
+
 表示电源键过滤策略。
 
 **起始版本：** 21

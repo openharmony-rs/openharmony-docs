@@ -1,5 +1,9 @@
 # AccessibilityNextFocusParams
 
+```TypeScript
+declare interface AccessibilityNextFocusParams
+```
+
 定义无障碍自定义下一个焦点处理过程中可使用的详细参数对象。
 
 **起始版本：** 26.0.0

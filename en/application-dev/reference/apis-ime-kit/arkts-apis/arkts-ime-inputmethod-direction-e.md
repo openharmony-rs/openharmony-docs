@@ -1,5 +1,9 @@
 # Direction
 
+```TypeScript
+export enum Direction
+```
+
 Enumerates the directions of cursor movement of the input method.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # NotificationMultiLineContent
 
+```TypeScript
+export interface NotificationMultiLineContent extends NotificationBasicContent
+```
+
 Describes the multi-line text notification. This API is inherited from NotificationBasicContent.
 
 > **NOTE:** 

@@ -1,5 +1,9 @@
 # AsyKeySpec
 
+```TypeScript
+interface AsyKeySpec
+```
+
 Defines the asymmetric key parameters for creating a key generator. You need to construct a child class object and pass it to [createAsyKeyGeneratorBySpec()](arkts-cryptoarchitecture-cryptoframework-createasykeygeneratorbyspec-f.md) to create a key generator. When constructing a child class object, use little-endian format for RSA keys and use big-endian format and positive numbers for other key parameters of the bigint type.
 
 **Since:** 10

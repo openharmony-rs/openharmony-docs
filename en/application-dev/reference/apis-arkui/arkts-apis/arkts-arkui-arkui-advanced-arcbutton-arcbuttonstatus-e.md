@@ -1,5 +1,9 @@
 # ArcButtonStatus
 
+```TypeScript
+export declare enum ArcButtonStatus
+```
+
 Enumerates the states that can be set for **ArcButton**.
 
 **Since:** 18

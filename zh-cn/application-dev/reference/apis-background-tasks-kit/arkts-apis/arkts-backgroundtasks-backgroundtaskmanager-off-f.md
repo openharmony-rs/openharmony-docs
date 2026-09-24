@@ -31,8 +31,31 @@ function off(type: 'continuousTaskCancel', callback?: Callback<ContinuousTaskCan
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Callback parameter error; 2. Unregister type has not register; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Callback parameter error; 2. Unregister type has not register; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+const callback = (info: backgroundTaskManager.ContinuousTaskCancelInfo) => {
+  console.info('continuousTaskCancel callback id ' + info.id);
+  console.info('continuousTaskCancel callback reason ' + info.reason);
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    try {
+      backgroundTaskManager.off('continuousTaskCancel', callback);
+    } catch (error) {
+      console.error(`Operation offContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
 
 
 ## off('continuousTaskSuspend')
@@ -60,8 +83,32 @@ function off(type: 'continuousTaskSuspend', callback?: Callback<ContinuousTaskSu
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9800005](../errorcode-backgroundTaskMgr.md#9800005-长时任务校验失败) | Continuous task verification failed. |
+
+**示例**
+
+```TypeScript
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+const callback = (info: backgroundTaskManager.ContinuousTaskSuspendInfo) => {
+  console.info('continuousTaskSuspend callback continuousTaskId: ' + info.continuousTaskId);
+  console.info('continuousTaskSuspend callback suspendState: ' + info.suspendState);
+  console.info('continuousTaskSuspend callback suspendReason: ' + info.suspendReason);
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    try {
+      backgroundTaskManager.off('continuousTaskSuspend', callback);
+    } catch (error) {
+      console.error(`Operation offContinuousTaskSuspend failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
 
 
 ## off('continuousTaskActive')
@@ -89,5 +136,27 @@ function off(type: 'continuousTaskActive', callback?: Callback<ContinuousTaskAct
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9800005](../errorcode-backgroundTaskMgr.md#9800005-长时任务校验失败) | Continuous task verification failed. |
+
+**示例**
+
+```TypeScript
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+const callback = (info: backgroundTaskManager.ContinuousTaskActiveInfo) => {
+  console.info('continuousTaskActive callback id: ' + info.id);
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    try {
+      backgroundTaskManager.off('continuousTaskActive', callback);
+    } catch (error) {
+      console.error(`Operation offContinuousTaskActive failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```

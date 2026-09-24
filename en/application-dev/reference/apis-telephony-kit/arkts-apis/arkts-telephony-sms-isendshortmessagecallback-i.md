@@ -1,5 +1,9 @@
 # ISendShortMessageCallback
 
+```TypeScript
+export interface ISendShortMessageCallback
+```
+
 Provides the callback for the SMS message sending result. It consists of three parts: SMS message sending result, URI for storing the sent SMS message, and whether the SMS message is the last part of a long SMS message.
 
 **Since:** 6

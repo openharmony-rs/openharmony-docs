@@ -1,5 +1,9 @@
 # IInputer (System API)
 
+```TypeScript
+interface IInputer
+```
+
 Provides callbacks to obtain credential inputer data.
 
 **Since:** 8

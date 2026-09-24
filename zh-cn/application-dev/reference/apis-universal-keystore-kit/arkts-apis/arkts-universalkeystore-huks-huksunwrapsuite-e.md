@@ -1,5 +1,9 @@
 # HuksUnwrapSuite
 
+```TypeScript
+export enum HuksUnwrapSuite
+```
+
 表示安全导入密钥的算法套件。
 
 **起始版本：** 9
@@ -18,6 +22,8 @@ HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING = 1
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** 
@@ -34,6 +40,8 @@ HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING = 2
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** 
@@ -49,6 +57,8 @@ HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING = 5
 安全导入密钥时，使用临时SM4密钥加密导入密钥，使用已导入HUKS的SM2密钥加密SM4密钥。
 
 **起始版本：** 23
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 

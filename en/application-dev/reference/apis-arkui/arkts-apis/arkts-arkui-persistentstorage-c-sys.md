@@ -1,5 +1,9 @@
 # PersistentStorage
 
+```TypeScript
+declare class PersistentStorage
+```
+
 For details about how to use PersistentStorage on the UI, see [PersistentStorage: Persisting Application State](../../../ui/state-management/arkts-persiststorage.md).
 
 > **NOTE:** 
@@ -19,6 +23,8 @@ constructor(appStorage: AppStorage, storage: Storage)
 Constructor.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

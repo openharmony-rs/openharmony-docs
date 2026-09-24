@@ -1,5 +1,9 @@
 # AppClonePreferenceMode (System API)
 
+```TypeScript
+export enum AppClonePreferenceMode
+```
+
 Enumerates the application clone preference modes.
 
 **Since:** 26.0.0

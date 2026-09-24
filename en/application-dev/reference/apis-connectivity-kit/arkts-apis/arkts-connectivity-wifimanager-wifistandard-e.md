@@ -1,5 +1,9 @@
 # WifiStandard
 
+```TypeScript
+enum WifiStandard
+```
+
 Wi-Fi standard. @enum { int }
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # HdrMetadataType
 
+```TypeScript
+enum HdrMetadataType
+```
+
 Enumerates the values available for **HDR_METADATA_TYPE** in [HdrMetadataKey](arkts-image-image-hdrmetadatakey-e.md).
 
 **Since:** 12

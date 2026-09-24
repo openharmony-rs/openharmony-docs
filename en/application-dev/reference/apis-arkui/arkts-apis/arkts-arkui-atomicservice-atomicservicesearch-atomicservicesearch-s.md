@@ -1,5 +1,9 @@
 # AtomicServiceSearch
 
+```TypeScript
+export declare struct AtomicServiceSearch
+```
+
 **AtomicServiceSearch** allows you to customize the default search area, customizable selection area, and function area (a maximum of two).
 
 **Since:** 18
@@ -22,7 +26,7 @@ controller?: SearchController
 
 Set the Search component controller.
 
-**Type:** [SearchController](../arkts-components/arkts-arkui-searchcontroller-c.md)
+**Type:** [SearchController](../arkts-components/arkts-arkui-search-comp-searchcontroller-c.md)
 
 **Since:** 18
 

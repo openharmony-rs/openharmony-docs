@@ -8,6 +8,8 @@ struct OhosPixelMapInfo {...}
 
 Defines the pixel map information.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 8
 
 **Deprecated**: 10

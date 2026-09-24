@@ -6,6 +6,8 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
+<a id="rejectcall-3"></a>
+
 ## rejectCall
 
 ```TypeScript
@@ -44,61 +46,6 @@ Rejects a call. This API uses an asynchronous callback to return the result.
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.rejectCall((err: BusinessError) => {
-    if (err) {
-        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`rejectCall success.`);
-    }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.rejectCall(1, (err: BusinessError) => {
-    if (err) {
-        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`rejectCall success.`);
-    }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let rejectMessageOptions : call.RejectMessageOptions = {
-    messageContent: "Unknown number blocked"
-}
-call.rejectCall(1, rejectMessageOptions, (err: BusinessError) => {
-    if (err) {
-        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`rejectCall success.`);
-    }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let rejectMessageOptions: call.RejectMessageOptions = {
-    messageContent: "Unknown number blocked"
-}
-call.rejectCall(1, rejectMessageOptions).then(() => {
-    console.info(`rejectCall success.`);
-}).catch((err: BusinessError) => {
-    console.error(`rejectCall fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let rejectMessageOptions: call.RejectMessageOptions = {
-    messageContent: "Unknown number blocked"
-}
-call.rejectCall(rejectMessageOptions, (err: BusinessError) => {
     if (err) {
         console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
     } else {

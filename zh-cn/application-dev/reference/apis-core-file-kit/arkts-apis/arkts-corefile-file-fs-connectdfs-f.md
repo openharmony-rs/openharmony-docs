@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function connectDfs(networkId: string, listeners: DfsListeners): Promise<void>
 ```
 
-业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内onStatus通知应用。
+业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内[onStatus](../../../reference/apis-core-file-kit/js-apis-file-fs.md#onstatus12)通知应用。
 
 **起始版本：** 12
 
@@ -37,7 +37,7 @@ declare function connectDfs(networkId: string, listeners: DfsListeners): Promise
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13900045 | Connection failed. |
 | 13900046 | Software caused connection abort. |

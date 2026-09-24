@@ -1,5 +1,9 @@
 # NumberConstructor
 
+```TypeScript
+interface NumberConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

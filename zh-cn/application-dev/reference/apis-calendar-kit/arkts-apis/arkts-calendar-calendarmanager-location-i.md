@@ -1,5 +1,9 @@
 # Location
 
+```TypeScript
+interface Location
+```
+
 日程地点。
 
 **起始版本：** 10

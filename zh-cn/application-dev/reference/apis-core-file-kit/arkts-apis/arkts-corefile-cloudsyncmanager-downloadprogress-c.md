@@ -1,5 +1,9 @@
 # DownloadProgress
 
+```TypeScript
+class DownloadProgress
+```
+
 全量下载任务的进度信息。
 
 **起始版本：** 20

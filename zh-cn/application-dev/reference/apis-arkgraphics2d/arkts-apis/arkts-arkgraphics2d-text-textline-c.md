@@ -1,5 +1,9 @@
 # TextLine
 
+```TypeScript
+class TextLine
+```
+
 描述段落基础文本行结构的载体。
 
 下列API示例中都需先使用[Paragraph](arkts-arkgraphics2d-text-paragraph-c.md)类的[getTextLines()](arkts-arkgraphics2d-text-paragraph-c.md#gettextlines)接口或者[LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md)类的[createLine()](arkts-arkgraphics2d-text-linetypeset-c.md#createline)接口获取到TextLine对象实例，再通过此实例调用对应方法。

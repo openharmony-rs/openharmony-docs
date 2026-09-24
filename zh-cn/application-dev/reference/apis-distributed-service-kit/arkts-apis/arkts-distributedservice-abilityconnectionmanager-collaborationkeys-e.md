@@ -1,5 +1,9 @@
 # CollaborationKeys
 
+```TypeScript
+export enum CollaborationKeys
+```
+
 应用协作键值的枚举。
 
 **起始版本：** 18

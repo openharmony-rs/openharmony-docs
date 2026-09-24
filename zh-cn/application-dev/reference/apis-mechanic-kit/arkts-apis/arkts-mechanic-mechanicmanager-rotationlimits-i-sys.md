@@ -1,5 +1,9 @@
 # RotationLimits（系统接口）
 
+```TypeScript
+export interface RotationLimits
+```
+
 相对于参考点的旋转角度限制@typedef RotationLimits
 
 **起始版本：** 20

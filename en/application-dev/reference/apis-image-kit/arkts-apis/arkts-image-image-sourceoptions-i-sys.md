@@ -1,5 +1,9 @@
 # SourceOptions
 
+```TypeScript
+interface SourceOptions
+```
+
 Defines image source initialization options.
 
 **Since:** 9
@@ -22,7 +26,7 @@ SVG resource limit level used when parsing and rendering an SVG image. The limit
 
 **Type:** [SVGResourceLimitLevel](arkts-image-image-svgresourcelimitlevel-e-sys.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

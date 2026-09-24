@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_InquiryInfo {...} ScsiPeripheral_InquiryInfo
 
 SCSI INQUIRY 数据，用于存储SCSI外设的INQUIRY命令查询结果。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **起始版本：** 18
 
 **相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

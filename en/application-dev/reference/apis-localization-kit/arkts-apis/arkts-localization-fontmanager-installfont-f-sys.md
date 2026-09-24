@@ -12,7 +12,11 @@ import { fontManager } from '@kit.LocalizationKit';
 function installFont(path: string): Promise<number>
 ```
 
-Installs a font file from a specified path into the system font library. This API uses a promise to return the result. After successful installation, applications can use the font by its font name.
+Installs a font file from a specified path into the system font library. This API uses a promise to return the result.
+
+> **NOTE:** 
+> - After successful installation, applications can use the font by its font name. The same font path cannot be installed repeatedly.
+> - A maximum of 200 font files can be installed. In version 26.0.1 and later, a maximum of 800 font files can be installed on PCs and 2-in-1 devices.
 
 **Since:** 19
 
@@ -26,7 +30,7 @@ Installs a font file from a specified path into the system font library. This AP
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| path | string | Yes | Path to the font file to be installed. Only .ttf and .ttc font files are supported. |
+| path | string | Yes | Path to the font file to be installed. Only font files in.ttf,ttc, or.otf format are supported. |
 
 **Return value:**
 

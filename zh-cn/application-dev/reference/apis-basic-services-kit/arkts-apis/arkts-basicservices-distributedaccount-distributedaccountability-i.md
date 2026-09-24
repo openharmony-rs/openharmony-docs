@@ -1,5 +1,9 @@
 # DistributedAccountAbility
 
+```TypeScript
+interface DistributedAccountAbility
+```
+
 提供查询和更新分布式账号登录状态方法（使用前需要先获取分布式账号的单实例对象）。
 
 **起始版本：** 7
@@ -36,8 +40,8 @@ getOsAccountDistributedInfo(callback: AsyncCallback<DistributedInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 
 **示例**
@@ -62,22 +66,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 获取分布式账号的单实例对象
-const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
-try {
-  accountAbility.getOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
-    console.info('distributed information: ' + JSON.stringify(data));
-  }).catch((err: BusinessError) => {
-    console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getosaccountdistributedinfo-1"></a>
 
 ## getOsAccountDistributedInfo
 
@@ -103,12 +92,144 @@ getOsAccountDistributedInfo(): Promise<DistributedInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 
 **示例**
 
-参见 [getOsAccountDistributedInfo](#getosaccountdistributedinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取分布式账号的单实例对象
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+try {
+  accountAbility.getOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
+    console.info('distributed information: ' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## setOsAccountDistributedInfo
+
+```TypeScript
+setOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCallback<void>): void
+```
+
+更新分布式账号信息。使用callback异步回调。该接口仅限系统应用调用。
+
+**起始版本：** 9
+
+**需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| accountInfo | [DistributedInfo](arkts-basicservices-distributedaccount-distributedinfo-i.md) | 是 | 分布式账号信息。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当更新分布式账号信息成功时，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid accountInfo. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300406](../errorcode-account.md#12300406-该分布式账号信息已经与目标系统账号的其他子身份资料绑定) | The distributed account information has already been bound to a sub-profile of the same OS account.<br>**适用版本：** 26.0.0+ |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取分布式账号的单实例对象
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+// 示例值，实际使用时请通过getOsAccountDistributedInfo获取真实分布式账号信息
+let accountInfo: distributedAccount.DistributedInfo =
+  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
+try {
+  accountAbility.setOsAccountDistributedInfo(accountInfo, (err: BusinessError) => {
+    if (err) {
+      console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('setOsAccountDistributedInfo successfully');
+    }
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+<a id="setosaccountdistributedinfo-1"></a>
+
+## setOsAccountDistributedInfo
+
+```TypeScript
+setOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>
+```
+
+更新分布式账号信息。使用Promise异步回调。该接口仅限系统应用调用。
+
+**起始版本：** 9
+
+**需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| accountInfo | [DistributedInfo](arkts-basicservices-distributedaccount-distributedinfo-i.md) | 是 | 分布式账号信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid accountInfo. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300406](../errorcode-account.md#12300406-该分布式账号信息已经与目标系统账号的其他子身份资料绑定) | The distributed account information has already been bound to a sub-profile of the same OS account.<br>**适用版本：** 26.0.0+ |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取分布式账号的单实例对象
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+// 示例值，实际使用时请通过getOsAccountDistributedInfo获取真实分布式账号信息
+let accountInfo: distributedAccount.DistributedInfo =
+  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
+try {
+  accountAbility.setOsAccountDistributedInfo(accountInfo).then(() => {
+    console.info('setOsAccountDistributedInfo successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## queryOsAccountDistributedInfo
 
@@ -157,17 +278,7 @@ accountAbility.queryOsAccountDistributedInfo(
   });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 获取分布式账号的单实例对象
-const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
-accountAbility.queryOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
-  console.info('distributed information: ' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="queryosaccountdistributedinfo-1"></a>
 
 ## queryOsAccountDistributedInfo
 
@@ -201,124 +312,17 @@ queryOsAccountDistributedInfo(): Promise<DistributedInfo>
 
 **示例**
 
-参见 [queryOsAccountDistributedInfo](#queryosaccountdistributedinfo)
-
-## setOsAccountDistributedInfo
-
-```TypeScript
-setOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCallback<void>): void
-```
-
-更新分布式账号信息。使用callback异步回调。该接口仅限系统应用调用。
-
-**起始版本：** 9
-
-**需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| accountInfo | [DistributedInfo](arkts-basicservices-distributedaccount-distributedinfo-i.md) | 是 | 分布式账号信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当更新分布式账号信息成功时，err为undefined，否则为错误对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
-| [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid accountInfo. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
-| [12300406](../errorcode-account.md#12300406-该分布式账号信息已经与目标系统账号的其他子身份资料绑定) | The distributed account information has already been bound to a sub-profile of the same OS account.<br>**适用版本：** 26.0.0+ |
-
-**示例**
-
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取分布式账号的单实例对象
 const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
-// 示例值，实际使用时请通过getOsAccountDistributedInfo获取真实分布式账号信息
-let accountInfo: distributedAccount.DistributedInfo =
-  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
-try {
-  accountAbility.setOsAccountDistributedInfo(accountInfo, (err: BusinessError) => {
-    if (err) {
-      console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('setOsAccountDistributedInfo successfully');
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-}
+accountAbility.queryOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
+  console.info('distributed information: ' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+});
 ```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 获取分布式账号的单实例对象
-const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
-// 示例值，实际使用时请通过getOsAccountDistributedInfo获取真实分布式账号信息
-let accountInfo: distributedAccount.DistributedInfo =
-  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
-try {
-  accountAbility.setOsAccountDistributedInfo(accountInfo).then(() => {
-    console.info('setOsAccountDistributedInfo successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
-## setOsAccountDistributedInfo
-
-```TypeScript
-setOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>
-```
-
-更新分布式账号信息。使用Promise异步回调。该接口仅限系统应用调用。
-
-**起始版本：** 9
-
-**需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| accountInfo | [DistributedInfo](arkts-basicservices-distributedaccount-distributedinfo-i.md) | 是 | 分布式账号信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
-| [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid accountInfo. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
-| [12300406](../errorcode-account.md#12300406-该分布式账号信息已经与目标系统账号的其他子身份资料绑定) | The distributed account information has already been bound to a sub-profile of the same OS account.<br>**适用版本：** 26.0.0+ |
-
-**示例**
-
-参见 [setOsAccountDistributedInfo](#setosaccountdistributedinfo)
 
 ## updateOsAccountDistributedInfo
 
@@ -370,20 +374,7 @@ accountAbility.updateOsAccountDistributedInfo(accountInfo, (err: BusinessError) 
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 获取分布式账号的单实例对象
-const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
-// 示例值，实际使用时请通过getOsAccountDistributedInfo获取真实分布式账号信息
-let accountInfo: distributedAccount.DistributedInfo =
-  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
-accountAbility.updateOsAccountDistributedInfo(accountInfo).then(() => {
-  console.info('updateOsAccountDistributedInfo successfully');
-}).catch((err: BusinessError) => {
-  console.error(`updateOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="updateosaccountdistributedinfo-1"></a>
 
 ## updateOsAccountDistributedInfo
 
@@ -423,4 +414,17 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>
 
 **示例**
 
-参见 [updateOsAccountDistributedInfo](#updateosaccountdistributedinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取分布式账号的单实例对象
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+// 示例值，实际使用时请通过getOsAccountDistributedInfo获取真实分布式账号信息
+let accountInfo: distributedAccount.DistributedInfo =
+  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
+accountAbility.updateOsAccountDistributedInfo(accountInfo).then(() => {
+  console.info('updateOsAccountDistributedInfo successfully');
+}).catch((err: BusinessError) => {
+  console.error(`updateOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+});
+```

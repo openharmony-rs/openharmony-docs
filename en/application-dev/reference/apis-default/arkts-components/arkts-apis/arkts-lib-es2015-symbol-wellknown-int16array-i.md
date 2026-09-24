@@ -1,5 +1,9 @@
 # Int16Array
 
+```TypeScript
+interface Int16Array
+```
+
 ## Modules to Import
 
 ```TypeScript

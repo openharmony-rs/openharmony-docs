@@ -426,6 +426,22 @@ Verification code edit box.
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
+## PATTERN_ONE_TIME_CODE_NUMBER
+
+```TypeScript
+const PATTERN_ONE_TIME_CODE_NUMBER: number
+```
+
+The numeric verification code edit box. The value is fixed at 15. The value should be an integer.
+
+**Type:** number
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
 ## PATTERN_PASSWORD
 
 ```TypeScript

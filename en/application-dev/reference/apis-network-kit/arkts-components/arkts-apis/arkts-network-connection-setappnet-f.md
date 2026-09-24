@@ -39,12 +39,57 @@ Binds an application to the network specified by **netHandle**, so that the appl
 
 **Examples**
 
-```TypeScript
 If an application is bound to a Wi-Fi network and the Wi-Fi signal is weak or the network is disconnected, the application cannot access the Internet if it is not unbound.
 
 The following example binds the application to a Wi-Fi network. It uses the [on('netAvailable')](arkts-network-connection-netconnection-i.md#onnetavailable) API to bind the application when the Wi-Fi network is available, and the [on('netLost')](arkts-network-connection-netconnection-i.md#onnetlost) API to unbind the application and switch to the default network when the Wi-Fi network is unavailable.
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Create a NetConnection object. To bind only to the Wi-Fi network, set the network type to Wi-Fi.
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
+  }
+});
+
+// Use the on API to enable listening for netAvailable events.
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
+  });
+});
+
+// Use the on API to enable listening for netLost events.
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  // When the network is lost, proactively unbind the specified network.
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
+  });
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  if (error) {
+    console.error(JSON.stringify(error));
+  }
+});
 ```
 
+
+<a id="setappnet-1"></a>
 
 ## setAppNet
 
@@ -84,4 +129,47 @@ Binds an application to the network specified by **netHandle**, so that the appl
 
 **Examples**
 
-See [setAppNet](#setappnet)
+If an application is bound to a Wi-Fi network and the Wi-Fi signal is weak or the network is disconnected, the application cannot access the Internet if it is not unbound.
+
+The following example binds the application to a Wi-Fi network. It uses the [on('netAvailable')](arkts-network-connection-netconnection-i.md#onnetavailable) API to bind the application when the Wi-Fi network is available, and the [on('netLost')](arkts-network-connection-netconnection-i.md#onnetlost) API to unbind the application and switch to the default network when the Wi-Fi network is unavailable.
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Create a NetConnection object. To bind only to the Wi-Fi network, set the network type to Wi-Fi.
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
+  }
+});
+
+// Use the on API to enable listening for netAvailable events.
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  connection.setAppNet(netHandle).then(() => {
+    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
+});
+
+// Use the on API to enable listening for netLost events.
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  // When the network is lost, proactively unbind the specified network.
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle).then(() => {
+    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  if (error) {
+    console.error(JSON.stringify(error));
+  }
+});
+```

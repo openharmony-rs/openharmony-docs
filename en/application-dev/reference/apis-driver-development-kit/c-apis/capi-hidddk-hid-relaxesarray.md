@@ -8,6 +8,8 @@ typedef struct Hid_RelAxesArray {...} Hid_RelAxesArray
 
 Defines an array of relative coordinates.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 11
 
 **Related module**: [HidDdk](capi-hidddk.md)

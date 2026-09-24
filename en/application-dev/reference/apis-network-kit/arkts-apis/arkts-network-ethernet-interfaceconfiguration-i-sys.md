@@ -1,5 +1,9 @@
 # InterfaceConfiguration (System API)
 
+```TypeScript
+export interface InterfaceConfiguration
+```
+
 Defines the network configuration for the Ethernet connection.
 
 **Since:** 9

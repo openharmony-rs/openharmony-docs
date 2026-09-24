@@ -1,5 +1,9 @@
 # PropertyDescriptor
 
+```TypeScript
+interface PropertyDescriptor
+```
+
 Defines the descriptor of a property.
 
 **Since:** 26.0.0

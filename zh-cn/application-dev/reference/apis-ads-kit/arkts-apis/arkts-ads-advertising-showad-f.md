@@ -38,12 +38,22 @@ function showAd(ad: Advertisement, options: AdDisplayOptions, context?: common.U
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified. |
 | [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 | [21800004](../errorcode-ads.md#21800004-广告展示失败) | Failed to display the ad. |
 
 **示例**
 
-```TypeScript
 其中context的获取方式参见[各类Context的获取方式](../../../application-models/application-context-stage.md#context的获取方式)。
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { advertising } from '@kit.AdsKit';
+
+function showAd(ad: advertising.Advertisement, context?: common.UIAbilityContext): void {
+  // 广告展示参数，开发者可根据项目实际情况设置
+  const adDisplayOptions: advertising.AdDisplayOptions = {};
+  // 调用全屏广告展示接口
+  advertising.showAd(ad, adDisplayOptions, context);
+}
 ```

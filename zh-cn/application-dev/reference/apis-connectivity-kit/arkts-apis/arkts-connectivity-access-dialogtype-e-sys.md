@@ -1,5 +1,9 @@
 # DialogType（系统接口）
 
+```TypeScript
+enum DialogType
+```
+
 枚举，对话框类型。
 
 **起始版本：** 20

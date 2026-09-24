@@ -1,5 +1,9 @@
 # SuggestionType（系统接口）
 
+```TypeScript
+export enum SuggestionType
+```
+
 语言或国家地区的推荐类型。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # ControlCenterEffectType
 
+```TypeScript
+enum ControlCenterEffectType
+```
+
 枚举，相机控制器支持的效果类型。
 
 **起始版本：** 20

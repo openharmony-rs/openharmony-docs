@@ -1,5 +1,9 @@
 # KVStoreType
 
+```TypeScript
+enum KVStoreType
+```
+
 KVStore数据库类型枚举。
 
 **起始版本：** 7

@@ -8,6 +8,8 @@ typedef struct OH_CryptoAsymCipher OH_CryptoAsymCipher
 
 Asymmetric cipher structure, representing an asymmetric cipher context.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Related module**: [CryptoAsymCipherApi](capi-cryptoasymcipherapi.md)

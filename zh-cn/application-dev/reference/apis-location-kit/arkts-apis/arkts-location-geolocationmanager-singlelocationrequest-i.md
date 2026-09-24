@@ -1,5 +1,9 @@
 # SingleLocationRequest
 
+```TypeScript
+export interface SingleLocationRequest
+```
+
 单次定位的请求参数。
 
 **起始版本：** 12

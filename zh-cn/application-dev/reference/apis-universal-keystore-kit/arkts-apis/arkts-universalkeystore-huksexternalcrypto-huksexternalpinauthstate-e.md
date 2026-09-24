@@ -1,5 +1,9 @@
 # HuksExternalPinAuthState
 
+```TypeScript
+export enum HuksExternalPinAuthState
+```
+
 枚举PIN认证的状态
 
 **起始版本：** 22

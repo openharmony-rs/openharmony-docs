@@ -1,5 +1,9 @@
 # ChipV2Accessibility
 
+```TypeScript
+export declare class ChipV2Accessibility
+```
+
 ChipV2Accessibility定义无障碍属性类。
 
 **起始版本：** 26.0.0

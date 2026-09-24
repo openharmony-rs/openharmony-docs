@@ -33,27 +33,15 @@ Actively requests to update location information.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-radio.sendUpdateCellLocationRequest((err: BusinessError) => {
-    if (err) {
-        console.error(`sendUpdateCellLocationRequest failed, callback: err->${JSON.stringify(err)}`);
-        return;
-    }
-    console.info(`sendUpdateCellLocationRequest success.`);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -68,17 +56,8 @@ radio.sendUpdateCellLocationRequest(slotId, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-radio.sendUpdateCellLocationRequest(slotId).then(() => {
-    console.info(`sendUpdateCellLocationRequest success.`);
-}).catch((err: BusinessError) => {
-    console.error(`sendUpdateCellLocationRequest failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="sendupdatecelllocationrequest-1"></a>
 
 ## sendUpdateCellLocationRequest
 
@@ -112,9 +91,9 @@ Actively requests to update location information.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -122,8 +101,19 @@ Actively requests to update location information.
 
 **示例**
 
-参见 [sendUpdateCellLocationRequest](#sendupdatecelllocationrequest)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let slotId: number = 0;
+radio.sendUpdateCellLocationRequest(slotId).then(() => {
+    console.info(`sendUpdateCellLocationRequest success.`);
+}).catch((err: BusinessError) => {
+    console.error(`sendUpdateCellLocationRequest failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+
+<a id="sendupdatecelllocationrequest-2"></a>
 
 ## sendUpdateCellLocationRequest
 
@@ -151,9 +141,9 @@ Actively requests to update location information.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -161,4 +151,14 @@ Actively requests to update location information.
 
 **示例**
 
-参见 [sendUpdateCellLocationRequest](#sendupdatecelllocationrequest)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+radio.sendUpdateCellLocationRequest((err: BusinessError) => {
+    if (err) {
+        console.error(`sendUpdateCellLocationRequest failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`sendUpdateCellLocationRequest success.`);
+});
+```

@@ -1,5 +1,9 @@
 # CMHandle
 
+```TypeScript
+export interface CMHandle
+```
+
 Represents the handle to a signing or signature verification operation.
 
 **Since:** 11

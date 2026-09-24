@@ -14,6 +14,14 @@ function setSync(key: string, value: string): void
 
 Sets a value for the specified key.
 
+> **NOTE:** 
+> 
+> Both **setSync** and **set** can be used to set system parameter values.
+> - **setSync**: synchronous method, which directly sets the system parameter and returns the result immediately. This method is suitable for simple synchronization scenarios.
+> - **set**: asynchronous method, which uses a callback or promise to return the result asynchronously. This method is suitable for scenarios that require asynchronous processing.
+> 
+> You should select a proper method based on the specific scenario.
+
 **Since:** 6
 
 **Deprecated since:** 9
@@ -28,8 +36,8 @@ Sets a value for the specified key.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Target key. |
-| value | string | Yes | Value to set. |
+| key | string | Yes | Key to be set. |
+| value | string | Yes | Value to set. For details about length limit, see [Parameter Management](../../../../device-dev/subsystems/subsys-boot-init-sysparam.md). |
 
 **Examples**
 

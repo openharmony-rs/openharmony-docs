@@ -30,7 +30,7 @@ function getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**
@@ -61,30 +61,8 @@ try {
 }
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 使用try catch对可能出现的异常进行捕获
-try {
-  const promise = sensor.getGeomagneticInfo({ latitude: 80, longitude: 0, altitude: 0 }, 1580486400000);
-  promise.then((data: sensor.GeomagneticResponse) => {
-    console.info("Succeeded in getting geomagneticInfo x" + data.x);
-    console.info("Succeeded in getting geomagneticInfo y" + data.y);
-    console.info("Succeeded in getting geomagneticInfo z" + data.z);
-    console.info("Succeeded in getting geomagneticInfo geomagneticDip" + data.geomagneticDip);
-    console.info("Succeeded in getting geomagneticInfo deflectionAngle" + data.deflectionAngle);
-    console.info("Succeeded in getting geomagneticInfo levelIntensity" + data.levelIntensity);
-    console.info("Succeeded in getting geomagneticInfo totalIntensity" + data.totalIntensity);
-  }, (err: BusinessError) => {
-    console.error(`Failed to get geomagneticInfo. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to get geomagneticInfo. Code: ${e.code}, message: ${e.message}`);
-}
-```
-
+<a id="getgeomagneticinfo-1"></a>
 
 ## getGeomagneticInfo
 
@@ -115,9 +93,31 @@ function getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**
 
-参见 getGeomagneticInfo
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  const promise = sensor.getGeomagneticInfo({ latitude: 80, longitude: 0, altitude: 0 }, 1580486400000);
+  promise.then((data: sensor.GeomagneticResponse) => {
+    console.info("Succeeded in getting geomagneticInfo x" + data.x);
+    console.info("Succeeded in getting geomagneticInfo y" + data.y);
+    console.info("Succeeded in getting geomagneticInfo z" + data.z);
+    console.info("Succeeded in getting geomagneticInfo geomagneticDip" + data.geomagneticDip);
+    console.info("Succeeded in getting geomagneticInfo deflectionAngle" + data.deflectionAngle);
+    console.info("Succeeded in getting geomagneticInfo levelIntensity" + data.levelIntensity);
+    console.info("Succeeded in getting geomagneticInfo totalIntensity" + data.totalIntensity);
+  }, (err: BusinessError) => {
+    console.error(`Failed to get geomagneticInfo. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get geomagneticInfo. Code: ${e.code}, message: ${e.message}`);
+}
+```

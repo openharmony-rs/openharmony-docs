@@ -1,5 +1,9 @@
 # AddFormOptions
 
+```TypeScript
+export interface AddFormOptions
+```
+
 **起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

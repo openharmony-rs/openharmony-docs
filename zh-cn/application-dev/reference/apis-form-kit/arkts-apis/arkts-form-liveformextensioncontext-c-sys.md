@@ -1,5 +1,9 @@
 # LiveFormExtensionContext
 
+```TypeScript
+declare class LiveFormExtensionContext extends ExtensionContext
+```
+
 LiveFormExtensionContext是[LiveFormExtensionAbility](arkts-form-app-form-liveformextensionability-liveformextensionability-c.md)的上下文，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。它提供访问特定于LiveFormExtensionAbility资源的能力，支持在互动卡片中拉起应用页面，适用于需要在互动卡片中响应用户点击并跳转到应用页面的场景，解决了互动卡片无法主动拉起应用页面的限制问题。
 
 **继承/实现关系：** LiveFormExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
@@ -16,7 +20,7 @@ public connectServiceExtensionAbility(want: Want, connection: ConnectOptions): n
 
 将当前LiveFormExtensionAbility客户端连接到一个[ServiceExtensionAbility](../../../application-models/serviceextensionability-sys.md)服务端。
 
-调用该接口前，必须实现ConnectOptions接口。
+调用该接口前，必须实现[ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-connectoptions-i.md)接口。
 
 通过本接口连接成功后，LiveFormExtensionAbility可以通过ConnectOptions返回的[IRemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-iremoteobject-c.md)与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。
 
@@ -51,7 +55,7 @@ ServiceExtensionAbility提供后台服务扩展能力，支持后台运行并对
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 | [16501011](../errorcode-form.md#16501011-卡片不支持调用当前接口) | The form can not support this operation |
@@ -170,7 +174,7 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../../application
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 | [16501011](../errorcode-form.md#16501011-卡片不支持调用当前接口) | The form can not support this operation |
 

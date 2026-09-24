@@ -1,5 +1,9 @@
 # ConditionType（系统接口）
 
+```TypeScript
+interface ConditionType
+```
+
 提供 ConditionType 类型，包括 timeout、killSignal、maxBuffer。
 
 **起始版本：** 10

@@ -46,18 +46,6 @@ Actively requests to update location information.
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-radio.sendUpdateCellLocationRequest((err: BusinessError) => {
-    if (err) {
-        console.error(`sendUpdateCellLocationRequest failed, callback: err->${JSON.stringify(err)}`);
-        return;
-    }
-    console.info(`sendUpdateCellLocationRequest success.`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let slotId: number = 0;
 radio.sendUpdateCellLocationRequest(slotId, (err: BusinessError) => {
     if (err) {
@@ -68,17 +56,8 @@ radio.sendUpdateCellLocationRequest(slotId, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-radio.sendUpdateCellLocationRequest(slotId).then(() => {
-    console.info(`sendUpdateCellLocationRequest success.`);
-}).catch((err: BusinessError) => {
-    console.error(`sendUpdateCellLocationRequest failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="sendupdatecelllocationrequest-1"></a>
 
 ## sendUpdateCellLocationRequest
 
@@ -122,8 +101,19 @@ Actively requests to update location information.
 
 **Examples**
 
-See [sendUpdateCellLocationRequest](#sendupdatecelllocationrequest)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let slotId: number = 0;
+radio.sendUpdateCellLocationRequest(slotId).then(() => {
+    console.info(`sendUpdateCellLocationRequest success.`);
+}).catch((err: BusinessError) => {
+    console.error(`sendUpdateCellLocationRequest failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+
+<a id="sendupdatecelllocationrequest-2"></a>
 
 ## sendUpdateCellLocationRequest
 
@@ -161,4 +151,14 @@ Actively requests to update location information.
 
 **Examples**
 
-See [sendUpdateCellLocationRequest](#sendupdatecelllocationrequest)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+radio.sendUpdateCellLocationRequest((err: BusinessError) => {
+    if (err) {
+        console.error(`sendUpdateCellLocationRequest failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`sendUpdateCellLocationRequest success.`);
+});
+```

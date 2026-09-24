@@ -24,7 +24,7 @@ ContentSlot(content: Content)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [Content](arkts-arkui-content-t.md) | 是 | Content作为ContentSlot的管理器，通过Native侧提供的接口，可以注册并触发ContentSlot的上下树（即组件节点加入或移出组件渲染树）事件回调以及管理ContentSlot的子组件。 |
+| content | [Content](arkts-arkui-contentslot-comp-content-t.md) | 是 | Content作为ContentSlot的管理器，通过Native侧提供的接口，可以注册并触发ContentSlot的上下树（即组件节点加入或移出组件渲染树）事件回调以及管理ContentSlot的子组件。 |
 
 ## 汇总
 
@@ -32,10 +32,31 @@ ContentSlot(content: Content)
 
 | 名称 | 说明 |
 | --- | --- |
-| [Content](arkts-arkui-content-t.md) | 定义ComponentContent和NodeContent的基类。 |
+| [Content](arkts-arkui-contentslot-comp-content-t.md) | 定义ComponentContent和NodeContent的基类。 |
 
 ## 示例
 
-```TypeScript
 下面的示例展示了ContentSlot的基本用法。
+
+```TypeScript
+import { nativeNode } from 'libNativeNode.so'; // 开发者自己实现的so
+import { NodeContent, Content } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Parent {
+  private nodeContent: Content = new NodeContent();
+
+  aboutToAppear() {
+    // 通过C-API创建节点，并添加到管理器nodeContent上
+    nativeNode.createNativeNode(this.nodeContent);
+  }
+
+  build() {
+    Column() {
+      // 显示nodeContent管理器里存放的Native侧的组件
+      ContentSlot(this.nodeContent)
+    }
+  }
+}
 ```

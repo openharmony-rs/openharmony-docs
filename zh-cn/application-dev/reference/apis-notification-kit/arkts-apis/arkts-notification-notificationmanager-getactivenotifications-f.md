@@ -20,9 +20,7 @@ function getActiveNotifications(callback: AsyncCallback<Array<NotificationReques
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：**
-
-[setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) 设置角标个数。
+**参见：** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) 设置角标个数。
 
 **参数：**
 
@@ -34,7 +32,7 @@ function getActiveNotifications(callback: AsyncCallback<Array<NotificationReques
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -54,16 +52,8 @@ let getActiveNotificationsCallback = (err: BusinessError, data: Array<notificati
 notificationManager.getActiveNotifications(getActiveNotificationsCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.getActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
-  console.info(`Succeeded in getting active notifications, data is ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get active notifications. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getactivenotifications-1"></a>
 
 ## getActiveNotifications
 
@@ -79,9 +69,7 @@ function getActiveNotifications(): Promise<Array<NotificationRequest>>
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：**
-
-[setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) 设置角标个数。
+**参见：** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber-1) 设置角标个数。
 
 **返回值：**
 
@@ -99,4 +87,12 @@ function getActiveNotifications(): Promise<Array<NotificationRequest>>
 
 **示例**
 
-参见 getActiveNotifications
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
+  console.info(`Succeeded in getting active notifications, data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get active notifications. Code is ${err.code}, message is ${err.message}`);
+});
+```

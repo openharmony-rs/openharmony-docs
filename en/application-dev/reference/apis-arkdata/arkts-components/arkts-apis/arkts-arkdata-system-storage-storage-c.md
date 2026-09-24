@@ -1,5 +1,9 @@
 # Storage
 
+```TypeScript
+export default class Storage
+```
+
 **Since:** 3
 
 **Deprecated since:** 6

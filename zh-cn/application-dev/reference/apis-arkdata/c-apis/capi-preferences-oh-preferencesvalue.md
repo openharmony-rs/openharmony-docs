@@ -8,6 +8,8 @@ typedef struct OH_PreferencesValue OH_PreferencesValue
 
 定义PreferencesValue对象类型。
 
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
 **起始版本：** 13
 
 **相关模块：** [Preferences](capi-preferences.md)

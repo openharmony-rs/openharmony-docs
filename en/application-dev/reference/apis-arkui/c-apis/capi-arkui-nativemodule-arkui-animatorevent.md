@@ -8,6 +8,8 @@ typedef struct ArkUI_AnimatorEvent ArkUI_AnimatorEvent
 
 Defines the animator callback event object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

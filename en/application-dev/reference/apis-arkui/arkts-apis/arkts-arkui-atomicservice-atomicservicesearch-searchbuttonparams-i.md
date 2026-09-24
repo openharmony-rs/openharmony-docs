@@ -1,5 +1,9 @@
 # SearchButtonParams
 
+```TypeScript
+export interface SearchButtonParams
+```
+
 Sets the search button located next to the search text box.
 
 **Since:** 18
@@ -20,7 +24,7 @@ options?: SearchButtonOptions
 
 Font of the search text box. Default value: **{fontSize: '16fp',fontColor: '#ff3f97e9'}**
 
-**Type:** [SearchButtonOptions](../arkts-components/arkts-arkui-searchbuttonoptions-i.md)
+**Type:** [SearchButtonOptions](../arkts-components/arkts-arkui-search-comp-searchbuttonoptions-i.md)
 
 **Since:** 18
 

@@ -1,5 +1,9 @@
 # DLPManagerResult
 
+```TypeScript
+export interface DLPManagerResult
+```
+
 表示打开DLP权限管理应用的结果。
 
 **起始版本：** 11

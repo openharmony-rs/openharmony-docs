@@ -1,5 +1,9 @@
 # AppCrashPolicy
 
+```TypeScript
+interface AppCrashPolicy
+```
+
 Defines the application crash event configuration policy.
 
 **Since:** 24
@@ -24,6 +28,8 @@ Policy for the APP_CRASH event the value true means to the minidump capture capa
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
@@ -44,6 +50,8 @@ The default value is **false**.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
@@ -59,6 +67,8 @@ The policy for APP_CRASH event. Truncation size for crash logs. The value ranges
 **Type:** number
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
@@ -84,6 +94,8 @@ Note: The enabling behavior of an application takes effect only in its current l
 
 **Since:** 24
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
@@ -105,6 +117,8 @@ The default value is **false**.
 **Type:** boolean
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 

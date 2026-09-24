@@ -1,5 +1,9 @@
 # TiffPropertyKey
 
+```TypeScript
+enum TiffPropertyKey
+```
+
 Enumerates the properties available for the metadata of a TIFF image.
 
 > **NOTE:** 

@@ -4,6 +4,8 @@
 
 Provides APIs for obtaining and using a image filter.
 
+**System capability**: SystemCapability.Multimedia.ImageEffect.Core
+
 **Since**: 12
 
 ## Files

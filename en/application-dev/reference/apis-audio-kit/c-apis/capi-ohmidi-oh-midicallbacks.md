@@ -8,6 +8,8 @@ typedef struct OH_MIDICallbacks {...} OH_MIDICallbacks
 
 Client callbacks structure.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Related module**: [OHMIDI](capi-ohmidi.md)

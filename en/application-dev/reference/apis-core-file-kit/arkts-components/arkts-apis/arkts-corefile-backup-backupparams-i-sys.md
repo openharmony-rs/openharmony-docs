@@ -1,5 +1,9 @@
 # BackupParams (System API)
 
+```TypeScript
+interface BackupParams
+```
+
 Provides configuration parameters for backup and restore.
 
 @interface BackupParams

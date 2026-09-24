@@ -1,5 +1,9 @@
 # DeviceChangeType
 
+```TypeScript
+enum DeviceChangeType
+```
+
 Enumerates the device connection statuses.
 
 **Since:** 7

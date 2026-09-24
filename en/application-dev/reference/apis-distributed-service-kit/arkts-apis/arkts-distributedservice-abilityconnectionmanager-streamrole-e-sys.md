@@ -1,5 +1,9 @@
 # StreamRole (System API)
 
+```TypeScript
+export enum StreamRole
+```
+
 Stream transmission role.
 
 **Since:** 18

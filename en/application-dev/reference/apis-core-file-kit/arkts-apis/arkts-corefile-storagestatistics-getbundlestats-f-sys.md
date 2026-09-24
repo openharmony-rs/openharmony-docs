@@ -57,32 +57,6 @@ try {
 
   let packageName:string = bundleName;
   let index:number = resourceInfo.appIndex;
-  storageStatistics.getBundleStats(packageName, index).then((BundleStats: storageStatistics.BundleStats) => {
-    hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
-  });
-
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed with error: %{public}s', message);
-}
-```
-
-```TypeScript
-import { bundleResourceManager } from '@kit.AbilityKit';
-import { storageStatistics } from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let bundleName = "com.example.myapplication";
-let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
-try {
-  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
-  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
-
-  let packageName:string = bundleName;
-  let index:number = resourceInfo.appIndex;
   storageStatistics.getBundleStats(packageName, (err: BusinessError, BundleStats: storageStatistics.BundleStats) => {
     if (err) {
       hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
@@ -97,6 +71,8 @@ try {
 }
 ```
 
+
+<a id="getbundlestats-1"></a>
 
 ## getBundleStats
 
@@ -140,8 +116,34 @@ Obtains the storage space of an application, in bytes. This API uses a promise t
 
 **Examples**
 
-See [getBundleStats](#getbundlestats)
+```TypeScript
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+let bundleName = "com.example.myapplication";
+let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
+  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+
+  let packageName:string = bundleName;
+  let index:number = resourceInfo.appIndex;
+  storageStatistics.getBundleStats(packageName, index).then((BundleStats: storageStatistics.BundleStats) => {
+    hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
+  });
+
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed with error: %{public}s', message);
+}
+```
+
+
+<a id="getbundlestats-2"></a>
 
 ## getBundleStats
 
@@ -151,7 +153,7 @@ function getBundleStats(packageName: string, option?: BundleStatsOptions): Promi
 
 Obtains the storage space of an application, in bytes. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.STORAGE_MANAGER
 
@@ -185,4 +187,56 @@ Obtains the storage space of an application, in bytes. This API uses a promise t
 
 **Examples**
 
-See [getBundleStats](#getbundlestats)
+```TypeScript
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = "com.example.myapplication";
+let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
+  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+
+  let packageName:string = bundleName;
+  let index:number = resourceInfo.appIndex;
+  storageStatistics.getBundleStats(packageName, index).then((BundleStats: storageStatistics.BundleStats) => {
+    hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
+  });
+
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed with error: %{public}s', message);
+}
+```
+
+```TypeScript
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = "com.example.myapplication";
+let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
+  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+
+  let packageName:string = bundleName;
+  let index:number = resourceInfo.appIndex;
+  storageStatistics.getBundleStats(packageName, (err: BusinessError, BundleStats: storageStatistics.BundleStats) => {
+    if (err) {
+      hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
+    } else {
+      hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
+    }
+  }, index);
+
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed: %{public}s', message);
+}
+```

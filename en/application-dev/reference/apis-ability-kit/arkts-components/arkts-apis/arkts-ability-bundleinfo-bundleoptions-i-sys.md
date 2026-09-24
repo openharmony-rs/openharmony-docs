@@ -1,5 +1,9 @@
 # BundleOptions (System API)
 
+```TypeScript
+export interface BundleOptions
+```
+
 The bundle options of bundle manager
 
 **Since:** 20

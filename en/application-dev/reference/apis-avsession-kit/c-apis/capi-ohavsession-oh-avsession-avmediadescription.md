@@ -8,6 +8,8 @@ typedef struct OH_AVSession_AVMediaDescription OH_AVSession_AVMediaDescription
 
 Declaring the AVMediaDescription. The instance of AVMediaDescription set by application for current resource.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Related module**: [OHAVSession](capi-ohavsession.md)

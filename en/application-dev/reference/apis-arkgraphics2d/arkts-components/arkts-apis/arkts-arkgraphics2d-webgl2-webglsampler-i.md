@@ -1,5 +1,9 @@
 # WebGLSampler
 
+```TypeScript
+interface WebGLSampler
+```
+
 WebGL 2.0
 
 **Since:** 7

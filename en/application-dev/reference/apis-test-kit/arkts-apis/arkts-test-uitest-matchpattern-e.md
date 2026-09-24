@@ -1,5 +1,9 @@
 # MatchPattern
 
+```TypeScript
+declare enum MatchPattern
+```
+
 Enumerates the match patterns supported for component attributes.
 
 **Since:** 8

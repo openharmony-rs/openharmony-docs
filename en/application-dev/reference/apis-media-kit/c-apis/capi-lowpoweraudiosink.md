@@ -4,6 +4,8 @@
 
 The LowPowerAudioSink sub module provides variables, properties, and functions for lowpower audio sink.
 
+**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **Since**: 20
 
 ## Files

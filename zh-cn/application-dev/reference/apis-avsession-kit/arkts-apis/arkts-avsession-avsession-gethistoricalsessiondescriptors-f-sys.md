@@ -33,25 +33,12 @@ function getHistoricalSessionDescriptors(maxSize: number, callback: AsyncCallbac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
-
-```TypeScript
-avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
-  console.info(`Succeeded in getting historical session descriptors, length: ${descriptors.length}`);
-  if (descriptors.length > 0 && descriptors[0]) {
-    console.info(`Succeeded in getting historical session descriptor, isActive: ${descriptors[0].isActive}`);
-    console.info(`Succeeded in getting historical session descriptor, type: ${descriptors[0].type}`);
-    console.info(`Succeeded in getting historical session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
-    console.info(`Succeeded in getting historical session descriptor, sessionId: ${descriptors[0].sessionId}`);
-    console.info(`Succeeded in getting historical session descriptor, bundleName: ${descriptors[0].elementName.bundleName}`);
-  }
-});
-```
 
 ```TypeScript
 avSession.getHistoricalSessionDescriptors(1, (descriptors: avSession.AVSessionDescriptor[]) => { 
@@ -66,6 +53,8 @@ avSession.getHistoricalSessionDescriptors(1, (descriptors: avSession.AVSessionDe
 });
 ```
 
+
+<a id="gethistoricalsessiondescriptors-1"></a>
 
 ## getHistoricalSessionDescriptors
 
@@ -99,11 +88,22 @@ function getHistoricalSessionDescriptors(maxSize?: number): Promise<Array<Readon
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
-参见 [getHistoricalSessionDescriptors](#gethistoricalsessiondescriptors)
+```TypeScript
+avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
+  console.info(`Succeeded in getting historical session descriptors, length: ${descriptors.length}`);
+  if (descriptors.length > 0 && descriptors[0]) {
+    console.info(`Succeeded in getting historical session descriptor, isActive: ${descriptors[0].isActive}`);
+    console.info(`Succeeded in getting historical session descriptor, type: ${descriptors[0].type}`);
+    console.info(`Succeeded in getting historical session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
+    console.info(`Succeeded in getting historical session descriptor, sessionId: ${descriptors[0].sessionId}`);
+    console.info(`Succeeded in getting historical session descriptor, bundleName: ${descriptors[0].elementName.bundleName}`);
+  }
+});
+```

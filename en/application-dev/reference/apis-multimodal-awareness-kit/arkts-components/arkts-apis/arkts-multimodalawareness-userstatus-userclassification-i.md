@@ -1,5 +1,9 @@
 # UserClassification
 
+```TypeScript
+export interface UserClassification
+```
+
 Defines the user age group detection result.
 
 **Since:** 20

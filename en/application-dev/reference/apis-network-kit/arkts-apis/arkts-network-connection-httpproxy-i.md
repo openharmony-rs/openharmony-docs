@@ -1,5 +1,9 @@
 # HttpProxy
 
+```TypeScript
+export interface HttpProxy
+```
+
 Represents the HTTP proxy configuration.
 
 **Since:** 10

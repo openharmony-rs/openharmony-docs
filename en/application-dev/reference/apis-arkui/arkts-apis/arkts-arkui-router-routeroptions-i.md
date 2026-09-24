@@ -1,5 +1,9 @@
 # RouterOptions
 
+```TypeScript
+interface RouterOptions
+```
+
 Describes the page routing options.
 
 **Since:** 8

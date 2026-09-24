@@ -1,5 +1,9 @@
 # Template (System API)
 
+```TypeScript
+interface Template
+```
+
 Defines the struct of the template used in a subscription.
 
 **Since:** 10

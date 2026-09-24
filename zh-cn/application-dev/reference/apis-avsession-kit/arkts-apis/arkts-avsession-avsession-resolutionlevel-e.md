@@ -1,5 +1,9 @@
 # ResolutionLevel
 
+```TypeScript
+enum ResolutionLevel
+```
+
 枚举，设备所支持的分辨率。
 
 **起始版本：** 19

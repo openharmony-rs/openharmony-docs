@@ -1,5 +1,9 @@
 # ShowToastOptions
 
+```TypeScript
+interface ShowToastOptions
+```
+
 Toast的选项。
 
 **起始版本：** 9
@@ -38,7 +42,7 @@ backgroundBlurStyle?: BlurStyle
 
 Toast的背板模糊材质。<br>默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT_ULTRA_THICK。<br>**说明：** <br>设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。
 
-**类型：** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**类型：** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **起始版本：** 12
 
@@ -78,6 +82,8 @@ bottom?: string | number
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -93,6 +99,8 @@ duration?: number
 **类型：** number
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -126,7 +134,7 @@ hoverModeArea?: HoverModeAreaType
 
 响应悬停态时，弹窗的显示区域。<br>默认值：HoverModeAreaType.BOTTOM_SCREEN，默认显示在下半屏。
 
-**类型：** [HoverModeAreaType](../arkts-components/arkts-arkui-hovermodeareatype-e.md)
+**类型：** [HoverModeAreaType](../arkts-components/arkts-arkui-common-comp-hovermodeareatype-e.md)
 
 **默认值：** HoverModeAreaType.BOTTOM_SCREEN
 
@@ -149,6 +157,8 @@ message: string | Resource
 **类型：** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -180,7 +190,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 Toast的背板阴影。<br>默认值：ShadowStyle.OUTER_DEFAULT_MD
 
-**类型：** [ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-shadowstyle-e.md)
+**类型：** [ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-common-comp-shadowstyle-e.md)
 
 **起始版本：** 12
 
@@ -216,9 +226,9 @@ showMode?: ToastShowMode
 systemMaterial?: SystemUiMaterial
 ```
 
-设置组件的系统材质。<br>默认值：如果主动设置了backgroundBlurStyle或backgroundColor接口，默认值是无系统材质效果，否则默认值是style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)对象。设置undefined时与默认值保持一致。<br>**说明：** <br>不同系统材质对应不同的属性影响效果，该接口影响背景色backgroundColor、边框颜色borderColor、边框宽度borderWidth、阴影shadow，不建议与上述接口一起使用。
+设置组件的系统材质。<br>默认值：如果主动设置了backgroundBlurStyle或backgroundColor接口，默认值是无系统材质效果，否则默认值是style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)对象。设置undefined时与默认值保持一致。<br>**说明：** <br>不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)，不建议与上述接口一起使用。
 
-**类型：** [SystemUiMaterial](../arkts-components/arkts-arkui-systemuimaterial-t.md)
+**类型：** [SystemUiMaterial](../arkts-components/arkts-arkui-common-comp-systemuimaterial-t.md)
 
 **起始版本：** 26.0.0
 

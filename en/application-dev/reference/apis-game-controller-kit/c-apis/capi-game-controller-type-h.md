@@ -32,6 +32,8 @@ enum GameController_ErrorCode
 
 Defines error codes of the game controller.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 | Enum item | Description |

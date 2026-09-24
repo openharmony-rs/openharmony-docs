@@ -1,5 +1,9 @@
 # FontWeight
 
+```TypeScript
+enum FontWeight
+```
+
 字重枚举。
 
 **起始版本：** 12

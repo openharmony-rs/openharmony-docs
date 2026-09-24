@@ -4,6 +4,8 @@
 
 Provide C interface for the Transient task management.
 
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+
 **起始版本：** 13
 
 ## 文件汇总

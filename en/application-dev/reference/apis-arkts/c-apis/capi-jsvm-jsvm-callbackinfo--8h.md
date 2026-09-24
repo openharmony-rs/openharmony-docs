@@ -8,6 +8,8 @@ typedef struct JSVM_CallbackInfo__* JSVM_CallbackInfo
 
 To represent a JavaScript VM callback additional information.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 11
 
 **Related module**: [JSVM](capi-jsvm.md)

@@ -1,5 +1,9 @@
 # PhysicalUnit
 
+```TypeScript
+enum PhysicalUnit
+```
+
 定义物理单位的枚举。
 
 **起始版本：** 20

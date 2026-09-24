@@ -1,6 +1,10 @@
 # ChipGroupV2SpaceConfig
 
-Defines chip group space config.
+```TypeScript
+export interface ChipGroupV2SpaceConfig
+```
+
+Defines the left and right padding of **ChipGroupV2** and the spacing configuration between **ChipV2** components.
 
 **Since:** 26.0.0
 
@@ -18,7 +22,13 @@ import { ChipGroupV2ItemConfig, ChipGroupV2Item, ChipGroupV2Items, ChipGroupV2It
 endSpace?: Length
 ```
 
-End space.
+Right padding (percentage not supported).
+
+Default value: **16**
+
+Unit: vp
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [Length](arkts-arkui-length-t.md)
 
@@ -36,7 +46,22 @@ End space.
 itemSpace?: string | number
 ```
 
-Space between items.
+Spacing between **ChipV2** components (percentage not supported).
+
+Value range:
+
+- number type: [0, +∞), for example, 0, 8, 16, 24.5.  
+- string type: a string in fp | vp | px | lpx units with a numeric value greater than or equal to 0, for example,  
+"8vp", "16fp", "12px", "10lpx".  
+- Not supported: negative numbers, percentage units, invalid string formats.
+
+If a value outside the valid range or in an unsupported format is passed, the default value is used.
+
+Default value: **8**
+
+Unit: vp
+
+If the value is undefined, the default value is used.
 
 **Type:** string &#124; number
 
@@ -54,7 +79,13 @@ Space between items.
 startSpace?: Length
 ```
 
-Start space.
+Left padding (percentage not supported).
+
+Default value: **16**
+
+Unit: vp
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [Length](arkts-arkui-length-t.md)
 

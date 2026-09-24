@@ -1,5 +1,9 @@
 # TargetedGestureProposal
 
+```TypeScript
+export abstract class TargetedGestureProposal extends BaseGestureHandlingProposal
+```
+
 带目标节点的智慧手势处理基类。
 
 **继承/实现关系：** TargetedGestureProposal extends [BaseGestureHandlingProposal](arkts-arkui-arkui-uicontext-basegesturehandlingproposal-c.md)

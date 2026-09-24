@@ -1,5 +1,9 @@
 # ConnectResult
 
+```TypeScript
+interface ConnectResult
+```
+
 客户端调用connect()后，返回的连接结果。
 
 **起始版本：** 20
@@ -40,7 +44,7 @@ reason: number
 - 32390201：表示服务端服务未启动。  
 - 32390300：表示内部错误。
 
-更多关于错误码的详细介绍请参考增强连接错误码。
+更多关于错误码的详细介绍请参考[增强连接错误码](../../../reference/apis-distributedservice-kit/errorcode-link-enhance.md)。
 
 **类型：** number
 

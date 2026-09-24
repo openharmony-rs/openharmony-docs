@@ -1,5 +1,9 @@
 # IRemoteAuthCallback (System API)
 
+```TypeScript
+interface IRemoteAuthCallback
+```
+
 Defines the callback of remote authentication. This API is used in remote authentication scenarios to obtain parameters of the remote authentication page and return the authentication result.
 
 **Since:** 26.0.0

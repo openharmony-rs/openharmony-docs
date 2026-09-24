@@ -1,5 +1,9 @@
 # CollaborateEventType
 
+```TypeScript
+enum CollaborateEventType
+```
+
 协同事件类型的枚举。
 
 **起始版本：** 18

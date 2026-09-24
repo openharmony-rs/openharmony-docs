@@ -8,6 +8,8 @@ typedef struct HiDebug_NativeStackFrame {...} HiDebug_NativeStackFrame
 
 Defines the native stack frame content.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 20
 
 **Related module**: [HiDebug](capi-hidebug.md)

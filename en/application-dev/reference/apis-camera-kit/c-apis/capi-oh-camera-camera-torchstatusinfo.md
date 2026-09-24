@@ -8,6 +8,8 @@ typedef struct Camera_TorchStatusInfo {...} Camera_TorchStatusInfo
 
 The struct describes the flashlight status information.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

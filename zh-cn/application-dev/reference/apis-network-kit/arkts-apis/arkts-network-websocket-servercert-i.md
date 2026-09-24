@@ -1,5 +1,9 @@
 # ServerCert
 
+```TypeScript
+export interface ServerCert
+```
+
 指定服务端证书的信息，包括服务端证书文件路径和服务端证书的私钥文件路径。
 
 **起始版本：** 19

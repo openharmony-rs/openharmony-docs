@@ -37,8 +37,8 @@ function createDataShareHelper(context: Context, uri: string, callback: AsyncCal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 19+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 19+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | [15700010](../errorcode-datashare.md#15700010-创建datasharehelper异常) | The DataShareHelper fails to be initialized. |
 
 **示例**
@@ -70,58 +70,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
-    let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
-    let context = this.context;
-    try {
-      dataShare.createDataShareHelper(context, uri, {isProxy : true}, (err:BusinessError, data:dataShare.DataShareHelper) => {
-        if (err !== undefined) {
-          console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
-          return;
-        }
-        console.info("createDataShareHelper succeed, data : " + data);
-        dataShareHelper = data;
-      });
-    } catch (err) {
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`Failed to create DataShareHelper. Code: ${code}, message: ${message}`);
-    };
-  }
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
-    let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
-    let context = this.context;
-    try {
-      dataShare.createDataShareHelper(context, uri, {isProxy : true}).then((data: dataShare.DataShareHelper) => {
-        console.info("createDataShareHelper succeed, data : " + data);
-        dataShareHelper = data;
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
-      });
-    } catch (err) {
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`Failed to create DataShareHelper. Code: ${code}, message: ${message}`);
-    };
-  }
-}
-```
-
+<a id="createdatasharehelper-1"></a>
 
 ## createDataShareHelper
 
@@ -160,14 +110,41 @@ function createDataShareHelper(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 19+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 19+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | [15700010](../errorcode-datashare.md#15700010-创建datasharehelper异常) | The DataShareHelper fails to be initialized. |
 
 **示例**
 
-参见 [createDataShareHelper](#createdatasharehelper)
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
+    let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
+    let context = this.context;
+    try {
+      dataShare.createDataShareHelper(context, uri, {isProxy : true}, (err:BusinessError, data:dataShare.DataShareHelper) => {
+        if (err !== undefined) {
+          console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        console.info("createDataShareHelper succeed, data : " + data);
+        dataShareHelper = data;
+      });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`Failed to create DataShareHelper. Code: ${code}, message: ${message}`);
+    };
+  }
+}
+```
+
+
+<a id="createdatasharehelper-2"></a>
 
 ## createDataShareHelper
 
@@ -210,10 +187,33 @@ function createDataShareHelper(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 19+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 19+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | [15700010](../errorcode-datashare.md#15700010-创建datasharehelper异常) | The DataShareHelper fails to be initialized. |
 
 **示例**
 
-参见 [createDataShareHelper](#createdatasharehelper)
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
+    let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
+    let context = this.context;
+    try {
+      dataShare.createDataShareHelper(context, uri, {isProxy : true}).then((data: dataShare.DataShareHelper) => {
+        console.info("createDataShareHelper succeed, data : " + data);
+        dataShareHelper = data;
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`Failed to create DataShareHelper. Code: ${code}, message: ${message}`);
+    };
+  }
+}
+```

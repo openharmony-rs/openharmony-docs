@@ -26,6 +26,14 @@
 | [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md) | 三维向量，通常用于表示3D空间中的点、方向或向量变换，由x、y和z三个分量组成。 |
 | [Vec4](arkts-arkgraphics3d-scenetypes-vec4-i.md) | 四维向量，通常用于表示4D空间中的点、方向或向量变换，由x、y、z和w四个分量组成。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [Position3](arkts-arkgraphics3d-position3-t.md) | 用于表示3维空间中物体的位置。类型为三维向量，单位为世界坐标系下的场景单位（比如cm、m、km等），可取任意值。 |
+| [Rotation3](arkts-arkgraphics3d-rotation3-t.md) | 用于表示3维空间中物体的旋转。类型为三维向量，单位为弧度（rad），可取任意值。 |
+| [Scale3](arkts-arkgraphics3d-scale3-t.md) | 用于表示3维空间中物体的缩放。类型为三维向量，可取任意值。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -34,11 +42,3 @@
 | [PrimitiveTopology](arkts-arkgraphics3d-scenetypes-primitivetopology-e.md) | 图元拓扑枚举，在顶点处理过程中，指定顶点的不同处理方式。 |
 | [RenderingPipelineType](arkts-arkgraphics3d-scenetypes-renderingpipelinetype-e.md) | 渲染管线类型枚举。 |
 | [ShadowAlgorithmType](arkts-arkgraphics3d-scenetypes-shadowalgorithmtype-e.md) | 阴影算法的枚举类型。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [Position3](arkts-arkgraphics3d-position3-t.md) | 用于表示3维空间中物体的位置。类型为三维向量，单位为世界坐标系下的场景单位（比如cm、m、km等），可取任意值。 |
-| [Rotation3](arkts-arkgraphics3d-rotation3-t.md) | 用于表示3维空间中物体的旋转。类型为三维向量，单位为弧度（rad），可取任意值。 |
-| [Scale3](arkts-arkgraphics3d-scale3-t.md) | 用于表示3维空间中物体的缩放。类型为三维向量，可取任意值。 |

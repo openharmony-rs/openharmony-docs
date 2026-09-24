@@ -53,56 +53,8 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenClass: screen.Screen | null = null;
-// Obtain all screen objects.
-let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
-promise.then((data: Array<screen.Screen>) => {
-  if (data.length > 0) {
-    screenClass = data[0];
-  }
-  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let screenClass: screen.Screen | null = null;
-// Obtain all screen objects.
-screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
-  const errCode: number = err.code;
-  if (errCode) {
-    console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
-  if (data.length > 0) {
-    screenClass = data[0];
-  }
-}, true);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let screenClass: screen.Screen | null = null;
-// Obtain all screen objects.
-let promise: Promise<Array<screen.Screen>> = screen.getAllScreens(true);
-promise.then((data: Array<screen.Screen>) => {
-  if (data.length > 0) {
-    screenClass = data[0];
-  }
-  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getallscreens-1"></a>
 
 ## getAllScreens
 
@@ -136,8 +88,26 @@ Obtains all screens. This API uses an asynchronous callback to return the result
 
 **Examples**
 
-See [getAllScreens](#getallscreens)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let screenClass: screen.Screen | null = null;
+// Obtain all screen objects.
+screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
+  if (data.length > 0) {
+    screenClass = data[0];
+  }
+}, true);
+```
+
+
+<a id="getallscreens-2"></a>
 
 ## getAllScreens
 
@@ -168,8 +138,24 @@ Obtains all screens. This API uses a promise to return the result.
 
 **Examples**
 
-See [getAllScreens](#getallscreens)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let screenClass: screen.Screen | null = null;
+// Obtain all screen objects.
+let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
+promise.then((data: Array<screen.Screen>) => {
+  if (data.length > 0) {
+    screenClass = data[0];
+  }
+  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+
+<a id="getallscreens-3"></a>
 
 ## getAllScreens
 
@@ -208,4 +194,18 @@ Obtains all screens. This API uses a promise to return the result.
 
 **Examples**
 
-See [getAllScreens](#getallscreens)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenClass: screen.Screen | null = null;
+// Obtain all screen objects.
+let promise: Promise<Array<screen.Screen>> = screen.getAllScreens(true);
+promise.then((data: Array<screen.Screen>) => {
+  if (data.length > 0) {
+    screenClass = data[0];
+  }
+  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
+});
+```

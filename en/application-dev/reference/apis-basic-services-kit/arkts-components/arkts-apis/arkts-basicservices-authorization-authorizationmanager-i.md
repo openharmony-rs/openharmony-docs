@@ -1,8 +1,12 @@
 # AuthorizationManager
 
+```TypeScript
+interface AuthorizationManager
+```
+
 Defines the authorization manager, which is used to request and check the authorization.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -20,7 +24,7 @@ hasAuthorization(privilege: Privilege): Promise<boolean>
 
 Checks whether the current process has authorization for the specified privilege. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -54,7 +58,7 @@ Requests that the specified privilege be granted to the current process. This AP
 
 When the application is in the foreground and there is no valid authorization, the authorization dialog is displayed in modal application mode. If a valid authorization already exists, it will be reused.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
 

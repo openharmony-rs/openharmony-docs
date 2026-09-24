@@ -1,5 +1,9 @@
 # ClearConfig (System API)
 
+```TypeScript
+interface ClearConfig
+```
+
 Defines the clearance configuration of a device-cloud synergy database.
 
 **Since:** 23

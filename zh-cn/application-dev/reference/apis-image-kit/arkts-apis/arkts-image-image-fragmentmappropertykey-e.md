@@ -1,5 +1,9 @@
 # FragmentMapPropertyKey
 
+```TypeScript
+enum FragmentMapPropertyKey
+```
+
 表示水印裁剪图图片信息的枚举。
 
 **起始版本：** 13

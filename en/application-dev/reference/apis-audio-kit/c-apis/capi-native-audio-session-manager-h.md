@@ -65,7 +65,7 @@ Declare audio session manager related interfaces.<br> This file interfaces are u
 | [OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)](#oh_audiosessionmanager_registercurrentinputdevicechangecallback) | - | Register the audio session input device change event callback. |
 | [OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)](#oh_audiosessionmanager_unregistercurrentinputdevicechangecallback) | - | Unregister the audio session input device change event callback. |
 | [OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *audioDeviceDescriptor)](#oh_audiosessionmanager_releasedevice) | - | Release the audio device descriptor object. |
-| [OH_AudioCommon_Result OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers(OH_AudioSessionManager *audioSessionManager, bool enable)](#oh_audiosessionmanager_enablemutesuggestionwhenmixwithothers) | - | Enables mute suggestion callback function when using {@link #CONCURRENCY_MIX_WITH_OTHERS} mode.<br>Usually when using mix mode, application won't receive state change event when there is another audio playing<br>simultaneously. But in some scenarios, like game or radio, the application may intend to mute its audio to<br>achieve better user experience.<br>If enabled, the mute and unmute suggestion hint will be sent by [OH_AudioSession_StateChangedCallback](capi-native-audio-session-manager-h.md#oh_audiosession_statechangedcallback)<br>registered by [OH_AudioSessionManager_RegisterStateChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registerstatechangecallback). Mute suggestion means there is<br>another application starting non-mixable audio.<br>This function only supports audio session with [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) set and activated with<br>{@link #CONCURRENCY_MIX_WITH_OTHERS} mode. And it takes effect only once during activation, so application need to enable it every time before activation. |
+| [OH_AudioCommon_Result OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers(OH_AudioSessionManager *audioSessionManager, bool enable)](#oh_audiosessionmanager_enablemutesuggestionwhenmixwithothers) | - | Enables mute suggestion callback function when using [CONCURRENCY_MIX_WITH_OTHERS](capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode) mode. Usually when using mix mode, application won't receive state change event when there is another audio playing simultaneously. But in some scenarios, like game or radio, the application may intend to mute its audio to achieve better user experience. If enabled, the mute and unmute suggestion hint will be sent by [OH_AudioSession_StateChangedCallback](capi-native-audio-session-manager-h.md#oh_audiosession_statechangedcallback) registered by [OH_AudioSessionManager_RegisterStateChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registerstatechangecallback). Mute suggestion means there is another application starting non-mixable audio. This function only supports audio session with [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) set and activated with [CONCURRENCY_MIX_WITH_OTHERS](capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode) mode. And it takes effect only once during activation, so application need to enable it every time before activation. |
 | [bool OH_AudioSessionManager_IsOtherMediaPlaying(OH_AudioSessionManager *audioSessionManager)](#oh_audiosessionmanager_isothermediaplaying) | - | Returns if there is any other application playing audio in media usage, including media session activated. |
 | [OH_AudioCommon_Result OH_AudioSessionManager_SetCaptureMuteHint(OH_AudioSessionManager *audioSessionManager, bool mute)](#oh_audiosessionmanager_setcapturemutehint) | - | Sets recording mute state to audio system. This method is used as a hint for power optimization, it does not mute the recording stream, only affects internal processing strategy. Audio system may disable some recording effects when application notifies its muted state to system. Mute hint state can only be set when there is at least one running stream in current process. |
 | [OH_AudioCommon_Result OH_AudioSessionManager_SetBehavior(OH_AudioSessionManager *audioSessionManager, uint32_t behavior)](#oh_audiosessionmanager_setbehavior) | - | Set audio session behavior parameters (supporting multiple flag combinations) This interface takes effect only after the interface [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) is called. Each time you call this interface to set parameters, you need to call the interface [OH_AudioSessionManager_ActivateAudioSession](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) again for the settings to take effect. |
@@ -92,6 +92,8 @@ enum OH_AudioSession_Scene
 
 Declare the audio session scene.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 | Enum item | Description |
@@ -109,6 +111,8 @@ enum OH_AudioSession_StateChangeHint
 **Description**
 
 Declare the audio session state change hints.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -135,6 +139,8 @@ enum OH_AudioSession_OutputDeviceChangeRecommendedAction
 
 Declare the recommend action when device change.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 | Enum item | Description |
@@ -152,6 +158,8 @@ enum OH_AudioSession_DeactivatedReason
 
 Declare the audio deactivated reasons.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -168,6 +176,8 @@ enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 **Description**
 
 Enumerates the categories application prefer to use when recording with bluetooth and nearlink.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 21
 
@@ -191,6 +201,8 @@ typedef void (*OH_AudioSession_StateChangedCallback)(OH_AudioSession_StateChange
 
 This function pointer will point to the callback function that is used to return the audio session state change event.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -209,14 +221,16 @@ typedef void (*OH_AudioSession_AvailableDeviceChangedCallback)(OH_AudioDevice_Ch
 
 This function pointer will point to the callback function that is used to return the changing audio device descriptors. There may be more than one audio device descriptor returned.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 21
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioDevice_ChangeType type | the {@link OH_AudioDevice_ChangeType} is connect or disconnect. |
-| OH_AudioDeviceDescriptorArray \*audioDeviceDescriptorArray | the {@link OH_AudioDeviceDescriptorArray} pointer variable which will be set the audio device descriptors value. Do not release the audioDeviceDescriptorArray pointer separately instead call [OH_AudioSessionManager_ReleaseDevices](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_releasedevices) to release the DeviceDescriptor array when it is no use anymore. |
+| OH_AudioDevice_ChangeType type | the [OH_AudioDevice_ChangeType](capi-native-audio-device-base-h.md#oh_audiodevice_changetype) is connect or disconnect. |
+| OH_AudioDeviceDescriptorArray \*audioDeviceDescriptorArray | the [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) pointer variable which will be set the audio device descriptors value. Do not release the audioDeviceDescriptorArray pointer separately instead call [OH_AudioSessionManager_ReleaseDevices](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_releasedevices) to release the DeviceDescriptor array when it is no use anymore. |
 
 ### OH_AudioSession_CurrentInputDeviceChangedCallback()
 
@@ -228,14 +242,16 @@ typedef void (*OH_AudioSession_CurrentInputDeviceChangedCallback)(OH_AudioDevice
 
 This function pointer will point to the callback function that is used to return the audio session input device change event.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 21
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| audioDeviceDescriptorArray | the {@link OH_AudioDeviceDescriptorArray} pointer variable which will be set the audio input device descriptors value. Do not release the audioDeviceDescriptorArray pointer separately instead call [OH_AudioSessionManager_ReleaseDevices](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_releasedevices) to release the DeviceDescriptor array when it is no use anymore. |
-| OH_AudioStream_DeviceChangeReason changeReason | the {@link #OH_AudioStream_DeviceChangeReason} indicates that why does the input device changes. |
+| audioDeviceDescriptorArray | the [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) pointer variable which will be set the audio input device descriptors value. Do not release the audioDeviceDescriptorArray pointer separately instead call [OH_AudioSessionManager_ReleaseDevices](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_releasedevices) to release the DeviceDescriptor array when it is no use anymore. |
+| OH_AudioStream_DeviceChangeReason changeReason | the [OH_AudioStream_DeviceChangeReason](capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason) indicates that why does the input device changes. |
 
 ### OH_AudioSession_CurrentOutputDeviceChangedCallback()
 
@@ -247,14 +263,16 @@ typedef void (*OH_AudioSession_CurrentOutputDeviceChangedCallback)(OH_AudioDevic
 
 This function pointer will point to the callback function that is used to return the audio session device change event.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| audioDeviceDescriptorArray | the {@link OH_AudioDeviceDescriptorArray} pointer variable which will be set the audio device descriptors value. Do not release the audioDeviceDescriptorArray pointer separately instead call [OH_AudioSessionManager_ReleaseDevices](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_releasedevices) to release the DeviceDescriptor array when it is no use anymore. |
-| OH_AudioStream_DeviceChangeReason changeReason | the {@link #OH_AudioStream_DeviceChangeReason} indicates that why does the device changes. |
+| audioDeviceDescriptorArray | the [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) pointer variable which will be set the audio device descriptors value. Do not release the audioDeviceDescriptorArray pointer separately instead call [OH_AudioSessionManager_ReleaseDevices](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_releasedevices) to release the DeviceDescriptor array when it is no use anymore. |
+| OH_AudioStream_DeviceChangeReason changeReason | the [OH_AudioStream_DeviceChangeReason](capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason) indicates that why does the device changes. |
 | [OH_AudioSession_OutputDeviceChangeRecommendedAction](capi-native-audio-session-manager-h.md#oh_audiosession_outputdevicechangerecommendedaction) recommendedAction | the [OH_AudioSession_OutputDeviceChangeRecommendedAction](capi-native-audio-session-manager-h.md#oh_audiosession_outputdevicechangerecommendedaction) recommend action when device change. |
 
 ### OH_AudioSession_DeactivatedCallback()
@@ -266,6 +284,8 @@ typedef int32_t (*OH_AudioSession_DeactivatedCallback)(OH_AudioSession_Deactivat
 **Description**
 
 This function pointer will point to the callback function that is used to return the audio session deactivated event.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -285,6 +305,8 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioSessionManager(OH_AudioSessionMana
 
 Fetch the audio session manager handle. The audio session manager handle should be the first parameter in audio session related functions
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -297,7 +319,7 @@ Fetch the audio session manager handle. The audio session manager handle should 
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} if system state error |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds  or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) if system state error |
 
 ### OH_AudioSessionManager_ActivateAudioSession()
 
@@ -309,6 +331,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_ActivateAudioSession(OH_AudioSessio
 
 Activate the audio session for the current pid application. If [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) is called, it will take focus when calling this method. If you want to take focus again after [OH_AudioSessionManager_DeactivateAudioSession](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_deactivateaudiosession) is called, you must call [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) again.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -316,13 +340,13 @@ Activate the audio session for the current pid application. If [OH_AudioSessionM
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | the [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) returned by the [OH_AudioManager_GetAudioSessionManager](capi-native-audio-session-manager-h.md#oh_audiomanager_getaudiosessionmanager) |
-| const OH_AudioSession_Strategy *strategy | pointer of {@link #OH_AudioSession_Strategy} which is used for setting audio session strategy |
+| const OH_AudioSession_Strategy *strategy | pointer of [OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md) which is used for setting audio session strategy |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | <ul><li>{@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds</li><li><br>   {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails</li><li><br>   {@link #AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE} if system illegal state</li></ul> |
+| OH_AudioCommon_Result | <ul><li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds</li><li>     [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails</li><li>     [AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result) if system illegal state</li></ul> |
 
 ### OH_AudioSessionManager_DeactivateAudioSession()
 
@@ -334,6 +358,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_DeactivateAudioSession(OH_AudioSess
 
 Deactivate the audio session for the current pid application.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -346,7 +372,7 @@ Deactivate the audio session for the current pid application.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | <ul><li>{@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds</li><li><br>   {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails</li><li><br>   {@link #AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE} if system illegal state</li></ul> |
+| OH_AudioCommon_Result | <ul><li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds</li><li>     [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails</li><li>     [AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result) if system illegal state</li></ul> |
 
 ### OH_AudioSessionManager_IsAudioSessionActivated()
 
@@ -357,6 +383,8 @@ bool OH_AudioSessionManager_IsAudioSessionActivated(OH_AudioSessionManager *audi
 **Description**
 
 Querying whether the current pid application has an activated audio session.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -382,6 +410,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterSessionDeactivatedCallback(
 
 Register the audio session deactivated event callback.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -395,7 +425,7 @@ Register the audio session deactivated event callback.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds  or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails |
 
 ### OH_AudioSessionManager_UnregisterSessionDeactivatedCallback()
 
@@ -407,6 +437,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterSessionDeactivatedCallbac
 
 Unregister the audio session deactivated event callback.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -420,7 +452,7 @@ Unregister the audio session deactivated event callback.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds  or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails |
 
 ### OH_AudioSessionManager_SetScene()
 
@@ -431,6 +463,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetScene(OH_AudioSessionManager *au
 **Description**
 
 Set scene for audio session.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -445,7 +479,7 @@ Set scene for audio session.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails<br>or {@link #AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE} if system illegal state<br>or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} if system state error |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds  or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails  or [AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result) if system illegal state  or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) if system state error |
 
 ### OH_AudioSessionManager_RegisterStateChangeCallback()
 
@@ -457,6 +491,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterStateChangeCallback(OH_Audi
 
 Register the audio session state change event callback.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -470,7 +506,7 @@ Register the audio session state change event callback.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails<br>or {@link AUDIOCOMMON_RESULT_ERROR_NO_MEMORY} No memory error<br>or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} if system state error |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds  or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails  or [AUDIOCOMMON_RESULT_ERROR_NO_MEMORY](capi-native-audio-common-h.md#oh_audiocommon_result) No memory error  or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) if system state error |
 
 ### OH_AudioSessionManager_UnregisterStateChangeCallback()
 
@@ -482,6 +518,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterStateChangeCallback(OH_Au
 
 Unregister the audio session state change event callback.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -495,7 +533,7 @@ Unregister the audio session state change event callback.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails<br>or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} if system state error |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds  or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails  or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) if system state error |
 
 ### OH_AudioSessionManager_SetDefaultOutputDevice()
 
@@ -506,6 +544,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSess
 **Description**
 
 Sets the default output device. This function applys on audiorenderers whose StreamUsage are STREAM_USAGE_VOICE_COMMUNICATION/STREAM_USAGE_VIDEO_COMMUNICATION/STREAM_USAGE_VOICE_MESSAGE. Setting the device will only takes effect if no other accessory such as headphones are in use
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -520,7 +560,7 @@ Sets the default output device. This function applys on audiorenderers whose Str
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails<br>or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} if system state error |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds  or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails  or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) if system state error |
 
 ### OH_AudioSessionManager_GetDefaultOutputDevice()
 
@@ -531,6 +571,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetDefaultOutputDevice(OH_AudioSess
 **Description**
 
 Gets the default output device.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -545,7 +587,7 @@ Gets the default output device.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails<br>or {@link #AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE} if system illegal state |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds  or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails  or [AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result) if system illegal state |
 
 ### OH_AudioSessionManager_ReleaseDevices()
 
@@ -556,6 +598,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevices(OH_AudioSessionManag
 **Description**
 
 Release the audio device descriptor array object.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -570,7 +614,7 @@ Release the audio device descriptor array object.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.<br>or {@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails               1.The param of audioSessionManager is nullptr;               2.The param of audioDeviceDescriptorArray is nullptr. |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.  or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails               1.The param of audioSessionManager is nullptr;               2.The param of audioDeviceDescriptorArray is nullptr. |
 
 ### OH_AudioSessionManager_RegisterCurrentOutputDeviceChangeCallback()
 
@@ -582,6 +626,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentOutputDeviceChangeCa
 
 Register the audio session device change event callback.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -595,7 +641,7 @@ Register the audio session device change event callback.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails<br>or {@link AUDIOCOMMON_RESULT_ERROR_NO_MEMORY} No memory error<br>or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} if system state error |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds  or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails  or [AUDIOCOMMON_RESULT_ERROR_NO_MEMORY](capi-native-audio-common-h.md#oh_audiocommon_result) No memory error  or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) if system state error |
 
 ### OH_AudioSessionManager_UnregisterCurrentOutputDeviceChangeCallback()
 
@@ -607,6 +653,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentOutputDeviceChange
 
 Unregister the audio session device change event callback.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -620,7 +668,7 @@ Unregister the audio session device change event callback.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails<br>or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} if system state error |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds  or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails  or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) if system state error |
 
 ### OH_AudioSessionManager_GetAvailableDevices()
 
@@ -632,6 +680,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetAvailableDevices(OH_AudioSession
 
 Get available devices by device usage.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -639,14 +689,14 @@ Get available devices by device usage.
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | the [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) handle returned by [OH_AudioManager_GetAudioSessionManager](capi-native-audio-session-manager-h.md#oh_audiomanager_getaudiosessionmanager). |
-| OH_AudioDevice_Usage deviceUsage | the {@link OH_AudioDevice_Usage} which is used as the filter parameter for get the available devices. |
-| OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray | the {@link OH_AudioDeviceDescriptorArray} pointer variable which will be set the audio device descriptors value Do not release the audioDeviceDescriptorArray pointer separately instead call [OH_AudioSessionManager_ReleaseDevices](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_releasedevices) to release the DeviceDescriptor array when it is no use anymore. |
+| OH_AudioDevice_Usage deviceUsage | the [OH_AudioDevice_Usage](capi-native-audio-device-base-h.md#oh_audiodevice_usage) which is used as the filter parameter for get the available devices. |
+| OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray | the [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) pointer variable which will be set the audio device descriptors value Do not release the audioDeviceDescriptorArray pointer separately instead call [OH_AudioSessionManager_ReleaseDevices](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_releasedevices) to release the DeviceDescriptor array when it is no use anymore. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} Audio client call audio service error, System error. |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails.      or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) Audio client call audio service error, System error. |
 
 ### OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback()
 
@@ -658,6 +708,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterAvailableDevicesChangeCallb
 
 Register available device change event callback.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -665,14 +717,14 @@ Register available device change event callback.
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | the [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) returned by the [OH_AudioManager_GetAudioSessionManager](capi-native-audio-session-manager-h.md#oh_audiomanager_getaudiosessionmanager) |
-| OH_AudioDevice_Usage deviceUsage | the {@link OH_AudioDevice_Usage} which is used as the filter parameter for register the available devices change event. |
+| OH_AudioDevice_Usage deviceUsage | the [OH_AudioDevice_Usage](capi-native-audio-device-base-h.md#oh_audiodevice_usage) which is used as the filter parameter for register the available devices change event. |
 | [OH_AudioSession_AvailableDeviceChangedCallback](capi-native-audio-session-manager-h.md#oh_audiosession_availabledevicechangedcallback) callback | the [OH_AudioSession_AvailableDeviceChangedCallback](capi-native-audio-session-manager-h.md#oh_audiosession_availabledevicechangedcallback) which is used to receive available device change event. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} Audio client call audio service error, System error. |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails.      or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) Audio client call audio service error, System error. |
 
 ### OH_AudioSessionManager_UnregisterAvailableDevicesChangeCallback()
 
@@ -683,6 +735,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterAvailableDevicesChangeCal
 **Description**
 
 Unregister available device change event callback.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 21
 
@@ -697,7 +751,7 @@ Unregister available device change event callback.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} Audio client call audio service error, System error. |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails.      or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) Audio client call audio service error, System error. |
 
 ### OH_AudioSessionManager_SelectMediaInputDevice()
 
@@ -708,6 +762,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSess
 **Description**
 
 Sets the media input device. This function is not valid for call recording, whose SourceType is SOURCE_TYPE_VOICE_CALL or SOURCE_TYPE_VOICE_COMMUNICATION. In scenarios where there are concurrent recording streams with higher priority, the actual input device used by the application may differ from the selected one. The application can use [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registercurrentinputdevicechangecallback) to register a callback to listen for the actual input device.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 21
 
@@ -722,7 +778,7 @@ Sets the media input device. This function is not valid for call recording, whos
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} Audio client call audio service error, System error. |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails.      or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) Audio client call audio service error, System error. |
 
 ### OH_AudioSessionManager_GetSelectedMediaInputDevice()
 
@@ -733,6 +789,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetSelectedMediaInputDevice(OH_Audi
 **Description**
 
 Gets the selected media input device.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 21
 
@@ -747,7 +805,7 @@ Gets the selected media input device.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} Audio client call audio service error, System error. |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails.      or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) Audio client call audio service error, System error. |
 
 ### OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory()
 
@@ -758,6 +816,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRec
 **Description**
 
 Sets the preferred record category with bluetooth and nearlink device. The application can set this category before bluetooth and nearlink connected, and the system will prefer to use bluetooth and nearlink to record when the device connected. In scenarios where there are concurrent recording streams with higher priority, the actual input device used by the application may differ from the preferred one. The application can use [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registercurrentinputdevicechangecallback) to register a callback to listen for the actual input device.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 21
 
@@ -772,7 +832,7 @@ Sets the preferred record category with bluetooth and nearlink device. The appli
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} Audio client call audio service error, System error. |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails.      or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) Audio client call audio service error, System error. |
 
 ### OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRecordCategory()
 
@@ -783,6 +843,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRec
 **Description**
 
 Gets the preferred record category with bluetooth and nearlink device.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 21
 
@@ -797,7 +859,7 @@ Gets the preferred record category with bluetooth and nearlink device.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} Audio client call audio service error, System error. |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails.      or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) Audio client call audio service error, System error. |
 
 ### OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback()
 
@@ -809,6 +871,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCal
 
 Register the audio session input device change event callback.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -822,7 +886,7 @@ Register the audio session input device change event callback.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails.<br>    or {@link AUDIOCOMMON_RESULT_ERROR_NO_MEMORY} No memory error.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} Audio client call audio service error, System error. |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails.      or [AUDIOCOMMON_RESULT_ERROR_NO_MEMORY](capi-native-audio-common-h.md#oh_audiocommon_result) No memory error.      or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) Audio client call audio service error, System error. |
 
 ### OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback()
 
@@ -834,6 +898,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeC
 
 Unregister the audio session input device change event callback.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -847,7 +913,7 @@ Unregister the audio session input device change event callback.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} Audio client call audio service error, System error. |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails.      or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) Audio client call audio service error, System error. |
 
 ### OH_AudioSessionManager_ReleaseDevice()
 
@@ -858,6 +924,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevice(OH_AudioSessionManage
 **Description**
 
 Release the audio device descriptor object.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 21
 
@@ -872,7 +940,7 @@ Release the audio device descriptor object.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.<br>    or {@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.      or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails |
 
 ### OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers()
 
@@ -882,7 +950,9 @@ OH_AudioCommon_Result OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthe
 
 **Description**
 
-Enables mute suggestion callback function when using {@link #CONCURRENCY_MIX_WITH_OTHERS} mode.<br>Usually when using mix mode, application won't receive state change event when there is another audio playing<br>simultaneously. But in some scenarios, like game or radio, the application may intend to mute its audio to<br>achieve better user experience.<br>If enabled, the mute and unmute suggestion hint will be sent by [OH_AudioSession_StateChangedCallback](capi-native-audio-session-manager-h.md#oh_audiosession_statechangedcallback)<br>registered by [OH_AudioSessionManager_RegisterStateChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registerstatechangecallback). Mute suggestion means there is<br>another application starting non-mixable audio.<br>This function only supports audio session with [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) set and activated with<br>{@link #CONCURRENCY_MIX_WITH_OTHERS} mode. And it takes effect only once during activation, so application need to enable it every time before activation.
+Enables mute suggestion callback function when using [CONCURRENCY_MIX_WITH_OTHERS](capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode) mode. Usually when using mix mode, application won't receive state change event when there is another audio playing simultaneously. But in some scenarios, like game or radio, the application may intend to mute its audio to achieve better user experience. If enabled, the mute and unmute suggestion hint will be sent by [OH_AudioSession_StateChangedCallback](capi-native-audio-session-manager-h.md#oh_audiosession_statechangedcallback) registered by [OH_AudioSessionManager_RegisterStateChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registerstatechangecallback). Mute suggestion means there is another application starting non-mixable audio. This function only supports audio session with [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) set and activated with [CONCURRENCY_MIX_WITH_OTHERS](capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode) mode. And it takes effect only once during activation, so application need to enable it every time before activation.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 23
 
@@ -897,7 +967,7 @@ Enables mute suggestion callback function when using {@link #CONCURRENCY_MIX_WIT
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} Parameter validation fails.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE} Function is called without setting<br>    [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) or called after audio session activation.<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} Audio client call audio service error, system internal error. |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.      or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) Parameter validation fails.      or [AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result) Function is called without setting      [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) or called after audio session activation.      or [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) Audio client call audio service error, system internal error. |
 
 ### OH_AudioSessionManager_IsOtherMediaPlaying()
 
@@ -908,6 +978,8 @@ bool OH_AudioSessionManager_IsOtherMediaPlaying(OH_AudioSessionManager *audioSes
 **Description**
 
 Returns if there is any other application playing audio in media usage, including media session activated.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 23
 
@@ -933,6 +1005,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetCaptureMuteHint(OH_AudioSessionM
 
 Sets recording mute state to audio system. This method is used as a hint for power optimization, it does not mute the recording stream, only affects internal processing strategy. Audio system may disable some recording effects when application notifies its muted state to system. Mute hint state can only be set when there is at least one running stream in current process.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -946,7 +1020,7 @@ Sets recording mute state to audio system. This method is used as a hint for pow
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | Function result code:      {@link #AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.<br>    {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} The param of audioSessionManager is nullptr.<br>    {@link #AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE} Operation not permitted at current state,          there is no audio capturer running. |
+| OH_AudioCommon_Result | Function result code:      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) The param of audioSessionManager is nullptr.      [AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result) Operation not permitted at current state,          there is no audio capturer running. |
 
 ### OH_AudioSessionManager_SetBehavior()
 
@@ -958,6 +1032,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetBehavior(OH_AudioSessionManager 
 
 Set audio session behavior parameters (supporting multiple flag combinations) This interface takes effect only after the interface [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) is called. Each time you call this interface to set parameters, you need to call the interface [OH_AudioSessionManager_ActivateAudioSession](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) again for the settings to take effect.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -965,12 +1041,12 @@ Set audio session behavior parameters (supporting multiple flag combinations) Th
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | the [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) returned by the [OH_AudioManager_GetAudioSessionManager](capi-native-audio-session-manager-h.md#oh_audiomanager_getaudiosessionmanager) |
-| uint32_t behavior | Audio session behavior flags, which can be a single flag or a bitwise OR combination of multiple flags {@link #OH_AudioSession_BehaviorFlags} |
+| uint32_t behavior | Audio session behavior flags, which can be a single flag or a bitwise OR combination of multiple flags [OH_AudioSession_BehaviorFlags](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags) |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if parameter validation fails<br>    or {@link #AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE} if system illegal state |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if parameter validation fails      or [AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result) if system illegal state |
 
 

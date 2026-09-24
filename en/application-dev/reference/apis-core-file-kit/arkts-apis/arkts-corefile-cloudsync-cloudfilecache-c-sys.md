@@ -1,5 +1,9 @@
 # CloudFileCache
 
+```TypeScript
+class CloudFileCache
+```
+
 Provides APIs for the file manager application to download files from the Drive Kit to a local device.
 
 **Since:** 11
@@ -62,6 +66,8 @@ try {
   console.error("clean cache failed with error message: " + err.message + ", error code: " + err.code);
 }
 ```
+
+<a id="constructor-1"></a>
 
 ## constructor
 

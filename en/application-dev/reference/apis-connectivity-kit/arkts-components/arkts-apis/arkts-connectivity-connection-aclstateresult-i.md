@@ -1,5 +1,9 @@
 # AclStateResult
 
+```TypeScript
+interface AclStateResult
+```
+
 Acl state change result.
 
 **Since:** 26.0.0

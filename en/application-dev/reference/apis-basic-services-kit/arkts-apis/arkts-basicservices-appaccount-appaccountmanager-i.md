@@ -1,5 +1,9 @@
 # AppAccountManager
 
+```TypeScript
+interface AppAccountManager
+```
+
 Defines the application account manager, which is used to manage account information of applications.
 
 **Since:** 7
@@ -51,23 +55,7 @@ appAccountManager.addAccount('WangWu', (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.addAccount('LiSi', 'token101', (err: BusinessError) => { 
-  console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.addAccount('LiSi', 'token101').then(()=> { 
-  console.info('addAccount Success');
-}).catch((err: BusinessError) => {
-  console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="addaccount-1"></a>
 
 ## addAccount
 
@@ -101,7 +89,15 @@ Adds an application account name and additional information. This API uses an as
 
 **Examples**
 
-See [addAccount](#addaccount)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.addAccount('LiSi', 'token101', (err: BusinessError) => { 
+  console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+<a id="addaccount-2"></a>
 
 ## addAccount
 
@@ -139,7 +135,15 @@ Adds an application account name and additional information. This API uses a pro
 
 **Examples**
 
-See [addAccount](#addaccount)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.addAccount('LiSi', 'token101').then(()=> { 
+  console.info('addAccount Success');
+}).catch((err: BusinessError) => {
+  console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## addAccountImplicitly
 
@@ -297,6 +301,50 @@ struct Index {
 }
 ```
 
+<a id="auth-1"></a>
+
+## auth
+
+```TypeScript
+auth(
+      name: string,
+      owner: string,
+      authType: string,
+      options: Record<string, Object>,
+      callback: AuthCallback
+    ): void
+```
+
+Authenticates an application account. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| options | Record&lt;string, Object&gt; | Yes | Options for the authentication. |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | Yes | Authenticator callback used to return the result. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
+| [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, owner, authType or options. |
+| [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
+| [12300010](../errorcode-account.md#12300010-account-service-not-respond) | Account service busy. |
+| [12300113](../errorcode-account.md#12300113-authentication-service-not-found) | Authenticator service not found. |
+| [12300114](../errorcode-account.md#12300114-authentication-service-abnormal) | Authenticator service exception. |
+
+**Examples**
+
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want, common } from '@kit.AbilityKit';
@@ -343,50 +391,6 @@ struct Index {
   build() {}
 }
 ```
-
-## auth
-
-```TypeScript
-auth(
-      name: string,
-      owner: string,
-      authType: string,
-      options: Record<string, Object>,
-      callback: AuthCallback
-    ): void
-```
-
-Authenticates an application account. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| options | Record&lt;string, Object&gt; | Yes | Options for the authentication. |
-| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | Yes | Authenticator callback used to return the result. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
-| [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
-| [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, owner, authType or options. |
-| [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
-| [12300010](../errorcode-account.md#12300010-account-service-not-respond) | Account service busy. |
-| [12300113](../errorcode-account.md#12300113-authentication-service-not-found) | Authenticator service not found. |
-| [12300114](../errorcode-account.md#12300114-authentication-service-abnormal) | Authenticator service exception. |
-
-**Examples**
-
-See [auth](#auth)
 
 ## authenticate
 
@@ -521,22 +525,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let labels = ['student'];
-try {
-  appAccountManager.checkAccountLabels('zhangsan', 'com.example.accountjsdemo', labels).then((
-    hasAllLabels: boolean) => {
-    console.info('checkAccountLabels successfully: ' + hasAllLabels);
-  }).catch((err: BusinessError) => {
-    console.error(`checkAccountLabels failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`checkAccountLabels exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="checkaccountlabels-1"></a>
 
 ## checkAccountLabels
 
@@ -577,25 +566,6 @@ Checks whether an application account has specific labels. This API uses a promi
 | [12300114](../errorcode-account.md#12300114-authentication-service-abnormal) | Authenticator service exception. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let labels = ['student'];
-try {
-  appAccountManager.checkAccountLabels('zhangsan', 'com.example.accountjsdemo', labels,
-    (err: BusinessError, hasAllLabels: boolean) => {
-      if (err) {
-        console.error(`checkAccountLabels failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('checkAccountLabels successfully, hasAllLabels: ' + hasAllLabels);
-      }
-    });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`checkAccountLabels exception: code is ${err.code}, message is ${err.message}`);
-}
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -663,20 +633,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.checkAppAccess('ZhangSan', 'com.example.accountjsdemo').then((isAccessible: boolean) => {
-    console.info('checkAppAccess successfully, isAccessible: ' + isAccessible);
-  }).catch((err: BusinessError) => {
-    console.error(`checkAppAccess failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="checkappaccess-1"></a>
 
 ## checkAppAccess
 
@@ -714,7 +671,20 @@ Checks whether the caller can access the account data that belongs to the target
 
 **Examples**
 
-See [checkAppAccess](#checkappaccess)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.checkAppAccess('ZhangSan', 'com.example.accountjsdemo').then((isAccessible: boolean) => {
+    console.info('checkAppAccess successfully, isAccessible: ' + isAccessible);
+  }).catch((err: BusinessError) => {
+    console.error(`checkAppAccess failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## checkAppAccountSyncEnable
 
@@ -761,15 +731,7 @@ appAccountManager.checkAppAccountSyncEnable('ZhangSan', (err: BusinessError, res
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.checkAppAccountSyncEnable('ZhangSan').then((data: boolean) => { 
-  console.info('checkAppAccountSyncEnable, result: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`checkAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="checkappaccountsyncenable-1"></a>
 
 ## checkAppAccountSyncEnable
 
@@ -808,7 +770,15 @@ Checks whether data synchronization is enabled for an application account. This 
 
 **Examples**
 
-See [checkAppAccountSyncEnable](#checkappaccountsyncenable)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.checkAppAccountSyncEnable('ZhangSan').then((data: boolean) => { 
+  console.info('checkAppAccountSyncEnable, result: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`checkAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## checkAuthTokenVisibility
 
@@ -861,21 +831,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.checkAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo').then((
-    isVisible: boolean) => {
-    console.info('checkAuthTokenVisibility successfully, isVisible: ' + isVisible);
-  }).catch((err: BusinessError) => {
-    console.error(`checkAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`checkAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="checkauthtokenvisibility-1"></a>
 
 ## checkAuthTokenVisibility
 
@@ -915,7 +871,21 @@ Checks the visibility of an authorization token of the specified authentication 
 
 **Examples**
 
-See [checkAuthTokenVisibility](#checkauthtokenvisibility)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.checkAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo').then((
+    isVisible: boolean) => {
+    console.info('checkAuthTokenVisibility successfully, isVisible: ' + isVisible);
+  }).catch((err: BusinessError) => {
+    console.error(`checkAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`checkAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## checkDataSyncEnabled
 
@@ -967,20 +937,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.checkDataSyncEnabled('ZhangSan').then((isEnabled: boolean) => {
-      console.info('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
-  }).catch((err: BusinessError) => {
-    console.error(`checkDataSyncEnabled failed, err: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="checkdatasyncenabled-1"></a>
 
 ## checkDataSyncEnabled
 
@@ -1020,7 +977,20 @@ Checks whether data synchronization is enabled for an application account. This 
 
 **Examples**
 
-See [checkDataSyncEnabled](#checkdatasyncenabled)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.checkDataSyncEnabled('ZhangSan').then((isEnabled: boolean) => {
+      console.info('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
+  }).catch((err: BusinessError) => {
+    console.error(`checkDataSyncEnabled failed, err: code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## checkOAuthTokenVisibility
 
@@ -1073,16 +1043,7 @@ appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.exampl
   });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo').then((
-  data: boolean) => {
-  console.info('checkOAuthTokenVisibility isVisible: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`checkOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="checkoauthtokenvisibility-1"></a>
 
 ## checkOAuthTokenVisibility
 
@@ -1122,7 +1083,16 @@ Checks the visibility of an authorization token of the specified authentication 
 
 **Examples**
 
-See [checkOAuthTokenVisibility](#checkoauthtokenvisibility)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo').then((
+  data: boolean) => {
+  console.info('checkOAuthTokenVisibility isVisible: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`checkOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## createAccount
 
@@ -1172,47 +1142,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let options: appAccount.CreateAccountOptions = {
-  customData: {
-    age: '10'
-  }
-}
-try {
-  appAccountManager.createAccount('LiSi', options, (err: BusinessError) => {
-    if (err) {
-      console.error(`createAccount failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('createAccount successfully');
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let options: appAccount.CreateAccountOptions = {
-  customData: {
-    age: '10'
-  }
-}
-try {
-  appAccountManager.createAccount('LiSi', options).then(() => {
-    console.info('createAccount successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`createAccount failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="createaccount-1"></a>
 
 ## createAccount
 
@@ -1246,7 +1176,29 @@ Creates an application account with custom data. This API uses an asynchronous c
 
 **Examples**
 
-See [createAccount](#createaccount)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let options: appAccount.CreateAccountOptions = {
+  customData: {
+    age: '10'
+  }
+}
+try {
+  appAccountManager.createAccount('LiSi', options, (err: BusinessError) => {
+    if (err) {
+      console.error(`createAccount failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('createAccount successfully');
+    }
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+<a id="createaccount-2"></a>
 
 ## createAccount
 
@@ -1285,7 +1237,25 @@ Creates an application account with custom data. This API uses a promise to retu
 
 **Examples**
 
-See [createAccount](#createaccount)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let options: appAccount.CreateAccountOptions = {
+  customData: {
+    age: '10'
+  }
+}
+try {
+  appAccountManager.createAccount('LiSi', options).then(() => {
+    console.info('createAccount successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`createAccount failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## createAccountImplicitly
 
@@ -1363,6 +1333,42 @@ struct Index {
 }
 ```
 
+<a id="createaccountimplicitly-1"></a>
+
+## createAccountImplicitly
+
+```TypeScript
+createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, callback: AuthCallback): void
+```
+
+Creates an application account automatically by the authenticator based on the specified account owner and options. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| options | [CreateAccountImplicitlyOptions](arkts-basicservices-appaccount-createaccountimplicitlyoptions-i.md) | Yes | Options for implicitly creating the account. |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | Yes | Authenticator callback used to return the result. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
+| [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid owner or options. |
+| [12300007](../errorcode-account.md#12300007-account-count-reached-the-limit) | The number of accounts reaches the upper limit. |
+| [12300010](../errorcode-account.md#12300010-account-service-not-respond) | Account service busy. |
+| [12300113](../errorcode-account.md#12300113-authentication-service-not-found) | Authenticator service not found. |
+| [12300114](../errorcode-account.md#12300114-authentication-service-abnormal) | Authenticator service exception. |
+
+**Examples**
+
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want, common } from '@kit.AbilityKit';
@@ -1410,42 +1416,6 @@ struct Index {
 }
 ```
 
-## createAccountImplicitly
-
-```TypeScript
-createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, callback: AuthCallback): void
-```
-
-Creates an application account automatically by the authenticator based on the specified account owner and options. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
-| options | [CreateAccountImplicitlyOptions](arkts-basicservices-appaccount-createaccountimplicitlyoptions-i.md) | Yes | Options for implicitly creating the account. |
-| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | Yes | Authenticator callback used to return the result. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
-| [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
-| [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid owner or options. |
-| [12300007](../errorcode-account.md#12300007-account-count-reached-the-limit) | The number of accounts reaches the upper limit. |
-| [12300010](../errorcode-account.md#12300010-account-service-not-respond) | Account service busy. |
-| [12300113](../errorcode-account.md#12300113-authentication-service-not-found) | Authenticator service not found. |
-| [12300114](../errorcode-account.md#12300114-authentication-service-abnormal) | Authenticator service exception. |
-
-**Examples**
-
-See [createAccountImplicitly](#createaccountimplicitly)
-
 ## deleteAccount
 
 ```TypeScript
@@ -1485,15 +1455,7 @@ appAccountManager.deleteAccount('ZhaoLiu', (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.deleteAccount('ZhaoLiu').then(() => { 
-  console.info('deleteAccount Success');
-}).catch((err: BusinessError) => {
-  console.error(`deleteAccount err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="deleteaccount-1"></a>
 
 ## deleteAccount
 
@@ -1531,7 +1493,15 @@ Deletes an application account. This API uses a promise to return the result.
 
 **Examples**
 
-See [deleteAccount](#deleteaccount)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.deleteAccount('ZhaoLiu').then(() => { 
+  console.info('deleteAccount Success');
+}).catch((err: BusinessError) => {
+  console.error(`deleteAccount err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## deleteAuthToken
 
@@ -1585,20 +1555,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.deleteAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx').then(() => {
-    console.info('deleteAuthToken successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`deleteAuthToken failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="deleteauthtoken-1"></a>
 
 ## deleteAuthToken
 
@@ -1639,7 +1596,20 @@ Deletes the authorization token of the specified authentication type for an appl
 
 **Examples**
 
-See [deleteAuthToken](#deleteauthtoken)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.deleteAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx').then(() => {
+    console.info('deleteAuthToken successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`deleteAuthToken failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## deleteCredential
 
@@ -1690,20 +1660,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.deleteCredential('zhangsan', 'PIN_SIX').then(() => {
-    console.info('deleteCredential successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`deleteCredential failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`deleteCredential exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="deletecredential-1"></a>
 
 ## deleteCredential
 
@@ -1742,7 +1699,20 @@ Deletes the credential for the specified type of an application account. This AP
 
 **Examples**
 
-See [deleteCredential](#deletecredential)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.deleteCredential('zhangsan', 'PIN_SIX').then(() => {
+    console.info('deleteCredential successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`deleteCredential failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`deleteCredential exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## deleteOAuthToken
 
@@ -1791,15 +1761,7 @@ appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSoci
   });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx').then(() => {
-  console.info('deleteOAuthToken successfully');
-}).catch((err: BusinessError) => {
-  console.error(`deleteOAuthToken err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="deleteoauthtoken-1"></a>
 
 ## deleteOAuthToken
 
@@ -1840,7 +1802,15 @@ Deletes the authorization token of the specified authentication type for an appl
 
 **Examples**
 
-See [deleteOAuthToken](#deleteoauthtoken)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx').then(() => {
+  console.info('deleteOAuthToken successfully');
+}).catch((err: BusinessError) => {
+  console.error(`deleteOAuthToken err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## disableAppAccess
 
@@ -1882,15 +1852,7 @@ appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(() => { 
-  console.info('disableAppAccess Success');
-}).catch((err: BusinessError) => {
-  console.error(`disableAppAccess err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="disableappaccess-1"></a>
 
 ## disableAppAccess
 
@@ -1929,7 +1891,15 @@ Disables an application account from accessing an application. This API uses a p
 
 **Examples**
 
-See [disableAppAccess](#disableappaccess)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(() => { 
+  console.info('disableAppAccess Success');
+}).catch((err: BusinessError) => {
+  console.error(`disableAppAccess err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## enableAppAccess
 
@@ -1975,15 +1945,7 @@ appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err:
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(() => { 
-  console.info('enableAppAccess Success');
-}).catch((err: BusinessError) => {
-  console.error(`enableAppAccess err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="enableappaccess-1"></a>
 
 ## enableAppAccess
 
@@ -2022,7 +1984,15 @@ Enables an application to access an application account. This API uses a promise
 
 **Examples**
 
-See [enableAppAccess](#enableappaccess)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(() => { 
+  console.info('enableAppAccess Success');
+}).catch((err: BusinessError) => {
+  console.error(`enableAppAccess err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## getAccountCredential
 
@@ -2068,15 +2038,7 @@ appAccountManager.getAccountCredential('ZhangSan', 'credentialType001', (err: Bu
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAccountCredential('ZhangSan', 'credentialType001').then((data: string) => { 
-  console.info('getAccountCredential, result: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`getAccountCredential err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="getaccountcredential-1"></a>
 
 ## getAccountCredential
 
@@ -2115,7 +2077,15 @@ Obtains the credential of an application account. This API uses a promise to ret
 
 **Examples**
 
-See [getAccountCredential](#getaccountcredential)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAccountCredential('ZhangSan', 'credentialType001').then((data: string) => { 
+  console.info('getAccountCredential, result: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`getAccountCredential err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## getAccountExtraInfo
 
@@ -2160,15 +2130,7 @@ appAccountManager.getAccountExtraInfo('ZhangSan', (err: BusinessError, result: s
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAccountExtraInfo('ZhangSan').then((data: string) => { 
-  console.info('getAccountExtraInfo, result: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`getAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="getaccountextrainfo-1"></a>
 
 ## getAccountExtraInfo
 
@@ -2205,7 +2167,15 @@ Obtains additional information of an application account. Additional information
 
 **Examples**
 
-See [getAccountExtraInfo](#getaccountextrainfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAccountExtraInfo('ZhangSan').then((data: string) => { 
+  console.info('getAccountExtraInfo, result: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`getAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## getAccountsByOwner
 
@@ -2254,21 +2224,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.getAccountsByOwner('com.example.accountjsdemo2').then((
-    data: appAccount.AppAccountInfo[]) => {
-    console.info('getAccountsByOwner successfully, data: ' + JSON.stringify(data));
-  }).catch((err: BusinessError) => {
-    console.error(`getAccountsByOwner failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAccountsByOwner exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getaccountsbyowner-1"></a>
 
 ## getAccountsByOwner
 
@@ -2304,7 +2260,21 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 **Examples**
 
-See [getAccountsByOwner](#getaccountsbyowner)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.getAccountsByOwner('com.example.accountjsdemo2').then((
+    data: appAccount.AppAccountInfo[]) => {
+    console.info('getAccountsByOwner successfully, data: ' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    console.error(`getAccountsByOwner failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getAccountsByOwner exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## getAllAccessibleAccounts
 
@@ -2350,15 +2320,7 @@ appAccountManager.getAllAccessibleAccounts((err: BusinessError, data: appAccount
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAllAccessibleAccounts().then((data: appAccount.AppAccountInfo[]) => { 
-  console.info('getAllAccessibleAccounts: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`getAllAccessibleAccounts err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="getallaccessibleaccounts-1"></a>
 
 ## getAllAccessibleAccounts
 
@@ -2391,7 +2353,15 @@ Obtains information about all accessible application accounts. This API uses a p
 
 **Examples**
 
-See [getAllAccessibleAccounts](#getallaccessibleaccounts)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAllAccessibleAccounts().then((data: appAccount.AppAccountInfo[]) => { 
+  console.info('getAllAccessibleAccounts: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`getAllAccessibleAccounts err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## getAllAccounts
 
@@ -2437,44 +2407,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.getAllAccounts().then((data: appAccount.AppAccountInfo[]) => {
-    console.info('getAllAccounts successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAllAccounts exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-const selfBundle = 'com.example.actsgetallaaccounts';
-appAccountManager.getAllAccounts(selfBundle, (err: BusinessError, data: appAccount.AppAccountInfo[])=>{
-  if (err) {
-    console.error(`getAllAccounts err: code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('getAllAccounts data:' + JSON.stringify(data));
-  }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-const selfBundle = 'com.example.actsgetallaaccounts';
-appAccountManager.getAllAccounts(selfBundle).then((data: appAccount.AppAccountInfo[]) => { 
-  console.info('getAllAccounts: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`getAllAccounts err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="getallaccounts-1"></a>
 
 ## getAllAccounts
 
@@ -2502,7 +2435,22 @@ Obtains information about all accessible application accounts. This API uses a p
 
 **Examples**
 
-See [getAllAccounts](#getallaccounts)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.getAllAccounts().then((data: appAccount.AppAccountInfo[]) => {
+    console.info('getAllAccounts successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getAllAccounts exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+<a id="getallaccounts-2"></a>
 
 ## getAllAccounts
 
@@ -2537,7 +2485,20 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 **Examples**
 
-See [getAllAccounts](#getallaccounts)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const selfBundle = 'com.example.actsgetallaaccounts';
+appAccountManager.getAllAccounts(selfBundle, (err: BusinessError, data: appAccount.AppAccountInfo[])=>{
+  if (err) {
+    console.error(`getAllAccounts err: code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('getAllAccounts data:' + JSON.stringify(data));
+  }
+});
+```
+
+<a id="getallaccounts-3"></a>
 
 ## getAllAccounts
 
@@ -2576,7 +2537,16 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 **Examples**
 
-See [getAllAccounts](#getallaccounts)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const selfBundle = 'com.example.actsgetallaaccounts';
+appAccountManager.getAllAccounts(selfBundle).then((data: appAccount.AppAccountInfo[]) => { 
+  console.info('getAllAccounts: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`getAllAccounts err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## getAllAuthTokens
 
@@ -2627,21 +2597,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.getAllAuthTokens('LiSi', 'com.example.accountjsdemo').then((
-    tokenArr: appAccount.AuthTokenInfo[]) => {
-    console.info('getAllAuthTokens successfully, tokenArr: ' + JSON.stringify(tokenArr));
-  }).catch((err: BusinessError) => {
-    console.error(`getAllAuthTokens failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getallauthtokens-1"></a>
 
 ## getAllAuthTokens
 
@@ -2679,7 +2635,21 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 **Examples**
 
-See [getAllAuthTokens](#getallauthtokens)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.getAllAuthTokens('LiSi', 'com.example.accountjsdemo').then((
+    tokenArr: appAccount.AuthTokenInfo[]) => {
+    console.info('getAllAuthTokens successfully, tokenArr: ' + JSON.stringify(tokenArr));
+  }).catch((err: BusinessError) => {
+    console.error(`getAllAuthTokens failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## getAllOAuthTokens
 
@@ -2726,16 +2696,7 @@ appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo',
   });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo').then((
-  data: appAccount.OAuthTokenInfo[]) => {
-  console.info('getAllOAuthTokens data: ' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`getAllOAuthTokens err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="getalloauthtokens-1"></a>
 
 ## getAllOAuthTokens
 
@@ -2773,7 +2734,16 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 **Examples**
 
-See [getAllOAuthTokens](#getalloauthtokens)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo').then((
+  data: appAccount.OAuthTokenInfo[]) => {
+  console.info('getAllOAuthTokens data: ' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`getAllOAuthTokens err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## getAssociatedData
 
@@ -2819,15 +2789,7 @@ appAccountManager.getAssociatedData('ZhangSan', 'k001', (err: BusinessError, res
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAssociatedData('ZhangSan', 'k001').then((data: string) => { 
-  console.info('getAssociatedData: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`getAssociatedData err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="getassociateddata-1"></a>
 
 ## getAssociatedData
 
@@ -2865,7 +2827,15 @@ Obtains data to be associated with an application account. This API uses a promi
 
 **Examples**
 
-See [getAssociatedData](#getassociateddata)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAssociatedData('ZhangSan', 'k001').then((data: string) => { 
+  console.info('getAssociatedData: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`getAssociatedData err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## getAuthCallback
 
@@ -2930,36 +2900,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, param: AbilityConstant.LaunchParam) { // Ability lifecycle function.
-    let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
-    try {
-      appAccountManager.getAuthCallback(sessionId).then((callback: appAccount.AuthCallback) => {
-      let result: appAccount.AuthResult = {
-        account: {
-          name: 'Lisi',
-          owner: 'com.example.accountjsdemo',
-        },
-        tokenInfo: {
-          token: 'xxxxxx',
-          authType: 'getSocialData'
-        }
-      };
-      callback.onResult(0, result);
-      }).catch((err: BusinessError) => {
-        console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
-      });
-    } catch (e) {
-      const err = e as BusinessError;
-      console.error(`getAuthCallback exception: code is ${err.code}, message is ${err.message}`);
-    }
-  }
-}
-```
+<a id="getauthcallback-1"></a>
 
 ## getAuthCallback
 
@@ -2996,7 +2937,36 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 **Examples**
 
-See [getAuthCallback](#getauthcallback)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, param: AbilityConstant.LaunchParam) { // Ability lifecycle function.
+    let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
+    try {
+      appAccountManager.getAuthCallback(sessionId).then((callback: appAccount.AuthCallback) => {
+      let result: appAccount.AuthResult = {
+        account: {
+          name: 'Lisi',
+          owner: 'com.example.accountjsdemo',
+        },
+        tokenInfo: {
+          token: 'xxxxxx',
+          authType: 'getSocialData'
+        }
+      };
+      callback.onResult(0, result);
+      }).catch((err: BusinessError) => {
+        console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getAuthCallback exception: code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
 
 ## getAuthenticatorCallback
 
@@ -3053,27 +3023,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, param: AbilityConstant.LaunchParam) { // Ability lifecycle function.
-    let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
-    appAccountManager.getAuthenticatorCallback(sessionId).then((
-      callback: appAccount.AuthenticatorCallback) => {
-      callback.onResult(appAccount.ResultCode.SUCCESS, {
-        name: 'LiSi',
-        owner: 'com.example.accountjsdemo',
-        authType: 'getSocialData',
-        token: 'xxxxxx'
-      });
-    }).catch((err: BusinessError) => {
-      console.error(`getAuthenticatorCallback err: code is ${err.code}, message is ${err.message}`);
-    });
-  }
-}
-```
+<a id="getauthenticatorcallback-1"></a>
 
 ## getAuthenticatorCallback
 
@@ -3110,7 +3060,27 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 **Examples**
 
-See [getAuthenticatorCallback](#getauthenticatorcallback)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, param: AbilityConstant.LaunchParam) { // Ability lifecycle function.
+    let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
+    appAccountManager.getAuthenticatorCallback(sessionId).then((
+      callback: appAccount.AuthenticatorCallback) => {
+      callback.onResult(appAccount.ResultCode.SUCCESS, {
+        name: 'LiSi',
+        owner: 'com.example.accountjsdemo',
+        authType: 'getSocialData',
+        token: 'xxxxxx'
+      });
+    }).catch((err: BusinessError) => {
+      console.error(`getAuthenticatorCallback err: code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
+```
 
 ## getAuthenticatorInfo
 
@@ -3156,16 +3126,7 @@ appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo',
   });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo').then((
-  data: appAccount.AuthenticatorInfo) => { 
-  console.info('getAuthenticatorInfo: ' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`getAuthenticatorInfo err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="getauthenticatorinfo-1"></a>
 
 ## getAuthenticatorInfo
 
@@ -3202,7 +3163,16 @@ Obtains the authenticator information of an application. This API uses a promise
 
 **Examples**
 
-See [getAuthenticatorInfo](#getauthenticatorinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo').then((
+  data: appAccount.AuthenticatorInfo) => { 
+  console.info('getAuthenticatorInfo: ' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`getAuthenticatorInfo err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## getAuthList
 
@@ -3253,20 +3223,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.getAuthList('LiSi', 'getSocialData').then((authList: string[]) => {
-    console.info('getAuthList successfully, authList: ' + authList);
-  }).catch((err: BusinessError) => {
-    console.error(`getAuthList failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getauthlist-1"></a>
 
 ## getAuthList
 
@@ -3305,7 +3262,20 @@ Obtains the authorization list of the specified authentication type for an appli
 
 **Examples**
 
-See [getAuthList](#getauthlist)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.getAuthList('LiSi', 'getSocialData').then((authList: string[]) => {
+    console.info('getAuthList successfully, authList: ' + authList);
+  }).catch((err: BusinessError) => {
+    console.error(`getAuthList failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## getAuthToken
 
@@ -3358,20 +3328,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.getAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData').then((token: string) => {
-    console.info('getAuthToken successfully, token: ' + token);
-  }).catch((err: BusinessError) => {
-    console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getauthtoken-1"></a>
 
 ## getAuthToken
 
@@ -3411,7 +3368,20 @@ Obtains the authorization token of the specified authentication type for an appl
 
 **Examples**
 
-See [getAuthToken](#getauthtoken)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.getAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData').then((token: string) => {
+    console.info('getAuthToken successfully, token: ' + token);
+  }).catch((err: BusinessError) => {
+    console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## getCredential
 
@@ -3462,20 +3432,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.getCredential('ZhangSan', 'PIN_SIX').then((credential: string) => {
-    console.info('getCredential successfully, credential: ' + credential);
-  }).catch((err: BusinessError) => {
-    console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getCredential exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getcredential-1"></a>
 
 ## getCredential
 
@@ -3514,7 +3471,20 @@ Obtains the credential of an application account. This API uses a promise to ret
 
 **Examples**
 
-See [getCredential](#getcredential)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.getCredential('ZhangSan', 'PIN_SIX').then((credential: string) => {
+    console.info('getCredential successfully, credential: ' + credential);
+  }).catch((err: BusinessError) => {
+    console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getCredential exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## getCustomData
 
@@ -3565,20 +3535,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.getCustomData('ZhangSan', 'age').then((data: string) => {
-    console.info('getCustomData successfully, data: ' + data);
-  }).catch((err: BusinessError) => {
-    console.error(`getCustomData failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getCustomData exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getcustomdata-1"></a>
 
 ## getCustomData
 
@@ -3617,7 +3574,20 @@ Obtains the custom data of an application account based on the specified key. Th
 
 **Examples**
 
-See [getCustomData](#getcustomdata)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.getCustomData('ZhangSan', 'age').then((data: string) => {
+    console.info('getCustomData successfully, data: ' + data);
+  }).catch((err: BusinessError) => {
+    console.error(`getCustomData failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getCustomData exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## getCustomDataSync
 
@@ -3712,15 +3682,7 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, dat
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getOAuthList('LiSi', 'getSocialData').then((data: string[]) => {
-  console.info('getOAuthList data: ' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`getOAuthList err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="getoauthlist-1"></a>
 
 ## getOAuthList
 
@@ -3758,7 +3720,15 @@ Obtains the authorization list of the specified authentication type for an appli
 
 **Examples**
 
-See [getOAuthList](#getoauthlist)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getOAuthList('LiSi', 'getSocialData').then((data: string[]) => {
+  console.info('getOAuthList data: ' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`getOAuthList err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## getOAuthToken
 
@@ -3806,15 +3776,7 @@ appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialD
   });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData').then((data: string) => {
-  console.info('getOAuthToken token: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`getOAuthToken err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="getoauthtoken-1"></a>
 
 ## getOAuthToken
 
@@ -3854,7 +3816,15 @@ Obtains the authorization token of the specified authentication type for an appl
 
 **Examples**
 
-See [getOAuthToken](#getoauthtoken)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData').then((data: string) => {
+  console.info('getOAuthToken token: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`getOAuthToken err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## off('change')
 
@@ -3885,6 +3855,26 @@ Unsubscribes from account information changes.
 | type | 'change' | Yes | Event type to Unsubscribe to. The value is **'change'**. An event will be reported when the account information changes. |
 | callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;Array&lt;[AppAccountInfo](arkts-basicservices-appaccount-appaccountinfo-i.md)&gt;&gt; | No | Callback to unregister. By default, no value is passed, which means to unregister all callbacks for the specified event. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
+  console.info('receive change data: ' + JSON.stringify(data));
+  appAccountManager.off('change', () => {
+    console.info('off finish');
+  })
+}
+
+try {
+  appAccountManager.on('change', ['com.example.actsaccounttest'], changeOnCallback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`on accountOnOffDemo err: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## off('accountChange')
 
 ```TypeScript
@@ -3911,6 +3901,29 @@ Unsubscribes from account information changes.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid type. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
+  console.info('receive change data:' + JSON.stringify(data));
+}
+
+try {
+  appAccountManager.on('accountChange', ['com.example.actsaccounttest'], changeOnCallback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`on accountChange failed, code is ${err.code}, message is ${err.message}`);
+}
+try {
+  appAccountManager.off('accountChange', changeOnCallback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`off accountChange failed, code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## on('change')
 
@@ -3942,6 +3955,23 @@ Subscribes to account information changes of apps.
 | owners | Array&lt;string&gt; | Yes | Application bundle names of the account. |
 | callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;Array&lt;[AppAccountInfo](arkts-basicservices-appaccount-appaccountinfo-i.md)&gt;&gt; | Yes | Callback registered to return the list of changed application accounts. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
+  console.info('receive change data:' + JSON.stringify(data));
+}
+
+try {
+  appAccountManager.on('change', ['com.example.actsaccounttest'], changeOnCallback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`on accountOnOffDemo code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## on('accountChange')
 
 ```TypeScript
@@ -3969,6 +3999,23 @@ Subscribes to account information changes of apps.
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid type or owners. |
 | [12400001](../errorcode-account.md#12400001-application-not-found) | Application not found.<br>**Applicable version:** 9 - 13 |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
+  console.info('receive change data:' + JSON.stringify(data));
+}
+
+try {
+  appAccountManager.on('accountChange', ['com.example.actsaccounttest'], changeOnCallback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`on accountChange failed, code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## queryAuthenticatorInfo
 
@@ -4018,21 +4065,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.queryAuthenticatorInfo('com.example.accountjsdemo').then((
-    info: appAccount.AuthenticatorInfo) => { 
-    console.info('queryAuthenticatorInfo successfully, info: ' + JSON.stringify(info));
-  }).catch((err: BusinessError) => {
-    console.error(`queryAuthenticatorInfo failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`queryAuthenticatorInfo exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="queryauthenticatorinfo-1"></a>
 
 ## queryAuthenticatorInfo
 
@@ -4069,7 +4102,21 @@ Obtains the authenticator information of an application. This API uses a promise
 
 **Examples**
 
-See [queryAuthenticatorInfo](#queryauthenticatorinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.queryAuthenticatorInfo('com.example.accountjsdemo').then((
+    info: appAccount.AuthenticatorInfo) => { 
+    console.info('queryAuthenticatorInfo successfully, info: ' + JSON.stringify(info));
+  }).catch((err: BusinessError) => {
+    console.error(`queryAuthenticatorInfo failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`queryAuthenticatorInfo exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## removeAccount
 
@@ -4118,20 +4165,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.removeAccount('Lisi').then(() => {
-    console.info('removeAccount successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`removeAccount failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="removeaccount-1"></a>
 
 ## removeAccount
 
@@ -4168,7 +4202,20 @@ Removes an application account. This API uses a promise to return the result.
 
 **Examples**
 
-See [removeAccount](#removeaccount)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.removeAccount('Lisi').then(() => {
+    console.info('removeAccount successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`removeAccount failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## selectAccountsByOptions
 
@@ -4223,23 +4270,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let options: appAccount.SelectAccountsOptions = {
-  allowedOwners: ['com.example.accountjsdemo']
-};
-try {
-  appAccountManager.selectAccountsByOptions(options).then((accountArr: appAccount.AppAccountInfo[]) => {
-    console.info('selectAccountsByOptions successfully, accountArr: ' + JSON.stringify(accountArr));
-  }).catch((err: BusinessError) => {
-    console.error(`selectAccountsByOptions failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`selectAccountsByOptions exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="selectaccountsbyoptions-1"></a>
 
 ## selectAccountsByOptions
 
@@ -4277,7 +4308,23 @@ Selects the accounts that can be accessed by the invoker based on the options. T
 
 **Examples**
 
-See [selectAccountsByOptions](#selectaccountsbyoptions)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let options: appAccount.SelectAccountsOptions = {
+  allowedOwners: ['com.example.accountjsdemo']
+};
+try {
+  appAccountManager.selectAccountsByOptions(options).then((accountArr: appAccount.AppAccountInfo[]) => {
+    console.info('selectAccountsByOptions successfully, accountArr: ' + JSON.stringify(accountArr));
+  }).catch((err: BusinessError) => {
+    console.error(`selectAccountsByOptions failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`selectAccountsByOptions exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## setAccountCredential
 
@@ -4324,15 +4371,7 @@ appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credent
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credential001').then(() => { 
-  console.info('setAccountCredential Success');
-}).catch((err: BusinessError) => {
-  console.error(`setAccountCredential err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="setaccountcredential-1"></a>
 
 ## setAccountCredential
 
@@ -4372,7 +4411,15 @@ Sets a credential for an application account. This API uses a promise to return 
 
 **Examples**
 
-See [setAccountCredential](#setaccountcredential)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credential001').then(() => { 
+  console.info('setAccountCredential Success');
+}).catch((err: BusinessError) => {
+  console.error(`setAccountCredential err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## setAccountExtraInfo
 
@@ -4418,15 +4465,7 @@ appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002', (err: BusinessError) 
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002').then(() => { 
-  console.info('setAccountExtraInfo Success');
-}).catch((err: BusinessError) => {
-  console.error(`setAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="setaccountextrainfo-1"></a>
 
 ## setAccountExtraInfo
 
@@ -4465,7 +4504,15 @@ Sets additional information for an application account. This API uses a promise 
 
 **Examples**
 
-See [setAccountExtraInfo](#setaccountextrainfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002').then(() => { 
+  console.info('setAccountExtraInfo Success');
+}).catch((err: BusinessError) => {
+  console.error(`setAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## setAppAccess
 
@@ -4517,20 +4564,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.setAppAccess('ZhangSan', 'com.example.accountjsdemo', true).then(() => {
-    console.info('setAppAccess successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`setAppAccess failed: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`setAppAccess exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="setappaccess-1"></a>
 
 ## setAppAccess
 
@@ -4570,7 +4604,20 @@ Sets the access to the data of an account for an application. This API uses a pr
 
 **Examples**
 
-See [setAppAccess](#setappaccess)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.setAppAccess('ZhangSan', 'com.example.accountjsdemo', true).then(() => {
+    console.info('setAppAccess successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`setAppAccess failed: code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setAppAccess exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## setAppAccountSyncEnable
 
@@ -4618,15 +4665,7 @@ appAccountManager.setAppAccountSyncEnable('ZhangSan', true, (err: BusinessError)
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setAppAccountSyncEnable('ZhangSan', true).then(() => { 
-  console.info('setAppAccountSyncEnable Success');
-}).catch((err: BusinessError) => {
-  console.error(`setAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="setappaccountsyncenable-1"></a>
 
 ## setAppAccountSyncEnable
 
@@ -4667,7 +4706,15 @@ Sets data synchronization for an application account. This API uses a promise to
 
 **Examples**
 
-See [setAppAccountSyncEnable](#setappaccountsyncenable)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setAppAccountSyncEnable('ZhangSan', true).then(() => { 
+  console.info('setAppAccountSyncEnable Success');
+}).catch((err: BusinessError) => {
+  console.error(`setAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## setAssociatedData
 
@@ -4714,15 +4761,7 @@ appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001', (err: BusinessEr
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001').then(() => { 
-  console.info('setAssociatedData Success');
-}).catch((err: BusinessError) => {
-  console.error(`setAssociatedData err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="setassociateddata-1"></a>
 
 ## setAssociatedData
 
@@ -4762,7 +4801,15 @@ Sets data to be associated with an application account. This API uses a promise 
 
 **Examples**
 
-See [setAssociatedData](#setassociateddata)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001').then(() => { 
+  console.info('setAssociatedData Success');
+}).catch((err: BusinessError) => {
+  console.error(`setAssociatedData err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## setAuthenticatorProperties
 
@@ -4816,28 +4863,7 @@ try {
 }
 ```
 
-```TypeScript
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let options: appAccount.SetPropertiesOptions = {
-  properties: { prop1: 'value1' }
-};
-try {
-  appAccountManager.setAuthenticatorProperties('com.example.accountjsdemo', options, {
-    onResult: (resultCode: number, result?: appAccount.AuthResult) => {
-      console.info('setAuthenticatorProperties onResult, resultCode: ' + JSON.stringify(resultCode));
-      console.info('setAuthenticatorProperties onResult, result: ' + JSON.stringify(result));
-    },
-    onRequestRedirected: (request: Want) => {
-      console.info('setAuthenticatorProperties onRequestRedirected, request: ' + JSON.stringify(request));
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`setAuthenticatorProperties err: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="setauthenticatorproperties-1"></a>
 
 ## setAuthenticatorProperties
 
@@ -4872,7 +4898,28 @@ Sets the authenticator attributes of an application. This API uses an asynchrono
 
 **Examples**
 
-See [setAuthenticatorProperties](#setauthenticatorproperties)
+```TypeScript
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let options: appAccount.SetPropertiesOptions = {
+  properties: { prop1: 'value1' }
+};
+try {
+  appAccountManager.setAuthenticatorProperties('com.example.accountjsdemo', options, {
+    onResult: (resultCode: number, result?: appAccount.AuthResult) => {
+      console.info('setAuthenticatorProperties onResult, resultCode: ' + JSON.stringify(resultCode));
+      console.info('setAuthenticatorProperties onResult, result: ' + JSON.stringify(result));
+    },
+    onRequestRedirected: (request: Want) => {
+      console.info('setAuthenticatorProperties onRequestRedirected, request: ' + JSON.stringify(request));
+    }
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setAuthenticatorProperties err: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## setAuthToken
 
@@ -4924,20 +4971,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.setAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
-    console.info('setAuthToken successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`setAuthToken failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="setauthtoken-1"></a>
 
 ## setAuthToken
 
@@ -4977,7 +5011,20 @@ Sets an authorization token of the specific authentication type for an applicati
 
 **Examples**
 
-See [setAuthToken](#setauthtoken)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.setAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
+    console.info('setAuthToken successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`setAuthToken failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## setAuthTokenVisibility
 
@@ -5038,20 +5085,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.setAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true).then(() => {
-    console.info('setAuthTokenVisibility successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`setAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`setAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="setauthtokenvisibility-1"></a>
 
 ## setAuthTokenVisibility
 
@@ -5093,7 +5127,20 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 **Examples**
 
-See [setAuthTokenVisibility](#setauthtokenvisibility)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.setAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true).then(() => {
+    console.info('setAuthTokenVisibility successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`setAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## setCredential
 
@@ -5145,20 +5192,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.setCredential('ZhangSan', 'PIN_SIX', 'xxxxxx').then(() => {
-    console.info('setCredential successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`setCredential failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="setcredential-1"></a>
 
 ## setCredential
 
@@ -5197,7 +5231,20 @@ Sets a credential for an application account. This API uses a promise to return 
 
 **Examples**
 
-See [setCredential](#setcredential)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.setCredential('ZhangSan', 'PIN_SIX', 'xxxxxx').then(() => {
+    console.info('setCredential successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`setCredential failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## setCustomData
 
@@ -5249,20 +5296,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.setCustomData('ZhangSan', 'age', '12').then(() => {
-    console.info('setCustomData successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`setCustomData failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="setcustomdata-1"></a>
 
 ## setCustomData
 
@@ -5302,7 +5336,20 @@ Sets custom data for an application account. This API uses a promise to return t
 
 **Examples**
 
-See [setCustomData](#setcustomdata)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appAccountManager.setCustomData('ZhangSan', 'age', '12').then(() => {
+    console.info('setCustomData successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`setCustomData failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## setDataSyncEnabled
 
@@ -5351,20 +5398,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    appAccountManager.setDataSyncEnabled('ZhangSan', true).then(() => { 
-        console.info('setDataSyncEnabled Success');
-    }).catch((err: BusinessError) => {
-        console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
-    });
-} catch (e) {
-    const err = e as BusinessError;
-    console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="setdatasyncenabled-1"></a>
 
 ## setDataSyncEnabled
 
@@ -5405,7 +5439,20 @@ Sets data synchronization for an application account. This API uses a promise to
 
 **Examples**
 
-See [setDataSyncEnabled](#setdatasyncenabled)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    appAccountManager.setDataSyncEnabled('ZhangSan', true).then(() => { 
+        console.info('setDataSyncEnabled Success');
+    }).catch((err: BusinessError) => {
+        console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+    });
+} catch (e) {
+    const err = e as BusinessError;
+    console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## setOAuthToken
 
@@ -5452,15 +5499,7 @@ appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessE
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
-  console.info('setOAuthToken successfully');
-}).catch((err: BusinessError) => {
-  console.error(`setOAuthToken err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="setoauthtoken-1"></a>
 
 ## setOAuthToken
 
@@ -5500,7 +5539,15 @@ Sets an authorization token of the specific authentication type for an applicati
 
 **Examples**
 
-See [setOAuthToken](#setoauthtoken)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
+  console.info('setOAuthToken successfully');
+}).catch((err: BusinessError) => {
+  console.error(`setOAuthToken err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## setOAuthTokenVisibility
 
@@ -5555,15 +5602,7 @@ appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.
   });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true).then(() => {
-  console.info('setOAuthTokenVisibility successfully');
-}).catch((err: BusinessError) => {
-  console.error(`setOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="setoauthtokenvisibility-1"></a>
 
 ## setOAuthTokenVisibility
 
@@ -5604,7 +5643,15 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 **Examples**
 
-See [setOAuthTokenVisibility](#setoauthtokenvisibility)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true).then(() => {
+  console.info('setOAuthTokenVisibility successfully');
+}).catch((err: BusinessError) => {
+  console.error(`setOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## verifyCredential
 
@@ -5660,29 +5707,7 @@ try {
 }
 ```
 
-```TypeScript
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let options: appAccount.VerifyCredentialOptions = {
-  credentialType: 'pin',
-  credential: '123456'
-};
-try {
-  appAccountManager.verifyCredential('zhangsan', 'com.example.accountjsdemo', options, {
-    onResult: (resultCode: number, result?: appAccount.AuthResult) => {
-      console.info('verifyCredential onResult, resultCode: ' + JSON.stringify(resultCode));
-      console.info('verifyCredential onResult, result: ' + JSON.stringify(result));
-    },
-    onRequestRedirected: (request: Want) => {
-      console.info('verifyCredential onRequestRedirected, request: ' + JSON.stringify(request));
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`verifyCredential err: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="verifycredential-1"></a>
 
 ## verifyCredential
 
@@ -5718,26 +5743,6 @@ Verifies the credential of an application account. This API uses an asynchronous
 | [12300114](../errorcode-account.md#12300114-authentication-service-abnormal) | Authenticator service exception. |
 
 **Examples**
-
-```TypeScript
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  appAccountManager.verifyCredential('zhangsan', 'com.example.accountjsdemo', {
-    onResult: (resultCode: number, result?: appAccount.AuthResult) => {
-      console.info('verifyCredential onResult, resultCode: ' + JSON.stringify(resultCode));
-      console.info('verifyCredential onResult, result: ' + JSON.stringify(result));
-    },
-    onRequestRedirected: (request: Want) => {
-      console.info('verifyCredential onRequestRedirected, request: ' + JSON.stringify(request));
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`verifyCredential err: code is ${err.code}, message is ${err.message}`);
-}
-```
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';

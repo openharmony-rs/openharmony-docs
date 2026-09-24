@@ -30,7 +30,7 @@ function getAllUserTrustedCertificates(): Promise<CMResult>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**
@@ -58,31 +58,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  /* 获取当前用户下的用户根CA证书列表，如果需要获取设备公共位置的用户根CA列表，则传入GLOBAL_USER */
-  let scope: certificateManager.CertScope = certificateManager.CertScope.CURRENT_USER;
-  certificateManager.getAllUserTrustedCertificates(scope).then((cmResult) => {
-    if (cmResult === undefined) { // 用户根CA证书个数为0时，返回cmResult为undefined。
-      console.info('The count of the user trusted certificates is 0.');
-    } else if (cmResult.certList == undefined) {
-      console.info('The result of getting current user trusted certificates is undefined.');
-    } else {
-      let list = cmResult.certList;
-      console.info('Succeeded in getting current user trusted certificates.');
-    }
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to get current user trusted certificates. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  console.error(`Failed to get current user trusted certificates. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="getallusertrustedcertificates-1"></a>
 
 ## getAllUserTrustedCertificates
 
@@ -114,10 +91,33 @@ function getAllUserTrustedCertificates(scope: CertScope): Promise<CMResult>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**
 
-参见 getAllUserTrustedCertificates
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  /* 获取当前用户下的用户根CA证书列表，如果需要获取设备公共位置的用户根CA列表，则传入GLOBAL_USER */
+  let scope: certificateManager.CertScope = certificateManager.CertScope.CURRENT_USER;
+  certificateManager.getAllUserTrustedCertificates(scope).then((cmResult) => {
+    if (cmResult === undefined) { // 用户根CA证书个数为0时，返回cmResult为undefined。
+      console.info('The count of the user trusted certificates is 0.');
+    } else if (cmResult.certList == undefined) {
+      console.info('The result of getting current user trusted certificates is undefined.');
+    } else {
+      let list = cmResult.certList;
+      console.info('Succeeded in getting current user trusted certificates.');
+    }
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get current user trusted certificates. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to get current user trusted certificates. Code: ${error.code}, message: ${error.message}`);
+}
+```

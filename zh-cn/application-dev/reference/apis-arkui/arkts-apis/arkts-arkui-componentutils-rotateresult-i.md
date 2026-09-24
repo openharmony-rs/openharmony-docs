@@ -1,5 +1,9 @@
 # RotateResult
 
+```TypeScript
+interface RotateResult
+```
+
 旋转信息。
 
 **起始版本：** 10

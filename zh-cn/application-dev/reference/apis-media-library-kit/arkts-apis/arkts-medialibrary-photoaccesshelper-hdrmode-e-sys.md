@@ -1,5 +1,9 @@
 # HdrMode（系统接口）
 
+```TypeScript
+enum HdrMode
+```
+
 枚举，媒体资产的HDR模式。
 
 **起始版本：** 22

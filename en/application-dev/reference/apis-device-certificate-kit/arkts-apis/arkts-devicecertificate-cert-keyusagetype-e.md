@@ -1,5 +1,9 @@
 # KeyUsageType
 
+```TypeScript
+enum KeyUsageType
+```
+
 Enumerates the purposes for which the key in the certificate is used.
 
 **Since:** 12

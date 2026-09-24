@@ -1,5 +1,9 @@
 # TimeZoneCityItem (System API)
 
+```TypeScript
+export interface TimeZoneCityItem
+```
+
 Represents a time zone and city combination item.
 
 **Since:** 10
@@ -56,7 +60,7 @@ Latitude info of time zone city in decimal degrees (°).
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -74,7 +78,7 @@ Longitude info of time zone city in decimal degrees (°).
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

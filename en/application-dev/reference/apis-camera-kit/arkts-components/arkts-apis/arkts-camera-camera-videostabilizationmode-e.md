@@ -1,5 +1,9 @@
 # VideoStabilizationMode
 
+```TypeScript
+enum VideoStabilizationMode
+```
+
 Enumerates the video stabilization modes.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # OptionsData
 
+```TypeScript
+interface OptionsData
+```
+
 设备证书请求的可选数据。
 
 **起始版本：** 11

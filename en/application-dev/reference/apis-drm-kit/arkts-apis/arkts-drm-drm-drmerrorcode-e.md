@@ -1,5 +1,9 @@
 # DrmErrorCode
 
+```TypeScript
+enum DrmErrorCode
+```
+
 Enumerates the DRM error codes.
 
 **Since:** 11

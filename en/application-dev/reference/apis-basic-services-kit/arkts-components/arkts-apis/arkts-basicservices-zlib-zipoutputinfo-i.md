@@ -1,5 +1,9 @@
 # ZipOutputInfo
 
+```TypeScript
+interface ZipOutputInfo
+```
+
 Compression and decompression return value information.
 
 **Since:** 12

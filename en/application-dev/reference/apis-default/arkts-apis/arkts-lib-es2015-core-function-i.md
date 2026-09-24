@@ -1,5 +1,9 @@
 # Function
 
+```TypeScript
+interface Function
+```
+
 ## Modules to Import
 
 ```TypeScript

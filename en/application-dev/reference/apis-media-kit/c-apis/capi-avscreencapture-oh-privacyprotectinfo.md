@@ -8,6 +8,8 @@ typedef struct OH_PrivacyProtectInfo {...} OH_PrivacyProtectInfo
 
 Defines the privacy protection information.
 
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
 **Since**: 24
 
 **Related module**: [AVScreenCapture](capi-avscreencapture.md)

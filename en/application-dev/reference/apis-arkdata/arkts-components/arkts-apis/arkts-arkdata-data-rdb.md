@@ -27,10 +27,10 @@ properties, characteristics, or relationships between data entities in an RDB st
 
 | Name | Description |
 | --- | --- |
-| [deleteRdbStore](arkts-arkdata-rdb-deleterdbstore-f.md) | Deletes an RDB store. This API uses an asynchronous callback to return the result. |
-| [deleteRdbStore](arkts-arkdata-rdb-deleterdbstore-f.md) | Deletes an RDB store. This API uses a promise to return the result. |
-| [getRdbStore](arkts-arkdata-rdb-getrdbstore-f.md) | Obtains an RDB store. This API uses an asynchronous callback to return the result. You can set parameters for the RDB store based on service requirements and call APIs to perform data operations. |
-| [getRdbStore](arkts-arkdata-rdb-getrdbstore-f.md) | Obtains an RDB store. This API uses a promise to return the result. You can set parameters for the RDB store based on service requirements and call APIs to perform data operations. |
+| [deleteRdbStore](arkts-arkdata-rdb-deleterdbstore-f.md#deleterdbstore) | Deletes an RDB store. This API uses an asynchronous callback to return the result. |
+| [deleteRdbStore](arkts-arkdata-rdb-deleterdbstore-f.md#deleterdbstore-1) | Deletes an RDB store. This API uses a promise to return the result. |
+| [getRdbStore](arkts-arkdata-rdb-getrdbstore-f.md#getrdbstore) | Obtains an RDB store. This API uses an asynchronous callback to return the result. You can set parameters for the RDB store based on service requirements and call APIs to perform data operations. |
+| [getRdbStore](arkts-arkdata-rdb-getrdbstore-f.md#getrdbstore-1) | Obtains an RDB store. This API uses a promise to return the result. You can set parameters for the RDB store based on service requirements and call APIs to perform data operations. |
 
 ### Classes
 

@@ -1,5 +1,9 @@
 # GetEuiccProfileInfoListResult（系统接口）
 
+```TypeScript
+export interface GetEuiccProfileInfoListResult
+```
+
 获取配置文件信息列表。
 
 **起始版本：** 18

@@ -38,6 +38,8 @@ Obtains the Want in a WantAgent object. This API uses an asynchronous callback t
 | [16000151](../errorcode-ability.md#16000151-invalid-wantagent-object) | Invalid wantAgent object. |
 
 
+<a id="getwant-1"></a>
+
 ## getWant
 
 ```TypeScript

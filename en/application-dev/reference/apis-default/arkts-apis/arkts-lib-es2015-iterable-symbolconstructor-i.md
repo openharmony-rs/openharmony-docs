@@ -1,5 +1,9 @@
 # SymbolConstructor
 
+```TypeScript
+interface SymbolConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

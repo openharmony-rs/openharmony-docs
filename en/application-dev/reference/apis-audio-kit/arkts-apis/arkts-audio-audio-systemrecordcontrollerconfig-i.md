@@ -1,5 +1,9 @@
 # SystemRecordControllerConfig
 
+```TypeScript
+interface SystemRecordControllerConfig
+```
+
 Defines the configuration for the system recording controller panel.
 
 **Since:** 26.0.0

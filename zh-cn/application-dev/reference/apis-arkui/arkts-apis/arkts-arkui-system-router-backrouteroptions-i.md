@@ -1,5 +1,9 @@
 # BackRouterOptions
 
+```TypeScript
+export interface BackRouterOptions
+```
+
 定义路由器返回的选项。
 
 **起始版本：** 7

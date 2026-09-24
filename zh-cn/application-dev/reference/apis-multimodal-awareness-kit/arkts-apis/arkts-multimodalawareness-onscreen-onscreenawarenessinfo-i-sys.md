@@ -1,5 +1,9 @@
 # OnscreenAwarenessInfo（系统接口）
 
+```TypeScript
+export interface OnscreenAwarenessInfo
+```
+
 屏上感知返回信息列表。
 
 **起始版本：** 23

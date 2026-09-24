@@ -8,6 +8,8 @@ typedef struct Asset_Attr {...} Asset_Attr
 
 关键资产属性，属性由标签和值组成，以键值对的形式存在。
 
+**系统能力：** SystemCapability.Security.Asset
+
 **起始版本：** 11
 
 **相关模块：** [AssetType](capi-assettype.md)

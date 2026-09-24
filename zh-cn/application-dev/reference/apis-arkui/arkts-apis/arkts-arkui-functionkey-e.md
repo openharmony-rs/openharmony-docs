@@ -1,5 +1,9 @@
 # FunctionKey
 
+```TypeScript
+declare enum FunctionKey
+```
+
 输入法功能键类型。
 
 **起始版本：** 10

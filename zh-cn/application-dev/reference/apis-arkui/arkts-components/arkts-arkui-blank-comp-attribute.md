@@ -1,10 +1,14 @@
 # Blank属性/事件
 
-支持[通用属性](arkts-arkui-commonmethod-c.md)。
+```TypeScript
+declare class BlankAttribute extends CommonMethod<BlankAttribute>
+```
 
-支持[通用事件](arkts-arkui-commonmethod-c.md)。
+支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)。
 
-**继承/实现关系：** BlankAttribute extends CommonMethod&lt;BlankAttribute&gt;
+支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
+
+**继承/实现关系：** BlankAttribute extends CommonMethod<BlankAttribute>
 
 **起始版本：** 7
 
@@ -16,7 +20,7 @@
 color(value: ResourceColor)
 ```
 
-设置空白填充的填充颜色，支持attributeModifier动态设置属性方法。
+设置空白填充的填充颜色，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 7
 

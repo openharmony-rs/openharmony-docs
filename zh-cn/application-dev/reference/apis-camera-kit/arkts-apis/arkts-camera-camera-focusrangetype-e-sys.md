@@ -1,5 +1,9 @@
 # FocusRangeType（系统接口）
 
+```TypeScript
+enum FocusRangeType
+```
+
 Enumerates the focus range types.
 
 **起始版本：** 15

@@ -1,5 +1,9 @@
 # NetworkPolicy
 
+```TypeScript
+enum NetworkPolicy
+```
+
 Indicates network policy.
 
 **Since:** 26.0.0

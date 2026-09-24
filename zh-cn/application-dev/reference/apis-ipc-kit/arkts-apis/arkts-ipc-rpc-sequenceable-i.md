@@ -1,5 +1,9 @@
 # Sequenceable
 
+```TypeScript
+interface Sequenceable
+```
+
 在进程间通信（IPC）期间，将类的对象写入MessageParcel并从MessageParcel中恢复它们。
 
 **起始版本：** 7

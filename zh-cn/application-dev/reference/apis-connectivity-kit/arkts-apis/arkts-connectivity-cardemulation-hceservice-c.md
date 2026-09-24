@@ -1,5 +1,9 @@
 # HceService
 
+```TypeScript
+export class HceService
+```
+
 提供HCE卡模拟的实现，主要包括接收对端读卡设备的APDU数据，并响应APDU数据到对端读卡设备。使用HCE相关接口前，必须先判断设备是否支持HCE卡模拟能力。
 
 **起始版本：** 8
@@ -24,6 +28,8 @@ off(type: 'hceCmd', callback?: AsyncCallback<number[]>): void
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
@@ -39,8 +45,8 @@ off(type: 'hceCmd', callback?: AsyncCallback<number[]>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 
@@ -89,6 +95,8 @@ on(type: 'hceCmd', callback: AsyncCallback<number[]>): void
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
@@ -104,18 +112,302 @@ on(type: 'hceCmd', callback: AsyncCallback<number[]>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameter.<br>**适用版本：** 12+ |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 12+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter.<br>**适用版本：** 12+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 12+ |
+
+**示例**
+
+ArkTS示例：
+
+```TypeScript
+// 适用于除轻量级智能穿戴产品之外其他设备
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { cardEmulation } from '@kit.ConnectivityKit';
+import { AsyncCallback } from '@kit.BasicServicesKit';
+import { bundleManager, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+let hceService: cardEmulation.HceService = new cardEmulation.HceService();
+let element: bundleManager.ElementName;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, param: AbilityConstant.LaunchParam) {
+    hilog.info(0x0000, 'testHce', '%{public}s', 'Ability onCreate');
+    element = {
+      bundleName: want.bundleName ?? '',
+      abilityName: want.abilityName ?? '',
+      moduleName: want.moduleName
+    };
+    const apduCallback: AsyncCallback<number[]> = (err, data) => {
+      // 处理数据和异常
+      console.info("got apdu data");
+    };
+    hceService.on('hceCmd', apduCallback);
+  }
+  onDestroy() {
+    hilog.info(0x0000, 'testHce', '%{public}s', 'Ability onDestroy');
+    hceService.stop(element);
+  }
+  // 生命周期内的其他功能
+}
+```
+
+JS示例：
+
+```TypeScript
+// 适用于轻量级智能穿戴设备
+import cardEmulation from '@ohos.nfc.cardEmulation';
+
+let appName = "com.example.testquestionlite";
+
+export default {
+  data:{
+    fontSize: '30px',
+    fontColor: '#50609f',
+    hide: 'show',
+    headCon: appName,
+    paymentAid: ["A0000000041010", "A0000000041012"]
+  },
+  onCreate() {
+    console.info('onCreate');
+  },
+  onReady() {
+    cardEmulation.hasHceCapability();
+    cardEmulation.isDefaultService(appName, cardEmulation.CardType.PAYMENT);
+    cardEmulation.isDefaultService(appName, cardEmulation.CardType.OTHER);
+    let hceService = new cardEmulation.HceService();
+
+    hceService.start(appName, this.paymentAid);
+    hceService.on("hceCmd", (data) => {
+      console.info('data:' + data);
+      // 应用程序实际想要发送的数据， 此处仅作为示例
+      let responseData = [0x1, 0x2];
+      hceService.transmit(responseData, () => {
+        console.info('sendResponse start');
+      });
+      console.info('sendResponse end');
+    });
+  },
+  onDestroy() {
+  }
+  // 生命周期内的其他功能
+}
+```
+
+## start
+
+```TypeScript
+start(elementName: ElementName, aidList: string[]): void
+```
+
+启动HCE业务功能。包括设置当前应用为前台优先，动态注册AID列表。
+
+**起始版本：** 9
+
+**需要权限：** ohos.permission.NFC_CARD_EMULATION
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Communication.NFC.CardEmulation
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| elementName | [ElementName](../../apis-ability-kit/arkts-apis/arkts-ability-elementname-i.md) | 是 | 所属应用声明NFC卡模拟能力的页面信息（至少包含bundleName、abilityName这两项的赋值），不可以为空。 |
+| aidList | string[] | 是 | 动态注册卡模拟的AID列表，允许为空。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [3100301](../errorcode-nfc.md#3100301-nfc卡模拟状态异常) | Card emulation running state is abnormal in service. |
+
+## stop
+
+```TypeScript
+stop(elementName: ElementName): void
+```
+
+停止HCE业务功能。包括取消APDU数据接收的订阅，退出当前应用前台优先，释放动态注册的AID列表。应用程序需要在HCE卡模拟页面的onDestroy函数里调用该接口。
+
+**起始版本：** 9
+
+**需要权限：** ohos.permission.NFC_CARD_EMULATION
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Communication.NFC.CardEmulation
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| elementName | [ElementName](../../apis-ability-kit/arkts-apis/arkts-ability-elementname-i.md) | 是 | 所属应用声明NFC卡模拟能力的页面信息（至少包含bundleName、abilityName这两项的赋值），不可以为空。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [3100301](../errorcode-nfc.md#3100301-nfc卡模拟状态异常) | Card emulation running state is abnormal in service. |
+
+## transmit
+
+```TypeScript
+transmit(response: number[]): Promise<void>
+```
+
+发送APDU数据到对端读卡设备，使用Promise异步回调。应用程序必须在on收到读卡设备发送的APDU数据后，才调用该接口响应数据。
+
+**起始版本：** 9
+
+**需要权限：** ohos.permission.NFC_CARD_EMULATION
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Communication.NFC.CardEmulation
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| response | number[] | 是 | 发送到对端读卡设备的符合APDU协议的数据，每个number十六进制表示，范围是0x00~0xFF。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [3100301](../errorcode-nfc.md#3100301-nfc卡模拟状态异常) | Card emulation running state is abnormal in service. |
 
 **示例**
 
 ```TypeScript
-ArkTS示例：
+// 适用于除轻量级智能穿戴产品之外其他设备
+import { cardEmulation } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hceService: cardEmulation.HceService = new cardEmulation.HceService();
+
+// 应用程序实际想要发送的数据， 此处仅作为示例
+const responseData = [0x1, 0x2];
+hceService.transmit(responseData).then(() => {
+  // 处理 promise 的回调
+  console.info("transmit Promise success.");
+}).catch((err: BusinessError) => {
+  console.error("transmit Promise error:", err);
+});
 ```
 
 ```TypeScript
-JS示例：
+// 适用于轻量级智能穿戴设备
+import cardEmulation from '@ohos.nfc.cardEmulation';
+
+let hceService = new cardEmulation.HceService();
+
+// 应用程序实际想要发送的数据， 此处仅作为示例
+let responseData = [0x1, 0x2];
+hceService.transmit(responseData).then(() => {
+  // 处理 promise 的回调
+  console.info("transmit Promise success.");
+});
+console.info("transmit Promise end.");
+```
+
+<a id="transmit-1"></a>
+
+## transmit
+
+```TypeScript
+transmit(response: number[], callback: AsyncCallback<void>): void
+```
+
+发送APDU数据到对端读卡设备，应用程序必须在on收到读卡设备发送的APDU数据后，才调用该接口响应数据。使用Callback异步回调。
+
+**起始版本：** 9
+
+**需要权限：** ohos.permission.NFC_CARD_EMULATION
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Communication.NFC.CardEmulation
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| response | number[] | 是 | 发送到对端读卡设备的符合APDU协议的数据，每个number十六进制表示，范围是0x00~0xFF。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当发送APDU数据成功时，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [3100301](../errorcode-nfc.md#3100301-nfc卡模拟状态异常) | Card emulation running state is abnormal in service. |
+
+**示例**
+
+```TypeScript
+// 适用于除轻量级智能穿戴产品之外其他设备
+import { cardEmulation } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hceService: cardEmulation.HceService = new cardEmulation.HceService();
+
+// 应用程序实际想要发送的数据， 此处仅作为示例
+try {
+  const responseData = [0x1, 0x2];
+
+  hceService.transmit(responseData, (err : BusinessError)=> {
+    if (err) {
+      console.error(`transmit AsyncCallback err Code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info("transmit AsyncCallback success.");
+    }
+  });
+} catch (error) {
+  console.error(`transmit AsyncCallback catch Code: ${(error as BusinessError).code}, ` +
+    `message: ${(error as BusinessError).message}`);
+}
+```
+
+```TypeScript
+// 适用于轻量级智能穿戴设备
+import cardEmulation from '@ohos.nfc.cardEmulation';
+
+let hceService = new cardEmulation.HceService();
+
+// 应用程序实际想要发送的数据， 此处仅作为示例
+let responseData = [0x1, 0x2];
+hceService.transmit(responseData, () => {
+  console.info("transmit Promise success.");
+});
+console.info("transmit Promise end.");
 ```
 
 ## sendResponse
@@ -146,12 +438,21 @@ sendResponse(responseApdu: number[]): void
 
 **示例**
 
-```TypeScript
 ArkTS示例：
 
 示例请参见[transmit](#transmit)接口的示例。
 
 JS示例：
+
+```TypeScript
+<!-- 适用于轻量级智能穿戴设备 -->
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        测试
+    </text>
+    <input type="button" value="sendResponse" style="width: 240px; height: 50px; margin: 5px;" onclick="onClick"></input>
+</div>
 ```
 
 ```TypeScript
@@ -206,38 +507,6 @@ export default  {
 }
 ```
 
-## start
-
-```TypeScript
-start(elementName: ElementName, aidList: string[]): void
-```
-
-启动HCE业务功能。包括设置当前应用为前台优先，动态注册AID列表。
-
-**起始版本：** 9
-
-**需要权限：** ohos.permission.NFC_CARD_EMULATION
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Communication.NFC.CardEmulation
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| elementName | [ElementName](../../apis-ability-kit/arkts-apis/arkts-ability-elementname-i.md) | 是 | 所属应用声明NFC卡模拟能力的页面信息（至少包含bundleName、abilityName这两项的赋值），不可以为空。 |
-| aidList | string[] | 是 | 动态注册卡模拟的AID列表，允许为空。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [3100301](../errorcode-nfc.md#3100301-nfc卡模拟状态异常) | Card emulation running state is abnormal in service. |
-
 ## startHCE
 
 ```TypeScript
@@ -272,12 +541,21 @@ startHCE(aidList: string[]): boolean
 
 **示例**
 
-```TypeScript
 ArkTS示例：
 
 示例请参见on接口的示例。
 
 JS示例：
+
+```TypeScript
+<!-- 适用于轻量级智能穿戴设备 -->
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        测试
+    </text>
+    <input type="button" value="startHCE" style="width: 240px; height: 50px; margin: 5px;" onclick="onClick"></input>
+</div>
 ```
 
 ```TypeScript
@@ -325,37 +603,6 @@ export default  {
 }
 ```
 
-## stop
-
-```TypeScript
-stop(elementName: ElementName): void
-```
-
-停止HCE业务功能。包括取消APDU数据接收的订阅，退出当前应用前台优先，释放动态注册的AID列表。应用程序需要在HCE卡模拟页面的onDestroy函数里调用该接口。
-
-**起始版本：** 9
-
-**需要权限：** ohos.permission.NFC_CARD_EMULATION
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Communication.NFC.CardEmulation
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| elementName | [ElementName](../../apis-ability-kit/arkts-apis/arkts-ability-elementname-i.md) | 是 | 所属应用声明NFC卡模拟能力的页面信息（至少包含bundleName、abilityName这两项的赋值），不可以为空。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [3100301](../errorcode-nfc.md#3100301-nfc卡模拟状态异常) | Card emulation running state is abnormal in service. |
-
 ## stopHCE
 
 ```TypeScript
@@ -384,12 +631,21 @@ stopHCE(): boolean
 
 **示例**
 
-```TypeScript
 ArkTS示例：
 
 示例请参见on接口的示例。
 
 JS示例：
+
+```TypeScript
+<!-- 适用于轻量级智能穿戴设备 -->
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        测试
+    </text>
+    <input type="button" value="stopHCE" style="width: 240px; height: 50px; margin: 5px;" onclick="onClick"></input>
+</div>
 ```
 
 ```TypeScript
@@ -434,148 +690,3 @@ export default  {
     }
 }
 ```
-
-## transmit
-
-```TypeScript
-transmit(response: number[]): Promise<void>
-```
-
-发送APDU数据到对端读卡设备，使用Promise异步回调。应用程序必须在on收到读卡设备发送的APDU数据后，才调用该接口响应数据。
-
-**起始版本：** 9
-
-**需要权限：** ohos.permission.NFC_CARD_EMULATION
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Communication.NFC.CardEmulation
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| response | number[] | 是 | 发送到对端读卡设备的符合APDU协议的数据，每个number十六进制表示，范围是0x00~0xFF。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [3100301](../errorcode-nfc.md#3100301-nfc卡模拟状态异常) | Card emulation running state is abnormal in service. |
-
-**示例**
-
-```TypeScript
-// 适用于除轻量级智能穿戴产品之外其他设备
-import { cardEmulation } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let hceService: cardEmulation.HceService = new cardEmulation.HceService();
-
-// 应用程序实际想要发送的数据， 此处仅作为示例
-const responseData = [0x1, 0x2];
-hceService.transmit(responseData).then(() => {
-  // 处理 promise 的回调
-  console.info("transmit Promise success.");
-}).catch((err: BusinessError) => {
-  console.error("transmit Promise error:", err);
-});
-```
-
-```TypeScript
-// 适用于轻量级智能穿戴设备
-import cardEmulation from '@ohos.nfc.cardEmulation';
-
-let hceService = new cardEmulation.HceService();
-
-// 应用程序实际想要发送的数据， 此处仅作为示例
-let responseData = [0x1, 0x2];
-hceService.transmit(responseData).then(() => {
-  // 处理 promise 的回调
-  console.info("transmit Promise success.");
-});
-console.info("transmit Promise end.");
-```
-
-```TypeScript
-// 适用于除轻量级智能穿戴产品之外其他设备
-import { cardEmulation } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let hceService: cardEmulation.HceService = new cardEmulation.HceService();
-
-// 应用程序实际想要发送的数据， 此处仅作为示例
-try {
-  const responseData = [0x1, 0x2];
-
-  hceService.transmit(responseData, (err : BusinessError)=> {
-    if (err) {
-      console.error(`transmit AsyncCallback err Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info("transmit AsyncCallback success.");
-    }
-  });
-} catch (error) {
-  console.error(`transmit AsyncCallback catch Code: ${(error as BusinessError).code}, ` +
-    `message: ${(error as BusinessError).message}`);
-}
-```
-
-```TypeScript
-// 适用于轻量级智能穿戴设备
-import cardEmulation from '@ohos.nfc.cardEmulation';
-
-let hceService = new cardEmulation.HceService();
-
-// 应用程序实际想要发送的数据， 此处仅作为示例
-let responseData = [0x1, 0x2];
-hceService.transmit(responseData, () => {
-  console.info("transmit Promise success.");
-});
-console.info("transmit Promise end.");
-```
-
-## transmit
-
-```TypeScript
-transmit(response: number[], callback: AsyncCallback<void>): void
-```
-
-发送APDU数据到对端读卡设备，应用程序必须在on收到读卡设备发送的APDU数据后，才调用该接口响应数据。使用Callback异步回调。
-
-**起始版本：** 9
-
-**需要权限：** ohos.permission.NFC_CARD_EMULATION
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Communication.NFC.CardEmulation
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| response | number[] | 是 | 发送到对端读卡设备的符合APDU协议的数据，每个number十六进制表示，范围是0x00~0xFF。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当发送APDU数据成功时，err为undefined，否则为错误对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [3100301](../errorcode-nfc.md#3100301-nfc卡模拟状态异常) | Card emulation running state is abnormal in service. |
-
-**示例**
-
-参见 [transmit](#transmit)

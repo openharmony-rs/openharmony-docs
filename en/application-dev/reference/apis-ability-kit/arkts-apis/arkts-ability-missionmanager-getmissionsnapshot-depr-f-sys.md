@@ -55,23 +55,8 @@ try {
 }
 ```
 
-```TypeScript
-import missionManager from '@ohos.application.missionManager';
-import { BusinessError } from '@ohos.base';
 
-let testMissionId = 2;
-try {
-  // Obtain the mission snapshot.
-  missionManager.getMissionSnapShot('', testMissionId).then((data) => {
-    console.info(`getMissionSnapShot successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`getMissionSnapShot failed. Cause: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`getMissionSnapShot failed. Cause: ${error.message}`);
-}
-```
-
+<a id="getmissionsnapshot-1"></a>
 
 ## getMissionSnapShot
 
@@ -108,4 +93,19 @@ Obtains the snapshot of a given mission. This API uses a promise to return the r
 
 **Examples**
 
-See [getMissionSnapShot](#getmissionsnapshot)
+```TypeScript
+import missionManager from '@ohos.application.missionManager';
+import { BusinessError } from '@ohos.base';
+
+let testMissionId = 2;
+try {
+  // Obtain the mission snapshot.
+  missionManager.getMissionSnapShot('', testMissionId).then((data) => {
+    console.info(`getMissionSnapShot successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`getMissionSnapShot failed. Cause: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`getMissionSnapShot failed. Cause: ${error.message}`);
+}
+```

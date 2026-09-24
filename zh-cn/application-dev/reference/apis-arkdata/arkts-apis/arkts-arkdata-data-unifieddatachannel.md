@@ -25,16 +25,16 @@ import { unifiedDataChannel } from '@kit.ArkData';
 | 名称 | 说明 |
 | --- | --- |
 | [convertRecordsToEntries](arkts-arkdata-unifieddatachannel-convertrecordstoentries-f.md) | 本接口用于将传入的data转换成多样式数据结构。若原data使用多个record去承载同一份数据的不同数据格式，则可以使用此接口将原data转换为多样式数据结构。 |
-| [deleteData](arkts-arkdata-unifieddatachannel-deletedata-f.md) | 删除UDMF公共数据通路的数据，返回删除的数据集，使用callback异步回调。 |
-| [deleteData](arkts-arkdata-unifieddatachannel-deletedata-f.md) | 删除UDMF公共数据通路的数据，返回删除的数据集，使用Promise异步回调。 |
-| [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md) | 将数据写入UDMF的公共数据通路中，并生成数据的唯一标识符，使用callback异步回调。 |
-| [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md) | 将数据写入UDMF的公共数据通路中，并生成数据的唯一标识符，使用Promise异步回调。 |
-| [queryData](arkts-arkdata-unifieddatachannel-querydata-f.md) | 查询UDMF公共数据通路的数据，使用callback异步回调。 |
-| [queryData](arkts-arkdata-unifieddatachannel-querydata-f.md) | 查询UDMF公共数据通路的数据，使用Promise异步回调。 |
+| [deleteData](arkts-arkdata-unifieddatachannel-deletedata-f.md#deletedata) | 删除UDMF公共数据通路的数据，返回删除的数据集，使用callback异步回调。 |
+| [deleteData](arkts-arkdata-unifieddatachannel-deletedata-f.md#deletedata-1) | 删除UDMF公共数据通路的数据，返回删除的数据集，使用Promise异步回调。 |
+| [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata) | 将数据写入UDMF的公共数据通路中，并生成数据的唯一标识符，使用callback异步回调。 |
+| [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata-1) | 将数据写入UDMF的公共数据通路中，并生成数据的唯一标识符，使用Promise异步回调。 |
+| [queryData](arkts-arkdata-unifieddatachannel-querydata-f.md#querydata) | 查询UDMF公共数据通路的数据，使用callback异步回调。 |
+| [queryData](arkts-arkdata-unifieddatachannel-querydata-f.md#querydata-1) | 查询UDMF公共数据通路的数据，使用Promise异步回调。 |
 | [removeAppShareOptions](arkts-arkdata-unifieddatachannel-removeappshareoptions-f.md) | 清除[setAppShareOptions](arkts-arkdata-unifieddatachannel-setappshareoptions-f.md)设置的管控信息。调用成功后，setAppShareOptions设置的管控信息被清除，应用内拖拽通道数据恢复到默认使用范围。 |
 | [setAppShareOptions](arkts-arkdata-unifieddatachannel-setappshareoptions-f.md) | 设置应用内拖拽通道数据可使用的范围[ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md)，目前仅支持DRAG类型数据通道的管控设置。调用成功后，应用内拖拽通道数据的使用范围被设置为指定的ShareOptions值。 |
-| [updateData](arkts-arkdata-unifieddatachannel-updatedata-f.md) | 更新已写入UDMF的公共数据通路的数据，使用callback异步回调。 |
-| [updateData](arkts-arkdata-unifieddatachannel-updatedata-f.md) | 更新已写入UDMF的公共数据通路的数据，使用Promise异步回调。 |
+| [updateData](arkts-arkdata-unifieddatachannel-updatedata-f.md#updatedata) | 更新已写入UDMF的公共数据通路的数据，使用callback异步回调。 |
+| [updateData](arkts-arkdata-unifieddatachannel-updatedata-f.md#updatedata-1) | 更新已写入UDMF的公共数据通路的数据，使用Promise异步回调。 |
 
 ### 类
 
@@ -69,6 +69,16 @@ import { unifiedDataChannel } from '@kit.ArkData';
 | [Options](arkts-arkdata-unifieddatachannel-options-i.md) | UDMF提供的数据操作接口包含三个可选参数：intention、key和visibility。如果接口不需要这些参数，可以不填，具体要求请参阅该接口的参数说明。 |
 | [ProgressInfo](arkts-arkdata-unifieddatachannel-progressinfo-i.md) | 定义进度上报的数据。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [DataLoadHandler](arkts-arkdata-unifieddatachannel-dataloadhandler-t.md) | 用于延迟加载数据的处理函数。支持数据发送方根据接收方传入的信息，动态生成数据，实现更灵活、精准的数据交互策略。 |
+| [DataProgressListener](arkts-arkdata-unifieddatachannel-dataprogresslistener-t.md) | 定义获取进度信息和数据的监听回调函数。 |
+| [DelayedDataLoadHandler](arkts-arkdata-unifieddatachannel-delayeddataloadhandler-t.md) | 用于延迟加载数据的处理函数。支持数据发送方根据接收方传入的信息，动态生成数据，实现更灵活、精准的数据交互策略。 |
+| [GetDelayData](arkts-arkdata-unifieddatachannel-getdelaydata-t.md) | 对UnifiedData的延迟封装，支持延迟获取数据。当数据接收方请求特定类型数据时，系统会触发此回调函数，数据发送方可在回调中动态生成数据，而非提前准备所有数据。当前只支持同设备剪贴板场景。 |
+| [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md) | 用于表示统一数据记录允许的数据字段类型。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -80,13 +90,3 @@ import { unifiedDataChannel } from '@kit.ArkData';
 | [ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md) | UDMF支持的设备内使用范围类型枚举。 |
 | [UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md) | 拖拽场景下的URI授权策略。 |
 | [Visibility](arkts-arkdata-unifieddatachannel-visibility-e.md) | 表示数据的可见性等级枚举。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [DataLoadHandler](arkts-arkdata-unifieddatachannel-dataloadhandler-t.md) | 用于延迟加载数据的处理函数。支持数据发送方根据接收方传入的信息，动态生成数据，实现更灵活、精准的数据交互策略。 |
-| [DataProgressListener](arkts-arkdata-unifieddatachannel-dataprogresslistener-t.md) | 定义获取进度信息和数据的监听回调函数。 |
-| [DelayedDataLoadHandler](arkts-arkdata-unifieddatachannel-delayeddataloadhandler-t.md) | 用于延迟加载数据的处理函数。支持数据发送方根据接收方传入的信息，动态生成数据，实现更灵活、精准的数据交互策略。 |
-| [GetDelayData](arkts-arkdata-unifieddatachannel-getdelaydata-t.md) | 对UnifiedData的延迟封装，支持延迟获取数据。当数据接收方请求特定类型数据时，系统会触发此回调函数，数据发送方可在回调中动态生成数据，而非提前准备所有数据。当前只支持同设备剪贴板场景。 |
-| [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md) | 用于表示统一数据记录允许的数据字段类型。 |

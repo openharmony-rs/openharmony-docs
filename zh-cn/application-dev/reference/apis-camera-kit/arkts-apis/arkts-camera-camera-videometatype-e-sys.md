@@ -1,5 +1,9 @@
 # VideoMetaType（系统接口）
 
+```TypeScript
+enum VideoMetaType
+```
+
 Video meta type.
 
 **起始版本：** 12

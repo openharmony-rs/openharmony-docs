@@ -1,5 +1,9 @@
 # CapturePhoto
 
+```TypeScript
+interface CapturePhoto
+```
+
 **CapturePhoto** provides APIs for obtaining the objects of the full-quality image and the uncompressed image.
 
 **Since:** 23
@@ -33,6 +37,16 @@ Releases output resources. This API uses a promise to return the result. Model c
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+
+async function releaseCapturePhoto(capturePhoto: camera.CapturePhoto): Promise<void> {
+  await capturePhoto.release();
+}
+```
 
 ## main
 

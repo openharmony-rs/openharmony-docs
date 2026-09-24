@@ -1,5 +1,9 @@
 # OperateButtonV2Options
 
+```TypeScript
+export interface OperateButtonV2Options
+```
+
 OperateButtonV2构造函数的参数选项。
 
 **起始版本：** 26.0.0

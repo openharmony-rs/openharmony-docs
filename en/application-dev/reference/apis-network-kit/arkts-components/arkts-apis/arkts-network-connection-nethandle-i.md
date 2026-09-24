@@ -1,5 +1,9 @@
 # NetHandle
 
+```TypeScript
+export interface NetHandle
+```
+
 Represents the network handle.
 
 Before invoking **NetHandle** APIs, call **getNetHandle** to obtain a **NetHandle** object. For example, you can call [getDefaultNet](arkts-network-connection-getdefaultnet-f.md) to obtain the network handle of the default network.
@@ -104,6 +108,43 @@ interface Data {
 })
 ```
 
+<a id="bindsocket-1"></a>
+
+## bindSocket
+
+```TypeScript
+bindSocket(socketParam: TCPSocket | UDPSocket): Promise<void>
+```
+
+Binds the TCPSocket or UDPSocket to the network specified by **NetHandle**. This API uses a promise to return the result.
+
+**Since:** 9
+
+**System capability:** SystemCapability.Communication.NetManager.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| socketParam | [TCPSocket](arkts-network-connection-tcpsocket-t.md) &#124; [UDPSocket](arkts-network-connection-udpsocket-t.md) | Yes | **TCPSocket** or **UDPSocket** object. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
+| [2100001](../errorcode-net-connection.md#2100001-invalid-parameter-value) | Invalid parameter value. |
+| [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
+| [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
+
+**Examples**
+
 ```TypeScript
 import { connection, socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -159,43 +200,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-## bindSocket
-
-```TypeScript
-bindSocket(socketParam: TCPSocket | UDPSocket): Promise<void>
-```
-
-Binds the TCPSocket or UDPSocket to the network specified by **NetHandle**. This API uses a promise to return the result.
-
-**Since:** 9
-
-**System capability:** SystemCapability.Communication.NetManager.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| socketParam | [TCPSocket](arkts-network-connection-tcpsocket-t.md) &#124; [UDPSocket](arkts-network-connection-udpsocket-t.md) | Yes | **TCPSocket** or **UDPSocket** object. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| [2100001](../errorcode-net-connection.md#2100001-invalid-parameter-value) | Invalid parameter value. |
-| [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
-| [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
-
-**Examples**
-
-See [bindSocket](#bindsocket)
-
 ## getAddressByName
 
 ```TypeScript
@@ -249,20 +253,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
-    return;
-  }
-  let host = "www.example.com";
-  netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
-    console.info("Succeeded to get data: " + JSON.stringify(data));
-  });
-});
-```
+<a id="getaddressbyname-1"></a>
 
 ## getAddressByName
 
@@ -302,7 +293,20 @@ Obtains the first IP address by using the network specified by **NetHandle** to 
 
 **Examples**
 
-See [getAddressByName](#getaddressbyname)
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
+    return;
+  }
+  let host = "www.example.com";
+  netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
+    console.info("Succeeded to get data: " + JSON.stringify(data));
+  });
+});
+```
 
 ## getAddressesByName
 
@@ -359,20 +363,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
-    return;
-  }
-  let host = "www.example.com";
-  netHandle.getAddressesByName(host).then((data: connection.NetAddress[]) => {
-    console.info("Succeeded to get data: " + JSON.stringify(data));
-  });
-});
-```
+<a id="getaddressesbyname-1"></a>
 
 ## getAddressesByName
 
@@ -413,26 +404,6 @@ Obtains all IP addresses by using the network specified by **NetHandle** to reso
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
 **Examples**
-
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
-    return;
-  }
-  let host = "www.example.com";
-  netHandle.getAddressesByName(host, (error: BusinessError, data: connection.NetAddress[]) => {
-    if (error) {
-      console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
-      return;
-    }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
-  });
-});
-```
 
 ```TypeScript
 import { connection } from '@kit.NetworkKit';

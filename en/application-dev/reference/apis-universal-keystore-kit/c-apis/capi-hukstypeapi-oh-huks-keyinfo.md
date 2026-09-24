@@ -8,6 +8,8 @@ typedef struct OH_Huks_KeyInfo {...} OH_Huks_KeyInfo
 
 Defines the struct of key information.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 **Related module**: [HuksTypeApi](capi-hukstypeapi.md)

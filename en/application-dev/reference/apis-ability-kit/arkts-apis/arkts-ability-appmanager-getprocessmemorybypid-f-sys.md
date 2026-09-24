@@ -47,28 +47,6 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let pid = 0;
-function getProcessMemoryByPidCallback(err: BusinessError, data: number) {
-  if (err) {
-    console.error(`getProcessMemoryByPidCallback fail, err: ${JSON.stringify(err)}`);
-  } else {
-    console.info('getProcessMemoryByPidCallback success.');
-  }
-}
-
-try {
-  appManager.getProcessMemoryByPid(pid, getProcessMemoryByPidCallback);
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
-}
-```
-
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let pid = 0;
 
 try {
   appManager.getProcessMemoryByPid(pid).then((data) => {
@@ -83,6 +61,8 @@ try {
 }
 ```
 
+
+<a id="getprocessmemorybypid-1"></a>
 
 ## getProcessMemoryByPid
 
@@ -115,4 +95,24 @@ Obtains the memory size of a process. This API uses an asynchronous callback to 
 
 **Examples**
 
-See [getProcessMemoryByPid](#getprocessmemorybypid)
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let pid = 0;
+function getProcessMemoryByPidCallback(err: BusinessError, data: number) {
+  if (err) {
+    console.error(`getProcessMemoryByPidCallback fail, err: ${JSON.stringify(err)}`);
+  } else {
+    console.info('getProcessMemoryByPidCallback success.');
+  }
+}
+
+try {
+  appManager.getProcessMemoryByPid(pid, getProcessMemoryByPidCallback);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```

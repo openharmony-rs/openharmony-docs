@@ -1,5 +1,9 @@
 # Package
 
+```TypeScript
+interface Package
+```
+
 Represents the details about a system update package.
 
 **Since:** 12

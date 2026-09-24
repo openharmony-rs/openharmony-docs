@@ -1,5 +1,9 @@
 # InputDeviceData
 
+```TypeScript
+interface InputDeviceData
+```
+
 Provides information about an input device.
 
 **Since:** 8
@@ -43,14 +47,14 @@ Bus type of the input device. By default, the bus type reported by the input dev
 ## displayId
 
 ```TypeScript
-displayId?: number
+readonly displayId?: number
 ```
 
 Indicates the bound target displayId.
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

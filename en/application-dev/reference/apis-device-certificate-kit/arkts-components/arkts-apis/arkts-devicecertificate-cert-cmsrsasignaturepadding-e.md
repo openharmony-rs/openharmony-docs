@@ -1,5 +1,9 @@
 # CmsRsaSignaturePadding
 
+```TypeScript
+enum CmsRsaSignaturePadding
+```
+
 Enumerates the RSA CMS signature padding modes.
 
 **Since:** 22

@@ -1,5 +1,9 @@
 # DescriptorWriteRequest
 
+```TypeScript
+interface DescriptorWriteRequest
+```
+
 描述server端订阅后收到的描述符写请求事件参数结构。
 
 从API version 9开始支持，从API version 10开始废弃。

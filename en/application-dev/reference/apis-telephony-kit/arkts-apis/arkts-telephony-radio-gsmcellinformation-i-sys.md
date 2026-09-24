@@ -1,5 +1,9 @@
 # GsmCellInformation (System API)
 
+```TypeScript
+export interface GsmCellInformation
+```
+
 Obtains GSM cell information.
 
 **Since:** 8

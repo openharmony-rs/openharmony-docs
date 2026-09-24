@@ -1,5 +1,9 @@
 # UsedScene
 
+```TypeScript
+export interface UsedScene
+```
+
 Describes the use scenario and timing of the permission, helping developers request and use permissions properly.
 
 **Since:** 9

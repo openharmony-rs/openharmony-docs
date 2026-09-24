@@ -1,5 +1,9 @@
 # StatisticKeyValue
 
+```TypeScript
+interface StatisticKeyValue
+```
+
 度量记录。
 
 **起始版本：** 11

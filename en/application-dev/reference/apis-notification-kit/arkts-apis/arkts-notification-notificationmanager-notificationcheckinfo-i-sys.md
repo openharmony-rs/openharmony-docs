@@ -1,5 +1,9 @@
 # NotificationCheckInfo (System API)
 
+```TypeScript
+export interface NotificationCheckInfo
+```
+
 Describes the parameters of check notifications.
 
 **Since:** 10

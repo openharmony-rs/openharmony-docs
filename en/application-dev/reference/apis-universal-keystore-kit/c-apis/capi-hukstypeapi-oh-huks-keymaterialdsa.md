@@ -8,6 +8,8 @@ typedef struct OH_Huks_KeyMaterialDsa {...} OH_Huks_KeyMaterialDsa
 
 Defines the struct for a DSA key.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 **Related module**: [HuksTypeApi](capi-hukstypeapi.md)

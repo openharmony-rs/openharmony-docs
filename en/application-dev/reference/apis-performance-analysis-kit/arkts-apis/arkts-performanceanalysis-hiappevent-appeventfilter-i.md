@@ -1,5 +1,9 @@
 # AppEventFilter
 
+```TypeScript
+interface AppEventFilter
+```
+
 Defines parameters of subscription filtering conditions of a [Watcher](arkts-performanceanalysis-hiappevent-watcher-i.md). This API is used to set event filtering conditions in the event watcher to ensure that only the events that meet the filtering conditions are subscribed to.
 
 > **NOTE:** 

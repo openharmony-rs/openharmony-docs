@@ -1,5 +1,9 @@
 # VideoPlayControlGroup
 
+```TypeScript
+enum VideoPlayControlGroup
+```
+
 Enumerates the video playback component groups. They are used only when [PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md) is set to **VIDEO_PLAY**.
 
 **Since:** 12

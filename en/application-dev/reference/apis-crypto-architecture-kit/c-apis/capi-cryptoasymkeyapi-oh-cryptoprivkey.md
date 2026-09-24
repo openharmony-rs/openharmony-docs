@@ -8,6 +8,8 @@ typedef struct OH_CryptoPrivKey OH_CryptoPrivKey
 
 Private key structure, representing a private key.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Related module**: [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)

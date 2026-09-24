@@ -1,5 +1,9 @@
 # ParagraphStyle
 
+```TypeScript
+interface ParagraphStyle
+```
+
 段落样式，用于控制段落的整体布局行为，包括对齐方式、断行策略和最大行数等属性。ParagraphStyle作为[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)构造函数的必要参数，与[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)（控制文本级别样式）分工协作，共同决定段落的最终排版效果。
 
 **起始版本：** 12

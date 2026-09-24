@@ -8,6 +8,8 @@ typedef struct OH_LowPowerVideoSink OH_LowPowerVideoSink
 
 The struct describes the declaration for the LowPowerVideoSink.
 
+**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **Since**: 20
 
 **Related module**: [LowPowerVideoSink](capi-lowpowervideosink.md)

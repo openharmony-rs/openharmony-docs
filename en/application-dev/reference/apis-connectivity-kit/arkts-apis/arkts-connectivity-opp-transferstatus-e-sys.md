@@ -1,5 +1,9 @@
 # TransferStatus (System API)
 
+```TypeScript
+enum TransferStatus
+```
+
 Enum for the file transfer status.
 
 **Since:** 16

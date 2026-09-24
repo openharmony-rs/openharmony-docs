@@ -1,5 +1,9 @@
 # ArcButtonProgressConfig
 
+```TypeScript
+export declare class ArcButtonProgressConfig
+```
+
 ArcButton内进度条的参数配置。
 
 **起始版本：** 23

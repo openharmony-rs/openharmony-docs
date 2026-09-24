@@ -1,5 +1,9 @@
 # CreateOsAccountForDomainOptions (System API)
 
+```TypeScript
+interface CreateOsAccountForDomainOptions extends CreateOsAccountOptions
+```
+
 Represents a set of optional parameters for creating an OS account bound to the specified domain account. It inherits from [CreateOsAccountOptions](arkts-basicservices-osaccount-createosaccountoptions-i-sys.md).
 
 **Inheritance/Implementation:** CreateOsAccountForDomainOptions extends [CreateOsAccountOptions](arkts-basicservices-osaccount-createosaccountoptions-i-sys.md)

@@ -1,5 +1,9 @@
 # PhysicalAperture
 
+```TypeScript
+interface PhysicalAperture
+```
+
 Describes the physical aperture object.
 
 **Since:** 24

@@ -1,5 +1,9 @@
 # Configuration
 
+```TypeScript
+export interface Configuration
+```
+
 The module defines the environment variables for the application runtime, including language, dark/light color mode, screen orientation, and font size. You can subscribe to these environment variables to adapt to different user preferences and enhance the interaction experience.
 
 **Since:** 9
@@ -243,3 +247,42 @@ You can subscribe to changes to this environment variable in the [UIAbility](ark
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Ability.AbilityBase
+
+**Examples**
+
+```TypeScript
+import { UIAbility, AbilityConstant, EnvironmentCallback, Want, Configuration } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    let envCallback: EnvironmentCallback = {
+      onConfigurationUpdated(config: Configuration): void {
+        console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
+        let language = config.language;
+        let colorMode = config.colorMode;
+        let direction = config.direction;
+        let screenDensity = config.screenDensity;
+        let displayId = config.displayId;
+        let hasPointerDevice = config.hasPointerDevice;
+        let fontId = config.fontId;
+        let fontSizeScale = config.fontSizeScale;
+        let fontWeightScale = config.fontWeightScale;
+        let mcc = config.mcc;
+        let mnc = config.mnc;
+        let locale = config.locale;
+      },
+      onMemoryLevel(level) {
+        console.info(`onMemoryLevel level: ${level}`);
+      }
+    };
+    try {
+      let applicationContext = this.context.getApplicationContext();
+      let callbackId = applicationContext.on('environment', envCallback);
+      console.info(`callbackId: ${callbackId}`);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```

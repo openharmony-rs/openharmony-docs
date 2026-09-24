@@ -1,5 +1,9 @@
 # AnimatorOptions
 
+```TypeScript
+export interface AnimatorOptions
+```
+
 Animator options.
 
 **Since:** 6

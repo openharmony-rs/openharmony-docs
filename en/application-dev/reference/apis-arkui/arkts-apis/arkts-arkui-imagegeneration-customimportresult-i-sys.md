@@ -1,5 +1,9 @@
 # CustomImportResult (System API)
 
+```TypeScript
+interface CustomImportResult
+```
+
 The result of import operation for custom import icon.
 
 **Since:** 26.0.0

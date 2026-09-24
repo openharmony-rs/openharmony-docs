@@ -1,5 +1,9 @@
 # LocalSocketMessageInfo
 
+```TypeScript
+export interface LocalSocketMessageInfo
+```
+
 Defines the data received by the client over a local socket connection.
 
 **Since:** 11

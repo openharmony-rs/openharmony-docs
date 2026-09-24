@@ -1,5 +1,9 @@
 # Parameters（系统接口）
 
+```TypeScript
+export interface Parameters
+```
+
 扩展参数信息。
 
 **起始版本：** 15

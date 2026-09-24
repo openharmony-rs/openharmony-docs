@@ -1,5 +1,9 @@
 # FormLocation
 
+```TypeScript
+enum FormLocation
+```
+
 Enumerates the widget locations.
 
 **Since:** 20

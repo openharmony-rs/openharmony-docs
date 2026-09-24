@@ -1,5 +1,9 @@
 # Calendar属性/事件
 
+```TypeScript
+declare class CalendarAttribute
+```
+
 **起始版本：** 7
 
 **废弃版本：** 20

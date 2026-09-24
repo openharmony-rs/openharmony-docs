@@ -1,5 +1,9 @@
 # Color
 
+```TypeScript
+export interface Color
+```
+
 Color in RGBA format. It consists of four components: red, green, blue, and alpha.
 
 @typedef Color

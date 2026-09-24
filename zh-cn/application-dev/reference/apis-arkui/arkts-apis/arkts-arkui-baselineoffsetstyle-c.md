@@ -1,5 +1,9 @@
 # BaselineOffsetStyle
 
+```TypeScript
+declare class BaselineOffsetStyle
+```
+
 文本基线偏移量对象说明。适用于需要微调文本垂直位置的场景，例如化学公式、数学表达式中的上下标文本与正常文本的对齐调整。
 
 **起始版本：** 12
@@ -26,7 +30,7 @@ constructor(value: LengthMetrics)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 是 | 文本基线偏移量设置项。如果LengthMetrics的unit值是PERCENT，该设置不生效。 |
+| value | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 是 | 文本基线偏移量设置项。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，该设置不生效。 |
 
 ## baselineOffset
 
@@ -36,7 +40,7 @@ readonly baselineOffset: number
 
 获取属性字符串的文本基线偏移量。
 
-单位：[vp](arkts-arkui-length-t.md)
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 

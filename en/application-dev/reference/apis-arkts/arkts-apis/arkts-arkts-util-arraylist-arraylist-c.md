@@ -1,5 +1,9 @@
 # ArrayList
 
+```TypeScript
+declare class ArrayList<T>
+```
+
 ArrayList is a linear data structure that is implemented based on arrays. ArrayList can dynamically adjust the capacity based on project requirements. It increases the capacity by 50% each time.
 
 **Since:** 8
@@ -895,6 +899,18 @@ Returns the element at the given index.
 | Error Code ID | Error Message |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-value-out-of-range) | The value of index is out of range. |
+
+**Examples**
+
+```TypeScript
+let arrayList = new ArrayList<number>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+let result: number = arrayList[2];
+console.info("result = ", result); // result =  5
+```
 
 ## length
 

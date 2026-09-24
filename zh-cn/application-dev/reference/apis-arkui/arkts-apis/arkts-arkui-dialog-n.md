@@ -1,8 +1,12 @@
-# dialog
+# dialog(弹出框)
+
+```TypeScript
+declare namespace dialog
+```
 
 提供统一的Dialog API。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

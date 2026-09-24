@@ -1,5 +1,9 @@
 # BeautyQuery (System API)
 
+```TypeScript
+interface BeautyQuery
+```
+
 Provides APIs to obtain and set the beauty effect.
 
 **Since:** 12

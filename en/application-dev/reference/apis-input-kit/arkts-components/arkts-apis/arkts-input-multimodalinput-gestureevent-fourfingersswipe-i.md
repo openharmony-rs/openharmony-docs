@@ -1,5 +1,9 @@
 # FourFingersSwipe
 
+```TypeScript
+export declare interface FourFingersSwipe
+```
+
 Defines a four-finger swipe gesture event.
 
 **Since:** 10

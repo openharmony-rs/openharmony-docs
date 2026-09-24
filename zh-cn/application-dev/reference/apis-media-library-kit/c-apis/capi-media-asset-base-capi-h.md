@@ -70,6 +70,8 @@ enum MediaLibrary_ErrorCode
 
 媒体库错误代码的枚举。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -94,6 +96,8 @@ enum MediaLibrary_DeliveryMode
 
 请求资源分发模式。 <br>快速分发：不考虑资源质量，直接基于现有资源返回。 <br>高质量分发：返回高质量资源，若没有，则触发生成高质量资源，成功后才返回。 <br>均衡分发：若存在高质量资源，则直接返回高质量资源。否则，先返回低质量资源，并触发生成高质量资源，成功后再返回一次高质量资源。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -112,6 +116,8 @@ enum MediaLibrary_MediaType
 
 媒体类型的枚举。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -128,6 +134,8 @@ enum MediaLibrary_MediaSubType
 **描述：**
 
 媒体资源子类型的枚举。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 12
 
@@ -147,6 +155,8 @@ enum MediaLibrary_ResourceType
 
 资源类型的枚举。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -163,6 +173,8 @@ enum MediaLibrary_ImageFileType
 **描述：**
 
 图像文件类型的枚举。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 12
 
@@ -182,6 +194,8 @@ enum MediaLibrary_MediaQuality
 
 媒体资源质量枚举。 <br>此枚举与请求媒体资源时定义的分发模式有关。 <br>快速分发：不考虑资源质量，直接基于现有资源返回。 <br>高质量分发：返回高质量资源，若没有，则触发生成高质量资源，成功后才返回。 <br>均衡分发：若存在高质量资源，则直接返回高质量资源。否则，先返回低质量资源，并触发生成高质量资源，成功后再返回一次高质量资源。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -198,6 +212,8 @@ enum MediaLibrary_MediaContentType
 **描述：**
 
 媒体内容类型的枚举。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 12
 
@@ -219,6 +235,8 @@ typedef void (*OH_MediaLibrary_OnDataPrepared)(int32_t result, MediaLibrary_Requ
 
 当所请求的媒体资源准备完成时会触发回调。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -237,6 +255,8 @@ typedef void (*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode resul
 **描述：**
 
 当请求的图像源准备就绪时会触发回调。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 12
 
@@ -260,6 +280,8 @@ typedef void (*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode
 
 当请求的动态照片准备就绪时会触发回调。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -281,6 +303,8 @@ typedef void (*OH_MediaLibrary_OnQuickImageDataPrepared)(MediaLibrary_ErrorCode 
 **描述：**
 
 当请求的图像源准备就绪时调用此函数。如果系统中存在图像缓冲区，则会返回一个图片对象，从而减少编码时间。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 23
 

@@ -1,5 +1,9 @@
 # PointerMatrix
 
+```TypeScript
+declare class PointerMatrix
+```
+
 Implements a **PointerMatrix** object that stores coordinates and behaviors of each action of each finger in a multi-touch operation. After creating an object using create, use [setPoint](#setpoint) to set the coordinates of each finger at each step. Then pass the coordinates to [injectMultiPointerAction](arkts-test-uitest-driver-c.md#injectmultipointeraction) to perform a multi-finger operation.
 
 **Since:** 9

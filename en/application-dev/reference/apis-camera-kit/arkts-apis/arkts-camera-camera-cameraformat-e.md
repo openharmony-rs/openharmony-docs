@@ -1,5 +1,9 @@
 # CameraFormat
 
+```TypeScript
+enum CameraFormat
+```
+
 Enumerates the camera output formats.
 
 **Since:** 10

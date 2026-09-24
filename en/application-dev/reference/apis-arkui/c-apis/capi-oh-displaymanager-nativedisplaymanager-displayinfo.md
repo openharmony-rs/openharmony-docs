@@ -8,6 +8,8 @@ typedef struct NativeDisplayManager_DisplayInfo {...} NativeDisplayManager_Displ
 
 The struct describes the information about a display.
 
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
 **Since**: 14
 
 **Related module**: [OH_DisplayManager](capi-oh-displaymanager.md)

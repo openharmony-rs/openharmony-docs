@@ -87,6 +87,8 @@ enum TEE_ParamType
 
 Enumerates the types of the TEE parameter.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 | Enum item | Description |
@@ -114,6 +116,8 @@ enum TEE_ObjectAttribute
 **Description**
 
 Enumerates the types of object attribute.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -173,6 +177,8 @@ enum TEE_ObjectType
 
 Enumerates the types of object.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 | Enum item | Description |
@@ -225,6 +231,8 @@ enum TEE_Result_Value
 **Description**
 
 Enumerates the result codes used in the TEEKit APIs.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -383,6 +391,8 @@ enum TEE_LoginMethod
 
 Login type definitions
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 | Enum item | Description |
@@ -410,6 +420,8 @@ static inline bool check_param_type(uint32_t param_to_check, uint32_t valid0, ui
 **Description**
 
 Checks parameter types.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 

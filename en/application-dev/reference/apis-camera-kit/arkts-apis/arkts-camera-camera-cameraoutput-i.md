@@ -1,5 +1,9 @@
 # CameraOutput
 
+```TypeScript
+interface CameraOutput
+```
+
 CameraOutput implements output information used in [Session](arkts-camera-camera-session-i.md). It is the base class of **output**.
 
 **Since:** 10
@@ -38,6 +42,34 @@ Releases output resources. This API uses an asynchronous callback to return the 
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function releasePreviewOutput(previewOutput: camera.PreviewOutput): void {
+  previewOutput.release((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to release the Preview output instance ${err.code}`);
+      return;
+    }
+    console.info('Callback invoked to indicate that the preview output instance is released successfully.');
+  });
+}
+
+function releaseVideoOutput(videoOutput: camera.VideoOutput): void {
+  videoOutput.release((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to release the video output instance ${err.code}`);
+      return;
+    }
+    console.info('Callback invoked to indicate that the video output instance is released successfully.');
+  });
+}
+```
+
+<a id="release-1"></a>
+
 ## release
 
 ```TypeScript
@@ -63,3 +95,25 @@ Releases output resources. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function releasePreviewOutput(previewOutput: camera.PreviewOutput): void {
+  previewOutput.release().then(() => {
+    console.info('Promise returned to indicate that the preview output instance is released successfully.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to preview output release, error code: ${error.code}`);
+  });
+}
+
+function releaseVideoOutput(videoOutput: camera.VideoOutput): void {
+  videoOutput.release().then(() => {
+    console.info('Promise returned to indicate that the video output instance is released successfully.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to video output release, error code: ${error.code}`);
+  });
+}
+```

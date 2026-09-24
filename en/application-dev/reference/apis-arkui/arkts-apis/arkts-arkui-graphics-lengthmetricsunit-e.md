@@ -1,5 +1,9 @@
 # LengthMetricsUnit
 
+```TypeScript
+export enum LengthMetricsUnit
+```
+
 Enumerates length units.
 
 **Since:** 12

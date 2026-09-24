@@ -1,5 +1,9 @@
 # ExposureMeteringMode
 
+```TypeScript
+enum ExposureMeteringMode
+```
+
 Enumerates the exposure metering modes.
 
 **Since:** 24

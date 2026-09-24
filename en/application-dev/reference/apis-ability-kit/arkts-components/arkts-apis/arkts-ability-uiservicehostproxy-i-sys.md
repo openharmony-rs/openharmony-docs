@@ -1,5 +1,9 @@
 # UIServiceHostProxy (System API)
 
+```TypeScript
+export default interface UIServiceHostProxy
+```
+
 UIServiceHostProxy functions as a proxy to send data from the [UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md) server to the client.
 
 > **NOTE:** 

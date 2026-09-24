@@ -1,5 +1,9 @@
 # PhotoSubtype
 
+```TypeScript
+export enum PhotoSubtype
+```
+
 Enumerates the [PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasset-i.md) types.
 
 **Since:** 12
@@ -28,7 +32,7 @@ CINEMATIC_VIDEO = 5
 
 Cinematic video file.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -70,7 +74,7 @@ CINEMATIC_VIDEO_V2 = 8
 
 Cinematic version 2 video file. Compared to CINEMATIC_VIDEO, it adds more effects such as Hitchcock.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

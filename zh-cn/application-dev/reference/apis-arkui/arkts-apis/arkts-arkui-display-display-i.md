@@ -1,5 +1,9 @@
 # Display
 
+```TypeScript
+interface Display
+```
+
 屏幕实例。描述Display对象的属性和方法。
 
 下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md)、[getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md)中的任一方法获取到Display实例，再通过此实例调用对应方法。
@@ -40,7 +44,7 @@ getAvailableArea(): Promise<Rect>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. Possible cause: 1. This display is abnormal. 2. Internal task error. |
 
 **示例**
@@ -106,18 +110,7 @@ displayClass.getCutoutInfo((err: BusinessError, data: display.CutoutInfo) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let displayClass: display.Display | null = null;
-displayClass = display.getDefaultDisplaySync();
-let promise: Promise<display.CutoutInfo> = displayClass.getCutoutInfo();
-promise.then((data: display.CutoutInfo) => {
-  console.info(`Succeeded in getting cutoutInfo. Data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get cutoutInfo. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="getcutoutinfo-1"></a>
 
 ## getCutoutInfo
 
@@ -147,7 +140,18 @@ getCutoutInfo(): Promise<CutoutInfo>
 
 **示例**
 
-参见 [getCutoutInfo](#getcutoutinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: display.Display | null = null;
+displayClass = display.getDefaultDisplaySync();
+let promise: Promise<display.CutoutInfo> = displayClass.getCutoutInfo();
+promise.then((data: display.CutoutInfo) => {
+  console.info(`Succeeded in getting cutoutInfo. Data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get cutoutInfo. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## getDisplayCapability
 
@@ -175,7 +179,7 @@ Get current display capability, including foldstatus, displaymode, rotation, and
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.Function getDisplayCapability can not work correctly due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.Function getDisplayCapability can not work correctly due to limited device capabilities. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
@@ -214,7 +218,7 @@ getLiveCreaseRegion(): FoldCreaseRegion
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
 **示例**
@@ -254,7 +258,7 @@ getRoundedCorner(): Array<RoundedCorner>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
@@ -298,9 +302,26 @@ off(type: 'availableAreaChange', callback?: Callback<Rect>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
+
+**示例**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<display.Rect> = (data: display.Rect) => {
+  console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
+};
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+  displayClass.off('availableAreaChange', callback);
+} catch (exception) {
+  console.error(`Failed to unregister callback. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
 
 ## on('availableAreaChange')
 
@@ -327,9 +348,26 @@ on(type: 'availableAreaChange', callback: Callback<Rect>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
+
+**示例**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<display.Rect> = (data: display.Rect) => {
+  console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
+};
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+  displayClass.on('availableAreaChange', callback);
+} catch (exception) {
+  console.error(`Failed to register callback. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
 
 ## alive
 

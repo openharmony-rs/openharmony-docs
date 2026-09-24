@@ -63,34 +63,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { inputDevice } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          // Obtain the name of the device whose ID is 1.
-          try {
-            // Obtaining Input Device Information
-            inputDevice.getDeviceInfo(1).then((deviceData: inputDevice.InputDeviceData) => {
-              console.info(`Succeeded in getting device info: ${JSON.stringify(deviceData)}.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to get device info, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            });
-          } catch (error) {
-            console.error(`Failed to get device info, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="getdeviceinfo-1"></a>
 
 ## getDeviceInfo
 
@@ -124,4 +98,30 @@ Obtains the information about the input device with the specified ID. This API u
 
 **Examples**
 
-See [getDeviceInfo](#getdeviceinfo)
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Obtain the name of the device whose ID is 1.
+          try {
+            // Obtaining Input Device Information
+            inputDevice.getDeviceInfo(1).then((deviceData: inputDevice.InputDeviceData) => {
+              console.info(`Succeeded in getting device info: ${JSON.stringify(deviceData)}.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to get device info, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get device info, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

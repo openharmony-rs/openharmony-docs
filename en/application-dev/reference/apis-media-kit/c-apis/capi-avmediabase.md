@@ -4,6 +4,8 @@
 
 Defines the avmetakeys.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 23
 
 ## Files

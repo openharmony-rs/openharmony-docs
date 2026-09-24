@@ -1,5 +1,9 @@
 # AdvertisingState
 
+```TypeScript
+enum AdvertisingState
+```
+
 Enumerates the advertising states.
 
 **Since:** 26.0.0

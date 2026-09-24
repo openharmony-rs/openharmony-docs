@@ -2,7 +2,7 @@
 
 Provides APIs for creating a specific type of FrameNode, which can be mounted through the basic API of the FrameNode and be displayed using a placeholder container.
 
-When **typeNode** is used to create Text, Image, Select, or Toggle nodes, if the UI instance corresponding to the input [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) is destroyed, this API returns an invalid FrameNode that cannot be properly mounted or displayed.
+When **typeNode** is used to create [Text](../arkts-components/arkts-arkui-text-comp.md#text), [Image](../arkts-components/arkts-arkui-image-comp.md#image), [Select](../arkts-components/arkts-arkui-select-comp.md#select), or [Toggle](../arkts-components/arkts-arkui-toggle-comp.md#toggle) nodes, if the UI instance corresponding to the input [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) is destroyed, this API returns an invalid FrameNode that cannot be properly mounted or displayed.
 
 ## Summary
 
@@ -16,8 +16,8 @@ When **typeNode** is used to create Text, Image, Select, or Toggle nodes, if the
 
 | Name | Description |
 | --- | --- |
-| [FrameNode](arkts-arkui-framenode-c.md) | **FrameNode** represents an entity node in the component tree. It can be used by a [NodeController](arkts-arkui-nodecontroller-c.md) to mount a BuilderNode (that holds the FrameNode) to a NodeContainer or mount a [RenderNode](arkts-arkui-rendernode-c.md) to another FrameNode.&lt;!--RP2--&gt;&lt;!--RP2End--&gt; |
-| [NodeAdapter](arkts-arkui-framenode-nodeadapter-c.md) | Provides lazy loading capabilities for FrameNode data, implementing LazyForEach API functionality. |
+| [FrameNode](arkts-arkui-framenode-c.md) | **FrameNode** represents an entity node in the component tree. It can be used by a [NodeController](arkts-arkui-nodecontroller-c.md) to mount a [BuilderNode](arkts-arkui-buildernode-c.md) (that holds the FrameNode) to a [NodeContainer](../arkts-components/arkts-arkui-nodecontainer-comp-attribute.md#nodecontainerattribute) or mount a [RenderNode](arkts-arkui-rendernode-c.md) to another FrameNode.&lt;!--RP2--&gt;&lt;!--RP2End--&gt; |
+| [NodeAdapter](arkts-arkui-framenode-nodeadapter-c.md) | Provides lazy loading capabilities for FrameNode data, implementing [LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md#lazy_for_each) API functionality. |
 
 ### Interfaces
 

@@ -1,5 +1,9 @@
 # ReadOut
 
+```TypeScript
+declare interface ReadOut
+```
+
 仅用于read方法，获取文件的读取结果。
 
 **起始版本：** 6

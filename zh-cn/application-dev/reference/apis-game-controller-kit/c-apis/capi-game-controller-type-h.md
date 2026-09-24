@@ -32,6 +32,8 @@ enum GameController_ErrorCode
 
 此枚举定义游戏控制器的错误码。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 | 枚举项 | 描述 |

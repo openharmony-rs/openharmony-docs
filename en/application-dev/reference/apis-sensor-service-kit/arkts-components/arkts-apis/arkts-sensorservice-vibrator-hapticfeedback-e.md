@@ -1,5 +1,9 @@
 # HapticFeedback
 
+```TypeScript
+enum HapticFeedback
+```
+
 Defines the vibration effect. The frequency of the same vibration effect may vary depending on the vibrator, but the frequency trend remains consistent. These vibration effects correspond to the specific **EffectId** values. For details, see the sample code that demonstrates how to use [vibrator.startVibration9+](arkts-sensorservice-vibrator-startvibration-f.md) or [vibrator.stopVibration9+](arkts-sensorservice-vibrator-stopvibration-f.md) to deliver the vibration effect defined by [VibratePreset](arkts-sensorservice-vibrator-vibratepreset-i.md).
 
 **Since:** 12

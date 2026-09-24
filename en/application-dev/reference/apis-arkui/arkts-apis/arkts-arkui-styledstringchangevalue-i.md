@@ -1,5 +1,9 @@
 # StyledStringChangeValue
 
+```TypeScript
+interface StyledStringChangeValue
+```
+
 Describes the text changes of the styled string.
 
 **Since:** 12

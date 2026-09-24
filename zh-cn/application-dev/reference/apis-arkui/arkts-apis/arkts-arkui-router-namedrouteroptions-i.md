@@ -1,5 +1,9 @@
 # NamedRouterOptions
 
+```TypeScript
+interface NamedRouterOptions
+```
+
 命名路由跳转选项。
 
 **起始版本：** 10

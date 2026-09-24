@@ -1,5 +1,9 @@
 # Range
 
+```TypeScript
+interface Range
+```
+
 Describes a left-closed and right-open interval.
 
 **Since:** 12

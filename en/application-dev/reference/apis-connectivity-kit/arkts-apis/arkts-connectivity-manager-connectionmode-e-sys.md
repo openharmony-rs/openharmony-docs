@@ -1,5 +1,9 @@
 # ConnectionMode (System API)
 
+```TypeScript
+enum ConnectionMode
+```
+
 Enumerates the connection modes.
 
 **Since:** 26.0.0

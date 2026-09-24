@@ -1,5 +1,9 @@
 # PedometerResponse
 
+```TypeScript
+interface PedometerResponse extends Response
+```
+
 Describes the pedometer sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** PedometerResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

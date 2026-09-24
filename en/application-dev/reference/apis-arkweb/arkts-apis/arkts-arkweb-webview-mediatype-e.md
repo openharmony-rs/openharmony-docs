@@ -1,5 +1,9 @@
 # MediaType
 
+```TypeScript
+enum MediaType
+```
+
 Enumerates the media types.
 
 **Since:** 12

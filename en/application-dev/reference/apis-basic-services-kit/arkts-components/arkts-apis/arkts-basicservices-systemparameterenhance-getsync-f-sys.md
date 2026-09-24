@@ -12,7 +12,15 @@ import { systemParameterEnhance } from '@kit.BasicServicesKit';
 function getSync(key: string, def?: string): string
 ```
 
-Obtains a value of the specified key. This API uses a promise to return the result.
+Obtains the value of the specified system parameter key.
+
+> **NOTE:** 
+> 
+> Both **getSync** and **get** can be used to obtain system parameter values.
+> - **getSync**: synchronous method, which directly returns the system parameter value. This method is suitable for simple synchronization scenarios.
+> - **get**: asynchronous method, which uses a callback or promise to return the result asynchronously. This method is suitable for scenarios that require asynchronous processing.
+> 
+> You should select a proper method based on the specific scenario.
 
 **Since:** 9
 
@@ -25,13 +33,13 @@ Obtains a value of the specified key. This API uses a promise to return the resu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | key | string | Yes | Key to be queried. The value can contain a maximum of 128 bytes. Only letters, digits, periods (.), hyphens (-), at signs (@), colons (:), and underscores (_) are allowed. |
-| def | string | No | Default value of the system parameter.<br> It works only when the system parameter does not exist.<br> The value can be **undefined** or any custom value. |
+| def | string | No | Default value of the system parameter.<br> It works only when the system parameter does not exist. <br> Its value can be **undefined** or a random character string. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| string | Value of the system parameter.<br> If the specified key exists, the set value is returned. <br> If the specified key does not exist and **def** is set to a valid value, the set value is returned. If the specified key does not exist and **def** is set to an invalid value (such as **undefined**) or is not set, an exception is thrown. |
+| string | Value of the system parameter. If the specified key exists, the set value is returned. If the specified key does not exist and **def** is specified (not **undefined**), **def** is returned. If the specified key does not exist and **def** is not specified or **def** is **undefined**, an exception is thrown. |
 
 **Error codes:**
 

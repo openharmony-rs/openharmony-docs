@@ -8,6 +8,8 @@ typedef struct ArkUI_RenderBlurStyleOption ArkUI_RenderBlurStyleOption
 
 定义模糊样式结构体。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 26.0.0
 
 **相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

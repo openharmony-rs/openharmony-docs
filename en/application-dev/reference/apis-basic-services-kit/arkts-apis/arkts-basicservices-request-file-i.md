@@ -1,5 +1,9 @@
 # File
 
+```TypeScript
+interface File
+```
+
 Describes the list of files in [UploadConfig](arkts-basicservices-request-uploadconfig-i.md).
 
 **Since:** 6

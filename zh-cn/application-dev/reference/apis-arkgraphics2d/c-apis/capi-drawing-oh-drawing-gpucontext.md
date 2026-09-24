@@ -8,6 +8,8 @@ typedef struct OH_Drawing_GpuContext OH_Drawing_GpuContext
 
 定义图形处理器上下文，用于描述图形处理器后端上下文。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)

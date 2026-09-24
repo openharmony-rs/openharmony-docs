@@ -1,5 +1,9 @@
 # GestureStyleInterface
 
+```TypeScript
+declare interface GestureStyleInterface
+```
+
 Defines the Gesture Events.
 
 **Since:** 12
@@ -14,7 +18,7 @@ onClick?: Callback<ClickEvent>
 
 Callback for click events.
 
-**Type:** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;[ClickEvent](../arkts-components/arkts-arkui-clickevent-i.md)&gt;
+**Type:** Callback&lt;[ClickEvent](../arkts-components/arkts-arkui-common-comp-clickevent-i.md)&gt;
 
 **Since:** 12
 
@@ -32,7 +36,7 @@ onLongPress?: Callback<GestureEvent>
 
 Callback for long press events.
 
-**Type:** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;[GestureEvent](../arkts-components/arkts-arkui-gestureevent-i.md)&gt;
+**Type:** Callback&lt;[GestureEvent](../arkts-components/arkts-arkui-tapgesture-comp-gestureevent-i.md)&gt;
 
 **Since:** 12
 
@@ -50,7 +54,7 @@ onTouch?: Callback<TouchEvent>
 
 Callback for touch events.
 
-**Type:** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;[TouchEvent](../arkts-components/arkts-arkui-touchevent-i.md)&gt;
+**Type:** Callback&lt;[TouchEvent](../arkts-components/arkts-arkui-common-comp-touchevent-i.md)&gt;
 
 **Since:** 20
 

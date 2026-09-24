@@ -1,6 +1,12 @@
 # SensorAccuracy
 
+```TypeScript
+enum SensorAccuracy
+```
+
 传感器数据的精度挡位。
+
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **起始版本：** 11
 

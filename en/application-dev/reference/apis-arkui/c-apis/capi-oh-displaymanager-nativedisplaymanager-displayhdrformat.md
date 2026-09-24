@@ -8,6 +8,8 @@ typedef struct NativeDisplayManager_DisplayHdrFormat {...} NativeDisplayManager_
 
 The struct describes all the HDR formats supported by a display.
 
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
 **Since**: 14
 
 **Related module**: [OH_DisplayManager](capi-oh-displaymanager.md)

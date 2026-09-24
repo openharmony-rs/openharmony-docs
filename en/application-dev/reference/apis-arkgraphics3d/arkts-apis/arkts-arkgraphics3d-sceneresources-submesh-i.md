@@ -1,5 +1,9 @@
 # SubMesh
 
+```TypeScript
+export interface SubMesh
+```
+
 Sub-mesh resource.
 
 @interface SubMesh

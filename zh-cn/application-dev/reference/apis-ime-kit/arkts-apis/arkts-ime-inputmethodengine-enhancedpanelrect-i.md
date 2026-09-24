@@ -1,5 +1,9 @@
 # EnhancedPanelRect
 
+```TypeScript
+export interface EnhancedPanelRect
+```
+
 增强的输入法面板位置、大小信息，包含自定义避让区域、自定义热区。
 
 **起始版本：** 15

@@ -1,5 +1,9 @@
 # AudioHapticType
 
+```TypeScript
+enum AudioHapticType
+```
+
 Enumerates the audio haptic types.
 
 **Since:** 11

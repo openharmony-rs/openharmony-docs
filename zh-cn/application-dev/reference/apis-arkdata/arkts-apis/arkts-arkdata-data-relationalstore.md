@@ -35,15 +35,15 @@ import { relationalStore } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md) | 删除数据库文件，使用callback异步回调。 |
-| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md) | 使用指定的数据库文件配置删除数据库，使用callback异步回调。 |
-| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md) | 删除数据库文件，使用Promise异步回调。 |
-| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md) | 使用指定的数据库文件配置删除数据库，使用Promise异步回调。 |
+| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md#deleterdbstore) | 删除数据库文件，使用callback异步回调。 |
+| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md#deleterdbstore-1) | 使用指定的数据库文件配置删除数据库，使用callback异步回调。 |
+| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md#deleterdbstore-2) | 删除数据库文件，使用Promise异步回调。 |
+| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md#deleterdbstore-3) | 使用指定的数据库文件配置删除数据库，使用Promise异步回调。 |
 | [getDeleteSqlInfo](arkts-arkdata-relationalstore-getdeletesqlinfo-f.md) | 获取用于删除数据的SQL语句，此为同步接口。 |
 | [getInsertSqlInfo](arkts-arkdata-relationalstore-getinsertsqlinfo-f.md) | 获取用于插入数据的SQL语句，此为同步接口。 |
 | [getQuerySqlInfo](arkts-arkdata-relationalstore-getquerysqlinfo-f.md) | 获取用于查询数据的SQL语句，此为同步接口。 |
-| [getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md) | 创建或打开已有的关系型数据库，开发者可以根据自己的需求配置config参数，然后通过RdbStore调用相关接口执行数据操作。使用callback异步回调。 |
-| [getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md) | 创建或打开已有的关系型数据库，开发者可以根据自己的需求配置config参数，然后通过RdbStore调用相关接口执行数据操作。使用Promise异步回调。 |
+| [getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md#getrdbstore) | 创建或打开已有的关系型数据库，开发者可以根据自己的需求配置config参数，然后通过RdbStore调用相关接口执行数据操作。使用callback异步回调。 |
+| [getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md#getrdbstore-1) | 创建或打开已有的关系型数据库，开发者可以根据自己的需求配置config参数，然后通过RdbStore调用相关接口执行数据操作。使用Promise异步回调。 |
 | [getRdbStoreSync](arkts-arkdata-relationalstore-getrdbstoresync-f.md) | 创建或打开已有的关系型数据库。开发者可以根据自己的需求配置config参数，然后通过RdbStore调用相关接口执行数据操作。这是一个同步方法，会阻塞线程直到获取到RdbStore。 |
 | [getUpdateSqlInfo](arkts-arkdata-relationalstore-getupdatesqlinfo-f.md) | 获取用于更新数据的SQL语句，此为同步接口。 |
 | [isTokenizerSupported](arkts-arkdata-relationalstore-istokenizersupported-f.md) | 判断当前平台是否支持传入的分词器，此为同步接口。 |
@@ -102,6 +102,19 @@ import { relationalStore } from '@kit.ArkData';
 | [StoreConfig](arkts-arkdata-relationalstore-storeconfig-i-sys.md) | 管理关系数据库配置。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [Assets](arkts-arkdata-relationalstore-assets-t.md) | 表示[Asset](arkts-arkdata-relationalstore-asset-i.md)类型的数组。 |
+| [ModifyTime](arkts-arkdata-relationalstore-modifytime-t.md) | 用于存储数据库表的主键和修改时间的数据类型。 |
+| [PRIKeyType](arkts-arkdata-relationalstore-prikeytype-t.md) | 用于表示数据库表某一行主键的数据类型。 |
+| [RowData](arkts-arkdata-relationalstore-rowdata-t.md) | 用于表示数据库表中的某一行数据。 |
+| [RowsData](arkts-arkdata-relationalstore-rowsdata-t.md) | 用于表示数据库表中的多行数据。 |
+| [UTCTime](arkts-arkdata-relationalstore-utctime-t.md) | 用于表示UTC时间的数据类型。 |
+| [ValuesBucket](arkts-arkdata-relationalstore-valuesbucket-t.md) | 用于存储键值对的类型。不支持Sendable跨线程传递。 |
+| [ValueType](arkts-arkdata-relationalstore-valuetype-t.md) | 用于表示允许的数据字段类型，接口参数具体类型根据其功能而定。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -137,16 +150,3 @@ import { relationalStore } from '@kit.ArkData';
 | [DistributedOrigin](arkts-arkdata-relationalstore-distributedorigin-e-sys.md) | 表示数据来源。请使用枚举名称而非枚举值。 |
 | [HAMode](arkts-arkdata-relationalstore-hamode-e-sys.md) | 描述关系型数据库存储的高可用性模式的枚举。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [Assets](arkts-arkdata-relationalstore-assets-t.md) | 表示[Asset](arkts-arkdata-relationalstore-asset-i.md)类型的数组。 |
-| [ModifyTime](arkts-arkdata-relationalstore-modifytime-t.md) | 用于存储数据库表的主键和修改时间的数据类型。 |
-| [PRIKeyType](arkts-arkdata-relationalstore-prikeytype-t.md) | 用于表示数据库表某一行主键的数据类型。 |
-| [RowData](arkts-arkdata-relationalstore-rowdata-t.md) | 用于表示数据库表中的某一行数据。 |
-| [RowsData](arkts-arkdata-relationalstore-rowsdata-t.md) | 用于表示数据库表中的多行数据。 |
-| [UTCTime](arkts-arkdata-relationalstore-utctime-t.md) | 用于表示UTC时间的数据类型。 |
-| [ValuesBucket](arkts-arkdata-relationalstore-valuesbucket-t.md) | 用于存储键值对的类型。不支持Sendable跨线程传递。 |
-| [ValueType](arkts-arkdata-relationalstore-valuetype-t.md) | 用于表示允许的数据字段类型，接口参数具体类型根据其功能而定。 |

@@ -1,5 +1,9 @@
 # SubscribeStepCounterOptions
 
+```TypeScript
+export interface SubscribeStepCounterOptions
+```
+
 用于设置计步传感器订阅的参数，包括回调函数。
 
 **起始版本：** 3

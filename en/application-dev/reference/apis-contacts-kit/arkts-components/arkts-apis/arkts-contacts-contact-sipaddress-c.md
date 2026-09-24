@@ -1,5 +1,9 @@
 # SipAddress
 
+```TypeScript
+class SipAddress
+```
+
 Defines a contact's SIP address.
 
 **Since:** 7

@@ -66,6 +66,8 @@ try {
 ```
 
 
+<a id="getusbstoragedeviceaccesspolicy-1"></a>
+
 ## getUsbStorageDeviceAccessPolicy
 
 ```TypeScript

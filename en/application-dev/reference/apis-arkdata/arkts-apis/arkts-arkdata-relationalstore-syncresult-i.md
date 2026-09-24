@@ -1,5 +1,9 @@
 # SyncResult
 
+```TypeScript
+interface SyncResult
+```
+
 Indicates synchronization result.
 
 **Since:** 26.0.0

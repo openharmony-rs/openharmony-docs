@@ -1,5 +1,9 @@
 # console
 
+```TypeScript
+export declare class console
+```
+
 Defines the console info.
 
 **Since:** 7

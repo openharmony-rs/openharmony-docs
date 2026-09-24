@@ -1,5 +1,9 @@
 # AuthTrustLevel（系统接口）
 
+```TypeScript
+enum AuthTrustLevel
+```
+
 表示认证结果的受信任级别的枚举。
 
 **起始版本：** 8

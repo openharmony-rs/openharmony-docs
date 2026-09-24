@@ -1,5 +1,9 @@
 # WaitingReason
 
+```TypeScript
+enum WaitingReason
+```
+
 Enumerates the reasons why a task is waiting.
 
 **Since:** 20

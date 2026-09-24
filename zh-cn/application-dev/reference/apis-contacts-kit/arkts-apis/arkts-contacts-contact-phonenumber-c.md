@@ -1,5 +1,9 @@
 # PhoneNumber
 
+```TypeScript
+class PhoneNumber
+```
+
 联系人电话号码类。
 
 **起始版本：** 7

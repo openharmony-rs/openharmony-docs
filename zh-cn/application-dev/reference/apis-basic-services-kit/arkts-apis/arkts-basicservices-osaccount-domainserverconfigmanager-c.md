@@ -1,5 +1,9 @@
 # DomainServerConfigManager
 
+```TypeScript
+class DomainServerConfigManager
+```
+
 域服务器配置管理类。
 
 **起始版本：** 18
@@ -42,13 +46,13 @@ static addServerConfig(parameters: Record<string, Object>): Promise<DomainServer
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid server config parameters. |
-| 12300211 | Server unreachable. |
-| 12300213 | Server config already exists. |
-| 12300215 | The number of server config reaches the upper limit. |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
+| [12300213](../errorcode-account.md#12300213-服务器配置信息已存在) | Server config already exists. |
+| [12300215](../errorcode-account.md#12300215-服务器配置信息数量已达上限) | The number of server config reaches the upper limit. |
 
 **示例**
 
@@ -97,8 +101,8 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise<Dom
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Domain account not found. |
 
@@ -143,8 +147,8 @@ static getAllServerConfigs(): Promise<Array<DomainServerConfig>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
@@ -199,10 +203,10 @@ static getServerConfig(configId: string): Promise<DomainServerConfig>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
-| 12300212 | Server config not found. |
+| [12300212](../errorcode-account.md#12300212-服务器配置信息未找到) | Server config not found. |
 
 **示例**
 
@@ -256,11 +260,11 @@ static removeServerConfig(configId: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
-| 12300212 | Server config not found. |
-| 12300214 | Server config has been associated with an account. |
+| [12300212](../errorcode-account.md#12300212-服务器配置信息未找到) | Server config not found. |
+| [12300214](../errorcode-account.md#12300214-服务器配置信息已与账号绑定) | Server config has been associated with an account. |
 
 **示例**
 
@@ -312,14 +316,14 @@ static updateServerConfig(configId: string, parameters: Record<string, Object>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid server config parameters. |
-| 12300211 | Server unreachable. |
-| 12300212 | Server config not found. |
-| 12300213 | Server config already exists. |
-| 12300214 | Server config has been associated with an account. |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
+| [12300212](../errorcode-account.md#12300212-服务器配置信息未找到) | Server config not found. |
+| [12300213](../errorcode-account.md#12300213-服务器配置信息已存在) | Server config already exists. |
+| [12300214](../errorcode-account.md#12300214-服务器配置信息已与账号绑定) | Server config has been associated with an account. |
 
 **示例**
 

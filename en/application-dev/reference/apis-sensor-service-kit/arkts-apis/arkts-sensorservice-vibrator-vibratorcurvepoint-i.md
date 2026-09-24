@@ -1,5 +1,9 @@
 # VibratorCurvePoint
 
+```TypeScript
+interface VibratorCurvePoint
+```
+
 Defines the gain relative to the vibration intensity.
 
 **Since:** 18

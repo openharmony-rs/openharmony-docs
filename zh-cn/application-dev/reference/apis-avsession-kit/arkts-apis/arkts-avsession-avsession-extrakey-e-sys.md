@@ -1,5 +1,9 @@
 # ExtraKey
 
+```TypeScript
+enum ExtraKey
+```
+
 表示定义在不同场景中使用的额外键的枚举。
 
 **起始版本：** 26.0.0

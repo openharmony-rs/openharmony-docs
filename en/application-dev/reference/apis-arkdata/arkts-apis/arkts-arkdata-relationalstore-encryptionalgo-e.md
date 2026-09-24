@@ -1,5 +1,9 @@
 # EncryptionAlgo
 
+```TypeScript
+enum EncryptionAlgo
+```
+
 Enumerates the encryption algorithms for the database. Use the enum name rather than the enum value.
 
 **Since:** 14

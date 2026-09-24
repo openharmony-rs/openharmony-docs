@@ -1,5 +1,9 @@
 # TextEncoding
 
+```TypeScript
+enum TextEncoding
+```
+
 Enumerates the text encoding types.
 
 **Since:** 11

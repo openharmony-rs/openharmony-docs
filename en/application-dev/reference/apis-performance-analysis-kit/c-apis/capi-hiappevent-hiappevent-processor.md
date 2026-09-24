@@ -8,6 +8,8 @@ typedef struct HiAppEvent_Processor HiAppEvent_Processor
 
 Defines a processor for application events.
 
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
 **Since**: 18
 
 **Related module**: [HiAppEvent](capi-hiappevent.md)

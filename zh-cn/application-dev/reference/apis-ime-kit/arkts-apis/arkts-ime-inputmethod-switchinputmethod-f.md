@@ -33,8 +33,8 @@ function switchInputMethod(target: InputMethodProperty, callback: AsyncCallback<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permissions check fails.<br>**适用版本：** 9 - 10 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 9 - 10 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [12800005](../errorcode-inputmethod-framework.md#12800005-配置持久化失败) | configuration persistence error. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -57,56 +57,8 @@ inputMethod.switchInputMethod(currentIme, (err: BusinessError, result: boolean) 
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
-inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
-  if (result) {
-    console.info('Succeeded in switching input method.');
-  } else {
-    console.error('Failed to switch input method.');
-  }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { InputMethodSubtype } from '@kit.IMEKit';
-
-async function switchInputMethodWithSubtype() {
-  // 1. 获取当前输入法
-  const currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
-  if (!currentIme) {
-    console.error("Failed to get current input method");
-    return;
-  }
-  try {
-    // 2. 切换输入法
-    await inputMethod.switchInputMethod(currentIme.name);
-    console.info('Succeeded in switching inputMethod.');
-  } catch (err) {
-    console.error(`Failed to switchInputMethod. Code: ${err.code}, message: ${err.message}`);
-  }
-  // 3. 获取当前输入法子类型
-  const currentSubtype: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
-  if (!currentSubtype) {
-    console.error("Failed to get current input subtype");
-    return;
-  }
-  try {
-    // 4. 切换输入法子类型
-    await inputMethod.switchInputMethod(currentIme.name, currentSubtype.id);
-    console.info('Succeeded in switching inputMethod.');
-  } catch (err) {
-    console.error(`Failed to switchInputMethod. Code: ${err.code}, message: ${err.message}`);
-  }
-}
-
-switchInputMethodWithSubtype();
-```
-
+<a id="switchinputmethod-1"></a>
 
 ## switchInputMethod
 
@@ -140,11 +92,24 @@ function switchInputMethod(target: InputMethodProperty): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permissions check fails.<br>**适用版本：** 9 - 10 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 9 - 10 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [12800005](../errorcode-inputmethod-framework.md#12800005-配置持久化失败) | configuration persistence error. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例**
 
-参见 switchInputMethod
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
+inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
+  if (result) {
+    console.info('Succeeded in switching input method.');
+  } else {
+    console.error('Failed to switch input method.');
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
+});
+```

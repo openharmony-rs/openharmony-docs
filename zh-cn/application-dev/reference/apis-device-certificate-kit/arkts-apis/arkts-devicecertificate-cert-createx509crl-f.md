@@ -31,8 +31,8 @@ function createX509CRL(inStream: EncodingBlob, callback: AsyncCallback<X509CRL>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | This operation is not supported. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 
 **示例**
@@ -74,6 +74,45 @@ cert.createX509CRL(encodingBlob, (error, _X509CRL) => {
 });
 ```
 
+
+<a id="createx509crl-1"></a>
+
+## createX509CRL
+
+```TypeScript
+function createX509CRL(inStream: EncodingBlob): Promise<X509CRL>
+```
+
+表示创建X.509证书吊销列表对象。使用Promise方式返回结果。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | 是 | 表示证书吊销列表序列化数据。当前支持的数据长度不超过8192字节。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt; | Promise对象，返回创建的X509CRL实例。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | This operation is not supported. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+
+**示例**
+
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -109,42 +148,3 @@ cert.createX509CRL(encodingBlob).then(_X509CRL => {
   console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
-
-
-## createX509CRL
-
-```TypeScript
-function createX509CRL(inStream: EncodingBlob): Promise<X509CRL>
-```
-
-表示创建X.509证书吊销列表对象。使用Promise方式返回结果。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Security.Cert
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | 是 | 表示证书吊销列表序列化数据。当前支持的数据长度不超过8192字节。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt; | Promise对象，返回创建的X509CRL实例。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
-
-**示例**
-
-参见 createX509CRL

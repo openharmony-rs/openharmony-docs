@@ -18,8 +18,8 @@ import { pasteboard } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createData](arkts-basicservices-pasteboard-createdata-f.md) | 构建一个指定类型的剪贴板内容对象，根据传入的MIME类型和数据内容创建PasteData实例。调用此方法后，系统将验证MIME类型有效性，封装数据内容，并返回可用于后续剪贴板操作的PasteData对象。参数mimeType长度不能超过1024字节，value类型需与mimeType匹配。当需要将单一类型的数据（如纯文本、HTML、图片等）放入剪贴板时使用此方法。mimeType优先使用已定义的常量类型（如MIMETYPE_TEXT_PLAIN），若需要传递自定义格式数据，可使用自定义MIME类型。 |
-| [createData](arkts-basicservices-pasteboard-createdata-f.md) | 构建一个包含多个类型数据的剪贴板内容对象，支持一次创建多个MIME类型的数据条目。调用此方法后，系统将解析Record中的多个key-value对，创建多个PasteDataRecord条目，首个MIME类型作为默认类型。非默认类型数据需通过[getData](arkts-basicservices-pasteboard-pastedatarecord-i.md#getdata)接口读取。应用需要将多种不同类型的数据(如文本、URI、HTML等)同时复制到剪贴板时，可使用此接口一次性构建包含多个MIME类型数据的剪贴板内容对象。 |
+| [createData](arkts-basicservices-pasteboard-createdata-f.md#createdata) | 构建一个指定类型的剪贴板内容对象，根据传入的MIME类型和数据内容创建PasteData实例。调用此方法后，系统将验证MIME类型有效性，封装数据内容，并返回可用于后续剪贴板操作的PasteData对象。参数mimeType长度不能超过1024字节，value类型需与mimeType匹配。当需要将单一类型的数据（如纯文本、HTML、图片等）放入剪贴板时使用此方法。mimeType优先使用已定义的常量类型（如MIMETYPE_TEXT_PLAIN），若需要传递自定义格式数据，可使用自定义MIME类型。 |
+| [createData](arkts-basicservices-pasteboard-createdata-f.md#createdata-1) | 构建一个包含多个类型数据的剪贴板内容对象，支持一次创建多个MIME类型的数据条目。调用此方法后，系统将解析Record中的多个key-value对，创建多个PasteDataRecord条目，首个MIME类型作为默认类型。非默认类型数据需通过[getData](arkts-basicservices-pasteboard-pastedatarecord-i.md#getdata)接口读取。应用需要将多种不同类型的数据(如文本、URI、HTML等)同时复制到剪贴板时，可使用此接口一次性构建包含多个MIME类型数据的剪贴板内容对象。 |
 | [createHtmlData](arkts-basicservices-pasteboard-createhtmldata-f.md) | 构建一个HTML剪贴板内容对象。 |
 | [createHtmlTextRecord](arkts-basicservices-pasteboard-createhtmltextrecord-f.md) | 创建一条HTML内容的条目。 |
 | [createPlainTextData](arkts-basicservices-pasteboard-createplaintextdata-f.md) | 构建一个纯文本剪贴板内容对象。 |
@@ -48,6 +48,14 @@ import { pasteboard } from '@kit.BasicServicesKit';
 | [ProgressInfo](arkts-basicservices-pasteboard-progressinfo-i.md) | 定义进度上报的数据结构，且仅当进度指示选项[ProgressIndicator](arkts-basicservices-pasteboard-progressindicator-e.md)设置为NONE时才会上报此信息。 |
 | [SystemPasteboard](arkts-basicservices-pasteboard-systempasteboard-i.md) | 系统剪贴板对象。在调用SystemPasteboard的接口前，需要先通过[getSystemPasteboard](arkts-basicservices-pasteboard-getsystempasteboard-f.md)获取系统剪贴板。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [ProgressListener](arkts-basicservices-pasteboard-progresslistener-t.md) | 定义进度数据变化的订阅函数，当选择不使用系统默认进度显示时，可设置该项获取粘贴过程的进度。 |
+| [UpdateCallback](arkts-basicservices-pasteboard-updatecallback-t.md) | 表示剪贴板内容变更的回调。 |
+| [ValueType](arkts-basicservices-pasteboard-valuetype-t.md) | 用于表示允许的数据字段类型。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -56,14 +64,6 @@ import { pasteboard } from '@kit.BasicServicesKit';
 | [Pattern](arkts-basicservices-pasteboard-pattern-e.md) | 剪贴板支持检测的模式类型。 |
 | [ProgressIndicator](arkts-basicservices-pasteboard-progressindicator-e.md) | 定义进度条指示选项，可选择是否采用系统默认进度显示。 |
 | [ShareOption](arkts-basicservices-pasteboard-shareoption-e.md) | 可粘贴数据的范围类型枚举。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [ProgressListener](arkts-basicservices-pasteboard-progresslistener-t.md) | 定义进度数据变化的订阅函数，当选择不使用系统默认进度显示时，可设置该项获取粘贴过程的进度。 |
-| [UpdateCallback](arkts-basicservices-pasteboard-updatecallback-t.md) | 表示剪贴板内容变更的回调。 |
-| [ValueType](arkts-basicservices-pasteboard-valuetype-t.md) | 用于表示允许的数据字段类型。 |
 
 ### 常量
 

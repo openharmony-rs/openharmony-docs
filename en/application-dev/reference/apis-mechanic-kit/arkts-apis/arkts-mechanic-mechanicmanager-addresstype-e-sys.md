@@ -1,5 +1,9 @@
 # AddressType (System API)
 
+```TypeScript
+export enum AddressType
+```
+
 Mechanic device address type.
 
 **Since:** 26.0.0

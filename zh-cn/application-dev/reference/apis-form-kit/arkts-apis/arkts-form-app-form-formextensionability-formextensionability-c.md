@@ -1,5 +1,9 @@
 # FormExtensionAbility
 
+```TypeScript
+declare class FormExtensionAbility
+```
+
 卡片扩展类。包含卡片提供方接收创建卡片、修改可见性等的通知接口。
 
 **起始版本：** 9
@@ -464,7 +468,7 @@ context: FormExtensionContext
 
 FormExtensionAbility的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
 
-**类型：** FormExtensionContext
+**类型：** [FormExtensionContext](arkts-form-formextensioncontext-c-sys.md)
 
 **起始版本：** 9
 

@@ -1,5 +1,9 @@
 # ReqPermissionDetail
 
+```TypeScript
+export interface ReqPermissionDetail
+```
+
 Provides the detailed information of the permissions to request from the system.
 
 > **NOTE:** 

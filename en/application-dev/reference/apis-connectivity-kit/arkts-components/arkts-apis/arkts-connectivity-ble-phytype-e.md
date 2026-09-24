@@ -1,5 +1,9 @@
 # PhyType
 
+```TypeScript
+enum PhyType
+```
+
 Phy type used during scan.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # AuthStorageLevel
 
+```TypeScript
+export enum AuthStorageLevel
+```
+
 表示凭据的存储级别。
 
 **起始版本：** 18

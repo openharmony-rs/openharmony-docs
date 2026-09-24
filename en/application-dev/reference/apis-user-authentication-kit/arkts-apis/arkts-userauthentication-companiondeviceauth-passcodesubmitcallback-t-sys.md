@@ -6,7 +6,7 @@ type PasscodeSubmitCallback = (passcode: Uint8Array) => void
 
 Defines the callback used to submit a passcode entered by the user.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

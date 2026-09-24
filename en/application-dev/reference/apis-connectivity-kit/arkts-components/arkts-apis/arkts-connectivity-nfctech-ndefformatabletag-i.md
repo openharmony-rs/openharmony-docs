@@ -1,5 +1,9 @@
 # NdefFormatableTag
 
+```TypeScript
+export interface NdefFormatableTag extends TagSession
+```
+
 Provides APIs for formatting NDEF formattable tags. This class inherits from **TagSession**.
 
 **TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](arkts-connectivity-tagsession-tagsession-i.md).
@@ -117,6 +121,8 @@ function nfcTechDemo() {
     }
 }
 ```
+
+<a id="format-1"></a>
 
 ## format
 
@@ -258,6 +264,8 @@ function nfcTechDemo() {
     }
 }
 ```
+
+<a id="formatreadonly-1"></a>
 
 ## formatReadOnly
 

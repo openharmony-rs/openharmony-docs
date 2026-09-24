@@ -69,27 +69,8 @@ try {
 }
 ```
 
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let bundleName: string = 'com.ohos.demo';
-let moduleName: string = 'moduleTest';
-let option: bundleManager.BundleOptions = { 'userId': 100, 'appIndex': 0 };
-
-try {
-  bundleManager.enableDynamicIcon(bundleName, moduleName, option).then(() => {
-    hilog.info(0x0000, 'testTag', 'enableDynamicIcon successfully');
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'enableDynamicIcon failed. Cause: %{public}s', err.message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'enableDynamicIcon failed. Cause: %{public}s', message);
-}
-```
-
+<a id="enabledynamicicon-1"></a>
 
 ## enableDynamicIcon
 
@@ -140,4 +121,23 @@ To enable the dynamic icon for another user, you must request the ohos.permissio
 
 **Examples**
 
-See [enableDynamicIcon](#enabledynamicicon)
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName: string = 'com.ohos.demo';
+let moduleName: string = 'moduleTest';
+let option: bundleManager.BundleOptions = { 'userId': 100, 'appIndex': 0 };
+
+try {
+  bundleManager.enableDynamicIcon(bundleName, moduleName, option).then(() => {
+    hilog.info(0x0000, 'testTag', 'enableDynamicIcon successfully');
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'enableDynamicIcon failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'enableDynamicIcon failed. Cause: %{public}s', message);
+}
+```

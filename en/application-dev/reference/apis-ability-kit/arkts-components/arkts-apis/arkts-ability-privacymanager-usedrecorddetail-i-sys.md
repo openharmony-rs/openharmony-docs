@@ -1,5 +1,9 @@
 # UsedRecordDetail (System API)
 
+```TypeScript
+interface UsedRecordDetail
+```
+
 Represents the details of a single access record.
 
 **Since:** 9
@@ -26,6 +30,8 @@ Access duration. Unit: milliseconds.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -43,6 +49,8 @@ Default value: 0.
 **Type:** number
 
 **Since:** 11
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -65,6 +73,8 @@ Default value: 1.
 
 **Since:** 11
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -81,6 +91,8 @@ Access status. 0 indicates stopped usage, 1 indicates foreground usage, and 2 in
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -96,6 +108,8 @@ Access timestamp. Unit: milliseconds.
 **Type:** number
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -114,6 +128,8 @@ Default value: NORMAL_TYPE.
 **Type:** [PermissionUsedType](arkts-ability-privacymanager-permissionusedtype-e-sys.md)
 
 **Since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 

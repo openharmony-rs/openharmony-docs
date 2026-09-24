@@ -1,5 +1,9 @@
 # AccessAuthorization (System API)
 
+```TypeScript
+export enum AccessAuthorization
+```
+
 Enum for the PBAP or MAP access authorization.
 
 **Since:** 11

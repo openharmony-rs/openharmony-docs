@@ -1,5 +1,9 @@
 # Statistic
 
+```TypeScript
+interface Statistic
+```
+
 描述数据库表的端云同步过程的统计信息。
 
 **起始版本：** 10

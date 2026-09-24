@@ -4,6 +4,8 @@
 
 Defines the APIs for traffic filtering.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Since**: 26.0.0
 
 ## Files

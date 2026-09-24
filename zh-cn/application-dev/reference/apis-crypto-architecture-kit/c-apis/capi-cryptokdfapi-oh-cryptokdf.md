@@ -8,6 +8,8 @@ typedef struct OH_CryptoKdf OH_CryptoKdf
 
 KDF结构体，表示KDF上下文。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **相关模块：** [CryptoKdfApi](capi-cryptokdfapi.md)

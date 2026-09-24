@@ -1,5 +1,9 @@
 # PreviewAttribute
 
+```TypeScript
+interface PreviewAttribute
+```
+
 Defines the print preview attributes.
 
 **Since:** 24

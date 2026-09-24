@@ -1,5 +1,9 @@
 # UIExtensionHostWindowProxy（系统接口）
 
+```TypeScript
+interface UIExtensionHostWindowProxy
+```
+
 Transition Controller
 
 **起始版本：** 11
@@ -47,8 +51,8 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
@@ -99,6 +103,49 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
+<a id="createsubwindowwithoptions-1"></a>
+
+## createSubWindowWithOptions
+
+```TypeScript
+createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions,
+        followCreatorLifecycle: boolean): Promise<window.Window>
+```
+
+创建该UIExtensionHostWindowProxy实例下的子窗口，可通过设置followCreatorLifecycle，决定子窗是否跟随组件（EmbeddedComponent或UIExtensionComponent）的生命周期，使用Promise异步回调。
+
+**起始版本：** 22
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| name | string | 是 | 子窗口的名字。 |
+| subWindowConfig | [window.SubWindowOptions](arkts-arkui-window-subwindowoptions-i.md) | 是 | 子窗口参数。 |
+| followCreatorLifecycle | boolean | 是 | 子窗生命周期是否跟组件（EmbeddedComponent或UIExtensionComponent）保持同步。true表示该组件隐藏时，子窗隐藏，该组件显示时子窗显示，false表示子窗的显隐不跟随该组件变化。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[window.Window](arkts-arkui-window-window-i.md)&gt; | Promise used to return the subwindow. |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
+
+**示例**
+
 ```TypeScript
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -144,49 +191,6 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-## createSubWindowWithOptions
-
-```TypeScript
-createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions,
-        followCreatorLifecycle: boolean): Promise<window.Window>
-```
-
-创建该UIExtensionHostWindowProxy实例下的子窗口，可通过设置followCreatorLifecycle，决定子窗是否跟随组件（EmbeddedComponent或UIExtensionComponent）的生命周期，使用Promise异步回调。
-
-**起始版本：** 22
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| name | string | 是 | 子窗口的名字。 |
-| subWindowConfig | [window.SubWindowOptions](arkts-arkui-window-subwindowoptions-i.md) | 是 | 子窗口参数。 |
-| followCreatorLifecycle | boolean | 是 | 子窗生命周期是否跟组件（EmbeddedComponent或UIExtensionComponent）保持同步。true表示该组件隐藏时，子窗隐藏，该组件显示时子窗显示，false表示子窗的显隐不跟随该组件变化。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[window.Window](arkts-arkui-window-window-i.md)&gt; | Promise used to return the subwindow. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
-| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
-
-**示例**
-
-参见 [createSubWindowWithOptions](#createsubwindowwithoptions)
-
 ## getWindowAvoidArea
 
 ```TypeScript
@@ -219,7 +223,7 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
 **示例**
 
@@ -249,7 +253,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise<void>
 
 > **说明：** 
 > 
-> - 不安全窗口是指可能遮挡EmbeddedComponent（或UIExtensionComponent）组件的窗口，如全局悬浮窗、宿主子窗口和宿主创建的Dialog窗口（不包括系统应用创建的上述类型窗口）。
+> - 不安全窗口是指可能遮挡[EmbeddedComponent](../arkts-components/arkts-arkui-embeddedcomponent-comp.md#embedded_component)（或[UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent-comp-sys.md#ui_extension_componentsystem-api)）组件的窗口，如全局悬浮窗、宿主子窗口和宿主创建的Dialog窗口（不包括系统应用创建的上述类型窗口）。
 > 
 > - 当EmbeddedComponent（或UIExtensionComponent）组件被用来显示敏感操作提示内容时，可以选择隐藏不安全窗口，保护敏感操作提示内容不会被遮挡。当EmbeddedComponent（或UIExtensionComponent）组件不显示或销毁时，不安全窗口会重新显示。
 > 
@@ -283,8 +287,8 @@ hideNonSecureWindows(shouldHide: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | Abnormal state. Possible causes: 1. Permission denied. Interface caller does not have permission "ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS". 2. The UIExtension window proxy is abnormal.<br>**适用版本：** 12+ |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally.<br>**适用版本：** 12+ |
 
@@ -356,8 +360,8 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | Abnormal state. Possible causes: 1. The UIExtension window proxy is abnormal. 2. Not the UIExtensionAbility process calling. |
 
 **示例**
@@ -407,8 +411,23 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listening type is not registered. 3. The listener has not been registered. 4. The UIExtension window proxy is abnormal. |
+
+**示例**
+
+```TypeScript
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession} from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionDestroy(session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 注销所有避让区变化的监听
+    extensionHostWindow.off('avoidAreaChange');
+  }
+}
+```
 
 ## off('windowSizeChange')
 
@@ -437,8 +456,23 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listening type is not registered. 3. The listener has not been registered. 4. The UIExtension window proxy is abnormal. |
+
+**示例**
+
+```TypeScript
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionDestroy(session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 注销组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
+    extensionHostWindow.off('windowSizeChange');
+  }
+}
+```
 
 ## on('avoidAreaChange')
 
@@ -467,8 +501,25 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listener has been registered. 3. The UIExtension window proxy is abnormal. |
+
+**示例**
+
+```TypeScript
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 注册避让区变化的监听
+    extensionHostWindow.on('avoidAreaChange', (info) => {
+      console.info(`The avoid area of the host window is: ${JSON.stringify(info.area)}.`);
+    });
+  }
+}
+```
 
 ## on('windowSizeChange')
 
@@ -497,8 +548,25 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listener has been registered. 3. The UIExtension window proxy is abnormal. |
+
+**示例**
+
+```TypeScript
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 注册组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
+    extensionHostWindow.on('windowSizeChange', (size) => {
+      console.info(`The size of the component is: ${JSON.stringify(size)}.`);
+    });
+  }
+}
+```
 
 ## setWaterMarkFlag
 

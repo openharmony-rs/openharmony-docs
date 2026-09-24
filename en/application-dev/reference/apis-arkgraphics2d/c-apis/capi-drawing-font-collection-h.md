@@ -18,13 +18,13 @@ Defines functions related to font collections in the drawing module, which are u
 
 | Name | Description |
 | -- | -- |
-| [OH_Drawing_FontCollection* OH_Drawing_CreateFontCollection(void)](#oh_drawing_createfontcollection) | Creates an {@link OH_Drawing_FontCollection} object.(Deprecated in API26.1.0) |
+| [OH_Drawing_FontCollection* OH_Drawing_CreateFontCollection(void)](#oh_drawing_createfontcollection) | Creates an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.(Deprecated in API26.0.1) |
 | [void OH_Drawing_DestroyFontCollection(OH_Drawing_FontCollection* fontCollection)](#oh_drawing_destroyfontcollection) | Destroys an **OH_Drawing_FontCollection** object and reclaims the memory occupied by the object. |
 | [void OH_Drawing_DisableFontCollectionFallback(OH_Drawing_FontCollection* fontCollection)](#oh_drawing_disablefontcollectionfallback) | Disables the system fonts.(Deprecated in API18) |
 | [void OH_Drawing_DisableFontCollectionSystemFont(OH_Drawing_FontCollection* fontCollection)](#oh_drawing_disablefontcollectionsystemfont) | Disables system fonts. After disabling, the font collection object can only use registered custom fonts for text rendering. |
-| [OH_Drawing_FontCollection* OH_Drawing_CreateSharedFontCollection(void)](#oh_drawing_createsharedfontcollection) | Creates a shareable {@link OH_Drawing_FontCollection} object. |
+| [OH_Drawing_FontCollection* OH_Drawing_CreateSharedFontCollection(void)](#oh_drawing_createsharedfontcollection) | Creates a shareable [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object. |
 | [void OH_Drawing_ClearFontCaches(OH_Drawing_FontCollection* fontCollection)](#oh_drawing_clearfontcaches) | Clears the font cache. (The font cache has a memory limit and a clearing mechanism. It occupies limited memory. You are not advised to clear it unless otherwise required.) |
-| [OH_Drawing_FontCollection* OH_Drawing_GetFontCollectionGlobalInstance(void)](#oh_drawing_getfontcollectionglobalinstance) | Obtains the global font collection object {@link OH_Drawing_FontCollection}, which can be used to obtain theme font information. This object is prohibited from being released. |
+| [OH_Drawing_FontCollection* OH_Drawing_GetFontCollectionGlobalInstance(void)](#oh_drawing_getfontcollectionglobalinstance) | Obtains the global font collection object [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md), which can be used to obtain theme font information. This object is prohibited from being released. |
 
 ## Function description
 
@@ -36,13 +36,13 @@ OH_Drawing_FontCollection* OH_Drawing_CreateFontCollection(void)
 
 **Description**
 
-Creates an {@link OH_Drawing_FontCollection} object.
+Creates an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
-**Deprecated**: 26.1.0
+**Deprecated**: 26.0.1
 
 **Replaced by**: OH_Drawing_CreateSharedFontCollection
 
@@ -50,7 +50,7 @@ Creates an {@link OH_Drawing_FontCollection} object.
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_FontCollection* | Pointer to the created font collection object. The font collection pointer object created by this function      can only be used by one {@link OH_Drawing_TypographyCreate} object and does not support shared use among      multiple OH_Drawing_TypographyCreate objects. To share the same OH_Drawing_FontCollection among multiple      OH_Drawing_TypographyCreate objects, use the [OH_Drawing_CreateSharedFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createsharedfontcollection) function to create      the OH_Drawing_FontCollection object. |
+| OH_Drawing_FontCollection* | Pointer to the created font collection object. The font collection pointer object created by this function      can only be used by one [OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md) object and does not support shared use among      multiple OH_Drawing_TypographyCreate objects. To share the same OH_Drawing_FontCollection among multiple      OH_Drawing_TypographyCreate objects, use the [OH_Drawing_CreateSharedFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createsharedfontcollection) function to create      the OH_Drawing_FontCollection object. |
 
 ### OH_Drawing_DestroyFontCollection()
 
@@ -94,7 +94,7 @@ Disables the system fonts.
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | Pointer to an {@link OH_Drawing_FontCollection} object. |
+| OH_Drawing_FontCollection* fontCollection | Pointer to an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object. |
 
 ### OH_Drawing_DisableFontCollectionSystemFont()
 
@@ -114,7 +114,7 @@ Disables system fonts. After disabling, the font collection object can only use 
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | Pointer to the font collection object {@link OH_Drawing_FontCollection} for which system fonts are to be disabled. |
+| OH_Drawing_FontCollection* fontCollection | Pointer to the font collection object [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) for which system fonts are to be disabled. |
 
 ### OH_Drawing_CreateSharedFontCollection()
 
@@ -124,7 +124,7 @@ OH_Drawing_FontCollection* OH_Drawing_CreateSharedFontCollection(void)
 
 **Description**
 
-Creates a shareable {@link OH_Drawing_FontCollection} object.
+Creates a shareable [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -134,7 +134,7 @@ Creates a shareable {@link OH_Drawing_FontCollection} object.
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_FontCollection* | Pointer to the created font collection object, which can be used by multiple      {@link OH_Drawing_TypographyCreate} objects. |
+| OH_Drawing_FontCollection* | Pointer to the created font collection object, which can be used by multiple      [OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md) objects. |
 
 ### OH_Drawing_ClearFontCaches()
 
@@ -154,7 +154,7 @@ Clears the font cache. (The font cache has a memory limit and a clearing mechani
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | Pointer to an {@link OH_Drawing_FontCollection} object. |
+| OH_Drawing_FontCollection* fontCollection | Pointer to an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object. |
 
 ### OH_Drawing_GetFontCollectionGlobalInstance()
 
@@ -164,7 +164,7 @@ OH_Drawing_FontCollection* OH_Drawing_GetFontCollectionGlobalInstance(void)
 
 **Description**
 
-Obtains the global font collection object {@link OH_Drawing_FontCollection}, which can be used to obtain theme font information. This object is prohibited from being released.
+Obtains the global font collection object [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md), which can be used to obtain theme font information. This object is prohibited from being released.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -174,6 +174,6 @@ Obtains the global font collection object {@link OH_Drawing_FontCollection}, whi
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_FontCollection* | Pointer to the global font collection object, which can be used by multiple      {@link OH_Drawing_TypographyCreate} objects and is prohibited from being released. |
+| OH_Drawing_FontCollection* | Pointer to the global font collection object, which can be used by multiple      [OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md) objects and is prohibited from being released. |
 
 

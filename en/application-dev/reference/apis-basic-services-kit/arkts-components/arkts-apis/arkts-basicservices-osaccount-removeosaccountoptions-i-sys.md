@@ -1,5 +1,9 @@
 # RemoveOsAccountOptions (System API)
 
+```TypeScript
+interface RemoveOsAccountOptions
+```
+
 Represents the optional parameter used to remove an OS account.
 
 **Since:** 24

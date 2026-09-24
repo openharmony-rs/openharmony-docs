@@ -1,5 +1,9 @@
 # HighlightAlbum (System API)
 
+```TypeScript
+class HighlightAlbum
+```
+
 Provides APIs for managing the **Highlights** album, which is an automatically generated collection of memorable photos or videos.
 
 **Since:** 12

@@ -8,6 +8,8 @@ typedef struct JSVM_Data__* JSVM_Data
 
 To represent a JavaScript Data type.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 18
 
 **Related module**: [JSVM](capi-jsvm.md)

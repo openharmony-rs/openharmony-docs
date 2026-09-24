@@ -8,6 +8,8 @@ typedef struct Ethernet_NetAddrInfo {...} Ethernet_NetAddrInfo
 
 Defines the network address of the Ethernet NIC, including the Ethernet NIC name and the network address information.
 
+**System capability**: SystemCapability.Communication.NetManager.Ethernet
+
 **Since**: 26.0.0
 
 **Related module**: [netmanager_ext](capi-netmanager-ext.md)

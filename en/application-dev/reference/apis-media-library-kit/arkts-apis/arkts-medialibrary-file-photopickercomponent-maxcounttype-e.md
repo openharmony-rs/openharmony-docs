@@ -1,5 +1,9 @@
 # MaxCountType
 
+```TypeScript
+export declare enum MaxCountType
+```
+
 Enumerates the types of the maximum count.
 
 **Since:** 12

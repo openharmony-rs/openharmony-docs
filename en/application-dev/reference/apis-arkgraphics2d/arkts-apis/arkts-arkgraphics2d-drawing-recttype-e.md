@@ -1,5 +1,9 @@
 # RectType
 
+```TypeScript
+enum RectType
+```
+
 Enumerates the types of rectangles used to fill the lattices. Used only in [Lattice](arkts-arkgraphics2d-graphics-drawing.md).
 
 **Since:** 12

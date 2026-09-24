@@ -1,5 +1,9 @@
 # WaterfallDisplayAreaRects
 
+```TypeScript
+interface WaterfallDisplayAreaRects
+```
+
 瀑布屏曲面部分显示区域。
 
 **起始版本：** 9

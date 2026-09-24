@@ -36,7 +36,7 @@ function create(config: PiPConfiguration): Promise<PiPController>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例**
 
@@ -141,6 +141,44 @@ struct Index {
 }
 ```
 
+
+<a id="create-1"></a>
+
+## create
+
+```TypeScript
+function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise<PiPController>
+```
+
+创建画中画控制器，使用typeNode为画中画添加自定义UI节点。使用Promise异步回调。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| config | [PiPConfiguration](arkts-arkui-pipwindow-pipconfiguration-i.md) | 是 | 创建画中画控制器的参数。该参数不能为空，并且构造该参数的context不能为空。构造该参数时，如果指定了templateType，需保证templateType是[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md)类型；如果指定了controlGroups，需保证controlGroups与templateType匹配，详见[PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md)。 |
+| contentNode | [typeNode.XComponent](arkts-arkui-typenode-xcomponent-t.md) | 是 | 用于渲染画中画窗口中的内容。该参数不能为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[PiPController](arkts-arkui-pipwindow-pipcontroller-i.md)&gt; | Promise对象。返回当前创建的画中画控制器。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例**
+
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { PiPWindow, typeNode, UIContext } from '@kit.ArkUI';
@@ -188,41 +226,3 @@ struct Index {
     }
 }
 ```
-
-
-## create
-
-```TypeScript
-function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise<PiPController>
-```
-
-创建画中画控制器，使用typeNode为画中画添加自定义UI节点。使用Promise异步回调。
-
-**起始版本：** 12
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| config | [PiPConfiguration](arkts-arkui-pipwindow-pipconfiguration-i.md) | 是 | 创建画中画控制器的参数。该参数不能为空，并且构造该参数的context不能为空。构造该参数时，如果指定了templateType，需保证templateType是[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md)类型；如果指定了controlGroups，需保证controlGroups与templateType匹配，详见[PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md)。 |
-| contentNode | [typeNode.XComponent](arkts-arkui-typenode-xcomponent-t.md) | 是 | 用于渲染画中画窗口中的内容。该参数不能为空。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[PiPController](arkts-arkui-pipwindow-pipcontroller-i.md)&gt; | Promise对象。返回当前创建的画中画控制器。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
-
-**示例**
-
-参见 create

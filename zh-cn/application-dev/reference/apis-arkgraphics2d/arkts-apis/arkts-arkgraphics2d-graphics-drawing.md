@@ -55,8 +55,17 @@ import { drawing } from '@kit.ArkGraphics2D';
 | --- | --- |
 | [FontFeature](arkts-arkgraphics2d-drawing-fontfeature-i.md) | 表示字体特征。字体特征是字体内置的排版规则，用于控制字形的显示效果，具体包括连字、替代字形、上下标等功能。 |
 | [FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md) | 描述字形大小和布局的属性信息，同一种字体中的字符属性大致相同。 |
-| [RecordCmd](arkts-arkgraphics2d-drawing-recordcmd-i.md) |  |
+| [RecordCmd](arkts-arkgraphics2d-drawing-recordcmd-i.md) | 描述一组已录制的绘制指令。 |
 | [TextBlobRunBuffer](arkts-arkgraphics2d-drawing-textblobrunbuffer-i.md) | 描述一行文字中具有相同属性的连续字形。 |
+| [TypefaceFallbackInfo](arkts-arkgraphics2d-drawing-typefacefallbackinfo-i.md) | 定义字体回退信息结构体，表示一组使用相同回退字体的字形片段。 |
+
+<!--Del-->
+### 接口（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [AtlasImage](arkts-arkgraphics2d-drawing-atlasimage-i-sys.md) | 定义精灵图序列帧动画的图集帧参数。 |
+<!--DelEnd-->
 
 ### 枚举
 
@@ -87,3 +96,11 @@ import { drawing } from '@kit.ArkGraphics2D';
 | [TextEncoding](arkts-arkgraphics2d-drawing-textencoding-e.md) | 文本的编码类型枚举。 |
 | [TileMode](arkts-arkgraphics2d-drawing-tilemode-e.md) | 着色器效果平铺模式的枚举。 |
 | [VertexMode](arkts-arkgraphics2d-drawing-vertexmode-e.md) | 顶点绘制的连接方式枚举。 |
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [AtlasInterpolationMode](arkts-arkgraphics2d-drawing-atlasinterpolationmode-e-sys.md) | 定义精灵图序列帧动画的插值模式。 |
+<!--DelEnd-->

@@ -1,5 +1,9 @@
 # SocketMessageInfo
 
+```TypeScript
+export interface SocketMessageInfo
+```
+
 Defines the socket connection information.
 
 **Since:** 11

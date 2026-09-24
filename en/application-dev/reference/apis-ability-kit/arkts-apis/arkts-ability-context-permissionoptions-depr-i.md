@@ -1,5 +1,9 @@
 # PermissionOptions
 
+```TypeScript
+interface PermissionOptions
+```
+
 **Since:** 7
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

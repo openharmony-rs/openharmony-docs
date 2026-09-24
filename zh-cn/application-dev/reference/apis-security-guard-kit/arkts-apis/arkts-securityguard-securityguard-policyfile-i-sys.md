@@ -1,5 +1,9 @@
 # PolicyFile（系统接口）
 
+```TypeScript
+interface PolicyFile
+```
+
 配置文件信息。
 
 @interface PolicyFile

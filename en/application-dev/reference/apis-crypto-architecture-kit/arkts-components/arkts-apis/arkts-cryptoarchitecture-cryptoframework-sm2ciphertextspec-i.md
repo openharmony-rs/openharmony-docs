@@ -1,5 +1,9 @@
 # SM2CipherTextSpec
 
+```TypeScript
+interface SM2CipherTextSpec
+```
+
 Represents the SM2 ciphertext parameters. You can use this object to generate SM2 ciphertext in ASN.1 format or obtain SM2 parameters from the SM2 ciphertext in ASN.1 format.
 
 > **NOTE:** 

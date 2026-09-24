@@ -33,10 +33,10 @@ function getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
@@ -68,194 +68,8 @@ try {
 }
 ```
 
-```TypeScript
-import { distributedBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-    distributedBundleManager.getRemoteAbilityInfo(
-        {
-            deviceId: '1',
-            bundleName: 'com.example.application',
-            abilityName: 'EntryAbility'
-        }).then((data: distributedBundleManager.RemoteAbilityInfo) => {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }).catch((err: BusinessError) => {
-            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
-        });
-} catch (err) {
-    let code = (err as BusinessError).code;
-    let message = (err as BusinessError).message;
-    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
-}
-```
-
-```TypeScript
-import { distributedBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    distributedBundleManager.getRemoteAbilityInfo(
-        [
-            {
-                deviceId: '1',
-                bundleName: 'com.example.application1',
-                abilityName: 'EntryAbility1'
-            },
-            {
-                deviceId: '1',
-                bundleName: 'com.example.application2',
-                abilityName: 'EntryAbility'
-            }
-        ], (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo[]) => {
-          if (err) {
-            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
-          } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-          }
-        });
-} catch (err) {
-    let code = (err as BusinessError).code;
-    let message = (err as BusinessError).message;
-    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
-}
-```
-
-```TypeScript
-import { distributedBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    distributedBundleManager.getRemoteAbilityInfo(
-        [
-            {
-                deviceId: '1',
-                bundleName: 'com.example.application',
-                abilityName: 'EntryAbility'
-            },
-            {
-                deviceId: '1',
-                bundleName: 'com.example.application2',
-                abilityName: 'EntryAbility'
-            }
-        ]).then((data: distributedBundleManager.RemoteAbilityInfo[]) => {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }).catch((err: BusinessError) => {
-            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
-        });
-} catch (err) {
-    let code = (err as BusinessError).code;
-    let message = (err as BusinessError).message;
-    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
-}
-```
-
-```TypeScript
-import { distributedBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    distributedBundleManager.getRemoteAbilityInfo(
-        {
-            deviceId: '1',
-            bundleName: 'com.example.application',
-            abilityName: 'EntryAbility'
-        }, 'zh-Hans-CN', (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo) => {
-          if (err) {
-            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
-          } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-          }
-        });
-} catch (err) {
-    let code = (err as BusinessError).code;
-    let message = (err as BusinessError).message;
-    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
-}
-```
-
-```TypeScript
-import { distributedBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    distributedBundleManager.getRemoteAbilityInfo(
-        {
-            deviceId: '1',
-            bundleName: 'com.example.application',
-            abilityName: 'EntryAbility'
-        }, 'zh-Hans-CN').then((data: distributedBundleManager.RemoteAbilityInfo) => {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }).catch((err: BusinessError) => {
-            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
-        });
-} catch (err) {
-    let code = (err as BusinessError).code;
-    let message = (err as BusinessError).message;
-    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
-}
-```
-
-```TypeScript
-import { distributedBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    distributedBundleManager.getRemoteAbilityInfo(
-        [
-            {
-                deviceId: '1',
-                bundleName: 'com.example.application1',
-                abilityName: 'EntryAbility1'
-            },
-            {
-                deviceId: '1',
-                bundleName: 'com.example.application2',
-                abilityName: 'EntryAbility'
-            }
-        ], 'zh-Hans-CN', (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo[]) => {
-          if (err) {
-           console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
-          } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-          }
-        });
-} catch (err) {
-    let code = (err as BusinessError).code;
-    let message = (err as BusinessError).message;
-    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
-}
-```
-
-```TypeScript
-import { distributedBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    distributedBundleManager.getRemoteAbilityInfo(
-        [
-            {
-                deviceId: '1',
-                bundleName: 'com.example.application',
-                abilityName: 'EntryAbility'
-            },
-            {
-                deviceId: '1',
-                bundleName: 'com.example.application2',
-                abilityName: 'EntryAbility'
-            }
-        ], 'zh-Hans-CN').then((data: distributedBundleManager.RemoteAbilityInfo[]) => {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }).catch((err: BusinessError) => {
-            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
-        });
-} catch (err) {
-    let code = (err as BusinessError).code;
-    let message = (err as BusinessError).message;
-    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
-}
-```
-
+<a id="getremoteabilityinfo-1"></a>
 
 ## getRemoteAbilityInfo
 
@@ -289,10 +103,10 @@ function getRemoteAbilityInfo(elementName: ElementName): Promise<RemoteAbilityIn
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
@@ -300,8 +114,30 @@ function getRemoteAbilityInfo(elementName: ElementName): Promise<RemoteAbilityIn
 
 **示例**
 
-参见 [getRemoteAbilityInfo](#getremoteabilityinfo)
+```TypeScript
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        {
+            deviceId: '1',
+            bundleName: 'com.example.application',
+            abilityName: 'EntryAbility'
+        }).then((data: distributedBundleManager.RemoteAbilityInfo) => {
+            console.info('Operation succeed:' + JSON.stringify(data));
+        }).catch((err: BusinessError) => {
+            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+
+
+<a id="getremoteabilityinfo-2"></a>
 
 ## getRemoteAbilityInfo
 
@@ -330,10 +166,10 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, callback: AsyncC
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
@@ -341,8 +177,39 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, callback: AsyncC
 
 **示例**
 
-参见 [getRemoteAbilityInfo](#getremoteabilityinfo)
+```TypeScript
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        [
+            {
+                deviceId: '1',
+                bundleName: 'com.example.application1',
+                abilityName: 'EntryAbility1'
+            },
+            {
+                deviceId: '1',
+                bundleName: 'com.example.application2',
+                abilityName: 'EntryAbility'
+            }
+        ], (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo[]) => {
+          if (err) {
+            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+          } else {
+            console.info('Operation succeed:' + JSON.stringify(data));
+          }
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+
+
+<a id="getremoteabilityinfo-3"></a>
 
 ## getRemoteAbilityInfo
 
@@ -376,10 +243,10 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>): Promise<Array<R
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
@@ -387,8 +254,37 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>): Promise<Array<R
 
 **示例**
 
-参见 [getRemoteAbilityInfo](#getremoteabilityinfo)
+```TypeScript
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        [
+            {
+                deviceId: '1',
+                bundleName: 'com.example.application',
+                abilityName: 'EntryAbility'
+            },
+            {
+                deviceId: '1',
+                bundleName: 'com.example.application2',
+                abilityName: 'EntryAbility'
+            }
+        ]).then((data: distributedBundleManager.RemoteAbilityInfo[]) => {
+            console.info('Operation succeed:' + JSON.stringify(data));
+        }).catch((err: BusinessError) => {
+            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+
+
+<a id="getremoteabilityinfo-4"></a>
 
 ## getRemoteAbilityInfo
 
@@ -418,10 +314,10 @@ function getRemoteAbilityInfo(elementName: ElementName, locale: string, callback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
@@ -429,8 +325,32 @@ function getRemoteAbilityInfo(elementName: ElementName, locale: string, callback
 
 **示例**
 
-参见 [getRemoteAbilityInfo](#getremoteabilityinfo)
+```TypeScript
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        {
+            deviceId: '1',
+            bundleName: 'com.example.application',
+            abilityName: 'EntryAbility'
+        }, 'zh-Hans-CN', (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo) => {
+          if (err) {
+            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+          } else {
+            console.info('Operation succeed:' + JSON.stringify(data));
+          }
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+
+
+<a id="getremoteabilityinfo-5"></a>
 
 ## getRemoteAbilityInfo
 
@@ -465,10 +385,10 @@ function getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
@@ -476,8 +396,30 @@ function getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise
 
 **示例**
 
-参见 [getRemoteAbilityInfo](#getremoteabilityinfo)
+```TypeScript
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        {
+            deviceId: '1',
+            bundleName: 'com.example.application',
+            abilityName: 'EntryAbility'
+        }, 'zh-Hans-CN').then((data: distributedBundleManager.RemoteAbilityInfo) => {
+            console.info('Operation succeed:' + JSON.stringify(data));
+        }).catch((err: BusinessError) => {
+            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+
+
+<a id="getremoteabilityinfo-6"></a>
 
 ## getRemoteAbilityInfo
 
@@ -507,10 +449,10 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string, 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
@@ -518,8 +460,39 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string, 
 
 **示例**
 
-参见 [getRemoteAbilityInfo](#getremoteabilityinfo)
+```TypeScript
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        [
+            {
+                deviceId: '1',
+                bundleName: 'com.example.application1',
+                abilityName: 'EntryAbility1'
+            },
+            {
+                deviceId: '1',
+                bundleName: 'com.example.application2',
+                abilityName: 'EntryAbility'
+            }
+        ], 'zh-Hans-CN', (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo[]) => {
+          if (err) {
+           console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+          } else {
+            console.info('Operation succeed:' + JSON.stringify(data));
+          }
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+
+
+<a id="getremoteabilityinfo-7"></a>
 
 ## getRemoteAbilityInfo
 
@@ -554,10 +527,10 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
@@ -565,4 +538,31 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string):
 
 **示例**
 
-参见 [getRemoteAbilityInfo](#getremoteabilityinfo)
+```TypeScript
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        [
+            {
+                deviceId: '1',
+                bundleName: 'com.example.application',
+                abilityName: 'EntryAbility'
+            },
+            {
+                deviceId: '1',
+                bundleName: 'com.example.application2',
+                abilityName: 'EntryAbility'
+            }
+        ], 'zh-Hans-CN').then((data: distributedBundleManager.RemoteAbilityInfo[]) => {
+            console.info('Operation succeed:' + JSON.stringify(data));
+        }).catch((err: BusinessError) => {
+            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```

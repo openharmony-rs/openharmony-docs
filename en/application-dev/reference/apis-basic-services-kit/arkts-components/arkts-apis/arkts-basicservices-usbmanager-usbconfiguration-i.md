@@ -1,5 +1,9 @@
 # USBConfiguration
 
+```TypeScript
+interface USBConfiguration
+```
+
 Represents the USB configuration. One [USBDevice](arkts-basicservices-usbmanager-usbdevice-i.md) can contain multiple **USBConfig** instances.
 
 **Since:** 9

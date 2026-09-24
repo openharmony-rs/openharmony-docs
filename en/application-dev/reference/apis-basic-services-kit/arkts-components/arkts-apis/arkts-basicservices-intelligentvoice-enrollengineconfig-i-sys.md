@@ -1,5 +1,9 @@
 # EnrollEngineConfig (System API)
 
+```TypeScript
+interface EnrollEngineConfig
+```
+
 Describes enroll engine config. @typedef EnrollEngineConfig
 
 **Since:** 10

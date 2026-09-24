@@ -1,5 +1,9 @@
 # ChipV2LabelConfig
 
+```TypeScript
+export interface ChipV2LabelConfig
+```
+
 ChipV2LabelConfig定义文本属性配置。
 
 **起始版本：** 26.0.0
@@ -20,7 +24,7 @@ activatedFontColor?: ColorMetrics
 
 ChipV2激活时的文字颜色。
 
-默认值：&#36;r('sys.color.chip_activated_fontcolor')
+默认值：$r('sys.color.chip_activated_fontcolor')
 
 值为undefined时，按默认值处理。
 
@@ -44,7 +48,7 @@ fontColor?: ColorMetrics
 
 文字颜色。
 
-默认值：&#36;r('sys.color.chip_font_color')
+默认值：$r('sys.color.chip_font_color')
 
 值为undefined时，按默认值处理。
 
@@ -92,9 +96,9 @@ fontSize?: LengthMetrics
 
 默认值：
 
-size为ChipV2Size.SMALL时，默认值：&#36;r('sys.float.chip_small_font_size')。
+size为ChipV2Size.SMALL时，默认值：$r('sys.float.chip_small_font_size')。
 
-其他情况下，默认值：&#36;r('sys.float.chip_normal_font_size')
+其他情况下，默认值：$r('sys.float.chip_normal_font_size')
 
 单位：fp
 
@@ -148,11 +152,11 @@ localizedLabelMargin?: ChipV2LocalizedLabelMarginConfig
 
 size为ChipV2Size.SMALL时，默认值：
 
-`{ start: LengthMetrics.resource(&#36;r('sys.float.chip_small_text_margin')), end: LengthMetrics.resource(&#36;r('sys.float.chip_small_text_margin')) }`。
+`{ start: LengthMetrics.resource($r('sys.float.chip_small_text_margin')), end: LengthMetrics.resource($r('sys.float.chip_small_text_margin')) }`。
 
 size为ChipV2Size.NORMAL时，默认值：
 
-`{ start: LengthMetrics.resource(&#36;r('sys.float.chip_normal_text_margin')), end: LengthMetrics.resource(&#36;r('sys.float.chip_normal_text_margin')) }`。
+`{ start: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')), end: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')) }`。
 
 值为undefined时，按默认值处理。
 
@@ -176,7 +180,7 @@ modifier?: TextModifier
 
 默认值：undefined，不应用修饰器。
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 

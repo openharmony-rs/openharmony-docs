@@ -4,6 +4,8 @@
 
 The AudioCodec module provides functions for audio encoding and decoding.
 
+**System capability**: SystemCapability.Multimedia.Media.AudioCodec
+
 **Since**: 11
 
 ## Files

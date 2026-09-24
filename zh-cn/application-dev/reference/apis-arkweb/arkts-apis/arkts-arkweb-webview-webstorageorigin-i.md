@@ -1,5 +1,9 @@
 # WebStorageOrigin
 
+```TypeScript
+interface WebStorageOrigin
+```
+
 提供Web SQL数据库的使用信息。
 
 @interface WebStorageOrigin [since 9 - 11]

@@ -1,5 +1,9 @@
 # EventClassify (System API)
 
+```TypeScript
+export enum EventClassify
+```
+
 Represents an event type.
 
 **Since:** 9

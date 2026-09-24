@@ -1,5 +1,9 @@
 # NotificationSubscribeInfo (System API)
 
+```TypeScript
+export interface NotificationSubscribeInfo
+```
+
 The **NotificationSubscribeInfo** module provides APIs for defining the information about the publisher for notification subscription.
 
 **Since:** 7

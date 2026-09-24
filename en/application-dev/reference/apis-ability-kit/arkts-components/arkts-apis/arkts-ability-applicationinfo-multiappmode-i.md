@@ -1,5 +1,9 @@
 # MultiAppMode
 
+```TypeScript
+export interface MultiAppMode
+```
+
 Defines the [multi-app mode](../../../quick-start/multiInstance.md).
 
 **Since:** 12

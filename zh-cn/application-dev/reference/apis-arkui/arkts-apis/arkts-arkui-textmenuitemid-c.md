@@ -1,5 +1,9 @@
 # TextMenuItemId
 
+```TypeScript
+declare class TextMenuItemId
+```
+
 自定义菜单项的Id值。用于识别菜单选项，内置菜单项Id值见下列属性表格。
 
 **起始版本：** 12
@@ -86,7 +90,7 @@ static readonly address: TextMenuItemId
 static readonly AI_WRITER: TextMenuItemId
 ```
 
-&lt;!--RP1--&gt;&lt;!--RP1End--&gt;可对选中的文本进行润色、摘要提取、排版等，为一级菜单项。该菜单项依赖大模型能力，否则不生效。
+<!--RP1--><!--RP1End-->可对选中的文本进行润色、摘要提取、排版等，为一级菜单项。该菜单项依赖大模型能力，否则不生效。
 
 **类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
 
@@ -104,7 +108,7 @@ static readonly AI_WRITER: TextMenuItemId
 static readonly askAI: TextMenuItemId
 ```
 
-&lt;!--RP2--&gt;&lt;!--RP2End--&gt;对选中的文本提供AI问询能力，为一级菜单项。该菜单项依赖大模型能力，否则不生效。
+<!--RP2--><!--RP2End-->对选中的文本提供AI问询能力，为一级菜单项。该菜单项依赖大模型能力，否则不生效。
 
 **类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
 
@@ -122,7 +126,7 @@ static readonly askAI: TextMenuItemId
 static readonly autoFill: TextMenuItemId
 ```
 
-自动填充，为一级菜单项。点击后会展开二级菜单项“密码保险箱”，仅支持Search、TextInput、TextArea或RichEditor。
+自动填充，为一级菜单项。点击后会展开二级菜单项“密码保险箱”，仅支持[Search](../arkts-components/arkts-arkui-search-comp.md#search)、[TextInput](../arkts-components/arkts-arkui-textinput-comp.md#text_input)、[TextArea](../arkts-components/arkts-arkui-textarea-comp.md#text_area)或[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor)。
 
 **类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
 
@@ -248,7 +252,7 @@ static readonly email: TextMenuItemId
 static readonly passwordVault: TextMenuItemId
 ```
 
-密码保险箱，为二级菜单项。点击该菜单项后会拉起密码保险箱应用，该应用提供自动填充账号密码能力，仅支持Search、TextInput、TextArea或RichEditor。
+密码保险箱，为二级菜单项。点击该菜单项后会拉起密码保险箱应用，该应用提供自动填充账号密码能力，仅支持[Search](../arkts-components/arkts-arkui-search-comp.md#search)、[TextInput](../arkts-components/arkts-arkui-textinput-comp.md#text_input)、[TextArea](../arkts-components/arkts-arkui-textarea-comp.md#text_area)或[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor)。
 
 **类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
 

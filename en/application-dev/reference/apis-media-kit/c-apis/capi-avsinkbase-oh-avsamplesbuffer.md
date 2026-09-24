@@ -8,6 +8,8 @@ typedef struct OH_AVSamplesBuffer OH_AVSamplesBuffer
 
 The struct describes the input data of the LowPowerAVSink. After receiving the DataNeeded callback, the application must pack data into an OH_AVSamplesBuffer instance and pass it to the corresponding LowPowerAVSink.
 
+**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **Since**: 20
 
 **Related module**: [AVSinkBase](capi-avsinkbase.md)

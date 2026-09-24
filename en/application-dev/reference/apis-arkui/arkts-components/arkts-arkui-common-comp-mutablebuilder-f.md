@@ -20,10 +20,10 @@ Defining mutableBuilder function.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [BuilderCallback](arkts-arkui-buildercallback-t.md) | Yes |  |
+| builder | [BuilderCallback](arkts-arkui-common-comp-buildercallback-t.md) | Yes |  |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [MutableBuilder](arkts-arkui-mutablebuilder-c.md)&lt;Args&gt; |  |
+| [MutableBuilder](arkts-arkui-common-comp-mutablebuilder-c.md)&lt;Args&gt; |  |

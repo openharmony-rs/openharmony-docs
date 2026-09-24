@@ -62,29 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  certificateManager.getAllAppPrivateCertificates().then((cmResult) => {
-    if (cmResult === undefined) { // If the number of private credentials is 0, return undefined in cmResult.
-      console.info('The count of the app private certificates is 0.');
-    } else if (cmResult.credentialList == undefined) {
-      console.info('The result of getting all app private certificates is undefined.');
-    } else {
-      let list = cmResult.credentialList;
-      console.info('Succeeded in getting all app private certificates.');
-    }
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to get all app private certificates. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (error) {
-  console.error(`Failed to get all app private certificates. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="getallappprivatecertificates-1"></a>
 
 ## getAllAppPrivateCertificates
 
@@ -118,4 +97,25 @@ Obtains all private credentials. This API uses a promise to return the result.
 
 **Examples**
 
-See [getAllAppPrivateCertificates](#getallappprivatecertificates)
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  certificateManager.getAllAppPrivateCertificates().then((cmResult) => {
+    if (cmResult === undefined) { // If the number of private credentials is 0, return undefined in cmResult.
+      console.info('The count of the app private certificates is 0.');
+    } else if (cmResult.credentialList == undefined) {
+      console.info('The result of getting all app private certificates is undefined.');
+    } else {
+      let list = cmResult.credentialList;
+      console.info('Succeeded in getting all app private certificates.');
+    }
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get all app private certificates. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get all app private certificates. Code: ${error.code}, message: ${error.message}`);
+}
+```

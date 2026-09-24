@@ -1,5 +1,9 @@
 # ObserverOptions
 
+```TypeScript
+export interface ObserverOptions
+```
+
 Defines event subscription parameters.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # fileIo(文件管理)
 
+```TypeScript
+declare namespace fileIo
+```
+
 本模块是Core File Kit的核心模块，提供基础文件操作API，用于对应用沙箱内的文件和目录进行创建、打开、读写、拷贝、移动、删除、查询属性等操作。
 
 模块提供了多种文件访问模式，开发者可根据场景选择：
@@ -8,7 +12,7 @@
 
 > **使用说明：**
 
-使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取沙箱路径的方式及其接口用法可参考：[应用上下文Context-获取应用文件路径](../../../application-models/application-context-stage.md#获取应用文件路径)。<br>指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义及其转换方式请参考：文件URI。
+使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取沙箱路径的方式及其接口用法可参考：[应用上下文Context-获取应用文件路径](../../../application-models/application-context-stage.md#获取应用文件路径)。<br>指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义及其转换方式请参考：[文件URI](../../../reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 
 **起始版本：** 9
 

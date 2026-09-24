@@ -1,5 +1,9 @@
 # HuksUserAuthMode
 
+```TypeScript
+export enum HuksUserAuthMode
+```
+
 Enumerates the user authentication modes.
 
 **Since:** 12

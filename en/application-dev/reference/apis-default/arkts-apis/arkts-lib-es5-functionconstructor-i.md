@@ -1,5 +1,9 @@
 # FunctionConstructor
 
+```TypeScript
+interface FunctionConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

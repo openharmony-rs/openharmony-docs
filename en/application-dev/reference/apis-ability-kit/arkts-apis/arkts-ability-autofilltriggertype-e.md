@@ -1,5 +1,9 @@
 # AutoFillTriggerType
 
+```TypeScript
+export enum AutoFillTriggerType
+```
+
 This module specifies how the autofill service is triggered, based on different user gestures.
 
 **Since:** 26.0.0
@@ -12,7 +16,7 @@ This module specifies how the autofill service is triggered, based on different 
 AUTO_REQUEST = 0
 ```
 
-Automatically triggers the autofill service when a TextInput component gains focus.
+Automatically triggers the auto-fill service. It can be automatically triggered after a TextInput component gains focus.
 
 **Since:** 26.0.0
 
@@ -28,7 +32,7 @@ Automatically triggers the autofill service when a TextInput component gains foc
 MANUAL_REQUEST = 1
 ```
 
-Manually triggers the autofill service by long-pressing any input component to bring up a secondary menu and selecting autofill.
+Manually triggers the auto-fill service. It can be triggered by long-pressing any input component to bring up a secondary menu, selecting auto-fill, and triggering the auto-fill service.
 
 **Since:** 26.0.0
 
@@ -44,7 +48,7 @@ Manually triggers the autofill service by long-pressing any input component to b
 PASTE_REQUEST = 2
 ```
 
-Triggers the autofill service via paste by long-pressing a username or password in the password vault to select secure copy, long-pressing any input component to bring up a secondary menu, and selecting paste.
+Triggers the auto-fill service via paste. It is only triggered after the user has already long-pressed a username or password in the password vault to select secure copy, and then long-presses any input component to bring up a secondary menu and selects paste.
 
 **Since:** 26.0.0
 

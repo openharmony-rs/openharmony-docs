@@ -1,5 +1,9 @@
 # RawInputEventType
 
+```TypeScript
+declare enum RawInputEventType
+```
+
 Enumerates the raw input event types.
 
 **Since:** 26.0.0

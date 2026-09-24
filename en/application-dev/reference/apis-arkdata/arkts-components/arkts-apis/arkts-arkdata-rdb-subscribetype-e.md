@@ -1,5 +1,9 @@
 # SubscribeType
 
+```TypeScript
+enum SubscribeType
+```
+
 Defines the subscription type.
 
 **Since:** 8

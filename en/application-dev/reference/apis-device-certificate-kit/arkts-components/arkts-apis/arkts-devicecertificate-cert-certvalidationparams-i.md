@@ -1,5 +1,9 @@
 # CertValidationParams
 
+```TypeScript
+interface CertValidationParams
+```
+
 Parameters for certificate validation.
 
 **Since:** 26.0.0

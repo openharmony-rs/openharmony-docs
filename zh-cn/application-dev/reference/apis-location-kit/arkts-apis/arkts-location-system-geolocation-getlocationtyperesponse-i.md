@@ -1,5 +1,9 @@
 # GetLocationTypeResponse
 
+```TypeScript
+export interface GetLocationTypeResponse
+```
+
 当前设备支持的定位类型列表
 
 **起始版本：** 3

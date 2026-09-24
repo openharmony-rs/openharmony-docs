@@ -1,5 +1,9 @@
 # CdsmClient
 
+```TypeScript
+interface CdsmClient
+```
+
 CDSM客户端类，提供了获取远端设备的合作设备集合信息等操作方法。
 
 - 使用该类的方法前，需通过[cdsm.createCdsmClient](arkts-connectivity-cdsm-createcdsmclient-f.md)方法构造该类的实例。
@@ -44,7 +48,7 @@ getCdsmInfo(): CdsmInfo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 

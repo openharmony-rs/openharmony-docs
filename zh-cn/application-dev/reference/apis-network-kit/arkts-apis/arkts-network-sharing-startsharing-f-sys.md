@@ -33,9 +33,9 @@ function startSharing(type: SharingIfaceType, callback: AsyncCallback<void>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2200001](../errorcode-net-ethernet.md#2200001-非法参数值) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
@@ -57,21 +57,8 @@ sharing.startSharing(SHARING_WIFI, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { sharing } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let SHARING_WIFI = 0;
-sharing
-  .startSharing(SHARING_WIFI)
-  .then(() => {
-    console.info('start wifi sharing successful');
-  })
-  .catch((error: BusinessError) => {
-    console.error('start wifi sharing failed');
-  });
-```
-
+<a id="startsharing-1"></a>
 
 ## startSharing
 
@@ -105,9 +92,9 @@ function startSharing(type: SharingIfaceType): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2200001](../errorcode-net-ethernet.md#2200001-非法参数值) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
@@ -119,4 +106,17 @@ function startSharing(type: SharingIfaceType): Promise<void>
 
 **示例**
 
-参见 [startSharing](#startsharing)
+```TypeScript
+import { sharing } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let SHARING_WIFI = 0;
+sharing
+  .startSharing(SHARING_WIFI)
+  .then(() => {
+    console.info('start wifi sharing successful');
+  })
+  .catch((error: BusinessError) => {
+    console.error('start wifi sharing failed');
+  });
+```

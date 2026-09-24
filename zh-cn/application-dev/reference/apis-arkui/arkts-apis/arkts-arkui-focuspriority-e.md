@@ -1,5 +1,9 @@
 # FocusPriority
 
+```TypeScript
+declare enum FocusPriority
+```
+
 设置组件焦点的优先级。
 
 **起始版本：** 12

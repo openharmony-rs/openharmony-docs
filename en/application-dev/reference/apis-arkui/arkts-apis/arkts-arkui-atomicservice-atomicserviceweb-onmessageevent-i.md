@@ -1,5 +1,9 @@
 # OnMessageEvent
 
+```TypeScript
+export declare interface OnMessageEvent
+```
+
 Represents the callback invoked when the page is navigated back or destroyed.
 
 **Since:** 12

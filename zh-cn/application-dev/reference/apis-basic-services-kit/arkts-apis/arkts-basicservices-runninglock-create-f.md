@@ -32,8 +32,8 @@ function create(name: string, type: RunningLockType, callback: AsyncCallback<Run
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | If the permission is denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | If the permission is denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 
 **示例**
 
@@ -47,16 +47,8 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 });
 ```
 
-```TypeScript
-runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL)
-.then((lock: runningLock.RunningLock) => {
-    console.info('created running lock: ' + lock); // 创建并保存锁对象后，需要结合hold、unhold方法使用
-})
-.catch((err: BusinessError) => {
-    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
-});
-```
 
+<a id="create-1"></a>
 
 ## create
 
@@ -89,9 +81,17 @@ function create(name: string, type: RunningLockType): Promise<RunningLock>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | If the permission is denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | If the permission is denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 
 **示例**
 
-参见 create
+```TypeScript
+runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL)
+.then((lock: runningLock.RunningLock) => {
+    console.info('created running lock: ' + lock); // 创建并保存锁对象后，需要结合hold、unhold方法使用
+})
+.catch((err: BusinessError) => {
+    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
+});
+```

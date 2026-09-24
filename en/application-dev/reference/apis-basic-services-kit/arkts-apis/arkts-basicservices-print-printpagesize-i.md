@@ -1,5 +1,9 @@
 # PrintPageSize
 
+```TypeScript
+interface PrintPageSize
+```
+
 Defines the size of the printed page.
 
 **Since:** 11

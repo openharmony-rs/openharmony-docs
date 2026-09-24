@@ -1,5 +1,9 @@
 # ISinglePropertyChangeSubscriber（系统接口）
 
+```TypeScript
+interface ISinglePropertyChangeSubscriber<T> extends IPropertySubscriber
+```
+
 继承自[IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md)。用于订阅单个属性值的变化，当被订阅的属性发生变化时接收通知。
 
 **继承/实现关系：** ISinglePropertyChangeSubscriber extends [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md)
@@ -19,6 +23,8 @@ hasChanged(newValue: T): void
 变化时调用。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

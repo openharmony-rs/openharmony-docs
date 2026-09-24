@@ -1,5 +1,9 @@
 # WindowStageEventType
 
+```TypeScript
+enum WindowStageEventType
+```
+
 Enumerates the lifecycle event types of a WindowStage.
 
 **Since:** 9

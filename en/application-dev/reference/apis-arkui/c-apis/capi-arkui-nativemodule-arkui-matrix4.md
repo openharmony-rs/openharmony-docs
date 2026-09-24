@@ -8,6 +8,8 @@ typedef struct ArkUI_Matrix4 ArkUI_Matrix4
 
 Defines a fourth-order matrix object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

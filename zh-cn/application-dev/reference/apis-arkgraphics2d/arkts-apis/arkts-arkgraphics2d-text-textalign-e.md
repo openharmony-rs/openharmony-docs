@@ -1,5 +1,9 @@
 # TextAlign
 
+```TypeScript
+enum TextAlign
+```
+
 文本对齐方式枚举。
 
 **起始版本：** 12

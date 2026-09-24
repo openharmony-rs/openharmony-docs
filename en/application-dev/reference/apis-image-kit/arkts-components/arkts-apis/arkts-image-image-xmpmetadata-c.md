@@ -1,5 +1,9 @@
 # XMPMetadata
 
+```TypeScript
+class XMPMetadata
+```
+
 XMPMetadata instance.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # PanelStartCallback (System API)
 
+```TypeScript
+interface PanelStartCallback
+```
+
 The callback of start vertical panel.
 
 @typedef PanelStartCallback

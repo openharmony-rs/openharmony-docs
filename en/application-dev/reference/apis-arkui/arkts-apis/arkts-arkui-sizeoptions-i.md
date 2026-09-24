@@ -1,5 +1,9 @@
 # SizeOptions
 
+```TypeScript
+declare interface SizeOptions
+```
+
 Defines the width and height of a component during layout.
 
 **Since:** 7
@@ -18,6 +22,8 @@ Height of the component.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -35,6 +41,8 @@ Width of the component.
 **Type:** [Length](arkts-arkui-length-t.md)
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

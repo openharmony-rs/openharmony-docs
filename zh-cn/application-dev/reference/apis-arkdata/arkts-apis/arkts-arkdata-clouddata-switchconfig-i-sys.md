@@ -1,5 +1,9 @@
 # SwitchConfig（系统接口）
 
+```TypeScript
+interface SwitchConfig
+```
+
 端云协同数据库级配置。
 
 **起始版本：** 23

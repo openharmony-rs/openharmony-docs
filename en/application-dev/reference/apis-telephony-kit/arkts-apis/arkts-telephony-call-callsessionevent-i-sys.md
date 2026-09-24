@@ -1,5 +1,9 @@
 # CallSessionEvent (System API)
 
+```TypeScript
+export interface CallSessionEvent
+```
+
 Defines the video call event information.
 
 **Since:** 11

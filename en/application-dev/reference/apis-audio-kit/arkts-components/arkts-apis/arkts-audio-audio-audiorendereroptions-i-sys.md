@@ -1,5 +1,9 @@
 # AudioRendererOptions
 
+```TypeScript
+interface AudioRendererOptions
+```
+
 Describes audio renderer configurations.
 
 **Since:** 8

@@ -1,8 +1,12 @@
 # ComponentContent
 
+```TypeScript
+export class ComponentContent<T extends Object> extends Content
+```
+
 You can create an entity encapsulation component in either of the following ways: You can select either of the following methods during development:
 
-**ComponentContent** represents an entity encapsulation of component content, which can be created and transmitted outside of UI components. It allows you to encapsulate and decouple dialog box components. Its underlying implementation uses BuilderNode. For details, see BuilderNode.
+**ComponentContent** represents an entity encapsulation of component content, which can be created and transmitted outside of UI components. It allows you to encapsulate and decouple dialog box components. Its underlying implementation uses BuilderNode. For details, see [BuilderNode](arkts-arkui-buildernode-c.md).
 
 **ReactiveComponentContent** represents an entity encapsulation of component content, which can be created and transmitted outside of UI components. It allows you to encapsulate and decouple dialog box components. Its underlying implementation uses **ReactiveBuilderNode**. For details, see [ReactiveBuilderNode](arkts-arkui-buildernode-reactivebuildernode-c.md).
 
@@ -102,6 +106,8 @@ struct Index {
 }
 ```
 
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -186,6 +192,8 @@ struct Index {
   }
 }
 ```
+
+<a id="constructor-2"></a>
 
 ## constructor
 

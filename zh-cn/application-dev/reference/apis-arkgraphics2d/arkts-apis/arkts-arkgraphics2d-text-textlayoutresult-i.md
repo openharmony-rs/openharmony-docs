@@ -1,5 +1,9 @@
 # TextLayoutResult
 
+```TypeScript
+interface TextLayoutResult
+```
+
 文本布局结果。
 
 **起始版本：** 24

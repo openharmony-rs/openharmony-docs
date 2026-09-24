@@ -1,5 +1,9 @@
 # ScannerSyncDevice
 
+```TypeScript
+interface ScannerSyncDevice
+```
+
 Defines the device to be synced from the scanner.
 
 **Since:** 20

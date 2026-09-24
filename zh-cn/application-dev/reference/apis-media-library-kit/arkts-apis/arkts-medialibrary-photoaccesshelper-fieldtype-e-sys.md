@@ -1,5 +1,9 @@
 # FieldType（系统接口）
 
+```TypeScript
+enum FieldType
+```
+
 Smartlabel类型字段名
 
 **起始版本：** 23

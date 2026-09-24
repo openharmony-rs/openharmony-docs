@@ -1,5 +1,9 @@
 # ErrorCode（系统接口）
 
+```TypeScript
+export enum ErrorCode
+```
+
 表示端云同步过程的状态。请使用枚举名而非枚举值。
 
 **起始版本：** 11

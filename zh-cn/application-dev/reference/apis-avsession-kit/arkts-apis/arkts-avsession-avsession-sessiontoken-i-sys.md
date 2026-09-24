@@ -1,5 +1,9 @@
 # SessionToken（系统接口）
 
+```TypeScript
+interface SessionToken
+```
+
 会话令牌的信息。
 
 @typedef SessionToken

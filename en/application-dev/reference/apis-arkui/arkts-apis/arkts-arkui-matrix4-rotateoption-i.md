@@ -1,5 +1,9 @@
 # RotateOption
 
+```TypeScript
+interface RotateOption
+```
+
 Describes the rotation parameters.
 
 **Since:** 7

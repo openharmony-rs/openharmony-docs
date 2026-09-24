@@ -1,5 +1,9 @@
 # BoidsSimWorld（系统接口）
 
+```TypeScript
+export declare class BoidsSimWorld
+```
+
 群组模拟世界对象，用于管理群组模拟的生命周期及组件。
 
 > **说明：** 

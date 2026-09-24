@@ -1,5 +1,9 @@
 # DomainAccountInfo
 
+```TypeScript
+interface DomainAccountInfo
+```
+
 表示域账号信息。
 
 **起始版本：** 8

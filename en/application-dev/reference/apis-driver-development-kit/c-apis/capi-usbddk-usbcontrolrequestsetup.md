@@ -8,6 +8,8 @@ typedef struct UsbControlRequestSetup {...} __attribute__((aligned(8))) UsbContr
 
 Setup data for control transfer. It corresponds to <b>Setup Data</b> in the USB protocol.
 
+**System capability**: SystemCapability.Driver.USB.Extension
+
 **Since**: 10
 
 **Related module**: [UsbDdk](capi-usbddk.md)

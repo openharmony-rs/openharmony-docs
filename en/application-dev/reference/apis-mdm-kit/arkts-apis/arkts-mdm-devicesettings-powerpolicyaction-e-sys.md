@@ -1,5 +1,9 @@
 # PowerPolicyAction (System API)
 
+```TypeScript
+enum PowerPolicyAction
+```
+
 Enumerates the actions that can be performed to apply the power policy.
 
 **Since:** 11

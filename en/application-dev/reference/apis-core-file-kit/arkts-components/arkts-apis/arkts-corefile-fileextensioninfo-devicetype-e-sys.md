@@ -1,5 +1,9 @@
 # DeviceType (System API)
 
+```TypeScript
+enum DeviceType
+```
+
 Defines the values of **deviceType** used in **RootInfo**.
 
 **Since:** 9

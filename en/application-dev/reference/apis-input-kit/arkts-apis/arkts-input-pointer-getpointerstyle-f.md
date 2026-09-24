@@ -75,6 +75,41 @@ struct Index {
 }
 ```
 
+
+<a id="getpointerstyle-1"></a>
+
+## getPointerStyle
+
+```TypeScript
+function getPointerStyle(windowId: number): Promise<PointerStyle>
+```
+
+Obtains the mouse pointer style type. This API can obtain only the mouse pointer style type of windows within the current application process. This API uses a promise to return the result.
+
+**Since:** 9
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| windowId | number | Yes | Window ID. The value is an integer greater than or equal to **-1**. The value **-1** indicates the global window. <br>If the window ID is valid and the corresponding window exists, the mouse pointer style of the window is returned. <br>If the window ID is valid but the window does not exist, the global mouse pointer style is returned by default. <br>If the mouse pointer style is set for a non-existent window through [setPointerStyle](arkts-input-pointer-setpointerstyle-f.md), this API can obtain the mouse pointer style properly. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[PointerStyle](arkts-input-pointer-pointerstyle-e.md)&gt; | Promise object, which is used to return the mouse pointer style. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
 ```TypeScript
 import { pointer } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -114,38 +149,3 @@ struct Index {
   }
 }
 ```
-
-
-## getPointerStyle
-
-```TypeScript
-function getPointerStyle(windowId: number): Promise<PointerStyle>
-```
-
-Obtains the mouse pointer style type. This API can obtain only the mouse pointer style type of windows within the current application process. This API uses a promise to return the result.
-
-**Since:** 9
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| windowId | number | Yes | Window ID. The value is an integer greater than or equal to **-1**. The value **-1** indicates the global window. <br>If the window ID is valid and the corresponding window exists, the mouse pointer style of the window is returned. <br>If the window ID is valid but the window does not exist, the global mouse pointer style is returned by default. <br>If the mouse pointer style is set for a non-existent window through [setPointerStyle](arkts-input-pointer-setpointerstyle-f.md), this API can obtain the mouse pointer style properly. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[PointerStyle](arkts-input-pointer-pointerstyle-e.md)&gt; | Promise object, which is used to return the mouse pointer style. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**Examples**
-
-See [getPointerStyle](#getpointerstyle)

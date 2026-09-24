@@ -1,5 +1,9 @@
 # ReadableOptions
 
+```TypeScript
+interface ReadableOptions
+```
+
 描述**Readable**构造函数中使用的选项。
 
 **起始版本：** 12

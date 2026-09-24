@@ -1,5 +1,9 @@
 # NotifyType
 
+```TypeScript
+enum NotifyType
+```
+
 枚举，通知事件的类型。
 
 **起始版本：** 10

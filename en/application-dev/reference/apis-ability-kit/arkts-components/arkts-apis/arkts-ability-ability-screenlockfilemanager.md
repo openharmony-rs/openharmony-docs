@@ -31,9 +31,9 @@ import { screenLockFileManager } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [acquireAccess](arkts-ability-screenlockfilemanager-acquireaccess-f-sys.md) | Requests the permission to access a specified type of sensitive data under the lock screen synchronously. After the request is successful, the reference count of the sensitive data key increases, preventing the key from being destroyed after the screen has been locked for the system-configured duration threshold. This method must be used in pair with [releaseAccess](arkts-ability-screenlockfilemanager-releaseaccess-f.md). |
-| [queryAppKeyState](arkts-ability-screenlockfilemanager-queryappkeystate-f-sys.md) | Queries the status of a specified type of sensitive data key under the lock screen synchronously. |
-| [releaseAccess](arkts-ability-screenlockfilemanager-releaseaccess-f-sys.md) | Releases the permission to access a specified type of sensitive data under the lock screen synchronously. After the release is successful, the reference count of the sensitive data key decreases. When the reference count reaches zero, the key can be destroyed after the screen has been locked for the system-configured duration threshold. |
+| [acquireAccess](arkts-ability-screenlockfilemanager-acquireaccess-f-sys.md#acquireaccess-1) | Requests the permission to access a specified type of sensitive data under the lock screen synchronously. After the request is successful, the reference count of the sensitive data key increases, preventing the key from being destroyed after the screen has been locked for the system-configured duration threshold. This method must be used in pair with [releaseAccess](arkts-ability-screenlockfilemanager-releaseaccess-f.md). |
+| [queryAppKeyState](arkts-ability-screenlockfilemanager-queryappkeystate-f-sys.md#queryappkeystate-1) | Queries the status of a specified type of sensitive data key under the lock screen synchronously. |
+| [releaseAccess](arkts-ability-screenlockfilemanager-releaseaccess-f-sys.md#releaseaccess-1) | Releases the permission to access a specified type of sensitive data under the lock screen synchronously. After the release is successful, the reference count of the sensitive data key decreases. When the reference count reaches zero, the key can be destroyed after the screen has been locked for the system-configured duration threshold. |
 <!--DelEnd-->
 
 ### Enums

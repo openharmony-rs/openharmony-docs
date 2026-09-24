@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Filter OH_Drawing_Filter
 
 Defines a struct for a filter, which consists of a color filter, mask filter, and image filter.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)

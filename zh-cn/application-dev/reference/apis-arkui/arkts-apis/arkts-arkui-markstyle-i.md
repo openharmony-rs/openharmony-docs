@@ -1,5 +1,9 @@
 # MarkStyle
 
+```TypeScript
+declare interface MarkStyle
+```
+
 定义checkbox标记的样式。
 
 **起始版本：** 10

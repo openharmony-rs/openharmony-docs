@@ -1,5 +1,9 @@
 # CountryCode
 
+```TypeScript
+export interface CountryCode
+```
+
 Country code structure.
 
 **Since:** 9

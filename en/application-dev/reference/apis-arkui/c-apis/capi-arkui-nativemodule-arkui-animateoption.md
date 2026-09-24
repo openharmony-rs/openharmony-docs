@@ -8,6 +8,8 @@ typedef struct ArkUI_AnimateOption ArkUI_AnimateOption
 
 Defines the animation configuration.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

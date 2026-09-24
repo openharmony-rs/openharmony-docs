@@ -55,18 +55,8 @@ screen.stopExpand(expandScreenIds, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let expandScreenIds: Array<number> = [1, 2, 3]; // ID array of extended screens.
-// Stop the extend mode.
-screen.stopExpand(expandScreenIds).then(() => {
-  console.info('Succeeded in stopping expand screens.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to stop expand screens. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="stopexpand-1"></a>
 
 ## stopExpand
 
@@ -106,4 +96,14 @@ Stops extended mode. This API uses a promise to return the result.
 
 **Examples**
 
-See [stopExpand](#stopexpand)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let expandScreenIds: Array<number> = [1, 2, 3]; // ID array of extended screens.
+// Stop the extend mode.
+screen.stopExpand(expandScreenIds).then(() => {
+  console.info('Succeeded in stopping expand screens.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to stop expand screens. Code: ${err.code}, message: ${err.message}`);
+});
+```

@@ -58,30 +58,6 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-});
-cloudData.sharing.unshare('sharing_resource_test', participants).then((result) => {
-  console.info(`unshare succeeded, result: ${result}`);
-}).catch((err: BusinessError) => {
-  console.error(`unshare failed, code is ${err.code},message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let participants = new Array<cloudData.sharing.Participant>();
-participants.push({
-  identity: '000000000',
-  role: cloudData.sharing.Role.ROLE_INVITER,
-  state: cloudData.sharing.State.STATE_UNKNOWN,
-  privilege: {
-    writable: true,
-    readable: true,
-    creatable: false,
-    deletable: false,
-    shareable: false
-  },
-  attachInfo: ''
 })
 cloudData.sharing.unshare('sharing_resource_test', participants, (err: BusinessError, result) => {
   if (err) {
@@ -92,6 +68,8 @@ cloudData.sharing.unshare('sharing_resource_test', participants, (err: BusinessE
 });
 ```
 
+
+<a id="unshare-1"></a>
 
 ## unshare
 
@@ -133,4 +111,26 @@ Unshares data based on the specified shared resource ID and participants. This A
 
 **Examples**
 
-See [unshare](#unshare)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let participants = new Array<cloudData.sharing.Participant>();
+participants.push({
+  identity: '000000000',
+  role: cloudData.sharing.Role.ROLE_INVITER,
+  state: cloudData.sharing.State.STATE_UNKNOWN,
+  privilege: {
+    writable: true,
+    readable: true,
+    creatable: false,
+    deletable: false,
+    shareable: false
+  },
+  attachInfo: ''
+});
+cloudData.sharing.unshare('sharing_resource_test', participants).then((result) => {
+  console.info(`unshare succeeded, result: ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`unshare failed, code is ${err.code},message is ${err.message}`);
+});
+```

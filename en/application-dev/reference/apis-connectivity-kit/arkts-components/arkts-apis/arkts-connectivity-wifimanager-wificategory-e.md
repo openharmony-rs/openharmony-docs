@@ -1,5 +1,9 @@
 # WifiCategory
 
+```TypeScript
+enum WifiCategory
+```
+
 Wi-Fi Category. @enum { int }
 
 **Since:** 12

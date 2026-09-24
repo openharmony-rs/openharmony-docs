@@ -1,8 +1,12 @@
 # Select属性/事件
 
+```TypeScript
+declare class SelectAttribute extends CommonMethod<SelectAttribute>
+```
+
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** SelectAttribute extends CommonMethod&lt;SelectAttribute&gt;
+**继承/实现关系：** SelectAttribute extends CommonMethod<SelectAttribute>
 
 **起始版本：** 8
 
@@ -18,7 +22,7 @@ arrowModifier(modifier: Optional<SymbolGlyphModifier>)
 
 > **说明：** 
 > 
-> 该接口不支持在attributeModifier中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 20
 
@@ -32,7 +36,7 @@ arrowModifier(modifier: Optional<SymbolGlyphModifier>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [Optional](arkts-arkui-optional-t.md)&lt;[SymbolGlyphModifier](arkts-arkui-symbolglyphmodifier-t.md)&gt; | 是 | 在Select组件上，定制Select按钮下拉箭头图标样式的方法。<br> 当modifier的值为undefined时，不自定义下拉箭头图标样式。 |
+| modifier | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md)&gt; | 是 | 在Select组件上，定制Select按钮下拉箭头图标样式的方法。<br> 当modifier的值为undefined时，不自定义下拉箭头图标样式。 |
 
 ## arrowPosition
 
@@ -54,7 +58,9 @@ arrowPosition(value: ArrowPosition)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ArrowPosition](arkts-arkui-arrowposition-e.md) | 是 | 下拉菜单项的文本与箭头之间的对齐方式。<br>默认值：ArrowPosition.END |
+| value | [ArrowPosition](arkts-arkui-select-comp-arrowposition-e.md) | 是 | 下拉菜单项的文本与箭头之间的对齐方式。<br>默认值：ArrowPosition.END |
+
+<a id="arrowposition-1"></a>
 
 ## arrowPosition
 
@@ -76,7 +82,7 @@ arrowPosition(position: Optional<ArrowPosition>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| position | [Optional](arkts-arkui-optional-t.md)&lt;[ArrowPosition](arkts-arkui-arrowposition-e.md)&gt; | 是 | 下拉菜单项的文本与箭头之间的对齐方式。<br>当position的值为undefined时，默认值：ArrowPosition.END |
+| position | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ArrowPosition](arkts-arkui-select-comp-arrowposition-e.md)&gt; | 是 | 下拉菜单项的文本与箭头之间的对齐方式。<br>当position的值为undefined时，默认值：ArrowPosition.END |
 
 ## avoidance
 
@@ -98,7 +104,7 @@ avoidance(mode: AvoidanceMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [AvoidanceMode](arkts-arkui-avoidancemode-e.md) | 是 | 设置下拉菜单的避让模式。<br>默认值：AvoidanceMode.COVER_TARGET |
+| mode | [AvoidanceMode](arkts-arkui-select-comp-avoidancemode-e.md) | 是 | 设置下拉菜单的避让模式。<br>默认值：AvoidanceMode.COVER_TARGET |
 
 ## controlSize
 
@@ -120,7 +126,9 @@ controlSize(value: ControlSize)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ControlSize](arkts-arkui-controlsize-e.md) | 是 | Select组件的尺寸。<br>默认值：ControlSize.NORMAL |
+| value | [ControlSize](arkts-arkui-button-comp-controlsize-e.md) | 是 | Select组件的尺寸。<br>默认值：ControlSize.NORMAL |
+
+<a id="controlsize-1"></a>
 
 ## controlSize
 
@@ -142,7 +150,7 @@ controlSize(size: Optional<ControlSize>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | [Optional](arkts-arkui-optional-t.md)&lt;[ControlSize](arkts-arkui-controlsize-e.md)&gt; | 是 | Select组件的尺寸。<br>当size的值为undefined时，默认值为ControlSize.NORMAL。 |
+| size | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ControlSize](arkts-arkui-button-comp-controlsize-e.md)&gt; | 是 | Select组件的尺寸。<br>当size的值为undefined时，默认值为ControlSize.NORMAL。 |
 
 ## divider
 
@@ -164,7 +172,7 @@ divider(options: Optional<DividerOptions> | null)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [Optional](arkts-arkui-optional-t.md)&lt;[DividerOptions](arkts-arkui-divideroptions-i.md)&gt; &#124; null | 是 | 1.设置DividerOptions，则按设置的样式显示分割线。<br>默认值：<br>{<br> strokeWidth: '1px' , <br>color: '#33182431'<br>}<br>2.设置为null时，不显示分割线。<br>3.strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。<br>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。 startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。 |
+| options | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md)&gt; &#124; null | 是 | 1.设置DividerOptions，则按设置的样式显示分割线。<br>默认值：<br>{<br> strokeWidth: '1px' , <br>color: '#33182431'<br>}<br>2.设置为null时，不显示分割线。<br>3.strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。<br>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。 startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。 |
 
 ## dividerStyle
 
@@ -186,7 +194,7 @@ dividerStyle(style: Optional<DividerStyleOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-optional-t.md)&lt;[DividerStyleOptions](../arkts-apis/arkts-arkui-dividerstyleoptions-i.md)&gt; | 是 | 1.设置DividerStyleOptions，则按设置的样式显示分割线。<br>默认值：<br>{<br>strokeWidth: '1px' , <br>color: '#33182431'<br>}<br>2.设置为null或undefined时，展示默认分割线。<br>3.当mode为FLOAT_ABOVE_MENU时，strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。当mode为EMBEDDED_IN_MENU时，分割线在Menu中展开，独立占用高度。<br>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。 |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[DividerStyleOptions](../arkts-apis/arkts-arkui-dividerstyleoptions-i.md)&gt; | 是 | 1.设置DividerStyleOptions，则按设置的样式显示分割线。<br>默认值：<br>{<br>strokeWidth: '1px' , <br>color: '#33182431'<br>}<br>2.设置为null或undefined时，展示默认分割线。<br>3.当mode为FLOAT_ABOVE_MENU时，strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。当mode为EMBEDDED_IN_MENU时，分割线在Menu中展开，独立占用高度。<br>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。 |
 
 ## font
 
@@ -198,6 +206,8 @@ font(value: Font)
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -206,7 +216,9 @@ font(value: Font)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Font | 是 | 下拉按钮本身的文本样式。<br>API version 11及以前默认值：<br>{<br>size:  `&#36;r('sys.float.ohos_id_text_size_button1')`,<br>weight: FontWeight.Medium<br>} <br>API version 12以后，如果设置controlSize的值为：controlSize.SMALL，size默认值是`&#36;r('sys.float.ohos_id_text_size_button2')`，否则为`&#36;r('sys.float.ohos_id_text_size_button1')`。 |
+| value | Font | 是 | 下拉按钮本身的文本样式。<br>API version 11及以前默认值：<br>{<br>size:  `$r('sys.float.ohos_id_text_size_button1')`,<br>weight: FontWeight.Medium<br>} <br>API version 12以后，如果设置controlSize的值为：controlSize.SMALL，size默认值是`$r('sys.float.ohos_id_text_size_button2')`，否则为`$r('sys.float.ohos_id_text_size_button1')`。 |
+
+<a id="font-1"></a>
 
 ## font
 
@@ -228,7 +240,7 @@ font(selectFont: Optional<Font>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectFont | [Optional](arkts-arkui-optional-t.md)&lt;Font&gt; | 是 | 下拉按钮本身的文本样式。<br>如果设置controlSize的值为：controlSize.SMALL，size默认值是`&#36;r('sys.float.ohos_id_text_size_button2')`，否则为`&#36;r('sys.float.ohos_id_text_size_button1')`。<br>当selectFont的值为undefined时，恢复为系统文本样式。 |
+| selectFont | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | 是 | 下拉按钮本身的文本样式。<br>如果设置controlSize的值为：controlSize.SMALL，size默认值是`$r('sys.float.ohos_id_text_size_button2')`，否则为`$r('sys.float.ohos_id_text_size_button1')`。<br>当selectFont的值为undefined时，恢复为系统文本样式。 |
 
 ## fontColor
 
@@ -240,6 +252,8 @@ fontColor(value: ResourceColor)
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -248,7 +262,9 @@ fontColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 下拉按钮本身的文本颜色。<br>默认值：`&#36;r('sys.color.ohos_id_color_text_primary')`混合`&#36;r('sys.color.ohos_id_alpha_content_primary')`的透明度。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 下拉按钮本身的文本颜色。<br>默认值：`$r('sys.color.ohos_id_color_text_primary')`混合`$r('sys.color.ohos_id_alpha_content_primary')`的透明度。 |
+
+<a id="fontcolor-1"></a>
 
 ## fontColor
 
@@ -270,7 +286,7 @@ fontColor(resColor: Optional<ResourceColor>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resColor | [Optional](arkts-arkui-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 下拉按钮本身的文本颜色。<br>当resColor的值为undefined时，默认值：`&#36;r('sys.color.ohos_id_color_text_primary')`混合`&#36;r('sys.color.ohos_id_alpha_content_primary')`的透明度。<br>当value的值为undefined时，维持上次取值。 |
+| resColor | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 下拉按钮本身的文本颜色。<br>当resColor的值为undefined时，默认值：`$r('sys.color.ohos_id_color_text_primary')`混合`$r('sys.color.ohos_id_alpha_content_primary')`的透明度。<br>当value的值为undefined时，维持上次取值。 |
 
 ## keyboardAvoidMode
 
@@ -292,7 +308,7 @@ keyboardAvoidMode(mode: Optional<MenuKeyboardAvoidMode>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [Optional](arkts-arkui-optional-t.md)&lt;[MenuKeyboardAvoidMode](arkts-arkui-menukeyboardavoidmode-e.md)&gt; | 是 | 设置下拉菜单是否避让软键盘。取值为undefined时，按照MenuKeyboardAvoidMode.NONE处理，不避让软键盘。各枚举值的具体效果参见MenuKeyboardAvoidMode枚举说明。 |
+| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[MenuKeyboardAvoidMode](arkts-arkui-common-comp-menukeyboardavoidmode-e.md)&gt; | 是 | 设置下拉菜单是否避让软键盘。取值为undefined时，按照MenuKeyboardAvoidMode.NONE处理，不避让软键盘。各枚举值的具体效果参见MenuKeyboardAvoidMode枚举说明。 |
 
 ## menuAlign
 
@@ -314,8 +330,10 @@ menuAlign(alignType: MenuAlignType, offset?: Offset)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alignType | [MenuAlignType](arkts-arkui-menualigntype-e.md) | 是 | 对齐方式类型。<br>默认值：MenuAlignType.START |
+| alignType | [MenuAlignType](arkts-arkui-select-comp-menualigntype-e.md) | 是 | 对齐方式类型。<br>默认值：MenuAlignType.START |
 | offset | Offset | 否 | 按照对齐类型对齐后，下拉菜单相对下拉按钮的偏移量。dx控制水平方向偏移，dy控制垂直方向偏移。<br> 默认值：{dx: 0, dy: 0} |
+
+<a id="menualign-1"></a>
 
 ## menuAlign
 
@@ -337,7 +355,7 @@ menuAlign(alignType: Optional<MenuAlignType>, offset?: Offset)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alignType | [Optional](arkts-arkui-optional-t.md)&lt;[MenuAlignType](arkts-arkui-menualigntype-e.md)&gt; | 是 | 对齐方式类型。<br>当alignType的值为undefined时，默认值：MenuAlignType.START |
+| alignType | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[MenuAlignType](arkts-arkui-select-comp-menualigntype-e.md)&gt; | 是 | 对齐方式类型。<br>当alignType的值为undefined时，默认值：MenuAlignType.START |
 | offset | Offset | 否 | 按照对齐类型对齐后，下拉菜单相对下拉按钮的偏移量。<br> 默认值：{dx: 0, dy: 0} |
 
 ## menuBackgroundBlurStyle
@@ -350,7 +368,7 @@ menuBackgroundBlurStyle(value: BlurStyle)
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -364,7 +382,9 @@ menuBackgroundBlurStyle(value: BlurStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [BlurStyle](arkts-arkui-blurstyle-e.md) | 是 | 下拉菜单的背景模糊材质。<br>默认值：BlurStyle.COMPONENT_ULTRA_THICK |
+| value | [BlurStyle](arkts-arkui-common-comp-blurstyle-e.md) | 是 | 下拉菜单的背景模糊材质。<br>默认值：BlurStyle.COMPONENT_ULTRA_THICK |
+
+<a id="menubackgroundblurstyle-1"></a>
 
 ## menuBackgroundBlurStyle
 
@@ -386,7 +406,7 @@ menuBackgroundBlurStyle(style: Optional<BlurStyle>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-optional-t.md)&lt;[BlurStyle](arkts-arkui-blurstyle-e.md)&gt; | 是 | 下拉菜单的背景模糊材质。<br>当style的值为undefined时，默认值：BlurStyle.COMPONENT_ULTRA_THICK |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BlurStyle](arkts-arkui-common-comp-blurstyle-e.md)&gt; | 是 | 下拉菜单的背景模糊材质。<br>当style的值为undefined时，默认值：BlurStyle.COMPONENT_ULTRA_THICK |
 
 ## menuBackgroundBlurStyleOptions
 
@@ -408,7 +428,7 @@ menuBackgroundBlurStyleOptions(blurStyle: Optional<BackgroundBlurStyleOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| blurStyle | [Optional](arkts-arkui-optional-t.md)&lt;[BackgroundBlurStyleOptions](arkts-arkui-backgroundblurstyleoptions-i.md)&gt; | 是 | 设置Select组件的背景模糊效果。 |
+| blurStyle | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BackgroundBlurStyleOptions](arkts-arkui-common-comp-backgroundblurstyleoptions-i.md)&gt; | 是 | 设置Select组件的背景模糊效果。 |
 
 ## menuBackgroundColor
 
@@ -420,7 +440,7 @@ menuBackgroundColor(value: ResourceColor)
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -434,7 +454,9 @@ menuBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 下拉菜单的背景色。<br>默认值：<br>API version 11之前，默认值为&#36;r('sys.color.ohos_id_color_card_bg')。<br>API version 11及之后，默认值为Color.Transparent。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 下拉菜单的背景色。<br>默认值：<br>API version 11之前，默认值为$r('sys.color.ohos_id_color_card_bg')。<br>API version 11及之后，默认值为Color.Transparent。 |
+
+<a id="menubackgroundcolor-1"></a>
 
 ## menuBackgroundColor
 
@@ -456,7 +478,7 @@ menuBackgroundColor(resColor: Optional<ResourceColor>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resColor | [Optional](arkts-arkui-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 下拉菜单的背景色。<br>当resColor的值为undefined时，默认值为Color.Transparent。 |
+| resColor | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 下拉菜单的背景色。<br>当resColor的值为undefined时，默认值为Color.Transparent。 |
 
 ## menuBackgroundEffect
 
@@ -478,7 +500,7 @@ menuBackgroundEffect(effect: Optional<BackgroundEffectOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| effect | [Optional](arkts-arkui-optional-t.md)&lt;[BackgroundEffectOptions](arkts-arkui-backgroundeffectoptions-i.md)&gt; | 是 | 设置Select组件的背景属性，包括：模糊半径、亮度、饱和度和颜色。 |
+| effect | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BackgroundEffectOptions](arkts-arkui-common-comp-backgroundeffectoptions-i.md)&gt; | 是 | 设置Select组件的背景属性，包括：模糊半径、亮度、饱和度和颜色。 |
 
 ## menuItemContentModifier
 
@@ -490,7 +512,7 @@ menuItemContentModifier(modifier: ContentModifier<MenuItemConfiguration>)
 
 > **说明：** 
 > 
-> 该接口不支持在attributeModifier中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -504,7 +526,9 @@ menuItemContentModifier(modifier: ContentModifier<MenuItemConfiguration>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[MenuItemConfiguration](arkts-arkui-menuitemconfiguration-i.md)&gt; | 是 | 在Select组件上，定制下拉菜单项内容区的方法。<br>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[MenuItemConfiguration](arkts-arkui-select-comp-menuitemconfiguration-i.md)&gt; | 是 | 在Select组件上，定制下拉菜单项内容区的方法。<br>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+
+<a id="menuitemcontentmodifier-1"></a>
 
 ## menuItemContentModifier
 
@@ -516,7 +540,7 @@ menuItemContentModifier(modifier: Optional<ContentModifier<MenuItemConfiguration
 
 > **说明：** 
 > 
-> 该接口不支持在attributeModifier中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 18
 
@@ -530,7 +554,7 @@ menuItemContentModifier(modifier: Optional<ContentModifier<MenuItemConfiguration
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [Optional](arkts-arkui-optional-t.md)&lt;[ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[MenuItemConfiguration](arkts-arkui-menuitemconfiguration-i.md)&gt;&gt; | 是 | 在Select组件上，定制下拉菜单项内容区的方法。<br>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br>当modifier的值为undefined或null时，不使用内容修改器。 |
+| modifier | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[MenuItemConfiguration](arkts-arkui-select-comp-menuitemconfiguration-i.md)&gt;&gt; | 是 | 在Select组件上，定制下拉菜单项内容区的方法。<br>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br>当modifier的值为undefined或null时，不使用内容修改器。 |
 
 ## menuOutline
 
@@ -552,7 +576,7 @@ menuOutline(outline: MenuOutlineOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| outline | [MenuOutlineOptions](arkts-arkui-menuoutlineoptions-i.md) | 是 | 下拉菜单框的外描边样式。 |
+| outline | [MenuOutlineOptions](arkts-arkui-select-comp-menuoutlineoptions-i.md) | 是 | 下拉菜单框的外描边样式。 |
 
 ## minKeyboardAvoidDistance
 
@@ -574,7 +598,7 @@ minKeyboardAvoidDistance(distance: Optional<LengthMetrics>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| distance | [Optional](arkts-arkui-optional-t.md)&lt;LengthMetrics&gt; | 是 | 设置下拉菜单避让软键盘的最小距离。设置为负数、undefined时，按照8vp处理。 |
+| distance | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | 是 | 设置下拉菜单避让软键盘的最小距离。设置为负数、undefined时，按照8vp处理。 |
 
 ## onSelect
 
@@ -586,6 +610,8 @@ onSelect(callback: (index: number, value: string) => void)
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -595,6 +621,8 @@ onSelect(callback: (index: number, value: string) => void)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | (index: number, value: string) =&gt; void | 是 |  |
+
+<a id="onselect-1"></a>
 
 ## onSelect
 
@@ -616,7 +644,7 @@ onSelect(callback: Optional<OnSelectCallback>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-optional-t.md)&lt;[OnSelectCallback](arkts-arkui-onselectcallback-t-1.md)&gt; | 是 | 下拉菜单选中某一项的回调。<br>当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[OnSelectCallback](arkts-arkui-select-comp-onselectcallback-t.md)&gt; | 是 | 下拉菜单选中某一项的回调。<br>当callback的值为undefined时，不使用回调函数。 |
 
 ## optionBgColor
 
@@ -628,6 +656,8 @@ optionBgColor(value: ResourceColor)
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -637,6 +667,8 @@ optionBgColor(value: ResourceColor)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 下拉菜单项的背景色。<br>默认值：<br>API version 11之前，默认值为Color.White。<br>API version 11及之后，默认值为Color.Transparent。 |
+
+<a id="optionbgcolor-1"></a>
 
 ## optionBgColor
 
@@ -658,7 +690,7 @@ optionBgColor(resColor: Optional<ResourceColor>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resColor | [Optional](arkts-arkui-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 下拉菜单项的背景色。<br>当resColor的值为undefined时，下拉菜单项的背景色为Color.White。 |
+| resColor | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 下拉菜单项的背景色。<br>当resColor的值为undefined时，下拉菜单项的背景色为Color.White。 |
 
 ## optionFont
 
@@ -670,6 +702,8 @@ optionFont(value: Font)
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -678,7 +712,9 @@ optionFont(value: Font)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Font | 是 | 下拉菜单项的文本样式。<br>默认值：<br>{<br>size: &#36;r('sys.float.ohos_id_text_size_body1'),<br>weight:  FontWeight.Regular<br>} |
+| value | Font | 是 | 下拉菜单项的文本样式。<br>默认值：<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br>weight:  FontWeight.Regular<br>} |
+
+<a id="optionfont-1"></a>
 
 ## optionFont
 
@@ -702,7 +738,7 @@ optionFont(selectFont: Optional<Font>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectFont | [Optional](arkts-arkui-optional-t.md)&lt;Font&gt; | 是 | 下拉菜单项的文本样式。<br>当selectFont的值为undefined时，默认值：<br>{<br>size: &#36;r('sys.float.ohos_id_text_size_body1'),<br>weight: FontWeight.Regular<br>} |
+| selectFont | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | 是 | 下拉菜单项的文本样式。<br>当selectFont的值为undefined时，默认值：<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br>weight: FontWeight.Regular<br>} |
 
 ## optionFontColor
 
@@ -714,6 +750,8 @@ optionFontColor(value: ResourceColor)
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -722,7 +760,9 @@ optionFontColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 下拉菜单项的文本颜色。<br>默认值：&#36;r('sys.color.ohos_id_color_text_primary') |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 下拉菜单项的文本颜色。<br>默认值：$r('sys.color.ohos_id_color_text_primary') |
+
+<a id="optionfontcolor-1"></a>
 
 ## optionFontColor
 
@@ -744,7 +784,7 @@ optionFontColor(resColor: Optional<ResourceColor>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resColor | [Optional](arkts-arkui-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 下拉菜单项的文本颜色。<br>当resColor的值为undefined时，默认值：&#36;r('sys.color.ohos_id_color_text_primary') |
+| resColor | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 下拉菜单项的文本颜色。<br>当resColor的值为undefined时，默认值：$r('sys.color.ohos_id_color_text_primary') |
 
 ## optionHeight
 
@@ -772,6 +812,8 @@ optionHeight(value: Dimension)
 | --- | --- | --- | --- |
 | value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 下拉菜单显示的最大高度。 |
 
+<a id="optionheight-1"></a>
+
 ## optionHeight
 
 ```TypeScript
@@ -796,7 +838,7 @@ optionHeight(height: Optional<Dimension>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| height | [Optional](arkts-arkui-optional-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md)&gt; | 是 | 下拉菜单显示的最大高度。<br>当height的值为undefined时，属性不生效，下拉菜单最大高度设为默认值，即下拉菜单最大高度默认值为屏幕可用高度的80%。 |
+| height | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md)&gt; | 是 | 下拉菜单显示的最大高度。<br>当height的值为undefined时，属性不生效，下拉菜单最大高度设为默认值，即下拉菜单最大高度默认值为屏幕可用高度的80%。 |
 
 ## optionTextModifier
 
@@ -810,7 +852,7 @@ optionTextModifier(modifier: Optional<TextModifier>)
 
 > **说明：** 
 > 
-> 该接口不支持在attributeModifier中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 20
 
@@ -824,12 +866,12 @@ optionTextModifier(modifier: Optional<TextModifier>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [Optional](arkts-arkui-optional-t.md)&lt;TextModifier&gt; | 是 | 在Select组件上，定制Select下拉菜单未选中项文本样式的方法。<br> 当modifier的值为undefined时，不自定义下拉菜单未选中项的文本样式。 |
+| modifier | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;TextModifier&gt; | 是 | 在Select组件上，定制Select下拉菜单未选中项文本样式的方法。<br> 当modifier的值为undefined时，不自定义下拉菜单未选中项的文本样式。 |
 
 ## optionWidth
 
 ```TypeScript
-optionWidth(value: Dimension | OptionWidthMode )
+optionWidth(value: Dimension | OptionWidthMode)
 ```
 
 设置下拉菜单项的宽度，不支持设置百分比。OptionWidthMode类型为枚举类型，OptionWidthMode决定下拉菜单是否继承下拉按钮宽度。
@@ -851,6 +893,8 @@ Select组件距屏幕边缘的左右间距为16vp，建议将组件本身及菜�
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) &#124; [OptionWidthMode](../arkts-apis/arkts-arkui-optionwidthmode-e.md) | 是 | 下拉菜单项的宽度。 |
+
+<a id="optionwidth-1"></a>
 
 ## optionWidth
 
@@ -876,7 +920,7 @@ Select组件距屏幕边缘的左右间距为16vp，建议将组件本身及菜�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | [Optional](arkts-arkui-optional-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md) &#124; [OptionWidthMode](../arkts-apis/arkts-arkui-optionwidthmode-e.md)&gt; | 是 | 下拉菜单项的宽度。<br>当width的值为undefined时，属性无效，菜单项宽度设为默认值，即2栅格。 |
+| width | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md) &#124; [OptionWidthMode](../arkts-apis/arkts-arkui-optionwidthmode-e.md)&gt; | 是 | 下拉菜单项的宽度。<br>当width的值为undefined时，属性无效，菜单项宽度设为默认值，即2栅格。 |
 
 ## selected
 
@@ -886,11 +930,13 @@ selected(value: number | Resource)
 
 设置下拉菜单初始选项的索引，第一项的索引为0。当不设置selected属性、或设置为负数、非整数、超出索引范围等异常值时，默认选中值为-1，菜单项不选中；当设置为undefined、null时，选中第一项。
 
-从API version 10开始，该属性支持[&#36;&#36;](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 从API version 18开始，该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -902,6 +948,8 @@ selected(value: number | Resource)
 | --- | --- | --- | --- |
 | value | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 下拉菜单初始选项的索引，索引值从0开始。<br>**适用版本：** 11 |
 
+<a id="selected-1"></a>
+
 ## selected
 
 ```TypeScript
@@ -910,7 +958,7 @@ selected(numCount: Optional<number | Resource>)
 
 设置下拉菜单初始选项的索引，第一项的索引为0。当不设置selected属性、或设置为负数、非整数、超出索引范围等异常值时，默认选中值为-1，菜单项不选中；当设置为undefined、null时，选中第一项。
 
-该属性支持[&#36;&#36;](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
+该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **起始版本：** 18
 
@@ -924,7 +972,7 @@ selected(numCount: Optional<number | Resource>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| numCount | [Optional](arkts-arkui-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 下拉菜单初始选项的索引，索引值从0开始。<br>当numCount的值为undefined或null时，选中第一项。 |
+| numCount | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 下拉菜单初始选项的索引，索引值从0开始。<br>当numCount的值为undefined或null时，选中第一项。 |
 
 ## selectedOptionBgColor
 
@@ -936,6 +984,8 @@ selectedOptionBgColor(value: ResourceColor)
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -944,7 +994,9 @@ selectedOptionBgColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 下拉菜单选中项的背景色。<br>默认值：`&#36;r('sys.color.ohos_id_color_component_activated')`混合`&#36;r('sys.color.ohos_id_alpha_highlight_bg')`的透明度。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 下拉菜单选中项的背景色。<br>默认值：`$r('sys.color.ohos_id_color_component_activated')`混合`$r('sys.color.ohos_id_alpha_highlight_bg')`的透明度。 |
+
+<a id="selectedoptionbgcolor-1"></a>
 
 ## selectedOptionBgColor
 
@@ -966,7 +1018,7 @@ selectedOptionBgColor(resColor: Optional<ResourceColor>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resColor | [Optional](arkts-arkui-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 下拉菜单选中项的背景色。<br>当resColor的值为undefined时，默认值：`&#36;r('sys.color.ohos_id_color_component_activated')`混合`&#36;r('sys.color.ohos_id_alpha_highlight_bg')`的透明度。 |
+| resColor | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 下拉菜单选中项的背景色。<br>当resColor的值为undefined时，默认值：`$r('sys.color.ohos_id_color_component_activated')`混合`$r('sys.color.ohos_id_alpha_highlight_bg')`的透明度。 |
 
 ## selectedOptionFont
 
@@ -978,6 +1030,8 @@ selectedOptionFont(value: Font)
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -986,7 +1040,9 @@ selectedOptionFont(value: Font)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Font | 是 | 下拉菜单选中项的文本样式。<br>默认值：<br>{<br>size: &#36;r('sys.float.ohos_id_text_size_body1'),<br>weight:  FontWeight.Regular<br>} |
+| value | Font | 是 | 下拉菜单选中项的文本样式。<br>默认值：<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br>weight:  FontWeight.Regular<br>} |
+
+<a id="selectedoptionfont-1"></a>
 
 ## selectedOptionFont
 
@@ -1008,7 +1064,7 @@ selectedOptionFont(selectFont: Optional<Font>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectFont | [Optional](arkts-arkui-optional-t.md)&lt;Font&gt; | 是 | 下拉菜单选中项的文本样式。<br>当selectFont的值为undefined时，默认值：<br>{<br>size: &#36;r('sys.float.ohos_id_text_size_body1'),<br>weight: FontWeight.Regular<br>} |
+| selectFont | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | 是 | 下拉菜单选中项的文本样式。<br>当selectFont的值为undefined时，默认值：<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br>weight: FontWeight.Regular<br>} |
 
 ## selectedOptionFontColor
 
@@ -1020,6 +1076,8 @@ selectedOptionFontColor(value: ResourceColor)
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1028,7 +1086,9 @@ selectedOptionFontColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 下拉菜单选中项的文本颜色。<br>默认值：&#36;r('sys.color.ohos_id_color_text_primary_activated') |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 下拉菜单选中项的文本颜色。<br>默认值：$r('sys.color.ohos_id_color_text_primary_activated') |
+
+<a id="selectedoptionfontcolor-1"></a>
 
 ## selectedOptionFontColor
 
@@ -1050,7 +1110,7 @@ selectedOptionFontColor(resColor: Optional<ResourceColor>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resColor | [Optional](arkts-arkui-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 下拉菜单选中项的文本颜色。<br>当resColor的值为undefined时，默认值为&#36;r('sys.color.ohos_id_color_text_primary_activated')。 |
+| resColor | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 下拉菜单选中项的文本颜色。<br>当resColor的值为undefined时，默认值为$r('sys.color.ohos_id_color_text_primary_activated')。 |
 
 ## selectedOptionTextModifier
 
@@ -1064,7 +1124,7 @@ selectedOptionTextModifier(modifier: Optional<TextModifier>)
 
 > **说明：** 
 > 
-> 该接口不支持在attributeModifier中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 20
 
@@ -1078,7 +1138,7 @@ selectedOptionTextModifier(modifier: Optional<TextModifier>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [Optional](arkts-arkui-optional-t.md)&lt;TextModifier&gt; | 是 | 设置下拉菜单项选中项的文本样式。<br>开发者可以根据需要管理和维护文本的样式进行设置。 <br> 当modifier的值为undefined时，不自定义下拉菜单项选中项的文本样式。 |
+| modifier | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;TextModifier&gt; | 是 | 设置下拉菜单项选中项的文本样式。<br>开发者可以根据需要管理和维护文本的样式进行设置。 <br> 当modifier的值为undefined时，不自定义下拉菜单项选中项的文本样式。 |
 
 ## showDefaultSelectedIcon
 
@@ -1122,7 +1182,7 @@ showInSubWindow(showInSubWindow: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| showInSubWindow | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 设置下拉菜单是否显示在子窗中。<br>true代表下拉菜单显示在子窗中。<br>false代表下拉菜单不显示在子窗中。 |
+| showInSubWindow | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置下拉菜单是否显示在子窗中。<br>true代表下拉菜单显示在子窗中。<br>false代表下拉菜单不显示在子窗中。 |
 
 ## space
 
@@ -1146,6 +1206,8 @@ space(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 下拉菜单项的文本与箭头的间距。<br>默认值：8<br>**说明：** 设置string类型时，不支持百分比。 |
 
+<a id="space-1"></a>
+
 ## space
 
 ```TypeScript
@@ -1166,7 +1228,7 @@ space(spaceLength: Optional<Length>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| spaceLength | [Optional](arkts-arkui-optional-t.md)&lt;[Length](../arkts-apis/arkts-arkui-length-t.md)&gt; | 是 | 下拉菜单项的文本与箭头之间的间距。<br>当spaceLength的值为undefined时，默认值：8 |
+| spaceLength | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[Length](../arkts-apis/arkts-arkui-length-t.md)&gt; | 是 | 下拉菜单项的文本与箭头之间的间距。<br>当spaceLength的值为undefined时，默认值：8 |
 
 ## textModifier
 
@@ -1178,7 +1240,7 @@ textModifier(modifier: Optional<TextModifier>)
 
 > **说明：** 
 > 
-> 该接口不支持在attributeModifier中调用。
+> 该接口不支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 20
 
@@ -1192,7 +1254,7 @@ textModifier(modifier: Optional<TextModifier>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [Optional](arkts-arkui-optional-t.md)&lt;TextModifier&gt; | 是 | 在Select组件上，定制按钮文本样式的方法。<br> 当modifier的值为undefined时，不自定义文本样式。 |
+| modifier | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;TextModifier&gt; | 是 | 在Select组件上，定制按钮文本样式的方法。<br> 当modifier的值为undefined时，不自定义文本样式。 |
 
 ## value
 
@@ -1202,11 +1264,13 @@ value(value: ResourceStr)
 
 设置下拉按钮的文本内容。选中菜单项后，按钮文本将自动更新为选中的菜单项文本。
 
-从API version 10开始，该参数支持[&#36;&#36;](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -1218,6 +1282,8 @@ value(value: ResourceStr)
 | --- | --- | --- | --- |
 | value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 下拉按钮本身的文本内容。<br>**说明：** 文本长度大于列宽时，文本被截断。<br>**适用版本：** 11 |
 
+<a id="value-1"></a>
+
 ## value
 
 ```TypeScript
@@ -1226,7 +1292,7 @@ value(resStr: Optional<ResourceStr>)
 
 设置下拉按钮的文本内容。选中菜单项后，按钮文本将自动更新为选中的菜单项文本。与[value](#value)相比，resStr参数新增了对undefined类型的支持。
 
-该参数支持[&#36;&#36;](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
+该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **起始版本：** 18
 
@@ -1240,4 +1306,4 @@ value(resStr: Optional<ResourceStr>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resStr | [Optional](arkts-arkui-optional-t.md)&lt;[ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)&gt; | 是 | 下拉按钮本身的文本内容。<br>当resStr的值为undefined时维持上次取值。 |
+| resStr | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)&gt; | 是 | 下拉按钮本身的文本内容。<br>当resStr的值为undefined时维持上次取值。 |

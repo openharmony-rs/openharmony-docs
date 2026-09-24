@@ -28,9 +28,11 @@ function search(callback: AsyncCallback<Array<string>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 
+
+<a id="search-1"></a>
 
 ## search
 
@@ -55,9 +57,11 @@ function search(filter: Filter, callback: AsyncCallback<Array<string>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 
+
+<a id="search-2"></a>
 
 ## search
 
@@ -87,5 +91,5 @@ function search(filter?: Filter): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |

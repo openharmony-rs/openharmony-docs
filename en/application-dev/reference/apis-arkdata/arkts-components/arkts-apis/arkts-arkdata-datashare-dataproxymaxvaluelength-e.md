@@ -1,5 +1,9 @@
 # DataProxyMaxValueLength
 
+```TypeScript
+enum DataProxyMaxValueLength
+```
+
 The maximum length of [value](arkts-arkdata-datashare-proxydata-i.md#value), [value](arkts-arkdata-datashare-dataproxychangeinfo-i.md#value), [value](arkts-arkdata-datashare-dataproxygetresult-i.md#value).
 
 **Since:** 26.0.0

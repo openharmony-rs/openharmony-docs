@@ -1,5 +1,9 @@
 # WifiWapiConfig
 
+```TypeScript
+interface WifiWapiConfig
+```
+
 WAPI(Wireless LAN Authentication and Privacy Infrastructure) 身份验证协议配置。
 
 当用户通过WAPI身份验证协议连接无线网时，可通过以下方式配置参数或者证书进行连接。

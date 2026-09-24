@@ -1,5 +1,9 @@
 # Action
 
+```TypeScript
+export enum Action
+```
+
 want操作的常数。用于表示要执行的通用操作。
 
 **起始版本：** 6

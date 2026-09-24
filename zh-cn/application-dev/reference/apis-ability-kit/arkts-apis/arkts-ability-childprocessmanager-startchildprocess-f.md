@@ -46,7 +46,7 @@ function startChildProcess(srcEntry: string, startMode: StartMode): Promise<numb
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16000061](../errorcode-ability.md#16000061-不支持的操作) | Operation not supported. |
 | [16000062](../errorcode-ability.md#16000062-子进程数量超出上限) | The number of child processes exceeds the upper limit. |
@@ -85,27 +85,8 @@ try {
 }
 ```
 
-```TypeScript
-// 使用childProcessManager.startChildProcess方法启动子进程：
-// entry/src/main/ets/tool/Tool.ets
-import { childProcessManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import DemoProcess from '../process/DemoProcess';
 
-try {
-  DemoProcess.toString(); // 这里要调用下DemoProcess类的任意方法，防止没有引用到而被构建工具优化掉
-  childProcessManager.startChildProcess("./ets/process/DemoProcess.ets", childProcessManager.StartMode.SELF_FORK, (err, data) => {
-    if (err) {
-      console.error(`startChildProcess error. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`startChildProcess success, pid: ${data}`);
-    }
-  });
-} catch (err: BusinessError) {
-  console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
-}
-```
-
+<a id="startchildprocess-1"></a>
 
 ## startChildProcess
 
@@ -142,11 +123,42 @@ function startChildProcess(srcEntry: string, startMode: StartMode, callback: Asy
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16000061](../errorcode-ability.md#16000061-不支持的操作) | Operation not supported. |
 | [16000062](../errorcode-ability.md#16000062-子进程数量超出上限) | The number of child processes exceeds the upper limit. |
 
 **示例**
 
-参见 startChildProcess
+```TypeScript
+// 在entry模块的src/main/ets/process下创建DemoProcess.ets子进程类：
+// entry/src/main/ets/process/DemoProcess.ets
+import { ChildProcess } from '@kit.AbilityKit';
+
+export default class DemoProcess extends ChildProcess {
+  onStart() {
+    console.info('DemoProcess OnStart() called');
+  }
+}
+```
+
+```TypeScript
+// 使用childProcessManager.startChildProcess方法启动子进程：
+// entry/src/main/ets/tool/Tool.ets
+import { childProcessManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import DemoProcess from '../process/DemoProcess';
+
+try {
+  DemoProcess.toString(); // 这里要调用下DemoProcess类的任意方法，防止没有引用到而被构建工具优化掉
+  childProcessManager.startChildProcess("./ets/process/DemoProcess.ets", childProcessManager.StartMode.SELF_FORK, (err, data) => {
+    if (err) {
+      console.error(`startChildProcess error. Code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info(`startChildProcess success, pid: ${data}`);
+    }
+  });
+} catch (err: BusinessError) {
+  console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
+}
+```

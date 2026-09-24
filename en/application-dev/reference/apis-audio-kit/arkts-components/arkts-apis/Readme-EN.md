@@ -126,6 +126,8 @@
   <!--Del-->
   - [VolumeGroupInfo(system api)](arkts-audio-audio-volumegroupinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [VolumeLimitExceededEvent(system api)](arkts-audio-audio-volumelimitexceededevent-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [ActiveStreamsVolumeInfoArray(system api)](arkts-audio-audio-activestreamsvolumeinfoarray-t-sys.md)<!--DelEnd-->
   - [AudioCapturerChangeInfoArray](arkts-audio-audio-audiocapturerchangeinfoarray-t.md)
   - [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)

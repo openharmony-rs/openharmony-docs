@@ -1,5 +1,9 @@
 # ShaderStyle
 
+```TypeScript
+declare class ShaderStyle
+```
+
 Defines the base class for text shader effects.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # PacMap
 
+```TypeScript
+export interface PacMap
+```
+
 Defines the PacMap type used for data storage.
 
 **Since:** 7

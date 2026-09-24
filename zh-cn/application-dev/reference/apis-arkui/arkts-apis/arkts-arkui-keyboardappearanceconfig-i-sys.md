@@ -1,5 +1,9 @@
 # KeyboardAppearanceConfig（系统接口）
 
+```TypeScript
+declare interface KeyboardAppearanceConfig
+```
+
 键盘外观样式属性。
 
 **起始版本：** 20

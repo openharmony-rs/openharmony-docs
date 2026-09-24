@@ -1,5 +1,9 @@
 # PageInfo
 
+```TypeScript
+export interface PageInfo
+```
+
 Router和NavDestination等页面信息，若无对应的Router或NavDestination页面信息，则对应属性为undefined。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # InsightIntentInfoFilter (System API)
 
+```TypeScript
+interface InsightIntentInfoFilter
+```
+
 Defines an intent filter, which specifies the criteria for selecting target intents. It is used to filter intents on the device that meet these criteria.
 
 **Since:** 23

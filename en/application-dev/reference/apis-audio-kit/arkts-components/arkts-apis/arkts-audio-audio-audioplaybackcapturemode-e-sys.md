@@ -1,5 +1,9 @@
 # AudioPlaybackCaptureMode
 
+```TypeScript
+enum AudioPlaybackCaptureMode
+```
+
 Defines mode for playback capture, each mode means different target streams to capture.
 
 **Since:** 26.0.0

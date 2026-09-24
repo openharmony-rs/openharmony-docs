@@ -14,7 +14,7 @@ function offSpatialMotion(callback?: Callback<SpatialMotionInfo>): void
 
 关闭空间动作感知，订阅空间动作感知结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.vehicle.MMA_SPATIALACTION
 
@@ -32,5 +32,5 @@ function offSpatialMotion(callback?: Callback<SpatialMotionInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [34000001](../errorcode-carAwareness.md#34000001-服务异常) | Service exception. |

@@ -8,6 +8,8 @@ typedef struct OH_MediaAsset OH_MediaAsset
 
 定义媒体资产。<br>此结构体提供了封装文件资源属性的能力。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 12
 
 **相关模块：** [MediaAssetManager](capi-mediaassetmanager.md)

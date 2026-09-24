@@ -1,4 +1,4 @@
-# @ohos.application.formError(formError)
+# @ohos.application.formError(卡片错误码-FormError)
 
 **起始版本：** 8
 

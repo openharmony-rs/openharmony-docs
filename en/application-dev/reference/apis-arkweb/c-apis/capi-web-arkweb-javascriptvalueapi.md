@@ -8,6 +8,8 @@ struct ArkWeb_JavaScriptValueAPI {...}
 
 ArkWeb_JavaScriptValueAPI is a JavaScript-related Native API struct. This struct provides functions for creating JavaScript values, supporting the conversion of Native data into a JavaScript-recognizable format and returning it to HTML. This conversion mechanism parses and encapsulates the Native data buffer based on the specified JavaScript value type to generate the corresponding JavaScript value object. It is applicable to scenarios where data needs to be passed from the Native layer to the Web layer, enabling bidirectional data interaction between Native and Web and improving app development flexibility. <br>Call the OH_ArkWeb_GetNativeAPI method on the UI thread to obtain JavaScript-related APIs. Before calling, you are advised to use {@link ARKWEB_MEMBER_MISSING} to check the availability of the function pointer, to prevent crashes caused by mismatch between the SDK and device ROM.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 18
 
 **Related module**: [Web](capi-web.md)

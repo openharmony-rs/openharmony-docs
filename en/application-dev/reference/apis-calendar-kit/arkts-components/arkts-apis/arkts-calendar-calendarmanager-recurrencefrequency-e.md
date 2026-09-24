@@ -1,5 +1,9 @@
 # RecurrenceFrequency
 
+```TypeScript
+export enum RecurrenceFrequency
+```
+
 Enumerates the types of the event recurrence rule.
 
 **Since:** 10

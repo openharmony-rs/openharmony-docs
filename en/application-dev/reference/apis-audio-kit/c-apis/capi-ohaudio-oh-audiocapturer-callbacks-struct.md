@@ -8,6 +8,8 @@ typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callback
 
 Declaring the callback struct for capturer stream.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 **Deprecated**: 20

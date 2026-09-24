@@ -1,5 +1,9 @@
 # KVManagerConfig
 
+```TypeScript
+interface KVManagerConfig
+```
+
 Represents the configuration of a **KVManager** instance, including the bundle name and user information of the caller.
 
 **Since:** 7

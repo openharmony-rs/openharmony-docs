@@ -1,5 +1,9 @@
 # FloatViewLimits
 
+```TypeScript
+interface FloatViewLimits
+```
+
 Provides the limits of the float view.
 
 **Since:** 26.0.0

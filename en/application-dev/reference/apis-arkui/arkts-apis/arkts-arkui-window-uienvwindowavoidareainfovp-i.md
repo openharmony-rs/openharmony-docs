@@ -1,5 +1,9 @@
 # UIEnvWindowAvoidAreaInfoVP
 
+```TypeScript
+interface UIEnvWindowAvoidAreaInfoVP
+```
+
 Describes [environment variable](../../../ui/arkts-env-system-property.md) data types for window avoidance areas of different types. All types of window avoidance areas are measured in vp.
 
 **Since:** 23

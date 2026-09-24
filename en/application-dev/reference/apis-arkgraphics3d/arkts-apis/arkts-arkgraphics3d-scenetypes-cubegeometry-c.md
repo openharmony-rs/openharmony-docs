@@ -1,5 +1,9 @@
 # CubeGeometry
 
+```TypeScript
+export declare class CubeGeometry extends GeometryDefinition
+```
+
 A cube geometry type that inherits from GeometryDefinition.
 
 @extends GeometryDefinition

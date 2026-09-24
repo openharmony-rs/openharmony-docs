@@ -1,5 +1,9 @@
 # CreateOptions
 
+```TypeScript
+interface CreateOptions
+```
+
 图片或视频的创建选项。
 
 title参数的规格如下：

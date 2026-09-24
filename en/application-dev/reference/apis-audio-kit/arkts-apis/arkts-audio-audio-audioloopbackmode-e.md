@@ -1,5 +1,9 @@
 # AudioLoopbackMode
 
+```TypeScript
+enum AudioLoopbackMode
+```
+
 Enumerates the audio loopback modes.
 
 **Since:** 20

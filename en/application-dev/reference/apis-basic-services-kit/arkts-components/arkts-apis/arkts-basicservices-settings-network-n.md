@@ -1,5 +1,9 @@
 # network
 
+```TypeScript
+namespace network
+```
+
 Provides methods for setting network information, including the data roaming status, HTTP proxy configurations, and preferred networks.
 
 @namespace network

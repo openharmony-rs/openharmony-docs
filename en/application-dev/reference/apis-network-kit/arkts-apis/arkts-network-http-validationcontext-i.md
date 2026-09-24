@@ -1,5 +1,9 @@
 # ValidationContext
 
+```TypeScript
+export interface ValidationContext
+```
+
 The validation context of [ValidationCallback](arkts-network-http-validationcallback-t.md)
 
 **Since:** 26.0.0

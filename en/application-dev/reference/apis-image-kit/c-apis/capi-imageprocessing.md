@@ -4,6 +4,8 @@
 
 Provide image processing including color space conversion and metadata generation.
 
+**System capability**: SystemCapability.Multimedia.VideoProcessingEngine
+
 **Since**: 13
 
 ## Files

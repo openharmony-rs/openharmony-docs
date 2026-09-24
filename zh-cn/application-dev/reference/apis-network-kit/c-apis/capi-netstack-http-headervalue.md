@@ -8,6 +8,8 @@ typedef struct Http_HeaderValue {...} Http_HeaderValue
 
 请求或者响应的标头映射的值类型。
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 20
 
 **相关模块：** [netstack](capi-netstack.md)

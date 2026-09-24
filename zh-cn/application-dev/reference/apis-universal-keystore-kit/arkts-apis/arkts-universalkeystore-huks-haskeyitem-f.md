@@ -18,6 +18,8 @@ function hasKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallb
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -34,8 +36,8 @@ function hasKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallb
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | api is not supported |
 | [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
@@ -68,25 +70,8 @@ huks.hasKeyItem(keyAlias, emptyOptions, (error, data) => {
 });
 ```
 
-```TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 此处options选择emptyOptions来传空 */
-let keyAlias = 'keyAlias';
-let emptyOptions: huks.HuksOptions = {
-  properties: []
-};
-
-/* 判断密钥是否存在 */
-huks.hasKeyItem(keyAlias, emptyOptions).then((data) => {
-  if (data) {
-    console.info(`keyAlias:${keyAlias} is existed!`);
-  } else {
-    console.info(`find key failed!`);
-  }
-});
-```
-
+<a id="haskeyitem-1"></a>
 
 ## hasKeyItem
 
@@ -121,8 +106,8 @@ function hasKeyItem(keyAlias: string, options: HuksOptions): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | api is not supported |
 | [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
@@ -132,4 +117,21 @@ function hasKeyItem(keyAlias: string, options: HuksOptions): Promise<boolean>
 
 **示例**
 
-参见 hasKeyItem
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* 此处options选择emptyOptions来传空 */
+let keyAlias = 'keyAlias';
+let emptyOptions: huks.HuksOptions = {
+  properties: []
+};
+
+/* 判断密钥是否存在 */
+huks.hasKeyItem(keyAlias, emptyOptions).then((data) => {
+  if (data) {
+    console.info(`keyAlias:${keyAlias} is existed!`);
+  } else {
+    console.info(`find key failed!`);
+  }
+});
+```

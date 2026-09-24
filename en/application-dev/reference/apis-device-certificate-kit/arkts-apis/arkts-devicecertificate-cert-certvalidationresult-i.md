@@ -1,5 +1,9 @@
 # CertValidationResult
 
+```TypeScript
+interface CertValidationResult
+```
+
 Result of certificate validation.
 
 **Since:** 26.0.0

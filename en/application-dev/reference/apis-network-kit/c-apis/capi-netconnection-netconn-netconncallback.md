@@ -8,6 +8,8 @@ typedef struct NetConn_NetConnCallback {...} NetConn_NetConnCallback
 
 Defines a struct for the network status listener callback collection. All callback events must be registered; those not requiring attention can be set to empty.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 12
 
 **Related module**: [NetConnection](capi-netconnection.md)

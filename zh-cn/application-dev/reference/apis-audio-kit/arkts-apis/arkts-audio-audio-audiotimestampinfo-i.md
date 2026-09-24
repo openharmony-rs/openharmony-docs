@@ -1,8 +1,10 @@
 # AudioTimestampInfo
 
-音频流时间戳和当前数据帧位置信息。
+```TypeScript
+interface AudioTimestampInfo
+```
 
-@typedef AudioTimestampInfo
+音频流时间戳和当前数据帧位置信息。
 
 **起始版本：** 19
 
@@ -34,7 +36,7 @@ readonly framePos: number
 readonly timestamp: number
 ```
 
-播放或者录制到当前数据帧位置时对应的时间戳，单位为纳秒。
+播放或者录制到当前数据帧位置时对应的时间戳，单位为纳秒（ns）。
 
 **类型：** number
 

@@ -1,5 +1,9 @@
 # PasteDataRecord
 
+```TypeScript
+interface PasteDataRecord
+```
+
 对于剪贴板中内容记录的抽象定义，称之为条目。剪贴板内容部分由一个或者多个条目构成，例如一条文本内容、一份HTML、一个URI或者一个Want。不支持在创建PasteDataRecord之后，修改PasteDataRecord的默认数据类型的值，应在创建PasteDataRecord时指定正确的默认数据类型的值。如需刷新PasteDataRecord的属性值，请使用[addEntry](#addentry)。
 
 **起始版本：** 7
@@ -28,14 +32,14 @@ addEntry(type: string, value: ValueType): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | 剪贴板数据对应的MIME类型，可以是常量中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。 |
+| type | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](../../../reference/apis-basic-services-kit/js-apis-pasteboard.md#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。 |
 | value | [ValueType](arkts-basicservices-pasteboard-valuetype-t.md) | 是 | 自定义数据内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -49,86 +53,6 @@ record.addEntry(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 // 添加HTML类型数据
 record.addEntry(pasteboard.MIMETYPE_TEXT_HTML, html);
 ```
-
-## convertToText
-
-```TypeScript
-convertToText(callback: AsyncCallback<string>): void
-```
-
-将一个PasteData中的内容强制转换为文本内容，使用callback异步回调。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [toPlainText](#toplaintext)()
-
-**系统能力：** SystemCapability.MiscServices.Pasteboard
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，当转换成功，err为undefined，data为强制转换的文本内容；否则返回错误信息。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Possible causes: Incorrect parameters types. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability:///com.example.myapplication1/user.txt');
-record.convertToText((err: BusinessError, data: string) => {
-    if (err) {
-        console.error(`Failed to convert to text. errorCode: ${err.code}, errorMessage: ${err.message}.`);
-        return;
-    }
-    console.info(`Succeeded in converting to text. Data: ${data}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability:///com.example.myapplication1/user.txt');
-record.convertToText().then((data: string) => {
-    console.info(`Succeeded in converting to text. Data: ${data}`);
-}).catch((err: BusinessError) => {
-    console.error(`Failed to convert to text. errorCode: ${err.code}, errorMessage: ${err.message}.`);
-});
-```
-
-## convertToText
-
-```TypeScript
-convertToText(): Promise<string>
-```
-
-将一个PasteData中的内容强制转换为文本内容，使用Promise异步回调。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [toPlainText](#toplaintext)()
-
-**系统能力：** SystemCapability.MiscServices.Pasteboard
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回强制转换的文本内容。 |
-
-**示例**
-
-参见 [convertToText](#converttotext)
 
 ## getData
 
@@ -158,7 +82,7 @@ getData(type: string): Promise<ValueType>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -211,7 +135,7 @@ getValidTypes(types: Array<string>): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -255,6 +179,86 @@ toPlainText(): string
 let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_HTML, '<html>hello</html>');
 let text: string = record.toPlainText();
 console.info(`Succeeded in converting to text. Text: ${text}`);
+```
+
+## convertToText
+
+```TypeScript
+convertToText(callback: AsyncCallback<string>): void
+```
+
+将一个PasteData中的内容强制转换为文本内容，使用callback异步回调。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [toPlainText](#toplaintext)()
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，当转换成功，err为undefined，data为强制转换的文本内容；否则返回错误信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: Incorrect parameters types. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability:///com.example.myapplication1/user.txt');
+record.convertToText((err: BusinessError, data: string) => {
+    if (err) {
+        console.error(`Failed to convert to text. errorCode: ${err.code}, errorMessage: ${err.message}.`);
+        return;
+    }
+    console.info(`Succeeded in converting to text. Data: ${data}`);
+});
+```
+
+<a id="converttotext-1"></a>
+
+## convertToText
+
+```TypeScript
+convertToText(): Promise<string>
+```
+
+将一个PasteData中的内容强制转换为文本内容，使用Promise异步回调。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [toPlainText](#toplaintext)()
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;string&gt; | Promise对象，返回强制转换的文本内容。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability:///com.example.myapplication1/user.txt');
+record.convertToText().then((data: string) => {
+    console.info(`Succeeded in converting to text. Data: ${data}`);
+}).catch((err: BusinessError) => {
+    console.error(`Failed to convert to text. errorCode: ${err.code}, errorMessage: ${err.message}.`);
+});
 ```
 
 ## data

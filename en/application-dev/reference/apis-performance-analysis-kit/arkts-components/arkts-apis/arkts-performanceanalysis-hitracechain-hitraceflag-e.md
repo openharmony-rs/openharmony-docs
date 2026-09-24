@@ -1,5 +1,9 @@
 # HiTraceFlag
 
+```TypeScript
+enum HiTraceFlag
+```
+
 Enumerates trace flag types.
 
 **Since:** 8

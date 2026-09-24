@@ -1,5 +1,9 @@
 # WallpaperType
 
+```TypeScript
+enum WallpaperType
+```
+
 定义壁纸的枚举类型。
 
 **起始版本：** 7

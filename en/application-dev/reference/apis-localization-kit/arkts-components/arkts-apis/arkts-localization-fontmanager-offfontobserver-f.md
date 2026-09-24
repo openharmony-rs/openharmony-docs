@@ -12,9 +12,9 @@ import { fontManager } from '@kit.LocalizationKit';
 function offFontObserver(): void
 ```
 
-Unregisters the font service death observer.
+Unregisters the font service status listener.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.UPDATE_SCOPE_FONT
 

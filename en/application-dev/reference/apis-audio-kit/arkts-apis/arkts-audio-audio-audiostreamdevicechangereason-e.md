@@ -1,5 +1,9 @@
 # AudioStreamDeviceChangeReason
 
+```TypeScript
+enum AudioStreamDeviceChangeReason
+```
+
 Enumerates the reasons for audio stream device changes.
 
 **Since:** 11

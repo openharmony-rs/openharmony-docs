@@ -1,5 +1,9 @@
 # StyleOptions
 
+```TypeScript
+declare interface StyleOptions
+```
+
 Describes the style options.
 
 **Since:** 12

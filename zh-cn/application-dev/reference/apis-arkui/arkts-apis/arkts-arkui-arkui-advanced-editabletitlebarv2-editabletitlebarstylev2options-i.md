@@ -1,5 +1,9 @@
 # EditableTitleBarStyleV2Options
 
+```TypeScript
+export declare interface EditableTitleBarStyleV2Options
+```
+
 标题栏样式配置选项接口。
 
 **起始版本：** 26.0.0
@@ -22,7 +26,7 @@ backgroundBlurStyle?: BlurStyle
 
 默认值：BlurStyle.NONE，表示无模糊效果。
 
-**类型：** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**类型：** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **起始版本：** 26.0.0
 
@@ -64,9 +68,9 @@ contentMargin?: LocalizedMargin
 
 {
 
-start: LengthMetrics.resource(&#36;r('sys.float.margin_left')),
+start: LengthMetrics.resource($r('sys.float.margin_left')),
 
-end: LengthMetrics.resource(&#36;r('sys.float.margin_right'))
+end: LengthMetrics.resource($r('sys.float.margin_right'))
 
 }。
 
@@ -90,7 +94,7 @@ safeAreaEdges?: Array<SafeAreaEdge>
 
 默认值：[SafeAreaEdge.TOP]。
 
-**类型：** Array&lt;[SafeAreaEdge](../arkts-components/arkts-arkui-safeareaedge-e.md)&gt;
+**类型：** Array&lt;[SafeAreaEdge](../arkts-components/arkts-arkui-common-comp-safeareaedge-e.md)&gt;
 
 **起始版本：** 26.0.0
 
@@ -110,7 +114,7 @@ safeAreaTypes?: Array<SafeAreaType>
 
 默认值：[SafeAreaType.SYSTEM]。
 
-**类型：** Array&lt;[SafeAreaType](../arkts-components/arkts-arkui-safeareatype-e.md)&gt;
+**类型：** Array&lt;[SafeAreaType](../arkts-components/arkts-arkui-common-comp-safeareatype-e.md)&gt;
 
 **起始版本：** 26.0.0
 

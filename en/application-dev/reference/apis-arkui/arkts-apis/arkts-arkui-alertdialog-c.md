@@ -1,5 +1,9 @@
 # AlertDialog
 
+```TypeScript
+declare class AlertDialog
+```
+
 **Since:** 7
 
 **Deprecated since:** 26.0.0
@@ -28,6 +32,8 @@ Shows an alert dialog box.
 **Deprecated since:** 18
 
 **Substitutes:** [showAlertDialog](arkts-arkui-arkui-uicontext-uicontext-c.md#showalertdialog)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

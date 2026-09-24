@@ -6,6 +6,8 @@
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
 
+<a id="queryappkeystate-1"></a>
+
 ## queryAppKeyState
 
 ```TypeScript
@@ -38,37 +40,14 @@ function queryAppKeyState(dataType: DataType): KeyStatus
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameter is left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The specified SystemCapability name was not found. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameter is left unspecified. 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | The specified SystemCapability name was not found. |
 | [29300001](../errorcode-screenLockFileManager.md#29300001-入参错误) | Invalid DataType. |
 | [29300002](../errorcode-screenLockFileManager.md#29300002-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
-
-```TypeScript
-// 查询锁屏下应用敏感数据访问权限
-import { screenLockFileManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-    // 查询密钥状态
-    let keyStatus = screenLockFileManager.queryAppKeyState();
-    // 判断密钥状态并处理不同情况
-    if (keyStatus === screenLockFileManager.KeyStatus.KEY_NOT_EXIST) {
-        hilog.info(0x0000, 'testTag', 'Key does not exist.');
-    } else if (keyStatus === screenLockFileManager.KeyStatus.KEY_RELEASED) {
-        hilog.info(0x0000, 'testTag', 'Key has been released.');
-    } else if (keyStatus === screenLockFileManager.KeyStatus.KEY_EXIST) {
-        hilog.info(0x0000, 'testTag', 'Key exists.');
-    }
-} catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'queryAppKeyState failed: %{public}s', message);
-}
-```
 
 ```TypeScript
 // 查询锁屏下媒体类型数据的访问权限

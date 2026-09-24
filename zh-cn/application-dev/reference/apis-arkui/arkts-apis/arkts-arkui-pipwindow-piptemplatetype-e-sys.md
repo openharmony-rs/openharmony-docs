@@ -1,5 +1,9 @@
 # PiPTemplateType
 
+```TypeScript
+enum PiPTemplateType
+```
+
 画中画模板类型枚举。
 
 **起始版本：** 11
@@ -30,7 +34,7 @@ VIDEO_NAVIGATION = 5
 
 表示车载导航画中画模版类型，系统依此加载车载导航模板。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

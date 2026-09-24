@@ -48,6 +48,8 @@ Obtains the RunningFormInfo object by formId.
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
 
+<a id="getrunningforminfobyid-1"></a>
+
 ## getRunningFormInfoById
 
 ```TypeScript
@@ -91,6 +93,8 @@ Obtains the RunningFormInfo object by formId.
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
 
+<a id="getrunningforminfobyid-2"></a>
+
 ## getRunningFormInfoById
 
 ```TypeScript
@@ -127,6 +131,8 @@ Obtains the RunningFormInfo object by formId.
 | [16500100](../errorcode-form.md#16500100-failed-to-obtain-widget-configuration-information) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
+
+<a id="getrunningforminfobyid-3"></a>
 
 ## getRunningFormInfoById
 

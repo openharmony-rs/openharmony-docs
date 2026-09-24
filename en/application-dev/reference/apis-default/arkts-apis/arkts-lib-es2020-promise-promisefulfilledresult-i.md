@@ -1,5 +1,9 @@
 # PromiseFulfilledResult
 
+```TypeScript
+interface PromiseFulfilledResult<T>
+```
+
 ## Modules to Import
 
 ```TypeScript

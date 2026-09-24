@@ -1,5 +1,9 @@
 # RightClickType
 
+```TypeScript
+enum RightClickType
+```
+
 右键菜单的触发方式。
 
 **起始版本：** 10

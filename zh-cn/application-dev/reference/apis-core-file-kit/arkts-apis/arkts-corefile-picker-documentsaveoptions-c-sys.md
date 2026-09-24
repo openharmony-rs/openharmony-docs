@@ -1,5 +1,9 @@
 # DocumentSaveOptions
 
+```TypeScript
+class DocumentSaveOptions
+```
+
 文档保存选项。
 
 **起始版本：** 9

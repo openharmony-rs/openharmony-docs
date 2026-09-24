@@ -1,5 +1,9 @@
 # RenderProcessMode
 
+```TypeScript
+enum RenderProcessMode
+```
+
 ArkWeb渲染子进程模式类型，可根据应用对内存占用与渲染进程隔离的需求选择对应的模式。
 
 **起始版本：** 12

@@ -234,6 +234,8 @@ typedef void (*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler, 
 
 Called when the request stops. This callback is used on the IO thread. It is used to perform resource cleanup, status updates, or logging when the request completes. You should use **OH_ArkWebResourceRequest_Destroy** to destroy the **resourceRequest** and use **OH_ArkWebResourceHandler_Destroy** to destroy the **ArkWeb_ResourceHandler** received in **ArkWeb_OnRequestStart**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -274,6 +276,8 @@ typedef void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStre
 **Description**
 
 Called when the **OH_ArkWebHttpBodyStream_AsyncRead** read operation is complete. This callback runs on the ArkWeb worker thread.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 20
 
@@ -648,6 +652,8 @@ int32_t OH_ArkWebHttpBodyStream_SetAsyncReadCallback(ArkWeb_HttpBodyStream* http
 
 Sets a callback for **OH_ArkWebHttpBodyStream_AsyncRead**. The result of **OH_ArkWebHttpBodyStream_AsyncRead**<br>is notified to the caller through **readCallback**, which runs in the ArkWeb worker thread.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -721,6 +727,8 @@ void OH_ArkWebHttpBodyStream_AsyncRead(const ArkWeb_HttpBodyStream* httpBodyStre
 **Description**
 
 Exports the uploaded data of a request to the buffer. The buffer size must be greater than **bufLen**. The data from the worker thread is exported to the buffer. Therefore, before the callback returns the data, the buffer should not be used in other threads to avoid concurrency problems.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 20
 
@@ -992,6 +1000,8 @@ bool OH_ArkWebResourceRequest_HasGesture(const ArkWeb_ResourceRequest* resourceR
 
 Determines whether a request is triggered by a user gesture.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1144,6 +1154,8 @@ void OH_ArkWeb_CreateSchemeHandler(ArkWeb_SchemeHandler** schemeHandler)
 
 Creates an **ArkWeb_SchemeHandler** object.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1288,6 +1300,8 @@ void OH_ArkWeb_CreateResponse(ArkWeb_Response** response)
 **Description**
 
 Creates an **ArkWeb_Response** object for the intercepted request.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1625,6 +1639,8 @@ int32_t OH_ArkWebResponse_SetHeaderByName(ArkWeb_Response* response, const char*
 
 Sets a header for **ArkWeb_Response**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1808,6 +1824,8 @@ int32_t OH_ArkWebResourceHandler_DidFailWithErrorV2(const ArkWeb_ResourceHandler
 
 Notifies the ArkWeb kernel that the intercepted request fails. Compared with the [OH_ArkWebResourceHandler_DidFailWithError](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror) API, the **completeIfNoResponse** parameter is added. With this parameter set to **true**, if [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) has not been called, a response is automatically generated to complete the network request and the network error code is **-104**. With this parameter set to **false**, the system waits for the application to call [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) and pass the response.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -1834,7 +1852,9 @@ void OH_ArkWeb_CreateErrorInfo(ArkWeb_ErrorInfo** errorInfo)
 
 Creates an ArkWeb_ErrorInfo object.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -1852,7 +1872,9 @@ void OH_ArkWeb_DestroyErrorInfo(ArkWeb_ErrorInfo* errorInfo)
 
 Destroys the ArkWeb_ErrorInfo.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -1870,7 +1892,9 @@ int32_t OH_ArkWebErrorInfo_SetCompleteIfNoResponse(ArkWeb_ErrorInfo* errorInfo, 
 
 Sets whether to automatically generate a response if no response has been received.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -1883,7 +1907,7 @@ Sets whether to automatically generate a response if no response has been receiv
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 - Success.<br>        {@link ARKWEB_INVALID_PARAM} 17100101 - Invalid param, errorInfo is nullptr. |
+| int32_t | {@link ARKWEB_NET_OK} 0 - Success.          [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, errorInfo is nullptr. |
 
 ### OH_ArkWebErrorInfo_GetCompleteIfNoResponse()
 
@@ -1895,7 +1919,9 @@ bool OH_ArkWebErrorInfo_GetCompleteIfNoResponse(const ArkWeb_ErrorInfo* errorInf
 
 Gets whether to automatically generate a response if no response has been received.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -1919,7 +1945,9 @@ int32_t OH_ArkWebErrorInfo_SetCustomErrorCode(ArkWeb_ErrorInfo* errorInfo, int32
 
 Sets the custom error code for ArkWeb_ErrorInfo.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -1932,7 +1960,7 @@ Sets the custom error code for ArkWeb_ErrorInfo.
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 - Success.<br>        {@link ARKWEB_INVALID_PARAM} 17100101 - Invalid param, errorInfo is nullptr. |
+| int32_t | {@link ARKWEB_NET_OK} 0 - Success.          [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, errorInfo is nullptr. |
 
 ### OH_ArkWebErrorInfo_GetCustomErrorCode()
 
@@ -1944,7 +1972,9 @@ int32_t OH_ArkWebErrorInfo_GetCustomErrorCode(const ArkWeb_ErrorInfo* errorInfo)
 
 Gets the custom error code from the ArkWeb_ErrorInfo.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -1968,7 +1998,9 @@ int32_t OH_ArkWebErrorInfo_SetErrorCode(ArkWeb_ErrorInfo* errorInfo, ArkWeb_NetE
 
 Sets the error code for ArkWeb_ErrorInfo.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -1981,7 +2013,7 @@ Sets the error code for ArkWeb_ErrorInfo.
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 - Success.<br>        {@link ARKWEB_INVALID_PARAM} 17100101 - Invalid param, errorInfo is nullptr. |
+| int32_t | {@link ARKWEB_NET_OK} 0 - Success.          [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, errorInfo is nullptr. |
 
 ### OH_ArkWebErrorInfo_GetErrorCode()
 
@@ -1993,7 +2025,9 @@ ArkWeb_NetError OH_ArkWebErrorInfo_GetErrorCode(const ArkWeb_ErrorInfo* errorInf
 
 Gets the error code from the ArkWeb_ErrorInfo. Refer to arkweb_net_error_list.h.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -2017,7 +2051,9 @@ int32_t OH_ArkWebResponse_SetErrorInfo(ArkWeb_Response* response, ArkWeb_ErrorIn
 
 Sets the error info for the ArkWeb_Response.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -2030,7 +2066,7 @@ Sets the error info for the ArkWeb_Response.
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 - Success.<br>        {@link ARKWEB_INVALID_PARAM} 17100101 - Invalid param, response or errorInfo is nullptr. |
+| int32_t | {@link ARKWEB_NET_OK} 0 - Success.          [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, response or errorInfo is nullptr. |
 
 ### OH_ArkWebResponse_GetErrorInfo()
 
@@ -2042,7 +2078,9 @@ ArkWeb_ErrorInfo* OH_ArkWebResponse_GetErrorInfo(const ArkWeb_Response* response
 
 Gets the error info from the ArkWeb_Response.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -2066,7 +2104,9 @@ int32_t OH_ArkWebResourceHandler_DidFailWithErrorInfo(const ArkWeb_ResourceHandl
 
 Notify the web engine that this request should fail with error info.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -2079,7 +2119,7 @@ Notify the web engine that this request should fail with error info.
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 - Success.<br>        {@link ARKWEB_INVALID_PARAM} 17100101 - Invalid param, resourceHandler or errorInfo is nullptr. |
+| int32_t | {@link ARKWEB_NET_OK} 0 - Success.          [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, resourceHandler or errorInfo is nullptr. |
 
 ### OH_ArkWeb_ReleaseString()
 

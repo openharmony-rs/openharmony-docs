@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontGenericInfo {...} OH_Drawing_FontGenericInfo
 
 This struct describes the information about generic fonts supported by the system.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

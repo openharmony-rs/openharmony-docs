@@ -8,6 +8,8 @@ struct OhosImageComponent {...}
 
 Defines the image composition information.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 10
 
 **Related module**: [Image](capi-image.md)

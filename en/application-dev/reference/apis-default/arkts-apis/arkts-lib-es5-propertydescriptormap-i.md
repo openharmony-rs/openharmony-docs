@@ -1,5 +1,9 @@
 # PropertyDescriptorMap
 
+```TypeScript
+interface PropertyDescriptorMap
+```
+
 ## Modules to Import
 
 ```TypeScript

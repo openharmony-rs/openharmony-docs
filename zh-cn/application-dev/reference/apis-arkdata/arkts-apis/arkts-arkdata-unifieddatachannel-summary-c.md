@@ -1,5 +1,9 @@
 # Summary
 
+```TypeScript
+class Summary
+```
+
 描述统一数据对象的数据摘要，包括数据类型和大小。
 
 **起始版本：** 10
@@ -24,11 +28,11 @@ get filenameExtensions(): Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 

@@ -14,7 +14,7 @@ function openSession(accountId: number): Promise<Uint8Array>
 
 Opens a credential change session for the specified account.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 

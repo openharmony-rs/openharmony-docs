@@ -8,6 +8,8 @@ typedef struct OH_QoS_GewuSubmitRequestResult {...} OH_QoS_GewuSubmitRequestResu
 
 OH_QoS_GewuSubmitRequest()接口的返回结果，用于获取格物服务（Gewu service，端侧AI推理加速服务）推理请求的提交状态和结果。请求提交成功时，`request`字段包含创建的请求句柄， 可用于后续中止该请求；失败时，`error`字段保存错误码，便于开发者根据具体错误原因进行处理。该结构体适用于提交端侧AI推理请求后判断请求是否成功进入会话并获取请求句柄的场景。
 
+**系统能力：** SystemCapability.Resourceschedule.QoS.Core
+
 **起始版本：** 20
 
 **相关模块：** [QoS](capi-qos.md)

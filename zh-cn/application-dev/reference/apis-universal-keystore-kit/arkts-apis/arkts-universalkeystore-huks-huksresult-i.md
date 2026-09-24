@@ -1,5 +1,9 @@
 # HuksResult
 
+```TypeScript
+export interface HuksResult
+```
+
 调用接口返回的result。
 
 > **说明：** 

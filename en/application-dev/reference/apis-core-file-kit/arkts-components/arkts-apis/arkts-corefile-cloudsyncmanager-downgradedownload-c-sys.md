@@ -1,5 +1,9 @@
 # DowngradeDownload (System API)
 
+```TypeScript
+class DowngradeDownload
+```
+
 Full download: provides the capability of downloading cloud data for applications.
 
 It supports the full download of cloud application files.

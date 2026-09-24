@@ -1,5 +1,9 @@
 # NotificationCheckRequest（系统接口）
 
+```TypeScript
+export interface NotificationCheckRequest
+```
+
 描述通知的鉴权信息。
 
 **起始版本：** 11

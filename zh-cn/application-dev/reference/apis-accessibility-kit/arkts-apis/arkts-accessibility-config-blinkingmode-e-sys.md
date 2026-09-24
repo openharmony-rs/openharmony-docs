@@ -1,5 +1,9 @@
 # BlinkingMode（系统接口）
 
+```TypeScript
+export enum BlinkingMode
+```
+
 表示闪烁模式的枚举。
 
 **起始版本：** 26.0.0

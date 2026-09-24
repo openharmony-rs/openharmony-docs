@@ -1,0 +1,113 @@
+# ExecResult
+
+```TypeScript
+interface ExecResult
+```
+
+CLI工具执行的结果。包含CLI工具的退出码、标准输出、标准错误输出、终止信号、是否超时及执行时长。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { cliManager, CliHook, ExecToolParam, ExecCmdParam, ExecResultWrap } from '@kit.AbilityKit';
+```
+
+## errorText
+
+```TypeScript
+errorText?: string
+```
+
+工具的标准错误输出（stderr）。默认值：undefined。
+
+**类型：** string
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+## executionTime
+
+```TypeScript
+executionTime: number
+```
+
+工具的执行时长。单位：ms。
+
+**类型：** number
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+## exitCode
+
+```TypeScript
+exitCode?: number
+```
+
+工具的退出码。默认值：undefined。
+
+**类型：** number
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+## outputText
+
+```TypeScript
+outputText?: string
+```
+
+工具的标准输出（stdout）。默认值：undefined。
+
+**类型：** string
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+## signalNumber
+
+```TypeScript
+signalNumber?: number
+```
+
+工具的终止信号。默认值：undefined。
+
+**类型：** number
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+## timeOut
+
+```TypeScript
+timeOut: boolean
+```
+
+工具的执行是否超时。true表示超时，false表示未超时。
+
+**类型：** boolean
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core

@@ -38,17 +38,3 @@ Creates an &lt;b&gt;AudioLoopback&lt;/b&gt; instance, which provides low-latency
 | [6800104](../errorcode-audio.md#6800104-unsupported-parameter-value) | Loopback mode is unsupported. |
 
 **Examples**
-
-```TypeScript
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let audioLoopback: audio.AudioLoopback;
-
-audio.createAudioLoopback(audio.AudioLoopbackMode.HARDWARE).then((data) => {
-  audioLoopback = data;
-  console.info('AudioLoopback Created : SUCCESS');
-}).catch((err: BusinessError) => {
-  console.error(`AudioLoopback Created : ERROR : ${err}`);
-});
-```

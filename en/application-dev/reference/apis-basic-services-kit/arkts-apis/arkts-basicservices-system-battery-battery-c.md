@@ -1,5 +1,9 @@
 # Battery
 
+```TypeScript
+export default class Battery
+```
+
 The module allows you to query the charging status and remaining power of a device.
 
 **Since:** 3
@@ -26,6 +30,8 @@ Obtains the current charging state and battery level.
 
 **Deprecated since:** 6
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Lite
 
 **Parameters:**
@@ -36,12 +42,28 @@ Obtains the current charging state and battery level.
 
 **Examples**
 
-```TypeScript
 ArkTS example:
-```
 
 ```TypeScript
+Battery.getStatus({
+    success: (data: BatteryResponse) => {
+        console.info('success get battery level:' + data.level);
+    },
+    fail: (data: string, code: number) => {
+        console.error('fail to get battery level code:' + code + ', data: ' + data);
+    }
+});
+```
+
 JS example:
+
+```TypeScript
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Get Data" style="width: 240px; height: 50px; margin: 5px;" onclick="getBatteryInfo"></input>
+    <text class="title">level: {{ capacity }}</text>
+    <text class="title">charging: {{ charging }}</text>
+</div>
 ```
 
 ```TypeScript

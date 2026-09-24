@@ -1,5 +1,9 @@
 # ScreenshotOptions (System API)
 
+```TypeScript
+interface ScreenshotOptions
+```
+
 Describes the screenshot options.
 
 **Since:** 7

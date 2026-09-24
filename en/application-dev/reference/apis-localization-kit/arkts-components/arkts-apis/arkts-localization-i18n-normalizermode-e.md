@@ -1,5 +1,9 @@
 # NormalizerMode
 
+```TypeScript
+export enum NormalizerMode
+```
+
 Enumerates text normalization modes.
 
 **Since:** 10

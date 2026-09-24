@@ -1,5 +1,9 @@
 # Context
 
+```TypeScript
+export interface Context extends BaseContext
+```
+
 The context of an ability or an application. It allows access to application-specific resources, request and verification permissions. Can only be obtained through the ability.
 
 **Inheritance/Implementation:** Context extends [BaseContext](arkts-ability-basecontext-c.md)
@@ -27,6 +31,8 @@ Checks the detailed information of this ability.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt; | Yes | Return the detailed information of the current belonging Ability. |
+
+<a id="getabilityinfo-1"></a>
 
 ## getAbilityInfo
 
@@ -88,6 +94,8 @@ Obtains information about the current application.
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)&gt; | Yes | Returns information about the current application. |
 
+<a id="getapplicationinfo-1"></a>
+
 ## getApplicationInfo
 
 ```TypeScript
@@ -127,6 +135,8 @@ Obtains the application type.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Returns the type of the current application. |
+
+<a id="getapptype-1"></a>
 
 ## getAppType
 
@@ -168,6 +178,8 @@ Obtains the application version information.
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AppVersionInfo](arkts-ability-appversioninfo-appversioninfo-depr-i.md)&gt; | Yes | Return application version information. |
 
+<a id="getappversioninfo-1"></a>
+
 ## getAppVersionInfo
 
 ```TypeScript
@@ -207,6 +219,8 @@ Obtains the bundle name of the current ability.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Returns the Bundle name of the current capability. |
+
+<a id="getbundlename-1"></a>
 
 ## getBundleName
 
@@ -248,6 +262,8 @@ Obtains the cache directory of this application on the internal storage.
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Returns the internal storage directory of the application. |
 
+<a id="getcachedir-1"></a>
+
 ## getCacheDir
 
 ```TypeScript
@@ -287,6 +303,8 @@ Obtains the bundle name of the ability that called the current ability.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Returns the Bundle name of the ability caller. |
+
+<a id="getcallingbundle-1"></a>
 
 ## getCallingBundle
 
@@ -328,6 +346,8 @@ Obtains the current display orientation of this ability.
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[bundle.DisplayOrientation](arkts-ability-bundle-displayorientation-e.md)&gt; | Yes | Indicates the realistic direction of the screen. |
 
+<a id="getdisplayorientation-1"></a>
+
 ## getDisplayOrientation
 
 ```TypeScript
@@ -367,6 +387,8 @@ Obtains the ohos.bundle.ElementName object of the current ability.This method is
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ElementName](arkts-ability-elementname-elementname-depr-i.md)&gt; | Yes | Returns the ohos.bundle.ElementName of the current capability. |
+
+<a id="getelementname-1"></a>
 
 ## getElementName
 
@@ -410,6 +432,8 @@ Obtains the absolute path to the application-specific cache directory
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Returns the absolute path of the application's cache directory. |
 
+<a id="getexternalcachedir-1"></a>
+
 ## getExternalCacheDir
 
 ```TypeScript
@@ -452,6 +476,8 @@ Obtains the file directory of this application on the internal storage.
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Return the file directory of this application on internal storage. |
 
+<a id="getfilesdir-1"></a>
+
 ## getFilesDir
 
 ```TypeScript
@@ -491,6 +517,8 @@ Obtains the ModuleInfo object for this application.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)&gt; | Yes | Returns the ModuleInfo object of the application. |
+
+<a id="gethapmoduleinfo-1"></a>
 
 ## getHapModuleInfo
 
@@ -532,6 +560,8 @@ Obtains the distributed file path for storing ability or application data files.
 | --- | --- |
 | Promise&lt;string&gt; | Returns the distributed file path of the Ability or application. If it is the first call, a directory will be created. |
 
+<a id="getorcreatedistributeddir-1"></a>
+
 ## getOrCreateDistributedDir
 
 ```TypeScript
@@ -571,6 +601,8 @@ Get the local root dir of an app. If it is the first call, the dir will be creat
 | Type | Description |
 | --- | --- |
 | Promise&lt;string&gt; | the root dir |
+
+<a id="getorcreatelocaldir-1"></a>
 
 ## getOrCreateLocalDir
 
@@ -612,6 +644,8 @@ Obtains information about the current process, including the process ID and name
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ProcessInfo](arkts-ability-processinfo-processinfo-depr-i.md)&gt; | Yes | Return current process information. |
 
+<a id="getprocessinfo-1"></a>
+
 ## getProcessInfo
 
 ```TypeScript
@@ -651,6 +685,8 @@ Obtains the name of the current process.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Return current process name. |
+
+<a id="getprocessname-1"></a>
 
 ## getProcessName
 
@@ -692,6 +728,8 @@ Checks whether the configuration of this ability is changing.
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | True if the configuration of the capability is being changed, otherwise false. |
 
+<a id="isupdatingconfigurations-1"></a>
+
 ## isUpdatingConfigurations
 
 ```TypeScript
@@ -731,6 +769,8 @@ Inform the system of the time required for drawing this Page ability.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Represents the specified callback method. |
+
+<a id="printdrawncompleted-1"></a>
 
 ## printDrawnCompleted
 
@@ -777,6 +817,8 @@ Requests certain permissions from the system.
 | permissions | Array&lt;string&gt; | Yes | Indicates the list of permissions to be requested.parameter cannot be null. |
 | requestCode | number | Yes | Indicates the request code to be passed to the PermissionRequestResult |
 | resultCallback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md)&gt; | Yes | Return authorization result information. |
+
+<a id="requestpermissionsfromuser-1"></a>
 
 ## requestPermissionsFromUser
 
@@ -826,6 +868,8 @@ Sets the display orientation of the current ability.
 | orientation | [bundle.DisplayOrientation](arkts-ability-bundle-displayorientation-e.md) | Yes | Indicates the new orientation for the current ability. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Indicates the realistic direction of the screen. |
 
+<a id="setdisplayorientation-1"></a>
+
 ## setDisplayOrientation
 
 ```TypeScript
@@ -874,6 +918,8 @@ Sets whether to show this ability on top of the lock screen whenever the lock sc
 | --- | --- | --- | --- |
 | show | boolean | Yes | Specifies whether to show this ability on top of the lock screen. The value true means to show it on the lock screen, and the value false means not. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Returns the callback result. |
+
+<a id="setshowonlockscreen-1"></a>
 
 ## setShowOnLockScreen
 
@@ -927,6 +973,8 @@ Sets whether to wake up the screen when this ability is restored.
 | --- | --- | --- | --- |
 | wakeUp | boolean | Yes | Specifies whether to wake up the screen. The value true means to wake it up, and the value false means not. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Returns the callback result. |
+
+<a id="setwakeupscreen-1"></a>
 
 ## setWakeUpScreen
 
@@ -985,6 +1033,8 @@ Verify whether the specified permission is allowed for a particular pid and uid 
 | --- | --- |
 | Promise&lt;number&gt; | asynchronous callback with `0` if the PID and UID have the permission; callback with `-1` otherwise. |
 
+<a id="verifypermission-1"></a>
+
 ## verifyPermission
 
 ```TypeScript
@@ -1006,6 +1056,8 @@ Verify whether the specified permission is allowed for a particular pid and uid 
 | permission | string | Yes | The name of the specified permission |
 | options | [PermissionOptions](arkts-ability-context-permissionoptions-depr-i.md) | Yes | Permission Options |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Return permission verification result, 0 has permission, -1 has no permission. |
+
+<a id="verifypermission-2"></a>
 
 ## verifyPermission
 

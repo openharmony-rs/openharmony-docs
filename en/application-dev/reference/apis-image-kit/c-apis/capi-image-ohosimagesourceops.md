@@ -6,7 +6,9 @@ struct OhosImageSourceOps {...}
 
 ## Overview
 
-Defines image source options information [OH_ImageSource_Create](capi-image-source-mdk-h.md#oh_imagesource_create) and [OH_ImageSource_CreateIncremental](capi-image-source-mdk-h.md#oh_imagesource_createincremental).
+Defines image source options information {@link OH_ImageSource_Create} and {@link OH_ImageSource_CreateIncremental}.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 10
 

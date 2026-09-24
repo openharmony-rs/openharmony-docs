@@ -1,5 +1,9 @@
 # NumberFormatOptions
 
+```TypeScript
+interface NumberFormatOptions
+```
+
 ## Modules to Import
 
 ```TypeScript

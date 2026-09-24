@@ -42,6 +42,8 @@ Partitions a disk. This API uses an asynchronous callback to return the result. 
 | 13900042 | Unknown error. |
 
 
+<a id="partition-1"></a>
+
 ## partition
 
 ```TypeScript

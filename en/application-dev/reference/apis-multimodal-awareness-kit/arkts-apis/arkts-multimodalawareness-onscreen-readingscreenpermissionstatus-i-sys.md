@@ -1,5 +1,9 @@
 # ReadingScreenPermissionStatus (System API)
 
+```TypeScript
+export interface ReadingScreenPermissionStatus
+```
+
 Returns the status of the permission for reading screen information.
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # ShortcutWant
 
+```TypeScript
+export interface ShortcutWant
+```
+
 Describes a collection of target [Wants](../../../quick-start/module-configuration-file.md#wants) information defined within a shortcut.
 
 **Since:** 20

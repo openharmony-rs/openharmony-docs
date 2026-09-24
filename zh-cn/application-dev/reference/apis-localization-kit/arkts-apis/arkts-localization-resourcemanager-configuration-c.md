@@ -1,5 +1,9 @@
 # Configuration
 
+```TypeScript
+export class Configuration
+```
+
 表示当前设备的状态。
 
 **起始版本：** 6

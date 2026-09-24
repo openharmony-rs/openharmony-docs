@@ -1,5 +1,9 @@
 # FontVariationAxis
 
+```TypeScript
+interface FontVariationAxis
+```
+
 字体可变轴信息。
 
 **起始版本：** 24

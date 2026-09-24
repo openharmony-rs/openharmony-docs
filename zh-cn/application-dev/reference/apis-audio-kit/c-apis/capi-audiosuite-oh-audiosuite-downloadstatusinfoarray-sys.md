@@ -8,6 +8,8 @@ typedef struct OH_AudioSuite_DownloadStatusInfoArray {...} OH_AudioSuite_Downloa
 
 定义下载状态信息数组结构体。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
@@ -23,6 +25,6 @@ typedef struct OH_AudioSuite_DownloadStatusInfoArray {...} OH_AudioSuite_Downloa
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t size | 数组大小。<br>**起始版本：** 26.0.0 |
-| [OH_AudioSuite_DownloadStatusInfo](capi-audiosuite-oh-audiosuite-downloadstatusinfo.md) **downloadStatusInfo | 下载状态信息指针数组。<br>**起始版本：** 26.0.0 |
+| [OH_AudioSuite_DownloadStatusInfo](capi-audiosuite-oh-audiosuite-downloadstatusinfo-sys.md) **downloadStatusInfo | 下载状态信息指针数组。<br>**起始版本：** 26.0.0 |
 
 

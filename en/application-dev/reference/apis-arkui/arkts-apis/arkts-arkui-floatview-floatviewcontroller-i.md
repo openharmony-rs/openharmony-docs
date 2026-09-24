@@ -1,5 +1,9 @@
 # FloatViewController
 
+```TypeScript
+interface FloatViewController
+```
+
 Defines a float view controller instance, which is used to start and stop the float view and register callbacks.
 
 Before calling the following APIs, you must use [floatView.create()](arkts-arkui-floatview-create-f.md) to create a float view controller instance (that is, **floatViewController**).
@@ -308,7 +312,7 @@ try {
 restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>
 ```
 
-Restores the main window of the float view to display in the foreground. If this API is called when the main window is already in the foreground, the main window level will be raised. This API can be used only after the float view is clicked. If the main window is in the **PAUSED** state or in the multitasking state, error code 130 0032 will be returned if this API is called. This API uses a promise to return the result.
+Restores the main window of the float view to display in the foreground. If this API is called when the main window is already in the foreground, the main window level will be raised. This API can be used only after the float view is clicked. If the main window is in the **PAUSED** state or in the multitasking state, error code 1300032 will be returned if this API is called. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 

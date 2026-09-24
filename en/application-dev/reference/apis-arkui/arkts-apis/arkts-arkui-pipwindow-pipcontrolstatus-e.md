@@ -1,5 +1,9 @@
 # PiPControlStatus
 
+```TypeScript
+enum PiPControlStatus
+```
+
 Enumerates the statuses of components displayed on the PiP controller.
 
 **Since:** 12

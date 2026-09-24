@@ -14,7 +14,7 @@ function shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number
 
 Transfers a touchscreen input event from one window to another within the same application. This API takes effect only for the main window and its child windows. This API uses a promise to return the result.
 
-To transfer touchscreen input events, the source window must call this API within the callback of the onTouch event (the event type must be **TouchType.Down**). After a successful call, the system sends a **TouchType.Up** event to the source window and a **TouchType.Down** event to the target window.
+To transfer touchscreen input events, the source window must call this API within the callback of the [onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch) event (the event type must be **TouchType.Down**). After a successful call, the system sends a **TouchType.Up** event to the source window and a **TouchType.Down** event to the target window.
 
 **Since:** 20
 
@@ -26,7 +26,7 @@ To transfer touchscreen input events, the source window must call this API withi
 | --- | --- | --- | --- |
 | sourceWindowId | number | Yes | ID of the source window. You are advised to call [getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties) to obtain the window ID. The value must be an integer greater than 0. If it is less than or equal to 0, error code 1300016 is returned. |
 | targetWindowId | number | Yes | ID of the target window. You are advised to call [getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties) to obtain the window ID. The value must be an integer greater than 0. If it is less than or equal to 0, error code 1300016 is returned. |
-| fingerId | number | Yes | Unique ID of the finger in the touchscreen input event. You are advised to use the **touches** attribute in the TouchEvent object to obtain the ID. This parameter must be an integer greater than or equal to 0. If the value is less than 0, error code 1 300016 is returned. |
+| fingerId | number | Yes | Unique ID of the finger in the touchscreen input event. You are advised to use the **touches** attribute in the TouchEvent object to obtain the ID. This parameter must be an integer greater than or equal to 0. If the value is less than 0, error code 1300016 is returned. |
 
 **Return value:**
 

@@ -1,5 +1,9 @@
 # Zoom
 
+```TypeScript
+interface Zoom extends ZoomQuery
+```
+
 Zoom继承自[ZoomQuery](arkts-camera-camera-zoomquery-i.md)。
 
 变焦类，对设备变焦操作。
@@ -40,7 +44,7 @@ Gets zoom center point.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 ## prepareZoom
@@ -61,7 +65,7 @@ Instructs the bottom layer to prepare for zooming, for example, powering on the 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 **示例**
@@ -104,7 +108,7 @@ Sets zoom center point.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 ## unprepareZoom
@@ -125,7 +129,7 @@ Instructs the bottom layer to unprepare for zooming.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 **示例**

@@ -29,29 +29,11 @@ function getTargetOverlayModuleInfos(targetModuleName: string, callback: AsyncCa
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
 | [17700034](../errorcode-bundle.md#17700034-指定的module是overlay特征的module) | The specified module is an overlay module. |
 
 **示例**
-
-```TypeScript
-import { overlay } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let targetModuleName = "feature";
-
-(async () => {
-  try {
-    let overlayModuleInfos = await overlay.getTargetOverlayModuleInfos(targetModuleName);
-    console.info('overlayModuleInfos are ' + JSON.stringify(overlayModuleInfos));
-  } catch (err) {
-    let code = (err as BusinessError).code;
-    let message = (err as BusinessError).message;
-    console.error('getTargetOverlayModuleInfos failed due to err code : ' + code + ' ' + 'message :' + message);
-  }
-})();
-```
 
 ```TypeScript
 import { overlay } from '@kit.AbilityKit';
@@ -75,6 +57,8 @@ try {
 }
 ```
 
+
+<a id="gettargetoverlaymoduleinfos-1"></a>
 
 ## getTargetOverlayModuleInfos
 
@@ -104,10 +88,26 @@ function getTargetOverlayModuleInfos(targetModuleName: string): Promise<Array<Ov
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
 | [17700034](../errorcode-bundle.md#17700034-指定的module是overlay特征的module) | The specified module is an overlay module. |
 
 **示例**
 
-参见 getTargetOverlayModuleInfos
+```TypeScript
+import { overlay } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let targetModuleName = "feature";
+
+(async () => {
+  try {
+    let overlayModuleInfos = await overlay.getTargetOverlayModuleInfos(targetModuleName);
+    console.info('overlayModuleInfos are ' + JSON.stringify(overlayModuleInfos));
+  } catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error('getTargetOverlayModuleInfos failed due to err code : ' + code + ' ' + 'message :' + message);
+  }
+})();
+```

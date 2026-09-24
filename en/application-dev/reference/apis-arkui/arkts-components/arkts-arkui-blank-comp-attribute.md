@@ -1,8 +1,12 @@
 # Blank properties/events
 
-In addition to the [universal attributes](arkts-arkui-commonmethod-c.md), the following attributes are supported.
+```TypeScript
+declare class BlankAttribute extends CommonMethod<BlankAttribute>
+```
 
-The [universal events](arkts-arkui-commonmethod-c.md) are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
+
+The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Inheritance/Implementation:** BlankAttribute extends CommonMethod<BlankAttribute>
 
@@ -16,7 +20,7 @@ The [universal events](arkts-arkui-commonmethod-c.md) are supported.
 color(value: ResourceColor)
 ```
 
-Sets the fill color of the **Blank** component. This attribute can be dynamically set using attributeModifier.
+Sets the fill color of the **Blank** component. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 7
 
@@ -30,4 +34,4 @@ Sets the fill color of the **Blank** component. This attribute can be dynamicall
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color to fill the blank.<br>Default value: **Color.Transparent**<br>Invalid values are treated as the default value. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color to fill the blank.<br>Default value: **Color.Transparent** <br>Invalid values are treated as the default value. |

@@ -66,6 +66,8 @@ Opens a stream based on an FD. This API uses a promise to return the result. To 
 | 13900042 | Unknown error |
 
 
+<a id="fdopenstream-1"></a>
+
 ## fdopenStream
 
 ```TypeScript

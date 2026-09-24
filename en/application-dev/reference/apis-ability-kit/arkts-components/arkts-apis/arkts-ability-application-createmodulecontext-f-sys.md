@@ -6,6 +6,8 @@
 import { application } from '@kit.AbilityKit';
 ```
 
+<a id="createmodulecontext-1"></a>
+
 ## createModuleContext
 
 ```TypeScript
@@ -56,31 +58,6 @@ Creates the context for a module. This API uses a promise to return the result.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, application, common, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let moduleContext: common.Context;
-    try {
-      application.createModuleContext(this.context, 'entry').then((data: common.Context) => {
-        moduleContext = data;
-        console.info('createModuleContext success!');
-      }).catch((error: BusinessError) => {
-        let code: number = (error as BusinessError).code;
-        let message: string = (error as BusinessError).message;
-        console.error(`createModuleContext failed, error.code: ${code}, error.message: ${message}`);
-      });
-    } catch (error) {
-      let code: number = (error as BusinessError).code;
-      let message: string = (error as BusinessError).message;
-      console.error(`createModuleContext failed, error.code: ${code}, error.message: ${message}`);
-    }
-  }
-}
-```
 
 ```TypeScript
 import { UIAbility, application, common } from '@kit.AbilityKit';

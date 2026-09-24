@@ -53,24 +53,8 @@ formProvider.updateForm(formId, obj, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { formProvider, formBindingData } from '@kit.FormKit';
 
-// 使用时需要用已经存在formId
-let formId: string = '12400633174999288';
-let param: Record<string, string> = {
-  'temperature': '22c',
-  'time': '22:00'
-}
-let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
-formProvider.updateForm(formId, obj).then(() => {
-  console.info('formProvider updateForm success');
-}).catch((error: BusinessError) => {
-  console.error(`formProvider updateForm, errorCode: ${error.code}, errorMessage: ${error.message}`);
-});
-```
-
+<a id="updateform-1"></a>
 
 ## updateForm
 
@@ -103,4 +87,20 @@ function updateForm(formId: string, formBindingData: formBindingData.FormBinding
 
 **示例**
 
-参见 updateForm
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { formProvider, formBindingData } from '@kit.FormKit';
+
+// 使用时需要用已经存在formId
+let formId: string = '12400633174999288';
+let param: Record<string, string> = {
+  'temperature': '22c',
+  'time': '22:00'
+}
+let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+formProvider.updateForm(formId, obj).then(() => {
+  console.info('formProvider updateForm success');
+}).catch((error: BusinessError) => {
+  console.error(`formProvider updateForm, errorCode: ${error.code}, errorMessage: ${error.message}`);
+});
+```

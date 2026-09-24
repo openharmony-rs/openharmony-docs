@@ -1,5 +1,9 @@
 # RunningFormInfo
 
+```TypeScript
+interface RunningFormInfo
+```
+
 The class of a running form information.
 
 @typedef RunningFormInfo

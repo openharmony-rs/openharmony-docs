@@ -59,21 +59,8 @@ print.updatePrintJobState(jobId, state, subState, (error: BusinessError) => {
 })
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// Obtain the job ID from the onStartPrintJob callback of the PrintExtensionAbility.
-let jobId : string = 'jobId';
-let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
-let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
-print.updatePrintJobState(jobId, state, subState).then(() => {
-    console.info('update print job state success');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to updatePrintJobState. Code: ${error.code}, message: ${error.message}`);
-})
-```
-
+<a id="updateprintjobstate-1"></a>
 
 ## updatePrintJobState
 
@@ -115,4 +102,17 @@ Updates the print job state. This API uses a promise to return the result.
 
 **Examples**
 
-See [updatePrintJobState](#updateprintjobstate)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain the job ID from the onStartPrintJob callback of the PrintExtensionAbility.
+let jobId : string = 'jobId';
+let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
+let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
+print.updatePrintJobState(jobId, state, subState).then(() => {
+    console.info('update print job state success');
+}).catch((error: BusinessError) => {
+    console.error(`Failed to updatePrintJobState. Code: ${error.code}, message: ${error.message}`);
+})
+```

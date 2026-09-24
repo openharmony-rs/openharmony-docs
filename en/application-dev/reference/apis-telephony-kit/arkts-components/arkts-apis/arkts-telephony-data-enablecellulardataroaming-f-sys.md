@@ -56,17 +56,8 @@ data.enableCellularDataRoaming(0, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { data } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-data.enableCellularDataRoaming(0).then(() => {
-    console.info(`enableCellularDataRoaming success.`);
-}).catch((err: BusinessError) => {
-    console.error(`enableCellularDataRoaming fail. code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="enablecellulardataroaming-1"></a>
 
 ## enableCellularDataRoaming
 
@@ -110,4 +101,13 @@ Enables the cellular data roaming service. This API uses a promise to return the
 
 **Examples**
 
-See [enableCellularDataRoaming](#enablecellulardataroaming)
+```TypeScript
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.enableCellularDataRoaming(0).then(() => {
+    console.info(`enableCellularDataRoaming success.`);
+}).catch((err: BusinessError) => {
+    console.error(`enableCellularDataRoaming fail. code: ${err.code}, message: ${err.message}`);
+});
+```

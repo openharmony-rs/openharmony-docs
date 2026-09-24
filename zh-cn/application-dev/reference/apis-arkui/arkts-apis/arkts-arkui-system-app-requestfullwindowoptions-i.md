@@ -1,5 +1,9 @@
 # RequestFullWindowOptions
 
+```TypeScript
+export interface RequestFullWindowOptions
+```
+
 定义RequestFullWindow接口的选项。
 
 **起始版本：** 3
@@ -23,6 +27,8 @@ duration: number
 **类型：** number
 
 **起始版本：** 3
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

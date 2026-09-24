@@ -1,5 +1,9 @@
 # ClearAction（系统接口）
 
+```TypeScript
+enum ClearAction
+```
+
 清除本地下载的云端数据的行为枚举。
 
 **起始版本：** 10

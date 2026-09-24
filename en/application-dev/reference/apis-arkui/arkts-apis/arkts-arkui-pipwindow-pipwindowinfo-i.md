@@ -1,5 +1,9 @@
 # PiPWindowInfo
 
+```TypeScript
+interface PiPWindowInfo
+```
+
 Describes the PiP window information.
 
 **Since:** 15

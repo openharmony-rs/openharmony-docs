@@ -1,5 +1,9 @@
 # ImmersiveStyle
 
+```TypeScript
+enum ImmersiveStyle
+```
+
 Enumerates immersive material styles. Different material styles correspond to different material parameters, including the blur degree and brightness.
 
 **Since:** 26.0.0

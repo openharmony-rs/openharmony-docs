@@ -1,5 +1,9 @@
 # BundleNotificationStatistics（系统接口）
 
+```TypeScript
+export interface BundleNotificationStatistics
+```
+
 描述指定应用通知统计信息。
 
 **起始版本：** 26.0.0

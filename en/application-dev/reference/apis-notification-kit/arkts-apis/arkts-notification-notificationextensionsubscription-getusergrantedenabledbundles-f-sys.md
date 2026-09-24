@@ -47,14 +47,6 @@ Obtains the applications that are allowed to access device notifications. This A
 **Examples**
 
 ```TypeScript
-notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
-  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getUserGrantedEnabledBundles fail, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
 let targetBundle: notificationExtensionSubscription.BundleOption =
 {
   // Use the actual target application information.

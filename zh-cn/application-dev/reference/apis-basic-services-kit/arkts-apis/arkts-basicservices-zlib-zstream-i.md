@@ -1,5 +1,9 @@
 # ZStream
 
+```TypeScript
+interface ZStream
+```
+
 处理所有用于压缩和解压缩所需的信息。
 
 **起始版本：** 12

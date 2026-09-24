@@ -1,5 +1,9 @@
 # HuksUserAuthType
 
+```TypeScript
+export enum HuksUserAuthType
+```
+
 Enumerates the user authentication types.
 
 **Since:** 9

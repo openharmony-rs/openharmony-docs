@@ -1,5 +1,9 @@
 # LaunchController（系统接口）
 
+```TypeScript
+export declare class LaunchController
+```
+
 拉起原子化服务的控制器。
 
 **起始版本：** 12

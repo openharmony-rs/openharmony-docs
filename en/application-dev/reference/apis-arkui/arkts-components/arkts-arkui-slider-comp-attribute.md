@@ -1,5 +1,9 @@
 # Slider properties/events
 
+```TypeScript
+declare class SliderAttribute extends CommonMethod<SliderAttribute>
+```
+
 All the universal attributes except **responseRegion** are supported.
 
 In addition to the universal events, the following events are supported.
@@ -82,6 +86,8 @@ When **SliderBlockType.SHAPE** is used, **blockColor** sets the color of the thu
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -92,7 +98,9 @@ When **SliderBlockType.SHAPE** is used, **blockColor** sets the color of the thu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the thumb.<br>Default value: **&#36;r('sys.color.ohos_id_color_foreground_contrary')** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the thumb.<br>Default value: **$r('sys.color.ohos_id_color_foreground_contrary')** |
+
+<a id="blockcolor-1"></a>
 
 ## blockColor
 
@@ -122,7 +130,7 @@ When **SliderBlockType.SHAPE** is used, **blockColor** sets the color of the thu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Color of the thumb.<br>Default value: **&#36;r('sys.color.ohos_id_color_foreground_contrary')** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Color of the thumb.<br>Default value: **$r('sys.color.ohos_id_color_foreground_contrary')** |
 
 ## blockSize
 
@@ -150,7 +158,7 @@ When the slider type is set to **SliderBlockType.SHAPE**, this API sets the size
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SizeOptions](../arkts-apis/arkts-arkui-sizeoptions-i.md) | Yes | Size of the slider in the block direction.<br>Default value:<br>- For [SliderStyle](arkts-arkui-sliderstyle-e.md).OutSet: **{width: 18, height: 18}**<br>- For [SliderStyle](arkts-arkui-sliderstyle-e.md).InSet: **{width: 12, height: 12}**<br>- For [SliderStyle](arkts-arkui-sliderstyle-e.md).NONE: This parameter is not effective.<br>If the set **blockSize** has different width and height values, the smaller value is taken. If one or both of the width and height values are less than or equal to 0, the default value is used instead. |
+| value | [SizeOptions](../arkts-apis/arkts-arkui-sizeoptions-i.md) | Yes | Size of the slider in the block direction.<br>Default value:<br>- For [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).OutSet: **{width: 18, height: 18}**<br>- For [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).InSet: **{width: 12, height: 12}**<br>- For [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).NONE: This parameter is not effective.<br>If the set **blockSize** has different width and height values, the smaller value is taken. If one or both of the width and height values are less than or equal to 0, the default value is used instead. |
 
 ## blockStyle
 
@@ -172,7 +180,7 @@ Sets the style of the slider in the block direction.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SliderBlockStyle](arkts-arkui-sliderblockstyle-i.md) | Yes | Style of the slider in the block direction.<br>Default value: **SliderBlockType.DEFAULT**, indicating the round slider. |
+| value | [SliderBlockStyle](arkts-arkui-slider-comp-sliderblockstyle-i.md) | Yes | Style of the slider in the block direction.<br>Default value: **SliderBlockType.DEFAULT**, indicating the round slider. |
 
 ## contentModifier
 
@@ -194,7 +202,7 @@ Creates a content modifier.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[SliderConfiguration](arkts-arkui-sliderconfiguration-i.md)&gt; | Yes | Content modifier to apply to the slider.<br> **ContentModifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[SliderConfiguration](arkts-arkui-slider-comp-sliderconfiguration-i.md)&gt; | Yes | Content modifier to apply to the slider.<br> **ContentModifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
 
 ## digitalCrownSensitivity
 
@@ -206,7 +214,7 @@ Sets the sensitivity to the digital crown rotation.
 
 > **NOTE:** 
 > 
-> This API cannot be called within attributeModifier.
+> This API cannot be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 18
 
@@ -220,7 +228,7 @@ Sets the sensitivity to the digital crown rotation.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sensitivity | [Optional](arkts-arkui-optional-t.md)&lt;[CrownSensitivity](../arkts-apis/arkts-arkui-crownsensitivity-e.md)&gt; | Yes | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM** |
+| sensitivity | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CrownSensitivity](../arkts-apis/arkts-arkui-crownsensitivity-e.md)&gt; | Yes | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM** |
 
 ## enableHapticFeedback
 
@@ -257,13 +265,15 @@ Sets the maximum value.
 > **NOTE:** 
 > 
 > This attribute is supported since API version 7 and deprecated since API version 9. You are advised to use
-> **max** instead. **max** is an attribute of [SliderOptions](arkts-arkui-slideroptions-i.md).
+> **max** instead. **max** is an attribute of [SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md).
 
 **Since:** 7
 
 **Deprecated since:** 9
 
 **Substitutes:** max
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -284,13 +294,15 @@ Sets the minimum value.
 > **NOTE:** 
 > 
 > This attribute is supported since API version 7 and deprecated since API version 9. You are advised to use
-> **min** instead. **min** is an attribute of [SliderOptions](arkts-arkui-slideroptions-i.md).
+> **min** instead. **min** is an attribute of [SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md).
 
 **Since:** 7
 
 **Deprecated since:** 9
 
 **Substitutes:** min
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -320,7 +332,7 @@ Sets the minimum distance required for the slider to respond.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Minimum distance required for the slider to respond. The slider will only move when the sliding distance exceeds this threshold.<br>Default value: **0**<br>**NOTE:** <br>The unit is consistent with that of the **min** and **max** properties in [SliderOptions](arkts-arkui-slideroptions-i.md).<br>If the value is less than 0, greater than the result of (**max** – **min**), or invalid, the default value is used. |
+| value | number | Yes | Minimum distance required for the slider to respond. The slider will only move when the sliding distance exceeds this threshold.<br>Default value: **0**<br>**NOTE:** <br>The unit is consistent with that of the **min** and **max** properties in [SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md).<br>If the value is less than 0, greater than the result of (**max** – **min**), or invalid, the default value is used. |
 
 ## onChange
 
@@ -335,6 +347,8 @@ The **Begin** and **End** states are triggered when the slider is clicked with a
 If the coherent action is a drag action, the **Click** state will not be triggered.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -369,7 +383,7 @@ Sets the prefix of the slider.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | content | ComponentContent | Yes | Visual content of the slider prefix, which will be displayed at the start of the slider. |
-| options | [SliderPrefixOptions](arkts-arkui-sliderprefixoptions-i.md) | No | Accessibility configuration of the slider prefix. |
+| options | [SliderPrefixOptions](arkts-arkui-slider-comp-sliderprefixoptions-i.md) | No | Accessibility configuration of the slider prefix. |
 
 ## selectedBorderRadius
 
@@ -403,6 +417,8 @@ Sets the color of the portion of the track between the minimum value and the thu
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -413,7 +429,9 @@ Sets the color of the portion of the track between the minimum value and the thu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the portion of the track between the minimum value and the thumb.<br> Default value: **&#36;r('sys.color.ohos_id_color_emphasize')** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the portion of the track between the minimum value and the thumb.<br> Default value: **$r('sys.color.ohos_id_color_emphasize')** |
+
+<a id="selectedcolor-1"></a>
 
 ## selectedColor
 
@@ -437,7 +455,7 @@ Sets the color of the portion of the track between the minimum value and the thu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectedColor | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Color of the portion of the track between the minimum value and the thumb.<br>Default value: **&#36;r('sys.color.ohos_id_color_emphasize')**<br>**NOTE:** <br>With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied. |
+| selectedColor | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Color of the portion of the track between the minimum value and the thumb.<br>Default value: **$r('sys.color.ohos_id_color_emphasize')**<br>**NOTE:** <br>With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied. |
 
 ## showSteps
 
@@ -448,6 +466,8 @@ showSteps(value: boolean)
 Sets whether to display the step markers along the slider track.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -460,6 +480,8 @@ Sets whether to display the step markers along the slider track.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | boolean | Yes | Whether to display the step markers along the slider track.<br>**true**: Display the step markers. **false**: Do not display the step markers.<br>Default value: **false** |
+
+<a id="showsteps-1"></a>
 
 ## showSteps
 
@@ -488,7 +510,7 @@ The accessibility text settings take effect only when the step markers are displ
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | boolean | Yes | Whether to display the step markers along the slider track.<br>**true**: Display the step markers. **false**: Do not display the step markers.<br>Default value: **false** |
-| options | [SliderShowStepOptions](arkts-arkui-slidershowstepoptions-i.md) | No | Accessibility configuration of step markers.<br>Default value: **null** |
+| options | [SliderShowStepOptions](arkts-arkui-slider-comp-slidershowstepoptions-i.md) | No | Accessibility configuration of step markers.<br>Default value: **null** |
 
 ## showTips
 
@@ -503,6 +525,8 @@ When **direction** is set to **Axis.Horizontal**, the tooltip is displayed right
 The drawing area of the tooltip is the overlay of the slider.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -537,7 +561,7 @@ Sets the slide range.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SlideRange](arkts-arkui-sliderange-i.md) | Yes | Slide range. |
+| value | [SlideRange](arkts-arkui-slider-comp-sliderange-i.md) | Yes | Slide range. |
 
 ## sliderInteractionMode
 
@@ -559,7 +583,7 @@ Sets the interaction mode between the user and the slider.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SliderInteraction](arkts-arkui-sliderinteraction-e.md) | Yes | Interaction mode between the user and the slider.<br> Default value: **SliderInteraction.SLIDE_AND_CLICK** |
+| value | [SliderInteraction](arkts-arkui-slider-comp-sliderinteraction-e.md) | Yes | Interaction mode between the user and the slider.<br> Default value: **SliderInteraction.SLIDE_AND_CLICK** |
 
 ## stepColor
 
@@ -581,7 +605,7 @@ Sets the step color.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Step color.<br>Default value:<br>**&#36;r('sys.color.ohos_id_color_foreground')** mixed with **&#36;r('sys.color.ohos_id_alpha_normal_bg')** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Step color.<br>Default value:<br>**$r('sys.color.ohos_id_color_foreground')** mixed with **$r('sys.color.ohos_id_alpha_normal_bg')** |
 
 ## stepSize
 
@@ -626,7 +650,7 @@ Sets the suffix of the slider.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | content | ComponentContent | Yes | Visual content of the slider suffix, which will be displayed at the end of the slider. |
-| options | [SliderSuffixOptions](arkts-arkui-slidersuffixoptions-i.md) | No | Accessibility configuration of the slider suffix. |
+| options | [SliderSuffixOptions](arkts-arkui-slider-comp-slidersuffixoptions-i.md) | No | Accessibility configuration of the slider suffix. |
 
 ## trackBorderRadius
 
@@ -662,6 +686,8 @@ Since API version 12, **LinearGradient** can be used to create a gradient effect
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -672,7 +698,7 @@ Since API version 12, **LinearGradient** can be used to create a gradient effect
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Background color of the track.<br>Default value: **&#36;r('sys.color.ohos_id_color_component_normal')**<br>**NOTE:** <br>1. With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied.<br>2. The LinearGradient type cannot be used in atomic services.<br>**Since:** 12 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Background color of the track.<br>Default value: **$r('sys.color.ohos_id_color_component_normal')**<br>**NOTE:** <br>1. With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied.<br>2. The LinearGradient type cannot be used in atomic services.<br>**Since:** 12 |
 
 ## trackColorMetrics
 
@@ -694,7 +720,7 @@ Sets the linear gradient background color of the track.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [ColorMetricsLinearGradient](arkts-arkui-colormetricslineargradient-c.md) | Yes | Linear gradient background color of the track.<br>If **color** is **undefined**, the gradient color setting is invalid. The default background color of the track is **&#36;r('sys.color.ohos_id_color_component_normal')**. |
+| color | [ColorMetricsLinearGradient](arkts-arkui-slider-comp-colormetricslineargradient-c.md) | Yes | Linear gradient background color of the track.<br>If **color** is **undefined**, the gradient color setting is invalid. The default background color of the track is **$r('sys.color.ohos_id_color_component_normal')**. |
 
 ## trackThickness
 
@@ -704,15 +730,17 @@ trackThickness(value: Length)
 
 Sets the thickness of the track. If the value is less than or equal to 0, the default value is used.
 
-To ensure [SliderStyle](arkts-arkui-sliderstyle-e.md) works as expected for the thumb and track, [blockSize](#blocksize) should increase or decrease proportionally with **trackThickness**.
+To ensure [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md) works as expected for the thumb and track, [blockSize](#blocksize) should increase or decrease proportionally with **trackThickness**.
 
-Specially, when **style** is **[SliderStyle](arkts-arkui-sliderstyle-e.md).OutSet**, trackThickness: [blockSize](#blocksize) = 1:4; when **style** is **[SliderStyle](arkts-arkui-sliderstyle-e.md).InSet**, trackThickness: [blockSize](#blocksize) = 5:3.
+Specially, when **style** is **[SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).OutSet**, trackThickness: [blockSize](#blocksize) = 1:4; when **style** is **[SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).InSet**, trackThickness: [blockSize](#blocksize) = 5:3.
 
 If the value of **trackThickness** or [blockSize](#blocksize) exceeds the width or height of the **Slider** component, the default value is used.
 
-When [SliderStyle](arkts-arkui-sliderstyle-e.md) is set to **OutSet**, if the specified value of [blockSize](#blocksize) exceeds the width or height of the **Slider** component, the default value is used, regardless of whether the value of **trackThickness** is valid or not.
+When [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md) is set to **OutSet**, if the specified value of [blockSize](#blocksize) exceeds the width or height of the **Slider** component, the default value is used, regardless of whether the value of **trackThickness** is valid or not.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -724,4 +752,4 @@ When [SliderStyle](arkts-arkui-sliderstyle-e.md) is set to **OutSet**, if the sp
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Thickness of the track.<br>Default value: 4.0vp when **style** is set to **[SliderStyle](arkts-arkui-sliderstyle-e.md).OutSet**; 20.0vp when **style** is set to **[SliderStyle](arkts-arkui-sliderstyle-e.md).InSet** |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Thickness of the track.<br>Default value: 4.0vp when **style** is set to **[SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).OutSet**; 20.0vp when **style** is set to **[SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).InSet** |

@@ -1,5 +1,9 @@
 # DisconnectedReason (System API)
 
+```TypeScript
+enum DisconnectedReason
+```
+
 Wi-Fi disconnected reason. @enum { int }
 
 **Since:** 10

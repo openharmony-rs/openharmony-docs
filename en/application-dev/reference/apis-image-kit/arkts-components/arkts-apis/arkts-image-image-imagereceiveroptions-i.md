@@ -1,5 +1,9 @@
 # ImageReceiverOptions
 
+```TypeScript
+interface ImageReceiverOptions
+```
+
 Describes the initialization options for ImageReceiver.
 
 **Since:** 23

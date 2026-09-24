@@ -17,7 +17,7 @@ function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<n
 > **说明：** 
 > 
 > 该接口需要申请通知弹窗权限
-> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md)
+> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-1)
 > 后调用。 &gt;
 
 **起始版本：** 9
@@ -37,8 +37,8 @@ function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<n
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter is not valid parameter. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1700001](../errorcode-reminderAgentManager.md#1700001-通知使能未开启) | Notification is not enabled. |
 | [1700002](../errorcode-reminderAgentManager.md#1700002-提醒数量超出限制) | The number of reminders exceeds the limit. |
 
@@ -62,22 +62,8 @@ reminderAgentManager.publishReminder(timer, (err: BusinessError, reminderId: num
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
-let timer: reminderAgentManager.ReminderRequestTimer = {
-  reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER,
-  triggerTimeInSeconds: 10
-}
-
-reminderAgentManager.publishReminder(timer).then((reminderId: number) => {
-  console.info("promise, reminderId = " + reminderId);
-}).catch((err: BusinessError) => {
-  console.error("promise err code:" + err.code + " message:" + err.message);
-});
-```
-
+<a id="publishreminder-1"></a>
 
 ## publishReminder
 
@@ -90,7 +76,7 @@ function publishReminder(reminderReq: ReminderRequest): Promise<number>
 > **说明：** 
 > 
 > 该接口需要申请通知弹窗权限
-> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md)
+> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-1)
 > 后调用。 &gt;
 
 **起始版本：** 9
@@ -115,11 +101,25 @@ function publishReminder(reminderReq: ReminderRequest): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter is not valid parameter. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1700001](../errorcode-reminderAgentManager.md#1700001-通知使能未开启) | Notification is not enabled. |
 | [1700002](../errorcode-reminderAgentManager.md#1700002-提醒数量超出限制) | The number of reminders exceeds the limit. |
 
 **示例**
 
-参见 publishReminder
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+
+let timer: reminderAgentManager.ReminderRequestTimer = {
+  reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER,
+  triggerTimeInSeconds: 10
+}
+
+reminderAgentManager.publishReminder(timer).then((reminderId: number) => {
+  console.info("promise, reminderId = " + reminderId);
+}).catch((err: BusinessError) => {
+  console.error("promise err code:" + err.code + " message:" + err.message);
+});
+```

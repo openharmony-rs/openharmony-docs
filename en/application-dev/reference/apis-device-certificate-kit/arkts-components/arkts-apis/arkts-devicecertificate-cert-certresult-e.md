@@ -1,5 +1,9 @@
 # CertResult
 
+```TypeScript
+enum CertResult
+```
+
 Enumerates the error codes.
 
 **Since:** 9

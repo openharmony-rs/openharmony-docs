@@ -1,5 +1,9 @@
 # DelaySuspendInfo
 
+```TypeScript
+interface DelaySuspendInfo
+```
+
 Defines the information about the transient task.
 
 **Since:** 9

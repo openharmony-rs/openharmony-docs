@@ -1,5 +1,9 @@
 # PathDashStyle
 
+```TypeScript
+enum PathDashStyle
+```
+
 Enumerates the drawing styles for path effects.
 
 | Name | Value| Description |  

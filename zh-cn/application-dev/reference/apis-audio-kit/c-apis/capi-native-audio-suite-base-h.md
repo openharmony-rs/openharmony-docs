@@ -28,7 +28,7 @@
 | [OH_AudioSuiteEngineStruct](capi-ohaudiosuite-oh-audiosuiteenginestruct.md) | OH_AudioSuiteEngine | 声明音频编创引擎，用来管理音频编创管线。 |
 | [OH_AudioSuitePipelineStruct](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md) | OH_AudioSuitePipeline | 声明音频编创管线，用来管理音频编创节点。 |
 | [OH_AudioNodeStruct](capi-ohaudiosuite-oh-audionodestruct.md) | OH_AudioNode | 声明音频编创节点，用于描述音频编创节点实例。 |
-| [OH_AudioNodeBuilderStruct](capi-ohaudiosuite-oh-audionodebuilderstruct.md) | OH_AudioNodeBuilder | 声明音频编创节点的构造器。用于构建[OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)，配置输入/输出节点数据格式，配置输入节点回调接口。 |
+| [OH_AudioNodeBuilderStruct](capi-ohaudiosuite-oh-audionodebuilderstruct.md) | OH_AudioNodeBuilder | 声明音频编创节点的构造器。用于构建{@link OH_AudioNode}，配置输入/输出节点数据格式，配置输入节点回调接口。 |
 
 ### 枚举
 
@@ -82,6 +82,8 @@ enum OH_AudioNode_Type
 
 定义音频编创节点类型。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 22
 
 | 枚举项 | 描述 |
@@ -111,6 +113,8 @@ enum OH_AudioSuite_PipelineWorkMode
 
 定义音频编创管线工作模式。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 22
 
 | 枚举项 | 描述 |
@@ -128,6 +132,8 @@ enum OH_AudioSuite_PipelineState
 
 定义音频编创管线运行状态。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 22
 
 | 枚举项 | 描述 |
@@ -144,6 +150,8 @@ enum OH_AudioSuite_Result
 **描述：**
 
 音频编创错误码。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 22
 
@@ -174,6 +182,8 @@ enum OH_Audio_SampleFormat
 
 定义音频编创节点音频流的位深度。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 22
 
 | 枚举项 | 描述 |
@@ -194,6 +204,8 @@ enum OH_Audio_EncodingType
 
 定义音频流编码类型。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 22
 
 | 枚举项 | 描述 |
@@ -209,6 +221,8 @@ enum OH_Audio_SampleRate
 **描述：**
 
 定义音频采样率。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 22
 
@@ -239,6 +253,8 @@ enum OH_SoundFieldType
 
 定义音频编创声场效果节点的效果模式。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 22
 
 | 枚举项 | 描述 |
@@ -257,6 +273,8 @@ enum OH_EnvironmentType
 **描述：**
 
 定义音频编创环境效果节点的模式。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 22
 
@@ -277,6 +295,8 @@ enum OH_VoiceBeautifierType
 
 定义音频编创美化效果节点模式。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 22
 
 | 枚举项 | 描述 |
@@ -296,6 +316,8 @@ enum OH_AudioSuite_SurroundDirection
 
 定义空间渲染效果节点旋转模式环绕方向。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -313,6 +335,8 @@ enum OH_AudioSuite_PureVoiceChangeGenderOption
 
 定义音频编创传统变声效果节点的性别。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -329,6 +353,8 @@ enum OH_AudioSuite_PureVoiceChangeType
 **描述：**
 
 定义音频编创传统变声效果节点的变声类型。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 23
 
@@ -351,6 +377,8 @@ enum OH_AudioSuite_GeneralVoiceChangeType
 **描述：**
 
 定义音频编创通用变声的节点类型。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 23
 

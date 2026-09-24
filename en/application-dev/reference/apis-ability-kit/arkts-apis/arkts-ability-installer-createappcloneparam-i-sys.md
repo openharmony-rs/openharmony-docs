@@ -1,5 +1,9 @@
 # CreateAppCloneParam (System API)
 
+```TypeScript
+export interface CreateAppCloneParam
+```
+
 Describes the parameters used for creating an application clone.
 
 **Since:** 12
@@ -44,7 +48,7 @@ is not sent after the clone is created. If this key is not present or the value 
 
 **Type:** Array&lt;Parameters&gt;
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

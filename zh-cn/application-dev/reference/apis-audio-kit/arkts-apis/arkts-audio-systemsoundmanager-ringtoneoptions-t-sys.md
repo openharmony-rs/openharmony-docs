@@ -6,8 +6,6 @@ type RingtoneOptions = _RingtoneOptions
 
 系统铃音播放器配置项。
 
-@typedef { _RingtoneOptions } RingtoneOptions
-
 **起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core

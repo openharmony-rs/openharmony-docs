@@ -8,6 +8,8 @@ typedef struct OH_Drawing_GpuContextOptions {...} OH_Drawing_GpuContextOptions
 
 This struct describes the options about the GPU context.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Deprecated**: 18

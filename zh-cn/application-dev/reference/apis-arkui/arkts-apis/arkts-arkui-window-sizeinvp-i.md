@@ -1,5 +1,9 @@
 # SizeInVP
 
+```TypeScript
+interface SizeInVP
+```
+
 窗口大小，单位为vp。
 
 **起始版本：** 23

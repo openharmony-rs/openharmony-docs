@@ -1,5 +1,9 @@
 # CollatorOptions
 
+```TypeScript
+export interface CollatorOptions
+```
+
 Defines the options for creating a **Collator** object. Since API version 9, the attributes in **CollatorOptions** are optional.
 
 **Since:** 8

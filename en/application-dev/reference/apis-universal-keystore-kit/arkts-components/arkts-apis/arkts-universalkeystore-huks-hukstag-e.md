@@ -1,5 +1,9 @@
 # HuksTag
 
+```TypeScript
+export enum HuksTag
+```
+
 Enumerates the tags used to invoke parameters.
 
 **Since:** 8
@@ -20,6 +24,8 @@ Note: This parameter is supported since API version 8 and deprecated since API v
 
 **Deprecated since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_TAG_ALGORITHM
@@ -31,6 +37,8 @@ HUKS_TAG_ALGORITHM = HuksTagType.HUKS_TAG_TYPE_UINT | 1
 Algorithm.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -46,6 +54,8 @@ Purpose of the key.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -60,6 +70,8 @@ Key size, in bits.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -73,6 +85,8 @@ HUKS_TAG_DIGEST = HuksTagType.HUKS_TAG_TYPE_UINT | 4
 Digest algorithm.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -90,6 +104,8 @@ Padding mode.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -103,6 +119,8 @@ HUKS_TAG_BLOCK_MODE = HuksTagType.HUKS_TAG_TYPE_UINT | 6
 Cipher mode.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -118,6 +136,8 @@ Key type.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -131,6 +151,8 @@ HUKS_TAG_ASSOCIATED_DATA = HuksTagType.HUKS_TAG_TYPE_BYTES | 8
 Associated authentication data.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -146,6 +168,8 @@ Nonce for key encryption and decryption.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -159,6 +183,8 @@ HUKS_TAG_IV = HuksTagType.HUKS_TAG_TYPE_BYTES | 10
 IV.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -174,6 +200,8 @@ Information generated during key derivation.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -187,6 +215,8 @@ HUKS_TAG_SALT = HuksTagType.HUKS_TAG_TYPE_BYTES | 12
 Salt value used for key derivation.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -208,6 +238,8 @@ Note: This parameter is supported since API version 8 and deprecated since API v
 
 **Deprecated since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_TAG_ITERATION
@@ -219,6 +251,8 @@ HUKS_TAG_ITERATION = HuksTagType.HUKS_TAG_TYPE_UINT | 14
 Number of iterations for key derivation.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -235,6 +269,8 @@ HUKS_TAG_KEY_GENERATE_TYPE = HuksTagType.HUKS_TAG_TYPE_UINT | 15
 Key generation type.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -298,6 +334,8 @@ Type of the algorithm used for key agreement.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -313,6 +351,8 @@ HUKS_TAG_AGREE_PUBLIC_KEY_IS_KEY_ALIAS = HuksTagType.HUKS_TAG_TYPE_BOOL | 20
 Public key alias used in key agreement.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -330,6 +370,8 @@ Private key alias used in key agreement.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -345,6 +387,8 @@ HUKS_TAG_AGREE_PUBLIC_KEY = HuksTagType.HUKS_TAG_TYPE_BYTES | 22
 Public key used in key agreement.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -362,6 +406,8 @@ Key alias.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -375,6 +421,8 @@ HUKS_TAG_DERIVE_KEY_SIZE = HuksTagType.HUKS_TAG_TYPE_UINT | 24
 Size of the derived key, in bytes.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -392,6 +440,8 @@ Type of the imported key.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -407,6 +457,8 @@ HUKS_TAG_UNWRAP_ALGORITHM_SUITE = HuksTagType.HUKS_TAG_TYPE_UINT | 26
 Suite for securely importing a key.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -424,6 +476,8 @@ Storage type of the derived key or agreed key.
 
 **Since:** 10
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -439,6 +493,8 @@ HUKS_TAG_RSA_PSS_SALT_LEN_TYPE = HuksTagType.HUKS_TAG_TYPE_UINT | 30
 Type of the **rsa_pss_salt_length**.
 
 **Since:** 10
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -476,6 +532,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_TAG_USAGE_EXPIRE_DATETIME
@@ -491,6 +549,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -508,6 +568,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_TAG_ALL_USERS
@@ -519,6 +581,8 @@ HUKS_TAG_ALL_USERS = HuksTagType.HUKS_TAG_TYPE_BOOL | 301
 Reserved.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -536,6 +600,8 @@ ID of the user to which the key belongs.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -551,6 +617,8 @@ HUKS_TAG_NO_AUTH_REQUIRED = HuksTagType.HUKS_TAG_TYPE_BOOL | 303
 Reserved.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -938,6 +1006,8 @@ Whether to overwrite the key with the same name.
 
 **Since:** 20
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -951,6 +1021,8 @@ HUKS_TAG_AE_TAG_LEN = HuksTagType.HUKS_TAG_TYPE_UINT | 521
 Length of the specified AEAD tag, in bytes.
 
 **Since:** 22
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
@@ -992,6 +1064,8 @@ Security level of the key.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -1005,6 +1079,8 @@ HUKS_TAG_AAD = HuksTagType.HUKS_TAG_TYPE_BYTES | 527
 Additional verification data indicating the GCM or CCM mode.
 
 **Since:** 24
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
@@ -1020,6 +1096,8 @@ The tag indicates the context for crypto operations, such as ML-DSA, etc.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -1033,6 +1111,8 @@ HUKS_TAG_IS_KEY_ALIAS = HuksTagType.HUKS_TAG_TYPE_BOOL | 1001
 Whether to use the alias passed in during key generation.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -1048,6 +1128,8 @@ Key storage mode.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -1061,6 +1143,8 @@ HUKS_TAG_IS_ALLOWED_WRAP = HuksTagType.HUKS_TAG_TYPE_BOOL | 1003
 Reserved.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -1077,6 +1161,8 @@ HUKS_TAG_KEY_WRAP_TYPE = HuksTagType.HUKS_TAG_TYPE_UINT | 1004
 Reserved.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -1108,6 +1194,8 @@ Reserved.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -1124,6 +1212,8 @@ Flag of the key.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -1137,6 +1227,8 @@ HUKS_TAG_IS_ASYNCHRONIZED = HuksTagType.HUKS_TAG_TYPE_UINT | 1008
 Reserved.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -1157,6 +1249,8 @@ Note: This parameter is supported since API version 8 and deprecated since API v
 **Since:** 8
 
 **Deprecated since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -1185,6 +1279,8 @@ HUKS_TAG_KEY_DOMAIN = HuksTagType.HUKS_TAG_TYPE_UINT | 1011
 Reserved.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -1217,6 +1313,8 @@ Note: This parameter is supported since API version 8 and deprecated since API v
 **Since:** 8
 
 **Deprecated since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -1294,6 +1392,8 @@ Reserved.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -1340,6 +1440,8 @@ Used to pass in the AEAD in GCM mode.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -1358,6 +1460,8 @@ Note: This parameter is supported since API version 8 and deprecated since API v
 
 **Deprecated since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_TAG_OS_VERSION
@@ -1373,6 +1477,8 @@ Note: This parameter is supported since API version 8 and deprecated since API v
 **Since:** 8
 
 **Deprecated since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -1390,6 +1496,8 @@ Note: This parameter is supported since API version 8 and deprecated since API v
 
 **Deprecated since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_TAG_SYMMETRIC_KEY_DATA
@@ -1401,6 +1509,8 @@ HUKS_TAG_SYMMETRIC_KEY_DATA = HuksTagType.HUKS_TAG_TYPE_BYTES | 20001
 Reserved.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -1415,6 +1525,8 @@ HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA = HuksTagType.HUKS_TAG_TYPE_BYTES | 20002
 Reserved.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -1431,6 +1543,8 @@ HUKS_TAG_ASYMMETRIC_PRIVATE_KEY_DATA = HuksTagType.HUKS_TAG_TYPE_BYTES | 20003
 Reserved.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 

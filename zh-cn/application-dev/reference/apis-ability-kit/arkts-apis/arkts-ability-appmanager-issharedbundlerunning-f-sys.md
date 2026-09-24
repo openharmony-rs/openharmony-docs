@@ -39,9 +39,9 @@ function isSharedBundleRunning(bundleName: string, versionCode: number): Promise
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
@@ -60,21 +60,8 @@ appManager.isSharedBundleRunning(bundleName, versionCode).then((data) => {
 });
 ```
 
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
 
-const bundleName = 'com.example.myapplication';
-const versionCode = 1;
-
-appManager.isSharedBundleRunning(bundleName, versionCode, (err, data) => {
-  if (err) {
-    console.error(`err: ${JSON.stringify(err)}`);
-  } else {
-    console.info(`The shared bundle running is: ${JSON.stringify(data)}`);
-  }
-});
-```
-
+<a id="issharedbundlerunning-1"></a>
 
 ## isSharedBundleRunning
 
@@ -104,11 +91,24 @@ function isSharedBundleRunning(bundleName: string, versionCode: number, callback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
 
-参见 [isSharedBundleRunning](#issharedbundlerunning)
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+
+const bundleName = 'com.example.myapplication';
+const versionCode = 1;
+
+appManager.isSharedBundleRunning(bundleName, versionCode, (err, data) => {
+  if (err) {
+    console.error(`err: ${JSON.stringify(err)}`);
+  } else {
+    console.info(`The shared bundle running is: ${JSON.stringify(data)}`);
+  }
+});
+```

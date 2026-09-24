@@ -1,5 +1,9 @@
 # LcdFlashStatus（系统接口）
 
+```TypeScript
+interface LcdFlashStatus
+```
+
 Describes the LCD flash information.
 
 **起始版本：** 12

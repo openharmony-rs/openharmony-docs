@@ -1,5 +1,9 @@
 # Filter
 
+```TypeScript
+interface Filter
+```
+
 Filter effect class, used to apply corresponding effects to specified components. Before calling Filter methods, you need to first create a Filter instance through createFilter.
 
 **Since:** 12

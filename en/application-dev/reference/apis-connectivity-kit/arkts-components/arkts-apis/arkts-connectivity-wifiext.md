@@ -24,10 +24,10 @@ import { wifiext } from '@kit.ConnectivityKit';
 | --- | --- |
 | [disableHotspot](arkts-connectivity-wifiext-disablehotspot-f.md) | Disables a Wi-Fi hotspot. |
 | [enableHotspot](arkts-connectivity-wifiext-enablehotspot-f.md) | Enables a Wi-Fi hotspot. |
-| [getPowerModel](arkts-connectivity-wifiext-getpowermodel-f.md) | Obtains the current Wi-Fi power mode. |
-| [getPowerModel](arkts-connectivity-wifiext-getpowermodel-f.md) | Obtains the current Wi-Fi power mode. |
-| [getSupportedPowerModel](arkts-connectivity-wifiext-getsupportedpowermodel-f.md) | Obtains the supported power model. |
-| [getSupportedPowerModel](arkts-connectivity-wifiext-getsupportedpowermodel-f.md) | Obtains the supported power model. |
+| [getPowerModel](arkts-connectivity-wifiext-getpowermodel-f.md#getpowermodel) | Obtains the current Wi-Fi power mode. |
+| [getPowerModel](arkts-connectivity-wifiext-getpowermodel-f.md#getpowermodel-1) | Obtains the current Wi-Fi power mode. |
+| [getSupportedPowerModel](arkts-connectivity-wifiext-getsupportedpowermodel-f.md#getsupportedpowermodel) | Obtains the supported power model. |
+| [getSupportedPowerModel](arkts-connectivity-wifiext-getsupportedpowermodel-f.md#getsupportedpowermodel-1) | Obtains the supported power model. |
 | [setPowerModel](arkts-connectivity-wifiext-setpowermodel-f.md) | Set the current Wi-Fi power mode. |
 
 ### Enums

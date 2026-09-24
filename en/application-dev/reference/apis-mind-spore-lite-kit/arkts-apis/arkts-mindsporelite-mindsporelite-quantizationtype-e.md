@@ -1,5 +1,9 @@
 # QuantizationType
 
+```TypeScript
+export enum QuantizationType
+```
+
 Enum for quantization type
 
 **Since:** 12

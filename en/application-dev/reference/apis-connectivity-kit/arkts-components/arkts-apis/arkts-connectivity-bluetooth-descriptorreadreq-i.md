@@ -1,5 +1,9 @@
 # DescriptorReadReq
 
+```TypeScript
+interface DescriptorReadReq
+```
+
 Describes the parameters of the Gatt client's descriptor read request.
 
 **Since:** 7

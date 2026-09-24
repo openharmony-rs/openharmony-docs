@@ -1,5 +1,9 @@
 # RegionOp
 
+```TypeScript
+enum RegionOp
+```
+
 Enumerates the operations for combining two regions.
 
 > **NOTE:** 

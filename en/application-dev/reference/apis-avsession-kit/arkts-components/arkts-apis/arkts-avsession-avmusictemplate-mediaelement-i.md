@@ -1,5 +1,9 @@
 # MediaElement
 
+```TypeScript
+interface MediaElement extends MediaEntity
+```
+
 The definition of Singer/Radio/Banner.
 
 @extends MediaEntity @interface MediaElement

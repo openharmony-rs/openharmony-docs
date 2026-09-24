@@ -32,7 +32,7 @@ function getCellularDataState(callback: AsyncCallback<DataConnectState>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 22+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 22+ |
 
 **示例**
 
@@ -49,17 +49,8 @@ data.getCellularDataState((err: BusinessError, contextData: data.DataConnectStat
 });
 ```
 
-```TypeScript
-import { data } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-data.getCellularDataState().then((contextData: data.DataConnectState) => {
-    console.info(`getCellularDataState success, contextData: ${contextData}`);
-}).catch((err: BusinessError) => {
-    console.error(`getCellularDataState fail. code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getcellulardatastate-1"></a>
 
 ## getCellularDataState
 
@@ -87,8 +78,17 @@ function getCellularDataState(): Promise<DataConnectState>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 22+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 22+ |
 
 **示例**
 
-参见 getCellularDataState
+```TypeScript
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.getCellularDataState().then((contextData: data.DataConnectState) => {
+    console.info(`getCellularDataState success, contextData: ${contextData}`);
+}).catch((err: BusinessError) => {
+    console.error(`getCellularDataState fail. code: ${err.code}, message: ${err.message}`);
+});
+```

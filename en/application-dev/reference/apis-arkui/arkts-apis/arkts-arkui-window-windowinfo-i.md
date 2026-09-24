@@ -1,5 +1,9 @@
 # WindowInfo
 
+```TypeScript
+interface WindowInfo
+```
+
 Describes the window information.
 
 **Since:** 18

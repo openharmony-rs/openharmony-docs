@@ -1,5 +1,9 @@
 # WindowStageLifecycleEventType
 
+```TypeScript
+enum WindowStageLifecycleEventType
+```
+
 WindowStage生命周期的状态类型枚举。
 
 **起始版本：** 20

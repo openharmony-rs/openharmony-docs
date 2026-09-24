@@ -26,6 +26,8 @@ Imports keys in secure mode. This API uses an asynchronous callback to return th
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -234,19 +236,8 @@ function huksImportWrappedKey() {
 }
 ```
 
-```TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
 
-/* The process is similar if a callback is used, except the following: */
-/* The key data imported may be different from the sample code given below. The data structure is described in the preceding comments. */
-async function TestImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
-  await huks.importWrappedKeyItem(alias, wrappingAlias, options)
-    .then(() => {
-      console.info(`promise: importWrappedKeyItem success`);
-    });
-}
-```
-
+<a id="importwrappedkeyitem-1"></a>
 
 ## importWrappedKeyItem
 
@@ -309,4 +300,15 @@ Imports keys in secure mode. This API uses a promise to return the result.
 
 **Examples**
 
-See [importWrappedKeyItem](#importwrappedkeyitem)
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* The process is similar if a callback is used, except the following: */
+/* The key data imported may be different from the sample code given below. The data structure is described in the preceding comments. */
+async function TestImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
+  await huks.importWrappedKeyItem(alias, wrappingAlias, options)
+    .then(() => {
+      console.info(`promise: importWrappedKeyItem success`);
+    });
+}
+```

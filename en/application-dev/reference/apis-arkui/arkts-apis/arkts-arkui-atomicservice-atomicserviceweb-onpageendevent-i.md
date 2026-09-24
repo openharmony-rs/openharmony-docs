@@ -1,5 +1,9 @@
 # OnPageEndEvent
 
+```TypeScript
+export declare interface OnPageEndEvent
+```
+
 Represents the callback invoked when the web page loading ends.
 
 **Since:** 12

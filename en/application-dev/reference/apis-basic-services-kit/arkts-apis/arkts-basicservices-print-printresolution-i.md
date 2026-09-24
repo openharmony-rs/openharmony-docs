@@ -1,5 +1,9 @@
 # PrintResolution
 
+```TypeScript
+interface PrintResolution
+```
+
 Defines the resolution for printing.
 
 **Since:** 24

@@ -1,5 +1,9 @@
 # BatteryInfo (System API)
 
+```TypeScript
+interface BatteryInfo
+```
+
 Describe the contents of the battery information.
 
 **Since:** 26.0.0

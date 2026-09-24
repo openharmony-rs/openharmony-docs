@@ -1,5 +1,9 @@
 # DomainServerConfig
 
+```TypeScript
+interface DomainServerConfig
+```
+
 Represents the configuration of a domain server.
 
 **Since:** 18

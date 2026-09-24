@@ -1,5 +1,9 @@
 # ScreenCaptureEvent (System API)
 
+```TypeScript
+enum ScreenCaptureEvent
+```
+
 Enumerates the states available for the system screen recorder.
 
 **Since:** 18

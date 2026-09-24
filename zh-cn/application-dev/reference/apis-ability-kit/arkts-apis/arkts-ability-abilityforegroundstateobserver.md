@@ -1,4 +1,4 @@
-# AbilityForegroundStateObserver
+# AbilityForegroundStateObserver(前台状态监听器)
 
 ## 汇总
 

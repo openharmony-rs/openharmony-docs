@@ -1,5 +1,9 @@
 # ShortMessage
 
+```TypeScript
+export interface ShortMessage
+```
+
 短信实例。
 
 **起始版本：** 6

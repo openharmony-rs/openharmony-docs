@@ -8,6 +8,8 @@ typedef struct ArkUI_ListChildrenMainSize ArkUI_ListChildrenMainSize
 
 定义List组件子组件的主轴尺寸信息。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

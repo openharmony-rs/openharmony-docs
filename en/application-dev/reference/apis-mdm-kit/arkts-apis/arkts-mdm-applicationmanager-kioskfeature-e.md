@@ -1,5 +1,9 @@
 # KioskFeature
 
+```TypeScript
+enum KioskFeature
+```
+
 Defines the features of the kiosk mode.
 
 **Since:** 20

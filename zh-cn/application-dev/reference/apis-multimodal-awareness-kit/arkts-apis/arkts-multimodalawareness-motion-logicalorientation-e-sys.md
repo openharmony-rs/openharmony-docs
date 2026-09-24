@@ -1,5 +1,9 @@
 # LogicalOrientation（系统接口）
 
+```TypeScript
+export enum LogicalOrientation
+```
+
 由智能算法计算出的逻辑方向枚举。
 
 **起始版本：** 26.0.0

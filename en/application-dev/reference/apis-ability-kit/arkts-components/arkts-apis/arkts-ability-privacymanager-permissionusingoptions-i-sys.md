@@ -1,5 +1,9 @@
 # PermissionUsingOptions (System API)
 
+```TypeScript
+interface PermissionUsingOptions
+```
+
 Represents the optional parameter set for using a permission.
 
 **Since:** 26.0.0

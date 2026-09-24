@@ -41,6 +41,14 @@ Subscribes to **callDetailsChange** events. This API uses an asynchronous callba
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+**Examples**
+
+```TypeScript
+call.on('callDetailsChange', (data: call.CallAttributeOptions) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
 
 ## on('callEventChange')
 
@@ -76,6 +84,14 @@ Subscribes to **callEventChange** events. This API uses an asynchronous callback
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
+
+**Examples**
+
+```TypeScript
+call.on('callEventChange', (data: call.CallEventOptions) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
 
 
 ## on('callDisconnectedCause')
@@ -113,6 +129,14 @@ Subscribes to **callDisconnectedCause** events. This API uses an asynchronous ca
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+**Examples**
+
+```TypeScript
+call.on('callDisconnectedCause', (data: call.DisconnectedDetails) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
 
 ## on('mmiCodeResult')
 
@@ -148,6 +172,14 @@ Subscribes to **mmiCodeResult** events. This API uses an asynchronous callback t
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
+
+**Examples**
+
+```TypeScript
+call.on('mmiCodeResult', (data: call.MmiCodeResults) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
 
 
 ## on('audioDeviceChange')
@@ -185,6 +217,14 @@ Subscribes to audio device change events. This API uses an asynchronous callback
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+**Examples**
+
+```TypeScript
+call.on('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
 
 ## on('postDialDelay')
 
@@ -220,6 +260,14 @@ Subscribes to **postDialDelay** events. This API uses an asynchronous callback t
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
+
+**Examples**
+
+```TypeScript
+call.on('postDialDelay', (data: string) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
 
 
 ## on('imsCallModeChange')
@@ -257,6 +305,16 @@ Subscribes to **imsCallModeChange** events. This API uses an asynchronous callba
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.on('imsCallModeChange', (data: call.ImsCallModeInfo) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
 
 ## on('callSessionEvent')
 
@@ -292,6 +350,16 @@ Subscribes to **callSessionEvent** events. This API uses an asynchronous callbac
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.on('callSessionEvent', (data: call.CallSessionEvent) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
 
 
 ## on('peerDimensionsChange')
@@ -329,6 +397,16 @@ Subscribes to **peerDimensionsChange** events. This API uses an asynchronous cal
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.on('peerDimensionsChange', (data: call.PeerDimensionsDetail) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
 
 ## on('cameraCapabilitiesChange')
 
@@ -364,3 +442,11 @@ Subscribes to **cameraCapabilitiesChange** events. This API uses an asynchronous
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
+
+**Examples**
+
+```TypeScript
+call.on('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```

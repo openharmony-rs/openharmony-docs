@@ -1,5 +1,9 @@
 # BrightnessModeResponse
 
+```TypeScript
+export interface BrightnessModeResponse
+```
+
 Defines a response that returns the screen brightness mode.
 
 **Since:** 3
@@ -27,5 +31,7 @@ The value **0** indicates the manual adjustment mode, and the value **1** indica
 **Since:** 3
 
 **Deprecated since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite

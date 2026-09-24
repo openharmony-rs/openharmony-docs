@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_TestUnitReadyRequest {...} ScsiPeripheral_TestUnit
 
 Defines the request structure of the **test unit ready** command.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

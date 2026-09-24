@@ -1,5 +1,9 @@
 # TimeLapsePhotoSession（系统接口）
 
+```TypeScript
+interface TimeLapsePhotoSession extends Session, Focus, ManualFocus, AutoExposure, ManualExposure, ManualIso, WhiteBalance, Zoom, ColorEffect
+```
+
 TimeLapsePhotoSession extends Session, Focus, ManualFocus, AutoExposure, ManualExposure, ManualIso, WhiteBalance, Zoom, ColorEffect Implements a time-lapse photo session, which sets the parameters of the time-lapse photo mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md).
 
 **继承/实现关系：** TimeLapsePhotoSession extends [Session](arkts-camera-camera-session-i.md), [Focus](arkts-camera-camera-focus-i.md), [ManualFocus](arkts-camera-camera-manualfocus-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [ManualExposure](arkts-camera-camera-manualexposure-i.md), [ManualIso](arkts-camera-camera-manualiso-i.md), [WhiteBalance](arkts-camera-camera-whitebalance-i.md), [Zoom](arkts-camera-camera-zoom-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->
@@ -40,7 +44,7 @@ Obtains the supported time-lapse shooting interval range.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
 **示例**
@@ -85,7 +89,7 @@ Obtains the current time-lapse shooting interval.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 **示例**
@@ -130,7 +134,7 @@ Obtains the time-lapse preview type.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 **示例**
@@ -175,7 +179,7 @@ Obtains the time-lapse shooting state.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 **示例**
@@ -220,7 +224,7 @@ Checks whether Try AE is required.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
 **示例**
@@ -266,7 +270,15 @@ Unsubscribes from HighResolutionPhotoSession error events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterSessionError(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
+  timeLapsePhotoSession.off('error');
+}
+```
 
 ## off('focusStateChange')
 
@@ -293,7 +305,15 @@ Unsubscribes from focus state change events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterFocusStateChange(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
+  timeLapsePhotoSession.off('focusStateChange');
+}
+```
 
 ## off('isoInfoChange')
 
@@ -320,7 +340,15 @@ Unsubscribes from automatic ISO change events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterIsoInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
+  timeLapsePhotoSession.off('isoInfoChange');
+}
+```
 
 ## off('exposureInfoChange')
 
@@ -347,7 +375,15 @@ Unsubscribes from exposure information change events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterExposureInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
+  timeLapsePhotoSession.off('exposureInfoChange');
+}
+```
 
 ## off('luminationInfoChange')
 
@@ -374,7 +410,15 @@ Unsubscribes from illumination change events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterLuminationInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
+  timeLapsePhotoSession.off('luminationInfoChange');
+}
+```
 
 ## off('tryAEInfoChange')
 
@@ -401,7 +445,15 @@ Unsubscribes from Try AE change events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterTryAEInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
+  timeLapsePhotoSession.off('tryAEInfoChange');
+}
+```
 
 ## on('error')
 
@@ -428,7 +480,21 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Time lapse photo session error code: ${err.code}`);
+}
+
+function registerSessionError(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
+  timeLapsePhotoSession.on('error', callback);
+}
+```
 
 ## on('focusStateChange')
 
@@ -455,7 +521,25 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, focusState: camera.FocusState): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`Focus state: ${focusState}`);
+}
+
+function registerFocusStateChange(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
+  timeLapsePhotoSession.on('focusStateChange', callback);
+}
+```
 
 ## on('isoInfoChange')
 
@@ -482,7 +566,25 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isoInfoCallback(err: BusinessError, info: camera.IsoInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`ISO value: ${info.iso}`);
+}
+
+function registerIsoInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
+  timeLapsePhotoSession.on('isoInfoChange', isoInfoCallback);
+}
+```
 
 ## on('exposureInfoChange')
 
@@ -509,7 +611,25 @@ Subscribes to exposure information change events to obtain the exposure informat
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function exposureInfoCallback(err: BusinessError, info: camera.ExposureInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`exposureTimeValue: ${info.exposureTime}`);
+}
+
+function registerExposureInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
+  timeLapsePhotoSession.on('exposureInfoChange', exposureInfoCallback);
+}
+```
 
 ## on('luminationInfoChange')
 
@@ -536,7 +656,25 @@ Subscribes to illumination change events to obtain real-time illumination inform
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function luminationInfoCallback(err: BusinessError, info: camera.LuminationInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`Lumination: ${info.lumination}`);
+}
+
+function registerLuminationInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
+  timeLapsePhotoSession.on('luminationInfoChange', luminationInfoCallback);
+}
+```
 
 ## on('tryAEInfoChange')
 
@@ -563,7 +701,25 @@ Subscribes to Try AE change events to obtain real-time Try AE parameters. This A
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function tryAEInfoCallback(err: BusinessError, info: camera.TryAEInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`TryAEInfo: ${info.isTryAEDone}, ${info.isTryAEHintNeeded}, ${info.previewType}, ${info.captureInterval}`);
+}
+
+function registerTryAEInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
+  timeLapsePhotoSession.on('tryAEInfoChange', tryAEInfoCallback);
+}
+```
 
 ## setTimeLapseInterval
 
@@ -589,7 +745,7 @@ Sets a time-lapse shooting interval.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
@@ -634,7 +790,7 @@ Sets the time-lapse preview type.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
@@ -678,7 +834,7 @@ Sets the time-lapse shooting state.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
@@ -716,7 +872,7 @@ Starts to execute Try AE.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
@@ -754,7 +910,7 @@ Stops the execution of Try AE.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 

@@ -244,7 +244,7 @@ const OPTION_ASCII: number
 const OPTION_AUTO_CAP_CHARACTERS: number
 ```
 
-允许输入字符。
+自动将字符首字母大写。
 
 **类型：** number
 
@@ -258,7 +258,7 @@ const OPTION_AUTO_CAP_CHARACTERS: number
 const OPTION_AUTO_CAP_SENTENCES: number
 ```
 
-允许输入句子。
+自动将句子首字母大写。
 
 **类型：** number
 
@@ -421,6 +421,22 @@ const PATTERN_ONE_TIME_CODE: number
 **类型：** number
 
 **起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## PATTERN_ONE_TIME_CODE_NUMBER
+
+```TypeScript
+const PATTERN_ONE_TIME_CODE_NUMBER: number
+```
+
+数字验证码编辑框。固定为15。取值限定为整数。
+
+**类型：** number
+
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

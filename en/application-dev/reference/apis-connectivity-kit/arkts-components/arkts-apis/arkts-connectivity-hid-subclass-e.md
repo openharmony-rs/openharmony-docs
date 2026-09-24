@@ -1,5 +1,9 @@
 # Subclass
 
+```TypeScript
+enum Subclass
+```
+
 Describe the subclass.
 
 **Since:** 23

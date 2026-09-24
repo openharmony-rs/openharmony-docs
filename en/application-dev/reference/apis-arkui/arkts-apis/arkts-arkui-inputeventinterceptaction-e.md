@@ -1,5 +1,9 @@
 # InputEventInterceptAction
 
+```TypeScript
+declare enum InputEventInterceptAction
+```
+
 Defines the input event intercept action.
 
 **Since:** 26.0.0

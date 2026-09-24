@@ -1,5 +1,9 @@
 # SecurityEvent (System API)
 
+```TypeScript
+interface SecurityEvent
+```
+
 Provides the SecurityEvent type, including the event id, version info, report content.
 
 @typedef SecurityEvent

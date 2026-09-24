@@ -1,5 +1,9 @@
 # ArcSliderOptionsConstructorOptions
 
+```TypeScript
+interface ArcSliderOptionsConstructorOptions
+```
+
 Defines the constructor information for **ArcSliderOptions**.
 
 **Since:** 18

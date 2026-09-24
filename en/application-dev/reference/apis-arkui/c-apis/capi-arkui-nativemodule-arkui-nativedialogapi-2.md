@@ -8,6 +8,8 @@ typedef struct ArkUI_NativeDialogAPI_2 {...} ArkUI_NativeDialogAPI_2
 
 Provides the custom dialog box APIs for the native side.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -20,7 +22,7 @@ Provides the custom dialog box APIs for the native side.
 
 | Name | Description |
 | -- | -- |
-| [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md) nativeDialogAPI1 | Provides the custom dialog box APIs for the native side. The API scope is [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md)<br>**Since**: 15 |
+| [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md) nativeDialogAPI1 | Provides the custom dialog box APIs for the native side. The API scope is {@link ArkUI_NativeDialogAPI_1}<br>**Since**: 15 |
 
 
 ### Member functions
@@ -85,7 +87,7 @@ Sets the level mode for a custom dialog box.
 | Parameter | Description |
 | -- | -- |
 | ArkUI_NativeDialogHandle handle | Indicates the pointer to the custom dialog box controller. |
-|  [ArkUI_LevelMode](capi-native-dialog-h.md#arkui_levelmode) levelMode | Indicates the level mode. The parameter type is [ArkUI_LevelMode](capi-native-dialog-h.md#arkui_levelmode). |
+|  [ArkUI_LevelMode](capi-native-dialog-h.md#arkui_levelmode) levelMode | Indicates the level mode. The parameter type is {@link ArkUI_LevelMode}. |
 
 **Returns**:
 
@@ -143,7 +145,7 @@ Sets the immersive mode for a custom dialog box.
 | Parameter | Description |
 | -- | -- |
 | ArkUI_NativeDialogHandle handle | Indicates the pointer to the custom dialog box controller. |
-|  [ArkUI_ImmersiveMode](capi-native-dialog-h.md#arkui_immersivemode) immersiveMode | Indicates the immersive mode. The parameter type is [ArkUI_ImmersiveMode](capi-native-dialog-h.md#arkui_immersivemode). |
+|  [ArkUI_ImmersiveMode](capi-native-dialog-h.md#arkui_immersivemode) immersiveMode | Indicates the immersive mode. The parameter type is {@link ArkUI_ImmersiveMode}. |
 
 **Returns**:
 

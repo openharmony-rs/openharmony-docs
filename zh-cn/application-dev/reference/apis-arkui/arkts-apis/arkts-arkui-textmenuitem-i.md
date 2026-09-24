@@ -1,5 +1,9 @@
 # TextMenuItem
 
+```TypeScript
+declare interface TextMenuItem
+```
+
 文本菜单项
 
 **起始版本：** 12

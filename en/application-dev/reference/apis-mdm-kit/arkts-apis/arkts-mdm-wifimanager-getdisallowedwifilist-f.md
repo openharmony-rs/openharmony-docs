@@ -62,6 +62,8 @@ try {
 ```
 
 
+<a id="getdisallowedwifilist-1"></a>
+
 ## getDisallowedWifiList
 
 ```TypeScript

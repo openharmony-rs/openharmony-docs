@@ -1,5 +1,9 @@
 # CaptureStartInfo
 
+```TypeScript
+interface CaptureStartInfo
+```
+
 拍照开始信息。
 
 **起始版本：** 11

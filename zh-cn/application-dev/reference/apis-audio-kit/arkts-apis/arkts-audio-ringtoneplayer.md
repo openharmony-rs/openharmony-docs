@@ -1,5 +1,15 @@
 # ringtonePlayer(铃声播放器)
 
+铃声播放器提供了系统铃声的播放、配置、获取信息等功能。
+ ringtonePlayer需要和[@ohos.multimedia.systemSoundManager](arkts-audio-multimedia-systemsoundmanager.md)配
+ 合使用，才能完成管理系统铃声的功能。
+
+> **说明：**
+
+> - 本模块接口为系统接口。
+
+
+
 ## 汇总
 
 <!--Del-->

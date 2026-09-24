@@ -1,0 +1,61 @@
+# EditMode
+
+```TypeScript
+declare enum EditMode
+```
+
+ListItem元素编辑模式枚举。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## None
+
+```TypeScript
+None
+```
+
+编辑操作不限制。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Deletable
+
+```TypeScript
+Deletable
+```
+
+Deletable.
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Movable
+
+```TypeScript
+Movable
+```
+
+Movable.
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full

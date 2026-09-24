@@ -18,7 +18,7 @@ function closeToast(toastId: number): void
 > 
 > 直接使用closeToast可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用 UIContext中的getPromptAction方法获取
 > 到PromptAction对象，再通过该对象调用
-> closeToast实现。
+> [closeToast](arkts-arkui-arkui-uicontext-promptaction-c.md#closetoast)实现。
 
 **起始版本：** 18
 
@@ -38,6 +38,6 @@ function closeToast(toastId: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [103401](../errorcode-promptAction.md#103401-无法找到对应的文本提示框) | Cannot find the toast. |

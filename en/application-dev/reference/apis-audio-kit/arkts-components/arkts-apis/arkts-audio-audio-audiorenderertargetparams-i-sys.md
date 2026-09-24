@@ -1,5 +1,9 @@
 # AudioRendererTargetParams (System API)
 
+```TypeScript
+interface AudioRendererTargetParams
+```
+
 Options for setting the render target of an audio renderer. This parameter takes effect only when the target is non-PLAYBACK. In other cases, this parameter does not need to be specified and does not take effect even if specified. Both uid and streamId must be specified.
 
 **Since:** 26.0.0

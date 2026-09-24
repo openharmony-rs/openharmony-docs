@@ -33,8 +33,14 @@ function getEvent(node: FrameNode, nodeType: 'Scroll'): UIScrollEvent | undefine
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIScrollEvent](../arkts-components/arkts-arkui-uiscrollevent-i.md) &#124; undefined | Scroll节点类型的滚动事件，若获取失败，则返回undefined。 |
+| [UIScrollEvent](../arkts-components/arkts-arkui-scroll-comp-uiscrollevent-i.md) &#124; undefined | Scroll节点类型的滚动事件，若获取失败，则返回undefined。 |
 
+**示例**
+
+完整示例请参考滚动事件示例。
+
+
+<a id="getevent-1"></a>
 
 ## getEvent
 
@@ -63,8 +69,14 @@ function getEvent(node: FrameNode, nodeType: 'List'): UIListEvent | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIListEvent](../arkts-components/arkts-arkui-uilistevent-i.md) &#124; undefined | List节点类型的滚动事件，若获取失败，则返回undefined。 |
+| [UIListEvent](../arkts-components/arkts-arkui-list-comp-uilistevent-i.md) &#124; undefined | List节点类型的滚动事件，若获取失败，则返回undefined。 |
 
+**示例**
+
+完整示例请参考滚动事件示例。
+
+
+<a id="getevent-2"></a>
 
 ## getEvent
 
@@ -93,8 +105,14 @@ function getEvent(node: FrameNode, nodeType: 'WaterFlow'): UIWaterFlowEvent | un
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIWaterFlowEvent](../arkts-components/arkts-arkui-uiwaterflowevent-i.md) &#124; undefined | WaterFlow节点类型的滚动事件，若获取失败，则返回undefined。 |
+| [UIWaterFlowEvent](../arkts-components/arkts-arkui-waterflow-comp-uiwaterflowevent-i.md) &#124; undefined | WaterFlow节点类型的滚动事件，若获取失败，则返回undefined。 |
 
+**示例**
+
+完整示例请参考滚动事件示例。
+
+
+<a id="getevent-3"></a>
 
 ## getEvent
 
@@ -123,4 +141,8 @@ function getEvent(node: FrameNode, nodeType: 'Grid'): UIGridEvent | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIGridEvent](../arkts-components/arkts-arkui-uigridevent-i.md) &#124; undefined | Grid节点类型的滚动事件，若获取失败，则返回undefined。 |
+| [UIGridEvent](../arkts-components/arkts-arkui-grid-comp-uigridevent-i.md) &#124; undefined | Grid节点类型的滚动事件，若获取失败，则返回undefined。 |
+
+**示例**
+
+完整示例请参考滚动事件示例。

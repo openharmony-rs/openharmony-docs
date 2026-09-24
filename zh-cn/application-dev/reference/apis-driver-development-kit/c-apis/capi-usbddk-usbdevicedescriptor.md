@@ -8,6 +8,8 @@ typedef struct UsbDeviceDescriptor {...} __attribute__((aligned(8))) UsbDeviceDe
 
 标准设备描述符，对应USB协议中Standard Device Descriptor。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **起始版本：** 10
 
 **相关模块：** [UsbDdk](capi-usbddk.md)

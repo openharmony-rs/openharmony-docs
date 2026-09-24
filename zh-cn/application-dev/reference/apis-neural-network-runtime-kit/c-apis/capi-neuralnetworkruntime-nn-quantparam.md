@@ -8,6 +8,8 @@ typedef struct NN_QuantParam NN_QuantParam
 
 量化参数的句柄。
 
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
+
 **起始版本：** 11
 
 **相关模块：** [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)

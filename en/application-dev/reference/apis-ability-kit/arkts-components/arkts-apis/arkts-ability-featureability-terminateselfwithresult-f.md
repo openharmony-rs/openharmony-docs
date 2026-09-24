@@ -65,6 +65,37 @@ featureAbility.terminateSelfWithResult(
 );
 ```
 
+
+<a id="terminateselfwithresult-1"></a>
+
+## terminateSelfWithResult
+
+```TypeScript
+function terminateSelfWithResult(parameter: AbilityResult): Promise<void>
+```
+
+Terminates this ability. This API uses a promise to return the result. If the ability is started by calling [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md), the result is returned to the caller when **terminateSelfWithResult** is called. Otherwise, no result is returned to the caller when **terminateSelfWithResult** is called.
+
+**Since:** 7
+
+**Model restriction:** This API can be used only in the FA model.
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | Yes | Result returned after the ability is terminated. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
 ```TypeScript
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
@@ -99,34 +130,3 @@ featureAbility.terminateSelfWithResult(
   console.info('==========================>terminateSelfWithResult=======================>');
 });
 ```
-
-
-## terminateSelfWithResult
-
-```TypeScript
-function terminateSelfWithResult(parameter: AbilityResult): Promise<void>
-```
-
-Terminates this ability. This API uses a promise to return the result. If the ability is started by calling [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md), the result is returned to the caller when **terminateSelfWithResult** is called. Otherwise, no result is returned to the caller when **terminateSelfWithResult** is called.
-
-**Since:** 7
-
-**Model restriction:** This API can be used only in the FA model.
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | Yes | Result returned after the ability is terminated. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-See [terminateSelfWithResult](#terminateselfwithresult)

@@ -8,6 +8,8 @@ typedef struct OH_MediaAsset OH_MediaAsset
 
 The struct describes a media asset.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 12
 
 **Related module**: [MediaAssetManager](capi-mediaassetmanager.md)

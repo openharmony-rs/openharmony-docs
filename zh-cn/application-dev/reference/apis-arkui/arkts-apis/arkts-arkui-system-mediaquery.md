@@ -1,4 +1,4 @@
-# @system.mediaquery
+# @system.mediaquery(媒体查询)
 
 ## 导入模块
 

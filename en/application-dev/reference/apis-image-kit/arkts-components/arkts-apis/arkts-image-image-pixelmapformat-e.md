@@ -1,5 +1,9 @@
 # PixelMapFormat
 
+```TypeScript
+enum PixelMapFormat
+```
+
 Enumerates the pixel formats of images.
 
 **Since:** 7

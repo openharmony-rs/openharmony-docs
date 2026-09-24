@@ -1,5 +1,9 @@
 # EditableTitleV2
 
+```TypeScript
+export declare class EditableTitleV2
+```
+
 标题配置类。
 
 **起始版本：** 26.0.0

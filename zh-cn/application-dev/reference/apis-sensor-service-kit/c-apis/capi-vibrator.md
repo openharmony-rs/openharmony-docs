@@ -4,6 +4,8 @@
 
 提供振动API中使用的枚举、结构体和错误码。
 
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
 **起始版本：** 11
 
 ## 文件汇总

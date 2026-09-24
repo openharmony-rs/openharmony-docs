@@ -1,5 +1,9 @@
 # FocusMode
 
+```TypeScript
+enum FocusMode
+```
+
 表示焦点模式类型的枚举。
 
 **起始版本：** 23

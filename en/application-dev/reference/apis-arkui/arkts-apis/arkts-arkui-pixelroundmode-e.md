@@ -1,5 +1,9 @@
 # PixelRoundMode
 
+```TypeScript
+declare enum PixelRoundMode
+```
+
 Pixel Round Mode
 
 @enum { number }

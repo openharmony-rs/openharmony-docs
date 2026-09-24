@@ -1,5 +1,9 @@
 # AVMetricsEventType
 
+```TypeScript
+enum AVMetricsEventType
+```
+
 表示媒体服务支持的指标事件的枚举。
 
 **起始版本：** 23

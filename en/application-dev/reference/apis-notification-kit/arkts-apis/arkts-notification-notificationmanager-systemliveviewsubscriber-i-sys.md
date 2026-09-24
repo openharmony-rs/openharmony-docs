@@ -1,5 +1,9 @@
 # SystemLiveViewSubscriber (System API)
 
+```TypeScript
+export interface SystemLiveViewSubscriber
+```
+
 Subscriber of the system live view notification.
 
 **Since:** 11

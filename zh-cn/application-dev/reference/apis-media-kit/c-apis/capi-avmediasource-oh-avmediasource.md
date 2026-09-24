@@ -8,6 +8,8 @@ typedef struct OH_AVMediaSource OH_AVMediaSource
 
 声明媒体源类型。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **相关模块：** [AVMediaSource](capi-avmediasource.md)

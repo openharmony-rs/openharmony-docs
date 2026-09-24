@@ -1,5 +1,9 @@
 # BatteryStatsInfo (System API)
 
+```TypeScript
+interface BatteryStatsInfo
+```
+
 Describes the device power consumption information.
 
 **Since:** 8

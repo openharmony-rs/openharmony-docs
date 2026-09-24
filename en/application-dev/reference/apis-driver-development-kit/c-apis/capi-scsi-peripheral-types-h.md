@@ -63,6 +63,8 @@ enum ScsiPeripheral_DdkErrCode
 
 SCSI Peripheral DDK error codes.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 | Enum item | Description |
@@ -87,6 +89,8 @@ enum ScsiPeripheral_Status
 **Description**
 
 Enumerates the SCSI status codes used for the response.
+
+**System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
 

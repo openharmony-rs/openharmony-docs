@@ -1,5 +1,9 @@
 # AgentSkill
 
+```TypeScript
+export interface AgentSkill
+```
+
 Represents a distinct capability or function that an agent can perform.
 
 @typedef AgentSkill

@@ -1,5 +1,9 @@
 # P2pDeviceStatus
 
+```TypeScript
+enum P2pDeviceStatus
+```
+
 P2P device status.
 
 @enum { int }

@@ -8,6 +8,8 @@ typedef struct JSVM_Ref__* JSVM_Ref
 
 表示JavaScript值的引用。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 11
 
 **相关模块：** [JSVM](capi-jsvm.md)

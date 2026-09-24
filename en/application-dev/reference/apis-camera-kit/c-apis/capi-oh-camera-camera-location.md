@@ -8,6 +8,8 @@ typedef struct Camera_Location {...} Camera_Location
 
 The struct describes the location where a photo is taken.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

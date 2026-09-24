@@ -1,5 +1,9 @@
 # List
 
+```TypeScript
+declare class List<T>
+```
+
 List is implemented based on the singly linked list. Each node has a reference pointing to the next element. When querying an element, the system traverses the list from the beginning.
 
 **Since:** 8

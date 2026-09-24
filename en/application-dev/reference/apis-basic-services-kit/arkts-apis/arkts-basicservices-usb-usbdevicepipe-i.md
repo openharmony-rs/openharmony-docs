@@ -1,5 +1,9 @@
 # USBDevicePipe
 
+```TypeScript
+interface USBDevicePipe
+```
+
 Represents a USB device pipe, which is used to determine a USB device.
 
 **Since:** 8

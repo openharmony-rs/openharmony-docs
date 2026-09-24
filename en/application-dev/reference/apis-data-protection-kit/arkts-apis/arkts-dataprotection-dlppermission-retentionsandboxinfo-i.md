@@ -1,5 +1,9 @@
 # RetentionSandboxInfo
 
+```TypeScript
+export interface RetentionSandboxInfo
+```
+
 Represents the sandbox retention information.
 
 **Since:** 10

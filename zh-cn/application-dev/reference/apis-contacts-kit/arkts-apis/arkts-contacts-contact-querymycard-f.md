@@ -18,7 +18,7 @@ function queryMyCard(callback: AsyncCallback<Contact>): void
 
 **废弃版本：** 10
 
-**替代接口：** queryMyCard(context: Context, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryMyCard](#querymycard-1)(context: Context, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -31,12 +31,6 @@ function queryMyCard(callback: AsyncCallback<Contact>): void
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **示例**
-
-```TypeScript
-> 说明：
-> 
-> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -52,34 +46,8 @@ contact.queryMyCard((err: BusinessError, data) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { contact } from '@kit.ContactsKit';
 
-// 传入联系人的属性列表，查询“我的名片”
-contact.queryMyCard({
-  attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
-}, (err: BusinessError, data) => {
-  if (err) {
-    console.error(`Failed to query My Card. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info(`Succeeded in querying My Card. data->${JSON.stringify(data)}`);
-});
-```
-
-```TypeScript
-import { contact } from '@kit.ContactsKit';
-
-// 回调函数，传入联系人的属性列表，查询“我的名片”。
-let promise = contact.queryMyCard({
-  attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
-});
-promise.then((data) => {
-  console.info(`Succeeded in querying My Card. data->${JSON.stringify(data)}`);
-});
-```
-
+<a id="querymycard-1"></a>
 
 ## queryMyCard
 
@@ -106,13 +74,33 @@ function queryMyCard(context: Context, callback: AsyncCallback<Contact>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例**
 
-参见 queryMyCard
+> 说明：
+> 
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
+  import { common } from '@kit.AbilityKit';
+
+  // 请在组件内获取context。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  contact.queryMyCard(context, (err: BusinessError, data) => {
+    if (err) {
+      console.error(`Failed to query My Card. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`Succeeded in querying My Card. data->${JSON.stringify(data)}`);
+  });
+```
+
+
+<a id="querymycard-2"></a>
 
 ## queryMyCard
 
@@ -126,7 +114,7 @@ function queryMyCard(attrs: ContactAttributes, callback: AsyncCallback<Contact>)
 
 **废弃版本：** 10
 
-**替代接口：** queryMyCard(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryMyCard](#querymycard-3)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -141,8 +129,24 @@ function queryMyCard(attrs: ContactAttributes, callback: AsyncCallback<Contact>)
 
 **示例**
 
-参见 queryMyCard
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { contact } from '@kit.ContactsKit';
 
+// 传入联系人的属性列表，查询“我的名片”
+contact.queryMyCard({
+  attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
+}, (err: BusinessError, data) => {
+  if (err) {
+    console.error(`Failed to query My Card. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in querying My Card. data->${JSON.stringify(data)}`);
+});
+```
+
+
+<a id="querymycard-3"></a>
 
 ## queryMyCard
 
@@ -170,13 +174,35 @@ function queryMyCard(context: Context, attrs: ContactAttributes, callback: Async
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例**
 
-参见 queryMyCard
+> 说明：
+> 
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
+  import { common } from '@kit.AbilityKit';
+
+  // 请在组件内获取context。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  contact.queryMyCard(context, {
+    attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
+  }, (err: BusinessError, data) => {
+    if (err) {
+      console.error(`Failed to query My Card. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`Succeeded in querying My Card. data->${JSON.stringify(data)}`);
+  });
+```
+
+
+<a id="querymycard-4"></a>
 
 ## queryMyCard
 
@@ -190,7 +216,7 @@ function queryMyCard(attrs?: ContactAttributes): Promise<Contact>
 
 **废弃版本：** 10
 
-**替代接口：** queryMyCard(context: Context, attrs?: ContactAttributes)
+**替代接口：** [queryMyCard](#querymycard-5)(context: Context, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -210,8 +236,20 @@ function queryMyCard(attrs?: ContactAttributes): Promise<Contact>
 
 **示例**
 
-参见 queryMyCard
+```TypeScript
+import { contact } from '@kit.ContactsKit';
 
+// 回调函数，传入联系人的属性列表，查询“我的名片”。
+let promise = contact.queryMyCard({
+  attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
+});
+promise.then((data) => {
+  console.info(`Succeeded in querying My Card. data->${JSON.stringify(data)}`);
+});
+```
+
+
+<a id="querymycard-5"></a>
 
 ## queryMyCard
 
@@ -244,9 +282,25 @@ function queryMyCard(context: Context, attrs?: ContactAttributes): Promise<Conta
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例**
 
-参见 queryMyCard
+> 说明：
+> 
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+  import { common } from '@kit.AbilityKit';
+
+  // 请在组件内获取context。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let promise = contact.queryMyCard(context, {
+    attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
+  });
+  promise.then((data) => {
+    console.info(`Succeeded in querying My Card. data->${JSON.stringify(data)}`);
+  });
+```

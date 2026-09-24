@@ -1,5 +1,9 @@
 # PrintTask
 
+```TypeScript
+interface PrintTask
+```
+
 打印任务完成后的事件监听回调接口类。
 
 **起始版本：** 10
@@ -37,8 +41,8 @@ off(type: 'block', callback?: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -59,105 +63,6 @@ struct Index {
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
                         printTask.off('block', () => {
                             console.info('unregister state block');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.off('succeed', () => {
-                            console.info('unregister state succeed');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.off('fail', () => {
-                            console.info('unregister state fail');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.off('cancel', () => {
-                            console.info('unregister state cancel');
                         })
                         // ...
                     }).catch((error: BusinessError) => {
@@ -199,8 +104,8 @@ off(type: 'succeed', callback?: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -219,107 +124,8 @@ struct Index {
                     let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
                     let context = this.getUIContext().getHostContext();
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.off('block', () => {
-                            console.info('unregister state block');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
                         printTask.off('succeed', () => {
                             console.info('unregister state succeed');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.off('fail', () => {
-                            console.info('unregister state fail');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.off('cancel', () => {
-                            console.info('unregister state cancel');
                         })
                         // ...
                     }).catch((error: BusinessError) => {
@@ -361,8 +167,8 @@ off(type: 'fail', callback?: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -381,107 +187,8 @@ struct Index {
                     let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
                     let context = this.getUIContext().getHostContext();
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.off('block', () => {
-                            console.info('unregister state block');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.off('succeed', () => {
-                            console.info('unregister state succeed');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
                         printTask.off('fail', () => {
                             console.info('unregister state fail');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.off('cancel', () => {
-                            console.info('unregister state cancel');
                         })
                         // ...
                     }).catch((error: BusinessError) => {
@@ -523,109 +230,10 @@ off(type: 'cancel', callback?: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.off('block', () => {
-                            console.info('unregister state block');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.off('succeed', () => {
-                            console.info('unregister state succeed');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.off('fail', () => {
-                            console.info('unregister state fail');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
@@ -685,8 +293,8 @@ on(type: 'block', callback: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -707,105 +315,6 @@ struct Index {
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
                         printTask.on('block', () => {
                             console.info('print state is block');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.on('succeed', () => {
-                            console.info('print state is succeed');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.on('fail', () => {
-                            console.info('print state is fail');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.on('cancel', () => {
-                            console.info('print state is cancel');
                         })
                         // ...
                     }).catch((error: BusinessError) => {
@@ -847,8 +356,8 @@ on(type: 'succeed', callback: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -867,107 +376,8 @@ struct Index {
                     let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
                     let context = this.getUIContext().getHostContext();
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.on('block', () => {
-                            console.info('print state is block');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
                         printTask.on('succeed', () => {
                             console.info('print state is succeed');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.on('fail', () => {
-                            console.info('print state is fail');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.on('cancel', () => {
-                            console.info('print state is cancel');
                         })
                         // ...
                     }).catch((error: BusinessError) => {
@@ -1009,8 +419,8 @@ on(type: 'fail', callback: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -1029,107 +439,8 @@ struct Index {
                     let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
                     let context = this.getUIContext().getHostContext();
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.on('block', () => {
-                            console.info('print state is block');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.on('succeed', () => {
-                            console.info('print state is succeed');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
                         printTask.on('fail', () => {
                             console.info('print state is fail');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.on('cancel', () => {
-                            console.info('print state is cancel');
                         })
                         // ...
                     }).catch((error: BusinessError) => {
@@ -1171,109 +482,10 @@ on(type: 'cancel', callback: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.on('block', () => {
-                            console.info('print state is block');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.on('succeed', () => {
-                            console.info('print state is succeed');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-@Entry
-@Component
-struct Index {
-    build() {
-        Scroll() {
-            Column({ space: 10 }) {
-                Button('打印').width('90%').height(50).onClick(() => {
-                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-                    let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
-                        printTask.on('fail', () => {
-                            console.info('print state is fail');
-                        })
-                        // ...
-                    }).catch((error: BusinessError) => {
-                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
-                    })
-                })
-            }
-            .justifyContent(FlexAlign.Center)
-            .constraintSize({ minHeight: '100%' })
-            .width('100%')
-        }
-        .height('100%')
-    }
-}
-```
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';

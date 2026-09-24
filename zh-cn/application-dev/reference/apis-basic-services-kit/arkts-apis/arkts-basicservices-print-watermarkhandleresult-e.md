@@ -1,5 +1,9 @@
 # WatermarkHandleResult
 
+```TypeScript
+enum WatermarkHandleResult
+```
+
 强制水印处理结果的枚举。
 
 **起始版本：** 24

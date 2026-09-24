@@ -1,5 +1,9 @@
 # SharingIfaceType (System API)
 
+```TypeScript
+export enum SharingIfaceType
+```
+
 Enumerates the network sharing types of an NIC.
 
 **Since:** 9

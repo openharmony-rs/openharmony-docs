@@ -36,6 +36,8 @@ int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_
 
 Obtains the detail list of USB certificate credentials. After the call is complete, call OH_CertManager_FreeUkeyCertificate to release the certificateList memory.
 
+**System capability**: SystemCapability.Security.CertificateManager
+
 **Required permission**: ohos.permission.ACCESS_CERT_MANAGER
 
 **Since**: 22
@@ -52,7 +54,7 @@ Obtains the detail list of USB certificate credentials. After the call is comple
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>  <li>{@link OH_CM_ErrorCode} : </li>  <li>OH_CM_SUCCESS = 0: Operation successful.</li>  <li>OH_CM_HAS_NO_PERMISSION = 201: Permission verification failed.</li>  <li>OH_CM_CAPABILITY_NOT_SUPPORTED = 801: The device is not supported.</li>  <li>OH_CM_PARAMETER_VALIDATION_FAILED = 17500011: Input parameter verification failed. Possible causes:  1. Incorrect parameter format.  2. Invalid parameter value range.</li>  <li>OH_CM_INNER_FAILURE = 17500001: Internal error. Possible causes:  1. IPC failure.  2. Memory operation error.  3. File operation error.</li>  <li>OH_CM_NOT_FOUND = 17500002: The certificate does not exist.</li>  <li>OH_CM_ACCESS_UKEY_SERVICE_FAILED = 17500010: Failed to access the USB certificate credential.</li>  </ul> |
+| int32_t | <ul>  <li>[OH_CM_ErrorCode](capi-cm-native-type-h.md#oh_cm_errorcode) : </li>  <li>OH_CM_SUCCESS = 0: Operation successful.</li>  <li>OH_CM_HAS_NO_PERMISSION = 201: Permission verification failed.</li>  <li>OH_CM_CAPABILITY_NOT_SUPPORTED = 801: The device is not supported.</li>  <li>OH_CM_PARAMETER_VALIDATION_FAILED = 17500011: Input parameter verification failed. Possible causes:  1. Incorrect parameter format.  2. Invalid parameter value range.</li>  <li>OH_CM_INNER_FAILURE = 17500001: Internal error. Possible causes:  1. IPC failure.  2. Memory operation error.  3. File operation error.</li>  <li>OH_CM_NOT_FOUND = 17500002: The certificate does not exist.</li>  <li>OH_CM_ACCESS_UKEY_SERVICE_FAILED = 17500010: Failed to access the USB certificate credential.</li>  </ul> |
 
 ### OH_CertManager_GetPrivateCertificate()
 
@@ -63,6 +65,8 @@ int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Cre
 **Description**
 
 Obtains the details of a private certificate credential of a specific application. After the call is complete, call OH_CertManager_FreeCredential to release the certificate memory.
+
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Required permission**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -79,7 +83,7 @@ Obtains the details of a private certificate credential of a specific applicatio
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>  <li>{@link OH_CM_ErrorCode} : </li>  <li>OH_CM_SUCCESS = 0: Operation successful.</li>  <li>OH_CM_HAS_NO_PERMISSION = 201: Permission verification failed.</li>  <li>OH_CM_PARAMETER_VALIDATION_FAILED = 17500011: Input parameter verification failed. Possible causes:  1. Incorrect parameter format.  2. Invalid parameter value range.</li>  <li>OH_CM_INNER_FAILURE = 17500001: Internal error. Possible causes:  1. IPC failure.  2. Memory operation error.  3. File operation error.</li>  <li>OH_CM_NOT_FOUND = 17500002: The certificate does not exist.</li>  </ul> |
+| int32_t | <ul>  <li>[OH_CM_ErrorCode](capi-cm-native-type-h.md#oh_cm_errorcode) : </li>  <li>OH_CM_SUCCESS = 0: Operation successful.</li>  <li>OH_CM_HAS_NO_PERMISSION = 201: Permission verification failed.</li>  <li>OH_CM_PARAMETER_VALIDATION_FAILED = 17500011: Input parameter verification failed. Possible causes:  1. Incorrect parameter format.  2. Invalid parameter value range.</li>  <li>OH_CM_INNER_FAILURE = 17500001: Internal error. Possible causes:  1. IPC failure.  2. Memory operation error.  3. File operation error.</li>  <li>OH_CM_NOT_FOUND = 17500002: The certificate does not exist.</li>  </ul> |
 
 ### OH_CertManager_GetPublicCertificate()
 
@@ -90,6 +94,8 @@ int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Cred
 **Description**
 
 Obtains the details of a public certificate credential of a specific user. After the call is complete, call OH_CertManager_FreeCredential to release the certificate memory.
+
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Required permission**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -106,7 +112,7 @@ Obtains the details of a public certificate credential of a specific user. After
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>  <li>{@link OH_CM_ErrorCode} : </li>  <li>OH_CM_SUCCESS = 0: Operation successful.</li>  <li>OH_CM_HAS_NO_PERMISSION = 201: Permission verification failed.</li>  <li>OH_CM_PARAMETER_VALIDATION_FAILED = 17500011: Input parameter verification failed. Possible causes:  1. Incorrect parameter format.  2. Invalid parameter value range.</li>  <li>OH_CM_INNER_FAILURE = 17500001: Internal error. Possible causes:  1. IPC failure.  2. Memory operation error.  3. File operation error.</li>  <li>OH_CM_NOT_FOUND = 17500002: The certificate does not exist.</li>  <li>OH_CM_NO_AUTHORIZATION = 17500005: The application is not authorized.</li>  </ul> |
+| int32_t | <ul>  <li>[OH_CM_ErrorCode](capi-cm-native-type-h.md#oh_cm_errorcode) : </li>  <li>OH_CM_SUCCESS = 0: Operation successful.</li>  <li>OH_CM_HAS_NO_PERMISSION = 201: Permission verification failed.</li>  <li>OH_CM_PARAMETER_VALIDATION_FAILED = 17500011: Input parameter verification failed. Possible causes:  1. Incorrect parameter format.  2. Invalid parameter value range.</li>  <li>OH_CM_INNER_FAILURE = 17500001: Internal error. Possible causes:  1. IPC failure.  2. Memory operation error.  3. File operation error.</li>  <li>OH_CM_NOT_FOUND = 17500002: The certificate does not exist.</li>  <li>OH_CM_NO_AUTHORIZATION = 17500005: The application is not authorized.</li>  </ul> |
 
 ### OH_CertManager_FreeUkeyCertificate()
 
@@ -117,6 +123,8 @@ void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateL
 **Description**
 
 Destroys the certificate detail list.
+
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Since**: 22
 
@@ -135,6 +143,8 @@ void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)
 **Description**
 
 Destroys the certificate details.
+
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Since**: 22
 

@@ -1,5 +1,9 @@
 # InterceptedRecord (System API)
 
+```TypeScript
+interface InterceptedRecord
+```
+
 Intercepted record.
 
 **Since:** 14

@@ -1,5 +1,9 @@
 # CmKeyPadding
 
+```TypeScript
+export enum CmKeyPadding
+```
+
 Enumerates the padding modes that can be used for signing and signature verification.
 
 **Since:** 11

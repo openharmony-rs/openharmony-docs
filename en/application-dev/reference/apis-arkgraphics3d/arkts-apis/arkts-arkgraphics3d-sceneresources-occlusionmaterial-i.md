@@ -1,5 +1,9 @@
 # OcclusionMaterial
 
+```TypeScript
+export interface OcclusionMaterial extends Material
+```
+
 Occlusion material: occludes other objects in the scene but does not occlude the environment. It is inherited from Material.
 
 @extends Material @interface OcclusionMaterial

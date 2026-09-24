@@ -43,10 +43,10 @@ DLP管理应用或授权应用需要访问受保护的DLP文件内容时，先�
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
 | [19100003](../errorcode-dlp.md#19100003-加解密超时) | Credential task time out. |
@@ -90,35 +90,8 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
-import { fileIo } from '@kit.CoreFileKit';
-import { bundleManager } from '@kit.AbilityKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-
-let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-appId = data.signatureInfo.appId; // appId通过应用包信息获取
-
-file = fileIo.openSync(uri).fd; // file通过文件打开获取fd
-dlpPermission.openDLPFile(file, appId, async (err, res) => { // 打开DLP文件。
-  if (err) {
-    console.error(`Failed to open DLPFile. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('res', JSON.stringify(res));
-  }
-  await res?.closeDLPFile(); // 关闭DLP对象。
-  if (file) {
-    fileIo.closeSync(file);
-  }
-});
-```
-
+<a id="opendlpfile-1"></a>
 
 ## openDLPFile
 
@@ -148,10 +121,10 @@ DLP管理应用调用该接口，打开DLP文件。使用callback异步回调。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
 | [19100003](../errorcode-dlp.md#19100003-加解密超时) | Credential task time out. |
@@ -166,4 +139,31 @@ DLP管理应用调用该接口，打开DLP文件。使用callback异步回调。
 
 **示例**
 
-参见 [openDLPFile](#opendlpfile)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+let file: number | undefined = undefined;
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+let appId = '';
+let bundleName = 'com.ohos.note';
+let userId = 100;
+
+let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+appId = data.signatureInfo.appId; // appId通过应用包信息获取
+
+file = fileIo.openSync(uri).fd; // file通过文件打开获取fd
+dlpPermission.openDLPFile(file, appId, async (err, res) => { // 打开DLP文件。
+  if (err) {
+    console.error(`Failed to open DLPFile. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('res', JSON.stringify(res));
+  }
+  await res?.closeDLPFile(); // 关闭DLP对象。
+  if (file) {
+    fileIo.closeSync(file);
+  }
+});
+```

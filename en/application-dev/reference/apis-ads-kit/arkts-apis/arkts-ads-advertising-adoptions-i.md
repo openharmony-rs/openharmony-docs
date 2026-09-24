@@ -1,5 +1,9 @@
 # AdOptions
 
+```TypeScript
+export interface AdOptions
+```
+
 Defines the ad configuration.
 
 **Since:** 11

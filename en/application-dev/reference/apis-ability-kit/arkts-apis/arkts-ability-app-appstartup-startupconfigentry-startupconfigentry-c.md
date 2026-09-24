@@ -1,5 +1,9 @@
 # StartupConfigEntry
 
+```TypeScript
+declare class StartupConfigEntry
+```
+
 The module provides the capability to configure [AppStartup](../../../application-models/app-startup.md).
 
 **Since:** 12

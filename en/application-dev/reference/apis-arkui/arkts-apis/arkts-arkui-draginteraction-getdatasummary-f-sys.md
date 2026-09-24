@@ -24,7 +24,7 @@ Obtains the data summary of all dragged objects.
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[Summary](../arkts-components/arkts-arkui-summary-t.md)&gt; | Data summary of all dragged objects, including their type and data length. |
+| Array&lt;[Summary](../arkts-components/arkts-arkui-common-comp-summary-t.md)&gt; | Data summary of all dragged objects, including their type and data length. |
 
 **Error codes:**
 

@@ -36,18 +36,18 @@ import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 | [startAsyncTrace](arkts-performanceanalysis-hitracemeter-startasynctrace-f.md) | 标记一个异步跟踪耗时任务的开始，分级控制跟踪输出。 |
 | [startSyncTrace](arkts-performanceanalysis-hitracemeter-startsynctrace-f.md) | 标记一个同步跟踪耗时任务的开始，分级控制跟踪输出。适用于需要跟踪同步代码块执行耗时的场景，能够帮助开发者定位同步操作的耗时问题，优化应用响应速度。具体示例可参考[finishSyncTrace()](arkts-performanceanalysis-hitracemeter-finishsynctrace-f.md)中的示例。 |
 | [startTrace](arkts-performanceanalysis-hitracemeter-starttrace-f.md) | 标记一个异步跟踪耗时任务的开始。调用成功后，创建一条异步跟踪记录。 |
-| [traceByValue](arkts-performanceanalysis-hitracemeter-tracebyvalue-f.md) | 用来标记一个跟踪的整数变量，该变量的数值会不断变化。适用于需要实时监控数值变化（如网络请求次数、缓存命中率、内存占用等）的场景，能够帮助开发者快速发现异常波动，分析数据趋势。 |
-| [traceByValue](arkts-performanceanalysis-hitracemeter-tracebyvalue-f.md) | 整数跟踪事件，分级控制跟踪输出。用来标记一个预先定义需要跟踪的整数变量名及整数值。 |
+| [traceByValue](arkts-performanceanalysis-hitracemeter-tracebyvalue-f.md#tracebyvalue) | 用来标记一个跟踪的整数变量，该变量的数值会不断变化。适用于需要实时监控数值变化（如网络请求次数、缓存命中率、内存占用等）的场景，能够帮助开发者快速发现异常波动，分析数据趋势。 |
+| [traceByValue](arkts-performanceanalysis-hitracemeter-tracebyvalue-f.md#tracebyvalue-1) | 整数跟踪事件，分级控制跟踪输出。用来标记一个预先定义需要跟踪的整数变量名及整数值。 |
 | [unregisterTraceListener](arkts-performanceanalysis-hitracemeter-unregistertracelistener-f.md) | 注销通过registerTraceListener()注册的trace捕获开关通知回调函数。 |
-
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [HiTraceOutputLevel](arkts-performanceanalysis-hitracemeter-hitraceoutputlevel-e.md) | 枚举，跟踪输出级别。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
 | [TraceEventListener](arkts-performanceanalysis-hitracemeter-traceeventlistener-t.md) | 定义应用trace捕获开关状态切换时的回调函数类型。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [HiTraceOutputLevel](arkts-performanceanalysis-hitracemeter-hitraceoutputlevel-e.md) | 枚举，跟踪输出级别。 |

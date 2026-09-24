@@ -43,10 +43,10 @@ import { resourceManager } from '@kit.LocalizationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md) | 获取当前应用的资源管理对象。使用callback异步回调。 |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md) | 获取指定应用的资源管理对象。使用callback异步回调。 |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md) | 获取当前应用的资源管理对象。使用Promise异步回调。 |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md) | 获取指定应用的资源管理对象。使用Promise异步回调。 |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager) | 获取当前应用的资源管理对象。使用callback异步回调。 |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-1) | 获取指定应用的资源管理对象。使用callback异步回调。 |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-2) | 获取当前应用的资源管理对象。使用Promise异步回调。 |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-3) | 获取指定应用的资源管理对象。使用Promise异步回调。 |
 | [getSysResourceManager](arkts-localization-resourcemanager-getsysresourcemanager-f.md) | 获取系统资源管理对象，用于访问系统预置的资源。 |
 | [getSystemResourceManager](arkts-localization-resourcemanager-getsystemresourcemanager-f.md) | 获取系统资源管理对象，用于访问系统预置的资源。 |
 
@@ -64,6 +64,13 @@ import { resourceManager } from '@kit.LocalizationKit';
 | [AsyncCallback](arkts-localization-resourcemanager-asynccallback-i.md) | 异步回调接口 |
 | [ResourceManager](arkts-localization-resourcemanager-resourcemanager-i.md) | 提供访问应用资源和系统资源的能力，可访问的资源范围为当前Context对应的HAP/HSP模块中的资源以及所有的系统资源。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md) | 表示rawfile文件所在HAP的文件描述符信息。 |
+| [Resource](arkts-localization-resourcemanager-resource-t.md) | 表示资源相关信息，包括应用包名、应用模块名、资源ID、资源类型和格式化参数等。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -72,10 +79,3 @@ import { resourceManager } from '@kit.LocalizationKit';
 | [DeviceType](arkts-localization-resourcemanager-devicetype-e.md) | 用于表示当前设备类型。 |
 | [Direction](arkts-localization-resourcemanager-direction-e.md) | 用于表示设备屏幕方向。 |
 | [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md) | 用于表示当前设备屏幕密度。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md) | 表示rawfile文件所在HAP的文件描述符信息。 |
-| [Resource](arkts-localization-resourcemanager-resource-t.md) | 表示资源相关信息，包括应用包名、应用模块名、资源ID、资源类型和格式化参数等。 |

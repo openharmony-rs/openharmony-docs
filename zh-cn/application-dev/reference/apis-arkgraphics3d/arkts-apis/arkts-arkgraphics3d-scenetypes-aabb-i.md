@@ -1,5 +1,9 @@
 # Aabb
 
+```TypeScript
+export interface Aabb
+```
+
 轴对齐边界盒，主要用于判断空间中的物体是否重叠。
 
 @typedef Aabb

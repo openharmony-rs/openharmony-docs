@@ -1,5 +1,9 @@
 # HuksExceptionErrCode
 
+```TypeScript
+export enum HuksExceptionErrCode
+```
+
 Enumerates error codes and error details.
 
 For details about the error codes, see [Universal Error Codes](../../../reference/errorcode-universal.md) and [HUKS Error Codes](../../../reference/apis-universal-keystore-kit/errorcode-huks.md).
@@ -18,6 +22,8 @@ Permission verification failed.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -32,6 +38,8 @@ The caller is not a system application and cannot call the system API.
 
 **Since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_ILLEGAL_ARGUMENT
@@ -43,6 +51,8 @@ HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401
 Invalid parameters are detected. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -58,6 +68,8 @@ The API is not supported.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -71,6 +83,8 @@ HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001
 The feature is not supported.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -86,6 +100,8 @@ Key algorithm parameters are missing.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -99,6 +115,8 @@ HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003
 Invalid key algorithm parameters are detected.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -114,6 +132,8 @@ The file operation failed.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -127,6 +147,8 @@ HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005
 The communication failed.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -142,6 +164,8 @@ Failed to operate the algorithm library.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -155,6 +179,8 @@ HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED = 12000007
 Failed to access the key because the key has expired.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -170,6 +196,8 @@ Failed to access the key because the authentication has failed.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -183,6 +211,8 @@ HUKS_ERR_CODE_KEY_AUTH_TIME_OUT = 12000009
 Key access timed out.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -198,6 +228,8 @@ The number of key operation sessions has reached the limit.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -211,6 +243,8 @@ HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011
 The target object does not exist.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -226,6 +260,8 @@ An external error occurs.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -239,6 +275,8 @@ HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST = 12000013
 The credential does not exist.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -254,6 +292,8 @@ The memory is insufficient.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -267,6 +307,8 @@ HUKS_ERR_CODE_CALL_SERVICE_FAILED = 12000015
 Failed to call other system services.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -296,6 +338,8 @@ A key with the same name already exists.
 
 **Since:** 20
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -309,6 +353,8 @@ HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018
 The argument is invalid.
 
 **Since:** 20
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
@@ -324,6 +370,8 @@ A provider with the same name has been registered.
 
 **Since:** 22
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -337,6 +385,8 @@ HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020
 The external module on which this API depends returns an error.
 
 **Since:** 22
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
@@ -394,6 +444,8 @@ The device or resource is busy.
 
 **Since:** 22
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -408,6 +460,8 @@ The resource limit is exceeded.
 
 **Since:** 22
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -421,6 +475,8 @@ HUKS_ERR_CODE_SE_FAULT = 12000026
 The secure element is faulty.
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 

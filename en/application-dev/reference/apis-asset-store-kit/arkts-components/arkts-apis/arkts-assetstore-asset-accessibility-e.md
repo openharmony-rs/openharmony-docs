@@ -1,5 +1,9 @@
 # Accessibility
 
+```TypeScript
+enum Accessibility
+```
+
 Enumerates the types of access control based on the lock screen status.
 
 **Since:** 11

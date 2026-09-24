@@ -1,5 +1,9 @@
 # TextHeightBehavior
 
+```TypeScript
+enum TextHeightBehavior
+```
+
 文本高度修饰符模式枚举。
 
 **起始版本：** 12

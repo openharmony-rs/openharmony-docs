@@ -1,5 +1,9 @@
 # AudioSpatialDeviceType (System API)
 
+```TypeScript
+enum AudioSpatialDeviceType
+```
+
 Describes a spatial device type group.
 
 **Since:** 11

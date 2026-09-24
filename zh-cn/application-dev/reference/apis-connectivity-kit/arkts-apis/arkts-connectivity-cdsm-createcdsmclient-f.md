@@ -38,8 +38,8 @@ function createCdsmClient(address: string): CdsmClient
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the chip does not support it. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because the chip does not support it. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100041](../errorcode-nearlink-service.md#36100041-无效地址) | Invalid address. |
 | [36100050](../errorcode-nearlink-service.md#36100050-不支持合作设备集合管理功能) | Coordinated Devices Set Management not supported. |

@@ -1,6 +1,10 @@
 # Color
 
-common enum of color
+```TypeScript
+declare enum Color
+```
+
+颜色类型。
 
 **起始版本：** 7
 
@@ -12,9 +16,11 @@ common enum of color
 White
 ```
 
-White.
+![white](../../../reference/apis-arkui/arkui-ts/figures/white.png)
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -28,9 +34,11 @@ White.
 Black
 ```
 
-Black.
+![black](../../../reference/apis-arkui/arkui-ts/figures/black.png)
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -44,9 +52,11 @@ Black.
 Blue
 ```
 
-Blue.
+![blue](../../../reference/apis-arkui/arkui-ts/figures/blue.png)
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -60,9 +70,11 @@ Blue.
 Brown
 ```
 
-Brown.
+![brown](../../../reference/apis-arkui/arkui-ts/figures/brown.png)
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -76,9 +88,11 @@ Brown.
 Gray
 ```
 
-Gray.
+![gray](../../../reference/apis-arkui/arkui-ts/figures/gray.png)
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -92,9 +106,11 @@ Gray.
 Green
 ```
 
-Green.
+![green](../../../reference/apis-arkui/arkui-ts/figures/green.png)
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -108,9 +124,11 @@ Green.
 Grey
 ```
 
-Grey.
+![gray](../../../reference/apis-arkui/arkui-ts/figures/gray.png)
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -124,9 +142,11 @@ Grey.
 Orange
 ```
 
-Orange.
+![orange](../../../reference/apis-arkui/arkui-ts/figures/orange.png)
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -140,9 +160,11 @@ Orange.
 Pink
 ```
 
-Pink.
+![pink](../../../reference/apis-arkui/arkui-ts/figures/pink.png)
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -156,9 +178,11 @@ Pink.
 Red
 ```
 
-Red.
+![red](../../../reference/apis-arkui/arkui-ts/figures/red.png)
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -172,9 +196,11 @@ Red.
 Yellow
 ```
 
-Yellow.
+![yellow](../../../reference/apis-arkui/arkui-ts/figures/yellow.png)
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -188,9 +214,11 @@ Yellow.
 Transparent
 ```
 
-Transparent.
+透明色
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

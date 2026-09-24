@@ -1,5 +1,9 @@
 # TicketInfo (System API)
 
+```TypeScript
+interface TicketInfo
+```
+
 Ticket information.
 
 **Since:** 26.0.0
@@ -25,6 +29,8 @@ Challenge value.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -41,6 +47,8 @@ Ticket message.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -56,6 +64,8 @@ Ticket string.
 **Type:** string
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 

@@ -1,5 +1,9 @@
 # HiTraceFlag
 
+```TypeScript
+enum HiTraceFlag
+```
+
 跟踪标志组合类型枚举。用于控制分布式跟踪的行为模式，例如在需要跟踪异步调用的业务流程中使用INCLUDE_ASYNC标志，在不需要详细分支信息的简单业务流程中使用DONOT_CREATE_SPAN标志，在需要调试埋点信息的场景中使用TP_INFO标志。
 
 **起始版本：** 8

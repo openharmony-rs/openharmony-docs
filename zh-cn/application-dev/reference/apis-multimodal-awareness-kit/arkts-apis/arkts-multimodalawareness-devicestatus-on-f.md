@@ -29,6 +29,18 @@ function on(type: 'steadyStandingDetect', callback: Callback<SteadyStandingStatu
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
 | [32500001](../errorcode-deviceStatus.md#32500001-服务异常) | Service exception. |
 | [32500002](../errorcode-deviceStatus.md#32500002-订阅失败) | Subscription failed. |
+
+**示例**
+
+```TypeScript
+try {
+   deviceStatus.on('steadyStandingDetect', (data: deviceStatus.SteadyStandingStatus) => {
+      console.info(`succeeded to get status, now status = ${JSON.stringify(data)}`);
+   });
+} catch (err) {
+   console.error(`on failed. Code: ${err.code}, message: ${err.message}`);
+}
+```

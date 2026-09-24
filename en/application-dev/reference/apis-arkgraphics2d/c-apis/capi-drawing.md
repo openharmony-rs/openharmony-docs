@@ -4,6 +4,8 @@
 
 Provides functions such as 2D graphics rendering, text drawing, and image display.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 ## Files

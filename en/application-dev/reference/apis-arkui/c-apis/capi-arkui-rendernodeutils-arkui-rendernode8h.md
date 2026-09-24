@@ -8,6 +8,8 @@ typedef struct ArkUI_RenderNode* ArkUI_RenderNodeHandle
 
 Defines a render node pointer.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

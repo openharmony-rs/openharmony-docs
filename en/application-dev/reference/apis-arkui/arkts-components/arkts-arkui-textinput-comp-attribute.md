@@ -1,5 +1,9 @@
 # TextInput properties/events
 
+```TypeScript
+declare class TextInputAttribute extends CommonMethod<TextInputAttribute>
+```
+
 In addition to the [universal attributes](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), the following attributes are supported.
 
 In addition to the [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md), the following events are supported.
@@ -74,7 +78,9 @@ Sets the style of the cancel button on the right. Only icons of the image type a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [CancelButtonOptions](arkts-arkui-cancelbuttonoptions-i.md) | Yes | Options of the cancel button on the right.<br>Default value:<br>{<br> style: CancelButtonStyle.INPUT<br>}<br>Default value on wearables: **28vp**<br>**Since:** 18 |
+| options | [CancelButtonOptions](arkts-arkui-search-comp-cancelbuttonoptions-i.md) | Yes | Options of the cancel button on the right.<br>Default value:<br>{<br> style: CancelButtonStyle.INPUT<br>}<br>Default value on wearables: **28vp**<br>**Since:** 18 |
+
+<a id="cancelbutton-1"></a>
 
 ## cancelButton
 
@@ -96,7 +102,7 @@ Sets the style of the cancel button on the right. Only symbol-type icons are sup
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| symbolOptions | [CancelButtonSymbolOptions](arkts-arkui-cancelbuttonsymboloptions-i.md) | Yes | Style of the cancel button on the right.<br>Default value:<br> {<br>style: CancelButtonStyle.INPUT<br>} |
+| symbolOptions | [CancelButtonSymbolOptions](arkts-arkui-search-comp-cancelbuttonsymboloptions-i.md) | Yes | Style of the cancel button on the right.<br>Default value:<br> {<br>style: CancelButtonStyle.INPUT<br>} |
 
 ## caretColor
 
@@ -188,7 +194,7 @@ Sets whether to enable leading punctuation compression.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable leading punctuation compression.<br>**true**: Leading punctuation compression is enabled. **false**: Leading punctuation compression is disabled. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable leading punctuation compression.<br>**true**: Leading punctuation compression is enabled. **false**: Leading punctuation compression is disabled. |
 
 ## contentType
 
@@ -210,7 +216,7 @@ Sets the content type for autofill.&lt;!--RP7--&gt;&lt;!--RP7End--&gt;
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ContentType](arkts-arkui-contenttype-e.md) | Yes | Content type for autofill. |
+| value | [ContentType](arkts-arkui-textinput-comp-contenttype-e.md) | Yes | Content type for autofill. |
 
 ## copyOption
 
@@ -250,15 +256,15 @@ The custom keyboard is presented by overlaying the original screen, which is not
 
 The custom keyboard cannot obtain the focus, but it blocks gesture events.
 
-By default, the custom keyboard is closed when the input component loses the focus. You can also use the [TextInputController](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8). [stopEditing](arkts-arkui-textinputcontroller-c.md#stopediting) API to close the keyboard.
+By default, the custom keyboard is closed when the input component loses the focus. You can also use the [TextInputController](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8). [stopEditing](arkts-arkui-textinput-comp-textinputcontroller-c.md#stopediting) API to close the keyboard.
 
-When setting a custom keyboard, you can bind the [onKeyPreIme](arkts-arkui-commonmethod-c.md#onkeypreime) event to prevent input from the physical keyboard.
+When setting a custom keyboard, you can bind the [onKeyPreIme](arkts-arkui-common-comp-commonmethod-c.md#onkeypreime) event to prevent input from the physical keyboard.
 
 From API version 23, the [setCustomKeyboardContinueFeature](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23) API can be used to enable the continuation feature for custom keyboards. When switching between custom keyboards, the system changes the keyboard directly without triggering the close and open animations.
 
 > **NOTE:** 
 > 
-> This API cannot be called within attributeModifier.
+> This API cannot be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 10
 
@@ -272,8 +278,8 @@ From API version 23, the [setCustomKeyboardContinueFeature](../../../reference/a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [CustomBuilder](arkts-arkui-custombuilder-t.md) &#124; ComponentContent &#124; undefined | Yes | Custom keyboard. If the value is **undefined**, the custom keyboard is closed.<br>**Since:** 22 |
-| options | [KeyboardOptions](arkts-arkui-keyboardoptions-i.md) | No | Whether to support keyboard avoidance.<br>**Since:** 12 |
+| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; ComponentContent &#124; undefined | Yes | Custom keyboard. If the value is **undefined**, the custom keyboard is closed.<br>**Since:** 22 |
+| options | [KeyboardOptions](arkts-arkui-richeditor-comp-keyboardoptions-i.md) | No | Whether to support keyboard avoidance.<br>**Since:** 12 |
 
 ## decoration
 
@@ -295,7 +301,7 @@ Sets the color, type, and style of the text decorative line.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [TextDecorationOptions](arkts-arkui-textdecorationoptions-i.md) | Yes | Text decorative line options.<br>Default value: {<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID,<br> thicknessScale: 1.0<br>} |
+| value | [TextDecorationOptions](arkts-arkui-common-comp-textdecorationoptions-i.md) | Yes | Text decorative line options.<br>Default value: {<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID,<br> thicknessScale: 1.0<br>} |
 
 ## editMenuOptions
 
@@ -307,7 +313,7 @@ Sets the extended options of the custom menu, including the text content, icon, 
 
 When [disableMenuItems](../../../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) or
 
-[disableSystemServiceMenuItems](../../../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) is used to disable system service menu items in the text selection menu, the disabled menu options will be excluded from the parameter list in the onCreateMenu callback of **editMenuOptions**.
+[disableSystemServiceMenuItems](../../../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) is used to disable system service menu items in the text selection menu, the disabled menu options will be excluded from the parameter list in the [onCreateMenu](../arkts-apis/arkts-arkui-editmenuoptions-i.md#oncreatemenu) callback of **editMenuOptions**.
 
 **Since:** 12
 
@@ -345,7 +351,7 @@ This attribute works normally in the non-editing state. In the editing state, **
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [Optional](arkts-arkui-optional-t.md)&lt;[EllipsisMode](../arkts-apis/arkts-arkui-ellipsismode-e.md)&gt; | Yes | Ellipsis position.<br>Default value: **EllipsisMode.END** |
+| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[EllipsisMode](../arkts-apis/arkts-arkui-ellipsismode-e.md)&gt; | Yes | Ellipsis position.<br>Default value: **EllipsisMode.END** |
 
 ## enableAutoFill
 
@@ -389,7 +395,7 @@ Sets whether to enable the autofill animation.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the autofill animation.<br>**true** to enable; **false** otherwise.<br>Default value: **true**<br>**NOTE:** <br>When enabled, the animation takes effect only for text boxes where [InputType](arkts-arkui-inputtype-e.md) is set to **Password**, **NEW_PASSWORD**, or **NUMBER_PASSWORD**. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the autofill animation.<br>**true** to enable; **false** otherwise.<br>Default value: **true**<br>**NOTE:** <br>When enabled, the animation takes effect only for text boxes where [InputType](arkts-arkui-textinput-comp-inputtype-e.md) is set to **Password**, **NEW_PASSWORD**, or **NUMBER_PASSWORD**. |
 
 ## enableAutoSpacing
 
@@ -411,7 +417,7 @@ Sets whether to enable automatic spacing between Chinese and Western characters.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable automatic spacing between Chinese and Western characters.<br>**true** to enable, **false** otherwise.<br>Default value: **false** |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable automatic spacing between Chinese and Western characters.<br>**true** to enable, **false** otherwise.<br>Default value: **false** |
 
 ## enableHapticFeedback
 
@@ -529,7 +535,7 @@ Sets the type of the Enter key.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [EnterKeyType](arkts-arkui-enterkeytype-e.md) | Yes | Type of the Enter key.<br>Default value: **EnterKeyType.Done** |
+| value | [EnterKeyType](arkts-arkui-textinput-comp-enterkeytype-e.md) | Yes | Type of the Enter key.<br>Default value: **EnterKeyType.Done** |
 
 ## fallbackLineSpacing
 
@@ -551,7 +557,7 @@ Adapts the line height to the actual text height for overlapped multi-line text.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height adapts to the actual text height.<br>**true**: Line height adapts to the actual text height. **false**: Line height does not adapt to the actual text height. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height adapts to the actual text height.<br>**true**: Line height adapts to the actual text height. **false**: Line height does not adapt to the actual text height. |
 
 ## fontColor
 
@@ -703,7 +709,7 @@ Enables half leading for text, which splits the leading equally between the top 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| halfLeading | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether half leading is enabled. Half leading refers to splitting the leading in half and applying it equally to the top and bottom of the line.<br>**true**: Half leading is enabled. **false**: Half leading is not enabled.<br>Default value: **false** |
+| halfLeading | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether half leading is enabled. Half leading refers to splitting the leading in half and applying it equally to the top and bottom of the line.<br>**true**: Half leading is enabled. **false**: Half leading is not enabled.<br>Default value: **false** |
 
 ## heightAdaptivePolicy
 
@@ -760,7 +766,7 @@ Sets whether to add spacing to the first and last lines to avoid text truncation
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| include | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to add spacing to the first and last lines to avoid text truncation.<br>**true**: Spacing is added to the first and last lines. **false**: Spacing is not added to the first and last lines. |
+| include | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to add spacing to the first and last lines to avoid text truncation.<br>**true**: Spacing is added to the first and last lines. **false**: Spacing is not added to the first and last lines. |
 
 ## inputFilter
 
@@ -807,7 +813,7 @@ Sets the keyboard appearance for the text box. This setting takes effect only af
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appearance | [Optional](arkts-arkui-optional-t.md)&lt;[KeyboardAppearance](../arkts-apis/arkts-arkui-keyboardappearance-e.md)&gt; | Yes | Appearance of the keyboard.<br>Default value: **KeyboardAppearance.NONE_IMMERSIVE** |
+| appearance | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[KeyboardAppearance](../arkts-apis/arkts-arkui-keyboardappearance-e.md)&gt; | Yes | Appearance of the keyboard.<br>Default value: **KeyboardAppearance.NONE_IMMERSIVE** |
 
 ## letterSpacing
 
@@ -907,7 +913,7 @@ Sets the maximum font scale factor for text.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Maximum font scale factor for text. The **undefined** type is supported.<br>Value range: [1, +∞)<br>**NOTE:** <br>Values less than 1 are treated as **1**. Invalid values are not applied by default.<br>After the **maxFontScale** attribute is set, the error message set by **showError** can be enlarged to a maximum of twice the original size.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 18: Setting the Minimum and Maximum Font Scale Factors](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#example-18-setting-the-minimum-and-maximum-font-scale-factors). |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Maximum font scale factor for text. The **undefined** type is supported.<br>Value range: [1, +∞)<br>**NOTE:** <br>Values less than 1 are treated as **1**. Invalid values are not applied by default.<br>After the **maxFontScale** attribute is set, the error message set by **showError** can be enlarged to a maximum of twice the original size.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 18: Setting the Minimum and Maximum Font Scale Factors](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#example-18-setting-the-minimum-and-maximum-font-scale-factors). |
 
 ## maxFontSize
 
@@ -999,7 +1005,7 @@ Sets the minimum font scale factor for text.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Minimum font scale factor for text. The **undefined** type is supported.<br>Value range: [0, 1]<br>**NOTE:** <br>A value less than 0 is handled as **0**. A value greater than 1 is handled as **1**. Invalid values are not applied by default.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 18: Setting the Minimum and Maximum Font Scale Factors](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#example-18-setting-the-minimum-and-maximum-font-scale-factors). |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Minimum font scale factor for text. The **undefined** type is supported.<br>Value range: [0, 1]<br>**NOTE:** <br>A value less than 0 is handled as **0**. A value greater than 1 is handled as **1**. Invalid values are not applied by default.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 18: Setting the Minimum and Maximum Font Scale Factors](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#example-18-setting-the-minimum-and-maximum-font-scale-factors). |
 
 ## minFontSize
 
@@ -1071,7 +1077,7 @@ Triggered when the text content is scrolled.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnContentScrollCallback](arkts-arkui-oncontentscrollcallback-t.md) | Yes | Callback for text content scrolling.<br>**Since:** 18 |
+| callback | [OnContentScrollCallback](arkts-arkui-textinput-comp-oncontentscrollcallback-t.md) | Yes | Callback for text content scrolling.<br>**Since:** 18 |
 
 ## onCopy
 
@@ -1217,7 +1223,7 @@ Triggered when a paste operation is performed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnPasteCallback](arkts-arkui-onpastecallback-t.md) | Yes | Executed when a paste operation is performed.<br>**Since:** 18 |
+| callback | [OnPasteCallback](arkts-arkui-textinput-comp-onpastecallback-t.md) | Yes | Executed when a paste operation is performed.<br>**Since:** 18 |
 
 ## onSecurityStateChange
 
@@ -1229,7 +1235,7 @@ Triggered when the password visibility state is toggled.
 
 > **NOTE:** 
 > 
-> This API can be called in attributeModifier since API version 20.
+> This API can be called in [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 20.
 
 **Since:** 12
 
@@ -1265,7 +1271,7 @@ On non-TV devices, the input box loses focus and the keyboard is dismissed by de
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnSubmitCallback](arkts-arkui-onsubmitcallback-t.md) | Yes | Callback for submission.<br>**Since:** 18 |
+| callback | [OnSubmitCallback](arkts-arkui-textinput-comp-onsubmitcallback-t.md) | Yes | Callback for submission.<br>**Since:** 18 |
 
 ## onTextSelectionChange
 
@@ -1287,7 +1293,7 @@ Triggered when the text selection changes or the caret position changes during e
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnTextSelectionChangeCallback](arkts-arkui-ontextselectionchangecallback-t.md) | Yes | Callback for text selection changes or caret position changes.<br>**Since:** 18 |
+| callback | [OnTextSelectionChangeCallback](arkts-arkui-textinput-comp-ontextselectionchangecallback-t.md) | Yes | Callback for text selection changes or caret position changes.<br>**Since:** 18 |
 
 ## onWillAttachIME
 
@@ -1307,7 +1313,7 @@ From API version 22, the [setExtraConfig](../arkts-apis/arkts-arkui-imeclient-i.
 
 > **NOTE:** 
 > 
-> This API cannot be called within attributeModifier.
+> This API cannot be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 20
 
@@ -1461,7 +1467,7 @@ Orphan character optimization improves the text layout by handling the orphan ch
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable orphan character optimization for the last line of the paragraph.<br>**true**: Orphan character optimization is enabled. **false**: Orphan character optimization is disabled.<br>When the value is **undefined** or **null**, orphan character optimization is disabled. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable orphan character optimization for the last line of the paragraph.<br>**true**: Orphan character optimization is enabled. **false**: Orphan character optimization is disabled.<br>When the value is **undefined** or **null**, orphan character optimization is disabled. |
 
 ## passwordIcon
 
@@ -1485,7 +1491,7 @@ Images in JPG, PNG, BMP, HEIC, and WEBP formats are supported.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [PasswordIcon](arkts-arkui-passwordicon-i.md) | Yes | Password icon to display at the end of the password text box.<br>By default, the system-provided icon is used.<br>The icon size is fixed at 24 vp (or 28 vp on wearables), regardless of the source image size. |
+| value | [PasswordIcon](arkts-arkui-textinput-comp-passwordicon-i.md) | Yes | Password icon to display at the end of the password text box.<br>By default, the system-provided icon is used.<br>The icon size is fixed at 24 vp (or 28 vp on wearables), regardless of the source image size. |
 
 ## passwordRules
 
@@ -1569,7 +1575,7 @@ Whether to enable punctuation overflow at line ends.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the feature, the default value is false. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the feature, the default value is false. |
 
 ## selectAll
 
@@ -1691,7 +1697,7 @@ Sets the character counter displayed when the number of characters entered excee
 
 **options** can be set only when **value** is set to **true**, in which case a character counter is displayed below the text box. This attribute must be used together with [maxLength](#maxlength). The character counter is displayed in this format: Number of characters entered/Character limit.
 
-It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. If **options** is not set, the text box border and character counter subscript turn red when the number of characters entered exceeds the limit. If **value** is set to **true** and [InputCounterOptions](arkts-arkui-inputcounteroptions-i.md) is set, the text box border and character counter subscript turn red and the text box shakes when the number of characters entered reaches the limit, provided that the value of **thresholdPercentage** is valid. If **highlightBorder** is set to **false**, the text box border does not turn red. By default, **highlightBorder** is set to **true**.
+It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. If **options** is not set, the text box border and character counter subscript turn red when the number of characters entered exceeds the limit. If **value** is set to **true** and [InputCounterOptions](arkts-arkui-common-comp-inputcounteroptions-i.md) is set, the text box border and character counter subscript turn red and the text box shakes when the number of characters entered reaches the limit, provided that the value of **thresholdPercentage** is valid. If **highlightBorder** is set to **false**, the text box border does not turn red. By default, **highlightBorder** is set to **true**.
 
 The character counter is not displayed in the [inline style](../../../ui/arkts-common-components-text-input.md#inline-style) and [password mode](../../../ui/arkts-common-components-text-input.md#password-mode).
 
@@ -1699,7 +1705,7 @@ The character counter is not displayed in the [inline style](../../../ui/arkts-c
 
 > **NOTE:** 
 > 
-> This API can be called within attributeModifier since API version 12.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 12.
 
 **Since:** 11
 
@@ -1714,7 +1720,7 @@ The character counter is not displayed in the [inline style](../../../ui/arkts-c
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | boolean | Yes | Whether to display the character counter.<br>**true**: Character counter is displayed. **false**: Character counter is not displayed. |
-| options | [InputCounterOptions](arkts-arkui-inputcounteroptions-i.md) | No | Configuration options for the character counter. |
+| options | [InputCounterOptions](arkts-arkui-common-comp-inputcounteroptions-i.md) | No | Configuration options for the character counter. |
 
 ## showError
 
@@ -1748,7 +1754,7 @@ showPassword(visible: boolean)
 
 Sets whether to show the password.
 
-This API has effect only when the [input type](arkts-arkui-inputtype-e.md) is set to **Password**, **NEWPASSWORD**, or **NUMBERPASSWORD** mode. It does not work in other modes.
+This API has effect only when the [input type](arkts-arkui-textinput-comp-inputtype-e.md) is set to **Password**, **NEWPASSWORD**, or **NUMBERPASSWORD** mode. It does not work in other modes.
 
 In the [password mode](../../../ui/arkts-common-components-text-input.md#password-mode), inconsistencies between the backend state of the text box and the frontend application's state management variables may cause abnormal behavior of the trailing icon. To avoid such issues, use the [onSecurityStateChange](#onsecuritystatechange) callback to sync the states. For details, see [Example 1: Setting and Obtaining the Caret Position](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#example-1-setting-and-obtaining-the-caret-position).
 
@@ -1828,7 +1834,7 @@ Sets the unit displayed with the text box. This attribute effective only when [s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [CustomBuilder](arkts-arkui-custombuilder-t.md) | Yes | Unit displayed with the text box. |
+| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | Yes | Unit displayed with the text box. |
 
 ## stopBackPress
 
@@ -1850,7 +1856,7 @@ Sets whether to prevent the back key event from being propagated.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isStopped | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to prevent the back button press from being propagated to other components or applications.<br>**true**: Propagation is prevented. **false**: Propagation is allowed.<br> Default value: **true** Invalid values are treated as the default value. |
+| isStopped | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to prevent the back button press from being propagated to other components or applications.<br>**true**: Propagation is prevented. **false**: Propagation is allowed.<br> Default value: **true** Invalid values are treated as the default value. |
 
 ## strokeColor
 
@@ -1872,7 +1878,7 @@ Sets the text stroke color.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Stroke color. Default value: font color. Invalid values are treated as the default value. |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Stroke color. Default value: font color. Invalid values are treated as the default value. |
 
 ## strokeJoinStyle
 
@@ -1916,7 +1922,7 @@ Sets the text stroke width.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| width | [Optional](arkts-arkui-optional-t.md)&lt;LengthMetrics&gt; | Yes | Text stroke width. When the unit of **LengthMetrics** is **px**:<br> Values &lt; 0: solid text.<br>Values &gt; 0: outlined text.<br>Default value: **0** (no stroke) |
+| width | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | Yes | Text stroke width. When the unit of **LengthMetrics** is **px**:<br> Values &lt; 0: solid text.<br>Values &gt; 0: outlined text.<br>Default value: **0** (no stroke) |
 
 ## style
 
@@ -1938,7 +1944,7 @@ For details about the text box types, see [type](#type).
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [TextInputStyle](arkts-arkui-textinputstyle-e.md) &#124; [TextContentStyle](../arkts-apis/arkts-arkui-textcontentstyle-e.md) | Yes | Text input style.<br>Default value: **TextInputStyle.Default** |
+| value | [TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md) &#124; [TextContentStyle](../arkts-apis/arkts-arkui-textcontentstyle-e.md) | Yes | Text input style.<br>Default value: **TextInputStyle.Default** |
 
 ## textAlign
 
@@ -1950,7 +1956,7 @@ Sets the horizontal alignment of the text.
 
 Available options are **TextAlign.Start**, **TextAlign.Center**, and **TextAlign.End**. **TextAlign.JUSTIFY** behaves the same as **TextAlign.Start**.
 
-You can use the align attribute to control the vertical position of a text paragraph. In this component, the **align** attribute cannot be used to control the horizontal position of a text paragraph.
+You can use the [align](arkts-arkui-common-comp-commonmethod-c.md#align) attribute to control the vertical position of a text paragraph. In this component, the **align** attribute cannot be used to control the horizontal position of a text paragraph.
 
 - **Alignment.TopStart**, **Alignment.Top**, **Alignment.TopEnd**: Content aligns to the top.  
 - **Alignment.Start**, **Alignment.Center**, **Alignment.End**: Content is centered vertically.  
@@ -2058,7 +2064,7 @@ Different **InputType** values trigger corresponding keyboard types and enforce 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [InputType](arkts-arkui-inputtype-e.md) | Yes | Text box type.<br>Default value: **InputType.Normal** |
+| value | [InputType](arkts-arkui-textinput-comp-inputtype-e.md) | Yes | Text box type.<br>Default value: **InputType.Normal** |
 
 ## underlineColor
 
@@ -2082,7 +2088,7 @@ When [showUnderline](#showunderline) is enabled, the underline color can be conf
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [UnderlineColor](arkts-arkui-underlinecolor-i.md) &#124; undefined | Yes | Color of the underline.<br>The underline color changes with the underline mode. If the underline color is only set for the normal state, you can directly enter a value of the ResourceColor type. If the value specified is **undefined**, **null**, or invalid, all underlines are restored to the default value.<br>Default value: underline color configured for the theme. The default underline color in the theme is **'#33182431'**. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [UnderlineColor](arkts-arkui-textinput-comp-underlinecolor-i.md) &#124; undefined | Yes | Color of the underline.<br>The underline color changes with the underline mode. If the underline color is only set for the normal state, you can directly enter a value of the ResourceColor type. If the value specified is **undefined**, **null**, or invalid, all underlines are restored to the default value.<br>Default value: underline color configured for the theme. The default underline color in the theme is **'#33182431'**. |
 
 ## wordBreak
 

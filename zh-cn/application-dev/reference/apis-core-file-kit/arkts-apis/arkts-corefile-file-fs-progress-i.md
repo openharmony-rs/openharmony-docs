@@ -1,5 +1,9 @@
 # Progress
 
+```TypeScript
+interface Progress
+```
+
 拷贝进度回调数据
 
 **起始版本：** 11

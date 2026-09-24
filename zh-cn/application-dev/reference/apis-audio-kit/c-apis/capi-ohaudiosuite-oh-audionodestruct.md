@@ -8,6 +8,8 @@ typedef struct OH_AudioNodeStruct OH_AudioNode
 
 声明音频编创节点，用于描述音频编创节点实例。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 22
 
 **相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)

@@ -1,5 +1,9 @@
 # Progress
 
+```TypeScript
+enum Progress
+```
+
 Enumerates the stages in the device-cloud sync progress. Use the enum name rather than the enum value.
 
 **Since:** 10

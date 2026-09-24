@@ -1,5 +1,9 @@
 # DeferredPhotoProxy (System API)
 
+```TypeScript
+interface DeferredPhotoProxy
+```
+
 A class object that functions as a thumbnail proxy.
 
 **Since:** 11

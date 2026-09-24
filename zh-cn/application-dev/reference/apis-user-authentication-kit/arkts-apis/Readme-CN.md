@@ -50,10 +50,12 @@
   - [DeviceIdType(系统接口)](arkts-userauthentication-companiondeviceauth-deviceidtype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [SelectPurpose(系统接口)](arkts-userauthentication-companiondeviceauth-selectpurpose-e-sys.md)<!--DelEnd-->
-- [@ohos.userIAM.faceAuth(人脸认证)](arkts-userauthentication-useriam-faceauth.md)
+<!--Del-->
+- [@ohos.userIAM.faceAuth(人脸认证)](arkts-userauthentication-useriam-faceauth.md)<!--DelEnd-->
   <!--Del-->
   - [FaceAuthManager(系统接口)](arkts-userauthentication-faceauth-faceauthmanager-c-sys.md)<!--DelEnd-->
-- [@ohos.userIAM.userAccessCtrl(用户访问控制)](arkts-userauthentication-useriam-useraccessctrl.md)
+<!--Del-->
+- [@ohos.userIAM.userAccessCtrl(用户访问控制)](arkts-userauthentication-useriam-useraccessctrl.md)<!--DelEnd-->
   <!--Del-->
   - [verifyAuthToken(系统接口)](arkts-userauthentication-useraccessctrl-verifyauthtoken-f-sys.md)<!--DelEnd-->
   <!--Del-->

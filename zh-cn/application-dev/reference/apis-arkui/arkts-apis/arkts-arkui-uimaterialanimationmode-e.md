@@ -1,5 +1,9 @@
 # UIMaterialAnimationMode
 
+```TypeScript
+declare enum UIMaterialAnimationMode
+```
+
 Enumerates the component animation modes under the UI material effect.
 
 @enum { int }

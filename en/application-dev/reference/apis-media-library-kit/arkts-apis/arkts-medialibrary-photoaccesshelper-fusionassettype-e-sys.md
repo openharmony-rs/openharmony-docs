@@ -1,5 +1,9 @@
 # FusionAssetType
 
+```TypeScript
+enum FusionAssetType
+```
+
 Enumeration of fusion asset type
 
 **Since:** 22

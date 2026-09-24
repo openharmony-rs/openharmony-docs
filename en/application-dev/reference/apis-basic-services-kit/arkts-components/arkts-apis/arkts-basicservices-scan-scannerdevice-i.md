@@ -1,5 +1,9 @@
 # ScannerDevice
 
+```TypeScript
+interface ScannerDevice
+```
+
 Defines the scanner.
 
 **Since:** 20

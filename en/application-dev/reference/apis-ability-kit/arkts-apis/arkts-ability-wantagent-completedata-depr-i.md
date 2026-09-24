@@ -1,5 +1,9 @@
 # CompleteData
 
+```TypeScript
+export interface CompleteData
+```
+
 Describes the data returned by after wantAgent.trigger is called.
 
 **Since:** 7

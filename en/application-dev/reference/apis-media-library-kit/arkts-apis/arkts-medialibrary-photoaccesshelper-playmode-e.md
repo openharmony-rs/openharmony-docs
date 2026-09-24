@@ -1,5 +1,9 @@
 # PlayMode
 
+```TypeScript
+export enum PlayMode
+```
+
 Enumerates whether to support automatic playback of the moving photo.
 
 **Since:** 23

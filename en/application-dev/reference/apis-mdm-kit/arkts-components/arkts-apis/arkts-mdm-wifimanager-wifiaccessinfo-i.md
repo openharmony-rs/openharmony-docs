@@ -1,5 +1,9 @@
 # WifiAccessInfo
 
+```TypeScript
+interface WifiAccessInfo
+```
+
 Represents Wi-Fi access information containing Service Set Identifier (SSID) and Basic Service Set Identifier (BSSID).
 
 **Since:** 19

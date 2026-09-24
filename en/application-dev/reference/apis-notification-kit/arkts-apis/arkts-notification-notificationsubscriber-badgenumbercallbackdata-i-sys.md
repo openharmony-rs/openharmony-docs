@@ -1,5 +1,9 @@
 # BadgeNumberCallbackData (System API)
 
+```TypeScript
+export interface BadgeNumberCallbackData
+```
+
 Returns the changes of the application badge number.
 
 **Since:** 10

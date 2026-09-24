@@ -1,5 +1,9 @@
 # ImageData
 
+```TypeScript
+export declare class ImageData
+```
+
 An ImageData object is a common object that stores the actual pixel data of a Canvas object.
 
 **Since:** 11

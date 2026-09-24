@@ -1,5 +1,9 @@
 # RequestTraceConfig
 
+```TypeScript
+interface RequestTraceConfig
+```
+
 Provides options of trace collection.
 
 **Since:** 24

@@ -1,5 +1,9 @@
 # ValueType
 
+```TypeScript
+enum ValueType
+```
+
 数据类型枚举。
 
 **起始版本：** 7

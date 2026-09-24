@@ -1,5 +1,9 @@
 # ModifierKey
 
+```TypeScript
+declare enum ModifierKey
+```
+
 Enumerates the input method modifier keys.
 
 **Since:** 10

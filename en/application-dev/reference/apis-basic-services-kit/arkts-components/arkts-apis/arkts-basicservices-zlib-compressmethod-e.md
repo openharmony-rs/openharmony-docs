@@ -1,5 +1,9 @@
 # CompressMethod
 
+```TypeScript
+export enum CompressMethod
+```
+
 The deflate compression method (the only one supported in this version).
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # WaterfallDisplayAreaRects
 
+```TypeScript
+interface WaterfallDisplayAreaRects
+```
+
 Describes the curved area on a waterfall display.
 
 **Since:** 9

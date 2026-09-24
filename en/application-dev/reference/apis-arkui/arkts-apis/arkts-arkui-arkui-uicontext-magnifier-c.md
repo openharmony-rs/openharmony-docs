@@ -1,5 +1,9 @@
 # Magnifier
 
+```TypeScript
+export class Magnifier
+```
+
 Provides the capability of displaying and hiding of the magnifier. The magnifier enlarges the component content for you to view the component details.
 
 > **NOTE:** 
@@ -45,7 +49,48 @@ Binds the magnifier to the component with the specified ID.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | Component ID, which can be set through the universal attribute id or key. If the component ID is an empty string or no component is found based on the specified ID, the magnifier is not displayed. |
+| id | string | Yes | Component ID, which can be set through the universal attribute [id](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id) or [key](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#key). If the component ID is an empty string or no component is found based on the specified ID, the magnifier is not displayed. |
+
+**Examples**
+
+This example listens to the onTouch event to control the magnifier to zoom in on an image.
+
+```TypeScript
+import { Magnifier } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MagnifierExample {
+  private magnifier: Magnifier = this.getUIContext().getMagnifier();
+
+  build() {
+    Column() {
+      // Replace $r('app.media.startIcon') with the image resource file you use.
+      Image($r('app.media.startIcon'))
+        .draggable(false)
+        .width(200)
+        .height(200)
+        .margin(50)
+        .id('image')
+        .onTouch((event: TouchEvent) => {
+          if (event && event.sourceTool === SourceTool.Finger) {
+            if (event.type === TouchType.Down) {
+              this.magnifier.bind('image');
+            } else if (event.type === TouchType.Move) {
+              let touchX = event.touches[0].x;
+              let touchY = event.touches[0].y;
+              this.magnifier.show(touchX, touchY);
+            } else if (event.type === TouchType.Up) {
+              this.magnifier.unbind();
+            } else if (event.type === TouchType.Cancel) {
+              this.magnifier.unbind();
+            }
+          }
+        })
+    }
+  }
+}
+```
 
 ## show
 
@@ -75,6 +120,10 @@ Sets the position of the component content displayed by the magnifier relative t
 | x | number | Yes | Horizontal coordinate of the component content displayed by the magnifier, relative to the component itself, in vp. If the coordinate value is greater than the component width or less than 0, the magnifier is not displayed. If the value is **undefined**, the current display status of the magnifier is retained. |
 | y | number | Yes | Vertical coordinate of the component content displayed by the magnifier, relative to the component itself, in vp. If the coordinate value is greater than the component height or less than 0, the magnifier is not displayed. If the value is **undefined**, the current display status of the magnifier is retained. |
 
+**Examples**
+
+For details, see the [bind](#bind) example.
+
 ## unbind
 
 ```TypeScript
@@ -90,3 +139,7 @@ Unbinds the magnifier from the current component.
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Examples**
+
+For details, see the [bind](#bind) example.

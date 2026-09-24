@@ -1,5 +1,9 @@
 # NotificationSlot
 
+```TypeScript
+export interface NotificationSlot
+```
+
 描述通知渠道，不同通知渠道对应的通知提醒方式不同。
 
 **起始版本：** 7
@@ -68,24 +72,6 @@ readonly enabled?: boolean
 **类型：** boolean
 
 **起始版本：** 9
-
-**系统能力：** SystemCapability.Notification.Notification
-
-## level
-
-```TypeScript
-level?: notification.SlotLevel
-```
-
-通知级别。
-
-**类型：** [notification.SlotLevel](arkts-notification-notification-slotlevel-depr-e.md)
-
-**起始版本：** 7
-
-**废弃版本：** 20
-
-**替代接口：** [notificationLevel](#notificationlevel)
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -176,24 +162,6 @@ sound?: string
 
 **系统能力：** SystemCapability.Notification.Notification
 
-## type
-
-```TypeScript
-type?: notification.SlotType
-```
-
-渠道类型。
-
-**类型：** [notification.SlotType](arkts-notification-notification-slottype-depr-e.md)
-
-**起始版本：** 7
-
-**废弃版本：** 11
-
-**替代接口：** [notificationType](#notificationtype)
-
-**系统能力：** SystemCapability.Notification.Notification
-
 ## vibrationEnabled
 
 ```TypeScript
@@ -222,5 +190,41 @@ vibrationValues?: Array<number>
 **类型：** Array&lt;number&gt;
 
 **起始版本：** 7
+
+**系统能力：** SystemCapability.Notification.Notification
+
+## level
+
+```TypeScript
+level?: notification.SlotLevel
+```
+
+通知级别。
+
+**类型：** [notification.SlotLevel](arkts-notification-notification-slotlevel-depr-e.md)
+
+**起始版本：** 7
+
+**废弃版本：** 20
+
+**替代接口：** [notificationLevel](#notificationlevel)
+
+**系统能力：** SystemCapability.Notification.Notification
+
+## type
+
+```TypeScript
+type?: notification.SlotType
+```
+
+渠道类型。
+
+**类型：** [notification.SlotType](arkts-notification-notification-slottype-depr-e.md)
+
+**起始版本：** 7
+
+**废弃版本：** 11
+
+**替代接口：** [notificationType](#notificationtype)
 
 **系统能力：** SystemCapability.Notification.Notification

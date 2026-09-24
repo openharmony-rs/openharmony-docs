@@ -8,6 +8,8 @@ typedef struct ArkUI_NodeBorderRadius ArkUI_NodeBorderRadiusOption
 
 Defines a node border radius option.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

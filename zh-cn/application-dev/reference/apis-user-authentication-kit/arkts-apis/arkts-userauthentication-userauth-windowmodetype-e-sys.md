@@ -1,5 +1,9 @@
 # WindowModeType（系统接口）
 
+```TypeScript
+enum WindowModeType
+```
+
 用户认证界面的显示类型枚举。该枚举定义了认证界面可使用的显示模式，用于控制系统身份认证组件的窗口样式。
 
 **起始版本：** 10

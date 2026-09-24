@@ -1,8 +1,12 @@
 # RecordCmdUtils
 
+```TypeScript
+class RecordCmdUtils
+```
+
 该类提供了一组录制回放命令的操作。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -20,7 +24,7 @@ beginRecording(width: number, height: number): Canvas
 
 获取记录绘制命令的画布。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -53,7 +57,7 @@ finishRecording(): RecordCmd
 
 结束录制，返回录制的绘制指令对象。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -73,7 +77,7 @@ getHeight(): number
 
 获取录制画布的高度。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -93,7 +97,7 @@ getWidth(): number
 
 获取录制画布的宽度。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -8,6 +8,8 @@ typedef struct ArkUI_AccessibilityValue ArkUI_AccessibilityValue
 
 Defines the accessibility value for the component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

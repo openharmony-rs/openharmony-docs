@@ -1,5 +1,9 @@
 # CoverUriSource（系统接口）
 
+```TypeScript
+enum CoverUriSource
+```
+
 枚举，表示相册封面的来源。
 
 **起始版本：** 20

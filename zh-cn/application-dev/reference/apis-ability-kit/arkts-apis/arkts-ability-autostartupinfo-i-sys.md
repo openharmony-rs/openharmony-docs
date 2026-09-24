@@ -1,5 +1,9 @@
 # AutoStartupInfo（系统接口）
 
+```TypeScript
+export interface AutoStartupInfo
+```
+
 定义开机自启动应用组件信息。
 
 **起始版本：** 11

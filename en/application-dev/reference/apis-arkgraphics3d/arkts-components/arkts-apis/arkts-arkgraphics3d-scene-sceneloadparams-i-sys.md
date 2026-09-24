@@ -1,5 +1,9 @@
 # SceneLoadParams (System API)
 
+```TypeScript
+export interface SceneLoadParams
+```
+
 Scene load parameters object, used to specify additional configuration options when loading 3D model resources. A typical use case is loading an embedded glb model from an MP4 container file.
 
 **Since:** 26.0.0

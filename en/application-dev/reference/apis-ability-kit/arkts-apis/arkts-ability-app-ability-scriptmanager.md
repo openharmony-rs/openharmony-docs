@@ -30,3 +30,11 @@ import { scriptManager } from '@kit.AbilityKit';
 | --- | --- |
 | [ArkTSScriptInfo](arkts-ability-scriptmanager-arktsscriptinfo-i.md) | arkTS script info. |
 | [ExecuteResult](arkts-ability-scriptmanager-executeresult-i.md) | Result of arkTS script execution. |
+
+<!--Del-->
+### Interfaces(System API)
+
+| Name | Description |
+| --- | --- |
+| [ArkTSScriptInfo](arkts-ability-scriptmanager-arktsscriptinfo-i-sys.md) | arkTS script info. |
+<!--DelEnd-->

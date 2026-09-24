@@ -1,5 +1,9 @@
 # PublishFormCrossBundleInfo (System API)
 
+```TypeScript
+interface PublishFormCrossBundleInfo
+```
+
 PublishFormCrossBundleInfo
 
 @typedef PublishFormCrossBundleInfo

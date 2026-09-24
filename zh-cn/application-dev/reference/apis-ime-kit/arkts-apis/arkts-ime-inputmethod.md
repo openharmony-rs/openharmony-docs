@@ -47,23 +47,23 @@ import { inputMethod } from '@kit.IMEKit';
 | [offAttachmentDidFail](arkts-ime-inputmethod-offattachmentdidfail-f.md) | 取消订阅绑定失败事件。使用callback异步回调。 |
 | [onAttachmentDidFail](arkts-ime-inputmethod-onattachmentdidfail-f.md) | 订阅绑定失败事件。使用callback异步回调。 |
 | [setSimpleKeyboardEnabled](arkts-ime-inputmethod-setsimplekeyboardenabled-f.md) | 编辑框应用设置简单键盘标志。 |
-| [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md) | 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用callback异步回调。 |
-| [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md) | 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用promise异步回调。 |
-| [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md) | 切换当前输入法的子类型。使用callback异步回调。 |
-| [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md) | 切换当前输入法的子类型。使用promise异步回调。 |
-| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md) | 切换输入法，使用callback异步回调。<br> <br>含义/功能：将当前输入法切换为指定的目标输入法。<br> <br>使用场景：当前输入法应用需要切换到另一个输入法时使用（如用户在输入法设置中选择了新的输入法）。<br> <br>使用后效果：成功时系统将当前输入法切换为目标输入法，目标输入法成为新的当前输入法；失败时当前输入法不变。 |
-| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md) | 切换输入法，使用promise异步回调。<br> <br>含义/功能：将当前输入法切换为指定的目标输入法。<br> <br>使用场景：当前输入法应用需要切换到另一个输入法时使用。<br> <br>使用后效果：成功时系统将当前输入法切换为目标输入法；失败时当前输入法不变。 |
+| [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md#switchcurrentinputmethodandsubtype) | 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用callback异步回调。 |
+| [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md#switchcurrentinputmethodandsubtype-1) | 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用promise异步回调。 |
+| [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md#switchcurrentinputmethodsubtype) | 切换当前输入法的子类型。使用callback异步回调。 |
+| [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md#switchcurrentinputmethodsubtype-1) | 切换当前输入法的子类型。使用promise异步回调。 |
+| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md#switchinputmethod) | 切换输入法，使用callback异步回调。<br> <br>含义/功能：将当前输入法切换为指定的目标输入法。<br> <br>使用场景：当前输入法应用需要切换到另一个输入法时使用（如用户在输入法设置中选择了新的输入法）。<br> <br>使用后效果：成功时系统将当前输入法切换为目标输入法，目标输入法成为新的当前输入法；失败时当前输入法不变。 |
+| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md#switchinputmethod-1) | 切换输入法，使用promise异步回调。<br> <br>含义/功能：将当前输入法切换为指定的目标输入法。<br> <br>使用场景：当前输入法应用需要切换到另一个输入法时使用。<br> <br>使用后效果：成功时系统将当前输入法切换为目标输入法；失败时当前输入法不变。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f-sys.md) | 获取指定用户的当前输入法。 |
-| [getCurrentInputMethodSubtype](arkts-ime-inputmethod-getcurrentinputmethodsubtype-f-sys.md) | 获取指定用户的当前输入法子类型。 |
-| [getDefaultInputMethod](arkts-ime-inputmethod-getdefaultinputmethod-f-sys.md) | 获取指定用户的默认输入法。 |
-| [getSystemInputMethodConfigAbility](arkts-ime-inputmethod-getsysteminputmethodconfigability-f-sys.md) | 获取指定用户的系统输入法设置界面Ability信息。用于启动系统输入法配置界面。 |
-| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f-sys.md) | 切换输入法，使用promise异步回调。 |
+| [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f-sys.md#getcurrentinputmethod-1) | 获取指定用户的当前输入法。 |
+| [getCurrentInputMethodSubtype](arkts-ime-inputmethod-getcurrentinputmethodsubtype-f-sys.md#getcurrentinputmethodsubtype-1) | 获取指定用户的当前输入法子类型。 |
+| [getDefaultInputMethod](arkts-ime-inputmethod-getdefaultinputmethod-f-sys.md#getdefaultinputmethod-1) | 获取指定用户的默认输入法。 |
+| [getSystemInputMethodConfigAbility](arkts-ime-inputmethod-getsysteminputmethodconfigability-f-sys.md#getsysteminputmethodconfigability-1) | 获取指定用户的系统输入法设置界面Ability信息。用于启动系统输入法配置界面。 |
+| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f-sys.md#switchinputmethod-2) | 切换输入法，使用promise异步回调。 |
 | [switchInputMethodWithUserId](arkts-ime-inputmethod-switchinputmethodwithuserid-f-sys.md) | 切换输入法，使用promise异步回调。 |
 <!--DelEnd-->
 
@@ -94,20 +94,6 @@ import { inputMethod } from '@kit.IMEKit';
 | [InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i-sys.md) | 输入法软键盘的窗口信息。 |
 <!--DelEnd-->
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [AttachFailureReason](arkts-ime-inputmethod-attachfailurereason-e.md) | 枚举，绑定失败的原因。 |
-| [CapitalizeMode](arkts-ime-inputmethod-capitalizemode-e.md) | 枚举，定义了文本首字母大写的不同模式。<br> |
-| [Direction](arkts-ime-inputmethod-direction-e.md) | 光标移动方向。 |
-| [EnabledState](arkts-ime-inputmethod-enabledstate-e.md) | 输入法启用状态。 |
-| [EnterKeyType](arkts-ime-inputmethod-enterkeytype-e.md) | Enter键的功能类型。 |
-| [ExtendAction](arkts-ime-inputmethod-extendaction-e.md) | 编辑框中文本的扩展编辑操作类型，如剪切、复制等。 |
-| [KeyboardStatus](arkts-ime-inputmethod-keyboardstatus-e.md) | 输入法软键盘状态。 |
-| [RequestKeyboardReason](arkts-ime-inputmethod-requestkeyboardreason-e.md) | 请求键盘输入的原因。 |
-| [TextInputType](arkts-ime-inputmethod-textinputtype-e.md) | 文本输入类型。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -121,6 +107,20 @@ import { inputMethod } from '@kit.IMEKit';
 | --- | --- |
 | [ImeChangeWithUserIdCallback](arkts-ime-inputmethod-imechangewithuseridcallback-t-sys.md) | 输入法变更事件回调，携带发生输入法变更的用户ID。 |
 <!--DelEnd-->
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [AttachFailureReason](arkts-ime-inputmethod-attachfailurereason-e.md) | 枚举，绑定失败的原因。 |
+| [CapitalizeMode](arkts-ime-inputmethod-capitalizemode-e.md) | 枚举，定义了文本首字母大写的不同模式。<br> |
+| [Direction](arkts-ime-inputmethod-direction-e.md) | 光标移动方向。 |
+| [EnabledState](arkts-ime-inputmethod-enabledstate-e.md) | 输入法启用状态。 |
+| [EnterKeyType](arkts-ime-inputmethod-enterkeytype-e.md) | Enter键的功能类型。 |
+| [ExtendAction](arkts-ime-inputmethod-extendaction-e.md) | 编辑框中文本的扩展编辑操作类型，如剪切、复制等。 |
+| [KeyboardStatus](arkts-ime-inputmethod-keyboardstatus-e.md) | 输入法软键盘状态。 |
+| [RequestKeyboardReason](arkts-ime-inputmethod-requestkeyboardreason-e.md) | 请求键盘输入的原因。 |
+| [TextInputType](arkts-ime-inputmethod-textinputtype-e.md) | 文本输入类型。 |
 
 ### 常量
 

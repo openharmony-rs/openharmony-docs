@@ -1,5 +1,9 @@
 # ResultCode（系统接口）
 
+```TypeScript
+enum ResultCode
+```
+
 表示身份验证结果码。
 
 **起始版本：** 8

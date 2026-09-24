@@ -36,8 +36,8 @@ function download(url: string, options: CacheDownloadOptions): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 **示例**
 

@@ -1,5 +1,9 @@
 # WebGLActiveInfo
 
+```TypeScript
+interface WebGLActiveInfo
+```
+
 WebGL 1.0
 
 **Since:** 7

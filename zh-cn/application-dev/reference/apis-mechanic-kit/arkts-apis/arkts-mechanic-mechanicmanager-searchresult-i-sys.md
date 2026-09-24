@@ -1,5 +1,9 @@
 # SearchResult（系统接口）
 
+```TypeScript
+export interface SearchResult
+```
+
 Search result.
 
 @typedef SearchResult

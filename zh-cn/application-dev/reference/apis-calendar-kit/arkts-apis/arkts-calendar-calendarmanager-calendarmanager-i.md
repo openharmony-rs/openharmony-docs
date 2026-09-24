@@ -1,5 +1,9 @@
 # CalendarManager
 
+```TypeScript
+export interface CalendarManager
+```
+
 下列API示例中需先通过[getCalendarManager()](arkts-calendar-calendarmanager-getcalendarmanager-f.md)方法获取CalendarManager对象，再通过此对象调用对应方法，进行Calendar的创建、删除、修改、查询等操作。
 
 **起始版本：** 10
@@ -42,9 +46,62 @@ createCalendar(calendarAccount: CalendarAccount): Promise<Calendar>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
+import { calendarMgr } from '../entryability/EntryAbility';
+import { calendarManager } from '@kit.CalendarKit';
+
+const calendarAccount: calendarManager.CalendarAccount = {
+  name: 'CreateMyCalendarByPromise',
+  type: calendarManager.CalendarType.LOCAL,
+  displayName : 'MyApplication'
+};
+calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
+  console.info(`Succeeded in creating calendar data->${JSON.stringify(data)}`);
+}).catch((error : BusinessError) => {
+  // 检查权限是否已成功申请或者参数是否正确。
+  console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
+});
+```
+
+<a id="createcalendar-1"></a>
+
+## createCalendar
+
+```TypeScript
+createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calendar>): void
+```
+
+根据日历账户信息，创建一个Calendar对象，若创建的账户已存在（与CalendarAccount的name和type相同的账户已被创建），则返回之前的Calendar对象，使用callback异步回调。
+
+**起始版本：** 10
+
+**需要权限：** ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
+
+**系统能力：** SystemCapability.Applications.CalendarData
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| calendarAccount | [CalendarAccount](arkts-calendar-calendarmanager-calendaraccount-i.md) | 是 | 日历账户信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Calendar](arkts-calendar-calendarmanager-calendar-i.md)&gt; | 是 | 回调函数，当创建账户成功时，err为undefined，data为创建成功的Calendar；否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
@@ -72,59 +129,6 @@ try {
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
-import { calendarMgr } from '../entryability/EntryAbility';
-import { calendarManager } from '@kit.CalendarKit';
-
-const calendarAccount: calendarManager.CalendarAccount = {
-  name: 'CreateMyCalendarByPromise',
-  type: calendarManager.CalendarType.LOCAL,
-  displayName : 'MyApplication'
-};
-calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
-  console.info(`Succeeded in creating calendar data->${JSON.stringify(data)}`);
-}).catch((error : BusinessError) => {
-  // 检查权限是否已成功申请或者参数是否正确。
-  console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
-## createCalendar
-
-```TypeScript
-createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calendar>): void
-```
-
-根据日历账户信息，创建一个Calendar对象，若创建的账户已存在（与CalendarAccount的name和type相同的账户已被创建），则返回之前的Calendar对象，使用callback异步回调。
-
-**起始版本：** 10
-
-**需要权限：** ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
-
-**系统能力：** SystemCapability.Applications.CalendarData
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| calendarAccount | [CalendarAccount](arkts-calendar-calendarmanager-calendaraccount-i.md) | 是 | 日历账户信息。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Calendar](arkts-calendar-calendarmanager-calendar-i.md)&gt; | 是 | 回调函数，当创建账户成功时，err为undefined，data为创建成功的Calendar；否则为错误对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
-
-**示例**
-
-参见 [createCalendar](#createcalendar)
 
 ## deleteCalendar
 
@@ -156,9 +160,73 @@ deleteCalendar(calendar: Calendar): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
+import { calendarMgr } from '../entryability/EntryAbility';
+import { calendarManager } from '@kit.CalendarKit';
+
+const calendarAccount: calendarManager.CalendarAccount = {
+  name: 'DeleteMyCalendarByPromise',
+  type: calendarManager.CalendarType.LOCAL
+};
+calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
+  console.info(`Succeeded in creating calendar, data -> ${JSON.stringify(data)}`);
+  calendarMgr?.getCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
+    console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
+    calendarMgr?.deleteCalendar(data).then(() => {
+      console.info('Succeeded in deleting calendar');
+    }).catch((err: BusinessError) => {
+      // 检查参数是否正确。
+      console.error(`Failed to delete calendar. Code: ${err.code}, message: ${err.message}`);
+    });
+  }).catch((err: BusinessError) => {
+    // 检查权限是否已成功申请或者参数是否正确。
+    console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
+  });
+}).catch((error: BusinessError) => {
+  // 检查权限是否已成功申请或者参数是否正确。
+  console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
+})
+```
+
+<a id="deletecalendar-1"></a>
+
+## deleteCalendar
+
+```TypeScript
+deleteCalendar(calendar: Calendar, callback: AsyncCallback<void>): void
+```
+
+删除指定Calendar对象，使用callback异步回调。
+
+**起始版本：** 10
+
+**需要权限：** ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
+
+**系统能力：** SystemCapability.Applications.CalendarData
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| calendar | [Calendar](arkts-calendar-calendarmanager-calendar-i.md) | 是 | 即将删除的Calendar对象。无法删除默认账户。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当删除账户成功时，err为undefined；否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
@@ -195,70 +263,6 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 })
 ```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
-import { calendarMgr } from '../entryability/EntryAbility';
-import { calendarManager } from '@kit.CalendarKit';
-
-const calendarAccount: calendarManager.CalendarAccount = {
-  name: 'DeleteMyCalendarByPromise',
-  type: calendarManager.CalendarType.LOCAL
-};
-calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
-  console.info(`Succeeded in creating calendar, data -> ${JSON.stringify(data)}`);
-  calendarMgr?.getCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
-    console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
-    calendarMgr?.deleteCalendar(data).then(() => {
-      console.info('Succeeded in deleting calendar');
-    }).catch((err: BusinessError) => {
-      // 检查参数是否正确。
-      console.error(`Failed to delete calendar. Code: ${err.code}, message: ${err.message}`);
-    });
-  }).catch((err: BusinessError) => {
-    // 检查权限是否已成功申请或者参数是否正确。
-    console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
-  });
-}).catch((error: BusinessError) => {
-  // 检查权限是否已成功申请或者参数是否正确。
-  console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
-})
-```
-
-## deleteCalendar
-
-```TypeScript
-deleteCalendar(calendar: Calendar, callback: AsyncCallback<void>): void
-```
-
-删除指定Calendar对象，使用callback异步回调。
-
-**起始版本：** 10
-
-**需要权限：** ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
-
-**系统能力：** SystemCapability.Applications.CalendarData
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| calendar | [Calendar](arkts-calendar-calendarmanager-calendar-i.md) | 是 | 即将删除的Calendar对象。无法删除默认账户。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当删除账户成功时，err为undefined；否则为错误对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
-
-**示例**
-
-参见 [deleteCalendar](#deletecalendar)
 
 ## editEvent
 
@@ -329,31 +333,12 @@ getAllCalendars(): Promise<Calendar[]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
-import { calendarMgr } from '../entryability/EntryAbility';
-import { calendarManager } from '@kit.CalendarKit';
-
-calendarMgr?.getAllCalendars((err: BusinessError, data: calendarManager.Calendar[]) => {
-  if (err) {
-    console.error(`Failed to get all calendars. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting all calendars, data -> ${JSON.stringify(data)}`);
-    data.forEach((calendar) => {
-      const account = calendar.getAccount();
-      console.info(`account -> ${JSON.stringify(account)}`);
-    })
-  }
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -373,6 +358,8 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
   
 });
 ```
+
+<a id="getallcalendars-1"></a>
 
 ## getAllCalendars
 
@@ -398,14 +385,31 @@ getAllCalendars(callback: AsyncCallback<Calendar[]>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
-参见 [getAllCalendars](#getallcalendars)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
+import { calendarMgr } from '../entryability/EntryAbility';
+import { calendarManager } from '@kit.CalendarKit';
+
+calendarMgr?.getAllCalendars((err: BusinessError, data: calendarManager.Calendar[]) => {
+  if (err) {
+    console.error(`Failed to get all calendars. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getting all calendars, data -> ${JSON.stringify(data)}`);
+    data.forEach((calendar) => {
+      const account = calendar.getAccount();
+      console.info(`account -> ${JSON.stringify(account)}`);
+    })
+  }
+});
+```
 
 ## getCalendar
 
@@ -439,55 +443,13 @@ getCalendar(calendarAccount?: CalendarAccount): Promise<Calendar>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900003](../errorcode-calendarManager.md#23900003-未找到指定的账户) | 未找到指定的账户。<br>**适用版本：** 23+ |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
-import { calendarMgr } from '../entryability/EntryAbility';
-import { calendarManager } from '@kit.CalendarKit';
-
-calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
-  if (err) {
-    // 检查权限是否已成功申请或者参数是否正确。
-    console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
-  }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
-import { calendarMgr } from '../entryability/EntryAbility';
-import { calendarManager } from '@kit.CalendarKit';
-
-const calendarAccount: calendarManager.CalendarAccount = {
-  name: 'MyCalendar',
-  type: calendarManager.CalendarType.LOCAL
-};
-calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
-  console.info(`Succeeded in creating calendar, data -> ${JSON.stringify(data)}`);
-  calendarMgr?.getCalendar(calendarAccount, (err: BusinessError, data: calendarManager.Calendar) => {
-    if (err) {
-      console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
-      // 检查权限是否已成功申请或者参数是否正确。
-    } else {
-      console.info(`Succeeded in getting calendar data -> ${JSON.stringify(data)}`);
-    }
-  });
-}).catch((error: BusinessError) => {
-  console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
-  // 检查权限是否已成功申请或者参数是否正确。
-})
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -502,6 +464,8 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
   console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="getcalendar-1"></a>
 
 ## getCalendar
 
@@ -530,15 +494,41 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calendar>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900003](../errorcode-calendarManager.md#23900003-未找到指定的账户) | 未找到指定的账户。<br>**适用版本：** 23+ |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
-参见 [getCalendar](#getcalendar)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
+import { calendarMgr } from '../entryability/EntryAbility';
+import { calendarManager } from '@kit.CalendarKit';
+
+const calendarAccount: calendarManager.CalendarAccount = {
+  name: 'MyCalendar',
+  type: calendarManager.CalendarType.LOCAL
+};
+calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
+  console.info(`Succeeded in creating calendar, data -> ${JSON.stringify(data)}`);
+  calendarMgr?.getCalendar(calendarAccount, (err: BusinessError, data: calendarManager.Calendar) => {
+    if (err) {
+      console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
+      // 检查权限是否已成功申请或者参数是否正确。
+    } else {
+      console.info(`Succeeded in getting calendar data -> ${JSON.stringify(data)}`);
+    }
+  });
+}).catch((error: BusinessError) => {
+  console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
+  // 检查权限是否已成功申请或者参数是否正确。
+})
+```
+
+<a id="getcalendar-2"></a>
 
 ## getCalendar
 
@@ -566,11 +556,25 @@ getCalendar(callback: AsyncCallback<Calendar>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
-参见 [getCalendar](#getcalendar)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
+import { calendarMgr } from '../entryability/EntryAbility';
+import { calendarManager } from '@kit.CalendarKit';
+
+calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
+  if (err) {
+    // 检查权限是否已成功申请或者参数是否正确。
+    console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
+  }
+});
+```

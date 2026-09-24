@@ -1,5 +1,9 @@
 # TLSSocketServer
 
+```TypeScript
+export interface TLSSocketServer
+```
+
 TLSSocketServer连接。在调用TLSSocketServer的方法前，需要先通过[socket.constructTLSSocketServerInstance](arkts-network-socket-constructtlssocketserverinstance-f.md)创建TLSSocketServer对象。
 
 **起始版本：** 10
@@ -41,7 +45,7 @@ TLSSocketServer停止监听并释放通过[listen](arkts-network-socket-tcpsocke
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2300002](../errorcode-net-socket.md#2300002-系统内部错误) | System internal error. |
 
 **示例**
@@ -109,7 +113,7 @@ getCertificate(callback: AsyncCallback<X509CertRawData>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2303501](../errorcode-net-socket.md#2303501-ssl为空) | SSL is null. |
 | [2303504](../errorcode-net-socket.md#2303504-查找x509时出错) | An error occurred when verifying the X.509 certificate. |
 | [2300002](../errorcode-net-socket.md#2300002-系统内部错误) | System internal error. |
@@ -195,6 +199,8 @@ tlsServer.getCertificate().then((data: socket.X509CertRawData) => {
   console.error("failed" + err);
 });
 ```
+
+<a id="getcertificate-1"></a>
 
 ## getCertificate
 
@@ -378,7 +384,7 @@ getProtocol(callback: AsyncCallback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2303501](../errorcode-net-socket.md#2303501-ssl为空) | SSL is null. |
 | [2303505](../errorcode-net-socket.md#2303505-tls系统调用错误) | An error occurred in the TLS system call. |
 | [2300002](../errorcode-net-socket.md#2300002-系统内部错误) | System internal error. |
@@ -423,41 +429,7 @@ tlsServer.getProtocol((err: BusinessError, data: string) => {
 });
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
-let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx',
-  port: 8080
-}
-let tlsSecureOptions: socket.TLSSecureOptions = {
-  key: "xxxx",
-  cert: ["xxxx"],
-  ca: ["xxxx"],
-  password: "xxxx",
-  protocols: socket.Protocol.TLSv12,
-  useRemoteCipherPrefer: true,
-  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-  cipherSuite: "AES256-SHA256"
-}
-let tlsConnectOptions: socket.TLSConnectOptions = {
-  address: netAddress,
-  secureOptions: tlsSecureOptions,
-  ALPNProtocols: ["spdy/1", "http/1.1"]
-}
-tlsServer.listen(tlsConnectOptions).then(() => {
-  console.info("listen callback success");
-}).catch((err: BusinessError) => {
-  console.error("failed: " + JSON.stringify(err));
-});
-tlsServer.getProtocol().then((data: string) => {
-  console.info(data);
-}).catch((err: BusinessError) => {
-  console.error("failed" + err);
-});
-```
+<a id="getprotocol-1"></a>
 
 ## getProtocol
 
@@ -490,44 +462,6 @@ getProtocol(): Promise<string>
 | [2300002](../errorcode-net-socket.md#2300002-系统内部错误) | System internal error. |
 
 **示例**
-
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
-let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx',
-  port: 8080
-}
-let tlsSecureOptions: socket.TLSSecureOptions = {
-  key: "xxxx",
-  cert: ["xxxx"],
-  ca: ["xxxx"],
-  password: "xxxx",
-  protocols: socket.Protocol.TLSv12,
-  useRemoteCipherPrefer: true,
-  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-  cipherSuite: "AES256-SHA256"
-}
-let tlsConnectOptions: socket.TLSConnectOptions = {
-  address: netAddress,
-  secureOptions: tlsSecureOptions,
-  ALPNProtocols: ["spdy/1", "http/1.1"]
-}
-tlsServer.listen(tlsConnectOptions).then(() => {
-  console.info("listen callback success");
-}).catch((err: BusinessError) => {
-  console.error("failed: " + JSON.stringify(err));
-});
-tlsServer.getProtocol((err: BusinessError, data: string) => {
-  if (err) {
-    console.error("getProtocol callback error = " + err);
-  } else {
-    console.info("getProtocol callback = " + data);
-  }
-});
-```
 
 ```TypeScript
 import { socket } from '@kit.NetworkKit';
@@ -597,7 +531,7 @@ getSocketFd(): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
 
@@ -663,7 +597,7 @@ getState(callback: AsyncCallback<SocketStateBase>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2303188](../errorcode-net-socket.md#2303188-非套接字的套接字操作) | Socket operation on non-socket. |
 | [2300002](../errorcode-net-socket.md#2300002-系统内部错误) | System internal error. |
 
@@ -707,41 +641,7 @@ tlsServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
 });
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
-let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx',
-  port: 8080
-}
-let tlsSecureOptions: socket.TLSSecureOptions = {
-  key: "xxxx",
-  cert: ["xxxx"],
-  ca: ["xxxx"],
-  password: "xxxx",
-  protocols: socket.Protocol.TLSv12,
-  useRemoteCipherPrefer: true,
-  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-  cipherSuite: "AES256-SHA256"
-}
-let tlsConnectOptions: socket.TLSConnectOptions = {
-  address: netAddress,
-  secureOptions: tlsSecureOptions,
-  ALPNProtocols: ["spdy/1", "http/1.1"]
-}
-tlsServer.listen(tlsConnectOptions).then(() => {
-  console.info("listen callback success");
-}).catch((err: BusinessError) => {
-  console.error("failed: " + JSON.stringify(err));
-});
-tlsServer.getState().then(() => {
-  console.info('getState success');
-}).catch((err: BusinessError) => {
-  console.error('getState fail');
-});
-```
+<a id="getstate-1"></a>
 
 ## getState
 
@@ -773,44 +673,6 @@ getState(): Promise<SocketStateBase>
 | [2300002](../errorcode-net-socket.md#2300002-系统内部错误) | System internal error. |
 
 **示例**
-
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
-let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx',
-  port: 8080
-}
-let tlsSecureOptions: socket.TLSSecureOptions = {
-  key: "xxxx",
-  cert: ["xxxx"],
-  ca: ["xxxx"],
-  password: "xxxx",
-  protocols: socket.Protocol.TLSv12,
-  useRemoteCipherPrefer: true,
-  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-  cipherSuite: "AES256-SHA256"
-}
-let tlsConnectOptions: socket.TLSConnectOptions = {
-  address: netAddress,
-  secureOptions: tlsSecureOptions,
-  ALPNProtocols: ["spdy/1", "http/1.1"]
-}
-tlsServer.listen(tlsConnectOptions).then(() => {
-  console.info("listen callback success");
-}).catch((err: BusinessError) => {
-  console.error("failed: " + JSON.stringify(err));
-});
-tlsServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
-  if (err) {
-    console.error('getState fail');
-    return;
-  }
-  console.info('getState success:' + JSON.stringify(data));
-});
-```
 
 ```TypeScript
 import { socket } from '@kit.NetworkKit';
@@ -877,8 +739,8 @@ listen(options: TLSConnectOptions, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2300002](../errorcode-net-socket.md#2300002-系统内部错误) | System internal error. |
 | [2303109](../errorcode-net-socket.md#2303109-错误文件编号) | Bad file number. |
 | [2303111](../errorcode-net-socket.md#2303111-资源暂时不可用请重试) | Resource temporarily unavailable. Try again. |
@@ -922,37 +784,7 @@ tlsServer.listen(tlsConnectOptions, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
-let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx',
-  port: 8080
-}
-let tlsSecureOptions: socket.TLSSecureOptions = {
-  key: "xxxx",
-  cert: ["xxxx"],
-  ca: ["xxxx"],
-  password: "xxxx",
-  protocols: socket.Protocol.TLSv12,
-  useRemoteCipherPrefer: true,
-  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-  cipherSuite: "AES256-SHA256"
-}
-let tlsConnectOptions: socket.TLSConnectOptions = {
-  address: netAddress,
-  secureOptions: tlsSecureOptions,
-  ALPNProtocols: ["spdy/1", "http/1.1"],
-  skipRemoteValidation: false
-}
-tlsServer.listen(tlsConnectOptions).then(() => {
-  console.info("listen callback success");
-}).catch((err: BusinessError) => {
-  console.error("failed: " + JSON.stringify(err));
-});
-```
+<a id="listen-1"></a>
 
 ## listen
 
@@ -984,8 +816,8 @@ listen(options: TLSConnectOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2300002](../errorcode-net-socket.md#2300002-系统内部错误) | System internal error. |
 | [2303109](../errorcode-net-socket.md#2303109-错误文件编号) | Bad file number. |
 | [2303111](../errorcode-net-socket.md#2303111-资源暂时不可用请重试) | Resource temporarily unavailable. Try again. |
@@ -998,36 +830,6 @@ listen(options: TLSConnectOptions): Promise<void>
 | [2303506](../errorcode-net-socket.md#2303506-关闭tls连接失败) | Failed to close the TLS connection. |
 
 **示例**
-
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
-let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx',
-  port: 8080
-}
-let tlsSecureOptions: socket.TLSSecureOptions = {
-  key: "xxxx",
-  cert: ["xxxx"],
-  ca: ["xxxx"],
-  password: "xxxx",
-  protocols: socket.Protocol.TLSv12,
-  useRemoteCipherPrefer: true,
-  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-  cipherSuite: "AES256-SHA256"
-}
-let tlsConnectOptions: socket.TLSConnectOptions = {
-  address: netAddress,
-  secureOptions: tlsSecureOptions,
-  ALPNProtocols: ["spdy/1", "http/1.1"],
-  skipRemoteValidation: false
-}
-tlsServer.listen(tlsConnectOptions, (err: BusinessError) => {
-  console.error("listen callback error" + err);
-});
-```
 
 ```TypeScript
 import { socket } from '@kit.NetworkKit';
@@ -1090,7 +892,48 @@ off(type: 'connect', callback?: Callback<TLSSocketConnection>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+let netAddress: socket.NetAddress = {
+  address: '192.168.xx.xxx',
+  port: 8080
+}
+let tlsSecureOptions: socket.TLSSecureOptions = {
+  key: "xxxx",
+  cert: ["xxxx"],
+  ca: ["xxxx"],
+  password: "xxxx",
+  protocols: socket.Protocol.TLSv12,
+  useRemoteCipherPrefer: true,
+  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+  cipherSuite: "AES256-SHA256"
+}
+let tlsConnectOptions: socket.TLSConnectOptions = {
+  address: netAddress,
+  secureOptions: tlsSecureOptions,
+  ALPNProtocols: ["spdy/1", "http/1.1"]
+}
+tlsServer.listen(tlsConnectOptions).then(() => {
+  console.info("listen callback success");
+}).catch((err: BusinessError) => {
+  console.error("failed: " + JSON.stringify(err));
+});
+
+let callback = (data: socket.TLSSocketConnection) => {
+  console.info('on connect message: ' + JSON.stringify(data));
+}
+tlsServer.on('connect', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+tlsServer.off('connect', callback);
+tlsServer.off('connect');
+```
 
 ## off('error')
 
@@ -1121,7 +964,48 @@ off(type: 'error', callback?: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+let netAddress: socket.NetAddress = {
+  address: '192.168.xx.xxx',
+  port: 8080
+}
+let tlsSecureOptions: socket.TLSSecureOptions = {
+  key: "xxxx",
+  cert: ["xxxx"],
+  ca: ["xxxx"],
+  password: "xxxx",
+  protocols: socket.Protocol.TLSv12,
+  useRemoteCipherPrefer: true,
+  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+  cipherSuite: "AES256-SHA256"
+}
+let tlsConnectOptions: socket.TLSConnectOptions = {
+  address: netAddress,
+  secureOptions: tlsSecureOptions,
+  ALPNProtocols: ["spdy/1", "http/1.1"]
+}
+tlsServer.listen(tlsConnectOptions).then(() => {
+  console.info("listen callback success");
+}).catch((err: BusinessError) => {
+  console.error("failed: " + JSON.stringify(err));
+});
+
+let callback = (err: BusinessError) => {
+  console.error("on error, err:" + JSON.stringify(err));
+}
+tlsServer.on('error', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+tlsServer.off('error', callback);
+tlsServer.off('error');
+```
 
 ## on('connect')
 
@@ -1150,7 +1034,43 @@ on(type: 'connect', callback: Callback<TLSSocketConnection>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+let netAddress: socket.NetAddress = {
+  address: '192.168.xx.xxx',
+  port: 8080
+}
+let tlsSecureOptions: socket.TLSSecureOptions = {
+  key: "xxxx",
+  cert: ["xxxx"],
+  ca: ["xxxx"],
+  password: "xxxx",
+  protocols: socket.Protocol.TLSv12,
+  useRemoteCipherPrefer: true,
+  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+  cipherSuite: "AES256-SHA256"
+}
+let tlsConnectOptions: socket.TLSConnectOptions = {
+  address: netAddress,
+  secureOptions: tlsSecureOptions,
+  ALPNProtocols: ["spdy/1", "http/1.1"]
+}
+tlsServer.listen(tlsConnectOptions).then(() => {
+  console.info("listen callback success");
+  tlsServer.on('connect', (data: socket.TLSSocketConnection) => {
+    console.info(JSON.stringify(data));
+  });
+}).catch((err: BusinessError) => {
+  console.error("failed: " + JSON.stringify(err));
+});
+```
 
 ## on('error')
 
@@ -1179,7 +1099,43 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+let netAddress: socket.NetAddress = {
+  address: '192.168.xx.xxx',
+  port: 8080
+}
+let tlsSecureOptions: socket.TLSSecureOptions = {
+  key: "xxxx",
+  cert: ["xxxx"],
+  ca: ["xxxx"],
+  password: "xxxx",
+  protocols: socket.Protocol.TLSv12,
+  useRemoteCipherPrefer: true,
+  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+  cipherSuite: "AES256-SHA256"
+}
+let tlsConnectOptions: socket.TLSConnectOptions = {
+  address: netAddress,
+  secureOptions: tlsSecureOptions,
+  ALPNProtocols: ["spdy/1", "http/1.1"]
+}
+tlsServer.listen(tlsConnectOptions).then(() => {
+  console.info("listen callback success");
+}).catch((err: BusinessError) => {
+  console.error("failed: " + JSON.stringify(err));
+});
+tlsServer.on('error', (err: BusinessError) => {
+  console.error("on error, err:" + JSON.stringify(err))
+});
+```
 
 ## setExtraOptions
 
@@ -1208,7 +1164,7 @@ setExtraOptions(options: TCPExtraOptions, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2303188](../errorcode-net-socket.md#2303188-非套接字的套接字操作) | Socket operation on non-socket. |
 | [2300002](../errorcode-net-socket.md#2300002-系统内部错误) | System internal error. |
 
@@ -1268,57 +1224,7 @@ tlsServer.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
-let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx',
-  port: 8080
-}
-let tlsSecureOptions: socket.TLSSecureOptions = {
-  key: "xxxx",
-  cert: ["xxxx"],
-  ca: ["xxxx"],
-  password: "xxxx",
-  protocols: socket.Protocol.TLSv12,
-  useRemoteCipherPrefer: true,
-  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-  cipherSuite: "AES256-SHA256"
-}
-let tlsConnectOptions: socket.TLSConnectOptions = {
-  address: netAddress,
-  secureOptions: tlsSecureOptions,
-  ALPNProtocols: ["spdy/1", "http/1.1"]
-}
-tlsServer.listen(tlsConnectOptions).then(() => {
-  console.info("listen callback success");
-}).catch((err: BusinessError) => {
-  console.error("failed: " + JSON.stringify(err));
-});
-
-interface SocketLinger {
-  on: boolean;
-  linger: number;
-}
-
-let tcpExtraOptions: socket.TCPExtraOptions = {
-  keepAlive: true,
-  OOBInline: true,
-  TCPNoDelay: true,
-  socketLinger: { on: true, linger: 10 } as SocketLinger,
-  receiveBufferSize: 8192,
-  sendBufferSize: 8192,
-  reuseAddress: true,
-  socketTimeout: 3000
-}
-tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
-  console.info('setExtraOptions success');
-}).catch((err: BusinessError) => {
-  console.error('setExtraOptions fail');
-});
-```
+<a id="setextraoptions-1"></a>
 
 ## setExtraOptions
 
@@ -1352,65 +1258,11 @@ setExtraOptions(options: TCPExtraOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2303188](../errorcode-net-socket.md#2303188-非套接字的套接字操作) | Socket operation on non-socket. |
 | [2300002](../errorcode-net-socket.md#2300002-系统内部错误) | System internal error. |
 
 **示例**
-
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
-let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx',
-  port: 8080
-}
-let tlsSecureOptions: socket.TLSSecureOptions = {
-  key: "xxxx",
-  cert: ["xxxx"],
-  ca: ["xxxx"],
-  password: "xxxx",
-  protocols: socket.Protocol.TLSv12,
-  useRemoteCipherPrefer: true,
-  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-  cipherSuite: "AES256-SHA256"
-}
-let tlsConnectOptions: socket.TLSConnectOptions = {
-  address: netAddress,
-  secureOptions: tlsSecureOptions,
-  ALPNProtocols: ["spdy/1", "http/1.1"]
-}
-tlsServer.listen(tlsConnectOptions).then(() => {
-  console.info("listen callback success");
-}).catch((err: BusinessError) => {
-  console.error("failed: " + JSON.stringify(err));
-});
-
-interface SocketLinger {
-  on: boolean;
-  linger: number;
-}
-
-let tcpExtraOptions: socket.TCPExtraOptions = {
-  keepAlive: true,
-  OOBInline: true,
-  TCPNoDelay: true,
-  socketLinger: { on: true, linger: 10 } as SocketLinger,
-  receiveBufferSize: 8192,
-  sendBufferSize: 8192,
-  reuseAddress: true,
-  socketTimeout: 3000
-}
-tlsServer.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
-  if (err) {
-    console.error('setExtraOptions fail');
-    return;
-  }
-  console.info('setExtraOptions success');
-});
-```
 
 ```TypeScript
 import { socket } from '@kit.NetworkKit';

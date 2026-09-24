@@ -1,5 +1,9 @@
 # PathShape
 
+```TypeScript
+export declare class PathShape extends CommonShapeMethod<PathShape>
+```
+
 Represents a path used in the **clipShape** and **maskShape** APIs.
 
 This API inherits from [CommonShapeMethod](arkts-arkui-arkui-shape-commonshapemethod-c.md).

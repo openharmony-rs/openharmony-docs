@@ -1,5 +1,9 @@
 # AudioCapturerMicInConfig (System API)
 
+```TypeScript
+interface AudioCapturerMicInConfig
+```
+
 Describes audio capturer configuration that can capture microphone input (mic-in) audio data before any processing.
 
 **Since:** 23

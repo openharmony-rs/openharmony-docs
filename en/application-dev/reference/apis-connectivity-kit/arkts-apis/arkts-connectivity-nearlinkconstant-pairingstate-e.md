@@ -1,5 +1,9 @@
 # PairingState
 
+```TypeScript
+export enum PairingState
+```
+
 Enumerates the pairing states with a remote device.
 
 **Since:** 26.0.0

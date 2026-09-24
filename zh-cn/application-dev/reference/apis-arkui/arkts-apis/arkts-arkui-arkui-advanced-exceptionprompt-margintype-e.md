@@ -1,5 +1,9 @@
 # MarginType
 
+```TypeScript
+export declare enum MarginType
+```
+
 MarginType定义marginType的类型。
 
 **起始版本：** 11

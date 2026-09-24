@@ -1,5 +1,9 @@
 # CertificatePinning
 
+```TypeScript
+interface CertificatePinning
+```
+
 由应用配置的证书。
 
 **起始版本：** 12

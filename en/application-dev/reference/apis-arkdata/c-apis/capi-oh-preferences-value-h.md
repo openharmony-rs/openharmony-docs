@@ -72,6 +72,8 @@ enum Preference_ValueType
 
 Enumerates the data types of **PreferencesValue**.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 13
 
 | Enum item | Description |
@@ -103,6 +105,8 @@ const char *OH_PreferencesPair_GetKey(const OH_PreferencesPair *pairs, uint32_t 
 
 Obtains the key based on the specified index from the KV data.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -132,6 +136,8 @@ const OH_PreferencesValue *OH_PreferencesPair_GetPreferencesValue(const OH_Prefe
 **Description**
 
 Obtains the value based on the specified index from the KV pairs.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 13
 
@@ -163,6 +169,8 @@ void OH_PreferencesPair_Destroy(OH_PreferencesPair *pairs, uint32_t count)
 
 Destroys an [OH_PreferencesPair](capi-preferences-oh-preferencespair.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -186,6 +194,8 @@ Preference_ValueType OH_PreferencesValue_GetValueType(const OH_PreferencesValue 
 **Description**
 
 Obtains the data type of a **PreferencesValue** instance.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 13
 
@@ -215,6 +225,8 @@ int OH_PreferencesValue_GetInt(const OH_PreferencesValue *object, int *value)
 **Description**
 
 Obtains an integer from an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 13
 
@@ -246,6 +258,8 @@ int OH_PreferencesValue_GetBool(const OH_PreferencesValue *object, bool *value)
 
 Obtains a Boolean value from an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -275,6 +289,8 @@ int OH_PreferencesValue_GetString(const OH_PreferencesValue *object, char **valu
 **Description**
 
 Obtains a string from an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 13
 
@@ -307,6 +323,8 @@ OH_PreferencesValue* OH_PreferencesValue_Create(void)
 
 Creates an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 23
 
 **Returns**:
@@ -330,6 +348,8 @@ void OH_PreferencesValue_Destroy(OH_PreferencesValue *value)
 
 Destroys an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -352,6 +372,8 @@ int OH_PreferencesValue_SetInt(const OH_PreferencesValue *object, int value)
 **Description**
 
 Sets an integer value for an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 23
 
@@ -383,6 +405,8 @@ int OH_PreferencesValue_SetBool(const OH_PreferencesValue *object, bool value)
 
 Sets a boolean value for an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -412,6 +436,8 @@ int OH_PreferencesValue_SetString(const OH_PreferencesValue *object, const char 
 **Description**
 
 Sets a string value for an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 23
 
@@ -443,6 +469,8 @@ int OH_PreferencesValue_SetInt64(const OH_PreferencesValue *object, int64_t valu
 
 Sets an int64 value for an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -472,6 +500,8 @@ int OH_PreferencesValue_GetInt64(const OH_PreferencesValue *object, int64_t *val
 **Description**
 
 Obtains an int64 value from an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 23
 
@@ -503,6 +533,8 @@ int OH_PreferencesValue_SetDouble(const OH_PreferencesValue *object, double valu
 
 Sets a double value for an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -533,6 +565,8 @@ int OH_PreferencesValue_GetDouble(const OH_PreferencesValue *object, double *val
 
 Obtains a double value from an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -562,6 +596,8 @@ int OH_PreferencesValue_SetIntArray(const OH_PreferencesValue *object, const int
 **Description**
 
 Sets an integer array for an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 23
 
@@ -594,6 +630,8 @@ int OH_PreferencesValue_GetIntArray(const OH_PreferencesValue *object, int **val
 
 Obtains an integer array from an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -624,6 +662,8 @@ int OH_PreferencesValue_SetBoolArray(const OH_PreferencesValue *object, const bo
 **Description**
 
 Sets a boolean array for an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 23
 
@@ -656,6 +696,8 @@ int OH_PreferencesValue_GetBoolArray(const OH_PreferencesValue *object, bool **v
 
 Obtains a boolean array from an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -686,6 +728,8 @@ int OH_PreferencesValue_SetStringArray(const OH_PreferencesValue *object, const 
 **Description**
 
 Sets a string array for an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 23
 
@@ -718,6 +762,8 @@ int OH_PreferencesValue_GetStringArray(const OH_PreferencesValue *object, char *
 
 Obtains a string array of an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -748,6 +794,8 @@ int OH_PreferencesValue_SetInt64Array(const OH_PreferencesValue *object, const i
 **Description**
 
 Sets an int64 array for an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 23
 
@@ -780,6 +828,8 @@ int OH_PreferencesValue_GetInt64Array(const OH_PreferencesValue *object, int64_t
 
 Obtains an int64 array from an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -810,6 +860,8 @@ int OH_PreferencesValue_SetDoubleArray(const OH_PreferencesValue *object, const 
 **Description**
 
 Sets a double array for an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 23
 
@@ -842,6 +894,8 @@ int OH_PreferencesValue_GetDoubleArray(const OH_PreferencesValue *object, double
 
 Obtains a double array of an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -873,6 +927,8 @@ int OH_PreferencesValue_SetBlob(const OH_PreferencesValue *object, const uint8_t
 
 Sets a blob value for an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -903,6 +959,8 @@ int OH_PreferencesValue_GetBlob(const OH_PreferencesValue *object, uint8_t **val
 **Description**
 
 Obtains a blob value from an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 23
 

@@ -1,5 +1,9 @@
 # ReuseMode
 
+```TypeScript
+enum ReuseMode
+```
+
 Enumerates the modes for reusing authentication results. This enum defines four modes for reusing authentication results and is used to control which authentication results can be reused under what conditions. The application can select a proper reuse mode based on the service scenario to balance security and user experience.
 
 **Since:** 12

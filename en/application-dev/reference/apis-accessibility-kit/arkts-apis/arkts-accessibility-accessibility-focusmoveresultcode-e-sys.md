@@ -1,5 +1,9 @@
 # FocusMoveResultCode (System API)
 
+```TypeScript
+export enum FocusMoveResultCode
+```
+
 Enumerates the result codes returned by the focusable node query.
 
 **Since:** 23

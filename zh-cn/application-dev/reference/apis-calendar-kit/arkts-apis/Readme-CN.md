@@ -1,6 +1,6 @@
 # ArkTS API<!--arkts-calendarkit-->
 
-- [@ohos.calendarManager](arkts-calendar-calendarmanager.md)
+- [@ohos.calendarManager(日程管理能力)](arkts-calendar-calendarmanager.md)
   - [getCalendarManager](arkts-calendar-calendarmanager-getcalendarmanager-f.md)
   - [EventFilter](arkts-calendar-calendarmanager-eventfilter-c.md)
   - [Attendee](arkts-calendar-calendarmanager-attendee-i.md)

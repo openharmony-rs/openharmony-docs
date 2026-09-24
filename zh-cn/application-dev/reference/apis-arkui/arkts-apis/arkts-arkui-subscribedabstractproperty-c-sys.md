@@ -1,5 +1,9 @@
 # SubscribedAbstractProperty
 
+```TypeScript
+declare abstract class SubscribedAbstractProperty<T>
+```
+
 SubscribedAbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/ [LocalStorage](../../../ui/state-management/arkts-localstorage.md)中属性的单/双向同步绑定对象，用于与AppStorage/LocalStorage中的属性建立数据同步关系。SubscribedAbstractProperty实例需要通过[aboutToBeDeleted](arkts-arkui-subscribedabstractproperty-c.md#abouttobedeleted)接口手动释放，以取消同步关系并无效化实例。
 
 > **说明：** 
@@ -39,6 +43,8 @@ constructor(
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -59,6 +65,8 @@ createOneWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedProper
 创建单向同步属性。数据变更仅从数据源向订阅者单向传播。订阅关系不再需要时，应调用[unlinkSuscriber()](#unlinksuscriber)解除订阅（订阅者ID通过[IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md).[id()](arkts-arkui-ipropertysubscriber-i-sys.md#id)获取），或由返回的[SyncedPropertyOneWay](arkts-arkui-syncedpropertyoneway-c-sys.md)对象的[aboutToBeDeleted()](arkts-arkui-syncedpropertyoneway-c-sys.md#abouttobedeleted)方法处理取消订阅。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -87,6 +95,8 @@ createTwoWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedProper
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -114,6 +124,8 @@ id(): number
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -133,6 +145,8 @@ protected notifyHasChanged(newValue: T): void
 通知变化时调用。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -154,6 +168,8 @@ protected notifyPropertyRead(): void
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -167,6 +183,8 @@ numberOfSubscrbers(): number
 获取订阅者数量时调用。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +206,8 @@ unlinkSuscriber(subscriberId: number): void
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -208,6 +228,8 @@ private id_
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -221,6 +243,8 @@ private info_?
 变量信息，用于标识该订阅关系。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -237,6 +261,8 @@ protected subscribers_: Set<number>
 **类型：** Set&lt;number&gt;
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

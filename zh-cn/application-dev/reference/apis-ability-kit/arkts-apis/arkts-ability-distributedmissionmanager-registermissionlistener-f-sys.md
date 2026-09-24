@@ -36,8 +36,8 @@ function registerMissionListener(parameter: MissionDeviceInfo, options: MissionC
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -78,40 +78,8 @@ try {
 }
 ```
 
-```TypeScript
-import { distributedMissionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 实现回调函数
-function NotifyMissionsChanged(deviceId: string): void {
-  console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
- }
-function NotifySnapshot(deviceId: string, missionId: number): void {
-  console.info('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
-  console.info('NotifySnapshot missionId ' + JSON.stringify(missionId));
-}
-function NotifyNetDisconnect(deviceId: string, state: number): void {
-  console.info('NotifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
-  console.info('NotifyNetDisconnect state ' + JSON.stringify(state));
-}
-try {
-    // 调用registerMissionListener接口
-    distributedMissionManager.registerMissionListener(
-      { deviceId: "" },
-      {
-        notifyMissionsChanged: NotifyMissionsChanged,
-        notifySnapshot: NotifySnapshot,
-        notifyNetDisconnect: NotifyNetDisconnect
-      }).then(() => {
-        console.info('registerMissionListener finished. ');
-    }).catch((error: BusinessError) => {
-        console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
-    })
-} catch (error) {
-    console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
-}
-```
-
+<a id="registermissionlistener-1"></a>
 
 ## registerMissionListener
 
@@ -148,9 +116,41 @@ function registerMissionListener(parameter: MissionDeviceInfo, options: MissionC
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
-参见 [registerMissionListener](#registermissionlistener)
+```TypeScript
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 实现回调函数
+function NotifyMissionsChanged(deviceId: string): void {
+  console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
+ }
+function NotifySnapshot(deviceId: string, missionId: number): void {
+  console.info('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
+  console.info('NotifySnapshot missionId ' + JSON.stringify(missionId));
+}
+function NotifyNetDisconnect(deviceId: string, state: number): void {
+  console.info('NotifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
+  console.info('NotifyNetDisconnect state ' + JSON.stringify(state));
+}
+try {
+    // 调用registerMissionListener接口
+    distributedMissionManager.registerMissionListener(
+      { deviceId: "" },
+      {
+        notifyMissionsChanged: NotifyMissionsChanged,
+        notifySnapshot: NotifySnapshot,
+        notifyNetDisconnect: NotifyNetDisconnect
+      }).then(() => {
+        console.info('registerMissionListener finished. ');
+    }).catch((error: BusinessError) => {
+        console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+    })
+} catch (error) {
+    console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+}
+```

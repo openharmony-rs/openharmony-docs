@@ -1,5 +1,9 @@
 # ScanReport
 
+```TypeScript
+interface ScanReport
+```
+
 Describes the contents of the scan report.
 
 **Since:** 15

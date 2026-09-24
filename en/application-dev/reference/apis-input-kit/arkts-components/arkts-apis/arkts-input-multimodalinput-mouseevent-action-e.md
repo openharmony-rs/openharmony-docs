@@ -1,5 +1,9 @@
 # Action
 
+```TypeScript
+export declare enum Action
+```
+
 Enumerates mouse event types.
 
 **Since:** 9

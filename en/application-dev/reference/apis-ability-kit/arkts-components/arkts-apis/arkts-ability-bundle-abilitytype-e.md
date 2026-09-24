@@ -1,5 +1,9 @@
 # AbilityType
 
+```TypeScript
+export enum AbilityType
+```
+
 
 > **NOTE:** 
 > 

@@ -1,5 +1,9 @@
 # InputWindowInfo
 
+```TypeScript
+export interface InputWindowInfo
+```
+
 Describes the window information of the input method keyboard.
 
 **Since:** 10

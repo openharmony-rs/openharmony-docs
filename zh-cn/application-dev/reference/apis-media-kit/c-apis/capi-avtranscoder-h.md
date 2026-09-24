@@ -322,7 +322,7 @@ OH_AVErrCode OH_AVTranscoder_Prepare(OH_AVTranscoder *transcoder, OH_AVTranscode
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVTranscoder *transcoder | 指向OH_AVTranscoder实例的指针。传入的transcoder指针必须为OH_AVTranscoder_Create创建的实例。 |
-| OH_AVTranscoder_Config *config | 指向OH_AVTranscoder_Config实例的指针，参考{@link OH_AVTranscoder_Config}。 |
+| OH_AVTranscoder_Config *config | 指向OH_AVTranscoder_Config实例的指针，参考[OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md)。 |
 
 **返回值：**
 
@@ -467,7 +467,7 @@ OH_AVErrCode OH_AVTranscoder_SetStateCallback(OH_AVTranscoder *transcoder, OH_AV
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVTranscoder *transcoder | 指向OH_AVTranscoder实例的指针。传入的transcoder指针必须为OH_AVTranscoder_Create创建的实例。 |
-| OH_AVTranscoder_OnStateChange callback | 转码状态回调方法，详细说明请参见{@link OH_AVTranscoder_OnStateChange}。 |
+| OH_AVTranscoder_OnStateChange callback | 转码状态回调方法，详细说明请参见[OH_AVTranscoder_OnStateChange](capi-avtranscoder-base-h.md#oh_avtranscoder_onstatechange)。 |
 | void *userData | 指向用户特定数据的指针。 |
 
 **返回值：**
@@ -493,7 +493,7 @@ OH_AVErrCode OH_AVTranscoder_SetErrorCallback(OH_AVTranscoder *transcoder, OH_AV
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVTranscoder *transcoder | 指向OH_AVTranscoder实例的指针。 |
-| OH_AVTranscoder_OnError callback | 转码错误回调方法，详细说明请参见{@link OH_AVTranscoder_OnError}。 |
+| OH_AVTranscoder_OnError callback | 转码错误回调方法，详细说明请参见[OH_AVTranscoder_OnError](capi-avtranscoder-base-h.md#oh_avtranscoder_onerror)。 |
 | void *userData | 指向用户特定数据的指针。 |
 
 **返回值：**
@@ -519,7 +519,7 @@ OH_AVErrCode OH_AVTranscoder_SetProgressUpdateCallback(OH_AVTranscoder *transcod
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVTranscoder *transcoder | 指向OH_AVTranscoder实例的指针。 |
-| OH_AVTranscoder_OnProgressUpdate callback | 转码进度更新回调方法，详细说明请参见{@link OH_AVTranscoder_OnProgressUpdate}。 |
+| OH_AVTranscoder_OnProgressUpdate callback | 转码进度更新回调方法，详细说明请参见[OH_AVTranscoder_OnProgressUpdate](capi-avtranscoder-base-h.md#oh_avtranscoder_onprogressupdate)。 |
 | void *userData | 指向用户特定数据的指针。 |
 
 **返回值：**

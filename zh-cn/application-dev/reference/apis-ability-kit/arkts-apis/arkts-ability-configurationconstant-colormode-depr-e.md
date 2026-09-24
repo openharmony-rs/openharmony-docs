@@ -1,5 +1,9 @@
 # ColorMode
 
+```TypeScript
+export enum ColorMode
+```
+
 表示颜色模式的枚举。
 
 **起始版本：** 8

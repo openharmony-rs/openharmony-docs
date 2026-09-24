@@ -1,5 +1,9 @@
 # MainWindowInfo
 
+```TypeScript
+interface MainWindowInfo
+```
+
 Describes the main window information.
 
 **Since:** 21

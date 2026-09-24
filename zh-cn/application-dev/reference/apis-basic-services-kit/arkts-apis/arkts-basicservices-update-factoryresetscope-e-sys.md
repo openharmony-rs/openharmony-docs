@@ -1,5 +1,9 @@
 # FactoryResetScope（系统接口）
 
+```TypeScript
+export enum FactoryResetScope
+```
+
 恢复出厂设置范围。
 
 **起始版本：** 26.0.0

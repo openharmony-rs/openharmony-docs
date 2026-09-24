@@ -1,5 +1,9 @@
 # SyncState
 
+```TypeScript
+enum SyncState
+```
+
 端云同步状态，为枚举类型。
 
 > **说明：** 

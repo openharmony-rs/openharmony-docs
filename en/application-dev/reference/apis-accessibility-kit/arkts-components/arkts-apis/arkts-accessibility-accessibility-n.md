@@ -1,5 +1,9 @@
 # accessibility(Accessibility)
 
+```TypeScript
+declare namespace accessibility
+```
+
 This module provides accessibility features, including obtaining the accessibility application list, obtaining the accessibility application enabling state, obtaining the captions configuration, sending accessibility events, and listening for accessibility application state changes.
 
 **Since:** 7
@@ -19,22 +23,22 @@ import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, Injec
 
 | Name | Description |
 | --- | --- |
-| [isOpenAccessibility](arkts-accessibility-accessibility-isopenaccessibility-f.md) | Checks whether an accessibility application is enabled. This API uses an asynchronous callback to return the result. |
-| [isOpenAccessibility](arkts-accessibility-accessibility-isopenaccessibility-f.md) | Checks whether an accessibility application is enabled. This API uses a promise to return the result. |
+| [isOpenAccessibility](arkts-accessibility-accessibility-isopenaccessibility-f.md#isopenaccessibility) | Checks whether an accessibility application is enabled. This API uses an asynchronous callback to return the result. |
+| [isOpenAccessibility](arkts-accessibility-accessibility-isopenaccessibility-f.md#isopenaccessibility-1) | Checks whether an accessibility application is enabled. This API uses a promise to return the result. |
 | [isOpenAccessibilitySync](arkts-accessibility-accessibility-isopenaccessibilitysync-f.md) | Checks whether any accessibility application has been enabled in the system. |
-| [isOpenTouchGuide](arkts-accessibility-accessibility-isopentouchguide-f.md) | Checks whether touch guide mode is enabled. This API uses an asynchronous callback to return the result. |
-| [isOpenTouchGuide](arkts-accessibility-accessibility-isopentouchguide-f.md) | Checks whether touch guide mode is enabled. This API uses a promise to return the result. |
+| [isOpenTouchGuide](arkts-accessibility-accessibility-isopentouchguide-f.md#isopentouchguide) | Checks whether touch guide mode is enabled. This API uses an asynchronous callback to return the result. |
+| [isOpenTouchGuide](arkts-accessibility-accessibility-isopentouchguide-f.md#isopentouchguide-1) | Checks whether touch guide mode is enabled. This API uses a promise to return the result. |
 | [isOpenTouchGuideSync](arkts-accessibility-accessibility-isopentouchguidesync-f.md) | Checks whether touch guide mode is enabled. |
 | [isScreenReaderOpenSync](arkts-accessibility-accessibility-isscreenreaderopensync-f.md) | Checks whether screen reader mode is enabled. |
-| [getAbilityLists](arkts-accessibility-accessibility-getabilitylists-f.md) | Obtains the accessibility application list. This API uses an asynchronous callback to return the result. |
-| [getAbilityLists](arkts-accessibility-accessibility-getabilitylists-f.md) | Obtains the accessibility application list. This API uses a promise to return the result. |
-| [getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md) | Obtains the accessibility application list. This API uses a promise to return the result. |
-| [getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md) | Obtains the accessibility application list. This API uses an asynchronous callback to return the result. |
+| [getAbilityLists](arkts-accessibility-accessibility-getabilitylists-f.md#getabilitylists) | Obtains the accessibility application list. This API uses an asynchronous callback to return the result. |
+| [getAbilityLists](arkts-accessibility-accessibility-getabilitylists-f.md#getabilitylists-1) | Obtains the accessibility application list. This API uses a promise to return the result. |
+| [getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist) | Obtains the accessibility application list. This API uses a promise to return the result. |
+| [getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist-1) | Obtains the accessibility application list. This API uses an asynchronous callback to return the result. |
 | [getAccessibilityExtensionListSync](arkts-accessibility-accessibility-getaccessibilityextensionlistsync-f.md) | Query the list of accessibility applications in the current system, which can be queried by criteria. |
-| [sendEvent](arkts-accessibility-accessibility-sendevent-f.md) | Sends an accessibility event. The event will be distributed to registered accessibility extension applications that match the event type for response. This API uses an asynchronous callback to return the result. |
-| [sendEvent](arkts-accessibility-accessibility-sendevent-f.md) | Sends an accessibility event. The event will be distributed to registered accessibility extension applications that match the event type for response. This API uses a promise to return the result. |
-| [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md) | Sends an accessibility event. The event will be distributed to registered accessibility applications that match the event type for response. This API uses an asynchronous callback to return the result. |
-| [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md) | Sends an accessibility event. The event will be distributed to registered accessibility extension applications that match the event type for response. This API uses a promise to return the result. |
+| [sendEvent](arkts-accessibility-accessibility-sendevent-f.md#sendevent) | Sends an accessibility event. The event will be distributed to registered accessibility extension applications that match the event type for response. This API uses an asynchronous callback to return the result. |
+| [sendEvent](arkts-accessibility-accessibility-sendevent-f.md#sendevent-1) | Sends an accessibility event. The event will be distributed to registered accessibility extension applications that match the event type for response. This API uses a promise to return the result. |
+| [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent) | Sends an accessibility event. The event will be distributed to registered accessibility applications that match the event type for response. This API uses an asynchronous callback to return the result. |
+| [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent-1) | Sends an accessibility event. The event will be distributed to registered accessibility extension applications that match the event type for response. This API uses a promise to return the result. |
 | [getTouchModeSync](arkts-accessibility-accessibility-gettouchmodesync-f.md) | Obtains the single-tap/double-tap operation mode in touch guide mode. This can be used to adjust the app's interaction response mode based on the current operation mode (for example, responding directly to taps in single- tap mode, or requiring double-tap confirmation in double-tap mode). |
 | [on](arkts-accessibility-accessibility-on-f.md#onaccessibilitystatechange) | Subscribes to the state changes of the accessibility application. This API uses an asynchronous callback to return the result. |
 | [on](arkts-accessibility-accessibility-on-f.md#ontouchguidestatechange) | Subscribes to the state changes of touch guide mode. This API uses an asynchronous callback to return the result. |

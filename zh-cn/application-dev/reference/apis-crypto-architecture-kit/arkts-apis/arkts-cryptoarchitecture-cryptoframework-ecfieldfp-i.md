@@ -1,5 +1,9 @@
 # ECFieldFp
 
+```TypeScript
+interface ECFieldFp extends ECField
+```
+
 指定椭圆曲线的素数域。是[ECField](arkts-cryptoarchitecture-cryptoframework-ecfield-i.md)的子类。
 
 **继承/实现关系：** ECFieldFp extends [ECField](arkts-cryptoarchitecture-cryptoframework-ecfield-i.md)

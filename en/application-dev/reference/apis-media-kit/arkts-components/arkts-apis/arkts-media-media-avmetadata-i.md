@@ -1,5 +1,9 @@
 # AVMetadata
 
+```TypeScript
+interface AVMetadata
+```
+
 Defines the audio and video metadata. Parameters that are not declared as read-only in [AVRecorderConfig](arkts-media-media-avrecorderconfig-i.md) can be used as input parameters for recording of [AVRecorder](arkts-media-media-avrecorder-i.md).
 
 **Since:** 11

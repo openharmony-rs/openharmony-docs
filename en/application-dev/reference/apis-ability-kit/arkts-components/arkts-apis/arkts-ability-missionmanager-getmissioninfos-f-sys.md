@@ -61,23 +61,8 @@ try {
 }
 ```
 
-```TypeScript
-import { missionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  // Get all mission information.
-  missionManager.getMissionInfos('', 10).then((data: Array<missionManager.MissionInfo>) => {
-    console.info(`getMissionInfos successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`getMissionInfos failed. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`getMissionInfos failed. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="getmissioninfos-1"></a>
 
 ## getMissionInfos
 
@@ -118,4 +103,19 @@ Obtains information about all missions. This API uses a promise to return the re
 
 **Examples**
 
-See [getMissionInfos](#getmissioninfos)
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // Get all mission information.
+  missionManager.getMissionInfos('', 10).then((data: Array<missionManager.MissionInfo>) => {
+    console.info(`getMissionInfos successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`getMissionInfos failed. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`getMissionInfos failed. Code: ${err.code}, message: ${err.message}`);
+}
+```

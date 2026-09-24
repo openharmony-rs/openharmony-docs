@@ -1,5 +1,9 @@
 # DiallingNumbersInfo (System API)
 
+```TypeScript
+export interface DiallingNumbersInfo
+```
+
 Defines the contact number information.
 
 **Since:** 8

@@ -6,7 +6,9 @@ typedef struct GameDevice_AllDeviceInfos GameDevice_AllDeviceInfos
 
 ## Overview
 
-Defines the result returned by [OH_GameDevice_GetAllDeviceInfos](capi-game-device-h.md#oh_gamedevice_getalldeviceinfos).
+Defines the result returned by {@link OH_GameDevice_GetAllDeviceInfos}.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 

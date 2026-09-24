@@ -56,19 +56,8 @@ print.notifyPrintServiceEvent(event).then(() => {
 });
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let event : print.ApplicationEvent = print.ApplicationEvent.APPLICATION_CREATED;
-let jobId : string = '1';
-print.notifyPrintServiceEvent(event, jobId).then(() => {
-    console.info('notifyPrintServiceEvent success');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to notify print service event. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="notifyprintserviceevent-1"></a>
 
 ## notifyPrintServiceEvent
 
@@ -109,4 +98,15 @@ Notifies the print service of the print application events. This API uses a prom
 
 **Examples**
 
-See [notifyPrintServiceEvent](#notifyprintserviceevent)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let event : print.ApplicationEvent = print.ApplicationEvent.APPLICATION_CREATED;
+let jobId : string = '1';
+print.notifyPrintServiceEvent(event, jobId).then(() => {
+    console.info('notifyPrintServiceEvent success');
+}).catch((error: BusinessError) => {
+    console.error(`Failed to notify print service event. Code: ${error.code}, message: ${error.message}`);
+});
+```

@@ -8,6 +8,8 @@ typedef struct HiDebug_MemoryLimit {...} HiDebug_MemoryLimit
 
 应用程序进程内存限制结构类型定义。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 12
 
 **相关模块：** [HiDebug](capi-hidebug.md)

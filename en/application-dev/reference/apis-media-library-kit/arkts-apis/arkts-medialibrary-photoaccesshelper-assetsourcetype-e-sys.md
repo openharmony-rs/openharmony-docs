@@ -1,5 +1,9 @@
 # AssetSourceType (System API)
 
+```TypeScript
+export enum AssetSourceType
+```
+
 Enumerates the flags of asset source.
 
 **Since:** 26.0.0

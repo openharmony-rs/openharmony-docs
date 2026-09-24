@@ -14,7 +14,7 @@ function bindToDisplay(inputDeviceId: number, displayId: number): Promise<void>
 
 将输入设备绑定到显示器组。仅支持外接USB和蓝牙的鼠标、触摸板、键盘和游戏手柄。绑定后，输入设备将固定在指定显示器所在的显示器组上操作。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.INPUT_DEVICE_CONTROLLER
 
@@ -41,8 +41,8 @@ function bindToDisplay(inputDeviceId: number, displayId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. The application does not have the required permission. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Called by non-system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. The application does not have the required permission. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied. Called by non-system application. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
 | [3900001](../errorcode-inputdevice.md#3900001-指定的设备不存在) | The specified input device does not exist. |
 | [3900004](../errorcode-inputdevice.md#3900004-指定的显示器不存在) | The specified display does not exist. |

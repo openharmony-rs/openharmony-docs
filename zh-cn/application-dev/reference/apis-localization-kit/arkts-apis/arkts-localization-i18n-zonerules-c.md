@@ -1,5 +1,9 @@
 # ZoneRules
 
+```TypeScript
+export class ZoneRules
+```
+
 提供查询时区跳变规则的能力。
 
 **起始版本：** 20

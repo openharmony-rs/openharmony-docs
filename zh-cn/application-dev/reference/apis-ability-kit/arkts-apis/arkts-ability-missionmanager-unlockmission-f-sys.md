@@ -12,7 +12,7 @@ import { missionManager } from '@kit.AbilityKit';
 function unlockMission(missionId: number, callback: AsyncCallback<void>): void
 ```
 
-解锁指定任务ID的任务。使用callback异步回调。
+解锁指定任务ID的任务。适用于允许被锁定的任务被系统正常清理的场景，如系统管理类应用在不再需要保持某个任务在后台运行时解锁该任务。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -33,9 +33,9 @@ function unlockMission(missionId: number, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16300001](../errorcode-ability.md#16300001-指定的任务不存在) | Mission not found. |
 
 **示例**
@@ -61,25 +61,8 @@ try {
 }
 ```
 
-```TypeScript
-import { missionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// testMissionId为任务ID，可通过getMissionInfos接口获取真实有效的任务ID
-let testMissionId = 2;
-
-try {
-  missionManager.unlockMission(testMissionId).then((data: void) => {
-    console.info(`unlockMission successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`unlockMission failed. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`unlockMission failed. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="unlockmission-1"></a>
 
 ## unlockMission
 
@@ -87,7 +70,7 @@ try {
 function unlockMission(missionId: number): Promise<void>
 ```
 
-解锁指定任务ID的任务。使用Promise异步回调。
+解锁指定任务ID的任务。适用于允许被锁定的任务被系统正常清理的场景，如系统管理类应用在不再需要保持某个任务在后台运行时解锁该任务。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -113,11 +96,28 @@ function unlockMission(missionId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16300001](../errorcode-ability.md#16300001-指定的任务不存在) | Mission not found. |
 
 **示例**
 
-参见 [unlockMission](#unlockmission)
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// testMissionId为任务ID，可通过getMissionInfos接口获取真实有效的任务ID
+let testMissionId = 2;
+
+try {
+  missionManager.unlockMission(testMissionId).then((data: void) => {
+    console.info(`unlockMission successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`unlockMission failed. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`unlockMission failed. Code: ${err.code}, message: ${err.message}`);
+}
+```

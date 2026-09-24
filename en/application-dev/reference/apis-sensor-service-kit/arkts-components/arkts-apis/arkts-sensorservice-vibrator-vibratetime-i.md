@@ -1,5 +1,9 @@
 # VibrateTime
 
+```TypeScript
+interface VibrateTime
+```
+
 Represents vibration of the specified duration.
 
 **Since:** 9

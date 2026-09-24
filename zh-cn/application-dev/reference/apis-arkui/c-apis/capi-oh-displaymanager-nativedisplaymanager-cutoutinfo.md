@@ -8,6 +8,8 @@ typedef struct NativeDisplayManager_CutoutInfo {...} NativeDisplayManager_Cutout
 
 挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。
 
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
 **起始版本：** 12
 
 **相关模块：** [OH_DisplayManager](capi-oh-displaymanager.md)

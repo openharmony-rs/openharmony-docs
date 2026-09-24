@@ -51,6 +51,8 @@ Creates a temporary directory. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
+<a id="mkdtemp-1"></a>
+
 ## mkdtemp
 
 ```TypeScript

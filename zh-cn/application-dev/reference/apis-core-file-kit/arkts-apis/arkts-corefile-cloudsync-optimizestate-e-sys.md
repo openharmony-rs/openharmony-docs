@@ -1,5 +1,9 @@
 # OptimizeState（系统接口）
 
+```TypeScript
+enum OptimizeState
+```
+
 优化空间状态，为枚举类型。
 
 **起始版本：** 17

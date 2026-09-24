@@ -1,5 +1,9 @@
 # RootIterator (System API)
 
+```TypeScript
+interface RootIterator
+```
+
 Provides an iterator object of the device root directory.
 
 **Since:** 9

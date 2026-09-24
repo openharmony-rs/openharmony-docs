@@ -33,9 +33,9 @@ function exportVCard(context: Context, predicates: dataSharePredicates.DataShare
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs.<br>**适用版本：** 11 - 22 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs.<br>**适用版本：** 11 - 22 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
@@ -64,49 +64,8 @@ class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { window } from '@kit.ArkUI';
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { vcard } from '@kit.TelephonyKit';
-import { dataSharePredicates } from '@kit.ArkData';
 
-class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage) {
-        let predicates = new dataSharePredicates.DataSharePredicates();
-        predicates.equalTo("NAME", "Rose");
-        let options: vcard.VCardBuilderOptions = {
-            cardType: vcard.VCardType.VERSION_21,
-            charset: "UTF-8"
-        };
-        vcard.exportVCard(this.context, predicates, options).then(() => {
-            console.info(`exportVCard success.`);
-        }).catch((err: BusinessError) => {
-            console.error(`exportVCard failed, promise: err->${JSON.stringify(err)}`);
-        });
-    }
-}
-```
-
-```TypeScript
-import { window } from '@kit.ArkUI';
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { vcard } from '@kit.TelephonyKit';
-import { dataSharePredicates } from '@kit.ArkData';
-
-class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage) {
-        let predicates = new dataSharePredicates.DataSharePredicates();
-        predicates.equalTo("NAME", "Rose");
-
-        vcard.exportVCard(this.context, predicates, (err: BusinessError, data: string) => {
-            console.error(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-        });
-    }
-}
-```
-
+<a id="exportvcard-1"></a>
 
 ## exportVCard
 
@@ -140,17 +99,41 @@ function exportVCard(context: Context, predicates: dataSharePredicates.DataShare
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs.<br>**适用版本：** 11 - 22 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs.<br>**适用版本：** 11 - 22 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
 **示例**
 
-参见 exportVCard
+```TypeScript
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { vcard } from '@kit.TelephonyKit';
+import { dataSharePredicates } from '@kit.ArkData';
 
+class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+        let predicates = new dataSharePredicates.DataSharePredicates();
+        predicates.equalTo("NAME", "Rose");
+        let options: vcard.VCardBuilderOptions = {
+            cardType: vcard.VCardType.VERSION_21,
+            charset: "UTF-8"
+        };
+        vcard.exportVCard(this.context, predicates, options).then(() => {
+            console.info(`exportVCard success.`);
+        }).catch((err: BusinessError) => {
+            console.error(`exportVCard failed, promise: err->${JSON.stringify(err)}`);
+        });
+    }
+}
+```
+
+
+<a id="exportvcard-2"></a>
 
 ## exportVCard
 
@@ -178,13 +161,30 @@ function exportVCard(context: Context, predicates: dataSharePredicates.DataShare
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs.<br>**适用版本：** 11 - 22 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs.<br>**适用版本：** 11 - 22 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
 **示例**
 
-参见 exportVCard
+```TypeScript
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { vcard } from '@kit.TelephonyKit';
+import { dataSharePredicates } from '@kit.ArkData';
+
+class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+        let predicates = new dataSharePredicates.DataSharePredicates();
+        predicates.equalTo("NAME", "Rose");
+
+        vcard.exportVCard(this.context, predicates, (err: BusinessError, data: string) => {
+            console.error(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+        });
+    }
+}
+```

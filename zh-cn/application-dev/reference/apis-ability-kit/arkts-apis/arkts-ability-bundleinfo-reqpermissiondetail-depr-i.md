@@ -1,9 +1,13 @@
 # ReqPermissionDetail
 
+```TypeScript
+export interface ReqPermissionDetail
+```
+
 
 > **说明：** 
 > 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用ReqPermissionDetail替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[ReqPermissionDetail](#reqpermissiondetail)替代。
 
 应用运行时需向系统申请的权限集合的详细信息。
 

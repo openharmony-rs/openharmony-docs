@@ -1,5 +1,9 @@
 # ScaleOptions (System API)
 
+```TypeScript
+interface ScaleOptions
+```
+
 Describes the scale parameters.
 
 **Since:** 9

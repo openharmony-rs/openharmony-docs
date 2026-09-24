@@ -18,7 +18,7 @@ Publishes a reminder through the reminder agent. This API uses an asynchronous c
 
 **Deprecated since:** 9
 
-**Substitutes:** publishReminder
+**Substitutes:** [publishReminder](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md)
 
 **Required permissions:** ohos.permission.PUBLISH_AGENT_REMINDER
 
@@ -47,19 +47,8 @@ reminderAgent.publishReminder(timer, (err: BusinessError, reminderId: number) =>
 });
 ```
 
-```TypeScript
-import reminderAgent from '@ohos.reminderAgent';
 
-let timer:reminderAgent.ReminderRequestTimer = {
-  reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-  triggerTimeInSeconds: 10
-}
-
-reminderAgent.publishReminder(timer).then((reminderId: number) => {
-  console.info("promise, reminderId = " + reminderId);
-});
-```
-
+<a id="publishreminder-1"></a>
 
 ## publishReminder
 
@@ -73,7 +62,7 @@ Publishes a reminder through the reminder agent. This API uses a promise to retu
 
 **Deprecated since:** 9
 
-**Substitutes:** publishReminder
+**Substitutes:** [publishReminder](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md)
 
 **Required permissions:** ohos.permission.PUBLISH_AGENT_REMINDER
 
@@ -93,4 +82,15 @@ Publishes a reminder through the reminder agent. This API uses a promise to retu
 
 **Examples**
 
-See [publishReminder](#publishreminder)
+```TypeScript
+import reminderAgent from '@ohos.reminderAgent';
+
+let timer:reminderAgent.ReminderRequestTimer = {
+  reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+  triggerTimeInSeconds: 10
+}
+
+reminderAgent.publishReminder(timer).then((reminderId: number) => {
+  console.info("promise, reminderId = " + reminderId);
+});
+```

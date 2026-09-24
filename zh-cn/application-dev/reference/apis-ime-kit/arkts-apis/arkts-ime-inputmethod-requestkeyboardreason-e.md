@@ -1,5 +1,9 @@
 # RequestKeyboardReason
 
+```TypeScript
+export enum RequestKeyboardReason
+```
+
 请求键盘输入的原因。
 
 **起始版本：** 15

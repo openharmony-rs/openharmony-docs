@@ -1,5 +1,9 @@
 # Kdf
 
+```TypeScript
+interface Kdf
+```
+
 密钥派生函数（KDF）接口，定义基于密钥派生参数派生密钥的方法。调用前，需通过[createKdf](arkts-cryptoarchitecture-cryptoframework-createkdf-f.md)方法创建一个Kdf实例。
 
 **起始版本：** 11
@@ -41,20 +45,58 @@ generateSecret(params: KdfSpec, callback: AsyncCallback<DataBlob>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes:<br>1. Invalid key length in the params; <br>2. Invalid info length in the params; <br>3. Invalid keySize in the params.<br>**适用版本：** 22+ |
 
 **示例**
 
-```TypeScript
 PBKDF2算法
-```
 
 ```TypeScript
-HKDF算法
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+let spec: cryptoFramework.PBKDF2Spec = {
+  algName: 'PBKDF2',
+  password: '123456',
+  salt: new Uint8Array(16),
+  iterations: 10000,
+  keySize: 32
+};
+let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+kdf.generateSecret(spec, (err, secret) => {
+  if (err) {
+    console.error(`key derivation failed, errCode: ${err.code}, errMsg: ${err.message}`);
+    return;
+  }
+  console.info('key derivation output = ' + secret.data);
+});
 ```
+
+HKDF算法
+
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+let spec: cryptoFramework.HKDFSpec = {
+  algName: 'HKDF',
+  key: '123456',
+  salt: new Uint8Array(16),
+  info: new Uint8Array(16),
+  keySize: 32
+};
+let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+kdf.generateSecret(spec, (err, secret) => {
+  if (err) {
+    console.error(`key derivation failed, errCode: ${err.code}, errMsg: ${err.message}`);
+    return;
+  }
+  console.info('key derivation output = ' + secret.data);
+});
+```
+
+<a id="generatesecret-1"></a>
 
 ## generateSecret
 
@@ -88,14 +130,56 @@ generateSecret(params: KdfSpec): Promise<DataBlob>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes:<br>1. Invalid key length in the params; <br>2. Invalid info length in the params; <br>3. Invalid keySize in the params.<br>**适用版本：** 22+ |
 
 **示例**
 
-参见 [generateSecret](#generatesecret)
+PBKDF2算法
+
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let spec: cryptoFramework.PBKDF2Spec = {
+  algName: 'PBKDF2',
+  password: '123456',
+  salt: new Uint8Array(16),
+  iterations: 10000,
+  keySize: 32
+};
+let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+let kdfPromise = kdf.generateSecret(spec);
+kdfPromise.then(secret => {
+  console.info('key derivation output = ' + secret.data);
+}).catch((error: BusinessError) => {
+  console.error(`key derivation failed: errCode: ${error.code}, errMsg: ${error.message}`);
+});
+```
+
+HKDF算法
+
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let spec: cryptoFramework.HKDFSpec = {
+  algName: 'HKDF',
+  key: '123456',
+  salt: new Uint8Array(16),
+  info: new Uint8Array(16),
+  keySize: 32
+};
+let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+let kdfPromise = kdf.generateSecret(spec);
+kdfPromise.then(secret => {
+  console.info('key derivation output = ' + secret.data);
+}).catch((error: BusinessError) => {
+  console.error(`key derivation failed: errCode: ${error.code}, errMsg: ${error.message}`);
+});
+```
 
 ## generateSecretSync
 
@@ -129,7 +213,7 @@ generateSecretSync(params: KdfSpec): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
@@ -137,12 +221,38 @@ generateSecretSync(params: KdfSpec): DataBlob
 
 **示例**
 
-```TypeScript
 PBKDF2算法
-```
 
 ```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+let spec: cryptoFramework.PBKDF2Spec = {
+  algName: 'PBKDF2',
+  password: '123456',
+  salt: new Uint8Array(16),
+  iterations: 10000,
+  keySize: 32
+};
+let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+let secret = kdf.generateSecretSync(spec);
+console.info('[Sync]key derivation output = ' + secret.data);
+```
+
 HKDF算法
+
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+let spec: cryptoFramework.HKDFSpec = {
+  algName: 'HKDF',
+  key: '123456',
+  salt: new Uint8Array(16),
+  info: new Uint8Array(16),
+  keySize: 32
+};
+let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+let secret = kdf.generateSecretSync(spec);
+console.info('[Sync]key derivation output = ' + secret.data);
 ```
 
 ## algName

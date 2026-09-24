@@ -1,5 +1,9 @@
 # SceneResource
 
+```TypeScript
+export interface SceneResource
+```
+
 Describes a resource in a scene.
 
 @interface SceneResource

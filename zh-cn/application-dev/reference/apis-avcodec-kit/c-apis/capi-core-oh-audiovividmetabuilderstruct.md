@@ -8,6 +8,8 @@ typedef struct OH_AudioVividMetaBuilderStruct OH_AudioVividMetaBuilder
 
 OH_AudioVividMetaBuilder的前向声明。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [Core](capi-core.md)

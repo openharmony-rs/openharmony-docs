@@ -1,5 +1,9 @@
 # CallStateInfo
 
+```TypeScript
+export interface CallStateInfo
+```
+
 通话状态相关信息。
 
 **起始版本：** 11

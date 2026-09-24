@@ -1,5 +1,9 @@
 # EventType
 
+```TypeScript
+enum EventType
+```
+
 Enumerates the event types.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # PerformanceMode
 
+```TypeScript
+export enum PerformanceMode
+```
+
 Enum for performance mode
 
 **Since:** 12

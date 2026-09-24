@@ -1,5 +1,9 @@
 # NotifyType (System API)
 
+```TypeScript
+enum NotifyType
+```
+
 Enumerates the notification types.
 
 **Since:** 10

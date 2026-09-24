@@ -20,6 +20,8 @@ MenuItemGroup(value?: MenuItemGroupOptions)
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -28,7 +30,7 @@ MenuItemGroup(value?: MenuItemGroupOptions)
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [MenuItemGroupOptions](arkts-arkui-menuitemgroupoptions-i.md) | No | Header and footer of the menu item group. |
+| value | [MenuItemGroupOptions](arkts-arkui-menuitemgroup-comp-menuitemgroupoptions-i.md) | No | Header and footer of the menu item group. |
 
 ## Summary
 
@@ -36,4 +38,4 @@ MenuItemGroup(value?: MenuItemGroupOptions)
 
 | Name | Description |
 | --- | --- |
-| [MenuItemGroupOptions](arkts-arkui-menuitemgroupoptions-i.md) | Describes the header and footer of the menu item group. |
+| [MenuItemGroupOptions](arkts-arkui-menuitemgroup-comp-menuitemgroupoptions-i.md) | Describes the header and footer of the menu item group. |

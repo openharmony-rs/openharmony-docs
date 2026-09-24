@@ -1,5 +1,9 @@
 # ServiceType
 
+```TypeScript
+enum ServiceType
+```
+
 Distributed service type.
 
 **Since:** 26.0.0

@@ -36,8 +36,8 @@ function start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback:
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permit error.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | SystemAPI permit error.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [4400001](../errorcode-cooperator.md#4400001-目标设备描述符错误) | Incorrect descriptor for the target device. |
 | [4400002](../errorcode-cooperator.md#4400002-操作输入设备失败) | Screen hop failed. |
 
@@ -73,30 +73,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { inputDeviceCooperate } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          const sinkDeviceDescriptor = 'descriptor';
-          const srcInputDeviceId = 0;
-          inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId).then(() => {
-            console.info(`Succeeded in starting keyboard mouse crossing.`);
-          }).catch((error: BusinessError) => {
-            console.error(`Failed to start keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          });
-        })
-    }
-  }
-}
-```
-
+<a id="start-1"></a>
 
 ## start
 
@@ -133,11 +111,33 @@ function start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permit error.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | SystemAPI permit error.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [4400001](../errorcode-cooperator.md#4400001-目标设备描述符错误) | Incorrect descriptor for the target device. |
 | [4400002](../errorcode-cooperator.md#4400002-操作输入设备失败) | Screen hop failed. |
 
 **示例**
 
-参见 [start](#start)
+```TypeScript
+import { inputDeviceCooperate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          const sinkDeviceDescriptor = 'descriptor';
+          const srcInputDeviceId = 0;
+          inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId).then(() => {
+            console.info(`Succeeded in starting keyboard mouse crossing.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to start keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
+        })
+    }
+  }
+}
+```

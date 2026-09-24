@@ -1,5 +1,9 @@
 # FontConfigs
 
+```TypeScript
+declare interface FontConfigs
+```
+
 Defines font configurations.
 
 **Since:** 24

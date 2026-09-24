@@ -1,5 +1,9 @@
 # USBPort (System API)
 
+```TypeScript
+interface USBPort
+```
+
 Represents a USB port.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # MicStateChangeEvent
 
+```TypeScript
+interface MicStateChangeEvent
+```
+
 Describes the event received by the application when the microphone mute status is changed.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # SourceOptions
 
+```TypeScript
+interface SourceOptions
+```
+
 ImageSource的初始化选项。
 
 **起始版本：** 9

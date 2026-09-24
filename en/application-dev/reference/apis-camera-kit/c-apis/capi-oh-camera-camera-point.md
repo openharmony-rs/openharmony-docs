@@ -8,6 +8,8 @@ typedef struct Camera_Point {...} Camera_Point
 
 The struct describes the parameters related to a point.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

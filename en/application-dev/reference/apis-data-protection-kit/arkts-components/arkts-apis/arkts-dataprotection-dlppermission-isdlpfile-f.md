@@ -37,7 +37,7 @@ During file processing, the system checks whether the file is a DLP file and the
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
@@ -61,23 +61,8 @@ dlpPermission.isDLPFile(file).then((isDLPFile: boolean) => {
 });
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
-import { fileIo } from '@kit.CoreFileKit';
 
-let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
-let file: number | undefined = undefined;
-file = fileIo.openSync(uri).fd;
-dlpPermission.isDLPFile(file, (err, isDLPFile) => {
- if (err) {
-    console.error(`Failed to check if file is DLP file. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('isDLPFile:', isDLPFile);
-  }
-  fileIo.closeSync(file);
-});
-```
-
+<a id="isdlpfile-1"></a>
 
 ## isDLPFile
 
@@ -105,10 +90,25 @@ During file processing, the system checks whether the file is a DLP file and the
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
 **Examples**
 
-See [isDLPFile](#isdlpfile)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
+let file: number | undefined = undefined;
+file = fileIo.openSync(uri).fd;
+dlpPermission.isDLPFile(file, (err, isDLPFile) => {
+ if (err) {
+    console.error(`Failed to check if file is DLP file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('isDLPFile:', isDLPFile);
+  }
+  fileIo.closeSync(file);
+});
+```

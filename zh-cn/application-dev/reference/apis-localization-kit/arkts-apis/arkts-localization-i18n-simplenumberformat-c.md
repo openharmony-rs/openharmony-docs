@@ -1,5 +1,9 @@
 # SimpleNumberFormat
 
+```TypeScript
+export class SimpleNumberFormat
+```
+
 基于框架字符串提供数字格式化的能力。
 
 **起始版本：** 18

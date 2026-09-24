@@ -1,5 +1,9 @@
 # DismissDialogAction
 
+```TypeScript
+declare interface DismissDialogAction
+```
+
 Dialog关闭的信息。
 
 **起始版本：** 12
@@ -14,7 +18,7 @@ dismiss: Callback<void>
 
 Dialog关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。
 
-**类型：** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt;
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 12
 
@@ -32,7 +36,7 @@ reason: DismissReason
 
 Dialog无法关闭原因。根据开发者需要选择不同操作下，Dialog是否需要关闭。
 
-**类型：** [DismissReason](../arkts-components/arkts-arkui-dismissreason-e.md)
+**类型：** [DismissReason](../arkts-components/arkts-arkui-common-comp-dismissreason-e.md)
 
 **起始版本：** 12
 

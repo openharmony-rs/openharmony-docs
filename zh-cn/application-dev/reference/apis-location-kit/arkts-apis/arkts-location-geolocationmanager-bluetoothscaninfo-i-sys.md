@@ -1,5 +1,9 @@
 # BluetoothScanInfo（系统接口）
 
+```TypeScript
+export interface BluetoothScanInfo
+```
+
 蓝牙扫描信息。
 
 **起始版本：** 10

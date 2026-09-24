@@ -1,5 +1,9 @@
 # DatePickerComponentOptions
 
+```TypeScript
+export declare class DatePickerComponentOptions
+```
+
 DatePickerComponentOptions defines options for the date time picker component.
 
 **Since:** 26.0.0

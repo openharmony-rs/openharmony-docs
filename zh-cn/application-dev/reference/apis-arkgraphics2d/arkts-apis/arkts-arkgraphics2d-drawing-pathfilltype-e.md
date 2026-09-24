@@ -1,5 +1,9 @@
 # PathFillType
 
+```TypeScript
+enum PathFillType
+```
+
 定义路径的填充类型枚举。
 
 > **说明：** 

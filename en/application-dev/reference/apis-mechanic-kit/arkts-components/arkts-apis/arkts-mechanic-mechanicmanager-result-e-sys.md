@@ -1,5 +1,9 @@
 # Result (System API)
 
+```TypeScript
+export enum Result
+```
+
 Rotation execution results.
 
 @enum { int }

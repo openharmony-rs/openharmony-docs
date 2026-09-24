@@ -1,8 +1,10 @@
 # DialogDisplayMode
 
-Dialog display mode.
+```TypeScript
+declare enum DialogDisplayMode
+```
 
-@enum { DialogDisplayMode }
+弹窗在子窗口中的显示模式。
 
 **起始版本：** 26.0.0
 
@@ -14,7 +16,7 @@ Dialog display mode.
 SCREEN_BASED = 0
 ```
 
-The dialog displayed based on screen.
+弹窗在屏幕居中显示。
 
 **起始版本：** 26.0.0
 
@@ -30,7 +32,7 @@ The dialog displayed based on screen.
 WINDOW_BASED = 1
 ```
 
-The dialog displayed based on application window.
+弹窗在应用窗口居中显示。
 
 **起始版本：** 26.0.0
 

@@ -1,5 +1,9 @@
 # SystemRecordControllerChangeInfo (System API)
 
+```TypeScript
+interface SystemRecordControllerChangeInfo
+```
+
 Defines the information carried when the system recording controller state changes. It includes the enable status, application UID and expected audio source type.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # ErrorCode
 
+```TypeScript
+export enum ErrorCode
+```
+
 定义启动Ability时返回的错误码。
 
 **起始版本：** 7

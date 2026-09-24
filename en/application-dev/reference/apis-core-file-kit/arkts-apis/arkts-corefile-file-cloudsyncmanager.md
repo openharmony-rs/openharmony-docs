@@ -19,20 +19,20 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 | Name | Description |
 | --- | --- |
-| [changeAppCloudSwitch](arkts-corefile-cloudsyncmanager-changeappcloudswitch-f-sys.md) | Changes the device-cloud file sync switch for an application. This API uses a promise to return the result. |
-| [changeAppCloudSwitch](arkts-corefile-cloudsyncmanager-changeappcloudswitch-f-sys.md) | Changes the device-cloud file sync switch for an application. This API uses an asynchronous callback to return the result. |
-| [clean](arkts-corefile-cloudsyncmanager-clean-f-sys.md) | Callback used to clear the cloud data locally. This API uses a promise to return the result. |
-| [clean](arkts-corefile-cloudsyncmanager-clean-f-sys.md) | Callback used to clear the cloud data locally. This API uses an asynchronous callback to return the result. |
-| [disableCloud](arkts-corefile-cloudsyncmanager-disablecloud-f-sys.md) | Disables device-cloud sync. This API uses a promise to return the result. |
-| [disableCloud](arkts-corefile-cloudsyncmanager-disablecloud-f-sys.md) | Disables device-cloud sync. This API uses an asynchronous callback to return the result. |
-| [enableCloud](arkts-corefile-cloudsyncmanager-enablecloud-f-sys.md) | Enables device-cloud sync. This API uses a promise to return the result. |
-| [enableCloud](arkts-corefile-cloudsyncmanager-enablecloud-f-sys.md) | Enables device-cloud sync. This API uses an asynchronous callback to return the result. |
+| [changeAppCloudSwitch](arkts-corefile-cloudsyncmanager-changeappcloudswitch-f-sys.md#changeappcloudswitch) | Changes the device-cloud file sync switch for an application. This API uses a promise to return the result. |
+| [changeAppCloudSwitch](arkts-corefile-cloudsyncmanager-changeappcloudswitch-f-sys.md#changeappcloudswitch-1) | Changes the device-cloud file sync switch for an application. This API uses an asynchronous callback to return the result. |
+| [clean](arkts-corefile-cloudsyncmanager-clean-f-sys.md#clean) | Callback used to clear the cloud data locally. This API uses a promise to return the result. |
+| [clean](arkts-corefile-cloudsyncmanager-clean-f-sys.md#clean-1) | Callback used to clear the cloud data locally. This API uses an asynchronous callback to return the result. |
+| [disableCloud](arkts-corefile-cloudsyncmanager-disablecloud-f-sys.md#disablecloud) | Disables device-cloud sync. This API uses a promise to return the result. |
+| [disableCloud](arkts-corefile-cloudsyncmanager-disablecloud-f-sys.md#disablecloud-1) | Disables device-cloud sync. This API uses an asynchronous callback to return the result. |
+| [enableCloud](arkts-corefile-cloudsyncmanager-enablecloud-f-sys.md#enablecloud) | Enables device-cloud sync. This API uses a promise to return the result. |
+| [enableCloud](arkts-corefile-cloudsyncmanager-enablecloud-f-sys.md#enablecloud-1) | Enables device-cloud sync. This API uses an asynchronous callback to return the result. |
 | [getBundlesLocalFilePresentStatus](arkts-corefile-cloudsyncmanager-getbundleslocalfilepresentstatus-f-sys.md) | Obtains the existence status of local files for multiple applications and checks whether there are files that have not been uploaded to the cloud in the cloud storage space. This API uses a promise to return the result. |
 | [getDowngradeDownloadTaskState](arkts-corefile-cloudsyncmanager-getdowngradedownloadtaskstate-f-sys.md) | Supports querying the execution status of full data download tasks for integrated cloud drive applications. |
-| [notifyDataChange](arkts-corefile-cloudsyncmanager-notifydatachange-f-sys.md) | Notifies the device-cloud service that the cloud data of a specific application under a specified account has been changed. This API uses a promise to return the result. |
-| [notifyDataChange](arkts-corefile-cloudsyncmanager-notifydatachange-f-sys.md) | Notifies the device-cloud service that the cloud data of a specific application under a specified account has been changed. This API uses an asynchronous callback to return the result. |
-| [notifyDataChange](arkts-corefile-cloudsyncmanager-notifydatachange-f-sys.md) | Notifies the device-cloud service of the cloud data change information of a specified user. This API uses a promise to return the result. |
-| [notifyDataChange](arkts-corefile-cloudsyncmanager-notifydatachange-f-sys.md) | Notifies the device-cloud service of the cloud data change information of a specified user. This API uses an asynchronous callback to return the result. |
+| [notifyDataChange](arkts-corefile-cloudsyncmanager-notifydatachange-f-sys.md#notifydatachange) | Notifies the device-cloud service that the cloud data of a specific application under a specified account has been changed. This API uses a promise to return the result. |
+| [notifyDataChange](arkts-corefile-cloudsyncmanager-notifydatachange-f-sys.md#notifydatachange-1) | Notifies the device-cloud service that the cloud data of a specific application under a specified account has been changed. This API uses an asynchronous callback to return the result. |
+| [notifyDataChange](arkts-corefile-cloudsyncmanager-notifydatachange-f-sys.md#notifydatachange-2) | Notifies the device-cloud service of the cloud data change information of a specified user. This API uses a promise to return the result. |
+| [notifyDataChange](arkts-corefile-cloudsyncmanager-notifydatachange-f-sys.md#notifydatachange-3) | Notifies the device-cloud service of the cloud data change information of a specified user. This API uses an asynchronous callback to return the result. |
 <!--DelEnd-->
 
 ### Classes

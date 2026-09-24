@@ -8,6 +8,8 @@ typedef struct Print_Resolution {...} Print_Resolution
 
 Defines a struct for the printing resolution in dpi.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Related module**: [Print](capi-print.md)

@@ -1,5 +1,9 @@
 # ControlTypeValue (System API)
 
+```TypeScript
+enum ControlTypeValue
+```
+
 Describes the control type value.
 
 **Since:** 15

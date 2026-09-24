@@ -1,5 +1,9 @@
 # VideoRecorderConfig（系统接口）
 
+```TypeScript
+interface VideoRecorderConfig
+```
+
 表示视频录制的参数设置。
 
 通过audioSourceType和videoSourceType区分纯视频录制和音视频录制（纯音频录制请使用[AVRecorder](arkts-media-media-avrecorder-i.md)或[AudioRecorder](arkts-media-media-audiorecorder-i.md)）。纯视频录制时，仅需要设置videoSourceType；音视频录制时，audioSourceType和videoSourceType均需要设置。

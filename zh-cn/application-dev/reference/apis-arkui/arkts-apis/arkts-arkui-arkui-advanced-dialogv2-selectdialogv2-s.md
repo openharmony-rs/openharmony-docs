@@ -1,5 +1,9 @@
 # SelectDialogV2
 
+```TypeScript
+export declare struct SelectDialogV2
+```
+
 选择类弹出框，弹框中以列表或网格的形式提供可选的内容。适用于需要用户从多个选项中选择一个的场景，如选择语言、选择地区等。
 
 **起始版本：** 18

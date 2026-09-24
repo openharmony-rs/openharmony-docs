@@ -1,5 +1,9 @@
 # ConnectionProperties
 
+```TypeScript
+export interface ConnectionProperties
+```
+
 Defines the network connection properties.
 
 > **NOTE:** 

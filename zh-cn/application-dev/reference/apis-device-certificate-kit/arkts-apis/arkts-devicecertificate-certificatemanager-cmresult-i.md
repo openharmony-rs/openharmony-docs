@@ -1,5 +1,9 @@
 # CMResult
 
+```TypeScript
+export interface CMResult
+```
+
 表示接口的返回结果。
 
 **起始版本：** 11

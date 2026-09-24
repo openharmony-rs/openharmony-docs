@@ -8,6 +8,8 @@ struct NetConn_NetSpecifier {...}
 
 网络的特征集。
 
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
 **起始版本：** 12
 
 **相关模块：** [NetConnection](capi-netconnection.md)

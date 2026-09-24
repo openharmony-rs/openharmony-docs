@@ -1,5 +1,9 @@
 # PreviewOutput
 
+```TypeScript
+interface PreviewOutput extends CameraOutput
+```
+
 预览输出类。继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。
 
 **继承/实现关系：** PreviewOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
@@ -38,7 +42,7 @@ Attaches a surface for PiP preview.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect.<br>**适用版本：** 12+ |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
@@ -88,7 +92,7 @@ Enables or disables PiP preview.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed.<br>**适用版本：** 12+ |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
@@ -137,7 +141,7 @@ Obtains the zoom ratio when PiP preview is enabled.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 **示例**
@@ -173,7 +177,7 @@ Checks whether Picture-in-Picture (PiP) preview is supported.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
 **示例**
 
@@ -218,7 +222,15 @@ Unsubscribes from PiP status change events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterSketchStatusChanged(previewOutput: camera.PreviewOutput): void {
+  previewOutput.off('sketchStatusChanged');
+}
+```
 
 ## on('sketchStatusChanged')
 
@@ -245,4 +257,22 @@ Subscribes to PiP status change events. This API uses an asynchronous callback t
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(error: BusinessError, data: camera.SketchStatusData): void {
+  if (error !== undefined && error.code !== 0) {
+    console.error(`Callback Error, errorCode: ${error.code}`);
+    return;
+  }
+  console.info(`sketch errorCode is ${error.code}, data is ${JSON.stringify(data)}`);
+}
+
+function registerSketchStatusChanged(previewOutput: camera.PreviewOutput): void {
+  previewOutput.on('sketchStatusChanged', callback);
+}
+```

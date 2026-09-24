@@ -31,7 +31,7 @@ function registerWebAdInterface(controller: web_webview.WebviewController, conte
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified. |
 | [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 
 **示例**
@@ -63,33 +63,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { common } from '@kit.AbilityKit';
-import { advertising } from '@kit.AdsKit';
-import { webview } from '@kit.ArkWeb';
 
-@Entry
-@Component
-struct Index {
-  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  private webViewController: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      // ...
-      Button('registerWebAdInterface')
-        .onClick(() => {
-          advertising.registerWebAdInterface(this.webViewController, this.context, true);
-        })
-
-      Web({ src: 'https://www.example.com', controller: this.webViewController })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
+<a id="registerwebadinterface-1"></a>
 
 ## registerWebAdInterface
 
@@ -118,9 +93,34 @@ function registerWebAdInterface(controller: web_webview.WebviewController, conte
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. |
 | [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 
 **示例**
 
-参见 registerWebAdInterface
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { advertising } from '@kit.AdsKit';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private webViewController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      // ...
+      Button('registerWebAdInterface')
+        .onClick(() => {
+          advertising.registerWebAdInterface(this.webViewController, this.context, true);
+        })
+
+      Web({ src: 'https://www.example.com', controller: this.webViewController })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```

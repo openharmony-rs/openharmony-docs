@@ -1,5 +1,9 @@
 # OperationItem
 
+```TypeScript
+export class OperationItem
+```
+
 选择媒体文件的过滤配置。
 
 **起始版本：** 22

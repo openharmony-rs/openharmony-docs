@@ -1,5 +1,9 @@
 # StartMode
 
+```TypeScript
+export const enum StartMode
+```
+
 Enumerates the child process start modes.
 
 **Since:** 11

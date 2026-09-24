@@ -1,5 +1,9 @@
 # CloudMediaAssetStatus（系统接口）
 
+```TypeScript
+interface CloudMediaAssetStatus
+```
+
 云端媒体资产下载任务的详细信息，应用调用云端资产下载任务查询接口的返回类型。
 
 **起始版本：** 14

@@ -1,5 +1,9 @@
 # OsAccountType
 
+```TypeScript
+enum OsAccountType
+```
+
 Enumerates the OS account types.
 
 **Since:** 7

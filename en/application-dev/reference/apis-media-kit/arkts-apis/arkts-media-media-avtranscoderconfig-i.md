@@ -1,5 +1,9 @@
 # AVTranscoderConfig
 
+```TypeScript
+interface AVTranscoderConfig
+```
+
 Describes the video transcoding parameters.
 
 **Since:** 12

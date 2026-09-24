@@ -1,5 +1,9 @@
 # MechEvent（系统接口）
 
+```TypeScript
+export interface MechEvent
+```
+
 具身设备事件定义
 
 **起始版本：** 26.0.0

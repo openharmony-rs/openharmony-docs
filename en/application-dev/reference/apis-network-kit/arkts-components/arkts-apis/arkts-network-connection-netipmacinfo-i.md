@@ -1,5 +1,9 @@
 # NetIpMacInfo
 
+```TypeScript
+export interface NetIpMacInfo
+```
+
 Defines information about entries in the IP neighbor table.
 
 **Since:** 22

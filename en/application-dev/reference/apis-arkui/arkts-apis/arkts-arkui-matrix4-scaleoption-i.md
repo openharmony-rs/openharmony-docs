@@ -1,5 +1,9 @@
 # ScaleOption
 
+```TypeScript
+interface ScaleOption
+```
+
 Describes the scale parameters.
 
 **Since:** 7

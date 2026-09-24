@@ -1,5 +1,9 @@
 # Map
 
+```TypeScript
+class Map<K, V>
+```
+
 A non-linear data structure.
 
 > **NOTE:** 
@@ -95,6 +99,8 @@ A constructor used to create an ArkTS map.
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The ArkTS Map's constructor cannot be directly invoked. |
 
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -129,11 +135,11 @@ containsValue(value: V): boolean
 
 Checks whether this ArkTS map maps one or more keys to the specified value.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -348,11 +354,11 @@ Adds or updates a key-value pair to this ArkTS map and returns the previous valu
 > 
 > - When **undefined** is returned, you cannot directly distinguish whether the key does not exist or the key exists but its value is **undefined**. Before calling this API, you can use **has** to check whether the key exists, so that you can distinguish the case of the returned **undefined**.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -384,11 +390,11 @@ putAll(from: Map<K, V>): void
 
 Updates this ArkTS map with key-value pairs from the specified ArkTS Map.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -405,6 +411,8 @@ Updates this ArkTS map with key-value pairs from the specified ArkTS Map.
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The putAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification exception |
 
+<a id="putall-1"></a>
+
 ## putAll
 
 ```TypeScript
@@ -413,11 +421,11 @@ putAll(from: ReadonlyMap<K, V>): void
 
 Updates this ArkTS map with key-value pairs from the specified JavaScript built-in Map.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -446,11 +454,11 @@ Removes the specified key and its corresponding value from this ArkTS map.
 > 
 > - When **undefined** is returned, you cannot directly distinguish whether the key does not exist or the key exists but its value is **undefined**. Before calling this API, you can use **has** to check whether the key exists, so that you can distinguish the case of the returned **undefined**.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Utils.Lang
 

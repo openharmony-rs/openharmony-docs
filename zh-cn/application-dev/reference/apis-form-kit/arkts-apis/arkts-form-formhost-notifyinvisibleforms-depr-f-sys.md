@@ -45,17 +45,8 @@ formHost.notifyInvisibleForms(formIds, (error: Base.BusinessError) => {
 });
 ```
 
-```TypeScript
-import Base from '@ohos.base';
 
-let formIds: string[] = ['12400633174999288'];
-formHost.notifyInvisibleForms(formIds).then(() => {
-  console.info('formHost notifyInvisibleForms success');
-}).catch((error: Base.BusinessError) => {
-  console.error(`formHost notifyInvisibleForms, error: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="notifyinvisibleforms-1"></a>
 
 ## notifyInvisibleForms
 
@@ -91,4 +82,13 @@ function notifyInvisibleForms(formIds: Array<string>): Promise<void>
 
 **示例**
 
-参见 [notifyInvisibleForms](#notifyinvisibleforms)
+```TypeScript
+import Base from '@ohos.base';
+
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyInvisibleForms(formIds).then(() => {
+  console.info('formHost notifyInvisibleForms success');
+}).catch((error: Base.BusinessError) => {
+  console.error(`formHost notifyInvisibleForms, error: ${JSON.stringify(error)}`);
+});
+```

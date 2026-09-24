@@ -59,30 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// Use try catch to capture possible exceptions.
-try {
-  // inclinationMatrix can be 3*3 or 4*4.
-  let inclinationMatrix = [
-    1, 0, 0,
-    0, 1, 0,
-    0, 0, 1
-  ]
-  const promise = sensor.getInclination(inclinationMatrix);
-  promise.then((data: number) => {
-    console.info('Succeeded in getting inclination: ' + data);
-  }, (err: BusinessError) => {
-    console.error(`Failed to get inclination. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to get inclination. Code: ${e.code}, message: ${e.message}`);
-}
-```
-
+<a id="getinclination-1"></a>
 
 ## getInclination
 
@@ -117,4 +95,26 @@ Obtains the magnetic dip based on the inclination matrix. This API uses a promis
 
 **Examples**
 
-See [getInclination](#getinclination)
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Use try catch to capture possible exceptions.
+try {
+  // inclinationMatrix can be 3*3 or 4*4.
+  let inclinationMatrix = [
+    1, 0, 0,
+    0, 1, 0,
+    0, 0, 1
+  ]
+  const promise = sensor.getInclination(inclinationMatrix);
+  promise.then((data: number) => {
+    console.info('Succeeded in getting inclination: ' + data);
+  }, (err: BusinessError) => {
+    console.error(`Failed to get inclination. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get inclination. Code: ${e.code}, message: ${e.message}`);
+}
+```

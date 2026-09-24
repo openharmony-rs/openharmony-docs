@@ -1,5 +1,9 @@
 # FileConflictOptions
 
+```TypeScript
+enum FileConflictOptions
+```
+
 表示文件拷贝冲突时的可选策略的枚举。
 
 **起始版本：** 15

@@ -1,5 +1,9 @@
 # AlertDialogButtonBaseOptions
 
+```TypeScript
+declare interface AlertDialogButtonBaseOptions
+```
+
 警告弹窗中按钮的样式。
 
 > **说明：** 

@@ -11,3 +11,11 @@ export type ElementAttributeKeys = keyof ElementAttributeValues
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **类型：** keyof ElementAttributeValues
+
+**示例**
+
+```TypeScript
+import { ElementAttributeKeys } from '@kit.AccessibilityKit';
+
+let elementAttributeKeys: ElementAttributeKeys;
+```

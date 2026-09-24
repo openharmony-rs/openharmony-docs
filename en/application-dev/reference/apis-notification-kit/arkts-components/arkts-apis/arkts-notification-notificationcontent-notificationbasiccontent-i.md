@@ -1,5 +1,9 @@
 # NotificationBasicContent
 
+```TypeScript
+export interface NotificationBasicContent
+```
+
 Describes the basic text notification, which is used to display the title and body content. It serves as the basic content structure for other notification types. Other notification types (such as long text, multi-line text, picture, and live view) inherit this API and extend their own specific fields on this basis.
 
 **Since:** 7

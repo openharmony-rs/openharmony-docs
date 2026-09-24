@@ -61,19 +61,8 @@ let groupName: string = "GroupName";
 notificationManager.removeGroupByBundle(bundleOption, groupName, removeGroupByBundleCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleOption: notificationManager.BundleOption = { bundle: "Bundle" };
-let groupName: string = "GroupName";
-
-notificationManager.removeGroupByBundle(bundleOption, groupName).then(() => {
-    console.info("removeGroupByBundle success");
-}).catch((err: BusinessError) => {
-    console.error(`removeGroupByBundle failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="removegroupbybundle-1"></a>
 
 ## removeGroupByBundle
 
@@ -118,4 +107,15 @@ Removes notifications under a notification group of the specified application. T
 
 **Examples**
 
-See [removeGroupByBundle](#removegroupbybundle)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleOption: notificationManager.BundleOption = { bundle: "Bundle" };
+let groupName: string = "GroupName";
+
+notificationManager.removeGroupByBundle(bundleOption, groupName).then(() => {
+    console.info("removeGroupByBundle success");
+}).catch((err: BusinessError) => {
+    console.error(`removeGroupByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```

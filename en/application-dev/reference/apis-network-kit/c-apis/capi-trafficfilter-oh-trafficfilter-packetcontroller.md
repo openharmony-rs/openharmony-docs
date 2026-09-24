@@ -8,7 +8,9 @@ typedef struct OH_TrafficFilter_PacketController OH_TrafficFilter_PacketControll
 
 Packet controller
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
+**Since**: 26.0.1
 
 **Related module**: [TrafficFilter](capi-trafficfilter.md)
 

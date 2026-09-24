@@ -25,7 +25,7 @@ Send key event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [KeyEvent](../arkts-components/arkts-arkui-keyevent-i.md) | 是 | KeyEvent to be sent. |
+| event | [KeyEvent](../arkts-components/arkts-arkui-common-comp-keyevent-i.md) | 是 | KeyEvent to be sent. |
 
 **返回值：**
 

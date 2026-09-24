@@ -8,6 +8,8 @@ typedef struct OH_EqualizerFrequencyBandGains {...} OH_EqualizerFrequencyBandGai
 
 定义音频编创均衡器效果节点配置参数。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 22
 
 **相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)

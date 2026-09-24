@@ -1,5 +1,9 @@
 # DescriptorWriteRequest
 
+```TypeScript
+interface DescriptorWriteRequest
+```
+
 Describes the parameters of the Gatt client's characteristic write request.
 
 **Since:** 9

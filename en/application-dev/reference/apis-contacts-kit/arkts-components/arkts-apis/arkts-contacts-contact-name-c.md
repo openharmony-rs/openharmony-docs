@@ -1,5 +1,9 @@
 # Name
 
+```TypeScript
+class Name
+```
+
 Defines a contact's name.
 
 **Since:** 7

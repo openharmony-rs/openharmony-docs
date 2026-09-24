@@ -1,5 +1,9 @@
 # ContentType
 
+```TypeScript
+export enum ContentType
+```
+
 Enumerates the notification content types.
 
 **Since:** 9

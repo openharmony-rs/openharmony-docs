@@ -1,5 +1,9 @@
 # BroadcastEvent
 
+```TypeScript
+enum BroadcastEvent
+```
+
 定义自定义系统事件。用户可以使用公共事件接口获取该事件。
 
 上传下载SA具有'ohos.permission.SEND_TASK_COMPLETE_EVENT'权限，用户可以配置事件的metadata指向的二级配置文件来拦截其他事件发送者。

@@ -8,6 +8,8 @@ typedef struct Camera_FrameShutterEndInfo {...} Camera_FrameShutterEndInfo
 
 The struct describes the frame shutter end information during capture.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

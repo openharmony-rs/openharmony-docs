@@ -1,12 +1,16 @@
 # Particle属性/事件
 
-除支持通用属性外还支持以下属性：
+```TypeScript
+declare class ParticleAttribute extends CommonMethod<ParticleAttribute>
+```
 
-支持通用事件。
+除支持[通用属性](arkts-arkui-common-comp.md#common)外还支持以下属性：
+
+支持[通用事件](arkts-arkui-common-comp.md#common)。
 
 @extends CommonMethod&lt;ParticleAttribute&gt;
 
-**继承/实现关系：** ParticleAttribute extends CommonMethod&lt;ParticleAttribute&gt;
+**继承/实现关系：** ParticleAttribute extends CommonMethod<ParticleAttribute>
 
 **起始版本：** 10
 
@@ -32,7 +36,7 @@ disturbanceFields(fields: Array<DisturbanceFieldOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fields | Array&lt;[DisturbanceFieldOptions](arkts-arkui-disturbancefieldoptions-i.md)&gt; | 是 | 扰动场数组。用于设置粒子运动轨迹的干扰效果，通过配置多个扰动场可对粒子施加排斥力或吸引力，改变粒子的运动轨迹。 |
+| fields | Array&lt;[DisturbanceFieldOptions](arkts-arkui-particle-comp-disturbancefieldoptions-i.md)&gt; | 是 | 扰动场数组。用于设置粒子运动轨迹的干扰效果，通过配置多个扰动场可对粒子施加排斥力或吸引力，改变粒子的运动轨迹。 |
 
 ## emitter
 
@@ -54,7 +58,7 @@ emitter(value: Array<EmitterProperty>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array&lt;[EmitterProperty](arkts-arkui-emitterproperty-i.md)&gt; | 是 | 需要更新的发射器参数数组。 |
+| value | Array&lt;[EmitterProperty](arkts-arkui-particle-comp-emitterproperty-i.md)&gt; | 是 | 需要更新的发射器参数数组。 |
 
 ## rippleFields
 
@@ -76,7 +80,7 @@ rippleFields(fields: Array<RippleFieldOptions> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fields | Array&lt;[RippleFieldOptions](arkts-arkui-ripplefieldoptions-i.md)&gt; &#124; undefined | 是 | 粒子波动场数组。通过数组形式可以设置多个粒子波动场。当设置为undefined时，表示无波动场。 |
+| fields | Array&lt;[RippleFieldOptions](arkts-arkui-particle-comp-ripplefieldoptions-i.md)&gt; &#124; undefined | 是 | 粒子波动场数组。通过数组形式可以设置多个粒子波动场。当设置为undefined时，表示无波动场。 |
 
 ## velocityFields
 
@@ -98,4 +102,4 @@ velocityFields(fields: Array<VelocityFieldOptions> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fields | Array&lt;[VelocityFieldOptions](arkts-arkui-velocityfieldoptions-i.md)&gt; &#124; undefined | 是 | 粒子速度场数组。通过数组形式可设置多个粒子速度场。设置为undefined时表示无速度场。 |
+| fields | Array&lt;[VelocityFieldOptions](arkts-arkui-particle-comp-velocityfieldoptions-i.md)&gt; &#124; undefined | 是 | 粒子速度场数组。通过数组形式可设置多个粒子速度场。设置为undefined时表示无速度场。 |

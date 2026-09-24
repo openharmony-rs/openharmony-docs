@@ -1,5 +1,9 @@
 # ProxyTypes
 
+```TypeScript
+export enum ProxyTypes
+```
+
 Enumerates socket proxy types.
 
 **Since:** 18

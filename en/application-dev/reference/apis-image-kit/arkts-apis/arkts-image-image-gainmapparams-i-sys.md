@@ -1,5 +1,9 @@
 # GainmapParams (System API)
 
+```TypeScript
+interface GainmapParams
+```
+
 Describes gainmap generation parameters.
 
 **Since:** 26.0.0

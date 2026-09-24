@@ -1,5 +1,9 @@
 # ServiceState
 
+```TypeScript
+enum ServiceState
+```
+
 Enumerates the SE service states.
 
 **Since:** 10

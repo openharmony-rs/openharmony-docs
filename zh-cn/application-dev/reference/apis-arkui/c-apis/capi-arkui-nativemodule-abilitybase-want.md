@@ -8,6 +8,8 @@ typedef struct AbilityBase_Want AbilityBase_Want
 
 声明元能力want结构。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

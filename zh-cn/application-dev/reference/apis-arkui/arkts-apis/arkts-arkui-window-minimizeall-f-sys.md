@@ -31,8 +31,8 @@ function minimizeAll(id: number, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities.<br>**适用版本：** 12+ |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -62,25 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { display } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let displayClass: display.Display | null = null;
-displayClass = display.getDefaultDisplaySync();
-
-try {
-  let promise = window.minimizeAll(displayClass.id);
-  promise.then(() => {
-    console.info('Succeeded in minimizing all windows.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to minimize all windows. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed to minimize all windows. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
+<a id="minimizeall-1"></a>
 
 ## minimizeAll
 
@@ -112,10 +95,27 @@ function minimizeAll(id: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities.<br>**适用版本：** 12+ |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
 
-参见 [minimizeAll](#minimizeall)
+```TypeScript
+import { display } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: display.Display | null = null;
+displayClass = display.getDefaultDisplaySync();
+
+try {
+  let promise = window.minimizeAll(displayClass.id);
+  promise.then(() => {
+    console.info('Succeeded in minimizing all windows.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to minimize all windows. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to minimize all windows. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```

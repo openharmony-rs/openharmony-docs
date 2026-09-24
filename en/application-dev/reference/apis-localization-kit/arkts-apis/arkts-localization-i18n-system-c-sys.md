@@ -1,5 +1,9 @@
 # System
 
+```TypeScript
+export class System
+```
+
 Provides system attribute configuration functions, including translating language and country/region names, obtaining the list of supported languages and countries/regions, and obtaining the system language and region.
 
 **Since:** 9
@@ -159,7 +163,7 @@ Gets numbering systems supported by system locale.
 
 | Type | Description |
 | --- | --- |
-| Map&lt;string, string&gt; | a map will containing the numbering system 's identifier and sample. If the map is empty, there is no local digit for given locale. |
+| Map&lt;string, string&gt; | a map will containing the numbering system 's identifier and sample.If the map is empty, there is no local digit for given locale. |
 
 **Error codes:**
 

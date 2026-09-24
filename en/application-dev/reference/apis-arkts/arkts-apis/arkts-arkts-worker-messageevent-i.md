@@ -1,5 +1,9 @@
 # MessageEvent
 
+```TypeScript
+export interface MessageEvent<T> extends Event
+```
+
 Holds the data transferred between worker threads.
 
 **Inheritance/Implementation:** MessageEvent extends [Event](arkts-arkts-worker-event-i.md)

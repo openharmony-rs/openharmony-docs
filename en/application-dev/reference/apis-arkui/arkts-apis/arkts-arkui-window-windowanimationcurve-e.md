@@ -1,5 +1,9 @@
 # WindowAnimationCurve
 
+```TypeScript
+enum WindowAnimationCurve
+```
+
 Enumerates the types of window animation curves.
 
 **Since:** 20

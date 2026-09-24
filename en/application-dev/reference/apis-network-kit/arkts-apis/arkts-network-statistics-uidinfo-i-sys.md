@@ -1,5 +1,9 @@
 # UidInfo (System API)
 
+```TypeScript
+export interface UidInfo
+```
+
 Defines the parameters for querying historical traffic of an application.
 
 **Since:** 10

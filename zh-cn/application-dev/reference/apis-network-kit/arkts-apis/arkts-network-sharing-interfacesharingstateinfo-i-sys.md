@@ -1,5 +1,9 @@
 # InterfaceSharingStateInfo（系统接口）
 
+```TypeScript
+export interface InterfaceSharingStateInfo
+```
+
 唤醒在网络共享模式下的变化时的监听器。
 
 **起始版本：** 11

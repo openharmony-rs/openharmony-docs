@@ -1,5 +1,9 @@
 # PinType（系统接口）
 
+```TypeScript
+enum PinType
+```
+
 枚举，蓝牙配对类型。
 
 **起始版本：** 10

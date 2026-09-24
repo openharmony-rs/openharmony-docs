@@ -1,5 +1,9 @@
 # HiddenPhotosDisplayMode (System API)
 
+```TypeScript
+enum HiddenPhotosDisplayMode
+```
+
 Enumerates the display modes of hidden files in the system.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # ConnectionState
 
+```TypeScript
+export enum ConnectionState
+```
+
 表示和远端设备的连接状态，为枚举值。
 
 **起始版本：** 26.0.0

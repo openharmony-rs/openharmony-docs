@@ -4,6 +4,8 @@
 
 Provides the definition of the C interface for the print module.
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 12
 
 ## 文件汇总

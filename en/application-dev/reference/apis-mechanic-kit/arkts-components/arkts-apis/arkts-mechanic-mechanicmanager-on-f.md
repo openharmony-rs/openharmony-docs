@@ -31,6 +31,22 @@ Subscribes to device attachment state change events.
 | --- | --- |
 | [33300001](../errorcode-mechanic.md#33300001-system-error) | Service exception. |
 
+**Examples**
+
+```TypeScript
+// Define the callback for device connection state changes. The result parameter carries the device connection state change information.
+let callback = (result: mechanicManager.AttachStateChangeInfo) => {
+  console.info(`'callback result:' ${result}`);
+};
+
+// Print a log indicating the listener registration starts.
+console.info('Register');
+// Register the attachStateChange event listener. The callback is triggered when the device connection state changes.
+mechanicManager.on("attachStateChange", callback);
+// Print a log indicating that the listener is registered successfully.
+console.info('Succeeded in registering callback.');
+```
+
 
 ## on('trackingStateChange')
 
@@ -56,3 +72,17 @@ Subscribes to tracking events.
 | Error Code ID | Error Message |
 | --- | --- |
 | [33300001](../errorcode-mechanic.md#33300001-system-error) | Service exception. |
+
+**Examples**
+
+```TypeScript
+// Define the callback for tracking state changes. The result is the tracking event information.
+let callback = (result: mechanicManager.TrackingEventInfo) => {
+  console.info(`'callback result:' ${result}`);
+};
+
+console.info('Register');
+// Register the trackingStateChange event listener. The callback is triggered when the tracking state changes.
+mechanicManager.on("trackingStateChange", callback);
+console.info('Succeeded in registering callback.');
+```

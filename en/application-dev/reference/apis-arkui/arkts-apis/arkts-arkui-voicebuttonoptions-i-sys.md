@@ -1,5 +1,9 @@
 # VoiceButtonOptions (System API)
 
+```TypeScript
+interface VoiceButtonOptions
+```
+
 Sets the voice button options.
 
 **Since:** 23

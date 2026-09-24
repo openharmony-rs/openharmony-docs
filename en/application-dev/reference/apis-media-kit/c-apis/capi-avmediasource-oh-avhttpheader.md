@@ -8,6 +8,8 @@ typedef struct OH_AVHttpHeader OH_AVHttpHeader
 
 Defines a struct for the HTTP header.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 23
 
 **Related module**: [AVMediaSource](capi-avmediasource.md)

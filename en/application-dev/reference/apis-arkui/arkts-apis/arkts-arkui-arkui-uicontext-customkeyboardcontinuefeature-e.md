@@ -1,5 +1,9 @@
 # CustomKeyboardContinueFeature
 
+```TypeScript
+export const enum CustomKeyboardContinueFeature
+```
+
 Enum of CustomKeyboardContinueFeature
 
 **Since:** 23

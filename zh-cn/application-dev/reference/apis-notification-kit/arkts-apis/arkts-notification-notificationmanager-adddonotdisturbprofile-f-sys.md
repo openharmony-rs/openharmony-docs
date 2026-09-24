@@ -38,10 +38,10 @@ function addDoNotDisturbProfile(templates: Array<DoNotDisturbProfile>): Promise<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -77,37 +77,8 @@ notificationManager.addDoNotDisturbProfile(templates).then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let userId : number = 100;
-let trustlist: Array<notificationManager.BundleOption> = [
-  {
-    // 需根据实际情况进行替换
-    bundle: 'bundleName',
-    uid: 0
-  },
-  {
-    // 需根据实际情况进行替换
-    bundle: 'bundleName1',
-    uid: 1
-  }
-]
-let templates: Array<notificationManager.DoNotDisturbProfile> = [
-  {
-    id: 3,
-    name: '工作模式',
-    trustlist: trustlist
-  }
-]
-
-notificationManager.addDoNotDisturbProfile(templates, userId).then(() => {
-  console.info('addDoNotDisturbProfile success.');
-}).catch((err: BusinessError) => {
-  console.error(`addDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="adddonotdisturbprofile-1"></a>
 
 ## addDoNotDisturbProfile
 
@@ -144,9 +115,9 @@ function addDoNotDisturbProfile(templates: Array<DoNotDisturbProfile>, userId: n
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -155,4 +126,33 @@ function addDoNotDisturbProfile(templates: Array<DoNotDisturbProfile>, userId: n
 
 **示例**
 
-参见 [addDoNotDisturbProfile](#adddonotdisturbprofile)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId : number = 100;
+let trustlist: Array<notificationManager.BundleOption> = [
+  {
+    // 需根据实际情况进行替换
+    bundle: 'bundleName',
+    uid: 0
+  },
+  {
+    // 需根据实际情况进行替换
+    bundle: 'bundleName1',
+    uid: 1
+  }
+]
+let templates: Array<notificationManager.DoNotDisturbProfile> = [
+  {
+    id: 3,
+    name: '工作模式',
+    trustlist: trustlist
+  }
+]
+
+notificationManager.addDoNotDisturbProfile(templates, userId).then(() => {
+  console.info('addDoNotDisturbProfile success.');
+}).catch((err: BusinessError) => {
+  console.error(`addDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
+});
+```

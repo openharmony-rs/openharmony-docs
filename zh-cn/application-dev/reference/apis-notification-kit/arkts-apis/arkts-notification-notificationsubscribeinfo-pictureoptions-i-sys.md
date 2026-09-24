@@ -1,5 +1,9 @@
 # PictureOptions（系统接口）
 
+```TypeScript
+export interface PictureOptions
+```
+
 实况通知图片配置项。
 
 **起始版本：** 26.0.0

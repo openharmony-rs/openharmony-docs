@@ -1,5 +1,9 @@
 # FoldStatus
 
+```TypeScript
+enum FoldStatus
+```
+
 Enumerates the fold statuses of a foldable device. For dual-fold axis devices, when oriented with the charging port at the bottom, the hinges are identified from right to left as the first and second fold axes, respectively.
 
 > **NOTE:** 

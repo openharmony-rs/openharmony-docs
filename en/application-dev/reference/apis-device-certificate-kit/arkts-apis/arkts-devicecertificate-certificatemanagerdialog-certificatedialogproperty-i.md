@@ -1,5 +1,9 @@
 # CertificateDialogProperty
 
+```TypeScript
+export interface CertificateDialogProperty
+```
+
 Defines the property of the certificate management dialog box.
 
 **Since:** 18

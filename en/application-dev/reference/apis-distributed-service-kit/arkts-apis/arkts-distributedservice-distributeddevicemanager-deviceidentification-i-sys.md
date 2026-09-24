@@ -1,5 +1,9 @@
 # DeviceIdentification (System API)
 
+```TypeScript
+interface DeviceIdentification
+```
+
 Struct for distributed device identification.
 
 @interface DeviceIdentification

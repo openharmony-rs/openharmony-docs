@@ -1,5 +1,9 @@
 # IpInfo
 
+```TypeScript
+interface IpInfo
+```
+
 Wi-Fi IP information.
 
 @interface IpInfo

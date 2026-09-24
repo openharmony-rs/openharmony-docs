@@ -1,5 +1,9 @@
 # AccessibilityCustomAction
 
+```TypeScript
+declare interface AccessibilityCustomAction
+```
+
 自定义无障碍操作接口。
 
 **起始版本：** 26.0.0

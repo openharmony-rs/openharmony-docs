@@ -1,5 +1,9 @@
 # SystemTonePlayer (System API)
 
+```TypeScript
+export declare interface SystemTonePlayer
+```
+
 The module provides APIs for playing and configuring SMS tones and notification tones and obtaining related information. Before calling any API in SystemTonePlayer, you must use [getSystemTonePlayer](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getsystemtoneplayer) to create a SystemTonePlayer instance.
 
 **Since:** 11
@@ -193,6 +197,22 @@ Unsubscribes from the event indicating that the ringtone playback is finished. T
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [20700002](../errorcode-audio-ringtone-sys.md#20700002-parameter-check-failed) |  |
 
+**Examples**
+
+```TypeScript
+// Cancel all subscriptions to the event.
+systemTonePlayer.off('playFinished');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let playFinishedCallback = (streamId: number) => {
+  console.info(`Receive the callback of playFinished, streamId: ${streamId}.`);
+};
+
+systemTonePlayer.on('playFinished', 0, playFinishedCallback);
+
+systemTonePlayer.off('playFinished', playFinishedCallback);
+```
+
 ## off('error')
 
 ```TypeScript
@@ -220,6 +240,24 @@ Unsubscribes from error events that occur during ringtone playback. This API use
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [20700002](../errorcode-audio-ringtone-sys.md#20700002-parameter-check-failed) |  |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Cancel all subscriptions to the event.
+systemTonePlayer.off('error');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let callback = (err: BusinessError) => {
+  console.info(`Succeeded in using on or off function. code: ${err.code}, message: ${err.message}`);
+};
+
+systemTonePlayer.on('error', callback);
+
+systemTonePlayer.off('error', callback);
+```
 
 ## on('playFinished')
 
@@ -252,6 +290,26 @@ The object to listen for is an audio stream specified by **streamId**. If **stre
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [20700002](../errorcode-audio-ringtone-sys.md#20700002-parameter-check-failed) |  |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Subscribe to the playback complete events of all audio streams.
+systemTonePlayer.on('playFinished', 0, (streamId: number) => {
+  console.info(`Receive the callback of playFinished, streamId: ${streamId}.`);
+});
+
+// Subscribe to the playback complete event of a specified audio stream.
+systemTonePlayer.start().then((value: number) => {
+  systemTonePlayer.on('playFinished', value, (streamId: number) => {
+    console.info(`Receive the callback of playFinished, streamId: ${streamId}.`);
+  });
+}).catch((err: BusinessError) => {
+  console.error(`Failed to start system tone player. ${err}`);
+});
+```
+
 ## on('error')
 
 ```TypeScript
@@ -279,6 +337,16 @@ Subscribes to error events that occur during ringtone playback. This API uses an
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [20700002](../errorcode-audio-ringtone-sys.md#20700002-parameter-check-failed) |  |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+systemTonePlayer.on('error', (err: BusinessError) => {
+  console.info(`Succeeded in using on function. code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## prepare
 

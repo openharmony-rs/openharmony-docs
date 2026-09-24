@@ -1,5 +1,9 @@
 # RemoveFilterRule (System API)
 
+```TypeScript
+interface RemoveFilterRule
+```
+
 Defines the network packet filtering rule to remove.
 
 **Since:** 10

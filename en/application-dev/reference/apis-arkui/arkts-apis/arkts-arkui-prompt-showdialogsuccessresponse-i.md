@@ -1,5 +1,9 @@
 # ShowDialogSuccessResponse
 
+```TypeScript
+interface ShowDialogSuccessResponse
+```
+
 Defines the response of ShowDialog.
 
 @interface ShowDialogSuccessResponse
@@ -33,5 +37,7 @@ Defines the index of data.
 **Deprecated since:** 9
 
 **Substitutes:** [index](arkts-arkui-promptaction-showdialogsuccessresponse-i.md#index)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

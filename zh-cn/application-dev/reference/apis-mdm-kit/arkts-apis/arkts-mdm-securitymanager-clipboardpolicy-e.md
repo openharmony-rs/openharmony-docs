@@ -1,5 +1,9 @@
 # ClipboardPolicy
 
+```TypeScript
+export enum ClipboardPolicy
+```
+
 设备剪贴板策略。
 
 **起始版本：** 12

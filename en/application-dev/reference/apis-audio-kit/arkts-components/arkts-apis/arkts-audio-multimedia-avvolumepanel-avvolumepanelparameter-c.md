@@ -1,5 +1,9 @@
 # AVVolumePanelParameter
 
+```TypeScript
+export declare class AVVolumePanelParameter
+```
+
 Declare custom parameters used for volume panel.
 
 **Since:** 12

@@ -6,7 +6,9 @@ typedef struct RawFileDescriptor64 {...} RawFileDescriptor64
 
 ## 概述
 
-提供rawfile文件描述符信息，包含rawfile的文件描述符、在HAP包中的起始位置和文件长度。支持2GB以上的大文件。<br>通过 [OH_ResourceManager_GetRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_getrawfiledescriptor64)获取，使用完后须调用[OH_ResourceManager_ReleaseRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor64) 释放文件描述符资源。
+提供rawfile文件描述符信息，包含rawfile的文件描述符、在HAP包中的起始位置和文件长度。支持2GB以上的大文件。<br>通过 {@link OH_ResourceManager_GetRawFileDescriptor64}获取，使用完后须调用{@link OH_ResourceManager_ReleaseRawFileDescriptor64} 释放文件描述符资源。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 11
 

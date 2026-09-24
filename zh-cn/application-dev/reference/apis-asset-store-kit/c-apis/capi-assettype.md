@@ -4,6 +4,8 @@
 
 Provides the enums, structs, and error codes used in the Asset APIs.
 
+**系统能力：** SystemCapability.Security.Asset
+
 **起始版本：** 11
 
 ## 文件汇总

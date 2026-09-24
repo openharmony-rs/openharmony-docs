@@ -1,5 +1,9 @@
 # ShowDialogOptions
 
+```TypeScript
+interface ShowDialogOptions
+```
+
 Describes the options for showing the dialog box.
 
 **Since:** 9
@@ -38,7 +42,7 @@ backgroundBlurStyle?: BlurStyle
 
 Background blur style of the dialog box. <br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK** <br>**NOTE:** <br>Setting this parameter to **BlurStyle.NONE** disables the background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**. If you do, the color display may not produce the expected visual effect.
 
-**Type:** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**Type:** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **Default:** BlurStyle.COMPONENT_ULTRA_THICK
 
@@ -58,7 +62,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 Options for customizing the background blur style. For details about the default value, see **BackgroundBlurStyleOptions**.
 
-**Type:** [BackgroundBlurStyleOptions](../arkts-components/arkts-arkui-backgroundblurstyleoptions-i.md)
+**Type:** [BackgroundBlurStyleOptions](../arkts-components/arkts-arkui-common-comp-backgroundblurstyleoptions-i.md)
 
 **Since:** 19
 
@@ -96,7 +100,7 @@ backgroundEffect?: BackgroundEffectOptions
 
 Options for customizing the background effect. For details about the default value, see **BackgroundEffectOptions**.
 
-**Type:** [BackgroundEffectOptions](../arkts-components/arkts-arkui-backgroundeffectoptions-i.md)
+**Type:** [BackgroundEffectOptions](../arkts-components/arkts-arkui-common-comp-backgroundeffectoptions-i.md)
 
 **Since:** 19
 
@@ -117,6 +121,8 @@ Array of buttons in the dialog box. The array structure is {text:'button',&nbsp;
 **Type:** Array&lt;[Button](arkts-arkui-promptaction-button-i.md)&gt;
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -150,7 +156,7 @@ hoverModeArea?: HoverModeAreaType
 
 Default display area of the dialog box in semi-folded mode. <br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**
 
-**Type:** [HoverModeAreaType](../arkts-components/arkts-arkui-hovermodeareatype-e.md)
+**Type:** [HoverModeAreaType](../arkts-components/arkts-arkui-common-comp-hovermodeareatype-e.md)
 
 **Default:** HoverModeAreaType.BOTTOM_SCREEN
 
@@ -268,7 +274,7 @@ maskRect?: Rectangle
 
 Mask area of the dialog box. Events within the mask area are blocked, while events outside the mask area are transmitted.<br> Default value: **{ x: 0, y: 0, width: '100%', height: '100%' }**<br> **NOTE:** <br> **maskRect** does not take effect when **showInSubWindow** is set to **true**.<br> If only some properties in [Rectangle](../arkui-ts/ts-methods-alert-dialog-box.md#rectangle8) are set, the unset properties default to 0.
 
-**Type:** [Rectangle](../arkts-components/arkts-arkui-rectangle-i.md)
+**Type:** [Rectangle](../arkts-components/arkts-arkui-common-comp-rectangle-i.md)
 
 **Since:** 10
 
@@ -289,6 +295,8 @@ Text body.<br>Default value: **undefined**, which indicates that no content is d
 **Type:** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -392,7 +400,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 Shadow of the dialog box. <br> Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise On other devices, the dialog box has no shadow by default.
 
-**Type:** [ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-shadowstyle-e.md)
+**Type:** [ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-common-comp-shadowstyle-e.md)
 
 **Since:** 12
 
@@ -430,7 +438,7 @@ systemMaterial?: SystemUiMaterial
 
 System material of the dialog box. Different materials have different effects and can affect visual attributes such as the background color, border, and shadow of the dialog box.
 
-**Type:** [SystemUiMaterial](../arkts-components/arkts-arkui-systemuimaterial-t.md)
+**Type:** [SystemUiMaterial](../arkts-components/arkts-arkui-common-comp-systemuimaterial-t.md)
 
 **Since:** 26.0.0
 
@@ -451,6 +459,8 @@ Title of the dialog box.<br>Default value: **undefined**, which indicates that n
 **Type:** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

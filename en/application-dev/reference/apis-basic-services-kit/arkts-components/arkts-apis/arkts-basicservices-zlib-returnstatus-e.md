@@ -1,5 +1,9 @@
 # ReturnStatus
 
+```TypeScript
+export enum ReturnStatus
+```
+
 Return codes for the compression/decompression functions.
 
 **Since:** 12

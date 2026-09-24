@@ -46,25 +46,11 @@ function createImageReceiver(width: number, height: number, format: number, capa
 **示例**
 
 ```TypeScript
-let size: image.Size = {
-  height: 8192,
-  width: 8192
-}
-let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
-```
-
-```TypeScript
-let options: image.ImageReceiverOptions = {
-  size: { width: 480, height: 480 },
-  capacity: 3
-}
-let receiver: image.ImageReceiver | undefined = image.createImageReceiver(options);
-```
-
-```TypeScript
 let receiver: image.ImageReceiver = image.createImageReceiver(8192, 8192, image.ImageFormat.JPEG, 8);
 ```
 
+
+<a id="createimagereceiver-1"></a>
 
 ## createImageReceiver
 
@@ -98,12 +84,20 @@ function createImageReceiver(size: Size, format: ImageFormat, capacity: number):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types; |
 
 **示例**
 
-参见 createImageReceiver
+```TypeScript
+let size: image.Size = {
+  height: 8192,
+  width: 8192
+}
+let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+```
 
+
+<a id="createimagereceiver-3"></a>
 
 ## createImageReceiver
 
@@ -141,4 +135,10 @@ function createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | un
 
 **示例**
 
-参见 createImageReceiver
+```TypeScript
+let options: image.ImageReceiverOptions = {
+  size: { width: 480, height: 480 },
+  capacity: 3
+}
+let receiver: image.ImageReceiver | undefined = image.createImageReceiver(options);
+```

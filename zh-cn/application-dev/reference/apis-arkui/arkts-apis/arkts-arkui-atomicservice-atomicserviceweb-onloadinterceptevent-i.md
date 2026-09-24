@@ -1,5 +1,9 @@
 # OnLoadInterceptEvent
 
+```TypeScript
+export declare interface OnLoadInterceptEvent
+```
+
 定义Web组件加载url之前触发的加载拦截事件。
 
 **起始版本：** 12
@@ -20,7 +24,7 @@ data: WebResourceRequest
 
 网页请求的封装信息。
 
-**类型：** WebResourceRequest
+**类型：** [WebResourceRequest](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-webresourcerequest-c.md)
 
 **起始版本：** 12
 

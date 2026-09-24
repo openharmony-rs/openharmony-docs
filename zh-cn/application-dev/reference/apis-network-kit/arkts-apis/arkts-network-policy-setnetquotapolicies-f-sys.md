@@ -33,9 +33,9 @@ function setNetQuotaPolicies(quotaPolicies: Array<NetQuotaPolicy>, callback: Asy
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
@@ -68,37 +68,8 @@ policy.setNetQuotaPolicies(netQuotaPolicyList, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let netQuotaPolicyList: Array<policy.NetQuotaPolicy> = [];
-let netQuotaPolicy: policy.NetQuotaPolicy = {
-  networkMatchRule: {
-    netType: connection.NetBearType.BEARER_CELLULAR,
-    identity: '',
-    simId: '1'
-  },
-  quotaPolicy: {
-    periodDuration: 'M1',
-    warningBytes: 40000,
-    limitBytes: 50000,
-    metered: true,
-    limitAction: policy.LimitAction.LIMIT_ACTION_NONE
-  }
-}
-netQuotaPolicyList.push(netQuotaPolicy);
-
-policy
-  .setNetQuotaPolicies(netQuotaPolicyList)
-  .then(() => {
-    console.info('setNetQuotaPolicies success');
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
-```
-
+<a id="setnetquotapolicies-1"></a>
 
 ## setNetQuotaPolicies
 
@@ -132,13 +103,42 @@ function setNetQuotaPolicies(quotaPolicies: Array<NetQuotaPolicy>): Promise<void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
 **示例**
 
-参见 [setNetQuotaPolicies](#setnetquotapolicies)
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let netQuotaPolicyList: Array<policy.NetQuotaPolicy> = [];
+let netQuotaPolicy: policy.NetQuotaPolicy = {
+  networkMatchRule: {
+    netType: connection.NetBearType.BEARER_CELLULAR,
+    identity: '',
+    simId: '1'
+  },
+  quotaPolicy: {
+    periodDuration: 'M1',
+    warningBytes: 40000,
+    limitBytes: 50000,
+    metered: true,
+    limitAction: policy.LimitAction.LIMIT_ACTION_NONE
+  }
+}
+netQuotaPolicyList.push(netQuotaPolicy);
+
+policy
+  .setNetQuotaPolicies(netQuotaPolicyList)
+  .then(() => {
+    console.info('setNetQuotaPolicies success');
+  })
+  .catch((error: BusinessError) => {
+    console.error(JSON.stringify(error));
+  });
+```

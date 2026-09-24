@@ -24,13 +24,13 @@ function getDataSummary(): Array<Summary>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[Summary](../arkts-components/arkts-arkui-summary-t.md)&gt; | 所有拖拽对象的数据摘要，包含拖拽对象的类型和数据长度。 |
+| Array&lt;[Summary](../arkts-components/arkts-arkui-common-comp-summary-t.md)&gt; | 所有拖拽对象的数据摘要，包含拖拽对象的类型和数据长度。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
 **示例**
 

@@ -8,6 +8,8 @@ typedef struct NetConn_NetHandleList {...} NetConn_NetHandleList
 
 Defines the network list.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 11
 
 **Related module**: [NetConnection](capi-netconnection.md)

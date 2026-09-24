@@ -1,5 +1,9 @@
 # UninstallComponentType（系统接口）
 
+```TypeScript
+export enum UninstallComponentType
+```
+
 标识卸载时功能组件类型。
 
 **起始版本：** 15

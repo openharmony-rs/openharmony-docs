@@ -1,5 +1,9 @@
 # CollectStrategy (System API)
 
+```TypeScript
+export enum CollectStrategy
+```
+
 Defines a page information collection policy.
 
 **Since:** 23

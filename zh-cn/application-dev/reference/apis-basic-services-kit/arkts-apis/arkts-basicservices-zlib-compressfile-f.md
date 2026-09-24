@@ -37,7 +37,7 @@ function compressFile(inFile: string, outFile: string, options: Options, callbac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [900001](../errorcode-zlib.md#900001-传入的源文件错误) | The input source file is invalid. |
 | [900002](../errorcode-zlib.md#900002-传入的目标文件错误) | The input destination file is invalid. |
 
@@ -70,31 +70,8 @@ try {
 }
 ```
 
-```TypeScript
-// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
-import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let inFile = '/data/storage/el2/base/temp/filename.xxx';
-let outFile = '/data/storage/el2/base/temp/xxx.zip';
-let options: zlib.Options = {
-  level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
-  memLevel: zlib.MemLevel.MEM_LEVEL_DEFAULT,
-  strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY
-};
-
-try {
-  zlib.compressFile(inFile, outFile, options).then((data: void) => {
-    console.info('compressFile success. data: ' + JSON.stringify(data));
-  }).catch((errData: BusinessError) => {
-    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-  })
-} catch (errData) {
-  let code = (errData as BusinessError).code;
-  let message = (errData as BusinessError).message;
-  console.error(`errData is errCode:${code}  message:${message}`);
-}
-```
-
+<a id="compressfile-1"></a>
 
 ## compressFile
 
@@ -132,10 +109,33 @@ function compressFile(inFile: string, outFile: string, options: Options): Promis
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [900001](../errorcode-zlib.md#900001-传入的源文件错误) | The input source file is invalid. |
 | [900002](../errorcode-zlib.md#900002-传入的目标文件错误) | The input destination file is invalid. |
 
 **示例**
 
-参见 compressFile
+```TypeScript
+// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
+import { zlib, BusinessError } from '@kit.BasicServicesKit';
+
+let inFile = '/data/storage/el2/base/temp/filename.xxx';
+let outFile = '/data/storage/el2/base/temp/xxx.zip';
+let options: zlib.Options = {
+  level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
+  memLevel: zlib.MemLevel.MEM_LEVEL_DEFAULT,
+  strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY
+};
+
+try {
+  zlib.compressFile(inFile, outFile, options).then((data: void) => {
+    console.info('compressFile success. data: ' + JSON.stringify(data));
+  }).catch((errData: BusinessError) => {
+    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+  })
+} catch (errData) {
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
+}
+```

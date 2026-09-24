@@ -1,5 +1,9 @@
 # RemoteAbilityInfo（系统接口）
 
+```TypeScript
+export interface RemoteAbilityInfo
+```
+
 remoteAbility信息。
 
 > **说明：** 

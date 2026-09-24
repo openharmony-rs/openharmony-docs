@@ -8,6 +8,8 @@ typedef struct OH_NativeBuffer OH_NativeBuffer
 
 Provides native buffer capability.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **Since**: 9
 
 **Related module**: [NativeWindow](capi-nativewindow.md)

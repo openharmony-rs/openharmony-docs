@@ -8,6 +8,8 @@ typedef struct ImagePacker_Native_ ImagePacker_Native
 
 为编码器方法定义native层编码器对象。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 11
 
 **相关模块：** [Image](capi-image.md)

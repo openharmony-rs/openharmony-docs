@@ -1,5 +1,9 @@
 # PhysicalUnit
 
+```TypeScript
+enum PhysicalUnit
+```
+
 Enumerates the physical units.
 
 **Since:** 20

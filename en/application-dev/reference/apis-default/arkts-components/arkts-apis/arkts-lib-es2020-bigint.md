@@ -30,6 +30,6 @@
 
 | Name | Description |
 | --- | --- |
-| [BigInt](arkts-libes2020bigint-p.md) |  |
-| [BigInt64Array](arkts-libes2020bigint-p.md) |  |
-| [BigUint64Array](arkts-libes2020bigint-p.md) |  |
+| [BigInt](arkts-lib-es2020-bigint-p.md) |  |
+| [BigInt64Array](arkts-lib-es2020-bigint-p.md) |  |
+| [BigUint64Array](arkts-lib-es2020-bigint-p.md) |  |

@@ -1,5 +1,9 @@
 # SignatureUtils
 
+```TypeScript
+class SignatureUtils
+```
+
 用于ECC/SM2签名数据转换的工具类。
 
 **起始版本：** 20

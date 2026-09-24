@@ -31,20 +31,65 @@ function setAppNet(netHandle: NetHandle, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
 **示例**
 
-```TypeScript
 当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
 
 以下示例以绑定WIFI网络为例，结合[on('netAvailable')](arkts-network-connection-netconnection-i.md#onnetavailable)、[on('netLost')](arkts-network-connection-netconnection-i.md#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。仅关注WIFI网络，需要指定网络类型为WIFI网络。
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
+  }
+});
+
+// 使用on接口订阅网络可用事件
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
+  });
+});
+
+// 使用on接口订阅网络丢失事件。
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  // 网络丢失时，需要主动解除指定网络的绑定关系
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
+  });
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  if (error) {
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  }
+});
 ```
 
+
+<a id="setappnet-1"></a>
 
 ## setAppNet
 
@@ -76,12 +121,55 @@ function setAppNet(netHandle: NetHandle): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
 **示例**
 
-参见 [setAppNet](#setappnet)
+当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
+
+以下示例以绑定WIFI网络为例，结合[on('netAvailable')](arkts-network-connection-netconnection-i.md#onnetavailable)、[on('netLost')](arkts-network-connection-netconnection-i.md#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。仅关注WIFI网络，需要指定网络类型为WIFI网络。
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
+  }
+});
+
+// 使用on接口订阅网络可用事件
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  connection.setAppNet(netHandle).then(() => {
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
+});
+
+// 使用on接口订阅网络丢失事件。
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  // 网络丢失时，需要主动解除指定网络的绑定关系
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle).then(() => {
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  if (error) {
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  }
+});
+```

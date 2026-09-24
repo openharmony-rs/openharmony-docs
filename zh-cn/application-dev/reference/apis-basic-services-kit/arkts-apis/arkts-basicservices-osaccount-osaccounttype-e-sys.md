@@ -1,5 +1,9 @@
 # OsAccountType
 
+```TypeScript
+enum OsAccountType
+```
+
 表示系统账号类型的枚举。
 
 **起始版本：** 7

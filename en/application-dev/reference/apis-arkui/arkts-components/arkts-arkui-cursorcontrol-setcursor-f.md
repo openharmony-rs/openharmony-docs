@@ -20,4 +20,4 @@ Sets the current mouse cursor style. This API can be used globally in method sta
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [PointerStyle](arkts-arkui-pointerstyle-t.md) | Yes | Cursor style. |
+| value | [PointerStyle](arkts-arkui-common-comp-pointerstyle-t.md) | Yes | Cursor style. |

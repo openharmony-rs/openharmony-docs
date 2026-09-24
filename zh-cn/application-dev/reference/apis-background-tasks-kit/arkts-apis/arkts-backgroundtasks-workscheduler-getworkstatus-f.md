@@ -31,7 +31,7 @@ function getWorkStatus(workId: number, callback: AsyncCallback<WorkInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
 | [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
@@ -52,17 +52,8 @@ workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkIn
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { workScheduler } from '@kit.BackgroundTasksKit';
 
-workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
-  console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
-}).catch((error: BusinessError) => {
-  console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
-})
-```
-
+<a id="getworkstatus-1"></a>
 
 ## getWorkStatus
 
@@ -94,7 +85,7 @@ function getWorkStatus(workId: number): Promise<WorkInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
 | [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
@@ -102,4 +93,13 @@ function getWorkStatus(workId: number): Promise<WorkInfo>
 
 **示例**
 
-参见 getWorkStatus
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
+
+workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
+  console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
+}).catch((error: BusinessError) => {
+  console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
+})
+```

@@ -8,6 +8,8 @@ typedef struct OH_AVDataSourceExt {...} OH_AVDataSourceExt
 
 The struct describes a user-defined data source. User-defined data can be passed to its callback functions through the **userData** parameter.
 
+**System capability**: SystemCapability.Multimedia.Media.CodecBase
+
 **Since**: 20
 
 **Related module**: [CodecBase](capi-codecbase.md)

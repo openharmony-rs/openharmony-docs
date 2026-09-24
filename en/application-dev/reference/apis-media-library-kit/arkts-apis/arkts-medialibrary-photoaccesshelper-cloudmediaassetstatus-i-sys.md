@@ -1,5 +1,9 @@
 # CloudMediaAssetStatus (System API)
 
+```TypeScript
+interface CloudMediaAssetStatus
+```
+
 Describes the details of a cloud media asset download task. It is the return value of the API used by applications to obtain the cloud asset download task status.
 
 **Since:** 14

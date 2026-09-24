@@ -1,5 +1,9 @@
 # FirewallRulePage
 
+```TypeScript
+interface FirewallRulePage
+```
+
 防火墙规则页信息结构。
 
 **起始版本：** 15

@@ -1,5 +1,9 @@
 # CurrentOutputDeviceChangedEvent
 
+```TypeScript
+interface CurrentOutputDeviceChangedEvent
+```
+
 应用接收到输出设备的变更事件。
 
 **起始版本：** 20
@@ -47,10 +51,6 @@ preDevices?: AudioDeviceDescriptors
 ```
 
 应用输出设备变更前的设备信息。
-
-26.0.0
-
-此接口仅可在Stage模型下使用。
 
 **类型：** [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)
 

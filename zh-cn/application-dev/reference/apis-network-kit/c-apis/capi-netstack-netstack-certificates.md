@@ -8,6 +8,8 @@ typedef struct NetStack_Certificates {...} NetStack_Certificates
 
 Define certificate information.
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 12
 
 **相关模块：** [netstack](capi-netstack.md)

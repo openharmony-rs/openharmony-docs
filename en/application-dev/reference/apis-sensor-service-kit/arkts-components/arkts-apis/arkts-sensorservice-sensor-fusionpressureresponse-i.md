@@ -1,5 +1,9 @@
 # FusionPressureResponse
 
+```TypeScript
+interface FusionPressureResponse extends Response
+```
+
 Describes the fusion pressure sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** FusionPressureResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

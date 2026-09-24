@@ -8,6 +8,8 @@ typedef struct ArchiveReadCtx *OH_Archive_Reader_Ctx
 
 文件解压缩器的上下文结构体指针。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **相关模块：** [Archive](capi-archive.md)

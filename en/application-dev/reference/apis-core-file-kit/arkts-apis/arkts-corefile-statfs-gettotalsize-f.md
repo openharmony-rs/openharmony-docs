@@ -64,22 +64,8 @@ statfs.getTotalSize(path).then((number: number) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
 
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let path = context.filesDir;
-statfs.getTotalSize(path, (err: BusinessError, number: number) => {
-  if (err) {
-    console.error("getTotalSize failed with error message: " + err.message + ", error code: " + err.code);
-  } else {
-    console.info("getTotalSize succeed, Size: " + number);
-  }
-});
-```
-
+<a id="gettotalsize-1"></a>
 
 ## getTotalSize
 
@@ -120,4 +106,18 @@ Obtains the total size of the specified file system, in bytes. This API uses an 
 
 **Examples**
 
-See [getTotalSize](#gettotalsize)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let path = context.filesDir;
+statfs.getTotalSize(path, (err: BusinessError, number: number) => {
+  if (err) {
+    console.error("getTotalSize failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("getTotalSize succeed, Size: " + number);
+  }
+});
+```

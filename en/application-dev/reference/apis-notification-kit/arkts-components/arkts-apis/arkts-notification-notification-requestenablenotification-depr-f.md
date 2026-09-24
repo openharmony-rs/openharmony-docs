@@ -28,6 +28,8 @@ Requests notification to be enabled for this application. This API uses an async
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
+<a id="requestenablenotification-1"></a>
+
 ## requestEnableNotification
 
 ```TypeScript

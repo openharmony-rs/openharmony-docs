@@ -1,5 +1,9 @@
 # ServiceData
 
+```TypeScript
+interface ServiceData
+```
+
 Represents the service data.
 
 **Since:** 26.0.0

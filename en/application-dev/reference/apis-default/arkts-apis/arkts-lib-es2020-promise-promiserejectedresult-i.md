@@ -1,5 +1,9 @@
 # PromiseRejectedResult
 
+```TypeScript
+interface PromiseRejectedResult
+```
+
 ## Modules to Import
 
 ```TypeScript

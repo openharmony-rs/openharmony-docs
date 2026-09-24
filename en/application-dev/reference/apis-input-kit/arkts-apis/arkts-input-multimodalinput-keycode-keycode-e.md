@@ -1,5 +1,9 @@
 # KeyCode
 
+```TypeScript
+export declare enum KeyCode
+```
+
 The **keyCode** module provides key codes of key devices, including keyboards, CDs, and gamepads.
 
 **Since:** 9

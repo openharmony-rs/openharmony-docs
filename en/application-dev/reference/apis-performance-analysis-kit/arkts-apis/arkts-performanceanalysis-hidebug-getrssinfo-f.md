@@ -22,6 +22,8 @@ Obtains the physical memory usage of the application process. Reads data from th
 
 **Since:** 24
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug

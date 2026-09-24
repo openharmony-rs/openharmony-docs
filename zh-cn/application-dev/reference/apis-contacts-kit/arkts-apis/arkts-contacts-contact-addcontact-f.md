@@ -18,7 +18,7 @@ function addContact(contact: Contact, callback: AsyncCallback<number>): void
 
 **废弃版本：** 10
 
-**替代接口：** addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;)
+**替代接口：** [addContact](#addcontact-1)(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -32,12 +32,6 @@ function addContact(contact: Contact, callback: AsyncCallback<number>): void
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。 |
 
 **示例**
-
-```TypeScript
-> 说明：
-> 
-> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -62,24 +56,8 @@ contact.addContact(context, {
 });
 ```
 
-```TypeScript
-import { contact } from '@kit.ContactsKit';
 
-// Promise 成功时返回添加成功后的数据。
-let promise = contact.addContact({
-  name: {
-    fullName: 'xxx'
-  },
-  phoneNumbers: [{
-    phoneNumber: '138xxxxxxxx'
-  }]
-});
-// 成功回调：Promise resolve 时执行
-promise.then((data) => {
-  console.info(`Succeeded in adding Contact. data: ${JSON.stringify(data)}`);
-});
-```
-
+<a id="addcontact-1"></a>
 
 ## addContact
 
@@ -109,13 +87,40 @@ function addContact(context: Context, contact: Contact, callback: AsyncCallback<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. |
 
 **示例**
 
-参见 addContact
+> 说明：
+> 
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+  import { common } from '@kit.AbilityKit';
+  import { contact } from '@kit.ContactsKit';
+
+  // 请在组件内获取context。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  contact.addContact(context, {
+    name: {
+      fullName: 'xxx'
+    },
+    phoneNumbers: [{
+      phoneNumber: '138xxxxxxxx'
+    }]
+  }, (err: BusinessError, data) => {
+    if (err) {
+      console.error(`Failed to add Contact. Code:${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`Succeeded in adding Contact. data: ${JSON.stringify(data)}`);
+  });
+```
+
+
+<a id="addcontact-2"></a>
 
 ## addContact
 
@@ -129,7 +134,7 @@ function addContact(contact: Contact): Promise<number>
 
 **废弃版本：** 10
 
-**替代接口：** addContact(context: Context, contact: Contact)
+**替代接口：** [addContact](#addcontact-3)(context: Context, contact: Contact)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -149,8 +154,26 @@ function addContact(contact: Contact): Promise<number>
 
 **示例**
 
-参见 addContact
+```TypeScript
+import { contact } from '@kit.ContactsKit';
 
+// Promise 成功时返回添加成功后的数据。
+let promise = contact.addContact({
+  name: {
+    fullName: 'xxx'
+  },
+  phoneNumbers: [{
+    phoneNumber: '138xxxxxxxx'
+  }]
+});
+// 成功回调：Promise resolve 时执行
+promise.then((data) => {
+  console.info(`Succeeded in adding Contact. data: ${JSON.stringify(data)}`);
+});
+```
+
+
+<a id="addcontact-3"></a>
 
 ## addContact
 
@@ -185,9 +208,30 @@ function addContact(context: Context, contact: Contact): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. |
 
 **示例**
 
-参见 addContact
+> 说明：
+> 
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+  import { common } from '@kit.AbilityKit';
+
+  // 请在组件内获取context。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let promise = contact.addContact(context, {
+    name: {
+      fullName: 'xxx'
+    },
+    phoneNumbers: [{
+      phoneNumber: '138xxxxxxxx'
+    }]
+  });
+  promise.then((data) => {
+    console.info(`Succeeded in adding Contact. data: ${JSON.stringify(data)}`);
+  });
+```

@@ -1,5 +1,9 @@
 # ChipGroupV2Padding
 
+```TypeScript
+export declare class ChipGroupV2Padding
+```
+
 ChipGroupV2Padding定义了ChipGroupV2的上下内边距，用于控制其整体高度。
 
 **起始版本：** 26.0.0

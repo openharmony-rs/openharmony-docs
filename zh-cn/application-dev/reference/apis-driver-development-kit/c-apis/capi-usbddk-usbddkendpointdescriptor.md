@@ -8,6 +8,8 @@ typedef struct UsbDdkEndpointDescriptor {...} UsbDdkEndpointDescriptor
 
 端点描述符，包含标准端点描述符和未做解析的描述符信息。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **起始版本：** 10
 
 **相关模块：** [UsbDdk](capi-usbddk.md)

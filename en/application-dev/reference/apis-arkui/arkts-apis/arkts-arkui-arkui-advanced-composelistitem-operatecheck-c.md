@@ -1,5 +1,9 @@
 # OperateCheck
 
+```TypeScript
+export declare class OperateCheck
+```
+
 Defines the type where the element on the right of the **ComposeListItem** component is **Switch**, **CheckBox**, or **Radio**.
 
 **Since:** 10

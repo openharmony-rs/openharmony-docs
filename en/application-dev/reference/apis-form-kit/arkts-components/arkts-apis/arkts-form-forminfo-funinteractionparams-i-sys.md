@@ -1,5 +1,9 @@
 # FunInteractionParams (System API)
 
+```TypeScript
+interface FunInteractionParams
+```
+
 The fun interaction form params.
 
 @typedef { FunInteractionParams }

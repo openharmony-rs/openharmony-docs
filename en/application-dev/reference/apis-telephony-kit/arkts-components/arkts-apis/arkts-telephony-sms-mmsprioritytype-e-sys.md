@@ -1,5 +1,9 @@
 # MmsPriorityType (System API)
 
+```TypeScript
+export enum MmsPriorityType
+```
+
 Enumerates MMS message priorities.
 
 **Since:** 8

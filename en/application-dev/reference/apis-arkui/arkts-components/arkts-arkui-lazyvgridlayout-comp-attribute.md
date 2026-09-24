@@ -1,5 +1,9 @@
 # LazyVGridLayout properties/events
 
+```TypeScript
+declare class LazyVGridLayoutAttribute extends LazyGridLayoutAttribute<LazyVGridLayoutAttribute>
+```
+
 In addition to the universal attributes, the following attributes are supported.
 
 In addition to the universal events, the following events are supported.
@@ -45,6 +49,8 @@ If this attribute is set to **'0fr'**, the column width is 0, and child componen
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | string | Yes | Number of columns or minimum column width of the grid. |
+
+<a id="columnstemplate-1"></a>
 
 ## columnsTemplate
 

@@ -1,5 +1,9 @@
 # AlbumOperationType（系统接口）
 
+```TypeScript
+enum AlbumOperationType
+```
+
 枚举，设置相册属性的操作类型。
 
 **起始版本：** 26.0.0

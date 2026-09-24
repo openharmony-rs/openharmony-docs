@@ -1,5 +1,9 @@
 # NotificationRequest
 
+```TypeScript
+export interface NotificationRequest
+```
+
 定义了通知请求的数据结构，用于描述一条通知的全部信息，包括通知内容、标识、展示样式、交互行为等。
 
 **起始版本：** 7
@@ -49,26 +53,6 @@ classification?: string
 **类型：** string
 
 **起始版本：** 7
-
-**系统能力：** SystemCapability.Notification.Notification
-
-**系统接口：** 此接口为系统接口。
-
-## creatorInstanceKey
-
-```TypeScript
-readonly creatorInstanceKey?: number
-```
-
-创建者实例键值。
-
-**类型：** number
-
-**起始版本：** 12
-
-**废弃版本：** 15
-
-**替代接口：** [appInstanceKey](#appinstancekey)
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -278,6 +262,26 @@ unifiedGroupInfo?: UnifiedGroupInfo
 **类型：** [UnifiedGroupInfo](arkts-notification-notificationrequest-unifiedgroupinfo-i-sys.md)
 
 **起始版本：** 12
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## creatorInstanceKey
+
+```TypeScript
+readonly creatorInstanceKey?: number
+```
+
+创建者实例键值。
+
+**类型：** number
+
+**起始版本：** 12
+
+**废弃版本：** 15
+
+**替代接口：** [appInstanceKey](#appinstancekey)
 
 **系统能力：** SystemCapability.Notification.Notification
 

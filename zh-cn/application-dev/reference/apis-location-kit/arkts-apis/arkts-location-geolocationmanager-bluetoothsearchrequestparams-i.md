@@ -1,5 +1,9 @@
 # BluetoothSearchRequestParams
 
+```TypeScript
+export interface BluetoothSearchRequestParams
+```
+
 蓝牙扫描请求参数。
 
 **起始版本：** 26.0.0

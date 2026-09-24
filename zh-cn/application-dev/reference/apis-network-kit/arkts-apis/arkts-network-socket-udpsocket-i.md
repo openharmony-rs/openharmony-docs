@@ -1,5 +1,9 @@
 # UDPSocket
 
+```TypeScript
+export interface UDPSocket
+```
+
 UDPSocket连接。在调用UDPSocket的方法前，需要先通过[socket.constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md)创建UDPSocket对象。
 
 **起始版本：** 7
@@ -37,8 +41,8 @@ bind(address: NetAddress, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
 
@@ -60,21 +64,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-let bindAddr: socket.NetAddress = {
-  address: '192.168.xx.xxx',  // 本端地址
-  port: 8080
-}
-udp.bind(bindAddr).then(() => {
-  console.info('bind success');
-}).catch((err: BusinessError) => {
-  console.error('bind fail');
-});
-```
+<a id="bind-1"></a>
 
 ## bind
 
@@ -106,28 +96,10 @@ bind(address: NetAddress): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
-
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-let bindAddr: socket.NetAddress = {
-  address: '192.168.xx.xxx',  // 本端地址
-  port: 1234
-}
-udp.bind(bindAddr, (err: BusinessError) => {
-  if (err) {
-    console.error('bind fail');
-    return;
-  }
-  console.info('bind success');
-});
-```
 
 ```TypeScript
 import { socket } from '@kit.NetworkKit';
@@ -169,7 +141,7 @@ close(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
 
@@ -187,17 +159,7 @@ udp.close((err: BusinessError) => {
 })
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-udp.close().then(() => {
-  console.info('close success');
-}).catch((err: BusinessError) => {
-  console.error('close fail');
-});
-```
+<a id="close-1"></a>
 
 ## close
 
@@ -223,23 +185,9 @@ close(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
-
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-udp.close((err: BusinessError) => {
-  if (err) {
-    console.error('close fail');
-    return;
-  }
-  console.info('close success');
-})
-```
 
 ```TypeScript
 import { socket } from '@kit.NetworkKit';
@@ -339,7 +287,7 @@ getSocketFd(): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
 
@@ -393,7 +341,7 @@ getState(callback: AsyncCallback<SocketStateBase>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
 
@@ -422,28 +370,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
 })
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-let bindAddr: socket.NetAddress = {
-  address: '192.168.xx.xxx',
-  port: 8080
-}
-udp.bind(bindAddr, (err: BusinessError) => {
-  if (err) {
-    console.error('bind fail');
-    return;
-  }
-  console.info('bind success');
-  udp.getState().then((data: socket.SocketStateBase) => {
-    console.info('getState success:' + JSON.stringify(data));
-  }).catch((err: BusinessError) => {
-    console.error('getState fail' + JSON.stringify(err));
-  });
-});
-```
+<a id="getstate-1"></a>
 
 ## getState
 
@@ -473,34 +400,9 @@ getState(): Promise<SocketStateBase>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
-
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-let bindAddr: socket.NetAddress = {
-  address: '192.168.xx.xxx',
-  port: 8080
-}
-udp.bind(bindAddr, (err: BusinessError) => {
-  if (err) {
-    console.error('bind fail');
-    return;
-  }
-  console.info('bind success');
-  udp.getState((err: BusinessError, data: socket.SocketStateBase) => {
-    if (err) {
-      console.error('getState fail');
-      return;
-    }
-    console.info('getState success:' + JSON.stringify(data));
-  })
-})
-```
 
 ```TypeScript
 import { socket } from '@kit.NetworkKit';
@@ -544,6 +446,30 @@ off(type: 'message', callback?: Callback<SocketMessageInfo>): void
 | type | 'message' | 是 | 取消订阅的事件类型。'message'：接收消息事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SocketMessageInfo](arkts-network-socket-socketmessageinfo-i.md)&gt; | 否 | 回调函数。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订阅。<br>**适用版本：** 11 |
 
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+let messageView = '';
+let callback = (value: socket.SocketMessageInfo) => {
+  for (let i: number = 0; i < value.message.byteLength; i++) {
+    let uint8Array = new Uint8Array(value.message) 
+    let messages = uint8Array[i]
+    let message = String.fromCharCode(messages);
+    messageView += message;
+  }
+  console.info('on message message: ' + JSON.stringify(messageView));
+  console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+}
+udp.on('message', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+udp.off('message', callback);
+udp.off('message');
+```
+
 ## off('listening' | 'close')
 
 ```TypeScript
@@ -563,24 +489,28 @@ off(type: 'listening' | 'close', callback?: Callback<void>): void
 | type | 'listening' &#124; 'close' | 是 | 取消订阅事件类型。<br>- 'listening'：数据包消息事件。<br>- 'close'：关闭事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订阅。 |
 
-## off('listening' | 'close')
+**示例**
 
 ```TypeScript
-off(type: 'listening' | 'close', callback?: Callback<void>): void
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+let callback1 = () => {
+  console.info("on listening, success");
+}
+udp.on('listening', callback1);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+udp.off('listening', callback1);
+udp.off('listening');
+let callback2 = () => {
+  console.info("on close, success");
+}
+udp.on('close', callback2);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+udp.off('close', callback2);
+udp.off('close');
 ```
-
-取消订阅UDPSocket连接的数据包消息事件或关闭事件。使用callback异步回调。
-
-**起始版本：** 7
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'listening' &#124; 'close' | 是 | 取消订阅事件类型。<br>- 'listening'：数据包消息事件。<br>- 'close'：关闭事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订阅。 |
 
 ## off('error')
 
@@ -601,6 +531,22 @@ off(type: 'error', callback?: ErrorCallback): void
 | type | 'error' | 是 | 取消订阅的事件类型。'error'：error事件。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 回调函数。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订阅。 |
 
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+let callback = (err: BusinessError) => {
+  console.error("on error, err:" + JSON.stringify(err));
+}
+udp.on('error', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+udp.off('error', callback);
+udp.off('error');
+```
+
 ## on('message')
 
 ```TypeScript
@@ -620,6 +566,27 @@ on(type: 'message', callback: Callback<SocketMessageInfo>): void
 | type | 'message' | 是 | 订阅的事件类型。'message'：接收消息事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SocketMessageInfo](arkts-network-socket-socketmessageinfo-i.md)&gt; | 是 | 回调函数。返回订阅某类事件后UDPSocket连接成功的状态信息。<br>**适用版本：** 11 |
 
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+
+udp.on('message', (value: socket.SocketMessageInfo) => {
+  let messageView = '';
+  let uint8Array = new Uint8Array(value.message); 
+  for (let i: number = 0; i < value.message.byteLength; i++) {
+    let messages = uint8Array[i];
+    let message = String.fromCharCode(messages);
+    messageView += message;
+  }
+  console.info('on message message: ' + JSON.stringify(messageView));
+  console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+});
+```
+
 ## on('listening' | 'close')
 
 ```TypeScript
@@ -639,24 +606,20 @@ on(type: 'listening' | 'close', callback: Callback<void>): void
 | type | 'listening' &#124; 'close' | 是 | 订阅的事件类型。<br>- 'listening'：数据包消息事件。<br>- 'close'：关闭事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数。UDPSocket连接的某类数据包消息事件或关闭事件发生变化后触发回调函数。 |
 
-## on('listening' | 'close')
+**示例**
 
 ```TypeScript
-on(type: 'listening' | 'close', callback: Callback<void>): void
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+udp.on('listening', () => {
+  console.info("on listening success");
+});
+udp.on('close', () => {
+  console.info("on close success");
+});
 ```
-
-订阅UDPSocket连接的数据包消息事件或关闭事件。使用callback异步回调。
-
-**起始版本：** 7
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'listening' &#124; 'close' | 是 | 订阅的事件类型。<br>- 'listening'：数据包消息事件。<br>- 'close'：关闭事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数。UDPSocket连接的某类数据包消息事件或关闭事件发生变化后触发回调函数。 |
 
 ## on('error')
 
@@ -676,6 +639,18 @@ on(type: 'error', callback: ErrorCallback): void
 | --- | --- | --- | --- |
 | type | 'error' | 是 | 订阅的事件类型。'error'：error事件。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 回调函数。UDPSocket连接发生error事件后触发回调函数。 |
+
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+udp.on('error', (err: BusinessError) => {
+  console.error("on error, err:" + JSON.stringify(err))
+});
+```
 
 ## send
 
@@ -704,8 +679,8 @@ send(options: UDPSendOptions, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2301206](../errorcode-net-socket.md#2301206-socks5连接代理服务器失败) | Socks5 failed to connect to the proxy server.<br>**适用版本：** 18+ |
 | [2301207](../errorcode-net-socket.md#2301207-socks5认证用户名或密码无效) | Socks5 username or password is invalid.<br>**适用版本：** 18+ |
 | [2301208](../errorcode-net-socket.md#2301208-socks5连接远程服务器失败) | Socks5 failed to connect to the remote server.<br>**适用版本：** 18+ |
@@ -750,9 +725,7 @@ udp.send(sendOptions, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
 示例（设置socket代理）：
-```
 
 ```TypeScript
 import { socket } from '@kit.NetworkKit';
@@ -760,29 +733,45 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '192.168.xx.xxx', // 本端地址
-  port: 8080
+  address: '192.168.xx.xxx',  // 本端地址
+  port: 1234
 }
-udp.bind(bindAddr).then(() => {
+udp.bind(bindAddr, (err: BusinessError) => {
+  if (err) {
+    console.error('bind fail');
+    return;
+  }
   console.info('bind success');
-}).catch((err: BusinessError) => {
-  console.error('bind fail');
-  return;
 });
 let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx', // 对端地址
+  address: '192.168.xx.xxx',  // 对端地址
   port: 8080
+}
+let socks5Server: socket.NetAddress = {
+  address: '192.168.xx.xxx',
+  port: 8080
+}
+let proxyOptions: socket.ProxyOptions = {
+  type : 1,
+  address: socks5Server,
+  username: "xxx",
+  password: "xxx"
 }
 let sendOptions: socket.UDPSendOptions = {
   data: 'Hello, server!',
-  address: netAddress
+  address: netAddress,
+  proxy: proxyOptions,
 }
-udp.send(sendOptions).then(() => {
+udp.send(sendOptions, (err: BusinessError) => {
+  if (err) {
+    console.error('send fail');
+    return;
+  }
   console.info('send success');
-}).catch((err: BusinessError) => {
-  console.error('send fail');
 });
 ```
+
+<a id="send-1"></a>
 
 ## send
 
@@ -816,8 +805,8 @@ send(options: UDPSendOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2301206](../errorcode-net-socket.md#2301206-socks5连接代理服务器失败) | Socks5 failed to connect to the proxy server.<br>**适用版本：** 18+ |
 | [2301207](../errorcode-net-socket.md#2301207-socks5认证用户名或密码无效) | Socks5 username or password is invalid.<br>**适用版本：** 18+ |
 | [2301208](../errorcode-net-socket.md#2301208-socks5连接远程服务器失败) | Socks5 failed to connect to the remote server.<br>**适用版本：** 18+ |
@@ -828,43 +817,6 @@ send(options: UDPSendOptions): Promise<void>
 | [2301213](../errorcode-net-socket.md#2301213-socks5消息反序列化失败) | Socks5 deserialization error.<br>**适用版本：** 18+ |
 
 **示例**
-
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-let bindAddr: socket.NetAddress = {
-  address: '192.168.xx.xxx',  // 本端地址
-  port: 1234
-}
-udp.bind(bindAddr, (err: BusinessError) => {
-  if (err) {
-    console.error('bind fail');
-    return;
-  }
-  console.info('bind success');
-});
-let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx',  // 对端地址
-  port: 8080
-}
-let sendOptions: socket.UDPSendOptions = {
-  data: 'Hello, server!',
-  address: netAddress
-}
-udp.send(sendOptions, (err: BusinessError) => {
-  if (err) {
-    console.error('send fail');
-    return;
-  }
-  console.info('send success');
-});
-```
-
-```TypeScript
-示例（设置socket代理）：
-```
 
 ```TypeScript
 import { socket } from '@kit.NetworkKit';
@@ -888,6 +840,49 @@ let netAddress: socket.NetAddress = {
 let sendOptions: socket.UDPSendOptions = {
   data: 'Hello, server!',
   address: netAddress
+}
+udp.send(sendOptions).then(() => {
+  console.info('send success');
+}).catch((err: BusinessError) => {
+  console.error('send fail');
+});
+```
+
+示例（设置socket代理）：
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+let bindAddr: socket.NetAddress = {
+  address: '192.168.xx.xxx', // 本端地址
+  port: 8080
+}
+udp.bind(bindAddr).then(() => {
+  console.info('bind success');
+}).catch((err: BusinessError) => {
+  console.error('bind fail');
+  return;
+});
+let netAddress: socket.NetAddress = {
+  address: '192.168.xx.xxx', // 对端地址
+  port: 8080
+}
+let socks5Server: socket.NetAddress = {
+  address: '192.168.xx.xxx',
+  port: 8080
+}
+let proxyOptions: socket.ProxyOptions = {
+  type : 1,
+  address: socks5Server,
+  username: "xxx",
+  password: "xxx"
+}
+let sendOptions: socket.UDPSendOptions = {
+  data: 'Hello, server!',
+  address: netAddress,
+  proxy: proxyOptions,
 }
 udp.send(sendOptions).then(() => {
   console.info('send success');
@@ -925,8 +920,8 @@ setExtraOptions(options: UDPExtraOptions, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
 
@@ -963,36 +958,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
 })
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-
-let bindAddr: socket.NetAddress = {
-  address: '192.168.xx.xxx',
-  port: 8080
-}
-udp.bind(bindAddr, (err: BusinessError) => {
-  if (err) {
-    console.error('bind fail');
-    return;
-  }
-  console.info('bind success');
-  let udpextraoptions: socket.UDPExtraOptions = {
-    receiveBufferSize: 8192,
-    sendBufferSize: 8192,
-    reuseAddress: false,
-    socketTimeout: 6000,
-    broadcast: true
-  }
-  udp.setExtraOptions(udpextraoptions).then(() => {
-    console.info('setExtraOptions success');
-  }).catch((err: BusinessError) => {
-    console.error('setExtraOptions fail');
-  });
-})
-```
+<a id="setextraoptions-1"></a>
 
 ## setExtraOptions
 
@@ -1028,43 +994,10 @@ setExtraOptions(options: UDPExtraOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
-
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-
-let bindAddr: socket.NetAddress = {
-  address: '192.168.xx.xxx',
-  port: 8080
-}
-udp.bind(bindAddr, (err: BusinessError) => {
-  if (err) {
-    console.error('bind fail');
-    return;
-  }
-  console.info('bind success');
-  let udpextraoptions: socket.UDPExtraOptions = {
-    receiveBufferSize: 8192,
-    sendBufferSize: 8192,
-    reuseAddress: false,
-    socketTimeout: 6000,
-    broadcast: true
-  }
-  udp.setExtraOptions(udpextraoptions, (err: BusinessError) => {
-    if (err) {
-      console.error('setExtraOptions fail');
-      return;
-    }
-    console.info('setExtraOptions success');
-  })
-})
-```
 
 ```TypeScript
 import { socket } from '@kit.NetworkKit';

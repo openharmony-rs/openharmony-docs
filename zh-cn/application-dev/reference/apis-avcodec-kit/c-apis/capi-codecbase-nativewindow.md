@@ -8,6 +8,8 @@ typedef struct NativeWindow OHNativeWindow
 
 为图形接口定义native层对象。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 9
 
 **相关模块：** [CodecBase](capi-codecbase.md)

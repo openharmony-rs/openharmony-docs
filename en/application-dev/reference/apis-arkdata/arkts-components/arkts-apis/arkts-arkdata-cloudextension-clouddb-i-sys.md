@@ -1,5 +1,9 @@
 # CloudDB (System API)
 
+```TypeScript
+export interface CloudDB
+```
+
 Provides APIs for performing cloud database operations.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # AuthForm（系统接口）
 
+```TypeScript
+enum AuthForm
+```
+
 表示设备认证类型的枚举类。
 
 **起始版本：** 10

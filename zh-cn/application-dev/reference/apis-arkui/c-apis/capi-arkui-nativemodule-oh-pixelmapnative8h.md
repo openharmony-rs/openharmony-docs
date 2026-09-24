@@ -8,6 +8,8 @@ typedef struct OH_PixelmapNative* OH_PixelmapNativeHandle
 
 定义OH_PixelmapNative对象指针类型。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

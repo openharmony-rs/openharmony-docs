@@ -1,5 +1,9 @@
 # CameraType
 
+```TypeScript
+enum CameraType
+```
+
 Enumerates the camera types.
 
 **Since:** 10

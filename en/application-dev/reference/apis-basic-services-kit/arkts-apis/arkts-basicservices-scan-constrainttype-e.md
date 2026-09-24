@@ -1,5 +1,9 @@
 # ConstraintType
 
+```TypeScript
+enum ConstraintType
+```
+
 Enumerates the parameter constraint types.
 
 **Since:** 20

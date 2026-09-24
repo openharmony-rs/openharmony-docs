@@ -38,3 +38,17 @@ Subscribes to traffic change events. This API uses an asynchronous callback to r
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
+
+**Examples**
+
+```TypeScript
+import { statistics } from '@kit.NetworkKit';
+
+class IFace {
+  iface: string = ""
+  uid?: number = 0
+}
+statistics.on('netStatsChange', (data: IFace) => {
+  console.info('on netStatsChange' + JSON.stringify(data));
+});
+```

@@ -1,5 +1,9 @@
 # CounterV2Options
 
+```TypeScript
+declare class CounterV2Options
+```
+
 CounterV2Options定义CounterV2类型及样式。
 
 选择不同的CounterV2类型，需要选择对应的CounterV2样式。若样式参数与类型不匹配，将使用该类型对应的默认样式。

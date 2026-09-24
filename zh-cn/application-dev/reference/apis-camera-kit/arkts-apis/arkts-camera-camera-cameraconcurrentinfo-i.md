@@ -1,5 +1,9 @@
 # CameraConcurrentInfo
 
+```TypeScript
+interface CameraConcurrentInfo
+```
+
 相机的输出并发能力信息。
 
 **起始版本：** 18

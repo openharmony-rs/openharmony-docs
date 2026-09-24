@@ -1,5 +1,9 @@
 # ExpandOption (System API)
 
+```TypeScript
+interface ExpandOption
+```
+
 Defines the parameters for expanding a screen.
 
 **Since:** 9

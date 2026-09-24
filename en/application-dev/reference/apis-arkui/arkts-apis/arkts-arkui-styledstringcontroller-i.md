@@ -1,5 +1,9 @@
 # StyledStringController
 
+```TypeScript
+declare interface StyledStringController
+```
+
 Defines a styled string controller.
 
 **Since:** 12

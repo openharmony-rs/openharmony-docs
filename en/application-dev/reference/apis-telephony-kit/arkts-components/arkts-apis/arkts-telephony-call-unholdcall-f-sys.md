@@ -55,16 +55,8 @@ call.unHoldCall(1, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.unHoldCall(1).then(() => {
-    console.info(`unHoldCall success.`);
-}).catch((err: BusinessError) => {
-    console.error(`unHoldCall fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="unholdcall-1"></a>
 
 ## unHoldCall
 
@@ -108,4 +100,12 @@ Unholds a call based on the specified call ID. This API uses a promise to return
 
 **Examples**
 
-See [unHoldCall](#unholdcall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.unHoldCall(1).then(() => {
+    console.info(`unHoldCall success.`);
+}).catch((err: BusinessError) => {
+    console.error(`unHoldCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```

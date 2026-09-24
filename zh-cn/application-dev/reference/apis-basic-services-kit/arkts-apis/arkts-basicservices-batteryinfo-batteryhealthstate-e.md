@@ -1,5 +1,9 @@
 # BatteryHealthState
 
+```TypeScript
+export enum BatteryHealthState
+```
+
 表示电池健康状态的枚举。
 
 **起始版本：** 6

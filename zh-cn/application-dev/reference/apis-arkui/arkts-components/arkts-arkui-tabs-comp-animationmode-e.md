@@ -1,0 +1,93 @@
+# AnimationMode
+
+```TypeScript
+declare enum AnimationMode
+```
+
+点击[TabBar](arkts-arkui-tabcontent-comp-attribute.md#tabbar)页签时切换TabContent的动画形式枚举。
+
+**起始版本：** 12
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## CONTENT_FIRST
+
+```TypeScript
+CONTENT_FIRST = 0
+```
+
+先加载目标页内容，再开始切换动画。适用于需要先确保内容加载完成再展示动画的场景，可避免动画过程中出现空白内容，推荐用于内容加载较快、需要平滑过渡的场景。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## ACTION_FIRST
+
+```TypeScript
+ACTION_FIRST = 1
+```
+
+先开始切换动画，再加载目标页内容；生效需要同时需要满足：Tabs的height、width没有设置成auto。适用于需要立即响应用户操作、快速开始动画的场景，推荐用于内容加载较慢但希望提供快速视觉反馈的场景。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## NO_ANIMATION
+
+```TypeScript
+NO_ANIMATION = 2
+```
+
+关闭默认动画。调用TabsController的[changeIndex](arkts-arkui-tabs-comp-tabscontroller-c.md#changeindex)接口切换TabContent时该枚举值不生效。
+
+可以通过设置[animationDuration](arkts-arkui-tabs-comp-attribute.md#animationduration)为0实现调用TabsController的changeIndex接口时不带动画。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## CONTENT_FIRST_WITH_JUMP
+
+```TypeScript
+CONTENT_FIRST_WITH_JUMP = 3
+```
+
+先加载目标页内容，再无动画跳转到目标页附近，最后有动画跳转到目标页。
+
+**起始版本：** 15
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## ACTION_FIRST_WITH_JUMP
+
+```TypeScript
+ACTION_FIRST_WITH_JUMP = 4
+```
+
+先无动画跳转到目标页附近，再有动画跳转到目标页，最后加载目标页内容。此项生效需要同时需要满足：Tabs的height、width没有设置成auto。
+
+**起始版本：** 15
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full

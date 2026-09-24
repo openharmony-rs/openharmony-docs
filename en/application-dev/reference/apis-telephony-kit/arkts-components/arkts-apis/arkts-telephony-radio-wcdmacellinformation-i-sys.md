@@ -1,5 +1,9 @@
 # WcdmaCellInformation (System API)
 
+```TypeScript
+export interface WcdmaCellInformation
+```
+
 Obtains WCDMA cell information.
 
 **Since:** 8

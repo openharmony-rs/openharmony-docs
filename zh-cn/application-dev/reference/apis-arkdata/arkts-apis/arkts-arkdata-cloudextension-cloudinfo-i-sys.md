@@ -1,5 +1,9 @@
 # CloudInfo（系统接口）
 
+```TypeScript
+export interface CloudInfo
+```
+
 云信息。
 
 **起始版本：** 11

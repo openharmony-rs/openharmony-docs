@@ -28,7 +28,7 @@ function getDefaultSmsSimId(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -51,18 +51,8 @@ sms.getDefaultSmsSimId((err: BusinessError, data: number) => {
 });
 ```
 
-```TypeScript
-import { sms } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = sms.getDefaultSmsSimId();
-promise.then((data: number) => {
-    console.info(`getDefaultSmsSimId success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getDefaultSmsSimId failed, promise: errCode:${err.code},errMsg:${err.message}`);
-});
-```
-
+<a id="getdefaultsmssimid-1"></a>
 
 ## getDefaultSmsSimId
 
@@ -95,4 +85,14 @@ function getDefaultSmsSimId(): Promise<number>
 
 **示例**
 
-参见 getDefaultSmsSimId
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = sms.getDefaultSmsSimId();
+promise.then((data: number) => {
+    console.info(`getDefaultSmsSimId success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getDefaultSmsSimId failed, promise: errCode:${err.code},errMsg:${err.message}`);
+});
+```

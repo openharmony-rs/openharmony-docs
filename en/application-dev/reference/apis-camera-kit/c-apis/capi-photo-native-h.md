@@ -40,6 +40,8 @@ Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNati
 
 Obtains a full-quality image.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -65,6 +67,8 @@ Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_P
 
 Obtains an uncompressed image.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -89,6 +93,8 @@ Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)
 **Description**
 
 Releases a full-quality image.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 

@@ -38,8 +38,8 @@ function installPrivateCertificate(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500003](../errorcode-certManager.md#17500003-证书或凭据无效) | The keystore is in an invalid format or the keystore password is incorrect. |
 | [17500004](../errorcode-certManager.md#17500004-证书或凭据数量达到上限) | The number of certificates or credentials reaches the maximum allowed.<br>**适用版本：** 12+ |
@@ -68,52 +68,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-/* 安装的凭据数据需要业务赋值，本例数据非凭据数据 */
-let keystore: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
-]);
-let keystorePwd: string = '123456';
-try {
-  certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test').then((cmResult) => {
-    let uri: string = cmResult?.uri ?? '';
-    console.info('Succeeded in installing private certificate.');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-/* 安装的凭据数据需要业务赋值，本例数据非凭据数据。 */
-let keystore: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
-]);
-let keystorePwd: string = '123456';
-try {
-  /* 安装凭据在首次解锁设备后可以使用。 */
-  let level = certificateManager.AuthStorageLevel.EL2;
-  certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test', level).then((cmResult) => {
-    let uri: string = cmResult.uri ?? '';
-    console.info('Succeeded in installing private certificate.');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="installprivatecertificate-1"></a>
 
 ## installPrivateCertificate
 
@@ -147,16 +103,38 @@ function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, ce
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500003](../errorcode-certManager.md#17500003-证书或凭据无效) | The keystore is in an invalid format or the keystore password is incorrect. |
 | [17500004](../errorcode-certManager.md#17500004-证书或凭据数量达到上限) | The number of certificates or credentials reaches the maximum allowed.<br>**适用版本：** 12+ |
 
 **示例**
 
-参见 installPrivateCertificate
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+/* 安装的凭据数据需要业务赋值，本例数据非凭据数据 */
+let keystore: Uint8Array = new Uint8Array([
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
+]);
+let keystorePwd: string = '123456';
+try {
+  certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test').then((cmResult) => {
+    let uri: string = cmResult?.uri ?? '';
+    console.info('Succeeded in installing private certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
+<a id="installprivatecertificate-2"></a>
 
 ## installPrivateCertificate
 
@@ -191,12 +169,34 @@ function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, ce
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500003](../errorcode-certManager.md#17500003-证书或凭据无效) | The keystore is in an invalid format or the keystore password is incorrect. |
 | [17500004](../errorcode-certManager.md#17500004-证书或凭据数量达到上限) | The number of certificates or credentials reaches the maximum allowed. |
 
 **示例**
 
-参见 installPrivateCertificate
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/* 安装的凭据数据需要业务赋值，本例数据非凭据数据。 */
+let keystore: Uint8Array = new Uint8Array([
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
+]);
+let keystorePwd: string = '123456';
+try {
+  /* 安装凭据在首次解锁设备后可以使用。 */
+  let level = certificateManager.AuthStorageLevel.EL2;
+  certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test', level).then((cmResult) => {
+    let uri: string = cmResult.uri ?? '';
+    console.info('Succeeded in installing private certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
+}
+```

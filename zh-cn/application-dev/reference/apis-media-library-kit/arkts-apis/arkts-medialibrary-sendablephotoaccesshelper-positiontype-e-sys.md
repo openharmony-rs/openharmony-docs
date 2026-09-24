@@ -1,5 +1,9 @@
 # PositionType（系统接口）
 
+```TypeScript
+enum PositionType
+```
+
 Photo asset position
 
 **起始版本：** 14

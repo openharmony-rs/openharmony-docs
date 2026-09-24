@@ -8,6 +8,8 @@ typedef struct OH_AVSession_AVPlaybackState OH_AVSession_AVPlaybackState
 
 AVSession playbackstate object.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Related module**: [OHAVSession](capi-ohavsession.md)

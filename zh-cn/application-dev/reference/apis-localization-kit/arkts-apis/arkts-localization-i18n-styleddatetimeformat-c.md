@@ -1,5 +1,9 @@
 # StyledDateTimeFormat
 
+```TypeScript
+export class StyledDateTimeFormat
+```
+
 提供富文本时间日期格式化的能力。
 
 **起始版本：** 23

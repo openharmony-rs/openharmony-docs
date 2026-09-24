@@ -1,5 +1,9 @@
 # EnhanceMode（系统接口）
 
+```TypeScript
+enum EnhanceMode
+```
+
 枚举，高性能扫描模式配置。
 
 **起始版本：** 26.0.0

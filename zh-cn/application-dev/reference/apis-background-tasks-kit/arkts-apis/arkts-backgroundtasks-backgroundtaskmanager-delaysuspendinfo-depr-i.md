@@ -1,5 +1,9 @@
 # DelaySuspendInfo
 
+```TypeScript
+interface DelaySuspendInfo
+```
+
 延迟挂起信息。
 
 **起始版本：** 7

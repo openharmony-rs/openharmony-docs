@@ -33,5 +33,5 @@ function offAudioZoneSessionChange(userId: number, callback?: Callback<AVSession
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |

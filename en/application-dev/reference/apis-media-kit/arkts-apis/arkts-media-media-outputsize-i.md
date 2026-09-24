@@ -1,5 +1,9 @@
 # OutputSize
 
+```TypeScript
+interface OutputSize
+```
+
 This interface is used to define the output image size.
 
 **Since:** 20

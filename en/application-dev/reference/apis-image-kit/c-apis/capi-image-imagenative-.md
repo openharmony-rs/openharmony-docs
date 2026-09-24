@@ -8,6 +8,8 @@ typedef struct ImageNative_ ImageNative
 
 Defines an image object at the native layer for the image interface.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 10
 
 **Related module**: [Image](capi-image.md)

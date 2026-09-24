@@ -8,6 +8,8 @@ typedef struct OH_AudioConverterStruct OH_AudioConverter
 
 Declare the audio converter. The handle of audio converter is used for audio converter related functions.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **Related module**: [OHAudioSuite](capi-ohaudiosuite.md)

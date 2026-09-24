@@ -1,5 +1,9 @@
 # Reader
 
+```TypeScript
+export interface Reader
+```
+
 Reader的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例，其中SIM2从API version 22开始支持。通过[SEService.getReaders](arkts-connectivity-omapi-seservice-i.md#getreaders)获取Reader实例。
 
 **起始版本：** 10
@@ -28,7 +32,7 @@ closeSessions(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, service state exception. |
 
 **示例**
@@ -85,7 +89,7 @@ getName(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 
@@ -128,7 +132,7 @@ isSecureElementPresent(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, service state exception. |
 
 **示例**
@@ -172,7 +176,7 @@ openSession(): Session
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, service state exception. |
 | [3300104](../errorcode-se.md#3300104-se芯片io异常) | IOError, there is a communication problem to the reader or the SE. |
 

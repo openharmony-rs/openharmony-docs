@@ -1,5 +1,9 @@
 # DataField
 
+```TypeScript
+enum DataField
+```
+
 Enumerates contact data fields.
 
 **Since:** 15

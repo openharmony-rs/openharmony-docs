@@ -1,5 +1,9 @@
 # ScrollOptions
 
+```TypeScript
+export interface ScrollOptions
+```
+
 ScrollOptions
 
 @interface ScrollOptions

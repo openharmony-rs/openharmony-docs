@@ -1,6 +1,12 @@
 # ChipV2PrefixSymbolIconConfig
 
-Defines chip prefix symbol icon config.
+```TypeScript
+export interface ChipV2PrefixSymbolIconConfig extends ChipV2SymbolIconConfig
+```
+
+Defines the attribute configuration of the prefix symbol icon.
+
+Inherits from [ChipV2SymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2symboliconconfig-i.md).
 
 **Inheritance/Implementation:** ChipV2PrefixSymbolIconConfig extends [ChipV2SymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2symboliconconfig-i.md)
 

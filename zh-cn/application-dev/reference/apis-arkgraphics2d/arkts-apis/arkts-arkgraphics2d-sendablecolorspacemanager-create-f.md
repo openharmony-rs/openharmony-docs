@@ -34,7 +34,7 @@ function create(colorSpaceName: colorSpaceManager.ColorSpace): ColorSpaceManager
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed. |
 | [18600001](../errorcode-colorspace-manager.md#18600001-参数值异常) | The parameter value is abnormal. |
 
 **示例**
@@ -46,26 +46,8 @@ let colorSpace: sendableColorSpaceManager.ColorSpaceManager;
 colorSpace = sendableColorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
 ```
 
-```TypeScript
-import { colorSpaceManager, sendableColorSpaceManager } from '@kit.ArkGraphics2D';
-let colorSpace: sendableColorSpaceManager.ColorSpaceManager;
-// 定义色域标准三原色参数
-let primaries: colorSpaceManager.ColorSpacePrimaries = {
-  redX: 0.1,
-  redY: 0.1,
-  greenX: 0.2,
-  greenY: 0.2,
-  blueX: 0.3,
-  blueY: 0.3,
-  whitePointX: 0.4,
-  whitePointY: 0.4
-};
-// 定义色域gamma值
-let gamma: number = 2.2;
-// 创建自定义可共享的色彩管理实例
-colorSpace = sendableColorSpaceManager.create(primaries, gamma);
-```
 
+<a id="create-1"></a>
 
 ## create
 
@@ -96,9 +78,27 @@ function create(primaries: colorSpaceManager.ColorSpacePrimaries, gamma: number)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed. |
 | [18600001](../errorcode-colorspace-manager.md#18600001-参数值异常) | The parameter value is abnormal. |
 
 **示例**
 
-参见 create
+```TypeScript
+import { colorSpaceManager, sendableColorSpaceManager } from '@kit.ArkGraphics2D';
+let colorSpace: sendableColorSpaceManager.ColorSpaceManager;
+// 定义色域标准三原色参数
+let primaries: colorSpaceManager.ColorSpacePrimaries = {
+  redX: 0.1,
+  redY: 0.1,
+  greenX: 0.2,
+  greenY: 0.2,
+  blueX: 0.3,
+  blueY: 0.3,
+  whitePointX: 0.4,
+  whitePointY: 0.4
+};
+// 定义色域gamma值
+let gamma: number = 2.2;
+// 创建自定义可共享的色彩管理实例
+colorSpace = sendableColorSpaceManager.create(primaries, gamma);
+```

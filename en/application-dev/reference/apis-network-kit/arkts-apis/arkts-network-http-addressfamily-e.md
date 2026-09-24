@@ -1,5 +1,9 @@
 # AddressFamily
 
+```TypeScript
+export enum AddressFamily
+```
+
 Enumerates IP address families of the target domain name.
 
 **Since:** 15

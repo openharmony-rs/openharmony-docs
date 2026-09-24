@@ -1,5 +1,9 @@
 # Array
 
+```TypeScript
+interface Array<T>
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -51,6 +55,8 @@ Returns the value of the first element in the array where predicate is true, and
 | --- | --- | --- | --- |
 | predicate | (this: void, value: T, index: number, obj: T[]) =&gt; value is S | Yes |  |
 | thisArg | any | No |  |
+
+<a id="find-1"></a>
 
 ## find
 

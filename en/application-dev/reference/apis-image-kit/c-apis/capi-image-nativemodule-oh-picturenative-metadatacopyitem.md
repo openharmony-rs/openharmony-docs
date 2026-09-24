@@ -8,6 +8,8 @@ typedef struct OH_PictureNative_MetadataCopyItem {...} OH_PictureNative_Metadata
 
 This structure is used to specify a metadata copy rule when creating a deep copy of a PictureNative object. It describes how to copy metadata from one type to another.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 26.0.0
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)

@@ -1,5 +1,9 @@
 # MetadataOutput
 
+```TypeScript
+interface MetadataOutput extends CameraOutput
+```
+
 metadata流。继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。
 
 **继承/实现关系：** MetadataOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
@@ -38,10 +42,26 @@ addMetadataObjectTypes(types: Array<MetadataObjectType>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 13 - 22 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 13 - 22 |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+  try {
+    metadataOutput.addMetadataObjectTypes(types);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`addMetadataObjectTypes error. error code: ${err.code}`);
+  }
+}
+```
 
 ## isLockMetadataObjectTrackingSupported
 
@@ -64,6 +84,15 @@ isLockMetadataObjectTrackingSupported(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 表示是否支持锁定元数据对象追踪功能。true表示支持，false表示不支持。 |
+
+**示例**
+
+```TypeScript
+function checkLockMetadataSupport(metadataOutput: camera.MetadataOutput): void {
+  let isSupported: boolean = metadataOutput.isLockMetadataObjectTrackingSupported();
+  console.info(`Lock metadata object tracking supported: ${isSupported}`);
+}
+```
 
 ## lockMetadataObjectTracking
 
@@ -100,6 +129,21 @@ lockMetadataObjectTracking(point: Point): void
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function lockMetadata(metadataOutput: camera.MetadataOutput, point: camera.Point): void {
+  try {
+    metadataOutput.lockMetadataObjectTracking(point);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`lockMetadataObjectTracking error. error code: ${err.code}`);
+  }
+}
+```
+
 ## off('metadataObjectsAvailable')
 
 ```TypeScript
@@ -121,6 +165,14 @@ off(type: 'metadataObjectsAvailable', callback?: AsyncCallback<Array<MetadataObj
 | type | 'metadataObjectsAvailable' | 是 | 监听事件，固定为'metadataObjectsAvailable'，metadataOutput创建成功后可监听。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[MetadataObject](arkts-camera-camera-metadataobject-i.md)&gt;&gt; | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
+**示例**
+
+```TypeScript
+function unregisterMetadataObjectsAvailable(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.off('metadataObjectsAvailable');
+}
+```
+
 ## off('error')
 
 ```TypeScript
@@ -141,6 +193,14 @@ off(type: 'error', callback?: ErrorCallback): void
 | --- | --- | --- | --- |
 | type | 'error' | 是 | 监听事件，固定为'error'，metadataOutput创建成功后可监听。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例**
+
+```TypeScript
+function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.off('error');
+}
+```
 
 ## on('metadataObjectsAvailable')
 
@@ -167,6 +227,24 @@ on(type: 'metadataObjectsAvailable', callback: AsyncCallback<Array<MetadataObjec
 | type | 'metadataObjectsAvailable' | 是 | 监听事件，固定为'metadataObjectsAvailable'，metadataOutput创建成功后可监听。<br>检测到有效的metadata数据时，触发该事件发生并返回相应的metadata数据。如果输入错误字段，则不会创建有效监听。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[MetadataObject](arkts-camera-camera-metadataobject-i.md)&gt;&gt; | 是 | 回调函数，用于获取metadata数据。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, metadataObjectArr: Array<camera.MetadataObject>): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info('metadata output metadataObjectsAvailable');
+}
+
+function registerMetadataObjectsAvailable(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.on('metadataObjectsAvailable', callback);
+}
+```
+
 ## on('error')
 
 ```TypeScript
@@ -192,6 +270,20 @@ on(type: 'error', callback: ErrorCallback): void
 | type | 'error' | 是 | 监听事件，固定为'error'，metadataOutput创建成功后可监听。metadata接口使用错误时触发该事件并返回对应错误码，比如调用[start](#start)，[CameraOutput.release](arkts-camera-camera-cameraoutput-i.md#release)接口时发生错误返回对应错误信息。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(metadataOutputError: BusinessError): void {
+  console.error(`Metadata output error code: ${metadataOutputError.code}`);
+}
+
+function registerMetadataOutputError(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.on('error', callback);
+}
+```
+
 ## removeMetadataObjectTypes
 
 ```TypeScript
@@ -216,10 +308,26 @@ removeMetadataObjectTypes(types: Array<MetadataObjectType>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 13 - 22 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 13 - 22 |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+  try {
+    metadataOutput.removeMetadataObjectTypes(types);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`removeMetadataObjectTypes error. error code: ${err.code}`);
+  }
+}
+```
 
 ## start
 
@@ -248,6 +356,24 @@ start(callback: AsyncCallback<void>): void
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.start((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to start metadata output, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback returned with metadata output started.');
+  });
+}
+```
+
+<a id="start-1"></a>
+
 ## start
 
 ```TypeScript
@@ -275,6 +401,20 @@ start(): Promise<void>
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.start().then(() => {
+    console.info('Callback returned with metadata output started.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to metadata output start, error code: ${error.code}`);
+  });
+}
+```
+
 ## stop
 
 ```TypeScript
@@ -295,6 +435,24 @@ stop(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当停止输出metadata成功，err为undefined，否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stopMetadataOutput(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.stop((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to stop the metadata output, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback returned with metadata output stopped.');
+  })
+}
+```
+
+<a id="stop-1"></a>
+
 ## stop
 
 ```TypeScript
@@ -314,6 +472,20 @@ stop(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stopMetadataOutput(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.stop().then(() => {
+    console.info('Callback returned with metadata output stopped.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to metadata output stop, error code: ${error.code}`);
+  });
+}
+```
 
 ## unlockMetadataObjectTracking
 
@@ -337,3 +509,18 @@ unlockMetadataObjectTracking(): void
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function unlockMetadata(metadataOutput: camera.MetadataOutput): void {
+  try {
+    metadataOutput.unlockMetadataObjectTracking();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`unlockMetadataObjectTracking error. error code: ${err.code}`);
+  }
+}
+```

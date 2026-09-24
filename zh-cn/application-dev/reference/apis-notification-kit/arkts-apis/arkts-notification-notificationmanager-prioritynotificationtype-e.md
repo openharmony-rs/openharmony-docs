@@ -1,5 +1,9 @@
 # PriorityNotificationType
 
+```TypeScript
+export enum PriorityNotificationType
+```
+
 描述通知的优先级类型。
 
 **起始版本：** 23

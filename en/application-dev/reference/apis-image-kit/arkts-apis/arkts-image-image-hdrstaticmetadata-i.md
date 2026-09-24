@@ -1,5 +1,9 @@
 # HdrStaticMetadata
 
+```TypeScript
+interface HdrStaticMetadata
+```
+
 Describes the static metadata keys, that is, the values available for **HDR_STATIC_METADATA** in [HdrMetadataKey](arkts-image-image-hdrmetadatakey-e.md).
 
 **Since:** 12

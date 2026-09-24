@@ -8,6 +8,8 @@ typedef struct OH_Huks_KeyMaterialEcc {...} OH_Huks_KeyMaterialEcc
 
 Defines the struct for an ECC key.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 **Related module**: [HuksTypeApi](capi-hukstypeapi.md)

@@ -1,5 +1,9 @@
 # Offset
 
+```TypeScript
+interface Offset
+```
+
 定义坐标属性。
 
 **起始版本：** 10

@@ -8,6 +8,8 @@ typedef struct OH_Drawing_String {...} OH_Drawing_String
 
 采用UTF-16编码的字符串信息结构体。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 14
 
 **相关模块：** [Drawing](capi-drawing.md)

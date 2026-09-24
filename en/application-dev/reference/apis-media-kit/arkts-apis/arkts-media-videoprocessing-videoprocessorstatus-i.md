@@ -1,5 +1,9 @@
 # VideoProcessorStatus
 
+```TypeScript
+interface VideoProcessorStatus
+```
+
 Provides the unified video processor status.
 
 **Since:** 26.0.0

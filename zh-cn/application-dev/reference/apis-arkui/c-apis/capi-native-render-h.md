@@ -188,7 +188,7 @@
 | [ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromOvalShape(ArkUI_RectShapeOption* shape)](#oh_arkui_rendernodeutils_createrendernodeclipoptionfromovalshape) | 从椭圆形形状创建裁剪。 |
 | [ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCommandPath(ArkUI_CommandPathOption* path)](#oh_arkui_rendernodeutils_createrendernodeclipoptionfromcommandpath) | 从自定义绘制路径创建裁剪。 |
 | [void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption(ArkUI_RenderNodeClipOption* option)](#oh_arkui_rendernodeutils_disposerendernodeclipoption) | 释放渲染节点裁剪。 |
-| [int32_t OH_ArkUI_RenderNodeUtils_GetRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle* renderNode)](#oh_arkui_rendernodeutils_getrendernode) | 获取已被接纳为附属节点的目标节点的RenderNode。如果一个RenderNode是通过该接口获取的，调用{@link ArkUI_NativeNodeAPI_1}的{@link disposeNode} 接口主动销毁FrameNode时，需要额外调用[OH_ArkUI_RenderNodeUtils_DisposeNode](capi-native-render-h.md#oh_arkui_rendernodeutils_disposenode)释放该RenderNode。 |
+| [int32_t OH_ArkUI_RenderNodeUtils_GetRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle* renderNode)](#oh_arkui_rendernodeutils_getrendernode) | 获取已被接纳为附属节点的目标节点的RenderNode。如果一个RenderNode是通过该接口获取的，调用[ArkUI_NativeNodeAPI_1](capi-arkui-nativemodule-arkui-nativenodeapi-1.md)的[disposeNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) 接口主动销毁FrameNode时，需要额外调用[OH_ArkUI_RenderNodeUtils_DisposeNode](capi-native-render-h.md#oh_arkui_rendernodeutils_disposenode)释放该RenderNode。 |
 | [void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeOption* option, float x, float y, float width, float height)](#oh_arkui_rendernodeutils_setroundrectshapeoptionvalue) | 为圆角矩形形状选项设置边框矩形范围。该函数通过指定位置和尺寸来定义圆角矩形的几何框架。 |
 | [void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue(ArkUI_RectShapeOption* option, float x, float y, float width, float height)](#oh_arkui_rendernodeutils_setrectshapeoptionvalue) | 为矩形形状选项设置边框矩形范围。该函数通过指定位置和尺寸来定义矩形的几何框架。 |
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child, int32_t position)](#oh_arkui_rendernodeutils_insertrendernodeat) | 在父节点下的指定位置插入子渲染节点。 |
@@ -206,6 +206,8 @@ ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()
 **描述：**
 
 创建一个模糊样式对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -225,6 +227,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption
 
 销毁一个模糊样式对象。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -243,6 +247,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleO
 
 为目标模糊样式设置模糊半径。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -256,7 +262,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleO
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption()
 
@@ -267,6 +273,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle 
 **描述：**
 
 为渲染节点设置背景模糊样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -281,7 +289,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption()
 
@@ -292,6 +300,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandl
 **描述：**
 
 为渲染节点重置背景模糊样式。重置后无背景模糊样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -305,7 +315,7 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandl
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption()
 
@@ -316,6 +326,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle 
 **描述：**
 
 为渲染节点设置前景模糊样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -330,7 +342,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption()
 
@@ -341,6 +353,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandl
 **描述：**
 
 为渲染节点重置前景模糊样式。重置后无前景模糊样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -354,7 +368,7 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandl
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetContentBlurOption()
 
@@ -365,6 +379,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle nod
 **描述：**
 
 为渲染节点设置内容模糊样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -379,7 +395,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle nod
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_ResetContentBlurOption()
 
@@ -390,6 +406,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle n
 **描述：**
 
 为渲染节点重置内容模糊样式。重置后无内容模糊样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -403,7 +421,7 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle n
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_AddRenderNode()
 
@@ -414,6 +432,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_Rend
 **描述：**
 
 向父自定义节点添加子渲染节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -428,7 +448,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_Rend
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_NOT_CUSTOM_NODE} 目标节点非自定义节点。<br>    <br>{@link ARKUI_ERROR_CODE_CHILD_EXISTED} 目标节点已存在子节点。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED} 目标渲染节点存在父节点。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE} 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。从API      version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_NOT_CUSTOM_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点非自定义节点。      <br>[ARKUI_ERROR_CODE_CHILD_EXISTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点已存在子节点。      <br>[ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标渲染节点存在父节点。      <br>[ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。从API      version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_RemoveRenderNode()
 
@@ -439,6 +459,8 @@ int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_R
 **描述：**
 
 从父节点移除指定的子渲染节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -453,7 +475,7 @@ int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_R
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_NOT_CUSTOM_NODE} 目标节点非自定义节点。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_NOT_CUSTOM_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点非自定义节点。 |
 
 ### OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren()
 
@@ -464,6 +486,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren(ArkUI_NodeHandle node)
 **描述：**
 
 清除父节点内的子渲染节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -477,7 +501,7 @@ int32_t OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren(ArkUI_NodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_NOT_CUSTOM_NODE} 目标节点非自定义节点。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_NOT_CUSTOM_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点非自定义节点。 |
 
 ### OH_ArkUI_RenderNodeUtils_Invalidate()
 
@@ -488,6 +512,8 @@ int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)
 **描述：**
 
 标记目标节点，触发其生命周期和子节点的重新渲染。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -501,7 +527,7 @@ int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateNode()
 
@@ -512,6 +538,8 @@ ArkUI_RenderNodeHandle OH_ArkUI_RenderNodeUtils_CreateNode()
 **描述：**
 
 创建渲染节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -531,6 +559,8 @@ int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)
 
 销毁渲染节点。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -543,7 +573,7 @@ int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_AddChild()
 
@@ -554,6 +584,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_Ren
 **描述：**
 
 向目标父渲染节点上添加子节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -568,7 +600,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_Ren
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE} 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。从API      version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。      <br>[ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。从API      version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_InsertChildAfter()
 
@@ -579,6 +611,8 @@ int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, A
 **描述：**
 
 向父节点的目标子节点后添加子节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -594,7 +628,7 @@ int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, A
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE} 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。从API      version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。      <br>[ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。从API      version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_RemoveChild()
 
@@ -605,6 +639,8 @@ int32_t OH_ArkUI_RenderNodeUtils_RemoveChild(ArkUI_RenderNodeHandle node, ArkUI_
 **描述：**
 
 从指定渲染节点中移除子节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -619,7 +655,7 @@ int32_t OH_ArkUI_RenderNodeUtils_RemoveChild(ArkUI_RenderNodeHandle node, ArkUI_
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_ClearChildren()
 
@@ -630,6 +666,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ClearChildren(ArkUI_RenderNodeHandle node)
 **描述：**
 
 清空指定渲染节点的所有子节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -643,7 +681,7 @@ int32_t OH_ArkUI_RenderNodeUtils_ClearChildren(ArkUI_RenderNodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetChild()
 
@@ -654,6 +692,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t i
 **描述：**
 
 获取指定索引位置的子节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -669,7 +709,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t i
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST} 未找到对应的渲染子节点。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 未找到对应的渲染子节点。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetFirstChild()
 
@@ -680,6 +720,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFirstChild(ArkUI_RenderNodeHandle node, ArkU
 **描述：**
 
 获取指定渲染节点的第一个子节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -694,7 +736,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFirstChild(ArkUI_RenderNodeHandle node, ArkU
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST} 未找到对应的渲染子节点。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 未找到对应的渲染子节点。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetNextSibling()
 
@@ -705,6 +747,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetNextSibling(ArkUI_RenderNodeHandle node, Ark
 **描述：**
 
 获取指定节点的下一个兄弟节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -719,7 +763,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetNextSibling(ArkUI_RenderNodeHandle node, Ark
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST} 未找到对应的渲染子节点。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 未找到对应的渲染子节点。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetPreviousSibling()
 
@@ -730,6 +774,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPreviousSibling(ArkUI_RenderNodeHandle node,
 **描述：**
 
 获取指定节点的上一个兄弟节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -744,7 +790,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPreviousSibling(ArkUI_RenderNodeHandle node,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST} 未找到对应的渲染子节点。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 未找到对应的渲染子节点。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetChildren()
 
@@ -755,6 +801,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChildren(ArkUI_RenderNodeHandle node, ArkUI_
 **描述：**
 
 获取父渲染节点的所有子渲染节点，调用者负责释放返回的子节点数组。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -770,7 +818,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChildren(ArkUI_RenderNodeHandle node, ArkUI_
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetChildrenCount()
 
@@ -781,6 +829,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChildrenCount(ArkUI_RenderNodeHandle node, i
 **描述：**
 
 获取指定渲染节点的子渲染节点数量。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -795,7 +845,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChildrenCount(ArkUI_RenderNodeHandle node, i
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetBackgroundColor()
 
@@ -806,6 +856,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundColor(ArkUI_RenderNodeHandle node,
 **描述：**
 
 为渲染节点设置背景颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -820,7 +872,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundColor(ArkUI_RenderNodeHandle node,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetBackgroundColor()
 
@@ -831,6 +883,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBackgroundColor(ArkUI_RenderNodeHandle node,
 **描述：**
 
 获取渲染节点的背景颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -845,7 +899,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBackgroundColor(ArkUI_RenderNodeHandle node,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetClipToFrame()
 
@@ -856,6 +910,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClipToFrame(ArkUI_RenderNodeHandle node, int
 **描述：**
 
 设置是否对当前渲染节点裁剪。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -870,7 +926,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClipToFrame(ArkUI_RenderNodeHandle node, int
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE} 参数值超出范围。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 参数值超出范围。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetClipToFrame()
 
@@ -881,6 +937,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetClipToFrame(ArkUI_RenderNodeHandle node, int
 **描述：**
 
 获取是否对当前渲染节点裁剪。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -895,7 +953,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetClipToFrame(ArkUI_RenderNodeHandle node, int
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetClipToBounds()
 
@@ -906,6 +964,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClipToBounds(ArkUI_RenderNodeHandle node, in
 **描述：**
 
 设置是否对当前渲染节点边界裁剪。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -920,7 +980,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClipToBounds(ArkUI_RenderNodeHandle node, in
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE} 参数值超出范围。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 参数值超出范围。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetClipToBounds()
 
@@ -931,6 +991,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetClipToBounds(ArkUI_RenderNodeHandle node, in
 **描述：**
 
 获取是否对当前渲染节点边界裁剪。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -945,7 +1007,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetClipToBounds(ArkUI_RenderNodeHandle node, in
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetOpacity()
 
@@ -956,6 +1018,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetOpacity(ArkUI_RenderNodeHandle node, float o
 **描述：**
 
 为渲染节点设置不透明度值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -970,7 +1034,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetOpacity(ArkUI_RenderNodeHandle node, float o
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE} 参数值超出范围。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 参数值超出范围。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetOpacity()
 
@@ -981,6 +1045,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetOpacity(ArkUI_RenderNodeHandle node, float* 
 **描述：**
 
 获取渲染节点的不透明度值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -995,7 +1061,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetOpacity(ArkUI_RenderNodeHandle node, float* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetSize()
 
@@ -1007,6 +1073,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetSize(ArkUI_RenderNodeHandle node, int32_t wi
 
 为渲染节点设置尺寸。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -1014,14 +1082,14 @@ int32_t OH_ArkUI_RenderNodeUtils_SetSize(ArkUI_RenderNodeHandle node, int32_t wi
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | 目标渲染节点。 |
-| int32_t width | 宽度值（以像素为单位）。 默认值：0，单位：px。取值大于等于0，传入负值时返回{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE}。 |
-| int32_t height | 高度值（以像素为单位）。 默认值：0，单位：px。取值大于等于0，传入负值时返回{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE}。 |
+| int32_t width | 宽度值（以像素为单位）。 默认值：0，单位：px。取值大于等于0，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| int32_t height | 高度值（以像素为单位）。 默认值：0，单位：px。取值大于等于0，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE} 参数值超出范围。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 参数值超出范围。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetSize()
 
@@ -1032,6 +1100,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetSize(ArkUI_RenderNodeHandle node, int32_t* w
 **描述：**
 
 获取渲染节点的尺寸。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1047,7 +1117,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetSize(ArkUI_RenderNodeHandle node, int32_t* w
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetPosition()
 
@@ -1058,6 +1128,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetPosition(ArkUI_RenderNodeHandle node, int32_
 **描述：**
 
 为渲染节点设置位置坐标。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1073,7 +1145,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetPosition(ArkUI_RenderNodeHandle node, int32_
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetPosition()
 
@@ -1084,6 +1156,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPosition(ArkUI_RenderNodeHandle node, int32_
 **描述：**
 
 获取渲染节点的位置坐标。该坐标是渲染节点布局后相对父节点的位置偏移，单位为px。该坐标是父节点对该节点进行布局之后的结果，因此布局之后生效的offset属性和不参与布局的position属性不影响该坐标。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1099,7 +1173,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPosition(ArkUI_RenderNodeHandle node, int32_
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetPivot()
 
@@ -1110,6 +1184,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetPivot(ArkUI_RenderNodeHandle node, float x, 
 **描述：**
 
 为渲染节点的变换设置中心点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1125,7 +1201,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetPivot(ArkUI_RenderNodeHandle node, float x, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetPivot()
 
@@ -1136,6 +1212,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPivot(ArkUI_RenderNodeHandle node, float* x,
 **描述：**
 
 获取渲染节点的中心点坐标。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1151,7 +1229,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPivot(ArkUI_RenderNodeHandle node, float* x,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetScale()
 
@@ -1162,6 +1240,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetScale(ArkUI_RenderNodeHandle node, float x, 
 **描述：**
 
 为渲染节点设置缩放因子。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1177,7 +1257,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetScale(ArkUI_RenderNodeHandle node, float x, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetScale()
 
@@ -1188,6 +1268,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetScale(ArkUI_RenderNodeHandle node, float* x,
 **描述：**
 
 获取渲染节点的缩放因子。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1203,7 +1285,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetScale(ArkUI_RenderNodeHandle node, float* x,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetTranslation()
 
@@ -1214,6 +1296,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetTranslation(ArkUI_RenderNodeHandle node, flo
 **描述：**
 
 为渲染节点设置平移偏移量。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1229,7 +1313,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetTranslation(ArkUI_RenderNodeHandle node, flo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetTranslation()
 
@@ -1240,6 +1324,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetTranslation(ArkUI_RenderNodeHandle node, flo
 **描述：**
 
 获取渲染节点的平移偏移量。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1255,7 +1341,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetTranslation(ArkUI_RenderNodeHandle node, flo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetRotation()
 
@@ -1266,6 +1352,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetRotation(ArkUI_RenderNodeHandle node, float 
 **描述：**
 
 为渲染节点设置旋转角度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1282,7 +1370,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetRotation(ArkUI_RenderNodeHandle node, float 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetRotation()
 
@@ -1293,6 +1381,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetRotation(ArkUI_RenderNodeHandle node, float*
 **描述：**
 
 获取渲染节点的旋转角度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1309,7 +1399,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetRotation(ArkUI_RenderNodeHandle node, float*
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetTransform()
 
@@ -1320,6 +1410,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetTransform(ArkUI_RenderNodeHandle node, float
 **描述：**
 
 为渲染节点设置变换矩阵。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1334,7 +1426,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetTransform(ArkUI_RenderNodeHandle node, float
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE} 参数超出范围。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 参数超出范围。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetShadowColor()
 
@@ -1345,6 +1437,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowColor(ArkUI_RenderNodeHandle node, uin
 **描述：**
 
 为渲染节点设置阴影颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1359,7 +1453,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowColor(ArkUI_RenderNodeHandle node, uin
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetShadowColor()
 
@@ -1370,6 +1464,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowColor(ArkUI_RenderNodeHandle node, uin
 **描述：**
 
 获取渲染节点的阴影颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1384,7 +1480,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowColor(ArkUI_RenderNodeHandle node, uin
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetShadowOffset()
 
@@ -1395,6 +1491,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowOffset(ArkUI_RenderNodeHandle node, in
 **描述：**
 
 为渲染节点设置阴影偏移量。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1410,7 +1508,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowOffset(ArkUI_RenderNodeHandle node, in
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetShadowOffset()
 
@@ -1421,6 +1519,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowOffset(ArkUI_RenderNodeHandle node, in
 **描述：**
 
 获取渲染节点的阴影偏移量。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1436,7 +1536,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowOffset(ArkUI_RenderNodeHandle node, in
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetShadowAlpha()
 
@@ -1447,6 +1547,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowAlpha(ArkUI_RenderNodeHandle node, flo
 **描述：**
 
 为渲染节点设置阴影透明度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1461,7 +1563,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowAlpha(ArkUI_RenderNodeHandle node, flo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE} 参数超出范围。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 参数超出范围。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetShadowAlpha()
 
@@ -1472,6 +1574,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowAlpha(ArkUI_RenderNodeHandle node, flo
 **描述：**
 
 获取渲染节点的阴影透明度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1486,7 +1590,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowAlpha(ArkUI_RenderNodeHandle node, flo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetShadowElevation()
 
@@ -1497,6 +1601,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowElevation(ArkUI_RenderNodeHandle node,
 **描述：**
 
 为渲染节点设置阴影高度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1511,7 +1617,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowElevation(ArkUI_RenderNodeHandle node,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE} 参数超出范围。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 参数超出范围。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetShadowElevation()
 
@@ -1522,6 +1628,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowElevation(ArkUI_RenderNodeHandle node,
 **描述：**
 
 获取渲染节点的阴影高度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1536,7 +1644,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowElevation(ArkUI_RenderNodeHandle node,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetShadowRadius()
 
@@ -1548,6 +1656,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowRadius(ArkUI_RenderNodeHandle node, fl
 
 为渲染节点设置阴影半径。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -1555,13 +1665,13 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowRadius(ArkUI_RenderNodeHandle node, fl
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | 目标渲染节点。 |
-| float radius | 半径值。 默认值：0。取值大于等于0，传入负值时返回{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE}。 |
+| float radius | 半径值。 默认值：0。取值大于等于0，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE} 参数超出范围。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 参数超出范围。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetShadowRadius()
 
@@ -1572,6 +1682,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowRadius(ArkUI_RenderNodeHandle node, fl
 **描述：**
 
 获取渲染节点的阴影半径。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1586,7 +1698,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowRadius(ArkUI_RenderNodeHandle node, fl
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetBorderStyle()
 
@@ -1598,6 +1710,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderStyle(ArkUI_RenderNodeHandle node, Ark
 
 为渲染节点设置边框样式。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -1605,13 +1719,13 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderStyle(ArkUI_RenderNodeHandle node, Ark
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | 目标渲染节点。 |
-| [ArkUI_NodeBorderStyleOption](capi-arkui-rendernodeutils-arkui-nodeborderstyle.md)* borderStyle | 边框样式的指针。 结构体指针内默认值：{@link ARKUI_BORDER_STYLE_SOLID}。 |
+| [ArkUI_NodeBorderStyleOption](capi-arkui-rendernodeutils-arkui-nodeborderstyle.md)* borderStyle | 边框样式的指针。 结构体指针内默认值：[ARKUI_BORDER_STYLE_SOLID](capi-native-type-h.md#arkui_borderstyle)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetBorderStyle()
 
@@ -1623,6 +1737,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderStyle(ArkUI_RenderNodeHandle node, Ark
 
 获取渲染节点的边框样式。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -1630,13 +1746,13 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderStyle(ArkUI_RenderNodeHandle node, Ark
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | 目标渲染节点。 |
-| [ArkUI_NodeBorderStyleOption](capi-arkui-rendernodeutils-arkui-nodeborderstyle.md)** borderStyle | 用于接收边框样式的指针。 结构体指针内默认值：{@link ARKUI_BORDER_STYLE_SOLID}。 |
+| [ArkUI_NodeBorderStyleOption](capi-arkui-rendernodeutils-arkui-nodeborderstyle.md)** borderStyle | 用于接收边框样式的指针。 结构体指针内默认值：[ARKUI_BORDER_STYLE_SOLID](capi-native-type-h.md#arkui_borderstyle)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetBorderWidth()
 
@@ -1647,6 +1763,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderWidth(ArkUI_RenderNodeHandle node, Ark
 **描述：**
 
 为渲染节点设置边框宽度，边框宽度需小于节点尺寸。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1661,7 +1779,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderWidth(ArkUI_RenderNodeHandle node, Ark
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetBorderWidth()
 
@@ -1672,6 +1790,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderWidth(ArkUI_RenderNodeHandle node, Ark
 **描述：**
 
 获取渲染节点的边框宽度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1686,7 +1806,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderWidth(ArkUI_RenderNodeHandle node, Ark
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetBorderColor()
 
@@ -1697,6 +1817,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderColor(ArkUI_RenderNodeHandle node, Ark
 **描述：**
 
 为渲染节点设置边框颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1711,7 +1833,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderColor(ArkUI_RenderNodeHandle node, Ark
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetBorderColor()
 
@@ -1722,6 +1844,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderColor(ArkUI_RenderNodeHandle node, Ark
 **描述：**
 
 获取渲染节点的边框颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1736,7 +1860,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderColor(ArkUI_RenderNodeHandle node, Ark
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetBorderRadius()
 
@@ -1747,6 +1871,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderRadius(ArkUI_RenderNodeHandle node, Ar
 **描述：**
 
 为渲染节点设置边框角半径。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1761,7 +1887,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderRadius(ArkUI_RenderNodeHandle node, Ar
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetBorderRadius()
 
@@ -1772,6 +1898,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderRadius(ArkUI_RenderNodeHandle node, Ar
 **描述：**
 
 获取渲染节点的边框角半径。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1786,7 +1914,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderRadius(ArkUI_RenderNodeHandle node, Ar
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetMask()
 
@@ -1797,6 +1925,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_Rend
 **描述：**
 
 使用遮罩配置为渲染节点应用遮罩。<br> 遮罩创建方式如下： 1. 给遮罩图层增加亮度和线性颜色滤镜。 2. 在该滤镜下绘制遮罩图形。 3. 将原节点图像作为源颜色，遮罩图形为目标颜色，通过{@link BlendMode.SRC_IN}方式混合成Mask图像。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1811,7 +1941,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_Rend
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetClip()
 
@@ -1822,6 +1952,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_Rend
 **描述：**
 
 使用裁剪配置为渲染节点应用裁剪。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1836,7 +1968,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_Rend
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup()
 
@@ -1847,6 +1979,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, b
 **描述：**
 
 标记是否优先绘制该节点及其子节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1861,7 +1995,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, b
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetBounds()
 
@@ -1873,6 +2007,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBounds(ArkUI_RenderNodeHandle node, int32_t 
 
 为渲染节点设置边界。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -1882,14 +2018,14 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBounds(ArkUI_RenderNodeHandle node, int32_t 
 | [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | 目标渲染节点。 |
 | int32_t x | 边界左上角的X坐标（以像素为单位）。 默认值：0。 |
 | int32_t y | 边界左上角的Y坐标（以像素为单位）。 默认值：0。 |
-| int32_t width | 边界的宽度（以像素为单位）。 默认值：0。取值大于等于0，传入负值时返回{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE}。 |
-| int32_t height | 边界的高度（以像素为单位）。 默认值：0。取值大于等于0，传入负值时返回{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE}。 |
+| int32_t width | 边界的宽度（以像素为单位）。 默认值：0。取值大于等于0，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| int32_t height | 边界的高度（以像素为单位）。 默认值：0。取值大于等于0，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE} 参数超出范围。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 参数超出范围。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetBounds()
 
@@ -1900,6 +2036,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBounds(ArkUI_RenderNodeHandle node, int32_t*
 **描述：**
 
 获取渲染节点的边界。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1917,7 +2055,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBounds(ArkUI_RenderNodeHandle node, int32_t*
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetDrawRegion()
 
@@ -1928,6 +2066,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetDrawRegion(ArkUI_RenderNodeHandle node, floa
 **描述：**
 
 为渲染节点设置绘制区域，该绘制区域主要用于超出边界导致的绘制问题，建议根据实际绘制范围设置大小。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1945,7 +2085,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetDrawRegion(ArkUI_RenderNodeHandle node, floa
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_AttachContentModifier()
 
@@ -1956,6 +2096,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachContentModifier(ArkUI_RenderNodeHandle no
 **描述：**
 
 为渲染节点添加内容修改器。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1970,7 +2112,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachContentModifier(ArkUI_RenderNodeHandle no
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE} 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateContentModifier()
 
@@ -1981,6 +2123,8 @@ ArkUI_RenderContentModifierHandle OH_ArkUI_RenderNodeUtils_CreateContentModifier
 **描述：**
 
 创建内容修改器。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2000,6 +2144,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeContentModifier(ArkUI_RenderContentModifier
 
 释放内容修改器。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2018,6 +2164,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachFloatProperty(ArkUI_RenderContentModifier
 
 为目标内容修改器附加浮点属性。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2031,7 +2179,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachFloatProperty(ArkUI_RenderContentModifier
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_AttachVector2Property()
 
@@ -2042,6 +2190,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachVector2Property(ArkUI_RenderContentModifi
 **描述：**
 
 为目标内容修改器附加二维向量属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2056,7 +2206,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachVector2Property(ArkUI_RenderContentModifi
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_AttachColorProperty()
 
@@ -2067,6 +2217,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachColorProperty(ArkUI_RenderContentModifier
 **描述：**
 
 为目标内容修改器附加颜色属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2081,7 +2233,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachColorProperty(ArkUI_RenderContentModifier
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty()
 
@@ -2092,6 +2244,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(ArkUI_RenderConte
 **描述：**
 
 为目标内容修改器附加可动画的浮点属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2106,7 +2260,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(ArkUI_RenderConte
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty()
 
@@ -2117,6 +2271,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(ArkUI_RenderCon
 **描述：**
 
 为目标内容修改器附加可动画的二维向量属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2131,7 +2287,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(ArkUI_RenderCon
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty()
 
@@ -2142,6 +2298,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty(ArkUI_RenderConte
 **描述：**
 
 为目标内容修改器附加可动画的颜色属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2156,7 +2314,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty(ArkUI_RenderConte
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateFloatProperty()
 
@@ -2167,6 +2325,8 @@ ArkUI_FloatPropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatProperty(float val
 **描述：**
 
 创建浮点属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2192,6 +2352,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue(ArkUI_FloatPropertyHandle
 
 设置浮点属性的值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2205,7 +2367,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue(ArkUI_FloatPropertyHandle
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetFloatPropertyValue()
 
@@ -2216,6 +2378,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFloatPropertyValue(ArkUI_FloatPropertyHandle
 **描述：**
 
 获取浮点属性的值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2230,7 +2394,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFloatPropertyValue(ArkUI_FloatPropertyHandle
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeFloatProperty()
 
@@ -2241,6 +2405,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeFloatProperty(ArkUI_FloatPropertyHandle pro
 **描述：**
 
 释放浮点属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2259,6 +2425,8 @@ ArkUI_Vector2PropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Property(float
 **描述：**
 
 创建二维向量属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2285,6 +2453,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetVector2PropertyValue(ArkUI_Vector2PropertyHa
 
 设置二维向量属性的值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2299,7 +2469,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetVector2PropertyValue(ArkUI_Vector2PropertyHa
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetVector2PropertyValue()
 
@@ -2310,6 +2480,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetVector2PropertyValue(ArkUI_Vector2PropertyHa
 **描述：**
 
 获取二维向量属性的值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2325,7 +2497,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetVector2PropertyValue(ArkUI_Vector2PropertyHa
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeVector2Property()
 
@@ -2336,6 +2508,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeVector2Property(ArkUI_Vector2PropertyHandle
 **描述：**
 
 释放二维向量属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2354,6 +2528,8 @@ ArkUI_ColorPropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorProperty(uint32_t 
 **描述：**
 
 创建颜色属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2379,6 +2555,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetColorPropertyValue(ArkUI_ColorPropertyHandle
 
 设置颜色属性的值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2392,7 +2570,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetColorPropertyValue(ArkUI_ColorPropertyHandle
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetColorPropertyValue()
 
@@ -2403,6 +2581,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetColorPropertyValue(ArkUI_ColorPropertyHandle
 **描述：**
 
 获取颜色属性的值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2417,7 +2597,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetColorPropertyValue(ArkUI_ColorPropertyHandle
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeColorProperty()
 
@@ -2428,6 +2608,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeColorProperty(ArkUI_ColorPropertyHandle pro
 **描述：**
 
 释放颜色属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2446,6 +2628,8 @@ ArkUI_FloatAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatAnimatab
 **描述：**
 
 创建可动画的浮点属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2471,6 +2655,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue(ArkUI_FloatAnim
 
 设置可动画的浮点属性的值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2484,7 +2670,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue(ArkUI_FloatAnim
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetFloatAnimatablePropertyValue()
 
@@ -2495,6 +2681,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFloatAnimatablePropertyValue(ArkUI_FloatAnim
 **描述：**
 
 获取可动画的浮点属性的值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2509,7 +2697,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFloatAnimatablePropertyValue(ArkUI_FloatAnim
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty()
 
@@ -2520,6 +2708,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty(ArkUI_FloatAnimatab
 **描述：**
 
 释放可动画的浮点属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2538,6 +2728,8 @@ ArkUI_Vector2AnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Anim
 **描述：**
 
 创建可动画的二维向量属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2564,6 +2756,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetVector2AnimatablePropertyValue(ArkUI_Vector2
 
 设置可动画的二维向量属性的值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2578,7 +2772,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetVector2AnimatablePropertyValue(ArkUI_Vector2
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetVector2AnimatablePropertyValue()
 
@@ -2589,6 +2783,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetVector2AnimatablePropertyValue(ArkUI_Vector2
 **描述：**
 
 获取可动画的二维向量属性的值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2604,7 +2800,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetVector2AnimatablePropertyValue(ArkUI_Vector2
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeVector2AnimatableProperty()
 
@@ -2615,6 +2811,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeVector2AnimatableProperty(ArkUI_Vector2Anim
 **描述：**
 
 释放可动画的二维向量属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2633,6 +2831,8 @@ ArkUI_ColorAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorAnimatab
 **描述：**
 
 创建可动画的颜色属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2658,6 +2858,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue(ArkUI_ColorAnim
 
 设置可动画的颜色属性的值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2671,7 +2873,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue(ArkUI_ColorAnim
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue()
 
@@ -2682,6 +2884,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(ArkUI_ColorAnim
 **描述：**
 
 获取可动画的颜色属性的值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2696,7 +2900,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(ArkUI_ColorAnim
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty()
 
@@ -2707,6 +2911,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty(ArkUI_ColorAnimatab
 **描述：**
 
 释放可动画的颜色属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2726,6 +2932,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentMod
 
 设置内容修改器的onDraw函数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2740,7 +2948,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentMod
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()
 
@@ -2751,6 +2959,8 @@ ArkUI_RectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()
 **描述：**
 
 创建矩形形状。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2770,6 +2980,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption(ArkUI_RectShapeOption* opti
 
 释放矩形形状。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2787,6 +2999,8 @@ void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption*
 **描述：**
 
 设置矩形形状的边缘值。当设置左边界和上边界为负数时，因显示涉及到图层叠加效果，会导致部分超出节点内容部分无法绘制。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2808,6 +3022,8 @@ ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOptio
 
 创建节点边框样式。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **返回值：**
@@ -2826,6 +3042,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption(ArkUI_NodeBorderStyle
 
 释放节点边框样式。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2843,6 +3061,8 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorder
 **描述：**
 
 设置节点边框样式的边缘值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2864,6 +3084,8 @@ ArkUI_NodeBorderWidthOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOptio
 
 创建节点边框宽度。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **返回值：**
@@ -2882,6 +3104,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption(ArkUI_NodeBorderWidth
 
 释放节点边框宽度。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2899,6 +3123,8 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth(ArkUI_NodeBorder
 **描述：**
 
 设置节点边框宽度的边缘值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2920,6 +3146,8 @@ ArkUI_NodeBorderColorOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOptio
 
 创建节点边框颜色。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **返回值：**
@@ -2938,6 +3166,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption(ArkUI_NodeBorderColor
 
 释放节点边框颜色。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2955,6 +3185,8 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor(ArkUI_NodeBorder
 **描述：**
 
 设置节点边框颜色的边缘值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2976,6 +3208,8 @@ ArkUI_NodeBorderRadiusOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderRadiusOpt
 
 创建节点边框半径。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **返回值：**
@@ -2994,6 +3228,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption(ArkUI_NodeBorderRadi
 
 释放节点边框半径。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -3011,6 +3247,8 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius(ArkUI_NodeBo
 **描述：**
 
 设置节点边框半径的边缘值。请注意，入参cornerRadius为uint32_t，仅支持传入正整数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -3032,6 +3270,8 @@ ArkUI_CircleShapeOption* OH_ArkUI_RenderNodeUtils_CreateCircleShapeOption()
 
 创建圆形形状。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **返回值：**
@@ -3050,6 +3290,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption(ArkUI_CircleShapeOption* 
 
 释放圆形形状。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -3067,6 +3309,8 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX(ArkUI_CircleShapeOptio
 **描述：**
 
 设置圆形形状的圆心x轴坐标值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -3087,6 +3331,8 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY(ArkUI_CircleShapeOptio
 
 设置圆形形状的圆心y轴坐标值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -3105,6 +3351,8 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionRadius(ArkUI_CircleShapeOption
 **描述：**
 
 设置圆形形状的半径值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -3125,6 +3373,8 @@ ArkUI_RoundRectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption(
 
 创建圆角矩形形状。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **返回值：**
@@ -3143,6 +3393,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption(ArkUI_RoundRectShapeOp
 
 释放圆角矩形形状。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -3160,6 +3412,8 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectSh
 **描述：**
 
 设置圆角矩形形状的边缘值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -3180,6 +3434,8 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectSha
 **描述：**
 
 设置目标角的坐标值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -3202,6 +3458,8 @@ ArkUI_CommandPathOption* OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()
 
 创建自定义绘制路径。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **返回值：**
@@ -3219,6 +3477,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption(ArkUI_CommandPathOption* 
 **描述：**
 
 释放自定义绘制路径。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -3238,6 +3498,8 @@ void OH_ArkUI_RenderNodeUtils_SetCommandPathOptionCommands(ArkUI_CommandPathOpti
 
 设置自定义绘制路径的命令值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -3256,6 +3518,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **描述：**
 
 从矩形形状创建遮罩。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -3281,6 +3545,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 
 从圆角矩形形状创建遮罩。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -3304,6 +3570,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **描述：**
 
 从圆形形状创建遮罩。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -3329,6 +3597,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 
 从椭圆形形状创建遮罩。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -3352,6 +3622,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **描述：**
 
 从自定义绘制路径创建遮罩。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -3377,6 +3649,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption(ArkUI_RenderNodeMaskOp
 
 释放渲染节点遮罩。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -3394,6 +3668,8 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor(ArkUI_RenderNodeM
 **描述：**
 
 设置渲染节点遮罩的填充颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -3414,6 +3690,8 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeColor(ArkUI_RenderNod
 
 设置渲染节点遮罩的描边颜色。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -3433,6 +3711,8 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth(ArkUI_RenderNod
 
 设置渲染节点遮罩的描边宽度。以边框路径为中心进行相应宽度的绘制。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -3451,6 +3731,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **描述：**
 
 从矩形形状创建裁剪。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -3476,6 +3758,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 
 从圆角矩形形状创建裁剪。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -3499,6 +3783,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **描述：**
 
 从圆形形状创建裁剪。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -3524,6 +3810,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 
 从椭圆形形状创建裁剪。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -3547,6 +3835,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **描述：**
 
 从自定义绘制路径创建裁剪。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -3572,6 +3862,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption(ArkUI_RenderNodeClipOp
 
 释放渲染节点裁剪。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -3588,7 +3880,9 @@ int32_t OH_ArkUI_RenderNodeUtils_GetRenderNode(ArkUI_NodeHandle node, ArkUI_Rend
 
 **描述：**
 
-获取已被接纳为附属节点的目标节点的RenderNode。如果一个RenderNode是通过该接口获取的，调用{@link ArkUI_NativeNodeAPI_1}的{@link disposeNode} 接口主动销毁FrameNode时，需要额外调用[OH_ArkUI_RenderNodeUtils_DisposeNode](capi-native-render-h.md#oh_arkui_rendernodeutils_disposenode)释放该RenderNode。
+获取已被接纳为附属节点的目标节点的RenderNode。如果一个RenderNode是通过该接口获取的，调用[ArkUI_NativeNodeAPI_1](capi-arkui-nativemodule-arkui-nativenodeapi-1.md)的[disposeNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) 接口主动销毁FrameNode时，需要额外调用[OH_ArkUI_RenderNodeUtils_DisposeNode](capi-native-render-h.md#oh_arkui_rendernodeutils_disposenode)释放该RenderNode。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -3603,7 +3897,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetRenderNode(ArkUI_NodeHandle node, ArkUI_Rend
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE} 该节点未被接纳为附属节点。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 该节点未被接纳为附属节点。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue()
 
@@ -3614,6 +3908,8 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeO
 **描述：**
 
 为圆角矩形形状选项设置边框矩形范围。该函数通过指定位置和尺寸来定义圆角矩形的几何框架。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -3637,6 +3933,8 @@ void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue(ArkUI_RectShapeOption* opt
 
 为矩形形状选项设置边框矩形范围。该函数通过指定位置和尺寸来定义矩形的几何框架。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -3659,13 +3957,15 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle nod
 
 在父节点下的指定位置插入子渲染节点。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_NodeHandle node | 目标父节点。只支持{@link ArkUI_NodeType}中ARKUI_NODE_CUSTOM类型的节点。 |
+| ArkUI_NodeHandle node | 目标父节点。只支持[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)中ARKUI_NODE_CUSTOM类型的节点。 |
 | [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) child | 将要插入的子渲染节点。 |
 | int32_t position | 插入子渲染节点的索引。 <br>索引范围必须处于[0, 当前子节点数量]。 <br>如果索引等于当前子节点数量，那么等同于添加操作。 |
 
@@ -3673,7 +3973,7 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle nod
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。<br>    <br>{@link ARKUI_ERROR_CODE_NOT_CUSTOM_NODE} 目标节点非自定义节点。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED} 目标渲染节点存在父节点。<br>    <br>{@link ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE} 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。 |
+| ArkUI_ErrorCode | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。      <br>[ARKUI_ERROR_CODE_NOT_CUSTOM_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标节点非自定义节点。      <br>[ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 目标渲染节点存在父节点。      <br>[ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount()
 
@@ -3684,6 +3984,8 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHa
 **描述：**
 
 获取指定父节点的子渲染节点数量。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -3698,7 +4000,7 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHa
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| ArkUI_ErrorCode | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetRenderNodeAt()
 
@@ -3709,6 +4011,8 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, 
 **描述：**
 
 获取父节点下指定位置的子渲染节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -3724,6 +4028,6 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化失败。 |
+| ArkUI_ErrorCode | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 

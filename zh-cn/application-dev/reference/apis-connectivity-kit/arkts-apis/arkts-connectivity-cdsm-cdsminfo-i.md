@@ -1,5 +1,9 @@
 # CdsmInfo
 
+```TypeScript
+interface CdsmInfo
+```
+
 表示合作设备集合信息。
 
 **起始版本：** 26.0.0

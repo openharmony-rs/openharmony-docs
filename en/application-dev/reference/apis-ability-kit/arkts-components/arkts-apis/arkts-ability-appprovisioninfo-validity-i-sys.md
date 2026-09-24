@@ -1,5 +1,9 @@
 # Validity (System API)
 
+```TypeScript
+export interface Validity
+```
+
 Validity period in the configuration file.
 
 **Since:** 10

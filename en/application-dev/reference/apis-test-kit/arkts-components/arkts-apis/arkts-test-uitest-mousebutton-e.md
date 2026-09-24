@@ -1,5 +1,9 @@
 # MouseButton
 
+```TypeScript
+declare enum MouseButton
+```
+
 Describes the injected simulated mouse button.
 
 **Since:** 10

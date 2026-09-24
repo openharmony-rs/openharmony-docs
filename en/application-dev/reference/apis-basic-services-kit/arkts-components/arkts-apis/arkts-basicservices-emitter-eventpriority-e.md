@@ -1,5 +1,9 @@
 # EventPriority
 
+```TypeScript
+export enum EventPriority
+```
+
 Enumerates the event priorities.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # ImageBufferData
 
+```TypeScript
+interface ImageBufferData
+```
+
 保存图像缓冲区数据的指针、不同颜色分量的行间距与像素间距信息。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # GeneratorResultPageIcon (System API)
 
+```TypeScript
+interface GeneratorResultPageIcon
+```
+
 Custom icon object in the generation result page of ImageGeneratorDialog.
 
 @interface GeneratorResultPageIcon

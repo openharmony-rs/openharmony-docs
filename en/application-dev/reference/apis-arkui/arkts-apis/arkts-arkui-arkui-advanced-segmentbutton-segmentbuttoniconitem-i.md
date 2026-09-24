@@ -1,5 +1,9 @@
 # SegmentButtonIconItem
 
+```TypeScript
+interface SegmentButtonIconItem
+```
+
 Icon button information.
 
 > **NOTE:** 
@@ -22,9 +26,9 @@ import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray, Tab
 accessibilityDescription?: ResourceStr
 ```
 
-Accessibility description, which is used to explain component operations to users. You can set detailed description text to help users understand the operation consequences. If a component has both text and accessibility description, the text is read first, and then the accessibility description is read.
+Accessibility description, which provides additional explanation about the current component for users. Developers can set a relatively detailed explanatory text for this attribute to help users understand the operation to be performed, such as the potential consequences of the operation, especially when these consequences cannot be learned from the component's own attributes and accessibility text. If a component has both a text attribute and an accessibility description attribute, the text attribute is announced first when the component is selected, followed by the content of the accessibility description attribute.
 
-The default value is an empty string.
+Default value: empty string.
 
 If the value is **undefined**, the default value is used.
 
@@ -46,17 +50,17 @@ If the value is **undefined**, the default value is used.
 accessibilityLevel?: string
 ```
 
-Accessibility level, which is used to set whether the current component can be recognized by accessibility services.
+Accessibility level, which controls whether the current component can be recognized by accessibility services.
 
-The options are as follows:
+Supported values:
 
-**"auto"**: The component can be recognized by accessibility services.
+**"auto"**: The current component can be recognized by accessibility services.
 
-**"yes"**: The component can be recognized by accessibility services.
+**"yes"**: The current component can be recognized by accessibility services.
 
-**"no"**: The component cannot be recognized by accessibility services.
+**"no"**: The current component cannot be recognized by accessibility services.
 
-**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.
+**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.
 
 Default value: **"auto"**
 
@@ -80,9 +84,11 @@ If the value is **undefined**, the default value is used.
 icon: ResourceStr
 ```
 
-Icon of the unselected item.
+Icon of the button in unselected state.
 
-If the value is undefined, no icon is displayed.
+If the value is **undefined**, no icon is displayed.
+
+**Note:** **icon** and **selectedIcon** must be set together. Setting either alone is ineffective.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -100,9 +106,9 @@ If the value is undefined, no icon is displayed.
 iconAccessibilityText?: ResourceStr
 ```
 
-Accessibility text of the unselected item.
+Accessibility text for the icon of the button in unselected state.
 
-The default value is an empty string.
+Default value: empty string.
 
 If the value is **undefined**, the default value is used.
 
@@ -124,9 +130,11 @@ If the value is **undefined**, the default value is used.
 selectedIcon: ResourceStr
 ```
 
-Icon of the selected item.
+Icon of the button in selected state.
 
-If the value is undefined, no icon is displayed.
+If the value is **undefined**, no icon is displayed.
+
+**Note:** **icon** and **selectedIcon** must be set together. Setting either alone is ineffective.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -144,9 +152,9 @@ If the value is undefined, no icon is displayed.
 selectedIconAccessibilityText?: ResourceStr
 ```
 
-Accessibility text of the selected item.
+Accessibility text for the icon of the button in selected state.
 
-The default value is an empty string.
+Default value: empty string.
 
 If the value is **undefined**, the default value is used.
 

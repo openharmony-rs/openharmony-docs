@@ -1,5 +1,9 @@
 # RingChannel
 
+```TypeScript
+export enum RingChannel
+```
+
 Enumerates the audio playback channels for the custom prompt tone.
 
 **Since:** 20

@@ -52,23 +52,8 @@ try {
 }
 ```
 
-```TypeScript
-import missionManager from '@ohos.application.missionManager';
-import { BusinessError } from '@ohos.base';
 
-try {
-  // Clear all unlocked missions.
-  missionManager.clearAllMissions().then((data) => {
-    console.info(`clearAllMissions successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`clearAllMissions failed. Code: ${err.code}, message: ${err.message}.`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`clearAllMissions sync failed. Code: ${error.code}, message: ${error.message}.`);
-}
-```
-
+<a id="clearallmissions-1"></a>
 
 ## clearAllMissions
 
@@ -98,4 +83,19 @@ Clears all unlocked missions. This API uses a promise to return the result.
 
 **Examples**
 
-See [clearAllMissions](#clearallmissions)
+```TypeScript
+import missionManager from '@ohos.application.missionManager';
+import { BusinessError } from '@ohos.base';
+
+try {
+  // Clear all unlocked missions.
+  missionManager.clearAllMissions().then((data) => {
+    console.info(`clearAllMissions successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`clearAllMissions failed. Code: ${err.code}, message: ${err.message}.`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`clearAllMissions sync failed. Code: ${error.code}, message: ${error.message}.`);
+}
+```

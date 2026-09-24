@@ -1,5 +1,9 @@
 # MaterialType
 
+```TypeScript
+enum MaterialType
+```
+
 系统材质类型枚举。
 
 **起始版本：** 26.0.0
@@ -12,7 +16,7 @@
 NONE = 0
 ```
 
-无系统材质效果。对应的效果为背景色backgroundColor为透明色，边框颜色borderColor为透明色，边框宽度borderWidth为0，无阴影shadow。
+无系统材质效果。对应的效果为背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)为透明色，边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)为透明色，边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)为0，无阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -34,13 +38,13 @@ SEMI_TRANSPARENT = 1
 
 半透明系统材质效果。对应的效果为：
 
-背景色backgroundColor：浅色模式为"#f2f1f3f5"，深色模式为"#f2303131"。
+背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)：浅色模式为"#f2f1f3f5"，深色模式为"#f2303131"。
 
-边框颜色borderColor为theme.colors.compForegroundPrimary的[token](../../../ui/theme_skinning.md#系统缺省token色值)值以10%透明度（alpha值）进行混合叠加。
+边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)为theme.colors.compForegroundPrimary的[token](../../../ui/theme_skinning.md#系统缺省token色值)值以10%透明度（alpha值）进行混合叠加。
 
-边框宽度borderWidth为1vp。
+边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)为1vp。
 
-阴影shadow为ShadowStyle.OUTER_DEFAULT_SM。
+阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)为ShadowStyle.OUTER_DEFAULT_SM。
 
 **系统接口：** 此接口为系统接口。
 

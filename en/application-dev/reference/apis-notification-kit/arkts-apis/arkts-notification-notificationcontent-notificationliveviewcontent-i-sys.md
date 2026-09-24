@@ -1,5 +1,9 @@
 # NotificationLiveViewContent (System API)
 
+```TypeScript
+export interface NotificationLiveViewContent extends NotificationBasicContent
+```
+
 Describes the normal live notification content. This API inherits from NotificationBasicContent.
 
 **Inheritance/Implementation:** NotificationLiveViewContent extends [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)

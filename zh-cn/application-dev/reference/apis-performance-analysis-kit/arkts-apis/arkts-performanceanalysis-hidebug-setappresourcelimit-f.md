@@ -38,7 +38,7 @@ function setAppResourceLimit(type: string, value: number, enableDebugLog: boolea
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid argument, Possible causes: 1.The limit parameter is too small 2.The parameter is not in the specified type 3.The parameter type error or parameter order error |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid argument, Possible causes: 1.The limit parameter is too small 2.The parameter is not in the specified type 3.The parameter type error or parameter order error |
 | [11400104](../errorcode-hiviewdfx-hidebug-cpuusage.md#11400104-cpuusage统计异常) | Set limit failed due to remote exception |
 
 **示例**

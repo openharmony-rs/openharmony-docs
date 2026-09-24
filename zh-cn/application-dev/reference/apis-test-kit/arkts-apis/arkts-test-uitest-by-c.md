@@ -1,5 +1,9 @@
 # By
 
+```TypeScript
+declare class By
+```
+
 UiTest框架通过By类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。
 
 By提供的API能力具有以下几个特点：

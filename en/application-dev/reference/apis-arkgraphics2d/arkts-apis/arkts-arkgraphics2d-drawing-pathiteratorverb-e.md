@@ -1,5 +1,9 @@
 # PathIteratorVerb
 
+```TypeScript
+enum PathIteratorVerb
+```
+
 Enumerates the path operation types contained in an iterator. It is used to read path operation instructions.
 
 **Since:** 18

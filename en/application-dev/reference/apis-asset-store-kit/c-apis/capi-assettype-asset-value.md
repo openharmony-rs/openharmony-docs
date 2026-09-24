@@ -8,6 +8,8 @@ typedef union Asset_Value {...} Asset_Value
 
 Defines the value (content) of an asset attribute.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 **Related module**: [AssetType](capi-assettype.md)

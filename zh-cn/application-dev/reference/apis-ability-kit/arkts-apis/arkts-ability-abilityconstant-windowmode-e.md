@@ -1,6 +1,10 @@
 # WindowMode
 
-启动UIAbility时窗口的创建模式，类型为枚举。可配合[startAbility](arkts-ability-uiabilitycontext-c.md#startability)方法使用。
+```TypeScript
+export enum WindowMode
+```
+
+启动UIAbility时窗口的创建模式，类型为枚举。可配合[startAbility](arkts-ability-uiabilitycontext-c.md#startability-2)方法使用。
 
 **起始版本：** 12
 
@@ -43,6 +47,20 @@ WINDOW_MODE_SPLIT_SECONDARY = 101
 支持应用内拉起Ability时设置为分屏，右侧分屏。仅在折叠屏和Tablet设备上生效。
 
 **起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## WINDOW_MODE_SPLIT
+
+```TypeScript
+WINDOW_MODE_SPLIT = 105
+```
+
+分屏窗口模式。仅在应用内跳转场景下生效，且仅在折叠屏设备和平板上生效。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

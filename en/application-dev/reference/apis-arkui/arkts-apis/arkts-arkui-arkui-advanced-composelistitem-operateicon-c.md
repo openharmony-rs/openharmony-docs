@@ -1,5 +1,9 @@
 # OperateIcon
 
+```TypeScript
+export declare class OperateIcon
+```
+
 Defines the type of the icon element on the right of the **ComposeListItem** component.
 
 **Since:** 10
@@ -110,7 +114,7 @@ Resource of the symbol icon or arrow on the right, which has higher priority tha
 
 If this parameter is not set or is set to **undefined**, the symbol icon is not displayed.
 
-**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **Since:** 18
 

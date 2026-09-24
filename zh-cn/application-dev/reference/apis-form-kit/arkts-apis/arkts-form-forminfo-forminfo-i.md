@@ -1,5 +1,9 @@
 # FormInfo
 
+```TypeScript
+interface FormInfo
+```
+
 卡片配置信息。
 
 **起始版本：** 9
@@ -39,28 +43,6 @@ bundleName: string
 **类型：** string
 
 **起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Ability.Form
-
-## colorMode
-
-```TypeScript
-colorMode: ColorMode
-```
-
-卡片颜色模式。
-
-**说明：** 
-
-从API version 9开始支持，从API version 20开始废弃。无替代接口。
-
-**类型：** [ColorMode](arkts-form-forminfo-colormode-e.md)
-
-**起始版本：** 9
-
-**废弃版本：** 20
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -421,6 +403,28 @@ updateEnabled: boolean
 **类型：** boolean
 
 **起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+## colorMode
+
+```TypeScript
+colorMode: ColorMode
+```
+
+卡片颜色模式。
+
+**说明：** 
+
+从API version 9开始支持，从API version 20开始废弃。无替代接口。
+
+**类型：** [ColorMode](arkts-form-forminfo-colormode-e.md)
+
+**起始版本：** 9
+
+**废弃版本：** 20
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

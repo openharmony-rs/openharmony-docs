@@ -1,5 +1,9 @@
 # MouseController
 
+```TypeScript
+interface MouseController
+```
+
 提供模拟鼠标操作的功能。模拟鼠标操作序列必须满足以下要求：<br>1. 鼠标按键只能在抬起状态下被按下。<br>2. 鼠标按键只能在被按下后才能抬起。<br>3. 有效的轴事件序列必须先调用beginAxis开始事件，然后调用零次或多次updateAxis更新事件，最后调用endAxis结束事件。<br>
 4. 同一时间只能有一个进行中的轴事件序列。
 
@@ -46,7 +50,7 @@ beginAxis(axis: Axis, value: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [4300001](../errorcode-inputeventclient.md#4300001-状态错误) | The axis event is in progress. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
 
@@ -119,15 +123,13 @@ endAxis(axis: Axis): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [4300001](../errorcode-inputeventclient.md#4300001-状态错误) | The axis event is not in progress. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
 
 **示例**
 
-```TypeScript
 参见[beginAxis](#beginaxis)示例。
-```
 
 ## moveTo
 
@@ -163,7 +165,7 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [4300002](../errorcode-inputeventclient.md#4300002-显示器不存在) | The display does not exist. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
 
@@ -228,7 +230,7 @@ pressButton(button: Button): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [4300001](../errorcode-inputeventclient.md#4300001-状态错误) | The mouse button is already pressed. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
 
@@ -297,15 +299,13 @@ releaseButton(button: Button): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [4300001](../errorcode-inputeventclient.md#4300001-状态错误) | The mouse button is not pressed. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
 
 **示例**
 
-```TypeScript
 参见[pressButton](#pressbutton)示例。
-```
 
 ## updateAxis
 
@@ -340,12 +340,10 @@ updateAxis(axis: Axis, value: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [4300001](../errorcode-inputeventclient.md#4300001-状态错误) | The axis event is not in progress. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
 
 **示例**
 
-```TypeScript
 参见[beginAxis](#beginaxis)示例。
-```

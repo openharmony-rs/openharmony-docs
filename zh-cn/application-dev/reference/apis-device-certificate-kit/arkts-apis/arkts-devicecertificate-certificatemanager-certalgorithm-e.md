@@ -1,5 +1,9 @@
 # CertAlgorithm
 
+```TypeScript
+export enum CertAlgorithm
+```
+
 表示证书的算法类型。
 
 **起始版本：** 20

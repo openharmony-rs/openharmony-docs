@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="publish-2"></a>
+
 ## publish
 
 ```TypeScript
@@ -33,6 +35,8 @@ Publishes a notification to a specified user. This API uses an asynchronous call
 | userId | number | Yes | User ID. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+
+<a id="publish-3"></a>
 
 ## publish
 

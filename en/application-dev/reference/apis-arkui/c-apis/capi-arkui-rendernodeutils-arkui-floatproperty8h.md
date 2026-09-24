@@ -8,6 +8,8 @@ typedef struct ArkUI_FloatProperty* ArkUI_FloatPropertyHandle
 
 Defines a float property pointer.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

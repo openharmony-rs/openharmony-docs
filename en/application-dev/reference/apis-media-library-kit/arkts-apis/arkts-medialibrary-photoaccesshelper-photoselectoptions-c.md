@@ -1,5 +1,9 @@
 # PhotoSelectOptions
 
+```TypeScript
+class PhotoSelectOptions extends BaseSelectOptions
+```
+
 Defines additional options for selecting media assets from Gallery. It inherits from **BaseSelectOptions**. It is used to start the picker of the corresponding user ID space.
 
 **Inheritance/Implementation:** PhotoSelectOptions extends [BaseSelectOptions](arkts-medialibrary-photoaccesshelper-baseselectoptions-c.md)
@@ -56,7 +60,7 @@ When the selection process is complete, the PhotoPicker returns **contextRecover
 isDestroyedWithNavigation?: boolean
 ```
 
-Whether destruction with Navigation is supported. **true** if supported, **false** otherwise. The default value is **false**.
+Whether destruction with [Navigation](../../apis-arkui/arkts-components/arkts-arkui-navigation-comp.md#navigation) is supported. **true** if supported, **false** otherwise. The default value is **false**.
 
 **Type:** boolean
 
@@ -206,11 +210,11 @@ Picker color mode. Dark/light color mode of all content within the Picker. The d
 
 **Type:** [PickerColorMode](arkts-medialibrary-photoaccesshelper-pickercolormode-e.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

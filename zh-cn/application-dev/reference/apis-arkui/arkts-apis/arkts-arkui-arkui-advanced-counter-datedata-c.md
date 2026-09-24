@@ -1,5 +1,9 @@
 # DateData
 
+```TypeScript
+declare class DateData
+```
+
 DateData定义了日期通用属性和方法，包括年、月、日。
 
 **起始版本：** 11

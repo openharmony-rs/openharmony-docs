@@ -1,5 +1,9 @@
 # AxisModel
 
+```TypeScript
+declare enum AxisModel
+```
+
 定义焦点轴事件的轴类型。
 
 **起始版本：** 15

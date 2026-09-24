@@ -1,5 +1,9 @@
 # CustomSpan
 
+```TypeScript
+declare abstract class CustomSpan
+```
+
 Describes the custom span. Only the base class is provided. You need to define the specific implementation.
 
 The drag preview of a custom span is blank.
@@ -44,7 +48,7 @@ Called to draw a custom span.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | [DrawContext](../arkts-components/arkts-arkui-drawcontext-t.md) | Yes | Drawing context.<br>**NOTE:** <br>The **canvas** method of **DrawContext** obtains the canvas of the **Text** component. As such, the custom span does not extend beyond the area of the **Text** component. |
+| context | DrawContext | Yes | Drawing context.<br>**NOTE:** <br>The **canvas** method of **DrawContext** obtains the canvas of the **Text** component. As such, the custom span does not extend beyond the area of the **Text** component. |
 | drawInfo | [CustomSpanDrawInfo](arkts-arkui-customspandrawinfo-i.md) | Yes | Drawing information of the custom span. |
 
 ## onMeasure

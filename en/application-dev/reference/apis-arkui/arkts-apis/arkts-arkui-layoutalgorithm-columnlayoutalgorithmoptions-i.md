@@ -1,5 +1,9 @@
 # ColumnLayoutAlgorithmOptions
 
+```TypeScript
+interface ColumnLayoutAlgorithmOptions
+```
+
 Sets the spacing, main axis alignment method, cross axis alignment method, and main axis arrangement direction of the vertical linear layout algorithm.
 
 **Since:** 24
@@ -38,7 +42,7 @@ Invalid values are treated as the default value.
 isReverse?: boolean
 ```
 
-Whether to reverse the vertical arrangement of child components. **true** indicates to reverse the vertical arrangement of child components. **false** indicates to arrange child components in the vertical direction in normal order.
+Whether to reverse the vertical arrangement of child components. **true** indicates to reverse the vertical arrangement of child components. The vertical direction is not affected by the common attribute **direction**. **false** indicates to arrange child components in the vertical direction in normal order.
 
 Default value: **false**
 
@@ -90,7 +94,9 @@ Invalid values are treated as the default value.
 space?: LengthMetrics
 ```
 
-Vertical spacing between elements in a vertical layout.
+Vertical spacing between child components in a vertical layout.
+
+Value range: a non-negative number.
 
 Default value: **LengthMetrics.vp(0)**
 

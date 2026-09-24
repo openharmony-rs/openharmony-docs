@@ -1,5 +1,9 @@
 # BundleOption
 
+```TypeScript
+export interface BundleOption
+```
+
 描述BundleOption信息，即应用的包信息。
 
 **起始版本：** 9

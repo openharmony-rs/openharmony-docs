@@ -8,6 +8,8 @@ typedef struct OH_AVSession_AVQueueItem {...} OH_AVSession_AVQueueItem
 
 Declaring the avqueue item. The instance of AVQueueItem.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Related module**: [OHAVSession](capi-ohavsession.md)

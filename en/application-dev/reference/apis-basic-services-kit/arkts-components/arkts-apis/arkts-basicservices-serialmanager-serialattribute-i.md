@@ -1,5 +1,9 @@
 # SerialAttribute
 
+```TypeScript
+interface SerialAttribute
+```
+
 Represents the configuration parameters of a serial port.
 
 **Since:** 19

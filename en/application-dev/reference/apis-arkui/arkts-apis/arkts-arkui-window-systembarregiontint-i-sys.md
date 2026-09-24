@@ -1,5 +1,9 @@
 # SystemBarRegionTint (System API)
 
+```TypeScript
+interface SystemBarRegionTint
+```
+
 Describes the callback for a single system bar.
 
 **Since:** 8

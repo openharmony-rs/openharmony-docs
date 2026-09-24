@@ -1,5 +1,9 @@
 # BadgeType
 
+```TypeScript
+export declare enum BadgeType
+```
+
 Enumerates the badge types.
 
 **Since:** 21

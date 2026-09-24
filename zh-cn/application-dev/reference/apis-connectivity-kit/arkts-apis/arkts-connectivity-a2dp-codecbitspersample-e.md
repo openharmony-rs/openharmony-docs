@@ -1,5 +1,9 @@
 # CodecBitsPerSample
 
+```TypeScript
+enum CodecBitsPerSample
+```
+
 枚举，蓝牙媒体音频编解码器的位深，表示蓝牙音频信号在数字表示中使用的位数，单位为bit。位深决定每个采样点可以表示的动态范围和精度。
 
 **起始版本：** 11

@@ -45,18 +45,8 @@ appManager.getAppMemorySize().then((data) => {
 });
 ```
 
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
 
-appManager.getAppMemorySize((err, data) => {
-  if (err) {
-    console.error(`getAppMemorySize fail, code: ${err.code}, msg:${err.message}`);
-  } else {
-    console.info(`The size of app memory is: ${JSON.stringify(data)}`);
-  }
-});
-```
-
+<a id="getappmemorysize-1"></a>
 
 ## getAppMemorySize
 
@@ -82,9 +72,19 @@ function getAppMemorySize(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
 
-参见 getAppMemorySize
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+
+appManager.getAppMemorySize((err, data) => {
+  if (err) {
+    console.error(`getAppMemorySize fail, code: ${err.code}, msg:${err.message}`);
+  } else {
+    console.info(`The size of app memory is: ${JSON.stringify(data)}`);
+  }
+});
+```

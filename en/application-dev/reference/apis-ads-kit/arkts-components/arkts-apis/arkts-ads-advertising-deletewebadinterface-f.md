@@ -31,7 +31,7 @@ Deletes the ad JavaScript object injected through **registerWebAdInterface** (th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../errorcode-ads.md#401-incorrect-ads-request-parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | [21800001](../errorcode-ads.md#21800001-internal-system-error) | System internal error. |
 
 **Examples**

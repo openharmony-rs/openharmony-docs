@@ -8,6 +8,8 @@ struct ArkUI_NativeDialog
 
 Defines the custom dialog box controller of ArkUI on the native side.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

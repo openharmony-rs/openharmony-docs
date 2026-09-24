@@ -1,5 +1,9 @@
 # FlipOptions (System API)
 
+```TypeScript
+export enum FlipOptions
+```
+
 Flip option.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # NetAddress
 
+```TypeScript
+export interface NetAddress
+```
+
 网络地址。
 
 **起始版本：** 8

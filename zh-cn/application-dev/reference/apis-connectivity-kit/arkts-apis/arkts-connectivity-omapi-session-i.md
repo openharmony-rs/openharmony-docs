@@ -1,5 +1,9 @@
 # Session
 
+```TypeScript
+export interface Session
+```
+
 Session的实例表示在某个SE Reader实例上创建连接会话。通过[Reader.openSession](arkts-connectivity-omapi-reader-i.md#opensession)获取Session实例。
 
 **起始版本：** 10
@@ -28,7 +32,7 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, service state exception. |
 
 **示例**
@@ -64,7 +68,7 @@ closeChannels(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, service state exception. |
 
 **示例**
@@ -106,7 +110,7 @@ getATR(): number[]
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, service state exception. |
 
 **示例**
@@ -149,7 +153,7 @@ getReader(): Reader
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 
@@ -201,7 +205,7 @@ isClosed(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 
@@ -249,8 +253,8 @@ openBasicChannel(aid: number[]): Promise<Channel>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
 | [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected. |
 | [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the calling application cannot be granted access to this AID or the default applet on this session. |
@@ -285,6 +289,40 @@ function secureElementDemo() {
 }
 ```
 
+<a id="openbasicchannel-1"></a>
+
+## openBasicChannel
+
+```TypeScript
+openBasicChannel(aid: number[], callback: AsyncCallback<Channel>): void
+```
+
+打开基础通道，参考[ISO 7816-4]协议，返回基础Channel实例对象。SE不能提供基础Channel或应用程序没有访问SE的权限时，返回null。使用callback异步回调。
+
+**起始版本：** 10
+
+**系统能力：** SystemCapability.Communication.SecureElement
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| aid | number[] | 是 | 在此Channel上选择的Applet的AID或如果没有Applet被选择时空的数组。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Channel](arkts-connectivity-omapi-channel-i.md)&gt; | 是 | 以callback形式异步返回可用的基础Channel对象实例。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
+| [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected. |
+| [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the calling application cannot be granted access to this AID or the default applet on this session. |
+| [3300104](../errorcode-se.md#3300104-se芯片io异常) | IOError, there is a communication problem to the reader or the SE. |
+
+**示例**
+
 ```TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { omapi } from '@kit.ConnectivityKit';
@@ -314,6 +352,46 @@ function secureElementDemo() {
 }
 ```
 
+<a id="openbasicchannel-2"></a>
+
+## openBasicChannel
+
+```TypeScript
+openBasicChannel(aid: number[], p2: number): Promise<Channel>
+```
+
+打开基础通道，参考[ISO 7816-4]协议，返回基础Channel实例对象。SE不能提供基础Channel或应用程序没有访问SE的权限时，返回null。使用Promise异步回调。
+
+**起始版本：** 10
+
+**系统能力：** SystemCapability.Communication.SecureElement
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| aid | number[] | 是 | 在此Channel上选择的Applet的AID或如果没有Applet被选择时空的数组。 |
+| p2 | number | 是 | 在该Channel上执行的SELECT APDU的P2参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[Channel](arkts-connectivity-omapi-channel-i.md)&gt; | 以Promise形式异步返回可用的基础Channel对象实例。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
+| [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected. |
+| [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the calling application cannot be granted access to this AID or the default applet on this session. |
+| [3300104](../errorcode-se.md#3300104-se芯片io异常) | IOError, there is a communication problem to the reader or the SE. |
+
+**示例**
+
 ```TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { omapi } from '@kit.ConnectivityKit';
@@ -341,6 +419,41 @@ function secureElementDemo() {
     }
 }
 ```
+
+<a id="openbasicchannel-3"></a>
+
+## openBasicChannel
+
+```TypeScript
+openBasicChannel(aid: number[], p2: number, callback: AsyncCallback<Channel>): void
+```
+
+打开基础通道，参考[ISO 7816-4]协议，返回基础Channel实例对象。SE不能提供基础Channel或应用程序没有访问SE的权限时，返回null。使用callback异步回调。
+
+**起始版本：** 10
+
+**系统能力：** SystemCapability.Communication.SecureElement
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| aid | number[] | 是 | 在此Channel上选择的Applet的AID或如果没有Applet被选择时空的数组。 |
+| p2 | number | 是 | 此Channel上执行SELECT APDU命令的P2参数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Channel](arkts-connectivity-omapi-channel-i.md)&gt; | 是 | 以callback形式异步返回可用的基础Channel对象实例。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
+| [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected. |
+| [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the calling application cannot be granted access to this AID or the default applet on this session. |
+| [3300104](../errorcode-se.md#3300104-se芯片io异常) | IOError, there is a communication problem to the reader or the SE. |
+
+**示例**
 
 ```TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -372,115 +485,6 @@ function secureElementDemo() {
 }
 ```
 
-## openBasicChannel
-
-```TypeScript
-openBasicChannel(aid: number[], callback: AsyncCallback<Channel>): void
-```
-
-打开基础通道，参考[ISO 7816-4]协议，返回基础Channel实例对象。SE不能提供基础Channel或应用程序没有访问SE的权限时，返回null。使用callback异步回调。
-
-**起始版本：** 10
-
-**系统能力：** SystemCapability.Communication.SecureElement
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| aid | number[] | 是 | 在此Channel上选择的Applet的AID或如果没有Applet被选择时空的数组。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Channel](arkts-connectivity-omapi-channel-i.md)&gt; | 是 | 以callback形式异步返回可用的基础Channel对象实例。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
-| [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected. |
-| [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the calling application cannot be granted access to this AID or the default applet on this session. |
-| [3300104](../errorcode-se.md#3300104-se芯片io异常) | IOError, there is a communication problem to the reader or the SE. |
-
-**示例**
-
-参见 [openBasicChannel](#openbasicchannel)
-
-## openBasicChannel
-
-```TypeScript
-openBasicChannel(aid: number[], p2: number): Promise<Channel>
-```
-
-打开基础通道，参考[ISO 7816-4]协议，返回基础Channel实例对象。SE不能提供基础Channel或应用程序没有访问SE的权限时，返回null。使用Promise异步回调。
-
-**起始版本：** 10
-
-**系统能力：** SystemCapability.Communication.SecureElement
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| aid | number[] | 是 | 在此Channel上选择的Applet的AID或如果没有Applet被选择时空的数组。 |
-| p2 | number | 是 | 在该Channel上执行的SELECT APDU的P2参数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[Channel](arkts-connectivity-omapi-channel-i.md)&gt; | 以Promise形式异步返回可用的基础Channel对象实例。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
-| [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected. |
-| [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the calling application cannot be granted access to this AID or the default applet on this session. |
-| [3300104](../errorcode-se.md#3300104-se芯片io异常) | IOError, there is a communication problem to the reader or the SE. |
-
-**示例**
-
-参见 [openBasicChannel](#openbasicchannel)
-
-## openBasicChannel
-
-```TypeScript
-openBasicChannel(aid: number[], p2: number, callback: AsyncCallback<Channel>): void
-```
-
-打开基础通道，参考[ISO 7816-4]协议，返回基础Channel实例对象。SE不能提供基础Channel或应用程序没有访问SE的权限时，返回null。使用callback异步回调。
-
-**起始版本：** 10
-
-**系统能力：** SystemCapability.Communication.SecureElement
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| aid | number[] | 是 | 在此Channel上选择的Applet的AID或如果没有Applet被选择时空的数组。 |
-| p2 | number | 是 | 此Channel上执行SELECT APDU命令的P2参数。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Channel](arkts-connectivity-omapi-channel-i.md)&gt; | 是 | 以callback形式异步返回可用的基础Channel对象实例。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
-| [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected. |
-| [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the calling application cannot be granted access to this AID or the default applet on this session. |
-| [3300104](../errorcode-se.md#3300104-se芯片io异常) | IOError, there is a communication problem to the reader or the SE. |
-
-**示例**
-
-参见 [openBasicChannel](#openbasicchannel)
-
 ## openLogicalChannel
 
 ```TypeScript
@@ -509,8 +513,8 @@ openLogicalChannel(aid: number[]): Promise<Channel>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
 | [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected or a logical channel is already open to a non-multi-selectable applet. |
 | [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the calling application cannot be granted access to this AID or the default applet on this session. |
@@ -545,6 +549,40 @@ function secureElementDemo() {
 }
 ```
 
+<a id="openlogicalchannel-1"></a>
+
+## openLogicalChannel
+
+```TypeScript
+openLogicalChannel(aid: number[], callback: AsyncCallback<Channel>): void
+```
+
+打开逻辑通道，参考[ISO 7816-4]协议，返回逻辑Channel实例对象。SE不能提供逻辑Channel或应用程序没有访问SE的权限时，返回null。使用callback异步回调。
+
+**起始版本：** 10
+
+**系统能力：** SystemCapability.Communication.SecureElement
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| aid | number[] | 是 | 在此Channel上选择的Applet的AID或如果没有Applet被选择时空的数组。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Channel](arkts-connectivity-omapi-channel-i.md)&gt; | 是 | 以callback形式异步返回可用的逻辑Channel对象实例。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
+| [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected or a logical channel is already open to a non-multi-selectable applet. |
+| [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the calling application cannot be granted access to this AID or the default applet on this session. |
+| [3300104](../errorcode-se.md#3300104-se芯片io异常) | IOError, there is a communication problem to the reader or the SE. |
+
+**示例**
+
 ```TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { omapi } from '@kit.ConnectivityKit';
@@ -574,97 +612,7 @@ function secureElementDemo() {
 }
 ```
 
-```TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { omapi } from '@kit.ConnectivityKit';
-
-let seSession : omapi.Session;
-let seChannel : omapi.Channel;
-let aidArray : number[] = [0xA0, 0x00, 0x00, 0x00, 0x03, 0x10, 0x10];
-let p2 : number = 0x00;
-
-// 在使用seSession之前，需要对seSession进行初始化
-function secureElementDemo() {
-    try {
-        // 改为在此channel上选择的App的aid
-        seSession.openLogicalChannel(aidArray, p2).then((data) => {
-            seChannel = data;
-        }).catch((error : BusinessError) => {
-            hilog.error(0x0000, 'testTag', 'openLogicalChannel error %{public}s', JSON.stringify(error));
-        });
-    } catch (exception) {
-        hilog.error(0x0000, 'testTag', 'openLogicalChannel exception %{public}s', JSON.stringify(exception));
-    }
-    if (seChannel == undefined) {
-        hilog.error(0x0000, 'testTag', 'seChannel invalid.');
-        return;
-    }
-}
-```
-
-```TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { omapi } from '@kit.ConnectivityKit';
-
-let seSession : omapi.Session;
-let seChannel : omapi.Channel;
-let aidArray : number[] = [0xA0, 0x00, 0x00, 0x00, 0x03, 0x10, 0x10];
-let p2 : number = 0x00;
-
-// 在使用seSession之前，需要对seSession进行初始化
-function secureElementDemo() {
-    try {
-        // 改为在此channel上选择的App的aid
-        seSession.openLogicalChannel(aidArray, p2, (error, data) => {
-            if (error) {
-                hilog.error(0x0000, 'testTag', 'openLogicalChannel error %{public}s', JSON.stringify(error));
-            } else {
-                seChannel = data;
-            }
-        });
-    } catch (exception) {
-        hilog.error(0x0000, 'testTag', 'openLogicalChannel exception %{public}s', JSON.stringify(exception));
-    }
-    if (seChannel == undefined) {
-        hilog.error(0x0000, 'testTag', 'seChannel invalid.');
-        return;
-    }
-}
-```
-
-## openLogicalChannel
-
-```TypeScript
-openLogicalChannel(aid: number[], callback: AsyncCallback<Channel>): void
-```
-
-打开逻辑通道，参考[ISO 7816-4]协议，返回逻辑Channel实例对象。SE不能提供逻辑Channel或应用程序没有访问SE的权限时，返回null。使用callback异步回调。
-
-**起始版本：** 10
-
-**系统能力：** SystemCapability.Communication.SecureElement
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| aid | number[] | 是 | 在此Channel上选择的Applet的AID或如果没有Applet被选择时空的数组。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Channel](arkts-connectivity-omapi-channel-i.md)&gt; | 是 | 以callback形式异步返回可用的逻辑Channel对象实例。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
-| [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected or a logical channel is already open to a non-multi-selectable applet. |
-| [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the calling application cannot be granted access to this AID or the default applet on this session. |
-| [3300104](../errorcode-se.md#3300104-se芯片io异常) | IOError, there is a communication problem to the reader or the SE. |
-
-**示例**
-
-参见 [openLogicalChannel](#openlogicalchannel)
+<a id="openlogicalchannel-2"></a>
 
 ## openLogicalChannel
 
@@ -695,8 +643,8 @@ openLogicalChannel(aid: number[], p2: number): Promise<Channel>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
 | [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected or a logical channel is already open to a non-multi-selectable applet. |
 | [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the calling application cannot be granted access to this AID or the default applet on this session. |
@@ -704,7 +652,35 @@ openLogicalChannel(aid: number[], p2: number): Promise<Channel>
 
 **示例**
 
-参见 [openLogicalChannel](#openlogicalchannel)
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { omapi } from '@kit.ConnectivityKit';
+
+let seSession : omapi.Session;
+let seChannel : omapi.Channel;
+let aidArray : number[] = [0xA0, 0x00, 0x00, 0x00, 0x03, 0x10, 0x10];
+let p2 : number = 0x00;
+
+// 在使用seSession之前，需要对seSession进行初始化
+function secureElementDemo() {
+    try {
+        // 改为在此channel上选择的App的aid
+        seSession.openLogicalChannel(aidArray, p2).then((data) => {
+            seChannel = data;
+        }).catch((error : BusinessError) => {
+            hilog.error(0x0000, 'testTag', 'openLogicalChannel error %{public}s', JSON.stringify(error));
+        });
+    } catch (exception) {
+        hilog.error(0x0000, 'testTag', 'openLogicalChannel exception %{public}s', JSON.stringify(exception));
+    }
+    if (seChannel == undefined) {
+        hilog.error(0x0000, 'testTag', 'seChannel invalid.');
+        return;
+    }
+}
+```
+
+<a id="openlogicalchannel-3"></a>
 
 ## openLogicalChannel
 
@@ -730,8 +706,8 @@ openLogicalChannel(aid: number[], p2: number, callback: AsyncCallback<Channel>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
 | [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected or a logical channel is already open to a non-multi-selectable applet. |
 | [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the calling application cannot be granted access to this AID or the default applet on this session. |
@@ -739,4 +715,32 @@ openLogicalChannel(aid: number[], p2: number, callback: AsyncCallback<Channel>):
 
 **示例**
 
-参见 [openLogicalChannel](#openlogicalchannel)
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { omapi } from '@kit.ConnectivityKit';
+
+let seSession : omapi.Session;
+let seChannel : omapi.Channel;
+let aidArray : number[] = [0xA0, 0x00, 0x00, 0x00, 0x03, 0x10, 0x10];
+let p2 : number = 0x00;
+
+// 在使用seSession之前，需要对seSession进行初始化
+function secureElementDemo() {
+    try {
+        // 改为在此channel上选择的App的aid
+        seSession.openLogicalChannel(aidArray, p2, (error, data) => {
+            if (error) {
+                hilog.error(0x0000, 'testTag', 'openLogicalChannel error %{public}s', JSON.stringify(error));
+            } else {
+                seChannel = data;
+            }
+        });
+    } catch (exception) {
+        hilog.error(0x0000, 'testTag', 'openLogicalChannel exception %{public}s', JSON.stringify(exception));
+    }
+    if (seChannel == undefined) {
+        hilog.error(0x0000, 'testTag', 'seChannel invalid.');
+        return;
+    }
+}
+```

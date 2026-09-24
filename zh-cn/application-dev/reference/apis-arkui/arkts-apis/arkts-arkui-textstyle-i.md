@@ -1,5 +1,9 @@
 # TextStyle
 
+```TypeScript
+declare interface TextStyle
+```
+
 弹窗中message的文本样式，包含文本截断方式等。
 
 **起始版本：** 12

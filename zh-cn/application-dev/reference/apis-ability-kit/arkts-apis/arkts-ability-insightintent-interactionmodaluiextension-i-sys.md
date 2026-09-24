@@ -1,10 +1,14 @@
 # InteractionModalUIExtension（系统接口）
 
+```TypeScript
+interface InteractionModalUIExtension extends InteractionUI
+```
+
 定义当意图执行完成时模态UIExtension要显示为交互界面的信息，不支持分布式。
 
 **继承/实现关系：** InteractionModalUIExtension extends [InteractionUI](arkts-ability-insightintent-interactionui-i-sys.md)
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -26,7 +30,7 @@ abilityName: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,7 +48,7 @@ bundleName: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,7 +66,7 @@ interactionUIType: 'MODAL_UIEXTENSION'
 
 **类型：** 'MODAL_UIEXTENSION'
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -80,7 +84,7 @@ moduleName: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -98,7 +102,7 @@ parameters: Record<string, Object>
 
 **类型：** Record&lt;string, Object&gt;
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -116,7 +120,7 @@ UIExtension的类型。
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -134,7 +138,7 @@ uri: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -8,6 +8,8 @@ typedef struct FileShare_PolicyErrorResult {...} FileShare_PolicyErrorResult
 
 授予或激活权限失败的URI策略结果，用于记录失败URI、错误码和失败原因。
 
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
 **起始版本：** 12
 
 **相关模块：** [fileShare](capi-fileshare.md)

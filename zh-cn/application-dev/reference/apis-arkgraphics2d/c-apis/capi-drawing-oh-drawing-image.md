@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Image OH_Drawing_Image
 
 定义一个用于描述绘制二维像素数组的图片。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)

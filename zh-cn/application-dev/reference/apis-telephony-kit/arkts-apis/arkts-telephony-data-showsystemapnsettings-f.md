@@ -40,8 +40,18 @@ function showSystemApnSettings(context: Context): Promise<void>
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { data } from '@kit.TelephonyKit';
+import { common } from '@kit.AbilityKit';
+
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+data.showSystemApnSettings(context).then(() => {
+  console.info("showSystemApnSettings success");
+}).catch(() => {
+  console.error("showSystemApnSettings failed");
+});
 ```

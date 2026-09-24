@@ -1,5 +1,9 @@
 # ConstraintChangeInfo (System API)
 
+```TypeScript
+interface ConstraintChangeInfo
+```
+
 Defines the constraint change information.
 
 **Since:** 23

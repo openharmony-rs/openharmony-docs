@@ -1,5 +1,9 @@
 # FormType
 
+```TypeScript
+enum FormType
+```
+
 Type of form.
 
 **Since:** 9

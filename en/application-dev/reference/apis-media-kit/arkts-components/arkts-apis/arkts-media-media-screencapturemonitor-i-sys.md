@@ -1,5 +1,9 @@
 # ScreenCaptureMonitor (System API)
 
+```TypeScript
+interface ScreenCaptureMonitor
+```
+
 A class that provides APIs to query and monitor the system screen recorder status. Before calling any API, you must use getScreenCaptureMonitor() to obtain a ScreenCaptureMonitor instance.
 
 **Since:** 18
@@ -67,6 +71,16 @@ Subscribes to state change events of the system screen recorder. From the Screen
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
+
+**Examples**
+
+```TypeScript
+// This event is reported when the state of the system screen recorder changes.
+screenCaptureMonitor.on('systemScreenRecorder', (event: media.ScreenCaptureEvent) => { 
+  // Set the 'systemScreenRecorder' event callback.
+  console.info(`system ScreenRecorder event: ${event}`);
+})
+```
 
 ## isSystemScreenRecorderWorking
 

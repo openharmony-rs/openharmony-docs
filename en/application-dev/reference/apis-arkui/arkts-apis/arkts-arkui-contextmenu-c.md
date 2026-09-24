@@ -1,5 +1,9 @@
 # ContextMenu
 
+```TypeScript
+declare class ContextMenu
+```
+
 Defines Close contextMenu.
 
 **Since:** 11

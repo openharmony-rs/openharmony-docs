@@ -1,5 +1,9 @@
 # GnssFenceType (System API)
 
+```TypeScript
+export enum GnssFenceType
+```
+
 Enum for GNSS fence type.
 
 **Since:** 26.0.0

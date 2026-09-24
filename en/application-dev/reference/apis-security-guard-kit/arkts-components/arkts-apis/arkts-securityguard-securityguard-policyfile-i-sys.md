@@ -1,5 +1,9 @@
 # PolicyFile (System API)
 
+```TypeScript
+interface PolicyFile
+```
+
 Provides policy file information.
 
 @interface PolicyFile

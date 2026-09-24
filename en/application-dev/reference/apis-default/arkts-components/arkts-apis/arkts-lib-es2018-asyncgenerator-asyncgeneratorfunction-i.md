@@ -1,5 +1,9 @@
 # AsyncGeneratorFunction
 
+```TypeScript
+interface AsyncGeneratorFunction
+```
+
 ## Modules to Import
 
 ```TypeScript

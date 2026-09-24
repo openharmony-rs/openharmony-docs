@@ -1,5 +1,9 @@
 # CapsuleSegmentButtonOptions
 
+```TypeScript
+interface CapsuleSegmentButtonOptions extends CapsuleSegmentButtonConstructionOptions
+```
+
 胶囊类分段按钮选项。继承自[CapsuleSegmentButtonConstructionOptions](arkts-arkui-arkui-advanced-segmentbutton-capsulesegmentbuttonconstructionoptions-i.md)。
 
 **继承/实现关系：** CapsuleSegmentButtonOptions extends [CapsuleSegmentButtonConstructionOptions](arkts-arkui-arkui-advanced-segmentbutton-capsulesegmentbuttonconstructionoptions-i.md)

@@ -8,6 +8,8 @@ typedef struct ArkUI_SystemFontStyleEvent ArkUI_SystemFontStyleEvent
 
 Defines parameter used by the system font style callback event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

@@ -1,5 +1,9 @@
 # EditableLeftIconTypeV2
 
+```TypeScript
+export declare enum EditableLeftIconTypeV2
+```
+
 Declaration of the left icon type.
 
 **Since:** 26.0.0

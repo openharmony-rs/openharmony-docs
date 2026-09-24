@@ -8,6 +8,8 @@ struct OhosImageComponent {...}
 
 定义图像组件信息。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **相关模块：** [Image](capi-image.md)

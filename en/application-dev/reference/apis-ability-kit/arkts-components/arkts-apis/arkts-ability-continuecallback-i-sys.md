@@ -1,5 +1,9 @@
 # ContinueCallback (System API)
 
+```TypeScript
+export interface ContinueCallback
+```
+
 ContinueCallback registered for notify continue result.
 
 @interface ContinueCallback

@@ -1,5 +1,9 @@
 # Filter
 
+```TypeScript
+interface Filter
+```
+
 Filter效果类，用于将模糊、边缘像素扩展、水波纹等效果添加到组件上。在调用Filter的方法前，需要先通过[createFilter](arkts-arkgraphics2d-uieffect-createfilter-f.md)创建一个Filter实例。
 
 **起始版本：** 12
@@ -108,8 +112,8 @@ hdrBrightnessRatio(ratio: number): Filter
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。<br>**适用版本：** 20 - 23 |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败，应用无权限使用该API，需要申请权限。<br>**适用版本：** 24+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。<br>**适用版本：** 20 - 23 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败，应用无权限使用该API，需要申请权限。<br>**适用版本：** 24+ |
 
 **示例**
 

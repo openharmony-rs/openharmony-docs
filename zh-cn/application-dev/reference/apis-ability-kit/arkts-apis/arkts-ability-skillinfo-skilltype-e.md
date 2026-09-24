@@ -1,5 +1,9 @@
 # SkillType
 
+```TypeScript
+export enum SkillType
+```
+
 枚举Skill类型。
 
 @enum { int }

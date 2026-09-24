@@ -1,5 +1,9 @@
 # HuksCryptoExtensionResult
 
+```TypeScript
+export interface HuksCryptoExtensionResult
+```
+
 Represents the operation result of crypto extension.
 
 **Since:** 22

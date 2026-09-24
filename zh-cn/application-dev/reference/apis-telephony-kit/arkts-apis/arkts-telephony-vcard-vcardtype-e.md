@@ -1,5 +1,9 @@
 # VCardType
 
+```TypeScript
+export enum VCardType
+```
+
 VCard版本类型。
 
 **起始版本：** 23

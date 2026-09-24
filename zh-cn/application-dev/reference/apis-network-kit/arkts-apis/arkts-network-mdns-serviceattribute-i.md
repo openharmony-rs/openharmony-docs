@@ -1,5 +1,9 @@
 # ServiceAttribute
 
+```TypeScript
+export interface ServiceAttribute
+```
+
 MDNS服务属性信息。
 
 **起始版本：** 10

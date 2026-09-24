@@ -1,5 +1,9 @@
 # UpdateSimMessageOptions（系统接口）
 
+```TypeScript
+export interface UpdateSimMessageOptions
+```
+
 更新SIM卡消息选项。
 
 **起始版本：** 7

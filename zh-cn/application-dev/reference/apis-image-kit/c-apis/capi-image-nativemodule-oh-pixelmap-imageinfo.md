@@ -6,7 +6,9 @@ struct OH_Pixelmap_ImageInfo
 
 ## 概述
 
-OH_Pixelmap_ImageInfo是Native层封装的图像像素信息结构体，保存图像像素的宽高、行跨距、像素格式、透明度类型、 是否为HDR等信息，适用于在Native层查询Pixelmap属性的场景。 <br>创建OH_Pixelmap_ImageInfo对象使用[OH_PixelmapImageInfo_Create](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_create)函数， 使用完成后需调用[OH_PixelmapImageInfo_Release](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_release)函数释放资源，两者需配对使用，否则会导致内存泄漏。
+OH_Pixelmap_ImageInfo是Native层封装的图像像素信息结构体，保存图像像素的宽高、行跨距、像素格式、透明度类型、 是否为HDR等信息，适用于在Native层查询Pixelmap属性的场景。 <br>创建OH_Pixelmap_ImageInfo对象使用{@link OH_PixelmapImageInfo_Create}函数，<br>使用完成后需调用{@link OH_PixelmapImageInfo_Release}函数释放资源，两者需配对使用，否则会导致内存泄漏。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
 

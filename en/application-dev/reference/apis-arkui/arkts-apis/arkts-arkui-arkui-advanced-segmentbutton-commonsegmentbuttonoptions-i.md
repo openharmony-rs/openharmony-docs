@@ -1,5 +1,9 @@
 # CommonSegmentButtonOptions
 
+```TypeScript
+interface CommonSegmentButtonOptions
+```
+
 Defines the customizable attributes of a segment button component.
 
 **Since:** 11
@@ -18,11 +22,13 @@ import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray, Tab
 backgroundBlurStyle?: BlurStyle
 ```
 
-Background blur style of the component.
+Background blur material.
 
-If the value is **undefined**, it defaults to **BlurStyle.NONE**.
+Default value: **BlurStyle.NONE**
 
-**Type:** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+If the value is **undefined**, the default value is used.
+
+**Type:** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **Since:** 11
 
@@ -38,17 +44,17 @@ If the value is **undefined**, it defaults to **BlurStyle.NONE**.
 backgroundBorderRadius?: LengthMetrics
 ```
 
-Container border radius.
+Border radius of the overall container of the segment button.
 
 **NOTE:** 
 
 This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.
 
-For capsule-style multi-selection segmented buttons (with **type** being **"capsule"** and **multiply** being **true**), this attribute does not take effect and **itemBorderRadius** must be used to set the border radius.
+For capsule-type multi-select segment buttons (**type** is **"capsule"** and **multiply** is **true**), this attribute does not take effect. Use **itemBorderRadius** to configure the radius instead.
 
-The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.
+The radius size is limited by the component size. The maximum value is half of the component width or height. Percentage setting is not supported. If the value exceeds the maximum, it is automatically corrected to the maximum. If a percentage is used, the default value is used.
 
-Default value: **&#36;r('sys.float.segmentbutton_container_shape')**
+Default value: `$r('sys.float.segmentbutton_container_shape')`
 
 If the value is **undefined**, the default value is used.
 
@@ -68,9 +74,9 @@ If the value is **undefined**, the default value is used.
 backgroundColor?: ResourceColor
 ```
 
-Background color.
+Color of the background.
 
-Default value: **&#36;r('sys.color.ohos_id_color_button_normal')**
+Default value: **$r('sys.color.ohos_id_color_button_normal')**
 
 If the value is **undefined**, the default value is used.
 
@@ -92,7 +98,13 @@ If the value is **undefined**, the default value is used.
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-Set system-styled materials for the component. Different materials have different effects, which can influence the backgroundColor, border, shadow, and other visual attributes of the component.
+System material of the background of the segment button component. Different system materials have different properties and produce different effects. After a material is passed in, the animation effects of the **SegmentButton** change.
+
+For capsule-type multi-select segment buttons (type is **"capsule"** and **multiply** is **true**), this attribute does not take effect.
+
+Default value: no material effect.
+
+Since API version 26.0.0, except for capsule-type multi-select segment buttons (**type** is **"capsule"** and **multiply** is **true**), when **backgroundSystemMaterial** is set to a system material with automatic inverted color, **fontColor** and **selectedFontColor** use special system resources that support inverted color, and the colors automatically adapt to the inverted color of the material background color.
 
 **Type:** [uiMaterial.Material](arkts-arkui-uimaterial-material-c.md)
 
@@ -110,7 +122,7 @@ Set system-styled materials for the component. Different materials have differen
 borderRadiusMode?: BorderRadiusMode
 ```
 
-Border radius mode, used to control the border radius calculation method.
+Border radius mode, which controls the radius calculation method.
 
 Default value: **BorderRadiusMode.DEFAULT**
 
@@ -138,9 +150,9 @@ Button padding.
 
 Default value:
 
-For icon buttons and text buttons: { top: 4, right: 8, bottom: 4, left: 8 }
+For icon-only buttons and text-only buttons: `{ top: 4, right: 8, bottom: 4, left: 8 }`
 
-For icon+text buttons: { top: 6, right: 8, bottom: 6, left: 8 }
+For icon+text buttons: `{ top: 6, right: 8, bottom: 6, left: 8 }`
 
 Unit: vp
 
@@ -164,7 +176,7 @@ If the value is **undefined**, the default value is used.
 direction?: Direction
 ```
 
-Layout direction of the component.
+Layout direction.
 
 Default value: **Direction.Auto**
 
@@ -186,9 +198,11 @@ If the value is **undefined**, the default value is used.
 fontColor?: ResourceColor
 ```
 
-Text color of the unselected button.
+Text color of the button in unselected state.
 
-If the value is **undefined**, the color is &#36;r('sys.color.ohos_id_color_text_secondary').
+Default value: **$r('sys.color.ohos_id_color_text_secondary')**
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -206,9 +220,11 @@ If the value is **undefined**, the color is &#36;r('sys.color.ohos_id_color_text
 fontSize?: DimensionNoPercentage
 ```
 
-Font size of the unselected item. It cannot be set in percentage.
+Font size of the button in unselected state (percentage setting is not supported).
 
-Default value: **&#36;r('sys.float.ohos_id_text_size_body2')**
+Default value: **$r('sys.float.ohos_id_text_size_body2')**
+
+Unit: fp
 
 If the value is **undefined**, the default value is used.
 
@@ -230,7 +246,7 @@ If the value is **undefined**, the default value is used.
 fontWeight?: FontWeight
 ```
 
-Font weight of the unselected item.
+Font weight of the button in unselected state.
 
 Default value: **FontWeight.Regular**
 
@@ -254,9 +270,9 @@ If the value is **undefined**, the default value is used.
 imageSize?: SizeOptions
 ```
 
-Defines the image size.
+Image size.
 
-Default value: { width: 24, height: 24 }
+Default value: **{ width: 24, height: 24 }**
 
 Unit: vp
 
@@ -264,7 +280,7 @@ If the value is **undefined**, the default value is used.
 
 **NOTE:** 
 
-The **imageSize** property takes effect only for icon-only and icon-with-text buttons.
+The `imageSize` attribute takes effect only for icon buttons and icon + text buttons, and does not respond on text- only buttons.
 
 **Type:** [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
@@ -284,17 +300,17 @@ The **imageSize** property takes effect only for icon-only and icon-with-text bu
 itemBorderRadius?: LengthMetrics
 ```
 
-Individual button border radius.
+Border radius of the button items in the segment button.
 
 **NOTE:** 
 
 This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.
 
-For capsule-style multi-selection segmented buttons (with **type** being **"capsule"** and **multiply** being **true**), this attribute only affects end items.
+For capsule-type multi-select segment buttons (**type** is **"capsule"** and **multiply** is **true**), only the radius of the options at both ends can be controlled.
 
-The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.
+The radius size is limited by the component size. The maximum value is half of the component width or height. Percentage setting is not supported. If the value exceeds the maximum, it is automatically corrected to the maximum. If a percentage is used, the default value is used.
 
-Default value: **&#36;r('sys.float.segmentbutton_selected_background_shape')**
+Default value: `$r('sys.float.segmentbutton_selected_background_shape')`
 
 If the value is **undefined**, the default value is used.
 
@@ -314,13 +330,13 @@ If the value is **undefined**, the default value is used.
 localizedButtonPadding?: LocalizedPadding
 ```
 
-Button padding.
+Button padding, which supports adaptive adjustment based on the layout direction (LTR/RTL).
 
 Default value:
 
-Icon button and text button: **{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }**.
+For icon-only buttons and text-only buttons: `{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }`
 
-Icon + text button: **{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) **}.
+For icon + text buttons: `{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) }`
 
 If the value is **undefined**, the default value is used.
 
@@ -342,9 +358,11 @@ If the value is **undefined**, the default value is used.
 localizedTextPadding?: LocalizedPadding
 ```
 
-Text padding.
+Text padding, which supports adaptive adjustment based on the layout direction (LTR/RTL).
 
 Default value: **0**
+
+Unit: vp
 
 If the value is **undefined**, the default value is used.
 
@@ -364,11 +382,15 @@ If the value is **undefined**, the default value is used.
 selectedBackgroundColor?: ResourceColor
 ```
 
-Background color of the selected button.
+Color of the background for the button in selected state.
 
-When the value is **undefined** and **type** is **"tab"**, the background color is **&#36;r('sys.color.segment_button_checked_foreground_color')**.
+Default value:
 
-When **type** is **"capsule"**, the background color is **&#36;r('sys.color.ohos_id_color_emphasize')**.
+When **type** is **"tab"**, the default value is `$r('sys.color.segment_button_checked_foreground_color')`.
+
+When **type** is **"capsule"**, the default value is `$r('sys.color.ohos_id_color_emphasize')`.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -386,11 +408,15 @@ When **type** is **"capsule"**, the background color is **&#36;r('sys.color.ohos
 selectedFontColor?: ResourceColor
 ```
 
-Text color of the selected button.
+Text color of the button in selected state.
 
-If the value is **undefined**, the color is &#36;r('sys.color.ohos_id_color_text_primary') when type is set to **"tab"**.
+Default value:
 
-When type is set to **"capsule"**, the color is &#36;r('sys.color.ohos_id_color_foreground_contrary').
+When type is **"tab"**, the default value is `$r('sys.color.ohos_id_color_text_primary')`.
+
+When type is **"capsule"**, the default value is `$r('sys.color.ohos_id_color_foreground_contrary')`.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -408,9 +434,11 @@ When type is set to **"capsule"**, the color is &#36;r('sys.color.ohos_id_color_
 selectedFontSize?: DimensionNoPercentage
 ```
 
-Font size of the selected item. It cannot be set in percentage.
+Font size of the button in selected state (percentage setting is not supported).
 
-Default value: **&#36;r('sys.float.ohos_id_text_size_body2')**
+Default value: **$r('sys.float.ohos_id_text_size_body2')**
+
+Unit: fp
 
 If the value is **undefined**, the default value is used.
 
@@ -432,7 +460,7 @@ If the value is **undefined**, the default value is used.
 selectedFontWeight?: FontWeight
 ```
 
-Font weight of the selected item.
+Font weight of the button in selected state.
 
 Default value: **FontWeight.Medium**
 

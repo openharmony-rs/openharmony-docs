@@ -35,12 +35,8 @@ settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS, (uri:string) => {
 })
 ```
 
-```TypeScript
-settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS).then((uri:string) => {
-    console.info(`promise:uri -> ${JSON.stringify(uri)}`)
-})
-```
 
+<a id="geturi-1"></a>
 
 ## getURI
 
@@ -70,4 +66,8 @@ Constructs a URI for a specific name-value pair for monitoring data of the abili
 
 **Examples**
 
-See [getURI](#geturi)
+```TypeScript
+settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS).then((uri:string) => {
+    console.info(`promise:uri -> ${JSON.stringify(uri)}`)
+})
+```

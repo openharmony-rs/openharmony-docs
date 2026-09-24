@@ -1,5 +1,9 @@
 # MediaInfo
 
+```TypeScript
+interface MediaInfo
+```
+
 [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的一个参数。包含了网页中媒体的信息。应用可以根据这些信息来创建接管网页媒体播放的播放器。
 
 **起始版本：** 12

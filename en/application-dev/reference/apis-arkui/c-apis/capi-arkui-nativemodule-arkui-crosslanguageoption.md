@@ -8,6 +8,8 @@ typedef struct ArkUI_CrossLanguageOption ArkUI_CrossLanguageOption
 
 Defines a cross-language configuration option.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

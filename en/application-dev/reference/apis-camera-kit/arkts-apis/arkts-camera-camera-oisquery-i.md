@@ -1,5 +1,9 @@
 # OISQuery
 
+```TypeScript
+interface OISQuery
+```
+
 OIS (Optical Image Stabilization) query interface.
 
 **Since:** 24

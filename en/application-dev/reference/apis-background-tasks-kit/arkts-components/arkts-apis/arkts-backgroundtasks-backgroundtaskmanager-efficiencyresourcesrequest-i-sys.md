@@ -1,5 +1,9 @@
 # EfficiencyResourcesRequest (System API)
 
+```TypeScript
+export interface EfficiencyResourcesRequest
+```
+
 Describes the parameters for requesting efficiency resources.
 
 **Since:** 9

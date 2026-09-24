@@ -8,6 +8,8 @@ typedef struct NativeChildProcess_FdList {...} NativeChildProcess_FdList
 
 传递给子进程的文件描述符信息列表，文件描述符记录个数不能超过16个。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 13
 
 **相关模块：** [ChildProcess](capi-childprocess.md)

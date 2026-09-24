@@ -1,5 +1,9 @@
 # CustomComponentLifecycleState
 
+```TypeScript
+export declare enum CustomComponentLifecycleState
+```
+
 Current lifecycle status of a custom component.
 
 **Since:** 23

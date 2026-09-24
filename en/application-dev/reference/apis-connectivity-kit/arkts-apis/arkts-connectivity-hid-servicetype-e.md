@@ -1,5 +1,9 @@
 # ServiceType
 
+```TypeScript
+enum ServiceType
+```
+
 Describe the l2cap service type.
 
 **Since:** 23

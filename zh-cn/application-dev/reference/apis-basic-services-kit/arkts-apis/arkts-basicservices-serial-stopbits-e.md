@@ -1,5 +1,9 @@
 # StopBits
 
+```TypeScript
+enum StopBits
+```
+
 表示停止位的枚举。
 
 **起始版本：** 26.0.0

@@ -8,6 +8,8 @@ typedef struct ArkWeb_ProxyObject {...} ArkWeb_ProxyObject
 
 ArkWeb_ProxyObject是注入到Web页面的JavaScript代理对象结构体，用于将一组相关的ArkWeb_ProxyMethod方法组织成对象整体暴露给Web前端。 该结构体指定了对象在JavaScript中的名称（objName）、方法数组（methodList）和方法数量（size），使得Native应用可以向Web页面暴露结构化的API集合。 代理对象通过方法映射机制将Native侧的ArkWeb_ProxyMethod与JavaScript侧的方法调用进行关联，支持方法参数和返回值的自动转换。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 **相关模块：** [Web](capi-web.md)

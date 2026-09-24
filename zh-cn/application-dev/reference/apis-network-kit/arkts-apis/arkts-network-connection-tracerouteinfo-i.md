@@ -1,5 +1,9 @@
 # TraceRouteInfo
 
+```TypeScript
+export interface TraceRouteInfo
+```
+
 路由跟踪信息。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # BundleFlag
 
+```TypeScript
+enum BundleFlag
+```
+
 Enumerates the bundle flags, which indicate the type of bundle information to obtain.
 
 **Since:** 9

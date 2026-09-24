@@ -30,7 +30,7 @@ function getMacAddress(): Promise<Array<MacAddressInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Operation failed. Cannot connect to service. |
 | [2201005](../errorcode-net-ethernet.md#2201005-设备信息不存在) | Device information does not exist. |
 

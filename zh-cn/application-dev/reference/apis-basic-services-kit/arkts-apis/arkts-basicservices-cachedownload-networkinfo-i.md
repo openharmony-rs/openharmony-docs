@@ -1,5 +1,9 @@
 # NetworkInfo
 
+```TypeScript
+interface NetworkInfo
+```
+
 预下载的网络信息。
 
 **起始版本：** 20

@@ -32,38 +32,11 @@ function getAllSessionDescriptors(callback: AsyncCallback<Array<Readonly<AVSessi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
-
-```TypeScript
-import { avSession } from '@kit.AVSessionKit';
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
-              console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`);
-              if (descriptors.length > 0 ) {
-                console.info(`Succeeded in getting session descriptor, isActive: ${descriptors[0].isActive}`);
-                console.info(`Succeeded in getting session descriptor, type: ${descriptors[0].type}`);
-                console.info(`Succeeded in getting session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
 
 ```TypeScript
 import { avSession } from '@kit.AVSessionKit';

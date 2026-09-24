@@ -1,5 +1,9 @@
 # DeviceCapability
 
+```TypeScript
+export class DeviceCapability
+```
+
 表示设备支持的能力。
 
 **起始版本：** 6

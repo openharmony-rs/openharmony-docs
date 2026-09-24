@@ -1,5 +1,9 @@
 # DialCallOptions (System API)
 
+```TypeScript
+export interface DialCallOptions
+```
+
 Provides an option for determining whether a call is a video call.
 
 **Since:** 9
@@ -108,6 +112,8 @@ XCALL type.
 **Type:** [XCallType](arkts-telephony-call-xcalltype-e-sys.md)
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Telephony.CallManager
 

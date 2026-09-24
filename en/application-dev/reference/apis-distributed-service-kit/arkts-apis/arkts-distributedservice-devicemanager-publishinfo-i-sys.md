@@ -1,5 +1,9 @@
 # PublishInfo (System API)
 
+```TypeScript
+interface PublishInfo
+```
+
 Defines published device information.
 
 **Since:** 9

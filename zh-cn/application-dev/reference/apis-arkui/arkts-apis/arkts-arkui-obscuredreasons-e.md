@@ -1,6 +1,10 @@
 # ObscuredReasons
 
-ObscuredReasons.
+```TypeScript
+declare enum ObscuredReasons
+```
+
+设置组件内容的遮罩类型。
 
 **起始版本：** 10
 
@@ -12,7 +16,7 @@ ObscuredReasons.
 PLACEHOLDER = 0
 ```
 
-Displayed data should appear as generic placeholders.
+显示的数据为通用占位符。
 
 **起始版本：** 10
 

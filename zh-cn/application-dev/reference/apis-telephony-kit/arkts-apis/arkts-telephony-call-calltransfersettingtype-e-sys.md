@@ -1,5 +1,9 @@
 # CallTransferSettingType（系统接口）
 
+```TypeScript
+export enum CallTransferSettingType
+```
+
 设置呼叫转移类型。
 
 **起始版本：** 8

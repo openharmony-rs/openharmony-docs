@@ -24,7 +24,7 @@ function getUserId(name: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 用户ID的key。只能包含大小写字母、数字、下划线和 &#36;，不能以数字开头，长度非空且不超过256个字符。 |
+| name | string | 是 | 用户ID的key。只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。 |
 
 **返回值：**
 
@@ -36,7 +36,7 @@ function getUserId(name: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 **示例**
 

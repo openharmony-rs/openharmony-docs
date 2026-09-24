@@ -24,11 +24,11 @@ import { buffer } from '@kit.ArkTS';
 | [byteLength](arkts-arkts-buffer-bytelength-f.md) | Obtains the number of bytes of a string based on the encoding format. |
 | [compare](arkts-arkts-buffer-compare-f.md) | Compares two **Buffer** objects. This API is used for sorting **Buffer** objects. |
 | [concat](arkts-arkts-buffer-concat-f.md) | Concatenates an array of **Buffer** objects of the specified length into a new object. |
-| [from](arkts-arkts-buffer-from-f.md) | Creates a **Buffer** object with the specified array. |
-| [from](arkts-arkts-buffer-from-f.md) | Creates a **Buffer** object of the specified length that shares memory with ArrayBuffer. |
-| [from](arkts-arkts-buffer-from-f.md) | Copies the data of a passed **Buffer** object to create a new **Buffer** object and returns the new one. Creates a **Buffer** object based on the memory of a passed **Uint8Array** object and returns the new object, maintaining the memory association of the data. |
-| [from](arkts-arkts-buffer-from-f.md) | Creates a **Buffer** object based on the specified object. |
-| [from](arkts-arkts-buffer-from-f.md) | Creates a **Buffer** object based on a string in the given encoding format. |
+| [from](arkts-arkts-buffer-from-f.md#from) | Creates a **Buffer** object with the specified array. |
+| [from](arkts-arkts-buffer-from-f.md#from-1) | Creates a **Buffer** object of the specified length that shares memory with ArrayBuffer. |
+| [from](arkts-arkts-buffer-from-f.md#from-3) | Copies the data of a passed **Buffer** object to create a new **Buffer** object and returns the new one. Creates a **Buffer** object based on the memory of a passed **Uint8Array** object and returns the new object, maintaining the memory association of the data. |
+| [from](arkts-arkts-buffer-from-f.md#from-4) | Creates a **Buffer** object based on the specified object. |
+| [from](arkts-arkts-buffer-from-f.md#from-5) | Creates a **Buffer** object based on a string in the given encoding format. |
 | [isBuffer](arkts-arkts-buffer-isbuffer-f.md) | Checks whether the specified object is a **Buffer** object. |
 | [isEncoding](arkts-arkts-buffer-isencoding-f.md) | Checks whether the encoding format is supported. |
 | [transcode](arkts-arkts-buffer-transcode-f.md) | Transcodes a **Buffer** or **Uint8Array** object from one encoding format to another. |

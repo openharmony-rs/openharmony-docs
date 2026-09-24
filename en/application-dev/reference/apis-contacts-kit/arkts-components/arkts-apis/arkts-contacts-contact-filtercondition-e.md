@@ -1,5 +1,9 @@
 # FilterCondition
 
+```TypeScript
+enum FilterCondition
+```
+
 Enumerates filter criteria.
 
 **Since:** 15

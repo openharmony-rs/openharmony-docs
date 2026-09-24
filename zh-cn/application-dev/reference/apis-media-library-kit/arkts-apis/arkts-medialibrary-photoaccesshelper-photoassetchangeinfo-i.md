@@ -1,5 +1,9 @@
 # PhotoAssetChangeInfo
 
+```TypeScript
+interface PhotoAssetChangeInfo
+```
+
 媒体资产（图片/视频）信息。
 
 **起始版本：** 20

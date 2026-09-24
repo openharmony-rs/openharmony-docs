@@ -1,5 +1,9 @@
 # FusionFenceTransition (System API)
 
+```TypeScript
+export interface FusionFenceTransition
+```
+
 Indicates fusion fence transition information.
 
 **Since:** 26.0.0

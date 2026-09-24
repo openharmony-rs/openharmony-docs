@@ -1,5 +1,9 @@
 # AgentUIExtensionAbility
 
+```TypeScript
+declare class AgentUIExtensionAbility extends UIExtensionAbility
+```
+
 The class of agent UI extension ability. This class cannot be used in Harmony Archive(HAR).
 
 @extends UIExtensionAbility

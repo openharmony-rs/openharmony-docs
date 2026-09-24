@@ -1,5 +1,9 @@
 # ReturnMode
 
+```TypeScript
+enum ReturnMode
+```
+
 Enumerates the modes that define how the execution result of an intent is returned to the intent initiator.
 
 **Since:** 23

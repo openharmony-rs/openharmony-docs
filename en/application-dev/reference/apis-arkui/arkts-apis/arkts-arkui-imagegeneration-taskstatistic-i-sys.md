@@ -1,5 +1,9 @@
 # TaskStatistic (System API)
 
+```TypeScript
+interface TaskStatistic
+```
+
 Statistics Related to AI Image Generation Tasks.
 
 @interface TaskStatistic

@@ -8,6 +8,8 @@ typedef struct GameDevice_DeviceInfo GameDevice_DeviceInfo
 
 定义设备信息。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **相关模块：** [GameController](capi-gamecontroller.md)

@@ -1,5 +1,9 @@
 # LteCellInformation (System API)
 
+```TypeScript
+export interface LteCellInformation
+```
+
 Obtains LTE cell information.
 
 **Since:** 8

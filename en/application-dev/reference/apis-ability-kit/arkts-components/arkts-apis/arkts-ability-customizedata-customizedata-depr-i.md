@@ -1,5 +1,9 @@
 # CustomizeData
 
+```TypeScript
+export interface CustomizeData
+```
+
 The CustomizeData module provides custom metadata.
 
 > **NOTE:** 

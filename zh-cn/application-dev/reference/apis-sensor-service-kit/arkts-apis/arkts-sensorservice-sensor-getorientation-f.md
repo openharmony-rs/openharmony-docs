@@ -29,7 +29,7 @@ function getOrientation(rotationMatrix: Array<number>, callback: AsyncCallback<A
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**
@@ -63,31 +63,8 @@ try {
 }
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 使用try catch对可能出现的异常进行捕获
-try {
-  let preRotationMatrix = [
-    1, 0, 0,
-    0, 0.87, -0.50,
-    0, 0.50, 0.87
-  ];
-  const promise = sensor.getOrientation(preRotationMatrix);
-  promise.then((data: Array<number>) => {
-    for (let i = 0; i < data.length; i++) {
-      console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
-    }
-  }, (err: BusinessError) => {
-    console.error(`Failed to getOrientation. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to getOrientation Code: ${e.code}, message: ${e.message}`);
-}
-```
-
+<a id="getorientation-1"></a>
 
 ## getOrientation
 
@@ -117,9 +94,32 @@ function getOrientation(rotationMatrix: Array<number>): Promise<Array<number>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**
 
-参见 getOrientation
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let preRotationMatrix = [
+    1, 0, 0,
+    0, 0.87, -0.50,
+    0, 0.50, 0.87
+  ];
+  const promise = sensor.getOrientation(preRotationMatrix);
+  promise.then((data: Array<number>) => {
+    for (let i = 0; i < data.length; i++) {
+      console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
+    }
+  }, (err: BusinessError) => {
+    console.error(`Failed to getOrientation. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to getOrientation Code: ${e.code}, message: ${e.message}`);
+}
+```

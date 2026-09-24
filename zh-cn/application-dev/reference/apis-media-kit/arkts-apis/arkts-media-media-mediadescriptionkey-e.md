@@ -1,5 +1,9 @@
 # MediaDescriptionKey
 
+```TypeScript
+enum MediaDescriptionKey
+```
+
 媒体信息描述枚举。
 
 **起始版本：** 8

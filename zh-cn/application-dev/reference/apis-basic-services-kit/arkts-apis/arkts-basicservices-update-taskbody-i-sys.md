@@ -1,5 +1,9 @@
 # TaskBody（系统接口）
 
+```TypeScript
+export interface TaskBody
+```
+
 任务数据。
 
 **起始版本：** 9

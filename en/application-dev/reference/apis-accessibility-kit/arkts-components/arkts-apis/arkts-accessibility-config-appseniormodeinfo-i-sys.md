@@ -1,5 +1,9 @@
 # AppSeniorModeInfo (System API)
 
+```TypeScript
+interface AppSeniorModeInfo
+```
+
 Senior mode state information of an app.
 
 **Since:** 26.0.0

@@ -35,23 +35,23 @@ import { inputMethod } from '@kit.IMEKit';
 | [offAttachmentDidFail](arkts-ime-inputmethod-offattachmentdidfail-f.md) | Unsubscribes from attachment failure events. This API uses an asynchronous callback to return the result. |
 | [onAttachmentDidFail](arkts-ime-inputmethod-onattachmentdidfail-f.md) | Subscribes to attachment failure events. This API uses an asynchronous callback to return the result. |
 | [setSimpleKeyboardEnabled](arkts-ime-inputmethod-setsimplekeyboardenabled-f.md) | Enables or disables the simple keyboard. |
-| [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md) | Switches to a specified subtype of a specified input method. This API uses an asynchronous callback to return the result.<br> <br> |
-| [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md) | Switches to a specified subtype of a specified input method. This API uses a promise to return the result.<br> <br> |
-| [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md) | Switches to another subtype of this input method. This API uses an asynchronous callback to return the result.<br> <br> |
-| [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md) | Switches to another subtype of this input method. This API uses a promise to return the result.<br> <br> |
-| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md) | Switches to another input method. This API uses an asynchronous callback to return the result.<br> <br> |
-| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md) | Switches to another input method. This API uses a promise to return the result.<br> <br> |
+| [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md#switchcurrentinputmethodandsubtype) | Switches to a specified subtype of a specified input method. This API uses an asynchronous callback to return the result.<br> <br> |
+| [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md#switchcurrentinputmethodandsubtype-1) | Switches to a specified subtype of a specified input method. This API uses a promise to return the result.<br> <br> |
+| [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md#switchcurrentinputmethodsubtype) | Switches to another subtype of this input method. This API uses an asynchronous callback to return the result.<br> <br> |
+| [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md#switchcurrentinputmethodsubtype-1) | Switches to another subtype of this input method. This API uses a promise to return the result.<br> <br> |
+| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md#switchinputmethod) | Switches to another input method. This API uses an asynchronous callback to return the result.<br> <br> |
+| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md#switchinputmethod-1) | Switches to another input method. This API uses a promise to return the result.<br> <br> |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f-sys.md) | Get the current input method of a specified user. |
-| [getCurrentInputMethodSubtype](arkts-ime-inputmethod-getcurrentinputmethodsubtype-f-sys.md) | Get the current input method subtype of a specified user. |
-| [getDefaultInputMethod](arkts-ime-inputmethod-getdefaultinputmethod-f-sys.md) | Get the default input method of a specified user. |
-| [getSystemInputMethodConfigAbility](arkts-ime-inputmethod-getsysteminputmethodconfigability-f-sys.md) | Get the system input method config ability of a specified user. |
-| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f-sys.md) | Switches to another input method. This API uses a promise to return the result. |
+| [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f-sys.md#getcurrentinputmethod-1) | Get the current input method of a specified user. |
+| [getCurrentInputMethodSubtype](arkts-ime-inputmethod-getcurrentinputmethodsubtype-f-sys.md#getcurrentinputmethodsubtype-1) | Get the current input method subtype of a specified user. |
+| [getDefaultInputMethod](arkts-ime-inputmethod-getdefaultinputmethod-f-sys.md#getdefaultinputmethod-1) | Get the default input method of a specified user. |
+| [getSystemInputMethodConfigAbility](arkts-ime-inputmethod-getsysteminputmethodconfigability-f-sys.md#getsysteminputmethodconfigability-1) | Get the system input method config ability of a specified user. |
+| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f-sys.md#switchinputmethod-2) | Switches to another input method. This API uses a promise to return the result. |
 | [switchInputMethodWithUserId](arkts-ime-inputmethod-switchinputmethodwithuserid-f-sys.md) | Switch input method and subtype of a specified user. |
 <!--DelEnd-->
 

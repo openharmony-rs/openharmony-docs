@@ -1,6 +1,10 @@
 # UIFontGenericInfo
 
-系统的UI字体配置信息。
+```TypeScript
+interface UIFontGenericInfo
+```
+
+系统所支持的通用字体集列表。
 
 **起始版本：** 11
 

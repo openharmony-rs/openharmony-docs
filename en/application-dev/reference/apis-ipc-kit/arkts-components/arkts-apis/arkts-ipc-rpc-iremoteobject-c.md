@@ -1,5 +1,9 @@
 # IRemoteObject
 
+```TypeScript
+abstract class IRemoteObject
+```
+
 Provides methods to query of obtain interface descriptors, add or delete death notifications, dump object status to specific files, and send messages.
 
 **Since:** 7
@@ -257,6 +261,8 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain the passed object instance. |
 
+<a id="sendmessagerequest-1"></a>
+
 ## sendMessageRequest
 
 ```TypeScript
@@ -322,6 +328,8 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 | --- | --- |
 | boolean | Returns **true** if the message is sent successfully; returns **false** otherwise. |
 
+<a id="sendrequest-1"></a>
+
 ## sendRequest
 
 ```TypeScript
@@ -357,6 +365,8 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 | Type | Description |
 | --- | --- |
 | Promise&lt;[SendRequestResult](arkts-ipc-rpc-sendrequestresult-i.md)&gt; | Promise used to return a **sendRequestResult** instance. |
+
+<a id="sendrequest-2"></a>
 
 ## sendRequest
 

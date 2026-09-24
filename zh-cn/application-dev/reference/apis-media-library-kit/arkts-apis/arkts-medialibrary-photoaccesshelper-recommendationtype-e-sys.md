@@ -1,5 +1,9 @@
 # RecommendationType
 
+```TypeScript
+enum RecommendationType
+```
+
 枚举，推荐的图片类型。
 
 **起始版本：** 11
@@ -93,6 +97,22 @@ GAUSSIAN_SPLAT_3D = 17
 GAUSSIAN_SPLAT_3D表示通过3D高斯技术生成的照片会被推荐。
 
 **起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## FEATURED_SINGLE_PET
+
+```TypeScript
+FEATURED_SINGLE_PET = 18
+```
+
+推荐宠物。
+
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -2,15 +2,7 @@
 
 ```TypeScript
 type AxisType =
-    'touchmajor'
-    | 'touchminor'
-    | 'orientation'
-    | 'x'
-    | 'y'
-    | 'pressure'
-    | 'toolminor'
-    | 'toolmajor'
-    | 'null'
+    'touchmajor' | 'touchminor' | 'orientation' | 'x' | 'y' | 'pressure' | 'toolminor' | 'toolmajor' | 'null'
 ```
 
 Defines the axis type of an input device.

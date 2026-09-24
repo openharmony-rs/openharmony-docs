@@ -1,5 +1,9 @@
 # ResourceFlag（系统接口）
 
+```TypeScript
+enum ResourceFlag
+```
+
 资源信息标志，指示需要获取的资源信息的内容。
 
 **起始版本：** 11
@@ -70,7 +74,7 @@ GET_RESOURCE_INFO_WITH_SORTED_BY_LABEL = 0x00000008
 GET_RESOURCE_INFO_WITH_DRAWABLE_DESCRIPTOR = 0x00000010
 ```
 
-用于获取应用图标的drawableDescriptor对象。
+用于获取应用图标的[drawableDescriptor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor.md)对象。
 
 **起始版本：** 12
 

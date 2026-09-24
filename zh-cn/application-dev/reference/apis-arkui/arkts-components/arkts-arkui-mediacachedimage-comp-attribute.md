@@ -1,5 +1,9 @@
 # MediaCachedImage属性/事件
 
+```TypeScript
+declare class MediaCachedImageAttribute extends ImageAttribute
+```
+
 从 ImageAttribute 继承的 MediaCachedImage 属性。
 
 @extends ImageAttribute

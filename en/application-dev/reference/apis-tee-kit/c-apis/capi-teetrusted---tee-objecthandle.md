@@ -8,6 +8,8 @@ typedef struct __TEE_ObjectHandle TEE_ObjectHandleVar
 
 Defines the <b>__TEE_ObjectHandle</b> struct.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)

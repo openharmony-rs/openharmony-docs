@@ -1,5 +1,9 @@
 # SearchSuggestionResult (System API)
 
+```TypeScript
+interface SearchSuggestionResult
+```
+
 Search suggestion result.
 
 **Since:** 26.0.0

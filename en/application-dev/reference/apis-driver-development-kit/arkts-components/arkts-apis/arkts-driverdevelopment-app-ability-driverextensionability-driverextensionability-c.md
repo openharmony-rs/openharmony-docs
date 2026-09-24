@@ -1,5 +1,9 @@
 # DriverExtensionAbility
 
+```TypeScript
+declare class DriverExtensionAbility
+```
+
 The **DriverExtensionAbility** module provides the ExtensionAbility related to drivers. It provides lifecycle callbacks to be invoked when a driver is created, destroyed, connected, or disconnected.
 
 **Since:** 10
@@ -62,8 +66,33 @@ class DriverExt extends DriverExtensionAbility {
 }
 ```
 
-```TypeScript
 If the returned [RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md) object depends on an asynchronous API, you can use the asynchronous lifecycle.
+
+```TypeScript
+import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
+import { rpc } from '@kit.IPCKit';
+import { Want } from '@kit.AbilityKit';
+
+class StubTest extends rpc.RemoteObject{
+    constructor(des : string) {
+        super(des);
+    }
+    onRemoteMessageRequest(code : number, data : rpc.MessageSequence, reply : rpc.MessageSequence, option : rpc.MessageOption) {
+      // This interface must be overridden.
+      return true;
+    }
+}
+async function getDescriptor() {
+    // Call the asynchronous function.
+    return "asyncTest";
+}
+class DriverExt extends DriverExtensionAbility {
+  async onConnect(want : Want) {
+    console.info(`onConnect , want: ${want.abilityName}`);
+    let descriptor = await getDescriptor();
+    return new StubTest(descriptor);
+  }
+}
 ```
 
 ## onDisconnect
@@ -99,8 +128,18 @@ class DriverExt extends DriverExtensionAbility {
 }
 ```
 
-```TypeScript
 After the onDisconnect lifecycle callback is executed, the application may exit. As a result, the asynchronous function in onDisconnect may fail to be executed correctly, for example, asynchronously writing data to the database. The asynchronous lifecycle can be used to ensure that the subsequent lifecycle continues after the asynchronous onDisconnect is complete.
+
+```TypeScript
+import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
+import { Want } from '@kit.AbilityKit';
+
+class DriverExt extends DriverExtensionAbility {
+  async onDisconnect(want : Want) {
+    console.info(`onDisconnect, want: ${want.abilityName}`);
+    // Call the asynchronous function.
+  }
+}
 ```
 
 ## onDump

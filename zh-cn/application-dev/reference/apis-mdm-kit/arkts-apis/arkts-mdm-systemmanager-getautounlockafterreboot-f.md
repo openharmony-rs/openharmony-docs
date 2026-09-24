@@ -40,8 +40,8 @@ function getAutoUnlockAfterReboot(admin: Want): boolean
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例**
 
@@ -62,18 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { systemManager } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  systemManager.getAutoUnlockAfterReboot(null);
-  console.info('Succeeded in getting auto unlock after reboot.');
-} catch (err) {
-  console.error(`Failed to get auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="getautounlockafterreboot-1"></a>
 
 ## getAutoUnlockAfterReboot
 
@@ -109,9 +99,19 @@ function getAutoUnlockAfterReboot(admin: Want | null): boolean
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例**
 
-参见 getAutoUnlockAfterReboot
+```TypeScript
+import { systemManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  systemManager.getAutoUnlockAfterReboot(null);
+  console.info('Succeeded in getting auto unlock after reboot.');
+} catch (err) {
+  console.error(`Failed to get auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);
+}
+```

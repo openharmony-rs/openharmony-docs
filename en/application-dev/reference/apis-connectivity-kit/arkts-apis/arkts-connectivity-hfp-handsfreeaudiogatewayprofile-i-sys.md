@@ -1,5 +1,9 @@
 # HandsFreeAudioGatewayProfile
 
+```TypeScript
+interface HandsFreeAudioGatewayProfile extends BaseProfile
+```
+
 Manager hfp source profile.
 
 **Inheritance/Implementation:** HandsFreeAudioGatewayProfile extends [BaseProfile](arkts-connectivity-hfp-baseprofile-t.md)

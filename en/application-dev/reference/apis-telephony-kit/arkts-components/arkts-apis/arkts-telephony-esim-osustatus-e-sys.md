@@ -1,5 +1,9 @@
 # OsuStatus (System API)
 
+```TypeScript
+export enum OsuStatus
+```
+
 Defines the OS upgrade status.
 
 **Since:** 18

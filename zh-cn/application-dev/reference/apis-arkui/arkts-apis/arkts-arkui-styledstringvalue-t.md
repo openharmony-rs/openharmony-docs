@@ -1,9 +1,7 @@
 # StyledStringValue
 
 ```TypeScript
-declare type StyledStringValue = TextStyle | DecorationStyle | BaselineOffsetStyle | LetterSpacingStyle |
-TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightStyle | UrlStyle | CustomSpan |
-UserDataSpan | BackgroundColorStyle | LineSpacingStyle
+declare type StyledStringValue = TextStyle | DecorationStyle | BaselineOffsetStyle | LetterSpacingStyleTextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightStyle | UrlStyle | CustomSpanUserDataSpan | BackgroundColorStyle | LineSpacingStyle
 ```
 
 样式对象类型，用于设置属性字符串的样式。

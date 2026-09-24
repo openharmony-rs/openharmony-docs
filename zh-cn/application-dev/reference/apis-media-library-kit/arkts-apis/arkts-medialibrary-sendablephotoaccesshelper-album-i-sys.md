@@ -1,5 +1,9 @@
 # Album
 
+```TypeScript
+interface Album extends AbsAlbum
+```
+
 实体相册
 
 **继承/实现关系：** Album extends [AbsAlbum](arkts-medialibrary-sendablephotoaccesshelper-absalbum-i.md)
@@ -40,12 +44,37 @@ getFaceId(): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error |
 
 **示例**
 
-```TypeScript
 phAccessHelper的创建请参考[@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](arkts-medialibrary-file-sendablephotoaccesshelper.md)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { common } from '@kit.AbilityKit';
+
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('getFaceIdDemo');
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    predicates.equalTo('user_display_level', 1);
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let fetchResult =
+      await phAccessHelper.getAlbums(sendablePhotoAccessHelper.AlbumType.SMART,
+        sendablePhotoAccessHelper.AlbumSubtype.PORTRAIT,
+        fetchOptions);
+    let album = await fetchResult?.getFirstObject();
+    let faceId = await album?.getFaceId();
+    console.info(`getFaceId successfully, faceId: ${faceId}`);
+    fetchResult.close();
+  } catch (err) {
+    console.error(`getFaceId failed with err: ${err.code}, ${err.message}`);
+  }
+}
 ```

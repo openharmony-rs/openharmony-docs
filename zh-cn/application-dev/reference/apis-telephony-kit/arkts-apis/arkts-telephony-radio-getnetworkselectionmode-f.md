@@ -29,7 +29,7 @@ function getNetworkSelectionMode(slotId: number, callback: AsyncCallback<Network
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -50,17 +50,8 @@ radio.getNetworkSelectionMode(slotId, (err: BusinessError, data: radio.NetworkSe
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-radio.getNetworkSelectionMode(slotId).then((data: radio.NetworkSelectionMode) => {
-    console.info(`getNetworkSelectionMode success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getNetworkSelectionMode failed, promise: err code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getnetworkselectionmode-1"></a>
 
 ## getNetworkSelectionMode
 
@@ -90,7 +81,7 @@ function getNetworkSelectionMode(slotId: number): Promise<NetworkSelectionMode>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -98,4 +89,13 @@ function getNetworkSelectionMode(slotId: number): Promise<NetworkSelectionMode>
 
 **示例**
 
-参见 getNetworkSelectionMode
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+radio.getNetworkSelectionMode(slotId).then((data: radio.NetworkSelectionMode) => {
+    console.info(`getNetworkSelectionMode success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getNetworkSelectionMode failed, promise: err code: ${err.code}, message: ${err.message}`);
+});
+```

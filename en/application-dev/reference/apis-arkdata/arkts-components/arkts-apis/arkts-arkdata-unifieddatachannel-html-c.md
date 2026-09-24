@@ -1,5 +1,9 @@
 # HTML
 
+```TypeScript
+class HTML extends Text
+```
+
 Represents the HTML data. It is a child class of [Text](arkts-arkdata-unifieddatachannel-text-c.md).
 
 **Inheritance/Implementation:** HTML extends [Text](arkts-arkdata-unifieddatachannel-text-c.md)

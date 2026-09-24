@@ -1,5 +1,9 @@
 # TypeConstructor
 
+```TypeScript
+export interface TypeConstructor<T>
+```
+
 Represents a class constructor.
 
 **Since:** 12

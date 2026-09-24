@@ -1,5 +1,9 @@
 # SetReportData
 
+```TypeScript
+interface SetReportData
+```
+
 Describe the SET_REPORT data is received from remote host.
 
 **Since:** 23

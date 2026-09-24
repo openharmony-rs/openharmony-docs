@@ -1,5 +1,9 @@
 # BackgroundLuminanceSamplingConfigs（系统接口）
 
+```TypeScript
+export interface BackgroundLuminanceSamplingConfigs
+```
+
 背景亮度采样参数配置。背景亮度采样用于定期从组件背景区域取色，根据亮度阈值判定背景的明暗程度，以支持组件自适应明暗风格等场景。
 
 **起始版本：** 23

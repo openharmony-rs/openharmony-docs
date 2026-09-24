@@ -53,6 +53,8 @@ enum ArkUI_ListItemAlignment
 
 Enumerates the alignment modes of items along the cross axis. The default value is **<br>ARKUI_LIST_ITEM_ALIGNMENT_START**.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -70,6 +72,8 @@ enum ArkUI_StickyStyle
 **Description**
 
 Enumerates the modes for pinning the header to the top or the footer to the bottom.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -89,6 +93,8 @@ enum ArkUI_ListItemGroupArea
 **Description**
 
 Enumerates the areas in the {@link ListItemGroup} component. The default value is **<br>ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE**.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -113,6 +119,8 @@ ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()
 
 Creates a **ListChildrenMainSize** instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Returns**:
@@ -131,6 +139,8 @@ void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* opt
 
 Disposes of a **ListChildrenMainSize** instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -148,6 +158,8 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildre
 **Description**
 
 Sets the default size of the list item in the {@link List} component along the main axis. The vertical axis indicates the height, and the horizontal axis indicates the width.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -174,6 +186,8 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenM
 
 Obtains the default size of the list item in the {@link List} component along the main axis. The vertical axis indicates the height, and the horizontal axis indicates the width.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -198,6 +212,8 @@ void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* opti
 
 Adjusts the capacity of the children item size array in the {@link List} component along the main axis.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -216,6 +232,8 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* o
 **Description**
 
 Adjusts the children item size array in the {@link List} component along the main axis.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -244,6 +262,8 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSiz
 
 Updates the size at the specified index in the children item size array of the {@link List} component along the main axis. The vertical axis indicates the height, and the horizontal axis indicates the width.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -269,6 +289,8 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize
 **Description**
 
 Obtains the size at the specified index in the children item size array of the {@link List} component along the main axis. The vertical axis indicates the height, and the horizontal axis indicates the width.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

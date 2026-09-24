@@ -46,6 +46,8 @@ Notifies that the privacy protection status of the specified widgets changes. Th
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
 
+<a id="notifyformsprivacyprotected-1"></a>
+
 ## notifyFormsPrivacyProtected
 
 ```TypeScript

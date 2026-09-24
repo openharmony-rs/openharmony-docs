@@ -8,6 +8,8 @@ typedef struct UsbDdkInterfaceDescriptor {...} UsbDdkInterfaceDescriptor
 
 Defines USB interface descriptors.
 
+**System capability**: SystemCapability.Driver.USB.Extension
+
 **Since**: 10
 
 **Related module**: [UsbDdk](capi-usbddk.md)

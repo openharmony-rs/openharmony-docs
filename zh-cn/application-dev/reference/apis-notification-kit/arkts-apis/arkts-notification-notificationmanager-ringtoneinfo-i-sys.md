@@ -1,5 +1,9 @@
 # RingtoneInfo（系统接口）
 
+```TypeScript
+export interface RingtoneInfo
+```
+
 描述自定义铃声信息。
 
 **起始版本：** 21

@@ -37,19 +37,9 @@ function download(config: DownloadConfig, callback: AsyncCallback<DownloadTask>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
-
-```TypeScript
-let downloadTask: request.DownloadTask;
-// 需要手动将url替换为真实服务器的HTTP协议地址
-request.download({ url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-  downloadTask = data;
-}).catch((err: BusinessError) => {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-})
-```
 
 ```TypeScript
 let downloadTask: request.DownloadTask;
@@ -65,6 +55,8 @@ filePath: 'xxx/xxxxx.hap'}, (err: BusinessError, data: request.DownloadTask) => 
 ```
 
 
+<a id="download-1"></a>
+
 ## download
 
 ```TypeScript
@@ -77,7 +69,7 @@ function download(config: DownloadConfig): Promise<DownloadTask>
 
 **废弃版本：** 9
 
-**替代接口：** [downloadFile](arkts-basicservices-request-downloadfile-f.md)(context: BaseContext, config: DownloadConfig)
+**替代接口：** [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)(context: BaseContext, config: DownloadConfig)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -101,8 +93,16 @@ function download(config: DownloadConfig): Promise<DownloadTask>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 
-参见 download
+```TypeScript
+let downloadTask: request.DownloadTask;
+// 需要手动将url替换为真实服务器的HTTP协议地址
+request.download({ url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+  downloadTask = data;
+}).catch((err: BusinessError) => {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+})
+```

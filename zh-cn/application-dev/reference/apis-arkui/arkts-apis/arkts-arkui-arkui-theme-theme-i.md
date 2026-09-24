@@ -1,6 +1,10 @@
 # Theme
 
-当前生效的主题风格对象，可从[onWillApplyTheme](../arkts-components/arkts-arkui-basecustomcomponent-c.md#onwillapplytheme)中获取。
+```TypeScript
+export declare interface Theme
+```
+
+当前生效的主题风格对象，可从[onWillApplyTheme](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#onwillapplytheme)中获取。
 
 **起始版本：** 12
 

@@ -1,5 +1,9 @@
 # ThemeControl
 
+```TypeScript
+export declare class ThemeControl
+```
+
 Class ThemeControl provides the Theme management for whole Ability and pages.
 
 **Since:** 12

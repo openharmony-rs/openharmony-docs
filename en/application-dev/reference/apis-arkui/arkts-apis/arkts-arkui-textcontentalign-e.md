@@ -1,5 +1,9 @@
 # TextContentAlign
 
+```TypeScript
+declare enum TextContentAlign
+```
+
 Enumerates the vertical alignment directions of the text content area.
 
 **Since:** 21

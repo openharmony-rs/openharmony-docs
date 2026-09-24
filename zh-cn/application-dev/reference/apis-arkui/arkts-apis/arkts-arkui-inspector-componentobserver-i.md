@@ -1,5 +1,9 @@
 # ComponentObserver
 
+```TypeScript
+interface ComponentObserver
+```
+
 组件布局和组件绘制送显完成回调的句柄，通过该句柄可调用以下方法。
 
 **起始版本：** 10
@@ -164,8 +168,71 @@ offLayoutChildren(callback?: Callback<void>): void
 
 **示例**
 
-```TypeScript
 以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，通过[onLayoutChildren23+](#onlayoutchildren)接口监听子树中的节点完成布局时的回调事件。
+
+```TypeScript
+import { inspector } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Image($r('app.media.startIcon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+        .id('ROW_ID')
+      }
+    }.height(320).width(360).padding({ right: 10, top: 10 })
+  }
+
+  listenerForImage: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID');
+
+  aboutToAppear() {
+    let onLayoutComplete: () => void = (): void => {
+      // 根据需要补充实现代码
+    };
+    let onDrawComplete: () => void = (): void => {
+      // 根据需要补充实现代码
+    };
+    let onDrawChildrenComplete: () => void = (): void => {
+      // 根据需要补充实现代码
+    };
+    // 绑定当前js实例
+    let funcLayout = onLayoutComplete;
+    let funcDraw = onDrawComplete;
+    let funcDrawChildren = onDrawChildrenComplete;
+    let offFuncLayout = onLayoutComplete;
+    let offFuncDraw = onDrawComplete;
+    let offFuncDrawChildren = onDrawChildrenComplete;
+
+    this.listenerForImage.on('layout', funcLayout);
+    this.listenerForImage.on('draw', funcDraw);
+    this.listenerForRow.on('drawChildren', funcDrawChildren);
+
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // this.listenerForImage.off('layout', offFuncLayout)
+    // this.listenerForImage.off('draw', offFuncDraw)
+    // this.listenerForRow.off('drawChildren', offFuncDrawChildren)
+
+    let onLayoutChildrenComplete: () => void = (): void => {
+      // 监听到layoutChildren事件后，用户可以自定义实现逻辑。
+    };
+
+    let uniqueId: number = 0; // 替换为实际组件的uniqueId
+    let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId.toString());
+    listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete);
+  }
+
+  // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+  // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
+}
 ```
 
 ## on('layout')
@@ -261,8 +328,39 @@ onDrawChildren(callback: Callback<number[]>): void
 
 **示例**
 
-```TypeScript
 以下示例展示了inspector注册组件绘制送显完成回调通知能力的基本用法。通过[onDrawChildren24+](#ondrawchildren)接口注册回调，当子树内节点完成渲染时，回调返回该节点的uniqueId信息。
+
+```TypeScript
+import { inspector } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Image($r('app.media.startIcon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+        .id('ROW_ID')
+      }
+    }.height(320).width(360).padding({ right: 10, top: 10 })
+  }
+
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID');
+
+  aboutToAppear() {
+    let onDrawChildrenCompleteUniqueId: (childIds: number[]) => void = (childIds: number[]): void => {
+      // 从API version 24开始，新增onDrawChildren接口。监听到drawChildren事件后，用户可以自定义实现逻辑。
+    };
+
+    this.listenerForRow.onDrawChildren(onDrawChildrenCompleteUniqueId);
+  }
+}
 ```
 
 ## onLayoutChildren

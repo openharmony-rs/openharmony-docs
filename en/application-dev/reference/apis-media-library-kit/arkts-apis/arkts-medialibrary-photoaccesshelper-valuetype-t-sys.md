@@ -1,7 +1,7 @@
 # ValueType (System API)
 
 ```TypeScript
-type ValueType = number | number | number | string | boolean | Uint8Array | null
+type ValueType = number | number | string | boolean | Uint8Array | null
 ```
 
 Defines the type of value in a KV pair. The type varies with the parameter function.

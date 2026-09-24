@@ -1,5 +1,9 @@
 # PixelMapFormat
 
+```TypeScript
+enum PixelMapFormat
+```
+
 表示图片像素格式的枚举。
 
 **起始版本：** 7

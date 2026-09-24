@@ -56,17 +56,8 @@ sim.getActiveSimAccountInfoList((err: BusinessError, data: Array<sim.IccAccountI
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getActiveSimAccountInfoList().then((data: Array<sim.IccAccountInfo>) => {
-    console.info(`getActiveSimAccountInfoList success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getActiveSimAccountInfoList failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getactivesimaccountinfolist-1"></a>
 
 ## getActiveSimAccountInfoList
 
@@ -107,4 +98,13 @@ Obtains the list of activated SIM card accounts. This API uses a promise to retu
 
 **Examples**
 
-See [getActiveSimAccountInfoList](#getactivesimaccountinfolist)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getActiveSimAccountInfoList().then((data: Array<sim.IccAccountInfo>) => {
+    console.info(`getActiveSimAccountInfoList success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getActiveSimAccountInfoList failed, promise: err->${JSON.stringify(err)}`);
+});
+```

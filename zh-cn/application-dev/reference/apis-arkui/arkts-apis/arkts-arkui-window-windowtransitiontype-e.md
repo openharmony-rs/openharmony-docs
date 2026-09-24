@@ -1,5 +1,9 @@
 # WindowTransitionType
 
+```TypeScript
+enum WindowTransitionType
+```
+
 窗口转场动画类型枚举。
 
 **起始版本：** 20

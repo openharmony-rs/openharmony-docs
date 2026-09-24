@@ -1,5 +1,9 @@
 # NodeParamV2
 
+```TypeScript
+export interface NodeParamV2
+```
+
 节点参数接口，用于配置树节点的属性。
 
 **起始版本：** 26.0.0
@@ -208,7 +212,7 @@ Symbol编辑图标样式，优先级大于editIcon。
 
 默认值：undefined，编辑时显示与非编辑态一样
 
-**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **起始版本：** 26.0.0
 
@@ -228,7 +232,7 @@ Symbol图标样式，显示优先级大于icon，同时设置symbolIconStyle和i
 
 默认值：undefined，表示不显示Symbol图标。
 
-**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **起始版本：** 26.0.0
 
@@ -248,7 +252,7 @@ Symbol选中图标样式，优先级大于selectedIcon。
 
 默认值：undefined，选中时显示与未选中一样
 
-**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **起始版本：** 26.0.0
 

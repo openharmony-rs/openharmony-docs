@@ -1,5 +1,9 @@
 # ApplicationContext
 
+```TypeScript
+declare class ApplicationContext extends Context
+```
+
 ApplicationContext作为应用上下文，继承自Context，提供了应用生命周期监听、进程管理、应用环境设置等应用级别的管控能力。
 
 > **说明：** 
@@ -61,22 +65,7 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-
-export default class MyAbility extends UIAbility {
-  onBackground() {
-    // 获取应用上下文
-    let applicationContext = this.context.getApplicationContext();
-    // 清理当前应用的应用文件路径下的所有数据
-    applicationContext.clearUpApplicationData(error => {
-      if (error) {
-        console.error(`Failed to clear up application data. Code: ${error.code}, message: ${error.message}`);
-      }
-    });
-  }
-}
-```
+<a id="clearupapplicationdata-1"></a>
 
 ## clearUpApplicationData
 
@@ -109,13 +98,28 @@ clearUpApplicationData(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
 
-参见 [clearUpApplicationData](#clearupapplicationdata)
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class MyAbility extends UIAbility {
+  onBackground() {
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    // 清理当前应用的应用文件路径下的所有数据
+    applicationContext.clearUpApplicationData(error => {
+      if (error) {
+        console.error(`Failed to clear up application data. Code: ${error.code}, message: ${error.message}`);
+      }
+    });
+  }
+}
+```
 
 ## getAllRunningInstanceKeys
 
@@ -344,7 +348,7 @@ getRunningProcessInformation(): Promise<Array<ProcessInformation>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
@@ -368,24 +372,7 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-
-export default class MyAbility extends UIAbility {
-  onForeground() {
-    // 获取应用上下文
-    let applicationContext = this.context.getApplicationContext();
-    // 获取运行中的进程信息
-    applicationContext.getRunningProcessInformation((err, data) => {
-      if (err) {
-        console.error(`Failed to get running process information. Code: ${err.code}, message: ${err.message}`);
-      } else {
-        console.info(`The process running information is: ${JSON.stringify(data)}`);
-      }
-    });
-  }
-}
-```
+<a id="getrunningprocessinformation-1"></a>
 
 ## getRunningProcessInformation
 
@@ -413,13 +400,30 @@ getRunningProcessInformation(callback: AsyncCallback<Array<ProcessInformation>>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
 
-参见 [getRunningProcessInformation](#getrunningprocessinformation)
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class MyAbility extends UIAbility {
+  onForeground() {
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    // 获取运行中的进程信息
+    applicationContext.getRunningProcessInformation((err, data) => {
+      if (err) {
+        console.error(`Failed to get running process information. Code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.info(`The process running information is: ${JSON.stringify(data)}`);
+      }
+    });
+  }
+}
+```
 
 ## getUIAbilityChildProcessInfos
 
@@ -429,7 +433,7 @@ getUIAbilityChildProcessInfos(): Promise<Array<ChildProcessInformation>>
 
 获取当前应用的UIAbility子进程信息。该接口使用了一个promise。来返回结果。返回的子进程是通过ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT通过startAbility创建的。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -501,7 +505,7 @@ killAllProcesses(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
 **示例**
@@ -519,37 +523,7 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-
-let isClearPageStack = false;
-
-export default class MyAbility extends UIAbility {
-  onBackground() {
-    // 获取应用上下文
-    let applicationContext = this.context.getApplicationContext();
-    // 终止应用的所有进程，并清除页面堆栈
-    applicationContext.killAllProcesses(isClearPageStack);
-  }
-}
-```
-
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-
-export default class MyAbility extends UIAbility {
-  onBackground() {
-    // 获取应用上下文
-    let applicationContext = this.context.getApplicationContext();
-    // 终止应用的所有进程
-    applicationContext.killAllProcesses(error => {
-      if (error) {
-        console.error(`Failed to kill all processes. Code: ${error.code}, message: ${error.message}`);
-      }
-    });
-  }
-}
-```
+<a id="killallprocesses-1"></a>
 
 ## killAllProcesses
 
@@ -587,12 +561,27 @@ killAllProcesses(clearPageStack: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter is not valid parameter. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | If the input parameter is not valid parameter. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
 **示例**
 
-参见 [killAllProcesses](#killallprocesses)
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+
+let isClearPageStack = false;
+
+export default class MyAbility extends UIAbility {
+  onBackground() {
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    // 终止应用的所有进程，并清除页面堆栈
+    applicationContext.killAllProcesses(isClearPageStack);
+  }
+}
+```
+
+<a id="killallprocesses-2"></a>
 
 ## killAllProcesses
 
@@ -624,12 +613,27 @@ killAllProcesses(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
 **示例**
 
-参见 [killAllProcesses](#killallprocesses)
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class MyAbility extends UIAbility {
+  onBackground() {
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    // 终止应用的所有进程
+    applicationContext.killAllProcesses(error => {
+      if (error) {
+        console.error(`Failed to kill all processes. Code: ${error.code}, message: ${error.message}`);
+      }
+    });
+  }
+}
+```
 
 ## off('abilityLifecycle')
 
@@ -659,7 +663,36 @@ off(type: 'abilityLifecycle', callbackId: number, callback: AsyncCallback<void>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let lifecycleId: number;
+
+export default class EntryAbility extends UIAbility {
+  onDestroy() {
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    console.info(`stage applicationContext: ${applicationContext}`);
+    try {
+      // 取消监听应用内UIAbility生命周期
+      applicationContext.off('abilityLifecycle', lifecycleId, (error, data) => {
+        if (error) {
+          console.error(`Failed to unregister abilityLifecycle callback. Code: ${error.code}, message: ${error.message}`);
+        } else {
+          console.info(`unregisterAbilityLifecycleCallback success, data: ${JSON.stringify(data)}`);
+        }
+      });
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
 
 ## off('abilityLifecycle')
 
@@ -694,7 +727,30 @@ off(type: 'abilityLifecycle', callbackId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let lifecycleId: number;
+
+export default class MyAbility extends UIAbility {
+  onDestroy() {
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    console.info(`stage applicationContext: ${applicationContext}`);
+    try {
+      // 取消监听应用内UIAbility生命周期
+      applicationContext.off('abilityLifecycle', lifecycleId);
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
 
 ## off('environment')
 
@@ -724,7 +780,35 @@ off(type: 'environment', callbackId: number, callback: AsyncCallback<void>): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callbackId: number;
+
+export default class EntryAbility extends UIAbility {
+  onDestroy() {
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 取消对系统环境变化的监听
+      applicationContext.off('environment', callbackId, (error, data) => {
+        if (error) {
+          console.error(`Failed to unregister environment callback. Code: ${error.code}, message: ${error.message}`);
+        } else {
+          console.info(`unregisterEnvironmentCallback success, data: ${JSON.stringify(data)}`);
+        }
+      });
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
 
 ## off('environment')
 
@@ -759,7 +843,29 @@ off(type: 'environment', callbackId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callbackId: number;
+
+export default class MyAbility extends UIAbility {
+  onDestroy() {
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 取消对系统环境变化的监听
+      applicationContext.off('environment', callbackId);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
 
 ## off('applicationStateChange')
 
@@ -788,7 +894,39 @@ off(type: 'applicationStateChange', callback?: ApplicationStateChangeCallback): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**示例**
+
+假定已使用[ApplicationContext.on('applicationStateChange')](#onapplicationstatechange)方法注册名为applicationStateChangeCallback回调，下面示例展示如何取消对应的事件监听。
+
+```TypeScript
+import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let applicationStateChangeCallback: ApplicationStateChangeCallback = {
+  onApplicationForeground() {
+    console.info('applicationStateChangeCallback onApplicationForeground');
+  },
+  onApplicationBackground() {
+    console.info('applicationStateChangeCallback onApplicationBackground');
+  }
+};
+
+export default class MyAbility extends UIAbility {
+  onDestroy() {
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 本例中的callback参数取值为ApplicationStateChangeCallback，需要替换为实际值。
+      // 如果callback字段不传入参数，则取消所有已注册的该类型事件的监听。
+      applicationContext.off('applicationStateChange', applicationStateChangeCallback);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
 
 ## offSystemConfigurationUpdated
 
@@ -812,7 +950,7 @@ offSystemConfigurationUpdated(callback?: systemConfiguration.UpdatedCallback): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [systemConfiguration.UpdatedCallback](arkts-ability-systemconfiguration-updatedcallback-i.md) | 否 | 回调函数。取值可以为使用ApplicationContext.onSystemConfigurationUpdated方法注册的callback回调，也可以为空。<br>-&nbsp;如果传入已定义的回调，则取消该监听。 <br>-&nbsp;如果未传入参数，则取消所有已注册的监听。 |
+| callback | [systemConfiguration.UpdatedCallback](arkts-ability-systemconfiguration-updatedcallback-i.md) | 否 | 回调函数。取值可以为使用[ApplicationContext.onSystemConfigurationUpdated](../../../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonsystemconfigurationupdated24)方法注册的callback回调，也可以为空。<br>-&nbsp;如果传入已定义的回调，则取消该监听。 <br>-&nbsp;如果未传入参数，则取消所有已注册的监听。 |
 
 **示例**
 
@@ -898,7 +1036,84 @@ on(type: 'abilityLifecycle', callback: AbilityLifecycleCallback): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { UIAbility, AbilityLifecycleCallback } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let lifecycleId: number;
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    let abilityLifecycleCallback: AbilityLifecycleCallback = {
+      onAbilityCreate(ability) {
+        console.info(`AbilityLifecycleCallback onAbilityCreate ability: ${ability}`);
+      },
+      onWindowStageCreate(ability, windowStage) {
+        console.info(`AbilityLifecycleCallback onWindowStageCreate ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageCreate windowStage: ${windowStage}`);
+      },
+      onWindowStageActive(ability, windowStage) {
+        console.info(`AbilityLifecycleCallback onWindowStageActive ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageActive windowStage: ${windowStage}`);
+      },
+      onWindowStageInactive(ability, windowStage) {
+        console.info(`AbilityLifecycleCallback onWindowStageInactive ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageInactive windowStage: ${windowStage}`);
+      },
+      onWindowStageDestroy(ability, windowStage) {
+        console.info(`AbilityLifecycleCallback onWindowStageDestroy ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageDestroy windowStage: ${windowStage}`);
+      },
+      onAbilityDestroy(ability) {
+        console.info(`AbilityLifecycleCallback onAbilityDestroy ability: ${ability}`);
+      },
+      onAbilityForeground(ability) {
+        console.info(`AbilityLifecycleCallback onAbilityForeground ability: ${ability}`);
+      },
+      onAbilityBackground(ability) {
+        console.info(`AbilityLifecycleCallback onAbilityBackground ability: ${ability}`);
+      },
+      onAbilityContinue(ability) {
+        console.info(`AbilityLifecycleCallback onAbilityContinue ability: ${ability}`);
+      }
+    }
+
+    // 通过context属性获取applicationContext
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 通过applicationContext注册监听应用内生命周期
+      lifecycleId = applicationContext.on('abilityLifecycle', abilityLifecycleCallback);
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
+    console.info(`registerAbilityLifecycleCallback lifecycleId: ${lifecycleId}`);
+  }
+
+  // 不再需要或应用退出时取消监听应用内UIAbility生命周期
+  onDestroy() {
+    // 通过context属性获取applicationContext
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      applicationContext.off('abilityLifecycle', lifecycleId, (error, data) => {
+        if (error) {
+          console.error(`Failed to unregister abilityLifecycle callback. Code: ${error.code}, message: ${error.message}`);
+        } else {
+          console.info(`unregisterAbilityLifecycleCallback success, data: ${JSON.stringify(data)}`);
+        }
+      });
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
 
 ## on('environment')
 
@@ -939,7 +1154,58 @@ on(type: 'environment', callback: EnvironmentCallback): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { UIAbility, EnvironmentCallback } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callbackId: number;
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    let environmentCallback: EnvironmentCallback = {
+      onConfigurationUpdated(config) {
+        console.info(`onConfigurationUpdated config: ${JSON.stringify(config)}`);
+      },
+      onMemoryLevel(level) {
+        console.info(`onMemoryLevel level: ${level}`);
+      }
+    };
+    // 通过context属性获取applicationContext
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 通过applicationContext注册监听系统环境变化
+      callbackId = applicationContext.on('environment', environmentCallback);
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
+    console.info(`registerEnvironmentCallback callbackId: ${callbackId}`);
+  }
+
+  // 不再需要或应用退出时取消对系统环境变化的监听
+  onDestroy() {
+    // 通过context属性获取applicationContext
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      applicationContext.off('environment', callbackId, (error, data) => {
+        if (error) {
+          console.error(`Failed to unregister environment callback. Code: ${error.code}, message: ${error.message}`);
+        } else {
+          console.info(`unregisterEnvironmentCallback success, data: ${JSON.stringify(data)}`);
+        }
+      });
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
 
 ## on('applicationStateChange')
 
@@ -968,7 +1234,51 @@ on(type: 'applicationStateChange', callback: ApplicationStateChangeCallback): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let applicationStateChangeCallback: ApplicationStateChangeCallback = {
+  onApplicationForeground() {
+    console.info('applicationStateChangeCallback onApplicationForeground');
+  },
+  onApplicationBackground() {
+    console.info('applicationStateChangeCallback onApplicationBackground');
+  }
+}
+
+export default class MyAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    // 通过context属性获取applicationContext
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 通过applicationContext注册当前应用进程状态监听
+      applicationContext.on('applicationStateChange', applicationStateChangeCallback);
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
+    console.info('Register applicationStateChangeCallback');
+  }
+
+  // 不再需要或应用退出时取消所有已注册的该类型事件的监听。
+  onDestroy() {
+    // 通过context属性获取applicationContext
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      applicationContext.off('applicationStateChange', applicationStateChangeCallback);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
 
 ## onSystemConfigurationUpdated
 
@@ -1098,7 +1408,7 @@ restartApp(want: Want): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16000053](../errorcode-ability.md#16000053-非顶层ability) | The ability is not on the top of the UI. |
 | [16000063](../errorcode-ability.md#16000063-重启应用指定组件无效) | The target to restart does not belong to the current application or is not a UIAbility. |
@@ -1181,7 +1491,7 @@ setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
 **示例**
@@ -1411,8 +1721,8 @@ setSupportedProcessCache(isSupported : boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 

@@ -1,5 +1,9 @@
 # TLSSecureOptions
 
+```TypeScript
+export interface TLSSecureOptions
+```
+
 TLS security options. When **cert** (local certificate) and **key** (private key) are not empty, the two-way authentication mode is enabled. If **cert** or **key** is empty, one-way authentication is enabled.
 
 **Since:** 9

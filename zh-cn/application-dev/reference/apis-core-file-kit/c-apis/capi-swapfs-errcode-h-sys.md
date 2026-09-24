@@ -22,7 +22,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_Swapfs_ErrCode（系统接口）](#oh_swapfs_errcode) | OH_Swapfs_ErrCode | swapfs模块的错误码。**系统接口：** 此接口为系统接口。 |
+| [OH_Swapfs_ErrCode（系统接口）](#oh_swapfs_errcode) | OH_Swapfs_ErrCode | swapfs模块的错误码。<br>**系统接口：** 此接口为系统接口。 |
 
 ## 枚举类型说明
 
@@ -35,6 +35,8 @@ enum OH_Swapfs_ErrCode
 **描述：**
 
 swapfs模块的错误码。
+
+**系统能力：** SystemCapability.FileManagement.File.Swapfs
 
 **起始版本：** 26.0.0
 

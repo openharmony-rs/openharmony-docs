@@ -48,7 +48,7 @@ function getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remot
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100301](../errorcode-net-connection.md#2100301-调用方身份验证不通过非vpn应用) | Incorrect usage in non-VPN application. |

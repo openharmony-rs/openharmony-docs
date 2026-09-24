@@ -28,7 +28,7 @@ Creates a **DynamicComponent** component to display the .abc UI running in the w
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [DynamicOptions](arkts-arkui-dynamicoptions-i-sys.md) | Yes | Configuration parameters for constructing a **DynamicComponent**, which are used to configure the entry of the .abc page to be loaded, worker thread to run, and display options. |
+| options | [DynamicOptions](arkts-arkui-dynamiccomponent-comp-dynamicoptions-i-sys.md) | Yes | Configuration parameters for constructing a **DynamicComponent**, which are used to configure the entry of the .abc page to be loaded, worker thread to run, and display options. |
 
 ## Summary
 
@@ -36,11 +36,11 @@ Creates a **DynamicComponent** component to display the .abc UI running in the w
 
 | Name | Description |
 | --- | --- |
-| [DynamicOptions](arkts-arkui-dynamicoptions-i-sys.md) | Defines the parameters to be passed during **DynamicComponent** construction. |
+| [DynamicOptions](arkts-arkui-dynamiccomponent-comp-dynamicoptions-i-sys.md) | Defines the parameters to be passed during **DynamicComponent** construction. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [ErrorCallback](arkts-arkui-errorcallback-t-sys.md) | Defines the error callback type, which is used to receive exception information. |
-| [Worker](arkts-arkui-worker-t-sys.md) | Defines the worker thread object for running the .abc file. |
+| [ErrorCallback](arkts-arkui-dynamiccomponent-comp-errorcallback-t-sys.md) | Defines the error callback type, which is used to receive exception information. |
+| [Worker](arkts-arkui-dynamiccomponent-comp-worker-t-sys.md) | Defines the worker thread object for running the .abc file. |

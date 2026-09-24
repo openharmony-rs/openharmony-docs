@@ -8,6 +8,8 @@ typedef struct OH_IPC_MessageOption {...} OH_IPC_MessageOption
 
 IPC消息选项定义，用于配置IPC通信过程中的请求参数。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 **起始版本：** 12
 
 **相关模块：** [OHIPCRemoteObject](capi-ohipcremoteobject.md)

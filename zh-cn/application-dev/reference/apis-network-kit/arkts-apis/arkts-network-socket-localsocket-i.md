@@ -1,5 +1,9 @@
 # LocalSocket
 
+```TypeScript
+export interface LocalSocket
+```
+
 LocalSocket连接。在调用LocalSocket的方法前，需要先通过[socket.constructLocalSocketInstance](arkts-network-socket-constructlocalsocketinstance-f.md)创建LocalSocket对象。
 
 **起始版本：** 11
@@ -46,17 +50,32 @@ bind(address: LocalAddress): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2301013](../errorcode-net-socket.md#2301013-权限不足) | Insufficient permissions. |
 | [2301022](../errorcode-net-socket.md#2301022-参数无效) | Invalid argument. |
 | [2301098](../errorcode-net-socket.md#2301098-网络地址已被使用) | Address already in use. |
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance()
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let address : socket.LocalAddress = {
+  address: sandboxPath
+}
+client.bind(address).then(() => {
+  console.info('bind success')
+}).catch((err: Object) => {
+  console.error('failed to bind: ' + JSON.stringify(err))
+})
 ```
 
 ## close
@@ -129,7 +148,7 @@ connect(options: LocalConnectOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2301013](../errorcode-net-socket.md#2301013-权限不足) | Insufficient permissions. |
 | [2301022](../errorcode-net-socket.md#2301022-参数无效) | Invalid argument. |
 | [2301111](../errorcode-net-socket.md#2301111-连接被拒绝) | Connection refused. |
@@ -137,10 +156,29 @@ connect(options: LocalConnectOptions): Promise<void>
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let localAddress : socket.LocalAddress = {
+  address: sandboxPath
+}
+let connectOpt: socket.LocalConnectOptions = {
+  address: localAddress,
+  timeout: 6000
+}
+client.connect(connectOpt).then(() => {
+  console.info('connect success')
+}).catch((err: Object) => {
+  console.error('connect fail: ' + JSON.stringify(err));
+});
 ```
 
 ## getExtraOptions
@@ -173,10 +211,34 @@ getExtraOptions(): Promise<ExtraOptionsBase>
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let localAddress : socket.LocalAddress = {
+  address: sandboxPath
+}
+let connectOpt: socket.LocalConnectOptions = {
+  address: localAddress,
+  timeout: 6000
+}
+client.connect(connectOpt).then(() => {
+  console.info('connect success');
+  client.getExtraOptions().then((options : socket.ExtraOptionsBase) => {
+    console.info('options: ' + JSON.stringify(options));
+  }).catch((err: Object) => {
+    console.error('setExtraOptions fail: ' + JSON.stringify(err));
+  });
+}).catch((err: Object) => {
+  console.error('connect fail: ' + JSON.stringify(err));
+});
 ```
 
 ## getLocalAddress
@@ -211,10 +273,31 @@ getLocalAddress(): Promise<string>
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let address : socket.LocalAddress = {
+  address: sandboxPath
+}
+client.bind(address).then(() => {
+  console.error('bind success');
+  client.getLocalAddress().then((localPath: string) => {
+    console.info("SUCCESS " + JSON.stringify(localPath));
+  }).catch((err: BusinessError) => {
+    console.error("FAIL " + JSON.stringify(err));
+  })
+}).catch((err: Object) => {
+  console.error('failed to bind: ' + JSON.stringify(err));
+})
 ```
 
 ## getSocketFd
@@ -245,10 +328,34 @@ getSocketFd(): Promise<number>
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let localAddress : socket.LocalAddress = {
+  address: sandboxPath
+}
+let connectOpt: socket.LocalConnectOptions = {
+  address: localAddress,
+  timeout: 6000
+}
+client.connect(connectOpt).then(() => {
+  console.info('connect ok')
+}).catch((err: Object) => {
+  console.error('connect fail: ' + JSON.stringify(err))
+})
+client.getSocketFd().then((data: number) => {
+  console.info("fd: " + data);
+}).catch((err: Object) => {
+  console.error("getSocketFd failed: " + JSON.stringify(err));
+})
 ```
 
 ## getState
@@ -275,10 +382,34 @@ getState(): Promise<SocketStateBase>
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let localAddress : socket.LocalAddress = {
+  address: sandboxPath
+}
+let connectOpt: socket.LocalConnectOptions = {
+  address: localAddress,
+  timeout: 6000
+}
+client.connect(connectOpt).then(() => {
+  console.info('connect success');
+  client.getState().then(() => {
+    console.info('getState success');
+  }).catch((err: Object) => {
+    console.error('getState fail: ' + JSON.stringify(err))
+  });
+}).catch((err: Object) => {
+  console.error('connect fail: ' + JSON.stringify(err));
+});
 ```
 
 ## off('message')
@@ -304,7 +435,27 @@ off(type: 'message', callback?: Callback<LocalSocketMessageInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+let messageView = '';
+let callback = (value: socket.LocalSocketMessageInfo) => {
+  const uintArray = new Uint8Array(value.message)
+  let messageView = '';
+  for (let i = 0; i < uintArray.length; i++) {
+    messageView += String.fromCharCode(uintArray[i]);
+  }
+  console.info('total: ' + JSON.stringify(value));
+  console.info('message information: ' + messageView);
+}
+client.on('message', callback);
+client.off('message');
+```
 
 ## off('connect')
 
@@ -329,7 +480,22 @@ off(type: 'connect', callback?: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+let callback = () => {
+  console.info("on connect success");
+}
+client.on('connect', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+client.off('connect', callback);
+client.off('connect');
+```
 
 ## off('close')
 
@@ -354,7 +520,22 @@ off(type: 'close', callback?: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+let callback = () => {
+  console.info("on close success");
+}
+client.on('close', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+client.off('close', callback);
+client.off('close');
+```
 
 ## off('error')
 
@@ -379,7 +560,22 @@ off(type: 'error', callback?: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+let callback = (err: Object) => {
+  console.error("on error, err:" + JSON.stringify(err));
+}
+client.on('error', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+client.off('error', callback);
+client.off('error');
+```
 
 ## on('message')
 
@@ -404,7 +600,24 @@ on(type: 'message', callback: Callback<LocalSocketMessageInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+client.on('message', (value: socket.LocalSocketMessageInfo) => {
+  const uintArray = new Uint8Array(value.message)
+  let messageView = '';
+  for (let i = 0; i < uintArray.length; i++) {
+    messageView += String.fromCharCode(uintArray[i]);
+  }
+  console.info('total: ' + JSON.stringify(value));
+  console.info('message information: ' + messageView);
+});
+```
 
 ## on('connect')
 
@@ -429,7 +642,18 @@ on(type: 'connect', callback: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+client.on('connect', () => {
+  console.info("on connect success")
+});
+```
 
 ## on('close')
 
@@ -454,7 +678,19 @@ on(type: 'close', callback: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+let callback = () => {
+  console.info("on close success");
+}
+client.on('close', callback);
+```
 
 ## on('error')
 
@@ -479,7 +715,18 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+client.on('error', (err: Object) => {
+  console.error("on error, err:" + JSON.stringify(err))
+});
+```
 
 ## send
 
@@ -513,15 +760,42 @@ send(options: LocalSendOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2301011](../errorcode-net-socket.md#2301011-操作将阻塞) | Operation would block. |
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance()
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let localAddress : socket.LocalAddress = {
+  address: sandboxPath
+}
+let connectOpt: socket.LocalConnectOptions = {
+  address: localAddress,
+  timeout: 6000
+}
+client.connect(connectOpt).then(() => {
+  console.info('connect success')
+}).catch((err: Object) => {
+  console.error('connect failed: ' + JSON.stringify(err))
+})
+let sendOpt: socket.LocalSendOptions = {
+  data: 'Hello world!'
+}
+client.send(sendOpt).then(() => {
+  console.info('send success')
+}).catch((err: Object) => {
+  console.error('send fail: ' + JSON.stringify(err))
+})
 ```
 
 ## setExtraOptions
@@ -556,13 +830,42 @@ setExtraOptions(options: ExtraOptionsBase): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2301009](../errorcode-net-socket.md#2301009-错误文件描述符) | Bad file descriptor. |
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let localAddress : socket.LocalAddress = {
+  address: sandboxPath
+}
+let connectOpt: socket.LocalConnectOptions = {
+  address: localAddress,
+  timeout: 6000
+}
+client.connect(connectOpt).then(() => {
+  console.info('connect success');
+  let options: socket.ExtraOptionsBase = {
+    receiveBufferSize: 8192,
+    sendBufferSize: 8192,
+    socketTimeout: 3000
+  }
+  client.setExtraOptions(options).then(() => {
+    console.info('setExtraOptions success');
+  }).catch((err: Object) => {
+    console.error('setExtraOptions fail: ' + JSON.stringify(err));
+  });
+}).catch((err: Object) => {
+  console.error('connect fail: ' + JSON.stringify(err));
+});
 ```

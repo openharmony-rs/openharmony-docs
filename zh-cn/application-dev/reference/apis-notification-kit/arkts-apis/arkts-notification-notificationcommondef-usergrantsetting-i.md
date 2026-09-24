@@ -1,5 +1,9 @@
 # UserGrantSetting
 
+```TypeScript
+export interface UserGrantSetting
+```
+
 描述用户授权的设置信息。
 
 **起始版本：** 26.0.0

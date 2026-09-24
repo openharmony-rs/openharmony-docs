@@ -1,5 +1,9 @@
 # ZoomPointInfo
 
+```TypeScript
+interface ZoomPointInfo
+```
+
 Describes the equivalent focal length information.
 
 **Since:** 26.0.0

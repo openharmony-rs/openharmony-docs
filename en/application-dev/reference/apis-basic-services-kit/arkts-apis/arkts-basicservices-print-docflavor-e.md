@@ -1,5 +1,9 @@
 # DocFlavor
 
+```TypeScript
+enum DocFlavor
+```
+
 Enumerates the data source types for printing.
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # FileDeleteOption
 
+```TypeScript
+export interface FileDeleteOption
+```
+
 Defines the options used in delete().
 
 **Since:** 3

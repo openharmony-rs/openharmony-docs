@@ -62,6 +62,8 @@ try {
 ```
 
 
+<a id="getinstallationallowedappdistributiontypes-1"></a>
+
 ## getInstallationAllowedAppDistributionTypes
 
 ```TypeScript

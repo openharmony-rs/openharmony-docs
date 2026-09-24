@@ -1,5 +1,9 @@
 # EventFilter
 
+```TypeScript
+class EventFilter
+```
+
 Implements an event filter.
 
 You can use [filterById()](#filterbyid), [filterByTime()](#filterbytime), [filterByTitle()](#filterbytitle) to obtain an event filter, and then pass the filter in getEvents() for filtering.

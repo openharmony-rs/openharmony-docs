@@ -51,6 +51,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCacheDir(char* b
 
 Obtains the application-level cache directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -59,7 +61,7 @@ Obtains the application-level cache directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the application-level cache directory of the application. |
 | int32_t bufferSize | Buffer size, in bytes. |
-| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned. |
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned. |
 
 **Returns**:
 
@@ -76,6 +78,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetAreaMode(Ability
 **Description**
 
 Obtains the application-level file data encryption level of the application.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 13
 
@@ -101,6 +105,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleName(char*
 
 Obtains the bundle name of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -109,7 +115,7 @@ Obtains the bundle name of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the bundle name. |
 | int32_t bufferSize | Buffer size, in bytes. |
-| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned. |
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned. |
 
 **Returns**:
 
@@ -127,6 +133,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetTempDir(char* bu
 
 Obtains the application-level temporary file directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 16
 
 **Parameters**:
@@ -135,7 +143,7 @@ Obtains the application-level temporary file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the temporary file directory. |
 | const int32_t bufferSize | Buffer size, in bytes. |
-| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned. |
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned. |
 
 **Returns**:
 
@@ -153,6 +161,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetFilesDir(char* b
 
 Obtains the application-level common file directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 16
 
 **Parameters**:
@@ -161,7 +171,7 @@ Obtains the application-level common file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the common file directory. |
 | const int32_t bufferSize | Buffer size, in bytes. |
-| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned. |
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned. |
 
 **Returns**:
 
@@ -179,6 +189,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDatabaseDir(char
 
 Obtains the application-level database file directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 16
 
 **Parameters**:
@@ -187,7 +199,7 @@ Obtains the application-level database file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the database file directory. |
 | const int32_t bufferSize | Buffer size, in bytes. |
-| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned. |
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned. |
 
 **Returns**:
 
@@ -205,6 +217,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetPreferencesDir(c
 
 Obtains the application-level preferences file directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 16
 
 **Parameters**:
@@ -213,7 +227,7 @@ Obtains the application-level preferences file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the preferences file directory. |
 | const int32_t bufferSize | Buffer size, in bytes. |
-| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned. |
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned. |
 
 **Returns**:
 
@@ -231,6 +245,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleCodeDir(ch
 
 Obtains the application-level installation file directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 16
 
 **Parameters**:
@@ -239,7 +255,7 @@ Obtains the application-level installation file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the installation file directory. |
 | const int32_t bufferSize | Buffer size, in bytes. |
-| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned. |
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned. |
 
 **Returns**:
 
@@ -257,6 +273,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDistributedFiles
 
 Obtains the application-level distributed file directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 16
 
 **Parameters**:
@@ -265,7 +283,7 @@ Obtains the application-level distributed file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the distributed file directory. |
 | const int32_t bufferSize | Buffer size, in bytes. |
-| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned. |
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned. |
 
 **Returns**:
 
@@ -283,6 +301,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCloudFileDir(cha
 
 Obtains the application-level cloud file directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 16
 
 **Parameters**:
@@ -291,7 +311,7 @@ Obtains the application-level cloud file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the cloud file directory. |
 | const int32_t bufferSize | Buffer size, in bytes. |
-| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned. |
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned. |
 
 **Returns**:
 
@@ -309,6 +329,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(cons
 
 Obtains the application-level resource directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -318,7 +340,7 @@ Obtains the application-level resource directory of the application.
 | const char* moduleName | Pointer to the module name. |
 | char* buffer | Pointer to the buffer, which is used to receive the resource directory. |
 | const int32_t bufferSize | Buffer size, in bytes. |
-| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned. |
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned. |
 
 **Returns**:
 
@@ -335,6 +357,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbility(AbilityBase_Want *
 **Description**
 
 Starts the UIAbility of the current application.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Required permission**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -362,6 +386,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(Ab
 
 Starts the UIAbility of the current application using **StartOptions**.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Required permission**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
 **Since**: 17
@@ -371,7 +397,7 @@ Starts the UIAbility of the current application using **StartOptions**.
 | Parameter | Description |
 | -- | -- |
 | AbilityBase_Want *want | Pointer to the Want information required for starting the UIAbility. |
-| AbilityRuntime_StartOptions *options | Pointer to **StartOptions** required for starting the UIAbility. If the value of {@link startVisibility}<br>     is not null, ensure that the current application has been added to the status bar.<br>     Otherwise, the {@link ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED} error code is returned. |
+| AbilityRuntime_StartOptions *options | Pointer to **StartOptions** required for starting the UIAbility. If the value of {@link startVisibility} is not null, ensure that the current application has been added to the status bar. Otherwise, the [ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) error code is returned. |
 
 **Returns**:
 
@@ -388,6 +414,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetVersionCode(int6
 **Description**
 
 Obtains the application version code.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 21
 
@@ -413,6 +441,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(
 
 Obtains **WantParams** passed for the initial launch of the UIAbility of the current application. For details about **WantParams**, see {@link parameters in Want}.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -421,7 +451,7 @@ Obtains **WantParams** passed for the initial launch of the UIAbility of the cur
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive **WantParams**. |
 | const int32_t bufferSize | Buffer size, in bytes. |
-| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned. |
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned. |
 
 **Returns**:
 
@@ -439,6 +469,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(
 
 Obtains **WantParams** passed for the mose recent launch of the UIAbility of the current application. For details about **WantParams**, see {@link parameters in Want}.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -447,7 +479,7 @@ Obtains **WantParams** passed for the mose recent launch of the UIAbility of the
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive **WantParams**. |
 | const int32_t bufferSize | Buffer size, in bytes. |
-| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned. |
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned. |
 
 **Returns**:
 
@@ -465,6 +497,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(Abili
 
 Starts the UIAbility of the current application using **StartOptions** and obtains the process ID of the target UIAbility.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Required permission**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
 **Since**: 21
@@ -474,7 +508,7 @@ Starts the UIAbility of the current application using **StartOptions** and obtai
 | Parameter | Description |
 | -- | -- |
 | AbilityBase_Want *want | Pointer to the Want information required for starting the UIAbility. |
-| AbilityRuntime_StartOptions *options | Pointer to **StartOptions** required for starting the UIAbility. If the value of {@link startVisibility} is not null, ensure that the current application has been added<br>     to the status bar. Otherwise, the {@link ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED} error code is returned. |
+| AbilityRuntime_StartOptions *options | Pointer to **StartOptions** required for starting the UIAbility. If the value of {@link startVisibility} is not null, ensure that the current application has been added to the status bar. Otherwise, the [ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) error code is returned. |
 | int32_t *targetPid | Pointer to the process ID of the target UIAbility. |
 
 **Returns**:
@@ -493,6 +527,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLogFileDir(char*
 
 Obtains the application-level log file directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 22
 
 **Parameters**:
@@ -501,7 +537,7 @@ Obtains the application-level log file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the log file directory. |
 | const int32_t bufferSize | Buffer size, in bytes. |
-| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned. |
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned. |
 
 **Returns**:
 
@@ -518,6 +554,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(c
 **Description**
 
 This API can be called only from third-party frameworks. Each time a third-party framework switches pages, it notifies the system of the target page information (including the target page path, the length of the target page path, and the window ID corresponding to the target page). The system can adjust or recover the page according to product policies.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 23
 
@@ -545,7 +583,9 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_
 
 Acquires UIAbility child process infos of the current application.<br> Includes child processes created via startAbility with ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -558,6 +598,6 @@ Acquires UIAbility child process infos of the current application.<br> Includes 
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>       <li>{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the call is successful.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided are invalid.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_INTERNAL} if an internal error occurs,       such as connect system service failed.</li>       </ul> |
+| AbilityRuntime_ErrorCode | <ul>       <li>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the call is successful.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if an internal error occurs,       such as connect system service failed.</li>       </ul> |
 
 

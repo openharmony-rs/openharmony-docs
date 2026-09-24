@@ -33,40 +33,16 @@ function on(type: 'scanDeviceAdd', callback: Callback<ScannerDevice>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
 **示例**
 
 ```TypeScript
 import { scan } from '@kit.BasicServicesKit';
 
-scan.on('scanDeviceFound', (device: scan.ScannerDevice) => {
-    console.info('scan device found: ' + JSON.stringify(device));
-});
-```
-
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
-scan.on('scanDeviceSync', (device: scan.ScannerSyncDevice) => {
-    console.info('scan device sync: ' + JSON.stringify(device));
-});
-```
-
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
 scan.on('scanDeviceAdd', (device: scan.ScannerDevice) => {
     console.info('scan device add: ' + JSON.stringify(device));
-});
-```
-
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
-scan.on('scanDeviceDel', (device: scan.ScannerDevice) => {
-    console.info('scan device delete: ' + JSON.stringify(device));
 });
 ```
 
@@ -98,9 +74,15 @@ function on(type: 'scanDeviceDel', callback: Callback<ScannerDevice>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
 **示例**
 
-参见 on
+```TypeScript
+import { scan } from '@kit.BasicServicesKit';
+
+scan.on('scanDeviceDel', (device: scan.ScannerDevice) => {
+    console.info('scan device delete: ' + JSON.stringify(device));
+});
+```

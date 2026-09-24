@@ -1,5 +1,9 @@
 # PreviewOutput
 
+```TypeScript
+interface PreviewOutput extends CameraOutput
+```
+
 预览输出类。继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。
 
 **继承/实现关系：** PreviewOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
@@ -39,7 +43,33 @@ addDeferredSurface(surfaceId: string): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13 - 23 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13 - 23 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function preview(cameraManager: camera.CameraManager, cameraInfo: camera.CameraDevice, previewProfile: camera.Profile, photoProfile: camera.Profile, mode: camera.SceneMode, previewSurfaceId: string): Promise<void> {
+  let cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameraInfo);
+  let previewOutput: camera.PreviewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
+  let photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
+  let session: camera.Session  = cameraManager.createSession(mode);
+  session.beginConfig();
+  session.addInput(cameraInput);
+  session.addOutput(previewOutput);
+  session.addOutput(photoOutput);
+  await session.commitConfig();
+  try {
+    await session.start();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`start session failed. error code: ${err.code}`);
+  }
+  previewOutput.addDeferredSurface(previewSurfaceId);
+}
+```
 
 ## enableBandwidthCompression
 
@@ -76,6 +106,22 @@ enableBandwidthCompression(enabled: boolean): void
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled: boolean): void {
+  try {
+    previewOutput.enableBandwidthCompression(enabled);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The previewOutput.enableBandwidthCompression call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## getActiveFrameRate
 
 ```TypeScript
@@ -97,6 +143,15 @@ getActiveFrameRate(): FrameRateRange
 | 类型 | 说明 |
 | --- | --- |
 | [FrameRateRange](arkts-camera-camera-frameraterange-i.md) | 帧率范围 |
+
+**示例**
+
+```TypeScript
+function getActiveFrameRate(previewOutput: camera.PreviewOutput): camera.FrameRateRange {
+  let activeFrameRate: camera.FrameRateRange = previewOutput.getActiveFrameRate();
+  return activeFrameRate;
+}
+```
 
 ## getActiveProfile
 
@@ -123,6 +178,24 @@ getActiveProfile(): Profile
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testGetActiveProfile(previewOutput: camera.PreviewOutput): camera.Profile | undefined {
+  let activeProfile: camera.Profile | undefined = undefined;
+  try {
+    activeProfile = previewOutput.getActiveProfile();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The previewOutput.getActiveProfile call failed. error code: ${err.code}`);
+  }
+  return activeProfile;
+}
+```
 
 ## getPreviewRotation
 
@@ -163,6 +236,38 @@ getPreviewRotation(displayRotation?: number): ImageRotation
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect.<br>**适用版本：** 12 - 22 |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testGetPreviewRotation(previewOutput: camera.PreviewOutput, imageRotation : camera.ImageRotation): camera.ImageRotation {
+  let previewRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
+  try {
+    previewRotation = previewOutput.getPreviewRotation(imageRotation);
+    console.info(`Preview rotation is: ${previewRotation}`);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The previewOutput.getPreviewRotation call failed. error code: ${err.code}`);
+  }
+  return previewRotation;
+}
+
+function testGetPreviewRotationWithOutParam(previewOutput: camera.PreviewOutput): camera.ImageRotation {
+  let previewRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
+  try {
+    previewRotation = previewOutput.getPreviewRotation();
+    console.info(`Preview rotation is: ${previewRotation}`);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The previewOutput.testGetPreviewRotationWithOutParam call failed. error code: ${err.code}`);
+  }
+  return previewRotation;
+}
+```
+
 ## getSupportedFrameRates
 
 ```TypeScript
@@ -183,6 +288,15 @@ getSupportedFrameRates(): Array<FrameRateRange>
 | --- | --- |
 | Array&lt;[FrameRateRange](arkts-camera-camera-frameraterange-i.md)&gt; | 支持的帧率范围列表。若接口调用失败，返回undefined。 |
 
+**示例**
+
+```TypeScript
+function getSupportedFrameRates(previewOutput: camera.PreviewOutput): Array<camera.FrameRateRange> {
+  let supportedFrameRatesArray: Array<camera.FrameRateRange> = previewOutput.getSupportedFrameRates();
+  return supportedFrameRatesArray;
+}
+```
+
 ## isBandwidthCompressionSupported
 
 ```TypeScript
@@ -202,6 +316,24 @@ isBandwidthCompressionSupported(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 是否支持预览带宽压缩。true表示支持，false表示不支持。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isBandwidthCompressionSupported(previewOutput: camera.PreviewOutput): boolean {
+  let supported: boolean = false;
+  try {
+    supported = previewOutput.isBandwidthCompressionSupported();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The previewOutput.isBandwidthCompressionSupported call failed. error code: ${err.code}`);
+  }
+  return supported;
+}
+```
 
 ## isLogViewAssistSupported
 
@@ -229,6 +361,24 @@ LOG视频下，查询是否支持辅助监看功能。辅助监看开启后，�
 | --- | --- |
 | boolean | 是否支持辅助监看功能。true表示支持，false表示不支持。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isLogViewAssistSupported(previewOutput: camera.PreviewOutput): boolean {
+  let supported: boolean = false;
+  try {
+      supported = previewOutput.isLogViewAssistSupported();
+  } catch (error) {
+      // 失败返回错误码error.code并处理。
+      let err = error as BusinessError;
+      console.error(`The previewOutput.isLogViewAssistSupported call failed. error code: ${err.code}`);
+  }
+  return supported;
+}
+```
+
 ## off('frameStart')
 
 ```TypeScript
@@ -249,6 +399,14 @@ off(type: 'frameStart', callback?: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | type | 'frameStart' | 是 | 监听事件，固定为'frameStart'，previewOutput创建成功可监听。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例**
+
+```TypeScript
+function unregisterPreviewOutputFrameStart(previewOutput: camera.PreviewOutput): void {
+  previewOutput.off('frameStart');
+}
+```
 
 ## off('frameEnd')
 
@@ -271,6 +429,14 @@ off(type: 'frameEnd', callback?: AsyncCallback<void>): void
 | type | 'frameEnd' | 是 | 监听事件，固定为'frameEnd'，previewOutput创建成功可监听。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
+**示例**
+
+```TypeScript
+function unregisterPreviewOutputFrameEnd(previewOutput: camera.PreviewOutput): void {
+  previewOutput.off('frameEnd');
+}
+```
+
 ## off('error')
 
 ```TypeScript
@@ -291,6 +457,14 @@ off(type: 'error', callback?: ErrorCallback): void
 | --- | --- | --- | --- |
 | type | 'error' | 是 | 监听事件，固定为'error'，previewOutput创建成功可监听。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例**
+
+```TypeScript
+function unregisterPreviewOutputError(previewOutput: camera.PreviewOutput): void {
+  previewOutput.off('error');
+}
+```
 
 ## on('frameStart')
 
@@ -317,6 +491,24 @@ on(type: 'frameStart', callback: AsyncCallback<void>): void
 | type | 'frameStart' | 是 | 监听事件，固定为'frameStart'，previewOutput创建成功可监听。底层第一次开始曝光时触发该事件并返回。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于获取结果。只要有该事件返回就证明预览开始。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info('Preview frame started');
+}
+
+function registerPreviewOutputFrameStart(previewOutput: camera.PreviewOutput): void {
+  previewOutput.on('frameStart', callback);
+}
+```
+
 ## on('frameEnd')
 
 ```TypeScript
@@ -342,6 +534,24 @@ on(type: 'frameEnd', callback: AsyncCallback<void>): void
 | type | 'frameEnd' | 是 | 监听事件，固定为'frameEnd'，previewOutput创建成功可监听。预览完全结束最后一帧时触发该事件并返回。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于获取结果。只要有该事件返回就证明预览结束。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info('Preview frame ended');
+}
+
+function registerPreviewOutputFrameEnd(previewOutput: camera.PreviewOutput): void {
+  previewOutput.on('frameEnd', callback);
+}
+```
+
 ## on('error')
 
 ```TypeScript
@@ -366,6 +576,20 @@ on(type: 'error', callback: ErrorCallback): void
 | --- | --- | --- | --- |
 | type | 'error' | 是 | 监听事件，固定为'error'，previewOutput创建成功可监听。预览接口使用错误时触发该事件，比如调用[Session.start](arkts-camera-camera-session-i.md#start)，[CameraOutput.release](arkts-camera-camera-cameraoutput-i.md#release)等接口发生错误时返回对应错误信息。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(previewOutputError: BusinessError): void {
+  console.error(`Preview output error code: ${previewOutputError.code}`);
+}
+
+function registerPreviewOutputError(previewOutput: camera.PreviewOutput): void {
+  previewOutput.on('error', callback)
+}
+```
 
 ## setFrameRate
 
@@ -401,6 +625,14 @@ setFrameRate(minFps: number, maxFps: number): void
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400110](../errorcode-camera.md#7400110-与当前配置存在冲突) | Unresolved conflicts with current configurations. |
 
+**示例**
+
+```TypeScript
+function setFrameRateRange(previewOutput: camera.PreviewOutput, frameRateRange: Array<number>): void {
+  previewOutput.setFrameRate(frameRateRange[0], frameRateRange[1]);
+}
+```
+
 ## setLogViewAssistEnable
 
 ```TypeScript
@@ -433,9 +665,25 @@ LOG视频下，使能辅助监看之前，可先使用方法[isLogViewAssistSupp
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setLogViewAssistEnable(previewOutput: camera.PreviewOutput, enable: boolean): void {
+  try {
+      previewOutput.setLogViewAssistEnable(enable);
+  } catch (error) {
+      // 失败返回错误码error.code并处理。
+      let err = error as BusinessError;
+      console.error(`The previewOutput.setLogViewAssistEnable call failed. error code: ${err.code}`);
+  }
+}
+```
 
 ## setPreviewRotation
 
@@ -456,7 +704,7 @@ setPreviewRotation(previewRotation: ImageRotation, isDisplayLocked?: boolean): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | previewRotation | [ImageRotation](arkts-camera-camera-imagerotation-e.md) | 是 | 预览旋转角度 |
-| isDisplayLocked | boolean | 否 | Surface在屏幕旋转时是否锁定方向，未设置时默认取值为false，即不锁定方向。true表示锁定方向，false表示不锁定方向。详情请参考[SurfaceRotationOptions](../../apis-arkui/arkts-components/arkts-arkui-surfacerotationoptions-i.md) |
+| isDisplayLocked | boolean | 否 | Surface在屏幕旋转时是否锁定方向，未设置时默认取值为false，即不锁定方向。true表示锁定方向，false表示不锁定方向。详情请参考[SurfaceRotationOptions](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp-surfacerotationoptions-i.md) |
 
 **错误码：**
 
@@ -464,6 +712,23 @@ setPreviewRotation(previewRotation: ImageRotation, isDisplayLocked?: boolean): v
 | --- | --- |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testSetPreviewRotation(previewOutput: camera.PreviewOutput, previewRotation : camera.ImageRotation, isDisplayLocked: boolean): void {
+  try {
+    previewOutput.setPreviewRotation(previewRotation, isDisplayLocked);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The previewOutput.setPreviewRotation call failed. error code: ${err.code}`);
+  }
+  return;
+}
+```
 
 ## start
 
@@ -497,6 +762,24 @@ start(callback: AsyncCallback<void>): void
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startPreviewOutput(previewOutput: camera.PreviewOutput): void {
+  previewOutput.start((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to start the preview output, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback returned with preview output started.');
+  });
+}
+```
+
+<a id="start-1"></a>
+
 ## start
 
 ```TypeScript
@@ -529,6 +812,20 @@ start(): Promise<void>
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startPreviewOutput(previewOutput: camera.PreviewOutput): void {
+  previewOutput.start().then(() => {
+    console.info('Promise returned with preview output started.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to preview output start, error code: ${error.code}.`);
+  });
+}
+```
+
 ## stop
 
 ```TypeScript
@@ -555,6 +852,24 @@ stop(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当停止输出预览流成功，err为undefined，否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stopPreviewOutput(previewOutput: camera.PreviewOutput): void {
+  previewOutput.stop((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to stop the preview output, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Returned with preview output stopped.');
+  })
+}
+```
+
+<a id="stop-1"></a>
+
 ## stop
 
 ```TypeScript
@@ -580,3 +895,17 @@ stop(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stopPreviewOutput(previewOutput: camera.PreviewOutput): void {
+  previewOutput.stop().then(() => {
+    console.info('Callback returned with preview output stopped.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to preview output stop, error code: ${error.code}.`);
+  });
+}
+```

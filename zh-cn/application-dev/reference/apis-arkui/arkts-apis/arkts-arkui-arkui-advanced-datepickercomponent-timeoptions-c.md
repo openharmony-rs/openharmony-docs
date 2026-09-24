@@ -1,5 +1,9 @@
 # TimeOptions
 
+```TypeScript
+export declare class TimeOptions extends CommonOptions
+```
+
 TimeOptions定义时间选择器的选项。
 
 继承于[CommonOptions](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md)。

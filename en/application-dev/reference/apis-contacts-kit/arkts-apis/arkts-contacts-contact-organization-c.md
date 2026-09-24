@@ -1,5 +1,9 @@
 # Organization
 
+```TypeScript
+class Organization
+```
+
 Defines a contact's organization.
 
 **Since:** 7

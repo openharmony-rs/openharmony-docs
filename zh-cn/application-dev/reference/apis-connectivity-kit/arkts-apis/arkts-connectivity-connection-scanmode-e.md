@@ -1,5 +1,9 @@
 # ScanMode
 
+```TypeScript
+enum ScanMode
+```
+
 枚举，表示扫描模式。该模式决定设备是否可被发现或可被连接。
 
 **起始版本：** 10

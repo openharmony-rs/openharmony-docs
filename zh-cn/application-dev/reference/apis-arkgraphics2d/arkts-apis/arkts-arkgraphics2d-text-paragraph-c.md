@@ -1,5 +1,9 @@
 # Paragraph
 
+```TypeScript
+class Paragraph
+```
+
 保存文本内容及样式的载体，支持排版与绘制操作。
 
 下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)类的[build()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#build)接口获取到Paragraph对象实例，再通过此实例调用对应方法。
@@ -551,9 +555,7 @@ getLineMetrics(): Array<LineMetrics>
 let arrLineMetric =  paragraph.getLineMetrics();
 ```
 
-```TypeScript
-let lineMetrics =  paragraph.getLineMetrics(0);
-```
+<a id="getlinemetrics-1"></a>
 
 ## getLineMetrics
 
@@ -583,7 +585,9 @@ getLineMetrics(lineNumber: number): LineMetrics | undefined
 
 **示例**
 
-参见 [getLineMetrics](#getlinemetrics)
+```TypeScript
+let lineMetrics =  paragraph.getLineMetrics(0);
+```
 
 ## getLineWidth
 
@@ -1122,7 +1126,7 @@ layout(width: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 

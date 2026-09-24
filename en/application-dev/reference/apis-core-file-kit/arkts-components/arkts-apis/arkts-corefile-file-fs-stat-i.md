@@ -1,5 +1,9 @@
 # Stat
 
+```TypeScript
+declare interface Stat
+```
+
 Represents detailed file information. Before calling any API of the **Stat()** class, use [stat()](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiostat) to create a **Stat** instance.
 
 **Since:** 9
@@ -271,7 +275,7 @@ Time when the file was last accessed. The value is the number of seconds elapsed
 readonly atimeNs?:bigint
 ```
 
-Time of the last access to the file. The value is the number of nanoseconds elapsed since 00:00:00 on January 1, 19 70.
+Time of the last access to the file. The value is the number of nanoseconds elapsed since 00:00:00 on January 1, 1970.
 
 **Note:**  Currently, user data partitions are mounted in **noatime** mode by default, and **atime** update is disabled.
 

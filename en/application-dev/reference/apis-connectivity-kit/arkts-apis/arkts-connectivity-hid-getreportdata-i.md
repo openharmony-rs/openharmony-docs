@@ -1,5 +1,9 @@
 # GetReportData
 
+```TypeScript
+interface GetReportData
+```
+
 Describe the GET_REPORT data is received from remote host.
 
 @typedef GetReportData

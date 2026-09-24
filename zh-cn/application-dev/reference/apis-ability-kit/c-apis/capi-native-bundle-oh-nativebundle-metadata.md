@@ -8,6 +8,8 @@ typedef struct OH_NativeBundle_Metadata {...} OH_NativeBundle_Metadata
 
 元数据信息。
 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
 **起始版本：** 20
 
 **相关模块：** [Native_Bundle](capi-native-bundle.md)

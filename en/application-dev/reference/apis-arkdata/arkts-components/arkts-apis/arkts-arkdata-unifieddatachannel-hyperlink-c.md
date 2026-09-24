@@ -1,5 +1,9 @@
 # Hyperlink
 
+```TypeScript
+class Hyperlink extends Text
+```
+
 Represents the hyperlink data. It is a child class of [Text](arkts-arkdata-unifieddatachannel-text-c.md).
 
 **Inheritance/Implementation:** Hyperlink extends [Text](arkts-arkdata-unifieddatachannel-text-c.md)

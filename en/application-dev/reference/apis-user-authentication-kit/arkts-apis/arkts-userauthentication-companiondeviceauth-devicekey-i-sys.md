@@ -1,5 +1,9 @@
 # DeviceKey (System API)
 
+```TypeScript
+interface DeviceKey
+```
+
 Defines the device service ID. It uniquely identifies a device and its user, including the device ID type, device ID, user ID, and sub-profile ID.
 
 **Since:** 23
@@ -62,7 +66,7 @@ Device sub-profile ID. It is an integer greater than or equal to 0 and is used t
 
 **Default:** -1
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

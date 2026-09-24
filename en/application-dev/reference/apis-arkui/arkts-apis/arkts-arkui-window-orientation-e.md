@@ -1,5 +1,9 @@
 # Orientation
 
+```TypeScript
+enum Orientation
+```
+
 Enumerates the window orientations. <!--Del-->For details of the differences between different enumerated values, see [What is the difference between orientation values 8 to 10 or 12 and values 13 to 16 (API version 9)](../../../faqs/faqs-window-manager.md#what-is-the-difference-between-orientation-values-8-to-10-or-12-and-values-13-to-16-api-version-9).<!--DelEnd-->
 
 **Since:** 9

@@ -1,6 +1,10 @@
 # StepperItem属性/事件
 
-**继承/实现关系：** StepperItemAttribute extends CommonMethod&lt;StepperItemAttribute&gt;
+```TypeScript
+declare class StepperItemAttribute extends CommonMethod<StepperItemAttribute>
+```
+
+**继承/实现关系：** StepperItemAttribute extends CommonMethod<StepperItemAttribute>
 
 **起始版本：** 8
 
@@ -20,7 +24,7 @@ nextLabel(value: string)
 
 > **说明：** 
 
-> 从API version 8开始支持，从API version 22开始废弃，建议使用showNext替代。
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[showNext](arkts-arkui-swiper-comp-swipercontroller-c.md#shownext)替代。
 
 **起始版本：** 8
 
@@ -48,7 +52,7 @@ prevLabel(value: string)
 
 > **说明：** 
 
-> 从API version 8开始支持，从API version 22开始废弃，建议使用showPrevious替代。
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[showPrevious](arkts-arkui-swiper-comp-swipercontroller-c.md#showprevious)替代。
 
 **起始版本：** 8
 
@@ -92,4 +96,4 @@ status(value?: ItemState)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ItemState](arkts-arkui-itemstate-e.md) | 否 | 步骤导航器nextLabel的显示状态。<br>默认值：ItemState.Normal |
+| value | [ItemState](arkts-arkui-stepperitem-comp-itemstate-e.md) | 否 | 步骤导航器nextLabel的显示状态。<br>默认值：ItemState.Normal |

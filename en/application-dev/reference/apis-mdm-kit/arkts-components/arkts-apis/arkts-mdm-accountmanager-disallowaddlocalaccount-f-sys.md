@@ -67,24 +67,8 @@ accountManager.disallowAddLocalAccount(wantTemp, true, (err) => {
 });
 ```
 
-```TypeScript
-import { accountManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-accountManager.disallowAddLocalAccount(wantTemp, true).then(() => {
-  console.info('Succeeded in disallowing add local account');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to disallow add local account. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="disallowaddlocalaccount-1"></a>
 
 ## disallowAddLocalAccount
 
@@ -133,4 +117,20 @@ Forbids the creation of local accounts on the device. This API uses a promise to
 
 **Examples**
 
-See [disallowAddLocalAccount](#disallowaddlocalaccount)
+```TypeScript
+import { accountManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+accountManager.disallowAddLocalAccount(wantTemp, true).then(() => {
+  console.info('Succeeded in disallowing add local account');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to disallow add local account. Code: ${err.code}, message: ${err.message}`);
+});
+```

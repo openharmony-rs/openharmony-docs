@@ -1,5 +1,9 @@
 # ReverseGeoCodeRequest
 
+```TypeScript
+export interface ReverseGeoCodeRequest
+```
+
 Configuring parameters in reverse geocode requests
 
 @interface ReverseGeoCodeRequest

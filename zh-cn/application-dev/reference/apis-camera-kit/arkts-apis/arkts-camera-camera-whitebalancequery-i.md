@@ -1,5 +1,9 @@
 # WhiteBalanceQuery
 
+```TypeScript
+interface WhiteBalanceQuery
+```
+
 提供了查询设备对指定的白平衡模式是否支持，以及获取设备支持的白平衡模式范围的方法。
 
 **起始版本：** 20
@@ -40,6 +44,23 @@ getColorTintRange(): Array<number>
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getColorTintRange(session: camera.PhotoSession | camera.VideoSession): Array<number> {
+  let range: Array<number> = [];
+  try {
+    range = session.getColorTintRange();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The getColorTintRange call failed. error code: ${err.code}`);
+  }
+  return range;
+}
+```
+
 ## getWhiteBalanceRange
 
 ```TypeScript
@@ -64,8 +85,25 @@ getWhiteBalanceRange(): Array<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12 - 19 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 19 |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getWhiteBalanceRange(session: camera.PhotoSession | camera.VideoSession): Array<number> {
+  let range: Array<number> = [];
+  try {
+    range = session.getWhiteBalanceRange();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The getWhiteBalanceRange call failed. error code: ${err.code}`);
+  }
+  return range;
+}
+```
 
 ## isWhiteBalanceModeSupported
 
@@ -97,6 +135,24 @@ isWhiteBalanceModeSupported(mode: WhiteBalanceMode): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12 - 19 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 19 |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isWhiteBalanceModeSupported(session: camera.PhotoSession | camera.VideoSession): boolean {
+  let status: boolean = false;
+  try {
+  let mode: camera.WhiteBalanceMode = camera.WhiteBalanceMode.DAYLIGHT;
+    status = session.isWhiteBalanceModeSupported(mode);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The isWhiteBalanceModeSupported call failed. error code: ${err.code}`);
+  }
+  return status;
+}
+```

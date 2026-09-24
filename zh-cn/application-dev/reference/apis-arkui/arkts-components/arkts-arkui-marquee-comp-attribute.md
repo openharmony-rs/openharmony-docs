@@ -1,10 +1,12 @@
 # Marquee属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性。
+```TypeScript
+declare class MarqueeAttribute extends CommonMethod<MarqueeAttribute>
+```
 
-除支持[通用事件](arkts-arkui-commonmethod-c.md)外，还支持以下事件。
+除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
 
-**继承/实现关系：** MarqueeAttribute extends CommonMethod&lt;MarqueeAttribute&gt;
+**继承/实现关系：** MarqueeAttribute extends CommonMethod<MarqueeAttribute>
 
 **起始版本：** 8
 
@@ -237,4 +239,4 @@ onStop(event: Callback<void> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback&lt;void&gt; &#124; undefined | 是 |  |
+| event | Callback&lt;void&gt; &#124; undefined | 是 | 跑马灯滚动结束或停止时触发回调。<br>设置为undefined时不会执行回调。 |

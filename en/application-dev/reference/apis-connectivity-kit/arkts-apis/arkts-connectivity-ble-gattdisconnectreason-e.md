@@ -1,5 +1,9 @@
 # GattDisconnectReason
 
+```TypeScript
+enum GattDisconnectReason
+```
+
 The enum of gatt disconnection reasons.
 
 **Since:** 20

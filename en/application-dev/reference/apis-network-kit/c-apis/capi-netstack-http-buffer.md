@@ -8,6 +8,8 @@ typedef struct Http_Buffer {...} Http_Buffer
 
 Defines the HTTP buffer structure.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Related module**: [netstack](capi-netstack.md)

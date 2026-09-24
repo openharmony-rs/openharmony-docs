@@ -42,6 +42,8 @@ int pthread_attr_settee(pthread_attr_t *a, int ca, int task_id, int shadow)
 
 Sets thread attributes for CA, task ID, and shadow settings.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:

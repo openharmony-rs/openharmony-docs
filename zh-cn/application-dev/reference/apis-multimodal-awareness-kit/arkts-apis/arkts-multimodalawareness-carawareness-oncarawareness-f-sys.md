@@ -15,7 +15,7 @@ function onCarAwareness(capability: Capability, callback: Callback<CarAwarenessI
 
 开启汽车感知，订阅汽车感知结果。如果不支持该功能，则不会回调，支持的能力可以通过getAllCapacityList方法获取。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -35,6 +35,6 @@ function onCarAwareness(capability: Capability, callback: Callback<CarAwarenessI
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission check failed. A non-system application uses the system capability. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission check failed. A non-system application uses the system capability. |
 | [34000001](../errorcode-carAwareness.md#34000001-服务异常) | Service exception. |
 | [34000002](../errorcode-carAwareness.md#34000002-指定能力不支持) | Specific capability not supported. |

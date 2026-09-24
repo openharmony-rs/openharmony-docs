@@ -38,7 +38,7 @@ function getPhotoAccessHelper(context: Context): PhotoAccessHelper
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **示例**
 
@@ -55,27 +55,6 @@ struct Index {
       Button("example").onClick(async () => {
         let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
         let phAccessHelper = sendablePhotoAccessHelper.getPhotoAccessHelper(context);
-      }).width('100%')
-    }
-    .height('90%')
-  }
-}
-```
-
-```TypeScript
-// 此处获取的phAccessHelper实例为全局对象，后续使用到phAccessHelper的地方默认为使用此处获取的对象，如未添加此段代码报phAccessHelper未定义的错误请自行添加。
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-import { common } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      Button("example").onClick(async () => {
-        let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        // 此处101表示其他用户空间的userid
-        let phAccessHelper = sendablePhotoAccessHelper.getPhotoAccessHelper(context, 101);
       }).width('100%')
     }
     .height('90%')

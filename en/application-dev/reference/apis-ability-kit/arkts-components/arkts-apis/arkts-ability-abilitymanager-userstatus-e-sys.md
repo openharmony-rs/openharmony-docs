@@ -1,5 +1,9 @@
 # UserStatus (System API)
 
+```TypeScript
+export enum UserStatus
+```
+
 Enumerates the assertion result for different user operations.
 
 **Since:** 12

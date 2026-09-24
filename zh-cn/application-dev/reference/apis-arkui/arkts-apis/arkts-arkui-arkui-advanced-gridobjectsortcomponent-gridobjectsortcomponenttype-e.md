@@ -1,5 +1,9 @@
 # GridObjectSortComponentType
 
+```TypeScript
+export declare enum GridObjectSortComponentType
+```
+
 配置网格对象排序组件节点的类型，配置名称 IMAGE_TEXT 为图片文字类型，TEXT 为文字类型。
 
 **起始版本：** 11

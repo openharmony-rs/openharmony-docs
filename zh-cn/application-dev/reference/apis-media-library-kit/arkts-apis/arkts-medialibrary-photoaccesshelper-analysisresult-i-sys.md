@@ -1,5 +1,9 @@
 # AnalysisResult（系统接口）
 
+```TypeScript
+interface AnalysisResult
+```
+
 资产分析结果信息。
 
 **起始版本：** 24

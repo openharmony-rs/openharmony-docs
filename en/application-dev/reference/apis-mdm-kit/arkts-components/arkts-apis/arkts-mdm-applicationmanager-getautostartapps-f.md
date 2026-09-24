@@ -97,6 +97,8 @@ try {
 ```
 
 
+<a id="getautostartapps-1"></a>
+
 ## getAutoStartApps
 
 ```TypeScript
@@ -136,8 +138,41 @@ Checks the auto-start applications for the current user.
 
 **Examples**
 
-See [getAutoStartApps](#getautostartapps)
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
 
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let res: Array<Want> = applicationManager.getAutoStartApps(wantTemp);
+  console.info(`Succeeded in adding auto start apps: ${JSON.stringify(res)}`);
+} catch(err) {
+  console.error(`Failed to auto start apps. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+```TypeScript
+// Return value example.
+[
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    // Supported since API version 24.
+    "parameters": {
+      "isHiddenStart": false
+    }
+  },
+  // ...
+]
+```
+
+
+<a id="getautostartapps-2"></a>
 
 ## getAutoStartApps
 
@@ -181,6 +216,8 @@ Checks the auto-start applications for the specified user.
 See [getAutoStartApps](#getautostartapps)
 
 
+<a id="getautostartapps-3"></a>
+
 ## getAutoStartApps
 
 ```TypeScript
@@ -220,4 +257,35 @@ Checks the auto-start applications for the specified user.
 
 **Examples**
 
-See [getAutoStartApps](#getautostartapps)
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let res: Array<Want> = applicationManager.getAutoStartApps(wantTemp, 100);
+  console.info(`Succeeded in getting auto start apps: ${JSON.stringify(res)}`);
+} catch(err) {
+  console.error(`Failed to get auto start apps. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+```TypeScript
+// Return value example.
+[
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    // Supported since API version 24.
+    "parameters": {
+      "isHiddenStart": false
+    }
+  },
+  // ...
+]
+```

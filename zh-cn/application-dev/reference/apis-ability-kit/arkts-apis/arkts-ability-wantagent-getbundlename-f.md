@@ -31,7 +31,7 @@ function getBundleName(agent: WantAgent, callback: AsyncCallback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000007](../errorcode-ability.md#16000007-服务未响应) | Service busy. There are concurrent tasks. Try again later. |
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
 
@@ -104,6 +104,45 @@ try {
 }
 ```
 
+
+<a id="getbundlename-1"></a>
+
+## getBundleName
+
+```TypeScript
+function getBundleName(agent: WantAgent): Promise<string>
+```
+
+获取WantAgent实例所属应用的包名。使用Promise异步回调。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| agent | [WantAgent](arkts-ability-wantagent-t.md) | 是 | WantAgent对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;string&gt; | Promise对象，返回获取WantAgent实例的包名。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [16000007](../errorcode-ability.md#16000007-服务未响应) | Service busy. There are concurrent tasks. Try again later. |
+| [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
+
+**示例**
+
 ```TypeScript
 import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
@@ -165,42 +204,3 @@ try {
   console.error(`getWantAgent failed! ${err.code} ${err.message}`);
 }
 ```
-
-
-## getBundleName
-
-```TypeScript
-function getBundleName(agent: WantAgent): Promise<string>
-```
-
-获取WantAgent实例所属应用的包名。使用Promise异步回调。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| agent | [WantAgent](arkts-ability-wantagent-t.md) | 是 | WantAgent对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回获取WantAgent实例的包名。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [16000007](../errorcode-ability.md#16000007-服务未响应) | Service busy. There are concurrent tasks. Try again later. |
-| [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
-
-**示例**
-
-参见 getBundleName

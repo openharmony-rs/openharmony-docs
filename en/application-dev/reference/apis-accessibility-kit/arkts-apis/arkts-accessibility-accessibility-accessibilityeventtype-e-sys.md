@@ -1,5 +1,9 @@
 # AccessibilityEventType (System API)
 
+```TypeScript
+export enum AccessibilityEventType
+```
+
 Enumerates accessibility event types.
 
 **Since:** 20

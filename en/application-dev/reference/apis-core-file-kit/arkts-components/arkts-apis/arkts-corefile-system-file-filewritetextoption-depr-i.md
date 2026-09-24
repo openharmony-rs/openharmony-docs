@@ -1,5 +1,9 @@
 # FileWriteTextOption
 
+```TypeScript
+export interface FileWriteTextOption
+```
+
 Defines the options used in writeText().
 
 **Since:** 3

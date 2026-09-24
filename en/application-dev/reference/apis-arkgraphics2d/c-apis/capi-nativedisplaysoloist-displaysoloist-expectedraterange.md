@@ -8,6 +8,8 @@ typedef struct DisplaySoloist_ExpectedRateRange {...} DisplaySoloist_ExpectedRat
 
 This struct describes the expected frame rate range.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.HyperGraphicManager
+
 **Since**: 12
 
 **Related module**: [NativeDisplaySoloist](capi-nativedisplaysoloist.md)

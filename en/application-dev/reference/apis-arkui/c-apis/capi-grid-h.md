@@ -52,6 +52,8 @@ enum ArkUI_GridItemAlignment
 
 Enumerates the alignment modes of the {@link GridItem} component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 | Enum item | Description |
@@ -68,6 +70,8 @@ enum ArkUI_GridItemStyle
 **Description**
 
 Enumerates styles of grid items.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -89,6 +93,8 @@ ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()
 
 Creates **Grid** layout options.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Returns**:
@@ -107,6 +113,8 @@ void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 
 Disposes of the **Grid** layout option.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -124,6 +132,8 @@ int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* 
 **Description**
 
 Sets the irregular grid item index array for the grid layout.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -151,6 +161,8 @@ int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 Obtains the irregular grid item index array for the grid layout. When **<br>OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback** is not set, the grid item specified in this parameter occupies an entire row of the grid that scrolls vertically or an entire column of the grid that scrolls horizontally.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -177,6 +189,8 @@ void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_Gr
 
 Registers a callback to obtain the row and column span for the grid item at the specified index.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -196,6 +210,8 @@ void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutO
 **Description**
 
 Registers a callback to obtain the starting row, starting column, row span, and column span for the grid item at the specified index.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 

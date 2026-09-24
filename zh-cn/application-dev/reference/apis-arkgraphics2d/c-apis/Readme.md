@@ -114,6 +114,7 @@
     - [OH_Drawing_FontVariationInstanceCoordinate](capi-drawing-oh-drawing-fontvariationinstancecoordinate.md)
     - [NativePixelMap_](capi-drawing-nativepixelmap-.md)
     - [OH_PixelmapNative](capi-drawing-oh-pixelmapnative.md)
+    - [OH_Drawing_TypefaceFallbackInfo](capi-drawing-oh-drawing-typefacefallbackinfo.md)
     - [OH_Drawing_Font_Metrics](capi-drawing-oh-drawing-font-metrics.md)
     - [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)
     - [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md)

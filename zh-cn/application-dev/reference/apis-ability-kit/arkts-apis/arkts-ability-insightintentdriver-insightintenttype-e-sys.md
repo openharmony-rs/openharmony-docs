@@ -1,5 +1,9 @@
 # InsightIntentType（系统接口）
 
+```TypeScript
+enum InsightIntentType
+```
+
 表示通过意图装饰器定义的意图类型，可通过[getAllInsightIntentInfo](arkts-ability-insightintentdriver-getallinsightintentinfo-f-sys.md)等方法返回的[LinkIntentInfo](arkts-ability-insightintentdriver-linkintentinfo-i-sys.md)获取。
 
 **起始版本：** 20

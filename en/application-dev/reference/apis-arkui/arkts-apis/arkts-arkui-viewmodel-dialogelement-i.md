@@ -1,5 +1,9 @@
 # DialogElement
 
+```TypeScript
+export interface DialogElement extends Element
+```
+
 The &lt;dialog&gt; component is a custom pop-up container.
 
 @extends Element @interface DialogElement

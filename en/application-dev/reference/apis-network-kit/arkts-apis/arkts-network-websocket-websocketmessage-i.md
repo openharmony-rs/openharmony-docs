@@ -1,5 +1,9 @@
 # WebSocketMessage
 
+```TypeScript
+export interface WebSocketMessage
+```
+
 Callback used to return the result, which contains:
 
 **Since:** 19

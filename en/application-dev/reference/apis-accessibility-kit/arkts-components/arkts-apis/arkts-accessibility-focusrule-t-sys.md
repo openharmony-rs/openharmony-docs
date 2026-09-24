@@ -1,8 +1,7 @@
 # FocusRule (System API)
 
 ```TypeScript
-export type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' |
-'checkSelf' | 'checkSelfBypassDescendants'
+export type FocusRule = 'bypassSelf' | 'bypassSelfDescendants''checkSelf' | 'checkSelfBypassDescendants'
 ```
 
 Describes how to determine the focus capability of the starting node and its child nodes when searching for focusable nodes.

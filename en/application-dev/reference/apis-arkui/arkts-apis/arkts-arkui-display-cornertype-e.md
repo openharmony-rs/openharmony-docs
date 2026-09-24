@@ -1,5 +1,9 @@
 # CornerType
 
+```TypeScript
+enum CornerType
+```
+
 Enumerates the types of corners on the screen.
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # HeartRateResponse
 
+```TypeScript
+export interface HeartRateResponse
+```
+
 Defines a **HeartRateResponse** object.
 
 **Since:** 3

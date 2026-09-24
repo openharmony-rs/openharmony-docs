@@ -1,5 +1,9 @@
 # SubHeaderV2SelectOptions
 
+```TypeScript
+export interface SubHeaderV2SelectOptions
+```
+
 Defines the options for initializing a **SubHeaderV2Select** object.
 
 **Since:** 18
@@ -82,7 +86,7 @@ options: SelectOption[]
 
 Options for the drop-down list box.
 
-**Type:** [SelectOption](../arkts-components/arkts-arkui-selectoption-i.md)[]
+**Type:** [SelectOption](../arkts-components/arkts-arkui-select-comp-selectoption-i.md)[]
 
 **Since:** 18
 

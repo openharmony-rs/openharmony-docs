@@ -1,5 +1,9 @@
 # ShaderEffect
 
+```TypeScript
+class ShaderEffect
+```
+
 着色器，用于在绘图中填充颜色和渐变效果。画刷和画笔设置着色器后，会使用着色器效果而不是颜色属性去绘制，但此时画刷和画笔的透明度属性仍然生效。着色器支持创建单色着色器、线性渐变、径向渐变、扇形渐变、锥形渐变、图片着色器及混合着色器等多种类型。
 
 > **说明：** 
@@ -48,7 +52,15 @@ static createColorShader(color: number): ShaderEffect
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let shaderEffect = drawing.ShaderEffect.createColorShader(0xFFFF0000);
+```
 
 ## createComposeShader
 
@@ -82,6 +94,16 @@ static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: Shade
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let dstShader = drawing.ShaderEffect.createColorShader(0xFF0000FF);
+let srcShader = drawing.ShaderEffect.createColorShader(0xFFFF0000);
+let shader = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SRC);
+```
 
 ## createConicalGradient
 
@@ -120,7 +142,17 @@ static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+let startPt: common2D.Point = { x: 100, y: 100 };
+let endPt: common2D.Point = { x: 200, y: 200 };
+let shaderEffect = drawing.ShaderEffect.createConicalGradient(startPt, 100, endPt, 50, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT);
+```
 
 ## createImageShader
 
@@ -157,6 +189,47 @@ static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileM
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+**示例**
+
+```TypeScript
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i + 1] = 156;
+      colorData[i + 2] = 0;
+      colorData[i + 3] = 255;
+    }
+
+  let opts: image.InitializationOptions = {
+      editable: true,
+      pixelFormat: 3,
+      size: { height, width }
+    };
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    let matrix = new drawing.Matrix();
+    let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
+    if (pixelMap != null) {
+      let imageShader =
+        drawing.ShaderEffect.createImageShader(pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options,
+          matrix);
+    }
+    pixelMap.release();
+  }
+}
+```
+
 ## createLinearGradient
 
 ```TypeScript
@@ -191,7 +264,17 @@ static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+let startPt: common2D.Point = { x: 100, y: 100 };
+let endPt: common2D.Point = { x: 300, y: 300 };
+let shaderEffect = drawing.ShaderEffect.createLinearGradient(startPt, endPt, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT);
+```
 
 ## createRadialGradient
 
@@ -227,7 +310,16 @@ static createRadialGradient(centerPt: common2D.Point, radius: number, colors: Ar
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+let centerPt: common2D.Point = { x: 100, y: 100 };
+let shaderEffect = drawing.ShaderEffect.createRadialGradient(centerPt, 100, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT);
+```
 
 ## createSweepGradient
 
@@ -265,4 +357,13 @@ static createSweepGradient(centerPt: common2D.Point, colors: Array<number>,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+let centerPt: common2D.Point = { x: 100, y: 100 };
+let shaderEffect = drawing.ShaderEffect.createSweepGradient(centerPt, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT, 100, 200);
+```

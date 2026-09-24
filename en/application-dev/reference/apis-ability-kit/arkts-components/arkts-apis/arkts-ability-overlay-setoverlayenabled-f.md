@@ -44,27 +44,6 @@ let moduleName = "feature";
 let isEnabled = false;
 
 try {
-  overlay.setOverlayEnabled(moduleName, isEnabled)
-    .then(() => {
-      console.info('setOverlayEnabled success');
-    }).catch((err: BusinessError) => {
-    console.error('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
-  });
-} catch (err) {
-  let code = (err as BusinessError).code;
-  let message = (err as BusinessError).message;
-  console.error('setOverlayEnabled failed due to err code: ' + code + ' ' + 'message:' + message);
-}
-```
-
-```TypeScript
-import { overlay } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let moduleName = "feature";
-let isEnabled = false;
-
-try {
   overlay.setOverlayEnabled(moduleName, isEnabled, (err, data) => {
     if (err) {
       console.error('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
@@ -79,6 +58,8 @@ try {
 }
 ```
 
+
+<a id="setoverlayenabled-1"></a>
 
 ## setOverlayEnabled
 
@@ -115,4 +96,23 @@ Enables or disables a module with the overlay feature in the current application
 
 **Examples**
 
-See [setOverlayEnabled](#setoverlayenabled)
+```TypeScript
+import { overlay } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let moduleName = "feature";
+let isEnabled = false;
+
+try {
+  overlay.setOverlayEnabled(moduleName, isEnabled)
+    .then(() => {
+      console.info('setOverlayEnabled success');
+    }).catch((err: BusinessError) => {
+    console.error('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
+  });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error('setOverlayEnabled failed due to err code: ' + code + ' ' + 'message:' + message);
+}
+```

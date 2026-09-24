@@ -1,5 +1,9 @@
 # RootInfo (System API)
 
+```TypeScript
+interface RootInfo
+```
+
 Provides APIs for managing the device's root attribute information.
 
 **Since:** 9

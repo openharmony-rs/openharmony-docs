@@ -1,5 +1,9 @@
 # ContainerFormatType
 
+```TypeScript
+enum ContainerFormatType
+```
+
 Enumerates the container format types (CFTs).
 
 **Since:** 8

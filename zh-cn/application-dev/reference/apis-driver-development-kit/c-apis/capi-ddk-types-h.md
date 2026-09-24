@@ -40,6 +40,8 @@ enum DDK_RetCode
 
 枚举基本DDK中使用的错误代码。开发者调用DDK接口后，通过检查这些错误码来判断操作是否成功，并根据具体错误码（如参数无效、空指针异常等）进行相应的错误处理。
 
+**系统能力：** SystemCapability.Driver.DDK.Extension
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |

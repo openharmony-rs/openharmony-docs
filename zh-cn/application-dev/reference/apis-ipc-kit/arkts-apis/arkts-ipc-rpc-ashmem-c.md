@@ -1,5 +1,9 @@
 # Ashmem
 
+```TypeScript
+class Ashmem
+```
+
 提供与匿名共享内存对象相关的方法，包括创建、关闭、映射和取消映射Ashmem、从Ashmem读取数据和写入数据、获取Ashmem大小、设置Ashmem保护。
 
 共享内存只适用于本设备内跨进程通信。
@@ -80,7 +84,7 @@ static create(name: string, size: number): Ashmem
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The Ashmem name passed is empty; 4.The Ashmem size passed is less than or equal to 0. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The Ashmem name passed is empty; 4.The Ashmem size passed is less than or equal to 0. |
 
 **示例**
 
@@ -101,22 +105,7 @@ try {
 }
 ```
 
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
-  let ashmem2 = rpc.Ashmem.create(ashmem);
-  let size = ashmem2.getAshmemSize();
-  hilog.info(0x0000, 'testTag', 'size is ' + size);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
+<a id="create-1"></a>
 
 ## create
 
@@ -146,26 +135,9 @@ static create(ashmem: Ashmem): Ashmem
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The passed parameter is not an Ashmem object; 3.The ashmem instance for obtaining packaging is empty. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The passed parameter is not an Ashmem object; 3.The ashmem instance for obtaining packaging is empty. |
 
 **示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
-  hilog.info(0x0000, 'testTag', 'create ashmem: ' + ashmem);
-  let size = ashmem.getAshmemSize();
-  hilog.info(0x0000, 'testTag',  'size is ' + size);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -177,6 +149,337 @@ try {
   let ashmem2 = rpc.Ashmem.create(ashmem);
   let size = ashmem2.getAshmemSize();
   hilog.info(0x0000, 'testTag', 'size is ' + size);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
+
+## getAshmemSize
+
+```TypeScript
+getAshmemSize(): number
+```
+
+获取Ashmem对象的内存大小。
+
+**起始版本：** 8
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 返回Ashmem对象的内存大小。 |
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
+  let size = ashmem.getAshmemSize();
+  hilog.info(0x0000, 'testTag', ' size is ' + size);
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'error is ' + error);
+}
+```
+
+## mapReadonlyAshmem
+
+```TypeScript
+mapReadonlyAshmem(): void
+```
+
+在此进程虚拟地址空间上创建只读的共享文件映射。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
+  ashmem.mapReadonlyAshmem();
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
+
+## mapReadWriteAshmem
+
+```TypeScript
+mapReadWriteAshmem(): void
+```
+
+在此进程虚拟地址空间上创建可读写的共享文件映射。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
+  ashmem.mapReadWriteAshmem();
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
+
+## mapTypedAshmem
+
+```TypeScript
+mapTypedAshmem(mapType: number): void
+```
+
+在此进程的虚拟地址空间上创建共享文件映射，映射区域大小由此Ashmem对象指定。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| mapType | number | 是 | 指定映射的内存区域的保护等级。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The passed mapType exceeds the maximum protection level. |
+| [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
+  ashmem.mapTypedAshmem(rpc.Ashmem.PROT_READ | rpc.Ashmem.PROT_WRITE);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
+
+## readDataFromAshmem
+
+```TypeScript
+readDataFromAshmem(size: number, offset: number): ArrayBuffer
+```
+
+从此Ashmem对象关联的共享文件中读取数据。
+
+> **说明：** 
+> 
+> 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
+
+**起始版本：** 11
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| size | number | 是 | 要读取的数据的大小，以字节为单位。 |
+| offset | number | 是 | 要读取的数据在此Ashmem对象关联的内存区间的起始位置。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| ArrayBuffer | 返回读取的数据。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| [1900004](../errorcode-rpc.md#1900004-共享内存读数据失败) | Failed to read data from the shared memory. |
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let buffer = new ArrayBuffer(1024);
+  let int32View = new Int32Array(buffer);
+  for (let i = 0; i < int32View.length; i++) {
+    int32View[i] = i * 2 + 1;
+  }
+  let size = buffer.byteLength;
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
+  ashmem.mapReadWriteAshmem();
+  ashmem.writeDataToAshmem(buffer, size, 0);
+  let readResult = ashmem.readDataFromAshmem(size, 0);
+  let readInt32View = new Int32Array(readResult);
+  hilog.info(0x0000, 'testTag', 'read from Ashmem result is ' + readInt32View);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
+
+## setProtectionType
+
+```TypeScript
+setProtectionType(protectionType: number): void
+```
+
+设置映射内存区域的保护等级。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| protectionType | number | 是 | 要设置的保护类型。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| [1900002](../errorcode-rpc.md#1900002-系统调用ioctl失败) | Failed to call ioctl. |
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
+  ashmem.setProtectionType(rpc.Ashmem.PROT_READ);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'Rpc set protection type fail, errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'Rpc set protection type fail, errorMessage ' + e.message);
+}
+```
+
+## unmapAshmem
+
+```TypeScript
+unmapAshmem(): void
+```
+
+删除该Ashmem对象的地址映射。
+
+**起始版本：** 8
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
+  ashmem.unmapAshmem();
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'error is ' + error);
+}
+```
+
+## writeDataToAshmem
+
+```TypeScript
+writeDataToAshmem(buf: ArrayBuffer, size: number, offset: number): void
+```
+
+将数据写入此Ashmem对象关联的共享文件。
+
+> **说明：** 
+> 
+> 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
+
+**起始版本：** 11
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| buf | ArrayBuffer | 是 | 写入Ashmem对象的数据。 |
+| size | number | 是 | 要写入的数据大小，以字节为单位。 |
+| offset | number | 是 | 要写入的数据在此Ashmem对象关联的内存区间的起始位置。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain arrayBuffer information. |
+| [1900003](../errorcode-rpc.md#1900003-共享内存写数据失败) | Failed to write data to the shared memory. |
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let buffer = new ArrayBuffer(1024);
+  let int32View = new Int32Array(buffer);
+  for (let i = 0; i < int32View.length; i++) {
+    int32View[i] = i * 2 + 1;
+  }
+  let size = buffer.byteLength;
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
+  ashmem.mapReadWriteAshmem();
+  ashmem.writeDataToAshmem(buffer, size, 0);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -268,39 +571,6 @@ try {
   let ashmem2 = rpc.Ashmem.createAshmemFromExisting(ashmem);
   let size = ashmem2.getAshmemSize();
   hilog.info(0x0000, 'testTag', 'size is ' + size);
-} catch (error) {
-  hilog.error(0x0000, 'testTag', 'error is ' + error);
-}
-```
-
-## getAshmemSize
-
-```TypeScript
-getAshmemSize(): number
-```
-
-获取Ashmem对象的内存大小。
-
-**起始版本：** 8
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| number | 返回Ashmem对象的内存大小。 |
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
-  let size = ashmem.getAshmemSize();
-  hilog.info(0x0000, 'testTag', ' size is ' + size);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error is ' + error);
 }
@@ -423,118 +693,6 @@ try {
 }
 ```
 
-## mapReadonlyAshmem
-
-```TypeScript
-mapReadonlyAshmem(): void
-```
-
-在此进程虚拟地址空间上创建只读的共享文件映射。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
-  ashmem.mapReadonlyAshmem();
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
-
-## mapReadWriteAshmem
-
-```TypeScript
-mapReadWriteAshmem(): void
-```
-
-在此进程虚拟地址空间上创建可读写的共享文件映射。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
-  ashmem.mapReadWriteAshmem();
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
-
-## mapTypedAshmem
-
-```TypeScript
-mapTypedAshmem(mapType: number): void
-```
-
-在此进程的虚拟地址空间上创建共享文件映射，映射区域大小由此Ashmem对象指定。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| mapType | number | 是 | 指定映射的内存区域的保护等级。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The passed mapType exceeds the maximum protection level. |
-| [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
-  ashmem.mapTypedAshmem(rpc.Ashmem.PROT_READ | rpc.Ashmem.PROT_WRITE);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
-
 ## readAshmem
 
 ```TypeScript
@@ -572,7 +730,7 @@ readAshmem(size: number, offset: number): number[]
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900004](../errorcode-rpc.md#1900004-共享内存读数据失败) | Failed to read data from the shared memory. |
 
 **示例**
@@ -589,69 +747,6 @@ try {
   ashmem.writeAshmem(byteArrayVar, 5, 0);
   let readResult = ashmem.readAshmem(5, 0);
   hilog.info(0x0000, 'testTag', 'read from Ashmem result is ' + readResult);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
-
-## readDataFromAshmem
-
-```TypeScript
-readDataFromAshmem(size: number, offset: number): ArrayBuffer
-```
-
-从此Ashmem对象关联的共享文件中读取数据。
-
-> **说明：** 
-> 
-> 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
-
-**起始版本：** 11
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| size | number | 是 | 要读取的数据的大小，以字节为单位。 |
-| offset | number | 是 | 要读取的数据在此Ashmem对象关联的内存区间的起始位置。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| ArrayBuffer | 返回读取的数据。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
-| [1900004](../errorcode-rpc.md#1900004-共享内存读数据失败) | Failed to read data from the shared memory. |
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let buffer = new ArrayBuffer(1024);
-  let int32View = new Int32Array(buffer);
-  for (let i = 0; i < int32View.length; i++) {
-    int32View[i] = i * 2 + 1;
-  }
-  let size = buffer.byteLength;
-  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
-  ashmem.mapReadWriteAshmem();
-  ashmem.writeDataToAshmem(buffer, size, 0);
-  let readResult = ashmem.readDataFromAshmem(size, 0);
-  let readInt32View = new Int32Array(readResult);
-  hilog.info(0x0000, 'testTag', 'read from Ashmem result is ' + readInt32View);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -756,74 +851,6 @@ try {
 }
 ```
 
-## setProtectionType
-
-```TypeScript
-setProtectionType(protectionType: number): void
-```
-
-设置映射内存区域的保护等级。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| protectionType | number | 是 | 要设置的保护类型。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
-| [1900002](../errorcode-rpc.md#1900002-系统调用ioctl失败) | Failed to call ioctl. |
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
-  ashmem.setProtectionType(rpc.Ashmem.PROT_READ);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'Rpc set protection type fail, errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'Rpc set protection type fail, errorMessage ' + e.message);
-}
-```
-
-## unmapAshmem
-
-```TypeScript
-unmapAshmem(): void
-```
-
-删除该Ashmem对象的地址映射。
-
-**起始版本：** 8
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
-  ashmem.unmapAshmem();
-} catch (error) {
-  hilog.error(0x0000, 'testTag', 'error is ' + error);
-}
-```
-
 ## writeAshmem
 
 ```TypeScript
@@ -856,7 +883,7 @@ writeAshmem(buf: number[], size: number, offset: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The element does not exist in the array. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The element does not exist in the array. |
 | [1900003](../errorcode-rpc.md#1900003-共享内存写数据失败) | Failed to write data to the shared memory. |
 
 **示例**
@@ -875,61 +902,6 @@ try {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'Rpc write to ashmem fail, errorCode ' + e.code);
   hilog.error(0x0000, 'testTag', 'Rpc write to ashmem fail, errorMessage ' + e.message);
-}
-```
-
-## writeDataToAshmem
-
-```TypeScript
-writeDataToAshmem(buf: ArrayBuffer, size: number, offset: number): void
-```
-
-将数据写入此Ashmem对象关联的共享文件。
-
-> **说明：** 
-> 
-> 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
-
-**起始版本：** 11
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| buf | ArrayBuffer | 是 | 写入Ashmem对象的数据。 |
-| size | number | 是 | 要写入的数据大小，以字节为单位。 |
-| offset | number | 是 | 要写入的数据在此Ashmem对象关联的内存区间的起始位置。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain arrayBuffer information. |
-| [1900003](../errorcode-rpc.md#1900003-共享内存写数据失败) | Failed to write data to the shared memory. |
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let buffer = new ArrayBuffer(1024);
-  let int32View = new Int32Array(buffer);
-  for (let i = 0; i < int32View.length; i++) {
-    int32View[i] = i * 2 + 1;
-  }
-  let size = buffer.byteLength;
-  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
-  ashmem.mapReadWriteAshmem();
-  ashmem.writeDataToAshmem(buffer, size, 0);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
 

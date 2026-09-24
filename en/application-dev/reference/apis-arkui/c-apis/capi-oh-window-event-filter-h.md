@@ -51,6 +51,8 @@ typedef bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)
 
 Defines a function for filtering multimodal key events.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 12
 
 **Parameters**:
@@ -75,6 +77,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t wi
 
 Registers a function for filtering multimodal key events.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 12
 
 **Parameters**:
@@ -88,7 +92,7 @@ Registers a function for filtering multimodal key events.
 
 | Type | Description |
 | -- | -- |
-| WindowManager_ErrorCode | Returns the status code of the execution.      <ul>      <li>Returns {@link OK} if the operation is successful.</li><br>    <li>Returns {@link INVALID_WINDOW_ID} if the windowId is invalid.</li><br>    <li>Returns {@link WINDOW_MANAGER_ERRORCODE_INVALID_PARAM} if the keyEventFilter is invalid.</li><br>    <li>Returns {@link SERVICE_ERROR} if the window manager service error occurs.</li>      </ul> |
+| WindowManager_ErrorCode | Returns the status code of the execution.      <ul>      <li>Returns [OK](capi-uchar-h.md#ublockcode) if the operation is successful.</li>      <li>Returns [INVALID_WINDOW_ID](capi-oh-window-comm-h.md#windowmanager_errorcode) if the windowId is invalid.</li>      <li>Returns [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) if the keyEventFilter is invalid.</li>      <li>Returns [SERVICE_ERROR](capi-oh-window-comm-h.md#windowmanager_errorcode) if the window manager service error occurs.</li>      </ul> |
 
 ### OH_NativeWindowManager_UnregisterKeyEventFilter()
 
@@ -99,6 +103,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t 
 **Description**
 
 Unregisters a function for filtering multimodal key events.
+
+**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 12
 
@@ -112,7 +118,7 @@ Unregisters a function for filtering multimodal key events.
 
 | Type | Description |
 | -- | -- |
-| WindowManager_ErrorCode | Returns the status code of the execution.      <ul>      <li>Returns {@link OK} if the operation is successful.</li><br>    <li>Returns {@link INVALID_WINDOW_ID} if the windowId is invalid.</li><br>    <li>Returns {@link SERVICE_ERROR} if the window manager service error occurs.</li>      </ul> |
+| WindowManager_ErrorCode | Returns the status code of the execution.      <ul>      <li>Returns [OK](capi-uchar-h.md#ublockcode) if the operation is successful.</li>      <li>Returns [INVALID_WINDOW_ID](capi-oh-window-comm-h.md#windowmanager_errorcode) if the windowId is invalid.</li>      <li>Returns [SERVICE_ERROR](capi-oh-window-comm-h.md#windowmanager_errorcode) if the window manager service error occurs.</li>      </ul> |
 
 ### OH_NativeWindowManager_MouseEventFilter()
 
@@ -123,6 +129,8 @@ typedef bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseE
 **Description**
 
 Defines a function for filtering multimodal mouse events.
+
+**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -148,6 +156,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t 
 
 Registers a function for filtering multimodal mouse events.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 15
 
 **Parameters**:
@@ -161,7 +171,7 @@ Registers a function for filtering multimodal mouse events.
 
 | Type | Description |
 | -- | -- |
-| WindowManager_ErrorCode | Returns the status code of the execution.      <ul>      <li>Returns {@link OK} if the operation is successful.</li><br>    <li>Returns {@link INVALID_WINDOW_ID} if the windowId is invalid.</li><br>    <li>Returns {@link WINDOW_MANAGER_ERRORCODE_INVALID_PARAM} if the mouseEventFilter is invalid.</li><br>    <li>Returns {@link SERVICE_ERROR} if the window manager service error occurs.</li>      </ul> |
+| WindowManager_ErrorCode | Returns the status code of the execution.      <ul>      <li>Returns [OK](capi-uchar-h.md#ublockcode) if the operation is successful.</li>      <li>Returns [INVALID_WINDOW_ID](capi-oh-window-comm-h.md#windowmanager_errorcode) if the windowId is invalid.</li>      <li>Returns [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) if the mouseEventFilter is invalid.</li>      <li>Returns [SERVICE_ERROR](capi-oh-window-comm-h.md#windowmanager_errorcode) if the window manager service error occurs.</li>      </ul> |
 
 ### OH_NativeWindowManager_UnregisterMouseEventFilter()
 
@@ -172,6 +182,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterMouseEventFilter(int32_
 **Description**
 
 Unregisters a function for filtering multimodal mouse events.
+
+**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -185,7 +197,7 @@ Unregisters a function for filtering multimodal mouse events.
 
 | Type | Description |
 | -- | -- |
-| WindowManager_ErrorCode | Returns the status code of the execution.      <ul>      <li>Returns {@link OK} if the operation is successful.</li><br>    <li>Returns {@link INVALID_WINDOW_ID} if the windowId is invalid.</li><br>    <li>Returns {@link SERVICE_ERROR} if the window manager service error occurs.</li>      </ul> |
+| WindowManager_ErrorCode | Returns the status code of the execution.      <ul>      <li>Returns [OK](capi-uchar-h.md#ublockcode) if the operation is successful.</li>      <li>Returns [INVALID_WINDOW_ID](capi-oh-window-comm-h.md#windowmanager_errorcode) if the windowId is invalid.</li>      <li>Returns [SERVICE_ERROR](capi-oh-window-comm-h.md#windowmanager_errorcode) if the window manager service error occurs.</li>      </ul> |
 
 ### OH_NativeWindowManager_TouchEventFilter()
 
@@ -196,6 +208,8 @@ typedef bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchE
 **Description**
 
 Defines a function for filtering multimodal touch events.
+
+**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -221,6 +235,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t 
 
 Registers a function for filtering multimodal touch events.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 15
 
 **Parameters**:
@@ -234,7 +250,7 @@ Registers a function for filtering multimodal touch events.
 
 | Type | Description |
 | -- | -- |
-| WindowManager_ErrorCode | Returns the status code of the execution.      <ul>      <li>Returns {@link OK} if the operation is successful.</li><br>    <li>Returns {@link INVALID_WINDOW_ID} if the windowId is invalid.</li><br>    <li>Returns {@link WINDOW_MANAGER_ERRORCODE_INVALID_PARAM} if the touchEventFilter is invalid.</li><br>    <li>Returns {@link SERVICE_ERROR} if the window manager service error occurs.</li>      </ul> |
+| WindowManager_ErrorCode | Returns the status code of the execution.      <ul>      <li>Returns [OK](capi-uchar-h.md#ublockcode) if the operation is successful.</li>      <li>Returns [INVALID_WINDOW_ID](capi-oh-window-comm-h.md#windowmanager_errorcode) if the windowId is invalid.</li>      <li>Returns [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) if the touchEventFilter is invalid.</li>      <li>Returns [SERVICE_ERROR](capi-oh-window-comm-h.md#windowmanager_errorcode) if the window manager service error occurs.</li>      </ul> |
 
 ### OH_NativeWindowManager_UnregisterTouchEventFilter()
 
@@ -245,6 +261,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterTouchEventFilter(int32_
 **Description**
 
 Unregisters a function for filtering multimodal touch events.
+
+**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -258,7 +276,7 @@ Unregisters a function for filtering multimodal touch events.
 
 | Type | Description |
 | -- | -- |
-| WindowManager_ErrorCode | Returns the status code of the execution.      <ul>      <li>Returns {@link OK} if the operation is successful.</li><br>    <li>Returns {@link INVAILD_WINDOW_ID} if the window id is invalid.</li><br>    <li>Returns {@link SERVICE_ERROR} if the window manager service error occurs.</li>      </ul> |
+| WindowManager_ErrorCode | Returns the status code of the execution.      <ul>      <li>Returns [OK](capi-uchar-h.md#ublockcode) if the operation is successful.</li>      <li>Returns [INVAILD_WINDOW_ID](capi-oh-window-comm-h.md#windowmanager_errorcode) if the window id is invalid.</li>      <li>Returns [SERVICE_ERROR](capi-oh-window-comm-h.md#windowmanager_errorcode) if the window manager service error occurs.</li>      </ul> |
 
 ### OH_NativeWindowManager_GetKeyEventFilter()
 
@@ -269,6 +287,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_GetKeyEventFilter(int32_t windowI
 **Description**
 
 Gets the key event filter callback for the window.
+
+**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 26.0.0
 
@@ -283,7 +303,7 @@ Gets the key event filter callback for the window.
 
 | Type | Description |
 | -- | -- |
-| WindowManager_ErrorCode | Returns the error code defined by {@link WindowManager_ErrorCode}.<br>    <ul><br>    <li>Returns {@link OK} if the operation is successful.</li><br>    <li>Returns {@link INVALID_WINDOW_ID} if the windowId is invalid.</li><br>    <li>Returns {@link WINDOW_MANAGER_ERRORCODE_INVALID_PARAM} if the outKeyEventFilter is NULL.</li>      </ul> |
+| WindowManager_ErrorCode | Returns the error code defined by [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).      <ul>      <li>Returns [OK](capi-uchar-h.md#ublockcode) if the operation is successful.</li>      <li>Returns [INVALID_WINDOW_ID](capi-oh-window-comm-h.md#windowmanager_errorcode) if the windowId is invalid.</li>      <li>Returns [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) if the outKeyEventFilter is NULL.</li>      </ul> |
 
 ### OH_NativeWindowManager_GetMouseEventFilter()
 
@@ -294,6 +314,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_GetMouseEventFilter(int32_t windo
 **Description**
 
 Gets the mouse event filter callback for the window.
+
+**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 26.0.0
 
@@ -308,7 +330,7 @@ Gets the mouse event filter callback for the window.
 
 | Type | Description |
 | -- | -- |
-| WindowManager_ErrorCode | Returns the error code defined by {@link WindowManager_ErrorCode}.<br>    <ul><br>    <li>Returns {@link OK} if the operation is successful.</li><br>    <li>Returns {@link INVALID_WINDOW_ID} if the windowId is invalid.</li><br>    <li>Returns {@link WINDOW_MANAGER_ERRORCODE_INVALID_PARAM} if the outMouseEventFilter is NULL.</li>      </ul> |
+| WindowManager_ErrorCode | Returns the error code defined by [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).      <ul>      <li>Returns [OK](capi-uchar-h.md#ublockcode) if the operation is successful.</li>      <li>Returns [INVALID_WINDOW_ID](capi-oh-window-comm-h.md#windowmanager_errorcode) if the windowId is invalid.</li>      <li>Returns [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) if the outMouseEventFilter is NULL.</li>      </ul> |
 
 ### OH_NativeWindowManager_GetTouchEventFilter()
 
@@ -319,6 +341,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_GetTouchEventFilter(int32_t windo
 **Description**
 
 Gets the touch event filter callback for the window.
+
+**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 26.0.0
 
@@ -333,6 +357,6 @@ Gets the touch event filter callback for the window.
 
 | Type | Description |
 | -- | -- |
-| WindowManager_ErrorCode | Returns the error code defined by {@link WindowManager_ErrorCode}.<br>    <ul><br>    <li>Returns {@link OK} if the operation is successful.</li><br>    <li>Returns {@link INVALID_WINDOW_ID} if the windowId is invalid.</li><br>    <li>Returns {@link WINDOW_MANAGER_ERRORCODE_INVALID_PARAM} if the outTouchEventFilter is NULL.</li>      </ul> |
+| WindowManager_ErrorCode | Returns the error code defined by [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).      <ul>      <li>Returns [OK](capi-uchar-h.md#ublockcode) if the operation is successful.</li>      <li>Returns [INVALID_WINDOW_ID](capi-oh-window-comm-h.md#windowmanager_errorcode) if the windowId is invalid.</li>      <li>Returns [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) if the outTouchEventFilter is NULL.</li>      </ul> |
 
 

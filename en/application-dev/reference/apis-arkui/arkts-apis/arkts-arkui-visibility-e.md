@@ -1,5 +1,9 @@
 # Visibility
 
+```TypeScript
+declare enum Visibility
+```
+
 Defines the visibility and layout placeholder status of the component.
 
 **Since:** 7

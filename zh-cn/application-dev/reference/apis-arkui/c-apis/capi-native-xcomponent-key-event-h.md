@@ -37,6 +37,8 @@ enum OH_NativeXComponent_KeyCode
 
 按键事件的键码。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 10
 
 | 枚举项 | 描述 |
@@ -381,6 +383,8 @@ enum OH_NativeXComponent_KeyAction
 **描述：**
 
 按键事件动作。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 10
 

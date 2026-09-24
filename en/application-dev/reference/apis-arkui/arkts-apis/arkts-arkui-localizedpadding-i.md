@@ -1,5 +1,9 @@
 # LocalizedPadding
 
+```TypeScript
+declare interface LocalizedPadding
+```
+
 Defines the paddings in different directions of a component.
 
 **Since:** 12

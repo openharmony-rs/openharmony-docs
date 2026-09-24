@@ -1,5 +1,9 @@
 # Prompt
 
+```TypeScript
+export default class Prompt
+```
+
 Defines the prompt interface.
 
 **Since:** 11
@@ -22,6 +26,8 @@ Displays the menu.
 
 **Since:** 11
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -42,6 +48,8 @@ Displays the dialog box.
 
 **Since:** 11
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -61,6 +69,8 @@ static showToast(options: ShowToastOptions): void
 Displays the notification text.
 
 **Since:** 11
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

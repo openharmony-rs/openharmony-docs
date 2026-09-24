@@ -1,5 +1,9 @@
 # LineBreakStrategy
 
+```TypeScript
+declare enum LineBreakStrategy
+```
+
 The line break rule.
 
 **Since:** 12

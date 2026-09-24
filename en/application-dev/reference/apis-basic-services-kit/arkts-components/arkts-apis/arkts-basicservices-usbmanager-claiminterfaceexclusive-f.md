@@ -15,7 +15,7 @@ function claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force
 
 Claims a USB device interface exclusively. When this API is called, the system checks whether the specified USB interface has been claimed by another process to avoid conflicts during declaration. If **force** is set to **true**, the operating system first releases the interface from the kernel driver and then grants control to the calling app. After the interface is claimed exclusively, other processes can still claim the same interface by calling [usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md). You can use the **onConflict** callback to receive such conflict notifications.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

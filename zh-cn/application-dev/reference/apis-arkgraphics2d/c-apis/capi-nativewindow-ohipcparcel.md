@@ -8,6 +8,8 @@ typedef struct OHIPCParcel OHIPCParcel
 
 提供对IPC序列化对象的访问功能。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 12
 
 **相关模块：** [NativeWindow](capi-nativewindow.md)

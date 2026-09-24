@@ -1,5 +1,9 @@
 # Server
 
+```TypeScript
+interface Server
+```
+
 服务对象，提供启动服务、停止服务、关闭服务、注册/取消注册服务端回调等方法。
 
 **起始版本：** 20
@@ -32,7 +36,28 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+
+**示例**
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+  server.start();
+  server.close();
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
 
 ## off('connectionAccepted')
 
@@ -61,8 +86,35 @@ off(type: 'connectionAccepted', callback?: Callback<Connection>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
+
+**示例**
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
+  // 使用服务名构造Server
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+  server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
+    hilog.info(0x0000, TAG, 'accept new connection');
+  });
+  // 取消订阅服务接收
+  server.off('connectionAccepted', (connection: linkEnhance.Connection): void => {
+    hilog.info(0x0000, TAG, 'accept new connection');
+  });
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
 
 ## off('serverStopped')
 
@@ -91,8 +143,35 @@ off(type: 'serverStopped', callback?: Callback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
+
+**示例**
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
+  // 使用服务名构造Server
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+  server.on('serverStopped', (reason: number): void => {
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
+  });
+  // 取消订阅服务停止
+  server.off('serverStopped', (reason: number): void => {
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
+  });
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
 
 ## on('connectionAccepted')
 
@@ -121,8 +200,35 @@ on(type: 'connectionAccepted', callback: Callback<Connection>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
+
+**示例**
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
+  // 使用服务名构造Server
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+
+  // 订阅服务接收事件
+  server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
+    hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
+  });
+  // 启动服务
+  server.start();
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
 
 ## on('serverStopped')
 
@@ -151,8 +257,35 @@ on(type: 'serverStopped', callback: Callback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
+
+**示例**
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
+  // 使用服务名构造Server
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+
+  // 订阅服务停止
+  server.on('serverStopped', (reason: number): void => {
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
+  });
+  // 启动服务
+  server.start();
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
 
 ## start
 
@@ -174,9 +307,29 @@ start(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [32390202](../errorcode-link-enhance.md#32390202-服务个数超出限制) | The number of servers exceeds the limit. |
 | [32390300](../errorcode-link-enhance.md#32390300-内部错误) | Internal error. |
+
+**示例**
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+  server.start();
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
 
 ## stop
 
@@ -198,4 +351,25 @@ stop(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+
+**示例**
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+  server.start();
+  server.stop();
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```

@@ -1,5 +1,9 @@
 # CustomGeometry
 
+```TypeScript
+export declare class CustomGeometry extends GeometryDefinition
+```
+
 自定义几何类型，继承自GeometryDefinition。
 
 @extends GeometryDefinition

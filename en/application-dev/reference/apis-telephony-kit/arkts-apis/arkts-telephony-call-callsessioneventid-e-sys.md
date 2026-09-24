@@ -1,5 +1,9 @@
 # CallSessionEventId (System API)
 
+```TypeScript
+export enum CallSessionEventId
+```
+
 Enumerates video call event types.
 
 **Since:** 11

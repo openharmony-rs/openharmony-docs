@@ -1,12 +1,16 @@
 # SegmentButton
 
-**SegmentButton** is a versatile component that organizes related options into visually grouped buttons. It supports three variants: tab-style, capsule-style single-select, and capsule-style multi-select.
+```TypeScript
+declare struct SegmentButton
+```
+
+The segment button component includes tab-style segment buttons and capsule-style segment buttons. Tab-style segment buttons are suitable for switching between pages or content areas. Capsule-style segment buttons are suitable for single-select or multi-select scenarios, including capsule-style single-select segment buttons and capsule-style multi-select segment buttons. This component supports custom appearance attributes such as text color, font size, font weight, background color, image size, padding, and background blur material. It supports three button styles: text-only, icon-only, and icon + text. It also provides capabilities such as accessibility reading, layout direction mirroring, custom rounded corners, and property animation, making it suitable for scenarios where you need to quickly build a segmented selection interface that complies with design specifications.
 
 > **NOTE:** 
 > 
-> - The **SegmentButton** component does not support [universal attributes](ts-component-general-attributes.md). The component occupies the maximum available width within its content area and distributes this width evenly among its items. It adapts its height automatically to the content (text and images), the minimum height being 28 vp.
+> - The segment button does not support [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md). The segment button uses the maximum available width in the current area as the component width, and evenly distributes the width among the buttons based on the number of buttons. The segment button height automatically adapts to the button content (text and images), with a minimum height of 28 vp.
 > 
-> - Properties decorated with @Prop are optional. They are required during construction only when used together with the @Require decorator.
+> - Attributes decorated by **@Prop** are optional parameters. They must be passed during construction only when used together with the **@Require** decorator.
 
 **Since:** 11
 
@@ -26,9 +30,9 @@ import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray, Tab
 enableStateAnimation: boolean
 ```
 
-Whether to enable property animation for the segment button when the **selectedIndex** value is modified via a variable.
+Whether to enable the attribute animation of the segment button when the **selectedIndexes** value is modified through a variable.
 
-**true**: Property animation is enabled. **false**: Property animation is disabled and the original animation is used.
+The value **true** means to enable the attribute animation of the segment button, and **false** means the opposite.
 
 Default value: **false**
 
@@ -52,11 +56,13 @@ Default value: **false**
 maxFontScale: number | Resource
 ```
 
-Maximum font scale for the text in the **SegmentButton**.
+Maximum font scale factor for the segment button option text, used to limit the upper bound of font scaling. Pass in this parameter when you need to control the font scale factor to fit a specific UI layout or avoid excessively large text.
 
 Value range: [1, 2]
 
-Values less than 1 are treated as 1, and values greater than 2 are treated as 2.
+If the set value is less than 1, the value **1** is used. If the set value is greater than 2, the value **2** is used.
+
+Default value: **1**
 
 **Type:** number &#124; [Resource](arkts-arkui-resource-t.md)
 
@@ -76,7 +82,7 @@ Values less than 1 are treated as 1, and values greater than 2 are treated as 2.
 onItemClicked?: Callback<number>
 ```
 
-Callback function triggered when a segment button option is tapped. The subscript of the tapped option is passed as a parameter. If this parameter is not passed, no callback is triggered when the option is tapped.
+Callback invoked when a segment button option is clicked. It receives the index of the clicked option as a parameter. If this parameter is not passed in, no callback is triggered upon clicking.
 
 **Type:** Callback&lt;number&gt;
 
@@ -94,7 +100,7 @@ Callback function triggered when a segment button option is tapped. The subscrip
 options: SegmentButtonOptions
 ```
 
-Options of the **SegmentButton** component.
+Configuration options of the segment button, used to set the button type (tab type or capsule type), appearance style (color, font, size, etc.), button content, selected state, and other attributes.
 
 **Type:** [SegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonoptions-c.md)
 
@@ -114,11 +120,11 @@ Options of the **SegmentButton** component.
 selectedIndexes: number[]
 ```
 
-Indexes of selected items of the **SegmentButton**. The index is zero-based and increments by 1.
+Index of the selected item in the segment button. The index of the first item is 0, and subsequent items are numbered sequentially.
 
 **NOTE:** 
 
-**selectedIndexes** is decorated with [@Link](../../../ui/state-management/arkts-link.md) to implement parent- child two-way synchronization. If no items are selected, an empty array **[]** can be passed in.
+`selectedIndexes` uses the [@Link decorator: two-way synchronization between parent and child](../../../ui/state-management/arkts-link.md). Only valid button indexes are supported (the first button index is 0, and subsequent indexes increase sequentially, with the maximum index being the number of buttons minus 1). If an invalid index is passed in, it does not take effect. If no item is selected, an empty array `[]` can be passed in.
 
 **Type:** number[]
 

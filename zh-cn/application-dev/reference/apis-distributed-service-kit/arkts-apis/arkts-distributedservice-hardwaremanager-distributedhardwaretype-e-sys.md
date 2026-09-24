@@ -1,5 +1,9 @@
 # DistributedHardwareType（系统接口）
 
+```TypeScript
+enum DistributedHardwareType
+```
+
 表示分布式硬件类型。
 
 **起始版本：** 11

@@ -33,33 +33,13 @@ function getDisposedStatus(appId: string, callback: AsyncCallback<Want>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700005](../errorcode-bundle.md#17700005-指定的appid为空字符串) | The specified app ID is empty string. |
 
 **示例**
-
-```TypeScript
-import { appControl } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let appId = "com.example.myapplication_xxxxx";
-
-try {
-  appControl.getDisposedStatus(appId)
-    .then((data) => {
-      console.info('getDisposedStatus success. DisposedStatus: ' + JSON.stringify(data));
-    }).catch((error: BusinessError) => {
-    let message = (error as BusinessError).message;
-    console.error('getDisposedStatus failed ' + message);
-  });
-} catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('getDisposedStatus failed ' + message);
-}
-```
 
 ```TypeScript
 import { appControl } from '@kit.AbilityKit';
@@ -82,6 +62,8 @@ try {
 }
 ```
 
+
+<a id="getdisposedstatus-1"></a>
 
 ## getDisposedStatus
 
@@ -115,12 +97,30 @@ function getDisposedStatus(appId: string): Promise<Want>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700005](../errorcode-bundle.md#17700005-指定的appid为空字符串) | The specified app ID is empty string. |
 
 **示例**
 
-参见 [getDisposedStatus](#getdisposedstatus)
+```TypeScript
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let appId = "com.example.myapplication_xxxxx";
+
+try {
+  appControl.getDisposedStatus(appId)
+    .then((data) => {
+      console.info('getDisposedStatus success. DisposedStatus: ' + JSON.stringify(data));
+    }).catch((error: BusinessError) => {
+    let message = (error as BusinessError).message;
+    console.error('getDisposedStatus failed ' + message);
+  });
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('getDisposedStatus failed ' + message);
+}
+```

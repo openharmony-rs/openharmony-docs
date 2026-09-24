@@ -30,32 +30,11 @@ function setOverlayEnabled(moduleName:string, isEnabled: boolean, callback: Asyn
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
 | [17700033](../errorcode-bundle.md#17700033-指定的module不是overlay特征的module) | The specified module is not an overlay module. |
 
 **示例**
-
-```TypeScript
-import { overlay } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let moduleName = "feature";
-let isEnabled = false;
-
-try {
-  overlay.setOverlayEnabled(moduleName, isEnabled)
-    .then(() => {
-      console.info('setOverlayEnabled success');
-    }).catch((err: BusinessError) => {
-    console.error('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
-  });
-} catch (err) {
-  let code = (err as BusinessError).code;
-  let message = (err as BusinessError).message;
-  console.error('setOverlayEnabled failed due to err code: ' + code + ' ' + 'message:' + message);
-}
-```
 
 ```TypeScript
 import { overlay } from '@kit.AbilityKit';
@@ -79,6 +58,8 @@ try {
 }
 ```
 
+
+<a id="setoverlayenabled-1"></a>
 
 ## setOverlayEnabled
 
@@ -109,10 +90,29 @@ function setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
 | [17700033](../errorcode-bundle.md#17700033-指定的module不是overlay特征的module) | The specified module is not an overlay module. |
 
 **示例**
 
-参见 setOverlayEnabled
+```TypeScript
+import { overlay } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let moduleName = "feature";
+let isEnabled = false;
+
+try {
+  overlay.setOverlayEnabled(moduleName, isEnabled)
+    .then(() => {
+      console.info('setOverlayEnabled success');
+    }).catch((err: BusinessError) => {
+    console.error('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
+  });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error('setOverlayEnabled failed due to err code: ' + code + ' ' + 'message:' + message);
+}
+```

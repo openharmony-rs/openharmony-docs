@@ -1,5 +1,9 @@
 # PowerModel
 
+```TypeScript
+export enum PowerModel
+```
+
 The power model enumeration.
 
 @enum { number } PowerModel

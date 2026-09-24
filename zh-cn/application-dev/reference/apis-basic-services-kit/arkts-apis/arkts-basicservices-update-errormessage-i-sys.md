@@ -1,5 +1,9 @@
 # ErrorMessage（系统接口）
 
+```TypeScript
+export interface ErrorMessage
+```
+
 错误信息。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # FloatViewTemplateType
 
+```TypeScript
+enum FloatViewTemplateType
+```
+
 Provides the template type of the float view.
 
 **Since:** 26.0.0

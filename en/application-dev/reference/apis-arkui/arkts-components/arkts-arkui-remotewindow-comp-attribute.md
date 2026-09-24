@@ -1,5 +1,9 @@
 # RemoteWindow properties/events
 
+```TypeScript
+declare class RemoteWindowAttribute extends CommonMethod<RemoteWindowAttribute>
+```
+
 Inheritance CommonMethod Set Styles
 
 @extends CommonMethod&lt;RemoteWindowAttribute&gt;

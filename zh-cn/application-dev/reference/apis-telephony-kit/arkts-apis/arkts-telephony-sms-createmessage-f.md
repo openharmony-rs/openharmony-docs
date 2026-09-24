@@ -30,7 +30,7 @@ function createMessage(pdu: Array<number>, specification: string, callback: Asyn
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -54,20 +54,8 @@ sms.createMessage(pdu, specification, (err: BusinessError, data: sms.ShortMessag
 });
 ```
 
-```TypeScript
-import { sms } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-const specification: string = '3gpp';
-// 以数组的形式显示协议数据单元(PDU)，类型为number。
-const pdu: Array<number> = [0x01, 0x00, 0x05, 0x81, 0x01, 0x80, 0xF6, 0x00, 0x00, 0x05, 0xE8, 0x32, 0x9B, 0xFD, 0x06];
-sms.createMessage(pdu, specification).then((data: sms.ShortMessage) => {
-    console.info(`createMessage success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`createMessage failed, promise: errCode:${err.code},errMsg:${err.message}`);
-});
-```
-
+<a id="createmessage-1"></a>
 
 ## createMessage
 
@@ -98,7 +86,7 @@ function createMessage(pdu: Array<number>, specification: string): Promise<Short
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -106,4 +94,16 @@ function createMessage(pdu: Array<number>, specification: string): Promise<Short
 
 **示例**
 
-参见 createMessage
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const specification: string = '3gpp';
+// 以数组的形式显示协议数据单元(PDU)，类型为number。
+const pdu: Array<number> = [0x01, 0x00, 0x05, 0x81, 0x01, 0x80, 0xF6, 0x00, 0x00, 0x05, 0xE8, 0x32, 0x9B, 0xFD, 0x06];
+sms.createMessage(pdu, specification).then((data: sms.ShortMessage) => {
+    console.info(`createMessage success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`createMessage failed, promise: errCode:${err.code},errMsg:${err.message}`);
+});
+```

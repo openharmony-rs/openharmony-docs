@@ -1,5 +1,9 @@
 # AVCastPicker
 
+```TypeScript
+declare struct AVCastPicker
+```
+
 本模块提供创建投播组件AVCastPicker的功能，提供设备发现连接的统一入口。
 
 > **说明：** 
@@ -89,7 +93,7 @@ customPicker?: CustomBuilder
 
 自定义样式。建议使用自定义组件样式，可有效提升组件显示速度。
 
-**类型：** [CustomBuilder](../../apis-arkui/arkts-components/arkts-arkui-custombuilder-t.md)
+**类型：** [CustomBuilder](../../apis-arkui/arkts-components/arkts-arkui-common-comp-custombuilder-t.md)
 
 **起始版本：** 12
 

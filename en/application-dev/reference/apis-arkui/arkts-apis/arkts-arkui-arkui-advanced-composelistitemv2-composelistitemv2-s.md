@@ -1,5 +1,9 @@
 # ComposeListItemV2
 
+```TypeScript
+export declare struct ComposeListItemV2
+```
+
 Declare ComposeListItemV2
 
 **Since:** 26.0.0

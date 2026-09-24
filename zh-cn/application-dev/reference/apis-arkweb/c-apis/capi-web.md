@@ -4,6 +4,8 @@
 
 提供ArkWeb中拦截和自定义网络请求的C API。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 ## 文件汇总

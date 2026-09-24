@@ -1,5 +1,9 @@
 # ProfileConnectionState
 
+```TypeScript
+export enum ProfileConnectionState
+```
+
 枚举，本端和对端蓝牙设备间的Profile连接状态。
 
 **起始版本：** 10

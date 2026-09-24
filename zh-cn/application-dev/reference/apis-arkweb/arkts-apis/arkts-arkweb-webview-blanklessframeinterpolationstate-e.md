@@ -1,5 +1,9 @@
 # BlanklessFrameInterpolationState
 
+```TypeScript
+enum BlanklessFrameInterpolationState
+```
+
 白屏插帧状态。
 
 **起始版本：** 23

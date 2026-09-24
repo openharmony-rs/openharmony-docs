@@ -1,5 +1,9 @@
 # SystemBarStyle
 
+```TypeScript
+interface SystemBarStyle
+```
+
 Describes the properties of the status bar. These properties are valid for the page-level status bar.
 
 **Since:** 12

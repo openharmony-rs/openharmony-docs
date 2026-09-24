@@ -1,5 +1,9 @@
 # Field
 
+```TypeScript
+enum Field
+```
+
 Enumerates predicates used as query conditions. Use the enum name rather than the enum value.
 
 **Since:** 11

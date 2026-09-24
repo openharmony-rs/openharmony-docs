@@ -2,7 +2,12 @@
 
 路径绘制组件，根据绘制路径生成封闭的自定义形状，支持通过SVG路径描述规范定义复杂的几何形状。
 
-> **说明：** > > 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。 > > 该组件从API version 20开始支持使用AttributeUpdater类的 > updateConstructorParams接口更新构造参数。
+> **说明：** 
+> 
+> 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> 该组件从API version 20开始支持使用[AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md)类的
+> [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
 ## 子组件
 
@@ -25,7 +30,7 @@ SVG路径描述规范支持的命令如下：
 | S | smooth curveto | x2：第二个控制点参数的x坐标值。<br> y2：第二个控制点参数的y坐标值。<br> x：终点参数的x坐标值。<br> y：终点参数的y坐标值。 |使用(x2, y2)作为曲线终点的控制点，从当前点到(x, y)绘制三次贝塞尔曲线。若前一个命令是C或S，则起点控制点是上一个命令的终点控制点相对于当前点的映射。例如，`C100 100 250 100 250 200 S400 300 400 200`第二段贝塞尔曲线的起点控制点为(250, 300)。如果没有前一个命令或者前一个命令不是 C或S，则第一个控制点与当前点重合。
 
 |  
-| Q | quadratic Bezier curve | x1：第一个控制点参数的x坐标值。<br> y1：第一个控制点参数的y坐标值。<br> x：终点参数的x坐标值。<br> y：终点参数的y坐标值。 | 使用(x1, y1)作为控制点，从当前点到(x, y)绘制二次贝塞尔曲线。例如，`Q400 50 600 300 `表示绘制当前点到(600, 3 00)点的二次贝塞尔曲线，并将(600, 300)点作为新子路径的起始点。 |
+| Q | quadratic Bezier curve | x1：第一个控制点参数的x坐标值。<br> y1：第一个控制点参数的y坐标值。<br> x：终点参数的x坐标值。<br> y：终点参数的y坐标值。 | 使用(x1, y1)作为控制点，从当前点到(x, y)绘制二次贝塞尔曲线。例如，`Q400 50 600 300 `表示绘制当前点到(600, 300)点的二次贝塞尔曲线，并将(600, 300)点作为新子路径的起始点。 |
 
 | T | smooth quadratic Bezier curveto | x：终点参数的x坐标值。<br> y：终点参数的y坐标值。 | 从当前点到(x, y)绘制二次贝塞尔曲线。若前一个命令是Q或T，则控制点是上一个命令的终点控制点相对于当前点的映射。 例如，`Q400 50 600 300 T1000 300`第二段贝塞尔曲线的控制点为(800, 550)。 如果没有前一个命令或者前一个命令不是Q或T，则第一个控制点与当前点重合。 |
 
@@ -55,7 +60,7 @@ Use new to create Path. Annonymous Object Rectification.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [PathOptions](arkts-arkui-pathoptions-i.md) | 否 | path options |
+| options | [PathOptions](arkts-arkui-path-comp-pathoptions-i.md) | 否 | path options |
 
 ## Path
 
@@ -77,7 +82,7 @@ Path(options?: PathOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [PathOptions](arkts-arkui-pathoptions-i.md) | 否 | Path组件绘制属性的配置对象。<br>省略时不设置绘制属性，组件按默认尺寸显示。默认尺寸根据路径内容自动计算宽度和高度。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| options | [PathOptions](arkts-arkui-path-comp-pathoptions-i.md) | 否 | Path组件绘制属性的配置对象。<br>省略时不设置绘制属性，组件按默认尺寸显示。默认尺寸根据路径内容自动计算宽度和高度。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ## 汇总
 
@@ -85,28 +90,167 @@ Path(options?: PathOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [PathOptions](arkts-arkui-pathoptions-i.md) | 用于描述Path组件绘制属性。 |
+| [PathOptions](arkts-arkui-path-comp-pathoptions-i.md) | 用于描述Path组件绘制属性。 |
 
 ## 示例
 
-```TypeScript
 ### 示例1（组件属性绘制）
 
 通过commands、fillOpacity、stroke属性分别绘制路径、透明度、边框颜色。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct PathExample {
+  build() {
+    Column({ space: 10 }) {
+      Text('Straight line')
+        .fontSize(11)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+      // 绘制一条长600px，宽3vp的直线
+      Path()
+        .width('600px')
+        .height('10px')
+        .commands('M0 0 L600 0')
+        .stroke(Color.Black)
+        .strokeWidth(3)
+
+      Text('Straight line graph')
+        .fontSize(11)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+      // 绘制直线图形
+      Flex({ justifyContent: FlexAlign.SpaceBetween }) {
+        Path()
+          .width('210px')
+          .height('310px')
+          .commands('M100 0 L200 240 L0 240 Z')
+          .fillOpacity(0)
+          .stroke(Color.Black)
+          .strokeWidth(3)
+        Path()
+          .width('210px')
+          .height('310px')
+          .commands('M0 0 H200 V200 H0 Z')
+          .fillOpacity(0)
+          .stroke(Color.Black)
+          .strokeWidth(3)
+        Path()
+          .width('210px')
+          .height('310px')
+          .commands('M100 0 L0 100 L50 200 L150 200 L200 100 Z')
+          .fillOpacity(0)
+          .stroke(Color.Black)
+          .strokeWidth(3)
+      }.width('95%')
+
+      Text('Curve graphics').fontSize(11).fontColor(0xCCCCCC).width('90%')
+      // 绘制弧线图形
+      Flex({ justifyContent: FlexAlign.SpaceBetween }) {
+        Path()
+          .width('250px')
+          .height('310px')
+          .commands('M0 300 S100 0 240 300 Z')
+          .fillOpacity(0)
+          .stroke(Color.Black)
+          .strokeWidth(3)
+        Path()
+          .width('210px')
+          .height('310px')
+          .commands('M0 150 C0 100 140 0 200 150 L100 300 Z')
+          .fillOpacity(0)
+          .stroke(Color.Black)
+          .strokeWidth(3)
+        Path()
+          .width('210px')
+          .height('310px')
+          .commands('M0 100 A30 20 20 0 0 200 100 Z')
+          .fillOpacity(0)
+          .stroke(Color.Black)
+          .strokeWidth(3)
+      }.width('95%')
+    }.width('100%')
+    .margin({ top: 5 })
+  }
+}
+```
+
 ### 示例2（使用不同参数类型绘制路径）
 
 width、height、commands属性分别使用不同的长度类型绘制图形。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct PathTypeExample {
+  build() {
+    Column({ space: 10 }) {
+      // 宽、高、命令字符串使用string类型，绘制一条直线。
+      Path({ width: '600px', height: '10px' })
+        .commands('M0 0 L600 0')
+        .fillOpacity(0)
+        .stroke(Color.Black)
+        .strokeWidth(3)
+      // 宽、高使用number类型，绘制一个矩形图形。
+      Path({ width: 200, height: 100 })
+        .commands('M200 0 H400 V200 H200 Z')
+        .fillOpacity(0)
+        .stroke(Color.Black)
+        .strokeWidth(3)
+      // 宽、高、命令字符串使用Resource类型（需用户自定义），绘制一个弧线图形。
+      Path({ width: $r('app.string.PathWidth'), height: $r('app.string.PathHeight') }) // 本示例中PathWidth和PathHeight均定义为"200"。
+        .commands($r('app.string.PathCommands')) // 本示例中PathCommands定义为"M150 300 Q300 0 450 300 Z"。
+        .fillOpacity(0)
+        .stroke(Color.Black)
+        .strokeWidth(3)
+    }.width('100%')
+    .margin({ top: 5 })
+  }
+}
+```
+
 ### 示例3（使用attributeModifier动态设置Path组件的属性）
 
 以下示例展示了如何使用attributeModifier动态设置Path组件的commands、fill、fillOpacity、stroke、strokeDashArray、strokeDashOffset、strokeLineCap、strokeLineJoin、strokeMiterLimit、strokeOpacity、strokeWidth和antiAlias属性。
+
+```TypeScript
+// xxx.ets
+class MyPathModifier implements AttributeModifier<PathAttribute> {
+  applyNormalAttribute(instance: PathAttribute): void {
+    // 使用字符串commands绘制一个三角形，填充颜色#707070，填充透明度0.5，边框颜色#2787D9，边框间隙[20]，向左偏移15，线条两端样式为半圆，拐角样式使用尖角连接路径段，斜接长度与边框宽度比值的极限值为5，边框透明度0.5，边框宽度10，抗锯齿开启
+    instance.commands('M100 0 L200 240 L0 240 Z')
+    instance.fill("#707070")
+    instance.fillOpacity(0.5)
+    instance.stroke("#2787D9")
+    instance.strokeDashArray([20])
+    instance.strokeDashOffset("15")
+    instance.strokeLineCap(LineCapStyle.Round)
+    instance.strokeLineJoin(LineJoinStyle.Miter)
+    instance.strokeMiterLimit(5)
+    instance.strokeOpacity(0.5)
+    instance.strokeWidth(10)
+    instance.antiAlias(true)
+  }
+}
+
+@Entry
+@Component
+struct PathModifierDemo {
+  @State modifier: MyPathModifier = new MyPathModifier()
+
+  build() {
+    Column() {
+      Path()
+        .attributeModifier(this.modifier)
+        .offset({ x: 20, y: 20 })
+    }
+  }
+}
 ```

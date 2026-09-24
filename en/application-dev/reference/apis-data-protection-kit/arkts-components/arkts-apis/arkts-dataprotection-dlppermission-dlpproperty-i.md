@@ -1,5 +1,9 @@
 # DLPProperty
 
+```TypeScript
+export interface DLPProperty
+```
+
 Represents the authorization information.
 
 **Since:** 21

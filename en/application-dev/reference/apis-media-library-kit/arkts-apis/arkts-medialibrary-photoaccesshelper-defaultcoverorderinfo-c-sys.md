@@ -1,5 +1,9 @@
 # DefaultCoverOrderInfo (System API)
 
+```TypeScript
+export class DefaultCoverOrderInfo
+```
+
 Default Cover Order
 
 **Since:** 26.0.0

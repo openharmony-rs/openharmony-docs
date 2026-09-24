@@ -1,5 +1,9 @@
 # TimeFormat
 
+```TypeScript
+export declare enum TimeFormat
+```
+
 TimeFormat enum defines the format of the time picker.
 
 **Since:** 26.0.0

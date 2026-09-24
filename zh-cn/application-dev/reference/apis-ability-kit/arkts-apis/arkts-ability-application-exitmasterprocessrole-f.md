@@ -30,7 +30,7 @@ export function exitMasterProcessRole(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [16000118](../errorcode-ability.md#16000118-当前进程非主控进程) | Not a master process. |
 | [16000119](../errorcode-ability.md#16000119-存在未完成的请求) | Cannot exit because there is an unfinished request. |
 

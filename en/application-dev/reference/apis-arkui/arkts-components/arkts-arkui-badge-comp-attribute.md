@@ -1,5 +1,9 @@
 # Badge properties/events
 
+```TypeScript
+declare class BadgeAttribute extends CommonMethod<BadgeAttribute>
+```
+
 The [universal attributes](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md) are supported.
 
 The [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md) are supported.

@@ -1,5 +1,9 @@
 # ActionFlagType
 
+```TypeScript
+export enum ActionFlagType
+```
+
 Enumerates the operations that can be performed on a DLP file. For example, the DLP sandbox application can dim its button based on this parameter.
 
 **Since:** 10

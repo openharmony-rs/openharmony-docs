@@ -1,5 +1,9 @@
 # hiAppEvent(Application Event Logging)
 
+```TypeScript
+declare namespace hiAppEvent
+```
+
 This module provides application logging and event subscription capabilities, including event storage, event subscription, event clearance, and logging configuration. HiAppEvent records the events triggered during application running in [AppEventInfo](arkts-performanceanalysis-hiappevent-appeventinfo-i.md), and classifies the events into system events and application events.
 
 System events are triggered in system services and are predefined in the system. The fields of the event parameter object **params** of such events are defined by each system event. For details, see overviews of user guides. For example, [Crash Event Overview](../../../dfx/hiappevent-watcher-crash-events.md).
@@ -31,8 +35,8 @@ import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 | Name | Description |
 | --- | --- |
 | [configure](arkts-performanceanalysis-hiappevent-configure-f.md) | Configures the application event logging function, such as setting the logging switch and directory storage quota. |
-| [write](arkts-performanceanalysis-hiappevent-write-f.md) | Writes events of the **AppEventInfo** type. This API uses a promise to return the result. The event object written by calling this API is a custom object. To avoid conflicts with system events, you are not advised to write it to system events (system event name constants defined in [Event](arkts-performanceanalysis-hiappevent-event-n.md)). The events written by this API can be subscribed to through ([addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)). |
-| [write](arkts-performanceanalysis-hiappevent-write-f.md) | Writes events of the **AppEventInfo** type. This API uses an asynchronous callback to return the result. The event object written by calling this API is a custom object. To avoid conflicts with system events, you are not advised to write it to system events (system event name constants defined in [Event](arkts-performanceanalysis-hiappevent-event-n.md)). The events written by this API can be subscribed to through ([addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)). |
+| [write](arkts-performanceanalysis-hiappevent-write-f.md#write) | Writes events of the **AppEventInfo** type. This API uses a promise to return the result. The event object written by calling this API is a custom object. To avoid conflicts with system events, you are not advised to write it to system events (system event name constants defined in [Event](arkts-performanceanalysis-hiappevent-event-n.md)). The events written by this API can be subscribed to through ([addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)). |
+| [write](arkts-performanceanalysis-hiappevent-write-f.md#write-1) | Writes events of the **AppEventInfo** type. This API uses an asynchronous callback to return the result. The event object written by calling this API is a custom object. To avoid conflicts with system events, you are not advised to write it to system events (system event name constants defined in [Event](arkts-performanceanalysis-hiappevent-event-n.md)). The events written by this API can be subscribed to through ([addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)). |
 | [setEventParam](arkts-performanceanalysis-hiappevent-seteventparam-f.md) | Sets custom event parameters. This API uses a promise to return the result. During the same lifecycle, system events and application events can be associated through event domain and event name.System events only support crash, freeze and resource leak events. |
 | [setEventConfig](arkts-performanceanalysis-hiappevent-seteventconfig-f.md) | Sets event configuration. This method uses a promise to return the result. In the same lifecycle, you can set event configuration by event name. |
 | [addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md) | Adds an event watcher. You can use the callback of the event watcher to subscribe to events. |

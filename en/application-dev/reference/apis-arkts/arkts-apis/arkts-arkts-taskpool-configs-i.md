@@ -1,5 +1,9 @@
 # Configs
 
+```TypeScript
+interface Configs
+```
+
 Defines the task configs interface
 
 **Since:** 24

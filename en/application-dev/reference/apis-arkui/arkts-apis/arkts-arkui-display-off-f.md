@@ -33,6 +33,21 @@ Unsubscribes from display changes.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+// Unregister all the callbacks that have been registered through on().
+display.off('remove');
+
+let callback: Callback<number> = (data: number) => {
+  console.info(`Succeeded in unregistering the callback for display remove. Data: ${data}`);
+};
+// Unregister the specified callback.
+display.off('remove', callback);
+```
+
 
 ## off('add' | 'remove' | 'change')
 
@@ -61,6 +76,10 @@ Unsubscribes from display changes.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**Examples**
+
+See off
+
 
 ## off('add' | 'remove' | 'change')
 
@@ -88,6 +107,10 @@ Unsubscribes from display changes.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**Examples**
+
+See off
 
 
 ## off('foldStatusChange')
@@ -118,6 +141,21 @@ Unsubscribes from fold status change events of the foldable device.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
+**Examples**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+// Unregister all the callbacks that have been registered through on().
+display.off('foldStatusChange');
+
+let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
+  console.info(`unregistering FoldStatus changes callback. Data: ${data}`);
+};
+// Unregister the specified callback.
+display.off('foldStatusChange', callback);
+```
+
 
 ## off('foldAngleChange')
 
@@ -146,6 +184,21 @@ Unsubscribes from folding angle change events of the foldable device.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
+
+**Examples**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+// Unregister all the callbacks that have been registered through on().
+display.off('foldAngleChange');
+
+let callback: Callback<Array<number>> = (angles: Array<number>) => {
+  console.info('Listening fold angles length: ' + angles.length);
+};
+// Unregister the specified callback.
+display.off('foldAngleChange', callback);
+```
 
 
 ## off('captureStatusChange')
@@ -176,6 +229,21 @@ Unsubscribes from events indicating the status of the device's screen content is
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
+**Examples**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+// Unregister all the callbacks that have been registered through on().
+display.off('captureStatusChange');
+
+let callback: Callback<boolean> = (captureStatus: boolean) => {
+  console.info('Listening capture status: ' + captureStatus);
+};
+// Unregister the specified callback.
+display.off('captureStatusChange', callback);
+```
+
 
 ## off('foldDisplayModeChange')
 
@@ -204,6 +272,21 @@ Unsubscribes from display mode change events of the foldable device.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
+
+**Examples**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+// Unregister all the callbacks that have been registered through on().
+display.off('foldDisplayModeChange');
+
+let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
+  console.info(`unregistering FoldDisplayMode changes callback. Data: ${data}`);
+};
+// Unregister the specified callback.
+display.off('foldDisplayModeChange', callback);
+```
 
 
 ## off('brightnessInfoChange')
@@ -234,3 +317,16 @@ Unsubscribes from events related to screen brightness information changes.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 | [1400004](../errorcode-display.md#1400004-parameter-error) | Parameter error. Possible cause: 1. Invalid parameter range. |
+
+**Examples**
+
+```TypeScript
+let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
+  console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
+};
+try {
+  display.off('brightnessInfoChange', callback);
+} catch (error) {
+  console.error(`Failed to unregister brightnessInfoChange listener. Code: ${error.code}, message: ${error.message}`);
+}
+```

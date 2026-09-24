@@ -20,14 +20,14 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 
 | Name | Description |
 | --- | --- |
-| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md) | Obtains the information a deferred task. This API uses an asynchronous callback to return the result. |
-| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md) | Obtains the information a deferred task. This API uses a promise to return the result. |
-| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md) | Checks whether the last execution of a task timed out. This API uses an asynchronous callback to return the result. |
-| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md) | Checks whether the last execution of a task timed out. This API uses an asynchronous callback to return the result. |
-| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md) | Checks whether the last execution of a task timed out. This API uses a promise to return the result. |
-| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md) | Obtains all the deferred tasks. This API uses an asynchronous callback to return the result. |
-| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md) | Obtains all the deferred tasks. This API uses an asynchronous callback to return the result. |
-| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md) | Obtains all the deferred tasks. This API uses a promise to return the result. |
+| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getworkstatus) | Obtains the information a deferred task. This API uses an asynchronous callback to return the result. |
+| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getworkstatus-1) | Obtains the information a deferred task. This API uses a promise to return the result. |
+| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout) | Checks whether the last execution of a task timed out. This API uses an asynchronous callback to return the result. |
+| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout-1) | Checks whether the last execution of a task timed out. This API uses an asynchronous callback to return the result. |
+| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout-2) | Checks whether the last execution of a task timed out. This API uses a promise to return the result. |
+| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks) | Obtains all the deferred tasks. This API uses an asynchronous callback to return the result. |
+| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks-1) | Obtains all the deferred tasks. This API uses an asynchronous callback to return the result. |
+| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks-2) | Obtains all the deferred tasks. This API uses a promise to return the result. |
 | [startWork](arkts-backgroundtasks-workscheduler-startwork-f.md) | Requests a deferred task. Upon successful request, the deferred task is added to the execution queue and will be executed by the system once the trigger conditions are met. |
 | [stopAndClearWorks](arkts-backgroundtasks-workscheduler-stopandclearworks-f.md) | Stops and clears all the deferred tasks. |
 | [stopWork](arkts-backgroundtasks-workscheduler-stopwork-f.md) | Stops a deferred task. |

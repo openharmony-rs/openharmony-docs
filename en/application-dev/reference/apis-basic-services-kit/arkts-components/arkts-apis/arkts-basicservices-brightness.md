@@ -25,6 +25,6 @@ import { brightness } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [setValue](arkts-basicservices-brightness-setvalue-f-sys.md) | Sets the screen brightness. |
-| [setValue](arkts-basicservices-brightness-setvalue-f-sys.md) | Sets the screen brightness. This API is used for continuous brightness adjustment. To achieve a better performance, set **continuous** to **true** when you start, and set it to **false** after you finish. |
+| [setValue](arkts-basicservices-brightness-setvalue-f-sys.md#setvalue) | Sets the screen brightness. |
+| [setValue](arkts-basicservices-brightness-setvalue-f-sys.md#setvalue-1) | Sets the screen brightness. This API is used for continuous brightness adjustment. To achieve a better performance, set **continuous** to **true** when you start, and set it to **false** after you finish. |
 <!--DelEnd-->

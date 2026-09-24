@@ -1,5 +1,9 @@
 # ExchangeMedium（系统接口）
 
+```TypeScript
+enum ExchangeMedium
+```
+
 表示发现类型的枚举。
 
 **起始版本：** 7

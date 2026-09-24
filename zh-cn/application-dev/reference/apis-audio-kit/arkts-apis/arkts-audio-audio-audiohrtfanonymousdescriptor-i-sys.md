@@ -1,5 +1,9 @@
 # AudioHRTFAnonymousDescriptor（系统接口）
 
+```TypeScript
+interface AudioHRTFAnonymousDescriptor
+```
+
 用于跨进程传输的匿名个性化HRTF文件描述符。
 
 **起始版本：** 26.0.0

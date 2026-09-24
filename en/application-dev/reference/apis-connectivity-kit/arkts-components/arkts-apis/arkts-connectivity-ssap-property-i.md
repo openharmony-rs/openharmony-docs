@@ -1,5 +1,9 @@
 # Property
 
+```TypeScript
+interface Property
+```
+
 Represents a service Property.
 
 **Since:** 26.0.0

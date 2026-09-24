@@ -39,6 +39,8 @@ enum OH_Drawing_LatticeRectType
 
 定义填充网格的矩形类型的枚举，决定对应网格单元格的渲染方式。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -60,13 +62,15 @@ OH_Drawing_ErrorCode OH_Drawing_LatticeDestroy(OH_Drawing_Lattice* lattice)
 
 用于销毁由[OH_Drawing_LatticeCreate](capi-drawing-lattice-h.md#oh_drawing_latticecreate)创建的矩形网格对象并回收该对象占用的内存。 与[OH_Drawing_LatticeCreate](capi-drawing-lattice-h.md#oh_drawing_latticecreate)配对使用。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 23
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_Lattice* lattice | 指向由[OH_Drawing_LatticeCreate](capi-drawing-lattice-h.md#oh_drawing_latticecreate)创建的矩形网格对象{@link OH_Drawing_Lattice}的指针。 |
+| OH_Drawing_Lattice* lattice | 指向由[OH_Drawing_LatticeCreate](capi-drawing-lattice-h.md#oh_drawing_latticecreate)创建的矩形网格对象[OH_Drawing_Lattice](capi-drawing-oh-drawing-lattice.md)的指针。 |
 
 **返回值：**
 
@@ -84,6 +88,8 @@ OH_Drawing_ErrorCode OH_Drawing_LatticeCreate(const int* xDivs, const int* yDivs
 
 创建矩形网格对象。将图像划分为矩形网格，同时处于偶数列（列索引为偶数，即第0、2、 4…列）和偶数行（行索引为偶数，即第0、2、4…行）上的网格是固定的，如果目标网格足够大， 则这些固定网格以其原始大小进行绘制。 如果目标网格太小，无法容纳这些固定网格，则所有固定网格都会按比例缩小以适应目标网格。其余网格将进行缩放， 以适应剩余的空间。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 23
 
 **参数：**
@@ -99,7 +105,7 @@ OH_Drawing_ErrorCode OH_Drawing_LatticeCreate(const int* xDivs, const int* yDivs
 | uint32_t rectTypeCount | rectTypes数组的大小。如果rectTypes不是空指针，数组大小必须等于`(xCount + 1)*(yCount + 1)`。 <br>如果rectTypes是空指针，数组大小必须等于0。 |
 | const uint32_t* colors | 填充网格的颜色数组，颜色值为ARGB格式（0xAARRGGBB）。当rectTypes中包含FIXED_COLOR时， colors中对应位置的颜色会被绘制到对应矩形网格中，且colors不能为空指针。 当rectTypes不包含FIXED_COLOR且colors为空指针时，默认不使用自定义颜色填充网格。 |
 | uint32_t colorCount | colors数组的大小。如果colors不是空指针，数组大小必须等于`(xCount + 1)*(yCount + 1)`。 <br>如果colors是空指针，数组大小必须等于0。 |
-| OH_Drawing_Lattice** lattice | 指向矩形网格对象{@link OH_Drawing_Lattice}的二级指针，作为出参，返回给调用者，且不能为空指针。 |
+| OH_Drawing_Lattice** lattice | 指向矩形网格对象[OH_Drawing_Lattice](capi-drawing-oh-drawing-lattice.md)的二级指针，作为出参，返回给调用者，且不能为空指针。 |
 
 **返回值：**
 

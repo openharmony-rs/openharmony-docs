@@ -60,29 +60,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { inputDevice } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          // Obtaining the Input Device ID List
-          inputDevice.getDeviceIds().then((ids: Array<number>) => {
-            console.info(`Succeeded in getting device id list: ${JSON.stringify(ids)}.`);
-          }).catch((error: BusinessError) => {
-            console.error(`Failed to get device id list, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          })
-        })
-    }
-  }
-}
-```
-
+<a id="getdeviceids-1"></a>
 
 ## getDeviceIds
 
@@ -113,4 +92,25 @@ Obtains the IDs of all input devices. This API uses a promise to return the resu
 
 **Examples**
 
-See [getDeviceIds](#getdeviceids)
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Obtaining the Input Device ID List
+          inputDevice.getDeviceIds().then((ids: Array<number>) => {
+            console.info(`Succeeded in getting device id list: ${JSON.stringify(ids)}.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get device id list, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          })
+        })
+    }
+  }
+}
+```

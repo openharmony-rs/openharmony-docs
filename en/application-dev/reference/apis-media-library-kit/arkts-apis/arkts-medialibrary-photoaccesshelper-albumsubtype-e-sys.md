@@ -1,5 +1,9 @@
 # AlbumSubtype
 
+```TypeScript
+enum AlbumSubtype
+```
+
 Enumerate the album subtypes.
 
 **Since:** 10
@@ -85,6 +89,8 @@ LIVEPHOTO_4D = 1033
 4D LivePhoto album
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -210,7 +216,7 @@ SHARE = 8193
 
 Share album.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

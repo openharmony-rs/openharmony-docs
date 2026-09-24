@@ -1,5 +1,9 @@
 # DownloadOptions（系统接口）
 
+```TypeScript
+export interface DownloadOptions
+```
+
 下载选项，包含allowNetwork(允许下载的网络类型)和order(升级指令)字段，用于控制下载行为。
 
 **起始版本：** 9

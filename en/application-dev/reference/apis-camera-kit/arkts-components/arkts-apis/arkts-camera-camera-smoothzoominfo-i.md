@@ -1,5 +1,9 @@
 # SmoothZoomInfo
 
+```TypeScript
+interface SmoothZoomInfo
+```
+
 Describes the smooth zoom information.
 
 **Since:** 11

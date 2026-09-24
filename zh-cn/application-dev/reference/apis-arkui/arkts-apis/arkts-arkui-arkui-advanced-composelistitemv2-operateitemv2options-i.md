@@ -1,5 +1,9 @@
 # OperateItemV2Options
 
+```TypeScript
+export interface OperateItemV2Options
+```
+
 OperateItemV2构造函数的参数选项。
 
 **起始版本：** 26.0.0
@@ -166,7 +170,7 @@ symbolStyle?: SymbolGlyphModifier
 
 默认不设置或设置为undefined时，不显示Symbol图标。
 
-**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **起始版本：** 26.0.0
 

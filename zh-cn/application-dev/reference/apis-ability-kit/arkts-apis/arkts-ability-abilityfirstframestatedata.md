@@ -1,4 +1,4 @@
-# AbilityFirstFrameStateData
+# AbilityFirstFrameStateData(首帧绘制状态数据)
 
 ## 汇总
 

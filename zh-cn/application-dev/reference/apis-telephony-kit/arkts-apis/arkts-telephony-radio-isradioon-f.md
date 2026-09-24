@@ -31,26 +31,14 @@ function isRadioOn(slotId: number, callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-radio.isRadioOn((err: BusinessError, data: boolean) => {
-    if (err) {
-        console.error(`isRadioOn failed, callback: err code: ${err.code}, message: ${err.message}`);
-        return;
-    }
-    console.info(`isRadioOn success, callback: data->${JSON.stringify(data)}`);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -65,17 +53,8 @@ radio.isRadioOn(slotId, (err: BusinessError, data: boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-radio.isRadioOn(slotId).then((data: boolean) => {
-    console.info(`isRadioOn success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`isRadioOn failed, promise: err code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="isradioon-1"></a>
 
 ## isRadioOn
 
@@ -107,8 +86,8 @@ function isRadioOn(slotId?: number): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -116,8 +95,19 @@ function isRadioOn(slotId?: number): Promise<boolean>
 
 **示例**
 
-参见 isRadioOn
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let slotId: number = 0;
+radio.isRadioOn(slotId).then((data: boolean) => {
+    console.info(`isRadioOn success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`isRadioOn failed, promise: err code: ${err.code}, message: ${err.message}`);
+});
+```
+
+
+<a id="isradioon-2"></a>
 
 ## isRadioOn
 
@@ -143,8 +133,8 @@ function isRadioOn(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -152,4 +142,14 @@ function isRadioOn(callback: AsyncCallback<boolean>): void
 
 **示例**
 
-参见 isRadioOn
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+radio.isRadioOn((err: BusinessError, data: boolean) => {
+    if (err) {
+        console.error(`isRadioOn failed, callback: err code: ${err.code}, message: ${err.message}`);
+        return;
+    }
+    console.info(`isRadioOn success, callback: data->${JSON.stringify(data)}`);
+});
+```

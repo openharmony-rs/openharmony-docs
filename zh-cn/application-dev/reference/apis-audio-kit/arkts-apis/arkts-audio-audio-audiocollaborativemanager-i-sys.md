@@ -1,6 +1,10 @@
 # AudioCollaborativeManager（系统接口）
 
-移动全景声管理器。在使用AudioCollaborativeManager的接口前，需要先使用[getCollaborativeManager](arkts-audio-audio-audiomanager-i-sys.md#getcollaborativemanager)获取AudioCollaborativeManager实例。
+```TypeScript
+interface AudioCollaborativeManager
+```
+
+移动全景声管理器，支持蓝牙设备与本地扬声器协同播放音频。适用于系统应用控制移动全景声功能场景。在使用AudioCollaborativeManager的接口前，需要先使用[getCollaborativeManager](arkts-audio-audio-audiomanager-i-sys.md#getcollaborativemanager)获取AudioCollaborativeManager实例。
 
 @typedef AudioCollaborativeManager
 
@@ -46,7 +50,7 @@ isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -103,7 +107,7 @@ isCollaborativePlaybackSupported(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
 **示例**
 
@@ -152,7 +156,7 @@ isCollaborativePlaybackSupportedForDevice(deviceDescriptor: AudioDeviceDescripto
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
 ## setCollaborativePlaybackEnabledForDevice
 
@@ -185,8 +189,8 @@ setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Possible causes: 1. The specified device is not an A2DP device. 2. The specified device is not connected. |
 
 **示例**

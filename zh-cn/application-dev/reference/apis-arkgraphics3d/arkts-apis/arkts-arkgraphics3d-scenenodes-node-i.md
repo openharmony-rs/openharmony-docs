@@ -1,5 +1,9 @@
 # Node
 
+```TypeScript
+export interface Node extends SceneResource
+```
+
 3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自SceneResource。
 
 @extends SceneResource @interface Node
@@ -51,8 +55,30 @@ function getNode(): void {
 }
 ```
 
-```TypeScript
 调用getNodeByPath时需传入节点路径参数path。可通过遍历节点树并打印各节点的属性获取可用的path值，示例如下：
+
+```TypeScript
+import { Scene, Node } from '@kit.ArkGraphics3D';
+
+// 打印给定节点的树状结构，每行表示一个节点的路径。
+function printNodeTreeInRelativePath(node: Node | null): void {
+  if (!node) {
+    return;
+  }
+  let basePath: string = node.path + node.name + '/';
+  let printRelative = (n: Node | null): void => {
+    if (!n) {
+      return;
+    }
+    console.info(n.path.substring(basePath.length + 1) + n.name);
+    for (let i = 0; i < n.children.count(); i++) {
+      printRelative(n.children.get(i));
+    }
+  }
+  for (let i = 0; i < node.children.count(); i++) {
+    printRelative(node.children.get(i));
+  }
+}
 ```
 
 ## children

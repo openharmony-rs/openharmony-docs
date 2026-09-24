@@ -8,6 +8,8 @@ typedef void* ffrt_task_handle_t
 
 任务句柄，用于标识不同的任务。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 10
 
 **相关模块：** [FFRT](capi-ffrt.md)

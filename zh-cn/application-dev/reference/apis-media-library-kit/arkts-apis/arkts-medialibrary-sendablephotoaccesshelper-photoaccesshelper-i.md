@@ -1,8 +1,12 @@
 # PhotoAccessHelper
 
+```TypeScript
+interface PhotoAccessHelper extends lang.ISendable
+```
+
 提供操作系统媒体资源能力的接口。
 
-**继承/实现关系：** PhotoAccessHelper extends lang.ISendable
+**继承/实现关系：** PhotoAccessHelper extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
 
 **起始版本：** 12
 
@@ -13,6 +17,8 @@
 ```TypeScript
 import { sendablePhotoAccessHelper } from '@kit.MediaLibraryKit';
 ```
+
+<a id="createasset-2"></a>
 
 ## createAsset
 
@@ -38,7 +44,7 @@ createAsset(photoType: PhotoType, extension: string, options?: photoAccessHelper
 | --- | --- | --- | --- |
 | photoType | [PhotoType](arkts-medialibrary-sendablephotoaccesshelper-phototype-e.md) | 是 | 创建的文件类型，IMAGE或者VIDEO类型。 |
 | extension | string | 是 | 文件名后缀参数，例如：'jpg'。字符串长度的取值范围为[1, 255]。. |
-| options | [photoAccessHelper.CreateOptions](arkts-medialibrary-photoaccesshelper-createoptions-i.md) | 否 | 创建选项，例如{title: 'testPhoto'}。<br>文件名中不允许出现非法英文字符。<br>API18开始，非法字符包括： \ / : * ? " &lt; &gt; &#124; <br>API10-17，非法字符包括： . .. \ / : * ? " ' ` &lt; &gt; &#124; { } [ ] |
+| options | [photoAccessHelper.CreateOptions](arkts-medialibrary-photoaccesshelper-createoptions-i.md) | 否 | 创建选项，例如{title: 'testPhoto'}。<br>文件名中不允许出现非法英文字符。<br>API18开始，非法字符包括： \ / : * ? " &lt; &gt; &#124;<br>API10-17，非法字符包括： . .. \ / : * ? " ' ` &lt; &gt; &#124; { } [ ] |
 
 **返回值：**
 
@@ -50,18 +56,32 @@ createAsset(photoType: PhotoType, extension: string, options?: photoAccessHelper
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例**
 
-```TypeScript
 phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
-```
 
 ```TypeScript
-phAccessHelper的创建请参考[@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](arkts-medialibrary-file-sendablephotoaccesshelper.md)的示例使用。
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  console.info('createAssetDemo');
+  try {
+    let photoType: sendablePhotoAccessHelper.PhotoType = sendablePhotoAccessHelper.PhotoType.IMAGE;
+    let extension: string = 'jpg';
+    let options: photoAccessHelper.CreateOptions = {
+      title: 'testPhoto'
+    }
+    let uri: string = await phAccessHelper.createAsset(photoType, extension, options);
+    console.info('createAsset uri' + uri);
+    console.info('createAsset successfully');
+  } catch (err) {
+    console.error(`createAsset failed, error: ${err.code}, ${err.message}`);
+  }
+}
 ```
 
 ## getAlbums
@@ -96,24 +116,48 @@ getAlbums(options: photoAccessHelper.FetchOptions): Promise<FetchResult<Album>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
 
 **示例**
 
-```TypeScript
 phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  // 示例代码中为获取相册名为newAlbumName的相册。
+  console.info('getAlbumsDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  predicates.equalTo('album_name', 'newAlbumName');
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  phAccessHelper.getAlbums(fetchOptions).then( async (fetchResult) => {
+    if (fetchResult === undefined) {
+      console.error('getAlbumsPromise fetchResult is undefined');
+      return;
+    }
+    let album: sendablePhotoAccessHelper.Album = await fetchResult.getFirstObject();
+    console.info('getAlbumsPromise successfully, albumName: ' + album.albumName);
+    fetchResult.close();
+  }).catch((err: BusinessError) => {
+    console.error(`getAlbumsPromise failed with err: ${err.code}, ${err.message}`);
+  });
+}
 ```
+
+<a id="getalbums-1"></a>
 
 ## getAlbums
 
 ```TypeScript
-getAlbums(
-      type: AlbumType,
-      subtype: AlbumSubtype,
-      options?: photoAccessHelper.FetchOptions
-    ): Promise<FetchResult<Album>>
+getAlbums(type: AlbumType, subtype: AlbumSubtype, options?: photoAccessHelper.FetchOptions): Promise<FetchResult<Album>>
 ```
 
 根据检索选项和相册类型获取相册。使用Promise异步回调。
@@ -144,13 +188,41 @@ getAlbums(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, failed to create boolean value, possible causes: 1. Memory insufficient; 2. IPC timeout. Please retry; <br>2. System internal error, album query returned null, possible causes: 1. Database exception; 2. IPC timeout. Please retry; <br>3. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例**
 
-参见 [getAlbums](#getalbums)
+phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  // 示例代码中为获取相册名为newAlbumName的相册。
+  console.info('getAlbumsDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  predicates.equalTo('album_name', 'newAlbumName');
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  phAccessHelper.getAlbums(sendablePhotoAccessHelper.AlbumType.USER, sendablePhotoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions).then( async (fetchResult) => {
+    if (fetchResult === undefined) {
+      console.error('getAlbumsPromise fetchResult is undefined');
+      return;
+    }
+    let album: sendablePhotoAccessHelper.Album = await fetchResult.getFirstObject();
+    console.info('getAlbumsPromise successfully, albumName: ' + album.albumName);
+    fetchResult.close();
+  }).catch((err: BusinessError) => {
+    console.error(`getAlbumsPromise failed with err: ${err.code}, ${err.message}`);
+  });
+}
+```
 
 ## getAssets
 
@@ -182,14 +254,38 @@ getAssets(options: photoAccessHelper.FetchOptions): Promise<FetchResult<PhotoAss
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse FetchOptions, please check if the parameter is valid; <br>2. System internal error, failed to create boolean value, possible causes: 1. Memory insufficient; 2. IPC timeout. Please retry; <br>3. System internal error, query or IPC returned null, please retry. |
 
 **示例**
 
-```TypeScript
 phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  console.info('getAssets');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    if (fetchResult !== undefined) {
+      console.info('fetchResult success');
+      let photoAsset: sendablePhotoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      if (photoAsset !== undefined) {
+        console.info('photoAsset.displayName :' + photoAsset.displayName);
+      }
+    }
+  } catch (err) {
+    console.error(`getAssets failed, error: ${err.code}, ${err.message}`);
+  }
+}
 ```
 
 ## getBurstAssets
@@ -223,14 +319,54 @@ getBurstAssets(burstKey: string, options: photoAccessHelper.FetchOptions): Promi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse FetchOptions, please check if the parameter is valid; <br>2. System internal error, failed to create boolean value, possible causes: 1. Memory insufficient; 2. IPC timeout. Please retry; <br>3. System internal error, query or IPC returned null, please retry. |
 
 **示例**
 
-```TypeScript
 phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  console.info('getBurstAssets');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let photoAssetList: Array<sendablePhotoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
+  if (!photoAssetList || photoAssetList.length === 0) {
+  console.info('photoAssetList is empty');
+  return;
+  }
+  let photoAsset: sendablePhotoAccessHelper.PhotoAsset;
+  // burstKey为36位的uuid，可以根据photoAccessHelper.PhotoKeys获取。
+  for(photoAsset of photoAssetList){
+    // 获取BURST_KEY（连拍照片唯一标识的键名），用于后续从photoAsset中提取burstKey值。
+    let burstKey: string = photoAccessHelper.PhotoKeys.BURST_KEY.toString();
+    // 获取照片的burstKey（连拍照片唯一标识），用于后续查询同一连拍组下的所有照片。
+    let photoAccessBurstKey: photoAccessHelper.MemberType = photoAsset.get(burstKey).toString();
+    try {
+      // 根据burstKey查询同一连拍组下的所有照片资源。
+      let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await
+      phAccessHelper.getBurstAssets(photoAccessBurstKey, fetchOption);
+      if (fetchResult !== undefined) {
+        console.info('fetchResult success');
+        let photoAsset: sendablePhotoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+        if (photoAsset !== undefined) {
+          console.info('photoAsset.displayName :' + photoAsset.displayName);
+        }
+      }
+    } catch (err) {
+      console.error(`getBurstAssets failed, error: ${err.code}, ${err.message}`);
+    }
+  }
+}
 ```
 
 ## release
@@ -259,6 +395,22 @@ release(): Promise<void>
 
 **示例**
 
-```TypeScript
 phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  console.info('releaseDemo');
+  try {
+    console.info('use function...');
+  } catch (err) {
+    console.error(`function error. Code: ${err.code}, message: ${err.message}`);
+  }finally{
+      try{
+          phAccessHelper?.release();
+          console.info(`release success`);
+      } catch(e){
+          console.error(`release error. Code: ${e.code}, message: ${e.message}`);
+      }
+  }
+}
 ```

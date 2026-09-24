@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Brush OH_Drawing_Brush
 
 Defines a struct for a brush, which is used to describe the style and color to fill in a shape.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)

@@ -1,5 +1,9 @@
 # Point
 
+```TypeScript
+interface Point
+```
+
 Describes a coordinate point.
 
 **Since:** 12

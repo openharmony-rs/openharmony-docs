@@ -33,9 +33,9 @@ function getExemptedApps(resourceTypes: number, callback: AsyncCallback<Array<Ex
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [9800001](../errorcode-backgroundTaskMgr.md#9800001-内存操作失败) | Memory operation failed. |
 | [9800002](../errorcode-backgroundTaskMgr.md#9800002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters. |
 | [9800003](../errorcode-backgroundTaskMgr.md#9800003-ipc通信失败) | Failed to complete inner transaction. |
@@ -61,21 +61,8 @@ deviceStandby.getExemptedApps(resourceTypes, (err: BusinessError, res: Array<dev
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { deviceStandby } from '@kit.BackgroundTasksKit';
 
-let resourceTypes: deviceStandby.ResourceType = deviceStandby.ResourceType.TIMER | deviceStandby.ResourceType.NETWORK;
-deviceStandby.getExemptedApps(resourceTypes).then( (res: Array<deviceStandby.ExemptedAppInfo>) => {
-  console.info('DEVICE_STANDBY getExemptedApps promise success.');
-  for (let i = 0; i < res.length; i++) {
-    console.info('DEVICE_STANDBY getExemptedApps promise result ' + JSON.stringify(res[i]));
-  }
-}).catch( (err: BusinessError) => {
-  console.error('DEVICE_STANDBY getExemptedApps promise failed. code is: ' + err.code + ',message is: ' + err.message);
-});
-```
-
+<a id="getexemptedapps-1"></a>
 
 ## getExemptedApps
 
@@ -109,9 +96,9 @@ function getExemptedApps(resourceTypes: number): Promise<Array<ExemptedAppInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [9800001](../errorcode-backgroundTaskMgr.md#9800001-内存操作失败) | Memory operation failed. |
 | [9800002](../errorcode-backgroundTaskMgr.md#9800002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters. |
 | [9800003](../errorcode-backgroundTaskMgr.md#9800003-ipc通信失败) | Failed to complete inner transaction. |
@@ -120,4 +107,17 @@ function getExemptedApps(resourceTypes: number): Promise<Array<ExemptedAppInfo>>
 
 **示例**
 
-参见 [getExemptedApps](#getexemptedapps)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { deviceStandby } from '@kit.BackgroundTasksKit';
+
+let resourceTypes: deviceStandby.ResourceType = deviceStandby.ResourceType.TIMER | deviceStandby.ResourceType.NETWORK;
+deviceStandby.getExemptedApps(resourceTypes).then( (res: Array<deviceStandby.ExemptedAppInfo>) => {
+  console.info('DEVICE_STANDBY getExemptedApps promise success.');
+  for (let i = 0; i < res.length; i++) {
+    console.info('DEVICE_STANDBY getExemptedApps promise result ' + JSON.stringify(res[i]));
+  }
+}).catch( (err: BusinessError) => {
+  console.error('DEVICE_STANDBY getExemptedApps promise failed. code is: ' + err.code + ',message is: ' + err.message);
+});
+```

@@ -1,5 +1,9 @@
 # PrintOrientationMode
 
+```TypeScript
+enum PrintOrientationMode
+```
+
 打印方向的枚举。
 
 **起始版本：** 14

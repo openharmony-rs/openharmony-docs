@@ -1,5 +1,9 @@
 # ReleaseStatus
 
+```TypeScript
+export enum ReleaseStatus
+```
+
 Enumerates the statuses for releasing access permissions for sensitive data under the lock screen.
 
 **Since:** 12

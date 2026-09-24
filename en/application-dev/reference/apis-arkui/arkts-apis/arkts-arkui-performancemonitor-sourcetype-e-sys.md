@@ -1,5 +1,9 @@
 # SourceType (System API)
 
+```TypeScript
+export enum SourceType
+```
+
 Enumerates the trigger source types of user scenes.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # VideoConflictFunctions (System API)
 
+```TypeScript
+interface VideoConflictFunctions extends ZoomQuery, MacroQuery
+```
+
 Video Conflict Functions object.
 
 **Inheritance/Implementation:** VideoConflictFunctions extends [ZoomQuery](arkts-camera-camera-zoomquery-i.md), [MacroQuery](arkts-camera-camera-macroquery-i.md)

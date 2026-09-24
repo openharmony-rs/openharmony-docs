@@ -1,5 +1,9 @@
 # SharedModuleInfo（系统接口）
 
+```TypeScript
+export interface SharedModuleInfo
+```
+
 共享模块信息。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # ListFileExtOptions
 
+```TypeScript
+export interface ListFileExtOptions
+```
+
 可选项类型，支持listFileExt接口使用。
 
 **起始版本：** 26.0.0

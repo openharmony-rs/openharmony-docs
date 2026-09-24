@@ -1,5 +1,9 @@
 # AudioSeparationVolumeType (System API)
 
+```TypeScript
+enum AudioSeparationVolumeType
+```
+
 Volume type for audio separation effect.
 
 **Since:** 26.0.0

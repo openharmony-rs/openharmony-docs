@@ -1,5 +1,9 @@
 # WallpaperResourceType (System API)
 
+```TypeScript
+enum WallpaperResourceType
+```
+
 Indicates the resource type of the wallpaper.
 
 @enum { int } WallpaperResourceType

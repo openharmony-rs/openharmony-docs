@@ -8,6 +8,8 @@ typedef struct OH_Huks_PubKeyInfo {...} OH_Huks_PubKeyInfo
 
 Defines the struct of a public key.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 **Related module**: [HuksTypeApi](capi-hukstypeapi.md)

@@ -1,5 +1,9 @@
 # GetPropertyType（系统接口）
 
+```TypeScript
+enum GetPropertyType
+```
+
 表示要获取的属性类型的枚举。
 
 **起始版本：** 8

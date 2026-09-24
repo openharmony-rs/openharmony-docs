@@ -1,5 +1,9 @@
 # DeepOptimizeState (System API)
 
+```TypeScript
+enum DeepOptimizeState
+```
+
 Describes the state type of deep optimize space.
 
 **Since:** 26.0.0

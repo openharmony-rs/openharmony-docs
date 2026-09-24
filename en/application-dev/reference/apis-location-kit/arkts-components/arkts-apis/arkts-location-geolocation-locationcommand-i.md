@@ -1,5 +1,9 @@
 # LocationCommand
 
+```TypeScript
+export interface LocationCommand
+```
+
 Location subsystem command structure
 
 @interface LocationCommand

@@ -1,5 +1,9 @@
 # ImageItem (System API)
 
+```TypeScript
+interface ImageItem
+```
+
 Image object with layout information.
 
 @interface ImageItem

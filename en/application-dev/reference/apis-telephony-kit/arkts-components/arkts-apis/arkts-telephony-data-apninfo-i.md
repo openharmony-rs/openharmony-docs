@@ -1,5 +1,9 @@
 # ApnInfo
 
+```TypeScript
+interface ApnInfo
+```
+
 Defines the APN information.
 
 **Since:** 16

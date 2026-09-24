@@ -1,5 +1,9 @@
 # BreakIterator
 
+```TypeScript
+export class BreakIterator
+```
+
 Provides text line breaking capabilities, such as obtaining, moving, and identifying break points.
 
 **Since:** 8

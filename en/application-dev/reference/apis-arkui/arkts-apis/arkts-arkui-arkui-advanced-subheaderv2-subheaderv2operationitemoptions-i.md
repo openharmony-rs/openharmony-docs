@@ -1,5 +1,9 @@
 # SubHeaderV2OperationItemOptions
 
+```TypeScript
+export interface SubHeaderV2OperationItemOptions
+```
+
 Defines the options for initializing a **SubHeaderV2OperationItem** object.
 
 **Since:** 18

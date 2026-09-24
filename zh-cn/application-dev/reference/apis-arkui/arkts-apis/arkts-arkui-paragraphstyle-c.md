@@ -1,5 +1,9 @@
 # ParagraphStyle
 
+```TypeScript
+declare class ParagraphStyle
+```
+
 文本段落样式对象说明。
 
 除首个段落外，后续段落按'\n'划分。
@@ -44,7 +48,7 @@ readonly leadingMargin?: number | LeadingMarginPlaceholder
 
 返回为number类型时，单位为vp。
 
-**类型：** number &#124; [LeadingMarginPlaceholder](../arkts-components/arkts-arkui-leadingmarginplaceholder-i.md)
+**类型：** number &#124; [LeadingMarginPlaceholder](../arkts-components/arkts-arkui-richeditor-comp-leadingmarginplaceholder-i.md)
 
 **起始版本：** 12
 
@@ -122,7 +126,7 @@ readonly paragraphSpacing?: number
 
 获取属性字符串文本段落的段落间距。
 
-单位：[vp](arkts-arkui-length-t.md)
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
@@ -160,15 +164,7 @@ readonly shaderStyle?: ShaderStyle
 readonly tailIndents?: Array<number>
 ```
 
-获取属性字符串文本段落的文本尾部缩进距离。
-
-单位：[vp](arkts-arkui-length-t.md)
-
-取值范围：[0, INT32_MAX]
-
-值为0时不做尾部缩进。
-
-**说明：** tailIndents数组在同一段落内的每一行按数组索引依次取值做缩进；新的段落首行重新从tailIndents数组索引0位置开始取值做缩进。
+获取属性字符串文本段落的文本尾部缩进距离。单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)取值范围：[0, INT32_MAX]值为0时不做尾部缩进。**说明：** tailIndents数组在同一段落内的每一行按数组索引依次取值做缩进；新的段落首行重新从tailIndents数组索引0位置开始取值做缩进。单位为：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。
 
 **类型：** Array&lt;number&gt;
 
@@ -224,7 +220,7 @@ readonly textDirection?: TextDirection
 readonly textIndent?: number
 ```
 
-获取属性字符串文本段落的首行文本缩进。单位：[vp](arkts-arkui-length-t.md)
+获取属性字符串文本段落的首行文本缩进。单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
@@ -244,7 +240,7 @@ readonly textVerticalAlign?: TextVerticalAlign
 
 获取属性字符串文本段落在垂直方向的对齐方式。
 
-一个段落下使用同一字号必须同时设置行高lineHeight或者同一个段落不同字号文本混排时才有效果差异，否则设置了该属性任意枚举值和未设置该属性都是一样的排版效果。属性字符串[TextStyle](arkts-arkui-textstyle-c.md)中的SuperscriptStyle上下角标样式仅在TextVerticalAlign属性值为TextVerticalAlign.BASELINE时生效，其余垂直对齐方式下上下角标文本和普通文本表现一致，无上下角标效果。
+一个段落下使用同一字号必须同时设置行高[lineHeight](../arkts-components/arkts-arkui-text-comp-attribute.md#lineheight)或者同一个段落不同字号文本混排时才有效果差异，否则设置了该属性任意枚举值和未设置该属性都是一样的排版效果。属性字符串[TextStyle](arkts-arkui-textstyle-c.md)中的SuperscriptStyle上下角标样式仅在TextVerticalAlign属性值为TextVerticalAlign.BASELINE时生效，其余垂直对齐方式下上下角标文本和普通文本表现一致，无上下角标效果。
 
 **类型：** [TextVerticalAlign](arkts-arkui-textverticalalign-e.md)
 

@@ -1,6 +1,10 @@
 # IlluminatedType（系统接口）
 
-被照亮的类型枚举。
+```TypeScript
+declare enum IlluminatedType
+```
+
+定义光照类型，用于指定组件是否可以被光源照亮以及被照亮的类型。
 
 **起始版本：** 11
 

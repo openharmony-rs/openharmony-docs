@@ -1,6 +1,10 @@
 # Task
 
-Implements an upload or download task. Before using this API, you must obtain a **Task** object, from a promise through [request.agent.create](arkts-basicservices-agent-create-f.md) or from a callback through [request.agent.create](arkts-basicservices-agent-create-f.md).
+```TypeScript
+interface Task
+```
+
+Implements an upload or download task. Before using this API, you must obtain a **Task** object, from a promise through [request.agent.create](arkts-basicservices-agent-create-f.md#create-1) or from a callback through [request.agent.create](arkts-basicservices-agent-create-f.md).
 
 > **NOTE:** 
 > 
@@ -51,6 +55,8 @@ Unsubscribes from task progress events.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | task mode error.<br>**Applicable version:** 10 |
 
+<a id="off-1"></a>
+
 ## off
 
 ```TypeScript
@@ -84,6 +90,8 @@ Unsubscribes from task completion events.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | Operation with wrong task mode.<br>**Applicable version:** 10 |
+
+<a id="off-2"></a>
 
 ## off
 
@@ -119,6 +127,8 @@ Unsubscribes from task failure events.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | Operation with wrong task mode.<br>**Applicable version:** 10 |
 
+<a id="off-3"></a>
+
 ## off
 
 ```TypeScript
@@ -149,6 +159,8 @@ Unsubscribes from the foreground task pause event.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+
+<a id="off-4"></a>
 
 ## off
 
@@ -181,6 +193,8 @@ Unsubscribes from foreground task resume events.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
+<a id="off-5"></a>
+
 ## off
 
 ```TypeScript
@@ -211,6 +225,8 @@ Unsubscribes from the task removal event.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
+
+<a id="off-6"></a>
 
 ## off
 
@@ -245,6 +261,8 @@ Unsubscribes from task response headers.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
+<a id="off-7"></a>
+
 ## off
 
 ```TypeScript
@@ -275,6 +293,8 @@ Unsubscribes from task failure events.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+
+<a id="off-8"></a>
 
 ## off
 
@@ -341,6 +361,8 @@ Subscribes to task progress changes. This API uses an asynchronous callback to r
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | task mode error.<br>**Applicable version:** 10 |
 
+<a id="on-1"></a>
+
 ## on
 
 ```TypeScript
@@ -375,13 +397,15 @@ Subscribes to task completion events. This API uses an asynchronous callback to 
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | task mode error.<br>**Applicable version:** 10 |
 
+<a id="on-2"></a>
+
 ## on
 
 ```TypeScript
 on(event: 'failed', callback: (progress: Progress) => void): void
 ```
 
-Subscribes to task failure events. This API uses an asynchronous callback to return the result. You can call [request.agent.show](arkts-basicservices-agent-show-f.md) to view the error cause.
+Subscribes to task failure events. This API uses an asynchronous callback to return the result. You can call [request.agent.show](arkts-basicservices-agent-show-f.md#show-1) to view the error cause.
 
 > **NOTE:** 
 > 
@@ -408,6 +432,8 @@ Subscribes to task failure events. This API uses an asynchronous callback to ret
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | Operation with wrong task mode.<br>**Applicable version:** 10 |
+
+<a id="on-3"></a>
 
 ## on
 
@@ -440,6 +466,8 @@ Subscribes to task pause events. This API uses an asynchronous callback to retur
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
+<a id="on-4"></a>
+
 ## on
 
 ```TypeScript
@@ -471,6 +499,8 @@ Subscribes to task resume events. This API uses an asynchronous callback to retu
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
+<a id="on-5"></a>
+
 ## on
 
 ```TypeScript
@@ -501,6 +531,8 @@ Subscribes to task removal events. This API uses an asynchronous callback to ret
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+
+<a id="on-6"></a>
 
 ## on
 
@@ -535,6 +567,8 @@ Subscribes to task response headers. This API uses an asynchronous callback to r
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
+<a id="on-7"></a>
+
 ## on
 
 ```TypeScript
@@ -565,6 +599,8 @@ Subscribes to task failure events. This API uses a callback to return the result
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+
+<a id="on-8"></a>
 
 ## on
 
@@ -623,6 +659,8 @@ Pauses a task that is waiting, running, or retrying. A paused task can be resume
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | Operation with wrong task mode.<br>**Applicable version:** 10 |
 | [21900007](../errorcode-request.md#21900007-operation-not-supported-by-the-task-state) | Operation with wrong task state. |
 
+<a id="pause-1"></a>
+
 ## pause
 
 ```TypeScript
@@ -677,6 +715,8 @@ Resumes a paused task. This API uses an asynchronous callback to return the resu
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | Operation with wrong task mode.<br>**Applicable version:** 10 |
 | [21900007](../errorcode-request.md#21900007-operation-not-supported-by-the-task-state) | Operation with wrong task state. |
+
+<a id="resume-1"></a>
 
 ## resume
 
@@ -779,6 +819,8 @@ Tasks in the following states can be started:
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 | [21900007](../errorcode-request.md#21900007-operation-not-supported-by-the-task-state) | Operation with wrong task state. |
 
+<a id="start-1"></a>
+
 ## start
 
 ```TypeScript
@@ -846,6 +888,8 @@ Stops a task that is running, waiting, or retrying. A paused task can be resumed
 | --- | --- |
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 | [21900007](../errorcode-request.md#21900007-operation-not-supported-by-the-task-state) | Operation with wrong task state. |
+
+<a id="stop-1"></a>
 
 ## stop
 

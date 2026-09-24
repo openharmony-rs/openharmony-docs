@@ -1,5 +1,9 @@
 # Panel
 
+```TypeScript
+interface Panel
+```
+
 Describes a **Panel** object, which is created using [createPanel](arkts-basicservices-selectionmanager-createpanel-f.md). This method can be used to set, display, hide, and move the panel, as well as subscribe to events. It is applicable to scenarios where a custom operation UI needs to be displayed to users after word selection is complete.
 
 **Since:** 24

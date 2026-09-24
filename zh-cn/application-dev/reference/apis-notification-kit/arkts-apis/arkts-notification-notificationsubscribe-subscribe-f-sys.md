@@ -37,39 +37,15 @@ function subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// subscribe回调
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('subscribe success');
-  }
-}
-let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
-  console.info(`Consume callback: ${JSON.stringify(data)}`);
-}
-let subscriber: notificationSubscribe.NotificationSubscriber = {
-  onConsume: onConsumeCallback
-};
-// 不会对bundleNames进行校验，开发者自己确定需要订阅哪些bundleName
-let info: notificationSubscribe.NotificationSubscribeInfo = {
-  bundleNames: ['bundleName1','bundleName2']
-};
-notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -90,22 +66,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
-  console.info(`Consume callback: ${JSON.stringify(data)}`);
-}
-let subscriber: notificationSubscribe.NotificationSubscriber = {
-  onConsume: onConsumeCallback
-};
-notificationSubscribe.subscribe(subscriber).then(() => {
-  console.info('subscribe success');
-}).catch((err: BusinessError) => {
-  console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="subscribe-1"></a>
 
 ## subscribe
 
@@ -143,9 +105,9 @@ function subscribe(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -153,8 +115,32 @@ function subscribe(
 
 **示例**
 
-参见 [subscribe](#subscribe)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// subscribe回调
+let subscribeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('subscribe success');
+  }
+}
+let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
+  console.info(`Consume callback: ${JSON.stringify(data)}`);
+}
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+// 不会对bundleNames进行校验，开发者自己确定需要订阅哪些bundleName
+let info: notificationSubscribe.NotificationSubscribeInfo = {
+  bundleNames: ['bundleName1','bundleName2']
+};
+notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
+```
+
+
+<a id="subscribe-2"></a>
 
 ## subscribe
 
@@ -193,9 +179,9 @@ function subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscr
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -203,4 +189,18 @@ function subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscr
 
 **示例**
 
-参见 [subscribe](#subscribe)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
+  console.info(`Consume callback: ${JSON.stringify(data)}`);
+}
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+notificationSubscribe.subscribe(subscriber).then(() => {
+  console.info('subscribe success');
+}).catch((err: BusinessError) => {
+  console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+});
+```

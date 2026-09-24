@@ -8,6 +8,8 @@ typedef struct HiTraceId {...} HiTraceId
 
 Defines a **HiTraceId** instance.
 
+**System capability**: SystemCapability.HiviewDFX.HiTrace
+
 **Since**: 12
 
 **Related module**: [HiTrace](capi-hitrace.md)

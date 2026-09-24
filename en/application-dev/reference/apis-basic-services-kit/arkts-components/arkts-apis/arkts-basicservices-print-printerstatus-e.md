@@ -1,5 +1,9 @@
 # PrinterStatus
 
+```TypeScript
+enum PrinterStatus
+```
+
 Enumerates the printer states.
 
 **Since:** 14

@@ -33,9 +33,9 @@ function setPowerMode(mode: DevicePowerMode, callback: AsyncCallback<void>): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Parameter verification failed. |
 | [4900301](../errorcode-power.md#4900301-电源模式设置失败) | Setting the power mode failed.<br>**适用版本：** 23+ |
 
 **示例**
@@ -50,16 +50,8 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (err: BusinessError) 
 });
 ```
 
-```TypeScript
-power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
-.then(() => {
-    console.info('set power mode to MODE_PERFORMANCE');
-})
-.catch((err: BusinessError) => {
-    console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);
-});
-```
 
+<a id="setpowermode-1"></a>
 
 ## setPowerMode
 
@@ -93,11 +85,19 @@ function setPowerMode(mode: DevicePowerMode): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Parameter verification failed. |
 | [4900301](../errorcode-power.md#4900301-电源模式设置失败) | Setting the power mode failed.<br>**适用版本：** 23+ |
 
 **示例**
 
-参见 [setPowerMode](#setpowermode)
+```TypeScript
+power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
+.then(() => {
+    console.info('set power mode to MODE_PERFORMANCE');
+})
+.catch((err: BusinessError) => {
+    console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);
+});
+```

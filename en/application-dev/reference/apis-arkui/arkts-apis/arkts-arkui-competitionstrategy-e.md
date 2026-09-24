@@ -1,5 +1,9 @@
 # CompetitionStrategy
 
+```TypeScript
+declare enum CompetitionStrategy
+```
+
 Defines whether the dispatched event is a competitive gesture. In the competitive scenario, only one of the original node and target node of the gesture responds. In the non‑competitive scenario, both nodes can respond simultaneously.
 
 **Since:** 24

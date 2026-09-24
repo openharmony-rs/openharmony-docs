@@ -1,5 +1,9 @@
 # ApplicationInfo
 
+```TypeScript
+interface ApplicationInfo
+```
+
 Defines the application information.
 
 **Since:** 20

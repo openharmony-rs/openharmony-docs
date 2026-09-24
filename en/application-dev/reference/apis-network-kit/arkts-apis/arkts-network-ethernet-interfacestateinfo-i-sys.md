@@ -1,5 +1,9 @@
 # InterfaceStateInfo (System API)
 
+```TypeScript
+export interface InterfaceStateInfo
+```
+
 Listens for status changes of an Ethernet NIC.
 
 **Since:** 11

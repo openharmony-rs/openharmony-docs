@@ -1,5 +1,9 @@
 # MmsInformation（系统接口）
 
+```TypeScript
+export interface MmsInformation
+```
+
 彩信信息。
 
 **起始版本：** 8

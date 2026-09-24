@@ -1,5 +1,9 @@
 # PostMessageOptions
 
+```TypeScript
+export interface PostMessageOptions
+```
+
 明确数据传递过程中需要转移所有权的对象，这些对象必须是ArrayBuffer，在发送方的上下文中将变为不可用，仅在接收方可用。
 
 **起始版本：** 7

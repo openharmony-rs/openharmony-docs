@@ -1,5 +1,9 @@
 # RegExpExecArray
 
+```TypeScript
+interface RegExpExecArray extends Array<string>
+```
+
 ## Modules to Import
 
 ```TypeScript

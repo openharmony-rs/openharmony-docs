@@ -1,5 +1,9 @@
 # EventFlag
 
+```TypeScript
+enum EventFlag
+```
+
 Enumerates event types.
 
 **Since:** 18

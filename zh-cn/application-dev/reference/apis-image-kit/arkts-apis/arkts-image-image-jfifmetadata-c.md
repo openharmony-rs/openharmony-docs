@@ -1,5 +1,9 @@
 # JfifMetadata
 
+```TypeScript
+class JfifMetadata
+```
+
 JFIF metadata.
 
 **起始版本：** 26.0.0

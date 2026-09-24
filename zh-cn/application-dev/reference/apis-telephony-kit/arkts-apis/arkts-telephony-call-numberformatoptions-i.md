@@ -1,5 +1,9 @@
 # NumberFormatOptions
 
+```TypeScript
+export interface NumberFormatOptions
+```
+
 格式化号码的可选参数。
 
 **起始版本：** 7

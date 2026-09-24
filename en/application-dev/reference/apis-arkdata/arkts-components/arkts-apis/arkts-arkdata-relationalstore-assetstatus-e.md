@@ -1,5 +1,9 @@
 # AssetStatus
 
+```TypeScript
+enum AssetStatus
+```
+
 Enumerates the asset statuses. Use the enum name rather than the enum value.
 
 **Since:** 10

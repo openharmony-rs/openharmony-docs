@@ -1,5 +1,9 @@
 # ReadStream
 
+```TypeScript
+declare class ReadStream extends stream.Readable
+```
+
 文件可读流，需要先通过fileIo.createReadStream方法来构建一个ReadStream实例。ReadStream继承自数据流基类stream.Readable。ReadStream读到的数据为解码后的字符串，其编码格式当前仅支持'utf-8'。
 
 **继承/实现关系：** ReadStream extends [stream.Readable](../../apis-arkts/arkts-apis/arkts-arkts-stream-readable-c.md)
@@ -86,7 +90,7 @@ seek(offset: number, whence?: WhenceType): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error |
 | 13900020 | Invalid argument |
 | 13900026 | Illegal seek |
 | 13900042 | Unknown error |

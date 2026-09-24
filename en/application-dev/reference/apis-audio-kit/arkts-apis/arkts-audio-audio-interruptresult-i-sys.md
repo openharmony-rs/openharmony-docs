@@ -1,5 +1,9 @@
 # InterruptResult (System API)
 
+```TypeScript
+interface InterruptResult
+```
+
 Describes audio interrupt operation results.
 
 **Since:** 9

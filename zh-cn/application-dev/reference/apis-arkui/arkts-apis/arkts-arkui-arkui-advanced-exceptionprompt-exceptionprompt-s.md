@@ -1,5 +1,9 @@
 # ExceptionPrompt
 
+```TypeScript
+export declare struct ExceptionPrompt
+```
+
 **起始版本：** 11
 
 **装饰器类型：** @Component

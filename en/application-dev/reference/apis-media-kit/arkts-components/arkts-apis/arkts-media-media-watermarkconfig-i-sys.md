@@ -1,5 +1,9 @@
 # WatermarkConfig (System API)
 
+```TypeScript
+interface WatermarkConfig
+```
+
 Set configures of a watermark to AVRecorder. The position starts at top left corner.
 
 **Since:** 13

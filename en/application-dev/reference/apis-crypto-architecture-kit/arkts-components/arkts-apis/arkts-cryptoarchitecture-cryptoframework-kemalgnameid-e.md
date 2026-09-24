@@ -1,5 +1,9 @@
 # KemAlgNameId
 
+```TypeScript
+enum KemAlgNameId
+```
+
 Enumerates the KEM algorithm name IDs.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # FloatingBallTemplate
 
+```TypeScript
+enum FloatingBallTemplate
+```
+
 闪控球模板类型的枚举。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # Readable
 
+```TypeScript
+class Readable
+```
+
 可从中读取数据的流。可读流用于从源（如文件或网络套接字）读取数据。
 
 **起始版本：** 12
@@ -32,12 +36,7 @@ constructor()
 let readableStream = new stream.Readable();
 ```
 
-```TypeScript
-let option : stream.ReadableOptions = {
-  encoding : "utf-8"
-};
-let readableStream = new stream.Readable(option);
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -60,10 +59,6 @@ constructor(options: ReadableOptions)
 | options | [ReadableOptions](arkts-arkts-stream-readableoptions-i.md) | 是 | Readable构造函数的选项信息。 |
 
 **示例**
-
-```TypeScript
-let readableStream = new stream.Readable();
-```
 
 ```TypeScript
 let option : stream.ReadableOptions = {

@@ -1,5 +1,9 @@
 # ErrorReason
 
+```TypeScript
+enum ErrorReason
+```
+
 Describe the error reason.
 
 **Since:** 23

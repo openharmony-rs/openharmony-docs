@@ -1,5 +1,9 @@
 # TimerOptions (System API)
 
+```TypeScript
+interface TimerOptions
+```
+
 Defines the initialization options for the system timer.
 
 **Since:** 7

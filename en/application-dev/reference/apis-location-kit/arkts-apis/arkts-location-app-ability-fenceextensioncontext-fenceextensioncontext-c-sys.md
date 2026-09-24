@@ -1,5 +1,9 @@
 # FenceExtensionContext
 
+```TypeScript
+export default class FenceExtensionContext extends ExtensionContext
+```
+
 class of static subscriber extension context.
 
 @extends ExtensionContext
@@ -64,38 +68,3 @@ Starts a new service extension ability. If the target service extension ability 
 | [16200001](../../apis-ability-kit/errorcode-ability.md#16200001-caller-released) | The caller has been released. |
 
 **Examples**
-
-```TypeScript
-import { FenceExtensionAbility, geoLocationManager } from '@kit.LocationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-
-export class MyFenceExtensionAbility extends FenceExtensionAbility {
-  onFenceStatusChange(transition: geoLocationManager.GeofenceTransition, additions: Record<string, string>): void {
-    // Receive the geofence status change event and process the service logic.
-    console.info(`on geofence transition,id:${transition.geofenceId},event:${transition.transitionEvent},additions:${JSON.stringify(additions)}`);
-    let want: Want = {
-      bundleName: "com.example.myapp",
-      abilityName: "MyServiceExtensionAbility"
-    };
-    try {
-      this.context.startAbility(want)
-        .then(() => {
-          // Carry out normal service processing.
-          console.info('startAbility succeed');
-        })
-        .catch((error: BusinessError) => {
-          // Process service logic errors.
-          console.error('startAbility failed, error.code: ' + JSON.stringify(error.code) +
-            ' error.message: ' + JSON.stringify(error.message));
-        });
-    } catch (paramError) {
-      // Process input parameter errors.
-      let code = (paramError as BusinessError).code;
-      let message = (paramError as BusinessError).message;
-      console.error('startAbility failed, error.code: ' + JSON.stringify(code) +
-        ' error.message: ' + JSON.stringify(message));
-    }
-  }
-}
-```

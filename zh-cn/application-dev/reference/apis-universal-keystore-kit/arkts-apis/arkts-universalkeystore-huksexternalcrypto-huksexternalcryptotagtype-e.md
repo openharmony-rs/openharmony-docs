@@ -1,5 +1,9 @@
 # HuksExternalCryptoTagType
 
+```TypeScript
+export enum HuksExternalCryptoTagType
+```
+
 表示外部加密数据类型的枚举。
 
 **起始版本：** 22

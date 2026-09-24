@@ -1,8 +1,12 @@
 # FontClientObserver
 
-Observer for font service death events. When the font service dies unexpectedly, the [onServiceDied](#onservicedied) callback is invoked.
+```TypeScript
+interface FontClientObserver
+```
 
-**Since:** 26.1.0
+Font service status listener.
+
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Global.FontManager
 
@@ -18,9 +22,9 @@ import { fontManager } from '@kit.LocalizationKit';
 onServiceDied(): void
 ```
 
-Called when the font service is died.
+Callback function called when the font service exits abnormally. Your app can perform operations such as resource cleanup or re-registration in this callback function.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

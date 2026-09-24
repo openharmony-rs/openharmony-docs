@@ -8,6 +8,8 @@ typedef struct Print_PrinterCapability {...} Print_PrinterCapability
 
 Defines a struct for the printer capabilities.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Related module**: [Print](capi-print.md)

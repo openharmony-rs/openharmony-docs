@@ -12,7 +12,7 @@ import { defaultAppManager } from '@kit.AbilityKit';
 function setDefaultApplicationSync(type: string, elementName: ElementName, userId?: number): void
 ```
 
-Sets the default application based on a system-defined application type, a file type that complies with the media type format (either specified by **type** or **subtype**), or a [uniform data type](../../apis-arkdata/arkts-apis/arkts-arkdata-data-uniformtypedescriptor.md). This API returns the result synchronously. To set an application as the default browser, the target application must have been granted the ohos.permission.DEFAULT_WEB_BROWSER permission. Otherwise, error 18000001 is returned. [since 26.1.0]
+Sets the default application based on a system-defined application type, a file type that complies with the media type format (either specified by **type** or **subtype**), or a [uniform data type](../../apis-arkdata/arkts-apis/arkts-arkdata-data-uniformtypedescriptor.md). This API returns the result synchronously. To set an application as the default browser, the target application must have been granted the ohos.permission.DEFAULT_WEB_BROWSER permission. Otherwise, error 18000001 is returned. [since 26.0.1]
 
 **Since:** 10
 
@@ -41,7 +41,7 @@ Sets the default application based on a system-defined application type, a file 
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
 | [17700025](../errorcode-bundle.md#17700025-invalid-type) | The specified type is invalid. |
 | [17700028](../errorcode-bundle.md#17700028-mismatch-between-ability-and-type) | The specified ability does not match the type. |
-| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br>**Applicable version:** 26.1.0 and later |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br>**Applicable version:** 26.0.1 and later |
 
 **Examples**
 

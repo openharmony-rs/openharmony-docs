@@ -1,5 +1,9 @@
 # ExtraData (System API)
 
+```TypeScript
+interface ExtraData
+```
+
 Represents the cloud data change information.
 
 **Since:** 11

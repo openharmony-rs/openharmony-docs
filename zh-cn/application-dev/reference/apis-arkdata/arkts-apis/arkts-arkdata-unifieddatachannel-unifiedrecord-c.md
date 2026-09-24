@@ -1,5 +1,9 @@
 # UnifiedRecord
 
+```TypeScript
+class UnifiedRecord
+```
+
 对UDMF支持的数据内容的抽象定义，称为数据记录。一个统一数据对象内包含一条或多条数据记录，例如一条文本记录、一条图片记录、一条HTML记录等。从API version 15开始，支持往数据记录中增加同一内容的不同数据格式（例如同一文本可同时以纯文本、HTML或超链接等格式存储），数据使用方根据业务需要通过getEntry方法获取对应格式。
 
 **起始版本：** 10
@@ -39,7 +43,7 @@ addEntry(type: string, value: ValueType): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **示例**
 
@@ -90,38 +94,7 @@ constructor()
 let unifiedRecord = new unifiedDataChannel.UnifiedRecord();
 ```
 
-```TypeScript
-import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-import { image } from '@kit.ImageKit';
-
-let hyperlink: uniformDataStruct.Hyperlink = {
-  uniformDataType: 'general.hyperlink',
-  url: 'www.XXX.com',
-  description: 'This is the description of the hyperlink'
-};
-let hyperlinkRecord = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
-
-let plainText: uniformDataStruct.PlainText = {
-  uniformDataType: 'general.plain-text',
-  textContent: 'This is a plain text example',
-  abstract: 'This is abstract'
-};
-let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
-
-let arrayBuffer = new ArrayBuffer(4 * 200 * 200);
-let opt: image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: { height: 200, width: 200 },
-  alphaType: 3
-};
-let pixelMap: uniformDataStruct.PixelMap = {
-  uniformDataType: 'openharmony.pixel-map',
-  pixelMap: image.createPixelMapSync(arrayBuffer, opt)
-};
-let pixelMapRecord =
-  new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP, pixelMap);
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -154,13 +127,9 @@ constructor(type: string, value: ValueType)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **示例**
-
-```TypeScript
-let unifiedRecord = new unifiedDataChannel.UnifiedRecord();
-```
 
 ```TypeScript
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
@@ -298,7 +267,7 @@ getEntry(type: string): ValueType
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **示例**
 

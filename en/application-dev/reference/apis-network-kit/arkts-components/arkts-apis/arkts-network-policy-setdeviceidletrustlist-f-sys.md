@@ -51,19 +51,8 @@ policy.setDeviceIdleTrustlist([11111, 22222], true, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .setDeviceIdleTrustlist([11111, 22222], true)
-  .then(() => {
-    console.info('setDeviceIdleTrustlist success');
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
-```
-
+<a id="setdeviceidletrustlist-1"></a>
 
 ## setDeviceIdleTrustlist
 
@@ -107,4 +96,15 @@ Sets whether multiple UIDs are in the whitelist of the sleep firewall. This API 
 
 **Examples**
 
-See [setDeviceIdleTrustlist](#setdeviceidletrustlist)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+policy
+  .setDeviceIdleTrustlist([11111, 22222], true)
+  .then(() => {
+    console.info('setDeviceIdleTrustlist success');
+  })
+  .catch((error: BusinessError) => {
+    console.error(JSON.stringify(error));
+  });
+```

@@ -1,5 +1,9 @@
 # RemindType（系统接口）
 
+```TypeScript
+export enum RemindType
+```
+
 提醒类型。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # Fetch
 
+```TypeScript
+export default class Fetch
+```
+
 **Table 1** Mapping between data and Content-Type
 
 | data | Content-Type | Description|  

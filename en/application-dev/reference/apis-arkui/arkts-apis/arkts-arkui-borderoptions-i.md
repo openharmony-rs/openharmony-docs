@@ -1,5 +1,9 @@
 # BorderOptions
 
+```TypeScript
+declare interface BorderOptions
+```
+
 Defines border information.
 
 **Since:** 7

@@ -1,8 +1,12 @@
 # ShareMemberStatus (System API)
 
+```TypeScript
+enum ShareMemberStatus
+```
+
 Enumerates the member status of share album.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -16,7 +20,7 @@ INVITING = 0
 
 Member is being invited.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -32,7 +36,7 @@ ACCEPTED = 1
 
 Member has accepted the invitation.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -48,7 +52,7 @@ DECLINED = 2
 
 Member declined the invitation.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -64,7 +68,7 @@ REQUESTING = 3
 
 Member requested to join.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

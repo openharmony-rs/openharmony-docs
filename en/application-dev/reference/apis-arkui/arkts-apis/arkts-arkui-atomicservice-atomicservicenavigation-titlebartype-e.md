@@ -1,5 +1,9 @@
 # TitleBarType
 
+```TypeScript
+export declare enum TitleBarType
+```
+
 Enumerates the title bar types. The default type is **ROUND_ICON**.
 
 **Since:** 18

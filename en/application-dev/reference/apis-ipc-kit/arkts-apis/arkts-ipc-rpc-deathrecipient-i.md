@@ -1,5 +1,9 @@
 # DeathRecipient
 
+```TypeScript
+interface DeathRecipient
+```
+
 Subscribes to death notifications of a remote object. When the remote object is dead, the local end will receive a notification and **[onRemoteDied](#onremotedied)** will be called. A remote object is dead when the process holding the object is terminated or the device of the remote object is shut down or restarted. If the local and remote objects belong to different devices, the remote object is dead when the device holding the remote object is detached from the network.
 
 **Since:** 7

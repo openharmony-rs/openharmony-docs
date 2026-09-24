@@ -18,7 +18,7 @@ function updateContact(contact: Contact, callback: AsyncCallback<void>): void
 
 **废弃版本：** 10
 
-**替代接口：** updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [updateContact](#updatecontact-1)(context: Context, contact: Contact, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -34,12 +34,6 @@ function updateContact(contact: Contact, callback: AsyncCallback<void>): void
 **示例**
 
 ```TypeScript
-> 说明：
-> 
-> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
-```
-
-```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { contact } from '@kit.ContactsKit';
 
@@ -63,55 +57,8 @@ contact.selectContacts().then((data) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { contact } from '@kit.ContactsKit';
 
-
-// 通过selectContacts接口选择联系人。
-contact.selectContacts().then((data) => {
-  contact.updateContact({
-    id: data[0].id, // 选择联系人的id。
-    name: {
-      fullName: 'xxx'
-    },
-    phoneNumbers: [{
-      phoneNumber: '138xxxxxxxx'
-    }]
-  }, {
-    attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
-  }, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in updating Contact.');
-  });
-});
-```
-
-```TypeScript
-import { contact } from '@kit.ContactsKit';
-
-// 通过selectContacts接口选择联系人。
-contact.selectContacts().then((data) => {
-  let promise = contact.updateContact({
-    id: data[0].id, // 选择联系人的id。
-    name: {
-      fullName: 'xxx'
-    },
-    phoneNumbers: [{
-      phoneNumber: '138xxxxxxxx'
-    }]
-  }, {
-    attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
-  });
-  promise.then(() => {
-    console.info('Succeeded in updating Contact.');
-  });
-});
-```
-
+<a id="updatecontact-1"></a>
 
 ## updateContact
 
@@ -139,13 +86,45 @@ function updateContact(context: Context, contact: Contact, callback: AsyncCallba
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId. |
 
 **示例**
 
-参见 updateContact
+> 说明：
+> 
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// 通过selectContacts接口选择联系人。
+contact.selectContacts().then((data) => {
+  // 请在组件内获取context。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  contact.updateContact(context, {
+    id: data[0].id, // 选择联系人的id。
+    name: {
+      fullName: 'xxx'
+    },
+    phoneNumbers: [{
+      phoneNumber: '138xxxxxxxx'
+    }]
+  }, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in updating Contact.');
+  });
+});
+```
+
+
+<a id="updatecontact-2"></a>
 
 ## updateContact
 
@@ -159,7 +138,7 @@ function updateContact(contact: Contact, attrs: ContactAttributes, callback: Asy
 
 **废弃版本：** 10
 
-**替代接口：** updateContact(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [updateContact](#updatecontact-3)(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -175,8 +154,35 @@ function updateContact(contact: Contact, attrs: ContactAttributes, callback: Asy
 
 **示例**
 
-参见 updateContact
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { contact } from '@kit.ContactsKit';
 
+
+// 通过selectContacts接口选择联系人。
+contact.selectContacts().then((data) => {
+  contact.updateContact({
+    id: data[0].id, // 选择联系人的id。
+    name: {
+      fullName: 'xxx'
+    },
+    phoneNumbers: [{
+      phoneNumber: '138xxxxxxxx'
+    }]
+  }, {
+    attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
+  }, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in updating Contact.');
+  });
+});
+```
+
+
+<a id="updatecontact-3"></a>
 
 ## updateContact
 
@@ -205,13 +211,46 @@ function updateContact(context: Context, contact: Contact, attrs: ContactAttribu
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 1.Parameter error. Possible causes:Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 1.Parameter error. Possible causes:Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId. |
 
 **示例**
 
-参见 updateContact
+> 说明：
+> 
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// 通过selectContacts接口选择联系人。
+contact.selectContacts().then((data) => {
+  // 请在组件内获取context。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  contact.updateContact(context, {
+    id: data[0].id, // 选择联系人的id。
+    name: {
+      fullName: 'xxx'
+    },
+    phoneNumbers: [{
+      phoneNumber: '138xxxxxxxx'
+    }]
+  }, {
+    attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
+  }, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in updating Contact.');
+  });
+});
+```
+
+
+<a id="updatecontact-4"></a>
 
 ## updateContact
 
@@ -225,7 +264,7 @@ function updateContact(contact: Contact, attrs?: ContactAttributes): Promise<voi
 
 **废弃版本：** 10
 
-**替代接口：** updateContact(context: Context, contact: Contact, attrs?: ContactAttributes)
+**替代接口：** [updateContact](#updatecontact-5)(context: Context, contact: Contact, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -246,8 +285,30 @@ function updateContact(contact: Contact, attrs?: ContactAttributes): Promise<voi
 
 **示例**
 
-参见 updateContact
+```TypeScript
+import { contact } from '@kit.ContactsKit';
 
+// 通过selectContacts接口选择联系人。
+contact.selectContacts().then((data) => {
+  let promise = contact.updateContact({
+    id: data[0].id, // 选择联系人的id。
+    name: {
+      fullName: 'xxx'
+    },
+    phoneNumbers: [{
+      phoneNumber: '138xxxxxxxx'
+    }]
+  }, {
+    attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
+  });
+  promise.then(() => {
+    console.info('Succeeded in updating Contact.');
+  });
+});
+```
+
+
+<a id="updatecontact-5"></a>
 
 ## updateContact
 
@@ -281,9 +342,36 @@ function updateContact(context: Context, contact: Contact, attrs?: ContactAttrib
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId. |
 
 **示例**
 
-参见 updateContact
+> 说明：
+> 
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+  import { common } from '@kit.AbilityKit';
+
+  // 通过selectContacts接口选择联系人。
+  contact.selectContacts().then((data) => {
+    // 请在组件内获取context。
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    let promise = contact.updateContact(context, {
+      id: data[0].id, // 选择联系人的id。
+      name: {
+        fullName: 'xxx'
+      },
+      phoneNumbers: [{
+        phoneNumber: '138xxxxxxxx'
+      }]
+    }, {
+      attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
+    });
+    promise.then(() => {
+      console.info('Succeeded in updating Contact.');
+    });
+  });
+```

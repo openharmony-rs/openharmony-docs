@@ -1,5 +1,9 @@
 # Environment
 
+```TypeScript
+declare class Environment
+```
+
 For details about how to use environment parameters, see [Environment: Device Environment Query](../../../ui/state-management/arkts-environment.md).
 
 ## Built-in Environment Variables
@@ -8,7 +12,7 @@ For details about how to use environment parameters, see [Environment: Device En
 | -------------------- | --------------- | ------------------------------------------------------------ |  
 | accessibilityEnabled | string | Whether to enable accessibility. If there is no value of **accessibilityEnabled** in the environment variables, the default value passed through APIs such as **envProp** and **envProps** is added to AppStorage.|
 | colorMode | [ColorMode](arkts-arkui-colormode-e.md) | Color mode. The options are as follows:<br>- **ColorMode.LIGHT**: light mode.<br>- **ColorMode.DARK**: dark mode.|
-| [fontScale](../arkts-components/arkts-arkui-configuration-i.md) | number | Font scale. |
+| fontScale | number | Font scale. |
 | [fontWeightScale](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-configuration-configuration-i.md) | number | Font weight ratio. |
 | [layoutDirection](arkts-arkui-securitycomponentmethod-c.md) | [LayoutDirection](arkts-arkui-layoutdirection-e.md) | Layout direction. The options are as follows:<br>- **LayoutDirection.LTR**: from left to right.<br>- **LayoutDirection.RTL**: from right to left.<br>- **Auto**: follows the system settings.|
 | languageCode | string | Current system language, which is in lowercase letters, for example, **zh**.
@@ -34,6 +38,8 @@ It is incorrect to use AppStorage to read environment variables without calling 
 **Deprecated since:** 10
 
 **Substitutes:** [envProp](#envprop)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,9 +95,7 @@ It is incorrect to use AppStorage to read environment variables without calling 
 
 **Examples**
 
-```TypeScript
 For details about how to use envProp, see [Accessing Environment Parameters from the UI](../../../ui/state-management/arkts-environment.md#accessing-environment-parameters-from-the-ui).
-```
 
 ## EnvProps
 
@@ -111,6 +115,8 @@ Works in a way similar to the [EnvProp](#envprop) API, with the difference that 
 **Deprecated since:** 10
 
 **Substitutes:** [envProps](#envprops)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -172,6 +178,8 @@ Returns the property key array of environment variables.
 
 **Substitutes:** [keys](#keys)
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -181,15 +189,6 @@ Returns the property key array of environment variables.
 | Array&lt;string&gt; | Property key array of environment variables. |
 
 **Examples**
-
-```TypeScript
-Environment.EnvProps([{ key: 'accessibilityEnabled', defaultValue: 'default' }, {
-  key: 'languageCode',
-  defaultValue: 'en'
-}, { key: 'prop', defaultValue: 'hhhh' }]);
-
-let keys: Array<string> = Environment.Keys(); // keys contains accessibilityEnabled, languageCode, and prop.
-```
 
 ## keys
 

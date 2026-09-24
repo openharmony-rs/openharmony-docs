@@ -18,7 +18,7 @@ NODE_TOUCH_EVENT = 0
 
 **Description**
 
-Defines the gesture event type.<br> When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is<br>{@link ArkUI_UIInputEvent}.
+Defines the gesture event type.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md).
 
 **Since**: 12
 
@@ -30,7 +30,7 @@ NODE_EVENT_ON_APPEAR
 
 **Description**
 
-Defines the mount event.<br> This event is triggered when the component is mounted and displayed. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
+Defines the mount event.<br> This event is triggered when the component is mounted and displayed. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
 
 **Since**: 12
 
@@ -42,7 +42,7 @@ NODE_EVENT_ON_DISAPPEAR
 
 **Description**
 
-Defines the unmount event.<br> This event is triggered when the component is unmounted and hidden. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
+Defines the unmount event.<br> This event is triggered when the component is unmounted and hidden. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
 
 **Since**: 12
 
@@ -54,7 +54,7 @@ NODE_EVENT_ON_AREA_CHANGE
 
 **Description**
 
-Defines the area change event.<br> This event is triggered when the component's size, position, or any other attribute that may affect its display area changes. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains 12 parameters:<br><ul><br><li>ArkUI_NodeComponentEvent.data[0].f32</b>: original width of the target element, in vp.<br>The value type is number.</li><br><li>ArkUI_NodeComponentEvent.data[1].f32</b>: original height of the target element, in vp.<br>The value type is number.</li><br><li>ArkUI_NodeComponentEvent.data[2].f32</b>: original X coordinate of the target element's upper left corner<br>relative to the parent element's, in vp. The value type is number.</li><br><li>ArkUI_NodeComponentEvent.data[3].f32</b>: original Y coordinate of the target element's upper left corner<br>relative to the parent element's, in vp. The value type is number.</li><br><li>ArkUI_NodeComponentEvent.data[4].f32</b>: original X coordinate of the target element's upper left corner<br>relative to the page's, in vp. The value type is number.</li><br><li>ArkUI_NodeComponentEvent.data[5].f32</b>: original Y coordinate of the target element's upper left corner<br>relative to the page's, in vp. The value type is number.</li><br><li>ArkUI_NodeComponentEvent.data[6].f32</b>: new width of the target element, in vp. The value is a number.</li><br><li>ArkUI_NodeComponentEvent.data[7].f32</b>: new height of the target element, in vp. The value is a number.</li><br><li>ArkUI_NodeComponentEvent.data[8].f32</b>: new X coordinate of the target element's upper left corner relative<br>to the parent element's, in vp. The value type is number.</li><br><li>ArkUI_NodeComponentEvent.data[9].f32</b>: new Y coordinate of the target element's upper left corner relative<br>to the parent element's, in vp. The value type is number.</li><br><li>ArkUI_NodeComponentEvent.data[10].f32</b>: new X coordinate of the target element's upper left corner relative<br>to the page's, in vp. The value type is number.</li><br><li>ArkUI_NodeComponentEvent.data[11].f32</b>: new Y coordinate of the target element's upper left corner relative to the page's, in vp. The value type is number.</li> </ul>
+Defines the area change event.<br> This event is triggered when the component's size, position, or any other attribute that may affect its display area changes. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains 12 parameters: <ul> <li>ArkUI_NodeComponentEvent.data[0].f32</b>: original width of the target element, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[1].f32</b>: original height of the target element, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[2].f32</b>: original X coordinate of the target element's upper left corner relative to the parent element's, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[3].f32</b>: original Y coordinate of the target element's upper left corner relative to the parent element's, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[4].f32</b>: original X coordinate of the target element's upper left corner relative to the page's, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[5].f32</b>: original Y coordinate of the target element's upper left corner relative to the page's, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[6].f32</b>: new width of the target element, in vp. The value is a number.</li> <li>ArkUI_NodeComponentEvent.data[7].f32</b>: new height of the target element, in vp. The value is a number.</li> <li>ArkUI_NodeComponentEvent.data[8].f32</b>: new X coordinate of the target element's upper left corner relative to the parent element's, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[9].f32</b>: new Y coordinate of the target element's upper left corner relative to the parent element's, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[10].f32</b>: new X coordinate of the target element's upper left corner relative to the page's, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[11].f32</b>: new Y coordinate of the target element's upper left corner relative to the page's, in vp. The value type is number.</li> </ul>
 
 **Since**: 12
 
@@ -66,7 +66,7 @@ NODE_ON_FOCUS
 
 **Description**
 
-Defines the focus event.<br> This event is triggered when the component obtains the focus. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
+Defines the focus event.<br> This event is triggered when the component obtains the focus. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
 
 **Since**: 12
 
@@ -78,7 +78,7 @@ NODE_ON_BLUR
 
 **Description**
 
-Defines the blur event.<br> This event is triggered when the component loses the focus. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
+Defines the blur event.<br> This event is triggered when the component loses the focus. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
 
 **Since**: 12
 
@@ -90,7 +90,7 @@ NODE_ON_CLICK
 
 **Description**
 
-Defines the click event.<br> This event is triggered when the component is clicked. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains 12 parameters:<br><ul><br><li>ArkUI_NodeComponentEvent.data[0].f32</b>: X coordinate of the click relative to the upper left corner of the<br>clicked component's original area, in vp.</li><br><li>ArkUI_NodeComponentEvent.data[1].f32</b>: Y coordinate of the click relative to the upper left corner of the<br>clicked component's original area, in vp.</li><br><li>ArkUI_NodeComponentEvent.data[2].f32</b>: event timestamp. It is the interval between the time when the event<br>is triggered and the time when the system starts, in microseconds.</li><br><li>ArkUI_NodeComponentEvent.data[3].i32</b>: event input device. The value <b>1</b> indicates the mouse,<br><li>2</b> indicates the touchscreen, and <b>4</b> indicates the key.</li><br><li>ArkUI_NodeComponentEvent.data[4].f32</b>: X coordinate of the click relative to the upper left corner of the<br>application window, in vp.</li><br><li>ArkUI_NodeComponentEvent.data[5].f32</b>: Y coordinate of the click relative to the upper left corner of the<br>application window, in vp.</li><br><li>ArkUI_NodeComponentEvent.data[6].f32</b>: X coordinate of the click relative to the upper left corner of the<br>application screen, in vp.</li><br><li>ArkUI_NodeComponentEvent.data[7].f32</b>: Y coordinate of the click relative to the upper left corner of the application screen, in vp.</li> </ul>
+Defines the click event.<br> This event is triggered when the component is clicked. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains 12 parameters: <ul> <li>ArkUI_NodeComponentEvent.data[0].f32</b>: X coordinate of the click relative to the upper left corner of the clicked component's original area, in vp.</li> <li>ArkUI_NodeComponentEvent.data[1].f32</b>: Y coordinate of the click relative to the upper left corner of the clicked component's original area, in vp.</li> <li>ArkUI_NodeComponentEvent.data[2].f32</b>: event timestamp. It is the interval between the time when the event is triggered and the time when the system starts, in microseconds.</li> <li>ArkUI_NodeComponentEvent.data[3].i32</b>: event input device. The value <b>1</b> indicates the mouse, <li>2</b> indicates the touchscreen, and <b>4</b> indicates the key.</li> <li>ArkUI_NodeComponentEvent.data[4].f32</b>: X coordinate of the click relative to the upper left corner of the application window, in vp.</li> <li>ArkUI_NodeComponentEvent.data[5].f32</b>: Y coordinate of the click relative to the upper left corner of the application window, in vp.</li> <li>ArkUI_NodeComponentEvent.data[6].f32</b>: X coordinate of the click relative to the upper left corner of the application screen, in vp.</li> <li>ArkUI_NodeComponentEvent.data[7].f32</b>: Y coordinate of the click relative to the upper left corner of the application screen, in vp.</li> </ul>
 
 **Since**: 12
 
@@ -102,7 +102,7 @@ NODE_ON_TOUCH_INTERCEPT
 
 **Description**
 
-Defines event interception.<br> This event is triggered when the component is touched. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is<br>{@link ArkUI_UIInputEvent}.
+Defines event interception.<br> This event is triggered when the component is touched. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md).
 
 **Since**: 12
 
@@ -114,7 +114,7 @@ NODE_EVENT_ON_VISIBLE_AREA_CHANGE
 
 **Description**
 
-Defines the visible area change event.<br> This event is triggered when the ratio of the component's visible area to its total area is greater than or less than the threshold. Before registering this event, you must set <b>NODE_VISIBLE_AREA_CHANGE_RATIO</b>. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains two parameters:<br><ul><br><li>ArkUI_NodeComponentEvent.data[0].i32</b>: how the ratio of the component's visible area to its total area<br>changes compared to the previous one. The value <b>1</b> indicates an increase, and <b>0</b> indicates a<br>decrease.</li><br><li>ArkUI_NodeComponentEvent.data[1].f32</b>: ratio of the component's visible area to its total area when this callback is invoked.</li> </ul>
+Defines the visible area change event.<br> This event is triggered when the ratio of the component's visible area to its total area is greater than or less than the threshold. Before registering this event, you must set <b>NODE_VISIBLE_AREA_CHANGE_RATIO</b>. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains two parameters: <ul> <li>ArkUI_NodeComponentEvent.data[0].i32</b>: how the ratio of the component's visible area to its total area changes compared to the previous one. The value <b>1</b> indicates an increase, and <b>0</b> indicates a decrease.</li> <li>ArkUI_NodeComponentEvent.data[1].f32</b>: ratio of the component's visible area to its total area when this callback is invoked.</li> </ul>
 
 **Since**: 12
 
@@ -126,7 +126,7 @@ NODE_ON_HOVER
 
 **Description**
 
-Defines the event triggered when the mouse pointer is moved over or away from the component.<br> When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains one parameter:<br><ul><br><li>ArkUI_NodeComponentEvent.data[0].i32</b>: whether the mouse pointer is hovered over the component. The value <b>1</b> indicates that the mouse pointer is hovered over the component, and <b>0</b> indicates that the mouse pointer is moved away from the component.</li> </ul>
+Defines the event triggered when the mouse pointer is moved over or away from the component.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains one parameter: <ul> <li>ArkUI_NodeComponentEvent.data[0].i32</b>: whether the mouse pointer is hovered over the component. The value <b>1</b> indicates that the mouse pointer is hovered over the component, and <b>0</b> indicates that the mouse pointer is moved away from the component.</li> </ul>
 
 **Since**: 12
 
@@ -138,7 +138,7 @@ NODE_ON_MOUSE
 
 **Description**
 
-Defines the click event.<br> This event is triggered when the component is clicked by a mouse device button or when the mouse pointer moves within the component. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is<br>{@link ArkUI_UIInputEvent}.
+Defines the click event.<br> This event is triggered when the component is clicked by a mouse device button or when the mouse pointer moves within the component. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md).
 
 **Since**: 12
 
@@ -150,7 +150,7 @@ NODE_EVENT_ON_ATTACH
 
 **Description**
 
-Defines the attach event.<br> This event is triggered when the component is attached. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
+Defines the attach event.<br> This event is triggered when the component is attached. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
 
 **Since**: 12
 
@@ -162,7 +162,7 @@ NODE_EVENT_ON_DETACH
 
 **Description**
 
-Defines the detach event.<br> This event is triggered when the component is detached. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
+Defines the detach event.<br> This event is triggered when the component is detached. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
 
 **Since**: 12
 
@@ -174,7 +174,7 @@ NODE_ON_KEY_EVENT = 21
 
 **Description**
 
-Defines the event triggered when a key event occurs.<br> The callback can be triggered during interactions with a focused window using an external keyboard or other input device. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).
+Defines the event triggered when a key event occurs.<br> The callback can be triggered during interactions with a focused window using an external keyboard or other input device. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).
 
 **Since**: 14
 
@@ -186,7 +186,7 @@ NODE_ON_KEY_PRE_IME = 22
 
 **Description**
 
-Defines the event triggered before the input method responds to the key action.<br> If the return value of this callback is <b>true</b>, it is considered that the key event has been consumed, and subsequent event callbacks (<b>keyboardShortcut</b>, input method events, <b>onKeyEvent</b>) will be intercepted and no longer triggered. The callback can be triggered during interactions with a focused window using an external keyboard or other input device. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).
+Defines the event triggered before the input method responds to the key action.<br> If the return value of this callback is <b>true</b>, it is considered that the key event has been consumed, and subsequent event callbacks (<b>keyboardShortcut</b>, input method events, <b>onKeyEvent</b>) will be intercepted and no longer triggered. The callback can be triggered during interactions with a focused window using an external keyboard or other input device. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).
 
 **Since**: 14
 
@@ -198,7 +198,7 @@ NODE_ON_FOCUS_AXIS = 23
 
 **Description**
 
-Defines the event triggered when the bound component receives a focus axis event after gaining focus.<br> The event callback is triggered by interactions with a joystick and a focused component. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is<br>{@link ArkUI_UIInputEvent}.
+Defines the event triggered when the bound component receives a focus axis event after gaining focus.<br> The event callback is triggered by interactions with a joystick and a focused component. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md).
 
 **Since**: 15
 
@@ -210,7 +210,7 @@ NODE_DISPATCH_KEY_EVENT = 24
 
 **Description**
 
-Dispatch key event on the component node.<br> When the component node receives a key event, this callback will be triggered instead of dispatching event to its children. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).
+Dispatch key event on the component node.<br> When the component node receives a key event, this callback will be triggered instead of dispatching event to its children. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).
 
 **Since**: 15
 
@@ -222,7 +222,7 @@ NODE_ON_AXIS = 25
 
 **Description**
 
-Defines the event triggered when the bound component receives an axis event.<br> When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is<br>{@link ArkUI_UIInputEvent}.
+Defines the event triggered when the bound component receives an axis event.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md).
 
 **Since**: 17
 
@@ -234,7 +234,7 @@ NODE_ON_CLICK_EVENT = 26
 
 **Description**
 
-Defines the event triggered when the bound component is clicked.<br> When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is<br>{@link ArkUI_UIInputEvent}.
+Defines the event triggered when the bound component is clicked.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md).
 
 **Since**: 18
 
@@ -246,7 +246,7 @@ NODE_VISIBLE_AREA_APPROXIMATE_CHANGE_EVENT = 28
 
 **Description**
 
-Sets the callback for the NODE_EVENT_ON_VISIBLE_AREA_CHANGE event, which limits the callback interval.<br> The callback is triggered when the ratio of the component's visible area to its total area is greater than or less than the threshold. Before registering the callback, you must configure the threshold and update interval using <b>NODE_VISIBLE_AREA_APPROXIMATE_CHANGE_RATIO</b>. When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains two parameters:<br><ul><br><li>ArkUI_NodeComponentEvent.data[0].i32</b>: how the ratio of the component's visible area to its total area<br>changes compared to the previous one. The value <b>1</b> indicates an increase, and <b>0</b> indicates<br>a decrease.</li><br><li>ArkUI_NodeComponentEvent.data[1].f32</b>: ratio of the component's visible area to its total area when this callback is invoked.</li> </ul>
+Sets the callback for the NODE_EVENT_ON_VISIBLE_AREA_CHANGE event, which limits the callback interval.<br> The callback is triggered when the ratio of the component's visible area to its total area is greater than or less than the threshold. Before registering the callback, you must configure the threshold and update interval using <b>NODE_VISIBLE_AREA_APPROXIMATE_CHANGE_RATIO</b>. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains two parameters: <ul> <li>ArkUI_NodeComponentEvent.data[0].i32</b>: how the ratio of the component's visible area to its total area changes compared to the previous one. The value <b>1</b> indicates an increase, and <b>0</b> indicates a decrease.</li> <li>ArkUI_NodeComponentEvent.data[1].f32</b>: ratio of the component's visible area to its total area when this callback is invoked.</li> </ul>
 
 **Since**: 17
 
@@ -258,7 +258,7 @@ NODE_ON_HOVER_MOVE = 29
 
 **Description**
 
-Defines the hover event.<br> The event is triggered when the pointer is hovered by a pen device. within the component. When the event callback occurs, the {@link ArkUI_NodeEvent} object can be obtained from the<br>{@link ArkUI_UIInputEvent} object.
+Defines the hover event.<br> The event is triggered when the pointer is hovered by a pen device. within the component. When the event callback occurs, the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object can be obtained from the [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) object.
 
 **Since**: 15
 
@@ -270,7 +270,7 @@ NODE_ON_SIZE_CHANGE = 30
 
 **Description**
 
-Size change event. This event is triggered when the component size changes. <br>When the event callback occurs, the union type in the {@link ArkUI_NodeEvent} object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains four parameters:<br><ul><br><li>ArkUI_NodeComponentEvent.data[0].f32</b>: the width of the old rectangle.</li><br><li>ArkUI_NodeComponentEvent.data[1].f32</b>: the height of the old rectangle.</li><br><li>ArkUI_NodeComponentEvent.data[2].f32</b>: the width of the new rectangle.</li><br><li>ArkUI_NodeComponentEvent.data[3].f32</b>: the height of the new rectangle.</li> </ul>
+Size change event. This event is triggered when the component size changes. <br>When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains four parameters: <ul> <li>ArkUI_NodeComponentEvent.data[0].f32</b>: the width of the old rectangle.</li> <li>ArkUI_NodeComponentEvent.data[1].f32</b>: the height of the old rectangle.</li> <li>ArkUI_NodeComponentEvent.data[2].f32</b>: the width of the new rectangle.</li> <li>ArkUI_NodeComponentEvent.data[3].f32</b>: the height of the new rectangle.</li> </ul>
 
 **Since**: 21
 
@@ -282,7 +282,7 @@ NODE_ON_COASTING_AXIS_EVENT = 31
 
 **Description**
 
-Defines the coasting axis event.<br> The event is triggered when user swipes with two fingers on the touchpad, the system constructs sliding events based on the speed at the moment the fingers are lifted, according to a certain decay curve. You can listen for such events to handle the flick effect immediately after the regular axis events. When the event callback occurs, the {@link ArkUI_UIInputEvent} object can be obtained from the<br>{@link ArkUI_NodeEvent} object through [OH_ArkUI_NodeEvent_GetInputEvent](capi-native-node-h.md#oh_arkui_nodeevent_getinputevent).<br>And the {@link ArkUI_CoastingAxisEvent} object can be obtained from the {@link ArkUI_UIInputEvent}<br>object through {@link OH_ArkUI_UIInputEvent_GetCoastingAxisEvent}.
+Defines the coasting axis event.<br> The event is triggered when user swipes with two fingers on the touchpad, the system constructs sliding events based on the speed at the moment the fingers are lifted, according to a certain decay curve. You can listen for such events to handle the flick effect immediately after the regular axis events. When the event callback occurs, the [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object through [OH_ArkUI_NodeEvent_GetInputEvent](capi-native-node-h.md#oh_arkui_nodeevent_getinputevent). And the [ArkUI_CoastingAxisEvent](capi-arkui-eventmodule-arkui-coastingaxisevent.md) object can be obtained from the [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) object through [OH_ArkUI_UIInputEvent_GetCoastingAxisEvent](capi-ui-input-event-h.md#oh_arkui_uiinputevent_getcoastingaxisevent).
 
 **Since**: 22
 
@@ -294,7 +294,7 @@ NODE_ON_CHILD_TOUCH_TEST = 32
 
 **Description**
 
-Defines the pre-touch test of sub component in touch events. Called to specify how to perform the touch test on the children of this component.<br> The event is triggered when the component is touched. When the event callback occurs, the {@link ArkUI_NodeEvent} object can be obtained from the<br>{@link ArkUI_TouchTestInfo} object.
+Defines the pre-touch test of sub component in touch events. Called to specify how to perform the touch test on the children of this component.<br> The event is triggered when the component is touched. When the event callback occurs, the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object can be obtained from the [ArkUI_TouchTestInfo](capi-arkui-eventmodule-arkui-touchtestinfo.md) object.
 
 **Since**: 22
 
@@ -306,7 +306,7 @@ NODE_ON_DIGITAL_CROWN = 33
 
 **Description**
 
-Defines the crown event. This event is triggered when the crown is rotated. When the event callback occurs, the {@link ArkUI_UIInputEvent} object can be obtained from the<br>{@link ArkUI_NodeEvent} object.
+Defines the crown event. This event is triggered when the crown is rotated. When the event callback occurs, the [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object.
 
 **Since**: 24
 
@@ -318,7 +318,7 @@ NODE_ON_GESTURE_COLLECT_INTERCEPT = 37
 
 **Description**
 
-This callback is invoked when the events and gestures on this node and higher-priority nodes are collected. This callback is used to intervene in the collection result of events and gestures. <br> When the event callback occurs, the {@link ArkUI_GestureCollectInterceptInfo} object can be obtained from the<br>{@link ArkUI_NodeEvent} object.
+This callback is invoked when the events and gestures on this node and higher-priority nodes are collected. This callback is used to intervene in the collection result of events and gestures. <br> When the event callback occurs, the [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object.
 
 **Since**: 26.0.0
 

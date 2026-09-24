@@ -1,10 +1,12 @@
 # FoldStatus
 
-Enumerates the fold status.
+```TypeScript
+declare enum FoldStatus
+```
 
-@enum { number }
+定义设备的折叠状态。
 
-**起始版本：** 12
+**起始版本：** 11
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -14,9 +16,9 @@ Enumerates the fold status.
 FOLD_STATUS_UNKNOWN = 0
 ```
 
-Fold Status Unknown.
+表示设备当前折叠状态未知。
 
-**起始版本：** 12
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -30,9 +32,9 @@ Fold Status Unknown.
 FOLD_STATUS_EXPANDED = 1
 ```
 
-Fold Status Expanded.
+表示设备当前折叠状态为完全展开。
 
-**起始版本：** 12
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,9 +48,9 @@ Fold Status Expanded.
 FOLD_STATUS_FOLDED = 2
 ```
 
-Fold Status Folded.
+表示设备当前折叠状态为折叠。
 
-**起始版本：** 12
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,9 +64,9 @@ Fold Status Folded.
 FOLD_STATUS_HALF_FOLDED = 3
 ```
 
-Fold Status Half Folded.
+表示设备当前折叠状态为半折叠，即介于完全展开和折叠之间的状态。
 
-**起始版本：** 12
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

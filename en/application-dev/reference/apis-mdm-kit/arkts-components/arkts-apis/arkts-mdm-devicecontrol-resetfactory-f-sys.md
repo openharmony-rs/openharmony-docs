@@ -18,7 +18,7 @@ Restores factory settings. This API uses an asynchronous callback to return the 
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md)(admin: Want, operation: Operation, addition?: string)
+**Substitutes:** [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice-1)(admin: Want, operation: Operation, addition?: string)
 
 **Required permissions:** ohos.permission.ENTERPRISE_RESET_DEVICE
 
@@ -66,23 +66,8 @@ deviceControl.resetFactory(wantTemp, (err) => {
 })
 ```
 
-```TypeScript
-import { deviceControl } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-deviceControl.resetFactory(wantTemp).then(() => {
-}).catch((err: BusinessError) => {
-  console.error(`Failed to reset factory. Code is ${err.code}, message is ${err.message}`);
-})
-```
-
+<a id="resetfactory-1"></a>
 
 ## resetFactory
 
@@ -96,7 +81,7 @@ Restores factory settings. This API uses a promise to return the result.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md)(admin: Want, operation: Operation, addition?: string)
+**Substitutes:** [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice-1)(admin: Want, operation: Operation, addition?: string)
 
 **Required permissions:** ohos.permission.ENTERPRISE_RESET_DEVICE
 
@@ -130,4 +115,19 @@ Restores factory settings. This API uses a promise to return the result.
 
 **Examples**
 
-See [resetFactory](#resetfactory)
+```TypeScript
+import { deviceControl } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+deviceControl.resetFactory(wantTemp).then(() => {
+}).catch((err: BusinessError) => {
+  console.error(`Failed to reset factory. Code is ${err.code}, message is ${err.message}`);
+})
+```

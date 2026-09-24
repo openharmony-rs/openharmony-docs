@@ -1,10 +1,16 @@
 # Ellipse属性/事件
 
-支持[通用属性](arkts-arkui-commonmethod-c.md)以及图形绘制通用属性。
+```TypeScript
+declare class EllipseAttribute extends CommonShapeMethod<EllipseAttribute>
+```
 
-**继承/实现关系：** EllipseAttribute extends CommonShapeMethod&lt;EllipseAttribute&gt;
+支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)。
+
+**继承/实现关系：** EllipseAttribute extends CommonShapeMethod<EllipseAttribute>
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

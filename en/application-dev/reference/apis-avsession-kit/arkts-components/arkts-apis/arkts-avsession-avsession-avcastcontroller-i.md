@@ -1,5 +1,9 @@
 # AVCastController
 
+```TypeScript
+interface AVCastController
+```
+
 AVCastController definition used to implement a remote control when a cast is connected
 
 **Since:** 10
@@ -36,6 +40,20 @@ Get the playback status of the current player
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlaybackState) => {
+  if (err) {
+    console.error(`Failed to get AV playback state, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in getting AV playback state.');
+});
+```
+
+<a id="getavplaybackstate-1"></a>
+
 ## getAVPlaybackState
 
 ```TypeScript
@@ -62,6 +80,16 @@ Get the playback status of the current player
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
+  console.info('Succeeded in getting AV playback state.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get AV playback state, code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getCurrentItem
 
 ```TypeScript
@@ -85,6 +113,20 @@ Get the current playing item
 | Error Code ID | Error Message |
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+avCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueItem) => {
+  if (err) {
+    console.error(`Failed to get current item, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in getting current item.');
+});
+```
+
+<a id="getcurrentitem-1"></a>
 
 ## getCurrentItem
 
@@ -111,6 +153,16 @@ Get the current playing item
 | Error Code ID | Error Message |
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+avCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
+  console.info('Succeeded in getting current item.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get current item, code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## getRecommendedResolutionLevel
 
@@ -144,6 +196,17 @@ Get recommended resolution of remote player based on each decoder.
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+let decoderType = avSession.DecoderType.OH_AVCODEC_MIMETYPE_VIDEO_AVC;
+avCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLevel: avSession.ResolutionLevel) => {
+  console.info('Succeeded in getting recommended resolution level.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get recommended resolution level, code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getSupportedDecoders
 
 ```TypeScript
@@ -169,6 +232,19 @@ Get supported decoders of remote player.
 | Error Code ID | Error Message |
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+avCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderType[]) => {
+  console.info(`Succeeded in getting supported decoders, length: ${decoderTypes.length}`);
+  if (decoderTypes.length > 0 ) {
+    console.info(`Succeeded in getting supported decoder: ${decoderTypes[0]}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get supported decoders, code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## getSupportedHdrCapabilities
 
@@ -196,6 +272,21 @@ Get supported hdr capabilities of remote player.
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+import { type hdrCapability } from '@kit.ArkGraphics2D';
+
+avCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.HDRFormat[]) => {
+  console.info(`Succeeded in getting supported HDR capabilities, length: ${hdrFormats.length}`);
+  if (hdrFormats.length > 0 ) {
+    console.info(`Succeeded in getting supported HDR capability: ${hdrFormats[0]}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get supported HDR capabilities, code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getSupportedPlaySpeeds
 
 ```TypeScript
@@ -222,6 +313,19 @@ Get supported speed of remote player.
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
+  console.info(`Succeeded in getting supported play speeds, length: ${nums.length}`);
+  if (nums.length > 0 ) {
+    console.info(`Succeeded in getting supported play speed: ${nums[0]}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get supported play speeds, code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getValidCommands
 
 ```TypeScript
@@ -246,6 +350,20 @@ Get commands supported by the current cast controller
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.getValidCommands((err: BusinessError, state: avSession.AVCastControlCommandType[]) => {
+  if (err) {
+    console.error(`Failed to get valid commands, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in getting valid commands.');
+});
+```
+
+<a id="getvalidcommands-1"></a>
+
 ## getValidCommands
 
 ```TypeScript
@@ -269,6 +387,16 @@ Get commands supported by the current cast controller
 | Error Code ID | Error Message |
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+avCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
+  console.info('Succeeded in getting valid commands.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get valid commands, code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## off('playbackStateChange')
 
@@ -298,6 +426,12 @@ Unregister playback state changed callback
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.off('playbackStateChange');
+```
+
 ## off('mediaItemChange')
 
 ```TypeScript
@@ -324,6 +458,12 @@ Unregister listener for current media item playback events.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+avCastController.off('mediaItemChange');
+```
 
 ## off('playNext')
 
@@ -352,6 +492,12 @@ Unregister playback command callback sent by remote side or media center. When c
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.off('playNext');
+```
+
 ## off('playPrevious')
 
 ```TypeScript
@@ -379,6 +525,12 @@ Unregister playback command callback sent by remote side or media center. When c
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.off('playPrevious');
+```
+
 ## off('requestPlay')
 
 ```TypeScript
@@ -405,6 +557,12 @@ Unregister requested playback command callback sent by remote side or media cent
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.off('requestPlay');
+```
+
 ## off('endOfStream')
 
 ```TypeScript
@@ -430,6 +588,12 @@ Unregister endOfStream state callback.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+avCastController.off('endOfStream');
+```
 
 ## off('seekDone')
 
@@ -458,6 +622,12 @@ Unregister listens for playback events.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.off('seekDone');
+```
+
 ## off('validCommandChange')
 
 ```TypeScript
@@ -467,6 +637,8 @@ off(type: 'validCommandChange', callback?: Callback<Array<AVCastControlCommandTy
 Unregister the valid commands of the casted session changed callback
 
 **Since:** 11
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -484,6 +656,12 @@ Unregister the valid commands of the casted session changed callback
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600103](../errorcode-avsession.md#6600103-session-controller-does-not-exist) | The session controller does not exist. |
+
+**Examples**
+
+```TypeScript
+avCastController.off('validCommandChange');
+```
 
 ## off('videoSizeChange')
 
@@ -509,6 +687,12 @@ Unregister listener for video size change event, used at remote side.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+avCastController.off('videoSizeChange');
+```
 
 ## off('error')
 
@@ -543,6 +727,12 @@ Unregister listens for playback error events.
 | [5400106](../../apis-media-kit/errorcode-media.md#5400106-format-not-supported) | Unsupported format. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.off('error')
+```
+
 ## off('castControlGenericError')
 
 ```TypeScript
@@ -569,6 +759,12 @@ Unregister listeners for cast control generic error events.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+avCastController.off('castControlGenericError');
+```
 
 ## off('castControlIoError')
 
@@ -597,6 +793,12 @@ Unregister listeners for cast control input/output error events.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+avCastController.off('castControlIoError');
+```
+
 ## off('castControlParsingError')
 
 ```TypeScript
@@ -623,6 +825,12 @@ Unregister listeners for cast control parsing error events.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+avCastController.off('castControlParsingError');
+```
 
 ## off('castControlDecodingError')
 
@@ -651,6 +859,12 @@ Unregister listeners for cast control decoding error events.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+avCastController.off('castControlDecodingError');
+```
+
 ## off('castControlAudioRendererError')
 
 ```TypeScript
@@ -678,6 +892,12 @@ Unregister listeners for cast control audio renderer error events.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+avCastController.off('castControlAudioRendererError');
+```
+
 ## off('castControlDrmError')
 
 ```TypeScript
@@ -704,6 +924,12 @@ Unregister listeners for cast control drm error events.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+avCastController.off('castControlDrmError');
+```
 
 ## off('keyRequest')
 
@@ -733,6 +959,12 @@ Unregister listener for drm key request.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.off('keyRequest');
+```
+
 ## off('customDataChange')
 
 ```TypeScript
@@ -760,6 +992,12 @@ Unregister listener for custom data sent from remote device.
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.off('customDataChange');
+```
+
 ## on('playbackStateChange')
 
 ```TypeScript
@@ -769,6 +1007,8 @@ on(type: 'playbackStateChange', filter: Array<keyof AVPlaybackState> | 'all', ca
 Register playback state changed callback
 
 **Since:** 10
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -788,6 +1028,19 @@ Register playback state changed callback
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+avCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
+  console.info(`on playbackStateChange state : ${playbackState.state}`);
+});
+
+let playbackFilter: Array<keyof avSession.AVPlaybackState> = ['state', 'speed', 'loopMode'];
+avCastController.on('playbackStateChange', playbackFilter, (playbackState: avSession.AVPlaybackState) => {
+  console.info(`on playbackStateChange state : ${playbackState.state}`);
+});
+```
 
 ## on('mediaItemChange')
 
@@ -817,6 +1070,14 @@ Register listener for current media item playback events.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
+  console.info(`on mediaItemChange state : ${item.itemId}`);
+});
+```
+
 ## on('playNext')
 
 ```TypeScript
@@ -844,6 +1105,14 @@ Register playback command callback sent by remote side or media center. Applicat
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+avCastController.on('playNext', () => {
+  console.info('on playNext');
+});
+```
 
 ## on('playPrevious')
 
@@ -873,6 +1142,14 @@ Register playback command callback sent by remote side or media center. Applicat
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.on('playPrevious', () => {
+  console.info('on playPrevious');
+});
+```
+
 ## on('requestPlay')
 
 ```TypeScript
@@ -899,6 +1176,14 @@ Register requested playback command callback sent by remote side or media center
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.on('requestPlay', (item: avSession.AVQueueItem) => {
+  console.info(`on requestPlay state : ${item.itemId}`);
+});
+```
+
 ## on('endOfStream')
 
 ```TypeScript
@@ -924,6 +1209,14 @@ Register endOfStream state callback. Application needs update the new media reso
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+avCastController.on('endOfStream', () => {
+  console.info('on endOfStream');
+});
+```
 
 ## on('seekDone')
 
@@ -953,6 +1246,14 @@ Register listens for playback events.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.on('seekDone', (pos: number) => {
+  console.info(`on seekDone pos: ${pos} `);
+});
+```
+
 ## on('validCommandChange')
 
 ```TypeScript
@@ -962,6 +1263,8 @@ on(type: 'validCommandChange', callback: Callback<Array<AVCastControlCommandType
 Register the valid commands of the casted session changed callback
 
 **Since:** 11
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -979,6 +1282,15 @@ Register the valid commands of the casted session changed callback
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600103](../errorcode-avsession.md#6600103-session-controller-does-not-exist) | The session controller does not exist. |
+
+**Examples**
+
+```TypeScript
+avCastController.on('validCommandChange', (validCommands: avSession.AVCastControlCommandType[]) => {
+  console.info(`Succeeded in valid command change, size: ${validCommands.length}`);
+  console.info(`Succeeded in valid command change, validCommands: ${validCommands.values()}`);
+});
+```
 
 ## on('videoSizeChange')
 
@@ -1005,6 +1317,22 @@ Register listener for video size change event, used at remote side.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+avCastController.on('videoSizeChange', (width: number, height: number) => {
+  console.info(`Succeeded in video size change, size: ${width}, ${height}`);
+});
+```
+
+```TypeScript
+// Obtain the avCastController instance through avSession.getAVCastController.
+avCastController.on('videoSizeChange', (width: number, height: number) => {
+  console.info(`width : ${width} `);
+  console.info(`height: ${height} `);
+});
+```
 
 ## on('error')
 
@@ -1039,6 +1367,16 @@ Register listeners for playback error events.
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. |
 | [5400106](../../apis-media-kit/errorcode-media.md#5400106-format-not-supported) | Unsupported format. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('error', (error: BusinessError) => {
+  console.error(`error happened, error code: ${error.code}, error message : ${error.message}.`)
+})
+```
 
 ## on('castControlGenericError')
 
@@ -1080,6 +1418,16 @@ Register listeners for cast control generic error events.
 | [6611106](../errorcode-avsession.md#6611106-invalid-input-parameter) | The parameter is invalid, for example, the url is illegal to play. |
 | [6611107](../errorcode-avsession.md#6611107-memory-allocation-failure) | Allocation of memory failed. |
 | [6611108](../errorcode-avsession.md#6611108-operation-not-allowed) | Operation is not allowed. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlGenericError', (error: BusinessError) => {
+  console.error(`castControlGenericError happened, error code: ${error.code}, error message : ${error.message}.`)
+})
+```
 
 ## on('castControlIoError')
 
@@ -1125,6 +1473,16 @@ Register listeners for cast control input/output error events.
 | [6612106](../errorcode-avsession.md#6612106-frequent-resource-usage) | The number of times this content has been used as requested has reached the maximum allowed number of uses. |
 | [6612107](../errorcode-avsession.md#6612107-failure-in-sending-resource-packages-to-the-remote-device) | An error occurs when sending packet from source device to sink device. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlIoError', (error: BusinessError) => {
+  console.error(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
+})
+```
+
 ## on('castControlParsingError')
 
 ```TypeScript
@@ -1156,6 +1514,16 @@ Register listeners for cast control parsing error events.
 | [6613002](../errorcode-avsession.md#6613002-error-in-parsing-media-manifest) | Parsing error associated with the media manifest. |
 | [6613003](../errorcode-avsession.md#6613003-unsupported-media-format) | An error occurs when attempting to extract a file with an unsupported media container format or an unsupported media container feature. |
 | [6613004](../errorcode-avsession.md#6613004-unsupported-feature-in-the-media-manifest) | Unsupported feature in the media manifest. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlParsingError', (error: BusinessError) => {
+  console.error(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
+})
+```
 
 ## on('castControlDecodingError')
 
@@ -1190,6 +1558,16 @@ Register listeners for cast control decoding error events.
 | [6614004](../errorcode-avsession.md#6614004-content-format-is-beyond-the-device-capability) | The format of the content to decode exceeds the capabilities of the device. |
 | [6614005](../errorcode-avsession.md#6614005-decoding-of-the-content-format-is-not-supported) | The format of the content to decode is not supported. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlDecodingError', (error: BusinessError) => {
+  console.error(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
+})
+```
+
 ## on('castControlAudioRendererError')
 
 ```TypeScript
@@ -1219,6 +1597,16 @@ Register listeners for cast control audio renderer error error events.
 | [6615000](../errorcode-avsession.md#6615000-unknown-error-related-to-the-audio-renderer) | Unspecified errors related to the audio renderer. |
 | [6615001](../errorcode-avsession.md#6615001-audio-renderer-initialization-failure) | Initializing the audio renderer failed. |
 | [6615002](../errorcode-avsession.md#6615002-audio-renderer-failure-in-writing-data) | The audio renderer fails to write data. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlAudioRendererError', (error: BusinessError) => {
+  console.error(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`)
+})
+```
 
 ## on('castControlDrmError')
 
@@ -1257,6 +1645,16 @@ Register listeners for cast control drm error events.
 | [6616008](../errorcode-avsession.md#6616008-expired-drm-license-loaded) | The DRM license being loaded into the open DRM session has expired. |
 | [6616100](../errorcode-avsession.md#6616100-error-in-processing-the-key-response) | An error occurs when the DRM processes the key response. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlDrmError', (error: BusinessError) => {
+  console.error(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`)
+})
+```
+
 ## on('keyRequest')
 
 ```TypeScript
@@ -1285,6 +1683,15 @@ Register listener for drm key request.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
+  console.info(`Succeeded in keyRequestCallback. assetId: ${assetId}, requestData: ${requestData}`);
+}
+avCastController.on('keyRequest', keyRequestCallback);
+```
+
 ## on('customDataChange')
 
 ```TypeScript
@@ -1312,6 +1719,14 @@ Register listener for custom data sent from remote device.
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avCastController.on('customDataChange', (data: Record<string, Object>) => {
+    console.info(`Caught customDataChange event, the new data is: ${JSON.stringify(data)}`);
+});
+```
+
 ## prepare
 
 ```TypeScript
@@ -1338,6 +1753,38 @@ Load the current item and mediaUri can be null, this is needed for sink media in
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600109](../errorcode-avsession.md#6600109-remote-session-does-not-exist) | The remote connection is not established. |
+
+**Examples**
+
+```TypeScript
+// Set playback parameters.
+let playItem: avSession.AVQueueItem = {
+  itemId: 0,
+  description: {
+    assetId: '12345',
+    mediaType: 'AUDIO',
+    mediaUri: 'http://resource1_address',
+    mediaSize: 12345,
+    startPosition: 0,
+    duration: 0,
+    artist: 'mysong',
+    albumTitle: 'song1_title',
+    albumCoverUri: 'http://resource1_album_address',
+    lyricUri: 'http://resource1_lyric_address',
+    appName: 'MyMusic'
+  }
+};
+// Prepare for playback. This operation triggers loading and buffering, but not the actual playback.
+avCastController.prepare(playItem, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to prepare, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in preparing.');
+});
+```
+
+<a id="prepare-1"></a>
 
 ## prepare
 
@@ -1373,6 +1820,34 @@ Load the current item and mediaUri can be null, this is needed for sink media in
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600109](../errorcode-avsession.md#6600109-remote-session-does-not-exist) | The remote connection is not established. |
 
+**Examples**
+
+```TypeScript
+// Set playback parameters.
+let playItem: avSession.AVQueueItem = {
+  itemId: 0,
+  description: {
+    assetId: '12345',
+    mediaType: 'AUDIO',
+    mediaUri: 'http://resource1_address',
+    mediaSize: 12345,
+    startPosition: 0,
+    duration: 0,
+    artist: 'mysong',
+    albumTitle: 'song1_title',
+    albumCoverUri: 'http://resource1_album_address',
+    lyricUri: 'http://resource1_lyric_address',
+    appName: 'MyMusic'
+  }
+};
+// Prepare for playback. This operation triggers loading and buffering, but not the actual playback.
+avCastController.prepare(playItem).then(() => {
+  console.info('Succeeded in preparing.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to prepare, code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## processMediaKeyResponse
 
 ```TypeScript
@@ -1407,6 +1882,23 @@ Process the response corresponding to the media key request obtained by the appl
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
+  // Obtain the DRM URL based on the asset ID.
+  let drmUrl = 'http://license.xxx.xxx.com:8080/drmproxy/getLicense';
+  // Obtain a media key from the server. Assign a value based on service requirements.
+  let licenseResponseData: Uint8Array = new Uint8Array();
+  console.info(`Succeeded in get license by ${drmUrl}.`);
+  avCastController.processMediaKeyResponse(assetId, licenseResponseData).then(() => {
+    console.info('Succeeded in processing media key response.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to process media key response, code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
 ## release
 
 ```TypeScript
@@ -1430,6 +1922,20 @@ Destroy the controller
 | Error Code ID | Error Message |
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+avCastController.release((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to release, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in releasing.');
+});
+```
+
+<a id="release-1"></a>
 
 ## release
 
@@ -1456,6 +1962,16 @@ Destroy the controller
 | Error Code ID | Error Message |
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+avCastController.release().then(() => {
+  console.info('Succeeded in releasing.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to release, code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## sendControlCommand
 
@@ -1484,6 +2000,21 @@ Send control commands to remote player
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600105](../errorcode-avsession.md#6600105-invalid-session-command) | Invalid session command. |
 | [6600109](../errorcode-avsession.md#6600109-remote-session-does-not-exist) | The remote connection is not established. |
+
+**Examples**
+
+```TypeScript
+let avCommand: avSession.AVCastControlCommand = {command: 'play'};
+avCastController.sendControlCommand(avCommand, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to send control command, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in sending control command.');
+});
+```
+
+<a id="sendcontrolcommand-1"></a>
 
 ## sendControlCommand
 
@@ -1520,6 +2051,17 @@ Send control commands to remote player
 | [6600105](../errorcode-avsession.md#6600105-invalid-session-command) | Invalid session command. |
 | [6600109](../errorcode-avsession.md#6600109-remote-session-does-not-exist) | The remote connection is not established. |
 
+**Examples**
+
+```TypeScript
+let avCommand: avSession.AVCastControlCommand = {command: 'play'};
+avCastController.sendControlCommand(avCommand).then(() => {
+  console.info('Succeeded in sending control command.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to send control command, code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## sendCustomData
 
 ```TypeScript
@@ -1552,6 +2094,16 @@ Sends custom data to a remote device.
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 
+**Examples**
+
+```TypeScript
+avCastController.sendCustomData({customData: 'This is custom data'}).then(() => {
+  console.info('Succeeded in sending custom data.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to send custom data, code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## start
 
 ```TypeScript
@@ -1578,6 +2130,39 @@ Play the current item, should contain mediaUri otherwise the playback will fail.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600109](../errorcode-avsession.md#6600109-remote-session-does-not-exist) | The remote connection is not established. |
+
+**Examples**
+
+```TypeScript
+// Set playback parameters.
+let playItem: avSession.AVQueueItem = {
+  itemId: 0,
+  description: {
+    assetId: '12345',
+    mediaType: 'AUDIO',
+    mediaUri: 'http://resource1_address',
+    mediaSize: 12345,
+    startPosition: 0,
+    duration: 0,
+    artist: 'mysong',
+    albumTitle: 'song1_title',
+    albumCoverUri: 'http://resource1_album_address',
+    lyricUri: 'http://resource1_lyric_address',
+    appName: 'MyMusic'
+  }
+};
+
+// Start playback.
+avCastController.start(playItem, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to start, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in starting.');
+});
+```
+
+<a id="start-1"></a>
 
 ## start
 
@@ -1612,3 +2197,31 @@ Play the current item, should contain mediaUri otherwise the playback will fail.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600109](../errorcode-avsession.md#6600109-remote-session-does-not-exist) | The remote connection is not established. |
+
+**Examples**
+
+```TypeScript
+// Set playback parameters.
+let playItem: avSession.AVQueueItem = {
+  itemId: 0,
+  description: {
+    assetId: '12345',
+    mediaType: 'AUDIO',
+    mediaUri: 'http://resource1_address',
+    mediaSize: 12345,
+    startPosition: 0,
+    duration: 0,
+    artist: 'mysong',
+    albumTitle: 'song1_title',
+    albumCoverUri: 'http://resource1_album_address',
+    lyricUri: 'http://resource1_lyric_address',
+    appName: 'MyMusic'
+  }
+};
+// Start playback.
+avCastController.start(playItem).then(() => {
+  console.info('Succeeded in starting.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to start, code: ${err.code}, message: ${err.message}`);
+});
+```

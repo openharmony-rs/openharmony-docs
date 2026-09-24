@@ -1,5 +1,9 @@
 # GridLevel
 
+```TypeScript
+export enum GridLevel
+```
+
 Enumeration type of grid level.
 
 @enum { int } GridLevel

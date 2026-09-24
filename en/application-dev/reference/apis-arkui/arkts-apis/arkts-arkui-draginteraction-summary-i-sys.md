@@ -1,5 +1,9 @@
 # Summary (System API)
 
+```TypeScript
+interface Summary
+```
+
 Defines the data summary of the dragged object.
 
 **Since:** 11

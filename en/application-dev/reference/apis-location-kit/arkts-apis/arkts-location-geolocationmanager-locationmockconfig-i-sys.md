@@ -1,5 +1,9 @@
 # LocationMockConfig (System API)
 
+```TypeScript
+export interface LocationMockConfig
+```
+
 Parameters for configuring the location simulation function.
 
 **Since:** 9

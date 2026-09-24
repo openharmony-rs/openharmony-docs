@@ -1,5 +1,9 @@
 # AudioSessionDeactivatedReason
 
+```TypeScript
+enum AudioSessionDeactivatedReason
+```
+
 Enumerates the reasons for deactivating an audio session.
 
 **Since:** 12

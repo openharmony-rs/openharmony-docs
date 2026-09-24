@@ -8,6 +8,8 @@ typedef struct MediaKeySession MediaKeySession
 
 Describes a native object for MediaKeySession.
 
+**System capability**: SystemCapability.Multimedia.Media.VideoDecoder
+
 **Since**: 11
 
 **Related module**: [VideoDecoder](capi-videodecoder.md)

@@ -1,5 +1,9 @@
 # DragSpringLoadingState
 
+```TypeScript
+const enum DragSpringLoadingState
+```
+
 定义拖拽的悬停检测状态的枚举类型。默认系统配置下，如果没有触发CANCEL，状态报告如下：保持Hover--&gt;500ms--&gt;BEGIN--&gt;100ms--&gt;UPDATE--&gt;100ms--&gt;UPDATE--&gt;100ms--&gt;UPDATE--&gt;100ms--&gt;END
 
 **起始版本：** 20

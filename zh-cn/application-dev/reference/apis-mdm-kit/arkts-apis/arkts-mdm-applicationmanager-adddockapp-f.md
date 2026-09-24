@@ -60,8 +60,8 @@ function addDockApp(admin: Want, bundleName: string, abilityName: string, index?
 | [9201015](../errorcode-enterpriseDeviceManager.md#9201015-指定应用未安装) | The application is not installed. |
 | [9201018](../errorcode-enterpriseDeviceManager.md#9201018-指定应用不支持操作) | The application is inoperable. |
 | [9201019](../errorcode-enterpriseDeviceManager.md#9201019-指定位置不支持操作) | The location is inoperable. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例**
 

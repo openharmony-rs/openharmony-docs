@@ -1,5 +1,9 @@
 # TextRange
 
+```TypeScript
+declare interface TextRange
+```
+
 Defines the text range.
 
 **Since:** 12

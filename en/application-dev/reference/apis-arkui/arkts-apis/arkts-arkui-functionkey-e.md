@@ -1,5 +1,9 @@
 # FunctionKey
 
+```TypeScript
+declare enum FunctionKey
+```
+
 Enumerates the input method function keys.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # GridPinchMode
 
+```TypeScript
+export class GridPinchMode
+```
+
 Represents the pinch mode of the grid in the picker.
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # AuthTokenInfo
 
+```TypeScript
+interface AuthTokenInfo
+```
+
 Defines authorization token information.
 
 **Since:** 9

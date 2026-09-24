@@ -1,5 +1,9 @@
 # DataConnectState
 
+```TypeScript
+export enum DataConnectState
+```
+
 描述蜂窝数据链路连接状态。
 
 **起始版本：** 7

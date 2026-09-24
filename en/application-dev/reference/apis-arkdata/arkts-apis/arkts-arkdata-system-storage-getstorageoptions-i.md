@@ -1,5 +1,9 @@
 # GetStorageOptions
 
+```TypeScript
+export interface GetStorageOptions
+```
+
 @typedef GetStorageOptions
 
 **Since:** 3

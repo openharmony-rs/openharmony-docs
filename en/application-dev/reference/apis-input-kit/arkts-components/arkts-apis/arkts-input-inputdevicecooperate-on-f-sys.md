@@ -37,3 +37,34 @@ Registers a listener for screen hopping state changes. This API uses an asynchro
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api.<br>**Applicable version:** 12 and later |
+
+**Examples**
+
+```TypeScript
+import { inputDeviceCooperate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let callback = (error: BusinessError | undefined, data: { deviceDescriptor: string, eventMsg: EventMsg }) => {
+            if (error) {
+              console.error(`Failed to monitor cooperation, Code: ${error.code}, message: ${error.message}.`);
+              return;
+            }
+            console.info(`Succeeded in monitoring cooperation, data: ${JSON.stringify(data)}.`);
+          };
+          try {
+            inputDeviceCooperate.on('cooperation', callback);
+          } catch (error) {
+            console.error(`Failed to register keyboard and mouse traversal status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

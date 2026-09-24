@@ -1,8 +1,12 @@
 # SweepRefractionParam（系统接口）
 
+```TypeScript
+interface SweepRefractionParam
+```
+
 创建 SweepRefractionMask 的必选参数。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -24,7 +28,7 @@ chromaDelta: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,7 +46,7 @@ edgeThickness: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,7 +64,7 @@ maskRadius: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -78,7 +82,7 @@ refractAmount: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,7 +100,7 @@ rippleWidth: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -114,7 +118,7 @@ sweepOffset: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

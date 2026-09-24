@@ -1,5 +1,9 @@
 # Gauge properties/events
 
+```TypeScript
+declare class GaugeAttribute extends CommonMethod<GaugeAttribute>
+```
+
 In addition to the [universal attributes](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), the following attributes are supported.
 
 The [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md) are supported.
@@ -62,7 +66,7 @@ Creates a content modifier.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[GaugeConfiguration](arkts-arkui-gaugeconfiguration-i.md)&gt; | Yes | Content modifier to apply to the current component.<br> **modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[GaugeConfiguration](arkts-arkui-gauge-comp-gaugeconfiguration-i.md)&gt; | Yes | Content modifier to apply to the current component.<br> **modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
 
 ## description
 
@@ -86,7 +90,7 @@ Sets the description of the gauge.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [CustomBuilder](arkts-arkui-custombuilder-t.md) | Yes | Description.<br>**NOTE:** <br>You need to customize the content – text or imagery recommended – in @Builder.<br>If the width and height of the custom content are in percentage, the reference range is a rectangle that is 44.4% of the diameter of the ring horizontally and 25.4% vertically (for images, it is 28.6% both horizontally and vertically), positioned 0 vp away from the bottom of the ring and centered horizontally.<br>If this parameter is set to null, no description is displayed.<br>If this parameter is not set, what's displayed is subject to the maximum and minimum value settings.<br>If either or both of the maximum and minimum values are set, they are displayed.<br>If neither maximum nor minimum values are set, no description is displayed.<br>The maximum and minimum values are displayed at the bottom of the ring and cannot be relocated. They may be blocked by the ring if the ring's start and end angles are not set properly. |
+| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | Yes | Description.<br>**NOTE:** <br>You need to customize the content – text or imagery recommended – in @Builder.<br>If the width and height of the custom content are in percentage, the reference range is a rectangle that is 44.4% of the diameter of the ring horizontally and 25.4% vertically (for images, it is 28.6% both horizontally and vertically), positioned 0 vp away from the bottom of the ring and centered horizontally.<br>If this parameter is set to null, no description is displayed.<br>If this parameter is not set, what's displayed is subject to the maximum and minimum value settings.<br>If either or both of the maximum and minimum values are set, they are displayed.<br>If neither maximum nor minimum values are set, no description is displayed.<br>The maximum and minimum values are displayed at the bottom of the ring and cannot be relocated. They may be blocked by the ring if the ring's start and end angles are not set properly. |
 
 ## endAngle
 
@@ -132,7 +136,7 @@ Sets the indicator style of the gauge.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [GaugeIndicatorOptions](arkts-arkui-gaugeindicatoroptions-i.md) | Yes | Indicator style.<br>**NOTE:** <br>If this attribute is set to **null**, no indicator is displayed. |
+| value | [GaugeIndicatorOptions](arkts-arkui-gauge-comp-gaugeindicatoroptions-i.md) | Yes | Indicator style.<br>**NOTE:** <br>If this attribute is set to **null**, no indicator is displayed. |
 
 ## privacySensitive
 
@@ -144,7 +148,7 @@ Sets whether to enable privacy mode.
 
 > **NOTE:** 
 > 
-> This API can be called within attributeModifier since API version 20.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 20.
 
 **Since:** 12
 
@@ -160,7 +164,7 @@ Sets whether to enable privacy mode.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isPrivacySensitiveMode | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable privacy mode. In privacy mode, the gauge indicator points to **0**, the maximum and minimum values are masked, and the scale range is displayed in gray or the background color. The value **true** means to enable privacy mode, and **false** means the opposite. Default value: **false**.<!--Del--><br>For widgets, this property must be used with FormComponentand the [obscured](arkts-arkui-commonmethod-c.md#obscured) attribute to display privacy masking effects.<!--DelEnd-->. |
+| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable privacy mode. In privacy mode, the gauge indicator points to **0**, the maximum and minimum values are masked, and the scale range is displayed in gray or the background color. The value **true** means to enable privacy mode, and **false** means the opposite. Default value: **false**.<!--Del--><br>For widgets, this property must be used with [FormComponent](arkts-arkui-formcomponent-comp-sys.md#form_component)and the [obscured](arkts-arkui-common-comp-commonmethod-c.md#obscured) attribute to display privacy masking effects.<!--DelEnd-->. |
 
 ## startAngle
 
@@ -228,7 +232,7 @@ Sets the shadow style of the gauge.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [GaugeShadowOptions](arkts-arkui-gaugeshadowoptions-i.md) | Yes | Shadow effect. You can specify the blur radius, and the offset along the X and Y axes.<br>**NOTE:** <br>The shadow color is the same as the ring color.<br>If this attribute is set to **null**, the shadow effect is disabled. |
+| value | [GaugeShadowOptions](arkts-arkui-gauge-comp-gaugeshadowoptions-i.md) | Yes | Shadow effect. You can specify the blur radius, and the offset along the X and Y axes.<br>**NOTE:** <br>The shadow color is the same as the ring color.<br>If this attribute is set to **null**, the shadow effect is disabled. |
 
 ## value
 

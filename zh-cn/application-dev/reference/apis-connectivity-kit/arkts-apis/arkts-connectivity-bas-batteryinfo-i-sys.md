@@ -1,5 +1,9 @@
 # BatteryInfo（系统接口）
 
+```TypeScript
+interface BatteryInfo
+```
+
 描述设备的电量信息。
 
 **起始版本：** 26.0.0

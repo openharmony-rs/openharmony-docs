@@ -1,5 +1,9 @@
 # TriggerType (System API)
 
+```TypeScript
+export enum TriggerType
+```
+
 Enumerates the trigger types.
 
 **Since:** 23

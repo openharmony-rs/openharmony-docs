@@ -8,6 +8,8 @@ typedef struct VkImportNativeBufferInfoOHOS {...} VkImportNativeBufferInfoOHOS
 
 Defines the pointer to an <b>OH_NativeBuffer</b> struct.
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Related module**: [Vulkan](capi-vulkan.md)

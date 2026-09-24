@@ -14,4 +14,4 @@ export type FillRequest = _AutoFillRequest.FillRequest
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**类型：** _AutoFillRequest.FillRequest
+**类型：** [_AutoFillRequest.FillRequest](arkts-ability-autofillrequest-fillrequest-i-sys.md)

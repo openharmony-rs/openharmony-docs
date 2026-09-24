@@ -1,5 +1,9 @@
 # InterfaceConfig
 
+```TypeScript
+interface InterfaceConfig
+```
+
 以太网的网络接口配置。仅支持IPv4。
 
 **起始版本：** 23

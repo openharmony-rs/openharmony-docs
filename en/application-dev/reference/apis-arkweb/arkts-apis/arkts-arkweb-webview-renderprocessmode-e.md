@@ -1,5 +1,9 @@
 # RenderProcessMode
 
+```TypeScript
+enum RenderProcessMode
+```
+
 Enumerates the ArkWeb renderer subprocess mode types. You can select the appropriate mode based on the app's requirements for memory usage and renderer process isolation.
 
 **Since:** 12

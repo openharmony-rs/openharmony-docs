@@ -1,5 +1,9 @@
 # CertChainValidationResult
 
+```TypeScript
+interface CertChainValidationResult
+```
+
 表示证书链校验的返回值。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # LocatingRequiredDataConfig（系统接口）
 
+```TypeScript
+export interface LocatingRequiredDataConfig
+```
+
 订阅定位业务所需数据的变化，主要包含WiFi和蓝牙扫描信息；根据入参决定是否启动WiFi和蓝牙扫描。使用callback异步回调。
 
 **起始版本：** 10

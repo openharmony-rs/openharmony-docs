@@ -1,5 +1,9 @@
 # CaretStyle
 
+```TypeScript
+interface CaretStyle
+```
+
 Defines the cursor style.
 
 **Since:** 10

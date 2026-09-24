@@ -70,37 +70,8 @@ try {
 }
 ```
 
-```TypeScript
-import { applicationManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // Replace it as required.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-let autoStartApps: Array<Want> = [
-  // Replace it as required.
-  {
-    bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility',
-    // The following parameters are optional.
-    parameters: {
-      // Since API version 24, you can configure whether to hide the UI when applications automatically start upon device startup. The value true indicates yes. If this parameter is set to true, the applications must be integrated with the status bar. Otherwise, the automatic startup setting fails and error 401 is reported.
-      isHiddenStart: true 
-    }
-  }
-];
-
-try {
-  applicationManager.addAutoStartApps(wantTemp, autoStartApps, 100, true);
-  console.info('Succeeded in adding auto start applications and set disallowModify.');
-} catch(err) {
-  console.error(`Failed to add auto start applications and set disallowModify. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="addautostartapps-1"></a>
 
 ## addAutoStartApps
 
@@ -139,4 +110,33 @@ Applications can be added to the auto-start list via this API and the [addAutoSt
 
 **Examples**
 
-See [addAutoStartApps](#addautostartapps)
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let autoStartApps: Array<Want> = [
+  // Replace it as required.
+  {
+    bundleName: 'com.example.autoStartApplication',
+    abilityName: 'EntryAbility',
+    // The following parameters are optional.
+    parameters: {
+      // Since API version 24, you can configure whether to hide the UI when applications automatically start upon device startup. The value true indicates yes. If this parameter is set to true, the applications must be integrated with the status bar. Otherwise, the automatic startup setting fails and error 401 is reported.
+      isHiddenStart: true 
+    }
+  }
+];
+
+try {
+  applicationManager.addAutoStartApps(wantTemp, autoStartApps, 100, true);
+  console.info('Succeeded in adding auto start applications and set disallowModify.');
+} catch(err) {
+  console.error(`Failed to add auto start applications and set disallowModify. Code: ${err.code}, message: ${err.message}`);
+}
+```

@@ -1,5 +1,9 @@
 # DeviceClass
 
+```TypeScript
+export enum DeviceClass
+```
+
 表示设备类型，为枚举值。
 
 **起始版本：** 26.0.0

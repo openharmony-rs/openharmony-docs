@@ -1,5 +1,9 @@
 # UsedScene
 
+```TypeScript
+export interface UsedScene
+```
+
 描述权限使用的场景和时机。
 
 **起始版本：** 9

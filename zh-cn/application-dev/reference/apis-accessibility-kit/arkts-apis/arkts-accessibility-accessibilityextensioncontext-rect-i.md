@@ -1,5 +1,9 @@
 # Rect
 
+```TypeScript
+export interface Rect
+```
+
 表示矩形区域。
 
 **起始版本：** 9

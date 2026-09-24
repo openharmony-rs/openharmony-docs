@@ -1,5 +1,9 @@
 # Size
 
+```TypeScript
+export interface Size
+```
+
 用于返回组件布局大小的宽和高。默认单位为vp，不同的接口使用Size类型时会再定义单位，以接口定义的单位为准。
 
 **起始版本：** 11

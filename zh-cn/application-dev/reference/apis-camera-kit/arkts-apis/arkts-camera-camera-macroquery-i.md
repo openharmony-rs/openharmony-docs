@@ -1,5 +1,9 @@
 # MacroQuery
 
+```TypeScript
+interface MacroQuery
+```
+
 提供查询设备是否支持相机微距拍摄的方法。
 
 **起始版本：** 19
@@ -36,4 +40,13 @@ isMacroSupported(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 11 - 18 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 11 - 18 |
+
+**示例**
+
+```TypeScript
+function isMacroSupported(photoSession: camera.PhotoSession): boolean {
+  let isSupported: boolean = photoSession.isMacroSupported();
+  return isSupported;
+}
+```

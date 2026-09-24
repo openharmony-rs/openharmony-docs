@@ -1,5 +1,9 @@
 # Authenticator
 
+```TypeScript
+interface Authenticator
+```
+
 Provides APIs for managing the **Authenticator** object.
 
 **Since:** 6
@@ -57,18 +61,7 @@ authenticator.execute('FACE_ONLY', 'S2', (error, code) => {
 });
 ```
 
-```TypeScript
-import { userAuth } from '@kit.UserAuthenticationKit';
-
-try {
-  let authenticator = userAuth.getAuthenticator();
-  authenticator.execute('FACE_ONLY', 'S2').then((code) => {
-    console.info('auth successfully.');
-  })
-} catch (error) {
-  console.error(`auth failed, Code: ${error?.code}, message: ${error?.message}`);
-}
-```
+<a id="execute-1"></a>
 
 ## execute
 
@@ -103,4 +96,15 @@ Starts user authentication. This API uses a promise to return the result.
 
 **Examples**
 
-See [execute](#execute)
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+try {
+  let authenticator = userAuth.getAuthenticator();
+  authenticator.execute('FACE_ONLY', 'S2').then((code) => {
+    console.info('auth successfully.');
+  })
+} catch (error) {
+  console.error(`auth failed, Code: ${error?.code}, message: ${error?.message}`);
+}
+```

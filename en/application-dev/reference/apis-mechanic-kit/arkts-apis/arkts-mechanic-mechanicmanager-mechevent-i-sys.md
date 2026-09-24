@@ -1,5 +1,9 @@
 # MechEvent (System API)
 
+```TypeScript
+export interface MechEvent
+```
+
 Definition of Mechanic device event.
 
 **Since:** 26.0.0

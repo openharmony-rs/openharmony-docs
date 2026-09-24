@@ -1,5 +1,9 @@
 # TextShadowStyle
 
+```TypeScript
+declare class TextShadowStyle
+```
+
 Describes the text shadow style.
 
 **Since:** 12
@@ -28,7 +32,7 @@ The **ShadowOptions** object does not support the **fill** field.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md)&gt; | Yes | Text shadow options. |
+| value | [ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md)&gt; | Yes | Text shadow options. |
 
 ## textShadow
 
@@ -38,7 +42,7 @@ readonly textShadow: Array<ShadowOptions>
 
 Text shadow of the styled string.
 
-**Type:** Array&lt;[ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md)&gt;
+**Type:** Array&lt;[ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md)&gt;
 
 **Since:** 12
 

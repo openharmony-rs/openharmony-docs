@@ -1,5 +1,9 @@
 # AccessibilityGrid (System API)
 
+```TypeScript
+export interface AccessibilityGrid
+```
+
 Accessibility grid information. For details, see the property currentItem in [AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md).
 
 **Since:** 20

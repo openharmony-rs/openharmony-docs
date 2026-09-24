@@ -1,5 +1,9 @@
 # AuxiliaryPictureInfo
 
+```TypeScript
+interface AuxiliaryPictureInfo
+```
+
 表示辅助图的图像信息。
 
 **起始版本：** 13

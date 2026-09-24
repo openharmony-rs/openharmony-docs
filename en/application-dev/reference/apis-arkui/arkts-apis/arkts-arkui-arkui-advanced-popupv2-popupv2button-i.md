@@ -1,5 +1,9 @@
 # PopupV2Button
 
+```TypeScript
+export interface PopupV2Button
+```
+
 Defines the popup button
 
 @typedef PopupV2Button

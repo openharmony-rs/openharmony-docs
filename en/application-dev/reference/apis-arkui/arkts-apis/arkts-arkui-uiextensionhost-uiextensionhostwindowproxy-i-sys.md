@@ -1,5 +1,9 @@
 # UIExtensionHostWindowProxy (System API)
 
+```TypeScript
+interface UIExtensionHostWindowProxy
+```
+
 Transition Controller
 
 **Since:** 11
@@ -99,6 +103,49 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
+<a id="createsubwindowwithoptions-1"></a>
+
+## createSubWindowWithOptions
+
+```TypeScript
+createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions,
+        followCreatorLifecycle: boolean): Promise<window.Window>
+```
+
+Create subwindow.
+
+**Since:** 22
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the subwindow. |
+| subWindowConfig | [window.SubWindowOptions](arkts-arkui-window-subwindowoptions-i.md) | Yes | Configuration parameters for creating the subwindow. |
+| followCreatorLifecycle | boolean | Yes | Whether the lifecycle of the subwindow follows creator of subwindow. If true, when the creator goes to background, the subwindow will also go to background, when the creator returns to foreground, the subwindow will also return to foreground. If false, the subwindow will not change when the creator goes to background or returns to foreground. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[window.Window](arkts-arkui-window-window-i.md)&gt; | Promise used to return the subwindow. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
+
+**Examples**
+
 ```TypeScript
 // ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -143,49 +190,6 @@ export default class EntryAbility extends UIExtensionAbility {
   }
 }
 ```
-
-## createSubWindowWithOptions
-
-```TypeScript
-createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions,
-        followCreatorLifecycle: boolean): Promise<window.Window>
-```
-
-Create subwindow.
-
-**Since:** 22
-
-**Model restriction:** This API can be used only in the stage model.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the subwindow. |
-| subWindowConfig | [window.SubWindowOptions](arkts-arkui-window-subwindowoptions-i.md) | Yes | Configuration parameters for creating the subwindow. |
-| followCreatorLifecycle | boolean | Yes | Whether the lifecycle of the subwindow follows creator of subwindow. If true, when the creator goes to background, the subwindow will also go to background, when the creator returns to foreground, the subwindow will also return to foreground. If false, the subwindow will not change when the creator goes to background or returns to foreground. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[window.Window](arkts-arkui-window-window-i.md)&gt; | Promise used to return the subwindow. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
-| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
-
-**Examples**
-
-See [createSubWindowWithOptions](#createsubwindowwithoptions)
 
 ## getWindowAvoidArea
 
@@ -249,7 +253,7 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 
 > **NOTE:** 
 > 
-> - A non-secure window refers to any window that may obstruct the EmbeddedComponent or UIExtensionComponent, such as global floating windows , host subwindows, and dialog box windows created by the host application (excluding windows of these types created by system applications).
+> - A non-secure window refers to any window that may obstruct the [EmbeddedComponent](../arkts-components/arkts-arkui-embeddedcomponent-comp.md#embedded_component) or [UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent-comp-sys.md#ui_extension_componentsystem-api), such as global floating windows , host subwindows, and dialog box windows created by the host application (excluding windows of these types created by system applications).
 > 
 > - When using the **EmbeddedComponent** or **UIExtensionComponent** to display sensitive information, call this API to hide non-secure windows and prevent information obstruction. Hidden non-secure windows will reappear when the **EmbeddedComponent** or **UIExtensionComponent** is hidden or destroyed.
 > 
@@ -412,6 +416,21 @@ Unsubscribes from events of system avoidance area changes.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listening type is not registered. 3. The listener has not been registered. 4. The UIExtension window proxy is abnormal. |
 
+**Examples**
+
+```TypeScript
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession} from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionDestroy(session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // Cancel all subscriptions to the event indicating changes to the area where the window cannot be displayed.
+    extensionHostWindow.off('avoidAreaChange');
+  }
+}
+```
+
 ## off('windowSizeChange')
 
 ```TypeScript
@@ -441,6 +460,21 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listening type is not registered. 3. The listener has not been registered. 4. The UIExtension window proxy is abnormal. |
+
+**Examples**
+
+```TypeScript
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionDestroy(session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // Unsubscribe from size change events of the component (EmbeddedComponent or UIExtensionComponent).
+    extensionHostWindow.off('windowSizeChange');
+  }
+}
+```
 
 ## on('avoidAreaChange')
 
@@ -472,6 +506,23 @@ Subscribes to events of system avoidance area changes.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listener has been registered. 3. The UIExtension window proxy is abnormal. |
 
+**Examples**
+
+```TypeScript
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // Subscribe to the event indicating changes to the area where the window cannot be displayed.
+    extensionHostWindow.on('avoidAreaChange', (info) => {
+      console.info(`The avoid area of the host window is: ${JSON.stringify(info.area)}.`);
+    });
+  }
+}
+```
+
 ## on('windowSizeChange')
 
 ```TypeScript
@@ -501,6 +552,23 @@ Subscribes to size change events of the component (**EmbeddedComponent** or **UI
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listener has been registered. 3. The UIExtension window proxy is abnormal. |
+
+**Examples**
+
+```TypeScript
+// ExtensionProvider.ets
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // Subscribe to size change events of the component (EmbeddedComponent or UIExtensionComponent).
+    extensionHostWindow.on('windowSizeChange', (size) => {
+      console.info(`The size of the component is: ${JSON.stringify(size)}.`);
+    });
+  }
+}
+```
 
 ## setWaterMarkFlag
 

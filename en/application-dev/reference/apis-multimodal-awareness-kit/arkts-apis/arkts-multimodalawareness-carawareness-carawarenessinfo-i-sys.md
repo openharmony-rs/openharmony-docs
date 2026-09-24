@@ -1,8 +1,12 @@
 # CarAwarenessInfo (System API)
 
+```TypeScript
+export interface CarAwarenessInfo
+```
+
 Interface for car awareness response info.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
@@ -24,7 +28,7 @@ Interface for car awareness data items list information.
 
 **Type:** Record&lt;string, Object&gt;
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -42,7 +46,7 @@ Indicates specific capability.
 
 **Type:** [Capability](arkts-multimodalawareness-carawareness-capability-e.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -60,7 +64,7 @@ Indicates timestamp . Unit: milliseconds.
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

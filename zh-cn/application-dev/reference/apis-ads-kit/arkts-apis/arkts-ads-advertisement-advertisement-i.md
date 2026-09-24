@@ -1,5 +1,9 @@
 # Advertisement
 
+```TypeScript
+export interface Advertisement
+```
+
 本模块为请求的广告内容。
 
 **起始版本：** 11
@@ -14,7 +18,7 @@
 
 自定义参数。
 
-&lt;!--RP1--&gt;&lt;!--RP1End--&gt;
+<!--RP1--><!--RP1End-->
 
 **类型：** Object
 

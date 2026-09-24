@@ -1,5 +1,9 @@
 # SaveSuccessResponse
 
+```TypeScript
+interface SaveSuccessResponse
+```
+
 [save](arkts-arkdata-distributeddataobject-dataobject-i.md#save)接口回调信息。
 
 **起始版本：** 9

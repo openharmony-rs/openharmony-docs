@@ -14,9 +14,11 @@ ForEach(
   )
 ```
 
-**ForEach** enables rendering of repeated content based on array type data. It must be used in a container component, and the component it returns must be one allowed inside the container component. For example, a **ListItem** component is allowed only when the parent container component of **ForEach** is List or ListItemGroup.
+**ForEach** enables rendering of repeated content based on array type data. It must be used in a container component, and the component it returns must be one allowed inside the container component. For example, a **ListItem** component is allowed only when the parent container component of **ForEach** is [List](arkts-arkui-list-comp.md#list) or [ListItemGroup](arkts-arkui-listitemgroup-comp.md#list_item_group).
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

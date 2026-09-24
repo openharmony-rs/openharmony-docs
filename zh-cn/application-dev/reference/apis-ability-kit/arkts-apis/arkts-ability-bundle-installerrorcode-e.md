@@ -1,5 +1,9 @@
 # InstallErrorCode
 
+```TypeScript
+export enum InstallErrorCode
+```
+
 
 > **说明：** 
 > 

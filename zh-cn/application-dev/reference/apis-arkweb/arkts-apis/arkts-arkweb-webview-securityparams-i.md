@@ -1,5 +1,9 @@
 # SecurityParams
 
+```TypeScript
+interface SecurityParams
+```
+
 安全特性选项配置。该类提供了一组布尔开关，用于控制 ArkWeb 内核中特定 Web 功能的启用状态。通过关闭业务非必需的高风险模块（如 JIT编译、WebAssembly、WebGL 等），可减小攻击面、降低潜在漏洞利用风险。所有属性均为可选，默认 false（不禁用），请根据具体业务场景按需配置。
 
 **起始版本：** 26.0.0

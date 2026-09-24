@@ -1,5 +1,9 @@
 # LocalAddress
 
+```TypeScript
+export interface LocalAddress
+```
+
 Defines the address of a local socket file. When the address is passed for binding, a socket file is created at this address.
 
 **Since:** 11

@@ -18,9 +18,9 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) | - | OH_ImagePackerNative用于将ImageSource、PixelMap、Picture或PixelMap序列编码为图片数据或文件。<br>使用 [OH_ImagePackerNative_Create](capi-image-packer-native-h.md#oh_imagepackernative_create)函数创建OH_ImagePackerNative对象。<br>使用[OH_ImagePackerNative_Release](capi-image-packer-native-h.md#oh_imagepackernative_release)<br>函数释放OH_ImagePackerNative对象。<br>资源管理：OH_ImagePackerNative使用完成后，应调用[OH_ImagePackerNative_Release](capi-image-packer-native-h.md#oh_imagepackernative_release)释放。<br>释放OH_ImagePackerNative对象不会释放OH_PackingOptions、OH_PackingOptionsForSequence、OH_ImageSourceNative、<br>OH_PixelmapNative或OH_PictureNative对象。<br>OH_ImagePackerNative支持的编码方式如下：<br>\| 输入对象 \| 输出位置 \| 编码函数 \| 描述 \|\| -- \| -- \| --<br>\| -- \|\| {@link OH_ImageSourceNative} \| 数据缓冲区 \| [OH_ImagePackerNative_PackToDataFromImageSource](capi-image-packer-native-h.md#oh_imagepackernative_packtodatafromimagesource) \|<br>将ImageSource编码为指定格式的数据。 \|\| {@link OH_PixelmapNative} \| 数据缓冲区 \| [OH_ImagePackerNative_PackToDataFromPixelmap](capi-image-packer-native-h.md#oh_imagepackernative_packtodatafrompixelmap) \|<br>将PixelMap编码为指定格式的数据。 \|\| {@link OH_PictureNative} \| 数据缓冲区 \| [OH_ImagePackerNative_PackToDataFromPicture](capi-image-packer-native-h.md#oh_imagepackernative_packtodatafrompicture) \|<br>将Picture编码为指定格式的数据，仅支持JPEG和HEIF。 \|\| OH_PixelmapNative数组 \| 数据缓冲区 \|<br>[OH_ImagePackerNative_PackToDataFromPixelmapSequence](capi-image-packer-native-h.md#oh_imagepackernative_packtodatafrompixelmapsequence) \| 将PixelMap序列编码为GIF格式数据。 \|\| {@link OH_ImageSourceNative}<br>\| 文件描述符 \| [OH_ImagePackerNative_PackToFileFromImageSource](capi-image-packer-native-h.md#oh_imagepackernative_packtofilefromimagesource) \| 将ImageSource编码到文件中。 \|\| {@link OH_PixelmapNative} \|<br> 文件描述符 \| [OH_ImagePackerNative_PackToFileFromPixelmap](capi-image-packer-native-h.md#oh_imagepackernative_packtofilefrompixelmap) \| 将PixelMap编码到文件中。 \|\| {@link OH_PictureNative} \| 文件描述符 \|<br> [OH_ImagePackerNative_PackToFileFromPicture](capi-image-packer-native-h.md#oh_imagepackernative_packtofilefrompicture) \| 将Picture编码到文件中，仅支持JPEG和HEIF。 \|\| OH_PixelmapNative数组 \| 文件描述符 \|<br> [OH_ImagePackerNative_PackToFileFromPixelmapSequence](capi-image-packer-native-h.md#oh_imagepackernative_packtofilefrompixelmapsequence) \| 将PixelMap序列编码为GIF格式并写入文件。 \|<br>获取支持编码的图片格式使用<br>[OH_ImagePackerNative_GetSupportedFormats](capi-image-packer-native-h.md#oh_imagepackernative_getsupportedformats)函数。 |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) | - | OH_PackingOptions是native层封装的图像编码选项结构体，不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。<br>使用 [OH_PackingOptions_Create](capi-image-packer-native-h.md#oh_packingoptions_create)函数创建OH_PackingOptions对象。<br>使用[OH_PackingOptions_Release](capi-image-packer-native-h.md#oh_packingoptions_release)<br>函数释放OH_PackingOptions对象。<br>使用约束：OH_PackingOptions用于配置ImageSource、PixelMap或Picture编码参数。<br>资源管理：<br>释放OH_ImagePackerNative对象不会自动释放OH_PackingOptions对象。OH_PackingOptions使用完成后，应调用[OH_PackingOptions_Release](capi-image-packer-native-h.md#oh_packingoptions_release)释放，<br>释放后不应继续传入图像编码接口或调用其字段获取和设置接口。<br>OH_PackingOptions结构体内容和操作方式如下：<br>\| 字段类型 \| 字段名称 \| 字段描述 \| 字段获取函数 \| 字段设置函数 \|\| -- \| --<br>\| -- \| -- \| -- \|\| {@link Image_MimeType} \| mimeType \| 目标编码格式的MIME类型。ImageSource或PixelMap编码支持`image/jpeg`、`image/webp`<br>、`image/png`、`image/heic`或`image/heif`、`image/sdr_astc_4x4`、`image/sdr_sut_superfast_4x4`、`image/hdr_astc_4x4`；<br>Picture编码支持`image/jpeg`、`image/heic`或`image/heif`。实际支持范围以[OH_ImagePackerNative_GetSupportedFormats](capi-image-packer-native-h.md#oh_imagepackernative_getsupportedformats)返回结果为准。 \|<br>[OH_PackingOptions_GetMimeType](capi-image-packer-native-h.md#oh_packingoptions_getmimetype)、[OH_PackingOptions_GetMimeTypeWithNull](capi-image-packer-native-h.md#oh_packingoptions_getmimetypewithnull) \|<br>[OH_PackingOptions_SetMimeType](capi-image-packer-native-h.md#oh_packingoptions_setmimetype) \|\| uint32_t \| quality \| 编码质量，实际编码效果取决于目标编码格式。 \|<br>[OH_PackingOptions_GetQuality](capi-image-packer-native-h.md#oh_packingoptions_getquality) \| [OH_PackingOptions_SetQuality](capi-image-packer-native-h.md#oh_packingoptions_setquality) \|\| bool \| needsPackProperties \|<br>是否需要编码图像属性，例如Exif。 \| [OH_PackingOptions_GetNeedsPackProperties](capi-image-packer-native-h.md#oh_packingoptions_getneedspackproperties) \|<br>[OH_PackingOptions_SetNeedsPackProperties](capi-image-packer-native-h.md#oh_packingoptions_setneedspackproperties) \|\| int32_t \| desiredDynamicRange \| 编码时期望的图片动态范围，取值见<br>[IMAGE_PACKER_DYNAMIC_RANGE](capi-image-packer-native-h.md#image_packer_dynamic_range)。 \| [OH_PackingOptions_GetDesiredDynamicRange](capi-image-packer-native-h.md#oh_packingoptions_getdesireddynamicrange) \|<br>[OH_PackingOptions_SetDesiredDynamicRange](capi-image-packer-native-h.md#oh_packingoptions_setdesireddynamicrange) \| |
-| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) | - | OH_PackingOptionsForSequence是native层封装的GIF序列编码选项结构体，不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。<br>使用 [OH_PackingOptionsForSequence_Create](capi-image-packer-native-h.md#oh_packingoptionsforsequence_create)函数创建OH_PackingOptionsForSequence对象。<br>使用 [OH_PackingOptionsForSequence_Release](capi-image-packer-native-h.md#oh_packingoptionsforsequence_release)函数释放OH_PackingOptionsForSequence对象。<br>使用约束： OH_PackingOptionsForSequence用于配置PixelMap序列编码为GIF格式时的编码参数，需传入 [OH_ImagePackerNative_PackToDataFromPixelmapSequence](capi-image-packer-native-h.md#oh_imagepackernative_packtodatafrompixelmapsequence)或 [OH_ImagePackerNative_PackToFileFromPixelmapSequence](capi-image-packer-native-h.md#oh_imagepackernative_packtofilefrompixelmapsequence)使用。<br>资源管理：OH_PackingOptionsForSequence使用完成后，应调用 [OH_PackingOptionsForSequence_Release](capi-image-packer-native-h.md#oh_packingoptionsforsequence_release)释放。释放后不应继续传入图像序列编码接口或调用其字段获取和设置接口。通过 [OH_PackingOptionsForSequence_SetDelayTimeList](capi-image-packer-native-h.md#oh_packingoptionsforsequence_setdelaytimelist)和[OH_PackingOptionsForSequence_SetDisposalTypes](capi-image-packer-native-h.md#oh_packingoptionsforsequence_setdisposaltypes) 传入的数组不会被拷贝，调用方需保证OH_PackingOptionsForSequence对象使用期间数组数据有效。释放OH_PackingOptionsForSequence对象不会释放这些数组。<br> OH_PackingOptionsForSequence结构体内容和操作方式如下：<br>\| 字段类型 \| 字段名称 \| 字段描述 \| 字段获取函数 \| 字段设置函数 \|\| -- \| -- \| -- \| -- \| -- \|\| uint32_t \| frameCount \| 编码时指定的帧数，编码时必须大于0。 \| [OH_PackingOptionsForSequence_GetFrameCount](capi-image-packer-native-h.md#oh_packingoptionsforsequence_getframecount) \| [OH_PackingOptionsForSequence_SetFrameCount](capi-image-packer-native-h.md#oh_packingoptionsforsequence_setframecount) \|\| int32_t\| delayTimeList \| 编码时图片的延迟时间数组， 数组中的每个延迟时间必须大于0且不超过65535，单位为10毫秒（ms）。 \| [OH_PackingOptionsForSequence_GetDelayTimeList](capi-image-packer-native-h.md#oh_packingoptionsforsequence_getdelaytimelist) \| [OH_PackingOptionsForSequence_SetDelayTimeList](capi-image-packer-native-h.md#oh_packingoptionsforsequence_setdelaytimelist) \|\| uint32_t\| disposalTypes \| 编码时图片的过渡帧模式数组，数组中的每个取值必须小于等于3， 取值含义见[OH_PackingOptionsForSequence_SetDisposalTypes](capi-image-packer-native-h.md#oh_packingoptionsforsequence_setdisposaltypes)。 \| [OH_PackingOptionsForSequence_GetDisposalTypes](capi-image-packer-native-h.md#oh_packingoptionsforsequence_getdisposaltypes) \| [OH_PackingOptionsForSequence_SetDisposalTypes](capi-image-packer-native-h.md#oh_packingoptionsforsequence_setdisposaltypes) \|\| uint32_t \| loopCount \| 编码时图片循环播放次数，取值范围为[0, 65535]。 \| [OH_PackingOptionsForSequence_GetLoopCount](capi-image-packer-native-h.md#oh_packingoptionsforsequence_getloopcount) \| [OH_PackingOptionsForSequence_SetLoopCount](capi-image-packer-native-h.md#oh_packingoptionsforsequence_setloopcount) \| |
+| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) | - | OH_ImagePackerNative用于将ImageSource、PixelMap、Picture或PixelMap序列编码为图片数据或文件。<br>使用 {@link OH_ImagePackerNative_Create}函数创建OH_ImagePackerNative对象。<br>使用{@link OH_ImagePackerNative_Release}<br>函数释放OH_ImagePackerNative对象。<br>资源管理：OH_ImagePackerNative使用完成后，应调用{@link OH_ImagePackerNative_Release}释放。<br>释放OH_ImagePackerNative对象不会释放OH_PackingOptions、OH_PackingOptionsForSequence、OH_ImageSourceNative、<br>OH_PixelmapNative或OH_PictureNative对象。<br>OH_ImagePackerNative支持的编码方式如下：<br>\| 输入对象 \| 输出位置 \| 编码函数 \| 描述 \|\| -- \| -- \| --<br>\| -- \|\| {@link OH_ImageSourceNative} \| 数据缓冲区 \| {@link OH_ImagePackerNative_PackToDataFromImageSource} \|<br>将ImageSource编码为指定格式的数据。 \|\| {@link OH_PixelmapNative} \| 数据缓冲区 \| {@link OH_ImagePackerNative_PackToDataFromPixelmap} \|<br>将PixelMap编码为指定格式的数据。 \|\| {@link OH_PictureNative} \| 数据缓冲区 \| {@link OH_ImagePackerNative_PackToDataFromPicture} \|<br>将Picture编码为指定格式的数据，仅支持JPEG和HEIF。 \|\| OH_PixelmapNative数组 \| 数据缓冲区 \|<br>{@link OH_ImagePackerNative_PackToDataFromPixelmapSequence} \| 将PixelMap序列编码为GIF格式数据。 \|\| {@link OH_ImageSourceNative}<br>\| 文件描述符 \| {@link OH_ImagePackerNative_PackToFileFromImageSource} \| 将ImageSource编码到文件中。 \|\| {@link OH_PixelmapNative} \|<br> 文件描述符 \| {@link OH_ImagePackerNative_PackToFileFromPixelmap} \| 将PixelMap编码到文件中。 \|\| {@link OH_PictureNative} \| 文件描述符 \|<br> {@link OH_ImagePackerNative_PackToFileFromPicture} \| 将Picture编码到文件中，仅支持JPEG和HEIF。 \|\| OH_PixelmapNative数组 \| 文件描述符 \|<br> {@link OH_ImagePackerNative_PackToFileFromPixelmapSequence} \| 将PixelMap序列编码为GIF格式并写入文件。 \|<br>获取支持编码的图片格式使用<br>{@link OH_ImagePackerNative_GetSupportedFormats}函数。 |
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) | - | OH_PackingOptions是native层封装的图像编码选项结构体，不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。<br>使用 {@link OH_PackingOptions_Create}函数创建OH_PackingOptions对象。<br>使用{@link OH_PackingOptions_Release}<br>函数释放OH_PackingOptions对象。<br>使用约束：OH_PackingOptions用于配置ImageSource、PixelMap或Picture编码参数。<br>资源管理：<br>释放OH_ImagePackerNative对象不会自动释放OH_PackingOptions对象。OH_PackingOptions使用完成后，应调用{@link OH_PackingOptions_Release}释放，<br>释放后不应继续传入图像编码接口或调用其字段获取和设置接口。<br>OH_PackingOptions结构体内容和操作方式如下：<br>\| 字段类型 \| 字段名称 \| 字段描述 \| 字段获取函数 \| 字段设置函数 \|\| -- \| --<br>\| -- \| -- \| -- \|\| {@link Image_MimeType} \| mimeType \| 目标编码格式的MIME类型。ImageSource或PixelMap编码支持`image/jpeg`、`image/webp`<br>、`image/png`、`image/heic`或`image/heif`、`image/sdr_astc_4x4`、`image/sdr_sut_superfast_4x4`、`image/hdr_astc_4x4`；<br>Picture编码支持`image/jpeg`、`image/heic`或`image/heif`。实际支持范围以{@link OH_ImagePackerNative_GetSupportedFormats}返回结果为准。 \|<br>{@link OH_PackingOptions_GetMimeType}、{@link OH_PackingOptions_GetMimeTypeWithNull} \|<br>{@link OH_PackingOptions_SetMimeType} \|\| uint32_t \| quality \| 编码质量，实际编码效果取决于目标编码格式。 \|<br>{@link OH_PackingOptions_GetQuality} \| {@link OH_PackingOptions_SetQuality} \|\| bool \| needsPackProperties \|<br>是否需要编码图像属性，例如Exif。 \| {@link OH_PackingOptions_GetNeedsPackProperties} \|<br>{@link OH_PackingOptions_SetNeedsPackProperties} \|\| int32_t \| desiredDynamicRange \| 编码时期望的图片动态范围，取值见<br>{@link IMAGE_PACKER_DYNAMIC_RANGE}。 \| {@link OH_PackingOptions_GetDesiredDynamicRange} \|<br>{@link OH_PackingOptions_SetDesiredDynamicRange} \| |
+| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) | - | OH_PackingOptionsForSequence是native层封装的GIF序列编码选项结构体，不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。<br>使用 {@link OH_PackingOptionsForSequence_Create}函数创建OH_PackingOptionsForSequence对象。<br>使用<br>{@link OH_PackingOptionsForSequence_Release}函数释放OH_PackingOptionsForSequence对象。<br>使用约束：<br>OH_PackingOptionsForSequence用于配置PixelMap序列编码为GIF格式时的编码参数，需传入<br>{@link OH_ImagePackerNative_PackToDataFromPixelmapSequence}或<br>{@link OH_ImagePackerNative_PackToFileFromPixelmapSequence}使用。<br>资源管理：OH_PackingOptionsForSequence使用完成后，应调用<br>{@link OH_PackingOptionsForSequence_Release}释放。释放后不应继续传入图像序列编码接口或调用其字段获取和设置接口。通过<br>{@link OH_PackingOptionsForSequence_SetDelayTimeList}和{@link OH_PackingOptionsForSequence_SetDisposalTypes}<br>传入的数组不会被拷贝，调用方需保证OH_PackingOptionsForSequence对象使用期间数组数据有效。释放OH_PackingOptionsForSequence对象不会释放这些数组。<br><br>OH_PackingOptionsForSequence结构体内容和操作方式如下：<br>\| 字段类型 \| 字段名称 \| 字段描述 \| 字段获取函数 \| 字段设置函数 \|\| -- \| -- \| -- \| -- \| -- \|\|<br>uint32_t \| frameCount \| 编码时指定的帧数，编码时必须大于0。 \| {@link OH_PackingOptionsForSequence_GetFrameCount} \|<br>{@link OH_PackingOptionsForSequence_SetFrameCount} \|\| int32_t\| delayTimeList \| 编码时图片的延迟时间数组，<br>数组中的每个延迟时间必须大于0且不超过65535，单位为10毫秒（ms）。 \| {@link OH_PackingOptionsForSequence_GetDelayTimeList} \|<br>{@link OH_PackingOptionsForSequence_SetDelayTimeList} \|\| uint32_t\| disposalTypes \| 编码时图片的过渡帧模式数组，数组中的每个取值必须小于等于3，<br>取值含义见{@link OH_PackingOptionsForSequence_SetDisposalTypes}。 \| {@link OH_PackingOptionsForSequence_GetDisposalTypes} \|<br> {@link OH_PackingOptionsForSequence_SetDisposalTypes} \|\| uint32_t \| loopCount \| 编码时图片循环播放次数，取值范围为[0, 65535]。 \|<br>{@link OH_PackingOptionsForSequence_GetLoopCount} \| {@link OH_PackingOptionsForSequence_SetLoopCount} \| |
 
 ### 枚举
 
@@ -77,6 +77,8 @@ enum IMAGE_PACKER_DYNAMIC_RANGE
 
 编码指定动态范围。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -96,6 +98,8 @@ Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)
 **描述：**
 
 创建PackingOptions结构体的指针。 <br>使用约束：options不能为空指针；接口返回失败时，输出参数内容不应使用。 <br>资源管理：接口成功返回的OH_PackingOptions对象由调用方管理，使用完成后应调用[OH_PackingOptions_Release](capi-image-packer-native-h.md#oh_packingoptions_release)释放。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 12
 
@@ -120,6 +124,8 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_
 **描述：**
 
 获取编码参数中的MIME类型。该接口获取的format.data缺少字符串结束符'\0'，请谨慎使用。 <br>使用约束：options和format均不能为空指针。调用前若format->size不为0，则format->size必须大于或等于当前MIME类型长度。接口返回失败时，不应读取format.data。 <br>资源管理：接口执行成功后，format.data由接口分配，调用方使用完成后应使用free()释放。该接口返回的format.data不以字符串结束符'\0'结尾，如需按C字符串处理，建议使用 [OH_PackingOptions_GetMimeTypeWithNull](capi-image-packer-native-h.md#oh_packingoptions_getmimetypewithnull)。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 12
 
@@ -146,6 +152,8 @@ Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options
 
 获取编码参数中的MIME类型。该接口获取的format.data以字符串结束符'\0'结尾。 <br>使用场景：适用于读取字符串形式的MIME类型。与[OH_PackingOptions_GetMimeType](capi-image-packer-native-h.md#oh_packingoptions_getmimetype)相比，本接口返回的format.data以'\0'结尾，更适合直接按C字符串处理。 <br>使用约束：options和format均不能为空指针。调用前若format->size不为0，则format->size必须大于或等于当前MIME类型长度。接口返回失败时，不应读取format.data。 <br>资源管理：接口执行成功后，format.data由接口分配，调用方使用完成后应使用free()释放。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 19
 
 **参数：**
@@ -171,6 +179,8 @@ Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_
 
 Sets the MIME type.
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 12
 
 **参数：**
@@ -184,7 +194,7 @@ Sets the MIME type.
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options is nullptr, or format is nullptr.<br>    <br>{@link IMAGE_ALLOC_FAILED} allocate memory failed.<br>    <br>{@link IMAGE_COPY_FAILED} copy memory failed. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr, or format is nullptr.      <br>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) allocate memory failed.      <br>[IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) copy memory failed. |
 
 ### OH_PackingOptions_GetQuality()
 
@@ -195,6 +205,8 @@ Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options, uint32_
 **描述：**
 
 获取编码质量。 <br>使用约束：options和quality均不能为空指针。接口返回失败时，输出参数内容不应使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 12
 
@@ -221,6 +233,8 @@ Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options, uint32_
 
 设置编码质量。 <br>使用约束：options不能为空指针，quality取值范围为[0, 100]。OH_PackingOptions创建后，quality默认值为0，建议设置quality不低于80。quality的实际效果取决于目标编码格式。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 12
 
 **参数：**
@@ -245,6 +259,8 @@ Image_ErrorCode OH_PackingOptions_GetNeedsPackProperties(OH_PackingOptions *opti
 **描述：**
 
 获取OH_PackingOptions结构体的needsPackProperties参数。 <br>使用约束：options和needsPackProperties均不能为空指针。接口返回失败时，输出参数内容不应使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 12
 
@@ -271,6 +287,8 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *opti
 
 设置OH_PackingOptions结构体的needsPackProperties参数。 <br>使用场景：当需要在编码输出中保留或写入图片属性信息（例如Exif）时，将needsPackProperties设置为true。如果只关心像素内容、希望减少输出数据体积或目标格式不需要保留属性信息，可设置为false。 <br>使用约束：options不能为空指针。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 12
 
 **参数：**
@@ -295,6 +313,8 @@ Image_ErrorCode OH_PackingOptions_GetDesiredDynamicRange(OH_PackingOptions *opti
 **描述：**
 
 获取编码时期望的图片动态范围。 <br>使用约束：options和desiredDynamicRange均不能为空指针。接口返回失败时，输出参数内容不应使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 12
 
@@ -321,6 +341,8 @@ Image_ErrorCode OH_PackingOptions_SetDesiredDynamicRange(OH_PackingOptions *opti
 
 设置编码时期望的图片动态范围。 <br>使用约束：options不能为空指针。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 12
 
 **参数：**
@@ -346,6 +368,8 @@ Image_ErrorCode OH_PackingOptions_Release(OH_PackingOptions *options)
 
 释放OH_PackingOptions指针。 <br>使用约束：options不能为空指针。 <br>资源管理：由[OH_PackingOptions_Create](capi-image-packer-native-h.md#oh_packingoptions_create)成功创建的对象，都应在编码完成后调用本接口释放。释放OH_PackingOptions不会影响已经完成的编码输出， 也不会释放OH_ImagePackerNative对象；调用该接口后，options指向的OH_PackingOptions对象会被释放，不应继续使用。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 12
 
 **参数：**
@@ -370,6 +394,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_Create(OH_PackingOptionsForSequence
 
 创建OH_PackingOptionsForSequence结构体的指针。 <br>使用约束：options不能为空指针。接口返回失败时，输出参数内容不应使用。 <br>资源管理：接口成功返回的OH_PackingOptionsForSequence对象由调用方管理，使用完成后应调用[OH_PackingOptionsForSequence_Release](capi-image-packer-native-h.md#oh_packingoptionsforsequence_release)释放。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 18
 
 **参数：**
@@ -393,6 +419,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetFrameCount(OH_PackingOptionsForS
 **描述：**
 
 设置编码时指定的帧数。 <br>使用约束：options不能为空指针。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 18
 
@@ -419,6 +447,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetFrameCount(OH_PackingOptionsForS
 
 获取编码时指定的帧数。 <br>使用约束：options和frameCount均不能为空指针。接口返回失败时，输出参数内容不应使用。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 18
 
 **参数：**
@@ -443,6 +473,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetDelayTimeList(OH_PackingOptionsF
 **描述：**
 
 设定编码时图片的延迟时间数组。 <br>使用约束：options不能为空指针。 <br>资源管理：接口会保存传入的delayTimeList指针，不拷贝数组内容。调用方需保证OH_PackingOptionsForSequence对象使用期间delayTimeList指向的数据有效。多次调用该接口时， 新的delayTimeList指针会替换此前保存的指针。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 18
 
@@ -470,6 +502,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetDelayTimeList(OH_PackingOptionsF
 
 获取编码时图片的延迟时间数组。 <br>使用约束：options和delayTimeList均不能为空指针，delayTimeListLength必须大于0。接口会将已设置的延迟时间数组拷贝到调用方传入的delayTimeList缓冲区。接口返回失败时， 输出缓冲区内容不应使用。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 18
 
 **参数：**
@@ -495,6 +529,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetDisposalTypes(OH_PackingOptionsF
 **描述：**
 
 设定编码时图片的过渡帧模式数组。 <br>使用约束：options不能为空指针。 <br>资源管理：接口会保存传入的disposalTypes指针，不拷贝数组内容。调用方需保证OH_PackingOptionsForSequence对象使用期间disposalTypes指向的数据有效。多次调用该接口时， 新的disposalTypes指针会替换此前保存的指针。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 18
 
@@ -522,6 +558,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetDisposalTypes(OH_PackingOptionsF
 
 获取编码时图片的过渡帧模式数组。 <br>使用约束：options和disposalTypes均不能为空指针，disposalTypesLength必须大于0。接口会将已设置的过渡帧模式数组拷贝到调用方传入的disposalTypes缓冲区。接口返回失败时， 输出缓冲区内容不应使用。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 18
 
 **参数：**
@@ -548,6 +586,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetLoopCount(OH_PackingOptionsForSe
 
 设定编码时图片循环播放次数，取值范围为[0, 65535]，0表示无限循环；若无此字段，则表示不循环播放。 <br>使用约束：options不能为空指针。本接口仅保存传入的loopCount。当loopCount大于65535时，本接口仍会返回成功，但后续调用 [OH_ImagePackerNative_PackToDataFromPixelmapSequence](capi-image-packer-native-h.md#oh_imagepackernative_packtodatafrompixelmapsequence)或 [OH_ImagePackerNative_PackToFileFromPixelmapSequence](capi-image-packer-native-h.md#oh_imagepackernative_packtofilefrompixelmapsequence)编码时会返回参数错误。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 18
 
 **参数：**
@@ -572,6 +612,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetLoopCount(OH_PackingOptionsForSe
 **描述：**
 
 获取编码时图片循环播放次数。 <br>使用约束：options和loopCount均不能为空指针。接口返回失败时，输出参数内容不应使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 18
 
@@ -598,6 +640,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_Release(OH_PackingOptionsForSequenc
 
 释放OH_PackingOptionsForSequence指针。 <br>使用约束：options不能为空指针。 <br>资源管理：调用该接口后，options指向的OH_PackingOptionsForSequence对象会被释放，不应继续使用。释放OH_PackingOptionsForSequence对象不会释放通过 [OH_PackingOptionsForSequence_SetDelayTimeList](capi-image-packer-native-h.md#oh_packingoptionsforsequence_setdelaytimelist)或[OH_PackingOptionsForSequence_SetDisposalTypes](capi-image-packer-native-h.md#oh_packingoptionsforsequence_setdisposaltypes)传入的数组。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 18
 
 **参数：**
@@ -622,6 +666,8 @@ Image_ErrorCode OH_ImagePackerNative_Create(OH_ImagePackerNative **imagePacker)
 
 创建OH_ImagePackerNative指针。 <br>使用场景：适用于将ImageSource、PixelMap、Picture或PixelMap序列编码为JPEG、PNG、WebP等格式的数据或文件。创建ImagePacker后， 需要结合OH_PackingOptions或OH_PackingOptionsForSequence设置编码格式、质量、是否保留图片属性等参数。 <br>使用约束：imagePacker不能为空指针。接口返回失败时，输出参数内容不应使用。 <br>资源管理：成功创建的OH_ImagePackerNative对象由调用方持有，使用完成后必须调用[OH_ImagePackerNative_Release](capi-image-packer-native-h.md#oh_imagepackernative_release)释放。Packer不会接管输入ImageSource、 PixelMap、Picture或编码参数对象的生命周期。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 12
 
 **参数：**
@@ -645,6 +691,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromImageSource(OH_ImagePackerNat
 **描述：**
 
 将ImageSource编码为指定格式的数据。 <br>使用场景：适用于将已有ImageSource转码为另一种图片格式，或在修改图片属性后重新输出为内存数据。 <br>使用约束：imagePacker、options、imageSource、outData和size均不能为空指针。调用前，*size应设置为outData的容量。接口返回失败时，不应使用outData中的内容或size输出值。 <br>资源管理：outData由调用方申请和释放。调用前，*size应设置为outData可写缓冲区大小。调用成功后，*size会更新为实际写入的编码数据长度。imagePacker、 options和imageSource的生命周期仍由调用方管理，本接口不会释放这些对象。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 12
 
@@ -674,6 +722,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmap(OH_ImagePackerNative
 
 将Pixelmap编码为指定格式的数据。 <br>使用场景：适用于将解码、编辑、绘制或算法处理后的PixelMap编码为JPEG、PNG、WebP等格式的内存数据，以便上传、缓存或继续写入文件。 <br>使用约束：imagePacker、options、pixelmap、outData和size均不能为空指针。调用前，*size应设置为outData的容量；接口返回失败时，不应使用outData中的内容或size输出值。 <br>资源管理：outData由调用方申请和释放。调用前，*size应设置为outData可写缓冲区大小。调用成功后，*size会更新为实际写入的编码数据长度。imagePacker、 options和pixelmap的生命周期仍由调用方管理，本接口不会释放这些对象。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 12
 
 **参数：**
@@ -702,6 +752,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPicture(OH_ImagePackerNative 
 
 将Picture编码为指定格式的数据。 <br>使用约束：imagePacker、options、picture、outData和size均不能为空指针。调用前，*size应设置为outData的容量。接口返回失败时，不应使用outData中的内容或size输出值。 <br>资源管理：outData由调用方申请和释放。调用前，*size应设置为outData可写缓冲区大小。调用成功后，*size会更新为实际写入的编码数据长度。imagePacker、 options和picture的生命周期仍由调用方管理，本接口不会释放这些对象。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 13
 
 **参数：**
@@ -729,6 +781,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmapSequence(OH_ImagePack
 **描述：**
 
 将Pixelmap序列编码为数据。 <br>使用场景：适用于将多帧PixelMap编码为动图或其他支持序列帧的图片格式。编码前应通过OH_PackingOptionsForSequence设置帧数、延迟时间、循环次数等参数。 <br>使用约束：接口返回失败时，不应使用outData中的内容或outDataSize输出值。 <br>资源管理：outData由调用方申请和释放。imagePacker、options和pixelmapSequence中PixelMap对象的生命周期仍由调用方管理，本接口不会释放这些对象。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 18
 
@@ -759,6 +813,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromImageSource(OH_ImagePackerNat
 
 将一个ImageSource编码到文件中。 <br>使用场景：适用于将ImageSource转码后直接写入文件描述符，避免调用方自行管理编码后的内存缓冲区。 <br>使用约束：imagePacker、options和imageSource均不能为空指针，fd必须为可写文件描述符。 <br>资源管理：fd必须是可写文件描述符，文件描述符的打开和关闭由调用方负责。接口不会释放imagePacker、options或imageSource。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 12
 
 **参数：**
@@ -785,6 +841,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmap(OH_ImagePackerNative
 **描述：**
 
 将一个Pixelmap编码到文件中。 <br>使用场景：适用于将处理后的PixelMap直接保存为文件。与PackToDataFromPixelmap相比，该接口不需要调用方预先分配输出数据缓冲区。 <br>使用约束：imagePacker、options和pixelmap均不能为空指针，fd必须为可写文件描述符。 <br>资源管理：fd必须是可写文件描述符，文件描述符的打开和关闭由调用方负责。接口不会释放imagePacker、options或pixelmap。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 12
 
@@ -813,6 +871,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPicture(OH_ImagePackerNative 
 
 将一个Picture编码到文件中。 <br>使用约束：imagePacker、options和picture均不能为空指针，fd必须为可写文件描述符。 <br>资源管理：fd的打开和关闭由调用方负责。接口不会释放imagePacker、options或picture。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 13
 
 **参数：**
@@ -839,6 +899,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmapSequence(OH_ImagePack
 **描述：**
 
 将一个Pixelmap序列编码到文件中。 <br>使用约束：接口返回失败时，目标文件中的内容不应继续使用。 <br>资源管理：fd的打开和关闭由调用方负责。接口不会释放imagePacker、options或pixelmapSequence中的PixelMap对象。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 18
 
@@ -868,6 +930,8 @@ Image_ErrorCode OH_ImagePackerNative_Release(OH_ImagePackerNative *imagePacker)
 
 释放OH_ImagePackerNative指针。 <br>使用约束：imagePacker不能为空指针。 <br>资源管理：由[OH_ImagePackerNative_Create](capi-image-packer-native-h.md#oh_imagepackernative_create)成功创建的对象，在使用完毕后必须调用本接口释放。释放Packer不会释放OH_PackingOptions、 OH_PackingOptionsForSequence、OH_ImageSourceNative、OH_PixelmapNative或OH_PictureNative对象。调用该接口后， imagePacker指向的OH_ImagePackerNative对象会被释放，不应继续使用。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 12
 
 **参数：**
@@ -891,6 +955,8 @@ Image_ErrorCode OH_ImagePackerNative_GetSupportedFormats(Image_MimeType** suppor
 **描述：**
 
 获取支持编码的图片格式。 <br>使用场景：适用于在编码前动态查询当前系统支持的目标格式，并据此设置[OH_PackingOptions_SetMimeType](capi-image-packer-native-h.md#oh_packingoptions_setmimetype)的MIME类型。 <br>使用约束：supportedFormats和length均不能为空指针。接口返回失败时，输出参数内容不应使用。 <br>资源管理：接口成功返回的supportedFormats数组由系统内部管理，调用方不需要也不应释放或修改。如需长期保存，应自行拷贝数组内容。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 20
 

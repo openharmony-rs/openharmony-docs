@@ -1,5 +1,9 @@
 # ScanFilters
 
+```TypeScript
+interface ScanFilters
+```
+
 Defines the scan filters
 
 **Since:** 26.0.0

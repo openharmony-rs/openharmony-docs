@@ -33,6 +33,8 @@ function updateConfiguration(config: Configuration, callback: AsyncCallback<void
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当通过修改配置来更新配置成功，err为undefined，否则为错误对象。 |
 
 
+<a id="updateconfiguration-1"></a>
+
 ## updateConfiguration
 
 ```TypeScript

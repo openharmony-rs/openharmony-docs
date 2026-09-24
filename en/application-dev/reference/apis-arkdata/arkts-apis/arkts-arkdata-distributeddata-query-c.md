@@ -1,5 +1,9 @@
 # Query
 
+```TypeScript
+class Query
+```
+
 Provides APIs to create a **Query** object, which defines different data query criteria.
 
 **Since:** 8

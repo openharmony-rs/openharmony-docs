@@ -1,5 +1,9 @@
 # ConnectionState
 
+```TypeScript
+enum ConnectionState
+```
+
 连接状态枚举。
 
 **起始版本：** 10

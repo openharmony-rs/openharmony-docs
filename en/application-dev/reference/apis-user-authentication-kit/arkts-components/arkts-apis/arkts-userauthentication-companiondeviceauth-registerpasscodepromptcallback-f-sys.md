@@ -14,7 +14,7 @@ function registerPasscodePromptCallback(callback: PasscodePromptCallback): void
 
 Registers the callback invoked when the framework needs a companion device passcode. If a callback has already been registered, the new one replaces it.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 

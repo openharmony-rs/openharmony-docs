@@ -1,5 +1,9 @@
 # RangingParams
 
+```TypeScript
+interface RangingParams
+```
+
 Parameters for ranging operation.
 
 **Since:** 26.0.0

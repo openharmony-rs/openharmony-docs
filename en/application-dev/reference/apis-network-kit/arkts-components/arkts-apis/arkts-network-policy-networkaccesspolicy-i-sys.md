@@ -1,5 +1,9 @@
 # NetworkAccessPolicy (System API)
 
+```TypeScript
+export interface NetworkAccessPolicy
+```
+
 Network access policy.
 
 **Since:** 12

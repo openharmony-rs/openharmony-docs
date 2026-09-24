@@ -1,5 +1,9 @@
 # PlaybackStrategy
 
+```TypeScript
+interface PlaybackStrategy
+```
+
 Provides preferred playback settings for player.
 
 **Since:** 12

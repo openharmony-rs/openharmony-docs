@@ -1,5 +1,9 @@
 # TypeDescriptor
 
+```TypeScript
+class TypeDescriptor
+```
+
 Represents a class for defining a uniform data type. It provides properties and methods for describing a uniform data type and its relationship with other uniform data types.
 
 **Since:** 11

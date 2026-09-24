@@ -1,5 +1,9 @@
 # RetryOptions
 
+```TypeScript
+interface RetryOptions
+```
+
 Task retry configuration.
 
 **Since:** 26.0.0

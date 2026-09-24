@@ -41,6 +41,8 @@ OH_AVMemory *OH_AVMemory_Create(int32_t size)
 
 Creates an OH_AVMemory instance.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 10
 
 **Deprecated**: 11
@@ -68,6 +70,8 @@ uint8_t *OH_AVMemory_GetAddr(struct OH_AVMemory *mem)
 **Description**
 
 Obtains the virtual memory address.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 9
 
@@ -97,6 +101,8 @@ int32_t OH_AVMemory_GetSize(struct OH_AVMemory *mem)
 
 Obtains the memory length.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 9
 
 **Deprecated**: 11
@@ -125,6 +131,8 @@ OH_AVErrCode OH_AVMemory_Destroy(struct OH_AVMemory *mem)
 
 Releases an OH_AVMemory instance.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 10
 
 **Deprecated**: 11
@@ -141,6 +149,6 @@ Releases an OH_AVMemory instance.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The release operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}:      <br>1. The value of mem is nullptr.      <br>2. The value of mem fails parameter structure verification.      <br>3. The value of mem is not created by the caller. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The release operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode):      <br>1. The value of mem is nullptr.      <br>2. The value of mem fails parameter structure verification.      <br>3. The value of mem is not created by the caller. |
 
 

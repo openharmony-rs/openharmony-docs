@@ -1,5 +1,9 @@
 # Hyperlink
 
+```TypeScript
+interface Hyperlink
+```
+
 Represents data of the hyperlink type.
 
 **Since:** 12

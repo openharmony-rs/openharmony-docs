@@ -1,5 +1,9 @@
 # CellInfo (System API)
 
+```TypeScript
+export interface CellInfo
+```
+
 Cell information.
 
 **Since:** 23

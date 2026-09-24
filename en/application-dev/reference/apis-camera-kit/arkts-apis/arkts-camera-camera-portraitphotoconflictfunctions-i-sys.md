@@ -1,5 +1,9 @@
 # PortraitPhotoConflictFunctions (System API)
 
+```TypeScript
+interface PortraitPhotoConflictFunctions extends ZoomQuery, PortraitQuery, ApertureQuery
+```
+
 Portrait Photo Conflict Functions object.
 
 **Inheritance/Implementation:** PortraitPhotoConflictFunctions extends [ZoomQuery](arkts-camera-camera-zoomquery-i.md)<!--Del-->, [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.md)<!--DelEnd-->, [ApertureQuery](arkts-camera-camera-aperturequery-i.md)

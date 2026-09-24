@@ -8,6 +8,8 @@ typedef struct ArkUI_TextEditMenuOptions ArkUI_TextEditMenuOptions
 
 Defines the text menu item for edit menu options.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

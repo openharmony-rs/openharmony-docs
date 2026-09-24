@@ -1,5 +1,9 @@
 # SwiperDynamicSyncScene
 
+```TypeScript
+export class SwiperDynamicSyncScene extends DynamicSyncScene
+```
+
 Provides frame rate configuration APIs for the **Swiper** component.
 
 > **NOTE:** 

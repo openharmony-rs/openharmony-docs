@@ -8,6 +8,8 @@ typedef struct ImagePacker_Native_ ImagePacker_Native
 
 Defines an image packer object at the native layer for the image packer interface.
 
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
+
 **Since**: 11
 
 **Related module**: [Image](capi-image.md)

@@ -8,6 +8,8 @@ typedef struct __TEE_OperationInfo {...} TEE_OperationInfo
 
 Defines the operation information.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)

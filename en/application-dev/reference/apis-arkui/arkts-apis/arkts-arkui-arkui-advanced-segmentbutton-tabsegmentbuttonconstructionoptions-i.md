@@ -1,5 +1,9 @@
 # TabSegmentButtonConstructionOptions
 
+```TypeScript
+interface TabSegmentButtonConstructionOptions extends CommonSegmentButtonOptions
+```
+
 Creates a SegmentButtonOptions object of the tab type.
 
 Inherits from [CommonSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-commonsegmentbuttonoptions-i.md).

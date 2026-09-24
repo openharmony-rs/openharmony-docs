@@ -8,6 +8,8 @@ typedef struct OH_AudioStreamManager OH_AudioStreamManager
 
 声明音频流管理器，用于管理音频流相关功能。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 19
 
 **相关模块：** [OHAudio](capi-ohaudio.md)

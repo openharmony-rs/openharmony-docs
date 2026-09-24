@@ -1,5 +1,9 @@
 # VMMemoryInfo
 
+```TypeScript
+interface VMMemoryInfo
+```
+
 VM内存信息。
 
 **起始版本：** 12

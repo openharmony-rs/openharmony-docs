@@ -1,5 +1,9 @@
 # ScanErrorCode
 
+```TypeScript
+enum ScanErrorCode
+```
+
 Enumerates the scan error codes.
 
 **Since:** 20

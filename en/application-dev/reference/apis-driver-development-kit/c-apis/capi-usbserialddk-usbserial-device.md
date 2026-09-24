@@ -8,6 +8,8 @@ typedef struct UsbSerial_Device UsbSerial_Device
 
 Defines the data structures (opaque) for the USB serial port device.
 
+**System capability**: SystemCapability.Driver.UsbSerial.Extension
+
 **Since**: 18
 
 **Related module**: [USBSerialDDK](capi-usbserialddk.md)

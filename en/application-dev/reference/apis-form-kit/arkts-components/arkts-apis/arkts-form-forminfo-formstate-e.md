@@ -1,5 +1,9 @@
 # FormState
 
+```TypeScript
+enum FormState
+```
+
 Provides state about a form.
 
 **Since:** 9

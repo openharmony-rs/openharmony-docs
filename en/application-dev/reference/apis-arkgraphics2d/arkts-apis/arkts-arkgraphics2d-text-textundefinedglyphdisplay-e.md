@@ -1,5 +1,9 @@
 # TextUndefinedGlyphDisplay
 
+```TypeScript
+enum TextUndefinedGlyphDisplay
+```
+
 Enumerates the modes for displaying undefined text glyphs.
 
 **Since:** 20

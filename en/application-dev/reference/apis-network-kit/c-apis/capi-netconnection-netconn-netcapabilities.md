@@ -8,6 +8,8 @@ typedef struct NetConn_NetCapabilities {...} NetConn_NetCapabilities
 
 Defines network capability sets.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 11
 
 **Related module**: [NetConnection](capi-netconnection.md)

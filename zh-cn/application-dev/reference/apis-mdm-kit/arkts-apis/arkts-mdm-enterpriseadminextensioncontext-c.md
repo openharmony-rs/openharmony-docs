@@ -1,5 +1,9 @@
 # EnterpriseAdminExtensionContext
 
+```TypeScript
+declare class EnterpriseAdminExtensionContext extends ExtensionContext
+```
+
 EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md)的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
 
 每个EnterpriseAdminExtensionAbility组件实例化时，系统都会自动创建对应的EnterpriseAdminExtensionContext。开发者可以通过EnterpriseAdminExtensionContext获取应用的沙箱路径、启动其他的组件。该上下文环境只能在当前EnterpriseAdminExtensionAbility中使用，不能传递到其他组件中使用。
@@ -62,17 +66,42 @@ startAbilityByAdmin(admin: Want, want: Want): Promise<void>
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200014](../errorcode-enterpriseDeviceManager.md#9200014-启动组件失败) | Failed to start the ability. |
 | [9200015](../errorcode-enterpriseDeviceManager.md#9200015-组件不存在) | The ability does not exist. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例**
 
-```TypeScript
 需要在module.json5中配置被启动组件的信息。permissions为可选字段，需根据实际情况进行替换或者不填。
-```
 
 ```TypeScript
+"abilities": [
+  {
+    "name": "MainAbility",
+    "srcEntry": "./ets/MainAbility/MainAbility.ts",
+    "description": "$string:MainAbility_desc",
+    "icon": "$media:icon",
+    "label": "$string:MainAbility_label",
+    "startWindowIcon": "$media:icon",
+    "startWindowBackground": "$color:white",
+    "exported": true,
+    "permissions": [
+      "ohos.permission.START_UI_ABILITY"
+    ]
+  }
+]
+```
+
 调用方应用需要在module.json5中申请对应的权限。启动其他应用中的组件时，调用方应用必须获取该组件所要求的权限。
+
+```TypeScript
+"requestPermissions": [
+  {
+    "name": "ohos.permission.START_UI_ABILITY"
+  },
+  {
+    "name": "ohos.permission.ENTERPRISE_START_ABILITIES"
+  }
+]
 ```
 
 ```TypeScript

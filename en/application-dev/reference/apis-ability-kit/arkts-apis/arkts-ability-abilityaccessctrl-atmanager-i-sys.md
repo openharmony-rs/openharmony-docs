@@ -1,5 +1,9 @@
 # AtManager
 
+```TypeScript
+interface AtManager
+```
+
 Program access control management class, providing capabilities such as permission verification, runtime permission dialog box request, settings page authorization guidance, global switch request, and permission status monitoring. Obtain an instance through [createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md).
 
 **Since:** 8
@@ -23,6 +27,8 @@ Obtains the flags of a specified permission for a specified app. This API uses a
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_SENSITIVE_PERMISSIONS or ohos.permission.GRANT_SENSITIVE_PERMISSIONS or ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -81,6 +87,8 @@ Obtains the toggle state of a permission. This API uses a promise to return the 
 
 **Required permissions:** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -106,7 +114,7 @@ Obtains the toggle state of a permission. This API uses a promise to return the 
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The permissionName exceeds 256 characters, or the specified permission is not a user_grant permission. |
 | [12100003](../errorcode-access-token.md#12100003-permission-not-exist) | The specified permission does not exist. |
-| [12100004](../errorcode-access-token.md#12100004-listener-apis-not-used-in-pairs) | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**Applicable version:** 26.1.0 and later |
+| [12100004](../errorcode-access-token.md#12100004-listener-apis-not-used-in-pairs) | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**Applicable version:** 26.0.1 and later |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
 **Examples**
@@ -129,6 +137,8 @@ atManager.getPermissionRequestToggleStatus(permission).then((res: abilityAccessC
 });
 ```
 
+<a id="getpermissionrequesttogglestatus-1"></a>
+
 ## getPermissionRequestToggleStatus
 
 ```TypeScript
@@ -139,7 +149,7 @@ getPermissionRequestToggleStatus(
 
 Obtains the permission dialog toggle status for a specified permission under a specified sub-profile. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
@@ -189,6 +199,8 @@ Obtains the status of the specified permissions. This API uses a promise to retu
 **Since:** 12
 
 **Required permissions:** ohos.permission.GET_SENSITIVE_PERMISSIONS
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -243,6 +255,8 @@ Obtains the data version number of the current permission management. This API u
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -285,6 +299,8 @@ Grants an app permission. After the call is successful, the specified app obtain
 **Since:** 21
 
 **Required permissions:** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -347,6 +363,8 @@ This API only supports granting permissions of the user_grant type. If you need 
 
 **Required permissions:** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -394,21 +412,7 @@ atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', perm
 });
 ```
 
-```TypeScript
-import { abilityAccessCtrl } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // For details about how to obtain the tokenID, see the description in the AtManager section.
-let permissionFlags: number = 1;
-atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
-  if (err) {
-    console.error(`grantUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('grantUserGrantedPermission success');
-  }
-});
-```
+<a id="grantusergrantedpermission-1"></a>
 
 ## grantUserGrantedPermission
 
@@ -426,6 +430,8 @@ Grants a user_grant permission to an app. This API uses an asynchronous callback
 **Since:** 8
 
 **Required permissions:** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -455,7 +461,21 @@ Grants a user_grant permission to an app. This API uses an asynchronous callback
 
 **Examples**
 
-See [grantUserGrantedPermission](#grantusergrantedpermission)
+```TypeScript
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let tokenID: number = 0; // For details about how to obtain the tokenID, see the description in the AtManager section.
+let permissionFlags: number = 1;
+atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
+  if (err) {
+    console.error(`grantUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('grantUserGrantedPermission success');
+  }
+});
+```
 
 ## off('permissionStateChange')
 
@@ -477,6 +497,8 @@ This API is usually used together with [on](#onpermissionstatechange) to cancel 
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_SENSITIVE_PERMISSIONS
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -502,23 +524,6 @@ This API is usually used together with [on](#onpermissionstatechange) to cancel 
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
 **Examples**
-
-```TypeScript
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // Create a permission management instance
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  // Set the permission list to unsubscribe from
-  let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
-  // Unsubscribe from permission status changes
-  atManager.off('selfPermissionStateChange', permissionList);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Code: ${error.code}, message: ${error.message}`);
-}
-```
 
 ```TypeScript
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
@@ -559,6 +564,8 @@ This API is usually used together with [off](#offpermissionstatechange). When li
 
 **Required permissions:** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -585,26 +592,6 @@ This API is usually used together with [off](#offpermissionstatechange). When li
 | [12100008](../errorcode-access-token.md#12100008-out-of-memory) | Out of memory. |
 
 **Examples**
-
-```TypeScript
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // Create a permission management instance
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  // Set the list of permissions to subscribe to
-  let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
-  // Subscribe to permission status changes
-  atManager.on('selfPermissionStateChange', permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
-    console.info('receive permission state change');
-    console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Code: ${error.code}, message: ${error.message}`);
-}
-```
 
 ```TypeScript
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
@@ -838,10 +825,29 @@ If the user denies authorization, the dialog cannot be pulled up again. Permissi
 
 **Examples**
 
-```TypeScript
 For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 For details about the process and example of applying for user authorization, see [Requesting User Authorization](../../../security/AccessToken/request-user-authorization.md).
+
+```TypeScript
+import { abilityAccessCtrl, Context, PermissionRequestResult } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// Obtain the context within the component.
+let context: Context = this.getUIContext().getHostContext() as Context;
+let windowId = 0; // Obtain the window ID: let windowId = window.findWindow(window name).getWindowProperties().id;
+// Request user authorization for a specified permission based on the window ID
+atManager.requestPermissionsFromUserWithWindowId(context, windowId, ['ohos.permission.CAMERA']).then((data: PermissionRequestResult) => {
+  console.info(`requestPermissionsFromUserWithWindowId success, result: ${data}`);
+  console.info('requestPermissionsFromUserWithWindowId data permissions:' + data.permissions);
+  console.info('requestPermissionsFromUserWithWindowId data authResults:' + data.authResults);
+  console.info('requestPermissionsFromUserWithWindowId data dialogShownResults:' + data.dialogShownResults);
+  console.info('requestPermissionsFromUserWithWindowId data errorReasons:' + data.errorReasons);
+}).catch((err: BusinessError): void => {
+  console.error(`requestPermissionsFromUserWithWindowId fail, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## revokePermission
@@ -861,6 +867,8 @@ When the killProcess parameter is true and the permission status changes from "a
 **Since:** 21
 
 **Required permissions:** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -933,6 +941,8 @@ When the permission status changes from "authorized" to "unauthorized", the app 
 
 **Required permissions:** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -980,21 +990,7 @@ atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', per
 });
 ```
 
-```TypeScript
-import { abilityAccessCtrl } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // For details about how to obtain the tokenID, see the description in the AtManager section.
-let permissionFlags: number = 1;
-atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
-  if (err) {
-    console.error(`revokeUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('revokeUserGrantedPermission success');
-  }
-});
-```
+<a id="revokeusergrantedpermission-1"></a>
 
 ## revokeUserGrantedPermission
 
@@ -1012,6 +1008,8 @@ Revokes a user_grant permission from an app. This API uses an asynchronous callb
 **Since:** 8
 
 **Required permissions:** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -1041,7 +1039,21 @@ Revokes a user_grant permission from an app. This API uses an asynchronous callb
 
 **Examples**
 
-See [revokeUserGrantedPermission](#revokeusergrantedpermission)
+```TypeScript
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let tokenID: number = 0; // For details about how to obtain the tokenID, see the description in the AtManager section.
+let permissionFlags: number = 1;
+atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
+  if (err) {
+    console.error(`revokeUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('revokeUserGrantedPermission success');
+  }
+});
+```
 
 ## setPermissionRequestToggleStatus
 
@@ -1054,6 +1066,8 @@ Sets the dialog toggle status for a specified permission of the current user. Af
 **Since:** 12
 
 **Required permissions:** ohos.permission.DISABLE_PERMISSION_DIALOG
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -1081,7 +1095,7 @@ Sets the dialog toggle status for a specified permission of the current user. Af
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, or the status value is invalid. |
 | [12100003](../errorcode-access-token.md#12100003-permission-not-exist) | The specified permission does not exist. |
-| [12100006](../errorcode-access-token.md#12100006-operation-not-allowed) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**Applicable version:** 26.1.0 and later |
+| [12100006](../errorcode-access-token.md#12100006-operation-not-allowed) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**Applicable version:** 26.0.1 and later |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-internal-service-error) | Common inner error. A database error occurs. |
 
@@ -1101,6 +1115,8 @@ atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.Permiss
 });
 ```
 
+<a id="setpermissionrequesttogglestatus-1"></a>
+
 ## setPermissionRequestToggleStatus
 
 ```TypeScript
@@ -1112,7 +1128,7 @@ setPermissionRequestToggleStatus(
 
 Sets the dialog toggle status for a specified permission under a specified sub-profile. After the call is successful, the dialog toggle status of the permission will be set to the specified value. When the status is CLOSED, no permission dialog will pop up when the app requests the permission. When the status is OPEN, the permission dialog will pop up normally when the app requests the permission. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.DISABLE_PERMISSION_DIALOG
 

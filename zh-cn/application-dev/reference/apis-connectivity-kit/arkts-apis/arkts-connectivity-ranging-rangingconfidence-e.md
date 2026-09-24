@@ -1,5 +1,9 @@
 # RangingConfidence
 
+```TypeScript
+enum RangingConfidence
+```
+
 枚举，测距测量置信度，表示测量结果值的可信程度。
 
 **起始版本：** 26.0.0

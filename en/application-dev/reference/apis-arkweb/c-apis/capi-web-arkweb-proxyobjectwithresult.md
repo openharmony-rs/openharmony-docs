@@ -8,6 +8,8 @@ typedef struct ArkWeb_ProxyObjectWithResult {...} ArkWeb_ProxyObjectWithResult
 
 ArkWeb_ProxyObjectWithResult is a JavaScript proxy object struct with a return value, extending the capabilities of ArkWeb_ProxyObject. This struct organizes multiple ArkWeb_ProxyMethodWithResult instances into an object and injects it into a web page, allowing JavaScript to obtain a return value after calling Native methods. It resolves the issue that ArkWeb_ProxyObject cannot return execution results, simplifying the development process and improving development efficiency. It is suitable for API scenarios that require returning structured execution results to the web frontend.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 18
 
 **Related module**: [Web](capi-web.md)

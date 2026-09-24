@@ -53,17 +53,8 @@ sim.getSimTelephoneNumber(0, (err: BusinessError, data: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getSimTelephoneNumber(0).then((data: string) => {
-    console.info(`getSimTelephoneNumber success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getSimTelephoneNumber failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getsimtelephonenumber-1"></a>
 
 ## getSimTelephoneNumber
 
@@ -108,4 +99,13 @@ Obtains the MSISDN of the SIM card in a specified slot. The MSISDN is recorded i
 
 **Examples**
 
-See [getSimTelephoneNumber](#getsimtelephonenumber)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getSimTelephoneNumber(0).then((data: string) => {
+    console.info(`getSimTelephoneNumber success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getSimTelephoneNumber failed, promise: err->${JSON.stringify(err)}`);
+});
+```

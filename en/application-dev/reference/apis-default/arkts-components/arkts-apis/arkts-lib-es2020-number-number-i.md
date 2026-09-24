@@ -1,5 +1,9 @@
 # Number
 
+```TypeScript
+interface Number
+```
+
 ## Modules to Import
 
 ```TypeScript

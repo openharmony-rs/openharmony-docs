@@ -1,5 +1,9 @@
 # AudioDevice (System API)
 
+```TypeScript
+export interface AudioDevice
+```
+
 Enumerates audio devices.
 
 **Since:** 10

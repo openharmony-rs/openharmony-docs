@@ -8,6 +8,8 @@ typedef struct ArkUI_NativeAnimateAPI_1 {...} ArkUI_NativeAnimateAPI_1
 
 ArkUI（方舟UI框架）提供的Native侧动画接口集合。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -21,7 +23,7 @@ ArkUI（方舟UI框架）提供的Native侧动画接口集合。
 | 名称 | 描述 |
 | -- | -- |
 | [int32_t (\*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, ArkUI_ContextCallback* update,ArkUI_AnimateCompleteCallback* complete)](#animateto) | 执行显式动画过渡效果。 |
-| [int32_t (\*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateOption* option)](#keyframeanimateto) | 关键帧动画接口，通过指定关键帧定义属性在不同时间节点的值，系统根据插值算法自动计算中间帧的属性值实现平滑过渡。关键帧参数配置详见[ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)。 与animateTo的显式过渡动画不同，keyframeAnimateTo适用于需要在多个时间节点定义不同动画状态的场景。选取原则：仅需起始到结束状态的过渡动画时使用animateTo， 需多关键帧精细控制动画过程时使用keyframeAnimateTo。 |
+| [int32_t (\*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateOption* option)](#keyframeanimateto) | 关键帧动画接口，通过指定关键帧定义属性在不同时间节点的值，系统根据插值算法自动计算中间帧的属性值实现平滑过渡。关键帧参数配置详见{@link ArkUI_KeyframeAnimateOption}。 与animateTo的显式过渡动画不同，keyframeAnimateTo适用于需要在多个时间节点定义不同动画状态的场景。选取原则：仅需起始到结束状态的过渡动画时使用animateTo， 需多关键帧精细控制动画过程时使用keyframeAnimateTo。 |
 | [ArkUI_AnimatorHandle (\*createAnimator)(ArkUI_ContextHandle context, ArkUI_AnimatorOption* option)](#createanimator) | 创建animator动画对象并返回其指针。与animateTo/keyframeAnimateTo的触发式动画不同，createAnimator创建可持久控制的动画对象，适用于需要反复启动、停止、 监听状态等精细控制的动画场景。选取原则：一次性过渡动画使用animateTo或keyframeAnimateTo，需持久控制动画生命周期时使用createAnimator。 |
 | [void (\*disposeAnimator)(ArkUI_AnimatorHandle animatorHandle)](#disposeanimator) | 销毁animator动画对象并释放其内存，销毁后不可再使用该handle。传入NULL或已销毁的句柄时，函数不执行销毁操作。 |
 
@@ -64,7 +66,7 @@ int32_t (*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateO
 
 **描述：**
 
-关键帧动画接口，通过指定关键帧定义属性在不同时间节点的值，系统根据插值算法自动计算中间帧的属性值实现平滑过渡。关键帧参数配置详见[ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)。 与animateTo的显式过渡动画不同，keyframeAnimateTo适用于需要在多个时间节点定义不同动画状态的场景。选取原则：仅需起始到结束状态的过渡动画时使用animateTo， 需多关键帧精细控制动画过程时使用keyframeAnimateTo。
+关键帧动画接口，通过指定关键帧定义属性在不同时间节点的值，系统根据插值算法自动计算中间帧的属性值实现平滑过渡。关键帧参数配置详见{@link ArkUI_KeyframeAnimateOption}。 与animateTo的显式过渡动画不同，keyframeAnimateTo适用于需要在多个时间节点定义不同动画状态的场景。选取原则：仅需起始到结束状态的过渡动画时使用animateTo， 需多关键帧精细控制动画过程时使用keyframeAnimateTo。
 
 **参数：**
 

@@ -1,8 +1,12 @@
 # AssessmentErrorCode
 
+```TypeScript
+enum AssessmentErrorCode
+```
+
 Assessment error code.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Customization.AssessmentConfiguration
 
@@ -14,7 +18,7 @@ OK = 0
 
 Ok.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -28,7 +32,7 @@ USER_CANCEL = 1
 
 User cancel.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -42,7 +46,7 @@ TIMEOUT = 2
 
 Timeout exit.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -56,7 +60,7 @@ SYSTEM_ERROR = 3
 
 System error.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +74,7 @@ ENV_ANOMALY = 4
 
 Environment Anomaly
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

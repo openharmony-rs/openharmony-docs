@@ -4,6 +4,8 @@
 
 Provides APIs for game controller capability.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 ## Files

@@ -1,5 +1,9 @@
 # NetworkSearchResult（系统接口）
 
+```TypeScript
+export interface NetworkSearchResult
+```
+
 Obtains the network search results.
 
 **起始版本：** 6

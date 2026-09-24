@@ -4,6 +4,8 @@
 
 Provide the definition of the C interface for the audio module.
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 10
 
 ## 文件汇总

@@ -1,5 +1,9 @@
 # ActionType (System API)
 
+```TypeScript
+export enum ActionType
+```
+
 Enumerates the trigger modes for user scenes (typically scenes involving animations).
 
 **Since:** 10

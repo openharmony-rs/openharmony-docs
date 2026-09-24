@@ -1,5 +1,9 @@
 # FormStateInfo
 
+```TypeScript
+interface FormStateInfo
+```
+
 Describes the widget state information.
 
 **Since:** 8

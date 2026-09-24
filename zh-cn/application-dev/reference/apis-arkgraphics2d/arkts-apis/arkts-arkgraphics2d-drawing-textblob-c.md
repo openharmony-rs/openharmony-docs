@@ -1,5 +1,9 @@
 # TextBlob
 
+```TypeScript
+class TextBlob
+```
+
 TextBlob是由一个或多个具有相同字型的字符组成的字块。支持通过文本、字符串、RunBuffer等多种方式创建字形集合，适用于需要批量渲染文本或获取文字边界框的场景。
 
 > **说明：** 
@@ -36,6 +40,17 @@ bounds(): common2D.Rect
 | --- | --- |
 | [common2D.Rect](arkts-arkgraphics2d-common2d-rect-i.md) | 文字边界框的矩形区域。 |
 
+**示例**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+const font = new drawing.Font();
+font.setSize(20);
+const textBlob = drawing.TextBlob.makeFromString("drawing", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+let bounds = textBlob.bounds();
+```
+
 ## makeFromPosText
 
 ```TypeScript
@@ -67,7 +82,66 @@ static makeFromPosText(text: string, len: number, points: common2D.Point[], font
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let text : string = 'makeFromPosText';
+    let font : drawing.Font = new drawing.Font();
+    font.setSize(100);
+    let length = font.countText(text);
+    let points : common2D.Point[] = [];
+    for (let i = 0; i !== length; ++i) {
+      points.push({ x: i * 35, y: i * 35 });
+    }
+    let textBlob : drawing.TextBlob = drawing.TextBlob.makeFromPosText(text, points.length, points, font);
+    canvas.drawTextBlob(textBlob, 100, 100);
+  }
+}
+```
+
+## makeFromPosTextWithFallback
+
+```TypeScript
+static makeFromPosTextWithFallback(
+      text: string, len: number, points: common2D.Point[], font: Font): Array<TextBlob>
+```
+
+使用文本创建一组TextBlob对象，支持字体回退。若当前字型的字体不支持某些字符时，会自动从系统中查找回退字体。若未找到回退字体，则仍使用当前字型的字体。每段连续且使用相同字体的字符会创建一个TextBlob对象。TextBlob对象中每个字符的坐标由points数组中对应的坐标信息决定。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | 用于绘制TextBlob的文本内容。 |
+| len | number | 是 | 字形数量，即通过[countText](arkts-arkgraphics2d-drawing-font-c.md#counttext)获取的整数值。 |
+| points | [common2D.Point](arkts-arkgraphics2d-common2d-point-i.md)[] | 是 | 用于指定每个字形坐标的二维点数组，数组长度需与len一致。 |
+| font | [Font](arkts-arkgraphics2d-drawing-font-c.md) | 是 | 字型对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Array&lt;[TextBlob](arkts-arkgraphics2d-drawing-textblob-c.md)&gt; | 创建的TextBlob对象数组。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
 ## makeFromRunBuffer
 
@@ -99,7 +173,35 @@ static makeFromRunBuffer(pos: Array<TextBlobRunBuffer>, font: Font, bounds?: com
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const font = new drawing.Font();
+    font.setSize(20);
+    let runBuffer : Array<drawing.TextBlobRunBuffer> = [
+      { glyph: 65, positionX: 0, positionY: 0 },
+      { glyph: 227, positionX: 14.9, positionY: 0 },
+      { glyph: 283, positionX: 25.84, positionY: 0 },
+      { glyph: 283, positionX: 30.62, positionY: 0 },
+      { glyph: 299, positionX: 35.4, positionY: 0 }
+    ];
+    const textBlob = drawing.TextBlob.makeFromRunBuffer(runBuffer, font, null);
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachBrush(brush);
+    canvas.drawTextBlob(textBlob, 20, 20);
+    canvas.detachBrush();
+  }
+}
+```
 
 ## makeFromString
 
@@ -131,7 +233,55 @@ static makeFromString(text: string, font: Font, encoding?: TextEncoding): TextBl
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    const font = new drawing.Font();
+    font.setSize(20);
+    const textBlob = drawing.TextBlob.makeFromString("drawing", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    canvas.attachBrush(brush);
+    canvas.drawTextBlob(textBlob, 20, 20);
+    canvas.detachBrush();
+  }
+}
+```
+
+## makeFromStringWithFallback
+
+```TypeScript
+static makeFromStringWithFallback(text: string, font: Font): Array<TextBlob>
+```
+
+使用字符串创建一组TextBlob对象，支持字体回退。若当前字型的字体不支持某些字符时，会自动从系统中查找回退字体。若未找到回退字体，则仍使用当前字型的字体。每段连续且使用相同字体的字符会创建一个TextBlob对象。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | 用于绘制TextBlob的文本内容。 |
+| font | [Font](arkts-arkgraphics2d-drawing-font-c.md) | 是 | 字型对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Array&lt;[TextBlob](arkts-arkgraphics2d-drawing-textblob-c.md)&gt; | 创建的TextBlob对象数组。 |
 
 ## uniqueID
 
@@ -150,3 +300,16 @@ uniqueID(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 返回TextBlob对象的唯一的非零标识符。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let text : string = 'TextBlobUniqueId';
+let font : drawing.Font = new drawing.Font();
+font.setSize(100);
+let textBlob = drawing.TextBlob.makeFromString(text, font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+let id = textBlob.uniqueID();
+console.info('uniqueID---------------' + id);
+```

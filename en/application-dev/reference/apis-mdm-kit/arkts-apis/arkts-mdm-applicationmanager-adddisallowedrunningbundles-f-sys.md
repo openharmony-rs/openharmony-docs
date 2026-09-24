@@ -70,47 +70,8 @@ applicationManager.addDisallowedRunningBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-```TypeScript
-import { applicationManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// Replace with actual values.
-let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
-
-applicationManager.addDisallowedRunningBundles(wantTemp, appIds, 100, (err) => {
-  if (err) {
-    console.error(`Failed to add disallowed running bundles. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in adding disallowed running bundles');
-});
-```
-
-```TypeScript
-import { applicationManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// Replace with actual values.
-let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
-
-applicationManager.addDisallowedRunningBundles(wantTemp, appIds, 100).then(() => {
-  console.info('Succeeded in adding disallowed running bundles');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to add disallowed running bundles. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="adddisallowedrunningbundles-1"></a>
 
 ## addDisallowedRunningBundles
 
@@ -156,8 +117,29 @@ Adds the applications that are not allowed to run under a specified user (specif
 
 **Examples**
 
-See [addDisallowedRunningBundles](#adddisallowedrunningbundles)
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
 
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
+
+applicationManager.addDisallowedRunningBundles(wantTemp, appIds, 100, (err) => {
+  if (err) {
+    console.error(`Failed to add disallowed running bundles. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in adding disallowed running bundles');
+});
+```
+
+
+<a id="adddisallowedrunningbundles-2"></a>
 
 ## addDisallowedRunningBundles
 
@@ -208,4 +190,22 @@ Adds the applications that are not allowed to run by the current or specified us
 
 **Examples**
 
-See [addDisallowedRunningBundles](#adddisallowedrunningbundles)
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
+
+applicationManager.addDisallowedRunningBundles(wantTemp, appIds, 100).then(() => {
+  console.info('Succeeded in adding disallowed running bundles');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to add disallowed running bundles. Code is ${err.code}, message is ${err.message}`);
+});
+```

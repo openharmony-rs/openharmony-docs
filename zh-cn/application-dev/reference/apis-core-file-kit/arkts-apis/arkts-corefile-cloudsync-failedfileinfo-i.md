@@ -1,5 +1,9 @@
 # FailedFileInfo
 
+```TypeScript
+interface FailedFileInfo
+```
+
 云文件批量缓存失败列表及失败原因。
 
 **起始版本：** 20

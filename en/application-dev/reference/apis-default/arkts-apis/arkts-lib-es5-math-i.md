@@ -1,5 +1,9 @@
 # Math
 
+```TypeScript
+interface Math
+```
+
 ## Modules to Import
 
 ```TypeScript

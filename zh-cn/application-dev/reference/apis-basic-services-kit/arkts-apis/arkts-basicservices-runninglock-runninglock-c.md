@@ -1,5 +1,9 @@
 # RunningLock
 
+```TypeScript
+class RunningLock
+```
+
 阻止系统睡眠或使能接近光控制亮灭屏的锁，不同的锁类型具有不同的功能，详见[RunningLockType](arkts-basicservices-runninglock-runninglocktype-e.md)。需结合[create](arkts-basicservices-runninglock-create-f.md)创建锁、[hold](#hold)持锁、[unhold](#unhold)释放锁使用。具体使用方法见示例。
 
 **起始版本：** 7
@@ -36,8 +40,8 @@ hold(timeout: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | If the permission is denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | If the permission is denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 
 **示例**
 
@@ -119,6 +123,61 @@ class RunningLockTest {
 }
 ```
 
+## unhold
+
+```TypeScript
+unhold(): void
+```
+
+释放RunningLock锁。此方法与hold()配对使用，在调用hold()锁定后调用此方法释放锁。
+
+**起始版本：** 9
+
+**需要权限：** ohos.permission.RUNNING_LOCK
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | If the permission is denied. |
+
+**示例**
+
+```TypeScript
+// RunningLockTest.ets
+class RunningLockTest {
+    public static recordLock: runningLock.RunningLock;
+
+    public static unholdRunningLock(): void {
+        if (RunningLockTest.recordLock) {
+            try {
+                RunningLockTest.recordLock.unhold();
+                console.info('unhold running lock success');
+            } catch(err) {
+                console.error(`Failed to unhold running lock. Code: ${err.code}, message: ${err.message}`);
+            }
+        } else {
+            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: BusinessError, lock: runningLock.RunningLock) => {
+                if (err) {
+                    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
+                } else {
+                    console.info('create running lock: ' + lock);
+                    RunningLockTest.recordLock = lock;
+                    try {
+                        lock.unhold();
+                        console.info('unhold running lock success');
+                    } catch(err) {
+                        console.error(`Failed to unhold running lock. Code: ${err.code}, message: ${err.message}`);
+                    }
+                }
+            });
+        }
+    }
+}
+```
+
 ## isUsed
 
 ```TypeScript
@@ -189,61 +248,6 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 .catch((err: BusinessError) => {
     console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
 });
-```
-
-## unhold
-
-```TypeScript
-unhold(): void
-```
-
-释放RunningLock锁。此方法与hold()配对使用，在调用hold()锁定后调用此方法释放锁。
-
-**起始版本：** 9
-
-**需要权限：** ohos.permission.RUNNING_LOCK
-
-**系统能力：** SystemCapability.PowerManager.PowerManager.Core
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | If the permission is denied. |
-
-**示例**
-
-```TypeScript
-// RunningLockTest.ets
-class RunningLockTest {
-    public static recordLock: runningLock.RunningLock;
-
-    public static unholdRunningLock(): void {
-        if (RunningLockTest.recordLock) {
-            try {
-                RunningLockTest.recordLock.unhold();
-                console.info('unhold running lock success');
-            } catch(err) {
-                console.error(`Failed to unhold running lock. Code: ${err.code}, message: ${err.message}`);
-            }
-        } else {
-            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: BusinessError, lock: runningLock.RunningLock) => {
-                if (err) {
-                    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
-                } else {
-                    console.info('create running lock: ' + lock);
-                    RunningLockTest.recordLock = lock;
-                    try {
-                        lock.unhold();
-                        console.info('unhold running lock success');
-                    } catch(err) {
-                        console.error(`Failed to unhold running lock. Code: ${err.code}, message: ${err.message}`);
-                    }
-                }
-            });
-        }
-    }
-}
 ```
 
 ## unlock

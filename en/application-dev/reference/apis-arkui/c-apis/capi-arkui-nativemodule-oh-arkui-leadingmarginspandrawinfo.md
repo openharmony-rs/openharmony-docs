@@ -6,7 +6,9 @@ typedef struct OH_ArkUI_LeadingMarginSpanDrawInfo OH_ArkUI_LeadingMarginSpanDraw
 
 ## Overview
 
-Defines the custom drawing information for paragraph indentation.<br> [OH_ArkUI_LeadingMarginSpanDrawInfo_Create](capi-styled-string-h.md#oh_arkui_leadingmarginspandrawinfo_create) can be used to create a custom drawing information object for paragraph indentation.<br> [OH_ArkUI_LeadingMarginSpanDrawInfo_Destroy](capi-styled-string-h.md#oh_arkui_leadingmarginspandrawinfo_destroy) can be used to destroy the custom drawing information object for paragraph indentation.<br> This object is used to provide the drawing context information of the current line in the callback function registered by [OH_ArkUI_ParagraphStyle_RegisterOnDrawLeadingMarginCallback](capi-styled-string-h.md#oh_arkui_paragraphstyle_registerondrawleadingmargincallback).
+Defines the custom drawing information for paragraph indentation.<br> {@link OH_ArkUI_LeadingMarginSpanDrawInfo_Create} can be used to create a custom drawing information object for<br>paragraph indentation.<br> {@link OH_ArkUI_LeadingMarginSpanDrawInfo_Destroy} can be used to destroy the<br>custom drawing information object for paragraph indentation.<br> This object is used to provide the drawing<br>context information of the current line in the callback function registered by<br>{@link OH_ArkUI_ParagraphStyle_RegisterOnDrawLeadingMarginCallback}.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 

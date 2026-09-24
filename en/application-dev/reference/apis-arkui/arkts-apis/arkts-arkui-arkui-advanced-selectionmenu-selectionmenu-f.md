@@ -12,7 +12,7 @@ import { EditorEventInfo, EditorMenuOptions, ExpandedMenuOptions, SelectionMenu,
 export declare function SelectionMenu(options: SelectionMenuOptions): void
 ```
 
-Defines a **SelectionMenu** component. When the input parameter is empty, both the component and its content area have a zero size, making the component invisible. For example, when a **SelectionMenu** component activated via right -click is bound to a RichEditor component using bindSelectionMenu, it will not be displayed when the **RichEditor** component receives a right-click event.
+Defines a **SelectionMenu** component. When the input parameter is empty, both the component and its content area have a zero size, making the component invisible. For example, when a **SelectionMenu** component activated via right -click is bound to a [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor) component using [bindSelectionMenu](../arkts-components/arkts-arkui-richeditor-comp-attribute.md#bindselectionmenu), it will not be displayed when the **RichEditor** component receives a right-click event.
 
 **Since:** 11
 

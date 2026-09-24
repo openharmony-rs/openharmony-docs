@@ -40,14 +40,14 @@ import { dataTransfer } from '@kit.ConnectivityKit';
 | [ConnectionStateParams](arkts-connectivity-datatransfer-connectionstateparams-i.md) | 获取端口通道连接状态所需参数。 |
 | [DataParams](arkts-connectivity-datatransfer-dataparams-i.md) | 端口数据发送和接收的参数。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [TransferMode](arkts-connectivity-datatransfer-transfermode-e.md) | 表示和远端设备的数据传输模式，为枚举值。 |
-
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
 | [ConnectionState](arkts-connectivity-datatransfer-connectionstate-t.md) | 表示和远端设备的连接状态，为枚举值。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [TransferMode](arkts-connectivity-datatransfer-transfermode-e.md) | 表示和远端设备的数据传输模式，为枚举值。 |

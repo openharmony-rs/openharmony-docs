@@ -1,5 +1,9 @@
 # SnapshotSizeLimitation
 
+```TypeScript
+interface SnapshotSizeLimitation
+```
+
 定义组件截图的尺寸限制。
 
 **起始版本：** 26.0.0

@@ -1,6 +1,10 @@
 # SubCommandInfo (System API)
 
-Subcommand information
+```TypeScript
+export interface SubCommandInfo
+```
+
+Describes the information of a CLI tool subcommand.
 
 **Since:** 26.0.0
 
@@ -14,7 +18,7 @@ Subcommand information
 readonly description: string
 ```
 
-The description of the subcommand.
+Description of the subcommand. It should clearly explain the specific function and usage scenario of the subcommand.
 
 **Type:** string
 
@@ -32,7 +36,7 @@ The description of the subcommand.
 readonly eventSchemas?: Record<string, Record<string, Object>>
 ```
 
-Schemas about event for subcommand.
+Schema definitions for subcommand custom events. Stored as key-value pairs, where the key is the event type and the value is the JSON Schema definition of the event. The default value is an empty object.
 
 **Type:** Record&lt;string, Record&lt;string, Object&gt;&gt;
 
@@ -50,7 +54,7 @@ Schemas about event for subcommand.
 readonly eventTypes?: Array<string>
 ```
 
-Supported event types for custom event.
+List of custom event types supported by the CLI tool. All event types must be unique strings. The default value is an empty array.
 
 **Type:** Array&lt;string&gt;
 
@@ -68,7 +72,7 @@ Supported event types for custom event.
 readonly inputSchema: Record<string, Object>
 ```
 
-The input schema of the subcommand.
+Input schema definition of the subcommand. It uses JSON Schema format to define the structure and type of input parameters.
 
 **Type:** Record&lt;string, Object&gt;
 
@@ -86,7 +90,7 @@ The input schema of the subcommand.
 readonly outputSchema: Record<string, Object>
 ```
 
-The output schema of the subcommand.
+Output schema definition of the subcommand. It uses JSON Schema format to define the structure and type of output data.
 
 **Type:** Record&lt;string, Object&gt;
 
@@ -104,7 +108,7 @@ The output schema of the subcommand.
 readonly requirePermissions?: Array<string>
 ```
 
-The require permissions of the subcommand.
+List of permissions required by the subcommand. All permission items must be unique strings. The system verifies whether the caller has the required permissions when executing the subcommand, and cannot execute without the corresponding permissions. The default value is an empty array.
 
 **Type:** Array&lt;string&gt;
 

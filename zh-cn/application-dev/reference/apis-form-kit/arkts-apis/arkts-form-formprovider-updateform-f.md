@@ -41,7 +41,7 @@ function updateForm(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
@@ -74,27 +74,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formBindingData, formProvider } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
-let param: Record<string, string> = {
-  'temperature': '22c',
-  'time': '22:00'
-}
-let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
-try {
-  formProvider.updateForm(formId, obj).then(() => {
-    console.info(`formProvider updateForm success`);
-  }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
+<a id="updateform-1"></a>
 
 ## updateForm
 
@@ -132,7 +113,7 @@ function updateForm(formId: string, formBindingData: formBindingData.FormBinding
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
@@ -142,4 +123,23 @@ function updateForm(formId: string, formBindingData: formBindingData.FormBinding
 
 **示例**
 
-参见 updateForm
+```TypeScript
+import { formBindingData, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
+let param: Record<string, string> = {
+  'temperature': '22c',
+  'time': '22:00'
+}
+let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+try {
+  formProvider.updateForm(formId, obj).then(() => {
+    console.info(`formProvider updateForm success`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```

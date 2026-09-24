@@ -1,5 +1,9 @@
 # ModuleType
 
+```TypeScript
+export enum ModuleType
+```
+
 Enumerates the module types.
 
 **Since:** 9

@@ -34,6 +34,29 @@ Unsubscribes from continuous task cancellation events. This API uses an asynchro
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Callback parameter error;<br> 2. Unregister type has not register; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
+  console.info('continuousTaskCancel callback id ' + info.id);
+  console.info('continuousTaskCancel callback reason ' + info.reason);
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      backgroundTaskManager.off("continuousTaskCancel", callback);
+    } catch (error) {
+      console.error(`Operation onContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
 
 ## off('continuousTaskSuspend')
 
@@ -61,7 +84,31 @@ Unregisters from the listener for continuous task suspension. This API uses an a
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [9800005](../errorcode-backgroundTaskMgr.md#9800005-continuous-task-verification-failure) | Continuous task verification failed. |
+| [9800005](../errorcode-backgroundTaskMgr.md#9800005-long-running-task-verification-failure) | Continuous task verification failed. |
+
+**Examples**
+
+```TypeScript
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+function callback(info: backgroundTaskManager.ContinuousTaskSuspendInfo) {
+  console.info('continuousTaskSuspend callback continuousTaskId: ' + info.continuousTaskId);
+  console.info('continuousTaskSuspend callback suspendState: ' + info.suspendState);
+  console.info('continuousTaskSuspend callback suspendReason: ' + info.suspendReason);
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      backgroundTaskManager.off("continuousTaskSuspend", callback);
+    } catch (error) {
+      console.error(`Operation offContinuousTaskSuspend failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
 
 
 ## off('continuousTaskActive')
@@ -90,4 +137,26 @@ Unregisters from the listener for continuous task activation. This API uses an a
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [9800005](../errorcode-backgroundTaskMgr.md#9800005-continuous-task-verification-failure) | Continuous task verification failed. |
+| [9800005](../errorcode-backgroundTaskMgr.md#9800005-long-running-task-verification-failure) | Continuous task verification failed. |
+
+**Examples**
+
+```TypeScript
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+function callback(info: backgroundTaskManager.ContinuousTaskActiveInfo) {
+  console.info('continuousTaskActive callback id: ' + info.id);
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      backgroundTaskManager.off("continuousTaskActive", callback);
+    } catch (error) {
+      console.error(`Operation offContinuousTaskActive failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```

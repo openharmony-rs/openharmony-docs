@@ -22,7 +22,7 @@ function setProcessPriority(pid: number, priority: ProcessPriority): Promise<voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pid | number | 是 | 需要被压制子进程的进程号，OH_Ability_StartNativeChildProcess接口创建子进程后的pid参数，即为子进程进程号。 |
+| pid | number | 是 | 需要被压制子进程的进程号，[OH_Ability_StartNativeChildProcess](../../../reference/apis-ability-kit/c-apis/capi-native-child-process-h.md#oh_ability_startnativechildprocess)接口创建子进程后的pid参数，即为子进程进程号。 |
 | priority | [ProcessPriority](arkts-backgroundtasks-backgroundprocessmanager-processpriority-e.md) | 是 | 压制档位。 |
 
 **返回值：**
@@ -35,7 +35,7 @@ function setProcessPriority(pid: number, priority: ProcessPriority): Promise<voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: priority is out of range. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 

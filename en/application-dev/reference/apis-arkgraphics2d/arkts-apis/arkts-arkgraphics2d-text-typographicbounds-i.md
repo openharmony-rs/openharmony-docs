@@ -1,5 +1,9 @@
 # TypographicBounds
 
+```TypeScript
+interface TypographicBounds
+```
+
 Describes the typographic boundaries of a text line. These boundaries depend on the typographic font and font size, but not on the characters themselves. For example, for the string " a b " (which has a space before "a" and a space after "b"), the typographic boundaries include the spaces at the beginning and end of the line. Similarly, the strings "j" and "E" have identical typographic boundaries, independent of the characters themselves.
 
 > **NOTE:** 

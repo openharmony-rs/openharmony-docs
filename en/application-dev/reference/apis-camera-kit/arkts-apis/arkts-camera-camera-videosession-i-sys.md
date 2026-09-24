@@ -1,14 +1,20 @@
 # VideoSession
 
+```TypeScript
+interface VideoSession extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, Stabilization,
+    ColorManagement, ControlCenter, AutoDeviceSwitch, Macro, ManualExposure, ManualFocus, ManualIso, OIS,
+    Aperture
+```
+
 VideoSession inherits from [Session](arkts-camera-camera-session-i.md), [Flash](arkts-camera-camera-flash-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [WhiteBalance](arkts-camera-camera-whitebalance-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md), [Stabilization](arkts-camera-camera-stabilization-i.md), [ColorManagement](arkts-camera-camera-colormanagement-i.md), [AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md), [Macro](arkts-camera-camera-macro-i.md), [ControlCenter](arkts-camera-camera-controlcenter-i.md), [ManualExposure](arkts-camera-camera-manualexposure-i.md), [ManualFocus](arkts-camera-camera-manualfocus-i.md), [ManualIso](arkts-camera-camera-manualiso-i.md), [OIS](arkts-camera-camera-ois-i.md), and [Aperture](arkts-camera-camera-aperture-i.md).
 
 It implements a video session, which provides operations on the flash, exposure, white balance, focus, zoom, video stabilization, color space, macro mode and controller, manual exposure, manual focus, manual ISO, optical image stabilization, and aperture.
 
 **VideoSession** is provided for the default video recording mode. It applies to common scenarios. It supports recording at various resolutions (such as 720p and 1080p) and frame rates (such as 30 fps and 60 fps).
 
-@extends Session, Flash, AutoExposure, Focus, Zoom, Stabilization, ColorManagement [since 11 - 12] @extends AutoDeviceSwitch [since 13 - 18] @extends Session, Flash, AutoExposure, Focus, Zoom, Stabilization, ColorManagement, AutoDeviceSwitch, Macro [since 19 - 19] @extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, Stabilization, ColorManagement, ControlCenter, AutoDeviceSwitch, Macro [since 20 - 24] @extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, Stabilization, ColorManagement, ControlCenter, AutoDeviceSwitch, Macro, ManualExposure, ManualFocus, ManualIso, OIS, Aperture [since 26.0.0] @extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, Stabilization, ColorManagement, ControlCenter, AutoDeviceSwitch, Macro, ManualExposure, ManualFocus, ManualIso, OIS, Aperture, ColorControls [since 26.1.0]
+@extends Session, Flash, AutoExposure, Focus, Zoom, Stabilization, ColorManagement [since 11 - 12] @extends AutoDeviceSwitch [since 13 - 18] @extends Session, Flash, AutoExposure, Focus, Zoom, Stabilization, ColorManagement, AutoDeviceSwitch, Macro [since 19 - 19] @extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, Stabilization, ColorManagement, ControlCenter, AutoDeviceSwitch, Macro [since 20 - 24] @extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, Stabilization, ColorManagement, ControlCenter, AutoDeviceSwitch, Macro, ManualExposure, ManualFocus, ManualIso, OIS, Aperture [since 26.0.0 - 26.0.0]
 
-**Inheritance/Implementation:** VideoSession extends [Session](arkts-camera-camera-session-i.md), [Flash](arkts-camera-camera-flash-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [WhiteBalance](arkts-camera-camera-whitebalance-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md), [Stabilization](arkts-camera-camera-stabilization-i.md), [ColorManagement](arkts-camera-camera-colormanagement-i.md), [ControlCenter](arkts-camera-camera-controlcenter-i.md), [AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md), [Macro](arkts-camera-camera-macro-i.md), [ManualExposure](arkts-camera-camera-manualexposure-i.md), [ManualFocus](arkts-camera-camera-manualfocus-i.md), [ManualIso](arkts-camera-camera-manualiso-i.md), [OIS](arkts-camera-camera-ois-i.md), [Aperture](arkts-camera-camera-aperture-i.md)<!--Del-->, [ColorControls](arkts-camera-camera-colorcontrols-i-sys.md)<!--DelEnd-->
+**Inheritance/Implementation:** VideoSession extends [Session](arkts-camera-camera-session-i.md), [Flash](arkts-camera-camera-flash-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [WhiteBalance](arkts-camera-camera-whitebalance-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md), [Stabilization](arkts-camera-camera-stabilization-i.md), [ColorManagement](arkts-camera-camera-colormanagement-i.md), [ControlCenter](arkts-camera-camera-controlcenter-i.md), [AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md), [Macro](arkts-camera-camera-macro-i.md), [ManualExposure](arkts-camera-camera-manualexposure-i.md), [ManualFocus](arkts-camera-camera-manualfocus-i.md), [ManualIso](arkts-camera-camera-manualiso-i.md), [OIS](arkts-camera-camera-ois-i.md), [Aperture](arkts-camera-camera-aperture-i.md)
 
 **Since:** 11
 
@@ -28,7 +34,7 @@ disableColorCube(): void
 
 Disable the color cube.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -53,7 +59,7 @@ Enable the color cube.
 
 Before the setting, call [isColorCubeSupported] [isColorCubeSupported](#iscolorcubesupported) to check whether the device supports the color cube.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -141,7 +147,7 @@ getSupportedCubeDimension(): number
 
 Gets color cube dimension.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -170,7 +176,7 @@ isColorCubeSupported(): boolean
 
 Checks whether the color cube is supported.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -218,6 +224,14 @@ Unsubscribes from LCD flash status change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+**Examples**
+
+```TypeScript
+function unregisterLcdFlashStatus(videoSession: camera.VideoSession): void {
+  videoSession.off('lcdFlashStatus');
+}
+```
+
 ## off('focusTrackingInfoAvailable')
 
 ```TypeScript
@@ -244,6 +258,14 @@ Unsubscribes from focus tracking information events.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
+
+**Examples**
+
+```TypeScript
+function unregisterFocusTrackingInfoChanged(session: camera.VideoSessionForSys): void {
+  session.off('focusTrackingInfoAvailable');
+}
+```
 
 ## off('effectSuggestionChange')
 
@@ -299,6 +321,30 @@ Unsubscribes from camera light status changes.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function LightStatusCallback(err: BusinessError, lightStatus: camera.LightStatus) : void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`lightStatus: ${lightStatus}`);
+}
+
+function handleLightStatusOff(mSession: camera.VideoSessionForSys): void {
+  console.info('handleLightStatusOff');
+  try {
+    mSession.on('lightStatusChange', LightStatusCallback);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`handleLightStatusOff err:${err}`);
+  }
+}
+```
+
 ## offApertureInfoChange
 
 ```TypeScript
@@ -307,7 +353,7 @@ offApertureInfoChange(callback?: Callback<ApertureInfo>): void
 
 Unsubscribes from aperture info event callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -354,6 +400,25 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, lcdFlashStatus: camera.LcdFlashStatus): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`isLcdFlashNeeded: ${lcdFlashStatus.isLcdFlashNeeded}`);
+  console.info(`lcdCompensation: ${lcdFlashStatus.lcdCompensation}`);
+}
+
+function registerLcdFlashStatus(videoSession: camera.VideoSession): void {
+  videoSession.on('lcdFlashStatus', callback);
+}
+```
+
 ## on('focusTrackingInfoAvailable')
 
 ```TypeScript
@@ -380,6 +445,22 @@ Subscribes to focus tracking information events. This API uses an asynchronous c
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
+
+**Examples**
+
+```TypeScript
+function callback(focusTrackingInfo: camera.FocusTrackingInfo): void {
+  console.info(`Focus tracking mode: ${focusTrackingInfo.trackingMode}`);
+  console.info(`Focus tracking Region: topLeftX ${focusTrackingInfo.trackingRegion.topLeftX}
+                                       topLeftY ${focusTrackingInfo.trackingRegion.topLeftY}
+                                       width ${focusTrackingInfo.trackingRegion.width}
+                                       height ${focusTrackingInfo.trackingRegion.height}`);
+}
+
+function registerFocusTrackingInfoChanged(session: camera.VideoSessionForSys): void {
+  session.on('focusTrackingInfoAvailable', callback);
+}
+```
 
 ## on('effectSuggestionChange')
 
@@ -435,6 +516,30 @@ Subscribes to camera light status changes. This API uses an asynchronous callbac
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function handleLightStatusCallback(err: BusinessError, lightStatus: camera.LightStatus) : void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`lightStatus: ${lightStatus}`);
+}
+
+function handleLightStatusOn(mSession: camera.VideoSessionForSys): void {
+  console.info('handleLightStatusOn');
+  try {
+    mSession.on('lightStatusChange', handleLightStatusCallback);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`handleLightStatusOn err:${err}`);
+  }
+}
+```
+
 ## onApertureInfoChange
 
 ```TypeScript
@@ -443,7 +548,7 @@ onApertureInfoChange(callback: Callback<ApertureInfo>): void
 
 Subscribes aperture info event callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

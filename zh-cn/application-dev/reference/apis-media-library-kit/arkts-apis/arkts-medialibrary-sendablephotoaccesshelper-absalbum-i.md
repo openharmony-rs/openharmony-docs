@@ -1,8 +1,12 @@
 # AbsAlbum
 
+```TypeScript
+interface AbsAlbum  extends lang.ISendable
+```
+
 定义相册的抽象接口。
 
-**继承/实现关系：** AbsAlbum extends lang.ISendable
+**继承/实现关系：** AbsAlbum extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
 
 **起始版本：** 12
 
@@ -44,9 +48,9 @@ getAssets(options: photoAccessHelper.FetchOptions): Promise<FetchResult<PhotoAss
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse FetchOptions, please check if the parameter is valid; <br>2. System internal error, failed to create boolean value, possible causes: 1. Memory insufficient; 2. IPC timeout. Please retry; <br>3. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 ## albumName
 

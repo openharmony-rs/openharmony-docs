@@ -1,5 +1,9 @@
 # HashAlgorithmType
 
+```TypeScript
+enum HashAlgorithmType
+```
+
 Enum for the hash algorithm type.
 
 **Since:** 24

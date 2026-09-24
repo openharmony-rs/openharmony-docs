@@ -1,5 +1,9 @@
 # PersoLockType (System API)
 
+```TypeScript
+export enum PersoLockType
+```
+
 Indicates the personalized lock types.
 
 **Since:** 8

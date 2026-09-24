@@ -1,5 +1,9 @@
 # CmsContentType
 
+```TypeScript
+enum CmsContentType
+```
+
 Enumerates the Cryptographic Message Syntax (CMS) message types.
 
 **Since:** 18

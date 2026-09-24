@@ -1,5 +1,9 @@
 # DeliveryMode
 
+```TypeScript
+enum DeliveryMode
+```
+
 枚举，资源分发模式。
 
 该模式适用于分段式拍照或分段式视频。如果当前设备不具备分段式能力，则以下三种分发模式无区别，直接返回请求的图片或视频资源。请求的结果通过[onDataPrepared](arkts-medialibrary-photoaccesshelper-mediaassetdatahandler-i.md#ondataprepared)回调返回。

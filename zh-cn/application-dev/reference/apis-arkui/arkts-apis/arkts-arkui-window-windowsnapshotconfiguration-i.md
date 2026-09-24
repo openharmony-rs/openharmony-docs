@@ -1,5 +1,9 @@
 # WindowSnapshotConfiguration
 
+```TypeScript
+interface WindowSnapshotConfiguration
+```
+
 主窗口截图的配置项。
 
 **起始版本：** 21

@@ -8,6 +8,8 @@ typedef struct OH_CryptoRand OH_CryptoRand
 
 随机数生成器结构体，表示随机数生成器上下文。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **相关模块：** [CryptoRandApi](capi-cryptorandapi.md)

@@ -1,5 +1,9 @@
 # GridObjectSortComponentType
 
+```TypeScript
+export declare enum GridObjectSortComponentType
+```
+
 Enumerates display types for nodes in the **GridObjectSortComponent** component.
 
 **Since:** 11

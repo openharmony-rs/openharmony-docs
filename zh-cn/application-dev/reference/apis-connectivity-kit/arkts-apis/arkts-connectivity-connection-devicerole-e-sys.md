@@ -1,5 +1,9 @@
 # DeviceRole（系统接口）
 
+```TypeScript
+enum DeviceRole
+```
+
 枚举，蓝牙设备在连接过程中的角色。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # ImageRotation
 
+```TypeScript
+enum ImageRotation
+```
+
 Enumerates the image rotation angles.
 
 **Since:** 10

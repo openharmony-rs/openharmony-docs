@@ -35,9 +35,9 @@ function getAVCastController(sessionId: string, callback: AsyncCallback<AVCastCo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | session does not exist |
 
@@ -77,40 +77,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { avSession } from '@kit.AVSessionKit';
 
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          // 获取当前系统中所有session的描述符。
-          let descriptors = await AVSessionManager.getAllSessionDescriptors();
-          if (descriptors.length === 0) {
-            console.error(`No session in system, can not create controller.`);
-            return;
-          }
-          // 取目标session的sessionId创建controller。
-          let sessionId = descriptors[0].sessionId;
-
-          let avCastController: avSession.AVCastController;
-          avSession.getAVCastController(sessionId).then((avcontroller: avSession.AVCastController) => {
-            avCastController = avcontroller;
-            console.info('Succeeded in getting AV cast controller.');
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
+<a id="getavcastcontroller-2"></a>
 
 ## getAVCastController
 
@@ -146,47 +114,13 @@ function getAVCastController(sessionId: string): Promise<AVCastController>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | server exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | session does not exist |
 
 **示例**
-
-```TypeScript
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          // 获取当前系统中所有session的描述符。
-          let descriptors = await AVSessionManager.getAllSessionDescriptors();
-          if (descriptors.length === 0) {
-            console.error(`No session in system, can not create controller.`);
-            return;
-          }
-          // 取目标session的sessionId创建controller。
-          let sessionId = descriptors[0].sessionId;
-
-          let avCastController: avSession.AVCastController;
-          avSession.getAVCastController(sessionId, (avcontroller: avSession.AVCastController) => {
-            avCastController = avcontroller;
-            console.info('Succeeded in getting AV cast controller.');
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
 
 ```TypeScript
 import { avSession } from '@kit.AVSessionKit';

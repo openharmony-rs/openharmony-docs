@@ -8,6 +8,8 @@ typedef struct HiCollie_DetectionParam {...} HiCollie_DetectionParam
 
 检测业务线程卡顿的相关参数。请注意，API 12及以上支持。
 
+**系统能力：** SystemCapability.HiviewDFX.HiCollie
+
 **起始版本：** 12
 
 **相关模块：** [HiCollie](capi-hicollie.md)

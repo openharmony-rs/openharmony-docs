@@ -1,5 +1,9 @@
 # IncrementalUpdatePolicy
 
+```TypeScript
+declare enum IncrementalUpdatePolicy
+```
+
 文本渲染的增量更新策略。
 
 **起始版本：** 26.0.0

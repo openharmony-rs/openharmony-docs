@@ -1,5 +1,9 @@
 # ExtraKey
 
+```TypeScript
+enum ExtraKey
+```
+
 Define some common extra keys used in different scenarios.
 
 **Since:** 26.0.0

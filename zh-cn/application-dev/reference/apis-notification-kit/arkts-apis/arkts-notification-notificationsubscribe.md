@@ -22,25 +22,25 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 | 名称 | 说明 |
 | --- | --- |
 | [distributeOperation](arkts-notification-notificationsubscribe-distributeoperation-f-sys.md) | 触发指定通知的跨设备协同操作（例如通知跨设备点击跳转、通知跨设备快捷回复等）。使用Promise异步回调。 |
-| [remove](arkts-notification-notificationsubscribe-remove-f-sys.md) | 根据应用的包信息和通知键值，删除指定通知。使用callback异步回调。 |
-| [remove](arkts-notification-notificationsubscribe-remove-f-sys.md) | 根据应用的包信息和通知键值，删除指定通知。使用Promise异步回调。 |
-| [remove](arkts-notification-notificationsubscribe-remove-f-sys.md) | 通过通知的唯一ID，删除指定通知。使用callback异步回调。 |
-| [remove](arkts-notification-notificationsubscribe-remove-f-sys.md) | 批量删除指定通知。使用callback异步回调。 |
-| [remove](arkts-notification-notificationsubscribe-remove-f-sys.md) | 通过通知的唯一ID，删除指定通知。使用Promise异步回调。 |
-| [remove](arkts-notification-notificationsubscribe-remove-f-sys.md) | 批量删除指定通知。使用Promise异步回调。 |
-| [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md) | 删除指定应用的所有通知。使用callback异步回调。 |
-| [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md) | 删除所有通知。使用callback异步回调。 |
-| [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md) | 删除指定用户下的所有通知。使用callback异步回调。 |
-| [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md) | 删除指定用户下的所有通知。使用Promise异步回调。 |
-| [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md) | 删除指定应用的所有通知。使用Promise异步回调。 |
-| [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md) | 订阅当前用户下所有应用的通知。使用callback异步回调。 |
-| [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md) | 订阅通知并指定订阅信息。使用callback异步回调。 |
-| [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md) | 订阅通知并指定订阅信息。使用Promise异步回调。 |
-| [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md) | 订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。 |
-| [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md) | 订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。 |
+| [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove) | 根据应用的包信息和通知键值，删除指定通知。使用callback异步回调。 |
+| [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-1) | 根据应用的包信息和通知键值，删除指定通知。使用Promise异步回调。 |
+| [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-2) | 通过通知的唯一ID，删除指定通知。使用callback异步回调。 |
+| [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-3) | 批量删除指定通知。使用callback异步回调。 |
+| [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-4) | 通过通知的唯一ID，删除指定通知。使用Promise异步回调。 |
+| [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-5) | 批量删除指定通知。使用Promise异步回调。 |
+| [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md#removeall) | 删除指定应用的所有通知。使用callback异步回调。 |
+| [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md#removeall-1) | 删除所有通知。使用callback异步回调。 |
+| [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md#removeall-2) | 删除指定用户下的所有通知。使用callback异步回调。 |
+| [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md#removeall-3) | 删除指定用户下的所有通知。使用Promise异步回调。 |
+| [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md#removeall-4) | 删除指定应用的所有通知。使用Promise异步回调。 |
+| [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe) | 订阅当前用户下所有应用的通知。使用callback异步回调。 |
+| [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe-1) | 订阅通知并指定订阅信息。使用callback异步回调。 |
+| [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe-2) | 订阅通知并指定订阅信息。使用Promise异步回调。 |
+| [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification) | 订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。 |
+| [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification-1) | 订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。 |
 | [subscribeSelf](arkts-notification-notificationsubscribe-subscribeself-f-sys.md) | 订阅本应用的通知并指定订阅信息。使用Promise异步回调。 |
-| [unsubscribe](arkts-notification-notificationsubscribe-unsubscribe-f-sys.md) | 取消订阅。使用callback异步回调。 |
-| [unsubscribe](arkts-notification-notificationsubscribe-unsubscribe-f-sys.md) | 取消订阅。使用Promise异步回调。 |
+| [unsubscribe](arkts-notification-notificationsubscribe-unsubscribe-f-sys.md#unsubscribe) | 取消订阅。使用callback异步回调。 |
+| [unsubscribe](arkts-notification-notificationsubscribe-unsubscribe-f-sys.md#unsubscribe-1) | 取消订阅。使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -50,14 +50,6 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 | --- | --- |
 | [NotificationKey](arkts-notification-notificationsubscribe-notificationkey-i-sys.md) | 通知键值。 |
 | [OperationInfo](arkts-notification-notificationsubscribe-operationinfo-i-sys.md) | 跨设备协同操作信息。 |
-<!--DelEnd-->
-
-<!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 通知删除原因。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -80,4 +72,12 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 | [SubscribeCallbackData](arkts-notification-notificationsubscribe-subscribecallbackdata-t-sys.md) | 携带系统属性值的通知信息。 |
 | [VoiceContent](arkts-notification-notificationsubscribe-voicecontent-t-sys.md) | 通知消息中语音播报内容定义。 |
 | [VoiceContentOptions](arkts-notification-notificationsubscribe-voicecontentoptions-t-sys.md) | 实况通知语音播报内容配置项。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 通知删除原因。 |
 <!--DelEnd-->

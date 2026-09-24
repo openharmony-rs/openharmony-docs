@@ -90,6 +90,8 @@ enum NativeWindowOperation
 
 Indicates the operation code in the function OH_NativeWindow_NativeWindowHandleOpt.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **Since**: 8
 
 | Enum item | Description |
@@ -131,6 +133,8 @@ enum OHScalingMode
 
 Indicates Scaling Mode.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **Since**: 9
 
 **Deprecated**: 10
@@ -154,6 +158,8 @@ enum OHScalingModeV2
 
 Indicates Scaling Mode.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **Since**: 12
 
 | Enum item | Description |
@@ -174,6 +180,8 @@ enum OHHDRMetadataKey
 
 Enumerates the HDR metadata keys.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **Since**: 9
 
 **Deprecated**: 10
@@ -190,6 +198,8 @@ enum OHSurfaceSource
 **Description**
 
 Indicates the source type of surface.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **Since**: 12
 
@@ -881,7 +891,7 @@ Write an OHNativeWindow to an OHIPCParcel. This interface is a non-thread-safe t
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - parcel is NULL or window is NULL. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success.      [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - parcel is NULL or window is NULL. |
 
 ### OH_NativeWindow_ReadFromParcel()
 
@@ -908,7 +918,7 @@ Read an OHNativeWindow from an OHIPCParcel. This interface is a non-thread-safe 
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - parcel is NULL or parcel does not contain the window. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success.      [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - parcel is NULL or parcel does not contain the window. |
 
 ### OH_NativeWindow_GetLastFlushedBufferV2()
 
@@ -937,7 +947,7 @@ Get the last flushed <b>OHNativeWindowBuffer</b> from an <b>OHNativeWindow</b> i
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - window is NULL or buffer is NULL or fenceFd is NULL.<br>    {@link NATIVE_ERROR_BUFFER_STATE_INVALID} 41207000 - buffer state is wrong. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success.      [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - window is NULL or buffer is NULL or fenceFd is NULL.      [NATIVE_ERROR_BUFFER_STATE_INVALID](capi-graphic-error-code-h.md#ohnativeerrorcode) 41207000 - buffer state is wrong. |
 
 ### OH_NativeWindow_SetColorSpace()
 
@@ -964,7 +974,7 @@ Set the color space of the native window. This interface is a non-thread-safe ty
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - window is NULL.<br>    {@link NATIVE_ERROR_BUFFER_STATE_INVALID} 41207000 - Incorrect colorSpace state. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success.      [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - window is NULL.      [NATIVE_ERROR_BUFFER_STATE_INVALID](capi-graphic-error-code-h.md#ohnativeerrorcode) 41207000 - Incorrect colorSpace state. |
 
 ### OH_NativeWindow_GetColorSpace()
 
@@ -991,7 +1001,7 @@ Get the color space of the native window. This interface is a non-thread-safe ty
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - window is NULL.<br>    {@link NATIVE_ERROR_BUFFER_STATE_INVALID} 41207000 - Incorrect colorSpace state. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success.      [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - window is NULL.      [NATIVE_ERROR_BUFFER_STATE_INVALID](capi-graphic-error-code-h.md#ohnativeerrorcode) 41207000 - Incorrect colorSpace state. |
 
 ### OH_NativeWindow_SetMetadataValue()
 
@@ -1020,7 +1030,7 @@ Set the metadata type of the native window. This interface is a non-thread-safe 
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - window or metadata is NULL.<br>    {@link NATIVE_ERROR_BUFFER_STATE_INVALID} 41207000 - Incorrect metadata state.<br>    {@link NATIVE_ERROR_UNSUPPORTED} 50102000 - Unsupported metadata key. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success.      [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - window or metadata is NULL.      [NATIVE_ERROR_BUFFER_STATE_INVALID](capi-graphic-error-code-h.md#ohnativeerrorcode) 41207000 - Incorrect metadata state.      [NATIVE_ERROR_UNSUPPORTED](capi-graphic-error-code-h.md#ohnativeerrorcode) 50102000 - Unsupported metadata key. |
 
 ### OH_NativeWindow_GetMetadataValue()
 
@@ -1049,7 +1059,7 @@ Set the metadata type of the native window. This interface is a non-thread-safe 
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - window, metadata, or size is NULL.<br>    {@link NATIVE_ERROR_BUFFER_STATE_INVALID} 41207000 - Incorrect metadata state.<br>    {@link NATIVE_ERROR_UNSUPPORTED} 50102000 - Unsupported metadata key. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success.      [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - window, metadata, or size is NULL.      [NATIVE_ERROR_BUFFER_STATE_INVALID](capi-graphic-error-code-h.md#ohnativeerrorcode) 41207000 - Incorrect metadata state.      [NATIVE_ERROR_UNSUPPORTED](capi-graphic-error-code-h.md#ohnativeerrorcode) 50102000 - Unsupported metadata key. |
 
 ### OH_NativeWindow_CleanCache()
 
@@ -1075,7 +1085,7 @@ Clean all <b>OHNativeWindowBuffer</b> caches of this <b>OHNativeWindow</b> This 
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - window is NULL.<br>    {@link NATIVE_ERROR_CONSUMER_DISCONNECTED} 41211000 - the consumer is disconnected.<br>    {@link NATIVE_ERROR_BINDER_ERROR} 50401000 - ipc send failed. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success.      [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - window is NULL.      [NATIVE_ERROR_CONSUMER_DISCONNECTED](capi-graphic-error-code-h.md#ohnativeerrorcode) 41211000 - the consumer is disconnected.      [NATIVE_ERROR_BINDER_ERROR](capi-graphic-error-code-h.md#ohnativeerrorcode) 50401000 - ipc send failed. |
 
 ### OH_NativeWindow_PreAllocBuffers()
 
@@ -1130,7 +1140,7 @@ Requests an <b>OHNativeWindowBuffer</b> through an <b>OHNativeWindow</b> instanc
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - window or buffer is NULL.<br>    {@link NATIVE_ERROR_UNKNOWN} 50002000 - surface of window is NULL. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success.      [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - window or buffer is NULL.      [NATIVE_ERROR_UNKNOWN](capi-graphic-error-code-h.md#ohnativeerrorcode) 50002000 - surface of window is NULL. |
 
 ### OH_NativeWindow_UnlockAndFlushBuffer()
 
@@ -1156,7 +1166,7 @@ Flushes the <b>OHNativeWindowBuffer</b> filled with the content to the buffer qu
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - window is NULL.<br>    {@link NATIVE_ERROR_UNKNOWN} 50002000 - surface of window is NULL. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success.      [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - window is NULL.      [NATIVE_ERROR_UNKNOWN](capi-graphic-error-code-h.md#ohnativeerrorcode) 50002000 - surface of window is NULL. |
 
 ### OH_NativeWindow_Set3DMetadataValue()
 
@@ -1185,7 +1195,7 @@ Set the 3D metadata of the native window. This interface is a non-thread-safe ty
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - window or metadata is NULL.<br>    {@link NATIVE_ERROR_UNKNOWN} 50002000 - set 3D metadata failed.<br>    {@link NATIVE_ERROR_UNSUPPORTED} 50102000 - unsupported metadata key. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success.      [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - window or metadata is NULL.      [NATIVE_ERROR_UNKNOWN](capi-graphic-error-code-h.md#ohnativeerrorcode) 50002000 - set 3D metadata failed.      [NATIVE_ERROR_UNSUPPORTED](capi-graphic-error-code-h.md#ohnativeerrorcode) 50102000 - unsupported metadata key. |
 
 ### OH_NativeWindow_Get3DMetadataValue()
 
@@ -1214,6 +1224,6 @@ Get the 3D metadata of the native window. This interface is a non-thread-safe ty
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - window, metadata, or size is NULL.<br>    {@link NATIVE_ERROR_UNKNOWN} 50002000 - copy or allocate memory failed, otherwise get 3D metadata failed.<br>    {@link NATIVE_ERROR_UNSUPPORTED} 50102000 - unsupported metadata key. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success.      [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - window, metadata, or size is NULL.      [NATIVE_ERROR_UNKNOWN](capi-graphic-error-code-h.md#ohnativeerrorcode) 50002000 - copy or allocate memory failed, otherwise get 3D metadata failed.      [NATIVE_ERROR_UNSUPPORTED](capi-graphic-error-code-h.md#ohnativeerrorcode) 50102000 - unsupported metadata key. |
 
 

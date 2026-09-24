@@ -1,5 +1,9 @@
 # OrientationExecutionResult
 
+```TypeScript
+enum OrientationExecutionResult
+```
+
 窗口显示方向的执行结果枚举。
 
 **起始版本：** 26.0.0

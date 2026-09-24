@@ -1,5 +1,9 @@
 # DisplaySourceMode
 
+```TypeScript
+enum DisplaySourceMode
+```
+
 屏幕显示内容的显示模式枚举。
 
 **起始版本：** 19

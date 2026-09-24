@@ -71,32 +71,8 @@ if (iFaceInfo) {
 }
 ```
 
-```TypeScript
-import { statistics } from '@kit.NetworkKit';
 
-let iFaceInfo: statistics.IfaceInfo | null = null;
-if (iFaceInfo) {
-  statistics.getTrafficStatsByIface(iFaceInfo as statistics.IfaceInfo).then((statsInfo: statistics.NetStatsInfo) => {
-    console.info(
-      "getTrafficStatsByIface bytes of received = " +
-      JSON.stringify(statsInfo.rxBytes)
-    );
-    console.info(
-      "getTrafficStatsByIface bytes of sent = " +
-      JSON.stringify(statsInfo.txBytes)
-    );
-    console.info(
-      "getTrafficStatsByIface packets of received = " +
-      JSON.stringify(statsInfo.rxPackets)
-    );
-    console.info(
-      "getTrafficStatsByIface packets of sent = " +
-      JSON.stringify(statsInfo.txPackets)
-    );
-  });
-}
-```
-
+<a id="gettrafficstatsbyiface-1"></a>
 
 ## getTrafficStatsByIface
 
@@ -144,4 +120,28 @@ Obtains the historical data traffic of the specified NIC. This API uses a promis
 
 **Examples**
 
-See [getTrafficStatsByIface](#gettrafficstatsbyiface)
+```TypeScript
+import { statistics } from '@kit.NetworkKit';
+
+let iFaceInfo: statistics.IfaceInfo | null = null;
+if (iFaceInfo) {
+  statistics.getTrafficStatsByIface(iFaceInfo as statistics.IfaceInfo).then((statsInfo: statistics.NetStatsInfo) => {
+    console.info(
+      "getTrafficStatsByIface bytes of received = " +
+      JSON.stringify(statsInfo.rxBytes)
+    );
+    console.info(
+      "getTrafficStatsByIface bytes of sent = " +
+      JSON.stringify(statsInfo.txBytes)
+    );
+    console.info(
+      "getTrafficStatsByIface packets of received = " +
+      JSON.stringify(statsInfo.rxPackets)
+    );
+    console.info(
+      "getTrafficStatsByIface packets of sent = " +
+      JSON.stringify(statsInfo.txPackets)
+    );
+  });
+}
+```

@@ -1,5 +1,9 @@
 # DirectionalEdgesT
 
+```TypeScript
+declare interface DirectionalEdgesT<T>
+```
+
 Defines component edge widths for localized logical directions. Globalization is supported.
 
 **Since:** 12

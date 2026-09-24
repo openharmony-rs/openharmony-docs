@@ -1,5 +1,9 @@
 # SeekMode
 
+```TypeScript
+enum SeekMode
+```
+
 Enumerates the video playback seek modes, which can be passed in the **seek** API.
 
 **Since:** 8

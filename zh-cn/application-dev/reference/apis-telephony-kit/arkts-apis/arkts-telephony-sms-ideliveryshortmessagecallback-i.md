@@ -1,5 +1,9 @@
 # IDeliveryShortMessageCallback
 
+```TypeScript
+export interface IDeliveryShortMessageCallback
+```
+
 回调实例，返回短信送达报告。
 
 **起始版本：** 6

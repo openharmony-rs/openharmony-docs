@@ -1,5 +1,9 @@
 # FavoriteData
 
+```TypeScript
+interface FavoriteData
+```
+
 The definition of Favorite/Subscribe.
 
 @interface FavoriteData

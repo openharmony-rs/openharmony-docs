@@ -1,5 +1,9 @@
 # SelectedDragPreviewStyle
 
+```TypeScript
+declare interface SelectedDragPreviewStyle
+```
+
 Defines the drag preview style for selected text.
 
 **Since:** 23

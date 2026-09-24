@@ -8,6 +8,8 @@ typedef struct DRM_Statistics {...} DRM_Statistics
 
 MediaKeySystem的度量信息。
 
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
 **起始版本：** 11
 
 **相关模块：** [Drm](capi-drm.md)

@@ -1,5 +1,9 @@
 # WhiteBalance
 
+```TypeScript
+interface WhiteBalance extends WhiteBalanceQuery
+```
+
 WhiteBalance继承自[WhiteBalanceQuery](arkts-camera-camera-whitebalancequery-i.md)。
 
 提供了处理设备白平衡的相关功能，包括获取和设置白平衡模式以及白平衡值。
@@ -24,7 +28,7 @@ getWhiteBalanceGains(): WhiteBalanceGains
 
 Gets RGB white balance gain values.
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,7 +46,7 @@ Gets RGB white balance gain values.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 ## setWhiteBalanceGains
@@ -53,7 +57,7 @@ setWhiteBalanceGains(gains: WhiteBalanceGains): void
 
 Sets RGB white balance gain values.
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -71,5 +75,5 @@ Sets RGB white balance gain values.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |

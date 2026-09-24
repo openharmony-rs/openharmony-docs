@@ -6,7 +6,9 @@ struct OhosImageSource {...}
 
 ## 概述
 
-定义图像源输入资源，每次仅接收一种类型。由[OH_ImageSource_CreateFromUri](capi-image-source-mdk-h.md#oh_imagesource_createfromuri)、[OH_ImageSource_CreateFromFd](capi-image-source-mdk-h.md#oh_imagesource_createfromfd)和 [OH_ImageSource_CreateFromData](capi-image-source-mdk-h.md#oh_imagesource_createfromdata)获取。
+定义图像源输入资源，每次仅接收一种类型。由{@link OH_ImageSource_CreateFromUri}、{@link OH_ImageSource_CreateFromFd}和<br>{@link OH_ImageSource_CreateFromData}获取。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 10
 

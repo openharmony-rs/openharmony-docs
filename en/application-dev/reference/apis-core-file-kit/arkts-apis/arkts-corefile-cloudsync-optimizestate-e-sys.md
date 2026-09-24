@@ -1,5 +1,9 @@
 # OptimizeState (System API)
 
+```TypeScript
+enum OptimizeState
+```
+
 Enumerates the space optimization states.
 
 **Since:** 17

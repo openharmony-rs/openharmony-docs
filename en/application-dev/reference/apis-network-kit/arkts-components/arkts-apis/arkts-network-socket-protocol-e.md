@@ -1,5 +1,9 @@
 # Protocol
 
+```TypeScript
+export enum Protocol
+```
+
 Enumerates TLS protocol versions.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # FloatingBallTextUpdateAnimationType
 
+```TypeScript
+enum FloatingBallTextUpdateAnimationType
+```
+
 Enumerates the animation types used when the floating ball text is updated.
 
 **Since:** 26.0.0

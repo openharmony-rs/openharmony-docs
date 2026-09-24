@@ -1,5 +1,9 @@
 # MultiAppModeType
 
+```TypeScript
+export enum MultiAppModeType
+```
+
 Enumerates the types of the multi-app mode.
 
 **Since:** 12

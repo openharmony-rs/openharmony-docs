@@ -1,5 +1,9 @@
 # FormInfo
 
+```TypeScript
+interface FormInfo
+```
+
 Widget information.
 
 **Since:** 8

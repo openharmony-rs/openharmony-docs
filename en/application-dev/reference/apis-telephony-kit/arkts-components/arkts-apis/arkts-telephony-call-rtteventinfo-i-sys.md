@@ -1,5 +1,9 @@
 # RttEventInfo (System API)
 
+```TypeScript
+export interface RttEventInfo
+```
+
 Indicates the info of the rtt event.
 
 **Since:** 22
@@ -26,6 +30,8 @@ Indicates the id of rtt.
 
 **Since:** 22
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -42,6 +48,8 @@ Indicates the type of rtt event.
 
 **Since:** 22
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -57,6 +65,8 @@ Indicates the reason of rtt event.
 **Type:** number
 
 **Since:** 22
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Telephony.CallManager
 

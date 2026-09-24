@@ -1,5 +1,9 @@
 # ServiceData
 
+```TypeScript
+interface ServiceData
+```
+
 Describes the service data.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # GraphicsMemorySummary
 
+```TypeScript
+interface GraphicsMemorySummary
+```
+
 Describes the GPU memory data of an application, including the GL and Graph parts.
 
 **Since:** 21

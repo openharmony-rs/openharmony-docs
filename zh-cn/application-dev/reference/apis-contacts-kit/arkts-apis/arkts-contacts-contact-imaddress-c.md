@@ -1,5 +1,9 @@
 # ImAddress
 
+```TypeScript
+class ImAddress
+```
+
 联系人的即时消息地址。
 
 **起始版本：** 7

@@ -42,12 +42,12 @@ function revokeUriPermission(uri: string, targetBundleName: string, callback: As
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 10 - 11 |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 10 - 11 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16000059](../errorcode-ability.md#16000059-指定的uri类型无效) | Invalid URI type. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 19+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 19+ |
 
 **示例**
 
@@ -67,64 +67,8 @@ uriPermissionManager.revokeUriPermission(uri, targetBundleName, (error) => {
 });
 ```
 
-```TypeScript
-import { uriPermissionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let targetBundleName = 'com.example.test_case2';
-let uri = 'file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir';
-
-// 撤销指定应用的URI权限
-uriPermissionManager.revokeUriPermission(uri, targetBundleName)
-  .then((data) => {
-    console.info(`Verification success, data: ${JSON.stringify(data)}.`);
-  }).catch((error: BusinessError) => {
-  console.error(`Verification failed, err code: ${error.code}, err msg: ${error.message}.`);
-});
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want, wantConstant, uriPermissionManager } from '@kit.AbilityKit';
-import { fileUri } from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-  }
-
-  onForeground(): void {
-    let targetBundleName: string = 'com.example.demo1';
-    let filePath: string = this.context.filesDir + "/test.txt";
-    let uri: string = fileUri.getUriFromPath(filePath);
-    // 撤销主应用的URI权限
-    try {
-      let appCloneIndex: number = 0;
-      uriPermissionManager.revokeUriPermission(uri, targetBundleName, appCloneIndex)
-        .then(() => {
-          console.info('revokeUriPermission succeeded.');
-        }).catch((error: BusinessError) => {
-        console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
-      });
-    } catch (error) {
-      console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
-    }
-
-    // 撤销分身应用的URI权限
-    try {
-      let appCloneIndex: number = 1;
-      uriPermissionManager.revokeUriPermission(uri, targetBundleName, appCloneIndex)
-        .then(() => {
-          console.info('revokeUriPermission succeeded.');
-        }).catch((error: BusinessError) => {
-        console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
-      });
-    } catch (error) {
-      console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
-    }
-  }
-}
-```
-
+<a id="revokeuripermission-2"></a>
 
 ## revokeUriPermission
 
@@ -167,17 +111,33 @@ function revokeUriPermission(uri: string, targetBundleName: string): Promise<num
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 10 - 11 |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 10 - 11 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16000059](../errorcode-ability.md#16000059-指定的uri类型无效) | Invalid URI type. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 19+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 19+ |
 
 **示例**
 
-参见 [revokeUriPermission](#revokeuripermission)
+```TypeScript
+import { uriPermissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let targetBundleName = 'com.example.test_case2';
+let uri = 'file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir';
+
+// 撤销指定应用的URI权限
+uriPermissionManager.revokeUriPermission(uri, targetBundleName)
+  .then((data) => {
+    console.info(`Verification success, data: ${JSON.stringify(data)}.`);
+  }).catch((error: BusinessError) => {
+  console.error(`Verification failed, err code: ${error.code}, err msg: ${error.message}.`);
+});
+```
+
+
+<a id="revokeuripermission-4"></a>
 
 ## revokeUriPermission
 
@@ -219,13 +179,53 @@ function revokeUriPermission(uri: string, targetBundleName: string, appCloneInde
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16000059](../errorcode-ability.md#16000059-指定的uri类型无效) | Invalid URI type. |
 | [16000081](../errorcode-ability.md#16000081-获取目标应用信息失败) | Failed to obtain the target application information. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 19+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 19+ |
 
 **示例**
 
-参见 [revokeUriPermission](#revokeuripermission)
+```TypeScript
+import { AbilityConstant, UIAbility, Want, wantConstant, uriPermissionManager } from '@kit.AbilityKit';
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    let targetBundleName: string = 'com.example.demo1';
+    let filePath: string = this.context.filesDir + "/test.txt";
+    let uri: string = fileUri.getUriFromPath(filePath);
+    // 撤销主应用的URI权限
+    try {
+      let appCloneIndex: number = 0;
+      uriPermissionManager.revokeUriPermission(uri, targetBundleName, appCloneIndex)
+        .then(() => {
+          console.info('revokeUriPermission succeeded.');
+        }).catch((error: BusinessError) => {
+        console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
+      });
+    } catch (error) {
+      console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
+    }
+
+    // 撤销分身应用的URI权限
+    try {
+      let appCloneIndex: number = 1;
+      uriPermissionManager.revokeUriPermission(uri, targetBundleName, appCloneIndex)
+        .then(() => {
+          console.info('revokeUriPermission succeeded.');
+        }).catch((error: BusinessError) => {
+        console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
+      });
+    } catch (error) {
+      console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
+    }
+  }
+}
+```

@@ -1,5 +1,9 @@
 # DistributedOrigin (System API)
 
+```TypeScript
+enum DistributedOrigin
+```
+
 Describes the data origin sources.
 
 **Since:** 24

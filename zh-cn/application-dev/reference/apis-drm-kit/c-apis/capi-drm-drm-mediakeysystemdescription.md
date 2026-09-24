@@ -8,6 +8,8 @@ typedef struct DRM_MediaKeySystemDescription {...} DRM_MediaKeySystemDescription
 
 DRM解决方案名称及其UUID的列表。
 
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
 **起始版本：** 12
 
 **相关模块：** [Drm](capi-drm.md)

@@ -78,6 +78,44 @@ wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj) => {
 });
 ```
 
+
+<a id="startbackgroundrunning-1"></a>
+
+## startBackgroundRunning
+
+```TypeScript
+function startBackgroundRunning(id: number, request: NotificationRequest): Promise<void>
+```
+
+Requests a continuous task from the system. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [startBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md)
+
+**Required permissions:** ohos.permission.KEEP_BACKGROUND_RUNNING
+
+**Model restriction:** This API can be used only in the FA model.
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| id | number | Yes | Notification ID of the continuous task. |
+| request | [NotificationRequest](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i.md) | Yes | Notification parameter, which is used to display information in the notification bar. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise used to return the result. Promise that returns no value. |
+
+**Examples**
+
 ```TypeScript
 import { particleAbility, wantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -115,41 +153,3 @@ wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj) => {
   });
 });
 ```
-
-
-## startBackgroundRunning
-
-```TypeScript
-function startBackgroundRunning(id: number, request: NotificationRequest): Promise<void>
-```
-
-Requests a continuous task from the system. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [startBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md)
-
-**Required permissions:** ohos.permission.KEEP_BACKGROUND_RUNNING
-
-**Model restriction:** This API can be used only in the FA model.
-
-**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| id | number | Yes | Notification ID of the continuous task. |
-| request | [NotificationRequest](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i.md) | Yes | Notification parameter, which is used to display information in the notification bar. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. Promise that returns no value. |
-
-**Examples**
-
-See [startBackgroundRunning](#startbackgroundrunning)

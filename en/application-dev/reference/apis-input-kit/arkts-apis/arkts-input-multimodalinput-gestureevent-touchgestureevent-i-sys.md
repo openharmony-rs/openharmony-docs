@@ -1,5 +1,9 @@
 # TouchGestureEvent (System API)
 
+```TypeScript
+export declare interface TouchGestureEvent
+```
+
 Defines a touchscreen gesture event.
 
 **Since:** 18

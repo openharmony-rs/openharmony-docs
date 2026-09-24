@@ -30,6 +30,6 @@ function createVideoProcessor(): VideoProcessor
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该能力。由于设备能力受限，createVideoProcessor函数无法正常工作。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 不支持该能力。由于设备能力受限，createVideoProcessor函数无法正常工作。 |
 | [29200003](../../apis-image-kit/errorcode-videoprocessingengine.md#29200003-创建失败) | 创建视频处理实例失败。例如，实例数量超过上限。 |
 | [29200007](../../apis-image-kit/errorcode-videoprocessingengine.md#29200007-内存不足) | 内存不足。 |

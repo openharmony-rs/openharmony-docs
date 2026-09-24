@@ -1,5 +1,9 @@
 # CallEventOptions (System API)
 
+```TypeScript
+export interface CallEventOptions
+```
+
 Defines the call event options.
 
 **Since:** 8

@@ -38,11 +38,13 @@ Requests to publish a widget to the widget host. This API uses an asynchronous c
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | IPC connection error. |
 | [16500100](../errorcode-form.md#16500100-failed-to-obtain-widget-configuration-information) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
-| [16501002](../errorcode-form.md#16501002-too-many-widgets) | The number of forms exceeds the maximum allowed.<br>**Applicable version:** 26.1.0 and later |
+| [16501002](../errorcode-form.md#16501002-too-many-widgets) | The number of forms exceeds the maximum allowed.<br>**Applicable version:** 26.0.1 and later |
 | [16501008](../errorcode-form.md#16501008-adding-a-widget-to-the-home-screen-times-out) | Waiting for the form addition to the desktop timed out.<br>**Applicable version:** 12 and later |
-| [16501017](../errorcode-form.md#16501017-no-space-to-publish-the-widget) | There is no space to publish the form.<br>**Applicable version:** 26.1.0 and later |
-| [16501018](../errorcode-form.md#16501018-widget-not-supported-for-publishing) | This form does not support publishing.<br>**Applicable version:** 26.1.0 and later |
+| [16501017](../errorcode-form.md#16501017-no-space-to-publish-the-widget) | There is no space to publish the form.<br>**Applicable version:** 26.0.1 and later |
+| [16501018](../errorcode-form.md#16501018-widget-not-supported-for-publishing) | This form does not support publishing.<br>**Applicable version:** 26.0.1 and later |
 
+
+<a id="requestpublishform-1"></a>
 
 ## requestPublishForm
 
@@ -81,7 +83,7 @@ Requests to publish a widget to the widget host. This API uses a promise to retu
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | IPC connection error. |
 | [16500100](../errorcode-form.md#16500100-failed-to-obtain-widget-configuration-information) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
-| [16501002](../errorcode-form.md#16501002-too-many-widgets) | The number of forms exceeds the maximum allowed.<br>**Applicable version:** 26.1.0 and later |
+| [16501002](../errorcode-form.md#16501002-too-many-widgets) | The number of forms exceeds the maximum allowed.<br>**Applicable version:** 26.0.1 and later |
 | [16501008](../errorcode-form.md#16501008-adding-a-widget-to-the-home-screen-times-out) | Waiting for the form addition to the desktop timed out.<br>**Applicable version:** 12 and later |
-| [16501017](../errorcode-form.md#16501017-no-space-to-publish-the-widget) | There is no space to publish the form.<br>**Applicable version:** 26.1.0 and later |
-| [16501018](../errorcode-form.md#16501018-widget-not-supported-for-publishing) | This form does not support publishing.<br>**Applicable version:** 26.1.0 and later |
+| [16501017](../errorcode-form.md#16501017-no-space-to-publish-the-widget) | There is no space to publish the form.<br>**Applicable version:** 26.0.1 and later |
+| [16501018](../errorcode-form.md#16501018-widget-not-supported-for-publishing) | This form does not support publishing.<br>**Applicable version:** 26.0.1 and later |

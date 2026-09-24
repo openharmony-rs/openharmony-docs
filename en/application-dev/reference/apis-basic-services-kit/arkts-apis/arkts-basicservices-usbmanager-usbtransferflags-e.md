@@ -1,5 +1,9 @@
 # UsbTransferFlags
 
+```TypeScript
+export enum UsbTransferFlags
+```
+
 Enumerates USB transfer flags.
 
 **Since:** 18

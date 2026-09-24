@@ -1,5 +1,10 @@
 # QuickShotPhotoSession (System API)
 
+```TypeScript
+interface QuickShotPhotoSession extends Session, AutoExposure, ColorEffect, ColorManagement, EffectSuggestion,
+    Flash, Focus, Zoom, Beauty
+```
+
 Quick shot photo session object.
 
 @extends Session, AutoExposure, ColorEffect, ColorManagement, EffectSuggestion, Flash, Focus, Zoom [since 12 - 21] @extends Session, AutoExposure, ColorEffect, ColorManagement, EffectSuggestion, Flash, Focus, Zoom, Beauty [since 22]

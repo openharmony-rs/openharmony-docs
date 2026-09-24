@@ -1,5 +1,9 @@
 # KnowledgeContent（系统接口）
 
+```TypeScript
+class KnowledgeContent
+```
+
 支持的MIME类型。
 
 **起始版本：** 23
@@ -50,8 +54,8 @@ static getRelatedEntity (topic: string, context: ContextMap, option?: Options): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by nonsystem application |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
@@ -63,7 +67,7 @@ static getSearchResult(query: SearchQuery): Promise<SearchResult>
 
 根据提供的查询搜索媒资。该接口使用promise返回结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -89,8 +93,8 @@ static getSearchResult(query: SearchQuery): Promise<SearchResult>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes:<br>1. Invalid input data format. <br>2. The length of **queryString** or **param** in **SearchQuery** exceeds 16KB. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. Possible causes:<br>1. IPC timeout; <br>2. System exception. |
 
@@ -128,7 +132,7 @@ static getSearchSuggestion( searchSuggestionTypes: Array<SearchSuggestionType>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by nonsystem application |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes:<br>1. The searchSuggestionTypes list is empty. <br>2. The searchSuggestionTypes error. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |

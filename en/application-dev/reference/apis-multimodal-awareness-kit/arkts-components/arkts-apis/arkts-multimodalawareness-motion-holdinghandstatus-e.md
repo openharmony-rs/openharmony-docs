@@ -1,5 +1,9 @@
 # HoldingHandStatus
 
+```TypeScript
+export enum HoldingHandStatus
+```
+
 Represents the holding hand status. The holding hand status is returned if listening for holding hand status changes is enabled.
 
 **Since:** 20

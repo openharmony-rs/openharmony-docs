@@ -1,5 +1,9 @@
 # CallSessionEventId（系统接口）
 
+```TypeScript
+export enum CallSessionEventId
+```
+
 视频通话事件类型。
 
 **起始版本：** 11

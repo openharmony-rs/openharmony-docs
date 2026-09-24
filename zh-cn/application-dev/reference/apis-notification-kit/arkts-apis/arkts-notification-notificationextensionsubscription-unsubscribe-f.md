@@ -20,9 +20,7 @@ function unsubscribe(): Promise<void>
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：**
-
-[subscribe](arkts-notification-notificationextensionsubscription-subscribe-f.md) 订阅通知扩展。
+**参见：** [subscribe](arkts-notification-notificationextensionsubscription-subscribe-f.md) 订阅通知扩展。
 
 **返回值：**
 
@@ -34,7 +32,7 @@ function unsubscribe(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied or current device not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied or current device not supported. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 

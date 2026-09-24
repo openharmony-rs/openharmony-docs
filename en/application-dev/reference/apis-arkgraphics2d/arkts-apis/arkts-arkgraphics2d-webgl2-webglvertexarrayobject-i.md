@@ -1,5 +1,9 @@
 # WebGLVertexArrayObject
 
+```TypeScript
+interface WebGLVertexArrayObject
+```
+
 WebGL 2.0
 
 **Since:** 7

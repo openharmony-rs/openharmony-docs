@@ -8,6 +8,8 @@ typedef struct OH_AudioSession_StateChangedEvent {...} OH_AudioSession_StateChan
 
 declare the audio session state change event
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Related module**: [OHAudio](capi-ohaudio.md)

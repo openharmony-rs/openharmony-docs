@@ -1,5 +1,9 @@
 # UploadConfig
 
+```TypeScript
+interface UploadConfig
+```
+
 Describes the configuration of an upload task.
 
 **Since:** 6

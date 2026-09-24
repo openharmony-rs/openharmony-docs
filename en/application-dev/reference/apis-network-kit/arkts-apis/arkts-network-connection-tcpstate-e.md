@@ -1,5 +1,9 @@
 # TcpState
 
+```TypeScript
+export enum TcpState
+```
+
 Enumerates TCP states.
 
 **Since:** 24

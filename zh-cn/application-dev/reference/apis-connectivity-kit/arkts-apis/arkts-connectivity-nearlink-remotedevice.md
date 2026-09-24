@@ -57,14 +57,6 @@ import { remoteDevice } from '@kit.ConnectivityKit';
 | [RemoteDevice](arkts-connectivity-remotedevice-remotedevice-i-sys.md) | 提供远端设备的操作方法，使用前需要使用[remoteDevice.createRemoteDevice](arkts-connectivity-remotedevice-createremotedevice-f.md)方法创建一个远端设备[RemoteDevice](arkts-connectivity-remotedevice-remotedevice-i.md)实例。一个设备只需要创建一次，无需多次创建。 |
 <!--DelEnd-->
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [ConnectionReason](arkts-connectivity-remotedevice-connectionreason-e.md) | 连接原因的枚举。 |
-| [PairingReason](arkts-connectivity-remotedevice-pairingreason-e.md) | 配对原因的枚举。 |
-| [PairingType](arkts-connectivity-remotedevice-pairingtype-e.md) | 星闪配对类型，为枚举值。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -81,3 +73,11 @@ import { remoteDevice } from '@kit.ConnectivityKit';
 | --- | --- |
 | [ConnectionInterval](arkts-connectivity-remotedevice-connectioninterval-t-sys.md) | 表示连接间隔，为枚举值。 |
 <!--DelEnd-->
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [ConnectionReason](arkts-connectivity-remotedevice-connectionreason-e.md) | 连接原因的枚举。 |
+| [PairingReason](arkts-connectivity-remotedevice-pairingreason-e.md) | 配对原因的枚举。 |
+| [PairingType](arkts-connectivity-remotedevice-pairingtype-e.md) | 星闪配对类型，为枚举值。 |

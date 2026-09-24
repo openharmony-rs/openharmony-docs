@@ -1,5 +1,9 @@
 # BluetoothInfo
 
+```TypeScript
+export interface BluetoothInfo
+```
+
 Represents the device Bluetooth information.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # EnterprisePolicy
 
+```TypeScript
+export interface EnterprisePolicy
+```
+
 表示企业定制策略。
 
 **起始版本：** 21

@@ -1,5 +1,9 @@
 # GattProperties
 
+```TypeScript
+interface GattProperties
+```
+
 Describes the properties of a gatt characteristic.
 
 **Since:** 10

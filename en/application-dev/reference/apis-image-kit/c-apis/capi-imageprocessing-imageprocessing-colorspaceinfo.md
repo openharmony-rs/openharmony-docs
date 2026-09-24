@@ -8,6 +8,8 @@ typedef struct ImageProcessing_ColorSpaceInfo {...} ImageProcessing_ColorSpaceIn
 
 The color space information is used for color space conversion capability query.
 
+**System capability**: SystemCapability.Multimedia.VideoProcessingEngine
+
 **Since**: 13
 
 **Related module**: [ImageProcessing](capi-imageprocessing.md)

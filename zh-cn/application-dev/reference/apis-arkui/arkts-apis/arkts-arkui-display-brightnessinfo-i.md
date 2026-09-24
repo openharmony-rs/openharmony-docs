@@ -1,5 +1,9 @@
 # BrightnessInfo
 
+```TypeScript
+interface BrightnessInfo
+```
+
 屏幕亮度信息。此类型中的信息均来自底层屏幕信息数据。
 
 **起始版本：** 22

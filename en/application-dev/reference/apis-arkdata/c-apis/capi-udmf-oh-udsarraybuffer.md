@@ -8,6 +8,8 @@ typedef struct OH_UdsArrayBuffer OH_UdsArrayBuffer
 
 Describes the unified data struct of array buffer.
 
+**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+
 **Since**: 13
 
 **Related module**: [UDMF](capi-udmf.md)

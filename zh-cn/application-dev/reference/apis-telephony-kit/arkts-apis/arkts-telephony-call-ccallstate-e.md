@@ -1,5 +1,9 @@
 # CCallState
 
+```TypeScript
+export enum CCallState
+```
+
 运营商通话状态码。
 
 **起始版本：** 23

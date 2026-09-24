@@ -1,5 +1,9 @@
 # AttendeeStatus
 
+```TypeScript
+export enum AttendeeStatus
+```
+
 Enumerates the status types of an attendee.
 
 **Since:** 18

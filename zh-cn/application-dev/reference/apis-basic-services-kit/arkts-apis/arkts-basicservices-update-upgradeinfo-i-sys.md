@@ -1,5 +1,9 @@
 # UpgradeInfo（系统接口）
 
+```TypeScript
+export interface UpgradeInfo
+```
+
 升级信息。
 
 **起始版本：** 9

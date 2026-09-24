@@ -93,6 +93,8 @@ enum NetConn_NetCap
 
 Enumerates the network capabilities.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -115,6 +117,8 @@ enum NetConn_NetBearerType
 
 Enumerates the network carrier types.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -134,6 +138,8 @@ enum NetConn_ErrorCode
 **Description**
 
 Enumerates network connection error codes.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 15
 
@@ -155,6 +161,8 @@ enum NetConn_PacketsType
 
 Enumerates trace route packet types.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 20
 
 | Enum item | Description |
@@ -174,6 +182,8 @@ typedef int (*OH_NetConn_CustomDnsResolver)(const char *host, const char *serv, 
 **Description**
 
 Defines the pointer to the custom DNS resolver.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 11
 
@@ -196,6 +206,8 @@ typedef void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy)
 
 Defines the callback invoked when the HTTP proxy information of the application changes.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -213,6 +225,8 @@ typedef void (*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const 
 **Description**
 
 Defines the one-shot callback used to receive the global HTTP proxy re-authentication result.<br> This callback is invoked at most once for each successful call to OH_NetConn_RefreshGlobalHttpProxyWithCallback.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 26.0.0
 
@@ -234,6 +248,8 @@ typedef void (*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle)
 
 Defines the callback invoked when the network is available.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -251,6 +267,8 @@ typedef void (*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle, N
 **Description**
 
 Defines the callback invoked when the network capabilities change.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 12
 
@@ -271,6 +289,8 @@ typedef void (*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netH
 
 Defines the callback invoked when network connection properties change.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -290,6 +310,8 @@ typedef void (*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle)
 
 Defines the callback invoked when the network is disconnected.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -308,6 +330,8 @@ typedef void (*OH_NetConn_NetUnavailable)(void)
 
 Defines the callback invoked when the network is unavailable. This callback is triggered when the network is not activated within the specified timeout interval. If the timeout interval is not set, this callback is not triggered.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 12
 
 ### OH_NetConn_NetBlockStatusChange()
@@ -319,6 +343,8 @@ typedef void (*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bo
 **Description**
 
 Defines the callback invoked when the network blocking status changes.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 12
 

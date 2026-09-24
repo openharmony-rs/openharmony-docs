@@ -1,5 +1,9 @@
 # DownloadDescription
 
+```TypeScript
+export declare enum DownloadDescription
+```
+
 Enum for DownloadDescription
 
 @enum { number }

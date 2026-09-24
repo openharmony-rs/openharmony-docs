@@ -1,5 +1,9 @@
 # LocalSendOptions
 
+```TypeScript
+export interface LocalSendOptions
+```
+
 Defines the request parameters for the **LocalSocket** object.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # Offset
 
+```TypeScript
+interface Offset
+```
+
 Defines the offset property.
 
 **Since:** 10

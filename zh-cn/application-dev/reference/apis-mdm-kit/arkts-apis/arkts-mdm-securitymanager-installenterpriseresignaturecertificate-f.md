@@ -64,7 +64,7 @@ function installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: 
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
 | [9201006](../errorcode-enterpriseDeviceManager.md#9201006-安装企业重签名证书超过数量上限) | The number of certificates has reached the limit. |
 | [9201007](../errorcode-enterpriseDeviceManager.md#9201007-企业重签名证书无效) | The certificate is invalid. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 

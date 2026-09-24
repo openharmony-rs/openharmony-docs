@@ -6,7 +6,7 @@
 declare function $r(value: string, ...params: any[]): Resource
 ```
 
-global &#36;r function
+global $r function
 
 **Since:** 11
 

@@ -1,5 +1,9 @@
 # PickupEvent (System API)
 
+```TypeScript
+export enum PickupEvent
+```
+
 Enum for pickup event.
 
 **Since:** 26.0.0

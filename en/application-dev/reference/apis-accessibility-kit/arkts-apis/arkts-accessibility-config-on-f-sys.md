@@ -28,7 +28,7 @@ This API must be used together with [config.off('enabledAccessibilityExtensionLi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'enabledAccessibilityExtensionListChange' | Yes | The parameter is fixed to 'enabledAccessibilityExtensionListChange', which specifies the event type for listening to the list change of enabled accessibility extensions. |
+| type | 'enabledAccessibilityExtensionListChange' | Yes | The parameter is fixed to 'enabledAccessibilityExtensionListChange', which specifies the event type for listening to the list change ofenabled accessibility extensions. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | Callback invoked when the list of enabled accessibility extension abilities changes. |
 
 **Error codes:**
@@ -38,6 +38,16 @@ This API must be used together with [config.off('enabledAccessibilityExtensionLi
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { config } from '@kit.AccessibilityKit';
+
+config.on('enabledAccessibilityExtensionListChange', () => {
+  console.info('subscribe enabled accessibility extension list change state success');
+});
+```
 
 
 ## on('installedAccessibilityListChange')
@@ -72,3 +82,13 @@ This API must be used together with [config.off('installedAccessibilityListChang
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { config } from '@kit.AccessibilityKit';
+
+config.on('installedAccessibilityListChange', () => {
+  console.info('subscribe installed accessibility extension list change state success');
+});
+```

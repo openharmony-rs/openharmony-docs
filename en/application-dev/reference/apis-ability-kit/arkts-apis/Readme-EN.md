@@ -550,6 +550,8 @@
   <!--Del-->
   - [InteractionModalUIExtension(system api)](arkts-ability-insightintent-interactionmodaluiextension-i-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [InteractionText(system api)](arkts-ability-insightintent-interactiontext-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [InteractionUI(system api)](arkts-ability-insightintent-interactionui-i-sys.md)<!--DelEnd-->
   - [QueryEntityParam](arkts-ability-insightintent-queryentityparam-i.md)
   - [ExecuteMode](arkts-ability-insightintent-executemode-e.md)
@@ -559,6 +561,8 @@
   - [ReturnMode](arkts-ability-insightintent-returnmode-e.md)
 - [@ohos.app.ability.InsightIntentContext(Intent Execution Context)](arkts-ability-app-ability-insightintentcontext.md)
   - [InsightIntentContext](arkts-ability-app-ability-insightintentcontext-insightintentcontext-c.md)
+  <!--Del-->
+  - [InsightIntentContext(system api)](arkts-ability-app-ability-insightintentcontext-insightintentcontext-c-sys.md)<!--DelEnd-->
 - [@ohos.app.ability.InsightIntentDecorator(Intent Decorator)](arkts-ability-app-ability-insightintentdecorator.md)
   - [@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md)
   - [@InsightIntentEntry](arkts-ability-app-ability-insightintentdecorator-insightintententry-d.md)
@@ -696,6 +700,8 @@
 - [@ohos.app.ability.scriptManager(Script Management)](arkts-ability-app-ability-scriptmanager.md)
   - [completeArkTSScriptInApp](arkts-ability-scriptmanager-completearktsscriptinapp-f.md)
   - [ArkTSScriptInfo](arkts-ability-scriptmanager-arktsscriptinfo-i.md)
+  <!--Del-->
+  - [ArkTSScriptInfo(system api)](arkts-ability-scriptmanager-arktsscriptinfo-i-sys.md)<!--DelEnd-->
   - [ExecuteResult](arkts-ability-scriptmanager-executeresult-i.md)
 - [@ohos.app.ability.sendableContextManager](arkts-ability-app-ability-sendablecontextmanager.md)
   - [convertFromContext](arkts-ability-sendablecontextmanager-convertfromcontext-f.md)
@@ -745,7 +751,8 @@
   - [UIServiceExtensionAbility(system api)](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)<!--DelEnd-->
 <!--Del-->
 - [@ohos.app.ability.verticalPanelManager](arkts-ability-app-ability-verticalpanelmanager.md)<!--DelEnd-->
-  - [verticalPanelManager](arkts-ability-verticalpanelmanager-n.md)
+  <!--Del-->
+  - [verticalPanelManager(system api)](arkts-ability-verticalpanelmanager-n.md)<!--DelEnd-->
     <!--Del-->
     - [startVerticalPanel(system api)](arkts-ability-verticalpanelmanager-startverticalpanel-f-sys.md)<!--DelEnd-->
     <!--Del-->
@@ -873,9 +880,13 @@
   <!--Del-->
   - [queryToolSummaries(system api)](arkts-ability-climanager-querytoolsummaries-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [registerCliHook(system api)](arkts-ability-climanager-registerclihook-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [sendMessage(system api)](arkts-ability-climanager-sendmessage-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [subscribeSession(system api)](arkts-ability-climanager-subscribesession-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [unregisterCliHook(system api)](arkts-ability-climanager-unregisterclihook-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [CliSessionInfo(system api)](arkts-ability-climanager-clisessioninfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -892,6 +903,10 @@
   - [invokeFunction(system api)](arkts-ability-functionmanager-invokefunction-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [queryFunctions(system api)](arkts-ability-functionmanager-queryfunctions-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [registerFunctionHook(system api)](arkts-ability-functionmanager-registerfunctionhook-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [unregisterFunctionHook(system api)](arkts-ability-functionmanager-unregisterfunctionhook-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [InvokeOptions(system api)](arkts-ability-functionmanager-invokeoptions-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1398,7 +1413,8 @@
   - [UpgradeFlag(system api)](arkts-ability-freeinstall-upgradeflag-e-sys.md)<!--DelEnd-->
 <!--Del-->
 - [@ohos.bundle.innerBundleManager](arkts-ability-bundle-innerbundlemanager.md)<!--DelEnd-->
-  - [innerBundleManager](arkts-ability-innerbundlemanager-n.md)
+  <!--Del-->
+  - [innerBundleManager(system api)](arkts-ability-innerbundlemanager-n.md)<!--DelEnd-->
     <!--Del-->
     - [getAllLauncherAbilityInfos(system api)](arkts-ability-innerbundlemanager-getalllauncherabilityinfos-f-sys.md)<!--DelEnd-->
     <!--Del-->
@@ -1773,6 +1789,16 @@
   - [ChildProcessInformation](arkts-ability-childprocessinformation.md)
     - [ChildProcessInformation](arkts-ability-childprocessinformation-i.md)
   <!--Del-->
+  - [CliHook](arkts-ability-clihook.md)<!--DelEnd-->
+    <!--Del-->
+    - [CliHook(system api)](arkts-ability-clihook-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [ExecCmdParam(system api)](arkts-ability-clihook-execcmdparam-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [ExecResultWrap(system api)](arkts-ability-clihook-execresultwrap-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [ExecToolParam(system api)](arkts-ability-clihook-exectoolparam-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [CliToolEvent](arkts-ability-clitoolevent.md)<!--DelEnd-->
     <!--Del-->
     - [CliToolEvent(system api)](arkts-ability-clitoolevent-i-sys.md)<!--DelEnd-->
@@ -1816,6 +1842,14 @@
   - [ExtensionRunningInfo(ExtensionRunningInfo)](arkts-ability-extensionrunninginfo.md)<!--DelEnd-->
     <!--Del-->
     - [ExtensionRunningInfo(system api)](arkts-ability-extensionrunninginfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FunctionHook](arkts-ability-functionhook.md)<!--DelEnd-->
+    <!--Del-->
+    - [FunctionHook(system api)](arkts-ability-functionhook-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [FunctionResultWrap(system api)](arkts-ability-functionhook-functionresultwrap-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [InvokeFunctionParam(system api)](arkts-ability-functionhook-invokefunctionparam-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [FunctionInfo](arkts-ability-functioninfo.md)<!--DelEnd-->
     <!--Del-->
@@ -2010,6 +2044,8 @@
     - [DynamicIconInfo(system api)](arkts-ability-bundleinfo-dynamiciconinfo-i-sys.md)<!--DelEnd-->
     - [ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-i.md)
     - [SignatureInfo](arkts-ability-bundleinfo-signatureinfo-i.md)
+    <!--Del-->
+    - [SignatureInfo(system api)](arkts-ability-bundleinfo-signatureinfo-i-sys.md)<!--DelEnd-->
     - [UsedScene](arkts-ability-bundleinfo-usedscene-i.md)
   <!--Del-->
   - [BundlePackInfo](arkts-ability-bundlepackinfo.md)<!--DelEnd-->

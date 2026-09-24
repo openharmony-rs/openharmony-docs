@@ -1,5 +1,9 @@
 # DrawableDescriptor
 
+```TypeScript
+export class DrawableDescriptor
+```
+
 父类对象提供可重写的方法，包含：获取[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)实例，图片资源加载能力。
 
 **起始版本：** 10
@@ -32,7 +36,7 @@ getPixelMap(): image.PixelMap
 
 | 类型 | 说明 |
 | --- | --- |
-| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | [PixelMap](../arkts-components/arkts-arkui-pixelmap-t.md) |
+| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | [PixelMap](../arkts-components/arkts-arkui-common-comp-pixelmap-t.md) |
 
 **错误码：**
 
@@ -42,9 +46,7 @@ getPixelMap(): image.PixelMap
 
 **示例**
 
-```TypeScript
 示例请参考[LayeredDrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md)中的示例代码。
-```
 
 ## invalidate
 
@@ -94,6 +96,8 @@ load(): Promise<DrawableDescriptorLoadedResult>
 
 **起始版本：** 21
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -113,9 +117,7 @@ load(): Promise<DrawableDescriptorLoadedResult>
 
 **示例**
 
-```TypeScript
 示例请参考[DrawableDescriptorLoadedResult](arkts-arkui-arkui-drawabledescriptor-drawabledescriptorloadedresult-i.md)中的示例代码。
-```
 
 ## loadSync
 
@@ -126,6 +128,8 @@ loadSync(): DrawableDescriptorLoadedResult
 发起图片资源的同步加载，并返回加载结果。
 
 **起始版本：** 21
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
@@ -146,9 +150,7 @@ loadSync(): DrawableDescriptorLoadedResult
 
 **示例**
 
-```TypeScript
 示例请参考[DrawableDescriptorLoadedResult](arkts-arkui-arkui-drawabledescriptor-drawabledescriptorloadedresult-i.md)中的示例代码。
-```
 
 ## release
 

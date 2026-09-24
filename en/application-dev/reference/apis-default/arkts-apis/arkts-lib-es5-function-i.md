@@ -1,5 +1,9 @@
 # Function
 
+```TypeScript
+interface Function
+```
+
 Creates a new function.
 
 ## Modules to Import

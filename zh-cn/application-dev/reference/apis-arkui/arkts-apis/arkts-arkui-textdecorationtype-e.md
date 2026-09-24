@@ -1,6 +1,10 @@
 # TextDecorationType
 
-Type of text modifier.
+```TypeScript
+declare enum TextDecorationType
+```
+
+装饰线类型。
 
 **起始版本：** 7
 
@@ -12,7 +16,7 @@ Type of text modifier.
 None = 0
 ```
 
-Do not use text decorative lines.
+不使用文本装饰线。
 
 **起始版本：** 7
 
@@ -28,7 +32,7 @@ Do not use text decorative lines.
 Underline = 1
 ```
 
-Underline the words.
+文字下划线修饰。
 
 **起始版本：** 7
 
@@ -44,7 +48,7 @@ Underline the words.
 Overline = 2
 ```
 
-Text is in all uppercase.
+文字上划线修饰。
 
 **起始版本：** 7
 
@@ -60,7 +64,7 @@ Text is in all uppercase.
 LineThrough = 3
 ```
 
-A modifier line that passes through the text.
+穿过文本的修饰线。
 
 **起始版本：** 7
 

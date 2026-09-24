@@ -8,6 +8,8 @@ typedef struct OHIPCParcel OHIPCParcel
 
 Defines the ipc parcel.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **Since**: 12
 
 **Related module**: [NativeWindow](capi-nativewindow.md)

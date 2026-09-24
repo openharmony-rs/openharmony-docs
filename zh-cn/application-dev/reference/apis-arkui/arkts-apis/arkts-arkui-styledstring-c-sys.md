@@ -1,5 +1,9 @@
 # StyledString
 
+```TypeScript
+declare class StyledString
+```
+
 属性字符串。
 
 **起始版本：** 12
@@ -36,6 +40,8 @@ static marshalling(styledString: StyledString, callback: StyledStringMarshallCal
 | 类型 | 说明 |
 | --- | --- |
 | ArrayBuffer | 序列化后的buffer信息。<br>**说明：** <br>目前支持文本和图片。 |
+
+<a id="marshalling-1"></a>
 
 ## marshalling
 
@@ -100,8 +106,10 @@ static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallba
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [170002](../errorcode-styled-string.md#170002-属性字符串解码错误) | Styled string decode error. |
+
+<a id="unmarshalling-1"></a>
 
 ## unmarshalling
 
@@ -137,5 +145,5 @@ static unmarshalling(buffer: ArrayBuffer): Promise<StyledString>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [170002](../errorcode-styled-string.md#170002-属性字符串解码错误) | Styled string decode error. |

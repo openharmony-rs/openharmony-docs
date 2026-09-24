@@ -32,7 +32,7 @@ function getCellularDataFlowType(callback: AsyncCallback<DataFlowType>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 22+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 22+ |
 
 **示例**
 
@@ -49,17 +49,8 @@ data.getCellularDataFlowType((err: BusinessError, contextData: data.DataFlowType
 });
 ```
 
-```TypeScript
-import { data } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-data.getCellularDataFlowType().then((contextData: data.DataFlowType) => {
-    console.info(`getCellularDataFlowType success, contextData: ${contextData}`);
-}).catch((err: BusinessError) => {
-    console.error(`getCellularDataFlowType fail. code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getcellulardataflowtype-1"></a>
 
 ## getCellularDataFlowType
 
@@ -87,8 +78,17 @@ function getCellularDataFlowType(): Promise<DataFlowType>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 22+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 22+ |
 
 **示例**
 
-参见 getCellularDataFlowType
+```TypeScript
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.getCellularDataFlowType().then((contextData: data.DataFlowType) => {
+    console.info(`getCellularDataFlowType success, contextData: ${contextData}`);
+}).catch((err: BusinessError) => {
+    console.error(`getCellularDataFlowType fail. code: ${err.code}, message: ${err.message}`);
+});
+```

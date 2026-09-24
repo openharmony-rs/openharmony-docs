@@ -37,12 +37,12 @@ function getUidTxBytes(uid: number, callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [2103005](../errorcode-net-statistics.md#2103005-读取系统map失败) | Failed to read the system map. |
 | [2103011](../errorcode-net-statistics.md#2103011-系统map创建失败) | Failed to create a system map. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 26.0.0+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
@@ -60,15 +60,8 @@ statistics.getUidTxBytes(uid, (error: BusinessError, stats: number) => {
 });
 ```
 
-```TypeScript
-import { statistics } from '@kit.NetworkKit';
 
-let uid = 123456789;  // uid示例，请传入正确的uid
-statistics.getUidTxBytes(uid).then((stats: number) => {
-  console.info(JSON.stringify(stats));
-});
-```
-
+<a id="getuidtxbytes-1"></a>
 
 ## getUidTxBytes
 
@@ -106,13 +99,20 @@ function getUidTxBytes(uid: number): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [2103005](../errorcode-net-statistics.md#2103005-读取系统map失败) | Failed to read the system map. |
 | [2103011](../errorcode-net-statistics.md#2103011-系统map创建失败) | Failed to create a system map. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 26.0.0+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
-参见 [getUidTxBytes](#getuidtxbytes)
+```TypeScript
+import { statistics } from '@kit.NetworkKit';
+
+let uid = 123456789;  // uid示例，请传入正确的uid
+statistics.getUidTxBytes(uid).then((stats: number) => {
+  console.info(JSON.stringify(stats));
+});
+```

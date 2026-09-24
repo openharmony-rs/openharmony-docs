@@ -34,7 +34,7 @@ function createSubscriber(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -65,24 +65,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
-let subscriber: commonEventManager.CommonEventSubscriber | null = null;
-// 订阅者信息
-let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-  events: ['event']
-};
-// 创建订阅者
-commonEventManager.createSubscriber(subscribeInfo).then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-  console.info(`Succeeded in creating subscriber.`);
-  subscriber = commonEventSubscriber;
-}).catch((err: BusinessError) => {
-  console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="createsubscriber-1"></a>
 
 ## createSubscriber
 
@@ -114,8 +98,24 @@ function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<Comm
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
-参见 createSubscriber
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
+// 订阅者信息
+let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+  events: ['event']
+};
+// 创建订阅者
+commonEventManager.createSubscriber(subscribeInfo).then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+  console.info(`Succeeded in creating subscriber.`);
+  subscriber = commonEventSubscriber;
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+});
+```

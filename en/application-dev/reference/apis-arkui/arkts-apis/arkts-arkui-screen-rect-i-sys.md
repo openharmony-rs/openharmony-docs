@@ -1,5 +1,9 @@
 # Rect (System API)
 
+```TypeScript
+interface Rect
+```
+
 Describes the rectangle information.
 
 **Since:** 19

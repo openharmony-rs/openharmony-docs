@@ -8,6 +8,8 @@ typedef struct NetStack_Certificates {...} NetStack_Certificates
 
 Define certificate information.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 12
 
 **Related module**: [netstack](capi-netstack.md)

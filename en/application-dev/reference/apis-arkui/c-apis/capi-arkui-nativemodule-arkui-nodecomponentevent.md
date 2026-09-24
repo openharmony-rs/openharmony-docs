@@ -8,6 +8,8 @@ typedef struct ArkUI_NodeComponentEvent {...} ArkUI_NodeComponentEvent
 
 Defines the parameter type of the component callback event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

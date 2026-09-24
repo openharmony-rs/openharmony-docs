@@ -1,5 +1,9 @@
 # Rect
 
+```TypeScript
+export interface Rect
+```
+
 Defines a rectangle.
 
 **Since:** 9

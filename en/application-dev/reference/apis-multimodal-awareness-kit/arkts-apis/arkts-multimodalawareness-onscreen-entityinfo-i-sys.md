@@ -1,5 +1,9 @@
 # EntityInfo (System API)
 
+```TypeScript
+export interface EntityInfo
+```
+
 Provides entity information perceived, including content, links, images, and other types of entities.
 
 **Since:** 23

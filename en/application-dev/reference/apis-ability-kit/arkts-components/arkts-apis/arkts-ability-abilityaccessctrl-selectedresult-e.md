@@ -1,5 +1,9 @@
 # SelectedResult
 
+```TypeScript
+export enum SelectedResult
+```
+
 Enumerates the results of the dialog box for redirection to the settings page.
 
 **Since:** 22

@@ -1,5 +1,9 @@
 # AppSchema (System API)
 
+```TypeScript
+export interface AppSchema
+```
+
 Represents the application database schema.
 
 **Since:** 11

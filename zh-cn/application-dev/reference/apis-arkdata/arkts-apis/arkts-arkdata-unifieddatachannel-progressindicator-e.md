@@ -1,5 +1,9 @@
 # ProgressIndicator
 
+```TypeScript
+enum ProgressIndicator
+```
+
 表示进度条指示选项的枚举，可选择是否采用系统默认进度显示。
 
 **起始版本：** 15

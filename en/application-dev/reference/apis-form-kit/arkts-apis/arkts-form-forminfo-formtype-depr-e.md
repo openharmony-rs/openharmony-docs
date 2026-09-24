@@ -1,5 +1,9 @@
 # FormType
 
+```TypeScript
+enum FormType
+```
+
 Enumerates the widget types.
 
 **Since:** 8

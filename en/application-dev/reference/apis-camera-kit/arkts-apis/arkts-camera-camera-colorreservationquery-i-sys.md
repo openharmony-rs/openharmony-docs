@@ -1,5 +1,9 @@
 # ColorReservationQuery (System API)
 
+```TypeScript
+interface ColorReservationQuery
+```
+
 Provides APIs for querying the color retention type supported by the device.
 
 **Since:** 15

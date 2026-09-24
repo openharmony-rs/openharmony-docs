@@ -1,5 +1,9 @@
 # HuksChallengeType
 
+```TypeScript
+export enum HuksChallengeType
+```
+
 Enumerates the types of the challenges generated when a key is used.
 
 **Since:** 9

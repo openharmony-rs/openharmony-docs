@@ -1,7 +1,7 @@
 # SpecificSystemBar
 
 ```TypeScript
-type SpecificSystemBar = 'status' | 'navigation'| 'navigationIndicator'
+type SpecificSystemBar = 'status' | 'navigation' | 'navigationIndicator'
 ```
 
 当前支持显示或隐藏的系统栏类型。
@@ -15,5 +15,5 @@ type SpecificSystemBar = 'status' | 'navigation'| 'navigationIndicator'
 | 类型 | 说明 |
 | --- | --- |
 | 'status' | Status bar. |
-| 'navigation' | &lt;!--RP13--&gt;&lt;!--RP13End--&gt;Three-button navigation bar. |
-| 'navigationIndicator' | Bottom navigation bar. &lt;!--RP12--&gt;OpenHarmony devices do not support this capability.&lt;!--RP12End--&gt; |
+| 'navigation' | <!--RP13--><!--RP13End-->Three-button navigation bar. |
+| 'navigationIndicator' | Bottom navigation bar.<!--RP12-->OpenHarmony devices do not support this capability.<!--RP12End--> |

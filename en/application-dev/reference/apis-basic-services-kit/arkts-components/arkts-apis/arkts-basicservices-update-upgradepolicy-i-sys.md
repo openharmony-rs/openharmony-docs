@@ -1,5 +1,9 @@
 # UpgradePolicy (System API)
 
+```TypeScript
+export interface UpgradePolicy
+```
+
 Sets the upgrade policy to control the upgrade behavior.
 
 **Since:** 9

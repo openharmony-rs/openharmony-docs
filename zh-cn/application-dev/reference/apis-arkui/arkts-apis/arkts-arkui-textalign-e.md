@@ -1,6 +1,10 @@
 # TextAlign
 
-Alignment of text.
+```TypeScript
+declare enum TextAlign
+```
+
+文本段落在水平方向的对齐方式。
 
 **起始版本：** 7
 
@@ -12,7 +16,7 @@ Alignment of text.
 Center = 0
 ```
 
-Center the text.
+水平居中对齐。
 
 **起始版本：** 7
 
@@ -28,7 +32,7 @@ Center the text.
 Start = 1
 ```
 
-The text is aligned in the same direction as the writing
+水平对齐首部。
 
 **起始版本：** 7
 
@@ -44,7 +48,7 @@ The text is aligned in the same direction as the writing
 End = 2
 ```
 
-The text is aligned in the opposite direction of writing
+水平对齐尾部。
 
 **起始版本：** 7
 
@@ -60,7 +64,7 @@ The text is aligned in the opposite direction of writing
 JUSTIFY = 3
 ```
 
-Justify the text.
+双端对齐。
 
 **起始版本：** 10
 
@@ -78,7 +82,7 @@ Justify the text.
 LEFT = 4
 ```
 
-文本在左侧对齐。
+左对齐。
 
 **起始版本：** 23
 
@@ -96,7 +100,7 @@ LEFT = 4
 RIGHT = 5
 ```
 
-文本在右侧对齐。
+右对齐。
 
 **起始版本：** 23
 

@@ -30,10 +30,10 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [deleteRdbStore](arkts-arkdata-rdb-deleterdbstore-f.md) | 删除数据库，使用callback异步回调。 |
-| [deleteRdbStore](arkts-arkdata-rdb-deleterdbstore-f.md) | 使用指定的数据库文件配置删除数据库，使用Promise异步回调。 |
-| [getRdbStore](arkts-arkdata-rdb-getrdbstore-f.md) | 获得一个相关的RdbStore，操作关系型数据库，用户可以根据自己的需求配置RdbStore的参数，然后通过RdbStore调用相关接口可以执行相关的数据操作，使用callback异步回调。 |
-| [getRdbStore](arkts-arkdata-rdb-getrdbstore-f.md) | 获得一个相关的RdbStore，操作关系型数据库，用户可以根据自己的需求配置RdbStore的参数，然后通过RdbStore调用相关接口可以执行相关的数据操作，使用Promise异步回调。 |
+| [deleteRdbStore](arkts-arkdata-rdb-deleterdbstore-f.md#deleterdbstore) | 删除数据库，使用callback异步回调。 |
+| [deleteRdbStore](arkts-arkdata-rdb-deleterdbstore-f.md#deleterdbstore-1) | 使用指定的数据库文件配置删除数据库，使用Promise异步回调。 |
+| [getRdbStore](arkts-arkdata-rdb-getrdbstore-f.md#getrdbstore) | 获得一个相关的RdbStore，操作关系型数据库，用户可以根据自己的需求配置RdbStore的参数，然后通过RdbStore调用相关接口可以执行相关的数据操作，使用callback异步回调。 |
+| [getRdbStore](arkts-arkdata-rdb-getrdbstore-f.md#getrdbstore-1) | 获得一个相关的RdbStore，操作关系型数据库，用户可以根据自己的需求配置RdbStore的参数，然后通过RdbStore调用相关接口可以执行相关的数据操作，使用Promise异步回调。 |
 
 ### 类
 
@@ -48,13 +48,6 @@
 | [RdbStore](arkts-arkdata-rdb-rdbstore-i.md) | 提供管理关系数据库（RDB）方法的接口。 |
 | [StoreConfig](arkts-arkdata-rdb-storeconfig-i.md) | 管理关系数据库配置。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [SubscribeType](arkts-arkdata-rdb-subscribetype-e.md) | 描述订阅类型。 |
-| [SyncMode](arkts-arkdata-rdb-syncmode-e.md) | 指数据库同步模式。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -62,3 +55,10 @@
 | [ResultSet](arkts-arkdata-rdb-resultset-t.md) | 配置RdbPredicates以匹配数据字段为ValueType且value超出给定范围的指定字段。该方法等同于SQL语句中的"NOT BETWEEN"。 |
 | [ValuesBucket](arkts-arkdata-rdb-valuesbucket-t.md) | 用于存储键值对的类型。 |
 | [ValueType](arkts-arkdata-rdb-valuetype-t.md) | 用于表示允许的数据字段类型。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [SubscribeType](arkts-arkdata-rdb-subscribetype-e.md) | 描述订阅类型。 |
+| [SyncMode](arkts-arkdata-rdb-syncmode-e.md) | 指数据库同步模式。 |

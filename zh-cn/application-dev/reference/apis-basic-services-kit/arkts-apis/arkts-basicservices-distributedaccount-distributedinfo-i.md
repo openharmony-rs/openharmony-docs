@@ -1,5 +1,9 @@
 # DistributedInfo
 
+```TypeScript
+interface DistributedInfo
+```
+
 提供操作系统账号的分布式账号信息。
 
 **起始版本：** 7

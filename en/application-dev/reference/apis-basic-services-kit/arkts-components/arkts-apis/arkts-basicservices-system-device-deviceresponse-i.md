@@ -1,5 +1,11 @@
 # DeviceResponse
 
+```TypeScript
+export interface DeviceResponse
+```
+
+Defines the device profile information.
+
 **Since:** 3
 
 **Deprecated since:** 6
@@ -26,6 +32,8 @@ API version.
 
 **Deprecated since:** 6
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## brand
@@ -42,6 +50,8 @@ Brand.
 
 **Deprecated since:** 6
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## deviceType
@@ -50,13 +60,15 @@ Brand.
 deviceType: string
 ```
 
-Device type. The options are as follows: phone: smartphone tablet: tablet tv: smart TV wearable: wearable liteWearable: lite wearable ar: AR vr: virtual reality earphones: headset pc: personal computer speaker: speaker smartVision: smart visual device linkIoT: connection module
+Device type. The options are as follows: **phone**, **tablet**, **tv**, and **wearable**.
 
 **Type:** string
 
 **Since:** 4
 
 **Deprecated since:** 6
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
@@ -74,6 +86,8 @@ System language.
 
 **Deprecated since:** 6
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## manufacturer
@@ -89,6 +103,8 @@ Manufacturer.
 **Since:** 3
 
 **Deprecated since:** 6
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
@@ -106,6 +122,8 @@ Model.
 
 **Deprecated since:** 6
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## product
@@ -114,13 +132,15 @@ Model.
 product: string
 ```
 
-Product number.
+Product code.
 
 **Type:** string
 
 **Since:** 3
 
 **Deprecated since:** 6
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
@@ -138,6 +158,8 @@ System region.
 
 **Deprecated since:** 6
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## screenDensity
@@ -146,13 +168,15 @@ System region.
 screenDensity: number
 ```
 
-Screen density, unit dpi.
+Screen pixel density, which indicates the number of pixels per inch on the screen, in dots per inch (DPI). The screen pixel density varies depending on the device.
 
 **Type:** number
 
 **Since:** 4
 
 **Deprecated since:** 6
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
@@ -162,13 +186,17 @@ Screen density, unit dpi.
 screenShape: 'rect' | 'circle'
 ```
 
-Screen shape. The options are as follows: rect: Rectangle screen. circle: Circle screen.
+Screen shape. The options are as follows:  
+- **rect**: rectangular screen  
+- **circle**: round screen
 
 **Type:** 'rect' &#124; 'circle'
 
 **Since:** 4
 
 **Deprecated since:** 6
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
@@ -178,7 +206,9 @@ Screen shape. The options are as follows: rect: Rectangle screen. circle: Circle
 sdkMinorApiVersion?: number
 ```
 
-Minor API version of the system software. From API 26 and later versions, the system API version format is sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion. Example: 26.0.0 Value range: (-∞,+∞).
+SDK minor API version. Since API version 26.0.0, the API version is in the format of **apiVersion.sdkMinorApiVersion.sdkPatchApiVersion**. If the value fails to be obtained, **-1** is returned, which does not affect the overall return status of the **getInfo** API.
+
+**Model constraint:** This API can be used only in the FA model. **Since version**: 26.0.0 Example: 0
 
 **Type:** number
 
@@ -196,7 +226,9 @@ Minor API version of the system software. From API 26 and later versions, the sy
 sdkPatchApiVersion?: number
 ```
 
-Minor API version of the system software. From API 26 and later versions, the system API version format is sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion. Example: 26.0.0 Value range: (-∞,+∞).
+SDK patch API version. Since API version 26.0.0, the API version is in the format of **apiVersion.sdkMinorApiVersion.sdkPatchApiVersion**. If the value fails to be obtained, **-1** is returned, which does not affect the overall return status of the **getInfo** API.
+
+**Model constraint:** This API can be used only in the FA model. **Since version**: 26.0.0 Example: 0
 
 **Type:** number
 
@@ -214,13 +246,15 @@ Minor API version of the system software. From API 26 and later versions, the sy
 windowHeight: number
 ```
 
-Window Height, unit px.
+Available window height, in px. The available window size varies on different devices.
 
 **Type:** number
 
 **Since:** 3
 
 **Deprecated since:** 6
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
@@ -230,12 +264,14 @@ Window Height, unit px.
 windowWidth: number
 ```
 
-Window width, unit px.
+Available window width, in px. The available window size varies on different devices.
 
 **Type:** number
 
 **Since:** 3
 
 **Deprecated since:** 6
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite

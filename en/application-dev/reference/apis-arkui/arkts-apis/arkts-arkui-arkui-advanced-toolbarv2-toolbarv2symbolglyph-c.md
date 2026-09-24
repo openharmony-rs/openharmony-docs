@@ -1,5 +1,9 @@
 # ToolBarV2SymbolGlyph
 
+```TypeScript
+export class ToolBarV2SymbolGlyph
+```
+
 Defines toolBarV2 symbolGlyph.
 
 **Since:** 18

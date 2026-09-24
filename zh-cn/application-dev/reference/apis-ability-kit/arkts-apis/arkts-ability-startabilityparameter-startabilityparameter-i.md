@@ -1,5 +1,9 @@
 # StartAbilityParameter
 
+```TypeScript
+export interface StartAbilityParameter
+```
+
 定义启动Ability参数，可以作为入参，调用[startAbility](arkts-ability-featureability-startability-f.md)启动指定的Ability。
 
 **起始版本：** 6

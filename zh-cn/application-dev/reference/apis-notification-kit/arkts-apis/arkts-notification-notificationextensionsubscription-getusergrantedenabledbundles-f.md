@@ -6,6 +6,8 @@
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
+<a id="getusergrantedenabledbundles-1"></a>
+
 ## getUserGrantedEnabledBundles
 
 ```TypeScript
@@ -30,7 +32,7 @@ function getUserGrantedEnabledBundles(): Promise<GrantedBundleInfo[]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied or current device not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied or current device not supported. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
@@ -38,19 +40,6 @@ function getUserGrantedEnabledBundles(): Promise<GrantedBundleInfo[]>
 
 ```TypeScript
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
-  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getUserGrantedEnabledBundles fail, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-let targetBundle: notificationExtensionSubscription.BundleOption =
-{
-  // 应改为开发者需要查询的目标应用信息
-  bundle: 'com.example.testnotification',
-};
-notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getUserGrantedEnabledBundles fail, code is ${err.code}, message is ${err.message}`);

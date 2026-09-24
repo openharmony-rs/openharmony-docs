@@ -56,8 +56,54 @@ After the bulk transfer is complete, the size of the transferred or received dat
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > The following sample code is only a basic process for calling the bulkTransfer API. When calling this API, you must comply with the protocol specifications of the target USB device to ensure proper data transfer and device compatibility. For details about the protocol requirements, see the technical documentation of the device.
+
+```TypeScript
+import {BusinessError} from '@kit.BasicServicesKit';
+// Call usbManager.getDevices to obtain a data set. Then, obtain a USB device and its access permission.
+// Pass the obtained USB device as a parameter to usbManager.connectDevice. Then, call usbManager.connectDevice to connect the USB device.
+// Call usbManager.claimInterface to claim a USB interface. After that, call usbManager.bulkTransfer to start bulk transfer.
+async function bulkTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
+
+  let device: usbManager.USBDevice = devicesList?.[0];
+  await usbManager.requestRight(device.name);
+  if (!usbManager.hasRight(device.name)) {
+    console.error(`request right fail`);
+    return;
+  }
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicePipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
+  for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
+    if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
+      let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
+      let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
+      let ret: number = usbManager.claimInterface(devicePipe, interfaces);
+      if (ret !== 0) {
+        console.error(`claim interface failed`);
+        continue;
+      }
+      let buffer = new Uint8Array(128);
+      usbManager.bulkTransfer(devicePipe, endpoint, buffer).then((ret: number) => {
+        console.info(`bulkTransfer = ${ret}`);
+        ret = usbManager.releaseInterface(devicePipe, interfaces);
+        console.info(`releaseInterface = ${ret}`);
+        if (i === device.configs?.[0]?.interfaces.length - 1) {
+          usbManager.closePipe(devicePipe);
+        }
+      }).catch((error: BusinessError) => {
+        console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
+      });
+    }
+  }
+}
 ```

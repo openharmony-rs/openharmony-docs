@@ -4,6 +4,8 @@
 
 Defines APIs for AVMediaSource.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 23
 
 ## Files

@@ -1,5 +1,9 @@
 # CameraPosition
 
+```TypeScript
+enum CameraPosition
+```
+
 Enumerates the camera positions.
 
 **Since:** 10
@@ -62,7 +66,7 @@ This API is supported since API version 11 and deprecated since API version 12.
 
 **Deprecated since:** 12
 
-**Substitutes:** null
+**Substitutes:** null, null
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 

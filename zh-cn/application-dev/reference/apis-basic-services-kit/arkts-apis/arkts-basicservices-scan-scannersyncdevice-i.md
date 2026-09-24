@@ -1,5 +1,9 @@
 # ScannerSyncDevice
 
+```TypeScript
+interface ScannerSyncDevice
+```
+
 定义扫描仪同步设备的接口。
 
 **起始版本：** 20

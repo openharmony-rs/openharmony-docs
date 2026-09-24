@@ -44,8 +44,8 @@ function bindDevice(deviceAddress: PartnerDeviceAddress, deviceCapability: Devic
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [34900003](../errorcode-fusionConnectivity.md#34900003-设备未配对) | The device is not paired. |
 | [34900004](../errorcode-fusionConnectivity.md#34900004-设备地址已被注册) | The device has already been bound to the PartnerAgentExtensionAbility. |
 | [34900005](../errorcode-fusionConnectivity.md#34900005-蓝牙关闭) | Bluetooth disabled. |

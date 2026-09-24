@@ -1,5 +1,9 @@
 # CollaborateEventType
 
+```TypeScript
+enum CollaborateEventType
+```
+
 Enumerates collaboration event types.
 
 **Since:** 18

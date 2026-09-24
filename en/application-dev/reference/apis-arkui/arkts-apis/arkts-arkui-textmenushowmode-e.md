@@ -1,5 +1,9 @@
 # TextMenuShowMode
 
+```TypeScript
+declare enum TextMenuShowMode
+```
+
 Enumerates the text menu display modes.
 
 **Since:** 16
@@ -38,7 +42,7 @@ Displaying the text selection menu in a separate window is not supported in the 
 
 Displaying the text selection menu in a separate window is not supported in [UIExtension](arkts-arkui-arkui-uiextension.md).
 
-When a text component is displayed in a child window of Popup, Dialog, [Toast](../../../ui/arkts-create-toast.md), or Menu, the corresponding text selection menu cannot be displayed in a separate window.
+When a text component is displayed in a child window of [Popup](arkts-arkui-arkui-advanced-popup.md), [Dialog](arkts-arkui-arkui-advanced-dialog.md), [Toast](../../../ui/arkts-create-toast.md), or [Menu](../arkts-components/arkts-arkui-menu-comp.md#menu), the corresponding text selection menu cannot be displayed in a separate window.
 
 When **autoFill** is available for **TextInput** or **TextArea**, the corresponding text selection menu cannot be displayed in a separate window.
 

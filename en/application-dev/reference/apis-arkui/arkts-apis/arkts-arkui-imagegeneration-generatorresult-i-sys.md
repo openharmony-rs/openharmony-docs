@@ -1,5 +1,9 @@
 # GeneratorResult (System API)
 
+```TypeScript
+interface GeneratorResult
+```
+
 The result of AI-generated images
 
 @interface GeneratorResult

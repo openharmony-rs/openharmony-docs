@@ -8,6 +8,8 @@ typedef struct Ethernet_MacAddrInfoList {...} Ethernet_MacAddrInfoList
 
 Defines the MAC address list of Ethernet NICs.
 
+**System capability**: SystemCapability.Communication.NetManager.Ethernet
+
 **Since**: 26.0.0
 
 **Related module**: [netmanager_ext](capi-netmanager-ext.md)

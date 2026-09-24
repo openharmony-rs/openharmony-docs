@@ -1,5 +1,9 @@
 # Duplex
 
+```TypeScript
+class Duplex extends Readable
+```
+
 既可读又可写的流。双工流允许数据双向传输，即可读可写。**Duplex**类继承自[Readable](arkts-arkts-stream-readable-c.md)，支持**Readable**中的所有API。
 
 **继承/实现关系：** Duplex extends [Readable](arkts-arkts-stream-readable-c.md)

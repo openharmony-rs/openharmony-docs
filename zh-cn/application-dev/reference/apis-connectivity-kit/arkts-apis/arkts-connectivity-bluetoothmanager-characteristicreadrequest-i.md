@@ -1,5 +1,9 @@
 # CharacteristicReadRequest
 
+```TypeScript
+interface CharacteristicReadRequest
+```
+
 描述server端订阅后收到的特征值读请求事件参数结构。
 
 从API version 9开始支持，从API version 10开始废弃。

@@ -1,5 +1,9 @@
 # FeatureForAccount
 
+```TypeScript
+enum FeatureForAccount
+```
+
 Enumerates the features that can be disabled or enabled for a specified user.
 
 **Since:** 26.0.0

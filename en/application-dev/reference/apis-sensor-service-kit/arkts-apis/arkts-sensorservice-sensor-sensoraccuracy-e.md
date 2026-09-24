@@ -1,5 +1,9 @@
 # SensorAccuracy
 
+```TypeScript
+enum SensorAccuracy
+```
+
 Enumerates the accuracy levels of sensor data.
 
 **Since:** 11

@@ -8,6 +8,8 @@ typedef struct OH_Drawing_GpuContextOptions {...} OH_Drawing_GpuContextOptions
 
 定义有关图形处理器上下文的选项。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **废弃版本：** 18

@@ -1,5 +1,9 @@
 # AudioRecorderConfig
 
+```TypeScript
+interface AudioRecorderConfig
+```
+
 Provides the audio recorder configuration definitions.
 
 **Since:** 6

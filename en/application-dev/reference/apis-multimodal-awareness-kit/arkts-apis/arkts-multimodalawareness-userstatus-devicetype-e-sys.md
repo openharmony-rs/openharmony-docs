@@ -1,5 +1,9 @@
 # DeviceType (System API)
 
+```TypeScript
+export enum DeviceType
+```
+
 Enumerates device types.
 
 **Since:** 26.0.0

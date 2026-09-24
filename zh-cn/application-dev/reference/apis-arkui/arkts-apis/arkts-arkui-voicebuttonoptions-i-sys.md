@@ -1,5 +1,9 @@
 # VoiceButtonOptions（系统接口）
 
+```TypeScript
+interface VoiceButtonOptions
+```
+
 语音按钮选项。
 
 **起始版本：** 23

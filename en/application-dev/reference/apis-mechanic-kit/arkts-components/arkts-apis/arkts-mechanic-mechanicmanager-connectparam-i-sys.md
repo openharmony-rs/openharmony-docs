@@ -1,5 +1,9 @@
 # ConnectParam (System API)
 
+```TypeScript
+export interface ConnectParam
+```
+
 Definition of connect parameter.
 
 **Since:** 26.0.0

@@ -89,6 +89,8 @@ enum HiTraceId_Valid
 
 HiTraceId是否有效标志。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -106,6 +108,8 @@ enum HiTrace_Version
 
 HiTrace版本号。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -121,6 +125,8 @@ enum HiTrace_Flag
 **描述：**
 
 HiTrace跟踪标志。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 12
 
@@ -145,6 +151,8 @@ enum HiTrace_Tracepoint_Type
 
 跟踪埋点类型枚举。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -165,6 +173,8 @@ enum HiTrace_Communication_Mode
 
 跟踪通信类型枚举。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -183,6 +193,8 @@ enum HiTrace_Output_Level
 **描述：**
 
 HiTrace输出级别。低于系统跟踪输出级别阈值的打点将不会生效。log版本阈值为[HITRACE_LEVEL_INFO](capi-trace-h.md#hitrace_output_level)；nolog版本阈值为 [HITRACE_LEVEL_COMMERCIAL](capi-trace-h.md#hitrace_output_level)。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 19
 
@@ -207,6 +219,8 @@ typedef void (*OH_HiTrace_TraceEventListener)(bool traceStatus)
 
 定义应用trace捕获开关状态切换时的回调函数类型。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 22
 
 **参数：**
@@ -224,6 +238,8 @@ HiTraceId OH_HiTrace_BeginChain(const char *name, int flags)
 **描述：**
 
 开始跟踪。 当前线程TLS（Thread Local Storage，线程本地存储）中不存在有效的HiTraceId时，生成有效的HiTraceId并设置到当前线程TLS中，返回该HiTraceId； 当前线程TLS中已存在有效的HiTraceId时，不会开始新的跟踪，返回各属性值均为0的无效HiTraceId。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 12
 
@@ -250,6 +266,8 @@ void OH_HiTrace_EndChain()
 
 结束跟踪。 结束跟踪并将当前线程TLS中的HiTraceId设置为无效。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 12
 
 ### OH_HiTrace_GetId()
@@ -261,6 +279,8 @@ HiTraceId OH_HiTrace_GetId()
 **描述：**
 
 @brief Obtains the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread.
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 12
 
@@ -280,6 +300,8 @@ void OH_HiTrace_SetId(const HiTraceId *id)
 
 @brief Sets the given [HiTraceId](capi-hitrace-hitraceid.md) to the TLS of the current thread. If the input parameter is invalid, no operation is performed.
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 12
 
 **参数：**
@@ -298,6 +320,8 @@ void OH_HiTrace_ClearId(void)
 
 @brief Sets the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread to invalid.
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 12
 
 ### OH_HiTrace_CreateSpan()
@@ -309,6 +333,8 @@ HiTraceId OH_HiTrace_CreateSpan(void)
 **描述：**
 
 创建跟踪分支。 创建一个[HiTraceId](capi-hitrace-hitraceid.md)，使用当前线程TLS中的chainId、spanId初始化其chainId、parentSpanId，并为其生成一个新的spanId。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 12
 
@@ -327,6 +353,8 @@ void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_T
 **描述：**
 
 HiTraceMeter跟踪信息埋点。 type为客户端发送[HITRACE_TP_CS](capi-trace-h.md#hitrace_tracepoint_type)和服务端接收[HITRACE_TP_SR](capi-trace-h.md#hitrace_tracepoint_type)时，进行同步HiTraceMeter开始打点；type为客户端接收 [HITRACE_TP_CR](capi-trace-h.md#hitrace_tracepoint_type)和服务端发送[HITRACE_TP_SS](capi-trace-h.md#hitrace_tracepoint_type)时，进行同步HiTraceMeter结束打点；type为通用类型 [HITRACE_TP_GENERAL](capi-trace-h.md#hitrace_tracepoint_type)时，不会进行HiTraceMeter打点。 type为客户端发送[HITRACE_TP_CS](capi-trace-h.md#hitrace_tracepoint_type)和客户端接收 [HITRACE_TP_CR](capi-trace-h.md#hitrace_tracepoint_type)的信息埋点需配套使用；type为服务端接收[HITRACE_TP_SR](capi-trace-h.md#hitrace_tracepoint_type)和服务端发送[HITRACE_TP_SS](capi-trace-h.md#hitrace_tracepoint_type)的信息埋点需 配套使用。否则，HiTraceMeter开始与结束打点无法正常匹配。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 12
 
@@ -349,6 +377,8 @@ void OH_HiTrace_InitId(HiTraceId *id)
 
 初始化[HiTraceId](capi-hitrace-hitraceid.md)。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 12
 
 **参数：**
@@ -366,6 +396,8 @@ void OH_HiTrace_IdFromBytes(HiTraceId *id, const uint8_t *pIdArray, int len)
 **描述：**
 
 根据字节数组创建[HiTraceId](capi-hitrace-hitraceid.md)。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 12
 
@@ -386,6 +418,8 @@ bool OH_HiTrace_IsIdValid(const HiTraceId *id)
 **描述：**
 
 判断[HiTraceId](capi-hitrace-hitraceid.md)是否有效。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 12
 
@@ -410,6 +444,8 @@ bool OH_HiTrace_IsFlagEnabled(const HiTraceId *id, HiTrace_Flag flag)
 **描述：**
 
 判断[HiTraceId](capi-hitrace-hitraceid.md)是否启用了跟踪标志flag。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 12
 
@@ -436,6 +472,8 @@ void OH_HiTrace_EnableFlag(const HiTraceId *id, HiTrace_Flag flag)
 
 启用[HiTraceId](capi-hitrace-hitraceid.md)中指定的跟踪标志。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 12
 
 **参数：**
@@ -454,6 +492,8 @@ int OH_HiTrace_GetFlags(const HiTraceId *id)
 **描述：**
 
 获取[HiTraceId](capi-hitrace-hitraceid.md)中设置的跟踪标志位。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 12
 
@@ -479,6 +519,8 @@ void OH_HiTrace_SetFlags(HiTraceId *id, int flags)
 
 设置跟踪标志位到[HiTraceId](capi-hitrace-hitraceid.md)中。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 12
 
 **参数：**
@@ -497,6 +539,8 @@ uint64_t OH_HiTrace_GetChainId(const HiTraceId *id)
 **描述：**
 
 获取[HiTraceId](capi-hitrace-hitraceid.md)中的跟踪链ID。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 12
 
@@ -522,6 +566,8 @@ void OH_HiTrace_SetChainId(HiTraceId *id, uint64_t chainId)
 
 设置跟踪链ID到[HiTraceId](capi-hitrace-hitraceid.md)中。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 12
 
 **参数：**
@@ -540,6 +586,8 @@ uint64_t OH_HiTrace_GetSpanId(const HiTraceId *id)
 **描述：**
 
 获取当前[HiTraceId](capi-hitrace-hitraceid.md)中的分支ID。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 12
 
@@ -565,6 +613,8 @@ void OH_HiTrace_SetSpanId(HiTraceId *id, uint64_t spanId)
 
 设置分支ID到[HiTraceId](capi-hitrace-hitraceid.md)中。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 12
 
 **参数：**
@@ -583,6 +633,8 @@ uint64_t OH_HiTrace_GetParentSpanId(const HiTraceId *id)
 **描述：**
 
 获取当前[HiTraceId](capi-hitrace-hitraceid.md)中的父分支ID。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 12
 
@@ -608,6 +660,8 @@ void OH_HiTrace_SetParentSpanId(HiTraceId *id, uint64_t parentSpanId)
 
 设置[HiTraceId](capi-hitrace-hitraceid.md)结构的parentSpanId字段。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 12
 
 **参数：**
@@ -626,6 +680,8 @@ int OH_HiTrace_IdToBytes(const HiTraceId* id, uint8_t* pIdArray, int len)
 **描述：**
 
 将[HiTraceId](capi-hitrace-hitraceid.md)转换为字节数组，用于缓存或者通信传递。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 12
 
@@ -653,6 +709,8 @@ void OH_HiTrace_StartTrace(const char *name)
 
 标记一个同步跟踪耗时任务的开始。 同步跟踪打点接口[OH_HiTrace_StartTrace](capi-trace-h.md#oh_hitrace_starttrace)和[OH_HiTrace_FinishTrace](capi-trace-h.md#oh_hitrace_finishtrace)必须配对使用。 [OH_HiTrace_StartTrace](capi-trace-h.md#oh_hitrace_starttrace)和[OH_HiTrace_FinishTrace](capi-trace-h.md#oh_hitrace_finishtrace)函数对可以嵌套使用，跟踪解析时使用栈式数据结构进行匹配。 从API version 19开始，建议使用[OH_HiTrace_StartTraceEx](capi-trace-h.md#oh_hitrace_starttraceex)接口，以便分级控制跟踪输出。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 10
 
 **参数：**
@@ -671,6 +729,8 @@ void OH_HiTrace_FinishTrace(void)
 
 标记一个同步跟踪耗时任务的结束。 必须和[OH_HiTrace_StartTrace](capi-trace-h.md#oh_hitrace_starttrace)配对使用。跟踪解析时，和其前执行流程中最近的[OH_HiTrace_StartTrace](capi-trace-h.md#oh_hitrace_starttrace)进行匹配。 从API version 19开始，建议使用[OH_HiTrace_FinishTraceEx](capi-trace-h.md#oh_hitrace_finishtraceex)接口，以便分级控制跟踪输出。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 10
 
 ### OH_HiTrace_StartAsyncTrace()
@@ -682,6 +742,8 @@ void OH_HiTrace_StartAsyncTrace(const char *name, int32_t taskId)
 **描述：**
 
 标记一个异步跟踪耗时任务的开始。 用于在异步操作前调用进行开始打点，异步跟踪开始和结束数据由于不是顺序发生的，所以解析时需要通过一个唯一的taskId进行识别。 必须和[OH_HiTrace_FinishAsyncTrace](capi-trace-h.md#oh_hitrace_finishasynctrace)配对使用，参数name和taskId相同的开始与结束打点相匹配，构成一个异步跟踪耗时任务。 如果有多个相同name的任务需要跟踪或者对同一个任务跟踪多次，并且任务同时被执行，则每次调用的taskId需不相同。 如果具有相同name的任务是串行执行的，则taskId可以相同。 从API version 19开始，建议使用[OH_HiTrace_StartAsyncTraceEx](capi-trace-h.md#oh_hitrace_startasynctraceex)接口，以便分级控制跟踪输出与跟踪聚类。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 10
 
@@ -702,6 +764,8 @@ void OH_HiTrace_FinishAsyncTrace(const char *name, int32_t taskId)
 
 标记一个异步跟踪耗时任务的结束。 在异步操作完成后如回调函数中调用，进行结束打点。 和[OH_HiTrace_StartAsyncTrace](capi-trace-h.md#oh_hitrace_startasynctrace)配对使用，参数name和taskId必须与异步跟踪的开始打点接口的对应参数值保持一致。 从API version 19开始，建议使用[OH_HiTrace_FinishAsyncTraceEx](capi-trace-h.md#oh_hitrace_finishasynctraceex)接口，以便分级控制跟踪输出。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 10
 
 **参数：**
@@ -721,6 +785,8 @@ void OH_HiTrace_CountTrace(const char *name, int64_t count)
 
 用于跟踪给定整数变量名和整数值。 多次执行该接口可以跟踪给定整数变量在不同时刻的数值变化。 从API version 19开始，建议使用[OH_HiTrace_CountTraceEx](capi-trace-h.md#oh_hitrace_counttraceex)接口，以便分级控制跟踪输出。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 10
 
 **参数：**
@@ -739,6 +805,8 @@ void OH_HiTrace_StartTraceEx(HiTrace_Output_Level level, const char* name, const
 **描述：**
 
 标记一个同步跟踪耗时任务的开始，分级控制跟踪输出。 同步跟踪打点接口[OH_HiTrace_StartTraceEx](capi-trace-h.md#oh_hitrace_starttraceex)和[OH_HiTrace_FinishTraceEx](capi-trace-h.md#oh_hitrace_finishtraceex)必须配对使用。 [OH_HiTrace_StartTraceEx](capi-trace-h.md#oh_hitrace_starttraceex)和[OH_HiTrace_FinishTraceEx](capi-trace-h.md#oh_hitrace_finishtraceex)函数对可以嵌套使用，跟踪解析时使用栈式数据结构进行匹配。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 19
 
@@ -760,6 +828,8 @@ void OH_HiTrace_FinishTraceEx(HiTrace_Output_Level level)
 
 标记一个同步跟踪耗时任务的结束，分级控制跟踪输出。必须和[OH_HiTrace_StartTraceEx](capi-trace-h.md#oh_hitrace_starttraceex)配对使用，参数level必须与同步跟踪的开始 打点接口[OH_HiTrace_StartTraceEx](capi-trace-h.md#oh_hitrace_starttraceex)的对应参数值一致。跟踪数据解析时，和其前执行流程中最近的[OH_HiTrace_StartTraceEx](capi-trace-h.md#oh_hitrace_starttraceex)进行 匹配。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 19
 
 **参数：**
@@ -777,6 +847,8 @@ void OH_HiTrace_StartAsyncTraceEx(HiTrace_Output_Level level, const char* name, 
 **描述：**
 
 标记一个异步跟踪耗时任务的开始，分级控制跟踪输出。 用于在异步操作执行前进行开始打点，异步跟踪开始和结束数据由于不是顺序发生的，所以解析时需要通过一个唯一的taskId进行识别。 和[OH_HiTrace_FinishAsyncTraceEx](capi-trace-h.md#oh_hitrace_finishasynctraceex)配对使用，参数name和taskId相同的开始与结束打点相匹配，构成一个异步跟踪耗时任务。 如果有多个相同name的任务需要跟踪或者对同一个任务跟踪多次，并且任务同时被执行，则每次调用的taskId需不相同。 如果具有相同name的任务是串行执行的，则taskId可以相同。 不同进程的taskId不会相互干扰。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 19
 
@@ -800,6 +872,8 @@ void OH_HiTrace_FinishAsyncTraceEx(HiTrace_Output_Level level, const char* name,
 
 标记一个异步跟踪耗时任务的结束，分级控制跟踪输出。 用于在异步操作完成后进行结束打点，例如在回调函数中调用。 和[OH_HiTrace_StartAsyncTraceEx](capi-trace-h.md#oh_hitrace_startasynctraceex)配对使用，参数level、name和taskId必须与异步跟踪开始打点接口的对应参数值保持一致。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 19
 
 **参数：**
@@ -819,6 +893,8 @@ void OH_HiTrace_CountTraceEx(HiTrace_Output_Level level, const char* name, int64
 **描述：**
 
 标记一个跟踪的整数变量，分级控制跟踪输出。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 19
 
@@ -840,6 +916,8 @@ bool OH_HiTrace_IsTraceEnabled(void)
 
 判断当前是否开启应用trace捕获。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 19
 
 **返回值：**
@@ -857,6 +935,8 @@ int32_t OH_HiTrace_RegisterTraceListener(OH_HiTrace_TraceEventListener callback)
 **描述：**
 
 注册应用trace捕获开关通知回调，使用callback异步回调。 注册成功后，立即执行一次回调函数，后续回调函数由应用trace捕获开关状态变化触发执行。回调函数保存在应用进程内，一个进程最多可以注册10个回调函数。 若注册的回调包含耗时操作，当回调被执行时，注册或注销行为会被阻塞（等待回调执行完成）。因此，建议不要在应用主线程中注册或注销包含耗时操作的回调， 避免发生应用冻屏。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 22
 
@@ -881,6 +961,8 @@ int32_t OH_HiTrace_UnregisterTraceListener(int32_t index)
 **描述：**
 
 注销应用trace捕获开关通知回调。 使用[OH_HiTrace_RegisterTraceListener](capi-trace-h.md#oh_hitrace_registertracelistener)返回的回调索引，注销该索引关联的回调函数。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 22
 

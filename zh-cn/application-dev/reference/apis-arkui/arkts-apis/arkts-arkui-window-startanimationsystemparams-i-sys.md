@@ -1,5 +1,9 @@
 # StartAnimationSystemParams（系统接口）
 
+```TypeScript
+interface StartAnimationSystemParams
+```
+
 启动动画配置，仅对全屏应用生效。
 
 不同应用间跳转场景不生效，仍保持系统默认动效。

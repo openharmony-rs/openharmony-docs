@@ -1,5 +1,9 @@
 # Curve
 
+```TypeScript
+enum Curve
+```
+
 Defines an interpolation curve. For details about the curves and animations, see &lt;!--RP1--&gt; [Bezier Curve](../../../../design/ux-design/animation-attributes.md)&lt;!--RP1End--&gt;.
 
 **Since:** 7

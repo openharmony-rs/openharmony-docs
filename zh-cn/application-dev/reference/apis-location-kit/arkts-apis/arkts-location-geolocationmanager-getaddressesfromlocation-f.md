@@ -29,8 +29,8 @@ function getAddressesFromLocation(request: ReverseGeoCodeRequest, callback: Asyn
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call &#36;{geoLocationManager.getAddressesFromLocation} due to limited device capabilities. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call ${geoLocationManager.getAddressesFromLocation} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
 | [3301300](../errorcode-geoLocationManager.md#3301300-逆地理编码查询失败) | Reverse geocoding query failed. |
 
@@ -58,27 +58,8 @@ try {
 }
 ```
 
-```TypeScript
-import { geoLocationManager } from '@kit.LocationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let reverseGeocodeRequest: geoLocationManager.ReverseGeoCodeRequest = {
-  "latitude": 31.12,
-  "longitude": 121.11,
-  "maxItems": 1
-};
-try {
-  geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
-    console.info('getAddressesFromLocation: ' + JSON.stringify(data));
-  })
-    .catch((error: BusinessError) => {
-      console.error('promise, getAddressesFromLocation: error=' + JSON.stringify(error));
-    });
-} catch (err) {
-  console.error("errCode:" + err.code + ", message:" + err.message);
-}
-```
-
+<a id="getaddressesfromlocation-1"></a>
 
 ## getAddressesFromLocation
 
@@ -108,11 +89,30 @@ function getAddressesFromLocation(request: ReverseGeoCodeRequest): Promise<Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call &#36;{geoLocationManager.getAddressesFromLocation} due to limited device capabilities. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call ${geoLocationManager.getAddressesFromLocation} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
 | [3301300](../errorcode-geoLocationManager.md#3301300-逆地理编码查询失败) | Reverse geocoding query failed. |
 
 **示例**
 
-参见 getAddressesFromLocation
+```TypeScript
+import { geoLocationManager } from '@kit.LocationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let reverseGeocodeRequest: geoLocationManager.ReverseGeoCodeRequest = {
+  "latitude": 31.12,
+  "longitude": 121.11,
+  "maxItems": 1
+};
+try {
+  geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
+    console.info('getAddressesFromLocation: ' + JSON.stringify(data));
+  })
+    .catch((error: BusinessError) => {
+      console.error('promise, getAddressesFromLocation: error=' + JSON.stringify(error));
+    });
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```

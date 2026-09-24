@@ -8,6 +8,8 @@ typedef struct Print_PrintJob {...} Print_PrintJob
 
 Defines a struct for the print job.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Related module**: [Print](capi-print.md)

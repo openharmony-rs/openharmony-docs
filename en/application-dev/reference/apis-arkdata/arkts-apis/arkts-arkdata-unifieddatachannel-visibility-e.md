@@ -1,5 +1,9 @@
 # Visibility
 
+```TypeScript
+enum Visibility
+```
+
 Enumerates the data visibility levels.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # ReportingMode (System API)
 
+```TypeScript
+export enum ReportingMode
+```
+
 Enum for distance measurement result reporting modes. @enum { int } ReportingMode
 
 **Since:** 23

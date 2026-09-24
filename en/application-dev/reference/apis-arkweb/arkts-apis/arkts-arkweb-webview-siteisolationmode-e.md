@@ -1,5 +1,9 @@
 # SiteIsolationMode
 
+```TypeScript
+enum SiteIsolationMode
+```
+
 The site isolation mechanism isolates websites from different origins in different renderer subprocesses, reducing the cross-origin attack surface. For example, in the original process model on PC, each tab corresponds to one renderer subprocess. After site isolation is enabled, iframes from different origins run in independent renderer subprocesses.
 
 **Since:** 21

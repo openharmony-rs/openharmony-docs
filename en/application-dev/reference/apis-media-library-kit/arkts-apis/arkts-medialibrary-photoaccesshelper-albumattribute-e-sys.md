@@ -1,5 +1,9 @@
 # AlbumAttribute (System API)
 
+```TypeScript
+enum AlbumAttribute
+```
+
 Album operation attribute.
 
 **Since:** 26.0.0
@@ -64,7 +68,7 @@ FRIEND_ID_ATTR = 'friend_id'
 
 The album friend_id operation attribute.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -80,7 +84,7 @@ CONTACT_INFO_ATTR = 'contact_info'
 
 The album contact_info operation attribute.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

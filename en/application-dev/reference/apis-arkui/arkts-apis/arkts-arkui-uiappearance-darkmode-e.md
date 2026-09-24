@@ -1,5 +1,9 @@
 # DarkMode
 
+```TypeScript
+enum DarkMode
+```
+
 Enumerates the color modes.
 
 **Since:** 20

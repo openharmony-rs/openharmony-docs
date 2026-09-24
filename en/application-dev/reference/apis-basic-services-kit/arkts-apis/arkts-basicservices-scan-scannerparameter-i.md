@@ -1,5 +1,9 @@
 # ScannerParameter
 
+```TypeScript
+interface ScannerParameter
+```
+
 Defines the scanner parameters.
 
 **Since:** 20

@@ -41,7 +41,7 @@ function isLastWorkTimeOut(workId: number, callback: AsyncCallback<void>): boole
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
 | [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
@@ -76,6 +76,8 @@ workScheduler.isLastWorkTimeOut(500)
 ```
 
 
+<a id="islastworktimeout-1"></a>
+
 ## isLastWorkTimeOut
 
 ```TypeScript
@@ -101,7 +103,7 @@ function isLastWorkTimeOut(workId: number, callback: AsyncCallback<boolean>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
 | [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
@@ -109,8 +111,21 @@ function isLastWorkTimeOut(workId: number, callback: AsyncCallback<boolean>): vo
 
 **示例**
 
-参见 isLastWorkTimeOut
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
+workScheduler.isLastWorkTimeOut(500, (error: BusinessError, res: boolean) => {
+  if (error) {
+    console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
+  }
+});
+```
+
+
+<a id="islastworktimeout-2"></a>
 
 ## isLastWorkTimeOut
 
@@ -142,7 +157,7 @@ function isLastWorkTimeOut(workId: number): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
 | [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
@@ -150,4 +165,15 @@ function isLastWorkTimeOut(workId: number): Promise<boolean>
 
 **示例**
 
-参见 isLastWorkTimeOut
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
+
+workScheduler.isLastWorkTimeOut(500)
+  .then((res: boolean) => {
+    console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
+  })
+  .catch((error: BusinessError) => {
+    console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
+  });
+```

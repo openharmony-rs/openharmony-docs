@@ -1,5 +1,9 @@
 # Scenarios
 
+```TypeScript
+export enum Scenarios
+```
+
 表示不触发[onNewWant](arkts-ability-app-ability-uiability-uiability-c.md#onnewwant)生命周期回调场景的枚举，用于[setOnNewWantSkipScenarios](arkts-ability-uiabilitycontext-c.md#setonnewwantskipscenarios)接口。
 
 **起始版本：** 20
@@ -12,7 +16,7 @@
 SCENARIO_MOVE_MISSION_TO_FRONT = 0x00000001
 ```
 
-&lt;!--RP1--&gt;系统接口missionManager.moveMissionToFront接口触发的UIAbility到前台场景。&lt;!--RP1End--&gt;
+<!--RP1-->系统接口missionManager.moveMissionToFront接口触发的UIAbility到前台场景。<!--RP1End-->
 
 **起始版本：** 20
 

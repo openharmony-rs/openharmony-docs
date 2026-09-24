@@ -1,5 +1,9 @@
 # RotateEvent (System API)
 
+```TypeScript
+export enum RotateEvent
+```
+
 Enum for rotate event.
 
 **Since:** 26.0.0

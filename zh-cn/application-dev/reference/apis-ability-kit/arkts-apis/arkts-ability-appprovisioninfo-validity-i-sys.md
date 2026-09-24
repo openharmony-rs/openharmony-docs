@@ -1,5 +1,9 @@
 # Validity（系统接口）
 
+```TypeScript
+export interface Validity
+```
+
 配置文件中的有效期。
 
 **起始版本：** 10

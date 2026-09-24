@@ -1,5 +1,9 @@
 # OperationMode
 
+```TypeScript
+export enum OperationMode
+```
+
 Enumerates the uri operate mode types.
 
 @enum { int } OperationMode

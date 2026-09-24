@@ -20,10 +20,10 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)（系统接口）](#oh_packingoptions_getneedspackdfxdata) | 获取OH_PackingOptions结构体中的needsPackDfxData参数。**系统接口：** 此接口为系统接口。 |
-| [Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)（系统接口）](#oh_packingoptions_setneedspackdfxdata) | 设置OH_PackingOptions结构体中的needsPackDfxData参数。**系统接口：** 此接口为系统接口。 |
-| [Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, uint32_t c2paDataSize)（系统接口）](#oh_packingoptions_setc2padatasize) | 设置OH_PackingOptions结构体中的C2PA数据大小，默认值为0，表示不预留空间。**系统接口：** 此接口为系统接口。 |
-| [Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *options, uint32_t *c2paDataSize)（系统接口）](#oh_packingoptions_getc2padatasize) | 获取OH_PackingOptions结构体中的C2PA数据大小。**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)（系统接口）](#oh_packingoptions_getneedspackdfxdata) | 获取OH_PackingOptions结构体中的needsPackDfxData参数。<br>**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)（系统接口）](#oh_packingoptions_setneedspackdfxdata) | 设置OH_PackingOptions结构体中的needsPackDfxData参数。<br>**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, uint32_t c2paDataSize)（系统接口）](#oh_packingoptions_setc2padatasize) | 设置OH_PackingOptions结构体中的C2PA数据大小，默认值为0，表示不预留空间。<br>**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *options, uint32_t *c2paDataSize)（系统接口）](#oh_packingoptions_getc2padatasize) | 获取OH_PackingOptions结构体中的C2PA数据大小。<br>**系统接口：** 此接口为系统接口。 |
 
 ## 函数说明
 
@@ -36,6 +36,8 @@ Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options
 **描述：**
 
 获取OH_PackingOptions结构体中的needsPackDfxData参数。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 26.0.0
 
@@ -64,6 +66,8 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options
 
 设置OH_PackingOptions结构体中的needsPackDfxData参数。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
@@ -91,7 +95,9 @@ Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, ui
 
 设置OH_PackingOptions结构体中的C2PA数据大小，默认值为0，表示不预留空间。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -106,7 +112,7 @@ Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, ui
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | <ul>           <li>{@link IMAGE_SUCCESS} 操作成功。</li><br>        <li>202 非系统应用程序调用该接口。</li><br>        <li>{@link IMAGE_PACKER_INVALID_PARAMETER} options为NULL。</li>          </ul> |
+| Image_ErrorCode | <ul>           <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) 操作成功。</li>          <li>202 非系统应用程序调用该接口。</li>          <li>[IMAGE_PACKER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) options为NULL。</li>          </ul> |
 
 ### OH_PackingOptions_GetC2paDataSize()
 
@@ -118,7 +124,9 @@ Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *optio
 
 获取OH_PackingOptions结构体中的C2PA数据大小。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -133,6 +141,6 @@ Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *optio
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | <ul>           <li>{@link IMAGE_SUCCESS} 操作成功。</li><br>        <li>202 非系统应用程序调用该接口。</li><br>        <li>{@link IMAGE_PACKER_INVALID_PARAMETER} options或c2paDataSize为NULL。</li>          </ul> |
+| Image_ErrorCode | <ul>           <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) 操作成功。</li>          <li>202 非系统应用程序调用该接口。</li>          <li>[IMAGE_PACKER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) options或c2paDataSize为NULL。</li>          </ul> |
 
 

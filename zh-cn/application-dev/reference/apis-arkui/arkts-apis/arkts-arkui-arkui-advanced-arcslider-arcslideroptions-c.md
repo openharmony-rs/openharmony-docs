@@ -1,5 +1,9 @@
 # ArcSliderOptions
 
+```TypeScript
+declare class ArcSliderOptions
+```
+
 配置弧形Slider的信息。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # WindowMode
 
+```TypeScript
+declare enum WindowMode
+```
+
 窗口的窗口模式。
 
 **起始版本：** 9

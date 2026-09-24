@@ -1,5 +1,9 @@
 # ComponentObserver
 
+```TypeScript
+interface ComponentObserver
+```
+
 The ComponentObserver is used to listen for layout, draw and drawChildren events.
 
 **Since:** 10
@@ -164,8 +168,71 @@ Deregisters a callback with the corresponding query condition by using the handl
 
 **Examples**
 
-```TypeScript
 The following example demonstrates how to register the component layout and drawing completion callbacks. In addition, you can use the [onLayoutChildren23+](#onlayoutchildren) API to listen for the callback event triggered when the layout of a node in the subtree is complete.
+
+```TypeScript
+import { inspector } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Image($r('app.media.startIcon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+        .id('ROW_ID')
+      }
+    }.height(320).width(360).padding({ right: 10, top: 10 })
+  }
+
+  listenerForImage: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID');
+
+  aboutToAppear() {
+    let onLayoutComplete: () => void = (): void => {
+      // Supplement the implementation code as required.
+    };
+    let onDrawComplete: () => void = (): void => {
+      // Supplement the implementation code as required.
+    };
+    let onDrawChildrenComplete: () => void = (): void => {
+      // Supplement the implementation code as required.
+    };
+    // Bind to the current JS instance.
+    let funcLayout = onLayoutComplete;
+    let funcDraw = onDrawComplete;
+    let funcDrawChildren = onDrawChildrenComplete;
+    let offFuncLayout = onLayoutComplete;
+    let offFuncDraw = onDrawComplete;
+    let offFuncDrawChildren = onDrawChildrenComplete;
+
+    this.listenerForImage.on('layout', funcLayout);
+    this.listenerForImage.on('draw', funcDraw);
+    this.listenerForRow.on('drawChildren', funcDrawChildren);
+
+    // Unregister callbacks through the handle. You should decide when to call these APIs.
+    // this.listenerForImage.off('layout', offFuncLayout)
+    // this.listenerForImage.off('draw', offFuncDraw)
+    // this.listenerForRow.off('drawChildren', offFuncDrawChildren)
+
+    let onLayoutChildrenComplete: () => void = (): void => {
+      // After the layoutChildren event is received, you can customize the implementation logic.
+    };
+
+    let uniqueId: number = 0; // Replace it with the unique ID of the actual component.
+    let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId.toString());
+    listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete);
+  }
+
+  // Unregister callbacks through the handle. You should decide when to call these APIs.
+  // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
+}
 ```
 
 ## on('layout')
@@ -261,8 +328,39 @@ Registers a callback with the corresponding query condition by using the handle.
 
 **Examples**
 
-```TypeScript
 The following example demonstrates how to register the component layout and drawing completion callbacks. A callback is registered through the [onDrawChildren24+](#ondrawchildren) API. After the rendering of the node in the subtree is complete, the callback returns the unique ID of the node.
+
+```TypeScript
+import { inspector } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Image($r('app.media.startIcon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+        .id('ROW_ID')
+      }
+    }.height(320).width(360).padding({ right: 10, top: 10 })
+  }
+
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID');
+
+  aboutToAppear() {
+    let onDrawChildrenCompleteUniqueId: (childIds: number[]) => void = (childIds: number[]): void => {
+      // Since API version 24, the onDrawChildren API is added. After the drawChildren event is received, you can customize the implementation logic.
+    };
+
+    this.listenerForRow.onDrawChildren(onDrawChildrenCompleteUniqueId);
+  }
+}
 ```
 
 ## onLayoutChildren

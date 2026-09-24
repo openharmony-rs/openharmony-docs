@@ -1,5 +1,9 @@
 # Axis
 
+```TypeScript
+declare enum Axis
+```
+
 Defines the axis direction.
 
 **Since:** 7

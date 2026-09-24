@@ -1,5 +1,9 @@
 # Date
 
+```TypeScript
+interface Date
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -19,6 +23,8 @@ Converts a Date object to a string.
 | --- | --- | --- | --- |
 | hint | "default" | Yes |  |
 
+<a id="symboltoprimitive-1"></a>
+
 ## [Symbol.toPrimitive]
 
 ```TypeScript
@@ -33,6 +39,8 @@ Converts a Date object to a string.
 | --- | --- | --- | --- |
 | hint | "string" | Yes |  |
 
+<a id="symboltoprimitive-2"></a>
+
 ## [Symbol.toPrimitive]
 
 ```TypeScript
@@ -46,6 +54,8 @@ Converts a Date object to a number.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | hint | "number" | Yes |  |
+
+<a id="symboltoprimitive-3"></a>
 
 ## [Symbol.toPrimitive]
 

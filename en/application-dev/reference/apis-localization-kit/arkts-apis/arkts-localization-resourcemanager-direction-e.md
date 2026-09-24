@@ -1,5 +1,9 @@
 # Direction
 
+```TypeScript
+export enum Direction
+```
+
 Enumerates the screen directions.
 
 **Since:** 6

@@ -8,6 +8,8 @@ typedef struct OH_Filter OH_Filter
 
 Defines a filter struct used with EffectKit module APIs to implement filter effect processing.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **Related module**: [effectKit](capi-effectkit.md)

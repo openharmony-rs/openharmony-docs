@@ -1,5 +1,9 @@
 # BusinessType (System API)
 
+```TypeScript
+export enum BusinessType
+```
+
 This enumeration value is used to identify various types of business ability info
 
 @enum { number }

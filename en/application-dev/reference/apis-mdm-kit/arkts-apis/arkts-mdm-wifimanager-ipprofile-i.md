@@ -1,5 +1,9 @@
 # IpProfile
 
+```TypeScript
+interface IpProfile
+```
+
 Represents IP configuration information.
 
 **Since:** 12

@@ -45,7 +45,7 @@ function syncContacts(context: Context, mode: ContactSyncMode, progress: Contact
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
 | [16700002](../errorcode-contacts.md#16700002-参数检查失败) | Invalid parameter value. |
 | [16700003](../errorcode-contacts.md#16700003-禁止后台调用) | Background usage is prohibited. |
@@ -54,8 +54,53 @@ function syncContacts(context: Context, mode: ContactSyncMode, progress: Contact
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let mode = contact.ContactSyncMode.MODE_INCREMENTAL;
+const totalBatches: number = 3;
+const syncId: number = Date.now() / 1000;
+const totalCount = 300;
+const batchSize = 100;
+for (let batch: number = 1; batch <= totalBatches; batch++) {
+  try {
+    const remaining: number = totalCount - (batch - 1) * batchSize;
+    const currentBatchSize: number = Math.min(batchSize, remaining);
+    const contacts: contact.Contact[] = [];
+    for (let i: number = 0; i < currentBatchSize; i++) {
+      const contactData: contact.Contact = {
+        name: {
+          fullName: `同步联系人${i + 1}_${batch}批次`
+          },
+        phoneNumbers: [{
+          phoneNumber: `1380000${String(i + 1).padStart(4, '0')}`,
+          labelName: '手机'
+        }],
+        emails: [{
+          email: `contact${i + 1}@example.com`,
+          labelName: '工作'
+          }]
+        };
+      contacts.push(contactData);
+    }
+    const progress: contact.ContactSyncProgress = {
+      syncId: syncId,
+      currentBatch: batch,
+      totalBatches: totalBatches
+    };
+    let result = await contact.syncContacts(context, mode, progress, contacts);
+    console.info(`Succeeded in syncContacts. result->${JSON.stringify(result)}`);
+  }
+  catch (err) {
+    const e = err as BusinessError;
+    console.error(`Failed to syncContacts. Code: ${e.code}, message: ${e.message}`);
+  }
+}
 ```

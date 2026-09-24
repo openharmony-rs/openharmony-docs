@@ -8,11 +8,13 @@ typedef struct OH_NN_Memory {...} OH_NN_Memory
 
 Defines the memory structure.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 **Deprecated**: 11
 
-**Replaced by**: [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md)
+**Replaced by**: {@link NN_Tensor}
 
 **Related module**: [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)
 

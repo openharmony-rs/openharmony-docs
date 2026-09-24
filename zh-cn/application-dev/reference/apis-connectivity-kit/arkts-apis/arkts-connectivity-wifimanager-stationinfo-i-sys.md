@@ -1,5 +1,9 @@
 # StationInfo（系统接口）
 
+```TypeScript
+interface StationInfo
+```
+
 接入的设备信息。包含连接到Wi-Fi网络的设备详细信息。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # OcclusionState
 
+```TypeScript
+enum OcclusionState
+```
+
 窗口可见性状态枚举。
 
 **起始版本：** 22

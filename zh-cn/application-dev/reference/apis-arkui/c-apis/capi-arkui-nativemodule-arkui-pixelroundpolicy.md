@@ -8,6 +8,8 @@ typedef struct ArkUI_PixelRoundPolicy ArkUI_PixelRoundPolicy
 
 定义组件的像素取整策略结构体。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 21
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

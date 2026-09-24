@@ -42,6 +42,8 @@ OH_Data_VBuckets *OH_VBuckets_Create(void)
 
 Creates an OH_Data_VBuckets instance object.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 18
 
 **Returns**:
@@ -65,6 +67,8 @@ int OH_VBuckets_Destroy(OH_Data_VBuckets *buckets)
 
 Destroys an OH_Data_VBuckets instance object.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 18
 
 **Parameters**:
@@ -77,7 +81,7 @@ Destroys an OH_Data_VBuckets instance object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns {@link RDB_OK} if the execution is successful.<br>        Returns {@link RDB_E_INVALID_ARGS} if invalid input parameter. |
+| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_VBuckets_PutRow()
 
@@ -88,6 +92,8 @@ int OH_VBuckets_PutRow(OH_Data_VBuckets *buckets, const OH_VBucket *row)
 **Description**
 
 Add an OH_VBucket to OH_Data_VBuckets object.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -102,7 +108,7 @@ Add an OH_VBucket to OH_Data_VBuckets object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns {@link RDB_OK} if the execution is successful.<br>        Returns {@link RDB_E_INVALID_ARGS} if invalid input parameter. |
+| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_VBuckets_PutRows()
 
@@ -113,6 +119,8 @@ int OH_VBuckets_PutRows(OH_Data_VBuckets *buckets, const OH_Data_VBuckets *rows)
 **Description**
 
 Add an OH_Data_VBuckets to OH_Data_VBuckets object.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -127,7 +135,7 @@ Add an OH_Data_VBuckets to OH_Data_VBuckets object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns {@link RDB_OK} if the execution is successful.<br>        Returns {@link RDB_E_INVALID_ARGS} if invalid input parameter. |
+| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_VBuckets_RowCount()
 
@@ -138,6 +146,8 @@ int OH_VBuckets_RowCount(OH_Data_VBuckets *buckets, size_t *count)
 **Description**
 
 Gets the number of rows in OH_Data_VBuckets object.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -152,6 +162,6 @@ Gets the number of rows in OH_Data_VBuckets object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns {@link RDB_OK} if the execution is successful.<br>        Returns {@link RDB_E_INVALID_ARGS} if invalid input parameter. |
+| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 

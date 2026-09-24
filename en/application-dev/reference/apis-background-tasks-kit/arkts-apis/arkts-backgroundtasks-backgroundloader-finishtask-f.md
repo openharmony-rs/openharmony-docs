@@ -14,7 +14,7 @@ function finishTask(taskInfo: TaskInfo): void
 
 Finish background load task.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -34,4 +34,4 @@ Finish background load task.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [9700003](../errorcode-workScheduler.md#9700003-system-service-failure) | System service operation failed. |
-| [9700004](../errorcode-workScheduler.md#9700004-workinfo-verification-failure) | Check on taskInfo failed. |
+| [9700004](../errorcode-workScheduler.md#9700004-parameter-verification-failed) | Check on taskInfo failed. |

@@ -1,5 +1,9 @@
 # LabelOptions
 
+```TypeScript
+export interface LabelOptions
+```
+
 LabelOptions定义文本属性。
 
 > **说明：** 
@@ -25,7 +29,7 @@ activatedFontColor?: ResourceColor
 
 Chip激活时的文字颜色。
 
-默认值：&#36;r('sys.color.ohos_id_color_text_primary_contrary')
+默认值：$r('sys.color.ohos_id_color_text_primary_contrary')
 
 值为undefined时，按默认值处理。
 
@@ -47,7 +51,7 @@ fontColor?: ResourceColor
 
 文字颜色。
 
-默认值：&#36;r('sys.color.ohos_id_color_text_primary')
+默认值：$r('sys.color.ohos_id_color_text_primary')
 
 值为undefined时，按默认值处理。
 
@@ -93,7 +97,7 @@ fontSize?: Dimension
 
 传入负数时，按默认值处理。
 
-默认值：&#36;r('sys.float.ohos_id_text_size_button2')
+默认值：$r('sys.float.ohos_id_text_size_button2')
 
 单位：fp
 
@@ -149,11 +153,11 @@ localizedLabelMargin?: LocalizedLabelMarginOptions
 
 size为ChipSize.SMALL时，
 
-`{ start: LengthMetrics.resource(&#36;r('sys.float.chip_small_text_margin')), end: LengthMetrics.resource(&#36;r('sys.float.chip_small_text_margin')) }`
+`{ start: LengthMetrics.resource($r('sys.float.chip_small_text_margin')), end: LengthMetrics.resource($r('sys.float.chip_small_text_margin')) }`
 
 size为ChipSize.NORMAL时，
 
-`{ start: LengthMetrics.resource(&#36;r('sys.float.chip_normal_text_margin')), end: LengthMetrics.resource(&#36;r('sys.float.chip_normal_text_margin')) }`
+`{ start: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')), end: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')) }`
 
 值为undefined时，按默认值处理。
 

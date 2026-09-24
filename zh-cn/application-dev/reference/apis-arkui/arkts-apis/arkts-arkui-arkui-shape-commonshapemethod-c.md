@@ -1,5 +1,9 @@
 # CommonShapeMethod
 
+```TypeScript
+declare class CommonShapeMethod<T>
+```
+
 提供形状的偏移、填充和位置设置等通用方法的基类。
 
 **起始版本：** 12

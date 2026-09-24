@@ -1,5 +1,9 @@
 # GestureActionPhase
 
+```TypeScript
+export const enum GestureActionPhase
+```
+
 Enumerates triggering phases of gesture callbacks, corresponding to the action callbacks defined in **gesture.d.ts**. However, different gesture types support different phases (for example, **SwipeGesture** only includes the **WILL_START** enumerated value).
 
 **Since:** 20

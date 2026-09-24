@@ -1,5 +1,9 @@
 # Locale
 
+```TypeScript
+interface Locale extends LocaleOptions
+```
+
 ## Modules to Import
 
 ```TypeScript

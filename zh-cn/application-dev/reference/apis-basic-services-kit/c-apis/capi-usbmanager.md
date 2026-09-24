@@ -4,7 +4,9 @@
 
 Provides the C interface for the USB Manager module, enabling USB device enumeration, connection, permission management, and pipe operations.
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.USB.USBManager
+
+**起始版本：** 26.0.1
 
 ## 文件汇总
 

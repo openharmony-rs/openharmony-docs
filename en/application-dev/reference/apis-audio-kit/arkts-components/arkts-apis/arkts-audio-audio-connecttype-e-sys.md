@@ -1,5 +1,9 @@
 # ConnectType (System API)
 
+```TypeScript
+enum ConnectType
+```
+
 Connect type for device.
 
 **Since:** 9

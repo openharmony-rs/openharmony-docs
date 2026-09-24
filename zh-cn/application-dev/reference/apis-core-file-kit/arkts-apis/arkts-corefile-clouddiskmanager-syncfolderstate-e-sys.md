@@ -1,5 +1,9 @@
 # SyncFolderState（系统接口）
 
+```TypeScript
+enum SyncFolderState
+```
+
 枚举，云盘的同步根的状态。
 
 **起始版本：** 21

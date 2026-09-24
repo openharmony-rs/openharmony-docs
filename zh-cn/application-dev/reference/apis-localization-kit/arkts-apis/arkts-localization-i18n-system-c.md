@@ -1,5 +1,9 @@
 # System
 
+```TypeScript
+export class System
+```
+
 提供系统属性相关的能力，包括语言地区名称翻译、支持的语言地区列表获取和系统语言地区获取等。
 
 **起始版本：** 9
@@ -72,7 +76,7 @@ static getDisplayCountry(country: string, locale: string, sentenceCase?: boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **示例**
@@ -121,7 +125,7 @@ static getDisplayLanguage(language: string, locale: string, sentenceCase?: boole
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **示例**
@@ -253,7 +257,7 @@ static getSimplifiedLanguage(language?: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **示例**
@@ -303,7 +307,7 @@ static getSystemCountries(language: string): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **示例**
@@ -378,40 +382,6 @@ import { i18n } from '@kit.LocalizationKit';
 
 // systemLanguages = [ 'ug', 'bo', 'zh-Hant', 'en-Latn-US', 'zh-Hans' ]
 let systemLanguages: Array<string> = i18n.System.getSystemLanguages();
-```
-
-## getSystemLocale
-
-```TypeScript
-static getSystemLocale(): string
-```
-
-
-> [System.getSystemLocaleInstance](#getsystemlocaleinstance)代替。
-> 获取系统当前设置的区域。
-
-**起始版本：** 9
-
-**废弃版本：** 20
-
-**替代接口：** [getSystemLocaleInstance](#getsystemlocaleinstance)
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| string | 表示区域ID的字符串。 |
-
-**示例**
-
-```TypeScript
-import { i18n } from '@kit.LocalizationKit';
-
-let systemLocale: string = i18n.System.getSystemLocale(); // 如果系统语言为简体中文、地区为中国，systemLocale = 'zh-Hans-CN'
 ```
 
 ## getSystemLocaleInstance
@@ -634,7 +604,7 @@ static isSuggested(language: string, region?: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **示例**
@@ -676,7 +646,7 @@ static setAppPreferredLanguage(language: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **示例**
@@ -691,4 +661,38 @@ try {
   let err: BusinessError = error as BusinessError;
   console.error(`call System.setAppPreferredLanguage failed, error code: ${err.code}, message: ${err.message}.`);
 }
+```
+
+## getSystemLocale
+
+```TypeScript
+static getSystemLocale(): string
+```
+
+
+> [System.getSystemLocaleInstance](#getsystemlocaleinstance)代替。
+> 获取系统当前设置的区域。
+
+**起始版本：** 9
+
+**废弃版本：** 20
+
+**替代接口：** [getSystemLocaleInstance](#getsystemlocaleinstance)
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| string | 表示区域ID的字符串。 |
+
+**示例**
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let systemLocale: string = i18n.System.getSystemLocale(); // 如果系统语言为简体中文、地区为中国，systemLocale = 'zh-Hans-CN'
 ```

@@ -1,5 +1,9 @@
 # Calendar
 
+```TypeScript
+export class Calendar
+```
+
 提供历法相关的能力，包括历法名称获取和日期计算等。
 
 **起始版本：** 7
@@ -37,7 +41,7 @@ add(field: string, amount: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **示例**
@@ -87,7 +91,7 @@ compareDays(date: Date): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -457,12 +461,7 @@ let date: Date = new Date(2021, 10, 7, 8, 0, 0); // 时间日期为2021.11.07 08
 calendar.setTime(date);
 ```
 
-```TypeScript
-import { i18n } from '@kit.LocalizationKit';
-
-let calendar: i18n.Calendar = i18n.getCalendar('en-US', 'gregory');
-calendar.setTime(10540800000);
-```
+<a id="settime-1"></a>
 
 ## setTime
 
@@ -486,7 +485,12 @@ setTime(time: number): void
 
 **示例**
 
-参见 [setTime](#settime)
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let calendar: i18n.Calendar = i18n.getCalendar('en-US', 'gregory');
+calendar.setTime(10540800000);
+```
 
 ## setTimeZone
 

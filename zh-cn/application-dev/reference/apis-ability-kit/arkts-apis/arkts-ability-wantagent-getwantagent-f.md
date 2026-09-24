@@ -31,7 +31,7 @@ function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000007](../errorcode-ability.md#16000007-服务未响应) | Service busy. There are concurrent tasks. Try again later. |
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
 
@@ -89,6 +89,45 @@ wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 }
 ```
 
+
+<a id="getwantagent-1"></a>
+
+## getWantAgent
+
+```TypeScript
+function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
+```
+
+创建WantAgent。使用Promise异步回调。创建成功返回WantAgent对象，创建失败返回空值。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| info | [WantAgentInfo](arkts-ability-wantagent-wantagentinfo-t.md) | 是 | 表示创建WantAgent所需的配置信息，包括目标UIAbility、操作类型、请求码等。三方应用在WantAgentInfo中只能设置本应用的UIAbility。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[WantAgent](arkts-ability-wantagent-t.md)&gt; | Promise对象，返回创建的WantAgent。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [16000007](../errorcode-ability.md#16000007-服务未响应) | Service busy. There are concurrent tasks. Try again later. |
+| [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
+
+**示例**
+
 ```TypeScript
 import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
@@ -134,42 +173,3 @@ try {
   console.error(`getWantAgent failed! ${err.code} ${err.message}`);
 }
 ```
-
-
-## getWantAgent
-
-```TypeScript
-function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
-```
-
-创建WantAgent。使用Promise异步回调。创建成功返回WantAgent对象，创建失败返回空值。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| info | [WantAgentInfo](arkts-ability-wantagent-wantagentinfo-t.md) | 是 | 表示创建WantAgent所需的配置信息，包括目标UIAbility、操作类型、请求码等。三方应用在WantAgentInfo中只能设置本应用的UIAbility。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[WantAgent](arkts-ability-wantagent-t.md)&gt; | Promise对象，返回创建的WantAgent。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [16000007](../errorcode-ability.md#16000007-服务未响应) | Service busy. There are concurrent tasks. Try again later. |
-| [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
-
-**示例**
-
-参见 getWantAgent

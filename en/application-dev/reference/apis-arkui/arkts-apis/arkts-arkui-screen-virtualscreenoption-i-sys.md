@@ -1,5 +1,9 @@
 # VirtualScreenOption (System API)
 
+```TypeScript
+interface VirtualScreenOption
+```
+
 Defines virtual screen parameters.
 
 **Since:** 9

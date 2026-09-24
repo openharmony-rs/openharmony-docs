@@ -1,5 +1,9 @@
 # ParagraphStyleInterface
 
+```TypeScript
+declare interface ParagraphStyleInterface
+```
+
 文本段落样式。
 
 **起始版本：** 12
@@ -16,7 +20,7 @@ leadingMargin?: LengthMetrics | LeadingMarginPlaceholder
 
 默认值：0
 
-**类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md) &#124; [LeadingMarginPlaceholder](../arkts-components/arkts-arkui-leadingmarginplaceholder-i.md)
+**类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md) &#124; [LeadingMarginPlaceholder](../arkts-components/arkts-arkui-richeditor-comp-leadingmarginplaceholder-i.md)
 
 **起始版本：** 12
 

@@ -1,5 +1,9 @@
 # FileReadTextResponse
 
+```TypeScript
+export interface FileReadTextResponse
+```
+
 Returns the text read, including the text content.
 
 **Since:** 3

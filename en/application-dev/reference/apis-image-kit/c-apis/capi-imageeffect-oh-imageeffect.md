@@ -8,6 +8,8 @@ typedef struct OH_ImageEffect OH_ImageEffect
 
 Define the new type name OH_ImageEffect for struct OH_ImageEffect
 
+**System capability**: SystemCapability.Multimedia.ImageEffect.Core
+
 **Since**: 12
 
 **Related module**: [ImageEffect](capi-imageeffect.md)

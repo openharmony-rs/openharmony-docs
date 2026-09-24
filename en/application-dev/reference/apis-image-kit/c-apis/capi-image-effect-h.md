@@ -134,7 +134,7 @@ Add the OH_EffectFilter to the OH_ImageEffect by the OH_EffectFilter instance po
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer |
 
 ### OH_ImageEffect_InsertFilter()
 
@@ -190,7 +190,7 @@ Insert the OH_EffectFilter to the OH_ImageEffect by the OH_EffectFilter instance
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer or the index is invalid value |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer or the index is invalid value |
 
 ### OH_ImageEffect_RemoveFilter()
 
@@ -244,7 +244,7 @@ Remove the filter of the specified position
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer or the index is invalid value |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer or the index is invalid value |
 
 ### OH_ImageEffect_ReplaceFilter()
 
@@ -300,7 +300,7 @@ Replace the OH_EffectFilter in the OH_ImageEffect by the OH_EffectFilter instanc
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer or the index is invalid value |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer or the index is invalid value |
 
 ### OH_ImageEffect_GetFilterCount()
 
@@ -381,7 +381,7 @@ Set configuration information to the OH_ImageEffect
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer.<br>{@link EFFECT_KEY_ERROR}, the key of the configuration parameter is invalid.<br>{@link EFFECT_PARAM_ERROR}, the value of the configuration parameter is invalid. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer.  [EFFECT_KEY_ERROR](capi-image-effect-errors-h.md#imageeffect_errorcode), the key of the configuration parameter is invalid.  [EFFECT_PARAM_ERROR](capi-image-effect-errors-h.md#imageeffect_errorcode), the value of the configuration parameter is invalid. |
 
 ### OH_ImageEffect_SetOutputSurface()
 
@@ -408,7 +408,7 @@ Set the Surface to the image effect, this interface must be called before
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_ImageEffect_GetInputSurface()
 
@@ -435,7 +435,7 @@ Get the input Surface from the image effect, this interface must be called after
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_ImageEffect_SetInputPixelmap()
 
@@ -462,7 +462,7 @@ Set input pixelmap that contains the image information. It should be noted that 
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_ImageEffect_SetOutputPixelmap()
 
@@ -489,7 +489,7 @@ Set output pixelmap that contains the image information
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_ImageEffect_SetInputNativeBuffer()
 
@@ -516,7 +516,7 @@ Set input NativeBuffer that contains the image information. It should be noted t
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_ImageEffect_SetOutputNativeBuffer()
 
@@ -543,7 +543,7 @@ Set output NativeBuffer that contains the image information
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_ImageEffect_SetInputUri()
 
@@ -570,7 +570,7 @@ Set input URI of the image. It should be noted that the image resource will be d
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_ImageEffect_SetOutputUri()
 
@@ -597,7 +597,7 @@ Set output URI of the image
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_ImageEffect_SetInputPicture()
 
@@ -624,7 +624,7 @@ Set input picture that contains the image information. It should be noted that t
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_ImageEffect_SetOutputPicture()
 
@@ -651,7 +651,7 @@ Set output picture that contains the image information
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_ImageEffect_SetInputTextureId()
 
@@ -732,7 +732,7 @@ Render the filter effects that can be a single filter or a chain of filters
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer.<br>{@link EFFECT_INPUT_OUTPUT_NOT_SUPPORTED}, the data types of the input and output images<br>to be processed are different.<br>{@link EFFECT_COLOR_SPACE_NOT_MATCH}, the color spaces of the input and output images are different.<br>{@link EFFECT_ALLOCATE_MEMORY_FAILED}, the buffer fails to be allocated. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer.  [EFFECT_INPUT_OUTPUT_NOT_SUPPORTED](capi-image-effect-errors-h.md#imageeffect_errorcode), the data types of the input and output images  to be processed are different.  [EFFECT_COLOR_SPACE_NOT_MATCH](capi-image-effect-errors-h.md#imageeffect_errorcode), the color spaces of the input and output images are different.  [EFFECT_ALLOCATE_MEMORY_FAILED](capi-image-effect-errors-h.md#imageeffect_errorcode), the buffer fails to be allocated. |
 
 ### OH_ImageEffect_Stop()
 
@@ -758,7 +758,7 @@ Stop rendering the filter effects for next image frame data
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_ImageEffect_Release()
 
@@ -784,7 +784,7 @@ Clear the internal resources of the OH_ImageEffect and destroy the OH_ImageEffec
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_ImageEffect_Save()
 
@@ -811,7 +811,7 @@ Convert the OH_ImageEffect and the information of the filters in OH_ImageEffect 
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  {@link ImageEffect_ErrorCode}<br>{@link EFFECT_ERROR_PARAM_INVALID}, the input parameter is a null pointer. |
+| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_ImageEffect_Restore()
 

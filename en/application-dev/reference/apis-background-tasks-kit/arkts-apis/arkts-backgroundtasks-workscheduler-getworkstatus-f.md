@@ -33,9 +33,9 @@ Obtains the information a deferred task. This API uses an asynchronous callback 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-memory-operation-failure) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-system-service-failure) | System service operation failed. |
-| [9700004](../errorcode-workScheduler.md#9700004-workinfo-verification-failure) | Check on workInfo failed. |
+| [9700004](../errorcode-workScheduler.md#9700004-parameter-verification-failed) | Check on workInfo failed. |
 
 **Examples**
 
@@ -52,17 +52,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
   });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
-    console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
-  })
-```
-
+<a id="getworkstatus-1"></a>
 
 ## getWorkStatus
 
@@ -96,10 +87,19 @@ Obtains the information a deferred task. This API uses a promise to return the r
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-memory-operation-failure) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-system-service-failure) | System service operation failed. |
-| [9700004](../errorcode-workScheduler.md#9700004-workinfo-verification-failure) | Check on workInfo failed. |
+| [9700004](../errorcode-workScheduler.md#9700004-parameter-verification-failed) | Check on workInfo failed. |
 
 **Examples**
 
-See [getWorkStatus](#getworkstatus)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
+
+  workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
+    console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
+  })
+```

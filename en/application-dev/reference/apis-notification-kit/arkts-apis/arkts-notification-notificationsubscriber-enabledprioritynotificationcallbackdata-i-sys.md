@@ -1,5 +1,9 @@
 # EnabledPriorityNotificationCallbackData (System API)
 
+```TypeScript
+export interface EnabledPriorityNotificationCallbackData
+```
+
 Returns the notification priority master switch state.
 
 **Since:** 23

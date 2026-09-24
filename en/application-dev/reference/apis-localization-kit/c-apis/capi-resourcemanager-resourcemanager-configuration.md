@@ -8,6 +8,8 @@ typedef struct ResourceManager_Configuration {...} ResourceManager_Configuration
 
 Structure of the device status.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Related module**: [resourcemanager](capi-resourcemanager.md)

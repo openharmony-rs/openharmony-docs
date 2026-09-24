@@ -1,5 +1,9 @@
 # ReadonlyArray
 
+```TypeScript
+interface ReadonlyArray<T>
+```
+
 ## Modules to Import
 
 ```TypeScript

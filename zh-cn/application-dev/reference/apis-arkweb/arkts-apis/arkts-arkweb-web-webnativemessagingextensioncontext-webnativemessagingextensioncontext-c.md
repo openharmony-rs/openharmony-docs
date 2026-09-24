@@ -1,5 +1,9 @@
 # WebNativeMessagingExtensionContext
 
+```TypeScript
+export default class WebNativeMessagingExtensionContext extends ExtensionContext
+```
+
 WebNativeMessagingExtensionContext是Web原生消息扩展（[WebNativeMessagingExtensionAbility](arkts-arkweb-web-webnativemessagingextensionability-webnativemessagingextensionability-c.md)）的运行上下文，继承自ExtensionContext，为扩展Ability提供生命周期管理、Ability启动以及原生消息连接控制能力。开发者可在继承WebNativeMessagingExtensionAbility的扩展中通过`this.context`获取该上下文，进而调用[startAbility](#startability)启动其他Ability、调用[startAbilityForResult](#startabilityforresult)启动UIAbility并接收返回结果、调用[terminateSelf](#terminateself)结束当前扩展，或调用[stopNativeConnection](#stopnativeconnection)停止指定的Web原生消息连接。
 
 > **说明：** 
@@ -49,7 +53,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -136,7 +140,7 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -221,7 +225,7 @@ stopNativeConnection(connectionId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 

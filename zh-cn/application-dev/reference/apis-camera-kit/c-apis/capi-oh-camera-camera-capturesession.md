@@ -8,6 +8,8 @@ typedef struct Camera_CaptureSession Camera_CaptureSession
 
 捕获会话对象。<br> 可以使用{@link OH_CameraManager_CreateCaptureSession}方法创建指针。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

@@ -1,5 +1,9 @@
 # FeatureType
 
+```TypeScript
+enum FeatureType
+```
+
 Enumerates the NFC card emulation types.
 
 > **NOTE:** 

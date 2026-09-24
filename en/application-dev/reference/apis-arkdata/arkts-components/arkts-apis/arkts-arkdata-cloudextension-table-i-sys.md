@@ -1,5 +1,9 @@
 # Table (System API)
 
+```TypeScript
+export interface Table
+```
+
 Represents the table information.
 
 **Since:** 11

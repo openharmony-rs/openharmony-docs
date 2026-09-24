@@ -1,5 +1,9 @@
 # OverflowInfo
 
+```TypeScript
+interface OverflowInfo
+```
+
 互动卡片动效信息。
 
 @typedef { OverflowInfo }

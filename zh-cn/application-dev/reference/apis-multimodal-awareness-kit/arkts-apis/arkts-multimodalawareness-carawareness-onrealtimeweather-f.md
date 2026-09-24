@@ -14,7 +14,7 @@ function onRealTimeWeather(callback: Callback<RealTimeWeatherInfo>): void
 
 开启实时天气感知，订阅实时天气感知结果。如果能力不支持，则不会回调。支持的能力可以通过getAllCapacityList方法获取。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.vehicle.MMA_WEATHER
 
@@ -32,6 +32,6 @@ function onRealTimeWeather(callback: Callback<RealTimeWeatherInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [34000001](../errorcode-carAwareness.md#34000001-服务异常) | Service exception. |
 | [34000002](../errorcode-carAwareness.md#34000002-指定能力不支持) | Specific capability not supported. |

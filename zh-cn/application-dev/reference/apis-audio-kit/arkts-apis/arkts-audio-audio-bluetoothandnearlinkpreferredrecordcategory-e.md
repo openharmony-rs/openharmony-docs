@@ -1,5 +1,9 @@
 # BluetoothAndNearlinkPreferredRecordCategory
 
+```TypeScript
+enum BluetoothAndNearlinkPreferredRecordCategory
+```
+
 表示在使用蓝牙或星闪进行录音时，应用程序的设备偏好分类枚举。
 
 **起始版本：** 21

@@ -1,5 +1,9 @@
 # FileSystemRequestConfig (System API)
 
+```TypeScript
+interface FileSystemRequestConfig
+```
+
 Parameters required to perform garbage collection (GC).
 
 @interface FileSystemRequestConfig

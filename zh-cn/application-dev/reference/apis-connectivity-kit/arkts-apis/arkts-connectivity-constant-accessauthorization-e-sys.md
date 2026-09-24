@@ -1,5 +1,9 @@
 # AccessAuthorization（系统接口）
 
+```TypeScript
+export enum AccessAuthorization
+```
+
 枚举，蓝牙访问授权状态。表示对端蓝牙设备访问本端蓝牙Profile（如电话簿、消息等）的授权状态，用于蓝牙数据访问授权场景。
 
 **起始版本：** 11

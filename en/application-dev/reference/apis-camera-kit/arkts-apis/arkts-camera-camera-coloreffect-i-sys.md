@@ -1,5 +1,9 @@
 # ColorEffect (System API)
 
+```TypeScript
+interface ColorEffect extends ColorEffectQuery
+```
+
 ColorEffect extends [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md) Provides the APIs to obtain and set the lens color effect.
 
 **Inheritance/Implementation:** ColorEffect extends [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md)

@@ -1,5 +1,9 @@
 # RequestOptions
 
+```TypeScript
+interface RequestOptions
+```
+
 Represents request options.
 
 **Since:** 11

@@ -32,8 +32,8 @@ function getAllActiveIfaces(callback: AsyncCallback<Array<string>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 
@@ -55,20 +55,8 @@ ethernet.getAllActiveIfaces((error: BusinessError, value: string[]) => {
 });
 ```
 
-```TypeScript
-import { ethernet } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-ethernet.getAllActiveIfaces().then((data: string[]) => {
-  console.info("getAllActiveIfaces promise data.length = " + JSON.stringify(data.length));
-  for (let i = 0; i < data.length; i++) {
-    console.info("getAllActiveIfaces promise  = " + JSON.stringify(data[i]));
-  }
-}).catch((error:BusinessError) => {
-  console.error("getAllActiveIfaces promise error = " + JSON.stringify(error));
-});
-```
-
+<a id="getallactiveifaces-1"></a>
 
 ## getAllActiveIfaces
 
@@ -96,11 +84,23 @@ function getAllActiveIfaces(): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 
 **示例**
 
-参见 [getAllActiveIfaces](#getallactiveifaces)
+```TypeScript
+import { ethernet } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+ethernet.getAllActiveIfaces().then((data: string[]) => {
+  console.info("getAllActiveIfaces promise data.length = " + JSON.stringify(data.length));
+  for (let i = 0; i < data.length; i++) {
+    console.info("getAllActiveIfaces promise  = " + JSON.stringify(data[i]));
+  }
+}).catch((error:BusinessError) => {
+  console.error("getAllActiveIfaces promise error = " + JSON.stringify(error));
+});
+```

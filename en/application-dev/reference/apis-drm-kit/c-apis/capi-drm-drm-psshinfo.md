@@ -8,6 +8,8 @@ typedef struct DRM_PsshInfo {...} DRM_PsshInfo
 
 The struct describes the Protection System Specific Header (PSSH) data for a DRM system.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 **Related module**: [Drm](capi-drm.md)

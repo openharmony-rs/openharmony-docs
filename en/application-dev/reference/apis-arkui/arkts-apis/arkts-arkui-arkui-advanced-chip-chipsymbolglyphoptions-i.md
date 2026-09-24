@@ -1,5 +1,9 @@
 # ChipSymbolGlyphOptions
 
+```TypeScript
+export interface ChipSymbolGlyphOptions
+```
+
 Defines the prefix and suffix icon options.
 
 > **NOTE:** 
@@ -24,11 +28,11 @@ import { Chip, ChipOptions, ChipSize, IconCommonOptions, LabelMarginOptions, Lab
 activated?: SymbolGlyphModifier
 ```
 
-Icon settings for the activated state.
+Symbol type icon displayed for the **Chip** in the activated state.
 
-Default value: The prefix or suffix icon is not displayed.
+Default value: no prefix icon or suffix icon displayed
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
@@ -46,11 +50,11 @@ If the value is **undefined**, the default value is used.
 normal?: SymbolGlyphModifier
 ```
 
-Sets the icon in the inactive state.
+Symbol type icon displayed for the **Chip** in the inactive state.
 
-Default value: The prefix or suffix icon is not displayed.
+Default value: no prefix icon or suffix icon displayed
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 

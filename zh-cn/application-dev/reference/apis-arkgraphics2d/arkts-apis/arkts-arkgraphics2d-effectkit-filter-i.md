@@ -1,5 +1,9 @@
 # Filter
 
+```TypeScript
+interface Filter
+```
+
 图像效果类，用于通过链式调用将指定效果添加到效果链表中，适用于图片滤镜处理、视觉效果增强、图像美化等场景。在调用Filter的方法前，需要先通过[createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md)创建一个Filter实例。在添加效果后，需调用[getEffectPixelMap](#geteffectpixelmap)获取处理后的图像。
 
 **起始版本：** 9
@@ -110,6 +114,39 @@ struct Index {
 }
 ```
 
+<a id="blur-1"></a>
+
+## blur
+
+```TypeScript
+blur(radius: number, tileMode: TileMode): Filter
+```
+
+将模糊效果添加到效果链表中，返回链表的实例。支持选择着色器效果平铺模式，常用于实现背景虚化效果、隐私信息遮挡、毛玻璃背景效果、弹窗背景模糊等场景。
+
+> **说明：** 
+> 
+> 该接口为静态模糊接口，为静态图像提供模糊化效果，如果要对组件进行实时渲染的模糊，可以使用[动态模糊](../../../ui/arkts-blur-effect.md)。
+
+**起始版本：** 14
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| radius | number | 是 | 模糊半径，单位为px，取值范围为[0, +∞)。模糊半径值越大，模糊效果越明显。传入负数时无效果。 |
+| tileMode | [TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md) | 是 | 着色器效果平铺模式。影响图像边缘的模糊效果。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [Filter](arkts-arkgraphics2d-effectkit-filter-i.md) | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
+
+**示例**
+
 ```TypeScript
 import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
@@ -173,39 +210,6 @@ struct Index {
   }
 }
 ```
-
-## blur
-
-```TypeScript
-blur(radius: number, tileMode: TileMode): Filter
-```
-
-将模糊效果添加到效果链表中，返回链表的实例。支持选择着色器效果平铺模式，常用于实现背景虚化效果、隐私信息遮挡、毛玻璃背景效果、弹窗背景模糊等场景。
-
-> **说明：** 
-> 
-> 该接口为静态模糊接口，为静态图像提供模糊化效果，如果要对组件进行实时渲染的模糊，可以使用[动态模糊](../../../ui/arkts-blur-effect.md)。
-
-**起始版本：** 14
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| radius | number | 是 | 模糊半径，单位为px，取值范围为[0, +∞)。模糊半径值越大，模糊效果越明显。传入负数时无效果。 |
-| tileMode | [TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md) | 是 | 着色器效果平铺模式。影响图像边缘的模糊效果。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [Filter](arkts-arkgraphics2d-effectkit-filter-i.md) | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
-
-**示例**
-
-参见 [blur](#blur)
 
 ## brightness
 
@@ -357,29 +361,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 });
 ```
 
-```TypeScript
-import { image } from '@kit.ImageKit';
-import { effectKit } from '@kit.ArkGraphics2D';
-
-// 创建用于图像效果的buffer
-const colorBuffer = new ArrayBuffer(96);
-// 设置图像初始化选项
-let opts: image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
-  }
-};
-// 创建PixelMap实例
-image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
-  // 创建Filter实例、添加灰度效果并获取处理后的PixelMap
-  effectKit.createEffect(pixelMap).grayscale().getEffectPixelMap(false).then(data => {
-    console.info('getPixelBytesNumber = ', data.getPixelBytesNumber());
-  });
-});
-```
+<a id="geteffectpixelmap-1"></a>
 
 ## getEffectPixelMap
 
@@ -411,41 +393,13 @@ getEffectPixelMap(useCpuRender : boolean): Promise<image.PixelMap>
 
 **示例**
 
-参见 [getEffectPixelMap](#geteffectpixelmap)
-
-## getPixelMap
-
-```TypeScript
-getPixelMap(): image.PixelMap
-```
-
-获取已添加链表效果的源图像的image.PixelMap。常用于图片处理后需要保存或显示结果的场景。
-
-> **说明：** 
-> 
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[getEffectPixelMap](#geteffectpixelmap)替代。
-
-**起始版本：** 9
-
-**废弃版本：** 11
-
-**替代接口：** [getEffectPixelMap](#geteffectpixelmap)
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 已添加效果的源图像的image.PixelMap。 |
-
-**示例**
-
 ```TypeScript
 import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 
+// 创建用于图像效果的buffer
 const colorBuffer = new ArrayBuffer(96);
+// 设置图像初始化选项
 let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
@@ -454,9 +408,12 @@ let opts: image.InitializationOptions = {
     width: 6
   }
 };
+// 创建PixelMap实例
 image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
-  let pixel = effectKit.createEffect(pixelMap).grayscale().getPixelMap();
-  console.info('getPixelBytesNumber = ', pixel.getPixelBytesNumber());
+  // 创建Filter实例、添加灰度效果并获取处理后的PixelMap
+  effectKit.createEffect(pixelMap).grayscale().getEffectPixelMap(false).then(data => {
+    console.info('getPixelBytesNumber = ', data.getPixelBytesNumber());
+  });
 });
 ```
 
@@ -656,7 +613,7 @@ setColorMatrix(colorMatrix: Array<number>): Filter
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 输入参数错误。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 输入参数错误。 |
 
 **示例**
 
@@ -727,4 +684,51 @@ struct Index {
     .width('100%')
   }
 }
+```
+
+## getPixelMap
+
+```TypeScript
+getPixelMap(): image.PixelMap
+```
+
+获取已添加链表效果的源图像的image.PixelMap。常用于图片处理后需要保存或显示结果的场景。
+
+> **说明：** 
+> 
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[getEffectPixelMap](#geteffectpixelmap)替代。
+
+**起始版本：** 9
+
+**废弃版本：** 11
+
+**替代接口：** [getEffectPixelMap](#geteffectpixelmap)
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 已添加效果的源图像的image.PixelMap。 |
+
+**示例**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
+
+const colorBuffer = new ArrayBuffer(96);
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
+  let pixel = effectKit.createEffect(pixelMap).grayscale().getPixelMap();
+  console.info('getPixelBytesNumber = ', pixel.getPixelBytesNumber());
+});
 ```

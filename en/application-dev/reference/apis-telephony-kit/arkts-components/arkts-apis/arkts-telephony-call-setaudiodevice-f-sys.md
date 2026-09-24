@@ -58,19 +58,8 @@ call.setAudioDevice(audioDevice, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let audioDevice: call.AudioDevice = {
-    deviceType: call.AudioDeviceType.DEVICE_EARPIECE
-}
-call.setAudioDevice(audioDevice).then(() => {
-    console.info(`setAudioDevice success.`);
-}).catch((err: BusinessError) => {
-    console.error(`setAudioDevice fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="setaudiodevice-1"></a>
 
 ## setAudioDevice
 
@@ -114,4 +103,15 @@ Sets the audio device for a call. This API uses a promise to return the result.
 
 **Examples**
 
-See [setAudioDevice](#setaudiodevice)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let audioDevice: call.AudioDevice = {
+    deviceType: call.AudioDeviceType.DEVICE_EARPIECE
+}
+call.setAudioDevice(audioDevice).then(() => {
+    console.info(`setAudioDevice success.`);
+}).catch((err: BusinessError) => {
+    console.error(`setAudioDevice fail, promise: err->${JSON.stringify(err)}`);
+});
+```

@@ -1,5 +1,9 @@
 # WifiInfoElem
 
+```TypeScript
+interface WifiInfoElem
+```
+
 Wi-Fi information elements. @typedef WifiInfoElem
 
 **Since:** 9

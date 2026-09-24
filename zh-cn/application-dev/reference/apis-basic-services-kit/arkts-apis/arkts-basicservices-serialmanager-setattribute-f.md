@@ -34,15 +34,75 @@ function setAttribute(portId: number, attribute: SerialAttribute): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) |  |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) |  |
 | [31400001](../errorcode-usb.md#31400001-串口服务异常) |  |
 | [31400003](../errorcode-usb.md#31400003-端口号不存在) |  |
 | [31400005](../errorcode-usb.md#31400005-设备未打开) |  |
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 以下示例代码只是调用setAttribute接口的必要流程，需要放入具体的方法中执行。实际调用时，设备开发者需要遵循设备相关协议进行调用。
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取串口列表
+async function setAttributeExample() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
+
+  // 检测设备是否可被应用访问
+  if (!serialManager.hasSerialRight(portId)) {
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // 没有访问设备的权限且用户不授权则退出
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
+  }
+
+  // 打开设备
+  try {
+    serialManager.open(portId);
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+  }
+
+  // 设置串口配置
+  try {
+    let attribute: serialManager.SerialAttribute = {
+      baudRate: serialManager.BaudRates.BAUDRATE_9600,
+      dataBits: serialManager.DataBits.DATABIT_8,
+      parity: serialManager.Parity.PARITY_NONE,
+      stopBits: serialManager.StopBits.STOPBIT_1
+    };
+    serialManager.setAttribute(portId, attribute);
+    console.info('setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to set attribute. Code: ${err.code}, message: ${err.message}`);
+  }
+
+  // 关闭串口
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to close usbSerial. Code: ${err.code}, message: ${err.message}`);
+  }
+}
 ```

@@ -31,9 +31,9 @@ import { inputConsumer } from '@kit.InputKit';
 | --- | --- |
 | [getShieldStatus](arkts-input-inputconsumer-getshieldstatus-f-sys.md) | 获取系统快捷键屏蔽类型。 |
 | [off](arkts-input-inputconsumer-off-f-sys.md#offkey) | 取消订阅系统快捷键。使用callback异步回调。 |
-| [offKey](arkts-input-inputconsumer-offkey-f-sys.md) | 取消订阅系统快捷键。使用callback异步回调。 |
+| [offKey](arkts-input-inputconsumer-offkey-f-sys.md#offkey-1) | 取消订阅系统快捷键。使用callback异步回调。 |
 | [on](arkts-input-inputconsumer-on-f-sys.md#onkey) | 订阅系统快捷键，使用callback异步回调。 |
-| [onKey](arkts-input-inputconsumer-onkey-f-sys.md) | 订阅组合按键（按键命令模式），支持通过triggerType指定不同的触发模式。当满足条件的组合按键输入事件发生时，使用callback异步回调。 |
+| [onKey](arkts-input-inputconsumer-onkey-f-sys.md#onkey-1) | 订阅组合按键（按键命令模式），支持通过triggerType指定不同的触发模式。当满足条件的组合按键输入事件发生时，使用callback异步回调。 |
 | [setShieldStatus](arkts-input-inputconsumer-setshieldstatus-f-sys.md) | 设置系统快捷键屏蔽类型。 |
 <!--DelEnd-->
 
@@ -53,18 +53,18 @@ import { inputConsumer } from '@kit.InputKit';
 <!--DelEnd-->
 
 <!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [KeyCommandCallback](arkts-input-inputconsumer-keycommandcallback-t-sys.md) | 按键命令回调函数类型，当快捷键注册条件满足时触发的回调。 |
+<!--DelEnd-->
+
+<!--Del-->
 ### 枚举（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [KeyCommandTriggerType](arkts-input-inputconsumer-keycommandtriggertype-e-sys.md) | 按键命令触发类型枚举，用于指定组合按键的触发时机。 |
 | [ShieldMode](arkts-input-inputconsumer-shieldmode-e-sys.md) | 系统快捷键屏蔽类型。 |
-<!--DelEnd-->
-
-<!--Del-->
-### 类型（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [KeyCommandCallback](arkts-input-inputconsumer-keycommandcallback-t-sys.md) | 按键命令回调函数类型，当快捷键注册条件满足时触发的回调。 |
 <!--DelEnd-->

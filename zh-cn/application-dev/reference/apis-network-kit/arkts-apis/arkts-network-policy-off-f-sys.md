@@ -33,12 +33,39 @@ function off(type: 'netUidPolicyChange', callback?: Callback<NetUidPolicyInfo>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+
+**示例**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+interface Data {
+  uid: number,
+  policy: policy.NetUidPolicy
+}
+
+try {
+  policy.on('netUidPolicyChange', (data: Data) => {
+    console.info('on netUidPolicyChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netUidPolicyChange error: ' + JSON.stringify(err));
+}
+
+try {
+  policy.off('netUidPolicyChange', (data: Data) => {
+    console.info('off netUidPolicyChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('off netUidPolicyChange error: ' + JSON.stringify(err));
+}
+```
 
 
 ## off('netUidRuleChange')
@@ -68,12 +95,39 @@ function off(type: 'netUidRuleChange', callback?: Callback<NetUidRuleInfo>): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+
+**示例**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+interface Data {
+  uid: number,
+  rule: policy.NetUidRule
+}
+
+try {
+  policy.on('netUidRuleChange', (data: Data) => {
+    console.info('on netUidRuleChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netUidRuleChange error: ' + JSON.stringify(err));
+}
+
+try {
+  policy.off('netUidRuleChange', (data: Data) => {
+    console.info('off netUidRuleChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('off netUidRuleChange error: ' + JSON.stringify(err));
+}
+```
 
 
 ## off('netMeteredIfacesChange')
@@ -103,12 +157,34 @@ function off(type: 'netMeteredIfacesChange', callback?: Callback<Array<string>>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+
+**示例**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+try {
+  policy.on('netMeteredIfacesChange', (data: string[]) => {
+    console.info('on netMeteredIfacesChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netMeteredIfacesChange error: ' + JSON.stringify(err));
+}
+
+try {
+  policy.off('netMeteredIfacesChange', (data: string[]) => {
+    console.info('off netMeteredIfacesChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('off netMeteredIfacesChange error: ' + JSON.stringify(err));
+}
+```
 
 
 ## off('netQuotaPolicyChange')
@@ -138,12 +214,34 @@ function off(type: 'netQuotaPolicyChange', callback?: Callback<Array<NetQuotaPol
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+
+**示例**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+try {
+  policy.on('netQuotaPolicyChange', (data: Array<policy.NetQuotaPolicy>) => {
+    console.info('on netQuotaPolicyChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netQuotaPolicyChange error: ' + JSON.stringify(err));
+}
+
+try {
+  policy.off('netQuotaPolicyChange', (data: Array<policy.NetQuotaPolicy>) => {
+    console.info('off netQuotaPolicyChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('off netQuotaPolicyChange error: ' + JSON.stringify(err));
+}
+```
 
 
 ## off('netBackgroundPolicyChange')
@@ -173,9 +271,31 @@ function off(type: 'netBackgroundPolicyChange', callback?: Callback<boolean>): v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+
+**示例**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+try {
+  policy.on('netBackgroundPolicyChange', (data: boolean) => {
+    console.info('on netBackgroundPolicyChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netBackgroundPolicyChange error: ' + JSON.stringify(err));
+}
+
+try {
+  policy.off('netBackgroundPolicyChange', (data: boolean) => {
+    console.info('off netBackgroundPolicyChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('off netBackgroundPolicyChange error: ' + JSON.stringify(err));
+}
+```

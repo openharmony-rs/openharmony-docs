@@ -40,8 +40,8 @@ function subscribeNotification(subscriber: NotificationSubscriber): Promise<void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -64,25 +64,8 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
-  console.info(`Consume callback: ${JSON.stringify(data)}`);
-}
-let subscriber: notificationSubscribe.NotificationSubscriber = {
-  onConsume: onConsumeCallback
-};
-let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
-  bundleNames: ['bundleName1', 'bundleName2'],
-}
-notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
-  console.info('subscribeNotification success');
-}).catch((err: BusinessError) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="subscribenotification-1"></a>
 
 ## subscribeNotification
 
@@ -119,12 +102,29 @@ function subscribeNotification(subscriber: NotificationSubscriber, info: Notific
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
 **示例**
 
-参见 [subscribeNotification](#subscribenotification)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
+  console.info(`Consume callback: ${JSON.stringify(data)}`);
+}
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
+  bundleNames: ['bundleName1', 'bundleName2'],
+}
+notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
+  console.info('subscribeNotification success');
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # CommonController
 
+```TypeScript
+class CommonController
+```
+
 公共控制器，可以控制promptAction相关组件。
 
 **起始版本：** 18

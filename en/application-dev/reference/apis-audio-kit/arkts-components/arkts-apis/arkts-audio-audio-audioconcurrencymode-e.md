@@ -1,5 +1,9 @@
 # AudioConcurrencyMode
 
+```TypeScript
+enum AudioConcurrencyMode
+```
+
 Enumerates the audio concurrency modes.
 
 @enum { int } [since 12 - 24]

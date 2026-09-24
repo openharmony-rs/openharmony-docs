@@ -1,5 +1,9 @@
 # PeerInfo
 
+```TypeScript
+interface PeerInfo
+```
+
 Defines the application collaboration information.
 
 **Since:** 18

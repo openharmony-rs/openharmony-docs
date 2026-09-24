@@ -1,5 +1,9 @@
 # PlaybackState
 
+```TypeScript
+enum PlaybackState
+```
+
 Enumeration of play state.
 
 @enum { int }

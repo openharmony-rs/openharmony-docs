@@ -19,22 +19,22 @@ This file declares the functions related to the rectangle in the drawing module.
 | Name | Description |
 | -- | -- |
 | [OH_Drawing_Rect* OH_Drawing_RectCreate(float left, float top, float right, float bottom)](#oh_drawing_rectcreate) | Creates an **OH_Drawing_Rect** object, without sorting the coordinates passed in. This means that the coordinates of the upper left corner of the rectangle can be greater than those of the lower right corner. |
-| [bool OH_Drawing_RectIntersect(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)](#oh_drawing_rectintersect) | Checks whether two rectangles intersect and if yes, sets **rect** to the area of intersection. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If either **rect** or **other** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [bool OH_Drawing_RectJoin(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)](#oh_drawing_rectjoin) | Obtains the union of two rectangles. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If either **rect** or **other** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [void OH_Drawing_RectSetLeft(OH_Drawing_Rect* rect, float left)](#oh_drawing_rectsetleft) | Sets the horizontal coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [void OH_Drawing_RectSetTop(OH_Drawing_Rect* rect, float top)](#oh_drawing_rectsettop) | Sets the vertical coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [void OH_Drawing_RectSetRight(OH_Drawing_Rect* rect, float right)](#oh_drawing_rectsetright) | Sets the horizontal coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [void OH_Drawing_RectSetBottom(OH_Drawing_Rect* rect, float bottom)](#oh_drawing_rectsetbottom) | Sets the vertical coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [float OH_Drawing_RectGetLeft(OH_Drawing_Rect* rect)](#oh_drawing_rectgetleft) | Obtains the X coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [float OH_Drawing_RectGetTop(OH_Drawing_Rect* rect)](#oh_drawing_rectgettop) | Obtains the Y coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [float OH_Drawing_RectGetRight(OH_Drawing_Rect* rect)](#oh_drawing_rectgetright) | Obtains the X coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [float OH_Drawing_RectGetBottom(OH_Drawing_Rect* rect)](#oh_drawing_rectgetbottom) | Obtains the Y coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [float OH_Drawing_RectGetHeight(OH_Drawing_Rect* rect)](#oh_drawing_rectgetheight) | Obtains the height of a rectangle. The height is calculated by using the Y coordinate of the lower right corner of the rectangle minus the Y coordinate of the upper left corner. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [float OH_Drawing_RectGetWidth(OH_Drawing_Rect* rect)](#oh_drawing_rectgetwidth) | Obtains the width of a rectangle. The width is calculated by using the X coordinate of the lower right corner of the rectangle minus the X coordinate of the upper left corner. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [void OH_Drawing_RectCopy(OH_Drawing_Rect* src, OH_Drawing_Rect* dst)](#oh_drawing_rectcopy) | Copies a source rectangle to create a new one. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If either **src** or **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [bool OH_Drawing_RectIntersect(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)](#oh_drawing_rectintersect) | Checks whether two rectangles intersect and if yes, sets **rect** to the area of intersection. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **rect** or **other** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [bool OH_Drawing_RectJoin(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)](#oh_drawing_rectjoin) | Obtains the union of two rectangles. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **rect** or **other** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [void OH_Drawing_RectSetLeft(OH_Drawing_Rect* rect, float left)](#oh_drawing_rectsetleft) | Sets the horizontal coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [void OH_Drawing_RectSetTop(OH_Drawing_Rect* rect, float top)](#oh_drawing_rectsettop) | Sets the vertical coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [void OH_Drawing_RectSetRight(OH_Drawing_Rect* rect, float right)](#oh_drawing_rectsetright) | Sets the horizontal coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [void OH_Drawing_RectSetBottom(OH_Drawing_Rect* rect, float bottom)](#oh_drawing_rectsetbottom) | Sets the vertical coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [float OH_Drawing_RectGetLeft(OH_Drawing_Rect* rect)](#oh_drawing_rectgetleft) | Obtains the X coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [float OH_Drawing_RectGetTop(OH_Drawing_Rect* rect)](#oh_drawing_rectgettop) | Obtains the Y coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [float OH_Drawing_RectGetRight(OH_Drawing_Rect* rect)](#oh_drawing_rectgetright) | Obtains the X coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [float OH_Drawing_RectGetBottom(OH_Drawing_Rect* rect)](#oh_drawing_rectgetbottom) | Obtains the Y coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [float OH_Drawing_RectGetHeight(OH_Drawing_Rect* rect)](#oh_drawing_rectgetheight) | Obtains the height of a rectangle. The height is calculated by using the Y coordinate of the lower right corner of the rectangle minus the Y coordinate of the upper left corner. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [float OH_Drawing_RectGetWidth(OH_Drawing_Rect* rect)](#oh_drawing_rectgetwidth) | Obtains the width of a rectangle. The width is calculated by using the X coordinate of the lower right corner of the rectangle minus the X coordinate of the upper left corner. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [void OH_Drawing_RectCopy(OH_Drawing_Rect* src, OH_Drawing_Rect* dst)](#oh_drawing_rectcopy) | Copies a source rectangle to create a new one. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **src** or **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
 | [void OH_Drawing_RectDestroy(OH_Drawing_Rect* rect)](#oh_drawing_rectdestroy) | Destroys an **OH_Drawing_Rect** object and reclaims the memory occupied by the object. |
 | [OH_Drawing_Array* OH_Drawing_RectCreateArray(size_t size)](#oh_drawing_rectcreatearray) | Creates a rectangle array object to store multiple rectangle objects. Release this pointer by calling [OH_Drawing_RectDestroyArray](capi-drawing-rect-h.md#oh_drawing_rectdestroyarray) when this object is no longer needed. |
-| [OH_Drawing_ErrorCode OH_Drawing_RectGetArraySize(OH_Drawing_Array* rectArray, size_t* pSize)](#oh_drawing_rectgetarraysize) | Obtains the size of an {@link OH_Drawing_Array} object. |
+| [OH_Drawing_ErrorCode OH_Drawing_RectGetArraySize(OH_Drawing_Array* rectArray, size_t* pSize)](#oh_drawing_rectgetarraysize) | Obtains the size of an [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object. |
 | [OH_Drawing_ErrorCode OH_Drawing_RectGetArrayElement(OH_Drawing_Array* rectArray, size_t index, OH_Drawing_Rect** rect)](#oh_drawing_rectgetarrayelement) | Obtains the rectangle with the specified index in a rectangle array. |
 | [OH_Drawing_ErrorCode OH_Drawing_RectDestroyArray(OH_Drawing_Array* rectArray)](#oh_drawing_rectdestroyarray) | Destroys an **OH_Drawing_Array** object and reclaims the memory occupied by the object. |
 | [OH_Drawing_ErrorCode OH_Drawing_RectContains(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other, bool* isContains)](#oh_drawing_rectcontains) | Checks whether a rectangle completely contains another rectangle. |
@@ -57,6 +57,8 @@ OH_Drawing_Rect* OH_Drawing_RectCreate(float left, float top, float right, float
 **Description**
 
 Creates an **OH_Drawing_Rect** object, without sorting the coordinates passed in. This means that the coordinates of the upper left corner of the rectangle can be greater than those of the lower right corner.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -83,7 +85,9 @@ bool OH_Drawing_RectIntersect(OH_Drawing_Rect* rect, const OH_Drawing_Rect* othe
 
 **Description**
 
-Checks whether two rectangles intersect and if yes, sets **rect** to the area of intersection. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If either **rect** or **other** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Checks whether two rectangles intersect and if yes, sets **rect** to the area of intersection. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **rect** or **other** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -108,7 +112,9 @@ bool OH_Drawing_RectJoin(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)
 
 **Description**
 
-Obtains the union of two rectangles. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If either **rect** or **other** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Obtains the union of two rectangles. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **rect** or **other** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -133,7 +139,9 @@ void OH_Drawing_RectSetLeft(OH_Drawing_Rect* rect, float left)
 
 **Description**
 
-Sets the horizontal coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Sets the horizontal coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -152,7 +160,9 @@ void OH_Drawing_RectSetTop(OH_Drawing_Rect* rect, float top)
 
 **Description**
 
-Sets the vertical coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Sets the vertical coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -171,7 +181,9 @@ void OH_Drawing_RectSetRight(OH_Drawing_Rect* rect, float right)
 
 **Description**
 
-Sets the horizontal coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Sets the horizontal coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -190,7 +202,9 @@ void OH_Drawing_RectSetBottom(OH_Drawing_Rect* rect, float bottom)
 
 **Description**
 
-Sets the vertical coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Sets the vertical coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -209,7 +223,9 @@ float OH_Drawing_RectGetLeft(OH_Drawing_Rect* rect)
 
 **Description**
 
-Obtains the X coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Obtains the X coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -233,7 +249,9 @@ float OH_Drawing_RectGetTop(OH_Drawing_Rect* rect)
 
 **Description**
 
-Obtains the Y coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Obtains the Y coordinate of the upper left corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -257,7 +275,9 @@ float OH_Drawing_RectGetRight(OH_Drawing_Rect* rect)
 
 **Description**
 
-Obtains the X coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Obtains the X coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -281,7 +301,9 @@ float OH_Drawing_RectGetBottom(OH_Drawing_Rect* rect)
 
 **Description**
 
-Obtains the Y coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Obtains the Y coordinate of the lower right corner of a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -305,7 +327,9 @@ float OH_Drawing_RectGetHeight(OH_Drawing_Rect* rect)
 
 **Description**
 
-Obtains the height of a rectangle. The height is calculated by using the Y coordinate of the lower right corner of the rectangle minus the Y coordinate of the upper left corner. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Obtains the height of a rectangle. The height is calculated by using the Y coordinate of the lower right corner of the rectangle minus the Y coordinate of the upper left corner. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -329,7 +353,9 @@ float OH_Drawing_RectGetWidth(OH_Drawing_Rect* rect)
 
 **Description**
 
-Obtains the width of a rectangle. The width is calculated by using the X coordinate of the lower right corner of the rectangle minus the X coordinate of the upper left corner. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Obtains the width of a rectangle. The width is calculated by using the X coordinate of the lower right corner of the rectangle minus the X coordinate of the upper left corner. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -353,7 +379,9 @@ void OH_Drawing_RectCopy(OH_Drawing_Rect* src, OH_Drawing_Rect* dst)
 
 **Description**
 
-Copies a source rectangle to create a new one. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If either **src** or **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Copies a source rectangle to create a new one. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **src** or **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -374,6 +402,8 @@ void OH_Drawing_RectDestroy(OH_Drawing_Rect* rect)
 
 Destroys an **OH_Drawing_Rect** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -392,6 +422,8 @@ OH_Drawing_Array* OH_Drawing_RectCreateArray(size_t size)
 
 Creates a rectangle array object to store multiple rectangle objects. Release this pointer by calling [OH_Drawing_RectDestroyArray](capi-drawing-rect-h.md#oh_drawing_rectdestroyarray) when this object is no longer needed.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Parameters**:
@@ -404,7 +436,7 @@ Creates a rectangle array object to store multiple rectangle objects. Release th
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_Array* | Returns the pointer to the {@link OH_Drawing_Array} object created. If the returned object pointer is null,  the creation fails.  Possible causes are that no memory is available or an input parameter is incorrect. |
+| OH_Drawing_Array* | Returns the pointer to the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object created. If the returned object pointer is null,  the creation fails.  Possible causes are that no memory is available or an input parameter is incorrect. |
 
 ### OH_Drawing_RectGetArraySize()
 
@@ -414,7 +446,9 @@ OH_Drawing_ErrorCode OH_Drawing_RectGetArraySize(OH_Drawing_Array* rectArray, si
 
 **Description**
 
-Obtains the size of an {@link OH_Drawing_Array} object.
+Obtains the size of an [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 18
 
@@ -422,7 +456,7 @@ Obtains the size of an {@link OH_Drawing_Array} object.
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Array* rectArray | Pointer to an {@link OH_Drawing_Array} object. |
+| OH_Drawing_Array* rectArray | Pointer to an [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object. |
 | size_t* pSize | Pointer to the size_t type, which is used as an output parameter to store the size of the rectangle array. |
 
 **Returns**:
@@ -441,15 +475,17 @@ OH_Drawing_ErrorCode OH_Drawing_RectGetArrayElement(OH_Drawing_Array* rectArray,
 
 Obtains the rectangle with the specified index in a rectangle array.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Array* rectArray | Pointer to an {@link OH_Drawing_Array} object. |
+| OH_Drawing_Array* rectArray | Pointer to an [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object. |
 | size_t index | Index of the rectangle array. |
-| OH_Drawing_Rect** rect | Double pointer to {@link OH_Drawing_Rect}, which is returned to the caller as an output parameter. |
+| OH_Drawing_Rect** rect | Double pointer to [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md), which is returned to the caller as an output parameter. |
 
 **Returns**:
 
@@ -467,13 +503,15 @@ OH_Drawing_ErrorCode OH_Drawing_RectDestroyArray(OH_Drawing_Array* rectArray)
 
 Destroys an **OH_Drawing_Array** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Array* rectArray | Pointer to an {@link OH_Drawing_Array} object. |
+| OH_Drawing_Array* rectArray | Pointer to an [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object. |
 
 **Returns**:
 
@@ -491,14 +529,16 @@ OH_Drawing_ErrorCode OH_Drawing_RectContains(OH_Drawing_Rect* rect, const OH_Dra
 
 Checks whether a rectangle completely contains another rectangle.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 22
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Rect* rect | Pointer to the {@link OH_Drawing_Rect} object. This rectangle is used to check whether another rectangle (**other**) is contained. |
-| const OH_Drawing_Rect* other | Pointer to the {@link OH_Drawing_Rect} object. This rectangle is used to check whether it is contained by another rectangle (**rect**). |
+| OH_Drawing_Rect* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. This rectangle is used to check whether another rectangle (**other**) is contained. |
+| const OH_Drawing_Rect* other | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. This rectangle is used to check whether it is contained by another rectangle (**rect**). |
 | bool* isContains | Result of whether a rectangle completely contains another rectangle. It is used as an output parameter. **true** indicates that **rect** completely contains **other**. **false** indicates that **rect** does not completely contain **other**. |
 
 **Returns**:
@@ -517,13 +557,15 @@ OH_Drawing_ErrorCode OH_Drawing_RectInset(OH_Drawing_Rect* rect, float left, flo
 
 Adds a specified value to the bounds of a rectangle.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 22
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Rect* rect | Pointer to the {@link OH_Drawing_Rect} object. |
+| OH_Drawing_Rect* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
 | float left | Value to be added to the left bound of the rectangle (X coordinate of the upper left corner of the rectangle). |
 | float top | Value to be added to the top bound of the rectangle (Y coordinate of the upper left corner of the rectangle). |
 | float right | Value to be added to the right bound of the rectangle (X coordinate of the lower right corner of the rectangle). |
@@ -545,13 +587,15 @@ OH_Drawing_ErrorCode OH_Drawing_RectIsEmpty(const OH_Drawing_Rect* rect, bool* i
 
 Checks whether a rectangle is empty.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Rect* rect | Pointer to the {@link OH_Drawing_Rect} object. |
+| const OH_Drawing_Rect* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
 | bool* isEmpty | Whether a rectangle is empty. It is used as an output parameter. **true** means yes; **false**<br>otherwise. |
 
 **Returns**:
@@ -570,13 +614,15 @@ OH_Drawing_ErrorCode OH_Drawing_RectOffset(OH_Drawing_Rect* rect, float dx, floa
 
 Offsets a rectangle along the X axis and Y axis.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Rect* rect | Pointer to the {@link OH_Drawing_Rect} object. |
+| OH_Drawing_Rect* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
 | float dx | Offset on the X axis. A positive number indicates an offset towards the positive direction of the X axis, and a negative number indicates an offset towards the negative direction of the X axis. |
 | float dy | Offset on the Y axis. A positive number indicates an offset towards the positive direction of the Y axis, and a negative number indicates an offset towards the negative direction of the Y axis. |
 
@@ -596,13 +642,15 @@ OH_Drawing_ErrorCode OH_Drawing_RectOffsetTo(OH_Drawing_Rect* rect, float newLef
 
 Offsets a rectangle to a specific position while keeping the width and height unchanged.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Rect* rect | Pointer to the {@link OH_Drawing_Rect} object. |
+| OH_Drawing_Rect* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
 | float newLeft | X coordinate of the upper left corner of the rectangle after the offset. |
 | float newTop | Y coordinate of the upper left corner of the rectangle after the offset. |
 
@@ -622,13 +670,15 @@ OH_Drawing_ErrorCode OH_Drawing_RectSetEmpty(OH_Drawing_Rect* rect)
 
 Clears a rectangle (by setting the X and Y coordinates of the upper left corner and lower right corner to **0*<br>*).
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Rect* rect | Pointer to the {@link OH_Drawing_Rect} object. |
+| OH_Drawing_Rect* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
 
 **Returns**:
 
@@ -646,13 +696,15 @@ OH_Drawing_ErrorCode OH_Drawing_RectSort(OH_Drawing_Rect* rect)
 
 Sorts the coordinates of a rectangle based on the actual position.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Rect* rect | Pointer to the {@link OH_Drawing_Rect} object. |
+| OH_Drawing_Rect* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
 
 **Returns**:
 
@@ -670,14 +722,16 @@ OH_Drawing_ErrorCode OH_Drawing_RectUnion(OH_Drawing_Rect* rect, const OH_Drawin
 
 Sets the current rectangle to the union of this rectangle and another rectangle.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Rect* rect | Pointer to this {@link OH_Drawing_Rect} object. |
-| const OH_Drawing_Rect* other | Pointer to another {@link OH_Drawing_Rect} object. |
+| OH_Drawing_Rect* rect | Pointer to this [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
+| const OH_Drawing_Rect* other | Pointer to another [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
 
 **Returns**:
 

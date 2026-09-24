@@ -8,6 +8,8 @@ typedef struct Rdb_DistributedConfig {...} Rdb_DistributedConfig
 
 Manages the distributed configuration of the table.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 11
 
 **Related module**: [RDB](capi-rdb.md)

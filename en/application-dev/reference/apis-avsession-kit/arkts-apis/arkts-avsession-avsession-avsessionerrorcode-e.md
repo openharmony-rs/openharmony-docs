@@ -1,5 +1,9 @@
 # AVSessionErrorCode
 
+```TypeScript
+enum AVSessionErrorCode
+```
+
 Enumerates ErrorCode types, returns in BusinessError.code.
 
 **Since:** 10
@@ -942,7 +946,7 @@ ERR_CODE_SERVICE_NOT_RUNNING = 6700101
 
 Session service is not running.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

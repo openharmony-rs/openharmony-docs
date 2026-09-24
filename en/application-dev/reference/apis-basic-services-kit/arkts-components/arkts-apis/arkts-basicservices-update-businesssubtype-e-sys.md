@@ -1,5 +1,9 @@
 # BusinessSubType (System API)
 
+```TypeScript
+export enum BusinessSubType
+```
+
 Represents an update type.
 
 **Since:** 9

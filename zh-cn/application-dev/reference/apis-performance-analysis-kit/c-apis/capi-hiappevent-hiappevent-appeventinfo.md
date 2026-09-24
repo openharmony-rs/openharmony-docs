@@ -8,6 +8,8 @@ typedef struct HiAppEvent_AppEventInfo {...} HiAppEvent_AppEventInfo
 
 单个事件信息，包含事件领域、事件名称、事件类型和事件携带的用JSON格式字符串表示的自定义参数列表。
 
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
 **起始版本：** 12
 
 **相关模块：** [HiAppEvent](capi-hiappevent.md)

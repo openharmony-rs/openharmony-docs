@@ -1,5 +1,9 @@
 # ConvertOptions
 
+```TypeScript
+interface ConvertOptions
+```
+
 Options for conversion.
 
 **Since:** 8

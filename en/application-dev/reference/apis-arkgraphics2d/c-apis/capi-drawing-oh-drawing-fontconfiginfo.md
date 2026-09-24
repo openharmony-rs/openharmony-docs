@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontConfigInfo {...} OH_Drawing_FontConfigInfo
 
 This struct describes the information about a system font configuration.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

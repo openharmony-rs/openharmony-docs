@@ -1,5 +1,9 @@
 # RequestParameterForStage (System API)
 
+```TypeScript
+interface RequestParameterForStage
+```
+
 Plugin component request parameters which is used in request function.
 
 **Since:** 9

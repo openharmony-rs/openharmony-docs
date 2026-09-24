@@ -1,12 +1,14 @@
 # DataPanel属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性：
+```TypeScript
+declare class DataPanelAttribute extends CommonMethod<DataPanelAttribute>
+```
 
-支持[通用事件](arkts-arkui-commonmethod-c.md)。
+除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
 
 @extends CommonMethod [since 7 - 10] @extends CommonMethod&lt;DataPanelAttribute&gt; [since 11]
 
-**继承/实现关系：** DataPanelAttribute extends CommonMethod&lt;DataPanelAttribute&gt;
+**继承/实现关系：** DataPanelAttribute extends CommonMethod<DataPanelAttribute>
 
 **起始版本：** 7
 
@@ -54,7 +56,7 @@ contentModifier(modifier: ContentModifier<DataPanelConfiguration>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[DataPanelConfiguration](arkts-arkui-datapanelconfiguration-i.md)&gt; | 是 | 在DataPanel组件上，定制内容区的方法，设置后将使用开发者自定义的内容替换DataPanel原有显示内容。<br>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[DataPanelConfiguration](arkts-arkui-datapanel-comp-datapanelconfiguration-i.md)&gt; | 是 | 在DataPanel组件上，定制内容区的方法，设置后将使用开发者自定义的内容替换DataPanel原有显示内容。<br>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## strokeWidth
 
@@ -120,7 +122,7 @@ trackShadow(value: DataPanelShadowOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [DataPanelShadowOptions](arkts-arkui-datapanelshadowoptions-i.md) | 是 | 投影样式。<br>**说明：** <br>设置为null时，不开启投影。 |
+| value | [DataPanelShadowOptions](arkts-arkui-datapanel-comp-datapanelshadowoptions-i.md) | 是 | 投影样式。<br>**说明：** <br>设置为null时，不开启投影。 |
 
 ## valueColors
 
@@ -142,4 +144,4 @@ valueColors(value: Array<ResourceColor | LinearGradient>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [LinearGradient](arkts-arkui-lineargradient-c.md)&gt; | 是 | 各数据段颜色，ResourceColor为纯色，LinearGradient为渐变色。默认值为渐变色，九段数据的默认颜色为：[{ color: '#F7CE00', offset: 0 }, { color: '#F99B11', offset: 1 }]、[{ color: '#F76223', offset: 0 }, { color: '#F2400A', offset: 1 }]、[{ color: '#F772AC', offset: 0 }, { color: '#E65392', offset: 1 }]、[{ color: '#A575EB', offset: 0 }, { color: '#A12DF7', offset: 1 }]、[{ color: '#7B79F7', offset: 0 }, { color: '#4B48F7', offset: 1 }]、[{ color: '#4B8AF3', offset: 0 }, { color: '#007DFF', offset: 1 }]、[{ color: '#73C1E6', offset: 0 }, { color: '#4FB4E3', offset: 1 }]、[{ color: '#A5D61D', offset: 0 }, { color: '#69D14F', offset: 1 }]、[{ color: '#A2A2B0', offset: 0 }, { color: '#8E8E93', offset: 1 }]。<br>**说明：** <br>若设置的颜色个数少于数据段个数，剩余数据段会自动匹配默认颜色列表里对应顺序的颜色；若设置的颜色个数多于数据段个数，则显示的颜色个数与数据段个数一致，多余颜色将被忽略。 |
+| value | Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [LinearGradient](arkts-arkui-datapanel-comp-lineargradient-c.md)&gt; | 是 | 各数据段颜色，ResourceColor为纯色，LinearGradient为渐变色。默认值为渐变色，九段数据的默认颜色为：[{ color: '#F7CE00', offset: 0 }, { color: '#F99B11', offset: 1 }]、[{ color: '#F76223', offset: 0 }, { color: '#F2400A', offset: 1 }]、[{ color: '#F772AC', offset: 0 }, { color: '#E65392', offset: 1 }]、[{ color: '#A575EB', offset: 0 }, { color: '#A12DF7', offset: 1 }]、[{ color: '#7B79F7', offset: 0 }, { color: '#4B48F7', offset: 1 }]、[{ color: '#4B8AF3', offset: 0 }, { color: '#007DFF', offset: 1 }]、[{ color: '#73C1E6', offset: 0 }, { color: '#4FB4E3', offset: 1 }]、[{ color: '#A5D61D', offset: 0 }, { color: '#69D14F', offset: 1 }]、[{ color: '#A2A2B0', offset: 0 }, { color: '#8E8E93', offset: 1 }]。<br>**说明：** <br>若设置的颜色个数少于数据段个数，剩余数据段会自动匹配默认颜色列表里对应顺序的颜色；若设置的颜色个数多于数据段个数，则显示的颜色个数与数据段个数一致，多余颜色将被忽略。 |

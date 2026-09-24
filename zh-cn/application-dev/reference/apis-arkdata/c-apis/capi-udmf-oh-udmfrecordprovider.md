@@ -8,6 +8,8 @@ typedef struct OH_UdmfRecordProvider OH_UdmfRecordProvider
 
 定义统一数据对象中的数据提供者。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 13
 
 **相关模块：** [UDMF](capi-udmf.md)

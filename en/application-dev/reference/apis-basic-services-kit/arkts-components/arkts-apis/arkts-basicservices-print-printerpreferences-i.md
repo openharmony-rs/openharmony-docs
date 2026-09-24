@@ -1,5 +1,9 @@
 # PrinterPreferences
 
+```TypeScript
+interface PrinterPreferences
+```
+
 Defines the printer preferences.
 
 **Since:** 18

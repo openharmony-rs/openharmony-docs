@@ -63,28 +63,8 @@ hidebug.dumpJsRawHeapData().then((filePath: string) => {
 })
 ```
 
-```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
-  console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`);
-}).catch((error: BusinessError) => {
-  console.error(`error code: ${error.code}, error msg: ${error.message}`);
-})
-```
-
-```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) => {
-  console.info(`dumpJsRawHeapData success and generated file path is ${JSON.stringify(filePathArray)}`);
-}).catch((error: BusinessError) => {
-  console.error(`error code: ${error.code}, error msg: ${error.message}`);
-})
-```
-
+<a id="dumpjsrawheapdata-1"></a>
 
 ## dumpJsRawHeapData
 
@@ -136,8 +116,19 @@ function dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise<string>
 
 **示例**
 
-参见 dumpJsRawHeapData
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`);
+}).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+
+<a id="dumpjsrawheapdata-2"></a>
 
 ## dumpJsRawHeapData
 
@@ -190,4 +181,13 @@ function dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boo
 
 **示例**
 
-参见 dumpJsRawHeapData
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${JSON.stringify(filePathArray)}`);
+}).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```

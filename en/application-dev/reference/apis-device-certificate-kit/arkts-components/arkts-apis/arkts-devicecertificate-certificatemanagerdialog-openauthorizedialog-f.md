@@ -67,35 +67,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManagerDialog, certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-import { UIContext } from '@kit.ArkUI';
 
-/* context is application context information, which is obtained by the caller. The context here is only an example. */
-let context: common.Context = new UIContext().getHostContext() as common.Context;
-let certTypes: Array<certificateManagerDialog.CertificateType> = [
-  certificateManagerDialog.CertificateType.CREDENTIAL_USER,
-  certificateManagerDialog.CertificateType.CREDENTIAL_APP,
-  certificateManagerDialog.CertificateType.CREDENTIAL_UKEY
-];
-let certPurpose: certificateManager.CertificatePurpose = certificateManager.CertificatePurpose.PURPOSE_DEFAULT;
-let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: certTypes, certPurpose: certPurpose };
-try {
-  certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
-    let reference = certReference;
-    console.info(`Succeeded in opening authorize dialog.`)
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="openauthorizedialog-1"></a>
 
 ## openAuthorizeDialog
 
@@ -139,4 +112,31 @@ Opens the Certificate Credential Authorization page of the Certificate Managemen
 
 **Examples**
 
-See [openAuthorizeDialog](#openauthorizedialog)
+```TypeScript
+import { certificateManagerDialog, certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+import { UIContext } from '@kit.ArkUI';
+
+/* context is application context information, which is obtained by the caller. The context here is only an example. */
+let context: common.Context = new UIContext().getHostContext() as common.Context;
+let certTypes: Array<certificateManagerDialog.CertificateType> = [
+  certificateManagerDialog.CertificateType.CREDENTIAL_USER,
+  certificateManagerDialog.CertificateType.CREDENTIAL_APP,
+  certificateManagerDialog.CertificateType.CREDENTIAL_UKEY
+];
+let certPurpose: certificateManager.CertificatePurpose = certificateManager.CertificatePurpose.PURPOSE_DEFAULT;
+let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: certTypes, certPurpose: certPurpose };
+try {
+  certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
+    let reference = certReference;
+    console.info(`Succeeded in opening authorize dialog.`)
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
+}
+```

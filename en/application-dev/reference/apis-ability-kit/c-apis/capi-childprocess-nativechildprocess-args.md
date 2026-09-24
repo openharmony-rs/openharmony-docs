@@ -8,6 +8,8 @@ typedef struct NativeChildProcess_Args {...} NativeChildProcess_Args
 
 The struct describes the parameters passed to the child process.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 13
 
 **Related module**: [ChildProcess](capi-childprocess.md)

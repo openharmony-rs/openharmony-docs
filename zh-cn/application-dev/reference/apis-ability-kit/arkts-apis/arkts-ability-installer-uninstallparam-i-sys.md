@@ -1,5 +1,9 @@
 # UninstallParam（系统接口）
 
+```TypeScript
+export interface UninstallParam
+```
+
 共享包卸载需指定的参数信息。
 
 **起始版本：** 10

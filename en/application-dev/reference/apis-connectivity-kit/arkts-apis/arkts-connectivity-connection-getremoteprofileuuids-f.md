@@ -54,19 +54,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-try {
-    connection.getRemoteProfileUuids('XX:XX:XX:XX:XX:XX').then(() => {
-        console.info('getRemoteProfileUuids');
-    }, (err: BusinessError) => {
-        console.error('getRemoteProfileUuids: errCode' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-    });
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-}
-```
 
+<a id="getremoteprofileuuids-1"></a>
 
 ## getRemoteProfileUuids
 
@@ -110,4 +99,15 @@ Obtains the profile UUIDs supported by the remote device.
 
 **Examples**
 
-See [getRemoteProfileUuids](#getremoteprofileuuids)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    connection.getRemoteProfileUuids('XX:XX:XX:XX:XX:XX').then(() => {
+        console.info('getRemoteProfileUuids');
+    }, (err: BusinessError) => {
+        console.error('getRemoteProfileUuids: errCode' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    });
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```

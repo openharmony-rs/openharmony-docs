@@ -1,5 +1,9 @@
 # Constants(Distributed Data Management)
 
+```TypeScript
+namespace Constants
+```
+
 Defines the KV store constants.
 
 **Since:** 7

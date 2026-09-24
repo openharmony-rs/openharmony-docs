@@ -1,5 +1,9 @@
 # Matrix2D
 
+```TypeScript
+export class Matrix2D
+```
+
 2D变换矩阵，支持X轴和Y轴的旋转、平移和缩放。
 
 **起始版本：** 11

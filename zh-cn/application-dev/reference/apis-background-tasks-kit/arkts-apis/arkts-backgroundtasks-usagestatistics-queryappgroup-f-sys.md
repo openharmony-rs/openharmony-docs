@@ -32,12 +32,12 @@ function queryAppGroup(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [10000001](../errorcode-DeviceUsageStatistics.md#10000001-内存操作失败) | Memory operation failed. |
-| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc-parcel-write-failed) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
+| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc序列化失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
 | [10000003](../errorcode-DeviceUsageStatistics.md#10000003-系统服务操作失败) | Failed to get system ability manager. |
 | [10000004](../errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
 | [10000005](../errorcode-DeviceUsageStatistics.md#10000005-应用未安装) | Application is not installed. |
@@ -45,17 +45,6 @@ function queryAppGroup(callback: AsyncCallback<number>): void
 | [10100002](../errorcode-DeviceUsageStatistics.md#10100002-获取应用分组信息失败) | Failed to get the application group information. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { usageStatistics } from '@kit.BackgroundTasksKit';
-
-usageStatistics.queryAppGroup().then((res: number) => {
-  console.info('BUNDLE_ACTIVE queryAppGroup promise succeeded. result: ' + JSON.stringify(res));
-}).catch((err: BusinessError) => {
-  console.error('BUNDLE_ACTIVE queryAppGroup promise failed. code is: ' + err.code + ',message is: ' + err.message);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -70,33 +59,8 @@ usageStatistics.queryAppGroup((err: BusinessError, res: number) => {
 });
 ```
 
-```TypeScript
-// 有bundleName的promise
-import { BusinessError } from '@kit.BasicServicesKit';
-import { usageStatistics } from '@kit.BackgroundTasksKit';
 
-let bundleName: string = 'com.ohos.camera';
-usageStatistics.queryAppGroup(bundleName).then((res: number) => {
-  console.info('BUNDLE_ACTIVE queryAppGroup promise succeeded. result: ' + JSON.stringify(res));
-}).catch((err: BusinessError) => {
-  console.error('BUNDLE_ACTIVE queryAppGroup promise failed. code is: ' + err.code + ',message is: ' + err.message);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { usageStatistics } from '@kit.BackgroundTasksKit';
-
-let bundleName: string = 'com.ohos.camera';
-usageStatistics.queryAppGroup(bundleName, (err: BusinessError, res: number) => {
-  if(err) {
-    console.error('BUNDLE_ACTIVE queryAppGroup callback failed. code is: ' + err.code + ',message is: ' + err.message);
-  } else {
-    console.info('BUNDLE_ACTIVE queryAppGroup callback succeeded. result: ' + JSON.stringify(res));
-  }
-});
-```
-
+<a id="queryappgroup-1"></a>
 
 ## queryAppGroup
 
@@ -124,11 +88,11 @@ function queryAppGroup(): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [10000001](../errorcode-DeviceUsageStatistics.md#10000001-内存操作失败) | Memory operation failed. |
-| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc-parcel-write-failed) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
+| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc序列化失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
 | [10000003](../errorcode-DeviceUsageStatistics.md#10000003-系统服务操作失败) | Failed to get system ability manager. |
 | [10000004](../errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
 | [10000005](../errorcode-DeviceUsageStatistics.md#10000005-应用未安装) | Application is not installed. |
@@ -137,8 +101,19 @@ function queryAppGroup(): Promise<number>
 
 **示例**
 
-参见 [queryAppGroup](#queryappgroup)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
+usageStatistics.queryAppGroup().then((res: number) => {
+  console.info('BUNDLE_ACTIVE queryAppGroup promise succeeded. result: ' + JSON.stringify(res));
+}).catch((err: BusinessError) => {
+  console.error('BUNDLE_ACTIVE queryAppGroup promise failed. code is: ' + err.code + ',message is: ' + err.message);
+});
+```
+
+
+<a id="queryappgroup-2"></a>
 
 ## queryAppGroup
 
@@ -167,12 +142,12 @@ function queryAppGroup(bundleName: string, callback: AsyncCallback<number>): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [10000001](../errorcode-DeviceUsageStatistics.md#10000001-内存操作失败) | Memory operation failed. |
-| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc-parcel-write-failed) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
+| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc序列化失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
 | [10000003](../errorcode-DeviceUsageStatistics.md#10000003-系统服务操作失败) | Failed to get system ability manager. |
 | [10000004](../errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
 | [10000005](../errorcode-DeviceUsageStatistics.md#10000005-应用未安装) | Application is not installed. |
@@ -181,8 +156,22 @@ function queryAppGroup(bundleName: string, callback: AsyncCallback<number>): voi
 
 **示例**
 
-参见 [queryAppGroup](#queryappgroup)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
+let bundleName: string = 'com.ohos.camera';
+usageStatistics.queryAppGroup(bundleName, (err: BusinessError, res: number) => {
+  if(err) {
+    console.error('BUNDLE_ACTIVE queryAppGroup callback failed. code is: ' + err.code + ',message is: ' + err.message);
+  } else {
+    console.info('BUNDLE_ACTIVE queryAppGroup callback succeeded. result: ' + JSON.stringify(res));
+  }
+});
+```
+
+
+<a id="queryappgroup-3"></a>
 
 ## queryAppGroup
 
@@ -216,12 +205,12 @@ function queryAppGroup(bundleName: string): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [10000001](../errorcode-DeviceUsageStatistics.md#10000001-内存操作失败) | Memory operation failed. |
-| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc-parcel-write-failed) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
+| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc序列化失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
 | [10000003](../errorcode-DeviceUsageStatistics.md#10000003-系统服务操作失败) | Failed to get system ability manager. |
 | [10000004](../errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
 | [10000005](../errorcode-DeviceUsageStatistics.md#10000005-应用未安装) | Application is not installed. |
@@ -230,4 +219,15 @@ function queryAppGroup(bundleName: string): Promise<number>
 
 **示例**
 
-参见 [queryAppGroup](#queryappgroup)
+```TypeScript
+// 有bundleName的promise
+import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+
+let bundleName: string = 'com.ohos.camera';
+usageStatistics.queryAppGroup(bundleName).then((res: number) => {
+  console.info('BUNDLE_ACTIVE queryAppGroup promise succeeded. result: ' + JSON.stringify(res));
+}).catch((err: BusinessError) => {
+  console.error('BUNDLE_ACTIVE queryAppGroup promise failed. code is: ' + err.code + ',message is: ' + err.message);
+});
+```

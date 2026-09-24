@@ -1,5 +1,9 @@
 # LockState（系统接口）
 
+```TypeScript
+export enum LockState
+```
+
 Indicates the lock states.
 
 **起始版本：** 8

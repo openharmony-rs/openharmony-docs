@@ -37,7 +37,7 @@ This API is used to query the sandbox retention information of a specified appli
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100007](../errorcode-dlp.md#19100007-access-denied-for-a-dlp-sandbox-application) | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
@@ -54,30 +54,8 @@ dlpPermission.getRetentionSandboxList().then((sandboxList) => { // Obtain the sa
 });
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.getRetentionSandboxList('bundleName', (err, sandboxList) => {
-  if (err) {
-    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('sandboxList', JSON.stringify(sandboxList));
-  }
-}); // Obtain the sandbox retention information.
-```
-
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
-
-dlpPermission.getRetentionSandboxList((err, retentionSandboxList) => {
-  if (err) {
-    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('retentionSandboxList', JSON.stringify(retentionSandboxList));
-  }
-}); // Obtain the sandbox retention information.
-```
-
+<a id="getretentionsandboxlist-1"></a>
 
 ## getRetentionSandboxList
 
@@ -105,15 +83,27 @@ This API is used to query the sandbox retention information of a specified appli
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100007](../errorcode-dlp.md#19100007-access-denied-for-a-dlp-sandbox-application) | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
 **Examples**
 
-See [getRetentionSandboxList](#getretentionsandboxlist)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
 
+dlpPermission.getRetentionSandboxList('bundleName', (err, sandboxList) => {
+  if (err) {
+    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('sandboxList', JSON.stringify(sandboxList));
+  }
+}); // Obtain the sandbox retention information.
+```
+
+
+<a id="getretentionsandboxlist-2"></a>
 
 ## getRetentionSandboxList
 
@@ -140,11 +130,21 @@ This API is used to query the sandbox retention information of the current appli
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100007](../errorcode-dlp.md#19100007-access-denied-for-a-dlp-sandbox-application) | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
 **Examples**
 
-See [getRetentionSandboxList](#getretentionsandboxlist)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+dlpPermission.getRetentionSandboxList((err, retentionSandboxList) => {
+  if (err) {
+    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('retentionSandboxList', JSON.stringify(retentionSandboxList));
+  }
+}); // Obtain the sandbox retention information.
+```

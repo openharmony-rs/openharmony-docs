@@ -1,5 +1,9 @@
 # ExtensionWindowConfig（系统接口）
 
+```TypeScript
+interface ExtensionWindowConfig
+```
+
 创建扩展窗口时需要配置的参数。
 
 **起始版本：** 14

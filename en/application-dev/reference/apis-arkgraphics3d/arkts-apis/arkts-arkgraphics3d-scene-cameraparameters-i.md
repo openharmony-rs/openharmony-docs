@@ -1,5 +1,9 @@
 # CameraParameters
 
+```TypeScript
+export interface CameraParameters
+```
+
 Describes the camera parameters, which are used to define additional configuration options for camera initialization.
 
 @interface CameraParameters

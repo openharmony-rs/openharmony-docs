@@ -32,9 +32,9 @@ function getForegroundApplications(callback: AsyncCallback<Array<AppStateData>>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
@@ -60,17 +60,8 @@ try {
 }
 ```
 
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-appManager.getForegroundApplications().then((data) => {
-  console.info(`getForegroundApplications success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getForegroundApplications fail, err: ${JSON.stringify(err)}`);
-});
-```
-
+<a id="getforegroundapplications-1"></a>
 
 ## getForegroundApplications
 
@@ -98,10 +89,19 @@ function getForegroundApplications(): Promise<Array<AppStateData>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
 
-参见 [getForegroundApplications](#getforegroundapplications)
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appManager.getForegroundApplications().then((data) => {
+  console.info(`getForegroundApplications success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`getForegroundApplications fail, err: ${JSON.stringify(err)}`);
+});
+```

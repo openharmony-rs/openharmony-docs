@@ -1,5 +1,9 @@
 # PortraitThemeType (System API)
 
+```TypeScript
+enum PortraitThemeType
+```
+
 Enumerates the camera portrait theme types.
 
 **Since:** 14

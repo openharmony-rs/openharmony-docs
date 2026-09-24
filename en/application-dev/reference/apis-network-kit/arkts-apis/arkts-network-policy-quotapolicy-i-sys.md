@@ -1,5 +1,9 @@
 # QuotaPolicy (System API)
 
+```TypeScript
+export interface QuotaPolicy
+```
+
 Defines the network quota policy.
 
 **Since:** 10

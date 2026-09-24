@@ -8,6 +8,8 @@ typedef struct OH_CryptoMac OH_CryptoMac
 
 MAC structure, representing a MAC context.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Related module**: [CryptoMacApi](capi-cryptomacapi.md)

@@ -1,5 +1,9 @@
 # Skill
 
+```TypeScript
+export interface Skill
+```
+
 The module defines a skill object.
 
 **Since:** 12

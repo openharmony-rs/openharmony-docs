@@ -1,5 +1,9 @@
 # ReaderIteratorResult
 
+```TypeScript
+export interface ReaderIteratorResult
+```
+
 文件读取迭代器返回结果，支持ReaderIterator接口使用。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # AudioSessionStateChangedEvent
 
+```TypeScript
+interface AudioSessionStateChangedEvent
+```
+
 Describes the event indicating that the audio session state changes.
 
 **Since:** 20

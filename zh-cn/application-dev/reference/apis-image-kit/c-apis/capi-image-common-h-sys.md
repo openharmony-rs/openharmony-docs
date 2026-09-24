@@ -20,8 +20,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metadatas, uint32_t metadataCount, int32_t type, OH_PictureMetadata *metadata)（系统接口）](#oh_picturemetadata_getmetadatabytype) | 从OH_PictureMetadata数组中获取与指定类型匹配的PictureMetadata对象。**系统接口：** 此接口为系统接口。 |
-| [Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint32_t metadatasCount)（系统接口）](#oh_picturemetadatas_release) | 释放OH_PictureMetadata对象数组。**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metadatas, uint32_t metadataCount, int32_t type, OH_PictureMetadata *metadata)（系统接口）](#oh_picturemetadata_getmetadatabytype) | 从OH_PictureMetadata数组中获取与指定类型匹配的PictureMetadata对象。<br>**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint32_t metadatasCount)（系统接口）](#oh_picturemetadatas_release) | 释放OH_PictureMetadata对象数组。<br>**系统接口：** 此接口为系统接口。 |
 
 ## 函数说明
 
@@ -34,6 +34,8 @@ Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metada
 **描述：**
 
 从OH_PictureMetadata数组中获取与指定类型匹配的PictureMetadata对象。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 26.0.0
 
@@ -63,6 +65,8 @@ Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint
 **描述：**
 
 释放OH_PictureMetadata对象数组。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 26.0.0
 

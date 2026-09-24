@@ -8,6 +8,8 @@ typedef struct OH_AbilityRuntime_ConnectOptions OH_AbilityRuntime_ConnectOptions
 
 定义OH_AbilityRuntime_ConnectOptions结构体类型。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)

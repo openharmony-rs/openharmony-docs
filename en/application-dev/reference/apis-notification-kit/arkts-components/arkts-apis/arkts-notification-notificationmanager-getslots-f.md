@@ -59,16 +59,8 @@ let getSlotsCallback = (err: BusinessError, data: Array<notificationManager.Noti
 notificationManager.getSlots(getSlotsCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.getSlots().then((data: Array<notificationManager.NotificationSlot>) => {
-  console.info(`Succeeded in getting slots, data is ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get slots. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getslots-1"></a>
 
 ## getSlots
 
@@ -88,7 +80,7 @@ This API is used to batch query the configuration information of all notificatio
 
 [addSlot](arkts-notification-notificationmanager-addslot-f.md) adds a notification slot of a specified type.
 
-[removeSlot](arkts-notification-notificationmanager-removeslot-f.md) removes a notification slot of a specified type for this application.
+[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot-1) removes a notification slot of a specified type for this application.
 
 [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md) removes all notification slots for this application.
 
@@ -108,4 +100,12 @@ This API is used to batch query the configuration information of all notificatio
 
 **Examples**
 
-See [getSlots](#getslots)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getSlots().then((data: Array<notificationManager.NotificationSlot>) => {
+  console.info(`Succeeded in getting slots, data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get slots. Code is ${err.code}, message is ${err.message}`);
+});
+```

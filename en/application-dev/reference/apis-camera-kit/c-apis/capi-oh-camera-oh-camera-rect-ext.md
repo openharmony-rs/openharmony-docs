@@ -8,6 +8,8 @@ typedef struct OH_Camera_Rect_Ext {...} OH_Camera_Rect_Ext
 
 Describes the camera rect ext.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 26.0.0
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

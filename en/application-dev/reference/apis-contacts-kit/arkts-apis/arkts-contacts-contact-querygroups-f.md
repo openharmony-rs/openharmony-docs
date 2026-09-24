@@ -33,12 +33,6 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
 **Examples**
 
 ```TypeScript
-> NOTE
-> 
-> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance that inherits from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
-```
-
-```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { contact } from '@kit.ContactsKit';
 
@@ -51,48 +45,8 @@ contact.queryGroups((err: BusinessError, data) => {
 });
 ```
 
-```TypeScript
-> NOTE
-> 
-> In the examples of this document, UIAbilityContext is obtained through this.context, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
-```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { contact } from '@kit.ContactsKit';
-
-contact.queryGroups({
-  holderId: 1,
-  bundleName: '',
-  displayName: ''
-}, (err: BusinessError, data) => {
-  if (err) {
-    console.error(`Failed to query Groups. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
-});
-```
-
-```TypeScript
-> NOTE
-> 
-> In the examples in this document, this.context is used to obtain UIAbilityContext, where this refers to a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
-```
-
-```TypeScript
-import { contact } from '@kit.ContactsKit';
-
-let promise = contact.queryGroups({
-  holderId: 1,
-  bundleName: '',
-  displayName: ''
-});
-promise.then((data) => {
-  console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
-});
-```
-
+<a id="querygroups-1"></a>
 
 ## queryGroups
 
@@ -120,12 +74,32 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../errorcode-contacts.md#401-failed-to-open-the-contact-portrait-file) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **Examples**
 
-See [queryGroups](#querygroups)
+> NOTE
+> 
+> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance that inherits from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context in the component.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+contact.queryGroups(context, (err: BusinessError, data) => {
+  if (err) {
+    console.error(`Failed to query Groups. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
+});
+```
+
+
+<a id="querygroups-2"></a>
 
 ## queryGroups
 
@@ -154,8 +128,25 @@ Queries all groups of a contact based on the specified holder. This API uses an 
 
 **Examples**
 
-See [queryGroups](#querygroups)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { contact } from '@kit.ContactsKit';
 
+contact.queryGroups({
+  holderId: 1,
+  bundleName: '',
+  displayName: ''
+}, (err: BusinessError, data) => {
+  if (err) {
+    console.error(`Failed to query Groups. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
+});
+```
+
+
+<a id="querygroups-3"></a>
 
 ## queryGroups
 
@@ -184,12 +175,36 @@ Queries all groups of a contact based on the specified holder. This API uses an 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../errorcode-contacts.md#401-failed-to-open-the-contact-portrait-file) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **Examples**
 
-See [queryGroups](#querygroups)
+> NOTE
+> 
+> In the examples of this document, UIAbilityContext is obtained through this.context, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context in the component.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+contact.queryGroups(context, {
+  holderId: 1,
+  bundleName: '',
+  displayName: ''
+}, (err: BusinessError, data) => {
+  if (err) {
+    console.error(`Failed to query Groups. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
+});
+```
+
+
+<a id="querygroups-4"></a>
 
 ## queryGroups
 
@@ -223,8 +238,21 @@ Queries all groups of a contact based on the specified holder. This API uses a p
 
 **Examples**
 
-See [queryGroups](#querygroups)
+```TypeScript
+import { contact } from '@kit.ContactsKit';
 
+let promise = contact.queryGroups({
+  holderId: 1,
+  bundleName: '',
+  displayName: ''
+});
+promise.then((data) => {
+  console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
+});
+```
+
+
+<a id="querygroups-5"></a>
 
 ## queryGroups
 
@@ -258,8 +286,26 @@ Queries all groups of a contact based on the specified holder. This API uses a p
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../errorcode-contacts.md#401-failed-to-open-the-contact-portrait-file) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **Examples**
 
-See [queryGroups](#querygroups)
+> NOTE
+> 
+> In the examples in this document, this.context is used to obtain UIAbilityContext, where this refers to a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { contact } from '@kit.ContactsKit';
+
+// Obtain the context in the component.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let promise = contact.queryGroups(context, {
+  holderId: 1,
+  bundleName: '',
+  displayName: ''
+});
+promise.then((data) => {
+  console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
+});
+```

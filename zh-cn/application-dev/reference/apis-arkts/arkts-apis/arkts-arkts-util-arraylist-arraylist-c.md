@@ -1,5 +1,9 @@
 # ArrayList
 
+```TypeScript
+declare class ArrayList<T>
+```
+
 ArrayList是一种线性数据结构，底层基于数组实现，解决了固定大小数组无法动态扩容的限制。ArrayList会根据实际需要动态调整容量，每次扩容增加50%。
 
 **起始版本：** 8
@@ -908,6 +912,18 @@ console.info('result = ', arrayList.length); // result = 4
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
+
+**示例**
+
+```TypeScript
+let arrayList = new ArrayList<number>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+let result: number = arrayList[2];
+console.info('result = ', result); // result =  5
+```
 
 ## length
 

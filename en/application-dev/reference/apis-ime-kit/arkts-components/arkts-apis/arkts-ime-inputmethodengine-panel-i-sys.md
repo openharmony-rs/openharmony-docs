@@ -1,5 +1,9 @@
 # Panel
 
+```TypeScript
+interface Panel
+```
+
 You need to use [createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel) to obtain the panel instance and then call the following APIs through the instance.
 
 **Since:** 10
@@ -21,7 +25,7 @@ off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
 Disables listening for the panel size change. This API uses an asynchronous callback to return the result. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> This API applies only to the panels of the **SOFT_KEYBOARD** type in the **FLG_FIXED** or **FLG_FLOATING** state. When you call [adjustPanelRect](arkts-ime-inputmethodengine-panel-i.md#adjustpanelrect) to adjust the panel size, the system calculates the final value based on certain rules (for example, whether the panel size exceeds the screen). This callback can be used to obtain the actual panel size to refresh the panel layout.
+> This API applies only to the panels of the **SOFT_KEYBOARD** type in the **FLG_FIXED** or **FLG_FLOATING** state. When you call [adjustPanelRect](arkts-ime-inputmethodengine-panel-i.md#adjustpanelrect-1) to adjust the panel size, the system calculates the final value based on certain rules (for example, whether the panel size exceeds the screen). This callback can be used to obtain the actual panel size to refresh the panel layout.
 
 **Since:** 14
 
@@ -36,6 +40,16 @@ Disables listening for the panel size change. This API uses an asynchronous call
 | type | 'sizeUpdate' | Yes | Event type, which is **'sizeUpdate'**. |
 | callback | [SizeUpdateCallback](arkts-ime-inputmethodengine-sizeupdatecallback-t-sys.md) | No | Callback used to return the size of the soft keyboard panel, including the width and height. |
 
+**Examples**
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+
+panel.off('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+  console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
+});
+```
+
 ## on('sizeUpdate')
 
 ```TypeScript
@@ -45,7 +59,7 @@ on(type: 'sizeUpdate', callback: SizeUpdateCallback): void
 Listens for the panel size change. This API uses an asynchronous callback to return the result. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> This API applies only to the panels of the **SOFT_KEYBOARD** type in the **FLG_FIXED** or **FLG_FLOATING** state. When you call [adjustPanelRect](arkts-ime-inputmethodengine-panel-i.md#adjustpanelrect) to adjust the panel size, the system calculates the final value based on certain rules (for example, whether the panel size exceeds the screen). This callback can be used to obtain the actual panel size to refresh the panel layout.
+> This API applies only to the panels of the **SOFT_KEYBOARD** type in the **FLG_FIXED** or **FLG_FLOATING** state. When you call [adjustPanelRect](arkts-ime-inputmethodengine-panel-i.md#adjustpanelrect-1) to adjust the panel size, the system calculates the final value based on certain rules (for example, whether the panel size exceeds the screen). This callback can be used to obtain the actual panel size to refresh the panel layout.
 
 **Since:** 14
 
@@ -59,6 +73,17 @@ Listens for the panel size change. This API uses an asynchronous callback to ret
 | --- | --- | --- | --- |
 | type | 'sizeUpdate' | Yes | Event type, which is **'sizeUpdate'**. |
 | callback | [SizeUpdateCallback](arkts-ime-inputmethodengine-sizeupdatecallback-t-sys.md) | Yes | Callback used to return the size of the soft keyboard panel, including the width and height. |
+
+**Examples**
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+
+panel.on('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+  console.info(`panel size changed, windowSize: ${windowSize.width}, ${windowSize.height}, ` +
+    `keyboardArea: ${keyboardArea.top}, ${keyboardArea.bottom}, ${keyboardArea.left}, ${keyboardArea.right}`);
+});
+```
 
 ## setShadow
 

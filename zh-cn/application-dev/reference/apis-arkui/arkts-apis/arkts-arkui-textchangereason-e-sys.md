@@ -1,5 +1,9 @@
 # TextChangeReason（系统接口）
 
+```TypeScript
+declare enum TextChangeReason
+```
+
 组件内容变化原因。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # Point3d
 
+```TypeScript
+interface Point3d extends Point
+```
+
 Describes a 3D coordinate point. It inherits from [Point](arkts-arkgraphics2d-common2d-point-i.md).
 
 **Inheritance/Implementation:** Point3d extends [Point](arkts-arkgraphics2d-common2d-point-i.md)

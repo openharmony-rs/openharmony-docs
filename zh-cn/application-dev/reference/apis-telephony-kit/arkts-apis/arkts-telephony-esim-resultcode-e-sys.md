@@ -1,5 +1,9 @@
 # ResultCode（系统接口）
 
+```TypeScript
+export enum ResultCode
+```
+
 结果码。
 
 **起始版本：** 18

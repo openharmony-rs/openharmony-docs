@@ -1,5 +1,9 @@
 # IMEClient
 
+```TypeScript
+declare interface IMEClient
+```
+
 输入控件绑定输入法客户端类型。
 
 **起始版本：** 20

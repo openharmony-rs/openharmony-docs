@@ -1,5 +1,9 @@
 # WindowDensityInfo
 
+```TypeScript
+interface WindowDensityInfo
+```
+
 窗口所在显示设备和窗口自定义的显示密度信息，是与像素单位无关的缩放系数，即显示大小缩放系数。
 
 **起始版本：** 15

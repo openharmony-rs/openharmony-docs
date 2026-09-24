@@ -1,5 +1,9 @@
 # ParseOptions
 
+```TypeScript
+interface ParseOptions
+```
+
 解析的选项，可定义处理BigInt的模式和解析结果的返回类型。
 
 **起始版本：** 12

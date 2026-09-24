@@ -1,5 +1,9 @@
 # promptAction
 
+```TypeScript
+declare namespace promptAction
+```
+
 This module provides API for creating and displaying toasts, dialog boxes, and action menus.
 
 > **NOTE:** 
@@ -11,6 +15,8 @@ This module provides API for creating and displaying toasts, dialog boxes, and a
 > [ServiceExtensionAbility](../../../application-models/serviceextensionability-sys.md)<!--DelEnd-->.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,12 +35,12 @@ import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 | [showToast](arkts-arkui-promptaction-showtoast-f.md) | Creates and displays a toast. |
 | [openToast](arkts-arkui-promptaction-opentoast-f.md) | Shows a toast. This API uses a promise to return the toast ID. |
 | [closeToast](arkts-arkui-promptaction-closetoast-f.md) | Closes the specified toast. |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md) | Creates and displays a dialog box. This API uses an asynchronous callback to return the result. |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md) | Creates and displays a dialog box in the given settings. This API uses a promise to return the result. |
+| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog) | Creates and displays a dialog box. This API uses an asynchronous callback to return the result. |
+| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog-1) | Creates and displays a dialog box in the given settings. This API uses a promise to return the result. |
 | [openCustomDialog](arkts-arkui-promptaction-opencustomdialog-f.md) | Opens a custom dialog box. This API uses a promise to return the result. |
 | [closeCustomDialog](arkts-arkui-promptaction-closecustomdialog-f.md) | Closes the specified custom dialog box. |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md) | Creates and displays an action menu. This API uses an asynchronous callback to return the result. |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md) | Creates and displays an action menu in the given settings. This API uses a promise to return the result. |
+| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu) | Creates and displays an action menu. This API uses an asynchronous callback to return the result. |
+| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu-1) | Creates and displays an action menu in the given settings. This API uses a promise to return the result. |
 
 ### Classes
 
@@ -94,6 +100,105 @@ import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 
 ## Examples
 
-```TypeScript
 This example demonstrates how to call the getState API of promptAction.DialogController to obtain the current state of a dialog box, supported since API version 20.
+
+```TypeScript
+// xxx.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+import { ComponentContent, promptAction } from '@kit.ArkUI';
+
+@Component
+struct CustomDialogExample {
+  build() {
+    Column() {
+      Text('Hello')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 36 })
+      Button('Close Dialog Box')
+        .onClick(() => {
+          if (this.getDialogController()) {
+            this.getDialogController().close();
+          }
+        })
+      Button('Obtain State')
+        .onClick(() => {
+          if (this.getDialogController()) {
+            let state: promptAction.CommonState = this.getDialogController().getState();
+            switch (state) {
+              case promptAction.CommonState.UNINITIALIZED: {
+                console.info('The dialog state is uninitialized.');
+                break;
+              }
+              case promptAction.CommonState.INITIALIZED: {
+                console.info('The dialog state is initialized.');
+                break;
+              }
+              case promptAction.CommonState.APPEARING: {
+                console.info('The dialog state is appearing.');
+                break;
+              }
+              case promptAction.CommonState.APPEARED: {
+                console.info('The dialog state is appeared.');
+                break;
+              }
+              case promptAction.CommonState.DISAPPEARING: {
+                console.info('The dialog state is disappearing.');
+                break;
+              }
+              case promptAction.CommonState.DISAPPEARED: {
+                console.info('The dialog state is disappeared.');
+                break;
+              }
+              default: {
+                console.info('The dialog state is unknown.');
+                break;
+              }
+            }
+          }
+        })
+
+    }.backgroundColor('#FFF0F0F0')
+  }
+}
+
+@Builder
+function buildText() {
+   CustomDialogExample()
+}
+
+@Entry
+@Component
+struct Index {
+
+  private dialogController: promptAction.DialogController = new promptAction.DialogController()
+
+  build() {
+    Row() {
+      Column() {
+        Button("click me")
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let promptAction = uiContext.getPromptAction();
+            let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText),
+            );
+
+            promptAction.openCustomDialogWithController(contentNode, this.dialogController, {
+
+              transition: TransitionEffect.OPACITY.animation({
+                duration: 3000
+              })
+            }).then(() => {
+              console.info('succeeded')
+            }).catch((error: BusinessError) => {
+              console.error(`OpenCustomDialogWithController args error code is ${error.code}, message is ${error.message}`);
+            })
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
 ```

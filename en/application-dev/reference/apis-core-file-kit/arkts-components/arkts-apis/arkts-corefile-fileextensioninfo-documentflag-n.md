@@ -1,5 +1,9 @@
 # DocumentFlag(User File Access and Management Attribute Information)
 
+```TypeScript
+namespace DocumentFlag
+```
+
 Defines the values of **mode** used in **FileInfo**.
 
 **Since:** 9

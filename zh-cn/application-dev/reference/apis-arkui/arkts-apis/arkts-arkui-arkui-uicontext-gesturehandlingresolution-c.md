@@ -1,5 +1,9 @@
 # GestureHandlingResolution
 
+```TypeScript
+export class GestureHandlingResolution
+```
+
 智慧手势处理结果声明类。
 
 **起始版本：** 26.0.0

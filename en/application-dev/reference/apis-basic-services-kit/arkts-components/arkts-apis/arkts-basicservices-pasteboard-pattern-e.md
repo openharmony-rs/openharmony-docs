@@ -1,5 +1,9 @@
 # Pattern
 
+```TypeScript
+enum Pattern
+```
+
 Describes the patterns supported by the pasteboard.
 
 **Since:** 13

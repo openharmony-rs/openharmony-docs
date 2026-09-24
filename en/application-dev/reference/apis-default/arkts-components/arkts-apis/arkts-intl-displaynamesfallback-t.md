@@ -1,9 +1,7 @@
 # DisplayNamesFallback
 
 ```TypeScript
-type DisplayNamesFallback =
-        | "code"
-        | "none"
+type DisplayNamesFallback = | "code" | "none"
 ```
 
 | Type | Description |

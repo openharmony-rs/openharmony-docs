@@ -1,5 +1,9 @@
 # FontConfigs
 
+```TypeScript
+declare interface FontConfigs
+```
+
 字体配置项。
 
 **起始版本：** 24

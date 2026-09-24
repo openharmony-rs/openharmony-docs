@@ -1,5 +1,9 @@
 # TitleOptions
 
+```TypeScript
+export interface TitleOptions
+```
+
 Title bar options.
 
 **Since:** 12
@@ -36,7 +40,7 @@ barStyle?: BarStyle
 
 Set title bar style.
 
-**Type:** [BarStyle](../arkts-components/arkts-arkui-barstyle-e.md)
+**Type:** [BarStyle](../arkts-components/arkts-arkui-navigation-comp-barstyle-e.md)
 
 **Default:** BarStyle.STANDARD
 
@@ -90,7 +94,7 @@ titleIcon?: Resource | SymbolGlyphModifier
 
 Set title bar icon.
 
-**Type:** [Resource](arkts-arkui-resource-t.md) &#124; [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**Type:** [Resource](arkts-arkui-resource-t.md) &#124; [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **Default:** atomicservice icon
 

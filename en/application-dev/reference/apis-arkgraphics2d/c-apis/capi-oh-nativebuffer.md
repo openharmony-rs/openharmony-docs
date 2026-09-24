@@ -4,6 +4,8 @@
 
 Provides the common types for native buffer.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **Since**: 12
 
 ## Files

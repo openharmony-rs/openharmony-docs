@@ -62,23 +62,8 @@ connection.setGlobalHttpProxy(httpProxy, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let exclusionStr = "192.168,baidu.com";
-let exclusionArray = exclusionStr.split(',');
-connection.setGlobalHttpProxy({
-  host: "192.168.xx.xxx",
-  port: 8080,
-  exclusionList: exclusionArray
-} as connection.HttpProxy).then(() => {
-  console.info("success");
-}).catch((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-```
-
+<a id="setglobalhttpproxy-1"></a>
 
 ## setGlobalHttpProxy
 
@@ -121,4 +106,19 @@ Sets the global network HTTP proxy configuration information. This API uses a pr
 
 **Examples**
 
-See [setGlobalHttpProxy](#setglobalhttpproxy)
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let exclusionStr = "192.168,baidu.com";
+let exclusionArray = exclusionStr.split(',');
+connection.setGlobalHttpProxy({
+  host: "192.168.xx.xxx",
+  port: 8080,
+  exclusionList: exclusionArray
+} as connection.HttpProxy).then(() => {
+  console.info("success");
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```

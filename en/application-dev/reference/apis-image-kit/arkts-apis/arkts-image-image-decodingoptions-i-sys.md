@@ -1,5 +1,9 @@
 # DecodingOptions
 
+```TypeScript
+interface DecodingOptions
+```
+
 Describes the image decoding options.
 
 **Since:** 7

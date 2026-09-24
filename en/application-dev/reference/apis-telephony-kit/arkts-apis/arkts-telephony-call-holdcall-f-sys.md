@@ -55,16 +55,8 @@ call.holdCall(1, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.holdCall(1).then(() => {
-    console.info(`holdCall success.`);
-}).catch((err: BusinessError) => {
-    console.error(`holdCall fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="holdcall-1"></a>
 
 ## holdCall
 
@@ -108,4 +100,12 @@ Holds a call based on the specified call ID. This API uses a promise to return t
 
 **Examples**
 
-See [holdCall](#holdcall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.holdCall(1).then(() => {
+    console.info(`holdCall success.`);
+}).catch((err: BusinessError) => {
+    console.error(`holdCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```

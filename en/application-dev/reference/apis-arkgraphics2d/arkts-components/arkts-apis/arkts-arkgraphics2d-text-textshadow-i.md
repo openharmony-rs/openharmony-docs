@@ -1,5 +1,9 @@
 # TextShadow
 
+```TypeScript
+interface TextShadow
+```
+
 Represents a text shadow.
 
 **Since:** 12

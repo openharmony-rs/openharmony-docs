@@ -1,5 +1,9 @@
 # HashStream
 
+```TypeScript
+class HashStream extends stream.Transform
+```
+
 HashStream类是用于创建数据的哈希摘要的实用工具。由 [createHash](arkts-corefile-hash-createhash-f.md) 接口获得。该类采用增量式哈希计算设计，通过update方法多次添加数据块，最后通过digest方法计算最终哈希值，适用于处理大文件或持续产生的数据流。
 
 **继承/实现关系：** HashStream extends [stream.Transform](../../apis-arkts/arkts-apis/arkts-arkts-stream-transform-c.md)
@@ -36,7 +40,7 @@ digest(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error |
 | 13900042 | Unknown error |
 
 **示例**
@@ -73,7 +77,7 @@ update(data: ArrayBuffer): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error |
 | 13900042 | Unknown error |
 
 **示例**

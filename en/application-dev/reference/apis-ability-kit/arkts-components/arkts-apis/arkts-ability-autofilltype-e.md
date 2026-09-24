@@ -1,5 +1,9 @@
 # AutoFillType
 
+```TypeScript
+export enum AutoFillType
+```
+
 AutoFillType enumerates the types of elements to be automatically filled in.
 
 **Since:** 26.0.0
@@ -12,7 +16,7 @@ AutoFillType enumerates the types of elements to be automatically filled in.
 UNSPECIFIED = 0
 ```
 
-Undefined type.
+Unspecified type.
 
 **Since:** 26.0.0
 
@@ -28,7 +32,7 @@ Undefined type.
 PASSWORD = 1
 ```
 
-Password.
+Password type.
 
 **Since:** 26.0.0
 
@@ -44,7 +48,7 @@ Password.
 USER_NAME = 2
 ```
 
-Username.
+Username type.
 
 **Since:** 26.0.0
 
@@ -60,7 +64,7 @@ Username.
 NEW_PASSWORD = 3
 ```
 
-New password.
+New password type.
 
 **Since:** 26.0.0
 

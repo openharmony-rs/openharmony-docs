@@ -1,4 +1,4 @@
-# @ohos.app.agent.AgentExtensionAbility
+# @ohos.app.agent.AgentExtensionAbility(智能体扩展组件)
 
 ## 导入模块
 

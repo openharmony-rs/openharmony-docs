@@ -1,5 +1,9 @@
 # Volume (System API)
 
+```TypeScript
+export interface Volume
+```
+
 Get All Volumes.
 
 **Since:** 9

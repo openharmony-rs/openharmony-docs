@@ -1,5 +1,9 @@
 # ContentItemV2Options
 
+```TypeScript
+export interface ContentItemV2Options
+```
+
 Declare interface ContentItemV2Options
 
 **Since:** 26.0.0
@@ -110,7 +114,7 @@ symbolStyle?: SymbolGlyphModifier
 
 Sets the symbol
 
-**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **Since:** 26.0.0
 

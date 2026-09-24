@@ -1,5 +1,9 @@
 # MessageOption
 
+```TypeScript
+class MessageOption
+```
+
 公共消息选项，使用指定的标志类型，构造指定的MessageOption对象。
 
 **起始版本：** 7
@@ -39,21 +43,13 @@ MessageOption构造函数。
 import { rpc } from '@kit.IPCKit';
 
 class TestRemoteObject extends rpc.MessageOption {
-  constructor(async: boolean) {
-    super(async);
-  }
-}
-```
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-
-class TestRemoteObject extends rpc.MessageOption {
   constructor(syncFlags?: number,waitTime?: number) {
     super(syncFlags,waitTime);
   }
 }
 ```
+
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -83,16 +79,6 @@ import { rpc } from '@kit.IPCKit';
 class TestRemoteObject extends rpc.MessageOption {
   constructor(async: boolean) {
     super(async);
-  }
-}
-```
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-
-class TestRemoteObject extends rpc.MessageOption {
-  constructor(syncFlags?: number,waitTime?: number) {
-    super(syncFlags,waitTime);
   }
 }
 ```

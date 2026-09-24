@@ -1,5 +1,9 @@
 # TraceRouteOptions
 
+```TypeScript
+export interface TraceRouteOptions
+```
+
 Defines options for route tracing.
 
 **Since:** 26.0.0

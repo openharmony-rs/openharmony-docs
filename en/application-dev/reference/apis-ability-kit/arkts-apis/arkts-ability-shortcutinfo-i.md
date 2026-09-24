@@ -1,5 +1,9 @@
 # ShortcutInfo
 
+```TypeScript
+export interface ShortcutInfo
+```
+
 Describes the configuration information for a shortcut.
 
 **Since:** 20

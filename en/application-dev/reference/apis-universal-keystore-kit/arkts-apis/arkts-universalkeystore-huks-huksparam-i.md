@@ -1,5 +1,9 @@
 # HuksParam
 
+```TypeScript
+export interface HuksParam
+```
+
 Defines the **param** field in the **properties** array of **options** used in the APIs.
 
 **Since:** 8
@@ -24,6 +28,8 @@ Tag.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -39,6 +45,8 @@ Value of the tag.
 **Type:** boolean &#124; number &#124; bigint &#124; Uint8Array
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

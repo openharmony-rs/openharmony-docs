@@ -27,7 +27,7 @@ Remove surface for the virtual screen.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | screenId | number | Yes | Indicates the screen id of the virtual screen. |
-| surfaceId | string | Yes | ID of the surface bound to the virtual screen. You can use the [getXComponentSurfaceId](../arkts-components/arkts-arkui-xcomponentcontroller-c.md#getxcomponentsurfaceid) method to obtain the ID of the surface corresponding to an existing surface. The maximum length for this parameter is 4096 bytes. If it goes beyond that, only the first 4096 bytes are used. |
+| surfaceId | string | Yes | ID of the surface bound to the virtual screen. You can use the [getXComponentSurfaceId](../arkts-components/arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md#getxcomponentsurfaceid) method to obtain the ID of the surface corresponding to an existing surface. The maximum length for this parameter is 4096 bytes. If it goes beyond that, only the first 4096 bytes are used. |
 
 **Return value:**
 

@@ -1,5 +1,10 @@
 # SyncedPropertyOneWay（系统接口）
 
+```TypeScript
+declare class SyncedPropertyOneWay<T> extends SubscribedAbstractProperty<T>
+  implements ISinglePropertyChangeSubscriber<T>
+```
+
 继承自[SubscribedAbstractProperty\&lt;T\&gt;](arkts-arkui-subscribedabstractproperty-c.md)。用于接收父组件状态值的单向同步，当父组件状态变化时更新自身值。
 
 **继承/实现关系：** SyncedPropertyOneWay extends SubscribedAbstractProperty<T> implements ISinglePropertyChangeSubscriber<T>
@@ -20,6 +25,8 @@ aboutToBeDeleted(unsubscribeMe?: IPropertySubscriber): void
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -39,6 +46,8 @@ constructor(source: SubscribedAbstractProperty<T>, subscribeMe?: IPropertySubscr
 构造函数。订阅关系不再需要时，应调用[unlinkSuscriber()](arkts-arkui-subscribedabstractproperty-c-sys.md#unlinksuscriber)解除订阅（订阅者ID通过[IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md).[id()](arkts-arkui-ipropertysubscriber-i-sys.md#id)获取），或调用本对象的[aboutToBeDeleted()](#abouttobedeleted)方法处理取消订阅。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +71,8 @@ get(): T
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -81,6 +92,8 @@ hasChanged(newValue: T): void
 变化时调用。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +115,8 @@ set(newValue: T): void
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -122,6 +137,8 @@ private source_
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -135,6 +152,8 @@ private wrappedValue_
 单向绑定时的值。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

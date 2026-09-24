@@ -1,5 +1,9 @@
 # Aabb
 
+```TypeScript
+export interface Aabb
+```
+
 Axis aligned boundary box used to determine whether two objects in space are overlapping.
 
 @typedef Aabb

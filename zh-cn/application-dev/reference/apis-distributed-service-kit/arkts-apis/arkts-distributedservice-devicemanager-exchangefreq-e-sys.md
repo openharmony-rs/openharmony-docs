@@ -1,5 +1,9 @@
 # ExchangeFreq（系统接口）
 
+```TypeScript
+enum ExchangeFreq
+```
+
 表示发现频率的枚举。
 
 **起始版本：** 7

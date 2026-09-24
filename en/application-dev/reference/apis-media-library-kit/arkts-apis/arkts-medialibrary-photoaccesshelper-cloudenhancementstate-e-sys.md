@@ -1,5 +1,9 @@
 # CloudEnhancementState (System API)
 
+```TypeScript
+enum CloudEnhancementState
+```
+
 Enumerates the cloud enhancement states.
 
 **Since:** 13

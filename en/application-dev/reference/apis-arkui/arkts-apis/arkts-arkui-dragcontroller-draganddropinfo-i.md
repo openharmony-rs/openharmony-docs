@@ -1,5 +1,9 @@
 # DragAndDropInfo
 
+```TypeScript
+interface DragAndDropInfo
+```
+
 Provides the data reported when the state changes during dragging.
 
 **Since:** 11
@@ -20,7 +24,7 @@ event: DragEvent
 
 Drag event corresponding to the current state. The drag event initiated by **dragController** only supports the APIs for obtaining the result and behavior, and is used exclusively for the dragging end state.
 
-**Type:** [DragEvent](../arkts-components/arkts-arkui-dragevent-i.md)
+**Type:** [DragEvent](../arkts-components/arkts-arkui-common-comp-dragevent-i.md)
 
 **Since:** 11
 

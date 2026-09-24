@@ -1,8 +1,12 @@
 # IDataSourcePrefetching
 
-继承自[IDataSource](../arkts-components/arkts-arkui-idatasource-i.md)。实现该接口，提供具备预取能力的数据源。
+```TypeScript
+export interface IDataSourcePrefetching extends IDataSource
+```
 
-**继承/实现关系：** IDataSourcePrefetching extends [IDataSource](../arkts-components/arkts-arkui-idatasource-i.md)
+继承自[IDataSource](../arkts-components/arkts-arkui-lazyforeach-comp-idatasource-i.md)。实现该接口，提供具备预取能力的数据源。
+
+**继承/实现关系：** IDataSourcePrefetching extends [IDataSource](../arkts-components/arkts-arkui-lazyforeach-comp-idatasource-i.md)
 
 **起始版本：** 12
 

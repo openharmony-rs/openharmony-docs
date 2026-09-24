@@ -8,7 +8,9 @@ typedef struct ArkWeb_ErrorInfo_ ArkWeb_ErrorInfo
 
 The error info for setting response error details.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Since**: 26.0.1
 
 **Related module**: [Web](capi-web.md)
 

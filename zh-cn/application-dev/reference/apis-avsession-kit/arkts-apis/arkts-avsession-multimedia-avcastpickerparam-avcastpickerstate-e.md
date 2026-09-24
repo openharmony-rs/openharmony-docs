@@ -1,5 +1,9 @@
 # AVCastPickerState
 
+```TypeScript
+export declare enum AVCastPickerState
+```
+
 投播组件设备列表状态参数选项。
 
 **起始版本：** 11

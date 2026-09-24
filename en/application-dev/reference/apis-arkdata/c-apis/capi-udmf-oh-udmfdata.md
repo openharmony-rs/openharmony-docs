@@ -6,7 +6,9 @@ typedef struct OH_UdmfData OH_UdmfData
 
 ## Overview
 
-Describes the unified data type.
+Defines a struct for a unified data object.
+
+**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 

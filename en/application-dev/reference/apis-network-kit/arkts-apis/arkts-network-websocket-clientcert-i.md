@@ -1,5 +1,9 @@
 # ClientCert
 
+```TypeScript
+export interface ClientCert
+```
+
 Defines the client certificate type.
 
 **Since:** 11

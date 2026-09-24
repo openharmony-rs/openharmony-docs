@@ -1,5 +1,9 @@
 # DragAction
 
+```TypeScript
+interface DragAction
+```
+
 Implements a **DragAction** object to subscribe to drag state changes and start the drag service.
 
 **Since:** 11

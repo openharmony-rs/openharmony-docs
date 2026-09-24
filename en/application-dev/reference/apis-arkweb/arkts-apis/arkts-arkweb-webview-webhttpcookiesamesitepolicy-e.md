@@ -1,5 +1,9 @@
 # WebHttpCookieSameSitePolicy
 
+```TypeScript
+enum WebHttpCookieSameSitePolicy
+```
+
 Enumerates the policies for sending cookies in cross-site requests.
 
 **Since:** 23

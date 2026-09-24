@@ -1,5 +1,9 @@
 # OrderOverlayOptions
 
+```TypeScript
+export interface OrderOverlayOptions
+```
+
 Options for opening an overlay with order.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # SignatureCompareResult (System API)
 
+```TypeScript
+export enum SignatureCompareResult
+```
+
 Signature verification result.
 
 **Since:** 9

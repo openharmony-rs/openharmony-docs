@@ -1,5 +1,9 @@
 # ClipboardPolicy
 
+```TypeScript
+export enum ClipboardPolicy
+```
+
 Represents a device clipboard policy.
 
 **Since:** 12

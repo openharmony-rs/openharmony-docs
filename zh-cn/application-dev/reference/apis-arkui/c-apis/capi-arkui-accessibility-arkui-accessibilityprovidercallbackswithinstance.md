@@ -8,6 +8,8 @@ typedef struct ArkUI_AccessibilityProviderCallbacksWithInstance {...} ArkUI_Acce
 
 适配多实例场景第三方操作{@link provider}回调函数结构定义，包含节点信息查询、焦点查找与清除、操作执行、光标位置获取等无障碍相关回调函数。 该结构需由第三方平台实现，并通过OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance注册到系统侧，以支持第三方平台接入系统无障碍服务。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **相关模块：** [ArkUI_Accessibility](capi-arkui-accessibility.md)

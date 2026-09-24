@@ -40,10 +40,10 @@ function publishAsBundle(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The device does not support geofencing.<br>**适用版本：** 23+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | The device does not support geofencing.<br>**适用版本：** 23+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -95,58 +95,8 @@ let request: notificationManager.NotificationRequest = {
 notificationManager.publishAsBundle(request, representativeBundle, userId, callback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 被代理应用的包名
-let representativeBundle: string = 'com.example.demo';
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 100;
-// NotificationRequest对象
-let request: notificationManager.NotificationRequest = {
-    id: 1,
-    content: {
-        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-        normal: {
-            title: 'test_title',
-            text: 'test_text',
-            additionalText: 'test_additionalText'
-        }
-    }
-};
-notificationManager.publishAsBundle(request, representativeBundle, userId).then(() => {
-    console.info('publishAsBundle success');
-}).catch((err: BusinessError) => {
-    console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 被代理应用的包信息
-let representativeBundle: notificationManager.BundleOption = {
-  bundle: 'bundleName1',
-};
-// NotificationRequest对象
-let request: notificationManager.NotificationRequest = {
-    id: 1,
-    content: {
-        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-        normal: {
-            title: 'test_title',
-            text: 'test_text',
-            additionalText: 'test_additionalText'
-        }
-    }
-};
-notificationManager.publishAsBundle(representativeBundle, request).then(() => {
-    console.info('publishAsBundle success');
-}).catch((err: BusinessError) => {
-    console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="publishasbundle-1"></a>
 
 ## publishAsBundle
 
@@ -182,10 +132,10 @@ function publishAsBundle(request: NotificationRequest, representativeBundle: str
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The device does not support geofencing.<br>**适用版本：** 23+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | The device does not support geofencing.<br>**适用版本：** 23+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -207,8 +157,34 @@ function publishAsBundle(request: NotificationRequest, representativeBundle: str
 
 **示例**
 
-参见 [publishAsBundle](#publishasbundle)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// 被代理应用的包名
+let representativeBundle: string = 'com.example.demo';
+// 用户ID，使用时需替换为真实的userId。
+let userId: number = 100;
+// NotificationRequest对象
+let request: notificationManager.NotificationRequest = {
+    id: 1,
+    content: {
+        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        normal: {
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
+        }
+    }
+};
+notificationManager.publishAsBundle(request, representativeBundle, userId).then(() => {
+    console.info('publishAsBundle success');
+}).catch((err: BusinessError) => {
+    console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+
+<a id="publishasbundle-2"></a>
 
 ## publishAsBundle
 
@@ -243,10 +219,10 @@ function publishAsBundle(representativeBundle: BundleOption, request: Notificati
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The device does not support geofencing.<br>**适用版本：** 23+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | The device does not support geofencing.<br>**适用版本：** 23+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -268,4 +244,28 @@ function publishAsBundle(representativeBundle: BundleOption, request: Notificati
 
 **示例**
 
-参见 [publishAsBundle](#publishasbundle)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 被代理应用的包信息
+let representativeBundle: notificationManager.BundleOption = {
+  bundle: 'bundleName1',
+};
+// NotificationRequest对象
+let request: notificationManager.NotificationRequest = {
+    id: 1,
+    content: {
+        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        normal: {
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
+        }
+    }
+};
+notificationManager.publishAsBundle(representativeBundle, request).then(() => {
+    console.info('publishAsBundle success');
+}).catch((err: BusinessError) => {
+    console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```

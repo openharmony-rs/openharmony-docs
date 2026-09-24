@@ -1,5 +1,9 @@
 # CoordinateSystemType
 
+```TypeScript
+export enum CoordinateSystemType
+```
+
 坐标系类型。
 
 **起始版本：** 12

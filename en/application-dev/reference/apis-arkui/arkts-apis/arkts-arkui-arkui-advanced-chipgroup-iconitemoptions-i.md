@@ -1,6 +1,10 @@
 # IconItemOptions
 
-Defines the configuration for the trailing builder, with constraints applied to background size and color settings.
+```TypeScript
+export interface IconItemOptions
+```
+
+Defines the trailing builder API, which is used to configure the display properties of the trailing icon and its background area.
 
 **Since:** 12
 
@@ -18,11 +22,11 @@ import { IconOptions, LabelOptions as ChipItemLabelOptions, ChipGroupItemOptions
 accessibilityDescription?: ResourceStr
 ```
 
-Accessible description of the suffix icon. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If an icon contains both text information and the accessible description, the text is announced first and then the accessible description, when the icon is selected.
+Accessibility description of the trailing icon. This description is used to explain the trailing icon to users in detail. Developers should provide a relatively detailed text description for this attribute of the trailing icon to help users understand the operation to be performed and its possible consequences, especially when these consequences cannot be directly learned from the trailing icon's attributes and accessibility text alone. If the trailing icon has both a text attribute and an accessibility description attribute, when the trailing icon is selected, the system will first announce the text attribute of the trailing icon, and then announce the content of the accessibility description attribute.
 
-The default value is an empty string.
+Default value: empty string
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -40,21 +44,21 @@ If the value is **undefined**, the default value is used.
 accessibilityLevel?: string
 ```
 
-Accessibility level of the suffix icon. It determines whether the icon can be recognized by accessibility services.
+Accessibility level of the trailing icon. Used to control whether the trailing icon can be recognized by accessibility services. Set this parameter when you need to provide access support for accessibility service users, or when you need to exclude decorative icons from the accessibility tree.
 
-The options are as follows:
+Supported values:
 
-**"auto"**: It is treated as "yes" when **action** is set for the icon and as "no" otherwise.
+**"auto"**: The trailing icon is converted to **"yes"**, applicable to most scenarios.
 
-**"yes"**: The icon can be recognized by accessibility services.
+**"yes"**: The trailing icon can be recognized by accessibility services, applicable to functional icons.
 
-**"no"**: The icon cannot be recognized by accessibility services.
+**"no"**: The trailing icon cannot be recognized by accessibility services, applicable to purely decorative icons.
 
-**"no-hide-descendants"**: Neither the icon nor its child components can be recognized by accessibility services.
+**"no-hide-descendants"**: The trailing icon and all its child components cannot be recognized by accessibility services, applicable to scenarios where the entire area needs to be hidden.
 
 Default value: **"auto"**
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** string
 
@@ -74,11 +78,11 @@ If the value is **undefined**, the default value is used.
 accessibilityText?: ResourceStr
 ```
 
-Accessibility text, that is, accessibility label name, of the suffix icon. If an icon does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which icon is selected. To solve this problem, you can set accessibility text for icons without text information. When such an icon is selected, the screen reader announces the specified accessibility text, informing the user which icon is selected.
+Accessibility text attribute of the trailing icon. It is used to further explain the trailing icon to users. Developers can set a relatively detailed explanatory text for this attribute of the trailing icon to help users understand the operation to be performed. For example, help users understand the possible consequences of the operation to be performed, especially when these consequences cannot be learned from the trailing icon's own attributes and accessibility text. If the trailing icon has both a text attribute and an accessibility description attribute, when the trailing icon is selected, the text attribute of the trailing icon is announced first, followed by the content of the accessibility description attribute.
 
-The default value is an empty string.
+Default value: empty string.
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -96,9 +100,9 @@ If the value is **undefined**, the default value is used.
 action: Callback<void>
 ```
 
-Callback of custom builder items.
+Callback for the tap event on the trailing icon. It is triggered when the user taps the trailing icon. Set this parameter to add custom interaction to the trailing icon, such as performing a specific operation or opening a page.
 
-If the value is **undefined**, the event is unbound.
+When it is **undefined**, this callback is not triggered.
 
 **Type:** Callback&lt;void&gt;
 
@@ -116,15 +120,15 @@ If the value is **undefined**, the event is unbound.
 icon: IconOptions
 ```
 
-Custom builder icon.
+Custom Builder icon.
 
-When the chip size is **ChipSize.SMALL**, the suffix is at {width: 16, height: 16} by default.
+When the chip size is **ChipSize.SMALL**, the default icon size is **{width: '16vp', height: '16vp'}**.
 
-When the chip size is **ChipSize.NORMAL**, the suffix is at {width: 24, height: 24} by default.
+When the chip size is **ChipSize.NORMAL**, the default icon size is **{width: '24vp', height: '24vp'}**.
 
-To dynamically change the size, you must use the SymbolGlyphModifier type when importing the [IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroup-icongroupsuffix-s.md) API.
+To dynamically change the size, the SymbolGlyphModifier type must be used when [IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroup-icongroupsuffix-s.md) is introduced.
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [IconOptions](arkts-arkui-arkui-advanced-chipgroup-iconoptions-i.md)
 

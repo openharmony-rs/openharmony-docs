@@ -1,5 +1,9 @@
 # Sensor
 
+```TypeScript
+interface Sensor
+```
+
 Describes the sensor information.
 
 **Since:** 9

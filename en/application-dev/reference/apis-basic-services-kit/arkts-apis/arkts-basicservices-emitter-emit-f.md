@@ -49,72 +49,8 @@ let innerEvent: emitter.InnerEvent = {
 emitter.emit(innerEvent, eventData);
 ```
 
-```TypeScript
-let eventData: emitter.EventData = {
-  data: {
-    "content": "content",
-    "id": 1,
-  }
-};
 
-emitter.emit('eventId', eventData);
-```
-
-```TypeScript
-@Sendable
-class Sample {
-  constructor() {
-    this.count = 100;
-  }
-  printCount() {
-    console.info('Print count : ' + this.count);
-  }
-  count: number;
-}
-
-let eventData: emitter.GenericEventData<Sample> = {
-  data: new Sample()
-};
-emitter.emit('eventId', eventData);
-```
-
-```TypeScript
-let eventData: emitter.EventData = {
-  data: {
-    "content": "content",
-    "id": 1,
-  }
-};
-
-let options: emitter.Options = {
-  priority: emitter.EventPriority.HIGH
-};
-
-emitter.emit('eventId', options, eventData);
-```
-
-```TypeScript
-@Sendable
-class Sample {
-  constructor() {
-    this.count = 100;
-  }
-  printCount() {
-    console.info('Print count : ' + this.count);
-  }
-  count: number;
-}
-
-let options: emitter.Options = {
-  priority: emitter.EventPriority.HIGH
-};
-let eventData: emitter.GenericEventData<Sample> = {
-  data: new Sample()
-};
-
-emitter.emit('eventId', options, eventData);
-```
-
+<a id="emit-1"></a>
 
 ## emit
 
@@ -151,80 +87,11 @@ let eventData: emitter.EventData = {
   }
 };
 
-let innerEvent: emitter.InnerEvent = {
-  eventId: 1,
-  priority: emitter.EventPriority.HIGH
-};
-
-emitter.emit(innerEvent, eventData);
-```
-
-```TypeScript
-let eventData: emitter.EventData = {
-  data: {
-    "content": "content",
-    "id": 1,
-  }
-};
-
 emitter.emit('eventId', eventData);
 ```
 
-```TypeScript
-@Sendable
-class Sample {
-  constructor() {
-    this.count = 100;
-  }
-  printCount() {
-    console.info('Print count : ' + this.count);
-  }
-  count: number;
-}
 
-let eventData: emitter.GenericEventData<Sample> = {
-  data: new Sample()
-};
-emitter.emit('eventId', eventData);
-```
-
-```TypeScript
-let eventData: emitter.EventData = {
-  data: {
-    "content": "content",
-    "id": 1,
-  }
-};
-
-let options: emitter.Options = {
-  priority: emitter.EventPriority.HIGH
-};
-
-emitter.emit('eventId', options, eventData);
-```
-
-```TypeScript
-@Sendable
-class Sample {
-  constructor() {
-    this.count = 100;
-  }
-  printCount() {
-    console.info('Print count : ' + this.count);
-  }
-  count: number;
-}
-
-let options: emitter.Options = {
-  priority: emitter.EventPriority.HIGH
-};
-let eventData: emitter.GenericEventData<Sample> = {
-  data: new Sample()
-};
-
-emitter.emit('eventId', options, eventData);
-```
-
+<a id="emit-4"></a>
 
 ## emit
 
@@ -254,33 +121,6 @@ After an event is published using this API, the event may not be executed immedi
 **Examples**
 
 ```TypeScript
-let eventData: emitter.EventData = {
-  data: {
-    "content": "content",
-    "id": 1,
-  }
-};
-
-let innerEvent: emitter.InnerEvent = {
-  eventId: 1,
-  priority: emitter.EventPriority.HIGH
-};
-
-emitter.emit(innerEvent, eventData);
-```
-
-```TypeScript
-let eventData: emitter.EventData = {
-  data: {
-    "content": "content",
-    "id": 1,
-  }
-};
-
-emitter.emit('eventId', eventData);
-```
-
-```TypeScript
 @Sendable
 class Sample {
   constructor() {
@@ -298,43 +138,8 @@ let eventData: emitter.GenericEventData<Sample> = {
 emitter.emit('eventId', eventData);
 ```
 
-```TypeScript
-let eventData: emitter.EventData = {
-  data: {
-    "content": "content",
-    "id": 1,
-  }
-};
 
-let options: emitter.Options = {
-  priority: emitter.EventPriority.HIGH
-};
-
-emitter.emit('eventId', options, eventData);
-```
-
-```TypeScript
-@Sendable
-class Sample {
-  constructor() {
-    this.count = 100;
-  }
-  printCount() {
-    console.info('Print count : ' + this.count);
-  }
-  count: number;
-}
-
-let options: emitter.Options = {
-  priority: emitter.EventPriority.HIGH
-};
-let eventData: emitter.GenericEventData<Sample> = {
-  data: new Sample()
-};
-
-emitter.emit('eventId', options, eventData);
-```
-
+<a id="emit-6"></a>
 
 ## emit
 
@@ -372,51 +177,6 @@ let eventData: emitter.EventData = {
   }
 };
 
-let innerEvent: emitter.InnerEvent = {
-  eventId: 1,
-  priority: emitter.EventPriority.HIGH
-};
-
-emitter.emit(innerEvent, eventData);
-```
-
-```TypeScript
-let eventData: emitter.EventData = {
-  data: {
-    "content": "content",
-    "id": 1,
-  }
-};
-
-emitter.emit('eventId', eventData);
-```
-
-```TypeScript
-@Sendable
-class Sample {
-  constructor() {
-    this.count = 100;
-  }
-  printCount() {
-    console.info('Print count : ' + this.count);
-  }
-  count: number;
-}
-
-let eventData: emitter.GenericEventData<Sample> = {
-  data: new Sample()
-};
-emitter.emit('eventId', eventData);
-```
-
-```TypeScript
-let eventData: emitter.EventData = {
-  data: {
-    "content": "content",
-    "id": 1,
-  }
-};
-
 let options: emitter.Options = {
   priority: emitter.EventPriority.HIGH
 };
@@ -424,28 +184,8 @@ let options: emitter.Options = {
 emitter.emit('eventId', options, eventData);
 ```
 
-```TypeScript
-@Sendable
-class Sample {
-  constructor() {
-    this.count = 100;
-  }
-  printCount() {
-    console.info('Print count : ' + this.count);
-  }
-  count: number;
-}
 
-let options: emitter.Options = {
-  priority: emitter.EventPriority.HIGH
-};
-let eventData: emitter.GenericEventData<Sample> = {
-  data: new Sample()
-};
-
-emitter.emit('eventId', options, eventData);
-```
-
+<a id="emit-9"></a>
 
 ## emit
 
@@ -474,66 +214,6 @@ After an event is published using this API, the event may not be executed immedi
 | data | [GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt; | No | Data carried by the event. This parameter is left empty by default. |
 
 **Examples**
-
-```TypeScript
-let eventData: emitter.EventData = {
-  data: {
-    "content": "content",
-    "id": 1,
-  }
-};
-
-let innerEvent: emitter.InnerEvent = {
-  eventId: 1,
-  priority: emitter.EventPriority.HIGH
-};
-
-emitter.emit(innerEvent, eventData);
-```
-
-```TypeScript
-let eventData: emitter.EventData = {
-  data: {
-    "content": "content",
-    "id": 1,
-  }
-};
-
-emitter.emit('eventId', eventData);
-```
-
-```TypeScript
-@Sendable
-class Sample {
-  constructor() {
-    this.count = 100;
-  }
-  printCount() {
-    console.info('Print count : ' + this.count);
-  }
-  count: number;
-}
-
-let eventData: emitter.GenericEventData<Sample> = {
-  data: new Sample()
-};
-emitter.emit('eventId', eventData);
-```
-
-```TypeScript
-let eventData: emitter.EventData = {
-  data: {
-    "content": "content",
-    "id": 1,
-  }
-};
-
-let options: emitter.Options = {
-  priority: emitter.EventPriority.HIGH
-};
-
-emitter.emit('eventId', options, eventData);
-```
 
 ```TypeScript
 @Sendable

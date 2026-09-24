@@ -1,5 +1,9 @@
 # ProcessState
 
+```TypeScript
+export enum ProcessState
+```
+
 Enumerates the processes states.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # RectShapeOptions
 
+```TypeScript
+interface RectShapeOptions extends ShapeSize
+```
+
 Represents the parameter of the constructor used to create a **RectShape** object.
 
 This API inherits from [ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md).

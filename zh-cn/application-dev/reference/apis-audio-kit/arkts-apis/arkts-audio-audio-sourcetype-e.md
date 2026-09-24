@@ -1,5 +1,9 @@
 # SourceType
 
+```TypeScript
+enum SourceType
+```
+
 枚举，音源类型。
 
 **起始版本：** 8
@@ -58,7 +62,7 @@ SOURCE_TYPE_PLAYBACK_CAPTURE = 2
 
 SystemCapability.Multimedia.Audio.PlaybackCapture
 
-从API version 10开始支持，从API version 12开始废弃，建议使用录屏接口AVScreenCapture替代。
+从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。
 
 **起始版本：** 10
 

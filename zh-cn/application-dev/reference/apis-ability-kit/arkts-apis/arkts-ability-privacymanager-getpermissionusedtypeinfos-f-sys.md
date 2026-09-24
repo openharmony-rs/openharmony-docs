@@ -20,6 +20,8 @@ function getPermissionUsedTypeInfos(
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -28,7 +30,7 @@ function getPermissionUsedTypeInfos(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tokenId | number &#124; null | 否 | 访问敏感权限的应用身份标识。可通过应用BundleInfo中的[ApplicationInfo](arkts-ability-applicationinfo-i.md)的accessTokenId字段获取。当需要查询特定应用的敏感权限访问类型信息时传入具体的tokenId；为0或null时表示查询所有应用的敏感权限访问类型信息。从API version 20开始，新增支持null类型。<br>默认值：0。 |
+| tokenId | number &#124; null | 否 | 访问敏感权限的应用身份标识。可通过应用[BundleInfo](arkts-ability-bundleinfo-i.md)中的[ApplicationInfo](arkts-ability-applicationinfo-i.md)的accessTokenId字段获取。当需要查询特定应用的敏感权限访问类型信息时传入具体的tokenId；为0或null时表示查询所有应用的敏感权限访问类型信息。从API version 20开始，新增支持null类型。<br>默认值：0。 |
 | permissionName | Permissions | 否 | 被访问的敏感权限名称。当需要查询特定敏感权限的访问类型信息时传入具体的权限名；为空时表示查询所有敏感权限的访问类型信息。传入无效值时返回错误码12100001。<br>取值约束：权限名长度不能超过256个字符。默认值：空。 |
 
 **返回值：**
@@ -41,8 +43,8 @@ function getPermissionUsedTypeInfos(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_USED_STATS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system app. Interface caller is not a system app. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_USED_STATS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system app. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. PermissionName exceeds 256 characters. |
 | [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The input tokenId does not exist. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The input permissionName does not exist. |

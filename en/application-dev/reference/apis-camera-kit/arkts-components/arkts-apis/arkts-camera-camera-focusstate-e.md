@@ -1,5 +1,9 @@
 # FocusState
 
+```TypeScript
+enum FocusState
+```
+
 Enumerates the focus states.
 
 **Since:** 10

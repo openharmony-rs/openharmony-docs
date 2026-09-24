@@ -1,5 +1,9 @@
 # AVPlayer
 
+```TypeScript
+interface AVPlayer
+```
+
 播放管理类，用于管理和播放媒体资源。支持音视频播放、播放控制（播放、暂停、停止、跳转、倍速等）、状态管理和事件监听。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-media-media-createavplayer-f.md)构建一个AVPlayer实例。
 
 在使用AVPlayer实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。[on('stateChange')](arkts-media-media-avplayer-i.md#onstatechange)：监听播放状态机AVPlayerState切换。[on('error')](arkts-media-media-avplayer-i.md#onerror)：监听错误事件。
@@ -50,17 +54,9 @@ enableCameraPostprocessing(): Promise<void>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called from Non-System applications. Return by promise. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Called from Non-System applications. Return by promise. |
 
 **示例**
-
-```TypeScript
-async function test(){
-  let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized状态后才能调用。
-  avPlayer.enableCameraPostprocessing();
-}
-```
 
 ## forceLoadVideo
 
@@ -94,7 +90,7 @@ forceLoadVideo(force: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called from Non-System applications. Return by promise. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Called from Non-System applications. Return by promise. |
 
 **示例**
 
@@ -138,11 +134,30 @@ getCurrentTrack(trackType: MediaType): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called from Non-System applications. Return by promise. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Called from Non-System applications. Return by promise. |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
+  let myTrackId : number;
+  let trackType: media.MediaType = media.MediaType.MEDIA_TYPE_AUD;
+  avPlayer.getCurrentTrack(trackType).then((trackId: number) => {
+    console.info('Succeeded in getting CurrentTrack');
+    myTrackId = trackId;
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get CurrentTrack. Code:${error.code},message:${error.message}`);
+  });
+}
+```
 
 ## enableStartFrameRateOpt
 

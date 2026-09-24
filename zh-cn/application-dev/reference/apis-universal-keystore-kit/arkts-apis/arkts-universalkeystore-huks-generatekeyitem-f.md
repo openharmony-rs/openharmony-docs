@@ -22,6 +22,8 @@ function generateKeyItem(keyAlias: string, options: HuksOptions, callback: Async
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -38,9 +40,9 @@ function generateKeyItem(keyAlias: string, options: HuksOptions, callback: Async
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
 | [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
@@ -62,16 +64,55 @@ function generateKeyItem(keyAlias: string, options: HuksOptions, callback: Async
 
 **示例**
 
-```TypeScript
 ArkTS示例：
-```
 
 ```TypeScript
+/* 以生成ECC密钥为例 */
+import { huks } from '@kit.UniversalKeystoreKit';
+
+let keyAlias: string = 'keyAlias';
+let properties: Array<huks.HuksParam> = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_ECC
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  },
+];
+let options: huks.HuksOptions = {
+  properties: properties
+};
+/* 生成密钥 */
+huks.generateKeyItem(keyAlias, options, (error) => {
+  if (error) {
+    console.error(`callback: generateKeyItem failed`);
+  } else {
+    console.info(`callback: generateKeyItem key success`);
+  }
+});
+```
+
 JS示例：
 
 > 说明
 > 
 > JS示例代码仅供轻量级设备使用。
+
+```TypeScript
+<stack class="container">
+    <input type="button" class="generateBtn" @click="generateKey">生成密钥</input>
+    <text class="result">{{result}}</text>
+</stack>
 ```
 
 ```TypeScript
@@ -148,39 +189,8 @@ export default {
 };
 ```
 
-```TypeScript
-/* 以生成ECC密钥为例 */
-import { huks } from '@kit.UniversalKeystoreKit';
 
-let keyAlias = 'keyAlias';
-let properties: Array<huks.HuksParam> = [
-  {
-    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-    value: huks.HuksKeyAlg.HUKS_ALG_ECC
-  },
-  {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
-  },
-  {
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-  },
-  {
-    tag: huks.HuksTag.HUKS_TAG_DIGEST,
-    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-  },
-];
-let options: huks.HuksOptions = {
-  properties: properties
-};
-/* 生成密钥 */
-huks.generateKeyItem(keyAlias, options)
-  .then((data) => {
-    console.info(`promise: generateKeyItem success`);
-  });
-```
-
+<a id="generatekeyitem-1"></a>
 
 ## generateKeyItem
 
@@ -219,9 +229,9 @@ function generateKeyItem(keyAlias: string, options: HuksOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
 | [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
@@ -243,4 +253,35 @@ function generateKeyItem(keyAlias: string, options: HuksOptions): Promise<void>
 
 **示例**
 
-参见 generateKeyItem
+```TypeScript
+/* 以生成ECC密钥为例 */
+import { huks } from '@kit.UniversalKeystoreKit';
+
+let keyAlias = 'keyAlias';
+let properties: Array<huks.HuksParam> = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_ECC
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  },
+];
+let options: huks.HuksOptions = {
+  properties: properties
+};
+/* 生成密钥 */
+huks.generateKeyItem(keyAlias, options)
+  .then((data) => {
+    console.info(`promise: generateKeyItem success`);
+  });
+```

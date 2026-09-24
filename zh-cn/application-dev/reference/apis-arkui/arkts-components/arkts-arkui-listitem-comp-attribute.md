@@ -1,32 +1,16 @@
 # ListItem属性/事件
 
-除支持通用属性外，还支持以下属性：
-
-**继承/实现关系：** ListItemAttribute extends CommonMethod&lt;ListItemAttribute&gt;
-
-**起始版本：** 7
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## editable
-
 ```TypeScript
-editable(value: boolean | EditMode)
+declare class ListItemAttribute extends CommonMethod<ListItemAttribute>
 ```
 
-设置当前ListItem元素是否可编辑，进入编辑模式后可删除或移动列表项。
+除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
+
+**继承/实现关系：** ListItemAttribute extends CommonMethod<ListItemAttribute>
 
 **起始版本：** 7
 
-**废弃版本：** 9
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | boolean &#124; [EditMode](arkts-arkui-editmode-e.md) | 是 |  |
 
 ## onSelect
 
@@ -36,9 +20,11 @@ onSelect(event: (isSelected: boolean) => void)
 
 ListItem元素被鼠标框选的状态改变时触发回调。
 
-外层List组件设置multiSelectable为true开启鼠标框选，且当前ListItem的[selectable](#selectable)属性为true时，触发该回调。
+外层[List](arkts-arkui-list-comp.md#list)组件设置[multiSelectable](arkts-arkui-list-comp-attribute.md#multiselectable)为true开启鼠标框选，且当前ListItem的[selectable](#selectable)属性为true时，触发该回调。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -58,9 +44,11 @@ ListItem元素被鼠标框选的状态改变时触发回调。
 selectable(value: boolean)
 ```
 
-设置当前ListItem元素是否可以被鼠标框选。外层List组件设置multiSelectable为true开启鼠标框选时，ListItem的框选才生效。
+设置当前ListItem元素是否可以被鼠标框选。外层[List](arkts-arkui-list-comp.md#list)组件设置[multiSelectable](arkts-arkui-list-comp-attribute.md#multiselectable)为true开启鼠标框选时，ListItem的框选才生效。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -80,7 +68,7 @@ selectable(value: boolean)
 selected(value: boolean)
 ```
 
-设置当前ListItem选中状态。该属性支持[&#36;&#36;](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置多态样式前使用才能生效选中态样式。
+设置当前ListItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置[多态样式](arkts-arkui-common-comp.md#common)前使用才能生效选中态样式。
 
 **起始版本：** 10
 
@@ -97,6 +85,50 @@ selected(value: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | boolean | 是 | 当前ListItem选中状态。设置为true时为选中状态，设置为false时为默认状态。<br>默认值：false<br>**说明：** 需要在设置多态样式前使用才能生效选中态样式。 |
+
+## swipeAction
+
+```TypeScript
+swipeAction(value: SwipeActionOptions)
+```
+
+用于设置ListItem的划出组件。
+
+**起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [SwipeActionOptions](arkts-arkui-listitem-comp-swipeactionoptions-i.md) | 是 | ListItem的划出组件配置，用于设置划出时显示的组件、滑动效果和滑动状态回调等。 |
+
+## editable
+
+```TypeScript
+editable(value: boolean | EditMode)
+```
+
+设置当前ListItem元素是否可编辑，进入编辑模式后可删除或移动列表项。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | boolean &#124; [EditMode](arkts-arkui-listitem-comp-editmode-e.md) | 是 |  |
 
 ## sticky
 
@@ -116,25 +148,7 @@ sticky(value: Sticky)
 
 **替代接口：** sticky
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | [Sticky](arkts-arkui-sticky-e.md) | 是 |  |
-
-## swipeAction
-
-```TypeScript
-swipeAction(value: SwipeActionOptions)
-```
-
-用于设置ListItem的划出组件。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,4 +156,4 @@ swipeAction(value: SwipeActionOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [SwipeActionOptions](arkts-arkui-swipeactionoptions-i.md) | 是 | ListItem的划出组件配置，用于设置划出时显示的组件、滑动效果和滑动状态回调等。 |
+| value | [Sticky](arkts-arkui-listitem-comp-sticky-e.md) | 是 |  |

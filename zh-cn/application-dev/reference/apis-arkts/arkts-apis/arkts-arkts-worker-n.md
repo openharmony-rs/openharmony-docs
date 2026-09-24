@@ -1,5 +1,9 @@
 # worker(线程管理)
 
+```TypeScript
+declare namespace worker
+```
+
 JS跨线程通信工具。
 
 **起始版本：** 7

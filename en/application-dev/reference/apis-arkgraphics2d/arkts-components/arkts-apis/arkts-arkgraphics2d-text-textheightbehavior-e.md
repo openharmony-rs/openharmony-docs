@@ -1,5 +1,9 @@
 # TextHeightBehavior
 
+```TypeScript
+enum TextHeightBehavior
+```
+
 Enumerates the text height modifier patterns.
 
 **Since:** 12

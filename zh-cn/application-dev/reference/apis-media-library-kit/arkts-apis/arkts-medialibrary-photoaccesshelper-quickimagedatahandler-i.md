@@ -1,5 +1,9 @@
 # QuickImageDataHandler
 
+```TypeScript
+interface QuickImageDataHandler<T>
+```
+
 媒体资源处理器，应用在onDataPrepared方法中可自定义媒体资源处理逻辑。
 
 > **说明：** 
@@ -41,3 +45,15 @@ map支持返回的信息：
 | data | T | 是 | 已就绪的图片资源数据。 It is of the generic type and supports the [Picture](../../apis-image-kit/arkts-apis/arkts-image-image-picture-i.md) type. |
 | imageSource | [image.ImageSource](../../apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md) | 是 | 已就绪的图片资源数据。 |
 | map | Map&lt;string, string&gt; | 是 | 用于获取图片资源的额外信息，如图片质量。仅支持'quality'。 |
+
+**示例**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+
+class MediaHandler implements photoAccessHelper.QuickImageDataHandler<image.Picture> {
+  onDataPrepared(data: image.Picture, imageSource: image.ImageSource, map: Map<string, string>) {
+    console.info('on image data prepared');
+  }
+}
+```

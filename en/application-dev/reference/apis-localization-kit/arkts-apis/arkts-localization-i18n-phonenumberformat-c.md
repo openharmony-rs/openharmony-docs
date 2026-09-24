@@ -1,5 +1,9 @@
 # PhoneNumberFormat
 
+```TypeScript
+export class PhoneNumberFormat
+```
+
 Provides phone number management capabilities, such as phone number validity verification, formatting, and home location retrieval.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # FormParam
 
+```TypeScript
+enum FormParam
+```
+
 Enumerates widget parameters.
 
 **Since:** 9

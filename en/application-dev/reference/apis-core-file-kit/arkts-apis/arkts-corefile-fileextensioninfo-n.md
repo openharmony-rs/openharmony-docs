@@ -1,5 +1,9 @@
 # fileExtensionInfo(User File Access and Management Attribute Information)
 
+```TypeScript
+declare namespace fileExtensionInfo
+```
+
 The **fileExtensionInfo** module defines attributes in **RootInfo** and **FileInfo** of the user file access and management module.
 
 **Since:** 9

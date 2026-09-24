@@ -1,5 +1,9 @@
 # PackingDynamicRange
 
+```TypeScript
+enum PackingDynamicRange
+```
+
 描述编码时期望的图像动态范围。
 
 **起始版本：** 12

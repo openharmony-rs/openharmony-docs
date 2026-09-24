@@ -24,7 +24,7 @@ PIN码认证。使用Promise异步回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceId | string | 是 | Ukey中某容器的资源ID，可通过[导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md)获取，其结果中附带resourceId。 |
+| resourceId | string | 是 | Ukey中某容器的资源ID，可通过[导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog-1)获取，其结果中附带resourceId。 |
 | params | Array&lt;[HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)&gt; | 是 | 操作时需传入的参数，必选TAG：[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md)。 |
 
 **返回值：**
@@ -37,8 +37,8 @@ PIN码认证。使用Promise异步回调。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application and is not allowed to use system applications. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application and is not allowed to use system applications. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | api is not supported. |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed. |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | the UKey driver operation failed. |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist. |

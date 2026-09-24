@@ -1,5 +1,9 @@
 # AccessibilitySpanOptions
 
+```TypeScript
+declare interface AccessibilitySpanOptions
+```
+
 Defines accessibility options for the span.
 
 **Since:** 23

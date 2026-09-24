@@ -1,5 +1,9 @@
 # LockStatusResponse（系统接口）
 
+```TypeScript
+export interface LockStatusResponse
+```
+
 **起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CoreService

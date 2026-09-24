@@ -1,5 +1,9 @@
 # TextEncoder
 
+```TypeScript
+class TextEncoder
+```
+
 提供将字符串编码为字节数组的 API。支持多种编码格式。使用 **TextEncoder** 进行编码时，每个字符所占用的字节数因编码格式而异。必须显式指定编码格式以获取所需的编码结果。
 
 **起始版本：** 7
@@ -32,9 +36,7 @@ constructor()
 let textEncoder = new util.TextEncoder();
 ```
 
-```TypeScript
-let textEncoder = new util.TextEncoder("utf-8");
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -57,10 +59,6 @@ constructor(encoding?: string)
 | encoding | string | 否 | 编码格式。默认格式为 **'utf-8'**。 |
 
 **示例**
-
-```TypeScript
-let textEncoder = new util.TextEncoder();
-```
 
 ```TypeScript
 let textEncoder = new util.TextEncoder("utf-8");
@@ -98,43 +96,6 @@ static create(encoding?: string): TextEncoder
 let textEncoder = util.TextEncoder.create("utf-8");
 ```
 
-## encode
-
-```TypeScript
-encode(input?: string): Uint8Array
-```
-
-将输入内容编码为 Uint8Array 对象。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [encodeInto](#encodeinto)
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| input | string | 否 | 要编码的字符串。默认值为空字符串。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Uint8Array | 获取到的 Uint8Array 对象。 |
-
-**示例**
-
-```TypeScript
-let textEncoder = new util.TextEncoder();
-let result = textEncoder.encode("\uD800¥¥");
-console.info("result = " + result);
-// 输出结果: result = 237,160,128,194,165,194,165
-```
-
 ## encodeInto
 
 ```TypeScript
@@ -170,14 +131,7 @@ console.info("result = " + result);
 // 输出结果: result = 237,160,128,194,165,194,165
 ```
 
-```TypeScript
-let textEncoder = new util.TextEncoder();
-let buffer = new ArrayBuffer(4);
-let uint8 = new Uint8Array(buffer);
-let result = textEncoder.encodeInto('abcd', uint8);
-console.info("uint8 = " + uint8);
-// 输出结果: uint8 = 97,98,99,100
-```
+<a id="encodeinto-1"></a>
 
 ## encodeInto
 
@@ -210,7 +164,14 @@ encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 
 **示例**
 
-参见 [encodeInto](#encodeinto)
+```TypeScript
+let textEncoder = new util.TextEncoder();
+let buffer = new ArrayBuffer(4);
+let uint8 = new Uint8Array(buffer);
+let result = textEncoder.encodeInto('abcd', uint8);
+console.info("uint8 = " + uint8);
+// 输出结果: uint8 = 97,98,99,100
+```
 
 ## encodeIntoUint8Array
 
@@ -253,6 +214,43 @@ console.info("result.read = " + result.read);
 // 输出结果: result.read = 4
 console.info("result.written = " + result.written);
 // 输出结果: result.written = 4
+```
+
+## encode
+
+```TypeScript
+encode(input?: string): Uint8Array
+```
+
+将输入内容编码为 Uint8Array 对象。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [encodeInto](#encodeinto)
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| input | string | 否 | 要编码的字符串。默认值为空字符串。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Uint8Array | 获取到的 Uint8Array 对象。 |
+
+**示例**
+
+```TypeScript
+let textEncoder = new util.TextEncoder();
+let result = textEncoder.encode("\uD800¥¥");
+console.info("result = " + result);
+// 输出结果: result = 237,160,128,194,165,194,165
 ```
 
 ## encoding

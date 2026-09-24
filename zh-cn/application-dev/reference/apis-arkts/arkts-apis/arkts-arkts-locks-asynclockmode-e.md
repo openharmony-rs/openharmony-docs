@@ -1,5 +1,9 @@
 # AsyncLockMode
 
+```TypeScript
+enum AsyncLockMode
+```
+
 锁操作对应的模式枚举。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # PhoneNumberFormatOptions
 
+```TypeScript
+export interface PhoneNumberFormatOptions
+```
+
 Options for **PhoneNumberFormat** object initialization.
 
 **Since:** 8

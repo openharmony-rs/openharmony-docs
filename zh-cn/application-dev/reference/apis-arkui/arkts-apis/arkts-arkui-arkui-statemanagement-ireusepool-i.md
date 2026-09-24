@@ -1,5 +1,9 @@
 # IReusePool
 
+```TypeScript
+export declare interface IReusePool
+```
+
 `IReusePool`接口提供自定义组件上的全局复用池的相关功能，包括查询回收组件的当前数量和上限信息、预渲染可复用组件到复用池中等，适用于开发者需要手动管理和优化组件复用效率的场景。
 
 **起始版本：** 26.0.0
@@ -16,7 +20,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 
 ```TypeScript
 getReusableInfo(constructor: ReusableComponentConstructor,
-    reuseId?: string): IReusableInfo[] | IReusableInfo | undefined
+    reuseId?: string): IReusableInfo[]  | IReusableInfo | undefined
 ```
 
 检索此复用池中给定可复用组件类型的回收实例信息。
@@ -137,7 +141,7 @@ preRender(builder: WrappedBuilder<[]>, times: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | [WrappedBuilder](../arkts-components/arkts-arkui-wrappedbuilder-c.md)&lt;[]&gt; | 是 | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个[@Reusable](../../../ui/state-management/arkts-create-custom-components.md#reusable)/ [@ReusableV2](../../../ui/state-management/arkts-create-custom-components.md#reusablev2)组件。 |
+| builder | [WrappedBuilder](../arkts-components/arkts-arkui-common-comp-wrappedbuilder-c.md)&lt;[]&gt; | 是 | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个[@Reusable](../../../ui/state-management/arkts-create-custom-components.md#reusable)/ [@ReusableV2](../../../ui/state-management/arkts-create-custom-components.md#reusablev2)组件。 |
 | times | number | 是 | 执行@Builder函数的次数。取值范围为正整数。传入0或负数时不生效。传入小数时会向上取整。 |
 
 **返回值：**

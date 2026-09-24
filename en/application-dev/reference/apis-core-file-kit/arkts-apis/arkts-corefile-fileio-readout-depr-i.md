@@ -1,5 +1,9 @@
 # ReadOut
 
+```TypeScript
+declare interface ReadOut
+```
+
 Obtains the file read result. This class applies only to the **read()** method.
 
 **Since:** 6

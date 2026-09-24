@@ -1,5 +1,9 @@
 # SegmentButtonOptions
 
+```TypeScript
+declare class SegmentButtonOptions
+```
+
 
 > **说明：** 
 > 
@@ -108,7 +112,7 @@ backgroundBlurStyle: BlurStyle
 
 值为undefined时，按默认值处理。
 
-**类型：** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**类型：** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **起始版本：** 11
 
@@ -134,7 +138,7 @@ backgroundBorderRadius?: LengthMetrics
 
 圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。超出最大值时自动修正为最大值，使用百分比时按默认值处理。
 
-默认值：`&#36;r('sys.float.segmentbutton_container_shape')`
+默认值：`$r('sys.float.segmentbutton_container_shape')`
 
 值为undefined时，按默认值处理。
 
@@ -156,7 +160,7 @@ backgroundColor: ResourceColor
 
 分段按钮组件的背景板颜色。
 
-值为undefined时，背景板颜色为&#36;r('sys.color.ohos_id_color_button_normal')。
+值为undefined时，背景板颜色为$r('sys.color.ohos_id_color_button_normal')。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -288,7 +292,7 @@ fontColor: ResourceColor
 
 按钮未选中态的文本颜色。
 
-默认值：&#36;r('sys.color.ohos_id_color_text_secondary')
+默认值：$r('sys.color.ohos_id_color_text_secondary')
 
 值为undefined时，按默认值处理。
 
@@ -312,7 +316,7 @@ fontSize: DimensionNoPercentage
 
 单位：fp
 
-值为undefined时，字体大小为&#36;r('sys.float.ohos_id_text_size_body2')。
+值为undefined时，字体大小为$r('sys.float.ohos_id_text_size_body2')。
 
 **类型：** [DimensionNoPercentage](arkts-arkui-dimensionnopercentage-t.md)
 
@@ -386,7 +390,7 @@ itemBorderRadius?: LengthMetrics
 
 圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。超出最大值时自动修正为最大值，使用百分比时按默认值处理。
 
-默认值：`&#36;r('sys.float.segmentbutton_selected_background_shape')`
+默认值：`$r('sys.float.segmentbutton_selected_background_shape')`
 
 值为undefined时，按默认值处理。
 
@@ -486,9 +490,9 @@ selectedBackgroundColor: ResourceColor
 
 默认值：
 
-type为"tab"时，默认值为`&#36;r('sys.color.segment_button_checked_foreground_color')`。
+type为"tab"时，默认值为`$r('sys.color.segment_button_checked_foreground_color')`。
 
-type为"capsule"时，默认值为`&#36;r('sys.color.ohos_id_color_emphasize')`。
+type为"capsule"时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。
 
 值为undefined时，按默认值处理。
 
@@ -512,9 +516,9 @@ selectedFontColor: ResourceColor
 
 默认值：
 
-type为"tab"时，默认值为`&#36;r('sys.color.ohos_id_color_text_primary')`。
+type为"tab"时，默认值为`$r('sys.color.ohos_id_color_text_primary')`。
 
-type为"capsule"时，默认值为`&#36;r('sys.color.ohos_id_color_foreground_contrary')`。
+type为"capsule"时，默认值为`$r('sys.color.ohos_id_color_foreground_contrary')`。
 
 值为undefined时，按默认值处理。
 
@@ -538,7 +542,7 @@ selectedFontSize: DimensionNoPercentage
 
 单位：fp
 
-值为undefined时，字体大小为&#36;r('sys.float.ohos_id_text_size_body2')。
+值为undefined时，字体大小为$r('sys.float.ohos_id_text_size_body2')。
 
 **类型：** [DimensionNoPercentage](arkts-arkui-dimensionnopercentage-t.md)
 

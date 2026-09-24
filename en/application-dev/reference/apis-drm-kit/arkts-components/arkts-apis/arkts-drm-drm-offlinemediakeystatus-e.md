@@ -1,5 +1,9 @@
 # OfflineMediaKeyStatus
 
+```TypeScript
+enum OfflineMediaKeyStatus
+```
+
 Enumerates the statuses of offline media keys.
 
 **Since:** 11

@@ -1,8 +1,12 @@
 # Span properties/events
 
-Inherited from [BaseSpan](arkts-arkui-basespan-c.md).
+```TypeScript
+declare class SpanAttribute extends BaseSpan<SpanAttribute>
+```
 
-Among universal events, only onClick click events and onHover hover events are supported.
+Inherited from [BaseSpan](arkts-arkui-span-comp-basespan-c.md).
+
+Among universal events, only [onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick) click events and [onHover](arkts-arkui-common-comp-commonmethod-c.md#onhover) hover events are supported.
 
 @extends CommonMethod&lt;SpanAttribute&gt; [since 7 - 10] @extends BaseSpan&lt;SpanAttribute&gt; [since 11]
 
@@ -55,6 +59,8 @@ Sets the text style, covering the font size, font width, Font family, and font s
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | Font | Yes | Text style. |
+
+<a id="font-1"></a>
 
 ## font
 
@@ -181,7 +187,7 @@ Set the font variation.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,6 +218,8 @@ Sets the font weight. If the value is too large, the text may be clipped dependi
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight. For the number type, the value range is [100, 900], at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings of the number type are supported, for example, **400**, **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**.<br>Default value: **FontWeight.Normal**<br>The Resource type is supported since API version 20.<br>**Since:** 20 |
+
+<a id="fontweight-1"></a>
 
 ## fontWeight
 
@@ -324,4 +332,4 @@ Text shadow. It supports input parameters in an array to implement multiple text
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ShadowOptions](arkts-arkui-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-shadowoptions-i.md)&gt; | Yes | Text shadow. |
+| value | [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | Yes | Text shadow. |

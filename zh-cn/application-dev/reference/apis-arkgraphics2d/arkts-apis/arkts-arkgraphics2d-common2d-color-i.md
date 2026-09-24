@@ -1,5 +1,9 @@
 # Color
 
+```TypeScript
+interface Color
+```
+
 ARGB格式的颜色描述。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # Session
 
+```TypeScript
+interface Session
+```
+
 会话类，保存一次相机运行所需要的所有资源[CameraInput](arkts-camera-camera-camerainput-i.md)、[CameraOutput](arkts-camera-camera-cameraoutput-i.md)，并向相机设备申请完成相机功能（录像，拍照）。
 
 **起始版本：** 11
@@ -41,6 +45,22 @@ addInput(cameraInput: CameraInput): void
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config.<br>**适用版本：** 11 - 17 |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function addInput(session: camera.Session, cameraInput: camera.CameraInput): void {
+  try {
+    session.addInput(cameraInput);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The addInput call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## addOutput
 
 ```TypeScript
@@ -70,6 +90,22 @@ addOutput(cameraOutput: CameraOutput): void
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config.<br>**适用版本：** 11 - 17 |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function addOutput(session: camera.Session, cameraOutput: camera.CameraOutput): void {
+  try {
+    session.addOutput(cameraOutput);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The addOutput call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## beginConfig
 
 ```TypeScript
@@ -90,6 +126,22 @@ beginConfig(): void
 | --- | --- |
 | [7400105](../errorcode-camera.md#7400105-会话配置被锁定) | Session config locked. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function beginConfig(session: camera.Session): void {
+  try {
+    session.beginConfig();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The beginConfig call failed. error code: ${err.code}`);
+  }
+}
+```
 
 ## canAddInput
 
@@ -117,6 +169,15 @@ canAddInput(cameraInput: CameraInput): boolean
 | --- | --- |
 | boolean | 判断当前cameraInput是否可以添加到session中。true表示支持添加当前cameraInput，false表示不支持添加。 |
 
+**示例**
+
+```TypeScript
+function canAddInput(session: camera.Session, cameraInput: camera.CameraInput): void {
+  let canAdd: boolean = session.canAddInput(cameraInput);
+  console.info(`The input canAddInput: ${canAdd}`);
+}
+```
+
 ## canAddOutput
 
 ```TypeScript
@@ -142,6 +203,15 @@ canAddOutput(cameraOutput: CameraOutput): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 是否可以添加当前cameraOutput到session中，true为可添加，false为不可添加。 |
+
+**示例**
+
+```TypeScript
+function canAddOutput(session: camera.Session, cameraOutput: camera.CameraOutput): void {
+  let canAdd: boolean = session.canAddOutput(cameraOutput);
+  console.info(`This addOutput can add: ${canAdd}`);
+}
+```
 
 ## commitConfig
 
@@ -170,6 +240,24 @@ commitConfig(callback: AsyncCallback<void>): void
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function commitConfig(session: camera.Session): void {
+  session.commitConfig((err: BusinessError) => {
+    if (err) {
+      console.error(`The commitConfig call failed. error code: ${err.code}`);
+      return;
+    }
+    console.info('Callback invoked to indicate the commit config success.');
+  });
+}
+```
+
+<a id="commitconfig-1"></a>
+
 ## commitConfig
 
 ```TypeScript
@@ -197,6 +285,21 @@ commitConfig(): Promise<void>
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function commitConfig(session: camera.Session): void {
+  session.commitConfig().then(() => {
+    console.info('Promise returned to indicate the commit config success.');
+  }).catch((error: BusinessError) => {
+    // 失败返回错误码error.code并处理。
+    console.error(`The commitConfig call failed. error code: ${error.code}`);
+  });
+}
+```
+
 ## release
 
 ```TypeScript
@@ -223,6 +326,24 @@ release(callback: AsyncCallback<void>): void
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function releaseCaptureSession(session: camera.Session): void {
+  session.release((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to release the session instance, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback invoked to indicate that the session instance is released successfully.');
+  });
+}
+```
+
+<a id="release-1"></a>
+
 ## release
 
 ```TypeScript
@@ -248,6 +369,20 @@ release(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function releaseCaptureSession(session: camera.Session): void {
+  session.release().then(() => {
+    console.info('Promise returned to indicate that the session instance is released successfully.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to release the session instance, error code: ${error.code}.`);
+  });
+}
+```
 
 ## removeInput
 
@@ -278,6 +413,22 @@ removeInput(cameraInput: CameraInput): void
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config.<br>**适用版本：** 11 - 17 |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function removeInput(session: camera.Session, cameraInput: camera.CameraInput): void {
+  try {
+    session.removeInput(cameraInput);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The removeInput call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## removeOutput
 
 ```TypeScript
@@ -307,6 +458,22 @@ removeOutput(cameraOutput: CameraOutput): void
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config.<br>**适用版本：** 11 - 17 |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function removeOutput(session: camera.Session, previewOutput: camera.PreviewOutput): void {
+  try {
+    session.removeOutput(previewOutput);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The removeOutput call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## start
 
 ```TypeScript
@@ -334,6 +501,24 @@ start(callback: AsyncCallback<void>): void
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startCaptureSession(session: camera.Session): void {
+  session.start((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to start the session, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback invoked to indicate the session start success.');
+  });
+}
+```
+
+<a id="start-1"></a>
 
 ## start
 
@@ -363,6 +548,20 @@ start(): Promise<void>
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed.<br>**适用版本：** 12+ |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startCaptureSession(session: camera.Session): void {
+  session.start().then(() => {
+    console.info('Promise returned to indicate the session start success.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to start the session, error code: ${error.code}.`);
+  });
+}
+```
+
 ## stop
 
 ```TypeScript
@@ -389,6 +588,24 @@ stop(callback: AsyncCallback<void>): void
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stopCaptureSession(session: camera.Session): void {
+  session.stop((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to stop the session, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback invoked to indicate the session stop success.');
+  });
+}
+```
+
+<a id="stop-1"></a>
+
 ## stop
 
 ```TypeScript
@@ -414,3 +631,17 @@ stop(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stopCaptureSession(session: camera.Session): void {
+  session.stop().then(() => {
+    console.info('Promise returned to indicate the session stop success.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to stop the session, error code: ${error.code}.`);
+  });
+}
+```

@@ -4,7 +4,9 @@
 
 Provides the C interface for the USB Manager module, enabling USB device enumeration, connection, permission management, and pipe operations.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.USB.USBManager
+
+**Since**: 26.0.1
 
 ## Files
 

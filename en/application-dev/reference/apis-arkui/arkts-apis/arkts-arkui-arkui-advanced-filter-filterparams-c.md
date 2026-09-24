@@ -1,5 +1,9 @@
 # FilterParams
 
+```TypeScript
+export declare class FilterParams
+```
+
 This parameter is used to define the input of each filtering dimension.
 
 **Since:** 22

@@ -1,5 +1,9 @@
 # MmsDeliveryInd (System API)
 
+```TypeScript
+export interface MmsDeliveryInd
+```
+
 Defines an MMS message delivery index.
 
 **Since:** 8

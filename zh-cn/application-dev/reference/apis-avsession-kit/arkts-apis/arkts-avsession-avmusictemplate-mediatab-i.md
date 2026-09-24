@@ -1,5 +1,9 @@
 # MediaTab
 
+```TypeScript
+interface MediaTab
+```
+
 媒体标签页的定义。
 
 @interface MediaTab

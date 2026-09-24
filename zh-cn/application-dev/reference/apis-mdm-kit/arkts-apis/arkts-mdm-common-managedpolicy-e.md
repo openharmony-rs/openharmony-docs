@@ -1,5 +1,9 @@
 # ManagedPolicy
 
+```TypeScript
+export enum ManagedPolicy
+```
+
 企业设备管控策略。
 
 **起始版本：** 22

@@ -1,5 +1,9 @@
 # MetaSourceType (System API)
 
+```TypeScript
+enum MetaSourceType
+```
+
 Enumerates meta source type for recorder.
 
 **Since:** 12

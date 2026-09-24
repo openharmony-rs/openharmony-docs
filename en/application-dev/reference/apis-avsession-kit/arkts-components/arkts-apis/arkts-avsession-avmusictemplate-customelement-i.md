@@ -1,5 +1,9 @@
 # CustomElement
 
+```TypeScript
+interface CustomElement extends OperResult
+```
+
 Custom elements of mine page.
 
 @extends OperResult @interface CustomElement

@@ -1,5 +1,9 @@
 # MechEventType (System API)
 
+```TypeScript
+export enum MechEventType
+```
+
 Mechanic event definition.
 
 **Since:** 26.0.0

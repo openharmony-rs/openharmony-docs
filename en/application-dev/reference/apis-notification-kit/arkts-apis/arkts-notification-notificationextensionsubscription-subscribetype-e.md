@@ -1,5 +1,9 @@
 # SubscribeType
 
+```TypeScript
+export enum SubscribeType
+```
+
 Describes the type that enables notification extension subscription.
 
 **Since:** 22

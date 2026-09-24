@@ -1,5 +1,9 @@
 # AvisPropertyKey
 
+```TypeScript
+enum AvisPropertyKey
+```
+
 Enumerates the properties available for the metadata of a Avis image.
 
 > **NOTE:** 

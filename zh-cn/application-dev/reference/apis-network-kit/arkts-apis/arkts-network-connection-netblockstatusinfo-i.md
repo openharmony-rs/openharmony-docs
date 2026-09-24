@@ -1,5 +1,9 @@
 # NetBlockStatusInfo
 
+```TypeScript
+export interface NetBlockStatusInfo
+```
+
 获取网络状态信息。
 
 **起始版本：** 11

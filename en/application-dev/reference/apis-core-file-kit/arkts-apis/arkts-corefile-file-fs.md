@@ -20,123 +20,123 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 
 | Name | Description |
 | --- | --- |
-| [access](arkts-corefile-file-fs-access-f.md) | Checks whether the file or directory exists or has the operation permission. This API uses a promise to return the result. |
-| [access](arkts-corefile-file-fs-access-f.md) | Checks whether a file or directory exists. This API uses an asynchronous callback to return the result. |
-| [access](arkts-corefile-file-fs-access-f.md) | Checks whether the file or directory is stored locally or has the operation permission. This API uses a promise to return the result. |
-| [accessSync](arkts-corefile-file-fs-accesssync-f.md) | Checks whether a file or directory exists or has the operation permission. This API returns the result synchronously. |
-| [accessSync](arkts-corefile-file-fs-accesssync-f.md) | Checks whether a file or directory is stored locally or has the operation permission. This API returns the result synchronously. |
-| [close](arkts-corefile-file-fs-close-f.md) | Closes a file or directory. This API uses a promise to return the result. |
-| [close](arkts-corefile-file-fs-close-f.md) | Closes a file or directory. This API uses an asynchronous callback to return the result. |
+| [access](arkts-corefile-file-fs-access-f.md#access) | Checks whether the file or directory exists or has the operation permission. This API uses a promise to return the result. |
+| [access](arkts-corefile-file-fs-access-f.md#access-1) | Checks whether a file or directory exists. This API uses an asynchronous callback to return the result. |
+| [access](arkts-corefile-file-fs-access-f.md#access-2) | Checks whether the file or directory is stored locally or has the operation permission. This API uses a promise to return the result. |
+| [accessSync](arkts-corefile-file-fs-accesssync-f.md#accesssync) | Checks whether a file or directory exists or has the operation permission. This API returns the result synchronously. |
+| [accessSync](arkts-corefile-file-fs-accesssync-f.md#accesssync-1) | Checks whether a file or directory is stored locally or has the operation permission. This API returns the result synchronously. |
+| [close](arkts-corefile-file-fs-close-f.md#close) | Closes a file or directory. This API uses a promise to return the result. |
+| [close](arkts-corefile-file-fs-close-f.md#close-1) | Closes a file or directory. This API uses an asynchronous callback to return the result. |
 | [closeSync](arkts-corefile-file-fs-closesync-f.md) | Closes a file or directory. This API returns the result synchronously. |
 | [connectDfs](arkts-corefile-file-fs-connectdfs-f.md) | Triggers connection. If the peer device is abnormal, [onStatus](arkts-corefile-file-fs-dfslisteners-i.md#onstatus) in **DfsListeners** will be called to notify the application. |
-| [copy](arkts-corefile-file-fs-copy-f.md) | Copies a file or directory. This API uses a promise to return the result. |
-| [copy](arkts-corefile-file-fs-copy-f.md) | Copies a file or directory. This API uses an asynchronous callback to return the result. |
-| [copy](arkts-corefile-file-fs-copy-f.md) | Copies a file or directory. This API uses an asynchronous callback to return the result. |
-| [copyDir](arkts-corefile-file-fs-copydir-f.md) | Copies the source directory to the destination path. This API uses a promise to return the result. |
-| [copyDir](arkts-corefile-file-fs-copydir-f.md) | Copies the source directory to the destination directory. This API uses an asynchronous callback to return the result. |
-| [copyDir](arkts-corefile-file-fs-copydir-f.md) | Copies the source directory to the destination path. This API uses an asynchronous callback to return the result. |
-| [copyDir](arkts-corefile-file-fs-copydir-f.md) | Copies the source directory to the destination directory. You can set the copy mode. This API uses an asynchronous callback to return the result. |
-| [copyDir](arkts-corefile-file-fs-copydir-f.md) | Copies the source directory to the destination path. You can set the copy mode. This API uses an asynchronous callback to return the result. |
+| [copy](arkts-corefile-file-fs-copy-f.md#copy) | Copies a file or directory. This API uses a promise to return the result. |
+| [copy](arkts-corefile-file-fs-copy-f.md#copy-1) | Copies a file or directory. This API uses an asynchronous callback to return the result. |
+| [copy](arkts-corefile-file-fs-copy-f.md#copy-2) | Copies a file or directory. This API uses an asynchronous callback to return the result. |
+| [copyDir](arkts-corefile-file-fs-copydir-f.md#copydir) | Copies the source directory to the destination path. This API uses a promise to return the result. |
+| [copyDir](arkts-corefile-file-fs-copydir-f.md#copydir-1) | Copies the source directory to the destination directory. This API uses an asynchronous callback to return the result. |
+| [copyDir](arkts-corefile-file-fs-copydir-f.md#copydir-2) | Copies the source directory to the destination path. This API uses an asynchronous callback to return the result. |
+| [copyDir](arkts-corefile-file-fs-copydir-f.md#copydir-3) | Copies the source directory to the destination directory. You can set the copy mode. This API uses an asynchronous callback to return the result. |
+| [copyDir](arkts-corefile-file-fs-copydir-f.md#copydir-4) | Copies the source directory to the destination path. You can set the copy mode. This API uses an asynchronous callback to return the result. |
 | [copyDirSync](arkts-corefile-file-fs-copydirsync-f.md) | Copies the source directory to the destination path. This API returns the result synchronously. |
-| [copyFile](arkts-corefile-file-fs-copyfile-f.md) | Copies a file. This API uses a promise to return the result. |
-| [copyFile](arkts-corefile-file-fs-copyfile-f.md) | Copies a file. This API overwrites the file with the same name in the destination directory and truncates the part that is not overwritten. This API uses an asynchronous callback to return the result. |
-| [copyFile](arkts-corefile-file-fs-copyfile-f.md) | Copies a file with the specified mode. This API uses an asynchronous callback to return the result. |
+| [copyFile](arkts-corefile-file-fs-copyfile-f.md#copyfile) | Copies a file. This API uses a promise to return the result. |
+| [copyFile](arkts-corefile-file-fs-copyfile-f.md#copyfile-1) | Copies a file. This API overwrites the file with the same name in the destination directory and truncates the part that is not overwritten. This API uses an asynchronous callback to return the result. |
+| [copyFile](arkts-corefile-file-fs-copyfile-f.md#copyfile-2) | Copies a file with the specified mode. This API uses an asynchronous callback to return the result. |
 | [copyFileSync](arkts-corefile-file-fs-copyfilesync-f.md) | Copies a file. This API returns the result synchronously. |
-| [createRandomAccessFile](arkts-corefile-file-fs-createrandomaccessfile-f.md) | Creates a **RandomAccessFile** instance based on the specified file path or file object. This API uses a promise to return the result. |
-| [createRandomAccessFile](arkts-corefile-file-fs-createrandomaccessfile-f.md) | Creates a **RandomAccessFile** object in read-only mode based on a file path or file object. This API uses an asynchronous callback to return the result. |
-| [createRandomAccessFile](arkts-corefile-file-fs-createrandomaccessfile-f.md) | Creates a **RandomAccessFile** instance based on a file path or file object. This API uses an asynchronous callback to return the result. |
+| [createRandomAccessFile](arkts-corefile-file-fs-createrandomaccessfile-f.md#createrandomaccessfile) | Creates a **RandomAccessFile** instance based on the specified file path or file object. This API uses a promise to return the result. |
+| [createRandomAccessFile](arkts-corefile-file-fs-createrandomaccessfile-f.md#createrandomaccessfile-1) | Creates a **RandomAccessFile** object in read-only mode based on a file path or file object. This API uses an asynchronous callback to return the result. |
+| [createRandomAccessFile](arkts-corefile-file-fs-createrandomaccessfile-f.md#createrandomaccessfile-2) | Creates a **RandomAccessFile** instance based on a file path or file object. This API uses an asynchronous callback to return the result. |
 | [createRandomAccessFileSync](arkts-corefile-file-fs-createrandomaccessfilesync-f.md) | Creates a **RandomAccessFile** instance based on a file path or file object. |
 | [createReadStream](arkts-corefile-file-fs-createreadstream-f.md) | Creates a readable stream. This API returns the result synchronously. |
-| [createStream](arkts-corefile-file-fs-createstream-f.md) | Creates a stream based on a file path. This API uses a promise to return the result. To close the stream, use **close()** of [Stream](arkts-corefile-file-fs-stream-i.md). |
-| [createStream](arkts-corefile-file-fs-createstream-f.md) | Creates a stream based on a file path. This API uses an asynchronous callback to return the result. To close the stream, use **close()** of [Stream](arkts-corefile-file-fs-stream-i.md). |
+| [createStream](arkts-corefile-file-fs-createstream-f.md#createstream) | Creates a stream based on a file path. This API uses a promise to return the result. To close the stream, use **close()** of [Stream](arkts-corefile-file-fs-stream-i.md). |
+| [createStream](arkts-corefile-file-fs-createstream-f.md#createstream-1) | Creates a stream based on a file path. This API uses an asynchronous callback to return the result. To close the stream, use **close()** of [Stream](arkts-corefile-file-fs-stream-i.md). |
 | [createStreamSync](arkts-corefile-file-fs-createstreamsync-f.md) | Creates a stream based on a file path. This API returns the result synchronously. To close the stream, use **close()** of [Stream](arkts-corefile-file-fs-stream-i.md). |
 | [createWatcher](arkts-corefile-file-fs-createwatcher-f.md) | Creates a **Watcher** object to listen for file or directory changes. |
 | [createWriteStream](arkts-corefile-file-fs-createwritestream-f.md) | Creates a writeable stream. This API returns the result synchronously. |
 | [disconnectDfs](arkts-corefile-file-fs-disconnectdfs-f.md) | Triggers disconnection. |
 | [dup](arkts-corefile-file-fs-dup-f.md) | Duplicates the file descriptor and returns the corresponding **File** object. |
-| [fdatasync](arkts-corefile-file-fs-fdatasync-f.md) | Synchronizes the data of a file. This API uses a promise to return the result. |
-| [fdatasync](arkts-corefile-file-fs-fdatasync-f.md) | Synchronizes the data of a file. This API uses an asynchronous callback to return the result. |
+| [fdatasync](arkts-corefile-file-fs-fdatasync-f.md#fdatasync) | Synchronizes the data of a file. This API uses a promise to return the result. |
+| [fdatasync](arkts-corefile-file-fs-fdatasync-f.md#fdatasync-1) | Synchronizes the data of a file. This API uses an asynchronous callback to return the result. |
 | [fdatasyncSync](arkts-corefile-file-fs-fdatasyncsync-f.md) | Synchronizes the data of a file. This API returns the result synchronously. |
-| [fdopenStream](arkts-corefile-file-fs-fdopenstream-f.md) | Opens a stream based on an FD. This API uses a promise to return the result. To close the stream, use **close()** of [Stream](arkts-corefile-file-fs-stream-i.md). |
-| [fdopenStream](arkts-corefile-file-fs-fdopenstream-f.md) | Opens a stream based on an FD. This API uses an asynchronous callback to return the result. To close the stream, use **close()** of [Stream](arkts-corefile-file-fs-stream-i.md). |
+| [fdopenStream](arkts-corefile-file-fs-fdopenstream-f.md#fdopenstream) | Opens a stream based on an FD. This API uses a promise to return the result. To close the stream, use **close()** of [Stream](arkts-corefile-file-fs-stream-i.md). |
+| [fdopenStream](arkts-corefile-file-fs-fdopenstream-f.md#fdopenstream-1) | Opens a stream based on an FD. This API uses an asynchronous callback to return the result. To close the stream, use **close()** of [Stream](arkts-corefile-file-fs-stream-i.md). |
 | [fdopenStreamSync](arkts-corefile-file-fs-fdopenstreamsync-f.md) | Opens a stream based on an FD. This API returns the result synchronously. To close the stream, use **close()** of [Stream](arkts-corefile-file-fs-stream-i.md). |
-| [fsync](arkts-corefile-file-fs-fsync-f.md) | Synchronizes the cached data of a file to storage. This API uses a promise to return the result. |
-| [fsync](arkts-corefile-file-fs-fsync-f.md) | Synchronizes the cached data of a file to storage. This API uses an asynchronous callback to return the result. |
+| [fsync](arkts-corefile-file-fs-fsync-f.md#fsync) | Synchronizes the cached data of a file to storage. This API uses a promise to return the result. |
+| [fsync](arkts-corefile-file-fs-fsync-f.md#fsync-1) | Synchronizes the cached data of a file to storage. This API uses an asynchronous callback to return the result. |
 | [fsyncSync](arkts-corefile-file-fs-fsyncsync-f.md) | Synchronizes the cached data of a file to storage. This API returns the result synchronously. |
 | [getxattr](arkts-corefile-file-fs-getxattr-f.md) | Obtains an extended attribute of a file or directory. This API uses a promise to return the result. |
 | [getxattrSync](arkts-corefile-file-fs-getxattrsync-f.md) | Obtains an extended attribute of a file or directory. This API returns the result synchronously. |
-| [listFile](arkts-corefile-file-fs-listfile-f.md) | Lists the names of all files and directories in the current path. Filtering is supported. This API uses a promise to return the result. |
-| [listFile](arkts-corefile-file-fs-listfile-f.md) | Lists the names of all files and directories in the current path. Filtering is supported. This API uses an asynchronous callback to return the result. |
-| [listFile](arkts-corefile-file-fs-listfile-f.md) | Lists the names of all files and directories in the current path. Filtering is supported. This API uses an asynchronous callback to return the result. |
+| [listFile](arkts-corefile-file-fs-listfile-f.md#listfile) | Lists the names of all files and directories in the current path. Filtering is supported. This API uses a promise to return the result. |
+| [listFile](arkts-corefile-file-fs-listfile-f.md#listfile-1) | Lists the names of all files and directories in the current path. Filtering is supported. This API uses an asynchronous callback to return the result. |
+| [listFile](arkts-corefile-file-fs-listfile-f.md#listfile-2) | Lists the names of all files and directories in the current path. Filtering is supported. This API uses an asynchronous callback to return the result. |
 | [listFileExt](arkts-corefile-file-fs-listfileext-f.md) | Lists all file names in a directory. This API uses a promise to return the result. This API supports recursive listing of all file names and custom file name filtering. The returned result starts with a slash (/) and contains the subdirectory. |
 | [listFileExtSync](arkts-corefile-file-fs-listfileextsync-f.md) | Lists all file names in a directory. This API returns the result synchronously. This API supports recursive listing of all file names and custom file name filtering. The returned result starts with a slash (/) and contains the subdirectory. |
 | [listFileSync](arkts-corefile-file-fs-listfilesync-f.md) | Lists the names of all files and directories in the current directory. This API returns the result synchronously. Filtering is supported. |
 | [lseek](arkts-corefile-file-fs-lseek-f.md) | Adjusts the position of the file offset pointer. |
-| [lstat](arkts-corefile-file-fs-lstat-f.md) | Obtains information about a symbolic link that is used to refer to a file or directory. This API uses a promise to return the result. |
-| [lstat](arkts-corefile-file-fs-lstat-f.md) | Obtains information about a symbolic link that is used to refer to a file or directory. This API uses an asynchronous callback to return the result. |
+| [lstat](arkts-corefile-file-fs-lstat-f.md#lstat) | Obtains information about a symbolic link that is used to refer to a file or directory. This API uses a promise to return the result. |
+| [lstat](arkts-corefile-file-fs-lstat-f.md#lstat-1) | Obtains information about a symbolic link that is used to refer to a file or directory. This API uses an asynchronous callback to return the result. |
 | [lstatSync](arkts-corefile-file-fs-lstatsync-f.md) | Obtains information about a symbolic link that is used to refer to a file or directory. This API returns the result synchronously. |
-| [mkdir](arkts-corefile-file-fs-mkdir-f.md) | Creates a directory. This API uses a promise to return the result. |
-| [mkdir](arkts-corefile-file-fs-mkdir-f.md) | Creates a directory. This API uses a promise to return the result. The value **true** means to create a directory recursively. |
-| [mkdir](arkts-corefile-file-fs-mkdir-f.md) | Creates a directory. This API uses an asynchronous callback to return the result. |
-| [mkdir](arkts-corefile-file-fs-mkdir-f.md) | Creates a directory. This API uses an asynchronous callback to return the result. The value **true** means to create a directory recursively. |
-| [mkdirSync](arkts-corefile-file-fs-mkdirsync-f.md) | Creates a directory. This API returns the result synchronously. |
-| [mkdirSync](arkts-corefile-file-fs-mkdirsync-f.md) | Creates a directory. This API returns the result synchronously. The value **true** means to create a directory recursively. |
-| [mkdtemp](arkts-corefile-file-fs-mkdtemp-f.md) | Creates a temporary directory. This API uses a promise to return the result. |
-| [mkdtemp](arkts-corefile-file-fs-mkdtemp-f.md) | Creates a temporary directory. This API uses an asynchronous callback to return the result. |
+| [mkdir](arkts-corefile-file-fs-mkdir-f.md#mkdir) | Creates a directory. This API uses a promise to return the result. |
+| [mkdir](arkts-corefile-file-fs-mkdir-f.md#mkdir-1) | Creates a directory. This API uses a promise to return the result. The value **true** means to create a directory recursively. |
+| [mkdir](arkts-corefile-file-fs-mkdir-f.md#mkdir-2) | Creates a directory. This API uses an asynchronous callback to return the result. |
+| [mkdir](arkts-corefile-file-fs-mkdir-f.md#mkdir-3) | Creates a directory. This API uses an asynchronous callback to return the result. The value **true** means to create a directory recursively. |
+| [mkdirSync](arkts-corefile-file-fs-mkdirsync-f.md#mkdirsync) | Creates a directory. This API returns the result synchronously. |
+| [mkdirSync](arkts-corefile-file-fs-mkdirsync-f.md#mkdirsync-1) | Creates a directory. This API returns the result synchronously. The value **true** means to create a directory recursively. |
+| [mkdtemp](arkts-corefile-file-fs-mkdtemp-f.md#mkdtemp) | Creates a temporary directory. This API uses a promise to return the result. |
+| [mkdtemp](arkts-corefile-file-fs-mkdtemp-f.md#mkdtemp-1) | Creates a temporary directory. This API uses an asynchronous callback to return the result. |
 | [mkdtempSync](arkts-corefile-file-fs-mkdtempsync-f.md) | Creates a temporary directory. This API returns the result synchronously. |
 | [mmap](arkts-corefile-file-fs-mmap-f.md) | Creates a file mapping object based on a file descriptor or file object, using promise asynchronous callback. Maps file contents to memory for efficient read and write access to files. Note: In the read/write mode (MappingMode.READ_WRITE), if the mapping range exceeds the raw file size, the file size will be automatically expanded. |
 | [mmapSync](arkts-corefile-file-fs-mmapsync-f.md) | Creates a file mapping object based on a file descriptor or file object by using the synchronization method. Maps file contents to memory for efficient read and write access to files. Note: In the read/write mode (MappingMode.READ_WRITE), if the mapping range exceeds the raw file size, the file size will be automatically expanded. |
-| [moveDir](arkts-corefile-file-fs-movedir-f.md) | Moves the source directory to the destination directory. This API uses a promise to return the result. |
-| [moveDir](arkts-corefile-file-fs-movedir-f.md) | Moves the source directory to the destination directory. This API uses an asynchronous callback to return the result. |
-| [moveDir](arkts-corefile-file-fs-movedir-f.md) | Moves the source directory to the destination directory. This API uses an asynchronous callback to return the result. |
-| [moveDir](arkts-corefile-file-fs-movedir-f.md) | Moves the source directory to the destination directory. You can set the move mode. This API uses an asynchronous callback to return the result. |
-| [moveDir](arkts-corefile-file-fs-movedir-f.md) | Moves the source directory to the destination directory. You can set the move mode. This API uses an asynchronous callback to return the result. |
+| [moveDir](arkts-corefile-file-fs-movedir-f.md#movedir) | Moves the source directory to the destination directory. This API uses a promise to return the result. |
+| [moveDir](arkts-corefile-file-fs-movedir-f.md#movedir-1) | Moves the source directory to the destination directory. This API uses an asynchronous callback to return the result. |
+| [moveDir](arkts-corefile-file-fs-movedir-f.md#movedir-2) | Moves the source directory to the destination directory. This API uses an asynchronous callback to return the result. |
+| [moveDir](arkts-corefile-file-fs-movedir-f.md#movedir-3) | Moves the source directory to the destination directory. You can set the move mode. This API uses an asynchronous callback to return the result. |
+| [moveDir](arkts-corefile-file-fs-movedir-f.md#movedir-4) | Moves the source directory to the destination directory. You can set the move mode. This API uses an asynchronous callback to return the result. |
 | [moveDirSync](arkts-corefile-file-fs-movedirsync-f.md) | Moves the source directory to the destination directory. This API returns the result synchronously. |
-| [moveFile](arkts-corefile-file-fs-movefile-f.md) | Moves a file. This API uses a promise to return the result. |
-| [moveFile](arkts-corefile-file-fs-movefile-f.md) | Moves a file and forcibly overwrites the file with the same name in the destination directory. This API uses an asynchronous callback to return the result. |
-| [moveFile](arkts-corefile-file-fs-movefile-f.md) | Moves a file with the specified mode. This API uses an asynchronous callback to return the result. |
+| [moveFile](arkts-corefile-file-fs-movefile-f.md#movefile) | Moves a file. This API uses a promise to return the result. |
+| [moveFile](arkts-corefile-file-fs-movefile-f.md#movefile-1) | Moves a file and forcibly overwrites the file with the same name in the destination directory. This API uses an asynchronous callback to return the result. |
+| [moveFile](arkts-corefile-file-fs-movefile-f.md#movefile-2) | Moves a file with the specified mode. This API uses an asynchronous callback to return the result. |
 | [moveFileSync](arkts-corefile-file-fs-movefilesync-f.md) | Moves a file. This API returns the result synchronously. |
-| [open](arkts-corefile-file-fs-open-f.md) | Opens a file or directory. This API uses a promise to return the result. This API supports the use of a URI. |
-| [open](arkts-corefile-file-fs-open-f.md) | Opens a file or directory. This API uses an asynchronous callback to return the result. This API supports the use of a URI. |
-| [open](arkts-corefile-file-fs-open-f.md) | Opens a file or directory with the specified mode. This API uses an asynchronous callback to return the result. |
+| [open](arkts-corefile-file-fs-open-f.md#open) | Opens a file or directory. This API uses a promise to return the result. This API supports the use of a URI. |
+| [open](arkts-corefile-file-fs-open-f.md#open-1) | Opens a file or directory. This API uses an asynchronous callback to return the result. This API supports the use of a URI. |
+| [open](arkts-corefile-file-fs-open-f.md#open-2) | Opens a file or directory with the specified mode. This API uses an asynchronous callback to return the result. |
 | [openSync](arkts-corefile-file-fs-opensync-f.md) | Opens a file or directory. This API returns the result synchronously. This API supports the use of a URI. |
-| [read](arkts-corefile-file-fs-read-f.md) | Reads file data. This API uses a promise to return the result. |
-| [read](arkts-corefile-file-fs-read-f.md) | Reads data from a file. This API uses an asynchronous callback to return the result. |
-| [read](arkts-corefile-file-fs-read-f.md) | Reads data from a file. This API uses an asynchronous callback to return the result. |
-| [readLines](arkts-corefile-file-fs-readlines-f.md) | Reads the text content of a file line by line. This API uses a promise to return the result. Only the files in UTF-8 format are supported. |
-| [readLines](arkts-corefile-file-fs-readlines-f.md) | Reads a file text line by line. This API uses an asynchronous callback to return the result. Only the files in UTF-8 format are supported. |
-| [readLines](arkts-corefile-file-fs-readlines-f.md) | Reads a file text line by line. This API uses an asynchronous callback to return the result. Only the files in UTF-8 format are supported. |
+| [read](arkts-corefile-file-fs-read-f.md#read) | Reads file data. This API uses a promise to return the result. |
+| [read](arkts-corefile-file-fs-read-f.md#read-1) | Reads data from a file. This API uses an asynchronous callback to return the result. |
+| [read](arkts-corefile-file-fs-read-f.md#read-2) | Reads data from a file. This API uses an asynchronous callback to return the result. |
+| [readLines](arkts-corefile-file-fs-readlines-f.md#readlines) | Reads the text content of a file line by line. This API uses a promise to return the result. Only the files in UTF-8 format are supported. |
+| [readLines](arkts-corefile-file-fs-readlines-f.md#readlines-1) | Reads a file text line by line. This API uses an asynchronous callback to return the result. Only the files in UTF-8 format are supported. |
+| [readLines](arkts-corefile-file-fs-readlines-f.md#readlines-2) | Reads a file text line by line. This API uses an asynchronous callback to return the result. Only the files in UTF-8 format are supported. |
 | [readLinesSync](arkts-corefile-file-fs-readlinessync-f.md) | Reads the text content of a file line by line. This API returns the result synchronously. |
 | [readSync](arkts-corefile-file-fs-readsync-f.md) | Reads data from a file. This API returns the result synchronously. |
-| [readText](arkts-corefile-file-fs-readtext-f.md) | Reads the text content of a file. This API uses a promise to return the result. |
-| [readText](arkts-corefile-file-fs-readtext-f.md) | Reads the text content of a file. This API uses an asynchronous callback to return the result. |
-| [readText](arkts-corefile-file-fs-readtext-f.md) | Reads the text content of a file. This API uses an asynchronous callback to return the result. |
+| [readText](arkts-corefile-file-fs-readtext-f.md#readtext) | Reads the text content of a file. This API uses a promise to return the result. |
+| [readText](arkts-corefile-file-fs-readtext-f.md#readtext-1) | Reads the text content of a file. This API uses an asynchronous callback to return the result. |
+| [readText](arkts-corefile-file-fs-readtext-f.md#readtext-2) | Reads the text content of a file. This API uses an asynchronous callback to return the result. |
 | [readTextSync](arkts-corefile-file-fs-readtextsync-f.md) | Reads the text content of a file. This API returns the result synchronously. |
-| [rename](arkts-corefile-file-fs-rename-f.md) | Renames a file or directory. This API uses a promise to return the result. |
-| [rename](arkts-corefile-file-fs-rename-f.md) | Renames a file or directory. This API uses an asynchronous callback to return the result. |
+| [rename](arkts-corefile-file-fs-rename-f.md#rename) | Renames a file or directory. This API uses a promise to return the result. |
+| [rename](arkts-corefile-file-fs-rename-f.md#rename-1) | Renames a file or directory. This API uses an asynchronous callback to return the result. |
 | [renameSync](arkts-corefile-file-fs-renamesync-f.md) | Renames a file or directory. This API returns the result synchronously. |
-| [rmdir](arkts-corefile-file-fs-rmdir-f.md) | Removes a directory and all its subdirectories and files. This API uses a promise to return the result. |
-| [rmdir](arkts-corefile-file-fs-rmdir-f.md) | Removes a directory and all its subdirectories and files. This API uses an asynchronous callback to return the result. |
+| [rmdir](arkts-corefile-file-fs-rmdir-f.md#rmdir) | Removes a directory and all its subdirectories and files. This API uses a promise to return the result. |
+| [rmdir](arkts-corefile-file-fs-rmdir-f.md#rmdir-1) | Removes a directory and all its subdirectories and files. This API uses an asynchronous callback to return the result. |
 | [rmdirSync](arkts-corefile-file-fs-rmdirsync-f.md) | Removes a directory and all its subdirectories and files synchronously. |
 | [setxattr](arkts-corefile-file-fs-setxattr-f.md) | Sets an extended attribute of a file or directory. This API uses a promise to return the result. |
 | [setxattrSync](arkts-corefile-file-fs-setxattrsync-f.md) | Sets an extended attribute of a file or directory. |
-| [stat](arkts-corefile-file-fs-stat-f.md) | Obtains detailed attribute information of a file or directory. This API uses a promise to return the result. |
-| [stat](arkts-corefile-file-fs-stat-f.md) | Obtains detailed attribute information of a file or directory. This API uses an asynchronous callback to return the result. |
+| [stat](arkts-corefile-file-fs-stat-f.md#stat) | Obtains detailed attribute information of a file or directory. This API uses a promise to return the result. |
+| [stat](arkts-corefile-file-fs-stat-f.md#stat-1) | Obtains detailed attribute information of a file or directory. This API uses an asynchronous callback to return the result. |
 | [statSync](arkts-corefile-file-fs-statsync-f.md) | Obtains detailed attribute information of a file or directory. This API returns the result synchronously. |
-| [symlink](arkts-corefile-file-fs-symlink-f.md) | Creates a symbolic link based on a file path. This API uses a promise to return the result. |
-| [symlink](arkts-corefile-file-fs-symlink-f.md) | Creates a symbolic link based on the file path. This API uses an asynchronous callback to return the result. |
+| [symlink](arkts-corefile-file-fs-symlink-f.md#symlink) | Creates a symbolic link based on a file path. This API uses a promise to return the result. |
+| [symlink](arkts-corefile-file-fs-symlink-f.md#symlink-1) | Creates a symbolic link based on the file path. This API uses an asynchronous callback to return the result. |
 | [symlinkSync](arkts-corefile-file-fs-symlinksync-f.md) | Creates a symbolic link based on the file path. This API returns the result synchronously. |
-| [truncate](arkts-corefile-file-fs-truncate-f.md) | Truncates a file. This API uses a promise to return the result. |
-| [truncate](arkts-corefile-file-fs-truncate-f.md) | Truncates a file. This API uses an asynchronous callback to return the result. |
-| [truncate](arkts-corefile-file-fs-truncate-f.md) | Truncates a file. This API uses an asynchronous callback to return the result. |
+| [truncate](arkts-corefile-file-fs-truncate-f.md#truncate) | Truncates a file. This API uses a promise to return the result. |
+| [truncate](arkts-corefile-file-fs-truncate-f.md#truncate-1) | Truncates a file. This API uses an asynchronous callback to return the result. |
+| [truncate](arkts-corefile-file-fs-truncate-f.md#truncate-2) | Truncates a file. This API uses an asynchronous callback to return the result. |
 | [truncateSync](arkts-corefile-file-fs-truncatesync-f.md) | Truncates the file content. This API returns the result synchronously. |
-| [unlink](arkts-corefile-file-fs-unlink-f.md) | Removes a file. This API uses a promise to return the result. |
-| [unlink](arkts-corefile-file-fs-unlink-f.md) | Removes a file. This API uses an asynchronous callback to return the result. |
+| [unlink](arkts-corefile-file-fs-unlink-f.md#unlink) | Removes a file. This API uses a promise to return the result. |
+| [unlink](arkts-corefile-file-fs-unlink-f.md#unlink-1) | Removes a file. This API uses an asynchronous callback to return the result. |
 | [unlinkSync](arkts-corefile-file-fs-unlinksync-f.md) | Removes a file. This API returns the result synchronously. |
 | [utimes](arkts-corefile-file-fs-utimes-f.md) | Changes the time when the file was last modified. |
-| [write](arkts-corefile-file-fs-write-f.md) | Writes data into a file. This API uses a promise to return the result. |
-| [write](arkts-corefile-file-fs-write-f.md) | Writes data to a file. This API uses an asynchronous callback to return the result. |
-| [write](arkts-corefile-file-fs-write-f.md) | Writes data to a file. This API uses an asynchronous callback to return the result. |
+| [write](arkts-corefile-file-fs-write-f.md#write) | Writes data into a file. This API uses a promise to return the result. |
+| [write](arkts-corefile-file-fs-write-f.md#write-1) | Writes data to a file. This API uses an asynchronous callback to return the result. |
+| [write](arkts-corefile-file-fs-write-f.md#write-2) | Writes data to a file. This API uses an asynchronous callback to return the result. |
 | [writeSync](arkts-corefile-file-fs-writesync-f.md) | Writes data to a file. This API returns the result synchronously. |
 
 ### Classes

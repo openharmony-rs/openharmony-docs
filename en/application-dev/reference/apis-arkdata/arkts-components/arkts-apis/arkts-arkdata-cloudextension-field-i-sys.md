@@ -1,5 +1,9 @@
 # Field (System API)
 
+```TypeScript
+export interface Field
+```
+
 Represents a field in the database.
 
 **Since:** 11

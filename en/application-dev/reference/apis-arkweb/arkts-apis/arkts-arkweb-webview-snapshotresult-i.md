@@ -1,5 +1,9 @@
 # SnapshotResult
 
+```TypeScript
+interface SnapshotResult
+```
+
 Represents a full drawing result.
 
 **Since:** 12

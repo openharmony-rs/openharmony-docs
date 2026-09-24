@@ -1,5 +1,9 @@
 # DiscoverMode（系统接口）
 
+```TypeScript
+enum DiscoverMode
+```
+
 表示发现模式的枚举。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # MultiDownloadProgress
 
+```TypeScript
+class MultiDownloadProgress
+```
+
 云文件批量缓存的进度信息。
 
 **起始版本：** 20

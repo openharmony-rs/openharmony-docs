@@ -1,5 +1,9 @@
 # ErrorType
 
+```TypeScript
+enum ErrorType
+```
+
 端云同步失败类型，为枚举类型。
 
 - 当前阶段，同步过程中，当开启无限量使用移动数据网络，移动数据网络和WIFI均不可用时，才会返回NETWORK_UNAVAILABLE；开启无限量使用移动数据网络，若有一种类型网络可用，则能正常同步。  

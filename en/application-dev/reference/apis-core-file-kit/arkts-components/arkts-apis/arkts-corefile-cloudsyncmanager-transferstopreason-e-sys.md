@@ -1,5 +1,9 @@
 # TransferStopReason (System API)
 
+```TypeScript
+enum TransferStopReason
+```
+
 Describes the state type of transfer stop reason.
 
 **Since:** 26.0.0

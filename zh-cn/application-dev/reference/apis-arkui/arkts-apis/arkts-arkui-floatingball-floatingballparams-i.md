@@ -1,5 +1,9 @@
 # FloatingBallParams
 
+```TypeScript
+interface FloatingBallParams
+```
+
 启动和更新闪控球的配置参数。
 
 **起始版本：** 20

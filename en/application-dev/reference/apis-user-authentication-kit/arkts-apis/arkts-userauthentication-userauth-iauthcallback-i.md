@@ -1,5 +1,9 @@
 # IAuthCallback
 
+```TypeScript
+interface IAuthCallback
+```
+
 Provides callbacks to return the authentication result. This API defines the authentication result callback method, which is used to obtain the authentication result after the authentication is complete. By implementing the **onResult** method, the application can obtain the authentication token when the authentication is successful, or obtain the error code and related information when the authentication fails.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # ResultCode
 
+```TypeScript
+enum ResultCode
+```
+
 Enumerates the result codes.
 
 > **NOTE:** 

@@ -1,5 +1,9 @@
 # ElementName
 
+```TypeScript
+export interface ElementName
+```
+
 The module provides element name information, which can be obtained through Context.getElementName.
 
 > **NOTE:** 

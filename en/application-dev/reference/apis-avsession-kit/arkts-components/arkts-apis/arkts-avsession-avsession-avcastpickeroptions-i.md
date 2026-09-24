@@ -1,5 +1,9 @@
 # AVCastPickerOptions
 
+```TypeScript
+interface AVCastPickerOptions
+```
+
 An option to make different picker usage
 
 **Since:** 14

@@ -61,29 +61,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { inputDevice } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          // Obtain the name of the device whose ID is 1.
-          inputDevice.getDevice(1).then((deviceData: inputDevice.InputDeviceData) => {
-            console.info(`Succeeded in getting device info: ${JSON.stringify(deviceData)}.`);
-          }).catch((error: BusinessError) => {
-            console.error(`Failed to get device info, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          })
-        })
-    }
-  }
-}
-```
-
+<a id="getdevice-1"></a>
 
 ## getDevice
 
@@ -120,4 +99,25 @@ Obtains the information about the input device with the specified ID. This API u
 
 **Examples**
 
-See [getDevice](#getdevice)
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Obtain the name of the device whose ID is 1.
+          inputDevice.getDevice(1).then((deviceData: inputDevice.InputDeviceData) => {
+            console.info(`Succeeded in getting device info: ${JSON.stringify(deviceData)}.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get device info, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          })
+        })
+    }
+  }
+}
+```

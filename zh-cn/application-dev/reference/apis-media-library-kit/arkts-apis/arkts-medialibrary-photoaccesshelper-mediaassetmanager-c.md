@@ -1,5 +1,9 @@
 # MediaAssetManager
 
+```TypeScript
+class MediaAssetManager
+```
+
 媒体资产管理类，管理媒体资源读取。
 
 > **说明：** 
@@ -47,9 +51,25 @@ static cancelRequest(context: Context, requestId: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | System inner fail |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.User file service initialization failed, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please check if the context is valid and retry; <br>2.The requestId parameter is invalid, please check if it is a valid non-empty string returned by a prior request. |
+
+**示例**
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(context: Context) {
+  try {
+    let requestId: string = 'xxx-xxx'; // 应用需使用requestImage等接口返回的有效requestId
+    await photoAccessHelper.MediaAssetManager.cancelRequest(context, requestId);
+    console.info("request cancelled successfully");
+  } catch (err) {
+    console.error(`Failed to cancel request. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
 
 ## loadMovingPhoto
 
@@ -74,8 +94,8 @@ static loadMovingPhoto(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 传入AbilityContext或者UIExtensionContext的实例。 |
-| imageFileUri | string | 是 | 应用沙箱动态照片的图片uri。<br>示例：'file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg' |
-| videoFileUri | string | 是 | 应用沙箱动态照片的视频uri。<br>示例：'file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4' |
+| imageFileUri | string | 是 | 应用沙箱动态照片的图片uri。<br>示例：'file://com.example.temptest/data/storage/el2/base/haps/ ImageFile.jpg' |
+| videoFileUri | string | 是 | 应用沙箱动态照片的视频uri。<br>示例：'file://com.example.temptest/data/storage/el2/base/haps/ VideoFile.mp4' |
 
 **返回值：**
 
@@ -87,8 +107,22 @@ static loadMovingPhoto(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.User file client initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please retry. |
+
+**示例**
+
+```TypeScript
+async function example(context: Context) {
+  try {
+    let imageFileUri: string = 'file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg'; // 应用沙箱动态照片的图片uri。
+    let videoFileUri: string = 'file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4'; // 应用沙箱动态照片的视频uri。
+    let movingPhoto: photoAccessHelper.MovingPhoto = await photoAccessHelper.MediaAssetManager.loadMovingPhoto(context, imageFileUri, videoFileUri);
+  } catch (err) {
+    console.error(`Failed to load moving photo. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
 
 ## quickRequestImage
 
@@ -128,19 +162,53 @@ static quickRequestImage(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { image } from '@kit.ImageKit';
+
+class MediaHandler implements photoAccessHelper.QuickImageDataHandler<image.Picture> {
+  onDataPrepared(data: image.Picture, imageSource: image.ImageSource, map: Map<string, string>) {
+    console.info('on image data prepared');
+  }
+}
+
+async function example(context: Context) {
+  console.info('quickRequestImage');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let requestOptions: photoAccessHelper.RequestOptions = {
+    deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
+  }
+  const handler = new MediaHandler();
+  let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+  phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+      console.info('fetchResult success');
+      let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      await photoAccessHelper.MediaAssetManager.quickRequestImage(context, photoAsset, requestOptions, handler);
+      console.info('quickRequestImage successfully');
+  });
+}
+```
 
 ## requestImage
 
 ```TypeScript
-static requestImage(
-      context: Context,
-      asset: PhotoAsset,
-      requestOptions: RequestOptions,
-      dataHandler: MediaAssetDataHandler<image.ImageSource>
-    ): Promise<string>
+static requestImage(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler<image.ImageSource>): Promise<string>
 ```
 
 根据不同的策略模式，请求图片资源。使用Promise异步回调。
@@ -170,19 +238,61 @@ static requestImage(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | System inner fail. Possible causes:<br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object; <br>2.User file service initialization failed, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: 1. Memory insufficient; 2. IPC timeout. Please retry. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { image } from '@kit.ImageKit';
+
+class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<image.ImageSource> {
+  onDataPrepared(data: image.ImageSource) {
+    if (data === undefined) {
+      console.error('Error occurred when preparing data');
+      return;
+    }
+    console.info('on image data prepared');
+  }
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('requestImage');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let requestOptions: photoAccessHelper.RequestOptions = {
+    deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
+  }
+  const handler = new MediaHandler();
+
+  phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('fetchResult success');
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
+    await photoAccessHelper.MediaAssetManager.requestImage(context, photoAsset, requestOptions, handler);
+    console.info('requestImage successfully');
+  });
+}
+```
 
 ## requestImageData
 
 ```TypeScript
-static requestImageData(
-      context: Context,
-      asset: PhotoAsset,
-      requestOptions: RequestOptions,
-      dataHandler: MediaAssetDataHandler<ArrayBuffer>
-    ): Promise<string>
+static requestImageData(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler<ArrayBuffer>): Promise<string>
 ```
 
 根据不同的策略模式，请求图片资源数据。使用Promise异步回调。
@@ -212,9 +322,55 @@ static requestImageData(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | System inner fail. Possible causes:<br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object; <br>2.User file service initialization failed, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: 1. Memory insufficient; 2. IPC timeout. Please retry. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+class MediaDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
+  onDataPrepared(data: ArrayBuffer) {
+    if (data === undefined) {
+      console.error('Error occurred when preparing data');
+      return;
+    }
+    console.info('on image data prepared');
+  }
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('requestImageData');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let requestOptions: photoAccessHelper.RequestOptions = {
+    deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
+  }
+  const handler = new MediaDataHandler();
+
+  phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+      console.info('fetchResult success');
+      let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      if (photoAsset === undefined) {
+      console.error('requestImageData photoAsset is undefined');
+      return;
+    }
+      await photoAccessHelper.MediaAssetManager.requestImageData(context, photoAsset, requestOptions, handler);
+      console.info('requestImageData successfully');
+  });
+}
+```
 
 ## requestMovingPhoto
 
@@ -254,10 +410,54 @@ static requestMovingPhoto(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
-| 14000011 | System inner fail |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**适用版本：** 18+ |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter parsing failed, please check the number and types of parameters; <br>2.User file service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: 1. Memory insufficient; 2. IPC timeout. Please retry. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
+  async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
+    if (movingPhoto === undefined) {
+      console.error('Error occurred when preparing data');
+      return;
+    }
+    console.info("moving photo acquired successfully, uri: " + movingPhoto.getUri());
+  }
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  predicates.equalTo(photoAccessHelper.PhotoKeys.PHOTO_SUBTYPE, photoAccessHelper.PhotoSubtype.MOVING_PHOTO);
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  // 请确保图库内存在动态照片。
+  let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+  if (!assetResult) {
+    console.error('Failed to get assets');
+    return;
+  }
+  let asset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
+  let requestOptions: photoAccessHelper.RequestOptions = {
+    deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+  }
+  const handler = new MovingPhotoHandler();
+  try {
+    let requestId: string = await photoAccessHelper.MediaAssetManager.requestMovingPhoto(context, asset, requestOptions, handler);
+    console.info("moving photo requested successfully, requestId: " + requestId);
+  } catch (err) {
+    console.error(`Failed to request moving photo. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
 
 ## requestVideoFile
 
@@ -288,7 +488,7 @@ static requestVideoFile(
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 传入Ability实例的上下文。 |
 | asset | [PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasset-i.md) | 是 | 待请求的媒体文件对象。 |
 | requestOptions | [RequestOptions](arkts-medialibrary-photoaccesshelper-requestoptions-i.md) | 是 | 视频请求策略模式配置项。 |
-| fileUri | string | 是 | 目标写入沙箱路径uri。示例fileUri：'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.mp4'。 |
+| fileUri | string | 是 | 目标写入沙箱路径uri。示例fileUri：'file://com.example.temptest/data/storage/el2/base/haps/entry/ files/test.mp4'。 |
 | dataHandler | [MediaAssetDataHandler](arkts-medialibrary-photoaccesshelper-mediaassetdatahandler-i.md)&lt;boolean&gt; | 是 | 媒体资源处理器，当所请求的视频资源写入完成时会触发回调。<br>视频资源写入成功时返回true，写入失败则返回false。 |
 
 **返回值：**
@@ -301,7 +501,45 @@ static requestVideoFile(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 15+ |
-| 14000011 | System inner fail. Possible causes:<br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**适用版本：** 15+ |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter parsing failed, please check the number and types of parameters; <br>2.The dataHandler parameter must be a valid object; <br>3.User file service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is valid and retry; <br>4.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+class MediaDataHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+    onDataPrepared(data: boolean) {
+        console.info('on video request status prepared');
+    }
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('requestVideoFile');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let requestOptions: photoAccessHelper.RequestOptions = {
+    deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
+  }
+  const handler = new MediaDataHandler();
+  let fileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.mp4';
+  phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+      console.info('fetchResult success');
+      let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      await photoAccessHelper.MediaAssetManager.requestVideoFile(context, photoAsset, requestOptions, fileUri, handler);
+      console.info('requestVideoFile successfully');
+  });
+}
+```

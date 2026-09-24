@@ -1,5 +1,9 @@
 # VideoRecorderProfile (System API)
 
+```TypeScript
+interface VideoRecorderProfile
+```
+
 Provides the video recorder profile definitions.
 
 **Since:** 9

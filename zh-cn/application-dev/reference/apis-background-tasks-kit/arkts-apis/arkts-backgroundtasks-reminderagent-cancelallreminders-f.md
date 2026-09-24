@@ -18,7 +18,7 @@ function cancelAllReminders(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** cancelAllReminders
+**替代接口：** [cancelAllReminders](arkts-backgroundtasks-reminderagentmanager-cancelallreminders-f.md)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -39,14 +39,8 @@ reminderAgent.cancelAllReminders((err: BusinessError, data: void) =>{
 })
 ```
 
-```TypeScript
-import reminderAgent from '@ohos.reminderAgent';
 
-reminderAgent.cancelAllReminders().then(() => {
-    console.info("cancelAllReminders promise")
-})
-```
-
+<a id="cancelallreminders-1"></a>
 
 ## cancelAllReminders
 
@@ -60,7 +54,7 @@ function cancelAllReminders(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** cancelAllReminders
+**替代接口：** [cancelAllReminders](arkts-backgroundtasks-reminderagentmanager-cancelallreminders-f.md)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -72,4 +66,10 @@ function cancelAllReminders(): Promise<void>
 
 **示例**
 
-参见 cancelAllReminders
+```TypeScript
+import reminderAgent from '@ohos.reminderAgent';
+
+reminderAgent.cancelAllReminders().then(() => {
+    console.info("cancelAllReminders promise")
+})
+```

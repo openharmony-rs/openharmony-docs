@@ -25,6 +25,8 @@ Imports a wrapped key. This API uses an asynchronous callback to return the resu
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** 
@@ -44,9 +46,9 @@ Imports a wrapped key. This API uses an asynchronous callback to return the resu
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
 | [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
@@ -238,19 +240,8 @@ function huksImportWrappedKey() {
 }
 ```
 
-```TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 处理流程与callback类似，主要差异点为如下函数： */
-/* 该处为示例代码，实际运行过程中，应使用实际导入密钥数据。数据构造方式由上注释可见说明 */
-async function testImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
-  await huks.importWrappedKeyItem(alias, wrappingAlias, options)
-    .then(() => {
-      console.info(`promise: importWrappedKeyItem success`);
-    });
-}
-```
-
+<a id="importwrappedkeyitem-1"></a>
 
 ## importWrappedKeyItem
 
@@ -288,9 +279,9 @@ Imports a wrapped key. This API uses a promise to return the result.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
 | [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
@@ -312,4 +303,15 @@ Imports a wrapped key. This API uses a promise to return the result.
 
 **示例**
 
-参见 importWrappedKeyItem
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* 处理流程与callback类似，主要差异点为如下函数： */
+/* 该处为示例代码，实际运行过程中，应使用实际导入密钥数据。数据构造方式由上注释可见说明 */
+async function testImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
+  await huks.importWrappedKeyItem(alias, wrappingAlias, options)
+    .then(() => {
+      console.info(`promise: importWrappedKeyItem success`);
+    });
+}
+```

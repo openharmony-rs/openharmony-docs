@@ -1,5 +1,9 @@
 # HuksCryptoExtensionParam
 
+```TypeScript
+export interface HuksCryptoExtensionParam
+```
+
 Defines the type of the param used for calling the API.
 
 **Since:** 26.0.0

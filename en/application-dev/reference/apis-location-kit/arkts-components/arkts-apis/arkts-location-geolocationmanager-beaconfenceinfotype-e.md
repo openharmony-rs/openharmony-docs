@@ -1,5 +1,9 @@
 # BeaconFenceInfoType
 
+```TypeScript
+export enum BeaconFenceInfoType
+```
+
 Enum for the beacon fence information type.
 
 **Since:** 20

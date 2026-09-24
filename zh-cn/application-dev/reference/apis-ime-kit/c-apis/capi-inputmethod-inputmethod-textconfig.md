@@ -34,6 +34,8 @@ typedef struct InputMethod_TextConfig InputMethod_TextConfig
 \| [OH_TextConfig_GetAbilityName](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getabilityname) \| 获取 abilityName信息。 \|
 \| [OH_TextConfig_GetConsumeKeyEvents](capi-inputmethod-text-config-capi-h. md#oh_textconfig_getconsumekeyevents) \| 获取文本配置中编辑框是否具有完整处理字母、字符、功能等按键的能力。<br/>**起始版本：** 26.0.0 \|
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 **起始版本：** 12
 
 **相关模块：** [InputMethod](capi-inputmethod.md)

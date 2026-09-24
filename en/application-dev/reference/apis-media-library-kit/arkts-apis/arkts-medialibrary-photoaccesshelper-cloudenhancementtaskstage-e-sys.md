@@ -1,5 +1,9 @@
 # CloudEnhancementTaskStage (System API)
 
+```TypeScript
+enum CloudEnhancementTaskStage
+```
+
 Enumerates the cloud enhancement task states, which are returned by [CloudEnhancementTaskState](arkts-medialibrary-photoaccesshelper-cloudenhancement-c-sys.md).
 
 **Since:** 13

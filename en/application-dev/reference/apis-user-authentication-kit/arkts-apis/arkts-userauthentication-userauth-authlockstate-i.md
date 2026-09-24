@@ -1,5 +1,9 @@
 # AuthLockState
 
+```TypeScript
+interface AuthLockState
+```
+
 Enumerates the lockout status of an identity authentication type. This API is used to query the lockout status of a specified authentication type (such as face, fingerprint, or PIN), including whether the authentication type is locked out, the number of remaining attempts, and the lockout duration. If a user fails to be authenticated multiple times, the authenticator may enter a temporary or permanent lockout state. The application can notify the user based on the lockout information.
 
 **Since:** 22

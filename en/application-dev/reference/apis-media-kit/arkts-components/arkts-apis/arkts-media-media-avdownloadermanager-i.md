@@ -1,5 +1,9 @@
 # AVDownloaderManager
 
+```TypeScript
+interface AVDownloaderManager
+```
+
 Definition of the Offline Download Management Interface
 
 **Since:** 26.0.0

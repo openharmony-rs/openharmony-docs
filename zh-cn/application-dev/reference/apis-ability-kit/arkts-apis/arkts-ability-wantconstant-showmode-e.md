@@ -1,5 +1,9 @@
 # ShowMode
 
+```TypeScript
+export enum ShowMode
+```
+
 表示[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)被拉起时的显示模式。
 
 **起始版本：** 12

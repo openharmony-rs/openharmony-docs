@@ -1,5 +1,9 @@
 # WhiteBalanceQuery
 
+```TypeScript
+interface WhiteBalanceQuery
+```
+
 提供了查询设备对指定的白平衡模式是否支持，以及获取设备支持的白平衡模式范围的方法。
 
 **起始版本：** 20
@@ -20,7 +24,7 @@ isWhiteBalanceGainsSupported(): boolean
 
 Checks whether the RGB gain is supported.
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,5 +42,5 @@ Checks whether the RGB gain is supported.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |

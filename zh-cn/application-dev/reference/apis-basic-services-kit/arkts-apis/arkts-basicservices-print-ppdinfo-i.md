@@ -1,5 +1,9 @@
 # PpdInfo
 
+```TypeScript
+interface PpdInfo
+```
+
 定义打印机所使用驱动的PPD文件信息的接口。
 
 **起始版本：** 24

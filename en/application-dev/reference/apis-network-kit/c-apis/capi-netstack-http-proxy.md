@@ -8,6 +8,8 @@ typedef struct Http_Proxy {...} Http_Proxy
 
 Defines the proxy configuration structure.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Related module**: [netstack](capi-netstack.md)
@@ -20,7 +22,7 @@ Defines the proxy configuration structure.
 
 | Name | Description |
 | -- | -- |
-| [Http_ProxyType](capi-net-http-type-h.md#http_proxytype) proxyType | Proxy configuration type. For details, see [Http_ProxyType](capi-net-http-type-h.md#http_proxytype). |
-| [Http_CustomProxy](capi-netstack-http-customproxy.md) customProxy | Custom proxy configuration. For details, see [Http_CustomProxy](capi-netstack-http-customproxy.md). |
+| [Http_ProxyType](capi-net-http-type-h.md#http_proxytype) proxyType | Proxy configuration type. For details, see {@link Http_ProxyType}. |
+| [Http_CustomProxy](capi-netstack-http-customproxy.md) customProxy | Custom proxy configuration. For details, see {@link Http_CustomProxy}. |
 
 

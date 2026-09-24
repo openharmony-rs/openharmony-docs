@@ -32,5 +32,5 @@ function isBasSupported(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |

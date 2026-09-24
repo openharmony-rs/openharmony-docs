@@ -8,6 +8,8 @@ struct NetConn_TraceRouteOption {...}
 
 定义网络跟踪路由选项。
 
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
 **起始版本：** 20
 
 **相关模块：** [NetConnection](capi-netconnection.md)

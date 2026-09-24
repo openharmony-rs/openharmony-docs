@@ -1,5 +1,9 @@
 # Preload
 
+```TypeScript
+enum Preload
+```
+
 播放器预加载媒体数据。
 
 **起始版本：** 12

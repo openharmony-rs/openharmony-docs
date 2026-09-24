@@ -1,5 +1,9 @@
 # EncodingFormat
 
+```TypeScript
+enum EncodingFormat
+```
+
 Enumerates the certificate encoding formats.
 
 **Since:** 9

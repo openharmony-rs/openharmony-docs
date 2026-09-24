@@ -22,21 +22,21 @@ import { geoLocationManager } from '@kit.LocationKit';
 | [addBeaconFence](arkts-location-geolocationmanager-addbeaconfence-f.md) | Add a beacon fence. |
 | [addGnssGeofence](arkts-location-geolocationmanager-addgnssgeofence-f.md) | Add a geofence. |
 | [findMatchingWlan](arkts-location-geolocationmanager-findmatchingwlan-f.md) | Check whether the WLAN scan results match the WLAN BSSID list, return information about the WLAN device that is successfully matched. |
-| [flushCachedGnssLocations](arkts-location-geolocationmanager-flushcachedgnsslocations-f.md) | All prepared GNSS locations are returned to the application through the callback function, and the bottom-layer buffer is cleared. |
-| [flushCachedGnssLocations](arkts-location-geolocationmanager-flushcachedgnsslocations-f.md) | All prepared GNSS locations are returned to the application, and the bottom-layer buffer is cleared. |
+| [flushCachedGnssLocations](arkts-location-geolocationmanager-flushcachedgnsslocations-f.md#flushcachedgnsslocations) | All prepared GNSS locations are returned to the application through the callback function, and the bottom-layer buffer is cleared. |
+| [flushCachedGnssLocations](arkts-location-geolocationmanager-flushcachedgnsslocations-f.md#flushcachedgnsslocations-1) | All prepared GNSS locations are returned to the application, and the bottom-layer buffer is cleared. |
 | [getActiveGeoFences](arkts-location-geolocationmanager-getactivegeofences-f.md) | Get all active fences. |
-| [getAddressesFromLocation](arkts-location-geolocationmanager-getaddressesfromlocation-f.md) | Obtain address info from location. |
-| [getAddressesFromLocation](arkts-location-geolocationmanager-getaddressesfromlocation-f.md) | Obtain address info from location. |
-| [getAddressesFromLocationName](arkts-location-geolocationmanager-getaddressesfromlocationname-f.md) | Obtain latitude and longitude info from location address. |
-| [getAddressesFromLocationName](arkts-location-geolocationmanager-getaddressesfromlocationname-f.md) | Obtain latitude and longitude info from location address. |
-| [getCachedGnssLocationsSize](arkts-location-geolocationmanager-getcachedgnsslocationssize-f.md) | Obtain the number of cached GNSS locations reported at a time. |
-| [getCachedGnssLocationsSize](arkts-location-geolocationmanager-getcachedgnsslocationssize-f.md) | Obtain the number of cached GNSS locations. |
-| [getCountryCode](arkts-location-geolocationmanager-getcountrycode-f.md) | Obtain the current country code. |
-| [getCountryCode](arkts-location-geolocationmanager-getcountrycode-f.md) | Obtain the current country code. |
+| [getAddressesFromLocation](arkts-location-geolocationmanager-getaddressesfromlocation-f.md#getaddressesfromlocation) | Obtain address info from location. |
+| [getAddressesFromLocation](arkts-location-geolocationmanager-getaddressesfromlocation-f.md#getaddressesfromlocation-1) | Obtain address info from location. |
+| [getAddressesFromLocationName](arkts-location-geolocationmanager-getaddressesfromlocationname-f.md#getaddressesfromlocationname) | Obtain latitude and longitude info from location address. |
+| [getAddressesFromLocationName](arkts-location-geolocationmanager-getaddressesfromlocationname-f.md#getaddressesfromlocationname-1) | Obtain latitude and longitude info from location address. |
+| [getCachedGnssLocationsSize](arkts-location-geolocationmanager-getcachedgnsslocationssize-f.md#getcachedgnsslocationssize) | Obtain the number of cached GNSS locations reported at a time. |
+| [getCachedGnssLocationsSize](arkts-location-geolocationmanager-getcachedgnsslocationssize-f.md#getcachedgnsslocationssize-1) | Obtain the number of cached GNSS locations. |
+| [getCountryCode](arkts-location-geolocationmanager-getcountrycode-f.md#getcountrycode) | Obtain the current country code. |
+| [getCountryCode](arkts-location-geolocationmanager-getcountrycode-f.md#getcountrycode-1) | Obtain the current country code. |
 | [getCurrentDistrict](arkts-location-geolocationmanager-getcurrentdistrict-f.md) | Obtains the information about the district where the current device is located. |
-| [getCurrentLocation](arkts-location-geolocationmanager-getcurrentlocation-f.md) | Obtain current location. |
-| [getCurrentLocation](arkts-location-geolocationmanager-getcurrentlocation-f.md) | Obtain current location. |
-| [getCurrentLocation](arkts-location-geolocationmanager-getcurrentlocation-f.md) | Obtain current location. |
+| [getCurrentLocation](arkts-location-geolocationmanager-getcurrentlocation-f.md#getcurrentlocation) | Obtain current location. |
+| [getCurrentLocation](arkts-location-geolocationmanager-getcurrentlocation-f.md#getcurrentlocation-1) | Obtain current location. |
+| [getCurrentLocation](arkts-location-geolocationmanager-getcurrentlocation-f.md#getcurrentlocation-2) | Obtain current location. |
 | [getCurrentWifiBssidForLocating](arkts-location-geolocationmanager-getcurrentwifibssidforlocating-f.md) | Obtains the BSSID of the connected Wi-Fi hotspot. |
 | [getDistanceBetweenLocations](arkts-location-geolocationmanager-getdistancebetweenlocations-f.md) | Obtains the distance between two locations. |
 | [getGeofenceSupportedCoordTypes](arkts-location-geolocationmanager-getgeofencesupportedcoordtypes-f.md) | Obtains the coordinate system types supported by geofence. |
@@ -73,8 +73,8 @@ import { geoLocationManager } from '@kit.LocationKit';
 | [onLocationChange](arkts-location-geolocationmanager-onlocationchange-f.md) | Subscribe location changed. |
 | [removeBeaconFence](arkts-location-geolocationmanager-removebeaconfence-f.md) | Remove a beacon fence. |
 | [removeGnssGeofence](arkts-location-geolocationmanager-removegnssgeofence-f.md) | Remove a geofence. |
-| [sendCommand](arkts-location-geolocationmanager-sendcommand-f.md) | Send extended commands to location subsystem. |
-| [sendCommand](arkts-location-geolocationmanager-sendcommand-f.md) | Send extended commands to location subsystem. |
+| [sendCommand](arkts-location-geolocationmanager-sendcommand-f.md#sendcommand) | Send extended commands to location subsystem. |
+| [sendCommand](arkts-location-geolocationmanager-sendcommand-f.md#sendcommand-1) | Send extended commands to location subsystem. |
 | [startBluetoothSearch](arkts-location-geolocationmanager-startbluetoothsearch-f.md) | Starts Bluetooth scanning and matches the device ID list in the input parameter with the Bluetooth scanning result. If the matching is successful, the Bluetooth device information is returned through the callback. |
 | [stopBluetoothSearch](arkts-location-geolocationmanager-stopbluetoothsearch-f.md) | Stop Bluetooth scanning and searching. |
 
@@ -88,8 +88,8 @@ import { geoLocationManager } from '@kit.LocationKit';
 | [disableLocationByUserId](arkts-location-geolocationmanager-disablelocationbyuserid-f-sys.md) | Turn off the location switch for a specified user. |
 | [disableLocationMock](arkts-location-geolocationmanager-disablelocationmock-f-sys.md) | Disable the geographical location simulation function. |
 | [disableReverseGeocodingMock](arkts-location-geolocationmanager-disablereversegeocodingmock-f-sys.md) | Disable the reverse geocoding simulation function. |
-| [enableLocation](arkts-location-geolocationmanager-enablelocation-f-sys.md) | Enable location switch. |
-| [enableLocation](arkts-location-geolocationmanager-enablelocation-f-sys.md) | Enable location switch. |
+| [enableLocation](arkts-location-geolocationmanager-enablelocation-f-sys.md#enablelocation) | Enable location switch. |
+| [enableLocation](arkts-location-geolocationmanager-enablelocation-f-sys.md#enablelocation-1) | Enable location switch. |
 | [enableLocationByUserId](arkts-location-geolocationmanager-enablelocationbyuserid-f-sys.md) | Turn on the location switch for a specified user. |
 | [enableLocationMock](arkts-location-geolocationmanager-enablelocationmock-f-sys.md) | Enable the geographical location simulation function. |
 | [enableReverseGeocodingMock](arkts-location-geolocationmanager-enablereversegeocodingmock-f-sys.md) | Enable the reverse geocoding simulation function. |

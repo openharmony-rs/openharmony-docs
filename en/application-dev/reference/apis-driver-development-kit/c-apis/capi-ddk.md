@@ -4,6 +4,8 @@
 
 Provides Base DDK APIs, including creating the shared memory, mapping the shared memory, unmapping the shared memory, and destroying the shared memory.
 
+**System capability**: SystemCapability.Driver.DDK.Extension
+
 **Since**: 12
 
 ## Files

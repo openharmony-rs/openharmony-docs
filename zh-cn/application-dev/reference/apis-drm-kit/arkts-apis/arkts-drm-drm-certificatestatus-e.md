@@ -1,5 +1,9 @@
 # CertificateStatus
 
+```TypeScript
+enum CertificateStatus
+```
+
 枚举，设备证书状态。
 
 **起始版本：** 11

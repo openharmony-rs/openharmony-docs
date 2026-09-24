@@ -37,6 +37,8 @@ FFRT_C_API int ffrt_cond_init(ffrt_cond_t* cond, const ffrt_condattr_t* attr)
 
 Initializes a condition variable.<br> The condition variable must later be destroyed by [ffrt_cond_destroy](capi-condition-variable-h.md#ffrt_cond_destroy) when no longer in use.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -61,6 +63,8 @@ FFRT_C_API int ffrt_cond_signal(ffrt_cond_t* cond)
 **Description**
 
 Unblocks at least one of the threads that are blocked on a condition variable.
+
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 
@@ -91,6 +95,8 @@ FFRT_C_API int ffrt_cond_broadcast(ffrt_cond_t* cond)
 
 Unblocks all threads currently blocked on a condition variable.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -119,6 +125,8 @@ FFRT_C_API int ffrt_cond_wait(ffrt_cond_t* cond, ffrt_mutex_t* mutex)
 **Description**
 
 Blocks the calling thread on a condition variable.<br> The mutex must be held by the calling thread on entry. It is atomically released while the thread is blocked, and re-acquired before the function returns, so the caller regains ownership of the mutex on wakeup. The thread is unblocked by a call to [ffrt_cond_signal](capi-condition-variable-h.md#ffrt_cond_signal) or [ffrt_cond_broadcast](capi-condition-variable-h.md#ffrt_cond_broadcast) from another thread. The caller is responsible for re-checking the predicate after wakeup to guard against spurious wakeups.
+
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 
@@ -152,6 +160,8 @@ FFRT_C_API int ffrt_cond_timedwait(ffrt_cond_t* cond, ffrt_mutex_t* mutex, const
 
 Blocks the calling thread until a given time point.<br> If [ffrt_cond_signal](capi-condition-variable-h.md#ffrt_cond_signal) or [ffrt_cond_broadcast](capi-condition-variable-h.md#ffrt_cond_broadcast) is not called to unblock the thread before `time_point` is reached, the thread is automatically unblocked.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -184,6 +194,8 @@ FFRT_C_API int ffrt_cond_destroy(ffrt_cond_t* cond)
 **Description**
 
 Destroys a condition variable.<br> The condition variable must have been initialized by [ffrt_cond_init](capi-condition-variable-h.md#ffrt_cond_init) and must not be referenced by any thread on entry.
+
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 

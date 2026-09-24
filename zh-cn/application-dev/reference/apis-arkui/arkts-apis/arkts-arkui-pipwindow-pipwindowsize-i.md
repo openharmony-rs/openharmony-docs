@@ -1,5 +1,9 @@
 # PiPWindowSize
 
+```TypeScript
+interface PiPWindowSize
+```
+
 画中画窗口大小。
 
 **起始版本：** 15

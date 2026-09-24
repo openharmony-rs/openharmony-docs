@@ -1,5 +1,9 @@
 # Options (System API)
 
+```TypeScript
+interface Options
+```
+
 Provides APIs for input Options.
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # TimeFormat
 
+```TypeScript
+export declare enum TimeFormat
+```
+
 TimeFormat枚举用于定义时间选择器的格式。
 
 **起始版本：** 26.0.0

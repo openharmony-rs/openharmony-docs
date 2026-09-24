@@ -1,5 +1,9 @@
 # AudioRoutingManager
 
+```TypeScript
+interface AudioRoutingManager
+```
+
 This interface implements audio routing management.
 
 Before calling any API in AudioRoutingManager, you must use [getRoutingManager](arkts-audio-audio-audiomanager-i.md#getroutingmanager) to obtain an AudioRoutingManager instance.
@@ -313,6 +317,30 @@ UnSubscribes to prefer output device change events.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+**Examples**
+
+```TypeScript
+// Cancel all subscriptions to the event.
+audioRoutingManager.off('preferredOutputDeviceChangeByFilter');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let preferredOutputDeviceChangeByFilterCallback = (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Succeeded in using on or off function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+};
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+audioRoutingManager.on('preferredOutputDeviceChangeByFilter', outputAudioRendererFilter, preferredOutputDeviceChangeByFilterCallback);
+
+audioRoutingManager.off('preferredOutputDeviceChangeByFilter', preferredOutputDeviceChangeByFilterCallback);
+```
+
 ## offPreferredInputDeviceChangeByFilter
 
 ```TypeScript
@@ -394,6 +422,22 @@ Subscribes to prefer output device change events. When preferred device for targ
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
+
+**Examples**
+
+```TypeScript
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+audioRoutingManager.on('preferredOutputDeviceChangeByFilter', outputAudioRendererFilter, (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Succeeded in using on function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+});
+```
 
 ## onPreferredInputDeviceChangeByFilter
 
@@ -551,33 +595,7 @@ async function selectInputDevice(){
 }
 ```
 
-```TypeScript
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let inputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
-  deviceRole : audio.DeviceRole.INPUT_DEVICE,
-  deviceType : audio.DeviceType.MIC,
-  id : 1,
-  name : "",
-  address : "",
-  sampleRates : [44100],
-  channelCounts : [2],
-  channelMasks : [0],
-  networkId : audio.LOCAL_NETWORK_ID,
-  interruptGroupId : 1,
-  volumeGroupId : 1,
-  displayName : "",
-}];
-
-async function getRoutingManager(){
-  audioRoutingManager.selectInputDevice(inputAudioDeviceDescriptor).then(() => {
-    console.info('Select input devices result promise: SUCCESS');
-  }).catch((err: BusinessError) => {
-    console.error(`Result ERROR: ${err}`);
-  });
-}
-```
+<a id="selectinputdevice-1"></a>
 
 ## selectInputDevice
 
@@ -607,7 +625,33 @@ Select the input device. This method uses a promise to return the result.
 
 **Examples**
 
-See [selectInputDevice](#selectinputdevice)
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let inputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.INPUT_DEVICE,
+  deviceType : audio.DeviceType.MIC,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function getRoutingManager(){
+  audioRoutingManager.selectInputDevice(inputAudioDeviceDescriptor).then(() => {
+    console.info('Select input devices result promise: SUCCESS');
+  }).catch((err: BusinessError) => {
+    console.error(`Result ERROR: ${err}`);
+  });
+}
+```
 
 ## selectInputDeviceByFilter
 
@@ -735,33 +779,7 @@ async function selectOutputDevice(){
 }
 ```
 
-```TypeScript
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
-  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
-  deviceType : audio.DeviceType.SPEAKER,
-  id : 1,
-  name : "",
-  address : "",
-  sampleRates : [44100],
-  channelCounts : [2],
-  channelMasks : [0],
-  networkId : audio.LOCAL_NETWORK_ID,
-  interruptGroupId : 1,
-  volumeGroupId : 1,
-  displayName : "",
-}];
-
-async function selectOutputDevice(){
-  audioRoutingManager.selectOutputDevice(outputAudioDeviceDescriptor).then(() => {
-    console.info('Select output devices result promise: SUCCESS');
-  }).catch((err: BusinessError) => {
-    console.error(`Result ERROR: ${err}`);
-  });
-}
-```
+<a id="selectoutputdevice-1"></a>
 
 ## selectOutputDevice
 
@@ -791,7 +809,33 @@ Select the output device. This method uses a promise to return the result.
 
 **Examples**
 
-See [selectOutputDevice](#selectoutputdevice)
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.SPEAKER,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function selectOutputDevice(){
+  audioRoutingManager.selectOutputDevice(outputAudioDeviceDescriptor).then(() => {
+    console.info('Select output devices result promise: SUCCESS');
+  }).catch((err: BusinessError) => {
+    console.error(`Result ERROR: ${err}`);
+  });
+}
+```
 
 ## selectOutputDeviceByFilter
 
@@ -855,6 +899,37 @@ async function selectOutputDeviceByFilter(){
 }
 ```
 
+<a id="selectoutputdevicebyfilter-1"></a>
+
+## selectOutputDeviceByFilter
+
+```TypeScript
+selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors): Promise<void>
+```
+
+Select the output device with desired AudioRenderer. This method uses a promise to return the result.
+
+**Since:** 9
+
+**System capability:** SystemCapability.Multimedia.Audio.Device
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| filter | [AudioRendererFilter](arkts-audio-audio-audiorendererfilter-i-sys.md) | Yes | Filter for AudioRenderer. |
+| outputAudioDevices | [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | Yes | Audio device description |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise used to return the result. |
+
+**Examples**
+
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -892,70 +967,7 @@ async function selectOutputDeviceByFilter(){
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let outputAudioRendererFilter: audio.AudioRendererFilter = {
-  uid : 20010041,
-  rendererInfo : {
-    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
-    rendererFlags : 0
-  },
-  rendererId : 0
-};
-
-let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
-  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
-  deviceType : audio.DeviceType.SPEAKER,
-  id : 1,
-  name : "",
-  address : "",
-  sampleRates : [44100],
-  channelCounts : [2],
-  channelMasks : [0],
-  networkId : audio.LOCAL_NETWORK_ID,
-  interruptGroupId : 1,
-  volumeGroupId : 1,
-  displayName : "",
-}];
-
-audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, outputAudioDeviceDescriptor, audio.AudioDevcieSelectStrategy.SELECT_STRATEGY_INDEPENDENT).then(() => {
-  console.info('Succeeded in selecting output device by filter.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to select output device by filter. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## selectOutputDeviceByFilter
-
-```TypeScript
-selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors): Promise<void>
-```
-
-Select the output device with desired AudioRenderer. This method uses a promise to return the result.
-
-**Since:** 9
-
-**System capability:** SystemCapability.Multimedia.Audio.Device
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| filter | [AudioRendererFilter](arkts-audio-audio-audiorendererfilter-i-sys.md) | Yes | Filter for AudioRenderer. |
-| outputAudioDevices | [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | Yes | Audio device description |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
-
-**Examples**
-
-See [selectOutputDeviceByFilter](#selectoutputdevicebyfilter)
+<a id="selectoutputdevicebyfilter-2"></a>
 
 ## selectOutputDeviceByFilter
 
@@ -995,7 +1007,39 @@ Select the output device with desired AudioRenderer. This method uses a promise 
 
 **Examples**
 
-See [selectOutputDeviceByFilter](#selectoutputdevicebyfilter)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.SPEAKER,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, outputAudioDeviceDescriptor, audio.AudioDevcieSelectStrategy.SELECT_STRATEGY_INDEPENDENT).then(() => {
+  console.info('Succeeded in selecting output device by filter.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to select output device by filter. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## unexcludeOutputDevices
 
@@ -1068,20 +1112,7 @@ async function unexcludeOutputDevices(){
 }
 ```
 
-```TypeScript
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let usage: audio.DeviceUsage.MEDIA_OUTPUT_DEVICES;
-
-async function unexcludeOutputDevices(){
-  audioRoutingManager.unexcludeOutputDevices(usage).then(() => {
-    console.info('Unexclude Output Devices result promise: SUCCESS');
-  }).catch((err: BusinessError) => {
-    console.error(`Result ERROR: ${err}`);
-  });
-}
-```
+<a id="unexcludeoutputdevices-1"></a>
 
 ## unexcludeOutputDevices
 
@@ -1123,4 +1154,17 @@ Unexclude output devices. This function will unexclude all output devices belong
 
 **Examples**
 
-See [unexcludeOutputDevices](#unexcludeoutputdevices)
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let usage: audio.DeviceUsage.MEDIA_OUTPUT_DEVICES;
+
+async function unexcludeOutputDevices(){
+  audioRoutingManager.unexcludeOutputDevices(usage).then(() => {
+    console.info('Unexclude Output Devices result promise: SUCCESS');
+  }).catch((err: BusinessError) => {
+    console.error(`Result ERROR: ${err}`);
+  });
+}
+```

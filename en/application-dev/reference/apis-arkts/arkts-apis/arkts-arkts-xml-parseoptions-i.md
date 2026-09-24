@@ -1,5 +1,9 @@
 # ParseOptions
 
+```TypeScript
+interface ParseOptions
+```
+
 Parse options for XmlPullParser.
 
 **Since:** 8

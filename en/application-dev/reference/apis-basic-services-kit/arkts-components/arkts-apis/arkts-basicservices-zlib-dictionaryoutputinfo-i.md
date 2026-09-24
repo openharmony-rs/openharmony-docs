@@ -1,5 +1,9 @@
 # DictionaryOutputInfo
 
+```TypeScript
+interface DictionaryOutputInfo
+```
+
 InflateGetDictionary and deflateGetDictionary return value information.
 
 **Since:** 12

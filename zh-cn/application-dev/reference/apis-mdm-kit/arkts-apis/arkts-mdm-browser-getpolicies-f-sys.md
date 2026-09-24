@@ -39,8 +39,8 @@ function getPolicies(admin: Want, appId: string, callback: AsyncCallback<string>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -64,25 +64,8 @@ browser.getPolicies(wantTemp, appId, (err, result) => {
 });
 ```
 
-```TypeScript
-import { browser } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
-let appId: string = 'com.example.******_******/******5t5CoBM=';
-browser.getPolicies(wantTemp, appId).then((result) => {
-  console.info(`Succeeded in getting browser policies, result : ${JSON.stringify(result)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get browser policies. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getpolicies-1"></a>
 
 ## getPolicies
 
@@ -122,9 +105,26 @@ function getPolicies(admin: Want, appId: string): Promise<string>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
-参见 [getPolicies](#getpolicies)
+```TypeScript
+import { browser } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
+let appId: string = 'com.example.******_******/******5t5CoBM=';
+browser.getPolicies(wantTemp, appId).then((result) => {
+  console.info(`Succeeded in getting browser policies, result : ${JSON.stringify(result)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get browser policies. Code is ${err.code}, message is ${err.message}`);
+});
+```

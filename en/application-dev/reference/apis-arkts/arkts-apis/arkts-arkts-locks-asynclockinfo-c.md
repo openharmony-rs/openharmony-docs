@@ -1,5 +1,9 @@
 # AsyncLockInfo
 
+```TypeScript
+class AsyncLockInfo
+```
+
 Information about a lock.
 
 **Since:** 12

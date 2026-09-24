@@ -1,5 +1,9 @@
 # EnhanceMode (System API)
 
+```TypeScript
+enum EnhanceMode
+```
+
 Scan enhance mode.
 
 **Since:** 26.0.0

@@ -8,6 +8,8 @@ typedef struct ContentEmbed_ExtensionInstance ContentEmbed_ExtensionInstance
 
 Declares the structure type of an OE Extension instance. Manages the core functions of the extension, such as lifecycle management, callback registration, and association with the client's OE object.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Related module**: [ContentEmbed](capi-contentembed.md)

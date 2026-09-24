@@ -1,5 +1,9 @@
 # HapModuleInfo (System API)
 
+```TypeScript
+interface HapModuleInfo
+```
+
 **Since:** 9
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App

@@ -1,5 +1,9 @@
 # ConnectionParam
 
+```TypeScript
+enum ConnectionParam
+```
+
 GATT connection parameters.
 
 **Since:** 22

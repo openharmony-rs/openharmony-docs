@@ -1,5 +1,9 @@
 # Event
 
+```TypeScript
+export interface Event
+```
+
 Defines the event.
 
 **Since:** 7

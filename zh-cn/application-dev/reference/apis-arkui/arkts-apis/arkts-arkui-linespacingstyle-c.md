@@ -1,5 +1,9 @@
 # LineSpacingStyle
 
+```TypeScript
+declare class LineSpacingStyle
+```
+
 文本行间距对象说明。适用于需要调整段落内各行间距的场景，例如提升文本阅读舒适度、调整文档排版密度等。
 
 **起始版本：** 26.0.0
@@ -26,7 +30,7 @@ constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| lineSpacing | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 是 | 文本的行间距。<br>取值范围：[0, +∞) |
+| lineSpacing | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 是 | 文本的行间距。<br>取值范围：[0, +∞)。 |
 | options | [LineSpacingOptions](arkts-arkui-linespacingoptions-i.md) | 否 | 行间距的配置项。 |
 
 ## lineSpacing
@@ -39,7 +43,7 @@ readonly lineSpacing: number
 
 取值范围：[0, +∞)
 
-单位：[vp](arkts-arkui-length-t.md)
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 

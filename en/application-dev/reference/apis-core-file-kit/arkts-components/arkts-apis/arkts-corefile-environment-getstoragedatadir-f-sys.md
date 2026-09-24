@@ -35,6 +35,8 @@ Obtains the root directory of the memory. This API uses a promise to return the 
 | 13900042 | Unknown error |
 
 
+<a id="getstoragedatadir-1"></a>
+
 ## getStorageDataDir
 
 ```TypeScript

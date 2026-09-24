@@ -1,5 +1,9 @@
 # SetPropertyRequest（系统接口）
 
+```TypeScript
+interface SetPropertyRequest
+```
+
 提供设置属性请求的信息。
 
 **起始版本：** 8

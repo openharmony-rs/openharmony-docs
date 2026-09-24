@@ -1,6 +1,10 @@
 # ChipSize
 
-Enumerates the chip size types.
+```TypeScript
+export declare enum ChipSize
+```
+
+Enumerates the size types that can be specified for the **Chip** component, such as normal and small.
 
 **Since:** 11
 
@@ -12,7 +16,7 @@ Enumerates the chip size types.
 NORMAL = "NORMAL"
 ```
 
-Normal size.
+Normal-sized chip for regular display scenarios.
 
 **Since:** 11
 
@@ -28,7 +32,7 @@ Normal size.
 SMALL = "SMALL"
 ```
 
-Small size.
+Small-sized chip for compact layout scenarios.
 
 **Since:** 11
 

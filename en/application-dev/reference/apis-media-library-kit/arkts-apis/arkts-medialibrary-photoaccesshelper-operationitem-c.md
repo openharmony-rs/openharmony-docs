@@ -1,5 +1,9 @@
 # OperationItem
 
+```TypeScript
+export class OperationItem
+```
+
 Describes the settings for filtering media files.
 
 **Since:** 22

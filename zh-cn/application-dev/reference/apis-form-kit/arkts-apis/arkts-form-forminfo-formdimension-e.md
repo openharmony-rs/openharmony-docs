@@ -1,5 +1,9 @@
 # FormDimension
 
+```TypeScript
+enum FormDimension
+```
+
 定义卡片尺寸枚举。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # SourceType (System API)
 
+```TypeScript
+export enum SourceType
+```
+
 Defines the notification source type.
 
 **Since:** 8

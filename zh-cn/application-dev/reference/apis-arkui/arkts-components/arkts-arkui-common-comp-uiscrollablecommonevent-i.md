@@ -1,0 +1,135 @@
+# UIScrollableCommonEvent
+
+```TypeScript
+declare interface UIScrollableCommonEvent extends UICommonEvent
+```
+
+用于设置滚动事件回调。
+
+@extends UICommonEvent @interface UIScrollableCommonEvent
+
+**继承/实现关系：** UIScrollableCommonEvent extends [UICommonEvent](arkts-arkui-common-comp-uicommonevent-i.md)
+
+**起始版本：** 19
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## setOnReachEnd
+
+```TypeScript
+setOnReachEnd(callback: Callback<void> | undefined): void
+```
+
+设置onReachEnd事件的回调。
+
+方法入参为undefined时，会重置事件回调。
+
+**起始版本：** 19
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](arkts-arkui-common-comp-callback-i.md)&lt;void&gt; &#124; undefined | 是 | onReachEnd事件的回调函数。 |
+
+## setOnReachStart
+
+```TypeScript
+setOnReachStart(callback: Callback<void> | undefined): void
+```
+
+设置onReachStart事件的回调。
+
+方法入参为undefined时，会重置事件回调。
+
+**起始版本：** 19
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](arkts-arkui-common-comp-callback-i.md)&lt;void&gt; &#124; undefined | 是 | onReachStart事件的回调函数。 |
+
+## setOnScrollFrameBegin
+
+```TypeScript
+setOnScrollFrameBegin(callback: OnScrollFrameBeginCallback | undefined): void
+```
+
+设置[onScrollFrameBegin](arkts-arkui-scroll-comp-attribute.md#onscrollframebegin)事件的回调。
+
+方法入参为undefined时，会重置事件回调。
+
+**起始版本：** 19
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [OnScrollFrameBeginCallback](arkts-arkui-scroll-comp-onscrollframebegincallback-t.md) &#124; undefined | 是 | onScrollFrameBegin事件的回调函数。 |
+
+## setOnScrollStart
+
+```TypeScript
+setOnScrollStart(callback: Callback<void> | undefined): void
+```
+
+设置onScrollStart事件的回调。
+
+方法入参为undefined时，会重置事件回调。
+
+**起始版本：** 19
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](arkts-arkui-common-comp-callback-i.md)&lt;void&gt; &#124; undefined | 是 | onScrollStart事件的回调函数。 |
+
+## setOnScrollStop
+
+```TypeScript
+setOnScrollStop(callback: Callback<void> | undefined): void
+```
+
+设置onScrollStop事件的回调。
+
+方法入参为undefined时，会重置事件回调。
+
+**起始版本：** 19
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](arkts-arkui-common-comp-callback-i.md)&lt;void&gt; &#124; undefined | 是 | onScrollStop事件的回调函数。 |

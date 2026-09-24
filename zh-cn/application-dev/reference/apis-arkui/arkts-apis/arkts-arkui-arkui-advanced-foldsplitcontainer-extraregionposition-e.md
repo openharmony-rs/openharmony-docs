@@ -1,5 +1,9 @@
 # ExtraRegionPosition
 
+```TypeScript
+export declare enum ExtraRegionPosition
+```
+
 扩展区域位置信息。
 
 **起始版本：** 12

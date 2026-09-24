@@ -1,5 +1,9 @@
 # EllipsisMode
 
+```TypeScript
+declare enum EllipsisMode
+```
+
 The position of ellipsis.
 
 **Since:** 11

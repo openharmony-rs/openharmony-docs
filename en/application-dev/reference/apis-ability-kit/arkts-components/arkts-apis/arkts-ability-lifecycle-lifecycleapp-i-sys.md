@@ -1,5 +1,9 @@
 # LifecycleApp
 
+```TypeScript
+export declare interface LifecycleApp
+```
+
 interface of app lifecycle.
 
 @interface LifecycleApp

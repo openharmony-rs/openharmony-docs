@@ -1,5 +1,9 @@
 # ContextType
 
+```TypeScript
+export enum ContextType
+```
+
 Context type
 
 **Since:** 26.0.0

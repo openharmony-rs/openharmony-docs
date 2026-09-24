@@ -1,5 +1,9 @@
 # SystemPanelInsets
 
+```TypeScript
+interface SystemPanelInsets
+```
+
 Defines the offset area between the input method soft keyboard and the system panel.
 
 **Since:** 21

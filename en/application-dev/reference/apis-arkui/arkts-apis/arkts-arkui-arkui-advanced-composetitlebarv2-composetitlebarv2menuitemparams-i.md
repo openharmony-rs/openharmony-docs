@@ -1,5 +1,9 @@
 # ComposeTitleBarV2MenuItemParams
 
+```TypeScript
+export interface ComposeTitleBarV2MenuItemParams
+```
+
 Options for creating a menu item instance.
 
 **Since:** 26.0.0
@@ -128,7 +132,7 @@ symbolStyle?: SymbolGlyphModifier
 
 Symbol icon resource for this menu item, which has higher priority than value.
 
-**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **Since:** 26.0.0
 

@@ -1,5 +1,9 @@
 # ControlObject（系统接口）
 
+```TypeScript
+enum ControlObject
+```
+
 枚举，控制对象。
 
 **起始版本：** 15

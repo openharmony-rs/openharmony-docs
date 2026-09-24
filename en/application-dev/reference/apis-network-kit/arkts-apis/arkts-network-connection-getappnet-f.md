@@ -47,17 +47,8 @@ connection.getAppNet((error: BusinessError, data: connection.NetHandle) => {
 })
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getAppNet().then((data: connection.NetHandle) => {
-  console.info(JSON.stringify(data));
-}).catch((error: BusinessError) => {
-  console.info(JSON.stringify(error));
-});
-```
-
+<a id="getappnet-1"></a>
 
 ## getAppNet
 
@@ -86,4 +77,13 @@ Obtains the network information bound to an application. This API uses a promise
 
 **Examples**
 
-See [getAppNet](#getappnet)
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getAppNet().then((data: connection.NetHandle) => {
+  console.info(JSON.stringify(data));
+}).catch((error: BusinessError) => {
+  console.info(JSON.stringify(error));
+});
+```

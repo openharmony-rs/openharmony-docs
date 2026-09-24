@@ -1,5 +1,9 @@
 # DateTimeFormatOptions
 
+```TypeScript
+interface DateTimeFormatOptions
+```
+
 ## Modules to Import
 
 ```TypeScript

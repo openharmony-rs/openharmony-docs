@@ -1,5 +1,9 @@
 # Updater (System API)
 
+```TypeScript
+export interface Updater
+```
+
 Defines a utility class that provides online system update functions, such as checking new versions online, downloading upgrade packages, installing update packages, managing upgrade policies, and obtaining version information.
 
 Use scenarios: OTA upgrade, online system upgrade, automatic version check, and upgrade management.
@@ -116,33 +120,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // Define an UpgradeInfo object.
-  const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
-    businessType: {
-      vendor: update.BusinessVendor.PUBLIC, // Vendor type
-      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
-    }
-  };
-  // Obtain an OnlineUpdater object.
-  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Check for a new version.
-  onlineUpdater.checkNewVersion().then((result: update.CheckResult) => {
-    console.info(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
-    // Version digest information
-    console.info(`checkNewVersion versionDigestInfo: ${result.newVersionInfo.versionDigestInfo.versionDigest}`);
-    }).catch((checkNewVersionError: BusinessError) => {
-      console.error(`checkNewVersion promise error, code:${checkNewVersionError.code}, message:${checkNewVersionError.message}.`);
-    });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`Fail to checkNewVersion. Code: ${err.code}, message: ${err.message}.`);
-}
-```
+<a id="checknewversion-1"></a>
 
 ## checkNewVersion
 
@@ -199,7 +177,33 @@ properly deployed and accessible.
 
 **Examples**
 
-See [checkNewVersion](#checknewversion)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // Define an UpgradeInfo object.
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC, // Vendor type
+      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
+    }
+  };
+  // Obtain an OnlineUpdater object.
+  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // Check for a new version.
+  onlineUpdater.checkNewVersion().then((result: update.CheckResult) => {
+    console.info(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
+    // Version digest information
+    console.info(`checkNewVersion versionDigestInfo: ${result.newVersionInfo.versionDigestInfo.versionDigest}`);
+    }).catch((checkNewVersionError: BusinessError) => {
+      console.error(`checkNewVersion promise error, code:${checkNewVersionError.code}, message:${checkNewVersionError.message}.`);
+    });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Fail to checkNewVersion. Code: ${err.code}, message: ${err.message}.`);
+}
+```
 
 ## clearError
 
@@ -293,40 +297,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Version digest information. Call checkNewVersion to check for a new version and confirm the value of isExistNewVersion is true first.
-// Obtain the value from the newVersionInfo.versionDigestInfo field in the returned result.
-const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // Obtain the actual value from the result returned by checkNewVersion.
-};
-
-// Options for clearing errors
-const clearOptions: update.ClearOptions = {
-  status: update.UpgradeStatus.UPGRADE_FAIL,
-};
-try {
-  // Define an UpgradeInfo object.
-  const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
-    businessType: {
-      vendor: update.BusinessVendor.PUBLIC, // Vendor type
-      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
-    }
-  };
-  // Obtain an OnlineUpdater object.
-  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Clear errors.
-  onlineUpdater.clearError(versionDigestInfo, clearOptions).then(() => {
-    console.info(`clearError execute success`);
-  }).catch((clearFailError: BusinessError) => {
-    console.error(`clearError execute error. code:${clearFailError.code}, message:${clearFailError.message}.`);
-  });
-} catch (error) {
-  console.error(`Fail to get onlineUpdater error: ${error}`);
-}
-```
+<a id="clearerror-1"></a>
 
 ## clearError
 
@@ -386,7 +357,40 @@ abnormal status.
 
 **Examples**
 
-See [clearError](#clearerror)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Version digest information. Call checkNewVersion to check for a new version and confirm the value of isExistNewVersion is true first.
+// Obtain the value from the newVersionInfo.versionDigestInfo field in the returned result.
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: 'versionDigest' // Obtain the actual value from the result returned by checkNewVersion.
+};
+
+// Options for clearing errors
+const clearOptions: update.ClearOptions = {
+  status: update.UpgradeStatus.UPGRADE_FAIL,
+};
+try {
+  // Define an UpgradeInfo object.
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC, // Vendor type
+      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
+    }
+  };
+  // Obtain an OnlineUpdater object.
+  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // Clear errors.
+  onlineUpdater.clearError(versionDigestInfo, clearOptions).then(() => {
+    console.info(`clearError execute success`);
+  }).catch((clearFailError: BusinessError) => {
+    console.error(`clearError execute error. code:${clearFailError.code}, message:${clearFailError.message}.`);
+  });
+} catch (error) {
+  console.error(`Fail to get onlineUpdater error: ${error}`);
+}
+```
 
 ## download
 
@@ -491,41 +495,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Version digest information. Call checkNewVersion to check for a new version and confirm the value of isExistNewVersion is true first.
-// Obtain the value from the newVersionInfo.versionDigestInfo field in the returned result.
-const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // Obtain the actual value from the result returned by checkNewVersion.
-};
-
-// Download options
-const downloadOptions: update.DownloadOptions = {
-  allowNetwork: update.NetType.CELLULAR, // Whether to allow download over data network
-  order: update.Order.DOWNLOAD // Download
-};
-try {
-  // Define an UpgradeInfo object.
-  const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
-    businessType: {
-      vendor: update.BusinessVendor.PUBLIC, // Vendor type
-      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
-    }
-  };
-  // Obtain an OnlineUpdater object.
-  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Download the upgrade package.
-  onlineUpdater.download(versionDigestInfo, downloadOptions).then(() => {
-    console.info(`download start`);
-  }).catch((downloadError: BusinessError) => {
-    console.error(`download error. code:${downloadError.code}, message:${downloadError.message}.`);
-  });
-} catch (error) {
-  console.error(`Fail to get onlineUpdater error: ${error}`);
-}
-```
+<a id="download-1"></a>
 
 ## download
 
@@ -593,7 +563,41 @@ message will be returned, indicating that the current version is the latest vers
 
 **Examples**
 
-See [download](#download)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Version digest information. Call checkNewVersion to check for a new version and confirm the value of isExistNewVersion is true first.
+// Obtain the value from the newVersionInfo.versionDigestInfo field in the returned result.
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: 'versionDigest' // Obtain the actual value from the result returned by checkNewVersion.
+};
+
+// Download options
+const downloadOptions: update.DownloadOptions = {
+  allowNetwork: update.NetType.CELLULAR, // Whether to allow download over data network
+  order: update.Order.DOWNLOAD // Download
+};
+try {
+  // Define an UpgradeInfo object.
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC, // Vendor type
+      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
+    }
+  };
+  // Obtain an OnlineUpdater object.
+  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // Download the upgrade package.
+  onlineUpdater.download(versionDigestInfo, downloadOptions).then(() => {
+    console.info(`download start`);
+  }).catch((downloadError: BusinessError) => {
+    console.error(`download error. code:${downloadError.code}, message:${downloadError.message}.`);
+  });
+} catch (error) {
+  console.error(`Fail to get onlineUpdater error: ${error}`);
+}
+```
 
 ## getCurrentVersionDescription
 
@@ -681,35 +685,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-// Options of the description file
-const descriptionOptions: update.DescriptionOptions = {
-  format: update.DescriptionFormat.STANDARD, // Standard format
-  language: 'zh-cn' // Chinese
-};
-try {
-  // Define an UpgradeInfo object.
-  const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
-    businessType: {
-      vendor: update.BusinessVendor.PUBLIC, // Vendor type
-      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
-    }
-  };
-  // Obtain an OnlineUpdater object.
-  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-
-  // Obtain the description of the current version.
-  onlineUpdater.getCurrentVersionDescription(descriptionOptions).then((info: Array<update.ComponentDescription>) => {
-    console.info(`getCurrentVersionDescription promise info ${JSON.stringify(info)}`);
-  }).catch((descriptionError: BusinessError) => {
-    console.error(`getCurrentVersionDescription error, code:${descriptionError.code}, message:${descriptionError.message}.`);
-  });
-} catch (error) {
-  console.error(`Fail to get onlineUpdater error: ${error}`);
-}
-```
+<a id="getcurrentversiondescription-1"></a>
 
 ## getCurrentVersionDescription
 
@@ -765,7 +741,35 @@ then call this method to obtain the detailed description for display.
 
 **Examples**
 
-See [getCurrentVersionDescription](#getcurrentversiondescription)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// Options of the description file
+const descriptionOptions: update.DescriptionOptions = {
+  format: update.DescriptionFormat.STANDARD, // Standard format
+  language: 'zh-cn' // Chinese
+};
+try {
+  // Define an UpgradeInfo object.
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC, // Vendor type
+      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
+    }
+  };
+  // Obtain an OnlineUpdater object.
+  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+
+  // Obtain the description of the current version.
+  onlineUpdater.getCurrentVersionDescription(descriptionOptions).then((info: Array<update.ComponentDescription>) => {
+    console.info(`getCurrentVersionDescription promise info ${JSON.stringify(info)}`);
+  }).catch((descriptionError: BusinessError) => {
+    console.error(`getCurrentVersionDescription error, code:${descriptionError.code}, message:${descriptionError.message}.`);
+  });
+} catch (error) {
+  console.error(`Fail to get onlineUpdater error: ${error}`);
+}
+```
 
 ## getCurrentVersionInfo
 
@@ -836,31 +840,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-try {
-  // Define an UpgradeInfo object.
-  const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
-    businessType: {
-      vendor: update.BusinessVendor.PUBLIC, // Vendor type
-      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
-    }
-  };
-  // Obtain an OnlineUpdater object.
-  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Obtain the current version information.
-  onlineUpdater.getCurrentVersionInfo().then((info: update.CurrentVersionInfo) => {
-    console.info(`info osVersion = ${info.osVersion}`);
-    console.info(`info deviceName = ${info.deviceName}`);
-    console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
-  }).catch((currentVersionInfoError: BusinessError) => {
-    console.error(`getCurrentVersionInfo error, code:${currentVersionInfoError.code}, message:${currentVersionInfoError.message}.`);
-  });
-} catch (error) {
-  console.error(`Fail to get updater error: ${error}`);
-}
-```
+<a id="getcurrentversioninfo-1"></a>
 
 ## getCurrentVersionInfo
 
@@ -900,7 +880,31 @@ This method reads the current version information from the local system files an
 
 **Examples**
 
-See [getCurrentVersionInfo](#getcurrentversioninfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  // Define an UpgradeInfo object.
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC, // Vendor type
+      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
+    }
+  };
+  // Obtain an OnlineUpdater object.
+  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // Obtain the current version information.
+  onlineUpdater.getCurrentVersionInfo().then((info: update.CurrentVersionInfo) => {
+    console.info(`info osVersion = ${info.osVersion}`);
+    console.info(`info deviceName = ${info.deviceName}`);
+    console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
+  }).catch((currentVersionInfoError: BusinessError) => {
+    console.error(`getCurrentVersionInfo error, code:${currentVersionInfoError.code}, message:${currentVersionInfoError.message}.`);
+  });
+} catch (error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
 
 ## getNewVersionDescription
 
@@ -992,44 +996,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Version digest information. Call checkNewVersion to check for a new version and confirm the value of isExistNewVersion is true first.
-// Obtain the value from the newVersionInfo.versionDigestInfo field in the returned result.
-const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // Obtain the actual value from the result returned by checkNewVersion.
-};
-
-// Options of the description file
-const descriptionOptions: update.DescriptionOptions = {
-  format: update.DescriptionFormat.STANDARD, // Standard format
-  language: 'zh-cn' // Chinese
-};
-
-try {
-  // Define an UpgradeInfo object.
-  const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
-    businessType: {
-      vendor: update.BusinessVendor.PUBLIC, // Vendor type
-      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
-    }
-  };
-  // Obtain an OnlineUpdater object.
-  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-
-  // Obtain the description of the new version.
-  onlineUpdater.getNewVersionDescription(versionDigestInfo, descriptionOptions)
-    .then((info: Array<update.ComponentDescription>) => {
-    console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
-  }).catch((descriptionError: BusinessError) => {
-    console.error(`getNewVersionDescription promise error, code:${descriptionError.code}, message:${descriptionError.message}.`);
-  });
-} catch (error) {
-  console.error(`Fail to get onlineUpdater error: ${error}`);
-}
-```
+<a id="getnewversiondescription-1"></a>
 
 ## getNewVersionDescription
 
@@ -1086,7 +1053,44 @@ information.
 
 **Examples**
 
-See [getNewVersionDescription](#getnewversiondescription)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Version digest information. Call checkNewVersion to check for a new version and confirm the value of isExistNewVersion is true first.
+// Obtain the value from the newVersionInfo.versionDigestInfo field in the returned result.
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: 'versionDigest' // Obtain the actual value from the result returned by checkNewVersion.
+};
+
+// Options of the description file
+const descriptionOptions: update.DescriptionOptions = {
+  format: update.DescriptionFormat.STANDARD, // Standard format
+  language: 'zh-cn' // Chinese
+};
+
+try {
+  // Define an UpgradeInfo object.
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC, // Vendor type
+      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
+    }
+  };
+  // Obtain an OnlineUpdater object.
+  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+
+  // Obtain the description of the new version.
+  onlineUpdater.getNewVersionDescription(versionDigestInfo, descriptionOptions)
+    .then((info: Array<update.ComponentDescription>) => {
+    console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
+  }).catch((descriptionError: BusinessError) => {
+    console.error(`getNewVersionDescription promise error, code:${descriptionError.code}, message:${descriptionError.message}.`);
+  });
+} catch (error) {
+  console.error(`Fail to get onlineUpdater error: ${error}`);
+}
+```
 
 ## getNewVersionInfo
 
@@ -1176,30 +1180,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-try {
-  // Define an UpgradeInfo object.
-  const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
-    businessType: {
-      vendor: update.BusinessVendor.PUBLIC, // Vendor type
-      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
-    }
-  };
-  // Obtain an OnlineUpdater object.
-  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Obtain new version information.
-  onlineUpdater.getNewVersionInfo().then((info: update.NewVersionInfo) => {
-    console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
-    console.info(`info innerVersion = ${info.versionComponents[0].innerVersion}`);
-  }).catch((getNewVersionInfoError: BusinessError) => {
-    console.error(`getNewVersionInfo promise error, code:${getNewVersionInfoError.code}, message:${getNewVersionInfoError.message}.`);
-  });
-} catch (error) {
-  console.error(`Fail to get onlineUpdater error: ${error}`);
-}
-```
+<a id="getnewversioninfo-1"></a>
 
 ## getNewVersionInfo
 
@@ -1263,7 +1244,30 @@ only when **isExistNewVersion** is **true**.
 
 **Examples**
 
-See [getNewVersionInfo](#getnewversioninfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  // Define an UpgradeInfo object.
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC, // Vendor type
+      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
+    }
+  };
+  // Obtain an OnlineUpdater object.
+  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // Obtain new version information.
+  onlineUpdater.getNewVersionInfo().then((info: update.NewVersionInfo) => {
+    console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
+    console.info(`info innerVersion = ${info.versionComponents[0].innerVersion}`);
+  }).catch((getNewVersionInfoError: BusinessError) => {
+    console.error(`getNewVersionInfo promise error, code:${getNewVersionInfoError.code}, message:${getNewVersionInfoError.message}.`);
+  });
+} catch (error) {
+  console.error(`Fail to get onlineUpdater error: ${error}`);
+}
+```
 
 ## getTaskInfo
 
@@ -1351,31 +1355,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // Define an UpgradeInfo object.
-  const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
-    businessType: {
-      vendor: update.BusinessVendor.PUBLIC, // Vendor type
-      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
-    }
-  };
-  // Obtain an OnlineUpdater object.
-  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Obtain information about the update task.
-  onlineUpdater.getTaskInfo().then((info: update.TaskInfo) => {
-    console.info(`getTaskInfo existTask= ${info.existTask}`);
-  }).catch((taskInfoError: BusinessError) => {
-    // Handle the failure of obtaining the task information.
-    console.error(`Failed to get task info. code:${taskInfoError.code}, message:${taskInfoError.message}.`);
-  });
-} catch (error) {
-  console.error(`Fail to get onlineUpdater error: ${error}`);
-}
-```
+<a id="gettaskinfo-1"></a>
 
 ## getTaskInfo
 
@@ -1435,7 +1415,31 @@ determine the follow-up procedure.
 
 **Examples**
 
-See [getTaskInfo](#gettaskinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // Define an UpgradeInfo object.
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC, // Vendor type
+      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
+    }
+  };
+  // Obtain an OnlineUpdater object.
+  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // Obtain information about the update task.
+  onlineUpdater.getTaskInfo().then((info: update.TaskInfo) => {
+    console.info(`getTaskInfo existTask= ${info.existTask}`);
+  }).catch((taskInfoError: BusinessError) => {
+    // Handle the failure of obtaining the task information.
+    console.error(`Failed to get task info. code:${taskInfoError.code}, message:${taskInfoError.message}.`);
+  });
+} catch (error) {
+  console.error(`Fail to get onlineUpdater error: ${error}`);
+}
+```
 
 ## getUpgradePolicy
 
@@ -1502,30 +1506,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-try {
-  // Define an UpgradeInfo object.
-  const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
-    businessType: {
-      vendor: update.BusinessVendor.PUBLIC, // Vendor type
-      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
-    }
-  };
-  // Obtain an OnlineUpdater object.
-  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Obtain the upgrade policy.
-  onlineUpdater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
-    console.info(`policy downloadStrategy = ${policy.downloadStrategy}`);
-    console.info(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
-  }).catch((upgradePolicyError: BusinessError) => {
-    console.error(`getUpgradePolicy error. code:${upgradePolicyError.code}, message:${upgradePolicyError.message}.`);
-  });
-} catch (error) {
-  console.error(`Fail to get onlineUpdater error: ${error}`);
-}
-```
+<a id="getupgradepolicy-1"></a>
 
 ## getUpgradePolicy
 
@@ -1565,7 +1546,30 @@ This method queries the upgrade policy configuration from the system upgrade ser
 
 **Examples**
 
-See [getUpgradePolicy](#getupgradepolicy)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  // Define an UpgradeInfo object.
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC, // Vendor type
+      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
+    }
+  };
+  // Obtain an OnlineUpdater object.
+  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // Obtain the upgrade policy.
+  onlineUpdater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
+    console.info(`policy downloadStrategy = ${policy.downloadStrategy}`);
+    console.info(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
+  }).catch((upgradePolicyError: BusinessError) => {
+    console.error(`getUpgradePolicy error. code:${upgradePolicyError.code}, message:${upgradePolicyError.message}.`);
+  });
+} catch (error) {
+  console.error(`Fail to get onlineUpdater error: ${error}`);
+}
+```
 
 ## off
 
@@ -1806,41 +1810,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Version digest information. Call checkNewVersion to check for a new version and confirm the value of isExistNewVersion is true first.
-// Obtain the value from the newVersionInfo.versionDigestInfo field in the returned result.
-const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // Obtain the actual value from the result returned by checkNewVersion.
-};
-
-// Options for pausing download
-const pauseDownloadOptions: update.PauseDownloadOptions = {
-  isAllowAutoResume: true // Whether to allow automatic resuming of download
-};
-try {
-  // Define an UpgradeInfo object.
-  const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
-    businessType: {
-      vendor: update.BusinessVendor.PUBLIC, // Vendor type
-      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
-    }
-  };
-  // Obtain an OnlineUpdater object.
-  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Pause the download of the upgrade package.
-  onlineUpdater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
-    console.info(`pauseDownload`);
-  }).catch((pauseDownloadError: BusinessError) => {
-    console.error(`pauseDownload error. code:${pauseDownloadError.code}, message:${pauseDownloadError.message}.`);
-    
-  });
-} catch (error) {
-  console.error(`Fail to get onlineUpdater error: ${error}`);
-}
-```
+<a id="pausedownload-1"></a>
 
 ## pauseDownload
 
@@ -1900,7 +1870,41 @@ resume the download and complete the installation first.
 
 **Examples**
 
-See [pauseDownload](#pausedownload)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Version digest information. Call checkNewVersion to check for a new version and confirm the value of isExistNewVersion is true first.
+// Obtain the value from the newVersionInfo.versionDigestInfo field in the returned result.
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: 'versionDigest' // Obtain the actual value from the result returned by checkNewVersion.
+};
+
+// Options for pausing download
+const pauseDownloadOptions: update.PauseDownloadOptions = {
+  isAllowAutoResume: true // Whether to allow automatic resuming of download
+};
+try {
+  // Define an UpgradeInfo object.
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC, // Vendor type
+      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
+    }
+  };
+  // Obtain an OnlineUpdater object.
+  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // Pause the download of the upgrade package.
+  onlineUpdater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
+    console.info(`pauseDownload`);
+  }).catch((pauseDownloadError: BusinessError) => {
+    console.error(`pauseDownload error. code:${pauseDownloadError.code}, message:${pauseDownloadError.message}.`);
+    
+  });
+} catch (error) {
+  console.error(`Fail to get onlineUpdater error: ${error}`);
+}
+```
 
 ## resumeDownload
 
@@ -1990,40 +1994,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Version digest information. Call checkNewVersion to check for a new version and confirm the value of isExistNewVersion is true first.
-// Obtain the value from the newVersionInfo.versionDigestInfo field in the returned result.
-const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // Obtain the actual value from the result returned by checkNewVersion.
-};
-
-// Options for resuming download
-const resumeDownloadOptions: update.ResumeDownloadOptions = {
-  allowNetwork: update.NetType.CELLULAR, // Whether to allow download over data network
-};
-try {
-  // Define an UpgradeInfo object.
-  const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
-    businessType: {
-      vendor: update.BusinessVendor.PUBLIC, // Vendor type
-      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
-    }
-  };
-  // Obtain an OnlineUpdater object.
-  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Resume the download of the upgrade package.
-  onlineUpdater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
-    console.info(`resumeDownload start`);
-  }).catch((resumeDownloadError: BusinessError) => {
-    console.error(`resumeDownload error. code:${resumeDownloadError.code}, message:${resumeDownloadError.message}.`);
-  });
-} catch (error) {
-  console.error(`Fail to get onlineUpdater error: ${error}`);
-}
-```
+<a id="resumedownload-1"></a>
 
 ## resumeDownload
 
@@ -2076,7 +2047,40 @@ The process is as follows: Read the progress status saved when the download is p
 
 **Examples**
 
-See [resumeDownload](#resumedownload)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Version digest information. Call checkNewVersion to check for a new version and confirm the value of isExistNewVersion is true first.
+// Obtain the value from the newVersionInfo.versionDigestInfo field in the returned result.
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: 'versionDigest' // Obtain the actual value from the result returned by checkNewVersion.
+};
+
+// Options for resuming download
+const resumeDownloadOptions: update.ResumeDownloadOptions = {
+  allowNetwork: update.NetType.CELLULAR, // Whether to allow download over data network
+};
+try {
+  // Define an UpgradeInfo object.
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC, // Vendor type
+      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
+    }
+  };
+  // Obtain an OnlineUpdater object.
+  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // Resume the download of the upgrade package.
+  onlineUpdater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
+    console.info(`resumeDownload start`);
+  }).catch((resumeDownloadError: BusinessError) => {
+    console.error(`resumeDownload error. code:${resumeDownloadError.code}, message:${resumeDownloadError.message}.`);
+  });
+} catch (error) {
+  console.error(`Fail to get onlineUpdater error: ${error}`);
+}
+```
 
 ## setUpgradePolicy
 
@@ -2151,35 +2155,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-const upgradePolicy: update.UpgradePolicy = {
-  downloadStrategy: false, // Disable automatic download.
-  autoUpgradeStrategy: false, // Disable automatic upgrade.
-  autoUpgradePeriods: [ { start: 120, end: 240 }] // Automatic upgrade period, in minutes
-};
-try {
-  // Define an UpgradeInfo object.
-  const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
-    businessType: {
-      vendor: update.BusinessVendor.PUBLIC, // Vendor type
-      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
-    }
-  };
-  // Obtain an OnlineUpdater object.
-  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Set the upgrade policy.
-  onlineUpdater.setUpgradePolicy(upgradePolicy).then(() => {
-    console.info(`setUpgradePolicy success`);
-  }).catch((setUpgradePolicyError: BusinessError) => {
-    console.error(`setUpgradePolicy promise error, code:${setUpgradePolicyError.code}, message:${setUpgradePolicyError.message}.`);
-  });
-} catch (error) {
-  console.error(`Fail to get onlineUpdater error: ${error}`);
-}
-```
+<a id="setupgradepolicy-1"></a>
 
 ## setUpgradePolicy
 
@@ -2227,7 +2203,35 @@ The process is as follows: Verify the validity of the policy parameters. Write t
 
 **Examples**
 
-See [setUpgradePolicy](#setupgradepolicy)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const upgradePolicy: update.UpgradePolicy = {
+  downloadStrategy: false, // Disable automatic download.
+  autoUpgradeStrategy: false, // Disable automatic upgrade.
+  autoUpgradePeriods: [ { start: 120, end: 240 }] // Automatic upgrade period, in minutes
+};
+try {
+  // Define an UpgradeInfo object.
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC, // Vendor type
+      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
+    }
+  };
+  // Obtain an OnlineUpdater object.
+  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // Set the upgrade policy.
+  onlineUpdater.setUpgradePolicy(upgradePolicy).then(() => {
+    console.info(`setUpgradePolicy success`);
+  }).catch((setUpgradePolicyError: BusinessError) => {
+    console.error(`setUpgradePolicy promise error, code:${setUpgradePolicyError.code}, message:${setUpgradePolicyError.message}.`);
+  });
+} catch (error) {
+  console.error(`Fail to get onlineUpdater error: ${error}`);
+}
+```
 
 ## terminateUpgrade
 
@@ -2307,29 +2311,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-try {
-  // Define an UpgradeInfo object.
-  const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
-    businessType: {
-      vendor: update.BusinessVendor.PUBLIC, // Vendor type
-      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
-    }
-  };
-  // Obtain an OnlineUpdater object.
-  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Terminate the upgrade task.
-  onlineUpdater.terminateUpgrade().then(() => {
-    console.info(`terminateUpgrade success`);
-  }).catch((terminateUpgradeError: BusinessError) => {
-    console.error(`terminateUpgrade error, code:${terminateUpgradeError.code}, message:${terminateUpgradeError.message}.`);
-  });
-} catch (error) {
-  console.error(`Fail to get onlineUpdater error: ${error}`);
-}
-```
+<a id="terminateupgrade-1"></a>
 
 ## terminateUpgrade
 
@@ -2383,7 +2365,29 @@ The process is as follows: Check the current task status, and only download or i
 
 **Examples**
 
-See [terminateUpgrade](#terminateupgrade)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  // Define an UpgradeInfo object.
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC, // Vendor type
+      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
+    }
+  };
+  // Obtain an OnlineUpdater object.
+  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // Terminate the upgrade task.
+  onlineUpdater.terminateUpgrade().then(() => {
+    console.info(`terminateUpgrade success`);
+  }).catch((terminateUpgradeError: BusinessError) => {
+    console.error(`terminateUpgrade error, code:${terminateUpgradeError.code}, message:${terminateUpgradeError.message}.`);
+  });
+} catch (error) {
+  console.error(`Fail to get onlineUpdater error: ${error}`);
+}
+```
 
 ## upgrade
 
@@ -2482,40 +2486,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Version digest information. Call checkNewVersion to check for a new version and confirm the value of isExistNewVersion is true first.
-// Obtain the value from the newVersionInfo.versionDigestInfo field in the returned result.
-const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // Obtain the actual value from the result returned by checkNewVersion.
-};
-
-// Installation options
-const upgradeOptions: update.UpgradeOptions = {
-  order: update.Order.INSTALL // Installation command
-};
-try {
-  // Define an UpgradeInfo object.
-  const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
-    businessType: {
-      vendor: update.BusinessVendor.PUBLIC, // Vendor type
-      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
-    }
-  };
-  // Obtain an OnlineUpdater object.
-  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Install the upgrade package.
-  onlineUpdater.upgrade(versionDigestInfo, upgradeOptions).then(() => {
-    console.info(`upgrade start`);
-  }).catch((upgradeError: BusinessError) => {
-    console.error(`upgrade error. code:${upgradeError.code}, message:${upgradeError.message}.`);
-  });
-} catch (error) {
-  console.error(`Fail to get onlineUpdater error: ${error}`);
-}
-```
+<a id="upgrade-1"></a>
 
 ## upgrade
 
@@ -2581,4 +2552,37 @@ If the **upgrade** method fails (the status is **UPGRADE_FAIL**), you must call 
 
 **Examples**
 
-See [upgrade](#upgrade)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Version digest information. Call checkNewVersion to check for a new version and confirm the value of isExistNewVersion is true first.
+// Obtain the value from the newVersionInfo.versionDigestInfo field in the returned result.
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: 'versionDigest' // Obtain the actual value from the result returned by checkNewVersion.
+};
+
+// Installation options
+const upgradeOptions: update.UpgradeOptions = {
+  order: update.Order.INSTALL // Installation command
+};
+try {
+  // Define an UpgradeInfo object.
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC, // Vendor type
+      subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
+    }
+  };
+  // Obtain an OnlineUpdater object.
+  let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // Install the upgrade package.
+  onlineUpdater.upgrade(versionDigestInfo, upgradeOptions).then(() => {
+    console.info(`upgrade start`);
+  }).catch((upgradeError: BusinessError) => {
+    console.error(`upgrade error. code:${upgradeError.code}, message:${upgradeError.message}.`);
+  });
+} catch (error) {
+  console.error(`Fail to get onlineUpdater error: ${error}`);
+}
+```

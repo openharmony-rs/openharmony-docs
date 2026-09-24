@@ -1,5 +1,9 @@
 # VideoOutput
 
+```TypeScript
+interface VideoOutput extends CameraOutput
+```
+
 VideoOutput implements output information used in a video session. It inherits from [CameraOutput](arkts-camera-camera-cameraoutput-i.md).
 
 **Inheritance/Implementation:** VideoOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)

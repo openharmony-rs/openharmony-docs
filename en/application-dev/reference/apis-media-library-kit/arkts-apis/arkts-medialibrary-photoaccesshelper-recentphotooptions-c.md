@@ -1,5 +1,9 @@
 # RecentPhotoOptions
 
+```TypeScript
+export class RecentPhotoOptions
+```
+
 RecentPhotoOptions Object
 
 **Since:** 20

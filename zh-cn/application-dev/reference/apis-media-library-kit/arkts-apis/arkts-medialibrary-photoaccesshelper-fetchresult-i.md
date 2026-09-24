@@ -1,5 +1,9 @@
 # FetchResult
 
+```TypeScript
+interface FetchResult<T>
+```
+
 文件检索结果集。
 
 **起始版本：** 10
@@ -30,8 +34,32 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid argument. Possible causes: 1. Parameter count exceeds the limit; 2. The current object is invalid. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('fetchResultCloseDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    fetchResult.close();
+    console.info('close succeed.');
+  } catch (err) {
+    console.error(`close fail. error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## contains
 
@@ -61,6 +89,31 @@ contains(object: T): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示指定的文件资产在文件检索结果中；返回false表示指定的文件资产不在文件检索结果中。 |
 
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('fetchResultContainsDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    let ret: boolean = await fetchResult.contains(asset);
+    console.info(`succeed. ${ret}`);
+  } catch (err) {
+    console.error(`fail. error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## getAllObjects
 
 ```TypeScript
@@ -85,8 +138,35 @@ getAllObjects(callback: AsyncCallback<Array<T>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getAllObjectDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  fetchResult.getAllObjects((err, photoAssetList) => {
+    if (photoAssetList !== undefined) {
+      console.info('photoAssetList length: ', photoAssetList.length);
+    } else {
+      console.error(`photoAssetList failed with err:${err.code}, ${err.message}`);
+    }
+  });
+}
+```
+
+<a id="getallobjects-1"></a>
 
 ## getAllObjects
 
@@ -112,8 +192,28 @@ getAllObjects(): Promise<Array<T>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getAllObjectDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let photoAssetList: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
+  console.info('photoAssetList length: ', photoAssetList.length);
+}
+```
 
 ## getCount
 
@@ -139,8 +239,28 @@ getCount(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getCountDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let fetchCount = fetchResult.getCount();
+  console.info('fetchCount = ', fetchCount);
+}
+```
 
 ## getFirstObject
 
@@ -166,8 +286,35 @@ getFirstObject(callback: AsyncCallback<T>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getFirstObjectDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  fetchResult.getFirstObject((err, photoAsset) => {
+    if (err) {
+      console.error(`Failed to getFirstObject. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+      console.info('photoAsset displayName: ', photoAsset.displayName);
+  });
+}
+```
+
+<a id="getfirstobject-1"></a>
 
 ## getFirstObject
 
@@ -193,8 +340,28 @@ getFirstObject(): Promise<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getFirstObjectDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+  console.info('photoAsset displayName: ', photoAsset.displayName);
+}
+```
 
 ## getIndex
 
@@ -224,6 +391,31 @@ getIndex(object: T): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回查询结果。如果对象在文件检索结果中则返回对应的索引，不存在则返回-1。 |
 
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('fetchResultGetIndexDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    let ret: number = await fetchResult.getIndex(asset);
+    console.info(`succeed. ${ret}`);
+  } catch (err) {
+    console.error(`fail. error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## getLastObject
 
 ```TypeScript
@@ -248,8 +440,35 @@ getLastObject(callback: AsyncCallback<T>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | 1.Parameter count exceeds the limit;<br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getLastObjectDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  fetchResult.getLastObject((err, photoAsset) => {
+    if (photoAsset !== undefined) {
+      console.info('photoAsset displayName: ', photoAsset.displayName);
+    } else {
+      console.error(`photoAsset failed with err: ${err.code}, ${err.message}`);
+    }
+  });
+}
+```
+
+<a id="getlastobject-1"></a>
 
 ## getLastObject
 
@@ -275,8 +494,28 @@ getLastObject(): Promise<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getLastObjectDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getLastObject();
+  console.info('photoAsset displayName: ', photoAsset.displayName);
+}
+```
 
 ## getNextObject
 
@@ -304,8 +543,38 @@ getNextObject(callback: AsyncCallback<T>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getNextObjectDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  await fetchResult.getFirstObject();
+  if (!fetchResult.isAfterLast()) {
+    fetchResult.getNextObject((err, photoAsset) => {
+      if (photoAsset !== undefined) {
+        console.info('photoAsset displayName: ', photoAsset.displayName);
+      } else {
+        console.error(`photoAsset failed with err: ${err.code}, ${err.message}`);
+      }
+    });
+  }
+}
+```
+
+<a id="getnextobject-1"></a>
 
 ## getNextObject
 
@@ -333,8 +602,31 @@ getNextObject(): Promise<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getNextObjectDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  await fetchResult.getFirstObject();
+  if (!fetchResult.isAfterLast()) {
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getNextObject();
+    console.info('photoAsset displayName: ', photoAsset.displayName);
+  }
+}
+```
 
 ## getObjectByPosition
 
@@ -361,8 +653,35 @@ getObjectByPosition(index: number, callback: AsyncCallback<T>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getObjectByPositionDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  fetchResult.getObjectByPosition(0, (err, photoAsset) => {
+    if (photoAsset !== undefined) {
+      console.info('photoAsset displayName: ', photoAsset.displayName);
+    } else {
+      console.error(`photoAsset failed with err: ${err.code}, ${err.message}`);
+    }
+  });
+}
+```
+
+<a id="getobjectbyposition-1"></a>
 
 ## getObjectByPosition
 
@@ -394,8 +713,32 @@ getObjectByPosition(index: number): Promise<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getObjectByPositionDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  if (fetchResult === undefined) {
+    console.error('fetchResult is undefined');
+    return;
+  }
+  let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getObjectByPosition(0);
+  console.info('photoAsset displayName: ', photoAsset.displayName);
+}
+```
 
 ## getObjectsByIndexSet
 
@@ -429,7 +772,32 @@ getObjectsByIndexSet(indexSet: number[]): Promise<T[]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes:<br>1.The indexSet is null, undefined or empty. <br>2.The indexSet length is bigger than 500. <br>3.The max value of indexSet is equal or bigger than the fetch result length. <br>4.The min value of indexSet is less than 0. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Invalid parameter. Possible causes:<br>1.The index is out of range, must be within [0, count); <br>2.The FetchResType is not supported, must be a valid FetchResType enum value. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('fetchResultGetObjectsByIndexSetDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let indexSet: number[] = [0, 1];
+    let ret: photoAccessHelper.PhotoAsset[] = await fetchResult.getObjectsByIndexSet(indexSet);
+    console.info(`succeed. ${ret.length}`);
+  } catch (err) {
+    console.error(`fail. error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## getRangeObjects
 
@@ -460,9 +828,43 @@ getRangeObjects(index: number, offset: number): Promise<T[]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application<br>**适用版本：** 21 - 22 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. A non-system application calls a system API.<br>**适用版本：** 21 - 22 |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails.<br>Possible causes: index or offset validity check failed. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs.<br>Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper} from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getRangeObjectsDemo');
+  type PhotoAsset = photoAccessHelper.PhotoAsset;
+  let testNum: string = "getRangeObjects_test_003";
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+  };
+  // 创建两个独立的FetchResult实例用于并行获取，提高大批量数据检索效率。
+  let fetchResult1: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
+      await phAccessHelper.getAssets(fetchOptions);
+  let fetchResult2: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
+      await phAccessHelper.getAssets(fetchOptions);
+  let count: number = fetchResult1.getCount();
+  const half: number = Math.ceil(count / 2);
+  // 将结果集分为两批并行获取：前半部分从fetchResult1获取，后半部分从fetchResult2获取。
+  let promises: Promise<PhotoAsset[]>[] = [];
+  promises[0] = fetchResult1.getRangeObjects(0, half);
+  promises[1] = fetchResult2.getRangeObjects(half, count - half);
+  let photoAssetsArray: PhotoAsset[][] = await Promise.all(promises);
+  let photoAssets: PhotoAsset[] = photoAssetsArray[0].concat(photoAssetsArray[1]);
+  console.info('photoAssets length: ', photoAssets.length);
+}
+```
 
 ## isAfterLast
 
@@ -488,5 +890,32 @@ isAfterLast(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000011 | System inner fail |
+| 13900020 | Invalid parameter. Possible causes:<br>1.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let fetchCount = fetchResult.getCount();
+  console.info('count:' + fetchCount);
+  let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getLastObject();
+  if (fetchResult.isAfterLast()) {
+    if (photoAsset) {
+      console.info('photoAsset isAfterLast displayName = ', photoAsset.displayName);
+    }
+  } else {
+    console.info('photoAsset not isAfterLast.');
+  }
+}
+```

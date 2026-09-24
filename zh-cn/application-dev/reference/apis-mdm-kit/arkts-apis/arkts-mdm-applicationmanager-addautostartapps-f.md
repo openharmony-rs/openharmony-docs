@@ -35,8 +35,8 @@ function addAutoStartApps(admin: Want, autoStartApps: Array<Want>): void
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -70,37 +70,8 @@ try {
 }
 ```
 
-```TypeScript
-import { applicationManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-let autoStartApps: Array<Want> = [
-  // 需根据实际情况进行替换
-  {
-    bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility',
-    // 下面为非必选参数
-    parameters: {
-      // 从API version 24开始支持，配置应用开机自启时，是否隐藏UI界面，true代表隐藏，该参数设置为true时，应用需接入状态栏，否则自启设置失败，抛出401异常。
-      isHiddenStart: true 
-    }
-  }
-];
-
-try {
-  applicationManager.addAutoStartApps(wantTemp, autoStartApps, 100, true);
-  console.info('Succeeded in adding auto start applications and set disallowModify.');
-} catch (err) {
-  console.error(`Failed to add auto start applications and set disallowModify. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="addautostartapps-1"></a>
 
 ## addAutoStartApps
 
@@ -135,8 +106,37 @@ function addAutoStartApps(admin: Want, autoStartApps: Array<Want>, accountId: nu
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
-参见 addAutoStartApps
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let autoStartApps: Array<Want> = [
+  // 需根据实际情况进行替换
+  {
+    bundleName: 'com.example.autoStartApplication',
+    abilityName: 'EntryAbility',
+    // 下面为非必选参数
+    parameters: {
+      // 从API version 24开始支持，配置应用开机自启时，是否隐藏UI界面，true代表隐藏，该参数设置为true时，应用需接入状态栏，否则自启设置失败，抛出401异常。
+      isHiddenStart: true 
+    }
+  }
+];
+
+try {
+  applicationManager.addAutoStartApps(wantTemp, autoStartApps, 100, true);
+  console.info('Succeeded in adding auto start applications and set disallowModify.');
+} catch (err) {
+  console.error(`Failed to add auto start applications and set disallowModify. Code: ${err.code}, message: ${err.message}`);
+}
+```

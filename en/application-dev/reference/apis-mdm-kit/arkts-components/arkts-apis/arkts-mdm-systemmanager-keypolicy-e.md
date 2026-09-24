@@ -1,5 +1,9 @@
 # KeyPolicy
 
+```TypeScript
+enum KeyPolicy
+```
+
 Enumerates key policies. This refers to the system behavior triggered after the key code delivered by the MDM app matches the system key event.
 
 **Since:** 23

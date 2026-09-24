@@ -1,5 +1,9 @@
 # UnitUsage
 
+```TypeScript
+export enum UnitUsage
+```
+
 Enumerates unit formatting scenarios.
 
 **Since:** 23

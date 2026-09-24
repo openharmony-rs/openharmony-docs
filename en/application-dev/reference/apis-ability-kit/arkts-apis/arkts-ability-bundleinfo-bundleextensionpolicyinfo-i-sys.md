@@ -1,8 +1,12 @@
 # BundleExtensionPolicyInfo (System API)
 
+```TypeScript
+export interface BundleExtensionPolicyInfo
+```
+
 Defines bundle extension policy information.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,7 +22,7 @@ Index of an application. The value should be an integer.
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -36,7 +40,7 @@ The application sandbox policy.
 
 **Type:** [bundleManager.AppSandboxPolicy](arkts-ability-bundlemanager-appsandboxpolicy-e-sys.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -54,7 +58,7 @@ Bundle name of the application.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -72,7 +76,7 @@ The device mode distribution policy of the application.
 
 **Type:** [bundleManager.DeviceModeDistributionPolicy](arkts-ability-bundlemanager-devicemodedistributionpolicy-e-sys.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

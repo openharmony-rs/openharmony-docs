@@ -30,10 +30,12 @@ function getUserDataDir(): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application |
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
+
+<a id="getuserdatadir-1"></a>
 
 ## getUserDataDir
 
@@ -59,6 +61,6 @@ function getUserDataDir(callback: AsyncCallback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application |
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |

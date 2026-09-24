@@ -1,5 +1,9 @@
 # DataProxyConfig
 
+```TypeScript
+interface DataProxyConfig
+```
+
 数据代理操作配置的数据结构。
 
 **起始版本：** 20

@@ -44,7 +44,7 @@ function get(id: string, callback: AsyncCallback<image.PixelMap>, options?: Snap
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Invalid ID. |
 
 **示例**
@@ -90,46 +90,8 @@ struct SnapshotExample {
 }
 ```
 
-```TypeScript
-import { componentSnapshot } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
 
-@Entry
-@Component
-struct SnapshotExample {
-  @State pixmap: image.PixelMap | undefined = undefined
-
-  build() {
-    Column() {
-      Row() {
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        // $r('app.media.img')需要替换为开发者所需的图像资源文件
-        Image($r('app.media.img'))
-          .autoResize(true)
-          .width(200)
-          .height(200)
-          .margin(5)
-          .id("root")
-      }
-
-      Button("click to generate UI snapshot")
-        .onClick(() => {
-          // 建议使用this.getUIContext().getComponentSnapshot().get()
-          componentSnapshot.get("root", { scale: 2, waitUntilRenderFinished: true })
-            .then((pixmap: image.PixelMap) => {
-              this.pixmap = pixmap
-            }).catch((err: Error) => {
-            console.error(`error:${err}`)
-          })
-        }).margin(10)
-    }
-    .width('100%')
-    .height('100%')
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-```
-
+<a id="get-1"></a>
 
 ## get
 
@@ -174,9 +136,47 @@ function get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Invalid ID. |
 
 **示例**
 
-参见 get
+```TypeScript
+import { componentSnapshot } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct SnapshotExample {
+  @State pixmap: image.PixelMap | undefined = undefined
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
+      }
+
+      Button("click to generate UI snapshot")
+        .onClick(() => {
+          // 建议使用this.getUIContext().getComponentSnapshot().get()
+          componentSnapshot.get("root", { scale: 2, waitUntilRenderFinished: true })
+            .then((pixmap: image.PixelMap) => {
+              this.pixmap = pixmap
+            }).catch((err: Error) => {
+            console.error(`error:${err}`)
+          })
+        }).margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```

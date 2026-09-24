@@ -1,5 +1,9 @@
 # PluralRules
 
+```TypeScript
+interface PluralRules
+```
+
 ## Modules to Import
 
 ```TypeScript

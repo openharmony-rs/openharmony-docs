@@ -1,5 +1,9 @@
 # GetLocationTypeOption
 
+```TypeScript
+export interface GetLocationTypeOption
+```
+
 查询定位类型接口的入参，用于存放回调函数，在查询成功或者失败时接收查询结果。
 
 **起始版本：** 3

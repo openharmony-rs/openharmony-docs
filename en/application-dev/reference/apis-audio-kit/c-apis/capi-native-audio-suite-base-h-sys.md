@@ -20,14 +20,14 @@ Declare underlying data structure.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AudioSuite_SystemNodeFormat(System API)](capi-ohaudiosuite-oh-audiosuite-systemnodeformat-sys.md) | OH_AudioSuite_SystemNodeFormat | Define the audio format info structure, used to describe basic audio format for system node.**System API:** This is a system API. |
-| [OH_AudioSuite_MetaFrame(System API)](capi-ohaudiosuite-oh-audiosuite-metaframe-sys.md) | OH_AudioSuite_MetaFrame | Define the audio meta data frame structure. This structure is used to pass audio data and meta data together.**System API:** This is a system API. |
+| [OH_AudioSuite_SystemNodeFormat(System API)](capi-ohaudiosuite-oh-audiosuite-systemnodeformat-sys.md) | OH_AudioSuite_SystemNodeFormat | Define the audio format info structure, used to describe basic audio format for system node.<br>**System API:** This is a system API. |
+| [OH_AudioSuite_MetaFrame(System API)](capi-ohaudiosuite-oh-audiosuite-metaframe-sys.md) | OH_AudioSuite_MetaFrame | Define the audio meta data frame structure. This structure is used to pass audio data and meta data together.<br>**System API:** This is a system API. |
 
 ### Enum
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AudioSuite_SystemNodeType(System API)](#oh_audiosuite_systemnodetype) | OH_AudioSuite_SystemNodeType | Define audio node system type.**System API:** This is a system API. |
+| [OH_AudioSuite_SystemNodeType(System API)](#oh_audiosuite_systemnodetype) | OH_AudioSuite_SystemNodeType | Define audio node system type.<br>**System API:** This is a system API. |
 
 ## Enum type description
 
@@ -40,6 +40,8 @@ enum OH_AudioSuite_SystemNodeType
 **Description**
 
 Define audio node system type.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 

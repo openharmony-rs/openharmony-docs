@@ -4,6 +4,8 @@
 
 提供图片编辑能力。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 ## 文件汇总

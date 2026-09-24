@@ -1,5 +1,9 @@
 # LockType (System API)
 
+```TypeScript
+export enum LockType
+```
+
 Indicates the lock types.
 
 **Since:** 8

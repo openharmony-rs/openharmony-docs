@@ -1,5 +1,9 @@
 # LinkAddress
 
+```TypeScript
+export interface LinkAddress
+```
+
 网络链路信息。
 
 **起始版本：** 8

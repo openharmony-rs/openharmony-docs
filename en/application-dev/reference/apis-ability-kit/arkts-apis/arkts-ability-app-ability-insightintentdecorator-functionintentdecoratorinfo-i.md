@@ -1,5 +1,9 @@
 # FunctionIntentDecoratorInfo
 
+```TypeScript
+declare interface FunctionIntentDecoratorInfo extends IntentDecoratorInfo
+```
+
 Parameter type of the [@InsightIntentFunctionMethod](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod) decorator. All properties inherit from [IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intentdecoratorinfo-i.md).
 
 **Inheritance/Implementation:** FunctionIntentDecoratorInfo extends [IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intentdecoratorinfo-i.md)

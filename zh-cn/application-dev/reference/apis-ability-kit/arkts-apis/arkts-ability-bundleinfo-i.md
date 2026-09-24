@@ -1,5 +1,9 @@
 # BundleInfo
 
+```TypeScript
+export interface BundleInfo
+```
+
 应用包信息。
 
 **起始版本：** 9

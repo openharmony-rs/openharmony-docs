@@ -1,5 +1,9 @@
 # UidInfo（系统接口）
 
+```TypeScript
+export interface UidInfo
+```
+
 查询应用历史流量参数信息。
 
 **起始版本：** 10

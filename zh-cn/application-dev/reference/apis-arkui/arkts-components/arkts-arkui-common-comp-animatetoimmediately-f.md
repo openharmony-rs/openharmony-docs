@@ -20,5 +20,5 @@ declare function animateToImmediately(value: AnimateParam, event: () => void): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [AnimateParam](arkts-arkui-animateparam-i.md) | 是 | 设置动画效果相关参数，动画参数将作用于event闭包函数中状态变化产生的过渡动效。各属性的取值范围及含义详见[AnimateParam](arkts-arkui-animateparam-i.md)。animateToImmediately接口对AnimateParam各属性的使用与[animateTo](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)一致，但仅支持渲染层上的属性动画，无法用于UI侧的逐帧动画。 |
+| value | [AnimateParam](arkts-arkui-common-comp-animateparam-i.md) | 是 | 设置动画效果相关参数，动画参数将作用于event闭包函数中状态变化产生的过渡动效。各属性的取值范围及含义详见[AnimateParam](arkts-arkui-common-comp-animateparam-i.md)。animateToImmediately接口对AnimateParam各属性的使用与[animateTo](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)一致，但仅支持渲染层上的属性动画，无法用于UI侧的逐帧动画。 |
 | event | () =&gt; void | 是 | 指定显式动效的闭包函数，闭包中仅支持渲染层上的属性动画相关的状态变化，无法用于UI侧的逐帧动画。在闭包函数中导致的状态变化系统会自动插入过渡动画，动画效果由value参数控制。务必确保调用时所有涉及动画的属性值已正确设置，否则动画开始的少量帧可能出现渲染异常。 |

@@ -1,5 +1,9 @@
 # Button
 
+```TypeScript
+interface Button
+```
+
 Describes the menu item button in the action menu.
 
 **Since:** 9
@@ -23,6 +27,8 @@ Text color of the button.
 **Type:** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -57,6 +63,8 @@ Button text.
 **Type:** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

@@ -57,22 +57,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let date = new Date(); 
-try {
-  systemTime.setDate(date).then(() => {
-    console.info(`Succeeded in setting date.`);
-  }).catch((error: BusinessError) => {
-    console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
-  });
-} catch(e) {
-  let error = e as BusinessError;
-  console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
-}
-```
-
+<a id="setdate-1"></a>
 
 ## setDate
 
@@ -112,4 +98,18 @@ Sets the system date. This API uses a promise to return the result.
 
 **Examples**
 
-See [setDate](#setdate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let date = new Date(); 
+try {
+  systemTime.setDate(date).then(() => {
+    console.info(`Succeeded in setting date.`);
+  }).catch((error: BusinessError) => {
+    console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
+}
+```

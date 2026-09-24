@@ -28,7 +28,7 @@ function isPointerVisible(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -61,6 +61,29 @@ struct Index {
 }
 ```
 
+
+<a id="ispointervisible-1"></a>
+
+## isPointerVisible
+
+```TypeScript
+function isPointerVisible(): Promise<boolean>
+```
+
+获取当前窗口的显示/隐藏状态，此状态反映的是多模进程对此窗口所在进程的光标显示/隐藏状态，并非真实的光标显示/隐藏情况，光标是否正确显示/隐藏还受渲染服务进程影响，使用Promise异步回调。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示鼠标光标为显示状态；返回false表示鼠标光标为隐藏状态。 |
+
+**示例**
+
 ```TypeScript
 import { pointer } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -87,26 +110,3 @@ struct Index {
   }
 }
 ```
-
-
-## isPointerVisible
-
-```TypeScript
-function isPointerVisible(): Promise<boolean>
-```
-
-获取当前窗口的显示/隐藏状态，此状态反映的是多模进程对此窗口所在进程的光标显示/隐藏状态，并非真实的光标显示/隐藏情况，光标是否正确显示/隐藏还受渲染服务进程影响，使用Promise异步回调。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示鼠标光标为显示状态；返回false表示鼠标光标为隐藏状态。 |
-
-**示例**
-
-参见 isPointerVisible

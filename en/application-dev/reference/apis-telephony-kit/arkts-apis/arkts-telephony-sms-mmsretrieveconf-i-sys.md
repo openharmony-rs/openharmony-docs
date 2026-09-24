@@ -1,5 +1,9 @@
 # MmsRetrieveConf (System API)
 
+```TypeScript
+export interface MmsRetrieveConf
+```
+
 Defines the MMS message retrieval configuration.
 
 **Since:** 8

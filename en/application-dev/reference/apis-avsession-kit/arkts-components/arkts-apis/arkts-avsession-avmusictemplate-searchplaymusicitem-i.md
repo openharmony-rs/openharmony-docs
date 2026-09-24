@@ -1,5 +1,9 @@
 # SearchPlayMusicItem
 
+```TypeScript
+interface SearchPlayMusicItem
+```
+
 The definition of SearchPlayMusicItem.
 
 @interface SearchPlayMusicItem

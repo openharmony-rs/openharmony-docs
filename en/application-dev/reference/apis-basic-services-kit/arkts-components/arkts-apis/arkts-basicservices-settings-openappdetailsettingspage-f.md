@@ -36,16 +36,3 @@ Open the app detail settings page.
 | [16900020](../errorcode-settings.md#16900020-failed-to-open-the-settings-page) | Failed to open the settings page via redirection. |
 
 **Examples**
-
-```TypeScript
-import { settings } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  settings.openAppDetailSettingsPage(context, 'com.example');
-} catch (err) {
-  console.error(`Failed to open the app detail settings page. code: ${err?.code}, message: ${err?.message}`);
-}
-```

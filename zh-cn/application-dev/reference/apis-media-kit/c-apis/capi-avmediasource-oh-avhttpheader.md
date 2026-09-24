@@ -8,6 +8,8 @@ typedef struct OH_AVHttpHeader OH_AVHttpHeader
 
 声明HTTP头部类型。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **相关模块：** [AVMediaSource](capi-avmediasource.md)

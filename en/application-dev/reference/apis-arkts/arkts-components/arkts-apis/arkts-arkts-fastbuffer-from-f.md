@@ -42,44 +42,8 @@ console.info(buf.toString('hex'));
 // Output: 627566666572
 ```
 
-```TypeScript
-import { fastbuffer } from '@kit.ArkTS';
 
-let ab = new ArrayBuffer(10);
-let buf = fastbuffer.from(ab, 0, 2);
-console.info(buf.length.toString());
-// Output: 2
-```
-
-```TypeScript
-import { fastbuffer } from '@kit.ArkTS';
-
-// Create a FastBuffer object of the FastBuffer type.
-let buf1 = fastbuffer.from('buffer');
-let buf2 = fastbuffer.from(buf1);
-console.info(buf2.toString());
-// Output: buffer
-
-// Create a FastBuffer object of the Uint8Array type to ensure memory sharing between objects.
-let uint8Array = new Uint8Array(10);
-let buf3 = fastbuffer.from(uint8Array);
-buf3.fill(1)
-console.info("uint8Array:", uint8Array)
-// Output: 1,1,1,1,1,1,1,1,1,1
-```
-
-```TypeScript
-import { fastbuffer } from '@kit.ArkTS';
-
-let buf1 = fastbuffer.from('this is a test');
-let buf2 = fastbuffer.from('7468697320697320612074c3a97374', 'hex');
-
-console.info(buf1.toString());
-// Output: this is a test
-console.info(buf2.toString());
-// Output: this is a tést
-```
-
+<a id="from-1"></a>
 
 ## from
 
@@ -118,8 +82,17 @@ This creates a view of the ArrayBuffer without copying the underlying memory.
 
 **Examples**
 
-See [from](#from)
+```TypeScript
+import { fastbuffer } from '@kit.ArkTS';
 
+let ab = new ArrayBuffer(10);
+let buf = fastbuffer.from(ab, 0, 2);
+console.info(buf.length.toString());
+// Output: 2
+```
+
+
+<a id="from-2"></a>
 
 ## from
 
@@ -155,8 +128,25 @@ Copies the passed buffer data onto a new FastBuffer instance.
 
 **Examples**
 
-See [from](#from)
+```TypeScript
+import { fastbuffer } from '@kit.ArkTS';
 
+// Create a FastBuffer object of the FastBuffer type.
+let buf1 = fastbuffer.from('buffer');
+let buf2 = fastbuffer.from(buf1);
+console.info(buf2.toString());
+// Output: buffer
+
+// Create a FastBuffer object of the Uint8Array type to ensure memory sharing between objects.
+let uint8Array = new Uint8Array(10);
+let buf3 = fastbuffer.from(uint8Array);
+buf3.fill(1)
+console.info("uint8Array:", uint8Array)
+// Output: 1,1,1,1,1,1,1,1,1,1
+```
+
+
+<a id="from-3"></a>
 
 ## from
 
@@ -187,4 +177,14 @@ Creates a new FastBuffer containing string. The encoding parameter identifies th
 
 **Examples**
 
-See [from](#from)
+```TypeScript
+import { fastbuffer } from '@kit.ArkTS';
+
+let buf1 = fastbuffer.from('this is a test');
+let buf2 = fastbuffer.from('7468697320697320612074c3a97374', 'hex');
+
+console.info(buf1.toString());
+// Output: this is a test
+console.info(buf2.toString());
+// Output: this is a tést
+```

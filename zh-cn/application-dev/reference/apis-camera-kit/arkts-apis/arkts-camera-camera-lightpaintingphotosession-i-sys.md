@@ -1,5 +1,9 @@
 # LightPaintingPhotoSession（系统接口）
 
+```TypeScript
+interface LightPaintingPhotoSession extends Session, Flash, Focus, Zoom, ColorEffect
+```
+
 LightPaintingPhotoSession extends Session, Flash, Focus, Zoom, ColorEffect Implements a light painting photo session, which sets the parameters of the light painting photo mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md).
 
 **继承/实现关系：** LightPaintingPhotoSession extends [Session](arkts-camera-camera-session-i.md), [Flash](arkts-camera-camera-flash-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->
@@ -40,7 +44,7 @@ Obtains the type of light painting shutter mode in use.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 **示例**
@@ -76,7 +80,7 @@ Obtains the supported types of light painting shutter mode.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 **示例**
@@ -113,7 +117,15 @@ Unsubscribes from HighResolutionPhotoSession error events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterSessionError(lightPaintingPhotoSession: camera.LightPaintingPhotoSession): void {
+  lightPaintingPhotoSession.off('error');
+}
+```
 
 ## off('focusStateChange')
 
@@ -140,7 +152,15 @@ Unsubscribes from focus state change events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterFocusStateChange(lightPaintingPhotoSession: camera.LightPaintingPhotoSession): void {
+  lightPaintingPhotoSession.off('focusStateChange');
+}
+```
 
 ## off('smoothZoomInfoAvailable')
 
@@ -167,7 +187,15 @@ Unsubscribes from smooth zoom state change events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterSmoothZoomInfo(lightPaintingPhotoSession: camera.LightPaintingPhotoSession): void {
+  lightPaintingPhotoSession.off('smoothZoomInfoAvailable');
+}
+```
 
 ## on('error')
 
@@ -194,7 +222,21 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`LightPaintingPhotoSession error code: ${err.code}`);
+}
+
+function registerSessionError(lightPaintingPhotoSession: camera.LightPaintingPhotoSession): void {
+  lightPaintingPhotoSession.on('error', callback);
+}
+```
 
 ## on('focusStateChange')
 
@@ -221,7 +263,25 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, focusState: camera.FocusState): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`Focus state: ${focusState}`);
+}
+
+function registerFocusStateChange(lightPaintingPhotoSession: camera.LightPaintingPhotoSession): void {
+  lightPaintingPhotoSession.on('focusStateChange', callback);
+}
+```
 
 ## on('smoothZoomInfoAvailable')
 
@@ -248,7 +308,25 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, smoothZoomInfo: camera.SmoothZoomInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`The duration of smooth zoom: ${smoothZoomInfo.duration}`);
+}
+
+function registerSmoothZoomInfo(lightPaintingPhotoSession: camera.LightPaintingPhotoSession): void {
+  lightPaintingPhotoSession.on('smoothZoomInfoAvailable', callback);
+}
+```
 
 ## setLightPaintingType
 
@@ -274,7 +352,7 @@ Sets the type of light painting shutter mode.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 

@@ -1,5 +1,9 @@
 # GetPropertyType (System API)
 
+```TypeScript
+enum GetPropertyType
+```
+
 Enumerates the types of properties to obtain.
 
 **Since:** 8

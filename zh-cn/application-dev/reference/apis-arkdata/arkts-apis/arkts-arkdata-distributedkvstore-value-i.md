@@ -1,5 +1,9 @@
 # Value
 
+```TypeScript
+interface Value
+```
+
 存储在数据库中的值对象。
 
 **起始版本：** 9
@@ -31,12 +35,12 @@ type: ValueType
 ## value
 
 ```TypeScript
-value: Uint8Array | string | number | number | boolean
+value: Uint8Array | string | number | boolean
 ```
 
 键值对中的值。Uint8Array、string类型的长度范围为0-[MAX_VALUE_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md)，number和boolean类型的取值范围由其自身类型决定。
 
-**类型：** Uint8Array &#124; string &#124; number &#124; number &#124; boolean
+**类型：** Uint8Array &#124; string &#124; number &#124; boolean
 
 **起始版本：** 9
 

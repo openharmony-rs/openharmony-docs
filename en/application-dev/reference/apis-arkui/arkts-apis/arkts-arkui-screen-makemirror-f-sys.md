@@ -55,20 +55,8 @@ screen.makeMirror(mainScreenId, mirrorScreenIds, (err: BusinessError, data: numb
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// Obtain the screen ID using getAllScreens().
-let mainScreenId: number = 0; // Main screen ID.
-let mirrorScreenIds: Array<number> = [1, 2, 3]; // ID array of mirrored screens.
-// Set the screen to mirror mode.
-screen.makeMirror(mainScreenId, mirrorScreenIds).then((data: number) => {
-  console.info(`Succeeded in setting screen mirroring. Data: ${data}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set screen mirroring. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="makemirror-1"></a>
 
 ## makeMirror
 
@@ -107,4 +95,16 @@ Sets the screen to mirror mode. This API uses a promise to return the result.
 
 **Examples**
 
-See [makeMirror](#makemirror)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain the screen ID using getAllScreens().
+let mainScreenId: number = 0; // Main screen ID.
+let mirrorScreenIds: Array<number> = [1, 2, 3]; // ID array of mirrored screens.
+// Set the screen to mirror mode.
+screen.makeMirror(mainScreenId, mirrorScreenIds).then((data: number) => {
+  console.info(`Succeeded in setting screen mirroring. Data: ${data}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set screen mirroring. Code: ${err.code}, message: ${err.message}`);
+});
+```

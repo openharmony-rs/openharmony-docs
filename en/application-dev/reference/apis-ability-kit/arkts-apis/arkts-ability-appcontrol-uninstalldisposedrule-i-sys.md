@@ -1,5 +1,9 @@
 # UninstallDisposedRule (System API)
 
+```TypeScript
+export interface UninstallDisposedRule
+```
+
 Describes an uninstallation disposed rule.
 
 **Since:** 15

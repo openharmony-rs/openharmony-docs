@@ -1,5 +1,9 @@
 # WindowAnimationTarget (System API)
 
+```TypeScript
+export interface WindowAnimationTarget
+```
+
 Window animation target.
 
 @interface WindowAnimationTarget

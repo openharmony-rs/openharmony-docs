@@ -8,6 +8,8 @@ typedef struct UsbRequestPipe {...} __attribute__((aligned(8))) UsbRequestPipe
 
 Defines a USB request pipe.
 
+**System capability**: SystemCapability.Driver.USB.Extension
+
 **Since**: 10
 
 **Related module**: [UsbDdk](capi-usbddk.md)

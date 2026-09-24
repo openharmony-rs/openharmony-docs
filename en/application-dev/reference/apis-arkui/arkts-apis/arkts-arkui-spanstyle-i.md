@@ -1,5 +1,9 @@
 # SpanStyle
 
+```TypeScript
+declare interface SpanStyle
+```
+
 Describes the span style.
 
 **Since:** 12

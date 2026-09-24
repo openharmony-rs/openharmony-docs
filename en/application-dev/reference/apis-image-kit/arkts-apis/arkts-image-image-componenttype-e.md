@@ -1,5 +1,9 @@
 # ComponentType
 
+```TypeScript
+enum ComponentType
+```
+
 Enumerates the color component types of images.
 
 **Since:** 9

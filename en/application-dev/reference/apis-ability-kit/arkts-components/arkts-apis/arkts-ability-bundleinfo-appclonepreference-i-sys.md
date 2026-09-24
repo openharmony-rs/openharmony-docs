@@ -1,5 +1,9 @@
 # AppClonePreference (System API)
 
+```TypeScript
+export interface AppClonePreference
+```
+
 Defines the application clone preference configuration.
 
 **Since:** 26.0.0

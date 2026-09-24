@@ -1,5 +1,9 @@
 # SystemMemInfo
 
+```TypeScript
+interface SystemMemInfo
+```
+
 Describes the system memory information, including the total memory, free memory, and available memory.
 
 **Since:** 12

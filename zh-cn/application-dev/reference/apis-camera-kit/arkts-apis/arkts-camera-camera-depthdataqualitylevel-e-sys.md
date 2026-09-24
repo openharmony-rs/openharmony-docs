@@ -1,5 +1,9 @@
 # DepthDataQualityLevel（系统接口）
 
+```TypeScript
+enum DepthDataQualityLevel
+```
+
 Enumerates the quality levels of depth data.
 
 **起始版本：** 13

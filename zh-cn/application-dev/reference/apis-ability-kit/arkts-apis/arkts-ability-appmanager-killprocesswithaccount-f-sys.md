@@ -45,9 +45,9 @@ function killProcessWithAccount(bundleName: string, accountId: number): Promise<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
@@ -72,46 +72,8 @@ try {
 }
 ```
 
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = 'bundleName';
-let accountId = 0;
-let isClearPageStack = false;
-let appIndex = 1;
-
-try {
-  appManager.killProcessWithAccount(bundleName, accountId, isClearPageStack, appIndex).then(() => {
-    console.info('killProcessWithAccount success');
-  }).catch((err: BusinessError) => {
-    console.error(`killProcessWithAccount fail, err: ${JSON.stringify(err)}`);
-  });
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
-}
-```
-
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'bundleName';
-let accountId = 0;
-
-function killProcessWithAccountCallback(err: BusinessError) {
-  if (err) {
-    console.error(`killProcessWithAccountCallback fail, err: ${JSON.stringify(err)}`);
-  } else {
-    console.info('killProcessWithAccountCallback success.');
-  }
-}
-
-appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountCallback);
-```
-
+<a id="killprocesswithaccount-1"></a>
 
 ## killProcessWithAccount
 
@@ -153,15 +115,37 @@ function killProcessWithAccount(bundleName: string, accountId: number, clearPage
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter is not valid parameter. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | If the input parameter is not valid parameter. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
 
-参见 [killProcessWithAccount](#killprocesswithaccount)
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let bundleName = 'bundleName';
+let accountId = 0;
+let isClearPageStack = false;
+let appIndex = 1;
+
+try {
+  appManager.killProcessWithAccount(bundleName, accountId, isClearPageStack, appIndex).then(() => {
+    console.info('killProcessWithAccount success');
+  }).catch((err: BusinessError) => {
+    console.error(`killProcessWithAccount fail, err: ${JSON.stringify(err)}`);
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
+
+<a id="killprocesswithaccount-2"></a>
 
 ## killProcessWithAccount
 
@@ -197,11 +181,27 @@ function killProcessWithAccount(bundleName: string, accountId: number, callback:
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
 
-参见 [killProcessWithAccount](#killprocesswithaccount)
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'bundleName';
+let accountId = 0;
+
+function killProcessWithAccountCallback(err: BusinessError) {
+  if (err) {
+    console.error(`killProcessWithAccountCallback fail, err: ${JSON.stringify(err)}`);
+  } else {
+    console.info('killProcessWithAccountCallback success.');
+  }
+}
+
+appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountCallback);
+```

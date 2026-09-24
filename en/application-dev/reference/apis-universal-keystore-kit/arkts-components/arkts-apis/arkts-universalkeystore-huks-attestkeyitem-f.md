@@ -148,6 +148,65 @@ async function generateKeyThenAttestKey() {
 }
 ```
 
+
+<a id="attestkeyitem-1"></a>
+
+## attestKeyItem
+
+```TypeScript
+function attestKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksReturnResult>
+```
+
+Attests a key. This API uses a promise to return the result.
+
+&lt;!--RP6--&gt;  
+> **NOTE:** 
+> 
+> The certificate chain generated during non-anonymous certificate key attestation may contain the device
+> identifier (confirm the specific implementation with the vendor). If the device identifier is included, you can
+> determine its use, retention, and destruction. It is recommended that you describe the use purpose, retention
+> policy, and destruction method in the privacy statement. &lt;!--RP6End--&gt;
+
+**Since:** 9
+
+**Required permissions:** 
+- API version 26 and later: ohos.permission.ATTEST_KEY or ohos.permission.ENTERPRISE_ATTEST_KEY
+- API version 11 and later: ohos.permission.ATTEST_KEY
+- API versions 9 to 10: N/A
+
+**System capability:** SystemCapability.Security.Huks.Extension
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| keyAlias | string | Yes | Alias of the key. The certificate to be obtained stores the key. |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | Yes | Parameters and data required for obtaining the certificate. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[HuksReturnResult](arkts-universalkeystore-huks-huksreturnresult-i.md)&gt; | Promise that returns the operation result. When the call is successful, the **certChains** member of **HuksReturnResult** is the obtained certificate chain. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed: call the attestKeyItem API, missing Permission: ohos.permission.ATTEST_KEY |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [12000001](../errorcode-huks.md#12000001-feature-not-supported) | algorithm mode is not supported |
+| [12000004](../errorcode-huks.md#12000004-file-error) | operating file failed |
+| [12000005](../errorcode-huks.md#12000005-ipc-error) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-algorithm-library-operation-failed) | error occurred in crypto engine |
+| [12000011](../errorcode-huks.md#12000011-the-entity-does-not-exist) | queried entity does not exist |
+| [12000012](../errorcode-huks.md#12000012-external-error) | Device environment or input parameter abnormal |
+| [12000014](../errorcode-huks.md#12000014-insufficient-memory) | memory is insufficient |
+| [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | the group id specified by the access group tag is invalid<br>**Applicable version:** 23 and later |
+
+**Examples**
+
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
 
@@ -236,62 +295,3 @@ async function attestKey() {
     });
 }
 ```
-
-
-## attestKeyItem
-
-```TypeScript
-function attestKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksReturnResult>
-```
-
-Attests a key. This API uses a promise to return the result.
-
-&lt;!--RP6--&gt;  
-> **NOTE:** 
-> 
-> The certificate chain generated during non-anonymous certificate key attestation may contain the device
-> identifier (confirm the specific implementation with the vendor). If the device identifier is included, you can
-> determine its use, retention, and destruction. It is recommended that you describe the use purpose, retention
-> policy, and destruction method in the privacy statement. &lt;!--RP6End--&gt;
-
-**Since:** 9
-
-**Required permissions:** 
-- API version 26 and later: ohos.permission.ATTEST_KEY or ohos.permission.ENTERPRISE_ATTEST_KEY
-- API version 11 and later: ohos.permission.ATTEST_KEY
-- API versions 9 to 10: N/A
-
-**System capability:** SystemCapability.Security.Huks.Extension
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| keyAlias | string | Yes | Alias of the key. The certificate to be obtained stores the key. |
-| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | Yes | Parameters and data required for obtaining the certificate. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[HuksReturnResult](arkts-universalkeystore-huks-huksreturnresult-i.md)&gt; | Promise that returns the operation result. When the call is successful, the **certChains** member of **HuksReturnResult** is the obtained certificate chain. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed: call the attestKeyItem API, missing Permission: ohos.permission.ATTEST_KEY |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
-| [12000001](../errorcode-huks.md#12000001-feature-not-supported) | algorithm mode is not supported |
-| [12000004](../errorcode-huks.md#12000004-file-error) | operating file failed |
-| [12000005](../errorcode-huks.md#12000005-ipc-error) | IPC communication failed |
-| [12000006](../errorcode-huks.md#12000006-algorithm-library-operation-failed) | error occurred in crypto engine |
-| [12000011](../errorcode-huks.md#12000011-the-entity-does-not-exist) | queried entity does not exist |
-| [12000012](../errorcode-huks.md#12000012-external-error) | Device environment or input parameter abnormal |
-| [12000014](../errorcode-huks.md#12000014-insufficient-memory) | memory is insufficient |
-| [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | the group id specified by the access group tag is invalid<br>**Applicable version:** 23 and later |
-
-**Examples**
-
-See [attestKeyItem](#attestkeyitem)

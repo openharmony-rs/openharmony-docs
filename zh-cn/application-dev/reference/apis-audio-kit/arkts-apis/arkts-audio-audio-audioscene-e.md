@@ -1,5 +1,9 @@
 # AudioScene
 
+```TypeScript
+enum AudioScene
+```
+
 表示音频场景的枚举。
 
 **起始版本：** 8

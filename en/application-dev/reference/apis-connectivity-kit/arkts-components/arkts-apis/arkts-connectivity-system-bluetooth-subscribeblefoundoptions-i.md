@@ -1,5 +1,9 @@
 # SubscribeBLEFoundOptions
 
+```TypeScript
+export interface SubscribeBLEFoundOptions
+```
+
 **Since:** 6
 
 **System capability:** SystemCapability.Communication.Bluetooth.Lite

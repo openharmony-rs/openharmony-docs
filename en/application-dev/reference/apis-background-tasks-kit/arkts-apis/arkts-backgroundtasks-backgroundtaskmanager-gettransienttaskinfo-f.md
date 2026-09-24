@@ -29,7 +29,7 @@ Obtains all transient task information, including the remaining quota of the cur
 | Error Code ID | Error Message |
 | --- | --- |
 | [9900001](../errorcode-backgroundTaskMgr.md#9900001-caller-information-verification-failure-for-a-transient-task) | Caller information verification failed for a transient task. |
-| [9900003](../errorcode-backgroundTaskMgr.md#9900003-parcel-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
+| [9900003](../errorcode-backgroundTaskMgr.md#9900003-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
 | [9900004](../errorcode-backgroundTaskMgr.md#9900004-system-service-failure) | System service operation failed. |
 
 **Examples**

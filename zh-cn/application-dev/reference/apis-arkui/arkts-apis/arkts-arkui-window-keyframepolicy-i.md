@@ -1,5 +1,9 @@
 # KeyFramePolicy
 
+```TypeScript
+interface KeyFramePolicy
+```
+
 关键帧的策略配置。
 
 **起始版本：** 20

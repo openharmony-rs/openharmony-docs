@@ -29,22 +29,10 @@ function isDefaultApplication(type: string, callback: AsyncCallback<boolean>) : 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
-
-```TypeScript
-import { defaultAppManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-defaultAppManager.isDefaultApplication(defaultAppManager.ApplicationType.BROWSER)
-  .then((data) => {
-    console.info('Operation successful. IsDefaultApplication ? ' + JSON.stringify(data));
-  }).catch((error: BusinessError) => {
-  console.error('Operation failed. Cause: ' + JSON.stringify(error));
-});
-```
 
 ```TypeScript
 import { defaultAppManager } from '@kit.AbilityKit';
@@ -59,6 +47,8 @@ defaultAppManager.isDefaultApplication(defaultAppManager.ApplicationType.BROWSER
 });
 ```
 
+
+<a id="isdefaultapplication-1"></a>
 
 ## isDefaultApplication
 
@@ -88,9 +78,19 @@ function isDefaultApplication(type: string) : Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 
-参见 isDefaultApplication
+```TypeScript
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+defaultAppManager.isDefaultApplication(defaultAppManager.ApplicationType.BROWSER)
+  .then((data) => {
+    console.info('Operation successful. IsDefaultApplication ? ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+});
+```

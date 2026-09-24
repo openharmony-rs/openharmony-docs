@@ -1,5 +1,9 @@
 # MetadataObjectType
 
+```TypeScript
+enum MetadataObjectType
+```
+
 Enumerates the types of metadata objects used for camera detection.
 
 **Since:** 10

@@ -30,7 +30,7 @@ function initializeEnvironment(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该能力。由于设备能力受限，initializeEnvironment函数无法正常工作。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 不支持该能力。由于设备能力受限，initializeEnvironment函数无法正常工作。 |
 | [29200002](../errorcode-videoprocessingengine.md#29200002-初始化失败) | 图像处理全局环境初始化失败，例如GPU环境初始化失败。 |
 | [29200006](../errorcode-videoprocessingengine.md#29200006-不被允许的操作) | 不允许执行该操作，可能是由于当前状态不正确。 |
 | [29200007](../errorcode-videoprocessingengine.md#29200007-内存不足) | 内存不足。 |

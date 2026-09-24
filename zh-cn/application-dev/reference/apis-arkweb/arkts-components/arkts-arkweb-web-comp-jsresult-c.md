@@ -1,0 +1,73 @@
+# JsResult
+
+```TypeScript
+declare class JsResult
+```
+
+JsResult是Web组件在处理JavaScript弹窗事件时返回的结果处理对象，适用于开发者拦截并自定义处理`window.alert`、`window.confirm`、`window.prompt`等弹窗场景。开发者可在[onAlert](arkts-arkweb-web-comp-attribute.md#onalert)、[onConfirm](arkts-arkweb-web-comp-attribute.md#onconfirm)或[onPrompt](arkts-arkweb-web-comp-attribute.md#onprompt)等事件回调中，通过该对象向Web组件反馈用户的确认、取消或输入内容等操作结果，从而控制弹窗的后续行为。
+
+**起始版本：** 8
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## constructor
+
+```TypeScript
+constructor()
+```
+
+JsResult的构造函数。用于处理JavaScript弹窗事件。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## handleCancel
+
+```TypeScript
+handleCancel(): void
+```
+
+通知Web组件用户取消弹窗操作。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## handleConfirm
+
+```TypeScript
+handleConfirm(): void
+```
+
+通知Web组件用户确认弹窗操作。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## handlePromptConfirm
+
+```TypeScript
+handlePromptConfirm(result: string): void
+```
+
+通知Web组件用户确认弹窗操作并传递对话框内容。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| result | string | 是 | 用户输入的对话框内容。 |

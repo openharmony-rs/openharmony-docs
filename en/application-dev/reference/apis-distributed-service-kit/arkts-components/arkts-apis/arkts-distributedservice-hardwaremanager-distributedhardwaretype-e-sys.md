@@ -1,5 +1,9 @@
 # DistributedHardwareType (System API)
 
+```TypeScript
+enum DistributedHardwareType
+```
+
 Enumerates the types of the distributed hardware.
 
 **Since:** 11

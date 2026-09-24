@@ -1,5 +1,9 @@
 # WindowAnimationCurve
 
+```TypeScript
+enum WindowAnimationCurve
+```
+
 窗口动画曲线类型。
 
 **起始版本：** 20

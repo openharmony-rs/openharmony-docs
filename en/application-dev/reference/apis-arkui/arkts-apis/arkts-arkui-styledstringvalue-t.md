@@ -1,9 +1,7 @@
 # StyledStringValue
 
 ```TypeScript
-declare type StyledStringValue = TextStyle | DecorationStyle | BaselineOffsetStyle | LetterSpacingStyle |
-TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightStyle | UrlStyle | CustomSpan |
-UserDataSpan | BackgroundColorStyle | LineSpacingStyle
+declare type StyledStringValue = TextStyle | DecorationStyle | BaselineOffsetStyle | LetterSpacingStyleTextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightStyle | UrlStyle | CustomSpanUserDataSpan | BackgroundColorStyle | LineSpacingStyle
 ```
 
 Defines the style for a styled string.

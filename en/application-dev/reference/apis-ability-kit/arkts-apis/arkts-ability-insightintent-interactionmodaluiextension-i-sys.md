@@ -1,10 +1,14 @@
 # InteractionModalUIExtension (System API)
 
+```TypeScript
+interface InteractionModalUIExtension extends InteractionUI
+```
+
 Defines the information of the modal UIExtension to be displayed as the interaction UI after the current intent execution completes. Does not support distributed scenarios.
 
 **Inheritance/Implementation:** InteractionModalUIExtension extends [InteractionUI](arkts-ability-insightintent-interactionui-i-sys.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -26,7 +30,7 @@ Ability name of the target UIExtension ability.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -44,7 +48,7 @@ Bundle name of the target UIExtension ability.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -62,7 +66,7 @@ Type of the interaction UI. The value is fixed to 'MODAL_UIEXTENSION'.
 
 **Type:** 'MODAL_UIEXTENSION'
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -80,7 +84,7 @@ Module name of the target UIExtension ability.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -98,7 +102,7 @@ Parameters passed to the target UIExtension ability.
 
 **Type:** Record&lt;string, Object&gt;
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -116,7 +120,7 @@ Type of the UIExtension ability.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -134,7 +138,7 @@ URI information passed to the target UIExtension ability for data processing.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

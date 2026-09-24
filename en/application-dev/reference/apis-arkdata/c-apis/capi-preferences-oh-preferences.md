@@ -8,6 +8,8 @@ typedef struct OH_Preferences OH_Preferences
 
 Represents a **Preferences** object.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 13
 
 **Related module**: [Preferences](capi-preferences.md)

@@ -1,5 +1,9 @@
 # RootIterator（系统接口）
 
+```TypeScript
+interface RootIterator
+```
+
 表示设备根目录的迭代器对象。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # DistributedInfo (System API)
 
+```TypeScript
+interface DistributedInfo
+```
+
 Manages the distributed info of the table.
 
 **Since:** 24

@@ -1,5 +1,9 @@
 # MarkType（系统接口）
 
+```TypeScript
+export enum MarkType
+```
+
 号码标记的类型。
 
 **起始版本：** 12

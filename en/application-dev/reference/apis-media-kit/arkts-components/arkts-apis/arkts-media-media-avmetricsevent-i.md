@@ -1,5 +1,9 @@
 # AVMetricsEvent
 
+```TypeScript
+interface AVMetricsEvent
+```
+
 Describes the information of an Metrics Event.
 
 **Since:** 23

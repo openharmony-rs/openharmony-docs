@@ -55,16 +55,8 @@ call.enableImsSwitch(0, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.enableImsSwitch(0).then(() => {
-    console.info(`enableImsSwitch success.`);
-}).catch((err: BusinessError) => {
-    console.error(`enableImsSwitch fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="enableimsswitch-1"></a>
 
 ## enableImsSwitch
 
@@ -108,4 +100,12 @@ Enables the IMS service. This API uses a promise to return the result.
 
 **Examples**
 
-See [enableImsSwitch](#enableimsswitch)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.enableImsSwitch(0).then(() => {
+    console.info(`enableImsSwitch success.`);
+}).catch((err: BusinessError) => {
+    console.error(`enableImsSwitch fail, promise: err->${JSON.stringify(err)}`);
+});
+```

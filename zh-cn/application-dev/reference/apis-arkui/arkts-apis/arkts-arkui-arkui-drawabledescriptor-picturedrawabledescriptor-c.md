@@ -1,5 +1,9 @@
 # PictureDrawableDescriptor
 
+```TypeScript
+export class PictureDrawableDescriptor extends DrawableDescriptor
+```
+
 支持通过传入Picture对象创建PictureDrawableDescriptor对象。继承自[DrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-drawabledescriptorloadedresult-i.md)。
 
 **继承/实现关系：** PictureDrawableDescriptor extends [DrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md)
@@ -59,66 +63,3 @@ setHdrComposition(config: HdrCompositionConfig): void
 | config | [HdrCompositionConfig](arkts-arkui-arkui-drawabledescriptor-hdrcompositionconfig-i.md) | 是 | HDR合成配置。 |
 
 **示例**
-
-```TypeScript
-import { PictureDrawableDescriptor } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
-
-
-@Entry
-@Component
-struct PictureDrawableDescriptorInvalidateTest {
-  @State drawable: PictureDrawableDescriptor | undefined = undefined;
-
-  async createPictureDrawableDescriptor() {
-    let resMgr = this.getUIContext().getHostContext()?.resourceManager
-    if (resMgr) {
-      try {
-        // $r('app.media.heic')需要替换为开发者所需的图像资源文件。
-        let uint8buffer = resMgr.getMediaContentSync($r('app.media.heic').id)
-        let imageSource = image.createImageSource(uint8buffer.buffer)
-        // 配置解码选项，请求解码GAINMAP和LHDR_GAINMAP辅助图用于HDR合成。
-        let options: image.DecodingOptionsForPicture = {
-          desiredAuxiliaryPictures: [image.AuxiliaryPictureType.GAINMAP, image.AuxiliaryPictureType.LHDR_GAINMAP],
-          desiredPixelFormat: image.PixelMapFormat.NV12
-        }
-        let picture = await imageSource.createPicture(options)
-        let drawable = new PictureDrawableDescriptor(picture)
-        imageSource.release()
-        this.drawable = drawable
-      } catch (error) {
-        console.error(`get media content failed`)
-      }
-    }
-  }
-
-  build() {
-    Column() {
-      Image(this.drawable)
-        .width(300)
-        .height(225)
-        .borderColor(Color.Red)
-        .borderWidth(1)
-
-      Button("创建PictureDrawableDescriptor对象").onClick((event: ClickEvent) => {
-        this.createPictureDrawableDescriptor()
-      })
-
-      Button("触发一次重建").onClick((event: ClickEvent) => {
-        // 设置HDR合成配置，指定合成矩形区域的位置和大小。
-        this.drawable?.setHdrComposition({
-          rect: {
-            x: 200,
-            y: 200,
-            width: 300,
-            height: 300
-          }
-        })
-        this.drawable?.invalidate()
-      })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```

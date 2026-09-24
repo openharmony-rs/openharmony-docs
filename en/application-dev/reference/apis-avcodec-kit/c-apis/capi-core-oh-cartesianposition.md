@@ -8,6 +8,8 @@ typedef struct OH_CartesianPosition {...} OH_CartesianPosition
 
 Represents a position in Cartesian coordinates.<br> Cartesian coordinates use x, y, and z axes to define a position in three-dimensional space.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 26.0.0
 
 **Related module**: [Core](capi-core.md)

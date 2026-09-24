@@ -8,6 +8,8 @@ typedef struct Rdb_ProgressObserver {...} Rdb_ProgressObserver
 
 The observer of progress.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 11
 
 **Related module**: [RDB](capi-rdb.md)

@@ -1,5 +1,9 @@
 # UserStatusFeature（系统接口）
 
+```TypeScript
+export enum UserStatusFeature
+```
+
 表示用户状态检测功能类型。
 
 **起始版本：** 26.0.0

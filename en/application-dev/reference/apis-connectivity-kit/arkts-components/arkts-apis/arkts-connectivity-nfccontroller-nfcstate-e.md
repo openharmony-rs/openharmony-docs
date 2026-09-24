@@ -1,5 +1,9 @@
 # NfcState
 
+```TypeScript
+enum NfcState
+```
+
 Enumerates the NFC states.
 
 **Since:** 7

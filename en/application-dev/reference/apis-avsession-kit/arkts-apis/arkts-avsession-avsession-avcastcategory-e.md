@@ -1,5 +1,9 @@
 # AVCastCategory
 
+```TypeScript
+enum AVCastCategory
+```
+
 cast category indicating different playback scenes
 
 **Since:** 10

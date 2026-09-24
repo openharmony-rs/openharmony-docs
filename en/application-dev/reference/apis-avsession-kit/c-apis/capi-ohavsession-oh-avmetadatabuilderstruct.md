@@ -8,6 +8,8 @@ typedef struct OH_AVMetadataBuilderStruct OH_AVMetadataBuilder
 
 Declaring the avmetadata builder. The instance of builder is used for creating avmetadata.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Related module**: [OHAVSession](capi-ohavsession.md)

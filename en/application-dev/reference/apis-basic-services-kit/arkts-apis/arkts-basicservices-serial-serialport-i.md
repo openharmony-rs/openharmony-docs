@@ -1,5 +1,9 @@
 # SerialPort
 
+```TypeScript
+interface SerialPort
+```
+
 Defines a serial port object, which provides information about the serial port device and the communication capability.
 
 **Since:** 26.0.0

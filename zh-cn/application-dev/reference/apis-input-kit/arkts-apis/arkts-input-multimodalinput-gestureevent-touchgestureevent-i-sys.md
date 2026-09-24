@@ -1,5 +1,9 @@
 # TouchGestureEvent（系统接口）
 
+```TypeScript
+export declare interface TouchGestureEvent
+```
+
 触摸屏手势事件。
 
 **起始版本：** 18

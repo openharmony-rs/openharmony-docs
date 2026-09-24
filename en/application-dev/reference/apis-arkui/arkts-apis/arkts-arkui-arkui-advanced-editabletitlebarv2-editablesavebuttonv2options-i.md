@@ -1,5 +1,9 @@
 # EditableSaveButtonV2Options
 
+```TypeScript
+export declare interface EditableSaveButtonV2Options
+```
+
 Indicates the options of the save button.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # PrintDocumentFormat
 
+```TypeScript
+enum PrintDocumentFormat
+```
+
 Enumerates the data formats.
 
 **Since:** 23

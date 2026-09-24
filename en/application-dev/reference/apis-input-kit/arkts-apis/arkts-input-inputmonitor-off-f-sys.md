@@ -37,6 +37,70 @@ Cancels listening for global touchscreen input events. This API uses an asynchro
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api.<br>**Applicable version:** 12 and later |
 
+**Examples**
+
+```TypeScript
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Disable listening for a single callback.
+          let callback = (touchEvent: TouchEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to Touch Events
+            inputMonitor.on('touch', callback);
+            // Unsubscribe from Touch Events
+            inputMonitor.off('touch', callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Cancel listening for all callbacks.
+          let callback = (touchEvent: TouchEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to Touch Events
+            inputMonitor.on('touch', callback);
+            // Unsubscribe from Touch Events
+            inputMonitor.off('touch');
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('mouse')
 
@@ -69,6 +133,70 @@ Disables listening for global mouse events. This API uses an asynchronous callba
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api.<br>**Applicable version:** 12 and later |
 
+**Examples**
+
+```TypeScript
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Disable listening for a single callback.
+          let callback = (mouseEvent: MouseEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to Mouse Events
+            inputMonitor.on('mouse', callback);
+            // Unsubscribe from Mouse Events
+            inputMonitor.off('mouse', callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Cancel listening for all callbacks.
+          let callback = (mouseEvent: MouseEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to Mouse Events
+            inputMonitor.on('mouse', callback);
+            // Unsubscribe from Mouse Events
+            inputMonitor.off('mouse');
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('pinch')
 
@@ -100,6 +228,70 @@ Disables listening for global touchpad pinch events. This API uses an asynchrono
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Disable listening for a single callback.
+          let callback = (pinchEvent: Pinch) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to Pinch Event
+            inputMonitor.on('pinch', callback);
+            // Unsubscribe from Pinch Event
+            inputMonitor.off('pinch', callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Cancel listening for all callbacks.
+          let callback = (pinchEvent: Pinch) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to Pinch Event
+            inputMonitor.on('pinch', callback);
+            // Unsubscribe from Pinch Event
+            inputMonitor.off('pinch');
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
 
 
 ## off('pinch')
@@ -134,6 +326,70 @@ Disables listening for global touchpad pinch events. This API uses an asynchrono
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Disable listening for a single callback.
+          let callback = (pinchEvent: Pinch) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to Pinch Event
+            inputMonitor.on('pinch', 2, callback);
+            // Unsubscribe from Pinch Event
+            inputMonitor.off('pinch', 2, callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Cancel listening for all callbacks.
+          let callback = (pinchEvent: Pinch) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
+            return false;
+          };
+          try {
+            // Number of fingers for pinch gesture monitoring: 2
+            inputMonitor.on('pinch', 2, callback);
+            // Unsubscribe from pinch events
+            inputMonitor.off('pinch', 2);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('rotate')
 
@@ -167,6 +423,70 @@ Disables listening for rotation events of the touchpad. This API uses an asynchr
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { inputMonitor, Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Disable listening for a single callback.
+          let callback = (rotateEvent: Rotate) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
+            return false;
+          };
+          try {
+            // Rotation gesture listening finger count 2
+            inputMonitor.on('rotate', 2, callback);
+            // Unsubscribe from rotation events
+            inputMonitor.off('rotate', 2, callback);
+            console.info(`Succeeded in turning off monitor.`); 
+          } catch (error) {
+            console.error(`Failed to cancel monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Cancel listening for all callbacks.
+          let callback = (rotateEvent: Rotate) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
+            return false;
+          };
+          try {
+            // Number of fingers for rotation gesture monitoring: 2
+            inputMonitor.on('rotate', 2, callback);
+            // Unsubscribe from rotation events
+            inputMonitor.off('rotate', 2);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('threeFingersSwipe')
 
@@ -198,6 +518,70 @@ Disables listening for three-finger swipe events. This API uses an asynchronous 
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Disable listening for a single callback.
+          let callback = (threeFingersSwipe: ThreeFingersSwipe) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to Three-Finger Swipe Event
+            inputMonitor.on('threeFingersSwipe', callback);
+            // Unsubscribe from Three-Finger Swipe Event
+            inputMonitor.off('threeFingersSwipe', callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Cancel listening for all callbacks.
+          let callback = (threeFingersSwipe: ThreeFingersSwipe) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to Three-Finger Swipe Events
+            inputMonitor.on('threeFingersSwipe', callback);
+            // Unsubscribe from Three-Finger Swipe Events
+            inputMonitor.off('threeFingersSwipe');
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
 
 
 ## off('fourFingersSwipe')
@@ -231,6 +615,70 @@ Disables listening for four-finger swipe events. This API uses an asynchronous c
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Disable listening for a single callback.
+          let callback = (fourFingersSwipe: FourFingersSwipe) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to Four-Finger Swipe Event
+            inputMonitor.on('fourFingersSwipe', callback);
+            // Unsubscribe from Four-Finger Swipe Event
+            inputMonitor.off('fourFingersSwipe', callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitoring four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Cancel listening for all callbacks.
+          let callback = (fourFingersSwipe: FourFingersSwipe) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to Four-Finger Swipe Event
+            inputMonitor.on('fourFingersSwipe', callback);
+            // Unsubscribe from Four-Finger Swipe Event
+            inputMonitor.off('fourFingersSwipe');
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitoring four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('threeFingersTap')
 
@@ -262,6 +710,70 @@ Disables listening for three-finger tap events. This API uses an asynchronous ca
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Disable listening for a single callback.
+          let callback = (threeFingersTap: ThreeFingersTap) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to three-finger tap event
+            inputMonitor.on('threeFingersTap', callback);
+            // Unsubscribe from three-finger tap event
+            inputMonitor.off('threeFingersTap', callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Cancel listening for all callbacks.
+          let callback = (threeFingersTap: ThreeFingersTap) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to three-finger tap event
+            inputMonitor.on('threeFingersTap', callback);
+            // Unsubscribe from three-finger tap event
+            inputMonitor.off('threeFingersTap');
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
 
 
 ## off('fingerprint')
@@ -295,6 +807,70 @@ Disables listening for fingerprint gesture input events. This API uses an asynch
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { inputMonitor, FingerprintEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Disable listening for a single callback.
+          let callback = (fingerprintEvent: FingerprintEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fingerprintEvent)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to Fingerprint Events
+            inputMonitor.on('fingerprint', callback);
+            // Unsubscribe from Fingerprint Events
+            inputMonitor.off('fingerprint', callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, FingerprintEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Cancel listening for all callbacks.
+          let callback = (fingerprintEvent: FingerprintEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fingerprintEvent)}.`);
+            return false;
+          };
+          try {
+            // Subscribe to Fingerprint Events
+            inputMonitor.on('fingerprint', callback);
+            // Unsubscribe from Fingerprint Events
+            inputMonitor.off('fingerprint');
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('swipeInward')
 
@@ -326,6 +902,70 @@ Cancels listening for inward swipe events. This API uses an asynchronous callbac
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
+
+**Examples**
+
+```TypeScript
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        // Disable listening for a single callback.
+        let callback = (swipeInward: SwipeInward) => {
+          console.info(`Succeeded in monitoring on ${JSON.stringify(swipeInward)}.`);
+          return false;
+        };
+        try {
+          // Subscribe to Swipe Inward Event
+          inputMonitor.on('swipeInward', callback);
+          // Unsubscribe from Swipe Inward Event
+          inputMonitor.off('swipeInward', callback);
+          console.info(`Succeeded in turning off monitor.`);
+        } catch (error) {
+          console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+        }
+      })
+  }
+}
+}
+```
+
+```TypeScript
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        // Cancel listening for all callbacks.
+        let callback = (swipeInward: SwipeInward) => {
+          console.info(`Succeeded in monitoring on ${JSON.stringify(swipeInward)}.`);
+          return false;
+        };
+        try {
+          // Subscribe to Swipe Inward Event
+          inputMonitor.on('swipeInward', callback);
+          // Unsubscribe from Swipe Inward Event
+          inputMonitor.off('swipeInward');
+          console.info(`Succeeded in turning off monitor.`);
+        } catch (error) {
+          console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+        }
+      })
+  }
+}
+}
+```
 
 
 ## off('touchscreenSwipe')
@@ -360,6 +1000,67 @@ Disables listening for touchscreen swipe events. This API uses an asynchronous c
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. 3.Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Disable listening for a single callback.
+          let callback = (event: TouchGestureEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+          };
+          let fingers: number = 4;
+          try {
+            // Subscribe to Touchscreen Swipe Events
+            inputMonitor.on('touchscreenSwipe', fingers, callback);
+            // Unsubscribe from Touchscreen Swipe Events
+            inputMonitor.off('touchscreenSwipe', fingers, callback);
+          } catch (error) {
+            console.error(`Failed to cancel monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Cancel listening for all callbacks.
+          let fingers: number = 4;
+          try {
+            // Subscribe to Touchscreen Swipe Events
+            inputMonitor.on('touchscreenSwipe', fingers, (event: TouchGestureEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            });
+            // Unsubscribe from Touchscreen Swipe Events
+            inputMonitor.off('touchscreenSwipe', fingers);
+          } catch (error) {
+            console.error(`Failed to monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('touchscreenPinch')
 
@@ -393,6 +1094,67 @@ Disables listening for touchscreen pinch events. This API uses an asynchronous c
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. 3.Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Disable listening for a single callback.
+          let callback = (event: TouchGestureEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+          };
+          let fingers: number = 4;
+          try {
+            // Subscribe to Touchscreen Pinch Event
+            inputMonitor.on('touchscreenPinch', fingers, callback);
+            // Unsubscribe from Touchscreen Pinch Event
+            inputMonitor.off('touchscreenPinch', fingers, callback);
+          } catch (error) {
+            console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Cancel listening for all callbacks.
+          let fingers: number = 4;
+          try {
+            // Subscribe to Touchscreen Pinch Event
+            inputMonitor.on('touchscreenPinch', fingers, (event: TouchGestureEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            });
+            // Unsubscribe from Touchscreen Pinch Event
+            inputMonitor.off('touchscreenPinch', fingers);
+          } catch (error) {
+            console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('keyPressed')
 
@@ -424,3 +1186,64 @@ Cancels listening for the press and release events of the specified key, which c
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Disable listening for a single callback.
+          try {
+            let callback = (event: KeyEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            };
+            let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            // Subscribe to Key Press Event
+            inputMonitor.on('keyPressed', keys, callback);
+            // Unsubscribe from Key Press Event
+            inputMonitor.off('keyPressed', callback);
+          } catch (error) {
+            console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Cancel listening for all callbacks.
+          try {
+            let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            // Subscribe to Key Press Events
+            inputMonitor.on('keyPressed', keys, (event: KeyEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            });
+            // Unsubscribe from Key Press Events
+            inputMonitor.off('keyPressed');
+          } catch (error) {
+            console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

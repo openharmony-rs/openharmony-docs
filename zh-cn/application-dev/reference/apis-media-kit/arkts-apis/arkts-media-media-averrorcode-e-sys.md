@@ -1,5 +1,9 @@
 # AVErrorCode
 
+```TypeScript
+enum AVErrorCode
+```
+
 [Media错误码](../../../reference/apis-media-kit/errorcode-media.md)类型枚举。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # ImageAnalyzerConfig
 
+```TypeScript
+declare interface ImageAnalyzerConfig
+```
+
 图像AI分析配置项。
 
 **起始版本：** 12

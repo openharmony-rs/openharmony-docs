@@ -8,6 +8,8 @@ typedef struct GamePad_PressedButton GamePad_PressedButton
 
 Defines pressed buttons.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Related module**: [GameController](capi-gamecontroller.md)

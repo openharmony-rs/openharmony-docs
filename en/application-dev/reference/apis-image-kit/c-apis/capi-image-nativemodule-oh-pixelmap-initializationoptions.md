@@ -8,6 +8,8 @@ struct OH_Pixelmap_InitializationOptions
 
 Defines the options used for creating a pixel map.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)

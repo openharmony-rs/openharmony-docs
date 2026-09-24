@@ -4,6 +4,8 @@
 
 Provide image processing including color space conversion and metadata generation.
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 13
 
 ## 文件汇总

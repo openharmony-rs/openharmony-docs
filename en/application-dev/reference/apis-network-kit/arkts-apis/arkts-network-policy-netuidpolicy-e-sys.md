@@ -1,5 +1,9 @@
 # NetUidPolicy (System API)
 
+```TypeScript
+export enum NetUidPolicy
+```
+
 Enumerates network access policies for the application.
 
 **Since:** 10

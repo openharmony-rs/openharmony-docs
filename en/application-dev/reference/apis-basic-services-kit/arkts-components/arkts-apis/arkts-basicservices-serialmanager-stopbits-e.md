@@ -1,5 +1,9 @@
 # StopBits
 
+```TypeScript
+enum StopBits
+```
+
 Enumerates the number of stop bits, in bits.
 
 **Since:** 19

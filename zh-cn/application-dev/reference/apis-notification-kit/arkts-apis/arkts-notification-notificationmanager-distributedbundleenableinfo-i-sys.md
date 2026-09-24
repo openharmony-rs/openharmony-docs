@@ -1,5 +1,9 @@
 # DistributedBundleEnableInfo（系统接口）
 
+```TypeScript
+export interface DistributedBundleEnableInfo
+```
+
 描述多设备协同的包信息。
 
 **起始版本：** 20

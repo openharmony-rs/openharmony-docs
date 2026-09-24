@@ -1,5 +1,9 @@
 # BatteryPluggedType
 
+```TypeScript
+export enum BatteryPluggedType
+```
+
 表示连接的充电器类型的枚举。
 
 **起始版本：** 6

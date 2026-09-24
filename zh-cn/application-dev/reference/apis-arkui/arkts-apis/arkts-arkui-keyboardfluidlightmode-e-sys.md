@@ -1,5 +1,9 @@
 # KeyboardFluidLightMode（系统接口）
 
+```TypeScript
+declare enum KeyboardFluidLightMode
+```
+
 键盘流光效果。
 
 **起始版本：** 20

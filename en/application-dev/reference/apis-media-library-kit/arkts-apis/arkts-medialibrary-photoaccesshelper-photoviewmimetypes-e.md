@@ -1,5 +1,9 @@
 # PhotoViewMIMETypes
 
+```TypeScript
+export enum PhotoViewMIMETypes
+```
+
 Enumerates the media file types.
 
 **Since:** 10

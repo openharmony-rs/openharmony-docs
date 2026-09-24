@@ -1,5 +1,9 @@
 # AudioHapticPlayer
 
+```TypeScript
+interface AudioHapticPlayer
+```
+
 Implements audio-haptic playback. Before calling any API in AudioHapticPlayer, you must use [createPlayer](arkts-audio-audiohaptic-audiohapticmanager-i.md#createplayer) to create an AudioHapticPlayer instance.
 
 **Since:** 11

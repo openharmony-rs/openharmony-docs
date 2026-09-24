@@ -1,5 +1,9 @@
 # RouterPageInfo
 
+```TypeScript
+export class RouterPageInfo
+```
+
 RouterPageInfo包含的信息，由系统返回给开发者。
 
 **起始版本：** 11
@@ -36,7 +40,9 @@ context: UIAbilityContext | UIContext
 index: number
 ```
 
-触发生命周期的routerPage页面对应的上下文信息。取值应≥0。
+触发生命周期的routerPage在栈中的位置。
+
+取值范围：[0, +∞)
 
 **类型：** number
 

@@ -1,5 +1,9 @@
 # Result（系统接口）
 
+```TypeScript
+export enum Result
+```
+
 Rotation execution results.
 
 @enum { int }

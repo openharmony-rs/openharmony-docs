@@ -1,5 +1,9 @@
 # MatchResult
 
+```TypeScript
+export interface MatchResult
+```
+
 Displays the identification result of sensitive content.
 
 **Since:** 21

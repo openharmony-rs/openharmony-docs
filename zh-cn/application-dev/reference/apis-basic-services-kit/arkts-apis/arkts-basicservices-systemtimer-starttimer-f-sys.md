@@ -32,8 +32,8 @@ function startTimer(timer: number, triggerTime: number, callback: AsyncCallback<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 
 **示例**
 
@@ -66,33 +66,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let options: systemTimer.TimerOptions = {
-  type: systemTimer.TIMER_TYPE_REALTIME,
-  repeat:false
-};
-let triggerTime: number = new Date().getTime();
-triggerTime += 3000;
-
-try {
-  systemTimer.createTimer(options).then((timerId: number) => {
-    systemTimer.startTimer(timerId, triggerTime).then(() => {
-      console.info(`Succeeded in starting timer.`);
-    }).catch((error: BusinessError) => {
-      console.error(`Failed to start timer. Code: ${error.code}, message: ${error.message}`);
-    });
-    console.info(`Succeeded in creating timer. timerId: ${timerId}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="starttimer-1"></a>
 
 ## startTimer
 
@@ -125,9 +100,34 @@ function startTimer(timer: number, triggerTime: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 
 **示例**
 
-参见 [startTimer](#starttimer)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let options: systemTimer.TimerOptions = {
+  type: systemTimer.TIMER_TYPE_REALTIME,
+  repeat:false
+};
+let triggerTime: number = new Date().getTime();
+triggerTime += 3000;
+
+try {
+  systemTimer.createTimer(options).then((timerId: number) => {
+    systemTimer.startTimer(timerId, triggerTime).then(() => {
+      console.info(`Succeeded in starting timer.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to start timer. Code: ${error.code}, message: ${error.message}`);
+    });
+    console.info(`Succeeded in creating timer. timerId: ${timerId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
+}
+```

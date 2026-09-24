@@ -1,5 +1,9 @@
 # WindowCreateParams
 
+```TypeScript
+interface WindowCreateParams
+```
+
 Describes the window parameters during application startup.
 
 **Since:** 20
@@ -38,7 +42,7 @@ Whether to hide the dock icon and the hover thumbnail preview. If true, the curr
 
 **Default:** false
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -56,7 +60,7 @@ Whether to hide the window from the multitasking center. If true, the current wi
 
 **Default:** false
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -74,7 +78,7 @@ Whether the window starts in a minimized state. If true, the window will not be 
 
 **Default:** false
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -1,5 +1,9 @@
 # SystemMemInfo
 
+```TypeScript
+interface SystemMemInfo
+```
+
 描述系统内存信息，包括总内存、空闲内存和可用内存。
 
 **起始版本：** 12

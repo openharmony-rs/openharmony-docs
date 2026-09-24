@@ -1,6 +1,12 @@
 # NumberStyleOptions
 
-Defines the number style options.
+```TypeScript
+declare class NumberStyleOptions extends InlineStyleOptions
+```
+
+Defines the list and compact counter attributes and events.
+
+Inherits from [InlineStyleOptions](arkts-arkui-arkui-advanced-counter-inlinestyleoptions-c.md) and includes all attributes of that API. This section only describes the newly added attributes. For inherited attributes, see the parent API.
 
 **Inheritance/Implementation:** NumberStyleOptions extends [InlineStyleOptions](arkts-arkui-arkui-advanced-counter-inlinestyleoptions-c.md)
 
@@ -20,7 +26,13 @@ import { CounterComponent, CounterOptions, CounterType, DateData } from '@kit.Ar
 onBlurDecrease?: () => void
 ```
 
-Trigger an event when the decrease button loses focus.
+Callback invoked when the decrease button of the current Counter component loses focus.
+
+Usage scenario: pass this callback when you need to perform custom operations (such as validating input, saving state, etc.) when the decrease button loses focus.
+
+Default value: the callback is not triggered when the decrease button loses focus.
+
+If the value is **undefined**, the default value is used.
 
 **Since:** 11
 
@@ -36,7 +48,13 @@ Trigger an event when the decrease button loses focus.
 onBlurIncrease?: () => void
 ```
 
-Trigger an event when the increase button loses focus.
+Callback invoked when the increase button of the current Counter component loses focus.
+
+Usage scenario: pass this callback when you need to perform custom operations (such as validating input, saving state, etc.) when the increase button loses focus.
+
+Default value: the callback is not triggered when the increase button loses focus.
+
+If the value is **undefined**, the default value is used.
 
 **Since:** 11
 
@@ -52,7 +70,13 @@ Trigger an event when the increase button loses focus.
 onFocusDecrease?: () => void
 ```
 
-Trigger an event when the decrease button gets focus.
+Callback invoked when the decrease button of the current Counter component gains focus.
+
+Usage scenario: pass this callback when you need to perform custom operations (such as changing styles, logging, etc.) when the decrease button gains focus.
+
+Default value: the callback is not triggered when the decrease button gains focus.
+
+If the value is **undefined**, the default value is used.
 
 **Since:** 11
 
@@ -68,7 +92,13 @@ Trigger an event when the decrease button gets focus.
 onFocusIncrease?: () => void
 ```
 
-Trigger an event when the increase button gets focus.
+Callback invoked when the increase button of the current Counter component gains focus.
+
+Usage scenario: pass this callback when you need to perform custom operations (such as changing styles, logging, etc.) when the increase button gains focus.
+
+Default value: the callback is not triggered when the increase button gains focus.
+
+If the value is **undefined**, the default value is used.
 
 **Since:** 11
 
@@ -84,7 +114,13 @@ Trigger an event when the increase button gets focus.
 label?: ResourceStr
 ```
 
-Set the label of the counter component.
+Label text of the Counter.
+
+Usage scenario: pass this parameter when you need to display descriptive text (such as 'Price', 'Quantity', etc.) next to the Counter.
+
+Default value: ''.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

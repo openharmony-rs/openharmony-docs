@@ -1,5 +1,9 @@
 # OrderOverlayOptions
 
+```TypeScript
+export interface OrderOverlayOptions
+```
+
 使用顺序打开浮层的选项。
 
 **起始版本：** 26.0.0

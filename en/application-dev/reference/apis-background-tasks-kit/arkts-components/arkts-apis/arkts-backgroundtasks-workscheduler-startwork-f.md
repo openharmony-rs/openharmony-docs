@@ -32,10 +32,10 @@ Requests a deferred task. Upon successful request, the deferred task is added to
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-memory-operation-failure) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-system-service-failure) | System service operation failed. |
-| [9700004](../errorcode-workScheduler.md#9700004-workinfo-verification-failure) | Check on workInfo failed. |
-| [9700005](../errorcode-workScheduler.md#9700005-startwork-call-failure) | Calling startWork failed. |
+| [9700004](../errorcode-workScheduler.md#9700004-parameter-verification-failed) | Check on workInfo failed. |
+| [9700005](../errorcode-workScheduler.md#9700005-startwork-failure) | Calling startWork failed. |
 
 **Examples**
 

@@ -1,4 +1,4 @@
-# @system.sensor
+# @system.sensor(传感器模块)
 
 本模块帮助应用实时获取传感器数据变化通知，实现运动监测、健康追踪、环境感知、方向识别、屏幕自适应等功能。每种传感器提供subscribe/unsubscribe配对接口，佩戴状态传感器额外提供getOnBodyState单次查询接口。
  非轻量穿戴设备从API version 8起不再维护本模块，建议使用[@ohos.sensor](arkts-sensorservice-sensor.md)模块替代。

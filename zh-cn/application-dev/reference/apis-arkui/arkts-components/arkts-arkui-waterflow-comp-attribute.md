@@ -1,10 +1,14 @@
 # WaterFlow属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)和[滚动组件通用属性](arkts-arkui-scrollablecommonmethod-c.md)外，还支持以下属性：
+```TypeScript
+declare class WaterFlowAttribute extends ScrollableCommonMethod<WaterFlowAttribute>
+```
 
-除支持[通用事件](arkts-arkui-commonmethod-c.md)和滚动组件通用事件外，还支持以下事件：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)和[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)外，还支持以下属性：
 
-**继承/实现关系：** WaterFlowAttribute extends ScrollableCommonMethod&lt;WaterFlowAttribute&gt;
+除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还支持以下事件：
+
+**继承/实现关系：** WaterFlowAttribute extends ScrollableCommonMethod<WaterFlowAttribute>
 
 **起始版本：** 9
 
@@ -32,7 +36,9 @@ cachedCount(value: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 预加载的FlowItem的数量。<br>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br>取值范围：0, +∞)，设置为小于0的值时，按1处理。 |
+| value | number | 是 | 预加载的FlowItem的数量。<br>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
+
+<a id="cachedcount-1"></a>
 
 ## cachedCount
 
@@ -42,7 +48,7 @@ cachedCount(count: number, show: boolean)
 
 设置预加载的FlowItem数量，并配置是否显示预加载节点。
 
-配合[clip或[clipContent](arkts-arkui-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
+配合[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)或[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
 
 只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了virtualScroll开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效，超出显示及缓存范围的FlowItem会被释放。
 
@@ -71,6 +77,8 @@ columnsGap(value: Length)
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -87,13 +95,19 @@ columnsGap(value: Length)
 columnsTemplate(value: string)
 ```
 
-设置当前瀑布流组件布局列的数量，不设置时默认1列。当[layoutDirection](#layoutdirection)设置为横向布局（FlexDirection.Row或FlexDirection.RowReverse）时，columnsTemplate不生效，由[rowsTemplate](#rowstemplate)控制布局。使用[sections](arkts-arkui-waterflowoptions-i.md)分组混合布局时，此属性会被忽略。
+设置当前瀑布流组件布局列的数量，不设置时默认1列。当[layoutDirection](#layoutdirection)设置为横向布局（FlexDirection.Row或FlexDirection.RowReverse）时，columnsTemplate不生效，由[rowsTemplate](#rowstemplate)控制布局。使用[sections](arkts-arkui-waterflow-comp-waterflowoptions-i.md)分组混合布局时，此属性会被忽略。
 
 例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。
 
-可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp，使用方法参见示例2。
+可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp，使用方法参见[示例2](../../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#示例2自动计算列数)。
+
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。需要按固定vp尺寸自动计算列数时，应使用repeat(auto-fill, track-size)。
+
+设置为'0fr'时，该列的列宽为0，该列FlowItem不显示。设置为其他非法值时，按固定1列处理。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -105,13 +119,15 @@ columnsTemplate(value: string)
 | --- | --- | --- | --- |
 | value | string | 是 | 当前瀑布流组件布局列的数量。<br>默认值：'1fr' |
 
+<a id="columnstemplate-1"></a>
+
 ## columnsTemplate
 
 ```TypeScript
 columnsTemplate(value: string | ItemFillPolicy)
 ```
 
-设置当前瀑布流组件布局列的数量，不设置时默认1列。当[layoutDirection](#layoutdirection)设置为横向布局（FlexDirection.Row或FlexDirection.RowReverse）时，columnsTemplate不生效，由[rowsTemplate](#rowstemplate)控制布局。使用[sections](arkts-arkui-waterflowoptions-i.md)分组混合布局时，此属性会被忽略。
+设置当前瀑布流组件布局列的数量，不设置时默认1列。当[layoutDirection](#layoutdirection)设置为横向布局（FlexDirection.Row或FlexDirection.RowReverse）时，columnsTemplate不生效，由[rowsTemplate](#rowstemplate)控制布局。使用[sections](arkts-arkui-waterflow-comp-waterflowoptions-i.md)分组混合布局时，此属性会被忽略。
 
 当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate)。
 
@@ -153,7 +169,7 @@ enableScrollInteraction(value: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](arkts-arkui-scroller-c.md)的滚动接口。<br>默认值：true |
+| value | boolean | 是 | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](arkts-arkui-scroll-comp-scroller-c.md)的滚动接口。<br>默认值：true |
 
 ## friction
 
@@ -183,9 +199,11 @@ friction(value: number | Resource)
 itemConstraintSize(value: ConstraintSizeOptions)
 ```
 
-设置约束尺寸，用于在子组件布局时限制其尺寸范围。使用方法参考示例1。
+设置约束尺寸，用于在子组件布局时限制其尺寸范围。使用方法参考[示例1](../../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#示例1使用基本瀑布流)。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -195,7 +213,7 @@ itemConstraintSize(value: ConstraintSizeOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | 约束尺寸。设置小于0的值，参数不生效。<br>**说明：** <br>1.同时设置itemConstraintSize和FlowItem的constraintSize属性时，minWidth/minHeight会取其中的最大值，maxWidth/maxHeight会取其中的最小值，调整后的值作为FlowItem的constraintSize处理。<br>2.只设置itemConstraintSize时，相当于对WaterFlow所有子组件设置了相同的constraintSize。<br>3.itemConstraintSize通过以上两种方式转换成FlowItem的constraintSize后的生效规则与通用属性constraintSize相同。 |
+| value | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | 约束尺寸。设置小于0的值，参数不生效。 <br>**说明：** <br>1.同时设置itemConstraintSize和FlowItem的[constraintSize](arkts-arkui-common-comp-commonmethod-c.md#constraintsize)属性时，minWidth/minHeight会取其中的最大值，maxWidth/maxHeight会取其中的最小值，调整后的值作为FlowItem的constraintSize处理。<br>2.只设置itemConstraintSize时，相当于对WaterFlow所有子组件设置了相同的constraintSize。<br>3.itemConstraintSize通过以上两种方式转换成FlowItem的constraintSize后的生效规则与通用属性[constraintSize](arkts-arkui-common-comp-commonmethod-c.md#constraintsize)相同。 |
 
 ## layoutDirection
 
@@ -206,6 +224,8 @@ layoutDirection(value: FlexDirection)
 设置布局的主轴方向。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -223,7 +243,7 @@ layoutDirection(value: FlexDirection)
 nestedScroll(value: NestedScrollOptions)
 ```
 
-设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。使用方法参考嵌套滚动实现方式二。
+设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。使用方法参考[嵌套滚动实现方式二](../../../reference/apis-arkui/arkui-ts/ts-container-scroll.md#示例3嵌套滚动实现方式二)。
 
 **起始版本：** 10
 
@@ -237,7 +257,7 @@ nestedScroll(value: NestedScrollOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [NestedScrollOptions](arkts-arkui-nestedscrolloptions-i.md) | 是 | 嵌套滚动选项，用于设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。 |
+| value | [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | 是 | 嵌套滚动选项，用于设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。 |
 
 ## onReachEnd
 
@@ -248,6 +268,8 @@ onReachEnd(event: () => void)
 瀑布流内容到达末尾位置时触发。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -268,6 +290,8 @@ onReachStart(event: () => void)
 瀑布流内容到达起始位置时触发。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -291,11 +315,11 @@ onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 
 1. 用户交互（如手指滑动、键鼠操作等）触发滚动。
 2. WaterFlow惯性滚动。
-3. 调用fling接口触发滚动。
+3. 调用[fling](arkts-arkui-scroll-comp-scroller-c.md#fling)接口触发滚动。
 
 不触发该事件的条件：
 
-1. 调用除fling接口外的其他滚动控制接口。
+1. 调用除[fling](arkts-arkui-scroll-comp-scroller-c.md#fling)接口外的其他滚动控制接口。
 2. 越界回弹。
 3. 拖动滚动条。
 
@@ -311,7 +335,7 @@ onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [OnScrollFrameBeginCallback](arkts-arkui-onscrollframebegincallback-t.md) | 是 | 每帧滚动开始回调函数。<br>**适用版本：** 20 |
+| event | [OnScrollFrameBeginCallback](arkts-arkui-scroll-comp-onscrollframebegincallback-t.md) | 是 | 每帧滚动开始回调函数。<br>**适用版本：** 20 |
 
 ## onScrollIndex
 
@@ -325,7 +349,7 @@ onScrollIndex(event: (first: number, last: number) => void)
 
 > **说明：** 
 > 
-> 从API version 20开始，该接口支持在attributeModifier中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -351,6 +375,8 @@ rowsGap(value: Length)
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -367,13 +393,19 @@ rowsGap(value: Length)
 rowsTemplate(value: string)
 ```
 
-设置当前瀑布流组件布局行的数量，不设置时默认1行。当[layoutDirection](#layoutdirection)设置为纵向布局（FlexDirection.Column或FlexDirection.ColumnReverse）或不设置时，rowsTemplate不生效，由[columnsTemplate](#columnstemplate)控制布局。使用[sections](arkts-arkui-waterflowoptions-i.md)分组混合布局时，此属性会被忽略。
+设置当前瀑布流组件布局行的数量，不设置时默认1行。当[layoutDirection](#layoutdirection)设置为纵向布局（FlexDirection.Column或FlexDirection.ColumnReverse）或不设置时，rowsTemplate不生效，由[columnsTemplate](#columnstemplate)控制布局。使用[sections](arkts-arkui-waterflow-comp-waterflowoptions-i.md)分组混合布局时，此属性会被忽略。
 
 例如，'1fr 1fr 2fr'是将父组件分3行，将父组件允许的高分为4等份，第1行占1份，第2行占1份，第3行占2份。
 
 可使用rowsTemplate('repeat(auto-fill,track-size)')根据给定的行高track-size自动计算行数，其中repeat、auto-fill为关键字，track-size为可设置的高度，支持的单位包括px、vp、%或有效数字，默认单位为vp。
 
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如rowsTemplate('100vp 100vp')）。需要按固定vp尺寸自动计算行数时，应使用repeat(auto-fill, track-size)。
+
+设置为'0fr'时，该行的行高为0，该行FlowItem不显示。设置为其他非法值时，按固定1行处理。
+
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -395,8 +427,8 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
 > **说明：** 
 > 
-> 当通过[sections](arkts-arkui-waterflowoptions-i.md)参数设置了[WaterFlowSections](arkts-arkui-waterflowsections-c.md)分组，或通过
-> [layoutMode](arkts-arkui-waterflowoptions-i.md)设置[SLIDING_WINDOW](arkts-arkui-waterflowlayoutmode-e.md)布局模式时，无论
+> 当通过[sections](arkts-arkui-waterflow-comp-waterflowoptions-i.md)参数设置了[WaterFlowSections](arkts-arkui-waterflow-comp-waterflowsections-c.md)分组，或通过
+> [layoutMode](arkts-arkui-waterflow-comp-waterflowoptions-i.md)设置[SLIDING_WINDOW](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md)布局模式时，无论
 > supportEmptyBranchInLazyLoading设为何值或未设置，空分支后的FlowItem都会显示。
 
 **起始版本：** 26.0.0
@@ -433,4 +465,4 @@ syncLoad(enable: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 是否同步加载WaterFlow区域内所有子组件。<br>true表示同步加载，false表示异步加载。<br>默认值：true。<br>**说明：** <br>设置为false时，在首次显示、不带动画[scrollToIndex](arkts-arkui-scroller-c.md#scrolltoindex)跳转场景，若当帧布局耗时超过50ms，会将WaterFlow区域内尚未布局的子组件延后到下一帧进行布局。 |
+| enable | boolean | 是 | 是否同步加载WaterFlow区域内所有子组件。<br>true表示同步加载，false表示异步加载。<br>默认值：true。<br>**说明：** <br>设置为false时，在首次显示、不带动画[scrollToIndex](arkts-arkui-scroll-comp-scroller-c.md#scrolltoindex)跳转场景，若当帧布局耗时超过50ms，会将WaterFlow区域内尚未布局的子组件延后到下一帧进行布局。 |

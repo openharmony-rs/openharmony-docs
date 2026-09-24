@@ -1,5 +1,9 @@
 # NetUidPolicyInfo（系统接口）
 
+```TypeScript
+export interface NetUidPolicyInfo
+```
+
 注册网络UID策略变化的回调函数。
 
 **起始版本：** 11

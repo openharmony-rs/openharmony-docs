@@ -1,5 +1,9 @@
 # ResourceOverlimitPolicy
 
+```TypeScript
+interface ResourceOverlimitPolicy
+```
+
 Defines the resource leak event configuration policy.
 
 **Since:** 24
@@ -35,6 +39,8 @@ the application may exit in advance due to a freeze event triggered by a perform
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
@@ -59,6 +65,8 @@ Note: The enabling behavior of an application takes effect only in its current l
 
 **Since:** 24
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
@@ -74,6 +82,8 @@ This parameter is used to control whether to output refined external log file na
 **Type:** boolean
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 

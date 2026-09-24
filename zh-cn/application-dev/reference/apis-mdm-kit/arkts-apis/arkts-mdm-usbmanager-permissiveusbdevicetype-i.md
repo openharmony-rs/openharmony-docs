@@ -1,5 +1,9 @@
 # PermissiveUsbDeviceType
 
+```TypeScript
+export interface PermissiveUsbDeviceType
+```
+
 USB设备类型信息，支持部分字段匹配。
 
 - 与[UsbDeviceType](arkts-mdm-usbmanager-usbdevicetype-i.md)相比，本接口的subClass、protocol、descriptor字段为可选字段，实现更灵活的USB设备禁用策略。  

@@ -8,6 +8,8 @@ typedef struct OH_AVMuxer OH_AVMuxer
 
 The struct describes a native object for the muxer interface.
 
+**System capability**: SystemCapability.Multimedia.Media.Muxer
+
 **Since**: 10
 
 **Related module**: [AVMuxer](capi-avmuxer.md)

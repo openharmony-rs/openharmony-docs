@@ -1,5 +1,9 @@
 # X509TrustAnchor
 
+```TypeScript
+interface X509TrustAnchor
+```
+
 表示X.509信任锚，用于校验证书链。使用信任锚中的证书或者公钥作为可信根，对证书链进行校验。
 
 **起始版本：** 11

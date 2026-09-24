@@ -1,5 +1,9 @@
 # PGOParam (System API)
 
+```TypeScript
+export interface PGOParam
+```
+
 Defines the parameters of the PGO configuration file.
 
 **Since:** 11

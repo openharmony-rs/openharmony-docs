@@ -8,6 +8,8 @@ typedef struct ffrt_rwlockattr_t {...} ffrt_rwlockattr_t
 
 Defines the rwlock attribute structure used to store rwlock attribute information.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 18
 
 **Related module**: [FFRT](capi-ffrt.md)

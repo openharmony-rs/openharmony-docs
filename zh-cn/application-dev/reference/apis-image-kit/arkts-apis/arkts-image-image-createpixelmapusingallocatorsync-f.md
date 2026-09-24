@@ -68,25 +68,8 @@ function createPixelMapUsingAllocatorSync() {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-function createPixelMapUsingAllocatorSync() {
-  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.BGRA_8888, size: { height: 4, width: 6 } };
-  try {
-    let pixelMap: image.PixelMap = image.createPixelMapUsingAllocatorSync(opts, image.AllocatorType.DMA);
-    if (pixelMap == undefined) {
-      console.error(`Failed to create the PixelMap.`);
-      return;
-    }
-    console.info('Succeeded in creating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
-    console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
-  }
-}
-```
-
+<a id="createpixelmapusingallocatorsync-1"></a>
 
 ## createPixelMapUsingAllocatorSync
 
@@ -121,31 +104,6 @@ Create an empty pixelmap by data buffer based on opts, the memory type used by t
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Memory alloc failed. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function createPixelMapUsingAllocatorSync() {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
-  let opts: image.InitializationOptions = {
-    size: { height: 4, width: 6 },
-    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区中的源像素数据的像素格式。
-    pixelFormat: image.PixelMapFormat.BGRA_8888, // 新创建的PixelMap的像素格式。
-    editable: true
-  };
-  try {
-    let pixelMap: image.PixelMap = image.createPixelMapUsingAllocatorSync(color, opts, image.AllocatorType.DMA);
-    if (pixelMap == undefined) {
-      console.error(`Failed to create the PixelMap.`);
-      return;
-    }
-    console.info('Succeeded in creating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
-    console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
-  }
-}
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

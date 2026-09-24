@@ -1,5 +1,9 @@
 # SessionCategory (System API)
 
+```TypeScript
+enum SessionCategory
+```
+
 Session category for different scenes.
 
 **Since:** 22

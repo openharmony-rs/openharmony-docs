@@ -17,4 +17,4 @@ Called when a paste operation is performed.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | pasteValue | string | Yes | Text to be pasted. |
-| event | [PasteEvent](../arkts-components/arkts-arkui-pasteevent-i.md) | Yes | Custom paste event. |
+| event | [PasteEvent](../arkts-components/arkts-arkui-richeditor-comp-pasteevent-i.md) | Yes | Custom paste event. |

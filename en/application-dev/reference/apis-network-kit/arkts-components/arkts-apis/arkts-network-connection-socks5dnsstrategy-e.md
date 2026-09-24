@@ -1,5 +1,9 @@
 # Socks5DnsStrategy
 
+```TypeScript
+export enum Socks5DnsStrategy
+```
+
 Socks5 DNS strategy
 
 **Since:** 26.0.0

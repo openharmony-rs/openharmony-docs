@@ -1,5 +1,9 @@
 # BundleConfigInfo（系统接口）
 
+```TypeScript
+export interface BundleConfigInfo
+```
+
 包的配置信息。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # PhotoSubtype
 
+```TypeScript
+export enum PhotoSubtype
+```
+
 Enumerates the [PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasset-i.md) types.
 
 **Since:** 12

@@ -8,6 +8,8 @@ typedef struct ArkUI_SelectedDragPreviewStyle ArkUI_SelectedDragPreviewStyle
 
 Defines the selected drag preview style configuration.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

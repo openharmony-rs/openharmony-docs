@@ -14,7 +14,7 @@ function getAvailableFormHostServices(): Promise<Array<formInfo.PeerFormHostServ
 
 Get available form host service info list.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.AGENT_REQUIRE_FORM
 

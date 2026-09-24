@@ -39,6 +39,20 @@ Unsubscribes from operating hand change events.
 | [31500001](../errorcode-motion.md#31500001-service-exception) | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception;<br> 2. N-API invocation exception, invalid N-API status. |
 | [31500003](../errorcode-motion.md#31500003-unsubscription-failed) | Unsubscription failed. Possible causes: 1. Callback failure;<br> 2. N-API invocation exception, invalid N-API status; 3. IPC request exception. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    motion.off('operatingHandChanged');
+    console.info("off succeeded");
+} catch (err) {
+    let error = err as BusinessError;
+    console.error("Failed off and err code is " + error.code);
+}
+```
+
 
 ## off('holdingHandChanged')
 
@@ -69,3 +83,17 @@ Disables listening for holding hand status changes.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
 | [31500001](../errorcode-motion.md#31500001-service-exception) | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception;<br> 2. N-API invocation exception, invalid N-API status. |
 | [31500003](../errorcode-motion.md#31500003-unsubscription-failed) | Unsubscription failed. Possible causes: 1. Callback failure;<br> 2. N-API invocation exception, invalid N-API status; 3. IPC request exception. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  motion.off('holdingHandChanged'); // Unregister all callbacks for the holding hand status change event.
+  console.info('off succeeded');
+} catch (err) {
+  let error = err as BusinessError;
+  console.error('Failed off; err code = ' + error.code);
+}
+```

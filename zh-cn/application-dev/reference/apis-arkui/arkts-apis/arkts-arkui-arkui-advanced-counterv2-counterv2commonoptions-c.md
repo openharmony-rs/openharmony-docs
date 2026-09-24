@@ -1,6 +1,10 @@
 # CounterV2CommonOptions
 
-CounterV2CommonOptions定义了CounterV2的共通属性和事件。
+```TypeScript
+declare class CounterV2CommonOptions
+```
+
+CounterV2CommonOptions定义了CounterV2的通用属性和事件。
 
 **起始版本：** 26.0.0
 

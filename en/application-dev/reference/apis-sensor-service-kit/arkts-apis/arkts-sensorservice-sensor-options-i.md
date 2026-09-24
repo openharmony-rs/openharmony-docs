@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+interface Options
+```
+
 Describes the sensor data reporting frequency.
 
 **Since:** 8

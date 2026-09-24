@@ -4,6 +4,8 @@
 
 This module provides URI format validation and URI conversion processing, as well as obtaining URI-related information
 
+**System capability**: SystemCapability.FileManagement.AppFileService
+
 **Since**: 12
 
 ## Files

@@ -1,6 +1,10 @@
 # DownloadTask
 
-Implements file downloads. Before using any APIs of this class, you must obtain a **DownloadTask** object, from a promise through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md) or from a callback through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md).
+```TypeScript
+interface DownloadTask
+```
+
+Implements file downloads. Before using any APIs of this class, you must obtain a **DownloadTask** object, from a promise through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1) or from a callback through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md).
 
 **Since:** 6
 
@@ -54,28 +58,6 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 try {
   // Replace the URL with the HTTP address of the real server.
   request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-    data.delete().then((result: boolean) => {
-      console.info('Succeeded in removing the download task.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to remove the download task. Code: ${err.code}, message: ${err.message}`);
-    });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  // Replace the URL with the HTTP address of the real server.
-  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
     let downloadTask: request.DownloadTask = data;
     downloadTask.delete((err: BusinessError, result: boolean) => {
       if (err) {
@@ -91,6 +73,8 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<a id="delete-1"></a>
 
 ## delete
 
@@ -147,31 +131,6 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  // Replace the URL with the HTTP address of the real server.
-  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-    let downloadTask: request.DownloadTask = data;
-    downloadTask.delete((err: BusinessError, result: boolean) => {
-      if (err) {
-        console.error(`Failed to remove the download task. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info('Succeeded in removing the download task.');
-    });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
 ## getTaskInfo
 
 ```TypeScript
@@ -215,29 +174,6 @@ try {
   // Replace the URL with the HTTP address of the real server.
   request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
     let downloadTask: request.DownloadTask = data;
-    downloadTask.getTaskInfo().then((downloadInfo: request.DownloadInfo) => {
-      console.info('Succeeded in querying the download task')
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to query the download task. Code: ${err.code}, message: ${err.message}`)
-    });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  // Replace the URL with the HTTP address of the real server.
-  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-    let downloadTask: request.DownloadTask = data;
     downloadTask.getTaskInfo((err: BusinessError, downloadInfo: request.DownloadInfo) => {
       if (err) {
         console.error(`Failed to query the download mimeType. Code: ${err.code}, message: ${err.message}`);
@@ -252,6 +188,8 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<a id="gettaskinfo-1"></a>
 
 ## getTaskInfo
 
@@ -286,7 +224,28 @@ Obtains the information about this download task. This API uses a promise to ret
 
 **Examples**
 
-See [getTaskInfo](#gettaskinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // Replace the URL with the HTTP address of the real server.
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    downloadTask.getTaskInfo().then((downloadInfo: request.DownloadInfo) => {
+      console.info('Succeeded in querying the download task')
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to query the download task. Code: ${err.code}, message: ${err.message}`)
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
 
 ## getTaskMimeType
 
@@ -331,29 +290,6 @@ try {
   // Replace the URL with the HTTP address of the real server.
   request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
     let downloadTask: request.DownloadTask = data;
-    downloadTask.getTaskMimeType().then((data: string) => {
-      console.info('Succeeded in querying the download MimeType');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to query the download MimeType. Code: ${err.code}, message: ${err.message}`)
-    });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  // Replace the URL with the HTTP address of the real server.
-  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-    let downloadTask: request.DownloadTask = data;
     downloadTask.getTaskMimeType((err: BusinessError, data: string) => {
       if (err) {
         console.error(`Failed to query the download mimeType. Code: ${err.code}, message: ${err.message}`);
@@ -368,6 +304,8 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<a id="gettaskmimetype-1"></a>
 
 ## getTaskMimeType
 
@@ -402,7 +340,28 @@ Obtains the MIME type (that is, media type of resources in HTTP) of a download t
 
 **Examples**
 
-See [getTaskMimeType](#gettaskmimetype)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // Replace the URL with the HTTP address of the real server.
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    downloadTask.getTaskMimeType().then((data: string) => {
+      console.info('Succeeded in querying the download MimeType');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to query the download MimeType. Code: ${err.code}, message: ${err.message}`)
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
 
 ## off('progress')
 
@@ -429,6 +388,38 @@ Unsubscribes from download progress events.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // Replace the URL with the HTTP address of the real server.
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    let progressCallback1 = (receivedSize: number, totalSize: number) => {
+      console.info('Download delete progress notification.' + 'receivedSize:' + receivedSize + 'totalSize:' + totalSize);
+    };
+    let progressCallback2 = (receivedSize: number, totalSize: number) => {
+      console.info('Download delete progress notification.' + 'receivedSize:' + receivedSize + 'totalSize:' + totalSize);
+    };
+    downloadTask.on('progress', progressCallback1);
+    downloadTask.on('progress', progressCallback2);
+    // Unsubscribe from progressCallback1.
+    downloadTask.off('progress', progressCallback1);
+    // Unsubscribe from all callbacks of download progress events.
+    downloadTask.off('progress');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('complete' | 'pause' | 'remove')
 
 ```TypeScript
@@ -454,55 +445,63 @@ Unsubscribes from download events.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
 
-## off('complete' | 'pause' | 'remove')
+**Examples**
 
 ```TypeScript
-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // Replace the URL with the HTTP address of the real server.
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    let completeCallback1 = () => {
+      console.info('Download delete complete notification.');
+    };
+    let completeCallback2 = () => {
+      console.info('Download delete complete notification.');
+    };
+    downloadTask.on('complete', completeCallback1);
+    downloadTask.on('complete', completeCallback2);
+    // Unsubscribe from completeCallback1.
+    downloadTask.off('complete', completeCallback1);
+    // Unsubscribe from all callbacks of the download completion events.
+    downloadTask.off('complete');
+
+    let pauseCallback1 = () => {
+      console.info('Download delete pause notification.');
+    };
+    let pauseCallback2 = () => {
+      console.info('Download delete pause notification.');
+    };
+    downloadTask.on('pause', pauseCallback1);
+    downloadTask.on('pause', pauseCallback2);
+    // Unsubscribe from pauseCallback1.
+    downloadTask.off('pause', pauseCallback1);
+    // Unsubscribe from all callbacks of the download pause events.
+    downloadTask.off('pause');
+
+    let removeCallback1 = () => {
+      console.info('Download delete remove notification.');
+    };
+    let removeCallback2 = () => {
+      console.info('Download delete remove notification.');
+    };
+    downloadTask.on('remove', removeCallback1);
+    downloadTask.on('remove', removeCallback2);
+    // Unsubscribe from removeCallback1.
+    downloadTask.off('remove', removeCallback1);
+    // Unsubscribe from all callbacks of the download removal events.
+    downloadTask.off('remove');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
 ```
-
-Unsubscribes from download events.
-
-**Since:** 7
-
-**System capability:** SystemCapability.MiscServices.Download
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| type | 'complete' &#124; 'pause' &#124; 'remove' | Yes | Event type.<br>- **'complete'**: download task completion.<br>- **'pause'**: download task pause.<br>- **'remove'**: download task removal. |
-| callback | () =&gt; void | No | Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
-
-## off('complete' | 'pause' | 'remove')
-
-```TypeScript
-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
-```
-
-Unsubscribes from download events.
-
-**Since:** 7
-
-**System capability:** SystemCapability.MiscServices.Download
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| type | 'complete' &#124; 'pause' &#124; 'remove' | Yes | Event type.<br>- **'complete'**: download task completion.<br>- **'pause'**: download task pause.<br>- **'remove'**: download task removal. |
-| callback | () =&gt; void | No | Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
 
 ## off('fail')
 
@@ -528,6 +527,38 @@ Unsubscribes from download failure events.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // Replace the URL with the HTTP address of the real server.
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    let failCallback1 = (err: number) => {
+      console.error(`Failed to download the task. Code: ${err}`);
+    };
+    let failCallback2 = (err: number) => {
+      console.error(`Failed to download the task. Code: ${err}`);
+    };
+    downloadTask.on('fail', failCallback1);
+    downloadTask.on('fail', failCallback2);
+    // Unsubscribe from failCallback1.
+    downloadTask.off('fail', failCallback1);
+    // Unsubscribe from all callbacks of the download failure events.
+    downloadTask.off('fail');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
 
 ## on('progress')
 
@@ -559,6 +590,30 @@ Subscribes to download progress events. This API uses an asynchronous callback t
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // Replace the URL with the HTTP address of the real server.
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    let progressCallback = (receivedSize: number, totalSize: number) => {
+      console.info("download receivedSize:" + receivedSize + " totalSize:" + totalSize);
+    };
+    downloadTask.on('progress', progressCallback);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('complete' | 'pause' | 'remove')
 
 ```TypeScript
@@ -584,55 +639,39 @@ Subscribes to download events. This API uses an asynchronous callback to return 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
 
-## on('complete' | 'pause' | 'remove')
+**Examples**
 
 ```TypeScript
-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // Replace the URL with the HTTP address of the real server.
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    let completeCallback = () => {
+      console.info('Download task completed.');
+    };
+    downloadTask.on('complete', completeCallback);
+
+    let pauseCallback = () => {
+      console.info('Download task pause.');
+    };
+    downloadTask.on('pause', pauseCallback);
+
+    let removeCallback = () => {
+      console.info('Download task remove.');
+    };
+    downloadTask.on('remove', removeCallback);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
 ```
-
-Subscribes to download events. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**System capability:** SystemCapability.MiscServices.Download
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| type | 'complete' &#124; 'pause' &#124; 'remove' | Yes | Event type.<br>- **'complete'**: download task completion.<br>- **'pause'**: download task pause.<br>- **'remove'**: download task removal. |
-| callback | () =&gt; void | Yes | Callback used to return the result. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
-
-## on('complete' | 'pause' | 'remove')
-
-```TypeScript
-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
-```
-
-Subscribes to download events. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**System capability:** SystemCapability.MiscServices.Download
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| type | 'complete' &#124; 'pause' &#124; 'remove' | Yes | Event type.<br>- **'complete'**: download task completion.<br>- **'pause'**: download task pause.<br>- **'remove'**: download task removal. |
-| callback | () =&gt; void | Yes | Callback used to return the result. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
 
 ## on('fail')
 
@@ -658,6 +697,30 @@ Subscribes to download failure events. This API uses an asynchronous callback to
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // Replace the URL with the HTTP address of the real server.
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    let failCallback = (err: number) => {
+      console.error(`Failed to download the task. Code: ${err}`);
+    };
+    downloadTask.on('fail', failCallback);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
 
 ## pause
 
@@ -692,14 +755,6 @@ Pauses this download task. This API uses an asynchronous callback to return the 
 **Examples**
 
 ```TypeScript
-downloadTask.pause().then(() => {    
-  console.info('Succeeded in pausing the download task.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
 downloadTask.pause((err: BusinessError) => {
   if(err) {
     console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
@@ -708,6 +763,8 @@ downloadTask.pause((err: BusinessError) => {
   console.info('Succeeded in pausing the download task.');
 });
 ```
+
+<a id="pause-1"></a>
 
 ## pause
 
@@ -749,16 +806,6 @@ downloadTask.pause().then(() => {
 });
 ```
 
-```TypeScript
-downloadTask.pause((err: BusinessError) => {
-  if(err) {
-    console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in pausing the download task.');
-});
-```
-
 ## query
 
 ```TypeScript
@@ -792,14 +839,6 @@ Queries this download task. This API uses an asynchronous callback to return the
 **Examples**
 
 ```TypeScript
-downloadTask.query().then((downloadInfo) => {    
-  console.info('Succeeded in querying the download task.')
-}).catch((err: BusinessError) => {
-  console.error(`Failed to query the download task. Code: ${err.code}, message: ${err.message}`)
-});
-```
-
-```TypeScript
 downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo)=>{
   if(err) {
     console.error(`Failed to query the download mimeType. Code: ${err.code}, message: ${err.message}`);
@@ -808,6 +847,8 @@ downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo)=>{
   }
 });
 ```
+
+<a id="query-1"></a>
 
 ## query
 
@@ -841,7 +882,13 @@ Queries this download task. This API uses a promise to return the result.
 
 **Examples**
 
-See [query](#query)
+```TypeScript
+downloadTask.query().then((downloadInfo) => {    
+  console.info('Succeeded in querying the download task.')
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query the download task. Code: ${err.code}, message: ${err.message}`)
+});
+```
 
 ## queryMimeType
 
@@ -876,14 +923,6 @@ Queries the MIME type of this download task. This API uses an asynchronous callb
 **Examples**
 
 ```TypeScript
-downloadTask.queryMimeType().then((data: string) => {    
-  console.info('Succeeded in querying the download MimeType.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to query the download MimeType. Code: ${err.code}, message: ${err.message}`)
-});
-```
-
-```TypeScript
 downloadTask.queryMimeType((err: BusinessError, data: string)=>{
   if(err) {
     console.error(`Failed to query the download mimeType. Code: ${err.code}, message: ${err.message}`);
@@ -892,6 +931,8 @@ downloadTask.queryMimeType((err: BusinessError, data: string)=>{
   }
 });
 ```
+
+<a id="querymimetype-1"></a>
 
 ## queryMimeType
 
@@ -925,7 +966,13 @@ Queries the MIME type of this download task. This API uses a promise to return t
 
 **Examples**
 
-See [queryMimeType](#querymimetype)
+```TypeScript
+downloadTask.queryMimeType().then((data: string) => {    
+  console.info('Succeeded in querying the download MimeType.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query the download MimeType. Code: ${err.code}, message: ${err.message}`)
+});
+```
 
 ## remove
 
@@ -960,14 +1007,6 @@ Deletes the download task. This API uses an asynchronous callback to return the 
 **Examples**
 
 ```TypeScript
-downloadTask.remove().then((result) => {
-  console.info('Succeeded in removing the download task.');
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to remove the download task. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
 downloadTask.remove((err, result)=>{
   if(err) {
     console.error(`Failed to remove the download task. Code: ${err.code}, message: ${err.message}`);
@@ -976,6 +1015,8 @@ downloadTask.remove((err, result)=>{
   console.info('Succeeded in removing the download task.');
 });
 ```
+
+<a id="remove-1"></a>
 
 ## remove
 
@@ -1014,16 +1055,6 @@ downloadTask.remove().then((result) => {
   console.info('Succeeded in removing the download task.');
 }).catch ((err: BusinessError) => {
   console.error(`Failed to remove the download task. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-downloadTask.remove((err, result)=>{
-  if(err) {
-    console.error(`Failed to remove the download task. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in removing the download task.');
 });
 ```
 
@@ -1070,29 +1101,6 @@ try {
   // Replace the URL with the HTTP address of the real server.
   request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
     let downloadTask: request.DownloadTask = data;
-    downloadTask.restore().then((result: boolean) => {
-      console.info('Succeeded in resuming the download task.')
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
-    });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  // Replace the URL with the HTTP address of the real server.
-  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-    let downloadTask: request.DownloadTask = data;
     downloadTask.restore((err: BusinessError, result: boolean) => {
       if (err) {
         console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
@@ -1107,6 +1115,8 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<a id="restore-1"></a>
 
 ## restore
 
@@ -1141,7 +1151,28 @@ Restores the download task. This API uses a promise to return the result.
 
 **Examples**
 
-See [restore](#restore)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // Replace the URL with the HTTP address of the real server.
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    downloadTask.restore().then((result: boolean) => {
+      console.info('Succeeded in resuming the download task.')
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
 
 ## resume
 
@@ -1176,14 +1207,6 @@ Restores the download task. This API uses an asynchronous callback to return the
 **Examples**
 
 ```TypeScript
-downloadTask.resume().then(() => {
-  console.info('Succeeded in resuming the download task.')
-}).catch((err: BusinessError) => {
-  console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
 downloadTask.resume((err: BusinessError) => {
   if (err) {
     console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
@@ -1192,6 +1215,8 @@ downloadTask.resume((err: BusinessError) => {
   console.info('Succeeded in resuming the download task.');
 });
 ```
+
+<a id="resume-1"></a>
 
 ## resume
 
@@ -1230,16 +1255,6 @@ downloadTask.resume().then(() => {
   console.info('Succeeded in resuming the download task.')
 }).catch((err: BusinessError) => {
   console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-downloadTask.resume((err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in resuming the download task.');
 });
 ```
 
@@ -1286,29 +1301,6 @@ try {
   // Replace the URL with the HTTP address of the real server.
   request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
     let downloadTask: request.DownloadTask = data;
-    downloadTask.suspend().then((result: boolean) => {
-      console.info('Succeeded in pausing the download task.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
-    });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  // Replace the URL with the HTTP address of the real server.
-  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-    let downloadTask: request.DownloadTask = data;
     downloadTask.suspend((err: BusinessError, result: boolean) => {
       if (err) {
         console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
@@ -1323,6 +1315,8 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<a id="suspend-1"></a>
 
 ## suspend
 
@@ -1357,4 +1351,25 @@ Suspends this download task. You can use [restore](#restore) to restore the down
 
 **Examples**
 
-See [suspend](#suspend)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // Replace the URL with the HTTP address of the real server.
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    downloadTask.suspend().then((result: boolean) => {
+      console.info('Succeeded in pausing the download task.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```

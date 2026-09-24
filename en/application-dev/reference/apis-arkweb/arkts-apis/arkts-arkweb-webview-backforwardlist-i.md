@@ -1,5 +1,9 @@
 # BackForwardList
 
+```TypeScript
+interface BackForwardList
+```
+
 BackForwardList is an interface in the ArkWeb framework for accessing the browsing history list of a Web component. It is obtained through the [getBackForwardEntries](arkts-arkweb-webview-webviewcontroller-c.md#getbackforwardentries) method. This interface provides read-only access to the page navigation history. Developers can obtain basic information about the current history list (the current index and the total number of history entries), as well as detailed information about a specific history item by index.
 
 @interface BackForwardList [since 9 - 11]
@@ -45,6 +49,8 @@ Obtains the information of the history item at the specified index in the histor
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+
+**Examples**
 
 ## currentIndex
 

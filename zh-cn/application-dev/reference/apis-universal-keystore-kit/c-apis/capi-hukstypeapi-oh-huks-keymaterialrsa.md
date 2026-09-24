@@ -8,6 +8,8 @@ typedef struct OH_Huks_KeyMaterialRsa {...} OH_Huks_KeyMaterialRsa
 
 定义RSA密钥的结构体类型。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 **相关模块：** [HuksTypeApi](capi-hukstypeapi.md)

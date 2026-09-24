@@ -1,5 +1,9 @@
 # InitializationOptions
 
+```TypeScript
+interface InitializationOptions
+```
+
 PixelMap的初始化选项。
 
 **起始版本：** 8

@@ -1,5 +1,9 @@
 # EditMenuOptions
 
+```TypeScript
+declare interface EditMenuOptions
+```
+
 编辑菜单选项
 
 **起始版本：** 12

@@ -8,6 +8,8 @@ typedef struct ffrt_rwlock_t {...} ffrt_rwlock_t
 
 Defines the rwlock structure used to store internal data of the rwlock.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 18
 
 **Related module**: [FFRT](capi-ffrt.md)
@@ -33,5 +35,7 @@ uint32_t storage[(ffrt_rwlock_storage_size + sizeof(uint32_t) - 1) / sizeof(uint
 **Description**
 
 Internal storage backing the rwlock. Do not access directly; use the `ffrt_rwlock_*` APIs.
+
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 

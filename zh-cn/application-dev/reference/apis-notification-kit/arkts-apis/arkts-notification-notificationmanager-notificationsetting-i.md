@@ -1,5 +1,9 @@
 # NotificationSetting
 
+```TypeScript
+export interface NotificationSetting
+```
+
 通知提醒方式开关的设置状态。
 
 **起始版本：** 20

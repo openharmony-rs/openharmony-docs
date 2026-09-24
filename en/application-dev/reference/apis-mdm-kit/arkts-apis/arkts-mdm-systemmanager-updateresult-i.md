@@ -1,5 +1,9 @@
 # UpdateResult
 
+```TypeScript
+interface UpdateResult
+```
+
 Represents the update result information.
 
 **Since:** 12

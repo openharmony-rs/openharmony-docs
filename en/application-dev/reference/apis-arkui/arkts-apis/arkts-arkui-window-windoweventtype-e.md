@@ -1,5 +1,9 @@
 # WindowEventType
 
+```TypeScript
+enum WindowEventType
+```
+
 Enumerates the window lifecycle states.
 
 **Since:** 10

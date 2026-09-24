@@ -1,11 +1,15 @@
 # IconGroupSuffix
 
-The **ChipGroup** component provides a set of chips for organizing and categorizing files or resource content.
+```TypeScript
+export declare struct IconGroupSuffix
+```
+
+The **ChipGroup** component provides chip group capabilities, supporting single-selection or multi-selection modes, customizable styles, icons, and spacing, as well as selected state management and event callbacks. It is suitable for various scenarios such as file categorization, resource filtering, tag selection, and content grouping, helping developers quickly implement selection functionality while delivering a consistent visual and interactive experience.
 
 > **NOTE:** 
 > 
 > With **SymbolGlyphModifier**, neither modifying the animation type with **symbolEffect** nor setting the effect
-> strategy with effectStrategy is supported.
+> strategy with [effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) is supported.
 
 **Since:** 12
 
@@ -25,7 +29,11 @@ import { IconOptions, LabelOptions as ChipItemLabelOptions, ChipGroupItemOptions
 iconBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-Set system-styled materials for the component. Different materials have different effects, which can influence the backgroundColor, border, shadow, and other visual attributes of the component.
+System material style of the component. Different materials have different effects and can affect the [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border), and [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow) visual properties of the component. When a system material with auto-invert is set, if **fontColor** uses a system-predefined invertible color resource (such as `$r('sys.color.font_primary')`), the color automatically adapts to the inverted color of the material background color.
+
+Default value: **undefined**
+
+When the **value** is **undefined**, no material style is applied.
 
 **Type:** [uiMaterial.Material](arkts-arkui-uimaterial-material-c.md)
 
@@ -45,7 +53,7 @@ Set system-styled materials for the component. Different materials have differen
 items: Array<IconItemOptions | SymbolGlyphModifier | SymbolItemOptions>
 ```
 
-Custom builder items.
+Array of custom items displayed in the trailing area. The array supports **IconItemOptions** (image icon), **SymbolGlyphModifier** (symbol icon), or **SymbolItemOptions** (symbol icon configuration) types.
 
 **Type:** Array&lt;[IconItemOptions](arkts-arkui-arkui-advanced-chipgroup-iconitemoptions-i.md) &#124; [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md) &#124; [SymbolItemOptions](arkts-arkui-arkui-advanced-chipgroup-symbolitemoptions-i.md)&gt;
 

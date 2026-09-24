@@ -1,5 +1,9 @@
 # DynamicRangeType
 
+```TypeScript
+enum DynamicRangeType
+```
+
 Enumerates the dynamic range types of media assets.
 
 **Since:** 14

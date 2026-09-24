@@ -1,5 +1,9 @@
 # ActionSheetOptions
 
+```TypeScript
+interface ActionSheetOptions
+```
+
 Provides **ActionSheet** configuration options.
 
 **Since:** 8
@@ -14,7 +18,7 @@ distortionMode?: DistortionMode
 
 Sets the distortion animation Mode of the dialog.
 
-**Type:** [DistortionMode](../arkts-components/arkts-arkui-distortionmode-e-sys.md)
+**Type:** [DistortionMode](../arkts-components/arkts-arkui-common-comp-distortionmode-e-sys.md)
 
 **Default:** DistortionMode.DISTORTION_AUTO
 
@@ -34,7 +38,7 @@ edgeLightMode?: EdgeLightMode
 
 Sets the edgeLight animation Mode of the dialog.
 
-**Type:** [EdgeLightMode](../arkts-components/arkts-arkui-edgelightmode-e-sys.md)
+**Type:** [EdgeLightMode](../arkts-components/arkts-arkui-common-comp-edgelightmode-e-sys.md)
 
 **Default:** EdgeLightMode.EDGELIGHT_AUTO
 

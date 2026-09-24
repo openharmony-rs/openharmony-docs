@@ -1,6 +1,6 @@
 # ArkTS API<!--arkts-arkgraphics2d-->
 
-- [@ohos.effectKit](arkts-arkgraphics2d-effectkit.md)
+- [@ohos.effectKit(图像效果)](arkts-arkgraphics2d-effectkit.md)
   - [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md)
   - [createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md)
   - [Color](arkts-arkgraphics2d-effectkit-color-i.md)
@@ -61,10 +61,15 @@
   - [Tool](arkts-arkgraphics2d-drawing-tool-c.md)
   - [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md)
   - [TypefaceArguments](arkts-arkgraphics2d-drawing-typefacearguments-c.md)
+  <!--Del-->
+  - [AtlasImage(系统接口)](arkts-arkgraphics2d-drawing-atlasimage-i-sys.md)<!--DelEnd-->
   - [FontFeature](arkts-arkgraphics2d-drawing-fontfeature-i.md)
   - [FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md)
   - [RecordCmd](arkts-arkgraphics2d-drawing-recordcmd-i.md)
   - [TextBlobRunBuffer](arkts-arkgraphics2d-drawing-textblobrunbuffer-i.md)
+  - [TypefaceFallbackInfo](arkts-arkgraphics2d-drawing-typefacefallbackinfo-i.md)
+  <!--Del-->
+  - [AtlasInterpolationMode(系统接口)](arkts-arkgraphics2d-drawing-atlasinterpolationmode-e-sys.md)<!--DelEnd-->
   - [BlendMode](arkts-arkgraphics2d-drawing-blendmode-e.md)
   - [BlurType](arkts-arkgraphics2d-drawing-blurtype-e.md)
   - [CapStyle](arkts-arkgraphics2d-drawing-capstyle-e.md)
@@ -159,7 +164,7 @@
   - [TextUndefinedGlyphDisplay](arkts-arkgraphics2d-text-textundefinedglyphdisplay-e.md)
   - [TextVerticalAlign](arkts-arkgraphics2d-text-textverticalalign-e.md)
   - [WordBreak](arkts-arkgraphics2d-text-wordbreak-e.md)
-- [@ohos.graphics.uiEffect](arkts-arkgraphics2d-graphics-uieffect.md)
+- [@ohos.graphics.uiEffect(效果级联)](arkts-arkgraphics2d-graphics-uieffect.md)
   - [uiEffect](arkts-arkgraphics2d-uieffect-n.md)
     <!--Del-->
     - [createBrightnessBlender(系统接口)](arkts-arkgraphics2d-uieffect-createbrightnessblender-f-sys.md)<!--DelEnd-->
@@ -188,6 +193,12 @@
     - [Filter](arkts-arkgraphics2d-uieffect-filter-i.md)
     <!--Del-->
     - [Filter(系统接口)](arkts-arkgraphics2d-uieffect-filter-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [GlassMarbleContentParam(系统接口)](arkts-arkgraphics2d-uieffect-glassmarblecontentparam-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [GlassMarbleMaterialParam(系统接口)](arkts-arkgraphics2d-uieffect-glassmarblematerialparam-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [GlassMarbleSphereParam(系统接口)](arkts-arkgraphics2d-uieffect-glassmarblesphereparam-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [HdrBrightnessBlender(系统接口)](arkts-arkgraphics2d-uieffect-hdrbrightnessblender-i-sys.md)<!--DelEnd-->
     <!--Del-->

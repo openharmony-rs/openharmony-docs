@@ -1,5 +1,9 @@
 # PackingDynamicRange
 
+```TypeScript
+enum PackingDynamicRange
+```
+
 Enumerates the desired dynamic range of an image during encoding.
 
 **Since:** 12

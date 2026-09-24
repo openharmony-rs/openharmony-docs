@@ -63,6 +63,8 @@ bundle.cleanBundleCacheFiles(bundleName).then(() => {
 ```
 
 
+<a id="cleanbundlecachefiles-1"></a>
+
 ## cleanBundleCacheFiles
 
 ```TypeScript

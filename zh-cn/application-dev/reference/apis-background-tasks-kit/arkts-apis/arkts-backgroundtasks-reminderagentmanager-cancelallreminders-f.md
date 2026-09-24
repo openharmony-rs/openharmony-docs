@@ -28,7 +28,7 @@ function cancelAllReminders(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter is not valid parameter. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1700004](../errorcode-reminderAgentManager.md#1700004-包名不存在) | The bundle name does not exist. |
 
 **示例**
@@ -46,17 +46,8 @@ reminderAgentManager.cancelAllReminders((err: BusinessError) =>{
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
-reminderAgentManager.cancelAllReminders().then(() => {
-  console.info("cancelAllReminders promise")
-}).catch((err: BusinessError) => {
-  console.error("promise err code:" + err.code + " message:" + err.message);
-});
-```
-
+<a id="cancelallreminders-1"></a>
 
 ## cancelAllReminders
 
@@ -80,9 +71,18 @@ function cancelAllReminders(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter is not valid parameter. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1700004](../errorcode-reminderAgentManager.md#1700004-包名不存在) | The bundle name does not exist. |
 
 **示例**
 
-参见 cancelAllReminders
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+
+reminderAgentManager.cancelAllReminders().then(() => {
+  console.info("cancelAllReminders promise")
+}).catch((err: BusinessError) => {
+  console.error("promise err code:" + err.code + " message:" + err.message);
+});
+```

@@ -46,6 +46,8 @@ ImageProcessing_ErrorCode OH_ImageProcessing_InitializeEnvironment(void)
 
 初始化图片处理模块的全局环境。 <br>此函数为非必需函数。通常此函数在主进程启动时被调用，用于图片处理模块的全局环境初始化并可以减少[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)的耗时。调用 [OH_ImageProcessing_DeinitializeEnvironment](capi-image-processing-h.md#oh_imageprocessing_deinitializeenvironment)进行全局环境反初始化。可用于检查设备GPU是否正常工作。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 13
 
 **返回值：**
@@ -64,6 +66,8 @@ ImageProcessing_ErrorCode OH_ImageProcessing_DeinitializeEnvironment(void)
 
 反初始化图片处理模块的全局环境。 <br>如果[OH_ImageProcessing_InitializeEnvironment](capi-image-processing-h.md#oh_imageprocessing_initializeenvironment)被调用，则此函数为必需函数。通常此函数在主进程准备退出时被调用，用于反初始化图片处理模块的全局环境（由 [OH_ImageProcessing_InitializeEnvironment](capi-image-processing-h.md#oh_imageprocessing_initializeenvironment)接口初始化）。如果此时存在图片处理实例，则不应调用此函数。如果 [OH_ImageProcessing_InitializeEnvironment](capi-image-processing-h.md#oh_imageprocessing_initializeenvironment)未被调用，则不应调用此函数。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 13
 
 **返回值：**
@@ -81,6 +85,8 @@ bool OH_ImageProcessing_IsColorSpaceConversionSupported(const ImageProcessing_Co
 **描述：**
 
 查询是否支持当前图片色彩空间转换能力。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 13
 
@@ -106,6 +112,8 @@ bool OH_ImageProcessing_IsCompositionSupported(const ImageProcessing_ColorSpaceI
 **描述：**
 
 查询是否支持HDR双层图片转换为HDR单层图片。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 13
 
@@ -133,6 +141,8 @@ bool OH_ImageProcessing_IsDecompositionSupported(const ImageProcessing_ColorSpac
 
 查询是否支持HDR单层图片转换为HDR双层图片。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 13
 
 **参数：**
@@ -159,6 +169,8 @@ bool OH_ImageProcessing_IsMetadataGenerationSupported(const ImageProcessing_Colo
 
 查询是否支持图片元数据生成能力。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 13
 
 **参数：**
@@ -182,6 +194,8 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Create(OH_ImageProcessing** imagePr
 **描述：**
 
 创建一个图片处理模块实例。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 13
 
@@ -208,6 +222,8 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Destroy(OH_ImageProcessing* imagePr
 
 销毁当前图片处理模块实例。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 13
 
 **参数：**
@@ -231,6 +247,8 @@ ImageProcessing_ErrorCode OH_ImageProcessing_SetParameter(OH_ImageProcessing* im
 **描述：**
 
 设置图片处理模块参数。通过特定参数键添加参数。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 13
 
@@ -257,6 +275,8 @@ ImageProcessing_ErrorCode OH_ImageProcessing_GetParameter(OH_ImageProcessing* im
 
 获取图片处理模块参数。通过特定参数键获取参数。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 13
 
 **参数：**
@@ -281,6 +301,8 @@ ImageProcessing_ErrorCode OH_ImageProcessing_ConvertColorSpace(OH_ImageProcessin
 **描述：**
 
 实现单层图片间转换。此函数包括HDR图片到SDR图片的色彩空间转换，SDR图片到HDR图片的色彩空间转换，SDR图片到SDR图片的色彩空间转换和HDR图片的色彩空间转换。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 13
 
@@ -307,6 +329,8 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Compose(OH_ImageProcessing* imagePr
 **描述：**
 
 实现HDR双层图片到HDR单层图片的转换。此函数通过输入图片与输入Gainmap生成输出图片。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 13
 
@@ -335,6 +359,8 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Decompose(OH_ImageProcessing* image
 
 实现HDR单层图片到HDR双层图片的转换。此函数通过输入图片生成输出图片和输出Gainmap。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 13
 
 **参数：**
@@ -362,6 +388,8 @@ ImageProcessing_ErrorCode OH_ImageProcessing_GenerateMetadata(OH_ImageProcessing
 
 生成HDR图片元数据。此函数为HDR图片生成元数据。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 13
 
 **参数：**
@@ -386,6 +414,8 @@ ImageProcessing_ErrorCode OH_ImageProcessing_EnhanceDetail(OH_ImageProcessing* i
 **描述：**
 
 进行图片清晰度/细节增强。此函数根据输入图片和输出图片预设的尺寸，对源图片进行必要的缩放操作生成目标图片，并提供了多种缩放方法以平衡性能和图像质量。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 13
 

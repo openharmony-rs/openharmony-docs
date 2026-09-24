@@ -1,5 +1,9 @@
 # ComfortReminderData (System API)
 
+```TypeScript
+export interface ComfortReminderData extends UserStatusData
+```
+
 Defines comfort reminder data.
 
 **Inheritance/Implementation:** ComfortReminderData extends [UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md)

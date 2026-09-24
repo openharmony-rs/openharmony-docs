@@ -1,5 +1,9 @@
 # PathSeparatorStrategy
 
+```TypeScript
+export enum PathSeparatorStrategy
+```
+
 PathSeparatorStrategy作为[Options](arkts-basicservices-zlib-options-i.md)的一个属性，用于指定解压时目标压缩包内文件路径中分隔符的处理策略。
 
 **起始版本：** 21

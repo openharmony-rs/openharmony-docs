@@ -27,7 +27,7 @@ function setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| tokenId | number | 是 | 目标应用的身份标识。可通过bundleManager.getApplicationInfo获取accessTokenId。 |
+| tokenId | number | 是 | 目标应用的身份标识。可通过[bundleManager.getApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md)获取accessTokenId。 |
 | policy | [ClipboardPolicy](arkts-mdm-securitymanager-clipboardpolicy-e.md) | 是 | 剪贴板策略。 |
 
 **错误码：**
@@ -36,8 +36,8 @@ function setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPo
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -60,26 +60,8 @@ try {
 }
 ```
 
-```TypeScript
-import { securityManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// 需根据实际情况进行替换
-let bundleName: string = 'com.example.myapplication';
-let accountId: number = 100;
-try {
-  securityManager.setAppClipboardPolicy(wantTemp, bundleName, accountId, securityManager.ClipboardPolicy.IN_APP);
-  console.info(`Succeeded in setting clipboard policy.`);
-} catch (err) {
-  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="setappclipboardpolicy-1"></a>
 
 ## setAppClipboardPolicy
 
@@ -112,8 +94,26 @@ function setAppClipboardPolicy(admin: Want, bundleName: string, accountId: numbe
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
-参见 setAppClipboardPolicy
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 需根据实际情况进行替换
+let bundleName: string = 'com.example.myapplication';
+let accountId: number = 100;
+try {
+  securityManager.setAppClipboardPolicy(wantTemp, bundleName, accountId, securityManager.ClipboardPolicy.IN_APP);
+  console.info(`Succeeded in setting clipboard policy.`);
+} catch (err) {
+  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+}
+```

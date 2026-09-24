@@ -1,5 +1,9 @@
 # RotationLimits (System API)
 
+```TypeScript
+export interface RotationLimits
+```
+
 Rotation angle limits relative to the reference point. @typedef RotationLimits
 
 **Since:** 20

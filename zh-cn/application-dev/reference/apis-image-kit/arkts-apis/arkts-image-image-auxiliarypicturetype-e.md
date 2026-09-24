@@ -1,5 +1,9 @@
 # AuxiliaryPictureType
 
+```TypeScript
+enum AuxiliaryPictureType
+```
+
 表示辅助图的图像类型的枚举。
 
 辅助图不直接参与图片显示，且并非所有图片中都含有辅助图。

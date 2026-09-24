@@ -1,5 +1,9 @@
 # MediaControlExtensionContext (System API)
 
+```TypeScript
+export default class MediaControlExtensionContext extends UIExtensionContext
+```
+
 The context of media control extension. It allows access to UIExtension-specific resources.
 
 @extends UIExtensionContext

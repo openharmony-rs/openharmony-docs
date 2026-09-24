@@ -1,5 +1,9 @@
 # ProcessManager
 
+```TypeScript
+export class ProcessManager
+```
+
 Provides APIs for throwing exceptions during the addition of a process.
 
 Construct a **ProcessManager** object.

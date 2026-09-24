@@ -51,9 +51,9 @@ function anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The app does not have sufficient permissions. Possible causes: The cross-account permission is not granted, the system is not unlocked by the user, or the user does not exist. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system apps use system APIs. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The API is not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The app does not have sufficient permissions. Possible causes: The cross-account permission is not granted, the system is not unlocked by the user, or the user does not exist. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system apps use system APIs. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | The API is not supported. |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | The function is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The extended encryption key is not supported. |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | The algorithm parameter is missing. |
 | [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | The algorithm parameter is invalid. |
@@ -69,6 +69,90 @@ function anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string,
 
 **示例**
 
-```TypeScript
 以下代码示例接口调用的前置条件同上文generateKeyItemAsUser的前置条件
+
+```TypeScript
+/* 以ECC离线匿名密钥证明为例 */
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+const userId = 100;
+const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
+const keyAliasString = 'key anon local attest as user';
+
+const challenge = stringToUint8Array('challenge_data');
+
+/* 1. 生成密钥 */
+async function generateKey(alias: string) {
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_ECC
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_DIGEST,
+      value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PADDING,
+      value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+      value: userIdStorageLevel,
+    }
+  ];
+  let options: huks.HuksOptions = {
+    properties: properties
+  };
+
+  await huks.generateKeyItemAsUser(userId, alias, options);
+}
+
+/* 2. 离线获取匿名化密钥证书 */
+async function anonAttestKeyItemOfflineAsUser() {
+  let aliasString = keyAliasString;
+  let aliasUint8 = stringToUint8Array(aliasString);
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+      value: challenge
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+      value: aliasUint8
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+      value: userIdStorageLevel,
+    }
+  ];
+
+  await generateKey(aliasString);
+  await huks.anonAttestKeyItemOfflineAsUser(userId, aliasString, properties).then((data) => {
+    console.debug(`'CERT:${JSON.stringify(data)}`)
+    for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
+      console.info(`CERT${i}是${data.certChains[i]}`)
+    }
+    console.info('离线匿名 attest 成功')
+  }).catch((err: BusinessError) => {
+    console.error(`离线匿名 attest 失败，错误码是：${err.code} 错误信息：${err.message}`)
+  })
+}
 ```

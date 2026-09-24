@@ -1,5 +1,9 @@
 # Descriptor
 
+```TypeScript
+enum Descriptor
+```
+
 USB描述符的枚举。
 
 **起始版本：** 14

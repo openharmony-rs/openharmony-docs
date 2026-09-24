@@ -1,5 +1,9 @@
 # FontSettingOptions
 
+```TypeScript
+declare interface FontSettingOptions
+```
+
 Defines font setting options.
 
 **Since:** 12
@@ -12,7 +16,7 @@ Defines font setting options.
 enableVariableFontWeight?: boolean
 ```
 
-Whether to enable variable font weight adjustment. This parameter serves as the input for the fontWeight API. When the **weight** value in **fontWeight** is a non-hundred value within the [100, 900] range, **enableVariableFontWeight** controls whether this **weight** value is applied.
+Whether to enable variable font weight adjustment. This parameter serves as the input for the [fontWeight](../arkts-components/arkts-arkui-text-comp-attribute.md#fontweight-1) API. When the **weight** value in **fontWeight** is a non-hundred value within the [100, 900] range, **enableVariableFontWeight** controls whether this **weight** value is applied.
 
 Default value: **false**
 

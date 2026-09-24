@@ -1,5 +1,9 @@
 # MmsDeliveryInd（系统接口）
 
+```TypeScript
+export interface MmsDeliveryInd
+```
+
 彩信发送标识。
 
 **起始版本：** 8

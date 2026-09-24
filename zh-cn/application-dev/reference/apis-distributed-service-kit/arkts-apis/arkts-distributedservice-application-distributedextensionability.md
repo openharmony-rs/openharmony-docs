@@ -1,4 +1,4 @@
-# @ohos.application.DistributedExtensionAbility(分布式协同扩展能力)
+# @ohos.application.DistributedExtensionAbility(协同Extension)
 
 ## 导入模块
 

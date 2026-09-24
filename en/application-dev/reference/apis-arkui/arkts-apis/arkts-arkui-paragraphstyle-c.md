@@ -1,5 +1,9 @@
 # ParagraphStyle
 
+```TypeScript
+declare class ParagraphStyle
+```
+
 Describes the text paragraph style.
 
 Except the first paragraph, all paragraphs are formed using the escape character '\n'.
@@ -44,7 +48,7 @@ Indent of the text paragraph.
 
 If the return value is of the number type, the unit is vp.
 
-**Type:** number &#124; [LeadingMarginPlaceholder](../arkts-components/arkts-arkui-leadingmarginplaceholder-i.md)
+**Type:** number &#124; [LeadingMarginPlaceholder](../arkts-components/arkts-arkui-richeditor-comp-leadingmarginplaceholder-i.md)
 
 **Since:** 12
 
@@ -230,7 +234,7 @@ readonly textVerticalAlign?: TextVerticalAlign
 
 Vertical alignment mode of the text paragraph.
 
-The effect of this attribute is noticeable only when the same font size is used in a paragraph and lineHeight is set, or when different font sizes are used in a paragraph and the font sizes are mixed. The **SuperscriptStyle** in [TextStyle](arkts-arkui-textstyle-c.md) takes effect only when the value of TextVerticalAlign is set to **TextVerticalAlign.BASELINE**. In other vertical alignment modes, the superscript and subscript texts are displayed in the same way as the normal text.
+The effect of this attribute is noticeable only when the same font size is used in a paragraph and [lineHeight](../arkts-components/arkts-arkui-text-comp-attribute.md#lineheight) is set, or when different font sizes are used in a paragraph and the font sizes are mixed. The **SuperscriptStyle** in [TextStyle](arkts-arkui-textstyle-c.md) takes effect only when the value of TextVerticalAlign is set to **TextVerticalAlign.BASELINE**. In other vertical alignment modes, the superscript and subscript texts are displayed in the same way as the normal text.
 
 **Type:** [TextVerticalAlign](arkts-arkui-textverticalalign-e.md)
 

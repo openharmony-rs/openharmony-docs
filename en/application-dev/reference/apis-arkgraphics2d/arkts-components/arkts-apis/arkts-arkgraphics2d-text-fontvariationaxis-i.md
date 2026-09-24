@@ -1,5 +1,9 @@
 # FontVariationAxis
 
+```TypeScript
+interface FontVariationAxis
+```
+
 Represents the font variable axis information.
 
 **Since:** 24

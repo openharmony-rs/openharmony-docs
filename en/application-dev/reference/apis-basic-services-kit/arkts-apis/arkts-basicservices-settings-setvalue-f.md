@@ -6,6 +6,8 @@
 import { settings } from '@kit.BasicServicesKit';
 ```
 
+<a id="setvalue-2"></a>
+
 ## setValue
 
 ```TypeScript
@@ -45,30 +47,8 @@ settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', (st
 });
 ```
 
-```TypeScript
-import { settings } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
 
-// Update the value of SCREEN_BRIGHTNESS_STATUS. (As this data item exists in the database, the setValue API will update its value.)
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100').then((status) => {
-  console.info('Callback return whether value is set.');
-});
-```
-
-```TypeScript
-import { settings } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// Update the value of SCREEN_BRIGHTNESS_STATUS. (As this data item exists in the database, the setValue API will update its value.)
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', settings.domainName.DEVICE_SHARED).then((status) => {
-  console.info(`callback:return whether value is set.`)
-});
-```
-
+<a id="setvalue-3"></a>
 
 ## setValue
 
@@ -102,8 +82,20 @@ Set settingsdata value.
 
 **Examples**
 
-See [setValue](#setvalue)
+```TypeScript
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
 
+// Update the value of SCREEN_BRIGHTNESS_STATUS. (As this data item exists in the database, the setValue API will update its value.)
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100').then((status) => {
+  console.info('Callback return whether value is set.');
+});
+```
+
+
+<a id="setvalue-4"></a>
 
 ## setValue
 
@@ -144,4 +136,14 @@ Set settingsdata value. [DEVICE_SHARED, USER_PROPERTY] domain need ohos.permissi
 
 **Examples**
 
-See [setValue](#setvalue)
+```TypeScript
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Update the value of SCREEN_BRIGHTNESS_STATUS. (As this data item exists in the database, the setValue API will update its value.)
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', settings.domainName.DEVICE_SHARED).then((status) => {
+  console.info(`callback:return whether value is set.`)
+});
+```

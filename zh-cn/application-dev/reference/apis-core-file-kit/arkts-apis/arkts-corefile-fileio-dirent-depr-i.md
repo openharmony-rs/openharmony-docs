@@ -1,5 +1,9 @@
 # Dirent
 
+```TypeScript
+declare interface Dirent
+```
+
 在调用Dirent的方法前，需要先通过[dir.read()](arkts-corefile-fileio-read-f.md)方法（同步或异步）来构建一个Dirent实例。
 
 **起始版本：** 6

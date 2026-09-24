@@ -30,7 +30,7 @@ function getBatteryStats(): Promise<Array<BatteryStatsInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [4600101](../errorcode-batteryStatistics.md#4600101-连接服务失败) | Failed to connect to the service. |
 
 **示例**
@@ -45,16 +45,8 @@ batteryStats.getBatteryStats()
 });
 ```
 
-```TypeScript
-batteryStats.getBatteryStats((err: BusinessError, data: batteryStats.BatteryStatsInfo[]) => {
-    if (err) {
-        console.error(`Failed to get battery statistics. Code: ${err.code}, message: ${err.message}`);
-    } else {
-        console.info('battery statistics info: ' + data);
-    }
-});
-```
 
+<a id="getbatterystats-1"></a>
 
 ## getBatteryStats
 
@@ -80,10 +72,18 @@ function getBatteryStats(callback: AsyncCallback<Array<BatteryStatsInfo>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [4600101](../errorcode-batteryStatistics.md#4600101-连接服务失败) | Failed to connect to the service. |
 
 **示例**
 
-参见 [getBatteryStats](#getbatterystats)
+```TypeScript
+batteryStats.getBatteryStats((err: BusinessError, data: batteryStats.BatteryStatsInfo[]) => {
+    if (err) {
+        console.error(`Failed to get battery statistics. Code: ${err.code}, message: ${err.message}`);
+    } else {
+        console.info('battery statistics info: ' + data);
+    }
+});
+```

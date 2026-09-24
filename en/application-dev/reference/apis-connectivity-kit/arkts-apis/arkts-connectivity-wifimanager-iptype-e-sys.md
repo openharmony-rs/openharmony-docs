@@ -1,5 +1,9 @@
 # IpType (System API)
 
+```TypeScript
+enum IpType
+```
+
 Wi-Fi IP type enumeration.
 
 @enum { int }

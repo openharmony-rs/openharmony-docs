@@ -53,6 +53,8 @@ import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
 
+<a id="getp2plinkedinfo-1"></a>
+
 ## getP2pLinkedInfo
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # AuthenticatorCallback
 
+```TypeScript
+interface AuthenticatorCallback
+```
+
 OAuth认证器回调接口。
 
 > **说明：** 

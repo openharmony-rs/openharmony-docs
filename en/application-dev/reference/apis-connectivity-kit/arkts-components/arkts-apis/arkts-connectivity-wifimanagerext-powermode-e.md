@@ -1,5 +1,9 @@
 # PowerMode
 
+```TypeScript
+export enum PowerMode
+```
+
 The power Mode enumeration.
 
 @enum { number } PowerMode

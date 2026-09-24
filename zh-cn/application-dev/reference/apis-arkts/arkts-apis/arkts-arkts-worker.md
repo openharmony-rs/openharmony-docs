@@ -35,16 +35,16 @@ import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, E
 | [WorkerGlobalScope](arkts-arkts-worker-workerglobalscope-i.md) | Worker线程自身的运行环境，与宿主线程环境隔离。 |
 | [WorkerOptions](arkts-arkts-worker-workeroptions-i.md) | Worker构造函数的选项，用于为Worker添加其他信息。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [Priority](arkts-arkts-worker-priority-e.md) | 表示发送消息时的优先级枚举，各优先级对应关系请参考EventHandler等级定义。 |
-| [ThreadWorkerPriority](arkts-arkts-worker-threadworkerpriority-e.md) | Worker线程的优先级枚举，各优先级对应关系请参考QoS等级定义。 |
-
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
 | [ErrorCallback](arkts-arkts-errorcallback-t.md) | 表示异常回调类型。 |
 | [MessageType](arkts-arkts-messagetype-t.md) | 表示消息类型。预留数据类型，暂未实现。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [Priority](arkts-arkts-worker-priority-e.md) | 表示发送消息时的优先级枚举，各优先级对应关系请参考EventHandler等级定义。 |
+| [ThreadWorkerPriority](arkts-arkts-worker-threadworkerpriority-e.md) | Worker线程的优先级枚举，各优先级对应关系请参考QoS等级定义。 |

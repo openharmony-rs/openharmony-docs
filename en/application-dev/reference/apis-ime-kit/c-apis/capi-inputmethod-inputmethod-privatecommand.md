@@ -8,6 +8,8 @@ typedef struct InputMethod_PrivateCommand InputMethod_PrivateCommand
 
 Represents the private data exchanged between the text box and the input method application.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Related module**: [InputMethod](capi-inputmethod.md)

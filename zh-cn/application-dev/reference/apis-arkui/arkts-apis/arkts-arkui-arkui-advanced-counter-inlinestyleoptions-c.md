@@ -1,5 +1,9 @@
 # InlineStyleOptions
 
+```TypeScript
+declare class InlineStyleOptions extends CommonOptions
+```
+
 InlineStyleOptions定义了数值内联型Counter的属性和事件。
 
 继承于[CommonOptions](arkts-arkui-arkui-advanced-counter-commonoptions-c.md)。
@@ -30,7 +34,7 @@ onChange?: (value: number) => void
 
 value：当前显示的数值。
 
-默认值：数值改变时，不返回值。
+默认值：不触发数值改变时的回调。
 
 值为undefined时，按默认值处理。
 
@@ -123,8 +127,6 @@ textWidth?: number
 值为undefined时，按默认值处理。
 
 **类型：** number
-
-**默认值：** 0
 
 **起始版本：** 11
 

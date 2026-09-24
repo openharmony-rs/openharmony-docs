@@ -1,5 +1,9 @@
 # Transliterator
 
+```TypeScript
+export class Transliterator
+```
+
 提供文本音译相关的能力，包括音译支持范围获取和文本音译等。
 
 **起始版本：** 9

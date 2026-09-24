@@ -169,6 +169,10 @@
   <!--Del-->
   - [ResultInfo(system api)](arkts-medialibrary-photoaccesshelper-resultinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [SearchQuery(system api)](arkts-medialibrary-photoaccesshelper-searchquery-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SearchResult(system api)](arkts-medialibrary-photoaccesshelper-searchresult-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [SearchSuggestionResult(system api)](arkts-medialibrary-photoaccesshelper-searchsuggestionresult-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [SharedAlbumAsset(system api)](arkts-medialibrary-photoaccesshelper-sharedalbumasset-i-sys.md)<!--DelEnd-->
@@ -416,20 +420,3 @@
   - [PositionType(system api)](arkts-medialibrary-sendablephotoaccesshelper-positiontype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ThumbnailVisibility(system api)](arkts-medialibrary-sendablephotoaccesshelper-thumbnailvisibility-e-sys.md)<!--DelEnd-->
-- [@ohos.multimedia.movingphotoview(A component which support applications to show moving photo data)](arkts-medialibrary-multimedia-movingphotoview.md)
-  - [MovingPhotoViewAttribute](arkts-medialibrary-multimedia-movingphotoview-movingphotoviewattribute-c.md)
-  <!--Del-->
-  - [MovingPhotoViewAttribute(system api)](arkts-medialibrary-multimedia-movingphotoview-movingphotoviewattribute-c-sys.md)<!--DelEnd-->
-  - [MovingPhotoViewController](arkts-medialibrary-multimedia-movingphotoview-movingphotoviewcontroller-c.md)
-  <!--Del-->
-  - [MovingPhotoViewController(system api)](arkts-medialibrary-multimedia-movingphotoview-movingphotoviewcontroller-c-sys.md)<!--DelEnd-->
-  - [MovingPhotoViewInterface](arkts-medialibrary-multimedia-movingphotoview-movingphotoviewinterface-i.md)
-  - [MovingPhotoViewOptions](arkts-medialibrary-multimedia-movingphotoview-movingphotoviewoptions-i.md)
-  <!--Del-->
-  - [MovingPhotoViewOptions(system api)](arkts-medialibrary-multimedia-movingphotoview-movingphotoviewoptions-i-sys.md)<!--DelEnd-->
-  - [MovingPhotoViewEventCallback](arkts-medialibrary-movingphotovieweventcallback-t.md)
-  <!--Del-->
-  - [DynamicRangeMode(system api)](arkts-medialibrary-multimedia-movingphotoview-dynamicrangemode-e-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [PixelMapFormat(system api)](arkts-medialibrary-multimedia-movingphotoview-pixelmapformat-e-sys.md)<!--DelEnd-->
-  - [Constants](arkts-medialibrary-multimedia-movingphotoview-con.md)

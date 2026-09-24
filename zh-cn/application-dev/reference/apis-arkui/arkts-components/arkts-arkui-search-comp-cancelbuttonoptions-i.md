@@ -1,0 +1,47 @@
+# CancelButtonOptions
+
+```TypeScript
+interface CancelButtonOptions
+```
+
+定义清除按钮选项。
+
+**起始版本：** 12
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## icon
+
+```TypeScript
+icon?: IconOptions
+```
+
+右侧清除按钮图标。不传入时使用默认清除图标样式。
+
+**类型：** [IconOptions](arkts-arkui-search-comp-iconoptions-i.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## style
+
+```TypeScript
+style?: CancelButtonStyle
+```
+
+右侧清除按钮显示状态。默认值：CancelButtonStyle.INPUT。
+
+**类型：** [CancelButtonStyle](arkts-arkui-search-comp-cancelbuttonstyle-e.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full

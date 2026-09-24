@@ -1,5 +1,9 @@
 # AbilityFormInfo (System API)
 
+```TypeScript
+export interface AbilityFormInfo
+```
+
 AbilityFormInfo: the form info of an ability.
 
 **Since:** 9

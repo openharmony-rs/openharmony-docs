@@ -1,5 +1,9 @@
 # HuksKeyStorageType
 
+```TypeScript
+export enum HuksKeyStorageType
+```
+
 表示密钥存储方式。
 
 **起始版本：** 8
@@ -20,6 +24,8 @@ HUKS_STORAGE_TEMP = 0
 
 **废弃版本：** 10
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_STORAGE_PERSISTENT
@@ -36,6 +42,8 @@ HUKS_STORAGE_PERSISTENT = 1
 
 **废弃版本：** 10
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_STORAGE_ONLY_USED_IN_HUKS
@@ -47,6 +55,8 @@ HUKS_STORAGE_ONLY_USED_IN_HUKS = 2
 表示主密钥派生的密钥存储于huks中，由HUKS进行托管。
 
 **起始版本：** 10
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -63,6 +73,8 @@ HUKS_STORAGE_KEY_EXPORT_ALLOWED = 3
 表示主密钥派生的密钥直接导出给业务方，HUKS不对其进行托管服务。
 
 **起始版本：** 10
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 

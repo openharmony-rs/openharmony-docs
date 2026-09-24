@@ -4,6 +4,8 @@
 
 BackgroundProcessManager provides APIs.
 
+**System capability**: SystemCapability.Resourceschedule.BackgroundProcessManager
+
 **Since**: 17
 
 ## Files

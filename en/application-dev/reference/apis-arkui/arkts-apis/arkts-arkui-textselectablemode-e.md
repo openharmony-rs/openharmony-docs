@@ -1,5 +1,9 @@
 # TextSelectableMode
 
+```TypeScript
+declare enum TextSelectableMode
+```
+
 Sets whether text can be selected and focused on.
 
 **Since:** 12

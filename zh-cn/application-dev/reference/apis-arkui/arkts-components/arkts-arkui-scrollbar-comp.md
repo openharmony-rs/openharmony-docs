@@ -1,8 +1,12 @@
 # ScrollBar
 
-滚动条组件ScrollBar，用于配合可滚动组件使用，如ArcList、List、Grid、Scroll、WaterFlow。
+滚动条组件ScrollBar，用于配合可滚动组件使用，如[ArcList](arkts-arkui-arclist-comp.md#ohosarkuiarclist)、List、Grid、Scroll、WaterFlow。
 
-> **说明：** > > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。 > > - ScrollBar主轴方向不设置大小时，采用父组件[布局约束](../arkts-apis/arkts-arkui-framenode-layoutconstraint-i.md)中的maxSize作为主轴方向大小。如果ScrollBar的父组件存在可滚动组件，如 > ArcList、List、Grid、Scroll、 > WaterFlow，建议设置ScrollBar主轴方向大小，否则ScrollBar主轴方向大小可能为无穷大。
+> **说明：** 
+> 
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 
+> - ScrollBar主轴方向不设置大小时，采用父组件[布局约束](../arkts-apis/arkts-arkui-framenode-layoutconstraint-i.md)中的maxSize作为主轴方向大小。如果ScrollBar的父组件存在可滚动组件，如[ArcList](arkts-arkui-arclist-comp.md#ohosarkuiarclist)、List、Grid、Scroll、WaterFlow，建议设置ScrollBar主轴方向大小，否则ScrollBar主轴方向大小可能为无穷大。
 
 ## 子组件
 
@@ -20,13 +24,17 @@
 > 
 > - 从API version 12开始，ScrollBar组件没有子节点时，支持显示默认样式的滚动条。
 > 
-> - ScrollBar组件的显隐是通过BarState设置，组件内部会自动根据BarState设置调整opacity来控制显隐，因此ScrollBar组件设置opacity属性不生效。
+> - ScrollBar组件的显隐是通过BarState设置，组件内部会自动根据BarState设置调整opacity来控制显隐，因此ScrollBar组件设置[opacity](arkts-arkui-common-comp-commonmethod-c.md#opacity)属性不生效。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 只读 | 可选 | 说明 | | -------- | -------- | -------- | -- | -------- | | scroller | [Scroller](arkts-arkui-scroller-c.md) | 否 | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定。 | | direction | ScrollBarDirection | 否 | 是 | 滚动条的方向，控制可滚动组件对应方向的滚动。<br>默认值：ScrollBarDirection.Vertical | | state | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | 否 | 是 | 滚动条状态。<br>默认值：BarState.Auto |
+| 名称 | 类型 | 只读 | 可选 | 说明 |  
+| -------- | -------- | -------- | -- | -------- |  
+| scroller | [Scroller](arkts-arkui-scroll-comp-scroller-c.md) | 否 | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定。 |
+| direction | [ScrollBarDirection](../../../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md#scrollbardirection枚举说明) | 否 | 是 | 滚动条的方向，控制可滚动组件对应方向的滚动。<br>默认值：ScrollBarDirection.Vertical |
+| state | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | 否 | 是 | 滚动条状态。<br>默认值：BarState.Auto |
 
 ## ScrollBarDirection枚举说明
 
@@ -36,7 +44,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 值 | 说明 | | -------- | ---- | -------- | | Vertical | 0 | 纵向滚动条。 | | Horizontal | 1 | 横向滚动条。 |
+| 名称 | 值 | 说明 |  
+| -------- | ---- | -------- |  
+| Vertical | 0 | 纵向滚动条。 |
+| Horizontal | 1 | 横向滚动条。 |
 
 ## 示例1（设置子节点）
 
@@ -207,6 +218,8 @@ ScrollBar(value: ScrollBarOptions)
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -215,7 +228,7 @@ ScrollBar(value: ScrollBarOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ScrollBarOptions](arkts-arkui-scrollbaroptions-i.md) | 是 | 滚动条组件参数。 |
+| value | [ScrollBarOptions](arkts-arkui-scrollbar-comp-scrollbaroptions-i.md) | 是 | 滚动条组件参数。 |
 
 ## 汇总
 
@@ -223,10 +236,10 @@ ScrollBar(value: ScrollBarOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [ScrollBarOptions](arkts-arkui-scrollbaroptions-i.md) | 滚动条组件参数。 |
+| [ScrollBarOptions](arkts-arkui-scrollbar-comp-scrollbaroptions-i.md) | 滚动条组件参数。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [ScrollBarDirection](arkts-arkui-scrollbardirection-e.md) | 滚动条方向枚举。 |
+| [ScrollBarDirection](arkts-arkui-scrollbar-comp-scrollbardirection-e.md) | 滚动条方向枚举。 |

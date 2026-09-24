@@ -1,5 +1,9 @@
 # ColorMode
 
+```TypeScript
+export enum ColorMode
+```
+
 
 > **说明：** 
 > 

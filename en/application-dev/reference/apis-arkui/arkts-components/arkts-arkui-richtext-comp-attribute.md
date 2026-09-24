@@ -1,5 +1,9 @@
 # RichText properties/events
 
+```TypeScript
+declare class RichTextAttribute extends CommonMethod<RichTextAttribute>
+```
+
 Defines the RichText attribute functions.
 
 **Inheritance/Implementation:** RichTextAttribute extends CommonMethod<RichTextAttribute>

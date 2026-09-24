@@ -1,5 +1,9 @@
 # Morpher
 
+```TypeScript
+export interface Morpher
+```
+
 Defines the deformation of 3D models by adjusting the weights of different deformation targets to create dynamic effects.
 
 @interface Morpher

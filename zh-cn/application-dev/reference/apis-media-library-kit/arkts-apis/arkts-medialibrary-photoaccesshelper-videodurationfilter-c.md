@@ -1,5 +1,9 @@
 # VideoDurationFilter
 
+```TypeScript
+class VideoDurationFilter
+```
+
 可选择媒体文件视频时长的过滤配置。
 
 **起始版本：** 19

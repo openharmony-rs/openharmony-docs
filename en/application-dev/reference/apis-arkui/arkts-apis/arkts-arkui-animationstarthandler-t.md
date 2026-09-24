@@ -18,4 +18,4 @@ Defines the callback triggered when the page transition animation starts.
 | --- | --- | --- | --- |
 | index | number | Yes | Index of the currently displayed element before the animation starts (not the final index after the animation ends). |
 | targetIndex | number | Yes | Index of the target element to switch to. |
-| event | [SwiperAnimationEvent](../arkts-components/arkts-arkui-swiperanimationevent-i.md) | Yes | Extra information of the animation, including the offset of the currently displayed element and target element relative to the start position of the **ArcSwiper** along the main axis, and the hands-off velocity. |
+| event | [SwiperAnimationEvent](../arkts-components/arkts-arkui-swiper-comp-swiperanimationevent-i.md) | Yes | Extra information of the animation, including the offset of the currently displayed element and target element relative to the start position of the **ArcSwiper** along the main axis, and the hands-off velocity. |

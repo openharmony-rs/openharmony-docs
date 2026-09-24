@@ -1,5 +1,9 @@
 # ImageSpanAlignment
 
+```TypeScript
+declare enum ImageSpanAlignment
+```
+
 The alignment mode of the image relative to the line height.
 
 **Since:** 10

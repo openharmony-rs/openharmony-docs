@@ -1,5 +1,9 @@
 # LocationPrivacyType (System API)
 
+```TypeScript
+export enum LocationPrivacyType
+```
+
 Enum for location privacy type.
 
 **Since:** 9

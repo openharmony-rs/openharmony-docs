@@ -1,5 +1,9 @@
 # UsbIsoPacketDescriptor
 
+```TypeScript
+interface UsbIsoPacketDescriptor
+```
+
 Describes packet information returned in real time by the transfer callback.
 
 **Since:** 18

@@ -33,6 +33,8 @@ Instructs the widget framework to make a widget visible. After this API is calle
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If a notification is sent to the widget framework to make the widget visible, **error** is undefined; otherwise, **error** is an error object. |
 
 
+<a id="notifyvisibleforms-1"></a>
+
 ## notifyVisibleForms
 
 ```TypeScript

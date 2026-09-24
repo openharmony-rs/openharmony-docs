@@ -1,5 +1,9 @@
 # AccessibilitySourceType (System API)
 
+```TypeScript
+export enum AccessibilitySourceType
+```
+
 Enumerates the source types of accessibility nodes.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # BLEDescriptor
 
+```TypeScript
+interface BLEDescriptor
+```
+
 GATT描述符结构定义，是特征值[BLECharacteristic](arkts-connectivity-ble-blecharacteristic-i.md)的数据单元，用于描述特征值的附加信息和属性。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # UIServiceExtensionConnectCallback
 
+```TypeScript
+export default interface UIServiceExtensionConnectCallback
+```
+
 UIServiceExtensionConnectCallback provides callbacks for the connection to a UIServiceExtensionAbility.
 
 > **NOTE:** 

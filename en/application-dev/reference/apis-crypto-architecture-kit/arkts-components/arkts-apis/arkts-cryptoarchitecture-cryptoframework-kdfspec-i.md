@@ -1,5 +1,9 @@
 # KdfSpec
 
+```TypeScript
+interface KdfSpec
+```
+
 Defines the parameters of the key derivation function. When the key derivation function is used to derive a key, you need to construct and pass in a child class object of **KdfSpec**.
 
 **Since:** 11

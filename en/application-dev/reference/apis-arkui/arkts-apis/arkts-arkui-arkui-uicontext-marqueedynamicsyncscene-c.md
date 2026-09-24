@@ -1,5 +1,9 @@
 # MarqueeDynamicSyncScene
 
+```TypeScript
+export class MarqueeDynamicSyncScene extends DynamicSyncScene
+```
+
 Represents a dynamic synchronization scene of Marquee.
 
 **Inheritance/Implementation:** MarqueeDynamicSyncScene extends [DynamicSyncScene](arkts-arkui-arkui-uicontext-dynamicsyncscene-c.md)

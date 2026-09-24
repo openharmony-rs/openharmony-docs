@@ -1,5 +1,9 @@
 # Visibility
 
+```TypeScript
+declare enum Visibility
+```
+
 定义组件的可见性及布局占位状态。
 
 **起始版本：** 7

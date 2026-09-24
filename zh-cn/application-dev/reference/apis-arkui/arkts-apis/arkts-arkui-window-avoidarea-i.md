@@ -1,5 +1,9 @@
 # AvoidArea
 
+```TypeScript
+interface AvoidArea
+```
+
 窗口内容的避让区域。
 
 窗口内容做[沉浸式布局](../../../windowmanager/window-terminology.md#immersive-layout沉浸式布局)适配时，需要按照[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)对应的AvoidArea做窗口内容避让。

@@ -1,5 +1,9 @@
 # TransformObject
 
+```TypeScript
+export interface TransformObject
+```
+
 TransformObject
 
 @interface TransformObject

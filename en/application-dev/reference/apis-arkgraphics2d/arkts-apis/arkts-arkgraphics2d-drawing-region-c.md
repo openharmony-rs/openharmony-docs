@@ -1,5 +1,9 @@
 # Region
 
+```TypeScript
+class Region
+```
+
 Describes a region, which is used to describe the region where the shape can be drawn.
 
 > **NOTE:** 
@@ -32,6 +36,58 @@ Constructs a **Region** object.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    region.setRect(200, 200, 400, 400);
+    let region2 = new drawing.Region(region);
+    canvas.drawRegion(region2);
+    canvas.detachPen();
+  }
+}
+```
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region(100, 100, 200, 200);
+    canvas.drawRegion(region);
+    canvas.detachPen();
+  }
+}
+```
+
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -49,6 +105,35 @@ Copies a **Region** object.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | region | [Region](arkts-arkgraphics2d-drawing-region-c.md) | Yes | Region to be copied. |
+
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    region.setRect(200, 200, 400, 400);
+    let region2 = new drawing.Region(region);
+    canvas.drawRegion(region2);
+    canvas.detachPen();
+  }
+}
+```
+
+<a id="constructor-2"></a>
 
 ## constructor
 
@@ -71,6 +156,31 @@ Constructs a rectangular region.
 | right | number | Yes | Right position of the rectangle (X coordinate of the lower right corner). The value must be an integer. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left. |
 | bottom | number | Yes | Bottom position of the rectangle (Y coordinate of the lower right corner). The value must be an integer. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region(100, 100, 200, 200);
+    canvas.drawRegion(region);
+    canvas.detachPen();
+  }
+}
+```
+
 ## getBoundaryPath
 
 ```TypeScript
@@ -88,6 +198,15 @@ Obtains a new path that is the boundary of the existing region.
 | Type | Description |
 | --- | --- |
 | [Path](arkts-arkgraphics2d-drawing-path-c.md) | Path of the boundary of the existing region. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let region = new drawing.Region();
+let path = region.getBoundaryPath();
+```
 
 ## getBounds
 
@@ -107,6 +226,15 @@ Obtains the boundaries of the existing region.
 | --- | --- |
 | [common2D.Rect](arkts-arkgraphics2d-common2d-rect-i.md) | Bounding rectangle of this region. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let region = new drawing.Region();
+let rect = region.getBounds();
+```
+
 ## isComplex
 
 ```TypeScript
@@ -125,6 +253,36 @@ Checks whether this region contains multiple rectangles.
 | --- | --- |
 | boolean | Check result. **true** means yes; **false** otherwise. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+import { RenderNode } from '@kit.ArkUI';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    region.setRect(100, 100, 200, 200);
+    region.op(new drawing.Region(220, 200, 280, 280), drawing.RegionOp.UNION);
+    let flag: boolean = false;
+    flag = region.isComplex();
+    console.info('flag :', flag);
+    canvas.drawRegion(region);
+    canvas.detachPen();
+  }
+}
+```
+
 ## isEmpty
 
 ```TypeScript
@@ -142,6 +300,36 @@ Checks whether the existing region is empty.
 | Type | Description |
 | --- | --- |
 | boolean | Check result. **true** means yes; **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    let flag: boolean = region.isEmpty();
+    console.info('flag: ', flag);
+    region.setRect(100, 100, 400, 400);
+    flag = region.isEmpty();
+    console.info('flag: ', flag);
+    canvas.drawRegion(region);
+    canvas.detachPen();
+  }
+}
+```
 
 ## isEqual
 
@@ -166,6 +354,38 @@ Checks whether another region is equal to this region.
 | Type | Description |
 | --- | --- |
 | boolean | Check result. **true** if the source rectangle is equal to the destination rectangle; **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    let other = new drawing.Region();
+    region.setRect(100, 100, 400, 400);
+    other.setRect(150, 150, 250, 250);
+    let flag: boolean = false;
+    flag = region.isEqual(other);
+    console.info('flag: ', flag);
+    canvas.drawRegion(region);
+    canvas.drawRegion(other);
+    canvas.detachPen();
+  }
+}
+```
 
 ## isPointContained
 
@@ -198,6 +418,36 @@ Checks whether a point is contained in this region.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    region.setRect(100, 100, 400, 400);
+    let flag: boolean = false;
+    flag = region.isPointContained(200, 200);
+    console.info("region isPointContained : " + flag);
+    canvas.drawPoint(200, 200);
+    canvas.drawRegion(region);
+    canvas.detachPen();
+  }
+}
+```
+
 ## isRect
 
 ```TypeScript
@@ -217,6 +467,41 @@ Checks whether this region is the same as a single rectangle.
 | Type | Description |
 | --- | --- |
 | boolean | Check result. **true** if this region is the same as a single rectangle; **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+import { RenderNode } from '@kit.ArkUI';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    let flag: boolean = false;
+    flag = region.isRect();
+    console.info('flag :', flag);
+    region.setRect(100, 100, 200, 200);
+    flag = region.isRect();
+    console.info('flag :', flag);
+    let other = new drawing.Region(220, 200, 280, 280);
+    region.op(other, drawing.RegionOp.UNION);
+    flag = region.isRect();
+    console.info('flag :', flag);
+    canvas.drawRegion(region);
+    canvas.detachPen();
+  }
+}
+```
 
 ## isRegionContained
 
@@ -248,6 +533,38 @@ Checks whether another region is contained in this region.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    let other = new drawing.Region();
+    region.setRect(100, 100, 400, 400);
+    other.setRect(150, 150, 250, 250);
+    let flag: boolean = false;
+    flag = region.isRegionContained(other);
+    console.info("region isRegionContained : " + flag);
+    canvas.drawRegion(region);
+    canvas.drawRegion(other);
+    canvas.detachPen();
+  }
+}
+```
+
 ## offset
 
 ```TypeScript
@@ -266,6 +583,34 @@ Translates a region.
 | --- | --- | --- | --- |
 | dx | number | Yes | X offset. A positive number indicates an offset towards the positive direction of the X axis, and a negative number indicates an offset towards the negative direction of the X axis. The value is an integer. |
 | dy | number | Yes | Y offset. A positive number indicates an offset towards the positive direction of the Y axis, and a negative number indicates an offset towards the negative direction of the Y axis. The value is an integer. |
+
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    region.setRect(100, 100, 400, 400);
+    region.offset(10, 20);
+    canvas.drawPoint(200, 200);
+    canvas.drawRegion(region);
+    canvas.detachPen();
+  }
+}
+```
 
 ## op
 
@@ -298,6 +643,37 @@ Performs an operation on this region and another region, and stores the resultin
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    region.setRect(200, 200, 400, 400);
+    let othregion = new drawing.Region();
+    othregion.setRect(110, 110, 240, 240);
+    let flag: boolean = false;
+    flag = region.op(othregion, drawing.RegionOp.REPLACE);
+    console.info("region op : " + flag);
+    canvas.drawRegion(region);
+    canvas.detachPen();
+  }
+}
+```
+
 ## quickContains
 
 ```TypeScript
@@ -326,6 +702,39 @@ Checks whether this region is the same as a single rectangle and contains the sp
 | Type | Description |
 | --- | --- |
 | boolean | Check result. **true** if the current region is the same as a single rectangle and contains the specified rectangle; **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+import { RenderNode } from '@kit.ArkUI';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    let flag: boolean = false;
+    flag = region.quickContains(10, 10, 100, 100);
+    console.info('flag :', flag);
+    let other = new drawing.Region();
+    other.setRect(100, 100, 200, 200);
+    flag = other.quickContains(10, 10, 100, 100);
+    console.info('flag :', flag);
+    canvas.drawRegion(region);
+    canvas.drawRegion(other);
+    canvas.detachPen();
+  }
+}
+```
 
 ## quickReject
 
@@ -360,6 +769,35 @@ Checks whether a rectangle do not intersect with this region. Actually, this API
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    region.setRect(100, 100, 400, 400);
+    let flag: boolean = false;
+    flag = region.quickReject(50, 50, 70, 70);
+    console.info("region quickReject : " + flag);
+    canvas.drawRegion(region);
+    canvas.detachPen();
+  }
+}
+```
+
 ## quickRejectRegion
 
 ```TypeScript
@@ -384,6 +822,36 @@ Checks whether the existing region does not intersect with another region. Actua
 | --- | --- |
 | boolean | Check result. **true** if the regions do not intersect; **false** otherwise. The value **true** is returned only if the regions intersect with each other by point or edge. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    let region2 = new drawing.Region();
+    region2.setRect(100, 100, 400, 400);
+    let flag: boolean = false;
+    flag = region.quickRejectRegion(region2);
+    console.info("region quickRejectRegion: " + flag);
+    canvas.drawRegion(region);
+    canvas.detachPen();
+  }
+}
+```
+
 ## setEmpty
 
 ```TypeScript
@@ -395,6 +863,25 @@ Set the existing region to empty.
 **Since:** 20
 
 **System capability:** SystemCapability.Graphics.Drawing
+
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    let region = new drawing.Region();
+    region.setRect(100, 100, 200, 200);
+    let isEmpty = region.isEmpty();
+    console.info("isEmpty :" + isEmpty);
+    region.setEmpty();
+    isEmpty = region.isEmpty();
+    console.info("isEmpty :" + isEmpty);
+  }
+}
+```
 
 ## setPath
 
@@ -426,6 +913,37 @@ Sets a region that matches the outline of a path within the cropping area.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    let path = new drawing.Path();
+    region.setRect(100, 100, 400, 400);
+    path.arcTo(50, 50, 300, 300, 0, 359);
+    let flag: boolean = false;
+    flag = region.setPath(path, region);
+    console.info("region setPath : " + flag);
+    canvas.drawRegion(region);
+    canvas.detachPen();
+  }
+}
+```
 
 ## setRect
 
@@ -460,6 +978,34 @@ Sets a rectangle.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    let flag: boolean = false;
+    flag = region.setRect(50, 50, 300, 300);
+    console.info("region setRect : " + flag);
+    canvas.drawRegion(region);
+    canvas.detachPen();
+  }
+}
+```
+
 ## setRegion
 
 ```TypeScript
@@ -477,3 +1023,31 @@ Sets the existing region to another region.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | region | [Region](arkts-arkgraphics2d-drawing-region-c.md) | Yes | Region to be set. |
+
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    region.setRect(100, 100, 200, 200);
+    let region2 = new drawing.Region();
+    region2.setRegion(region);
+    canvas.drawRegion(region2);
+    canvas.detachPen();
+  }
+}
+```

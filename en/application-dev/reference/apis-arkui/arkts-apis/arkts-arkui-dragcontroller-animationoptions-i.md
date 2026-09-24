@@ -1,5 +1,9 @@
 # AnimationOptions
 
+```TypeScript
+interface AnimationOptions
+```
+
 Defines parameters related to drag-and-drop animation effects.
 
 **Since:** 11

@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_DeviceMemMap {...} ScsiPeripheral_DeviceMemMap
 
 Represents the device memory mapping created by calling {@link OH_ScsiPeripheral_CreateDeviceMemMap}. The buffer that uses the device memory mapping can provide better performance.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

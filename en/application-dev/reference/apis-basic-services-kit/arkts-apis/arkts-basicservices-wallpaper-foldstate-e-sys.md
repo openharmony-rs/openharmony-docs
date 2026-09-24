@@ -1,5 +1,9 @@
 # FoldState (System API)
 
+```TypeScript
+enum FoldState
+```
+
 Define the folding state of wallpaper
 
 @enum { int } FoldState

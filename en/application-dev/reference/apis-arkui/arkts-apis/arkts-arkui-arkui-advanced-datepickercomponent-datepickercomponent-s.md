@@ -1,5 +1,9 @@
 # DatePickerComponent
 
+```TypeScript
+export declare struct DatePickerComponent
+```
+
 DatePickerComponent component is used to select date (year, month, day) and time (hour, minute, second).
 
 ## Child Components

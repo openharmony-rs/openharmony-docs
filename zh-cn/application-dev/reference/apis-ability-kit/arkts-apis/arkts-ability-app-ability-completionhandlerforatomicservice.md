@@ -1,4 +1,4 @@
-# @ohos.app.ability.CompletionHandlerForAtomicService
+# @ohos.app.ability.CompletionHandlerForAtomicService(原子化服务拉起结果的操作类)
 
 ## 导入模块
 

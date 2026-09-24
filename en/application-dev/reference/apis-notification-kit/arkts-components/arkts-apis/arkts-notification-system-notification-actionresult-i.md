@@ -1,5 +1,9 @@
 # ActionResult
 
+```TypeScript
+export interface ActionResult
+```
+
 **Since:** 3
 
 **Deprecated since:** 7

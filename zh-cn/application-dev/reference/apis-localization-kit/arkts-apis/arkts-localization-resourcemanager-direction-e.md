@@ -1,5 +1,9 @@
 # Direction
 
+```TypeScript
+export enum Direction
+```
+
 用于表示设备屏幕方向。
 
 **起始版本：** 6

@@ -14,7 +14,7 @@ function getAllCapabilityList(): Promise<Capability[]>
 
 返回所有能力列表
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -30,5 +30,5 @@ function getAllCapabilityList(): Promise<Capability[]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Car awareness not supported. Function can not work correctly due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Car awareness not supported. Function can not work correctly due to limited device capabilities. |
 | [34000001](../errorcode-carAwareness.md#34000001-服务异常) | Service exception. |

@@ -1,5 +1,9 @@
 # AVCastController
 
+```TypeScript
+interface AVCastController
+```
+
 在投播建立后，调用[avSession.AVSession.getAVCastController](arkts-avsession-avsession-avsession-i.md#getavcastcontroller)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
 
 > **说明：** 
@@ -41,29 +45,11 @@ setDisplaySurface(surfaceId: string, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
 **示例**
-
-```TypeScript
-import { media } from '@kit.MediaKit';
-
-let surfaceID: string = '';
-media.createAVRecorder().then((avRecorder) => {
-  avRecorder.getInputSurface((surfaceId: string) => {
-    console.info('Succeeded in getting input surface.');
-    surfaceID = surfaceId;
-    if (surfaceID) {
-      // 需先通过avSession.getAVCastController获取avCastController实例。
-      avCastController.setDisplaySurface(surfaceID).then(() => {
-        console.info('Succeeded in setting display surface.');
-      });
-    }
-  });
-})
-```
 
 ```TypeScript
 import { media } from '@kit.MediaKit';
@@ -82,6 +68,8 @@ media.createAVRecorder().then((avRecorder) => {
   });
 })
 ```
+
+<a id="setdisplaysurface-1"></a>
 
 ## setDisplaySurface
 
@@ -113,10 +101,26 @@ setDisplaySurface(surfaceId: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
 **示例**
 
-参见 [setDisplaySurface](#setdisplaysurface)
+```TypeScript
+import { media } from '@kit.MediaKit';
+
+let surfaceID: string = '';
+media.createAVRecorder().then((avRecorder) => {
+  avRecorder.getInputSurface((surfaceId: string) => {
+    console.info('Succeeded in getting input surface.');
+    surfaceID = surfaceId;
+    if (surfaceID) {
+      // 需先通过avSession.getAVCastController获取avCastController实例。
+      avCastController.setDisplaySurface(surfaceID).then(() => {
+        console.info('Succeeded in setting display surface.');
+      });
+    }
+  });
+})
+```

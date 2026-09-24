@@ -1,5 +1,9 @@
 # SettingItem
 
+```TypeScript
+interface SettingItem
+```
+
 The definition of setting Information.
 
 @interface SettingItem

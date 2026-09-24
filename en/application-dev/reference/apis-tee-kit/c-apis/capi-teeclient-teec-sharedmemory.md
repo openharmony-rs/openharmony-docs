@@ -8,6 +8,8 @@ typedef struct TEEC_SharedMemory {...} TEEC_SharedMemory
 
 Defines a shared memory block, which can be registered or allocated.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeClient](capi-teeclient.md)

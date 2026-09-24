@@ -64,6 +64,8 @@ bundle.setApplicationEnabled(bundleName, false).then(() => {
 ```
 
 
+<a id="setapplicationenabled-1"></a>
+
 ## setApplicationEnabled
 
 ```TypeScript

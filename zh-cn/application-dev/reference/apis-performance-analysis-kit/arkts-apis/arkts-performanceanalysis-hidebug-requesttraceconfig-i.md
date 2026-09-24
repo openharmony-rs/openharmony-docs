@@ -1,5 +1,9 @@
 # RequestTraceConfig
 
+```TypeScript
+interface RequestTraceConfig
+```
+
 提供trace采集的参数选项。
 
 **起始版本：** 24

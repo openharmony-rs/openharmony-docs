@@ -14,7 +14,7 @@ function getAllBundleCacheSize(): Promise<number>
 
 Obtains the global cache size. This API uses a promise to return the result.
 
-It is not possible to obtain the cache of applications that are currently running or have been granted the "AllowAppDataNotCleared" privilege as specified in the [application configuration guide](../../../../device-dev/subsystems/subsys-app-privilege-config-guide.md).
+It is not possible to obtain the cache of applications that are currently running or have been granted the "AllowAppDataNotCleared" privilege as specified in the[application configuration guide](../../../../device-dev/subsystems/subsys-app-privilege-config-guide.md).
 
 **Since:** 15
 

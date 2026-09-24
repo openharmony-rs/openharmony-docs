@@ -1,5 +1,9 @@
 # NetStatsInfo
 
+```TypeScript
+export interface NetStatsInfo
+```
+
 Defines the historical traffic information.
 
 **Since:** 22

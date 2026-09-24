@@ -1,5 +1,9 @@
 # MediaChangeRequest
 
+```TypeScript
+interface MediaChangeRequest
+```
+
 Media change request, which is the parent class of the asset change request and album change request.
 
 > **NOTE:** 

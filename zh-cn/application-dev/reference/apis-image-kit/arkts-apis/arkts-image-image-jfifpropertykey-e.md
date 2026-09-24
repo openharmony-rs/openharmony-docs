@@ -1,5 +1,9 @@
 # JfifPropertyKey
 
+```TypeScript
+enum JfifPropertyKey
+```
+
 表示JFIF图片信息的枚举。
 
 > **说明：** 

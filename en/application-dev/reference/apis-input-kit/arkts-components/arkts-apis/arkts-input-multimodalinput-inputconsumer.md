@@ -35,9 +35,9 @@ import { inputConsumer } from '@kit.InputKit';
 | --- | --- |
 | [getShieldStatus](arkts-input-inputconsumer-getshieldstatus-f-sys.md) | Obtains the system hotkey shield status. |
 | [off](arkts-input-inputconsumer-off-f-sys.md#offkey) | Disables listening for system hotkey change events. This API uses an asynchronous callback to return the result. |
-| [offKey](arkts-input-inputconsumer-offkey-f-sys.md) | Unsubscribe system keys. |
+| [offKey](arkts-input-inputconsumer-offkey-f-sys.md#offkey-1) | Unsubscribe system keys. |
 | [on](arkts-input-inputconsumer-on-f-sys.md#onkey) | Enables listening for system hotkey change events. This API uses an asynchronous callback to return the system hotkey data when a system hotkey event that meets the specified condition occurs. |
-| [onKey](arkts-input-inputconsumer-onkey-f-sys.md) | Subscribe system keys. |
+| [onKey](arkts-input-inputconsumer-onkey-f-sys.md#onkey-1) | Subscribe system keys. |
 | [setShieldStatus](arkts-input-inputconsumer-setshieldstatus-f-sys.md) | Sets the system hotkey shield status. |
 <!--DelEnd-->
 

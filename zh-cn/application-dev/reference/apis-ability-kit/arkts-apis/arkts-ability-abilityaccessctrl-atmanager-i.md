@@ -1,5 +1,9 @@
 # AtManager
 
+```TypeScript
+interface AtManager
+```
+
 程序访问控制管理类，提供权限校验、运行时权限弹窗申请、设置页授权引导、全局开关请求和权限状态监听等能力。通过[createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md)获取实例。
 
 **起始版本：** 8
@@ -24,6 +28,8 @@ checkAccessToken(tokenID: number, permissionName: Permissions): Promise<GrantSta
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
@@ -45,7 +51,7 @@ checkAccessToken(tokenID: number, permissionName: Permissions): Promise<GrantSta
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters. |
 
 **示例**
@@ -84,6 +90,8 @@ checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 **起始版本：** 10
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
@@ -105,7 +113,7 @@ checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters. |
 
 **示例**
@@ -137,6 +145,8 @@ getSelfPermissionStatus(permissionName: Permissions): PermissionStatus
 适用于在判断是否需要请求权限前、权限申请后确认授权结果、或监听到权限状态变化后重新查询等场景。
 
 **起始版本：** 20
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
@@ -195,9 +205,11 @@ off(
 
 > **说明：** 
 > 当不传入callback参数时，将批量删除与permissionList相关联的所有回调函数。
-> 该接口通常与on配套使用，用于取消通过on创建的监听关系。
+> 该接口通常与[on](arkts-ability-abilityaccessctrl-atmanager-i-sys.md#on)配套使用，用于取消通过on创建的监听关系。
 
 **起始版本：** 18
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
@@ -215,7 +227,7 @@ off(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | The API is not used in pair with 'on'. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
@@ -238,22 +250,6 @@ try {
 }
 ```
 
-```TypeScript
-import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  let bundleInfo: bundleManager.BundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
-  let tokenIDList: Array<number> = [bundleInfo.appInfo.accessTokenId];
-  let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
-  atManager.off('permissionStateChange', tokenIDList, permissionList);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`catch errcode: ${error.code}, message: ${error.message}`);
-}
-```
-
 ## on('selfPermissionStateChange')
 
 ```TypeScript
@@ -264,7 +260,7 @@ on(
     ): void
 ```
 
-订阅本应用的指定权限列表的权限授权状态变化事件，使用callback异步回调。可在需要根据权限状态实时更新UI或业务逻辑、监听用户授权行为等场景中使用。不再需要监听时，调用off取消订阅。
+订阅本应用的指定权限列表的权限授权状态变化事件，使用callback异步回调。可在需要根据权限状态实时更新UI或业务逻辑、监听用户授权行为等场景中使用。不再需要监听时，调用[off](arkts-ability-abilityaccessctrl-atmanager-i-sys.md#off)取消订阅。
 
 - 多次调用本订阅接口时，如果订阅的权限列表相同，callback不同，允许订阅成功。  
 - 多次调用本订阅接口时，如果订阅的权限列表间有相同的子集，callback相同时，订阅失败。
@@ -272,9 +268,11 @@ on(
 > **说明：** 
 > 权限状态由“已授权”变更为“未授权”可能存在两种场景：
 > - 用户主动撤销：系统会终止对应应用进程。
-> - 系统主动回收：应用进程不会终止。典型场景如安全控件的单次授权，在授权周期结束后由系统自动回收。该接口通常与off配套使用，当不再需要监听时应调用off取消订阅。
+> - 系统主动回收：应用进程不会终止。典型场景如安全控件的单次授权，在授权周期结束后由系统自动回收。该接口通常与[off](arkts-ability-abilityaccessctrl-atmanager-i-sys.md#off)配套使用，当不再需要监听时应调用off取消订阅。
 
 **起始版本：** 18
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
@@ -292,7 +290,7 @@ on(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. Possible causes: 1. The permissionList exceeds the size limit; 2. The permissionNames in the list are all invalid. |
 | [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | The API is used repeatedly with the same input. |
 | [12100005](../errorcode-access-token.md#12100005-监听器数量超过限制) | The registration time has exceeded the limit. |
@@ -320,26 +318,6 @@ try {
 }
 ```
 
-```TypeScript
-import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  let bundleInfo: bundleManager.BundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
-  let tokenIDList: Array<number> = [bundleInfo.appInfo.accessTokenId];
-  let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
-
-  atManager.on('permissionStateChange', tokenIDList, permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
-    console.info('receive permission state change');
-    console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
-    });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`catch errcode: ${error.code}, message: ${error.message}`);
-}
-```
-
 ## openPermissionOnSetting
 
 ```TypeScript
@@ -361,7 +339,7 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise<Sele
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](arkts-ability-context-t.md) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法打开设置页面。 |
-| permission | Permissions | 是 | 需要跳转设置页处理的权限名。传入无效或未在module.json中声明的权限时返回错误码12100001；仅支持授权方式为manual_settings类型的权限，传入其他类型权限时返回错误码12100014。<br>取值约束：权限名长度不能超过256个字符。 |
+| permission | Permissions | 是 | 需要跳转设置页处理的权限名。传入无效或未在module.json中声明的权限时返回错误码12100001；仅支持授权方式为[manual_settings](../../../security/AccessToken/app -permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限，传入其他类型权限时返回错误码12100014。<br>取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
 
@@ -379,8 +357,22 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise<Sele
 
 **示例**
 
-```TypeScript
 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理器实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 拉起跳转设置页弹窗
+atManager.openPermissionOnSetting(context, 'ohos.permission.HOOK_KEY_EVENT').then((data: abilityAccessCtrl.SelectedResult) => {
+  console.info(`openPermissionOnSetting success, result: ${data}`);
+}).catch((err: BusinessError): void => {
+  console.error(`openPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## requestGlobalSwitch
@@ -395,11 +387,11 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise<boolean>
 
 当应用需要使用相机、麦克风或定位等需要全局开关管控的功能时，如果对应的全局开关被关闭，应用可拉起此弹窗请求用户开启对应功能。如果当前全局开关的状态为开启，则不拉起弹窗。
 
-&lt;!--RP5--&gt;
+<!--RP5-->
 
 ![requestGlobalSwitch](../../../reference/apis-ability-kit/figures/requestGlobalSwitch.png)
 
-&lt;!--RP5End--&gt;
+<!--RP5End-->
 
 **起始版本：** 12
 
@@ -426,15 +418,29 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. Possible causes: 1. The context is invalid because it does not belong to the application itself; 2. The type of global switch is not supported. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
 | [12100013](../errorcode-access-token.md#12100013-全局开关已开启) | The specific global switch is already open. |
 
 **示例**
 
-```TypeScript
 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理器实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 拉起全局开关设置弹窗
+atManager.requestGlobalSwitch(context, abilityAccessCtrl.SwitchType.CAMERA).then((data: boolean) => {
+  console.info(`requestGlobalSwitch success, result: ${data}`);
+}).catch((err: BusinessError): void => {
+  console.error(`requestGlobalSwitch fail, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## requestPermissionOnSetting
@@ -449,11 +455,11 @@ requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>)
 
 在调用此接口前，应用需要先调用[requestPermissionsFromUser](#requestpermissionsfromuser)。如果用户已在首次弹窗中授权，则调用当前接口不会拉起授权弹窗。
 
-&lt;!--RP4--&gt;
+<!--RP4-->
 
 ![requestPermissionOnSetting](../../../reference/apis-ability-kit/figures/requestPermissionOnSetting.png)
 
-&lt;!--RP4End--&gt;
+<!--RP4End-->
 
 **起始版本：** 12
 
@@ -489,8 +495,22 @@ requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>)
 
 **示例**
 
-```TypeScript
 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理器实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 拉起权限设置弹窗
+atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
+  console.info(`requestPermissionOnSetting success, result: ${data}`);
+}).catch((err: BusinessError): void => {
+  console.error(`requestPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## requestPermissionsFromUser
@@ -499,17 +519,17 @@ requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>)
 requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>, requestCallback: AsyncCallback<PermissionRequestResult>) : void
 ```
 
-用于&lt;!--RP1--&gt;[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)&lt;!--RP1End--&gt;拉起弹窗请求[用户授权](../../../security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用callback异步回调。
+用于<!--RP1-->[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)<!--RP1End-->拉起弹窗请求[用户授权](../../../security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用callback异步回调。
 
 适用于应用首次访问受保护资源前主动向用户申请[user_grant](../../../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权) 权限的场景。
 
 如果用户拒绝授权，将无法通过此接口再次拉起授权弹窗。开发者可引导用户前往系统设置界面手动授权，或调用[requestPermissionOnSetting](#requestpermissiononsetting)拉起权限设置弹窗，引导用户完成授权。
 
-&lt;!--RP3--&gt;
+<!--RP3-->
 
 ![requestPermissionsFromUser](../../../reference/apis-ability-kit/figures/requestPermissionsFromUser.png)
 
-&lt;!--RP3End--&gt;
+<!--RP3End-->
 
 **起始版本：** 9
 
@@ -523,7 +543,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](arkts-ability-context-t.md) | 是 | 请求权限的&lt;!--RP1--&gt;UIAbility&lt;!--RP1End--&gt;的Context。<br>若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
+| context | [Context](arkts-ability-context-t.md) | 是 | 请求权限的<!--RP1-->UIAbility<!--RP1End-->的Context。<br>若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
 | permissionList | Array&lt;Permissions&gt; | 是 | 权限名列表。建议仅传入当前业务场景必要的敏感权限，避免一次申请过多权限。<br>最小长度为1。取值约束：权限名长度不能超过256个字符。 |
 | requestCallback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PermissionRequestResult](arkts-ability-permissionrequestresult-t.md)&gt; | 是 | 回调函数。调用完成后通过err返回错误信息，通过data返回权限请求结果对象。开发者可根据权限请求结果判断用户是否授权、是否展示过弹窗以及失败原因。 |
 
@@ -531,17 +551,39 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | (Deprecated in 12) Invalid parameter. The context is invalid when it does not belong to the application itself. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. An error occurs when creating the pop-up window or obtaining user operation results. |
 
 **示例**
 
-```TypeScript
 下述示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 关于向用户申请授权的完整流程及示例，请参见[向用户申请授权](../../../security/AccessToken/request-user-authorization.md)。
+
+```TypeScript
+import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理器实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 请求用户授权
+atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: BusinessError, data: PermissionRequestResult) => {
+  if (err) {
+    console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`requestPermissionsFromUser success, result: ${data}`);
+    console.info('requestPermissionsFromUser data permissions:' + data.permissions);
+    console.info('requestPermissionsFromUser data authResults:' + data.authResults);
+    console.info('requestPermissionsFromUser data dialogShownResults:' + data.dialogShownResults);
+    console.info('requestPermissionsFromUser data errorReasons:' + data.errorReasons);
+  }
+});
 ```
+
+<a id="requestpermissionsfromuser-1"></a>
 
 ## requestPermissionsFromUser
 
@@ -549,7 +591,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>,
 requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>) : Promise<PermissionRequestResult>
 ```
 
-用于&lt;!--RP1--&gt;[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)&lt;!--RP1End--&gt;拉起弹窗请求[用户授权](../../../security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用Promise异步回调。
+用于<!--RP1-->[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)<!--RP1End-->拉起弹窗请求[用户授权](../../../security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用Promise异步回调。
 
 适用于应用首次访问受保护资源前主动向用户申请user_grant权限的场景。
 
@@ -569,7 +611,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](arkts-ability-context-t.md) | 是 | 请求权限的&lt;!--RP1--&gt;UIAbility&lt;!--RP1End--&gt;的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
+| context | [Context](arkts-ability-context-t.md) | 是 | 请求权限的<!--RP1-->UIAbility<!--RP1End-->的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
 | permissionList | Array&lt;Permissions&gt; | 是 | 权限名列表。建议仅传入当前业务场景必要的敏感权限，避免一次申请过多权限。<br>最小长度为1。取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
@@ -582,13 +624,35 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | (Deprecated in 12) Invalid parameter. The context is invalid when it does not belong to the application itself. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result.<br>**适用版本：** 11+ |
 
 **示例**
 
-参见 [requestPermissionsFromUser](#requestpermissionsfromuser)
+下述示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+关于向用户申请授权的完整流程及示例，请参见[向用户申请授权](../../../security/AccessToken/request-user-authorization.md)。
+
+```TypeScript
+import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理器实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 请求用户授权
+atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((data: PermissionRequestResult) => {
+  console.info(`requestPermissionsFromUser success, result: ${data}`);
+  console.info('requestPermissionsFromUser data permissions:' + data.permissions);
+  console.info('requestPermissionsFromUser data authResults:' + data.authResults);
+  console.info('requestPermissionsFromUser data dialogShownResults:' + data.dialogShownResults);
+  console.info('requestPermissionsFromUser data errorReasons:' + data.errorReasons);
+}).catch((err: BusinessError): void => {
+  console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## verifyAccessToken
 
@@ -604,6 +668,8 @@ verifyAccessToken(tokenID: number, permissionName: Permissions): Promise<GrantSt
 > 建议使用[checkAccessToken](#checkaccesstoken)替代。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -642,6 +708,8 @@ atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCt
 });
 ```
 
+<a id="verifyaccesstoken-1"></a>
+
 ## verifyAccessToken
 
 ```TypeScript
@@ -658,6 +726,8 @@ verifyAccessToken(tokenID: number, permissionName: string): Promise<GrantStatus>
 **废弃版本：** 9
 
 **替代接口：** [checkAccessToken](#checkaccesstoken)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -676,7 +746,25 @@ verifyAccessToken(tokenID: number, permissionName: string): Promise<GrantStatus>
 
 **示例**
 
-参见 [verifyAccessToken](#verifyaccesstoken)
+```TypeScript
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理器实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 获取应用的bundleInfo信息
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+// 获取应用的TokenID
+let tokenID: number = bundleInfo.appInfo.accessTokenId;
+// 设置需要校验的权限名
+let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+// 校验应用是否被授予权限
+atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
+  console.info(`verifyAccessToken success, result: ${data}`);
+}).catch((err: BusinessError): void => {
+  console.error(`verifyAccessToken fail, code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## verifyAccessTokenSync
 
@@ -691,6 +779,8 @@ verifyAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 建议使用[checkAccessTokenSync](#checkaccesstokensync)替代。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -711,7 +801,7 @@ verifyAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters. |
 
 **示例**

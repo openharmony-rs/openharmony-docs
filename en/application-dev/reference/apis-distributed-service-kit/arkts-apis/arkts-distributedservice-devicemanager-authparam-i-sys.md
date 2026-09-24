@@ -1,5 +1,9 @@
 # AuthParam (System API)
 
+```TypeScript
+interface AuthParam
+```
+
 Defines the authentication parameters.
 
 **Since:** 7

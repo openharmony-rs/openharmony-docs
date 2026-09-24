@@ -8,6 +8,8 @@
 
 **Substitutes:** [promptAction/promptAction](arkts-arkui-promptaction-n.md)
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -22,10 +24,10 @@ import { prompt } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md) | Displays the menu. |
-| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md) | Displays the menu. |
-| [showDialog](arkts-arkui-prompt-showdialog-f.md) | Displays the dialog box. |
-| [showDialog](arkts-arkui-prompt-showdialog-f.md) | Displays the dialog box. |
+| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md#showactionmenu) | Displays the menu. |
+| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md#showactionmenu-1) | Displays the menu. |
+| [showDialog](arkts-arkui-prompt-showdialog-f.md#showdialog) | Displays the dialog box. |
+| [showDialog](arkts-arkui-prompt-showdialog-f.md#showdialog-1) | Displays the dialog box. |
 | [showToast](arkts-arkui-prompt-showtoast-f.md) | Displays the notification text. |
 
 ### Interfaces

@@ -34,10 +34,10 @@ function setCallRestriction(slotId: number, info: CallRestrictionInfo, callback:
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -61,21 +61,8 @@ call.setCallRestriction(0, callRestrictionInfo, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let callRestrictionInfo: call.CallRestrictionInfo = {
-    type: call.CallRestrictionType.RESTRICTION_TYPE_ALL_INCOMING,
-    password: "123456",
-    mode: call.CallRestrictionMode.RESTRICTION_MODE_ACTIVATION
-}
-call.setCallRestriction(0, callRestrictionInfo).then(() => {
-    console.info(`setCallRestriction success.`);
-}).catch((err: BusinessError) => {
-    console.error(`setCallRestriction fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="setcallrestriction-1"></a>
 
 ## setCallRestriction
 
@@ -110,14 +97,27 @@ function setCallRestriction(slotId: number, info: CallRestrictionInfo): Promise<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 
 **示例**
 
-参见 [setCallRestriction](#setcallrestriction)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callRestrictionInfo: call.CallRestrictionInfo = {
+    type: call.CallRestrictionType.RESTRICTION_TYPE_ALL_INCOMING,
+    password: "123456",
+    mode: call.CallRestrictionMode.RESTRICTION_MODE_ACTIVATION
+}
+call.setCallRestriction(0, callRestrictionInfo).then(() => {
+    console.info(`setCallRestriction success.`);
+}).catch((err: BusinessError) => {
+    console.error(`setCallRestriction fail, promise: err->${JSON.stringify(err)}`);
+});
+```

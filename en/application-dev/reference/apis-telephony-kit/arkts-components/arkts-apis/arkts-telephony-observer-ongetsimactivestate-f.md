@@ -20,6 +20,8 @@ Registers an observer for SIM card activation state changes. This API uses an as
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**

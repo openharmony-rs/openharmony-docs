@@ -42,10 +42,10 @@ DLP管理应用调用该接口，将明文文件加密生成DLPFile管理对象�
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
 | [19100003](../errorcode-dlp.md#19100003-加解密超时) | Credential task time out. |
@@ -92,37 +92,8 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
-import { fileIo } from '@kit.CoreFileKit';
 
-let dlpUri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt';
-let file: number | undefined = undefined;
-let dlp: number | undefined = undefined;
-
-file = fileIo.openSync(uri).fd;
-dlp = fileIo.openSync(dlpUri).fd;
-let dlpProperty: dlpPermission.DLPProperty = {
-  ownerAccount: 'zhangsan',
-  ownerAccountType: dlpPermission.AccountType.DOMAIN_ACCOUNT,
-  authUserList: [],
-  contactAccount: 'zhangsan',
-  offlineAccess: true,
-  ownerAccountID: 'xxxxxxx',
-  everyoneAccessList: []
-};
-dlpPermission.generateDLPFile(file, dlp, dlpProperty, (err, res) => { // 生成DLP文件。
-  if (err) {
-    console.error(`Failed to generate DLPFile. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('res', JSON.stringify(res));
-  }
-  fileIo.closeSync(file);
-  fileIo.closeSync(dlp);
-});
-```
-
+<a id="generatedlpfile-1"></a>
 
 ## generateDLPFile
 
@@ -155,10 +126,10 @@ DLP管理应用调用该接口，将明文文件加密生成权限受控文件�
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
 | [19100003](../errorcode-dlp.md#19100003-加解密超时) | Credential task time out. |
@@ -169,4 +140,33 @@ DLP管理应用调用该接口，将明文文件加密生成权限受控文件�
 
 **示例**
 
-参见 [generateDLPFile](#generatedlpfile)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+let dlpUri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt';
+let file: number | undefined = undefined;
+let dlp: number | undefined = undefined;
+
+file = fileIo.openSync(uri).fd;
+dlp = fileIo.openSync(dlpUri).fd;
+let dlpProperty: dlpPermission.DLPProperty = {
+  ownerAccount: 'zhangsan',
+  ownerAccountType: dlpPermission.AccountType.DOMAIN_ACCOUNT,
+  authUserList: [],
+  contactAccount: 'zhangsan',
+  offlineAccess: true,
+  ownerAccountID: 'xxxxxxx',
+  everyoneAccessList: []
+};
+dlpPermission.generateDLPFile(file, dlp, dlpProperty, (err, res) => { // 生成DLP文件。
+  if (err) {
+    console.error(`Failed to generate DLPFile. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('res', JSON.stringify(res));
+  }
+  fileIo.closeSync(file);
+  fileIo.closeSync(dlp);
+});
+```

@@ -1,10 +1,14 @@
 # PbapClientProfile
 
+```TypeScript
+interface PbapClientProfile extends BaseProfile
+```
+
 Manage the PBAP client profile.
 
 **Inheritance/Implementation:** PbapClientProfile extends [BaseProfile](arkts-connectivity-pbap-baseprofile-t.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -22,7 +26,7 @@ connect(deviceId: string): void
 
 Connect the PBAP client connection with the remote device.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
@@ -57,7 +61,7 @@ disconnect(deviceId: string): void
 
 Disconnect the PBAP client connection with the remote device.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
@@ -92,7 +96,7 @@ getSyncState(deviceId: string): SyncStateType
 
 Get the PBAP phone book sync state, only the synchronization sub-state is reported.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
@@ -133,7 +137,7 @@ offSyncStateChange(callback?: Callback<SyncStateChangeParam>): void
 
 Unsubscribe to the event reported when the phone book sync state changes.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
@@ -164,7 +168,7 @@ onSyncStateChange(callback: Callback<SyncStateChangeParam>): void
 
 Subscribe to the event reported when the phone book sync state changes. Only the synchronization sub-state is reported.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 

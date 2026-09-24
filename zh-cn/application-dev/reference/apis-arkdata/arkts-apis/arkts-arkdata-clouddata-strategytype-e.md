@@ -1,5 +1,9 @@
 # StrategyType
 
+```TypeScript
+enum StrategyType
+```
+
 云同步策略类型枚举。
 
 **起始版本：** 12

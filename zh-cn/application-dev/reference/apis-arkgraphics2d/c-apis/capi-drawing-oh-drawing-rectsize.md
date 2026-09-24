@@ -8,6 +8,8 @@ typedef struct OH_Drawing_RectSize {...} OH_Drawing_RectSize
 
 定义文本矩形结构体。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 24
 
 **相关模块：** [Drawing](capi-drawing.md)

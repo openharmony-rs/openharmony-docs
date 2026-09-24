@@ -18,7 +18,7 @@ function isDistributedEnabled(callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** isDistributedEnabled(deviceType: string)
+**替代接口：** [isDistributedEnabled](arkts-notification-notificationmanager-isdistributedenabled-f-sys.md#isdistributedenabled-2)(deviceType: string)
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -32,8 +32,8 @@ function isDistributedEnabled(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 26.0.0+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 26.0.0+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -54,39 +54,8 @@ let isDistributedEnabledCallback = (err: BusinessError, data: boolean): void => 
 notificationManager.isDistributedEnabled(isDistributedEnabledCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.isDistributedEnabled().then((data: boolean) => {
-  console.info(`isDistributedEnabled success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`isDistributedEnabled failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-  }
-
-  onForeground(): void {
-    try {
-      let deviceType: string = 'wearable';
-      notificationManager.isDistributedEnabled(deviceType).then((data: boolean) => {
-        console.info('isDistributedEnabled succeeded, result = ' + data);
-      }).catch((err: BusinessError) => {
-        console.error(`isDistributedEnabled failed. Code is ${err.code}, message is ${err.message}`);
-      });
-    } catch (err) {
-      console.error(`isDistributedEnabled failed. Code is ${err.code}, message is ${err.message}`);
-    }
-  }
-}
-```
-
+<a id="isdistributedenabled-1"></a>
 
 ## isDistributedEnabled
 
@@ -100,7 +69,7 @@ function isDistributedEnabled(): Promise<boolean>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** isDistributedEnabled(deviceType: string)
+**替代接口：** [isDistributedEnabled](arkts-notification-notificationmanager-isdistributedenabled-f-sys.md#isdistributedenabled-2)(deviceType: string)
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -114,7 +83,7 @@ function isDistributedEnabled(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 26.0.0+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 26.0.0+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -122,4 +91,12 @@ function isDistributedEnabled(): Promise<boolean>
 
 **示例**
 
-参见 isDistributedEnabled
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.isDistributedEnabled().then((data: boolean) => {
+  console.info(`isDistributedEnabled success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`isDistributedEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```

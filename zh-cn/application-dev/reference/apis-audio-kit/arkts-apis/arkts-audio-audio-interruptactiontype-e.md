@@ -1,5 +1,9 @@
 # InterruptActionType
 
+```TypeScript
+enum InterruptActionType
+```
+
 表示中断事件返回类型的枚举。
 
 > **说明：** 

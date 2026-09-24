@@ -1,8 +1,12 @@
 # RecordCmdUtils
 
+```TypeScript
+class RecordCmdUtils
+```
+
 This class offers a set of operations to generate drawing commands.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -20,7 +24,7 @@ beginRecording(width: number, height: number): Canvas
 
 Gets the canvas that records the drawing commands.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -53,7 +57,7 @@ finishRecording(): RecordCmd
 
 Finishes recording and returns the recorded command object.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -73,7 +77,7 @@ getHeight(): number
 
 Gets the height of the recording canvas.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -93,7 +97,7 @@ getWidth(): number
 
 Gets the width of the recording canvas.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

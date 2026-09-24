@@ -1,5 +1,9 @@
 # FileListOption
 
+```TypeScript
+export interface FileListOption
+```
+
 可选项类型，支持list接口使用。
 
 **起始版本：** 3
@@ -54,7 +58,7 @@ fail?: (data: string, code: number) => void
 success?: (data: FileListResponse) => void
 ```
 
-接口调用成功的回调函数。返回FileListResponse。
+接口调用成功的回调函数。返回[FileListResponse](arkts-corefile-system-file-filelistresponse-depr-i.md#filelistresponse)。
 
 **起始版本：** 3
 

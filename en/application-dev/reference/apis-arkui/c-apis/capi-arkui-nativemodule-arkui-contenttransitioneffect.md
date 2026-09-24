@@ -8,6 +8,8 @@ typedef struct ArkUI_ContentTransitionEffect ArkUI_ContentTransitionEffect
 
 Set the types and parameters related to content transition effects.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 21
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

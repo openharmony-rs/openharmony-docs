@@ -1,5 +1,9 @@
 # Orientation (System API)
 
+```TypeScript
+enum Orientation
+```
+
 Enumerates the screen orientations.
 
 **Since:** 9

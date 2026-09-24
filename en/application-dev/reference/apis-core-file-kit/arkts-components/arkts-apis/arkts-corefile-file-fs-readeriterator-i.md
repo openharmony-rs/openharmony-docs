@@ -1,5 +1,9 @@
 # ReaderIterator
 
+```TypeScript
+declare interface ReaderIterator
+```
+
 Provides a **ReaderIterator** object. Before calling APIs of **ReaderIterator**, you need to use **readLines()** to create a **ReaderIterator** instance.
 
 **Since:** 11

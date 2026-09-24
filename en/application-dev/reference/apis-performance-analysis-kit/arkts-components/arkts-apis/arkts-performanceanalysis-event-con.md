@@ -250,6 +250,8 @@ ArkWeb fling jank event. This is a system event name constant.
 
 **Since:** 23
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

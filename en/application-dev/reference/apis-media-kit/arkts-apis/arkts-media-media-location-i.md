@@ -1,5 +1,9 @@
 # Location
 
+```TypeScript
+interface Location
+```
+
 Provides the geographical location definitions for media resources.
 
 **Since:** 6

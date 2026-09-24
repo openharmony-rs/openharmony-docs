@@ -1,5 +1,9 @@
 # InputMethodExtensionAbility
 
+```TypeScript
+declare class InputMethodExtensionAbility
+```
+
 The **InputMethodExtensionAbility** module provides APIs for developing input methods and managing the lifecycle of input method extensions. <br> <br>  
 > **NOTE:** <br>
 > <br>

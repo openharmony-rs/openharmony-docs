@@ -1,5 +1,9 @@
 # ErrorMessage (System API)
 
+```TypeScript
+export interface ErrorMessage
+```
+
 Represents an error message.
 
 **Since:** 9

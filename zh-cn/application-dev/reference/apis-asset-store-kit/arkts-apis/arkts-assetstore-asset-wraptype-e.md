@@ -1,5 +1,9 @@
 # WrapType
 
+```TypeScript
+enum WrapType
+```
+
 枚举，关键资产支持的加密导入导出类型。
 
 **起始版本：** 18

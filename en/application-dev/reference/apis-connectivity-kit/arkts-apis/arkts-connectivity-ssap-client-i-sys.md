@@ -1,5 +1,9 @@
 # Client
 
+```TypeScript
+interface Client
+```
+
 Represents a SSAP client class. It provides APIs for connecting to and transmitting data with the server.
 
 Before using the methods of this class, use the [ssap.createClient](arkts-connectivity-ssap-createclient-f.md) method to construct an instance of this class.

@@ -1,5 +1,9 @@
 # Geofence
 
+```TypeScript
+export interface Geofence
+```
+
 Circular fence information.
 
 **Since:** 9

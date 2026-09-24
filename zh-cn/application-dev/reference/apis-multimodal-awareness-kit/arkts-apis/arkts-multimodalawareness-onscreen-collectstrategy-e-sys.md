@@ -1,5 +1,9 @@
 # CollectStrategy（系统接口）
 
+```TypeScript
+export enum CollectStrategy
+```
+
 页面信息收集策略。
 
 **起始版本：** 23

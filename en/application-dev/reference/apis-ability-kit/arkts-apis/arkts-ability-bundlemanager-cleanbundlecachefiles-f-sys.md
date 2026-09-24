@@ -64,45 +64,8 @@ try {
 }
 ```
 
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let bundleName = "com.ohos.myapplication";
-
-try {
-  bundleManager.cleanBundleCacheFiles(bundleName).then(() => {
-    hilog.info(0x0000, 'testTag', 'cleanBundleCacheFiles successfully.');
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', err.message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', message);
-}
-```
-
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let bundleName = "com.ohos.myapplication";
-let appIndex = 1;
-
-try {
-  bundleManager.cleanBundleCacheFiles(bundleName, appIndex).then(() => {
-    hilog.info(0x0000, 'testTag', 'cleanBundleCacheFiles successfully.');
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', err.message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', message);
-}
-```
-
+<a id="cleanbundlecachefiles-1"></a>
 
 ## cleanBundleCacheFiles
 
@@ -146,8 +109,27 @@ No permission is required when the caller clears its own cache.
 
 **Examples**
 
-See [cleanBundleCacheFiles](#cleanbundlecachefiles)
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+let bundleName = "com.ohos.myapplication";
+
+try {
+  bundleManager.cleanBundleCacheFiles(bundleName).then(() => {
+    hilog.info(0x0000, 'testTag', 'cleanBundleCacheFiles successfully.');
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', message);
+}
+```
+
+
+<a id="cleanbundlecachefiles-2"></a>
 
 ## cleanBundleCacheFiles
 
@@ -193,4 +175,22 @@ No permission is required when the caller clears its own cache.
 
 **Examples**
 
-See [cleanBundleCacheFiles](#cleanbundlecachefiles)
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = "com.ohos.myapplication";
+let appIndex = 1;
+
+try {
+  bundleManager.cleanBundleCacheFiles(bundleName, appIndex).then(() => {
+    hilog.info(0x0000, 'testTag', 'cleanBundleCacheFiles successfully.');
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', message);
+}
+```

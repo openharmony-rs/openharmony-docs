@@ -1,5 +1,9 @@
 # PackageType
 
+```TypeScript
+enum PackageType
+```
+
 Enumerates the update package types.
 
 **Since:** 12

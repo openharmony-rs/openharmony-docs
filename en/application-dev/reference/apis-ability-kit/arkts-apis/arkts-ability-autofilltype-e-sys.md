@@ -1,5 +1,9 @@
 # AutoFillType
 
+```TypeScript
+export enum AutoFillType
+```
+
 AutoFillType enumerates the types of elements to be automatically filled in.
 
 **Since:** 26.0.0

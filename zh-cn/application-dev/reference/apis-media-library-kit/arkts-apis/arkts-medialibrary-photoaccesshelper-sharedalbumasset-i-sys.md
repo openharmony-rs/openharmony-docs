@@ -1,5 +1,9 @@
 # SharedAlbumAsset（系统接口）
 
+```TypeScript
+interface SharedAlbumAsset
+```
+
 Defines the shared album asset
 
 **起始版本：** 14

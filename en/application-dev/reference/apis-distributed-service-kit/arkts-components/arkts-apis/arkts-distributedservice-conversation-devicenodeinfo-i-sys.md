@@ -1,8 +1,12 @@
 # DeviceNodeInfo (System API)
 
+```TypeScript
+interface DeviceNodeInfo
+```
+
 Defines the device node information, including the network ID, device name, device type ID, near-field status, and UDID.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
@@ -24,7 +28,7 @@ Device name.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -42,7 +46,7 @@ Device type ID, which indicates the device type. The value is an integer, for ex
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -60,7 +64,7 @@ Whether the device is in the near field. The value **true** indicates that the d
 
 **Type:** boolean
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -78,7 +82,7 @@ Network ID of the device, which uniquely identifies a device on a distributed ne
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -96,7 +100,7 @@ UDID of the device, which uniquely identifies a device and is used for device ad
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

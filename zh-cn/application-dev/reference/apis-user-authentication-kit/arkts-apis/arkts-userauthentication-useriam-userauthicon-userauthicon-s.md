@@ -1,5 +1,9 @@
 # UserAuthIcon
 
+```TypeScript
+export default struct UserAuthIcon
+```
+
 **userAuthIcon**模块是OpenHarmony用户身份认证体系（UserIAM）的UI组件模块，提供了一个开箱即用的身份认证图标组件（UserAuthIcon）。该组件用于在应用UI中展示人脸认证或指纹认证的图标，支持自定义图标颜色和尺寸，点击图标可启动系统身份认证弹窗组件。
 
 该模块主要用于以下场景：
@@ -78,7 +82,7 @@ authParam: userAuth.AuthParam
 iconColor?: ResourceColor
 ```
 
-图标颜色。设置认证图标的颜色，支持颜色值、资源引用等多种格式。默认使用系统激活色，开发者可根据应用主题自定义颜色，如使用Color.Blue或&#36;r('app.color.primary')。
+图标颜色。设置认证图标的颜色，支持颜色值、资源引用等多种格式。默认使用系统激活色，开发者可根据应用主题自定义颜色，如使用Color.Blue或$r('app.color.primary')。
 
 **类型：** [ResourceColor](../../apis-arkui/arkts-apis/arkts-arkui-resourcecolor-t.md)
 

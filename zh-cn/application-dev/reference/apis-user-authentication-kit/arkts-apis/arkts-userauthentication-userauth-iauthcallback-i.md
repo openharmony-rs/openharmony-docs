@@ -1,5 +1,9 @@
 # IAuthCallback
 
+```TypeScript
+interface IAuthCallback
+```
+
 返回认证结果的回调对象。该接口定义了认证结果的回调方法，用于在认证完成后获取认证结果。应用通过实现onResult方法，可以在认证通过时获取认证令牌，在认证不通过时获取错误码和相关信息。
 
 **起始版本：** 10

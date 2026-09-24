@@ -1,5 +1,9 @@
 # TrafficPlanParam（系统接口）
 
+```TypeScript
+export enum TrafficPlanParam
+```
+
 定义与流量计划相关的字段。
 
 **起始版本：** 26.0.0

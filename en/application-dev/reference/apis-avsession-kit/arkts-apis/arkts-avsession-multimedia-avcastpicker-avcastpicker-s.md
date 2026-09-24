@@ -1,5 +1,9 @@
 # AVCastPicker
 
+```TypeScript
+declare struct AVCastPicker
+```
+
 A picker view to show available streaming device list.
 
 **Since:** 10
@@ -78,7 +82,7 @@ customPicker?: CustomBuilder
 
 Set the custom builder for the picker appearance. If not set, system will show the default appearance for different device type.
 
-**Type:** [CustomBuilder](../../apis-arkui/arkts-components/arkts-arkui-custombuilder-t.md)
+**Type:** [CustomBuilder](../../apis-arkui/arkts-components/arkts-arkui-common-comp-custombuilder-t.md)
 
 **Since:** 12
 

@@ -1,5 +1,9 @@
 # ShowToastOptions
 
+```TypeScript
+interface ShowToastOptions
+```
+
 文本提示框的选项。
 
 **起始版本：** 8
@@ -32,6 +36,8 @@ bottom?: string | number
 
 **替代接口：** [bottom](arkts-arkui-promptaction-showtoastoptions-i.md#bottom)
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## duration
@@ -50,6 +56,8 @@ duration?: number
 
 **替代接口：** [duration](arkts-arkui-promptaction-showtoastoptions-i.md#duration)
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## message
@@ -67,5 +75,7 @@ message: string
 **废弃版本：** 9
 
 **替代接口：** [message](arkts-arkui-promptaction-showtoastoptions-i.md#message)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

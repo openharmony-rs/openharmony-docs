@@ -1,5 +1,9 @@
 # Generator
 
+```TypeScript
+interface Generator<T = unknown, TReturn = any, TNext = unknown> extends Iterator<T, TReturn, TNext>
+```
+
 ## Modules to Import
 
 ```TypeScript

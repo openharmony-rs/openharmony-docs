@@ -1,5 +1,9 @@
 # Vector2T
 
+```TypeScript
+interface Vector2T<T>
+```
+
 用于表示T类型的包含x和y两个值的向量。
 
 **起始版本：** 12

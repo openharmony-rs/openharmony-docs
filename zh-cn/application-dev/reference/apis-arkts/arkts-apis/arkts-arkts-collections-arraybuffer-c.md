@@ -1,5 +1,9 @@
 # ArrayBuffer
 
+```TypeScript
+class ArrayBuffer
+```
+
 ArkTS TypedArray（[Int8Array](arkts-arkts-collections-int8array-c.md)、[Uint8Array](arkts-arkts-collections-uint8array-c.md)、[Int16Array](arkts-arkts-collections-int16array-c.md)、[Uint16Array](arkts-arkts-collections-uint16array-c.md)、[Int32Array](arkts-arkts-collections-int32array-c.md)、[Uint32Array](arkts-arkts-collections-uint32array-c.md)、[Uint8ClampedArray](arkts-arkts-collections-uint8clampedarray-c.md)、[Float32Array](arkts-arkts-collections-float32array-c.md)）的底层数据结构。
 
 > **说明：** 

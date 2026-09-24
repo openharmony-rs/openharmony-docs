@@ -1,5 +1,9 @@
 # Configuration
 
+```TypeScript
+interface Configuration
+```
+
 Defines the parameters for creating a child window or system window.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # ServiceType
 
+```TypeScript
+enum ServiceType
+```
+
 分布式业务类型。
 
 **起始版本：** 26.0.0

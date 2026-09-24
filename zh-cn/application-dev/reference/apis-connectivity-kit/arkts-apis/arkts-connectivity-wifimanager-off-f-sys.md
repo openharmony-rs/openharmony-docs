@@ -33,11 +33,27 @@ function off(type: 'streamChange', callback?: Callback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | System API is not allowed called by Non-system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | System API is not allowed called by Non-system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
+
+**示例**
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+
+let recvStreamChangeFunc = (result:number) => {
+    console.info("Receive stream change event: " + result);
+}
+
+// Register event
+wifiManager.on("streamChange", recvStreamChangeFunc);
+
+// Unregister event
+wifiManager.off("streamChange", recvStreamChangeFunc);
+```
 
 
 ## off('deviceConfigChange')
@@ -67,11 +83,27 @@ function off(type: 'deviceConfigChange', callback?: Callback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | System API is not allowed called by Non-system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | System API is not allowed called by Non-system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
+
+**示例**
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+
+let recvDeviceConfigChangeFunc = (result:number) => {
+    console.info("Receive device config change event: " + result);
+}
+
+// Register event
+wifiManager.on("deviceConfigChange", recvDeviceConfigChangeFunc);
+
+// Unregister event
+wifiManager.off("deviceConfigChange", recvDeviceConfigChangeFunc);
+```
 
 
 ## off('hotspotStaJoin')
@@ -101,11 +133,27 @@ function off(type: 'hotspotStaJoin', callback?: Callback<StationInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | System API is not allowed called by Non-system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | System API is not allowed called by Non-system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2601000](../errorcode-wifi.md#2601000-hotspot模块异常) | Operation failed. |
+
+**示例**
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+
+let recvHotspotStaJoinFunc = (result:wifiManager.StationInfo) => {
+    console.info("Receive hotspot sta join event: " + result);
+}
+
+// Register event
+wifiManager.on("hotspotStaJoin", recvHotspotStaJoinFunc);
+
+// Unregister event
+wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
+```
 
 
 ## off('hotspotStaLeave')
@@ -135,8 +183,24 @@ function off(type: 'hotspotStaLeave', callback?: Callback<StationInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | System API is not allowed called by Non-system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | System API is not allowed called by Non-system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2601000](../errorcode-wifi.md#2601000-hotspot模块异常) | Operation failed. |
+
+**示例**
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+
+let recvHotspotStaLeaveFunc = (result:wifiManager.StationInfo) => {
+    console.info("Receive hotspot sta leave event: " + result);
+}
+
+// Register event
+wifiManager.on("hotspotStaLeave", recvHotspotStaLeaveFunc);
+
+// Unregister event
+wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
+```

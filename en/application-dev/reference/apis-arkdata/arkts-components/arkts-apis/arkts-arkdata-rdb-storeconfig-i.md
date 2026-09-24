@@ -1,5 +1,9 @@
 # StoreConfig
 
+```TypeScript
+interface StoreConfig
+```
+
 Defines the RDB store configuration.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # FlashState
 
+```TypeScript
+enum FlashState
+```
+
 Enumerates the flash states.
 
 **Since:** 24

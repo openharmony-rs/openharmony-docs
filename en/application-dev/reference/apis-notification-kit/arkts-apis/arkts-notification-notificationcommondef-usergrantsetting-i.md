@@ -1,5 +1,9 @@
 # UserGrantSetting
 
+```TypeScript
+export interface UserGrantSetting
+```
+
 Describes the user authorization settings.
 
 **Since:** 26.0.0

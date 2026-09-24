@@ -1,5 +1,9 @@
 # DepthFusion (System API)
 
+```TypeScript
+interface DepthFusion extends DepthFusionQuery
+```
+
 Depth fusion class. It inherits from [DepthFusionQuery](arkts-camera-camera-depthfusionquery-i-sys.md).
 
 **Inheritance/Implementation:** DepthFusion extends [DepthFusionQuery](arkts-camera-camera-depthfusionquery-i-sys.md)

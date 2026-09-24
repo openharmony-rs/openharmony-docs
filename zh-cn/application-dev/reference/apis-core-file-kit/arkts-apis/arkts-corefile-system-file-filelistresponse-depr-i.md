@@ -1,5 +1,9 @@
 # FileListResponse
 
+```TypeScript
+export interface FileListResponse
+```
+
 文件列表返回，包含文件列表信息。
 
 **起始版本：** 3

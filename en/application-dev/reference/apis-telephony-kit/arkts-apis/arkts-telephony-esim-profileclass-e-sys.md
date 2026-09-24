@@ -1,5 +1,9 @@
 # ProfileClass (System API)
 
+```TypeScript
+export enum ProfileClass
+```
+
 Enumerates the profile classes.
 
 **Since:** 18

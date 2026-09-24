@@ -20,8 +20,8 @@ The file declares the common enums and structs used by the image interface.
 
 | Name | Description |
 | -- | -- |
-| [Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metadatas, uint32_t metadataCount, int32_t type, OH_PictureMetadata *metadata)(System API)](#oh_picturemetadata_getmetadatabytype) | Obtains the PictureMetadata object matching the specified type from the PictureMetadata array.**System API:** This is a system API. |
-| [Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint32_t metadatasCount)(System API)](#oh_picturemetadatas_release) | Releases an array of OH_PictureMetadata objects.**System API:** This is a system API. |
+| [Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metadatas, uint32_t metadataCount, int32_t type, OH_PictureMetadata *metadata)(System API)](#oh_picturemetadata_getmetadatabytype) | Obtains the PictureMetadata object matching the specified type from the PictureMetadata array.<br>**System API:** This is a system API. |
+| [Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint32_t metadatasCount)(System API)](#oh_picturemetadatas_release) | Releases an array of OH_PictureMetadata objects.<br>**System API:** This is a system API. |
 
 ## Function description
 
@@ -34,6 +34,8 @@ Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metada
 **Description**
 
 Obtains the PictureMetadata object matching the specified type from the PictureMetadata array.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -63,6 +65,8 @@ Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint
 **Description**
 
 Releases an array of OH_PictureMetadata objects.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 

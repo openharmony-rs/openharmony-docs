@@ -10,7 +10,7 @@ If Internet access is required, you must apply for the **ohos.permission.INTERNE
 
 ## Child Components
 
-This component can contain the Image child component.
+This component can contain the [Image](arkts-arkui-image-comp.md#image) child component.
 
 ## Hyperlink
 
@@ -37,6 +37,29 @@ Defines the constructor of Hyperlink.
 
 ## Examples
 
-```TypeScript
 This example shows how to create hyperlinks with both images and text that can be clicked to navigate to a specified URL.
+
+```TypeScript
+@Entry
+@Component
+struct HyperlinkExample {
+  build() {
+    Column() {
+      Column() {
+        Hyperlink('https://example.com/') {
+          // Replace $r('app.media.bg') with the image resource file you use.
+          Image($r('app.media.bg'))
+            .width(200)
+            .height(100)
+        }
+      }
+
+      Column() {
+        Hyperlink('https://example.com/', 'Go to the developer website') {
+        }
+        .color(Color.Blue)
+      }
+    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+  }
+}
 ```

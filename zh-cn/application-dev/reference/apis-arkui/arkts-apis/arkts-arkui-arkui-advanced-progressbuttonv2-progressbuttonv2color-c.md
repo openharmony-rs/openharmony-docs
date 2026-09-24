@@ -1,5 +1,9 @@
 # ProgressButtonV2Color
 
+```TypeScript
+export declare class ProgressButtonV2Color
+```
+
 下载按钮颜色选项。
 
 设备行为差异：该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -46,7 +50,7 @@ constructor(options: ProgressButtonV2ColorOptions)
 public backgroundColor?: ColorMetrics
 ```
 
-按钮背景颜色。<br>默认值：\&#36;r('sys.color.ohos_id_color_foreground_contrary')<br>装饰器类型：@Trace
+按钮背景颜色。<br>默认值：\$r('sys.color.ohos_id_color_foreground_contrary')<br>装饰器类型：@Trace
 
 **类型：** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 

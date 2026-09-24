@@ -1,5 +1,9 @@
 # MemoryLimit
 
+```TypeScript
+interface MemoryLimit
+```
+
 Defines the memory limit of the application process.
 
 **Since:** 12

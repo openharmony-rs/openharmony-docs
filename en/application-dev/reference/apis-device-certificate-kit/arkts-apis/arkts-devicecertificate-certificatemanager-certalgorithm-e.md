@@ -1,5 +1,9 @@
 # CertAlgorithm
 
+```TypeScript
+export enum CertAlgorithm
+```
+
 Enumerates the certificate algorithms.
 
 **Since:** 20

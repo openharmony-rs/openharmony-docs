@@ -1,5 +1,9 @@
 # WebDataBase
 
+```TypeScript
+class WebDataBase
+```
+
 Web组件数据库管理对象。
 
 **起始版本：** 9
@@ -26,6 +30,34 @@ static deleteHttpAuthCredentials(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('deleteHttpAuthCredentials')
+        .onClick(() => {
+          try {
+            webview.WebDataBase.deleteHttpAuthCredentials();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## existHttpAuthCredentials
 
 ```TypeScript
@@ -45,6 +77,38 @@ static existHttpAuthCredentials(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 是否存在任何已保存的HTTP身份验证凭据。<br>存在返回true，不存在返回false。 |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('existHttpAuthCredentials')
+        .onClick(() => {
+          try {
+            if (webview.WebDataBase.existHttpAuthCredentials()) {
+                console.info('HTTP auth credentials exist.');
+              } else {
+                console.info('No HTTP auth credentials found.');
+              }
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
 
 ## getHttpAuthCredentials
 
@@ -77,7 +141,39 @@ static getHttpAuthCredentials(host: string, realm: string): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  host: string = 'www.spincast.org';
+  realm: string = 'protected example';
+  usernamePassword: string[] = [];
+
+  build() {
+    Column() {
+      Button('getHttpAuthCredentials')
+        .onClick(() => {
+          try {
+            this.usernamePassword = webview.WebDataBase.getHttpAuthCredentials(this.host, this.realm);
+            console.info('num: ' + this.usernamePassword.length);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
 
 ## saveHttpAuthCredentials
 
@@ -106,4 +202,34 @@ static saveHttpAuthCredentials(host: string, realm: string, username: string, pa
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  host: string = 'www.spincast.org';
+  realm: string = 'protected example';
+
+  build() {
+    Column() {
+      Button('saveHttpAuthCredentials')
+        .onClick(() => {
+          try {
+            webview.WebDataBase.saveHttpAuthCredentials(this.host, this.realm, 'Stromgol', 'Laroche');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```

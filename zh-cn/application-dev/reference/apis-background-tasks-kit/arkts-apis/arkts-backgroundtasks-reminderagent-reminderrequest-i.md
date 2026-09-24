@@ -1,5 +1,9 @@
 # ReminderRequest
 
+```TypeScript
+interface ReminderRequest
+```
+
 提醒实例对象，用于设置提醒类型、响铃时长等具体信息。
 
 **起始版本：** 7
@@ -30,7 +34,7 @@ actionButton?: [ActionButton?, ActionButton?]
 
 **废弃版本：** 9
 
-**替代接口：** actionButton
+**替代接口：** [actionButton](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#actionbutton)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -48,7 +52,7 @@ content?: string
 
 **废弃版本：** 9
 
-**替代接口：** content
+**替代接口：** [content](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#content)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -66,7 +70,7 @@ expiredContent?: string
 
 **废弃版本：** 9
 
-**替代接口：** expiredContent
+**替代接口：** [expiredContent](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#expiredcontent)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -84,7 +88,7 @@ maxScreenWantAgent?: MaxScreenWantAgent
 
 **废弃版本：** 9
 
-**替代接口：** maxScreenWantAgent
+**替代接口：** [maxScreenWantAgent](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#maxscreenwantagent)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -102,7 +106,7 @@ notificationId?: number
 
 **废弃版本：** 9
 
-**替代接口：** notificationId
+**替代接口：** [notificationId](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#notificationid)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -120,7 +124,7 @@ reminderType: ReminderType
 
 **废弃版本：** 9
 
-**替代接口：** reminderType
+**替代接口：** [reminderType](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#remindertype)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -138,7 +142,7 @@ ringDuration?: number
 
 **废弃版本：** 9
 
-**替代接口：** ringDuration
+**替代接口：** [ringDuration](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#ringduration)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -156,7 +160,7 @@ slotType?: notification.SlotType
 
 **废弃版本：** 9
 
-**替代接口：** slotType
+**替代接口：** [slotType](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#slottype)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -174,7 +178,7 @@ snoozeContent?: string
 
 **废弃版本：** 9
 
-**替代接口：** snoozeContent
+**替代接口：** [snoozeContent](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#snoozecontent)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -192,7 +196,7 @@ snoozeTimes?: number
 
 **废弃版本：** 9
 
-**替代接口：** snoozeTimes
+**替代接口：** [snoozeTimes](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#snoozetimes)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -210,7 +214,7 @@ timeInterval?: number
 
 **废弃版本：** 9
 
-**替代接口：** timeInterval
+**替代接口：** [timeInterval](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#timeinterval)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -228,7 +232,7 @@ title?: string
 
 **废弃版本：** 9
 
-**替代接口：** title
+**替代接口：** [title](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#title)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -246,6 +250,6 @@ wantAgent?: WantAgent
 
 **废弃版本：** 9
 
-**替代接口：** wantAgent
+**替代接口：** [wantAgent](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#wantagent)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent

@@ -1,5 +1,9 @@
 # FloatingBallState
 
+```TypeScript
+enum FloatingBallState
+```
+
 闪控球生命周期状态的枚举。
 
 **起始版本：** 20

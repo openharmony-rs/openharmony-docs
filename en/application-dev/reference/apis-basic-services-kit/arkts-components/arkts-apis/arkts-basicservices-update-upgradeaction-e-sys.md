@@ -1,5 +1,9 @@
 # UpgradeAction (System API)
 
+```TypeScript
+export enum UpgradeAction
+```
+
 Represents an update mode.
 
 **Since:** 9

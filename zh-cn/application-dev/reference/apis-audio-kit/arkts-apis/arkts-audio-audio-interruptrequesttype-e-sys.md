@@ -1,5 +1,9 @@
 # InterruptRequestType（系统接口）
 
+```TypeScript
+enum InterruptRequestType
+```
+
 枚举，音频中断请求类型。
 
 **起始版本：** 9

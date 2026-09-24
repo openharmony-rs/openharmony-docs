@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Lattice OH_Drawing_Lattice
 
 定义为矩形网格，用于将图片按照矩形网格进行划分。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 23
 
 **相关模块：** [Drawing](capi-drawing.md)

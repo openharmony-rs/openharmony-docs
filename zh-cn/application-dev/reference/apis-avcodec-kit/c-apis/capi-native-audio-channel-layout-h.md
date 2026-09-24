@@ -36,6 +36,8 @@ enum OH_AudioChannelSet
 
 音频声道集合。<br> 将每一个声道映射为int64的变量。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -81,6 +83,8 @@ enum OH_AmbAttributeSet
 
 高保真立体声混响设置。<br> 用int64整数来表示高保真立体声混响属性。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -103,6 +107,8 @@ enum OH_AudioChannelLayout
 **描述：**
 
 音频声道布局。<br> 用int64整数来表示在录制或播放时扬声器的外观和顺序。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 11
 

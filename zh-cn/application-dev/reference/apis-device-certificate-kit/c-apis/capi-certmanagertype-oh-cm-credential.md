@@ -8,6 +8,8 @@ typedef struct OH_CM_Credential {...} OH_CM_Credential
 
 Defines a struct for the certificate credential details.
 
+**系统能力：** SystemCapability.Security.CertificateManager
+
 **起始版本：** 22
 
 **相关模块：** [CertManagerType](capi-certmanagertype.md)

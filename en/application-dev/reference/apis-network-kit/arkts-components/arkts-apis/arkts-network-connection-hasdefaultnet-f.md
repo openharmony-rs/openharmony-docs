@@ -49,14 +49,8 @@ connection.hasDefaultNet((error: BusinessError, data: boolean) => {
 });
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
 
-connection.hasDefaultNet().then((data: boolean) => {
-  console.info('data: ' + data);
-});
-```
-
+<a id="hasdefaultnet-1"></a>
 
 ## hasDefaultNet
 
@@ -90,4 +84,10 @@ Checks whether there is an available network. This API uses a promise to return 
 
 **Examples**
 
-See [hasDefaultNet](#hasdefaultnet)
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+
+connection.hasDefaultNet().then((data: boolean) => {
+  console.info('data: ' + data);
+});
+```

@@ -69,6 +69,8 @@ enum OH_IPC_RequestMode
 
 IPC请求模式定义。同步请求模式适用于需要等待远端响应的场景，异步请求模式适用于不需要等待远端响应或需要提高并发性能的场景。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -106,7 +108,7 @@ Stub端用于处理远端数据请求的回调函数。当Proxy端通过[OH_IPCR
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；<br>否则返回用户自定义错误码或系统错误码，自定义错误码范围：[1909001, 1909999]；<br>如果用户自定义错误码超出范围，将返回{@link OH_IPC_ErrorCode#OH_IPC_INVALID_USER_ERROR_CODE}。 |
+| int | 成功返回[OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；  否则返回用户自定义错误码或系统错误码，自定义错误码范围：[1909001, 1909999]；  如果用户自定义错误码超出范围，将返回[OH_IPC_INVALID_USER_ERROR_CODE](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
 
 ### OH_OnRemoteDestroyCallback()
 
@@ -225,7 +227,7 @@ IPC消息发送函数，用于Proxy端向远端Stub发送IPC消息请求，支�
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 发送成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；<br>参数不合法时返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}；<br>远端OHIPCRemoteStub对象死亡返回{@link OH_IPC_ErrorCode#OH_IPC_DEAD_REMOTE_OBJECT}；<br>code超出范围返回{@link OH_IPC_ErrorCode#OH_IPC_CODE_OUT_OF_RANGE}；<br>其它返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}或用户自定义错误码（范围：[1909001, 1909999]）。 |
+| int | 发送成功返回[OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；  参数不合法时返回[OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；  远端OHIPCRemoteStub对象死亡返回[OH_IPC_DEAD_REMOTE_OBJECT](capi-ipc-error-code-h.md#oh_ipc_errorcode)；  code超出范围返回[OH_IPC_CODE_OUT_OF_RANGE](capi-ipc-error-code-h.md#oh_ipc_errorcode)；  其它返回[OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)或用户自定义错误码（范围：[1909001, 1909999]）。 |
 
 ### OH_IPCRemoteProxy_GetInterfaceDescriptor()
 
@@ -254,7 +256,7 @@ int OH_IPCRemoteProxy_GetInterfaceDescriptor(OHIPCRemoteProxy *proxy, char **des
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 发送成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；<br>参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}；<br>远端OHIPCRemoteStub对象死亡返回{@link OH_IPC_ErrorCode#OH_IPC_DEAD_REMOTE_OBJECT}；<br>内存分配失败返回{@link OH_IPC_ErrorCode#OH_IPC_MEM_ALLOCATOR_ERROR}；<br>序列化读失败返回{@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR}或用户自定义错误码。 |
+| int | 发送成功返回[OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；  参数错误返回[OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；  远端OHIPCRemoteStub对象死亡返回[OH_IPC_DEAD_REMOTE_OBJECT](capi-ipc-error-code-h.md#oh_ipc_errorcode)；  内存分配失败返回[OH_IPC_MEM_ALLOCATOR_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；  序列化读失败返回[OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)或用户自定义错误码。 |
 
 ### OH_OnDeathRecipientCallback()
 
@@ -369,7 +371,7 @@ int OH_IPCRemoteProxy_AddDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRecip
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；<br>参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}；<br>其它返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}。 |
+| int | 成功返回[OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；  参数错误返回[OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；  其它返回[OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
 
 ### OH_IPCRemoteProxy_RemoveDeathRecipient()
 
@@ -396,7 +398,7 @@ int OH_IPCRemoteProxy_RemoveDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRe
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；<br>参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}；<br>其它返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}。 |
+| int | 成功返回[OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；  参数错误返回[OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；  其它返回[OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
 
 ### OH_IPCRemoteProxy_IsRemoteDead()
 

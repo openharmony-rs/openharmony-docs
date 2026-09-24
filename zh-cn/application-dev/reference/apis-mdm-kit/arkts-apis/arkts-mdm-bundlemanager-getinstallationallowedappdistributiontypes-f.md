@@ -40,7 +40,7 @@ function getInstallationAllowedAppDistributionTypes(admin: Want): Array<AppDistr
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
@@ -62,19 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { bundleManager } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  let result: Array<bundleManager.AppDistributionType> =
-    bundleManager.getInstallationAllowedAppDistributionTypes(null);
-  console.info(`Succeeded in getting allowed appDistributionTypes. Result: ${JSON.stringify(result)}`);
-} catch (err) {
-  console.error(`Failed to get allowed appDistributionTypes. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="getinstallationallowedappdistributiontypes-1"></a>
 
 ## getInstallationAllowedAppDistributionTypes
 
@@ -110,8 +99,19 @@ function getInstallationAllowedAppDistributionTypes(admin: Want | null): Array<A
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
-参见 getInstallationAllowedAppDistributionTypes
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: Array<bundleManager.AppDistributionType> =
+    bundleManager.getInstallationAllowedAppDistributionTypes(null);
+  console.info(`Succeeded in getting allowed appDistributionTypes. Result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get allowed appDistributionTypes. Code: ${err.code}, message: ${err.message}`);
+}
+```

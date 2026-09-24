@@ -1,5 +1,9 @@
 # PolygonMode
 
+```TypeScript
+export enum PolygonMode
+```
+
 Enumerates the polygon drawing mode.
 
 @enum { int }

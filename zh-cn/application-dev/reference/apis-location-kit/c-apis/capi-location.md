@@ -4,6 +4,8 @@
 
 提供查询位置开关状态、启动定位、停止定位的接口。
 
+**系统能力：** SystemCapability.Location.Location.Core
+
 **起始版本：** 13
 
 ## 文件汇总

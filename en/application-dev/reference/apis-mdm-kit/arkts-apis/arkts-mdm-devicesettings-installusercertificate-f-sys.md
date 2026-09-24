@@ -79,35 +79,8 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 });
 ```
 
-```TypeScript
-import { deviceSettings } from '@kit.MDMKit';
-import { common, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-let certFileArray: Uint8Array = new Uint8Array();
-// Initialize the context variable in the onCreate callback function of the MainAbility.
-// Store test.cer in the rawfile directory.
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-context.resourceManager.getRawFileContent("test.cer").then((value) => {
-  certFileArray = value
-  deviceSettings.installUserCertificate(wantTemp, { inData: certFileArray, alias: "cert_alias_xts" })
-    .then((result) => {
-      console.info(`Succeeded in installing user certificate, result : ${JSON.stringify(result)}`);
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
-  })
-}).catch((error: BusinessError) => {
-  console.error(`Failed to get raw file content. message: ${error.message}`);
-  return;
-});
-```
-
+<a id="installusercertificate-1"></a>
 
 ## installUserCertificate
 
@@ -157,4 +130,31 @@ Installs a user certificate. This API uses a promise to return the result.
 
 **Examples**
 
-See [installUserCertificate](#installusercertificate)
+```TypeScript
+import { deviceSettings } from '@kit.MDMKit';
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let certFileArray: Uint8Array = new Uint8Array();
+// Initialize the context variable in the onCreate callback function of the MainAbility.
+// Store test.cer in the rawfile directory.
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+context.resourceManager.getRawFileContent("test.cer").then((value) => {
+  certFileArray = value
+  deviceSettings.installUserCertificate(wantTemp, { inData: certFileArray, alias: "cert_alias_xts" })
+    .then((result) => {
+      console.info(`Succeeded in installing user certificate, result : ${JSON.stringify(result)}`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+}).catch((error: BusinessError) => {
+  console.error(`Failed to get raw file content. message: ${error.message}`);
+  return;
+});
+```

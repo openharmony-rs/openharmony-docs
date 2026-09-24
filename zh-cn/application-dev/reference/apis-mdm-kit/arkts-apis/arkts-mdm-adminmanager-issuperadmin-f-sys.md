@@ -33,8 +33,8 @@ function isSuperAdmin(bundleName: String, callback: AsyncCallback<boolean>): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例**
 
@@ -54,21 +54,8 @@ adminManager.isSuperAdmin(bundleName, (err, result) => {
 });
 ```
 
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 需根据实际情况进行替换
-let bundleName: string = 'com.example.myapplication';
-
-adminManager.isSuperAdmin(bundleName).then((result) => {
-  console.info(`Succeeded in querying admin is super admin or not, result : ${result}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to query admin is super admin or not. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="issuperadmin-1"></a>
 
 ## isSuperAdmin
 
@@ -102,9 +89,22 @@ function isSuperAdmin(bundleName: String): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例**
 
-参见 [isSuperAdmin](#issuperadmin)
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 需根据实际情况进行替换
+let bundleName: string = 'com.example.myapplication';
+
+adminManager.isSuperAdmin(bundleName).then((result) => {
+  console.info(`Succeeded in querying admin is super admin or not, result : ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query admin is super admin or not. Code: ${err.code}, message: ${err.message}`);
+});
+```

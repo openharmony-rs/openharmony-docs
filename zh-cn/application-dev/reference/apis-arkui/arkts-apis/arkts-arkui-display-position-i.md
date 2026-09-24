@@ -1,5 +1,9 @@
 # Position
 
+```TypeScript
+interface Position
+```
+
 坐标位置：在全局坐标系中，以主屏左上角为原点。在相对坐标系中，以指定屏幕左上角为原点。
 
 **起始版本：** 20

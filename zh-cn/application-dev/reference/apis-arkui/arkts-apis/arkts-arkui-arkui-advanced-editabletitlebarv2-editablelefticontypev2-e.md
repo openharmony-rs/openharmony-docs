@@ -1,5 +1,9 @@
 # EditableLeftIconTypeV2
 
+```TypeScript
+export declare enum EditableLeftIconTypeV2
+```
+
 左侧图标类型枚举。
 
 **起始版本：** 26.0.0

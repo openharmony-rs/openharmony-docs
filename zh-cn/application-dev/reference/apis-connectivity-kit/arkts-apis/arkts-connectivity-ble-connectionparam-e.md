@@ -1,5 +1,9 @@
 # ConnectionParam
 
+```TypeScript
+enum ConnectionParam
+```
+
 枚举，连接参数类型。
 
 **起始版本：** 22

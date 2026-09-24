@@ -1,5 +1,9 @@
 # SqlExecutionInfo
 
+```TypeScript
+interface SqlExecutionInfo
+```
+
 Represents statistics about SQL statements executed by the database.
 
 **Since:** 12

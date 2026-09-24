@@ -8,6 +8,8 @@ typedef struct MediaKeySystem MediaKeySystem
 
 MediaKeySystem结构，用于表示一个媒体密钥系统实例。MediaKeySystem提供数字版权保护能力， 负责DRM插件配置管理、设备证书管理、统计信息获取、内容保护级别查询以及创建MediaKeySession等功能。 通过OH_MediaKeySystem_Create接口创建实例，通过OH_MediaKeySystem_Destroy接口销毁实例。
 
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
 **起始版本：** 11
 
 **相关模块：** [Drm](capi-drm.md)

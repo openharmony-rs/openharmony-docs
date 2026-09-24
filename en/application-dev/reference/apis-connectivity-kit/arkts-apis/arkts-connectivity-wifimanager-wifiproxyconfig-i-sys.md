@@ -1,5 +1,9 @@
 # WifiProxyConfig (System API)
 
+```TypeScript
+interface WifiProxyConfig
+```
+
 Wi-Fi Proxy config. @typedef WifiProxyConfig
 
 **Since:** 10

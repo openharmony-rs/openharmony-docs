@@ -1,5 +1,9 @@
 # ASON(Defines the utils for ArkTS)
 
+```TypeScript
+namespace ASON
+```
+
 ArkTS JSON utils.
 
 **Since:** 12

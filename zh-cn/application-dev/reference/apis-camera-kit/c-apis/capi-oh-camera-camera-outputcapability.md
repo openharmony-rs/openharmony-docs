@@ -8,6 +8,8 @@ typedef struct Camera_OutputCapability {...} Camera_OutputCapability
 
 相机输出能力。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

@@ -55,16 +55,8 @@ call.getCallWaitingStatus(0, (err: BusinessError, data: call.CallWaitingStatus) 
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.getCallWaitingStatus(0).then((data: call.CallWaitingStatus) => {
-    console.info(`getCallWaitingStatus success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getCallWaitingStatus fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getcallwaitingstatus-1"></a>
 
 ## getCallWaitingStatus
 
@@ -108,4 +100,12 @@ Obtains the call waiting status. This API uses a promise to return the result.
 
 **Examples**
 
-See [getCallWaitingStatus](#getcallwaitingstatus)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.getCallWaitingStatus(0).then((data: call.CallWaitingStatus) => {
+    console.info(`getCallWaitingStatus success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getCallWaitingStatus fail, promise: err->${JSON.stringify(err)}`);
+});
+```

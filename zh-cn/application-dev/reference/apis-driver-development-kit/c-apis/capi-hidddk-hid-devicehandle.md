@@ -8,6 +8,8 @@ typedef struct Hid_DeviceHandle Hid_DeviceHandle
 
 不透明的USB HID设备结构，用于标识和操作HID设备实例。开发者通过该句柄进行HID设备的打开、关闭、读写等操作。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **起始版本：** 18
 
 **相关模块：** [HidDdk](capi-hidddk.md)

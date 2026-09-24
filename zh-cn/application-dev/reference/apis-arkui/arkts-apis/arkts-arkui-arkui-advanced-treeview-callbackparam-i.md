@@ -1,5 +1,9 @@
 # CallbackParam
 
+```TypeScript
+export interface CallbackParam
+```
+
 Declare CallbackParam
 
 **起始版本：** 10

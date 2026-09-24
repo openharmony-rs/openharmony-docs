@@ -1,5 +1,9 @@
 # ApplicationState（系统接口）
 
+```TypeScript
+export enum ApplicationState
+```
+
 应用状态，该类型为枚举，可配合[AbilityStateData](arkts-ability-abilitystatedata-c.md)返回相应的应用状态。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # UIElementInfo
 
+```TypeScript
+declare interface UIElementInfo
+```
+
 Provides information about the UI event.
 
 **Since:** 10

@@ -67,28 +67,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { inputDeviceCooperate } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          inputDeviceCooperate.stop().then(() => {
-            console.info(`Succeeded in stopping keyboard mouse crossing.`);
-          }).catch((error: BusinessError) => {
-            console.error(`Failed to stop keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          });
-        })
-    }
-  }
-}
-```
-
+<a id="stop-1"></a>
 
 ## stop
 
@@ -122,4 +102,24 @@ Stops screen hopping. This API uses a promise to return the result.
 
 **Examples**
 
-See [stop](#stop)
+```TypeScript
+import { inputDeviceCooperate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          inputDeviceCooperate.stop().then(() => {
+            console.info(`Succeeded in stopping keyboard mouse crossing.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to stop keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
+        })
+    }
+  }
+}
+```

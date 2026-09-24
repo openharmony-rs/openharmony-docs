@@ -28,20 +28,11 @@ function getCurrentBundleStats(callback: AsyncCallback<BundleStats>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:Mandatory parameters are left unspecified; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:Mandatory parameters are left unspecified; |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-storageStatistics.getCurrentBundleStats().then((bundleStats: storageStatistics.BundleStats) => {
-  console.info('getCurrentBundleStats successfully:' + JSON.stringify(bundleStats));
-}).catch((err: BusinessError) => {
-  console.error(`getCurrentBundleStats failed. Code: ${err.code}, message: ${err.message}`);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -55,6 +46,8 @@ storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: stor
 });
 ```
 
+
+<a id="getcurrentbundlestats-1"></a>
 
 ## getCurrentBundleStats
 
@@ -78,10 +71,17 @@ function getCurrentBundleStats(): Promise<BundleStats>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:Mandatory parameters are left unspecified; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:Mandatory parameters are left unspecified; |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
 **示例**
 
-参见 getCurrentBundleStats
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getCurrentBundleStats().then((bundleStats: storageStatistics.BundleStats) => {
+  console.info('getCurrentBundleStats successfully:' + JSON.stringify(bundleStats));
+}).catch((err: BusinessError) => {
+  console.error(`getCurrentBundleStats failed. Code: ${err.code}, message: ${err.message}`);
+});
+```

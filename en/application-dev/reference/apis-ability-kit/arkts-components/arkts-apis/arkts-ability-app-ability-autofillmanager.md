@@ -1,6 +1,6 @@
 # @ohos.app.ability.autoFillManager
 
-The autoFillManager module provides APIs for saving accounts and passwords.
+The autoFillManager module provides applications with the auto-fill capability for user information such as accounts, passwords, addresses, and phone numbers.
 
 Unlike the system's auto-save feature that triggers during page transitions, this feature requires manual activation by the user. For example, the user must input their account and password on a website and click the **Save** button to initiate the saving process.
 
@@ -23,8 +23,8 @@ import { autoFillManager } from '@kit.AbilityKit';
 | Name | Description |
 | --- | --- |
 | [requestAutoFill](arkts-ability-autofillmanager-requestautofill-f.md) | Trigger an auto fill request. |
-| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md) | Requests to automatically save the widget data. This API uses an asynchronous callback to return the result. If the current widget does not support widget switching, you can call this API to save historical widget input data. The callback is triggered when the auto-save request is complete. |
-| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md) | Trigger an auto save request. |
+| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave) | Requests to automatically save the widget data. This API uses an asynchronous callback to return the result. If the current widget does not support widget switching, you can call this API to save historical widget input data. The callback is triggered when the auto-save request is complete. |
+| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave-1) | Trigger an auto save request. |
 
 ### Interfaces
 

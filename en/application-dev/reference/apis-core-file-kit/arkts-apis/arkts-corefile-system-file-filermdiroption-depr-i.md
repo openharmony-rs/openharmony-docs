@@ -1,5 +1,9 @@
 # FileRmdirOption
 
+```TypeScript
+export interface FileRmdirOption
+```
+
 Defines the options used in rmdir().
 
 **Since:** 3

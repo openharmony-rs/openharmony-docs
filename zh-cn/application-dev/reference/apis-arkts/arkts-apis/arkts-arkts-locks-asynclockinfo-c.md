@@ -1,5 +1,9 @@
 # AsyncLockInfo
 
+```TypeScript
+class AsyncLockInfo
+```
+
 关于锁的信息。
 
 **起始版本：** 12

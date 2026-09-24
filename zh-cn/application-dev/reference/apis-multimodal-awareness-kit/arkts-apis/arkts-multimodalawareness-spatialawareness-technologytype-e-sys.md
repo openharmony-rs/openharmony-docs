@@ -1,5 +1,9 @@
 # TechnologyType（系统接口）
 
+```TypeScript
+export enum TechnologyType
+```
+
 提供输入信号的类型。接口根据输入信号类型，执行对应算法。
 
 @enum { int } 测距技术类型

@@ -1,5 +1,9 @@
 # Float32Array
 
+```TypeScript
+class Float32Array
+```
+
 A linear data structure that is implemented on [ArkTS ArrayBuffer](arkts-arkts-collections-arraybuffer-c.md).
 
 > **NOTE:** 
@@ -98,6 +102,8 @@ A constructor used to create an empty ArkTS Float32Array.
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Float32Array's constructor cannot be directly invoked. |
 
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -123,6 +129,8 @@ A constructor used to create an ArkTS Float32Array of a given length.
 | Error Code ID | Error Message |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Float32Array's constructor cannot be directly invoked. |
+
+<a id="constructor-2"></a>
 
 ## constructor
 
@@ -150,6 +158,8 @@ A constructor that creates an ArkTS Float32Array from an iterable object.
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Float32Array's constructor cannot be directly invoked. |
 
+<a id="constructor-3"></a>
+
 ## constructor
 
 ```TypeScript
@@ -175,6 +185,8 @@ A constructor that creates an ArkTS Float32Array from an array-like object or Ar
 | Error Code ID | Error Message |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Float32Array's constructor cannot be directly invoked. |
+
+<a id="constructor-4"></a>
 
 ## constructor
 
@@ -494,6 +506,8 @@ Creates an ArkTS Float32Array from an array-like or iterator object.
 | --- | --- |
 | Float32Array | New ArkTS Float32Array generated. |
 
+<a id="from-1"></a>
+
 ## from
 
 ```TypeScript
@@ -520,6 +534,8 @@ Creates an ArkTS Float32Array from an array-like object.
 | Type | Description |
 | --- | --- |
 | Float32Array | New ArkTS Float32Array generated. |
+
+<a id="from-2"></a>
 
 ## from
 
@@ -802,6 +818,8 @@ Applies a reduce function on each element in this ArkTS Float32Array and returns
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
+<a id="reduce-1"></a>
+
 ## reduce
 
 ```TypeScript
@@ -869,6 +887,8 @@ Reversely traverses this ArkTS Float32Array, applies a reduce function for each 
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
+
+<a id="reduceright-1"></a>
 
 ## reduceRight
 

@@ -1,5 +1,9 @@
 # InitializationOptions
 
+```TypeScript
+interface InitializationOptions
+```
+
 Defines PixelMap initialization options.
 
 **Since:** 8

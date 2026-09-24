@@ -29,7 +29,7 @@ function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter is not valid parameter. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -51,21 +51,8 @@ reminderAgentManager.addNotificationSlot(mySlot, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
-let mySlot: notificationManager.NotificationSlot = {
-  notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
-}
-reminderAgentManager.addNotificationSlot(mySlot).then(() => {
-  console.info("addNotificationSlot promise");
-}).catch((err: BusinessError) => {
-  console.error("promise err code:" + err.code + " message:" + err.message);
-});
-```
-
+<a id="addnotificationslot-1"></a>
 
 ## addNotificationSlot
 
@@ -95,8 +82,21 @@ function addNotificationSlot(slot: NotificationSlot): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter is not valid parameter. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
-参见 addNotificationSlot
+```TypeScript
+import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+
+let mySlot: notificationManager.NotificationSlot = {
+  notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
+}
+reminderAgentManager.addNotificationSlot(mySlot).then(() => {
+  console.info("addNotificationSlot promise");
+}).catch((err: BusinessError) => {
+  console.error("promise err code:" + err.code + " message:" + err.message);
+});
+```

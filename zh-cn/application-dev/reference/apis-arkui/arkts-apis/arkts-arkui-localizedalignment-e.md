@@ -1,8 +1,10 @@
 # LocalizedAlignment
 
-LocalizedAlignment enumeration description.
+```TypeScript
+declare enum LocalizedAlignment
+```
 
-@enum { string }
+用于支持align、[layoutGravity](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#layoutgravity)属性镜像特性的枚举类型。
 
 **起始版本：** 20
 
@@ -14,7 +16,7 @@ LocalizedAlignment enumeration description.
 TOP_START = "top_start"
 ```
 
-Top Start.
+顶部起始端。
 
 **起始版本：** 20
 
@@ -32,7 +34,7 @@ Top Start.
 TOP = "top"
 ```
 
-The top is centered horizontally.
+顶部横向居中。
 
 **起始版本：** 20
 
@@ -50,7 +52,7 @@ The top is centered horizontally.
 TOP_END = "top_end"
 ```
 
-Top tail end.
+顶部尾端。
 
 **起始版本：** 20
 
@@ -68,7 +70,7 @@ Top tail end.
 START = "start"
 ```
 
-The starting end is centered longitudinally.
+起始端纵向居中。
 
 **起始版本：** 20
 
@@ -86,7 +88,7 @@ The starting end is centered longitudinally.
 CENTER = "center"
 ```
 
-Center horizontal and vertical.
+横向和纵向居中。
 
 **起始版本：** 20
 
@@ -104,7 +106,7 @@ Center horizontal and vertical.
 END = "end"
 ```
 
-The tail end is centered longitudinally.
+尾端纵向居中。
 
 **起始版本：** 20
 
@@ -122,7 +124,7 @@ The tail end is centered longitudinally.
 BOTTOM_START = "bottom_start"
 ```
 
-Bottom starting end.
+底部起始端。
 
 **起始版本：** 20
 
@@ -140,7 +142,7 @@ Bottom starting end.
 BOTTOM = "bottom"
 ```
 
-The bottom is centered horizontally.
+底部横向居中。
 
 **起始版本：** 20
 
@@ -158,7 +160,7 @@ The bottom is centered horizontally.
 BOTTOM_END = "bottom_end"
 ```
 
-Bottom end.
+底部尾端。
 
 **起始版本：** 20
 

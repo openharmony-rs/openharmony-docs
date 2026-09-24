@@ -31,7 +31,19 @@ function on(type: 'add' | 'remove' | 'change', callback: Callback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<number> = (data: number) => {
+  console.info(`Listening enabled. Data: ${data}`);
+};
+
+display.on('add', callback);
+```
 
 
 ## on('add' | 'remove' | 'change')
@@ -59,7 +71,11 @@ function on(type: 'add' | 'remove' | 'change', callback: Callback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**示例**
+
+参见 on
 
 
 ## on('add' | 'remove' | 'change')
@@ -87,7 +103,11 @@ function on(type: 'add' | 'remove' | 'change', callback: Callback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**示例**
+
+参见 on
 
 
 ## on('foldStatusChange')
@@ -121,8 +141,23 @@ function on(type: 'foldStatusChange', callback: Callback<FoldStatus>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
+
+**示例**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+/**
+ * 注册监听的callback参数要采用对象传递。
+ * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
+ */
+let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
+  console.info(`Listening enabled. Data: ${data}`);
+};
+display.on('foldStatusChange', callback);
+```
 
 
 ## on('foldAngleChange')
@@ -150,8 +185,23 @@ function on(type: 'foldAngleChange', callback: Callback<Array<number>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
+
+**示例**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+/**
+ * 注册监听的callback参数要采用对象传递。
+ * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
+ */
+let callback: Callback<Array<number>> = (angles: Array<number>) => {
+  console.info('Listening fold angles length: ' + angles.length);
+};
+display.on('foldAngleChange', callback);
+```
 
 
 ## on('captureStatusChange')
@@ -179,8 +229,19 @@ function on(type: 'captureStatusChange', callback: Callback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
+
+**示例**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<boolean> = (captureStatus: boolean) => {
+  console.info('Listening capture status: ' + captureStatus);
+};
+display.on('captureStatusChange', callback);
+```
 
 
 ## on('foldDisplayModeChange')
@@ -212,8 +273,23 @@ function on(type: 'foldDisplayModeChange', callback: Callback<FoldDisplayMode>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
+
+**示例**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+/**
+ * 注册监听的callback参数要采用对象传递。
+ * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
+ */
+let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
+  console.info(`Listening enabled. Data: ${data}`);
+}; 
+display.on('foldDisplayModeChange', callback);
+```
 
 
 ## on('brightnessInfoChange')
@@ -241,6 +317,19 @@ function on(type: 'brightnessInfoChange', callback: BrightnessCallback<number, B
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [1400004](../errorcode-display.md#1400004-参数异常) | Parameter error. Possible cause: 1. Invalid parameter range. |
+
+**示例**
+
+```TypeScript
+let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
+  console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
+};
+try {
+  display.on('brightnessInfoChange', callback);
+} catch (error) {
+  console.error(`Failed to register brightnessInfoChange listener. Code: ${error.code}, message: ${error.message}`);
+}
+```

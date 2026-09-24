@@ -1,5 +1,9 @@
 # ControlDeviceActionParams (System API)
 
+```TypeScript
+interface ControlDeviceActionParams
+```
+
 Describes information about controlling the Bluetooth peripheral.
 
 **Since:** 15

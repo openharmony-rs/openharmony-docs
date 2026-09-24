@@ -1,5 +1,9 @@
 # CrownAction
 
+```TypeScript
+declare enum CrownAction
+```
+
 旋转表冠动作。
 
 **起始版本：** 18

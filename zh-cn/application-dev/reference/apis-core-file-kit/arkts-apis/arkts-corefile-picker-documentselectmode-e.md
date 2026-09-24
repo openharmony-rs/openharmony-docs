@@ -1,5 +1,9 @@
 # DocumentSelectMode
 
+```TypeScript
+export enum DocumentSelectMode
+```
+
 Enumerates the types of documents selected.
 
 **起始版本：** 11

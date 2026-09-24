@@ -1,5 +1,9 @@
 # TaskSignal (System API)
 
+```TypeScript
+export class TaskSignal
+```
+
 for interrupting batch operations.
 
 **Since:** 26.0.0

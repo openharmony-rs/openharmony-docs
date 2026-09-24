@@ -8,6 +8,8 @@ struct WebSocket_CloseResult {...}
 
 websocket客户端接收到服务端关闭的参数。
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 11
 
 **相关模块：** [netstack](capi-netstack.md)

@@ -66,24 +66,8 @@ deviceInfo.getDeviceSerial(wantTemp, (err, result) => {
 });
 ```
 
-```TypeScript
-import { deviceInfo } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-deviceInfo.getDeviceSerial(wantTemp).then((result) => {
-  console.info(`Succeeded in getting device serial, result : ${result}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get device serial. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getdeviceserial-1"></a>
 
 ## getDeviceSerial
 
@@ -131,4 +115,20 @@ Obtains the device serial number. This API uses a promise to return the result.
 
 **Examples**
 
-See [getDeviceSerial](#getdeviceserial)
+```TypeScript
+import { deviceInfo } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+deviceInfo.getDeviceSerial(wantTemp).then((result) => {
+  console.info(`Succeeded in getting device serial, result : ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get device serial. Code: ${err.code}, message: ${err.message}`);
+});
+```

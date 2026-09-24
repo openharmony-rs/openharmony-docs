@@ -39,7 +39,7 @@ function decomposeToPicture(hdrPixelMap : PixelMap, options?: HdrDecomposeOption
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
 | [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation. hdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010\YCRCB_P010. |
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible cause: hdrPixelMap is empty. |
 | [7600208](../errorcode-image.md#7600208-hdr图片分解失败) | HDR image decomposition failed. Possible causes: 1. Decomposition processing is not supported. 2. Processing error occurs. |

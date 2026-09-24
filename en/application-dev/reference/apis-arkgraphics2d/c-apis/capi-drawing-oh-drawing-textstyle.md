@@ -8,6 +8,8 @@ typedef struct OH_Drawing_TextStyle OH_Drawing_TextStyle
 
 Defines a struct used to manage text colors and decorations.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)

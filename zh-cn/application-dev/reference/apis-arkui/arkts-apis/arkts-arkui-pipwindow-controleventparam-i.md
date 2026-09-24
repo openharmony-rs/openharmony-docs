@@ -1,5 +1,9 @@
 # ControlEventParam
 
+```TypeScript
+interface ControlEventParam
+```
+
 画中画控制面板控件动作回调的参数。
 
 **起始版本：** 12

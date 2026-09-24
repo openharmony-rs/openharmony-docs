@@ -1,5 +1,9 @@
 # WebHitTestType
 
+```TypeScript
+enum WebHitTestType
+```
+
 指示光标命中的节点类型。
 
 **起始版本：** 9

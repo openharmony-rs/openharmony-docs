@@ -32,18 +32,18 @@
 <!--DelEnd-->
 
 <!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [IconType](arkts-notification-icontype-t-sys.md) | 描述图标的类型。 |
+<!--DelEnd-->
+
+<!--Del-->
 ### 枚举（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [LiveViewStatus](arkts-notification-notificationcontent-liveviewstatus-e-sys.md) | 描述普通实况通知的状态。 |
 | [LiveViewTypes](arkts-notification-notificationcontent-liveviewtypes-e-sys.md) | 描述实况通知的类型。 |
-<!--DelEnd-->
-
-<!--Del-->
-### 类型（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [IconType](arkts-notification-icontype-t-sys.md) | 描述图标的类型。 |
 <!--DelEnd-->

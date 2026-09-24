@@ -1,5 +1,9 @@
 # BackupPriority (System API)
 
+```TypeScript
+interface BackupPriority
+```
+
 Control backup and restore priority sequence
 
 @interface BackupPriority

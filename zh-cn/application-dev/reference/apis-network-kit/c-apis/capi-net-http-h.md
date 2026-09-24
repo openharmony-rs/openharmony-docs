@@ -245,6 +245,6 @@ void OH_Http_Destroy(struct Http_Request **request)
 
 | 参数项 | 描述 |
 | -- | -- |
-| struct Http_Request **request | 要中断的请求，指向Http_Request的指针，参考{@link Http_Request}。 |
+| struct Http_Request **request | 要中断的请求，指向Http_Request的指针，参考[Http_Request](capi-netstack-http-request.md)。 |
 
 

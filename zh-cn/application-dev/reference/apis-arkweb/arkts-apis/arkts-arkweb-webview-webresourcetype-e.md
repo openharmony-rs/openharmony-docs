@@ -1,5 +1,9 @@
 # WebResourceType
 
+```TypeScript
+enum WebResourceType
+```
+
 资源请求的资源类型。
 
 **起始版本：** 12

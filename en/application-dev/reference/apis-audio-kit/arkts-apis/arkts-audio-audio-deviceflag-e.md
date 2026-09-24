@@ -1,5 +1,9 @@
 # DeviceFlag
 
+```TypeScript
+enum DeviceFlag
+```
+
 Enumerates the audio device flags.
 
 **Since:** 7

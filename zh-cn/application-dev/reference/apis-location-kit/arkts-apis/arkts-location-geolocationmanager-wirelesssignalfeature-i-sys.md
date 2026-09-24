@@ -1,5 +1,9 @@
 # WirelessSignalFeature（系统接口）
 
+```TypeScript
+export interface WirelessSignalFeature
+```
+
 Wi-Fi指纹信息。
 
 **起始版本：** 26.0.0

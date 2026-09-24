@@ -1,5 +1,9 @@
 # CodecInfoList
 
+```TypeScript
+interface CodecInfoList
+```
+
 Describes the codec information.
 
 **Since:** 19

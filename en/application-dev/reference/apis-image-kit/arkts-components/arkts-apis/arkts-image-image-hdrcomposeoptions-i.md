@@ -1,5 +1,9 @@
 # HdrComposeOptions
 
+```TypeScript
+interface HdrComposeOptions
+```
+
 Describes compose parameters.
 
 @typedef HdrComposeOptions

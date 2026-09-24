@@ -8,6 +8,8 @@ typedef struct Rdb_ProgressObserver {...} Rdb_ProgressObserver
 
 端云同步进度观察者。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 11
 
 **相关模块：** [RDB](capi-rdb.md)

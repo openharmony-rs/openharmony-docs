@@ -1,5 +1,9 @@
 # TransitionAnimation
 
+```TypeScript
+interface TransitionAnimation
+```
+
 窗口转场动画配置。
 
 **起始版本：** 20

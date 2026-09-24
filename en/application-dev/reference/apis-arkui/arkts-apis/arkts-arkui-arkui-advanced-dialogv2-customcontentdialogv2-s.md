@@ -1,5 +1,9 @@
 # CustomContentDialogV2
 
+```TypeScript
+export declare struct CustomContentDialogV2
+```
+
 Declare custom content dialog
 
 @struct { CustomContentDialogV2 }
@@ -60,7 +64,7 @@ contentBuilder: CustomBuilder
 
 Sets the CustomContentDialogV2 content.
 
-**Type:** [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md)
+**Type:** [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md)
 
 **Since:** 18
 

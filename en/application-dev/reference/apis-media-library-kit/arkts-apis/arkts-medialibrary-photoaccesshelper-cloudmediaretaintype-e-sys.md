@@ -1,5 +1,9 @@
 # CloudMediaRetainType (System API)
 
+```TypeScript
+enum CloudMediaRetainType
+```
+
 Enumerates the modes used for deleting cloud media assets.
 
 **Since:** 14
@@ -44,7 +48,7 @@ SHARE_RETAIN_FORCE = 2
 
 Deletes the local metadata and thumbnails of shared files and shared albums from the cloud.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

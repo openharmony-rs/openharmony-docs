@@ -42,6 +42,8 @@ AVSession_ErrCode OH_AVSession_GetPlaybackState(OH_AVSession_AVPlaybackState* pl
 
 Get State of PlayBackState.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -49,13 +51,13 @@ Get State of PlayBackState.
 | Parameter | Description |
 | -- | -- |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | reference returned by [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md) |
-| AVSession_PlaybackState* state | the pointer {@link AVSession_PlaybackState} variable that will be set play state value. |
+| AVSession_PlaybackState* state | the pointer [AVSession_PlaybackState](capi-native-avsession-base-h.md#avsession_playbackstate) variable that will be set play state value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>or {@link AV_SESSION_ERR_INVALID_PARAMETER} if parameter valiation fails                 1.The param of playbackState is nullptr;                 2.The param of state is nullptr. |
+| AVSession_ErrCode | [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.  or [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode) if parameter valiation fails                 1.The param of playbackState is nullptr;                 2.The param of state is nullptr. |
 
 ### OH_AVSession_GetPlaybackPosition()
 
@@ -66,6 +68,8 @@ AVSession_ErrCode OH_AVSession_GetPlaybackPosition(OH_AVSession_AVPlaybackState*
 **Description**
 
 Get position of PlaybackState.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -80,7 +84,7 @@ Get position of PlaybackState.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>or {@link AV_SESSION_ERR_INVALID_PARAMETER} if parameter valiation fails                 1.The param of playbackState is nullptr;                 2.The param of position is nullptr. |
+| AVSession_ErrCode | [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.  or [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode) if parameter valiation fails                 1.The param of playbackState is nullptr;                 2.The param of position is nullptr. |
 
 ### OH_AVSession_GetPlaybackSpeed()
 
@@ -91,6 +95,8 @@ AVSession_ErrCode OH_AVSession_GetPlaybackSpeed(OH_AVSession_AVPlaybackState* pl
 **Description**
 
 Get speed of PlaybackState.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -105,7 +111,7 @@ Get speed of PlaybackState.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>or {@link AV_SESSION_ERR_INVALID_PARAMETER} if parameter valiation fails                 1.The param of playbackState is nullptr;                 2.The param of speed is nullptr. |
+| AVSession_ErrCode | [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.  or [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode) if parameter valiation fails                 1.The param of playbackState is nullptr;                 2.The param of speed is nullptr. |
 
 ### OH_AVSession_GetPlaybackVolume()
 
@@ -116,6 +122,8 @@ AVSession_ErrCode OH_AVSession_GetPlaybackVolume(OH_AVSession_AVPlaybackState* p
 **Description**
 
 Get volume of PlaybackState.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -130,6 +138,6 @@ Get volume of PlaybackState.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>or {@link AV_SESSION_ERR_INVALID_PARAMETER} if parameter valiation fails                 1.The param of playbackState is nullptr;                 2.The param of volume is nullptr. |
+| AVSession_ErrCode | [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.  or [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode) if parameter valiation fails                 1.The param of playbackState is nullptr;                 2.The param of volume is nullptr. |
 
 

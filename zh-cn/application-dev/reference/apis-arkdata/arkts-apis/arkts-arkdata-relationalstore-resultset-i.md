@@ -1,10 +1,14 @@
 # ResultSet
 
+```TypeScript
+interface ResultSet
+```
+
 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
 
 ResultSet实例不会实时刷新。使用结果集后，如果数据库中的数据发生变化（如增删改操作），需要重新查询才能获取到最新的数据。
 
-下列API示例中，都需先使用[query](arkts-arkdata-relationalstore-rdbstore-i.md#query)、[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql)、[remoteQuery](arkts-arkdata-relationalstore-rdbstore-i.md#remotequery)、[queryLockedRow](arkts-arkdata-relationalstore-rdbstore-i.md#querylockedrow)等query类方法中任一方法获取到ResultSet实例，再通过此实例调用对应方法。
+下列API示例中，都需先使用[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-1)、[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-1)、[remoteQuery](arkts-arkdata-relationalstore-rdbstore-i.md#remotequery-1)、[queryLockedRow](arkts-arkdata-relationalstore-rdbstore-i.md#querylockedrow)等query类方法中任一方法获取到ResultSet实例，再通过此实例调用对应方法。
 
 **起始版本：** 9
 
@@ -35,6 +39,8 @@ close(): void
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 
+**示例**
+
 ## getAsset
 
 ```TypeScript
@@ -64,7 +70,7 @@ getAsset(columnIndex: number): Asset
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds.<br>**适用版本：** 12+ |
@@ -83,6 +89,14 @@ getAsset(columnIndex: number): Asset
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation.<br>**适用版本：** 12+ |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  const doc = (resultSet as relationalStore.ResultSet).getAsset((resultSet as relationalStore.ResultSet).getColumnIndex("DOC"));
+}
+```
 
 ## getAssets
 
@@ -113,7 +127,7 @@ getAssets(columnIndex: number): Assets
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds.<br>**适用版本：** 12+ |
@@ -132,6 +146,14 @@ getAssets(columnIndex: number): Assets
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation.<br>**适用版本：** 12+ |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  const docs = (resultSet as relationalStore.ResultSet).getAssets((resultSet as relationalStore.ResultSet).getColumnIndex("DOCS"));
+}
+```
 
 ## getBlob
 
@@ -162,7 +184,7 @@ getBlob(columnIndex: number): Uint8Array
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds.<br>**适用版本：** 12+ |
@@ -181,6 +203,14 @@ getBlob(columnIndex: number): Uint8Array
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation.<br>**适用版本：** 12+ |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  const codes = (resultSet as relationalStore.ResultSet).getBlob((resultSet as relationalStore.ResultSet).getColumnIndex("CODES"));
+}
+```
 
 ## getColumnIndex
 
@@ -211,7 +241,7 @@ getColumnIndex(columnName: string): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
@@ -230,6 +260,17 @@ getColumnIndex(columnName: string): number
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation.<br>**适用版本：** 12+ |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+  const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+  const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+  const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+}
+```
 
 ## getColumnName
 
@@ -260,7 +301,7 @@ getColumnName(columnIndex: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
@@ -279,6 +320,16 @@ getColumnName(columnIndex: number): string
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation.<br>**适用版本：** 12+ |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  const id = (resultSet as relationalStore.ResultSet).getColumnName(0);
+  const name = (resultSet as relationalStore.ResultSet).getColumnName(1);
+  const age = (resultSet as relationalStore.ResultSet).getColumnName(2);
+}
+```
 
 ## getColumnNames
 
@@ -315,6 +366,21 @@ getColumnNames(): Array<string>
 | [14800028](../errorcode-data-rdb.md#14800028-sqlite发生了某种磁盘io错误) | SQLite: Some kind of disk I/O error occurred. |
 | [14800030](../errorcode-data-rdb.md#14800030-sqlite无法打开数据库文件) | SQLite: Unable to open the database file. |
 
+**示例**
+
+```TypeScript
+try {
+  // 联表查询EMPLOYEE1和EMPLOYEE2，并获取重名的列名。store为获取到的RdbStore实例。
+  let resultSet: relationalStore.ResultSet = await store.querySql("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+  if (resultSet != undefined) {
+    const names = resultSet.getColumnNames();
+    resultSet.close();
+  }
+} catch (err) {
+  console.error(`Failed to get column names: code:${err.code}, message:${err.message}`);
+}
+```
+
 ## getColumnType
 
 ```TypeScript
@@ -343,7 +409,7 @@ getColumnType(columnIdentifier: number | string): Promise<ColumnType>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds. |
@@ -364,6 +430,22 @@ getColumnType(columnIdentifier: number | string): Promise<ColumnType>
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation. |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch. |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly. |
+
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  let idType = await (resultSet as relationalStore.ResultSet).getColumnType("ID") as relationalStore.ColumnType;
+  let nameType = await (resultSet as relationalStore.ResultSet).getColumnType("NAME") as relationalStore.ColumnType;
+  let ageType = await (resultSet as relationalStore.ResultSet).getColumnType("AGE") as relationalStore.ColumnType;
+  let salaryType = await (resultSet as relationalStore.ResultSet).getColumnType("SALARY") as relationalStore.ColumnType;
+  let codesType = await (resultSet as relationalStore.ResultSet).getColumnType("CODES") as relationalStore.ColumnType;
+  let identityType = await (resultSet as relationalStore.ResultSet).getColumnType(5) as relationalStore.ColumnType;
+  let assetDataType = await (resultSet as relationalStore.ResultSet).getColumnType(6) as relationalStore.ColumnType;
+  let assetsDataType = await (resultSet as relationalStore.ResultSet).getColumnType(7) as relationalStore.ColumnType;
+  let floatArrayType = await (resultSet as relationalStore.ResultSet).getColumnType(8) as relationalStore.ColumnType;
+}
+```
 
 ## getColumnTypeSync
 
@@ -393,7 +475,7 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds. |
@@ -414,6 +496,22 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation. |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch. |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly. |
+
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  let idType = (resultSet as relationalStore.ResultSet).getColumnTypeSync("ID") as relationalStore.ColumnType;
+  let nameType = (resultSet as relationalStore.ResultSet).getColumnTypeSync("NAME") as relationalStore.ColumnType;
+  let ageType = (resultSet as relationalStore.ResultSet).getColumnTypeSync("AGE") as relationalStore.ColumnType;
+  let salaryType = (resultSet as relationalStore.ResultSet).getColumnTypeSync("SALARY") as relationalStore.ColumnType;
+  let codesType = (resultSet as relationalStore.ResultSet).getColumnTypeSync("CODES") as relationalStore.ColumnType;
+  let identityType = (resultSet as relationalStore.ResultSet).getColumnTypeSync(5) as relationalStore.ColumnType;
+  let assetDataType = (resultSet as relationalStore.ResultSet).getColumnTypeSync(6) as relationalStore.ColumnType;
+  let assetsDataType = (resultSet as relationalStore.ResultSet).getColumnTypeSync(7) as relationalStore.ColumnType;
+  let floatArrayType = (resultSet as relationalStore.ResultSet).getColumnTypeSync(8) as relationalStore.ColumnType;
+}
+```
 
 ## getCurrentRowData
 
@@ -449,6 +547,22 @@ getCurrentRowData(): RowData
 | [14800028](../errorcode-data-rdb.md#14800028-sqlite发生了某种磁盘io错误) | SQLite: Some kind of disk I/O error occurred. |
 | [14800030](../errorcode-data-rdb.md#14800030-sqlite无法打开数据库文件) | SQLite: Unable to open the database file. |
 
+**示例**
+
+```TypeScript
+try {
+  // 联表查询EMPLOYEE1和EMPLOYEE2，并获取当前行包含重名列名的值。store为获取到的RdbStore实例。
+  let resultSet: relationalStore.ResultSet = await store.querySql("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+  if (resultSet != undefined) {
+    resultSet.goToFirstRow();
+    const rowData = resultSet.getCurrentRowData();
+    resultSet.close();
+  }
+} catch (err) {
+  console.error(`Failed to get row data: code:${err.code}, message:${err.message}`);
+}
+```
+
 ## getDouble
 
 ```TypeScript
@@ -478,7 +592,7 @@ getDouble(columnIndex: number): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds.<br>**适用版本：** 12+ |
@@ -497,6 +611,20 @@ getDouble(columnIndex: number): number
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation.<br>**适用版本：** 12+ |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+if (resultSet !== undefined) {
+  while (resultSet.goToNextRow()) {
+    const colIndex = resultSet.getColumnIndex("SALARY");
+    if (colIndex > -1) {
+      const salary = resultSet.getDouble(colIndex);
+      console.info(`Get double success, salary is ${salary}`);
+    }
+  }
+}
+```
 
 ## getLong
 
@@ -527,7 +655,7 @@ getLong(columnIndex: number): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds.<br>**适用版本：** 12+ |
@@ -546,6 +674,20 @@ getLong(columnIndex: number): number
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation.<br>**适用版本：** 12+ |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+if (resultSet !== undefined) {
+  while (resultSet.goToNextRow()) {
+    const colIndex = resultSet.getColumnIndex("AGE");
+    if (colIndex > -1) {
+      const age = resultSet.getLong(colIndex);
+      console.info(`Get long success, age is ${age}`);
+    }
+  }
+}
+```
 
 ## getRow
 
@@ -589,6 +731,14 @@ getRow(): ValuesBucket
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
 
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  const row = (resultSet as relationalStore.ResultSet).getRow();
+}
+```
+
 ## getRows
 
 ```TypeScript
@@ -618,7 +768,7 @@ getRows(maxCount: number, position?: number): Promise<Array<ValuesBucket>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds. |
@@ -635,6 +785,35 @@ getRows(maxCount: number, position?: number): Promise<Array<ValuesBucket>>
 | [14800031](../errorcode-data-rdb.md#14800031-sqlitetext或blob超出大小限制) | SQLite: TEXT or BLOB exceeds size limit. |
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation. |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch. |
+
+**示例**
+
+```TypeScript
+// 以查到100条数据为例
+async function processRows(resultSet: relationalStore.ResultSet) {
+  // 示例1：仅指定maxCount
+  if (resultSet != undefined) {
+    let rows: Array<relationalStore.ValuesBucket>;
+    let maxCount: number = 50;
+    // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
+    // getRows会自动移动结果集当前行到上次getRows获取结束位置的下一行，无需使用goToFirstRow、goToNextRow等接口移动
+    while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount)).length != 0) {
+      console.info(JSON.stringify(rows[0]));
+    }
+  }
+
+  // 示例2：指定maxCount和起始的position
+  if (resultSet != undefined) {
+    let rows: Array<relationalStore.ValuesBucket>;
+    let maxCount: number = 50;
+    let position: number = 50;
+    while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount, position)).length != 0) {
+      console.info(JSON.stringify(rows[0]));
+      position += rows.length;
+    }
+  }
+}
+```
 
 ## getRowsData
 
@@ -655,7 +834,7 @@ getRowsData(maxCount: number, position?: number): Promise<RowsData>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | maxCount | number | 是 | 正整数，指定从结果集中获取数据的条数。不为正整数则参数非法，抛出错误码14800001。 |
-| position | number | 否 | 非负整数，指定从结果集中获取数据的起始位置，不填则从结果集的当前行（默认首次获取数据时为当前结果集的第一行）开始获取数据。不为非负整数则参数非法，抛出错误码1480000 1。 |
+| position | number | 否 | 非负整数，指定从结果集中获取数据的起始位置，不填则从结果集的当前行（默认首次获取数据时为当前结果集的第一行）开始获取数据。不为非负整数则参数非法，抛出错误码14800001。 |
 
 **返回值：**
 
@@ -677,6 +856,48 @@ getRowsData(maxCount: number, position?: number): Promise<RowsData>
 | [14800028](../errorcode-data-rdb.md#14800028-sqlite发生了某种磁盘io错误) | SQLite: Some kind of disk I/O error occurred. |
 | [14800030](../errorcode-data-rdb.md#14800030-sqlite无法打开数据库文件) | SQLite: Unable to open the database file. |
 | [14800031](../errorcode-data-rdb.md#14800031-sqlitetext或blob超出大小限制) | SQLite: TEXT or BLOB exceeds size limit. |
+
+**示例**
+
+```TypeScript
+try {
+  // 联表查询EMPLOYEE1和EMPLOYEE2，并获取多行包含重名列名的值。store为获取到的RdbStore实例。
+  let resultSet: relationalStore.ResultSet = await store.querySql("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+  // 以查到50条数据为例
+  // 示例1：仅指定maxCount
+  if (resultSet != undefined) {
+    let rowsData: relationalStore.RowsData;
+    // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
+    // getRowsData会自动移动结果集当前行到上次getRowsData获取结束位置的下一行，无需使用goToFirstRow、goToNextRow等接口移动
+    let maxCount: number = 50;
+    let rowCount: number = 0;
+    while ((rowsData = await resultSet.getRowsData(maxCount)).length != 0) {
+      rowsData.forEach((rowData, index) => {
+        // 第rowCount + index + 1行的查询结果
+        console.info(`${rowCount + index + 1}：${rowData}`);
+      });
+      rowCount += rowsData.length;
+    }
+  }
+
+  // 示例2：指定maxCount和起始的position
+  if (resultSet != undefined) {
+    let rowsData: relationalStore.RowsData;
+    let maxCount: number = 50;
+    let position: number = 50;
+    while ((rowsData = await resultSet.getRowsData(maxCount, position)).length != 0) {
+      rowsData.forEach((rowData, index) => {
+        // 第position + index + 1行的查询结果
+        console.info(`${position + index + 1}：${rowData}`);
+      });
+      position += rowsData.length;
+    }
+  }
+  resultSet.close();
+} catch (err) {
+  console.error(`Failed to get rows data: code:${err.code}, message:${err.message}`);
+}
+```
 
 ## getSendableRow
 
@@ -720,13 +941,61 @@ getSendableRow(): sendableRelationalStore.ValuesBucket
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch. |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly. |
 
+**示例**
+
+示例代码中this.context定义见Stage模型的应用[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。
+
+```TypeScript
+// EntryAbility.ets
+import { window } from '@kit.ArkUI';
+import { UIAbility, common } from '@kit.AbilityKit';
+import { relationalStore, sendableRelationalStore } from '@kit.ArkData';
+import { taskpool } from '@kit.ArkTS';
+
+@Concurrent
+async function getDataByName(name: string, context: common.UIAbilityContext) {
+  const STORE_CONFIG: relationalStore.StoreConfig = {
+    name: "RdbTest.db",
+    securityLevel: relationalStore.SecurityLevel.S3
+  };
+  const store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+  const predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+  predicates.equalTo("NAME", name);
+  const resultSet = store.querySync(predicates);
+
+  if (resultSet.rowCount > 0) {
+    resultSet.goToFirstRow();
+    const sendableValuesBucket = resultSet.getSendableRow();
+    resultSet.close();
+    return sendableValuesBucket;
+  } else {
+    resultSet.close();
+    return null;
+  }
+}
+
+export default class EntryAbility extends UIAbility {
+  async onWindowStageCreate(windowStage: window.WindowStage) {
+    const task = new taskpool.Task(getDataByName, 'Lisa', this.context);
+    const sendableValuesBucket = await taskpool.execute(task) as sendableRelationalStore.ValuesBucket;
+
+    if (sendableValuesBucket) {
+      const columnCount = sendableValuesBucket.size;
+      const age = sendableValuesBucket.get('age');
+      const name = sendableValuesBucket.get('name');
+      console.info(`Query data in taskpool succeeded, name is "${name}", age is "${age}"`);
+    }
+  }
+}
+```
+
 ## getString
 
 ```TypeScript
 getString(columnIndex: number): string
 ```
 
-以字符串形式获取当前行中指定列的值，如果当前列中的值为INTEGER、DOUBLE、TEXT、BLOB类型，会以字符串形式返回指定值，如果是当前列中的值为INTEGER，并且为空，则会返回空字符串""，其他类型则抛出错误码14 800000。如果当前列中的值为DOUBLE类型，可能存在精度的丢失，建议使用[getDouble](#getdouble)接口获取。
+以字符串形式获取当前行中指定列的值，如果当前列中的值为INTEGER、DOUBLE、TEXT、BLOB类型，会以字符串形式返回指定值，如果是当前列中的值为INTEGER，并且为空，则会返回空字符串""，其他类型则抛出错误码14800000。如果当前列中的值为DOUBLE类型，可能存在精度的丢失，建议使用[getDouble](#getdouble)接口获取。
 
 **起始版本：** 9
 
@@ -749,7 +1018,7 @@ getString(columnIndex: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds.<br>**适用版本：** 12+ |
@@ -768,6 +1037,14 @@ getString(columnIndex: number): string
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation.<br>**适用版本：** 12+ |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+}
+```
 
 ## getValue
 
@@ -797,7 +1074,7 @@ getValue(columnIndex: number): ValueType
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds. |
@@ -817,6 +1094,20 @@ getValue(columnIndex: number): ValueType
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation. |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch. |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly. |
+
+**示例**
+
+```TypeScript
+if (resultSet !== undefined) {
+  while (resultSet.goToNextRow()) {
+    const colIndex = resultSet.getColumnIndex("NAME");
+    if (colIndex > -1) {
+      const name = resultSet.getValue(colIndex);
+      console.info(`Get value success, name is ${name}`);
+    }
+  }
+}
+```
 
 ## goTo
 
@@ -847,7 +1138,7 @@ goTo(offset: number): boolean
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
@@ -866,6 +1157,14 @@ goTo(offset: number): boolean
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation.<br>**适用版本：** 12+ |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  (resultSet as relationalStore.ResultSet).goTo(1);
+}
+```
 
 ## goToFirstRow
 
@@ -909,6 +1208,14 @@ goToFirstRow(): boolean
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
 
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  (resultSet as relationalStore.ResultSet).goToFirstRow();
+}
+```
+
 ## goToLastRow
 
 ```TypeScript
@@ -950,6 +1257,14 @@ goToLastRow(): boolean
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation.<br>**适用版本：** 12+ |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  (resultSet as relationalStore.ResultSet).goToLastRow();
+}
+```
 
 ## goToNextRow
 
@@ -993,6 +1308,14 @@ goToNextRow(): boolean
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
 
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  (resultSet as relationalStore.ResultSet).goToNextRow();
+}
+```
+
 ## goToPreviousRow
 
 ```TypeScript
@@ -1035,6 +1358,14 @@ goToPreviousRow(): boolean
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
 
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  (resultSet as relationalStore.ResultSet).goToPreviousRow();
+}
+```
+
 ## goToRow
 
 ```TypeScript
@@ -1064,7 +1395,7 @@ goToRow(position: number): boolean
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
@@ -1083,6 +1414,14 @@ goToRow(position: number): boolean
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation.<br>**适用版本：** 12+ |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+if (resultSet != undefined) {
+  (resultSet as relationalStore.ResultSet).goToRow(5);
+}
+```
 
 ## isColumnNull
 
@@ -1113,7 +1452,7 @@ isColumnNull(columnIndex: number): boolean
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds.<br>**适用版本：** 12+ |
@@ -1132,6 +1471,20 @@ isColumnNull(columnIndex: number): boolean
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation.<br>**适用版本：** 12+ |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+if (resultSet !== undefined) {
+  while (resultSet.goToNextRow()) {
+    const colIndex = resultSet.getColumnIndex("CODES");
+    if (colIndex > -1) {
+      const isColumnNull = resultSet.isColumnNull(colIndex);
+      console.info(`Column is null: ${isColumnNull}`);
+    }
+  }
+}
+```
 
 ## columnCount
 

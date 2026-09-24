@@ -8,6 +8,8 @@ typedef struct DrmSubsample {...} DrmSubsample
 
 The struct describes the subsample type.
 
+**System capability**: SystemCapability.Multimedia.Media.Spliter
+
 **Since**: 12
 
 **Related module**: [Multimedia_Drm](capi-multimedia-drm.md)

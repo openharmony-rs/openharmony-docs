@@ -1,5 +1,9 @@
 # UIExtensionContentSession
 
+```TypeScript
+declare class UIExtensionContentSession
+```
+
 UIExtensionAbility组件的界面操作类，提供页面加载、设置宿主应用窗口隐私模式等功能。
 
 **起始版本：** 10
@@ -38,7 +42,7 @@ getUIExtensionHostWindowProxy(): uiExtensionHost.UIExtensionHostWindowProxy
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
@@ -113,8 +117,8 @@ sendData(data: Record<string, Object>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
@@ -177,8 +181,8 @@ setReceiveDataCallback(callback: (data: Record<string, Object>) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
@@ -234,8 +238,8 @@ setReceiveDataForResultCallback(callback: (data: Record<string, Object>) => Reco
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
@@ -292,8 +296,8 @@ setWindowBackgroundColor(color: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
@@ -358,9 +362,9 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -400,55 +404,7 @@ export default class UIExtAbility extends UIExtensionAbility {
 }
 ```
 
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbility(want, startOptions, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
-        return;
-      }
-      console.info(`Succeeded in startAbility`);
-    })
-  }
-
-  // ...
-}
-```
-
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbility(want, startOptions)
-      .then(() => {
-        console.info(`Succeeded in startAbility`);
-      })
-      .catch((err: BusinessError) => {
-        console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
-      });
-  }
-
-  // ...
-}
-```
+<a id="startability-1"></a>
 
 ## startAbility
 
@@ -484,9 +440,9 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
 | [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
@@ -503,7 +459,32 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 
 **示例**
 
-参见 [startAbility](#startability)
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbility(want, startOptions, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
+        return;
+      }
+      console.info(`Succeeded in startAbility`);
+    })
+  }
+
+  // ...
+}
+```
+
+<a id="startability-2"></a>
 
 ## startAbility
 
@@ -544,9 +525,9 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -565,7 +546,30 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 **示例**
 
-参见 [startAbility](#startability)
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbility(want, startOptions)
+      .then(() => {
+        console.info(`Succeeded in startAbility`);
+      })
+      .catch((err: BusinessError) => {
+        console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
+      });
+  }
+
+  // ...
+}
+```
 
 ## startAbilityAsCaller
 
@@ -594,9 +598,9 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -641,6 +645,55 @@ export default class UIExtAbility extends UIExtensionAbility {
 }
 ```
 
+<a id="startabilityascaller-1"></a>
+
+## startAbilityAsCaller
+
+```TypeScript
+startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback<void>): void
+```
+
+初始Ability将自己的caller信息（如BundleName、AbilityName等）置于want参数中，传递给中间层的ExtensionAbility。当ExtensionAbility通过该接口拉起另外一个Ability，被拉起的Ability可以从onCreate生命周期获取到初始Ability的caller信息。使用callback异步回调。
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动Ability的want信息。 |
+| options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) | 是 | 启动Ability所携带的参数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当启动Ability成功，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
+| [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
+| [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
+| [16000006](../errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed. |
+| [16000008](../errorcode-ability.md#16000008-众测应用到期) | The crowdtesting application expires. |
+| [16000009](../errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000012](../errorcode-ability.md#16000012-应用被管控) | The application is controlled. |
+| [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [16000053](../errorcode-ability.md#16000053-非顶层ability) | The ability is not on the top of the UI. |
+| [16000055](../errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
+| [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
+
+**示例**
+
 ```TypeScript
 import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -671,84 +724,7 @@ export default class UIExtAbility extends UIExtensionAbility {
 }
 ```
 
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let localWant: Want = want;
-    localWant.bundleName = 'com.example.demo';
-    localWant.moduleName = 'entry';
-    localWant.abilityName = 'TestAbility';
-
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbilityAsCaller(localWant, startOptions)
-      .then(() => {
-        console.info(`Succeeded in startAbilityAsCaller`);
-      })
-      .catch((err: BusinessError) => {
-        console.error(`Failed to startAbilityAsCaller, code: ${err.code}, msg: ${err.message}`);
-      });
-  }
-
-  // ...
-}
-```
-
-## startAbilityAsCaller
-
-```TypeScript
-startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback<void>): void
-```
-
-初始Ability将自己的caller信息（如BundleName、AbilityName等）置于want参数中，传递给中间层的ExtensionAbility。当ExtensionAbility通过该接口拉起另外一个Ability，被拉起的Ability可以从onCreate生命周期获取到初始Ability的caller信息。使用callback异步回调。
-
-**起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动Ability的want信息。 |
-| options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) | 是 | 启动Ability所携带的参数。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当启动Ability成功，err为undefined，否则为错误对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
-| [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
-| [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
-| [16000006](../errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed. |
-| [16000008](../errorcode-ability.md#16000008-众测应用到期) | The crowdtesting application expires. |
-| [16000009](../errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
-| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000012](../errorcode-ability.md#16000012-应用被管控) | The application is controlled. |
-| [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [16000053](../errorcode-ability.md#16000053-非顶层ability) | The ability is not on the top of the UI. |
-| [16000055](../errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
-| [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
-
-**示例**
-
-参见 [startAbilityAsCaller](#startabilityascaller)
+<a id="startabilityascaller-2"></a>
 
 ## startAbilityAsCaller
 
@@ -783,9 +759,9 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -804,7 +780,35 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>
 
 **示例**
 
-参见 [startAbilityAsCaller](#startabilityascaller)
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let localWant: Want = want;
+    localWant.bundleName = 'com.example.demo';
+    localWant.moduleName = 'entry';
+    localWant.abilityName = 'TestAbility';
+
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbilityAsCaller(localWant, startOptions)
+      .then(() => {
+        console.info(`Succeeded in startAbilityAsCaller`);
+      })
+      .catch((err: BusinessError) => {
+        console.error(`Failed to startAbilityAsCaller, code: ${err.code}, msg: ${err.message}`);
+      });
+  }
+
+  // ...
+}
+```
 
 ## startAbilityForResult
 
@@ -843,9 +847,9 @@ startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -885,55 +889,7 @@ export default class UIExtAbility extends UIExtensionAbility {
 }
 ```
 
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions, common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbilityForResult(want, startOptions, (err: BusinessError, data: common.AbilityResult) => {
-      if (err) {
-        console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
-        return;
-      }
-      console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
-    })
-  }
-
-  // ...
-}
-```
-
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions, common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbilityForResult(want, startOptions)
-      .then((data: common.AbilityResult) => {
-        console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
-      })
-      .catch((err: BusinessError) => {
-        console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
-      });
-  }
-
-  // ...
-}
-```
+<a id="startabilityforresult-1"></a>
 
 ## startAbilityForResult
 
@@ -973,9 +929,9 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
 | [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
@@ -992,7 +948,32 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 
 **示例**
 
-参见 [startAbilityForResult](#startabilityforresult)
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbilityForResult(want, startOptions, (err: BusinessError, data: common.AbilityResult) => {
+      if (err) {
+        console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
+        return;
+      }
+      console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
+    })
+  }
+
+  // ...
+}
+```
+
+<a id="startabilityforresult-2"></a>
 
 ## startAbilityForResult
 
@@ -1037,9 +1018,9 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -1058,4 +1039,27 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 **示例**
 
-参见 [startAbilityForResult](#startabilityforresult)
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbilityForResult(want, startOptions)
+      .then((data: common.AbilityResult) => {
+        console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
+      })
+      .catch((err: BusinessError) => {
+        console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
+      });
+  }
+
+  // ...
+}
+```

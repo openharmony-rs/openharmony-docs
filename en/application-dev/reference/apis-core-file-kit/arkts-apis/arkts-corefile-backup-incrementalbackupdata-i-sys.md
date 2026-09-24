@@ -1,5 +1,9 @@
 # IncrementalBackupData (System API)
 
+```TypeScript
+interface IncrementalBackupData extends IncrementalBackupTime, FileManifestData, BackupParams, BackupPriority
+```
+
 Corresponds to an incremental application, including its last incremental time and incremental list.
 
 @extends IncrementalBackupTime, FileManifestData, BackupParams, BackupPriority @interface IncrementalBackupData

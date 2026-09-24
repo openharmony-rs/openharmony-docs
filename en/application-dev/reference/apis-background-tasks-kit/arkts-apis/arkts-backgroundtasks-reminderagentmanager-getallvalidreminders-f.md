@@ -16,6 +16,8 @@ Obtains all [valid (not yet expired) reminders](../../../task-management/agent-p
 
 **Since:** 12
 
+**Required permissions:** ohos.permission.PUBLISH_AGENT_REMINDER
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 **Return value:**

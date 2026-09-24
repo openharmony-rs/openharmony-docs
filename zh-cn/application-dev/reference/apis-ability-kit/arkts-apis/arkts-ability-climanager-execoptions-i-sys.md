@@ -1,5 +1,9 @@
 # ExecOptions（系统接口）
 
+```TypeScript
+interface ExecOptions
+```
+
 执行CLI工具的可选参数。可用于指定CLI工具后台运行、前台执行时长、超时时长。
 
 **起始版本：** 26.0.0
@@ -11,7 +15,7 @@
 ## 导入模块
 
 ```TypeScript
-import { cliManager } from '@kit.AbilityKit';
+import { cliManager, CliHook, ExecToolParam, ExecCmdParam, ExecResultWrap } from '@kit.AbilityKit';
 ```
 
 ## background

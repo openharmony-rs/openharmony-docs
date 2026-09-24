@@ -32,8 +32,8 @@ function getAllNotificationEnabledBundles(): Promise<Array<BundleOption>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -54,22 +54,8 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 })
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let userId : number = 100;
-
-notificationManager.getAllNotificationEnabledBundles(userId).then((data: Array<notificationManager.BundleOption>) => {
-  console.info(`Enable bundle data is ${JSON.stringify(data)}`);
-  data.forEach(element => {
-    console.info(`Enable uid is ${JSON.stringify(element.uid)}`);
-    console.info(`Enable bundle is ${JSON.stringify(element.bundle)}`);
-  });
-}).catch((err: BusinessError) => {
-  console.error(`getAllNotificationEnabledBundles failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getallnotificationenabledbundles-1"></a>
 
 ## getAllNotificationEnabledBundles
 
@@ -103,8 +89,8 @@ function getAllNotificationEnabledBundles(userId: number): Promise<Array<BundleO
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -112,4 +98,18 @@ function getAllNotificationEnabledBundles(userId: number): Promise<Array<BundleO
 
 **示例**
 
-参见 [getAllNotificationEnabledBundles](#getallnotificationenabledbundles)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId : number = 100;
+
+notificationManager.getAllNotificationEnabledBundles(userId).then((data: Array<notificationManager.BundleOption>) => {
+  console.info(`Enable bundle data is ${JSON.stringify(data)}`);
+  data.forEach(element => {
+    console.info(`Enable uid is ${JSON.stringify(element.uid)}`);
+    console.info(`Enable bundle is ${JSON.stringify(element.bundle)}`);
+  });
+}).catch((err: BusinessError) => {
+  console.error(`getAllNotificationEnabledBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```

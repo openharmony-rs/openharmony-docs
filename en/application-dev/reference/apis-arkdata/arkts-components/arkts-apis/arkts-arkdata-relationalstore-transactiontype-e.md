@@ -1,5 +1,9 @@
 # TransactionType
 
+```TypeScript
+enum TransactionType
+```
+
 Enumerates the types of transaction objects that can be created. Use the enum name rather than the enum value.
 
 **Since:** 14

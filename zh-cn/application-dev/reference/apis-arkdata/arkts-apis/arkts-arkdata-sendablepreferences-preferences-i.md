@@ -1,10 +1,14 @@
 # Preferences
 
+```TypeScript
+interface Preferences extends lang.ISendable
+```
+
 Preferences继承自[ISendable](../../../arkts-utils/arkts-sendable.md#isendable)，可以在ArkTS并发实例间（包括主线程、TaskPool&Worker工作线程）传递，传递的行为是引用传递，提供获取和修改存储数据的接口。
 
 下列接口都需先使用[sendablePreferences.getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md)获取到Preferences实例，再通过此实例调用对应接口。
 
-**继承/实现关系：** Preferences extends lang.ISendable
+**继承/实现关系：** Preferences extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
 
 **起始版本：** 12
 
@@ -99,7 +103,7 @@ delete(key: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
+| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **返回值：**
 
@@ -111,7 +115,7 @@ delete(key: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
 
 **示例**
@@ -145,13 +149,13 @@ deleteSync(key: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
+| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
 
 **示例**
@@ -251,7 +255,7 @@ get(key: string, defValue: lang.ISendable): Promise<lang.ISendable>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
+| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | defValue | [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md) | 是 | 默认返回值。 |
 
 **返回值：**
@@ -264,7 +268,7 @@ get(key: string, defValue: lang.ISendable): Promise<lang.ISendable>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
 
 **示例**
@@ -379,7 +383,7 @@ getSync(key: string, defValue: lang.ISendable): lang.ISendable
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
+| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | defValue | [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md) | 是 | 默认返回值。 |
 
 **返回值：**
@@ -392,7 +396,7 @@ getSync(key: string, defValue: lang.ISendable): lang.ISendable
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
 
 **示例**
@@ -421,7 +425,7 @@ has(key: string): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
+| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **返回值：**
 
@@ -433,7 +437,7 @@ has(key: string): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
 
 **示例**
@@ -471,7 +475,7 @@ hasSync(key: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
+| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **返回值：**
 
@@ -483,7 +487,7 @@ hasSync(key: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
 
 **示例**
@@ -522,8 +526,26 @@ off(type: 'change', callback?: Callback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+};
+preferences.on('change', observer);
+preferences.putSync('startup', 'auto');
+preferences.flush().then(() => {
+  console.info("Succeeded in flushing.");
+  preferences.off('change', observer);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to flush. code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## off('multiProcessChange')
 
@@ -552,8 +574,26 @@ off(type: 'multiProcessChange', callback?: Callback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+};
+preferences.on('multiProcessChange', observer);
+preferences.putSync('startup', 'auto');
+preferences.flush().then(() => {
+  console.info("Succeeded in flushing.");
+  preferences.off('multiProcessChange', observer);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to flush. code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## off('dataChange')
 
@@ -581,8 +621,29 @@ off(type: 'dataChange', keys: Array<string>, callback?: Callback<lang.ISendable>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { lang } from '@kit.ArkTS';
+
+let observer = (data: lang.ISendable) => {
+  console.info(`observer : ${data}`);
+};
+let keys = ['name', 'age'];
+preferences.on('dataChange', keys, observer);
+preferences.putSync('name', 'xiaohong');
+preferences.putSync('weight', 125);
+preferences.flush().then(() => {
+  console.info("Succeeded in flushing.");
+  preferences.off('dataChange', keys, observer);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to flush. code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## on('change')
 
@@ -623,8 +684,25 @@ on(type: 'change', callback: Callback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+};
+preferences.on('change', observer);
+preferences.putSync('startup', 'manual');
+preferences.flush().then(() => {
+  console.info("Succeeded in flushing.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to flush. code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## on('multiProcessChange')
 
@@ -661,9 +739,26 @@ on(type: 'multiProcessChange', callback: Callback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
 | [15500019](../errorcode-preferences.md#15500019-获取订阅服务失败) | Failed to obtain the subscription service. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+};
+preferences.on('multiProcessChange', observer);
+preferences.putSync('startup', 'manual');
+preferences.flush().then(() => {
+  console.info("Succeeded in flushing.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to flush. code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## on('dataChange')
 
@@ -697,8 +792,28 @@ on(type: 'dataChange', keys: Array<string>, callback: Callback<lang.ISendable>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { lang } from '@kit.ArkTS';
+
+let observer = (data: lang.ISendable) => {
+  console.info(`observer : ${data}`);
+};
+let keys = ['name', 'age'];
+preferences.on('dataChange', keys, observer);
+preferences.putSync('name', 'xiaohong');
+preferences.putSync('weight', 125);
+preferences.flush().then(() => {
+  console.info("Succeeded in flushing.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to flush. code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## put
 
@@ -724,7 +839,7 @@ put(key: string, value: lang.ISendable): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
+| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | value | [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md) | 是 | 存储的新值。 |
 
 **返回值：**
@@ -737,7 +852,7 @@ put(key: string, value: lang.ISendable): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
 
 **示例**
@@ -777,14 +892,14 @@ putSync(key: string, value: lang.ISendable): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
+| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | value | [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md) | 是 | 存储的新值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
 
 **示例**

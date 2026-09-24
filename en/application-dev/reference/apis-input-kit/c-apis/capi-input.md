@@ -4,6 +4,8 @@
 
 Provides C APIs of the multimodal input module, supporting event processing for various input devices such as touch, key, and mouse. It enables unified access to multiple devices, improving development efficiency and application interaction experience.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 12
 
 ## Files

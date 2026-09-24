@@ -55,18 +55,8 @@ securityLabel.getSecurityLabel(filePath).then((type: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-let filePath = pathDir + '/test.txt';
-securityLabel.getSecurityLabel(filePath, (err: BusinessError, type: string) => {
-  if (err) {
-    console.error("getSecurityLabel failed with error message: " + err.message + ", error code: " + err.code);
-  } else {
-    console.info("getSecurityLabel successfully, Label: " + type);
-  }
-});
-```
 
+<a id="getsecuritylabel-1"></a>
 
 ## getSecurityLabel
 
@@ -102,4 +92,14 @@ Obtains the data security level of a file or directory. If no data security leve
 
 **Examples**
 
-See [getSecurityLabel](#getsecuritylabel)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let filePath = pathDir + '/test.txt';
+securityLabel.getSecurityLabel(filePath, (err: BusinessError, type: string) => {
+  if (err) {
+    console.error("getSecurityLabel failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("getSecurityLabel successfully, Label: " + type);
+  }
+});
+```

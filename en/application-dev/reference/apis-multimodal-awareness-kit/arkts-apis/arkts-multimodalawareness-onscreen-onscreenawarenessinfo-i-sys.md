@@ -1,5 +1,9 @@
 # OnscreenAwarenessInfo (System API)
 
+```TypeScript
+export interface OnscreenAwarenessInfo
+```
+
 Returns the list of onscreen awareness information.
 
 **Since:** 23

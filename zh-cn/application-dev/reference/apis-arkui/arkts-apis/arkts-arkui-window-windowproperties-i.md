@@ -1,5 +1,9 @@
 # WindowProperties
 
+```TypeScript
+interface WindowProperties
+```
+
 窗口属性。
 
 **起始版本：** 6
@@ -25,24 +29,6 @@ brightness: number
 **起始版本：** 6
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-## dimBehindValue
-
-```TypeScript
-dimBehindValue: number
-```
-
-下层窗口的暗度值。该参数为浮点数，取值范围为[0.0, 1.0]，其取1.0表示最暗。
-
-**说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。
-
-**类型：** number
-
-**起始版本：** 7
-
-**废弃版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -182,31 +168,13 @@ isLayoutFullScreen: boolean
 isPrivacyMode: boolean
 ```
 
-窗口是否为隐私模式。true表示窗口为隐私模式；false表示窗口为非隐私模式。可通过[setWindowPrivacyMode()](arkts-arkui-window-window-i.md#setwindowprivacymode)设置窗口的隐私模式。
+窗口是否为隐私模式。true表示窗口为隐私模式；false表示窗口为非隐私模式。可通过[setWindowPrivacyMode()](arkts-arkui-window-window-i.md#setwindowprivacymode-1)设置窗口的隐私模式。
 
 **类型：** boolean
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-## isRoundCorner
-
-```TypeScript
-isRoundCorner: boolean
-```
-
-窗口是否为圆角。true表示窗口为圆角；false表示窗口为非圆角。
-
-**说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。
-
-**类型：** boolean
-
-**起始版本：** 7
-
-**废弃版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -258,35 +226,13 @@ touchable: boolean
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-## type
-
-```TypeScript
-type: WindowType
-```
-
-窗口类型。
-
-当前存在主窗使用[getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)接口返回type不准确的问题，开发者在创建窗口时已指明窗口类型，无需通过getWindowProperties()接口获取窗口类型。
-
-**类型：** [WindowType](arkts-arkui-window-windowtype-e.md)
-
-**起始版本：** 7
-
-**废弃版本：** 26.0.0
-
-**替代接口：** [windowType](#windowtype)
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 ## windowRect
 
 ```TypeScript
 windowRect: Rect
 ```
 
-窗口尺寸，其中左边界上边界是相对于窗口所在屏幕左上顶点计算，可在页面生命周期[onPageShow](../arkts-components/arkts-arkui-basecustomcomponent-c.md#onpageshow)或应用生命周期[onForeground](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onforeground)阶段获取。
+窗口尺寸，其中左边界上边界是相对于窗口所在屏幕左上顶点计算，可在页面生命周期[onPageShow](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#onpageshow)或应用生命周期[onForeground](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onforeground)阶段获取。
 
 **类型：** [Rect](arkts-arkui-window-rect-i.md)
 
@@ -311,5 +257,63 @@ windowType?: WindowType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## dimBehindValue
+
+```TypeScript
+dimBehindValue: number
+```
+
+下层窗口的暗度值。该参数为浮点数，取值范围为[0.0, 1.0]，其取1.0表示最暗。
+
+**说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。
+
+**类型：** number
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## isRoundCorner
+
+```TypeScript
+isRoundCorner: boolean
+```
+
+窗口是否为圆角。true表示窗口为圆角；false表示窗口为非圆角。
+
+**说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。
+
+**类型：** boolean
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## type
+
+```TypeScript
+type: WindowType
+```
+
+窗口类型。
+
+当前存在主窗使用[getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)接口返回type不准确的问题，开发者在创建窗口时已指明窗口类型，无需通过getWindowProperties()接口获取窗口类型。
+
+**类型：** [WindowType](arkts-arkui-window-windowtype-e.md)
+
+**起始版本：** 7
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [windowType](#windowtype)
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

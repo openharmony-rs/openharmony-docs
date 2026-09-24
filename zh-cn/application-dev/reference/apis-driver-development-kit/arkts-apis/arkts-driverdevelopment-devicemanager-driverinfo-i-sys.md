@@ -1,5 +1,9 @@
 # DriverInfo（系统接口）
 
+```TypeScript
+interface DriverInfo
+```
+
 驱动详细信息。
 
 **起始版本：** 12

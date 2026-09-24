@@ -58,14 +58,16 @@ enum OH_AudioVividSignalFormat
 
 Enumerates the signal formats of the Audio Vivid encoder.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 26.0.0
 
 | Enum item | Description |
 | -- | -- |
-| OH_AUDIO_VIVID_SIGNAL_FORMAT_MONO = 0 | Mono. The encoder accepts mono data and internally sets the channel layout to {@link OH_AudioChannelLayout}.CH_LAYOUT_MONO.<br>**Since**: 26.0.0 |
-| OH_AUDIO_VIVID_SIGNAL_FORMAT_STEREO = 1 | Stereo. The encoder accepts stereo data and internally sets the channel layout to {@link OH_AudioChannelLayout}.CH_LAYOUT_STEREO.<br>**Since**: 26.0.0 |
-| OH_AUDIO_VIVID_SIGNAL_FORMAT_MC = 2 | Multi-channel audio. The encoder supports the following channel layouts: {@link OH_AudioChannelLayout}.CH_LAYOUT_5POINT1, {@link OH_AudioChannelLayout}.CH_LAYOUT_5POINT1POINT2,<br>{@link OH_AudioChannelLayout}.CH_LAYOUT_5POINT1POINT4, {@link OH_AudioChannelLayout}.CH_LAYOUT_7POINT1,<br>{@link OH_AudioChannelLayout}.CH_LAYOUT_7POINT1POINT2 and {@link OH_AudioChannelLayout}.CH_LAYOUT_7POINT1POINT4.<br>**Since**: 26.0.0 |
-| OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX = 4 | Hybrid mode, including a bed and an object. The bed supports the following channel layouts: {@link OH_AudioChannelLayout}.CH_LAYOUT_STEREO, {@link OH_AudioChannelLayout}.CH_LAYOUT_5POINT1,<br>{@link OH_AudioChannelLayout}.CH_LAYOUT_5POINT1POINT2, {@link OH_AudioChannelLayout}.CH_LAYOUT_5POINT1POINT4,<br>{@link OH_AudioChannelLayout}.CH_LAYOUT_7POINT1, {@link OH_AudioChannelLayout}.CH_LAYOUT_7POINT1POINT2 and<br>{@link OH_AudioChannelLayout}.CH_LAYOUT_7POINT1POINT4.<br>**Since**: 26.0.0 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_MONO = 0 | Mono. The encoder accepts mono data and internally sets the channel layout to [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_MONO.<br>**Since**: 26.0.0 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_STEREO = 1 | Stereo. The encoder accepts stereo data and internally sets the channel layout to [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO.<br>**Since**: 26.0.0 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_MC = 2 | Multi-channel audio. The encoder supports the following channel layouts: [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2 and [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT4.<br>**Since**: 26.0.0 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX = 4 | Hybrid mode, including a bed and an object. The bed supports the following channel layouts: [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2 and [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT4.<br>**Since**: 26.0.0 |
 
 
 ## Function description
@@ -84,6 +86,8 @@ Creates an Audio Vivid metadata builder.
 >
 > Lifecycle Management:* *     The instance created by this function must be manually released by calling [OH_AudioVividMetaBuilder_Destroy](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_destroy) when it is no longer needed to prevent memory leaks.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -97,7 +101,7 @@ Creates an Audio Vivid metadata builder.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}: The builder or format parameter is a null pointer or invalid.<br>    <br>{@link AV_ERR_UNSUPPORT}: This function is not supported on the device.<br>    <br>{@link AV_ERR_UNKNOWN}: Failed to create the builder. This is an unknown error. Check the log for details. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The builder or format parameter is a null pointer or invalid.      <br>[AV_ERR_UNSUPPORT](capi-native-averrors-h.md#oh_averrcode): This function is not supported on the device.      <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode): Failed to create the builder. This is an unknown error. Check the log for details. |
 
 ### OH_AudioVividMetaBuilder_UpdateObjectPos()
 
@@ -108,6 +112,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectPos(OH_AudioVividMetaBuilder *
 **Description**
 
 Updates the position of the audio object when the Audio Vivid signal format is [OH_AudioVividSignalFormat](capi-native-audio-vivid-h.md#oh_audiovividsignalformat).OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX. In this signal format, the channel arrangement in the input encoded Pulse Code Modulation (PCM) data is as follows: bed channels come first, followed by object channels.<br> The object channels correspond to **objectIndex** in sequence, starting from 0.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 26.0.0
 
@@ -123,7 +129,7 @@ Updates the position of the audio object when the Audio Vivid signal format is [
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}: The builder parameter is a null pointer or invalid, or the objectIndex      or pos parameter is invalid. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The builder parameter is a null pointer or invalid, or the objectIndex      or pos parameter is invalid. |
 
 ### OH_AudioVividMetaBuilder_UpdateObjectGain()
 
@@ -134,6 +140,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectGain(OH_AudioVividMetaBuilder 
 **Description**
 
 Updates the linear gain of audio object rendering when the Audio Vivid signal format is [OH_AudioVividSignalFormat](capi-native-audio-vivid-h.md#oh_audiovividsignalformat).OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 26.0.0
 
@@ -149,7 +157,7 @@ Updates the linear gain of audio object rendering when the Audio Vivid signal fo
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}: The builder parameter is a null pointer or invalid, or the objectIndex      or gain parameter is invalid. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The builder parameter is a null pointer or invalid, or the objectIndex      or gain parameter is invalid. |
 
 ### OH_AudioVividMetaBuilder_GetMetaLen()
 
@@ -160,6 +168,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_GetMetaLen(const OH_AudioVividMetaBuilder 
 **Description**
 
 Obtains the length of metadata.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 26.0.0
 
@@ -175,7 +185,7 @@ Obtains the length of metadata.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}: The builder parameter is a null pointer or invalid, or the len parameter      is a null pointer. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The builder parameter is a null pointer or invalid, or the len parameter      is a null pointer. |
 
 ### OH_AudioVividMetaBuilder_GetMeta()
 
@@ -186,6 +196,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_GetMeta(const OH_AudioVividMetaBuilder *bu
 **Description**
 
 Obtains the metadata buffer.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 26.0.0
 
@@ -202,7 +214,7 @@ Obtains the metadata buffer.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}: The builder parameter is a null pointer or invalid, the buffer parameter      is a null pointer, or the len parameter value is insufficient. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The builder parameter is a null pointer or invalid, the buffer parameter      is a null pointer, or the len parameter value is insufficient. |
 
 ### OH_AudioVividMetaBuilder_Destroy()
 
@@ -213,6 +225,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_Destroy(OH_AudioVividMetaBuilder *builder)
 **Description**
 
 Destroys an Audio Vivid metadata builder and releases resources.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 26.0.0
 
@@ -226,7 +240,7 @@ Destroys an Audio Vivid metadata builder and releases resources.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}: The builder parameter is a null pointer. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The builder parameter is a null pointer. |
 
 ### OH_AudioVividMetaBuilder_CreateEmptyBuilder()
 
@@ -242,6 +256,8 @@ Creates an empty Audio Vivid metadata builder.<br> This function is used for mer
 >
 > Lifecycle Management:* *      The instance created by this function must be manually released by calling [OH_AudioVividMetaBuilder_Destroy](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_destroy) when it is no longer needed to prevent memory leaks.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -254,7 +270,7 @@ Creates an empty Audio Vivid metadata builder.<br> This function is used for mer
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}: builder is nullptr.<br>    <br>{@link AV_ERR_UNSUPPORT}: current device not support this function.<br>    <br>{@link AV_ERR_UNKNOWN}: create builder fail with unknown error. For details, check logs. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): builder is nullptr.      <br>[AV_ERR_UNSUPPORT](capi-native-averrors-h.md#oh_averrcode): current device not support this function.      <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode): create builder fail with unknown error. For details, check logs. |
 
 ### OH_AudioVividMetaBuilder_UpdateBaseMeta()
 
@@ -270,6 +286,8 @@ Updates the base metadata of the builder.<br> The buffer contains complete Audio
 >
 > Constraint:* *      The total number of soundbed channels plus base objects plus added objects must not exceed 16.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -284,7 +302,7 @@ Updates the base metadata of the builder.<br> The buffer contains complete Audio
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}, builder is nullptr or invalid, buffer is nullptr or len is invalid. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), builder is nullptr or invalid, buffer is nullptr or len is invalid. |
 
 ### OH_AudioVividMetaBuilder_AddObject()
 
@@ -300,6 +318,8 @@ Adds a new audio object to the builder.<br> After adding an object, you can upda
 >
 > Constraint:* *      The total number of soundbed channels plus base objects plus added objects must not exceed 16.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -313,7 +333,7 @@ Adds a new audio object to the builder.<br> After adding an object, you can upda
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}, builder is nullptr or invalid, objectIndex is nullptr.<br>    <br>{@link AV_ERR_UNKNOWN}, add object fail with unknown error. For details, check logs. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), builder is nullptr or invalid, objectIndex is nullptr.      <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode), add object fail with unknown error. For details, check logs. |
 
 ### OH_AudioVividMetaBuilder_RemoveObject()
 
@@ -324,6 +344,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *bui
 **Description**
 
 Removes an audio object from the builder.<br> Only objects added by [OH_AudioVividMetaBuilder_AddObject](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_addobject) can be removed. Base objects from the base metadata cannot be removed. After removal, the indices of remaining objects remain unchanged.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 26.0.0
 
@@ -338,6 +360,6 @@ Removes an audio object from the builder.<br> Only objects added by [OH_AudioViv
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}, builder is nullptr or invalid, objectIndex is invalid. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), builder is nullptr or invalid, objectIndex is invalid. |
 
 

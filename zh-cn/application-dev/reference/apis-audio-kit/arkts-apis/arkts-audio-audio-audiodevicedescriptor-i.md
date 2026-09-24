@@ -1,5 +1,9 @@
 # AudioDeviceDescriptor
 
+```TypeScript
+interface AudioDeviceDescriptor
+```
+
 描述音频设备。
 
 **起始版本：** 7
@@ -176,7 +180,7 @@ SystemCapability.Multimedia.Audio.Core
 readonly id: number
 ```
 
-唯一的设备id。
+唯一的设备ID。
 
 SystemCapability.Multimedia.Audio.Device
 

@@ -1,5 +1,9 @@
 # MediaAnalysisAlbumChangeRequest (System API)
 
+```TypeScript
+class MediaAnalysisAlbumChangeRequest extends MediaAlbumChangeRequest
+```
+
 Provides APIs for managing the analysis album change request.
 
 **Inheritance/Implementation:** MediaAnalysisAlbumChangeRequest extends [MediaAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c.md)
@@ -68,6 +72,8 @@ async function example(context: Context) {
 }
 ```
 
+<a id="createanalysisalbumrequest-1"></a>
+
 ## createAnalysisAlbumRequest
 
 ```TypeScript
@@ -120,8 +126,20 @@ Creates a change request for the **Analysis** album.
 
 **Examples**
 
-```TypeScript
 For details about how to create a photoAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```TypeScript
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('createAlbumRequestDemo');
+  try {
+    let albumName: string = 'newAlbumName' + new Date().getTime();
+    let albumChangeRequest: photoAccessHelper.MediaAnalysisAlbumChangeRequest = photoAccessHelper.MediaAnalysisAlbumChangeRequest.createAnalysisAlbumRequest(context, albumName, photoAccessHelper.AlbumSubtype.PORTRAIT);
+    await phAccessHelper.applyChanges(albumChangeRequest);
+    console.info('apply createAlbumRequest successfully');
+  } catch (err) {
+    console.error(`createAlbumRequestDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
 ```
 
 ## setDefaultCoverUri
@@ -313,7 +331,7 @@ The supported relationship names include:
 | younger_brother | Younger brother|
 | younger_sister | Younger sister|
 | relative | Relative|
-| other | [Other](../../apis-arkweb/arkts-components/arkts-arkweb-contextmenuinputfieldtype-e.md) |
+| other | [Other](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-contextmenuinputfieldtype-e.md) |
 
 **Since:** 21
 

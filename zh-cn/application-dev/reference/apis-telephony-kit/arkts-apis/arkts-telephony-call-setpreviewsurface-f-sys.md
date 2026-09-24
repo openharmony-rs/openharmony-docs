@@ -27,7 +27,7 @@ function setPreviewSurface(callId: number, surfaceId: string): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callId | number | 是 | 呼叫Id。可以通过订阅callDetailsChange事件获得。 |
-| surfaceId | string | 是 | 预览窗口Id。surfaceId获取方式可参考[getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponentcontroller-c.md#getxcomponentsurfaceid)。 |
+| surfaceId | string | 是 | 预览窗口Id。surfaceId获取方式可参考[getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md#getxcomponentsurfaceid)。 |
 
 **返回值：**
 
@@ -39,9 +39,9 @@ function setPreviewSurface(callId: number, surfaceId: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |

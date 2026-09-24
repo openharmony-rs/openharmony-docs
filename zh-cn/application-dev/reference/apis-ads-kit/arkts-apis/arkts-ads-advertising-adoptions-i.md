@@ -1,5 +1,9 @@
 # AdOptions
 
+```TypeScript
+export interface AdOptions
+```
+
 广告配置参数。
 
 **起始版本：** 11
@@ -20,7 +24,7 @@ import { advertising } from '@kit.AdsKit';
 
 自定义参数。
 
-&lt;!--RP1--&gt;&lt;!--RP1End--&gt;
+<!--RP1--><!--RP1End-->
 
 **类型：** number &#124; boolean &#124; string &#124; undefined
 

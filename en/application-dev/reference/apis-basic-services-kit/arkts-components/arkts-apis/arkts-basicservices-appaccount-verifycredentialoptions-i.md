@@ -1,5 +1,9 @@
 # VerifyCredentialOptions
 
+```TypeScript
+interface VerifyCredentialOptions
+```
+
 Represents the options for verifying the user credential.
 
 **Since:** 9

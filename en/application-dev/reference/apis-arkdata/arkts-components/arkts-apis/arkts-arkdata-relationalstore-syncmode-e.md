@@ -1,5 +1,9 @@
 # SyncMode
 
+```TypeScript
+enum SyncMode
+```
+
 Defines the database synchronization mode. Use the enum name rather than the enum value.
 
 **Since:** 9

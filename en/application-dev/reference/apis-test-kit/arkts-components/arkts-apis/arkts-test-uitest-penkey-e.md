@@ -1,5 +1,9 @@
 # PenKey
 
+```TypeScript
+declare enum PenKey
+```
+
 Pen key type enum.
 
 **Since:** 26.0.0
@@ -18,6 +22,8 @@ Handwriting key.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.Test.UiTest
@@ -34,6 +40,8 @@ Smart key.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.Test.UiTest
@@ -49,6 +57,8 @@ AIR_MOUSE = 2
 Air mouse key.
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 

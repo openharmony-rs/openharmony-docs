@@ -1,5 +1,9 @@
 # ImageAttachmentInterface
 
+```TypeScript
+declare interface ImageAttachmentInterface
+```
+
 定义图片设置项接口。
 
 **起始版本：** 12
@@ -12,7 +16,7 @@
 colorFilter?: ColorFilterType
 ```
 
-获取属性字符串的图片颜色滤镜效果。
+设置属性字符串的图片颜色滤镜效果。不传入时不应用颜色滤镜，图片显示原始颜色。
 
 **类型：** [ColorFilterType](arkts-arkui-colorfiltertype-t.md)
 
@@ -70,13 +74,13 @@ resizable?: ResizableOptions
 
 获取属性字符串的图片拉伸选项。
 
-**类型：** [ResizableOptions](../arkts-components/arkts-arkui-resizableoptions-i.md)
+**类型：** [ResizableOptions](../arkts-components/arkts-arkui-image-comp-resizableoptions-i.md)
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,7 +112,7 @@ value: PixelMap
 
 设置图片数据源。
 
-**类型：** [PixelMap](../arkts-components/arkts-arkui-pixelmap-t.md)
+**类型：** [PixelMap](../arkts-components/arkts-arkui-common-comp-pixelmap-t.md)
 
 **起始版本：** 12
 

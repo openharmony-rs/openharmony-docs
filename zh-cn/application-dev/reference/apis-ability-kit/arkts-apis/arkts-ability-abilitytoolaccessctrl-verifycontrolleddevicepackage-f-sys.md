@@ -13,9 +13,11 @@ export function verifyControlledDevicePackage(ticketInfo: RemoteAuthPackage[]): 
 
 对受控设备的授权包进行校验。对被控设备发送的远程授权包进行校验。它验证票证以确保授权是合法的。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.QUERY_TOOL_PERMISSIONS
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -31,14 +33,14 @@ export function verifyControlledDevicePackage(ticketInfo: RemoteAuthPackage[]): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean[]&gt; | Promise用于返回&#36;{boolean[]}。 |
+| Promise&lt;boolean[]&gt; | Promise用于返回${boolean[]}。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denial. The interface caller does not have permission "ohos.permission.QUERY_TOOL_PERMISSIONS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denial. The interface caller does not have permission "ohos.permission.QUERY_TOOL_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | [24010000](../errorcode-abilityToolAccessCtrl-sys.md#24010000-入参错误) | Invalid parameter. Format of ticketInfo is invalid. |
 | [24010001](../errorcode-abilityToolAccessCtrl-sys.md#24010001-系统服务工作异常) | Service is abnormal. Possible cause: IPC failed. |
 | [24010002](../errorcode-abilityToolAccessCtrl-sys.md#24010002-服务内部错误) | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |

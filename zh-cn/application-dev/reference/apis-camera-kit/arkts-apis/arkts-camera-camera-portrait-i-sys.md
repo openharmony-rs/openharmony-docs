@@ -1,5 +1,9 @@
 # Portrait（系统接口）
 
+```TypeScript
+interface Portrait extends PortraitQuery
+```
+
 Portrait: inherits from [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.md). Provides the APIs for portrait photo settings.
 
 **继承/实现关系：** Portrait extends [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.md)
@@ -41,7 +45,7 @@ Obtains the portrait effect in use.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 11+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 11+ |
 
 **示例**
 
@@ -77,7 +81,7 @@ Sets a portrait effect. Before the setting, use [getSupportedPortraitEffects](ar
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 11+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 11+ |
 
 **示例**
 

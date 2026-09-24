@@ -1,5 +1,9 @@
 # AddressSanitizerPolicy
 
+```TypeScript
+interface AddressSanitizerPolicy
+```
+
 Defines the address sanitizer event configuration policy.
 
 **Since:** 24
@@ -31,6 +35,8 @@ Note: The enabling behavior of an application takes effect only in its current l
 **Type:** boolean
 
 **Since:** 24
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 

@@ -1,5 +1,9 @@
 # MarginType
 
+```TypeScript
+export declare enum MarginType
+```
+
 Control margin status of ExceptionPrompt. @enum { number }
 
 **Since:** 12

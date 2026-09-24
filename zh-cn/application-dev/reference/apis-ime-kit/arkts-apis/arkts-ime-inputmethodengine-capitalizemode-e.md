@@ -1,5 +1,9 @@
 # CapitalizeMode
 
+```TypeScript
+export enum CapitalizeMode
+```
+
 枚举，定义了文本首字母大写的不同模式。<br>
 
 | 名称 | 值 | 说明 |  

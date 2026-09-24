@@ -1,5 +1,9 @@
 # CMSignatureSpec
 
+```TypeScript
+export interface CMSignatureSpec
+```
+
 Represents a set of parameters used for signing or signature verification, including the key usage purpose, padding mode, and digest algorithm.
 
 **Since:** 11

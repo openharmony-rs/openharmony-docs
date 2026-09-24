@@ -8,6 +8,8 @@ typedef struct Http_CustomProxy {...} Http_CustomProxy
 
 Defines the custom proxy configuration.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Related module**: [netstack](capi-netstack.md)

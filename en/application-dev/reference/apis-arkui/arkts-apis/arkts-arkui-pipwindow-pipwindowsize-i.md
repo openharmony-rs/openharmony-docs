@@ -1,5 +1,9 @@
 # PiPWindowSize
 
+```TypeScript
+interface PiPWindowSize
+```
+
 Describes the size of a PiP window.
 
 **Since:** 15

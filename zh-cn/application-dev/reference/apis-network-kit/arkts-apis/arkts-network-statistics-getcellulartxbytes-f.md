@@ -53,16 +53,8 @@ statistics.getCellularTxBytes((error: BusinessError, stats: number) => {
 });
 ```
 
-```TypeScript
-import { statistics } from '@kit.NetworkKit';
 
-statistics.getCellularTxBytes().then((stats: number) => {
-  console.info('getCellularTxBytes success', JSON.stringify(stats));
-}).catch((error: Error) => {
-   console.error('getCellularTxBytes error', JSON.stringify(error));
-});
-```
-
+<a id="getcellulartxbytes-1"></a>
 
 ## getCellularTxBytes
 
@@ -98,4 +90,12 @@ function getCellularTxBytes(): Promise<number>
 
 **示例**
 
-参见 [getCellularTxBytes](#getcellulartxbytes)
+```TypeScript
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getCellularTxBytes().then((stats: number) => {
+  console.info('getCellularTxBytes success', JSON.stringify(stats));
+}).catch((error: Error) => {
+   console.error('getCellularTxBytes error', JSON.stringify(error));
+});
+```

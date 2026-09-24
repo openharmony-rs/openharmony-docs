@@ -38,7 +38,7 @@ function getPoliciesSync(admin: Want, appId: string): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -63,21 +63,8 @@ try {
 }
 ```
 
-```TypeScript
-import { browser } from '@kit.MDMKit';
 
-// 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
-let appId: string = 'com.example.******_******/******5t5CoBM=';
-
-try {
-  // 参数需根据实际情况进行替换
-  let result: string = browser.getPoliciesSync(null, appId);
-  console.info(`Succeeded in getting browser policies, result : ${JSON.stringify(result)}`);
-} catch(err) {
-  console.error(`Failed to get browser policies. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="getpoliciessync-1"></a>
 
 ## getPoliciesSync
 
@@ -111,8 +98,21 @@ function getPoliciesSync(admin: Want | null, appId: string): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
-参见 getPoliciesSync
+```TypeScript
+import { browser } from '@kit.MDMKit';
+
+// 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
+let appId: string = 'com.example.******_******/******5t5CoBM=';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: string = browser.getPoliciesSync(null, appId);
+  console.info(`Succeeded in getting browser policies, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get browser policies. Code is ${err.code}, message is ${err.message}`);
+}
+```

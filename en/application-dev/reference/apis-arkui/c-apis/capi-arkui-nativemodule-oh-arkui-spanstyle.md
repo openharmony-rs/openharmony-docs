@@ -6,7 +6,9 @@ typedef struct OH_ArkUI_SpanStyle OH_ArkUI_SpanStyle
 
 ## Overview
 
-Defines a styled string style.<br> [OH_ArkUI_SpanStyle_Create](capi-styled-string-h.md#oh_arkui_spanstyle_create) can be used to create a styled string style object.<br> [OH_ArkUI_SpanStyle_Destroy](capi-styled-string-h.md#oh_arkui_spanstyle_destroy) can be used to destroy the styled string style object.<br> After the object is created, [OH_ArkUI_SpanStyle_SetStart](capi-styled-string-h.md#oh_arkui_spanstyle_setstart) and [OH_ArkUI_SpanStyle_SetLength](capi-styled-string-h.md#oh_arkui_spanstyle_setlength) can be used to set the usage scope of the style.<br> After the object is created, the **OH_ArkUI_SpanStyle_SetXXXStyle** series APIs can be used to set the specific styles that take effect. For example, you can use [OH_ArkUI_SpanStyle_SetTextStyle](capi-styled-string-h.md#oh_arkui_spanstyle_settextstyle) to set the font style.
+Defines a styled string style.<br> {@link OH_ArkUI_SpanStyle_Create} can be used to create a styled<br>string style object.<br> {@link OH_ArkUI_SpanStyle_Destroy} can be used to destroy the styled string style<br>object.<br> After the object is created, {@link OH_ArkUI_SpanStyle_SetStart} and<br>{@link OH_ArkUI_SpanStyle_SetLength} can be used to set the usage scope of the style.<br> After the object is<br>created, the **OH_ArkUI_SpanStyle_SetXXXStyle** series APIs can be used to set the specific styles that take effect.<br>For example, you can use {@link OH_ArkUI_SpanStyle_SetTextStyle} to set the font style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 

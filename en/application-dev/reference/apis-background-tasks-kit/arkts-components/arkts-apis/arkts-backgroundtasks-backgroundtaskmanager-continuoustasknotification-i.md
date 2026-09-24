@@ -1,5 +1,9 @@
 # ContinuousTaskNotification
 
+```TypeScript
+interface ContinuousTaskNotification
+```
+
 Describes the information about a continuous-task notification.
 
 **Since:** 12

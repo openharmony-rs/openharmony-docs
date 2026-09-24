@@ -1,5 +1,9 @@
 # PermissionRequestToggleStatus (System API)
 
+```TypeScript
+export enum PermissionRequestToggleStatus
+```
+
 Enumerates the permission toggle states.
 
 **Since:** 12
@@ -18,6 +22,8 @@ Indicates that the dialog box for the specified permission is disabled. When an 
 
 **Since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -31,6 +37,8 @@ OPEN = 1
 Indicates that the dialog box for the specified permission is enabled. When an app calls APIs such as [requestPermissionsFromUser](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissionsfromuser) to request this permission, a permission dialog box will be displayed normally.
 
 **Since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 

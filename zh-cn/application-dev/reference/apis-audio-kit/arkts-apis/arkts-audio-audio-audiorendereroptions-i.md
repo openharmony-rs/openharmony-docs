@@ -1,5 +1,9 @@
 # AudioRendererOptions
 
+```TypeScript
+interface AudioRendererOptions
+```
+
 音频渲染器选项信息。
 
 **起始版本：** 8
@@ -34,8 +38,6 @@ rendererInfo: AudioRendererInfo
 
 音频渲染器信息。
 
-SystemCapability.Multimedia.Audio.Renderer
-
 **类型：** [AudioRendererInfo](arkts-audio-audio-audiorendererinfo-i.md)
 
 **起始版本：** 8
@@ -49,8 +51,6 @@ streamInfo: AudioStreamInfo
 ```
 
 音频流信息。
-
-SystemCapability.Multimedia.Audio.Renderer
 
 **类型：** [AudioStreamInfo](arkts-audio-audio-audiostreaminfo-i.md)
 

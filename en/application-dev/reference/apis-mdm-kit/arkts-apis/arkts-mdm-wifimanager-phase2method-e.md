@@ -1,5 +1,9 @@
 # Phase2Method
 
+```TypeScript
+enum Phase2Method
+```
+
 Enumerates the Phase 2 authentication methods.
 
 **Since:** 12

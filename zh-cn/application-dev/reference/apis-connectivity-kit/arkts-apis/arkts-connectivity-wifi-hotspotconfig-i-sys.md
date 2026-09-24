@@ -1,5 +1,9 @@
 # HotspotConfig（系统接口）
 
+```TypeScript
+interface HotspotConfig
+```
+
 热点配置信息。
 
 **起始版本：** 7

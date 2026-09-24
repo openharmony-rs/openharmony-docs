@@ -1,5 +1,9 @@
 # DeviceProfileInfo (System API)
 
+```TypeScript
+interface DeviceProfileInfo
+```
+
 Defines the device profile information.
 
 **Since:** 15

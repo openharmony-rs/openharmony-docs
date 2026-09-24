@@ -1,5 +1,9 @@
 # AbilityFirstFrameStateData (System API)
 
+```TypeScript
+export interface AbilityFirstFrameStateData
+```
+
 The module defines the struct reported by the callback when the first frame of an ability is rendered. After registering the first frame rendering completion event of an ability by using [on](arkts-ability-appmanager-on-f-sys.md#onabilityfirstframestate), you can obtain the reported struct through the [onAbilityFirstFrameDrawn](arkts-ability-abilityfirstframestateobserver-i-sys.md#onabilityfirstframedrawn) callback of [AbilityFirstFrameStateObserver](arkts-ability-abilityfirstframestateobserver-i-sys.md).
 
 **Since:** 12
@@ -64,7 +68,7 @@ The bundle name.
 isColdStart: boolean
 ```
 
-The entry ability of application is cold-start return true, others false.
+Enabled status of cold start. **true** if the entry ability of the application is cold-started, **false** otherwise.
 
 **Type:** boolean
 

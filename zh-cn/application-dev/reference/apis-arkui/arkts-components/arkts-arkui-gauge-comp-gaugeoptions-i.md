@@ -1,0 +1,91 @@
+# GaugeOptions
+
+```TypeScript
+interface GaugeOptions
+```
+
+数据量规图表选项。
+
+**起始版本：** 18
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## max
+
+```TypeScript
+max?: number
+```
+
+当前数据段最大值。
+
+默认值：100
+
+**说明：** 
+
+不传入时默认值为100。
+
+min大于max时，min取0，max取100。
+
+max和min支持负数。
+
+**类型：** number
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## min
+
+```TypeScript
+min?: number
+```
+
+当前数据段最小值。
+
+默认值：0
+
+**说明：** 
+
+不传入时默认值为0。
+
+min大于max时，min取0，max取100。
+
+max和min支持负数。
+
+**类型：** number
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## value
+
+```TypeScript
+value: number
+```
+
+量规图的当前数据值，即图中指针指向位置。用于组件创建时量规图初始值的预置。
+
+默认值：0
+
+**说明：** 
+
+value不在min和max范围内时，取min作为实际值。
+
+**类型：** number
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -1,5 +1,9 @@
 # ActionSheet
 
+```TypeScript
+declare class ActionSheet
+```
+
 **起始版本：** 8
 
 **废弃版本：** 26.0.0
@@ -28,6 +32,8 @@ showActionSheet需先获取[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.m
 **废弃版本：** 18
 
 **替代接口：** [showActionSheet](arkts-arkui-arkui-uicontext-uicontext-c.md#showactionsheet)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

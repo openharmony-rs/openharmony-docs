@@ -8,6 +8,8 @@ typedef struct TEEC_IonReference {...} TEEC_IonReference
 
 Describes the size and handle of the ION memory.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeClient](capi-teeclient.md)

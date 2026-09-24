@@ -1,5 +1,9 @@
 # ApplicationType
 
+```TypeScript
+export enum ApplicationType
+```
+
 Enumerates the default application types.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # DeviceSelectResult (System API)
 
+```TypeScript
+interface DeviceSelectResult
+```
+
 Returns the result of companion device selection. It is used to return the device information and extended context selected by the user in the device selection callback.
 
 **Since:** 23

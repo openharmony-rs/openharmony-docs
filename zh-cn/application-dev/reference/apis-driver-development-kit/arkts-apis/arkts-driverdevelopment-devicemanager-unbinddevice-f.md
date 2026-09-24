@@ -35,8 +35,8 @@ function unbindDevice(deviceId: number, callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permission check failed. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [22900001](../errorcode-deviceManager.md#22900001-扩展外设驱动服务异常或bustype参数错误) | ExternalDeviceManager service exception. |
 
 **示例**
@@ -59,22 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { deviceManager } from '@kit.DriverDevelopmentKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.unbindDevice(12345678).then((data: number) => {
-    console.info(`unbindDevice success, Device_Id is ${data}.`);
-  }, (error: BusinessError) => {
-    console.error(`unbindDevice async fail. Code is ${error.code}, message is ${error.message}`);
-  });
-} catch (error) {
-  console.error(`unbindDevice fail. Code is ${error.code}, message is ${error.message}`);
-}
-```
-
+<a id="unbinddevice-1"></a>
 
 ## unbindDevice
 
@@ -110,10 +96,24 @@ function unbindDevice(deviceId: number): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permission check failed. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [22900001](../errorcode-deviceManager.md#22900001-扩展外设驱动服务异常或bustype参数错误) | ExternalDeviceManager service exception. |
 
 **示例**
 
-参见 unbindDevice
+```TypeScript
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
+  deviceManager.unbindDevice(12345678).then((data: number) => {
+    console.info(`unbindDevice success, Device_Id is ${data}.`);
+  }, (error: BusinessError) => {
+    console.error(`unbindDevice async fail. Code is ${error.code}, message is ${error.message}`);
+  });
+} catch (error) {
+  console.error(`unbindDevice fail. Code is ${error.code}, message is ${error.message}`);
+}
+```

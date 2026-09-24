@@ -8,6 +8,8 @@ typedef struct OH_UdmfDataLoadParams OH_UdmfDataLoadParams
 
 表示数据加载参数结构体。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **相关模块：** [UDMF](capi-udmf.md)

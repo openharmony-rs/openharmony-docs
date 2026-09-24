@@ -31,8 +31,8 @@ function decodeMms(mmsFilePathName: string | Array<number>, callback: AsyncCallb
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -55,27 +55,8 @@ sms.decodeMms(mmsPdu, (err: BusinessError, data: sms.MmsInformation) => {
 });
 ```
 
-```TypeScript
-import { sms } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mmsFilePathName: string = "filename";
-let promise = sms.decodeMms(mmsFilePathName);
-promise.then((data: sms.MmsInformation) => {
-    console.info(`decodeMms success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`decodeMms failed, promise: err->${JSON.stringify(err)}`);
-});
-
-const mmsPdu: Array<number> = [0x8c, 0x80, 0x98, 0x31, 0x00, 0x8d, 0x92, 0x89, 0x09, 0x80, 0x07, 0xea, 0x31, 0x30, 0x30, 0x38, 0x36, 0x00, 0x97, 0x07, 0xea, 0x31, 0x30, 0x30,0x31, 0x30, 0x00, 0x84, 0x74, 0x79, 0x70, 0x65, 0x00, 0x00];
-let promiseArr = sms.decodeMms(mmsPdu);
-promiseArr.then((data: sms.MmsInformation) => {
-    console.info(`decodeMms success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`decodeMms failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="decodemms-1"></a>
 
 ## decodeMms
 
@@ -107,8 +88,8 @@ function decodeMms(mmsFilePathName: string | Array<number>): Promise<MmsInformat
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -116,4 +97,23 @@ function decodeMms(mmsFilePathName: string | Array<number>): Promise<MmsInformat
 
 **示例**
 
-参见 [decodeMms](#decodemms)
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mmsFilePathName: string = "filename";
+let promise = sms.decodeMms(mmsFilePathName);
+promise.then((data: sms.MmsInformation) => {
+    console.info(`decodeMms success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`decodeMms failed, promise: err->${JSON.stringify(err)}`);
+});
+
+const mmsPdu: Array<number> = [0x8c, 0x80, 0x98, 0x31, 0x00, 0x8d, 0x92, 0x89, 0x09, 0x80, 0x07, 0xea, 0x31, 0x30, 0x30, 0x38, 0x36, 0x00, 0x97, 0x07, 0xea, 0x31, 0x30, 0x30,0x31, 0x30, 0x00, 0x84, 0x74, 0x79, 0x70, 0x65, 0x00, 0x00];
+let promiseArr = sms.decodeMms(mmsPdu);
+promiseArr.then((data: sms.MmsInformation) => {
+    console.info(`decodeMms success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`decodeMms failed, promise: err->${JSON.stringify(err)}`);
+});
+```

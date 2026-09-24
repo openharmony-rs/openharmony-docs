@@ -82,6 +82,8 @@ enum ArkWeb_WebMessageType
 
 Enumerates the data types of post message.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -99,6 +101,8 @@ enum ArkWeb_JavaScriptValueType
 **Description**
 
 Enumerates the JavaScript data types.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 18
 
@@ -121,6 +125,8 @@ typedef void (*ArkWeb_OnJavaScriptCallback)(const char* webTag, const ArkWeb_Jav
 
 Callback invoked when the injected JavaScript execution is complete. It is used to obtain the execution result of JavaScript code in the Web component, for example, in scenarios where the native UI needs to be updated or subsequent logic needs to be executed based on the data returned by JavaScript.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 ### ArkWeb_OnJavaScriptProxyCallback()
@@ -133,6 +139,8 @@ typedef void (*ArkWeb_OnJavaScriptProxyCallback)(const char* webTag, const ArkWe
 
 Callback invoked when a Proxy method is executed. Proxy methods are used for object interaction and custom operations between the native side and the JavaScript side.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 ### ArkWeb_OnJavaScriptProxyCallbackWithResult()
@@ -144,6 +152,8 @@ typedef ArkWeb_JavaScriptValuePtr (*ArkWeb_OnJavaScriptProxyCallbackWithResult)(
 **Description**
 
 Callback invoked when a Proxy method is executed (with a return value). It is used to receive a notification and return the execution result when JavaScript calls an injected Proxy method. This is suitable for implementing bridge communication between JavaScript and native code, for example, intercepting JavaScript calls, executing native logic, computing results, and returning the results to JavaScript.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 18
 
@@ -166,6 +176,8 @@ typedef void (*ArkWeb_OnComponentCallback)(const char* webTag, void* userData)
 
 Callback for receiving Web component event notifications. It is used to receive lifecycle event notifications of the Web component, such as status change notifications in scenarios like page loading completion, page destruction, and component visibility changes.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 ### ArkWeb_OnScrollCallback()
@@ -177,6 +189,8 @@ typedef void (*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, doub
 **Description**
 
 Callback invoked when the Web component scrolls.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 18
 
@@ -198,6 +212,8 @@ typedef void (*ArkWeb_OnMessageEventHandler)(const char* webTag, const ArkWeb_We
 **Description**
 
 Called when a post message is sent from the HTML page.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 

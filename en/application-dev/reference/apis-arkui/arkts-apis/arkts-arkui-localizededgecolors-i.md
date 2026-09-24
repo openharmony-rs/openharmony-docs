@@ -1,5 +1,9 @@
 # LocalizedEdgeColors
 
+```TypeScript
+declare interface LocalizedEdgeColors
+```
+
 Defines the edge colors of a component.
 
 To reference this object, at least one parameter must be passed.

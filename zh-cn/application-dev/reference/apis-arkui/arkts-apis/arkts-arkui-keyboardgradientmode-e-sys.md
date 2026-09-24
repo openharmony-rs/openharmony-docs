@@ -1,5 +1,9 @@
 # KeyboardGradientMode（系统接口）
 
+```TypeScript
+declare enum KeyboardGradientMode
+```
+
 键盘模糊效果。
 
 **起始版本：** 20

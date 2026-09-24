@@ -8,6 +8,8 @@ typedef struct ffrt_rwlockattr_t {...} ffrt_rwlockattr_t
 
 读写锁属性结构体，用于存储读写锁的属性信息。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 18
 
 **相关模块：** [FFRT](capi-ffrt.md)

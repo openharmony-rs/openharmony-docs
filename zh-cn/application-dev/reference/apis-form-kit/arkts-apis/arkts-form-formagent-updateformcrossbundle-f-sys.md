@@ -41,8 +41,8 @@ function updateFormCrossBundle(formId: string, formBindingData: formBindingData.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permissions denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | Possible cause IPC connection error. Such as the remote object dose not exist. |
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Possible cause Service State error. Such as the form is recovering. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | Possible cause internal functional error. Such as virtualization failed. |

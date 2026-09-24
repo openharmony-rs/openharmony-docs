@@ -39,6 +39,8 @@ huks.init、huks.update、huks.finish为三段式接口，需要一起使用。
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | 是 | 回调函数。当密钥操作finish成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
 
 
+<a id="finish-1"></a>
+
 ## finish
 
 ```TypeScript
@@ -52,14 +54,14 @@ huks.init、huks.update、huks.finish为三段式接口，需要一起使用。
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.finishSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-finishsession-f.md)
+> [huks.finishSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-finishsession-f.md#finishsession-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [finishSession](arkts-universalkeystore-huks-finishsession-f.md)( handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback&lt;HuksReturnResult&gt; )
+**替代接口：** [finishSession](arkts-universalkeystore-huks-finishsession-f.md#finishsession-1)( handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback&lt;HuksReturnResult&gt; )
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 

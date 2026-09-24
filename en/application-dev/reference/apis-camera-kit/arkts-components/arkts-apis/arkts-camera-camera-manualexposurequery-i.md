@@ -1,5 +1,9 @@
 # ManualExposureQuery
 
+```TypeScript
+interface ManualExposureQuery
+```
+
 Provides APIs to obtain the manual exposure range supported.
 
 **Since:** 24

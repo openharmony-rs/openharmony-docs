@@ -55,18 +55,6 @@ print.notifyPrintService(jobId, 'spooler_closed_for_started', (error: BusinessEr
 });
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let jobId : string = '1';
-print.notifyPrintService(jobId, 'spooler_closed_for_started').then(() => {
-    console.info('notifyPrintService success');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to notify print service. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
 
 ## notifyPrintService('spooler_closed_for_cancelled' | 'spooler_closed_for_started')
 
@@ -108,4 +96,14 @@ Notifies the print service of the spooler shutdown information. This API uses a 
 
 **Examples**
 
-See notifyPrintService
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let jobId : string = '1';
+print.notifyPrintService(jobId, 'spooler_closed_for_started').then(() => {
+    console.info('notifyPrintService success');
+}).catch((error: BusinessError) => {
+    console.error(`Failed to notify print service. Code: ${error.code}, message: ${error.message}`);
+});
+```

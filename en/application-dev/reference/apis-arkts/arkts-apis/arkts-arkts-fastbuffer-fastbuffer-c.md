@@ -1,5 +1,9 @@
 # FastBuffer
 
+```TypeScript
+class FastBuffer
+```
+
 The FastBuffer object is a method of handling buffers dedicated to binary data.
 
 **Since:** 20

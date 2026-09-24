@@ -1,5 +1,9 @@
 # LocalizedEdgeColors
 
+```TypeScript
+declare interface LocalizedEdgeColors
+```
+
 边框颜色，用于描述组件边框四条边的颜色。
 
 引入该对象时，至少传入一个参数。

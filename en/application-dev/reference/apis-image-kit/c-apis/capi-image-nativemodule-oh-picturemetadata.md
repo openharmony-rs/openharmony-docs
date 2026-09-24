@@ -8,6 +8,8 @@ typedef struct OH_PictureMetadata OH_PictureMetadata
 
 Define a PictureMetadata struct type, used for picture metadata.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 13
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)

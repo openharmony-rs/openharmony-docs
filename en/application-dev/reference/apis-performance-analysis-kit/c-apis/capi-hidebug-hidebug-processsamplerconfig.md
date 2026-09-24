@@ -8,6 +8,8 @@ typedef struct HiDebug_ProcessSamplerConfig {...} HiDebug_ProcessSamplerConfig
 
 Defines a struct for sampling configuration.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 22
 
 **Related module**: [HiDebug](capi-hidebug.md)

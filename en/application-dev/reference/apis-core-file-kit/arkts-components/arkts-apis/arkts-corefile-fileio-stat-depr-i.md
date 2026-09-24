@@ -1,5 +1,9 @@
 # Stat
 
+```TypeScript
+declare interface Stat
+```
+
 Provides detailed file information. Before calling a method of the **Stat** class, use the [stat()](arkts-corefile-fileio-stat-f.md) method synchronously or asynchronously to create a **Stat** instance.
 
 **Since:** 6

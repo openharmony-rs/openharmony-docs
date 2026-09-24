@@ -32,6 +32,8 @@ enum OsAccount_ErrCode
 
 Enumerates the error codes.
 
+**System capability**: SystemCapability.Account.OsAccount
+
 **Since**: 12
 
 | Enum item | Description |

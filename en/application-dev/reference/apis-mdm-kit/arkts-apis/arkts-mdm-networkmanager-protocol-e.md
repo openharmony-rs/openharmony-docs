@@ -1,5 +1,9 @@
 # Protocol
 
+```TypeScript
+enum Protocol
+```
+
 Enumerates network protocols.
 
 **Since:** 12

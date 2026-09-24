@@ -1,5 +1,9 @@
 # DownloadContentOptions
 
+```TypeScript
+export interface DownloadContentOptions
+```
+
 Defines the download content options.
 
 @interface DownloadContentOptions

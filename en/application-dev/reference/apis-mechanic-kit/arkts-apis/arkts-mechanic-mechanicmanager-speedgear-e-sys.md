@@ -1,5 +1,9 @@
 # SpeedGear (System API)
 
+```TypeScript
+export enum SpeedGear
+```
+
 Speed gear definition.
 
 **Since:** 26.0.0

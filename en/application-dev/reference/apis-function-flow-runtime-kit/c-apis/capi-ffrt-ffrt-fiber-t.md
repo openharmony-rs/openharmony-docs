@@ -8,6 +8,8 @@ typedef struct ffrt_fiber_t {...} ffrt_fiber_t
 
 Defines the fiber structure used to store fiber execution context.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 20
 
 **Related module**: [FFRT](capi-ffrt.md)

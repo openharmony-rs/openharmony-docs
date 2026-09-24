@@ -1,5 +1,9 @@
 # Image
 
+```TypeScript
+export interface Image extends SceneResource
+```
+
 Image resource, which inherits from SceneResource.
 
 @extends SceneResource @interface Image

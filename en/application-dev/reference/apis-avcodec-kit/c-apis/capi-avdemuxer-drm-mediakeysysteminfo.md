@@ -8,6 +8,8 @@ typedef struct DRM_MediaKeySystemInfo DRM_MediaKeySystemInfo
 
 The struct describes a native object for the DRM_MediaKeySystemInfo interface.
 
+**System capability**: SystemCapability.Multimedia.Media.Spliter
+
 **Since**: 11
 
 **Related module**: [AVDemuxer](capi-avdemuxer.md)

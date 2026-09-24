@@ -1,5 +1,9 @@
 # PrintMargin
 
+```TypeScript
+interface PrintMargin
+```
+
 Defines the page margins for printing.
 
 **Since:** 24

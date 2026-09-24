@@ -1,5 +1,9 @@
 # ColorPicker
 
+```TypeScript
+interface ColorPicker
+```
+
 取色类，用于从一张图像数据中获取它的主要颜色，适用于UI主题色提取、图片配色分析、智能配色推荐等场景，可帮助开发者基于图片内容动态生成和谐的配色方案。在调用ColorPicker的方法前，需要先通过[createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md)创建一个ColorPicker实例。
 
 **起始版本：** 9
@@ -36,6 +40,34 @@ discriminatePictureLightDegree(): PictureLightDegree
 | --- | --- |
 | [PictureLightDegree](arkts-arkgraphics2d-effectkit-picturelightdegree-e-sys.md) | 图像颜色明亮程度。 |
 
+**示例**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
+
+const color = new ArrayBuffer(96);
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let pictureLightDegree: effectKit.PictureLightDegree = colorPicker.discriminatePictureLightDegree();
+      console.info('The color light degree of the image is ' + pictureLightDegree);
+    }
+  });
+});
+```
+
 ## getAlphaZeroTransparentProportion
 
 ```TypeScript
@@ -62,7 +94,7 @@ getAlphaZeroTransparentProportion(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
 
 **示例**
 
@@ -118,7 +150,7 @@ getComplexityDegree(): PictureComplexityDegree
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
 
 **示例**
 
@@ -434,7 +466,7 @@ getShadeDegree(): PictureShadeDegree
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
 
 **示例**
 
@@ -496,7 +528,7 @@ getTopProportionColorsAndPercentage(colorCount: number): Map<Color | null, numbe
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
 
 **示例**
 

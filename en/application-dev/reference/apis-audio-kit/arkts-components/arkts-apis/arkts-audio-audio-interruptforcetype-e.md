@@ -1,5 +1,9 @@
 # InterruptForceType
 
+```TypeScript
+enum InterruptForceType
+```
+
 Enumerates the types of force that causes audio interruption.
 
 The force type is obtained when an [InterruptEvent](arkts-audio-audio-interruptevent-i.md) is received.

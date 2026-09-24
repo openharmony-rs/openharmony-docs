@@ -1,5 +1,9 @@
 # AccessibilitySourceType（系统接口）
 
+```TypeScript
+export enum AccessibilitySourceType
+```
+
 表示无障碍节点来源类型的枚举。
 
 **起始版本：** 26.0.0

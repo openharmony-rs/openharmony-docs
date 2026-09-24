@@ -1,5 +1,9 @@
 # ExposureInfo
 
+```TypeScript
+interface ExposureInfo
+```
+
 曝光信息对象。
 
 **起始版本：** 24

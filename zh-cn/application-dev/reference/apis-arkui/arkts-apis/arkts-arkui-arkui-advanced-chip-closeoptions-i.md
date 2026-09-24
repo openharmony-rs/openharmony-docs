@@ -1,5 +1,9 @@
 # CloseOptions
 
+```TypeScript
+export interface CloseOptions extends AccessibilityOptions
+```
+
 CloseOptions用于定义Chip组件默认的关闭图标功能属性，包括无障碍功能属性，其中accessibilityText默认为"删除"。
 
 继承于[AccessibilityOptions](arkts-arkui-arkui-advanced-chip-accessibilityoptions-i.md)。
@@ -26,9 +30,9 @@ fontSize?: Dimension
 
 默认值：
 
-size为ChipSize.SMALL时，`&#36;r('sys.float.chip_small_font_size')`
+size为ChipSize.SMALL时，`$r('sys.float.chip_small_font_size')`
 
-其他情况：`&#36;r('sys.float.chip_normal_font_size')`
+其他情况：`$r('sys.float.chip_normal_font_size')`
 
 单位：fp
 

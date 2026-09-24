@@ -1,5 +1,9 @@
 # ProgressButtonColorOptions
 
+```TypeScript
+export declare interface ProgressButtonColorOptions
+```
+
 下载按钮颜色选项
 
 **起始版本：** 18
@@ -20,7 +24,7 @@ backgroundColor?: ResourceColor
 
 按钮背景色。
 
-默认值：&#36;r('sys.color.ohos_id_color_foreground_contrary')
+默认值：$r('sys.color.ohos_id_color_foreground_contrary')
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 

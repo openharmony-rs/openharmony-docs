@@ -1,5 +1,9 @@
 # PiPControlType
 
+```TypeScript
+enum PiPControlType
+```
+
 控制面板控件类型枚举。
 
 **起始版本：** 12

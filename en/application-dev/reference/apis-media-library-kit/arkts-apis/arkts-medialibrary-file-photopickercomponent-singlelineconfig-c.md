@@ -1,5 +1,9 @@
 # SingleLineConfig
 
+```TypeScript
+export declare class SingleLineConfig
+```
+
 Represents the single-line display mode. In single-line mode, the component does not provide functions for viewing a larger image. The component does not support callbacks related to large images, and the PickerController does not support APIs related to large images, making API calls ineffective.
 
 **Since:** 20

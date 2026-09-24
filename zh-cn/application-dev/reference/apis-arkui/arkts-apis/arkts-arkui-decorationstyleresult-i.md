@@ -1,5 +1,9 @@
 # DecorationStyleResult
 
+```TypeScript
+interface DecorationStyleResult
+```
+
 后端返回的文本装饰线样式信息。
 
 **起始版本：** 12
@@ -31,6 +35,8 @@ style?: TextDecorationStyle
 ```
 
 装饰线样式。
+
+默认值：TextDecorationStyle.SOLID
 
 **类型：** [TextDecorationStyle](arkts-arkui-textdecorationstyle-e.md)
 

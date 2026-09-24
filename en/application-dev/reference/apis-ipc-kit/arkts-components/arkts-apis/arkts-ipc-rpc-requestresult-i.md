@@ -1,5 +1,9 @@
 # RequestResult
 
+```TypeScript
+interface RequestResult
+```
+
 Defines the response to the request.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # Protocol
 
+```TypeScript
+enum Protocol
+```
+
 网络协议。
 
 **起始版本：** 12

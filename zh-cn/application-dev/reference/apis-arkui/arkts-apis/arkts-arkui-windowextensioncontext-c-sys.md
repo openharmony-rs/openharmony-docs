@@ -1,5 +1,9 @@
 # WindowExtensionContext（系统接口）
 
+```TypeScript
+declare class WindowExtensionContext extends ExtensionContext
+```
+
 WindowExtensionContext模块是WindowExtensionAbility的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
 
 WindowExtensionContext模块提供[WindowExtensionAbility](arkts-arkui-application-windowextensionability-windowextensionability-c-sys.md)具有的能力，包括启动Ability。
@@ -32,7 +36,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 
 > **说明：** 
 > 
-> - 从API version 9开始支持，从API version 21开始废弃，推荐使用[UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startability)。
+> - 从API version 9开始支持，从API version 21开始废弃，推荐使用[UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startability-1)。
 
 **起始版本：** 9
 
@@ -56,8 +60,8 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -99,6 +103,52 @@ class WindowExtAbility extends WindowExtensionAbility {
 }
 ```
 
+<a id="startability-1"></a>
+
+## startAbility
+
+```TypeScript
+startAbility(want: Want, options?: StartOptions): Promise<void>
+```
+
+启动Ability，使用Promise异步回调。
+
+> **说明：** 
+> 
+> - 从API version 9开始支持，从API version 21开始废弃，推荐使用[UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startability-2)。
+
+**起始版本：** 9
+
+**废弃版本：** 21
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-application-want-want-depr-c.md) | 是 | Want类型参数，传入需要启动的ability的信息，如Ability名称，Bundle名称等。 |
+| options | [StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md) | 否 | 启动Ability所携带的参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例**
+
 ```TypeScript
 import { WindowExtensionAbility } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -136,49 +186,3 @@ class WindowExtAbility extends WindowExtensionAbility {
   }
 }
 ```
-
-## startAbility
-
-```TypeScript
-startAbility(want: Want, options?: StartOptions): Promise<void>
-```
-
-启动Ability，使用Promise异步回调。
-
-> **说明：** 
-> 
-> - 从API version 9开始支持，从API version 21开始废弃，推荐使用[UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startability)。
-
-**起始版本：** 9
-
-**废弃版本：** 21
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-application-want-want-depr-c.md) | 是 | Want类型参数，传入需要启动的ability的信息，如Ability名称，Bundle名称等。 |
-| options | [StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md) | 否 | 启动Ability所携带的参数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-
-**示例**
-
-参见 [startAbility](#startability)

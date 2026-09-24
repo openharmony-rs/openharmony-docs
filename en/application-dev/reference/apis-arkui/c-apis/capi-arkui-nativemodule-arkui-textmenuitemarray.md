@@ -8,6 +8,8 @@ typedef struct ArkUI_TextMenuItemArray ArkUI_TextMenuItemArray
 
 Defines text menu item array.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

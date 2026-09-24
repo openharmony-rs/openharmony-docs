@@ -1,5 +1,9 @@
 # ActionSheetOffset
 
+```TypeScript
+interface ActionSheetOffset
+```
+
 弹窗相对alignment所在位置的偏移量。
 
 **起始版本：** 18

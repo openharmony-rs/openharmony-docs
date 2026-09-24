@@ -1,5 +1,9 @@
 # distributedData(分布式数据管理)
 
+```TypeScript
+declare namespace distributedData
+```
+
 分布式数据管理为应用程序提供不同设备间数据库的分布式协同能力。通过调用分布式数据各个接口，应用程序可将数据保存到分布式数据库中，并可对分布式数据库中的数据进行增加、删除、修改、查询、同步等操作。该模块提供以下分布式数据管理相关的常用功能：
 
 - [KVManager](arkts-arkdata-distributeddata-kvmanagerconfig-i.md)：数据管理实例，用于获取KVStore的相关信息。  
@@ -41,8 +45,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md) | 创建一个KVManager对象实例，用于管理数据库对象，使用callback异步回调。 |
-| [createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md) | 创建一个KVManager对象实例，用于管理数据库对象，使用Promise异步回调。 |
+| [createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager) | 创建一个KVManager对象实例，用于管理数据库对象，使用callback异步回调。 |
+| [createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager-1) | 创建一个KVManager对象实例，用于管理数据库对象，使用Promise异步回调。 |
 
 ### 类
 

@@ -53,7 +53,7 @@ function anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]): Promis
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The API is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | The API is not supported. |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | The algorithm mode is not supported. |
 | [12000004](../errorcode-huks.md#12000004-文件错误) | The file operation failed. |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | The IPC communication failed. |

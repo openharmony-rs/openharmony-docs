@@ -1,5 +1,9 @@
 # PriorityStrategyStatus（系统接口）
 
+```TypeScript
+export enum PriorityStrategyStatus
+```
+
 描述应用通知的优先策略。
 
 **起始版本：** 23

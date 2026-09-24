@@ -1,5 +1,9 @@
 # WatchEvent
 
+```TypeScript
+export interface WatchEvent
+```
+
 Defines the event to observe.
 
 **Since:** 10

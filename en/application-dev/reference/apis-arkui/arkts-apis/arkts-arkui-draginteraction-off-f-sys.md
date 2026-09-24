@@ -33,3 +33,33 @@ Disables listening for dragging status changes.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2.Incorrect parameter types.3.Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
+
+**Examples**
+
+```TypeScript
+// Unregister a single callback.
+function single_callback(event: dragInteraction.DragState) {
+  console.info(`Drag interaction event: ${event}`);
+  return false;
+}
+try {
+  dragInteraction.on('drag', single_callback);
+  dragInteraction.off("drag", single_callback);
+} catch (error) {
+  console.error(`Execute failed, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+```TypeScript
+// Unregister all callbacks.
+function all_callback(event: dragInteraction.DragState) {
+  console.info(`Drag interaction event: ${event}`);
+  return false;
+}
+try {
+  dragInteraction.on('drag', all_callback);
+  dragInteraction.off("drag");
+} catch (error) {
+  console.error(`Execute failed, code: ${error.code}, message: ${error.message}`);
+}
+```

@@ -1,5 +1,9 @@
 # File（系统接口）
 
+```TypeScript
+interface File extends FileMeta, FileData, FileManifestData
+```
+
 文件对象，包含文件元数据、文件数据和清单文件信息。用于客户端与备份服务进行IPC。
 
 @extends FileMeta, FileData, FileManifestData @interface File

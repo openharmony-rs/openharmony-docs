@@ -8,6 +8,8 @@ struct OhosImageSize {...}
 
 Defines the image size.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 10
 
 **Related module**: [Image](capi-image.md)

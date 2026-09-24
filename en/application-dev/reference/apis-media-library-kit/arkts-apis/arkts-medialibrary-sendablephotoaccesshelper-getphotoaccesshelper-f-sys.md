@@ -6,6 +6,8 @@
 import { sendablePhotoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
+<a id="getphotoaccesshelper-1"></a>
+
 ## getPhotoAccessHelper
 
 ```TypeScript
@@ -46,26 +48,6 @@ Obtains a PhotoAccessHelper instance for the specified user, letting you access 
 | 13900020 | Invalid argument |
 
 **Examples**
-
-```TypeScript
-// The phAccessHelper instance obtained is a global object. It is used by default in subsequent operations. If the code snippet is not added, an error will be reported indicating that phAccessHelper is not defined.
-// Obtain the context from the component and ensure that the return value of this.getUiContext().getHostContext() is UIAbilityContext.
-import { common } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      Button("example").onClick(async () => {
-        let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        let phAccessHelper = sendablePhotoAccessHelper.getPhotoAccessHelper(context);
-      }).width('100%')
-    }
-    .height('90%')
-  }
-}
-```
 
 ```TypeScript
 // The phAccessHelper instance obtained is a global object. It is used by default in subsequent operations. If the code snippet is not added, an error will be reported indicating that phAccessHelper is not defined.

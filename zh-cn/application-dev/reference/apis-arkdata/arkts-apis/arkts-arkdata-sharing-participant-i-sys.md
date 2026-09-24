@@ -1,5 +1,9 @@
 # Participant（系统接口）
 
+```TypeScript
+interface Participant
+```
+
 端云共享的参与者。
 
 **起始版本：** 11

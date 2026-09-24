@@ -1,5 +1,9 @@
 # DisconnectedDetails（系统接口）
 
+```TypeScript
+export interface DisconnectedDetails
+```
+
 通话结束原因。
 
 **起始版本：** 9

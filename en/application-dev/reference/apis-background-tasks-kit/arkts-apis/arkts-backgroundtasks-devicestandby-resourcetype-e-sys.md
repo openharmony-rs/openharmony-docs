@@ -1,5 +1,9 @@
 # ResourceType (System API)
 
+```TypeScript
+export enum ResourceType
+```
+
 The type of exemption resources requested by the application.
 
 @enum { int }

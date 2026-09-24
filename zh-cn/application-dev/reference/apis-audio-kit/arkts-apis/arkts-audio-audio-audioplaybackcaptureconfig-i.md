@@ -1,12 +1,15 @@
 # AudioPlaybackCaptureConfig
 
+```TypeScript
+interface AudioPlaybackCaptureConfig
+```
+
 音频内录的配置信息。
 
 > **说明：** 
 > 
-> 从API version 10开始支持，从API version 12开始废弃，建议使用录屏接口AVScreenCapture替代。
-
-@typedef AudioPlaybackCaptureConfig
+> 从API version 10开始支持，从API version 12开始废弃，建议使用
+> [录屏接口AVScreenCapture](../../../reference/apis-media-kit/capi-avscreencapture.md)替代。
 
 **起始版本：** 10
 

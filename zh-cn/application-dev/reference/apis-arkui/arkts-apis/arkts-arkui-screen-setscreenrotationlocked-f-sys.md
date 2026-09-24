@@ -31,22 +31,10 @@ function setScreenRotationLocked(isLocked:boolean, callback: AsyncCallback<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let isLocked: boolean = false;
-// 设置自动转屏开关为未锁定
-screen.setScreenRotationLocked(isLocked).then(() => {
-  console.info('Succeeded in unlocking auto rotate');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to unlock auto rotate. Code: ${err.code}, message: ${err.message}`);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -63,6 +51,8 @@ screen.setScreenRotationLocked(isLocked, (err: BusinessError) => {
 });
 ```
 
+
+<a id="setscreenrotationlocked-1"></a>
 
 ## setScreenRotationLocked
 
@@ -94,9 +84,19 @@ function setScreenRotationLocked(isLocked:boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
 **示例**
 
-参见 [setScreenRotationLocked](#setscreenrotationlocked)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isLocked: boolean = false;
+// 设置自动转屏开关为未锁定
+screen.setScreenRotationLocked(isLocked).then(() => {
+  console.info('Succeeded in unlocking auto rotate');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to unlock auto rotate. Code: ${err.code}, message: ${err.message}`);
+});
+```

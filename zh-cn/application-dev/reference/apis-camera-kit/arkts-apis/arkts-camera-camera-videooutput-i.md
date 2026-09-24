@@ -1,5 +1,9 @@
 # VideoOutput
 
+```TypeScript
+interface VideoOutput extends CameraOutput
+```
+
 录像会话中使用的输出信息，继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。
 
 **继承/实现关系：** VideoOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
@@ -41,9 +45,26 @@ enableMirror(enabled: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12 - 14 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 14 |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
+
+**示例**
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { media } from '@kit.MediaKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function enableMirror(videoOutput: camera.VideoOutput, mirrorMode: boolean, aVRecorder: media.AVRecorder, deviceDegree : number): void {
+    try {
+        videoOutput.enableMirror(mirrorMode);
+        aVRecorder.updateRotation(videoOutput.getVideoRotation(deviceDegree));
+    } catch (error) {
+        let err = error as BusinessError;
+    }
+}
+```
 
 ## getActiveFrameRate
 
@@ -66,6 +87,15 @@ getActiveFrameRate(): FrameRateRange
 | 类型 | 说明 |
 | --- | --- |
 | [FrameRateRange](arkts-camera-camera-frameraterange-i.md) | 帧率范围 |
+
+**示例**
+
+```TypeScript
+function getActiveFrameRate(videoOutput: camera.VideoOutput): camera.FrameRateRange {
+  let activeFrameRate: camera.FrameRateRange = videoOutput.getActiveFrameRate();
+  return activeFrameRate;
+}
+```
 
 ## getActiveProfile
 
@@ -93,6 +123,24 @@ getActiveProfile(): VideoProfile
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testGetActiveProfile(videoOutput: camera.VideoOutput): camera.Profile | undefined {
+  let activeProfile: camera.VideoProfile | undefined = undefined;
+  try {
+    activeProfile = videoOutput.getActiveProfile();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The videoOutput.getActiveProfile call failed. error code: ${err.code}`);
+  }
+  return activeProfile;
+}
+```
+
 ## getSupportedFrameRates
 
 ```TypeScript
@@ -112,6 +160,15 @@ getSupportedFrameRates(): Array<FrameRateRange>
 | 类型 | 说明 |
 | --- | --- |
 | Array&lt;[FrameRateRange](arkts-camera-camera-frameraterange-i.md)&gt; | 支持的帧率范围列表。若接口调用失败，返回undefined。 |
+
+**示例**
+
+```TypeScript
+function getSupportedFrameRates(videoOutput: camera.VideoOutput): Array<camera.FrameRateRange> {
+  let supportedFrameRatesArray: Array<camera.FrameRateRange> = videoOutput.getSupportedFrameRates();
+  return supportedFrameRatesArray;
+}
+```
 
 ## getVideoRotation
 
@@ -151,6 +208,70 @@ getVideoRotation(deviceDegree?: number): ImageRotation
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect.<br>**适用版本：** 12 - 22 |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { Decimal } from '@kit.ArkTS';
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function getVideoRotation(videoOutput: camera.VideoOutput): Promise<camera.ImageRotation> {
+  let deviceDegree = await getDeviceDegree();
+  let videoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
+  try {
+    videoRotation = videoOutput.getVideoRotation(deviceDegree);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error('Failed to get video rotation: ' + JSON.stringify(err));
+  }
+  return videoRotation;
+}
+
+function testGetVideoRotationWithOutParam(videoOutput: camera.VideoOutput): camera.ImageRotation {
+  let videoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
+  try {
+    videoRotation = videoOutput.getVideoRotation();
+    console.info(`Video rotation is: ${videoRotation}`);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The videoOutput.testGetVideoRotationWithOutParam call failed. error code: ${err.code}`);
+  }
+  return videoRotation;
+}
+
+// 获取设备旋转角度
+function getDeviceDegree(): Promise<number> {
+  return new Promise<number>((resolve) => {
+    try {
+      sensor.once(sensor.SensorId.GRAVITY, (data: sensor.GravityResponse) => {
+        console.info('Succeeded in invoking once. X-coordinate component: ' + data.x);
+        console.info('Succeeded in invoking once. Y-coordinate component: ' + data.y);
+        console.info('Succeeded in invoking once. Z-coordinate component: ' + data.z);
+        let x = data.x;
+        let y = data.y;
+        let z = data.z;
+        let deviceDegree: number;
+        if ((x * x + y * y) * 3 < z * z) {
+          deviceDegree = -1;
+        } else {
+          let sd: Decimal = Decimal.atan2(y, -x);
+          let sc: Decimal = Decimal.round(Number(sd) / 3.141592653589 * 180)
+          deviceDegree = 90 - Number(sc);
+          deviceDegree = deviceDegree >= 0 ? deviceDegree% 360 : deviceDegree% 360 + 360;
+        }
+        resolve(deviceDegree);
+      });
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error('Failed to register gravity sensor: ' + JSON.stringify(err));
+      resolve(-1); // 异常时返回默认值
+    }
+  });
+}
+```
+
 ## isMirrorSupported
 
 ```TypeScript
@@ -175,7 +296,16 @@ isMirrorSupported(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12 - 14 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 14 |
+
+**示例**
+
+```TypeScript
+function testIsMirrorSupported(videoOutput: camera.VideoOutput): boolean {
+  let isSupported: boolean = videoOutput.isMirrorSupported();
+  return isSupported;
+}
+```
 
 ## off('frameStart')
 
@@ -202,6 +332,14 @@ off(type: 'frameStart', callback?: AsyncCallback<void>): void
 | type | 'frameStart' | 是 | 监听事件，固定为'frameStart'，videoOutput创建成功后可监听。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
+**示例**
+
+```TypeScript
+function unregisterVideoOutputFrameStart(videoOutput: camera.VideoOutput): void {
+  videoOutput.off('frameStart');
+}
+```
+
 ## off('frameEnd')
 
 ```TypeScript
@@ -223,6 +361,14 @@ off(type: 'frameEnd', callback?: AsyncCallback<void>): void
 | type | 'frameEnd' | 是 | 监听事件，固定为'frameEnd'，videoOutput创建成功后可监听。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
+**示例**
+
+```TypeScript
+function unregisterVideoOutputFrameEnd(videoOutput: camera.VideoOutput): void {
+  videoOutput.off('frameEnd');
+}
+```
+
 ## off('error')
 
 ```TypeScript
@@ -243,6 +389,14 @@ off(type: 'error', callback?: ErrorCallback): void
 | --- | --- | --- | --- |
 | type | 'error' | 是 | 监听事件，固定为'error'，photoOutput创建成功后可监听。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例**
+
+```TypeScript
+function unregisterVideoOutputError(videoOutput: camera.VideoOutput): void {
+  videoOutput.off('error');
+}
+```
 
 ## on('frameStart')
 
@@ -269,6 +423,24 @@ on(type: 'frameStart', callback: AsyncCallback<void>): void
 | type | 'frameStart' | 是 | 监听事件，固定为'frameStart'，videoOutput创建成功后可监听。底层第一次曝光时触发该事件并返回。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于获取结果。 只要有该事件返回就证明录像开始。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  if (err.code) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info('Video frame started');
+}
+
+function registerVideoOutputFrameStart(videoOutput: camera.VideoOutput): void {
+  videoOutput.on('frameStart', callback);
+}
+```
+
 ## on('frameEnd')
 
 ```TypeScript
@@ -289,6 +461,24 @@ on(type: 'frameEnd', callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | type | 'frameEnd' | 是 | 监听事件，固定为'frameEnd'，videoOutput创建成功后可监听。录像完全结束最后一帧时触发该事件并返回。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于获取结果。 只要有该事件返回就证明录像结束。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  if (err.code) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info('Video frame ended');
+}
+
+function registerVideoOutputFrameEnd(videoOutput: camera.VideoOutput): void {
+  videoOutput.on('frameEnd', callback);
+}
+```
 
 ## on('error')
 
@@ -314,6 +504,20 @@ on(type: 'error', callback: ErrorCallback): void
 | --- | --- | --- | --- |
 | type | 'error' | 是 | 监听事件，固定为'error'，videoOutput创建成功后可监听。录像接口调用出现错误时触发该事件并返回对应错误码，比如调用[start](#start)，[CameraOutput.release](arkts-camera-camera-cameraoutput-i.md#release)接口时出现错误返回对应错误信息。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Video output error code: ${err.code}`);
+}
+
+function registerVideoOutputError(videoOutput: camera.VideoOutput): void {
+  videoOutput.on('error', callback);
+}
+```
 
 ## setFrameRate
 
@@ -352,6 +556,14 @@ setFrameRate(minFps: number, maxFps: number): void
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400110](../errorcode-camera.md#7400110-与当前配置存在冲突) | Unresolved conflicts with current configurations. |
 
+**示例**
+
+```TypeScript
+function setFrameRateRange(videoOutput: camera.VideoOutput, frameRateRange: Array<number>): void {
+  videoOutput.setFrameRate(frameRateRange[0], frameRateRange[1]);
+}
+```
+
 ## start
 
 ```TypeScript
@@ -378,6 +590,24 @@ start(callback: AsyncCallback<void>): void
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startVideoOutput(videoOutput: camera.VideoOutput): void {
+  videoOutput.start((err: BusinessError) => {
+    if (err.code) {
+      console.error(`Failed to start the video output, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback invoked to indicate the video output start success.');
+  });
+}
+```
+
+<a id="start-1"></a>
 
 ## start
 
@@ -406,6 +636,20 @@ start(): Promise<void>
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startVideoOutput(videoOutput: camera.VideoOutput): void {
+  videoOutput.start().then(() => {
+    console.info('Promise returned to indicate that start method execution success.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to video output start, error code: ${error.code}.`);
+  });
+}
+```
+
 ## stop
 
 ```TypeScript
@@ -426,6 +670,18 @@ stop(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当结束录制成功，err为undefined，否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+function stopVideoOutput(videoOutput: camera.VideoOutput): void {
+  videoOutput.stop(() => {
+    console.info('Callback invoked to indicate the video output stop success.');
+  });
+}
+```
+
+<a id="stop-1"></a>
+
 ## stop
 
 ```TypeScript
@@ -445,3 +701,17 @@ stop(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stopVideoOutput(videoOutput: camera.VideoOutput): void {
+  videoOutput.stop().then(() => {
+    console.info('Promise returned to indicate that stop method execution success.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to video output stop, error code: ${error.code}.`);
+  });
+}
+```

@@ -1,5 +1,9 @@
 # DownloadConfiguration (System API)
 
+```TypeScript
+export interface DownloadConfiguration
+```
+
 Defines the download configuration.
 
 **Since:** 18

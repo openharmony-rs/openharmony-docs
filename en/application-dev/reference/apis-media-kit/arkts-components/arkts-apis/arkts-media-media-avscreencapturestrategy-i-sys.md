@@ -1,5 +1,9 @@
 # AVScreenCaptureStrategy
 
+```TypeScript
+interface AVScreenCaptureStrategy
+```
+
 Provides the media AVScreenCaptureStrategy definition.
 
 **Since:** 20

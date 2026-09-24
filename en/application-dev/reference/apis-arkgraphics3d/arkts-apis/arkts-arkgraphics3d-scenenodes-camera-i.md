@@ -1,5 +1,9 @@
 # Camera
 
+```TypeScript
+export interface Camera extends Node
+```
+
 Camera node, which inherits from Node.
 
 @extends Node @interface Camera

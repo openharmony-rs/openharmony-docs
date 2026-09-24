@@ -1,5 +1,9 @@
 # StorageStats (System API)
 
+```TypeScript
+export interface StorageStats
+```
+
 Get the user storage statistics.
 
 **Since:** 9

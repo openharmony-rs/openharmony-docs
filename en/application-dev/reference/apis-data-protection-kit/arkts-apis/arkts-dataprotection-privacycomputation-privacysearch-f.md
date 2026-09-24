@@ -14,9 +14,11 @@ function privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyPr
 
 Performs a privacy-preserving search. Searches the given dataset elements against the encrypted privacy target without revealing the target or the dataset contents to the other party. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Security.Asset
 

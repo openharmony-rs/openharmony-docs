@@ -24,7 +24,7 @@ function createEffect(): VisualEffect
 
 | 类型 | 说明 |
 | --- | --- |
-| VisualEffect | 返回VisualEffect实例，支持添加多种VisualEffect效果。 |
+| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回VisualEffect实例，支持添加多种VisualEffect效果。 |
 
 **示例**
 

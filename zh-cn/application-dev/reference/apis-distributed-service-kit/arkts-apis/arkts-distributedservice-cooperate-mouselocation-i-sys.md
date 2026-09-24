@@ -1,5 +1,9 @@
 # MouseLocation（系统接口）
 
+```TypeScript
+interface MouseLocation
+```
+
 键鼠穿越的位置。
 
 **起始版本：** 12
@@ -52,7 +56,7 @@ displayWidth: number
 displayX: number
 ```
 
-鼠标指针位于屏幕的X坐标上的位置。
+鼠标指针位于屏幕的X坐标上的位置，单位：px。
 
 **类型：** number
 
@@ -68,7 +72,7 @@ displayX: number
 displayY: number
 ```
 
-鼠标指针位于屏幕的Y坐标上的位置。
+鼠标指针位于屏幕的Y坐标上的位置，单位：px。
 
 **类型：** number
 

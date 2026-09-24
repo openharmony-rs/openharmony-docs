@@ -1,5 +1,9 @@
 # BatchOperationOptions (System API)
 
+```TypeScript
+interface BatchOperationOptions
+```
+
 Batch operation options
 
 **Since:** 26.0.0

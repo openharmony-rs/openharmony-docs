@@ -1,5 +1,9 @@
 # SelectionInfo
 
+```TypeScript
+interface SelectionInfo
+```
+
 Defines the information of a word selection event.
 
 **Since:** 24

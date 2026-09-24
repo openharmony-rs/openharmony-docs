@@ -33,3 +33,14 @@ Unsubscribes from privacy mode changes of this display.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+try {
+  // Unregister the callback for listening to privacy mode changes.
+  display.off('privateModeChange');
+} catch (exception) {
+  console.error(`Failed to unregister callback. Code: ${exception.code}, message: ${exception.message}`);
+}
+```

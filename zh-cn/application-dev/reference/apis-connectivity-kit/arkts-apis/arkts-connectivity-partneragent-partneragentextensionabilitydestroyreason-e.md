@@ -1,5 +1,9 @@
 # PartnerAgentExtensionAbilityDestroyReason
 
+```TypeScript
+export enum PartnerAgentExtensionAbilityDestroyReason
+```
+
 枚举，PartnerAgentExtensionAbility被销毁的原因。
 
 **起始版本：** 23

@@ -8,6 +8,8 @@ typedef struct TimeZoneRuleQuery {...} TimeZoneRuleQuery
 
 用于传入查询的信息，并接收查询的结果。
 
+**系统能力：** SystemCapability.Global.I18n
+
 **起始版本：** 22
 
 **相关模块：** [i18n](capi-i18n.md)

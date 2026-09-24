@@ -1,8 +1,12 @@
 # ListItemGroup属性/事件
 
+```TypeScript
+declare class ListItemGroupAttribute extends CommonMethod<ListItemGroupAttribute>
+```
+
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** ListItemGroupAttribute extends CommonMethod&lt;ListItemGroupAttribute&gt;
+**继承/实现关系：** ListItemGroupAttribute extends CommonMethod<ListItemGroupAttribute>
 
 **起始版本：** 9
 
@@ -32,7 +36,7 @@ childrenMainSize(value: ChildrenMainSize)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ChildrenMainSize](arkts-arkui-childrenmainsize-c.md) | 是 | 该对象用来维护子组件在主轴方向的大小信息。 |
+| value | [ChildrenMainSize](arkts-arkui-common-comp-childrenmainsize-c.md) | 是 | 该对象用来维护子组件在主轴方向的大小信息。 |
 
 ## divider
 
@@ -50,6 +54,8 @@ ListItem设置多态样式时，被按压的子组件上下的分割线不绘制
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -58,4 +64,4 @@ ListItem设置多态样式时，被按压的子组件上下的分割线不绘制
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ListDividerOptions](arkts-arkui-listdivideroptions-i.md) &#124; null | 是 | ListItem分割线样式。<br> 默认值：null<br>**适用版本：** 18 |
+| value | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) &#124; null | 是 | ListItem分割线样式。<br> 默认值：null<br>**适用版本：** 18 |

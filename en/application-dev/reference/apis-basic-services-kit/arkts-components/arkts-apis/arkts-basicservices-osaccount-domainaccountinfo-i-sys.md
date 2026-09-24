@@ -1,5 +1,9 @@
 # DomainAccountInfo
 
+```TypeScript
+interface DomainAccountInfo
+```
+
 Represents domain account information.
 
 **Since:** 8

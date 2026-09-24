@@ -1,5 +1,9 @@
 # PropertyWriteRequest
 
+```TypeScript
+interface PropertyWriteRequest
+```
+
 Define a client property write request.
 
 **Since:** 26.0.0

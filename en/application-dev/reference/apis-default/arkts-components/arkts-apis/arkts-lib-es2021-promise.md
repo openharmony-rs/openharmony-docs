@@ -19,4 +19,4 @@
 
 | Name | Description |
 | --- | --- |
-| [AggregateError](arkts-libes2021promise-p.md) |  |
+| [AggregateError](arkts-lib-es2021-promise-p.md) |  |

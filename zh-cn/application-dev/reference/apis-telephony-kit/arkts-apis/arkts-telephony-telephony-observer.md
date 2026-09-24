@@ -67,12 +67,6 @@ import { observer } from '@kit.TelephonyKit';
 | [ObserverOptions](arkts-telephony-observer-observeroptions-i.md) | 电话相关事件订阅参数可选项。 |
 | [SimStateData](arkts-telephony-observer-simstatedata-i.md) | SIM卡类型和状态。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [LockReason](arkts-telephony-observer-lockreason-e.md) | SIM卡锁类型。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -96,3 +90,9 @@ import { observer } from '@kit.TelephonyKit';
 | [CellInformation](arkts-telephony-observer-cellinformation-t-sys.md) | Describes current cell information. |
 | [NetworkSearchRealTimeResult](arkts-telephony-observer-networksearchrealtimeresult-t-sys.md) | Callback when the network state corresponding to the default sim card is updated. |
 <!--DelEnd-->
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [LockReason](arkts-telephony-observer-lockreason-e.md) | SIM卡锁类型。 |

@@ -1,5 +1,9 @@
 # AVRecorder
 
+```TypeScript
+interface AVRecorder
+```
+
 AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling any API in AVRecorder, you must use [createAVRecorder()](arkts-media-media-createavrecorder-f.md) to create an AVRecorder instance.
 
 For details about the audio and video recording demo, see [Audio Recording](../../../media/media/using-avrecorder-for-recording.md) and [Video Recording](../../../media/media/video-recording.md).
@@ -56,6 +60,26 @@ add a watermark for the AVRecorder. This API uses a promise to return the result
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 | [5400108](../errorcode-media.md#5400108-parameter-value-out-of-range) | The parameter check failed, parameter value out of range. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+let watermark: image.PixelMap | undefined = undefined; // You can obtain a local resource file and convert it into a pixel map. The watermark image cannot be empty.
+let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
+
+if (watermark) {
+    avRecorder.addWatermark(watermark, watermarkConfig).then((num: number) => {
+      console.info(`Succeeded in adding watermark, watermarkNum is ${num}`);
+    })
+    .catch((error: BusinessError) => {
+      console.error(`Failed to add watermark and catch error is: Code: ${error.code}, message: ${error.message}`);
+    });
+}
+```
+
 ## getAudioCapturerMaxAmplitude
 
 ```TypeScript
@@ -84,6 +108,25 @@ The return value is the maximum amplitude within the duration from the time the 
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let maxAmplitude: number;
+
+avRecorder.getAudioCapturerMaxAmplitude((err: BusinessError, amplitude: number) => {
+  if (err) {
+    console.error(`Failed to get AudioCapturerMaxAmplitude and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in getting AudioCapturerMaxAmplitude');
+    maxAmplitude = amplitude;
+  }
+});
+```
+
+<a id="getaudiocapturermaxamplitude-1"></a>
 
 ## getAudioCapturerMaxAmplitude
 
@@ -114,6 +157,22 @@ The return value is the maximum amplitude within the duration from the time the 
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let maxAmplitude: number;
+
+avRecorder.getAudioCapturerMaxAmplitude().then((amplitude: number) => {
+  console.info('Succeeded in getting AudioCapturerMaxAmplitude');
+  maxAmplitude = amplitude;
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get AudioCapturerMaxAmplitude and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## getAvailableEncoder
 
 ```TypeScript
@@ -139,6 +198,29 @@ Obtains available encoders. This API uses an asynchronous callback to return the
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let encoderInfo: media.EncoderInfo;
+
+avRecorder.getAvailableEncoder((err: BusinessError, info: media.EncoderInfo[]) => {
+  if (err) {
+    console.error(`Failed to get AvailableEncoder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in getting AvailableEncoder');
+    if (info.length > 0) {
+      encoderInfo = info[0];
+    } else {
+      console.error('No available encoder');
+    }
+  }
+});
+```
+
+<a id="getavailableencoder-1"></a>
+
 ## getAvailableEncoder
 
 ```TypeScript
@@ -163,6 +245,26 @@ Obtains available encoders. This API uses a promise to return the result.
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let encoderInfo: media.EncoderInfo;
+
+avRecorder.getAvailableEncoder().then((info: media.EncoderInfo[]) => {
+  console.info('Succeeded in getting AvailableEncoder');
+    if (info.length > 0) {
+      encoderInfo = info[0];
+    } else {
+      console.error('No available encoder');
+    }
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get AvailableEncoder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
 
 ## getAVRecorderConfig
 
@@ -192,6 +294,25 @@ This API can be called only after [prepare()](#prepare) is called.
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avConfig: media.AVRecorderConfig;
+
+avRecorder.getAVRecorderConfig((err: BusinessError, config: media.AVRecorderConfig) => {
+  if (err) {
+    console.error(`Failed to get avConfig and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in getting AVRecorderConfig');
+    avConfig = config;
+  }
+});
+```
+
+<a id="getavrecorderconfig-2"></a>
+
 ## getAVRecorderConfig
 
 ```TypeScript
@@ -219,6 +340,22 @@ This API can be called only after [prepare()](#prepare-1) is called.
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by promise. |
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avConfig: media.AVRecorderConfig;
+
+avRecorder.getAVRecorderConfig().then((config: media.AVRecorderConfig) => {
+  console.info('Succeeded in getting AVRecorderConfig');
+  avConfig = config;
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get AVRecorderConfig and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
 
 ## getCurrentAudioCapturerInfo
 
@@ -248,6 +385,26 @@ This API can be called only after the [prepare()](#prepare) API is called. If th
 | [5400103](../errorcode-media.md#5400103-io-error) | I/O error. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { audio } from '@kit.AudioKit';
+
+let currentCapturerInfo: audio.AudioCapturerChangeInfo;
+
+avRecorder.getCurrentAudioCapturerInfo((err: BusinessError, capturerInfo: audio.AudioCapturerChangeInfo) => {
+  if (err) {
+    console.error(`Failed to get CurrentAudioCapturerInfo and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in getting CurrentAudioCapturerInfo');
+    currentCapturerInfo = capturerInfo;
+  }
+});
+```
+
+<a id="getcurrentaudiocapturerinfo-2"></a>
+
 ## getCurrentAudioCapturerInfo
 
 ```TypeScript
@@ -275,6 +432,23 @@ This API can be called only after the [prepare()](#prepare) API is called. If th
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. |
 | [5400103](../errorcode-media.md#5400103-io-error) | I/O error. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { audio } from '@kit.AudioKit';
+
+let currentCapturerInfo: audio.AudioCapturerChangeInfo;
+
+avRecorder.getCurrentAudioCapturerInfo().then((capturerInfo: audio.AudioCapturerChangeInfo) => {
+  console.info('Succeeded in getting CurrentAudioCapturerInfo');
+  currentCapturerInfo = capturerInfo;
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get CurrentAudioCapturerInfo and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
 
 ## getInputSurface
 
@@ -308,6 +482,25 @@ This API can be called only after the [prepare()](#prepare) API is called.
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let surfaceID: string; // The surfaceID is transferred to the camera API to create a videoOutput instance.
+
+avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
+  if (err) {
+    console.error(`Failed to do getInputSurface and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in doing getInputSurface');
+    surfaceID = surfaceId;
+  }
+});
+```
+
+<a id="getinputsurface-2"></a>
+
 ## getInputSurface
 
 ```TypeScript
@@ -340,6 +533,22 @@ This API can be called only after the [prepare()](#prepare-1) API is called.
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let surfaceID: string; // The surfaceID is transferred to the camera API to create a videoOutput instance.
+
+avRecorder.getInputSurface().then((surfaceId: string) => {
+  console.info('Succeeded in getting InputSurface');
+  surfaceID = surfaceId;
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get InputSurface and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## off('stateChange')
 
 ```TypeScript
@@ -360,6 +569,12 @@ Unsubscribes from AVRecorder state changes. This API uses an asynchronous callba
 | --- | --- | --- | --- |
 | type | 'stateChange' | Yes | Event type, which is **'stateChange'** in this case. This event can be triggered by both user operations and the system. |
 | callback | [OnAVRecorderStateChangeHandler](arkts-media-media-onavrecorderstatechangehandler-t.md) | No | Callback used to return the state change event. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.<br>This parameter is supported since API version 12.<br>**Since:** 12 |
+
+**Examples**
+
+```TypeScript
+avRecorder.off('stateChange');
+```
 
 ## off('error')
 
@@ -382,6 +597,12 @@ Unsubscribes from AVRecorder errors. After the unsubscription, your application 
 | type | 'error' | Yes | Event type, which is **'error'** in this case.<br>This event is triggered when an error occurs during recording. |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | No | Callback used to return the recording error event. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.<br>This parameter is supported since API version 12.<br>**Since:** 12 |
 
+**Examples**
+
+```TypeScript
+avRecorder.off('error');
+```
+
 ## off('audioCapturerChange')
 
 ```TypeScript
@@ -401,6 +622,12 @@ Subscribes to audio capturer configuration changes. This API uses an asynchronou
 | type | 'audioCapturerChange' | Yes | Event type, which is **'audioCapturerChange'** in this case. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[audio.AudioCapturerChangeInfo](../../apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturerchangeinfo-i.md)&gt; | No | Callback used to return the changed audio capturer configuration. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.<br>This parameter is supported since API version 12.<br>**Since:** 12 |
 
+**Examples**
+
+```TypeScript
+avRecorder.off('audioCapturerChange');
+```
+
 ## off('photoAssetAvailable')
 
 ```TypeScript
@@ -419,6 +646,12 @@ Unsubscribes from media asset callback events. This API uses an asynchronous cal
 | --- | --- | --- | --- |
 | type | 'photoAssetAvailable' | Yes | Event type, which is **'photoAssetAvailable'** in this case. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[photoAccessHelper.PhotoAsset](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md)&gt; | No | Callback used to return the PhotoAsset object corresponding to the resource file created by the system. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
+
+**Examples**
+
+```TypeScript
+avRecorder.off('photoAssetAvailable');
+```
 
 ## on('audioCapturerChange')
 
@@ -446,6 +679,19 @@ When the application initiates multiple subscriptions to this event, the last su
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { audio } from '@kit.AudioKit'
+
+let capturerChangeInfo: audio.AudioCapturerChangeInfo;
+
+avRecorder.on('audioCapturerChange',  (audioCapturerChangeInfo: audio.AudioCapturerChangeInfo) => {
+  console.info('audioCapturerChange called');
+  capturerChangeInfo = audioCapturerChangeInfo;
+});
+```
 
 ## on('photoAssetAvailable')
 
@@ -475,6 +721,38 @@ When the application initiates multiple subscriptions to this event, the last su
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
+**Examples**
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+let photoAsset: photoAccessHelper.PhotoAsset;
+
+// Example: Process the photoAsset callback and save the video.
+async function saveVideo(context: Context, asset: photoAccessHelper.PhotoAsset) {
+  console.info("saveVideo called");
+  try {
+    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+    let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+    assetChangeRequest.saveCameraPhoto();
+    await phAccessHelper.applyChanges(assetChangeRequest);
+    console.info('apply saveVideo successfully');
+  } catch (err) {
+    console.error(`apply saveVideo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+// Subscribe to the photoAsset event.
+avRecorder.on('photoAssetAvailable', (asset: photoAccessHelper.PhotoAsset) => {
+  console.info('photoAssetAvailable called');
+  if (asset != undefined) {
+    photoAsset = asset;
+    // Process the photoAsset callback.
+    // Example: this.saveVideo(context, asset);
+  } else {
+    console.error('photoAsset is undefined');
+  }
+});
+```
+
 ## on('stateChange')
 
 ```TypeScript
@@ -502,6 +780,14 @@ Subscribes to AVRecorder state changes. An application can subscribe to only one
 | --- | --- |
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+
+**Examples**
+
+```TypeScript
+avRecorder.on('stateChange', async (state: media.AVRecorderState, reason: media.StateChangeReason) => {
+  console.info('case state has changed, new state is: ' + state + ', and reason is: ' + reason);
+});
+```
 
 ## on('error')
 
@@ -541,6 +827,16 @@ An application can subscribe to only one AVRecorder error event. When the applic
 | [5400106](../errorcode-media.md#5400106-format-not-supported) | Unsupported format. |
 | [5400107](../errorcode-media.md#5400107-audio-focus-conflict) | Audio interrupted.<br>**Applicable version:** 11 and later |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.on('error', (err: BusinessError) => {
+  console.error(`case avRecorder.on(error) called. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## pause
 
 ```TypeScript
@@ -568,6 +864,22 @@ This API can be called only after the [start()](#start) API is called. You can c
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by callback. |
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.pause((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to pause AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in pausing');
+  }
+});
+```
+
+<a id="pause-1"></a>
 
 ## pause
 
@@ -599,6 +911,19 @@ This API can be called only after the [start()](#start) API is called. You can c
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.pause().then(() => {
+  console.info('Succeeded in pausing');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to pause AVRecorder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## prepare
 
 ```TypeScript
@@ -628,6 +953,47 @@ Sets audio and video recording parameters. This API uses an asynchronous callbac
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Configure the parameters based on those supported by the hardware device.
+let avRecorderProfile: media.AVRecorderProfile = {
+  audioBitrate : 48000,
+  audioChannels : 2,
+  audioCodec : media.CodecMimeType.AUDIO_AAC,
+  audioSampleRate : 48000,
+  fileFormat : media.ContainerFormatType.CFT_MPEG_4,
+  videoBitrate : 2000000,
+  videoCodec : media.CodecMimeType.VIDEO_AVC,
+  videoFrameWidth : 640,
+  videoFrameHeight : 480,
+  videoFrameRate : 30
+};
+let videoMetaData: media.AVMetadata = {
+  videoOrientation: '0' // The value can be 0, 90, 180, or 270. If any other value is used, prepare() reports an error.
+};
+let avRecorderConfig: media.AVRecorderConfig = {
+  audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
+  videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
+  profile : avRecorderProfile,
+  url : 'fd://', // Before passing an FD to this parameter, the file must be created by the caller and granted with the read and write permissions.
+  metadata: videoMetaData,
+  location : { latitude : 30, longitude : 130 }
+};
+
+avRecorder.prepare(avRecorderConfig, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to prepare and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in preparing');
+  }
+});
+```
+
+<a id="prepare-1"></a>
 
 ## prepare
 
@@ -666,6 +1032,44 @@ Sets audio and video recording parameters. This API uses a promise to return the
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Configure the parameters based on those supported by the hardware device.
+let avRecorderProfile: media.AVRecorderProfile = {
+  audioBitrate : 48000,
+  audioChannels : 2,
+  audioCodec : media.CodecMimeType.AUDIO_AAC,
+  audioSampleRate : 48000,
+  fileFormat : media.ContainerFormatType.CFT_MPEG_4,
+  videoBitrate : 2000000,
+  videoCodec : media.CodecMimeType.VIDEO_AVC,
+  videoFrameWidth : 640,
+  videoFrameHeight : 480,
+  videoFrameRate : 30
+};
+let videoMetaData: media.AVMetadata = {
+  videoOrientation: '0' // The value can be 0, 90, 180, or 270. If any other value is used, prepare() reports an error.
+};
+let avRecorderConfig: media.AVRecorderConfig = {
+  audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
+  videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
+  profile : avRecorderProfile,
+  url : 'fd://',  // Before passing an FD to this parameter, the file must be created by the caller and granted with the read and write permissions.
+  metadata : videoMetaData,
+  location : { latitude : 30, longitude : 130 }
+};
+
+avRecorder.prepare(avRecorderConfig).then(() => {
+  console.info('Succeeded in preparing');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to prepare and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## release
 
 ```TypeScript
@@ -691,6 +1095,22 @@ After the resources are released, you can no longer perform any operation on the
 | Error Code ID | Error Message |
 | --- | --- |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.release((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to release AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in releasing AVRecorder');
+  }
+});
+```
+
+<a id="release-1"></a>
 
 ## release
 
@@ -720,6 +1140,19 @@ After the resources are released, you can no longer perform any operation on the
 | --- | --- |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.release().then(() => {
+  console.info('Succeeded in releasing AVRecorder');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to release AVRecorder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## reset
 
 ```TypeScript
@@ -746,6 +1179,22 @@ For audio-only recording, you can call [prepare()](#prepare) again for re -recor
 | --- | --- |
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.reset((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to reset AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in resetting AVRecorder');
+  }
+});
+```
+
+<a id="reset-1"></a>
 
 ## reset
 
@@ -774,6 +1223,19 @@ For audio-only recording, you can call [prepare()](#prepare-1) again for re-reco
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.reset().then(() => {
+  console.info('Succeeded in resetting AVRecorder');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to reset AVRecorder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## resume
 
 ```TypeScript
@@ -801,6 +1263,22 @@ This API can be called only after the [pause()](#pause) API is called.
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by callback. |
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.resume((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to resume AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in resuming AVRecorder');
+  }
+});
+```
+
+<a id="resume-1"></a>
 
 ## resume
 
@@ -832,6 +1310,19 @@ This API can be called only after the [pause()](#pause) API is called.
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.resume().then(() => {
+  console.info('Succeeded in resuming AVRecorder');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to resume AVRecorder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## setMetadata
 
 ```TypeScript
@@ -860,6 +1351,22 @@ This API can be called only after the prepare() event is successfully triggered 
 | [5400101](../errorcode-media.md#5400101-memory-allocation-failed) | No memory.<br>**Applicable version:** 26.0.0 and later |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed.<br>**Applicable version:** 26.0.0 and later |
 | [5400108](../errorcode-media.md#5400108-parameter-value-out-of-range) | Parameter check failed.<br>**Applicable version:** 26.0.0 and later |
+
+**Examples**
+
+```TypeScript
+let metadata: Record<string, string> = {
+  'com.openharmony.userdefine': '10',
+  'com.openharmony.userdefine2': '20'
+};
+
+try {
+  avRecorder.setMetadata(metadata);
+  console.info('set metadata successfully');
+} catch (err) {
+  console.error(`set metadata failed with error: ${err.code}, ${err.message}`);
+}
+```
 
 ## setWillMuteWhenInterrupted
 
@@ -892,6 +1399,19 @@ Sets whether to mute the current audio recording stream when an audio interrupti
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.setWillMuteWhenInterrupted(true).then(() => {
+  console.info('Succeeded in doing setWillMuteWhenInterrupted');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to do setWillMuteWhenInterrupted and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## start
 
 ```TypeScript
@@ -919,6 +1439,22 @@ For audio-only recording, this API can be called only after the [prepare()](#pre
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by callback. |
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.start((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to start AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in starting AVRecorder');
+  }
+});
+```
+
+<a id="start-1"></a>
 
 ## start
 
@@ -950,6 +1486,19 @@ For audio-only recording, this API can be called only after the [prepare()](#pre
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.start().then(() => {
+  console.info('Succeeded in starting AVRecorder');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to start AVRecorder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## stop
 
 ```TypeScript
@@ -979,6 +1528,22 @@ For audio-only recording, you can call [prepare()](#prepare) again for re -recor
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by callback. |
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.stop((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to stop AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in stopping AVRecorder');
+  }
+});
+```
+
+<a id="stop-1"></a>
 
 ## stop
 
@@ -1011,6 +1576,19 @@ For audio-only recording, you can call [prepare()](#prepare-1) again for re-reco
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by promise. |
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.stop().then(() => {
+  console.info('Succeeded in stopping AVRecorder');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to stop AVRecorder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
 
 ## updateRotation
 
@@ -1046,6 +1624,21 @@ This API can be called only after the [prepare()](#prepare-1) event is triggered
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let rotation = 90;
+
+avRecorder.updateRotation(rotation).then(() => {
+  console.info('Succeeded in doing updateRotation');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to do updateRotation and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
 
 ## state
 

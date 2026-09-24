@@ -1,5 +1,9 @@
 # TextBaseline
 
+```TypeScript
+enum TextBaseline
+```
+
 Enumerates the text baseline types.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # Float64Array
 
+```TypeScript
+interface Float64Array
+```
+
 ## Modules to Import
 
 ```TypeScript

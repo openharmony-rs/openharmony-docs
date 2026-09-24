@@ -34,9 +34,9 @@ function setVirtualScreenSurface(screenId:number, surfaceId: string, callback: A
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例**
@@ -81,6 +81,49 @@ struct Index {
 }
 ```
 
+
+<a id="setvirtualscreensurface-1"></a>
+
+## setVirtualScreenSurface
+
+```TypeScript
+function setVirtualScreenSurface(screenId:number, surfaceId: string): Promise<void>
+```
+
+设置虚拟屏幕的surface，使用Promise异步回调。
+
+**起始版本：** 9
+
+**需要权限：** ohos.permission.CAPTURE_SCREEN
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| screenId | number | 是 | 屏幕的id，该参数仅支持整数输入。 |
+| surfaceId | string | 是 | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
+
+**示例**
+
 ```TypeScript
 // Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -117,46 +160,3 @@ struct Index {
   }
 }
 ```
-
-
-## setVirtualScreenSurface
-
-```TypeScript
-function setVirtualScreenSurface(screenId:number, surfaceId: string): Promise<void>
-```
-
-设置虚拟屏幕的surface，使用Promise异步回调。
-
-**起始版本：** 9
-
-**需要权限：** ohos.permission.CAPTURE_SCREEN
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| screenId | number | 是 | 屏幕的id，该参数仅支持整数输入。 |
-| surfaceId | string | 是 | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
-| [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
-
-**示例**
-
-参见 [setVirtualScreenSurface](#setvirtualscreensurface)

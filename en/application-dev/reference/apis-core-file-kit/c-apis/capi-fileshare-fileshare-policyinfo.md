@@ -8,6 +8,8 @@ typedef struct FileShare_PolicyInfo {...} FileShare_PolicyInfo
 
 Define the FileShare_PolicyInfo structure type.<br> Policy information to manager permissions on a URI.
 
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
 **Since**: 12
 
 **Related module**: [fileShare](capi-fileshare.md)

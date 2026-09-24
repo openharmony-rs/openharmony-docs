@@ -1,5 +1,9 @@
 # CurrentOffsetResultValue
 
+```TypeScript
+export interface CurrentOffsetResultValue
+```
+
 CurrentOffsetResultValue
 
 @interface CurrentOffsetResultValue

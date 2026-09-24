@@ -35,7 +35,7 @@ function regCustomEapHandler(netType: number, eapCode: number, eapType: number, 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [33200006](../errorcode-net-eap.md#33200006-无效的网络类型) | Invalid net type |
 | [33200007](../errorcode-net-eap.md#33200007-无效的eapcode值) | Invalid eap code |
 | [33200008](../errorcode-net-eap.md#33200008-无效的eaptype值) | Invalid eap type |

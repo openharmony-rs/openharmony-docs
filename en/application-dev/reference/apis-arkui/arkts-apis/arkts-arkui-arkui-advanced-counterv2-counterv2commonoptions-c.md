@@ -1,6 +1,10 @@
 # CounterV2CommonOptions
 
-Defines the common options.
+```TypeScript
+declare class CounterV2CommonOptions
+```
+
+Defines the common attributes and events of the **CounterV2** component.
 
 **Since:** 26.0.0
 
@@ -18,7 +22,17 @@ import { CounterV2Component, CounterV2Options, CounterV2DateData, CounterV2Type 
 onHoverDecrease?: OnCounterV2HoverCallback
 ```
 
-Trigger a mouse hover event at the decrease button.
+Callback triggered when the mouse enters or leaves the decrease button of the **CounterV2** component.
+
+Use scenario: Pass in this callback when you need to perform custom operations (such as changing button styles and displaying tooltips) when hovering over the decrease button.
+
+**NOTE:** 
+
+This attribute takes effect for the list, compact, and inline number **CounterV2**, but not for the inline date **CounterV2**.
+
+Default value: **undefined**, indicating that this callback is not triggered.
+
+When the value is **undefined**, the default value is used.
 
 **Since:** 26.0.0
 
@@ -34,7 +48,17 @@ Trigger a mouse hover event at the decrease button.
 onHoverIncrease?: OnCounterV2HoverCallback
 ```
 
-Trigger a mouse hover event at the increase button.
+Callback triggered when the mouse enters or leaves the increase button of the **CounterV2** component.
+
+Use scenario: Pass in this callback when you need to perform custom operations (such as changing button styles and displaying tooltips) when hovering over the increase button.
+
+**NOTE:** 
+
+This attribute takes effect for the list, compact, and inline number **CounterV2**, but not for the inline date **CounterV2**.
+
+Default value: **undefined**, indicating that this callback is not triggered.
+
+When the value is **undefined**, the default value is used.
 
 **Since:** 26.0.0
 
@@ -50,7 +74,17 @@ Trigger a mouse hover event at the increase button.
 focusable?: boolean
 ```
 
-Set the focusable of the counter component.
+Whether **CounterV2** can obtain focus.
+
+**NOTE:** 
+
+This attribute takes effect for the list and compact **CounterV2**, but not for the inline number and inline date **CounterV2**.
+
+Default value: **true**
+
+**true**: **CounterV2** can obtain focus; **false**: **CounterV2** cannot obtain focus.
+
+When the value is **undefined**, the default value is used.
 
 **Type:** boolean
 
@@ -70,7 +104,19 @@ Set the focusable of the counter component.
 step?: number
 ```
 
-Set the step of the counter component, ranges greater than or equal to 1
+Step of **CounterV2**.
+
+**NOTE:** 
+
+This attribute takes effect for the list, compact Type, and inline number **CounterV2**, but not for the inline date **CounterV2**.
+
+Value range: an integer greater than or equal to 1.
+
+Default value: **1**
+
+If the value is out of the value range, the default value is used.
+
+When the value is **undefined**, the default value is used.
 
 **Type:** number
 

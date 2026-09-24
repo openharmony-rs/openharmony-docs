@@ -1,5 +1,9 @@
 # Key
 
+```TypeScript
+export declare interface Key
+```
+
 按键。
 
 @interface Key [since 9 - 11]

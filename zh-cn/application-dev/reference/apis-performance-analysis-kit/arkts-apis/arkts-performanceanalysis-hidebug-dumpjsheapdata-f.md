@@ -32,7 +32,7 @@ function dumpJsHeapData(filename : string) : void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | the parameter check failed, Parameter type error |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed, Parameter type error. |
 
 **示例**
 
@@ -47,17 +47,8 @@ try {
 }
 ```
 
-```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  hidebug.dumpJsHeapData("heapData", true);
-} catch (error) {
-  console.error(`error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
-}
-```
-
+<a id="dumpjsheapdata-1"></a>
 
 ## dumpJsHeapData
 
@@ -88,4 +79,13 @@ function dumpJsHeapData(filename : string, needClean : boolean) : void
 
 **示例**
 
-参见 dumpJsHeapData
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  hidebug.dumpJsHeapData("heapData", true);
+} catch (error) {
+  console.error(`error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
+}
+```

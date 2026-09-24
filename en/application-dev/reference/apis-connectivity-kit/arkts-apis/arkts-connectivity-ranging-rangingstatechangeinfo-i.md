@@ -1,5 +1,9 @@
 # RangingStateChangeInfo
 
+```TypeScript
+interface RangingStateChangeInfo
+```
+
 Describes the ranging state change information.
 
 **Since:** 26.0.0

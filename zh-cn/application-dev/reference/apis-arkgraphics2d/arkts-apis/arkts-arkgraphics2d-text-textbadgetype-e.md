@@ -1,5 +1,9 @@
 # TextBadgeType
 
+```TypeScript
+enum TextBadgeType
+```
+
 文本上下标枚举。
 
 **起始版本：** 20

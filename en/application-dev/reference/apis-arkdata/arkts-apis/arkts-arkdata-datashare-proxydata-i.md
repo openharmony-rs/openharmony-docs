@@ -1,5 +1,9 @@
 # ProxyData
 
+```TypeScript
+interface ProxyData
+```
+
 Defines a struct for shared configurations.
 
 **Since:** 20

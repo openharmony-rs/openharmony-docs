@@ -1,5 +1,9 @@
 # DataItem
 
+```TypeScript
+export interface DataItem
+```
+
 描述模块配置的路由表中的自定义数据。
 
 **起始版本：** 12

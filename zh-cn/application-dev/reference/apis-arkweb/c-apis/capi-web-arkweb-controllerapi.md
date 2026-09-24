@@ -8,6 +8,8 @@ typedef struct ArkWeb_ControllerAPI {...} ArkWeb_ControllerAPI
 
 ArkWeb_ControllerAPI是Controller相关Native API结构体。该结构体提供了JavaScript注入、同步和异步JavaScript代理注册、代理删除、页面刷新、Web Message Port创建和管理、Frame URL查询等功能，特点包括支持同步与异步代理并存、统一管理控制WebView行为。适用于需要从Native代码注入并调用JavaScript、实现Native与页面双向通信的场景， 可解决JSBridge互通与安全注入问题，提升开发效率与可控性。这是从Native代码控制WebView行为的主要接口。<br>Controller相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取， 调用前建议通过{@link ARKWEB_MEMBER_MISSING}校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 **相关模块：** [Web](capi-web.md)

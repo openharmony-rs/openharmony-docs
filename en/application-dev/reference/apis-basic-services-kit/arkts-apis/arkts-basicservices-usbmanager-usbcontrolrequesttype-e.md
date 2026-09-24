@@ -1,5 +1,9 @@
 # USBControlRequestType
 
+```TypeScript
+export enum USBControlRequestType
+```
+
 Enumerates control request types. Each type indicates a specific USB control request command such as obtaining the descriptor or setting the address.
 
 **Since:** 9

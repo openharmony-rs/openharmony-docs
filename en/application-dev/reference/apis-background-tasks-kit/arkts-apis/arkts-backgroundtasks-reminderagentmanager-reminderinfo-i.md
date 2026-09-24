@@ -1,5 +1,9 @@
 # ReminderInfo
 
+```TypeScript
+interface ReminderInfo
+```
+
 Defines the reminder information.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # VideoPixelFormat (System API)
 
+```TypeScript
+export enum VideoPixelFormat
+```
+
 Video pixelFormat Configuration Options.
 
 **Since:** 18

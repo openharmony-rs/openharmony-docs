@@ -44,6 +44,8 @@ enum ArkUI_EdgeEffect
 
 Enumerates the effects used at the edges of the component when the boundary of the scrollable content is reached. The default value is **ARKUI_EDGE_EFFECT_NONE** for the **Grid**, **Scroll**, and **WaterFlow** components, and **ARKUI_EDGE_EFFECT_SPRING** for the **List** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -61,6 +63,8 @@ enum ArkUI_BarState
 **Description**
 
 Enumerates the text control scrollbar states.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -80,6 +84,8 @@ enum ArkUI_EffectEdge
 
 Enumerates the edges for which the effect takes effect when the boundary of the scrollable content is reached.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 18
 
 | Enum item | Description |
@@ -96,6 +102,8 @@ enum ArkUI_ScrollDirection
 **Description**
 
 Enumerates the scrolling directions of the {@link Scroll} component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -116,6 +124,8 @@ enum ArkUI_ScrollSnapAlign
 
 Enumerates the alignment modes of list items when scrolling ends.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -135,6 +145,8 @@ enum ArkUI_ScrollSnapAnimationSpeed
 
 Enumerates scroll snap animation speeds for list components.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 | Enum item | Description |
@@ -151,6 +163,8 @@ enum ArkUI_ScrollBarDisplayMode
 **Description**
 
 Enumerates the scrollbar display modes.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -170,6 +184,8 @@ enum ArkUI_ContentClipMode
 
 Enumerates the content clipping modes of scrollable components.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 18
 
 | Enum item | Description |
@@ -187,6 +203,8 @@ enum ArkUI_ScrollNestedMode
 **Description**
 
 Enumerates nested scrolling modes.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -207,6 +225,8 @@ enum ArkUI_ScrollEdge
 
 Enumerates the edges to which the component scrolls.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -225,6 +245,8 @@ enum ArkUI_ScrollAlignment
 **Description**
 
 Defines how the list item to scroll to is aligned with the container.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -245,6 +267,8 @@ enum ArkUI_ScrollState
 
 Enumerates the scrolling states.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -262,6 +286,8 @@ enum ArkUI_ScrollSource
 **Description**
 
 Enumerates scroll sources.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

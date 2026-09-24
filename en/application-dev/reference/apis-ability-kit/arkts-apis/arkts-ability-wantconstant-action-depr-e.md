@@ -1,5 +1,9 @@
 # Action
 
+```TypeScript
+export enum Action
+```
+
 Enumerates the action constants of the Want object. **action** specifies the operation to execute.
 
 **Since:** 6

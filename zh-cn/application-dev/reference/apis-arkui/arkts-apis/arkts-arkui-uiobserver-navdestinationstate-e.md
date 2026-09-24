@@ -1,5 +1,9 @@
 # NavDestinationState
 
+```TypeScript
+export enum NavDestinationState
+```
+
 NavDestination组件状态。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # NotificationKey (System API)
 
+```TypeScript
+export interface NotificationKey
+```
+
 Defines the notification key value.
 
 **Since:** 9

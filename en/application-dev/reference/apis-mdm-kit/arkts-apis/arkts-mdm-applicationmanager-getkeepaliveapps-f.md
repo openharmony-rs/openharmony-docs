@@ -65,6 +65,8 @@ try {
 ```
 
 
+<a id="getkeepaliveapps-1"></a>
+
 ## getKeepAliveApps
 
 ```TypeScript

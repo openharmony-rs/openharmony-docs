@@ -37,7 +37,6 @@ import { ArcButton, ArcButtonOptions, ArcButtonProgressConfig, ArcButtonPosition
 
 ## Examples
 
-```TypeScript
 ### Example 1: Setting an Arc Button
 
 This example demonstrates the basic usage of ArcButton. ArcButton is added since API version 18. The following is an example configuration:
@@ -47,13 +46,86 @@ topOptions defines an upper arc button with the button text "ButtonTop," a font 
 bottomOptions defines a bottom arc button with the button text "ButtonBottom," a font size of 15 fp, shadow enabled, in a light-color emphasized style, with a click event set for the button.
 
 This example is recommended to run on a wearable device for optimal display effects and is also supported on other devices. To run the example on a wearable device, configure wearable in the [deviceTypes](../../../quick-start/module-configuration-file.md#devicetypes) tag of the [module.json5](../../../quick-start/module-configuration-file.md) configuration file in the src/main directory.
-```
 
 ```TypeScript
-
+// module.json5
+{
+  "module": {
+    // ...
+    "deviceTypes": [
+      "wearable",
+      "phone"
+    ]
+    // ...
+  }
+}
 ```
 
+
+
 ```TypeScript
+// xxx.ets
+import {
+  LengthMetrics,
+  LengthUnit,
+  ArcButton,
+  ArcButtonOptions,
+  ArcButtonStatus,
+  ArcButtonStyleMode,
+  ArcButtonPosition,
+} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local topOptions: ArcButtonOptions = new ArcButtonOptions({});
+  @Local bottomOptions: ArcButtonOptions = new ArcButtonOptions({});
+
+  aboutToAppear() {
+    this.topOptions = new ArcButtonOptions({
+      label: 'ButtonTop',
+      status: ArcButtonStatus.NORMAL,
+      position: ArcButtonPosition.TOP_EDGE,
+      styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+      fontSize: new LengthMetrics(15, LengthUnit.FP),
+      shadowEnabled: true
+    })
+
+    this.bottomOptions = new ArcButtonOptions({
+      label: 'ButtonBottom',
+      styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+      fontSize: new LengthMetrics(15, LengthUnit.FP),
+      shadowEnabled: true,
+      onClick: () => {
+        console.info('click from ArcButton.');
+      }
+    })
+  }
+
+  build() {
+    Stack() {
+      Stack() {
+        Circle({ width: 233, height: 233 })
+          .strokeWidth(0.1)
+          .fill(Color.White)
+
+        Column() {
+          ArcButton({ options: this.topOptions })
+          Blank()
+          ArcButton({ options: this.bottomOptions })
+
+        }.width('100%')
+        .height('100%')
+      }.width(233)
+      .height(233)
+    }.width('100%')
+    .height('100%')
+    .alignContent(Alignment.Center)
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+
 ### Example 2: Setting a Device Progress Indicator Button
 
 This example demonstrates the basic usage of the ArcButton component in progress indicator style. The [progressConfig](arkts-arkui-arkui-advanced-arcbutton-arcbuttonoptions-c.md) API is supported since API version 23. The following is an example configuration:
@@ -63,6 +135,19 @@ topOptions defines an upper arc button with the "Add" button text, a font size o
 bottomOptions defines a bottom arc button with the button text showing the progress percentage, a font size of 15 fp, state set in progress indicator mode, default style, and shadow enabled.
 
 This example is recommended to run on a wearable device for optimal display effects and is also supported on other devices. To run the example on a wearable device, configure wearable in the [deviceTypes](../../../quick-start/module-configuration-file.md#devicetypes) tag of the [module.json5](../../../quick-start/module-configuration-file.md) configuration file in the src/main directory.
+
+```TypeScript
+// module.json5
+{
+  "module": {
+    // ...
+    "deviceTypes": [
+      "wearable",
+      "phone"
+    ]
+    // ...
+  }
+}
 ```
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # ErrorCode (System API)
 
+```TypeScript
+export enum ErrorCode
+```
+
 Enumerates the device-cloud sync states. Use the enum name rather than the enum value.
 
 **Since:** 11

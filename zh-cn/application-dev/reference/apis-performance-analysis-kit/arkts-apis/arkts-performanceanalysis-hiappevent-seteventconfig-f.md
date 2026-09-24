@@ -47,10 +47,26 @@ function setEventConfig(name: string, config: Record<string, ParamType>): Promis
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3.Parameter verification failed. |
 
 **示例**
 
-```TypeScript
 以下示例用于模拟配置MAIN_THREAD_JANK事件的采集堆栈自定义参数：
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let params: Record<string, hiAppEvent.ParamType> = {
+  "log_type": "1",
+  "sample_interval": "100",
+  "ignore_startup_time": "11",
+  "sample_count": "21",
+  "report_times_per_app": "3"
+};
+hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
+  hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
+});
 ```

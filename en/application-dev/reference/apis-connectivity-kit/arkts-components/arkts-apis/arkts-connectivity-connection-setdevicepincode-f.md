@@ -55,21 +55,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-// promise
-try {
-    connection.setDevicePinCode('11:22:33:44:55:66', '12345').then(() => {
-        console.info('setDevicePinCode');
-    }, (error: BusinessError) => {
-        console.error('setDevicePinCode: errCode:' + error.code + ',errMessage' + error.message);
-    })
 
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-}
-```
-
+<a id="setdevicepincode-1"></a>
 
 ## setDevicePinCode
 
@@ -113,4 +100,17 @@ Set the pin during pairing when the pin type is PIN_TYPE_ENTER_PIN_CODE.
 
 **Examples**
 
-See [setDevicePinCode](#setdevicepincode)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// promise
+try {
+    connection.setDevicePinCode('11:22:33:44:55:66', '12345').then(() => {
+        console.info('setDevicePinCode');
+    }, (error: BusinessError) => {
+        console.error('setDevicePinCode: errCode:' + error.code + ',errMessage' + error.message);
+    })
+
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```

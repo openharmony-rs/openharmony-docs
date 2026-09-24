@@ -1,5 +1,9 @@
 # UserInfo
 
+```TypeScript
+interface UserInfo
+```
+
 Defines user information.
 
 **Since:** 7

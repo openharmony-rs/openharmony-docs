@@ -1,5 +1,9 @@
 # Hyperlink
 
+```TypeScript
+class Hyperlink extends Text
+```
+
 [Text](arkts-arkdata-unifieddatachannel-text-c.md)的子类，用于描述超链接类型数据。
 
 **继承/实现关系：** Hyperlink extends [Text](arkts-arkdata-unifieddatachannel-text-c.md)

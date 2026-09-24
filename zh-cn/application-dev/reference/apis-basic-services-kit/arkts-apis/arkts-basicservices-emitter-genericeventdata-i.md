@@ -1,5 +1,9 @@
 # GenericEventData
 
+```TypeScript
+export interface GenericEventData<T>
+```
+
 发送事件时传递的泛型数据。
 
 **起始版本：** 12

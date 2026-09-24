@@ -1,5 +1,9 @@
 # ConnectResult
 
+```TypeScript
+interface ConnectResult
+```
+
 Defines the connection result.
 
 **Since:** 18

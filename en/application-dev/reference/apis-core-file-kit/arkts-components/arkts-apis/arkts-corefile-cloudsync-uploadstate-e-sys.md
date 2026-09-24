@@ -1,5 +1,9 @@
 # UploadState (System API)
 
+```TypeScript
+enum UploadState
+```
+
 Describes the State type of file upload.
 
 **Since:** 26.0.0

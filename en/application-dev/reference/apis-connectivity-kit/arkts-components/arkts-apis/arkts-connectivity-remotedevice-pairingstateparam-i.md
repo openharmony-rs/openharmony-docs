@@ -1,5 +1,9 @@
 # PairingStateParam
 
+```TypeScript
+interface PairingStateParam
+```
+
 Describes the pairing state parameters.
 
 **Since:** 26.0.0

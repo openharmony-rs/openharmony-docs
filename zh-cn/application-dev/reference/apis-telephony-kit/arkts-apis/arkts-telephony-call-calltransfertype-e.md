@@ -1,5 +1,9 @@
 # CallTransferType
 
+```TypeScript
+export enum CallTransferType
+```
+
 呼叫转移类型。
 
 **起始版本：** 26.0.0

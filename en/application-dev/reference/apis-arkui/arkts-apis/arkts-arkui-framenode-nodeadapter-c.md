@@ -1,6 +1,10 @@
 # NodeAdapter
 
-Provides lazy loading capabilities for FrameNode data, implementing LazyForEach API functionality.
+```TypeScript
+declare class NodeAdapter
+```
+
+Provides lazy loading capabilities for FrameNode data, implementing [LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md#lazy_for_each) API functionality.
 
 > **NOTE:** 
 > 
@@ -167,9 +171,7 @@ Checks whether the NodeAdapter's backend reference has been released. Frontend n
 
 **Examples**
 
-```TypeScript
 See [NodeAdapter Validity Check Example.
-```
 
 ## moveItem
 
@@ -213,7 +215,7 @@ Called when a FrameNode is attached to the NodeAdapter.
 > node, instead of when the host node is attached to the main tree. In this case, the host node may not have been
 > attached to the main tree. If the node on which the callback logic depends has been mounted (for example,
 > accessing layout information or executing animation), you are advised to register
-> onAppear in the callback and place the related logic in **onAppear** for
+> [onAppear](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onappear) in the callback and place the related logic in **onAppear** for
 > execution. If you set this callback by dynamically assigning a value, complete the setting before calling
 > [attachNodeAdapter](#attachnodeadapter). Otherwise, the callback may fail to be triggered.
 
@@ -355,7 +357,7 @@ Called when a loaded node is reused. Node reuse occurs when the key value of a c
 reloadAllItems(): void
 ```
 
-Reloads all items in this node. This API calls the [OnDataReloaded](../arkts-components/arkts-arkui-datachangelistener-i.md#ondatareloaded) API in **LazyForEach** to trigger component data refresh.
+Reloads all items in this node. This API calls the [OnDataReloaded](../arkts-components/arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondatareloaded) API in **LazyForEach** to trigger component data refresh.
 
 **Since:** 12
 
@@ -447,6 +449,4 @@ Get the total number of node count.
 
 **Examples**
 
-```TypeScript
 See the example for [NodeAdapter Usage Example.
-```

@@ -8,6 +8,8 @@ struct OhosPixelMapCreateOps {...}
 
 用于定义创建PixelMap的设置选项，包含图片宽高、像素格式、是否可编辑、透明度类型及缩放类型信息， 适用于在Native层创建PixelMap时指定初始化属性的场景。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **相关模块：** [Image](capi-image.md)

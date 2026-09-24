@@ -1,5 +1,9 @@
 # CalleeCallback
 
+```TypeScript
+export interface CalleeCallback
+```
+
 通用组件服务端注册消息通知的回调函数类型。
 
 **起始版本：** 9

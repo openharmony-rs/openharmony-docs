@@ -1,5 +1,9 @@
 # DLPFeatureInfo (System API)
 
+```TypeScript
+export interface DLPFeatureInfo
+```
+
 Sets the DLP status.
 
 **Since:** 26.0.0

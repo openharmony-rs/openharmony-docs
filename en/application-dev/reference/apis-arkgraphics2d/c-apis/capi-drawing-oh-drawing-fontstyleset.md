@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontStyleSet OH_Drawing_FontStyleSet
 
 Defines a struct for a font style set, which is used for font style family matching.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

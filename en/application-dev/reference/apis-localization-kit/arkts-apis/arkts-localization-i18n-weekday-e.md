@@ -1,5 +1,9 @@
 # WeekDay
 
+```TypeScript
+export enum WeekDay
+```
+
 Enumerates the first day of a week. The value ranges from Monday to Sunday.
 
 **Since:** 18

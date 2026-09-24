@@ -28,7 +28,6 @@ import { LazyDynamicLayout, LazyDynamicLayoutAttribute } from '@kit.ArkUI';
 
 ## 示例
 
-```TypeScript
 ### 示例1（实现懒加载自定义布局）
 
 通过[List](ts-container-list.md)和LazyDynamicLayout组件实现自定义的懒加载列表布局，并通过onVisibleIndexesChange在可视区域发生变化时回调索引。
@@ -38,6 +37,99 @@ LazyListLayout实现了一个自定义懒加载列表布局算法，布局算法
 MyDataSource实现了[LazyForEach](ts-rendering-control-lazyforeach.md)数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给LazyDynamicLayout提供子组件。
 
 从API版本26.0.0开始，新增LazyDynamicLayout组件。
+
+```TypeScript
+import { LazyDynamicLayout, LazyDynamicLayoutAttribute } from '@kit.ArkUI';
+import { MyDataSource } from './MyDataSource';
+import { LazyListLayout } from './LazyListLayout';
+
+// 自定义懒加载列表布局组件
+@Component
+struct MyLazyListLayout {
+  // 间隔大小，使用@Watch监听变化，变化时触发onSpaceChange方法
+  @Prop @Watch('onSpaceChange') space: number;
+  arr: MyDataSource<string> = new MyDataSource<string>();
+  private itemHeight: number = 100;
+  // 懒加载布局算法实例，将高度转换为像素单位
+  private lazyAlgorithm: LazyListLayout = new LazyListLayout(this.getUIContext().vp2px(this.itemHeight));
+
+  // 间隔变化时更新布局算法中的间隔值
+  onSpaceChange(): void {
+    this.lazyAlgorithm.setSpace(this.getUIContext().vp2px(this.space));
+  }
+
+  aboutToAppear(): void {
+    this.lazyAlgorithm.setSpace(this.getUIContext().vp2px(this.space));
+  }
+
+  build() {
+    // 使用LazyDynamicLayout组件，传入懒加载布局算法
+    LazyDynamicLayout(this.lazyAlgorithm) {
+      LazyForEach(this.arr, (item: string) => {
+        Text(item)
+          .height(this.itemHeight)
+          .width('100%')
+          .borderRadius(8)
+          .backgroundColor('#E0E0FF')
+          .padding(10)
+      })
+    }
+    // 监听可视区域内子组件索引变化
+    .onVisibleIndexesChange((child: number[]) => {
+      console.info(`onVisibleIndexesChange:start:${child}`);
+    })
+  }
+}
+
+// 定义分组数据接口
+interface GroupData {
+  title: string;
+  data: MyDataSource<string>;
+}
+
+// 主页面组件
+@Entry
+@Component
+struct CustomListLayoutTest {
+  @State groupArr: GroupData[] = []; // 分组数据数组
+  @State space: number = 5; // 列表项间隔大小
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 3; i++) {
+      let data = new MyDataSource<string>();
+      for (let j = 0; j < 10; j++) {
+        data.pushData('item' + j.toString());
+      }
+      this.groupArr.push({ title: 'group' + i.toString(), data: data });
+    }
+  }
+
+  build() {
+    Stack({ alignContent: Alignment.Bottom }) {
+      List() {
+        ForEach(this.groupArr, (item: GroupData) => {
+          ListItem() {
+            Text(item.title).margin({ top: 20, bottom: 8 })
+          }
+          // 使用自定义懒加载布局组件
+          MyLazyListLayout({ arr: item.data, space: this.space })
+        })
+      }
+      .layoutWeight(1)
+      .padding({ left: 12, right: 12 })
+      .height('100%')
+      .width('100%')
+
+      Button('Space:' + this.space.toString())
+        .onClick(() => {
+          // 在5和10之间切换间隔大小，切换前后保持可视区域第一个子组件位置不变
+          this.space = this.space === 5 ? 10 : 5;
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 
 ```TypeScript

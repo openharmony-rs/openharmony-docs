@@ -1,5 +1,9 @@
 # HiTraceTracepointType
 
+```TypeScript
+enum HiTraceTracepointType
+```
+
 Enumerates trace point types.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # HAMode (System API)
 
+```TypeScript
+enum HAMode
+```
+
 Enumerates the high availability modes of the RDB store.
 
 **Since:** 12

@@ -1,13 +1,7 @@
 # DisplayNamesType
 
 ```TypeScript
-type DisplayNamesType =
-        | "language"
-        | "region"
-        | "script"
-        | "calendar"
-        | "dateTimeField"
-        | "currency"
+type DisplayNamesType = | "language" | "region" | "script" | "calendar" | "dateTimeField" | "currency"
 ```
 
 | Type | Description |

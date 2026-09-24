@@ -1,5 +1,9 @@
 # EuiccInfo (System API)
 
+```TypeScript
+export interface EuiccInfo
+```
+
 Defines the eUICC information.
 
 **Since:** 18

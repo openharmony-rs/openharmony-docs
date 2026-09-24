@@ -1,5 +1,9 @@
 # RotationChangeInfo
 
+```TypeScript
+interface RotationChangeInfo
+```
+
 Describes the window information obtained during window rotation changes.
 
 **Since:** 19

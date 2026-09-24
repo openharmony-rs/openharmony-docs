@@ -1,5 +1,9 @@
 # CameraElement
 
+```TypeScript
+export interface CameraElement extends Element
+```
+
 The &lt;camera&gt; component provides preview and photographing functions.
 
 @extends Element @interface CameraElement

@@ -6,6 +6,8 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
+<a id="getcurrentinputmethod-1"></a>
+
 ## getCurrentInputMethod
 
 ```TypeScript
@@ -45,10 +47,6 @@ Get the current input method of a specified user.
 | [12800025](../errorcode-inputmethod-framework.md#12800025-cross-user-operation-denied) | cross-user operation denied. Only user 0 applications are authorized for this operation. |
 
 **Examples**
-
-```TypeScript
-let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

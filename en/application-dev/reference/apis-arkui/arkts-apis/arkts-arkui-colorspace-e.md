@@ -1,5 +1,9 @@
 # ColorSpace
 
+```TypeScript
+declare enum ColorSpace
+```
+
 Enumerates color space types for specifying color rendering modes.
 
 **Since:** 20

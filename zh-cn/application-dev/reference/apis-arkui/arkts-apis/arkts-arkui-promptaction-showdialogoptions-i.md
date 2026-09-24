@@ -1,5 +1,9 @@
 # ShowDialogOptions
 
+```TypeScript
+interface ShowDialogOptions
+```
+
 对话框的选项。
 
 **起始版本：** 9
@@ -38,7 +42,7 @@ backgroundBlurStyle?: BlurStyle
 
 对话框背板模糊材质。<br>默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT_ULTRA_THICK。<br>**说明：** <br>设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。
 
-**类型：** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**类型：** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **默认值：** BlurStyle.COMPONENT_ULTRA_THICK
 
@@ -58,7 +62,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。
 
-**类型：** [BackgroundBlurStyleOptions](../arkts-components/arkts-arkui-backgroundblurstyleoptions-i.md)
+**类型：** [BackgroundBlurStyleOptions](../arkts-components/arkts-arkui-common-comp-backgroundblurstyleoptions-i.md)
 
 **起始版本：** 19
 
@@ -96,7 +100,7 @@ backgroundEffect?: BackgroundEffectOptions
 
 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。
 
-**类型：** [BackgroundEffectOptions](../arkts-components/arkts-arkui-backgroundeffectoptions-i.md)
+**类型：** [BackgroundEffectOptions](../arkts-components/arkts-arkui-common-comp-backgroundeffectoptions-i.md)
 
 **起始版本：** 19
 
@@ -117,6 +121,8 @@ buttons?: Array<Button>
 **类型：** Array&lt;[Button](arkts-arkui-promptaction-button-i.md)&gt;
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -150,7 +156,7 @@ hoverModeArea?: HoverModeAreaType
 
 设置悬停态下对话框的默认展示区域。<br>默认值：HoverModeAreaType.BOTTOM_SCREEN
 
-**类型：** [HoverModeAreaType](../arkts-components/arkts-arkui-hovermodeareatype-e.md)
+**类型：** [HoverModeAreaType](../arkts-components/arkts-arkui-common-comp-hovermodeareatype-e.md)
 
 **默认值：** HoverModeAreaType.BOTTOM_SCREEN
 
@@ -248,7 +254,7 @@ levelOrder?: LevelOrder
 levelUniqueId?: number
 ```
 
-置页面级对话框需要显示的层级下的节点UniqueID。<br>取值范围：大于等于0的数字。<br>**说明：** <br>- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
+置页面级对话框需要显示的层级下的[节点UniqueID](arkts-arkui-framenode-c.md#getuniqueid)。<br>取值范围：大于等于0的数字。<br>**说明：** <br>- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
 
 **类型：** number
 
@@ -266,9 +272,9 @@ levelUniqueId?: number
 maskRect?: Rectangle
 ```
 
-对话框遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。<br>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br>**说明：** <br>showInSubWindow为true时，maskRect不生效。<br>maskRect在设置[Rectangle](../arkts-components/arkts-arkui-rectangle-i.md)中的部分属性后，若未设置其余的属性，则其余属性的默认值为0。
+对话框遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。<br>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br>**说明：** <br>showInSubWindow为true时，maskRect不生效。<br>maskRect在设置[Rectangle](../arkts-components/arkts-arkui-common-comp-rectangle-i.md)中的部分属性后，若未设置其余的属性，则其余属性的默认值为0。
 
-**类型：** [Rectangle](../arkts-components/arkts-arkui-rectangle-i.md)
+**类型：** [Rectangle](../arkts-components/arkts-arkui-common-comp-rectangle-i.md)
 
 **起始版本：** 10
 
@@ -289,6 +295,8 @@ message?: string | Resource
 **类型：** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -392,7 +400,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 设置对话框背板的阴影。<br> 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。
 
-**类型：** [ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-shadowstyle-e.md)
+**类型：** [ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-common-comp-shadowstyle-e.md)
 
 **起始版本：** 12
 
@@ -428,9 +436,9 @@ showInSubWindow?: boolean
 systemMaterial?: SystemUiMaterial
 ```
 
-设置弹窗的系统材质。<br>**说明：** <br>- 默认值：[ImmersiveOptions](arkts-arkui-uimaterial-immersiveoptions-i.md)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)对象。设置undefined时与默认值保持一致。<br>- 不同的材质具有不同的效果，该接口影响背景色backgroundColor、背景模糊backgroundBlurStyle、背景效果backgroundEffect、阴影shadow，不建议与上述接口一起使用。
+设置弹窗的系统材质。<br>**说明：** <br>- 默认值：[ImmersiveOptions](arkts-arkui-uimaterial-immersiveoptions-i.md)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)对象。设置undefined时与默认值保持一致。<br>- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、背景模糊[backgroundBlurStyle](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle)、背景效果[backgroundEffect](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)，不建议与上述接口一起使用。
 
-**类型：** [SystemUiMaterial](../arkts-components/arkts-arkui-systemuimaterial-t.md)
+**类型：** [SystemUiMaterial](../arkts-components/arkts-arkui-common-comp-systemuimaterial-t.md)
 
 **起始版本：** 26.0.0
 
@@ -451,6 +459,8 @@ title?: string | Resource
 **类型：** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

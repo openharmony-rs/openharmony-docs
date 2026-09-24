@@ -1,5 +1,9 @@
 # DeviceChangeAction
 
+```TypeScript
+interface DeviceChangeAction
+```
+
 Describes the device connection status and device information.
 
 **Since:** 7

@@ -8,6 +8,8 @@ typedef struct OH_Drawing_RectStyle_Info {...} OH_Drawing_RectStyle_Info
 
 This struct describes the style of a rectangle.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

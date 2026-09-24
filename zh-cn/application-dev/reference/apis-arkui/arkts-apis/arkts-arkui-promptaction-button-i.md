@@ -1,5 +1,9 @@
 # Button
 
+```TypeScript
+interface Button
+```
+
 菜单中的菜单项按钮。
 
 **起始版本：** 9
@@ -23,6 +27,8 @@ color: string | Resource
 **类型：** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -57,6 +63,8 @@ text: string | Resource
 **类型：** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

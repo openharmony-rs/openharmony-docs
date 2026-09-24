@@ -1,5 +1,9 @@
 # SimMessageStatus（系统接口）
 
+```TypeScript
+export enum SimMessageStatus
+```
+
 SIM卡消息状态。
 
 **起始版本：** 7

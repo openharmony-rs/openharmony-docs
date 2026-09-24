@@ -1,5 +1,9 @@
 # AudioVolumeManager
 
+```TypeScript
+interface AudioVolumeManager
+```
+
 This interface implements audio volume management.
 
 Before calling any API in AudioVolumeManager, you must use [getVolumeManager](arkts-audio-audio-audiomanager-i.md#getvolumemanager) to obtain an AudioVolumeManager instance.
@@ -17,6 +21,37 @@ Before calling any API in AudioVolumeManager, you must use [getVolumeManager](ar
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 ```
+
+## confirmVolumeLimitExceeded
+
+```TypeScript
+confirmVolumeLimitExceeded(volumeType: AudioVolumeType, result: boolean): void
+```
+
+Confirms the result of adjusting the volume that exceeds the volume protection threshold.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type, different volume types have different thresholds, volumeType is used to identify the current volume type threshold. |
+| result | boolean | Yes | Confirm that the volume adjustment exceeds the volume protection threshold, and false indicates the opposite. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
+| [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
+| [6800301](../errorcode-audio.md#6800301-system-error) | System error. |
 
 ## forceVolumeKeyControlType
 
@@ -495,12 +530,7 @@ audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID, (err: BusinessErr
 });
 ```
 
-```TypeScript
-async function getVolumeGroupInfos(){
-  let volumegroupinfos: audio.VolumeGroupInfos = await audio.getAudioManager().getVolumeManager().getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
-  console.info('Promise returned to indicate that the volumeGroup list is obtained.'+JSON.stringify(volumegroupinfos))
-}
-```
+<a id="getvolumegroupinfos-1"></a>
 
 ## getVolumeGroupInfos
 
@@ -530,7 +560,12 @@ Get the volume group list for a networkId. This method uses a promise to return 
 
 **Examples**
 
-See [getVolumeGroupInfos](#getvolumegroupinfos)
+```TypeScript
+async function getVolumeGroupInfos(){
+  let volumegroupinfos: audio.VolumeGroupInfos = await audio.getAudioManager().getVolumeManager().getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+  console.info('Promise returned to indicate that the volumeGroup list is obtained.'+JSON.stringify(volumegroupinfos))
+}
+```
 
 ## getVolumeGroupInfosSync
 
@@ -725,6 +760,24 @@ Unsubscribes to the app volume change events..
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+// Cancel all subscriptions to the event.
+audioVolumeManager.off('appVolumeChangeForUid');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let appVolumeChangeForUidCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+};
+
+audioVolumeManager.on('appVolumeChangeForUid', appVolumeChangeForUidCallback);
+
+audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
+```
+
 ## off('activeVolumeTypeChange')
 
 ```TypeScript
@@ -752,6 +805,22 @@ Unsubscribes from active volume type changes.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+// Cancel all subscriptions to the event.
+audioVolumeManager.off('activeVolumeTypeChange');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let activeVolumeTypeChangeCallback = (volumeType: audio.AudioVolumeType) => {
+  console.info(`VolumeType of stream: ${volumeType} `);
+};
+
+audioVolumeManager.on('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
+
+audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
+```
 
 ## off('systemVolumeChange')
 
@@ -781,6 +850,22 @@ Unsubscribes to the system volume change events.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+// Cancel all subscriptions to the event.
+audioVolumeManager.off('systemVolumeChange');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let systemVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on or off function, VolumeEvent: ${volumeEvent}.`);
+};
+
+audioVolumeManager.on('systemVolumeChange', systemVolumeChangeCallback);
+
+audioVolumeManager.off('systemVolumeChange', systemVolumeChangeCallback);
+```
+
 ## offSystemVolumeChangeByFilter
 
 ```TypeScript
@@ -808,6 +893,35 @@ Unsubscribes from the system volume change events.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system app. |
+| [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
+
+## offVolumeLimitExceeded
+
+```TypeScript
+offVolumeLimitExceeded(callback?: Callback<VolumeLimitExceededEvent>): void
+```
+
+Unsubscribes from monitoring whether the current volume exceeds the volume protection threshold.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeLimitExceededEvent](arkts-audio-audio-volumelimitexceededevent-i-sys.md)&gt; | No | Callback used to get the volume limit event. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
 ## offVolumePercentageChange
@@ -888,6 +1002,18 @@ Listens for specified app volume change events. The app volume may changed by [s
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+let uid: number = 20010041; // Application ID.
+
+audioVolumeManager.on('appVolumeChangeForUid', uid, (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+});
+```
+
 ## on('activeVolumeTypeChange')
 
 ```TypeScript
@@ -915,6 +1041,14 @@ Subscribes to active volume type changes.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+audioVolumeManager.on('activeVolumeTypeChange', (volumeType: audio.AudioVolumeType) => {
+  console.info(`VolumeType of stream: ${volumeType} `);
+});
+```
 
 ## on('systemVolumeChange')
 
@@ -944,6 +1078,14 @@ Listens for system volume change events. This method uses a callback to get volu
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+audioVolumeManager.on('systemVolumeChange', (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on function, VolumeEvent: ${volumeEvent}.`);
+});
+```
+
 ## onSystemVolumeChangeByFilter
 
 ```TypeScript
@@ -972,6 +1114,35 @@ Subscribes to system volume change events. When the system volume for the target
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not a system app. |
+| [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
+
+## onVolumeLimitExceeded
+
+```TypeScript
+onVolumeLimitExceeded(callback: Callback<VolumeLimitExceededEvent>): void
+```
+
+Listens for the event when the current volume exceeds the volume protection threshold.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeLimitExceededEvent](arkts-audio-audio-volumelimitexceededevent-i-sys.md)&gt; | Yes | Callback used to get the volume limit event. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
 ## onVolumePercentageChange

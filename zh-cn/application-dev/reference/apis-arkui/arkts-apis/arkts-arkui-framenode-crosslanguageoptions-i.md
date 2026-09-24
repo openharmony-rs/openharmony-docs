@@ -1,5 +1,9 @@
 # CrossLanguageOptions
 
+```TypeScript
+declare interface CrossLanguageOptions
+```
+
 该接口用于配置或查询FrameNode的跨语言访问权限。例如，针对ArkTS语言创建的节点，可通过该接口控制是否允许通过非ArkTS语言进行属性访问或修改。
 
 **起始版本：** 15
@@ -42,7 +46,7 @@ true表示支持跨ArkTS语言进行组件树操作，false表示不支持跨Ark
 
 默认值为false。
 
-**说明：** 当FrameNode启用了跨ArkTS语言进行组件树操作的选项后，支持该FrameNode跨ArkTS语言调用addChild、insertChildAfter、insertChildAt、insertChildBefore和removeChild。
+**说明：** 当FrameNode启用了跨ArkTS语言进行组件树操作的选项后，支持该FrameNode跨ArkTS语言调用[addChild](../../../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)、[insertChildAfter](../../../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildafter)、[insertChildAt](../../../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildat)、[insertChildBefore](../../../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildbefore)和[removeChild](../../../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removechild)。
 
 **类型：** boolean
 

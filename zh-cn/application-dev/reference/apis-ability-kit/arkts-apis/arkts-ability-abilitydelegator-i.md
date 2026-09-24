@@ -1,5 +1,9 @@
 # AbilityDelegator
 
+```TypeScript
+export interface AbilityDelegator
+```
+
 AbilityDelegator模块可以通过[AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例来监听和管理[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)生命周期的变化。例如获取UIAbility当前状态（如是否已创建/是否在前台等）、查询当前获焦的UIAbility、等待UIAbility进入某个生命周期节点（如等待UIAbility进入onForeground）、启动指定UIAbility、设置超时机制等功能。AbilityDelegator可以通过[getAbilityDelegator](../../apis-test-kit/arkts-apis/arkts-test-abilitydelegatorregistry-getabilitydelegator-f.md)方法获取。
 
 > **说明：** 
@@ -37,7 +41,7 @@ addAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityMonitor failed. |
 
 **示例**
@@ -69,24 +73,7 @@ abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-
-let onAbilityCreateCallback = (data: UIAbility) => {
-  console.info('onAbilityCreateCallback');
-};
-
-let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityName',
-  onAbilityCreate: onAbilityCreateCallback
-};
-let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-
-abilityDelegator.addAbilityMonitor(monitor).then(() => {
-  console.info('addAbilityMonitor promise');
-});
-```
+<a id="addabilitymonitor-1"></a>
 
 ## addAbilityMonitor
 
@@ -118,12 +105,29 @@ addAbilityMonitor(monitor: AbilityMonitor): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityMonitor failed. |
 
 **示例**
 
-参见 [addAbilityMonitor](#addabilitymonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+let onAbilityCreateCallback = (data: UIAbility) => {
+  console.info('onAbilityCreateCallback');
+};
+
+let monitor: abilityDelegatorRegistry.AbilityMonitor = {
+  abilityName: 'abilityName',
+  onAbilityCreate: onAbilityCreateCallback
+};
+let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+
+abilityDelegator.addAbilityMonitor(monitor).then(() => {
+  console.info('addAbilityMonitor promise');
+});
+```
 
 ## addAbilityMonitorSync
 
@@ -149,7 +153,7 @@ addAbilityMonitorSync(monitor: AbilityMonitor): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityMonitorSync failed. |
 
 **示例**
@@ -198,7 +202,7 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityStageMonitor failed. |
 
 **示例**
@@ -222,19 +226,7 @@ abilityDelegator.addAbilityStageMonitor({
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.addAbilityStageMonitor({
-  moduleName: 'moduleName',
-  srcEntrance: 'srcEntrance',
-}).then(() => {
-  console.info('addAbilityStageMonitor promise');
-});
-```
+<a id="addabilitystagemonitor-1"></a>
 
 ## addAbilityStageMonitor
 
@@ -266,12 +258,24 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityStageMonitor failed. |
 
 **示例**
 
-参见 [addAbilityStageMonitor](#addabilitystagemonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.addAbilityStageMonitor({
+  moduleName: 'moduleName',
+  srcEntrance: 'srcEntrance',
+}).then(() => {
+  console.info('addAbilityStageMonitor promise');
+});
+```
 
 ## addAbilityStageMonitorSync
 
@@ -297,7 +301,7 @@ addAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityStageMonitorSync failed. |
 
 **示例**
@@ -367,7 +371,7 @@ doAbilityBackground(ability: UIAbility, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling DoAbilityBackground failed. |
 
 **示例**
@@ -398,27 +402,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let ability: UIAbility;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  if (err) {
-    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('getCurrentTopAbility callback');
-    ability = data;
-    abilityDelegator.doAbilityBackground(ability).then(() => {
-      console.info('doAbilityBackground promise');
-    });
-  }
-});
-```
+<a id="doabilitybackground-1"></a>
 
 ## doAbilityBackground
 
@@ -450,12 +434,32 @@ doAbilityBackground(ability: UIAbility): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling DoAbilityBackground failed. |
 
 **示例**
 
-参见 [doAbilityBackground](#doabilitybackground)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let ability: UIAbility;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    abilityDelegator.doAbilityBackground(ability).then(() => {
+      console.info('doAbilityBackground promise');
+    });
+  }
+});
+```
 
 ## doAbilityForeground
 
@@ -482,7 +486,7 @@ doAbilityForeground(ability: UIAbility, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling DoAbilityForeground failed. |
 
 **示例**
@@ -513,27 +517,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let ability: UIAbility;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  if (err) {
-    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('getCurrentTopAbility callback');
-    ability = data;
-    abilityDelegator.doAbilityForeground(ability).then(() => {
-      console.info('doAbilityForeground promise');
-    });
-  }
-});
-```
+<a id="doabilityforeground-1"></a>
 
 ## doAbilityForeground
 
@@ -565,12 +549,32 @@ doAbilityForeground(ability: UIAbility): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling DoAbilityForeground failed. |
 
 **示例**
 
-参见 [doAbilityForeground](#doabilityforeground)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let ability: UIAbility;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    abilityDelegator.doAbilityForeground(ability).then(() => {
+      console.info('doAbilityForeground promise');
+    });
+  }
+});
+```
 
 ## executeShellCommand
 
@@ -615,36 +619,7 @@ abilityDelegator.executeShellCommand(shellCommand, (err: BusinessError, data: ab
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let shellCommand = 'cmd';
-let timeout = 100;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(shellCommand, timeout, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
-  if (err) {
-    console.error(`executeShellCommand fail. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('executeShellCommand callback');
-  }
-});
-```
-
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let shellCommand = 'cmd';
-let timeout = 100;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(shellCommand, timeout).then((data) => {
-  console.info('executeShellCommand promise');
-});
-```
+<a id="executeshellcommand-1"></a>
 
 ## executeShellCommand
 
@@ -670,7 +645,25 @@ executeShellCommand(cmd: string, timeoutSecs: number, callback: AsyncCallback<Sh
 
 **示例**
 
-参见 [executeShellCommand](#executeshellcommand)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let shellCommand = 'cmd';
+let timeout = 100;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.executeShellCommand(shellCommand, timeout, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
+  if (err) {
+    console.error(`executeShellCommand fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('executeShellCommand callback');
+  }
+});
+```
+
+<a id="executeshellcommand-2"></a>
 
 ## executeShellCommand
 
@@ -701,7 +694,18 @@ executeShellCommand(cmd: string, timeoutSecs?: number): Promise<ShellCmdResult>
 
 **示例**
 
-参见 [executeShellCommand](#executeshellcommand)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let shellCommand = 'cmd';
+let timeout = 100;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.executeShellCommand(shellCommand, timeout).then((data) => {
+  console.info('executeShellCommand promise');
+});
+```
 
 ## finishTest
 
@@ -729,7 +733,7 @@ finishTest(msg: string, code: number, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling FinishTest failed. |
 
 **示例**
@@ -751,17 +755,7 @@ abilityDelegator.finishTest(msg, 0, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let msg = 'msg';
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.finishTest(msg, 0).then(() => {
-  console.info('finishTest promise');
-});
-```
+<a id="finishtest-1"></a>
 
 ## finishTest
 
@@ -794,12 +788,22 @@ finishTest(msg: string, code: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling FinishTest failed. |
 
 **示例**
 
-参见 [finishTest](#finishtest)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let msg = 'msg';
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.finishTest(msg, 0).then(() => {
+  console.info('finishTest promise');
+});
+```
 
 ## getAbilityState
 
@@ -831,7 +835,7 @@ getAbilityState(ability: UIAbility): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -912,7 +916,7 @@ getCurrentTopAbility(callback: AsyncCallback<UIAbility>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling GetCurrentTopAbility failed. |
 
 **示例**
@@ -936,19 +940,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let ability: UIAbility;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.getCurrentTopAbility().then((data: UIAbility) => {
-  console.info('getCurrentTopAbility promise');
-  ability = data;
-});
-```
+<a id="getcurrenttopability-1"></a>
 
 ## getCurrentTopAbility
 
@@ -978,7 +970,19 @@ getCurrentTopAbility(): Promise<UIAbility>
 
 **示例**
 
-参见 [getCurrentTopAbility](#getcurrenttopability)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let ability: UIAbility;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.getCurrentTopAbility().then((data: UIAbility) => {
+  console.info('getCurrentTopAbility promise');
+  ability = data;
+});
+```
 
 ## print
 
@@ -1020,17 +1024,7 @@ abilityDelegator.print(msg, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let msg = 'msg';
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.print(msg).then(() => {
-  console.info('print promise');
-});
-```
+<a id="print-1"></a>
 
 ## print
 
@@ -1060,7 +1054,17 @@ print(msg: string): Promise<void>
 
 **示例**
 
-参见 [print](#print)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let msg = 'msg';
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.print(msg).then(() => {
+  console.info('print promise');
+});
+```
 
 ## printSync
 
@@ -1086,7 +1090,7 @@ printSync(msg: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -1125,7 +1129,7 @@ removeAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<void>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityMonitor failed. |
 
 **示例**
@@ -1154,26 +1158,7 @@ abilityDelegator.removeAbilityMonitor(monitor, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-
-let onAbilityCreateCallback = (data: UIAbility) => {
-  console.info('onAbilityCreateCallback');
-};
-
-let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityName',
-  onAbilityCreate: onAbilityCreateCallback
-};
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.removeAbilityMonitor(monitor).then(() => {
-  console.info('removeAbilityMonitor promise');
-});
-```
+<a id="removeabilitymonitor-1"></a>
 
 ## removeAbilityMonitor
 
@@ -1205,12 +1190,31 @@ removeAbilityMonitor(monitor: AbilityMonitor): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityMonitor failed. |
 
 **示例**
 
-参见 [removeAbilityMonitor](#removeabilitymonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+let onAbilityCreateCallback = (data: UIAbility) => {
+  console.info('onAbilityCreateCallback');
+};
+
+let monitor: abilityDelegatorRegistry.AbilityMonitor = {
+  abilityName: 'abilityName',
+  onAbilityCreate: onAbilityCreateCallback
+};
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.removeAbilityMonitor(monitor).then(() => {
+  console.info('removeAbilityMonitor promise');
+});
+```
 
 ## removeAbilityMonitorSync
 
@@ -1236,7 +1240,7 @@ removeAbilityMonitorSync(monitor: AbilityMonitor): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityMonitorSync failed. |
 
 **示例**
@@ -1285,7 +1289,7 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityStageMonitor failed. |
 
 **示例**
@@ -1309,19 +1313,7 @@ abilityDelegator.removeAbilityStageMonitor({
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.removeAbilityStageMonitor({
-  moduleName: 'moduleName',
-  srcEntrance: 'srcEntrance',
-}).then(() => {
-  console.info('removeAbilityStageMonitor promise');
-});
-```
+<a id="removeabilitystagemonitor-1"></a>
 
 ## removeAbilityStageMonitor
 
@@ -1353,12 +1345,24 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityStageMonitor failed. |
 
 **示例**
 
-参见 [removeAbilityStageMonitor](#removeabilitystagemonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.removeAbilityStageMonitor({
+  moduleName: 'moduleName',
+  srcEntrance: 'srcEntrance',
+}).then(() => {
+  console.info('removeAbilityStageMonitor promise');
+});
+```
 
 ## removeAbilityStageMonitorSync
 
@@ -1384,7 +1388,7 @@ removeAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityStageMonitorSync failed. |
 
 **示例**
@@ -1453,7 +1457,7 @@ setMockList(mockList: Record<string, string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
@@ -1499,7 +1503,7 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -1543,21 +1547,7 @@ abilityDelegator.startAbility(want, (err: BusinessError, data: void) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { Want } from '@kit.AbilityKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let want: Want = {
-  bundleName: 'bundleName',
-  abilityName: 'abilityName'
-};
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.startAbility(want).then((data: void) => {
-  console.info('startAbility promise');
-});
-```
+<a id="startability-1"></a>
 
 ## startAbility
 
@@ -1589,7 +1579,7 @@ startAbility(want: Want): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -1608,7 +1598,21 @@ startAbility(want: Want): Promise<void>
 
 **示例**
 
-参见 [startAbility](#startability)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { Want } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let want: Want = {
+  bundleName: 'bundleName',
+  abilityName: 'abilityName'
+};
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.startAbility(want).then((data: void) => {
+  console.info('startAbility promise');
+});
+```
 
 ## waitAbilityMonitor
 
@@ -1635,7 +1639,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<UIAbility>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityMonitor failed. |
 
 **示例**
@@ -1665,6 +1669,39 @@ abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError, data: UIAbil
   }
 });
 ```
+
+<a id="waitabilitymonitor-1"></a>
+
+## waitAbilityMonitor
+
+```TypeScript
+waitAbilityMonitor(monitor: AbilityMonitor, timeout: number, callback: AsyncCallback<UIAbility>): void
+```
+
+设置等待时间，等待与AbilityMonitor实例匹配的Ability到达OnCreate生命周期，并返回Ability实例。使用callback异步回调。不支持多线程并发调用。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| monitor | [AbilityMonitor](arkts-ability-abilitymonitor-i.md) | 是 | [AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例。 |
+| timeout | number | 是 | 最大等待时间，单位毫秒（ms），默认值为5000毫秒。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)&gt; | 是 | 表示指定的回调方法。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityMonitor failed. |
+
+**示例**
 
 ```TypeScript
 import { abilityDelegatorRegistry } from '@kit.TestKit';
@@ -1697,59 +1734,7 @@ abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, dat
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-
-let onAbilityCreateCallback = (data: UIAbility) => {
-  console.info('onAbilityCreateCallback');
-};
-
-let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityName',
-  onAbilityCreate: onAbilityCreateCallback
-};
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.waitAbilityMonitor(monitor).then((data: UIAbility) => {
-  console.info('waitAbilityMonitor promise');
-});
-```
-
-## waitAbilityMonitor
-
-```TypeScript
-waitAbilityMonitor(monitor: AbilityMonitor, timeout: number, callback: AsyncCallback<UIAbility>): void
-```
-
-设置等待时间，等待与AbilityMonitor实例匹配的Ability到达OnCreate生命周期，并返回Ability实例。使用callback异步回调。不支持多线程并发调用。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| monitor | [AbilityMonitor](arkts-ability-abilitymonitor-i.md) | 是 | [AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例。 |
-| timeout | number | 是 | 最大等待时间，单位毫秒（ms），默认值为5000毫秒。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)&gt; | 是 | 表示指定的回调方法。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityMonitor failed. |
-
-**示例**
-
-参见 [waitAbilityMonitor](#waitabilitymonitor)
+<a id="waitabilitymonitor-2"></a>
 
 ## waitAbilityMonitor
 
@@ -1782,12 +1767,31 @@ waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise<UIAbility
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityMonitor failed. |
 
 **示例**
 
-参见 [waitAbilityMonitor](#waitabilitymonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+let onAbilityCreateCallback = (data: UIAbility) => {
+  console.info('onAbilityCreateCallback');
+};
+
+let monitor: abilityDelegatorRegistry.AbilityMonitor = {
+  abilityName: 'abilityName',
+  onAbilityCreate: onAbilityCreateCallback
+};
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.waitAbilityMonitor(monitor).then((data: UIAbility) => {
+  console.info('waitAbilityMonitor promise');
+});
+```
 
 ## waitAbilityStageMonitor
 
@@ -1814,7 +1818,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<Ab
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityStageMonitor failed. |
 
 **示例**
@@ -1839,41 +1843,7 @@ abilityDelegator.waitAbilityStageMonitor({
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { AbilityStage } from '@kit.AbilityKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.waitAbilityStageMonitor({
-  moduleName: 'moduleName',
-  srcEntrance: 'srcEntrance',
-}).then((data: AbilityStage) => {
-  console.info('waitAbilityStageMonitor promise');
-});
-```
-
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { AbilityStage } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let timeout = 100;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.waitAbilityStageMonitor({
-  moduleName: 'moduleName',
-  srcEntrance: 'srcEntrance',
-}, timeout, (err: BusinessError, data: AbilityStage) => {
-  if (err) {
-    console.error(`waitAbilityStageMonitor fail. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('waitAbilityStageMonitor callback');
-  }
-});
-```
+<a id="waitabilitystagemonitor-1"></a>
 
 ## waitAbilityStageMonitor
 
@@ -1901,12 +1871,33 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback:
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityStageMonitor failed. |
 
 **示例**
 
-参见 [waitAbilityStageMonitor](#waitabilitystagemonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { AbilityStage } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let timeout = 100;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.waitAbilityStageMonitor({
+  moduleName: 'moduleName',
+  srcEntrance: 'srcEntrance',
+}, timeout, (err: BusinessError, data: AbilityStage) => {
+  if (err) {
+    console.error(`waitAbilityStageMonitor fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('waitAbilityStageMonitor callback');
+  }
+});
+```
+
+<a id="waitabilitystagemonitor-2"></a>
 
 ## waitAbilityStageMonitor
 
@@ -1939,9 +1930,22 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityStageMonitor failed. |
 
 **示例**
 
-参见 [waitAbilityStageMonitor](#waitabilitystagemonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { AbilityStage } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.waitAbilityStageMonitor({
+  moduleName: 'moduleName',
+  srcEntrance: 'srcEntrance',
+}).then((data: AbilityStage) => {
+  console.info('waitAbilityStageMonitor promise');
+});
+```

@@ -54,6 +54,8 @@ AbilityBase_Want* OH_AbilityBase_CreateWant(AbilityBase_Element element)
 
 创建Want。
 
+**系统能力：** SystemCapability.Ability.AbilityBase
+
 **起始版本：** 15
 
 **参数：**
@@ -78,6 +80,8 @@ AbilityBase_ErrorCode OH_AbilityBase_DestroyWant(AbilityBase_Want* want)
 
 销毁Want。销毁后的Want不可使用，否则会导致未定义行为。
 
+**系统能力：** SystemCapability.Ability.AbilityBase
+
 **起始版本：** 15
 
 **参数：**
@@ -101,6 +105,8 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantElement(AbilityBase_Want* want, Abil
 **描述：**
 
 设置Want中由bundleName、moduleName与abilityName组成的Element结构体。
+
+**系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 15
 
@@ -127,6 +133,8 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantElement(AbilityBase_Want* want, Abil
 
 获取Want中由bundleName、moduleName与abilityName组成的Element结构体。
 
+**系统能力：** SystemCapability.Ability.AbilityBase
+
 **起始版本：** 15
 
 **参数：**
@@ -151,6 +159,8 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantCharParam(AbilityBase_Want* want, co
 **描述：**
 
 设置Want Param参数，Param可参考Want中的parameters参数。
+
+**系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 15
 
@@ -178,6 +188,8 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, co
 
 获取[OH_AbilityBase_SetWantCharParam](capi-want-h.md#oh_abilitybase_setwantcharparam)方法设置的Want Param参数。
 
+**系统能力：** SystemCapability.Ability.AbilityBase
+
 **起始版本：** 15
 
 **参数：**
@@ -187,7 +199,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, co
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md)* want | Want指针。 |
 | const char* key | Want中字符串参数键名。 |
 | char* value | Want中字符串。 |
-| size_t valueSize | value字符串长度。如果valueSize小于实际需要获取的value长度，则会报{@link ABILITY_BASE_ERROR_CODE_PARAM_INVALID}错误。 |
+| size_t valueSize | value字符串长度。如果valueSize小于实际需要获取的value长度，则会报[ABILITY_BASE_ERROR_CODE_PARAM_INVALID](capi-ability-base-common-h.md#abilitybase_errorcode)错误。 |
 
 **返回值：**
 
@@ -204,6 +216,8 @@ AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const cha
 **描述：**
 
 添加Want文件描述符，文件描述符可通过{@link fileIo.open}获取。
+
+**系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 15
 
@@ -231,6 +245,8 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantFd(AbilityBase_Want* want, const cha
 
 获取Want文件描述符。
 
+**系统能力：** SystemCapability.Ability.AbilityBase
+
 **起始版本：** 15
 
 **参数：**
@@ -257,6 +273,8 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const ch
 
 设置Want中URI字符串，URI可参考{@link Want}中的uri描述。
 
+**系统能力：** SystemCapability.Ability.AbilityBase
+
 **起始版本：** 17
 
 **参数：**
@@ -282,6 +300,8 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* ur
 
 获取Want中URI字符串。URI可参考{@link Want}中的uri描述。
 
+**系统能力：** SystemCapability.Ability.AbilityBase
+
 **起始版本：** 17
 
 **参数：**
@@ -290,7 +310,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* ur
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md)* want | Want指针。 |
 | char* uri | 表示URI。如果在Want中指定了URI，则Want将匹配指定的URI信息。URI可参考{@link Want}中的uri描述。 |
-| size_t uriSize | URI字符串长度。如果uriSize小于实际需要获取的URI长度，则会报{@link ABILITY_BASE_ERROR_CODE_PARAM_INVALID}错误。 |
+| size_t uriSize | URI字符串长度。如果uriSize小于实际需要获取的URI长度，则会报[ABILITY_BASE_ERROR_CODE_PARAM_INVALID](capi-ability-base-common-h.md#abilitybase_errorcode)错误。 |
 
 **返回值：**
 
@@ -307,6 +327,8 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantInt32Param(AbilityBase_Want* want, c
 **描述：**
 
 设置Want中int32_t类型的值。
+
+**系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 17
 
@@ -334,6 +356,8 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantInt32Param(AbilityBase_Want* want, c
 
 获取Want中int32_t类型的值。
 
+**系统能力：** SystemCapability.Ability.AbilityBase
+
 **起始版本：** 17
 
 **参数：**
@@ -359,6 +383,8 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantBoolParam(AbilityBase_Want* want, co
 **描述：**
 
 设置Want中bool类型的值。
+
+**系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 17
 
@@ -386,6 +412,8 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantBoolParam(AbilityBase_Want* want, co
 
 获取Want中bool类型的值。
 
+**系统能力：** SystemCapability.Ability.AbilityBase
+
 **起始版本：** 17
 
 **参数：**
@@ -412,6 +440,8 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantDoubleParam(AbilityBase_Want* want, 
 
 设置Want中double类型的值。
 
+**系统能力：** SystemCapability.Ability.AbilityBase
+
 **起始版本：** 17
 
 **参数：**
@@ -437,6 +467,8 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantDoubleParam(AbilityBase_Want* want, 
 **描述：**
 
 获取Want中double类型的值。
+
+**系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 17
 

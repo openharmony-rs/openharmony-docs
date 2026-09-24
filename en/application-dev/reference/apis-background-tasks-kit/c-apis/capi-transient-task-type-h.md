@@ -57,6 +57,8 @@ enum TransientTask_ErrorCode
 
 Enumerates the error codes available for a transient task.
 
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+
 **Since**: 13
 
 | Enum item | Description |
@@ -83,6 +85,8 @@ typedef void (*TransientTask_Callback)(void)
 **Description**
 
 Defines a callback for transient task timeout.
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **Since**: 13
 

@@ -1,5 +1,9 @@
 # Album
 
+```TypeScript
+interface Album extends AbsAlbum
+```
+
 Provides APIs to manage albums.
 
 **Inheritance/Implementation:** Album extends [AbsAlbum](arkts-medialibrary-sendablephotoaccesshelper-absalbum-i.md)
@@ -46,6 +50,31 @@ Obtains the face identifier on the cover of a portrait album or group photo albu
 
 **Examples**
 
-```TypeScript
 For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](arkts-medialibrary-file-sendablephotoaccesshelper.md).
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { common } from '@kit.AbilityKit';
+
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('getFaceIdDemo');
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    predicates.equalTo("user_display_level", 1);
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let fetchResult =
+      await phAccessHelper.getAlbums(sendablePhotoAccessHelper.AlbumType.SMART,
+        sendablePhotoAccessHelper.AlbumSubtype.PORTRAIT,
+        fetchOptions);
+    let album = await fetchResult?.getFirstObject();
+    let faceId = await album?.getFaceId();
+    console.info(`getFaceId successfully, faceId: ${faceId}`);
+    fetchResult.close();
+  } catch (err) {
+    console.error(`getFaceId failed with err: ${err.code}, ${err.message}`);
+  }
+}
 ```

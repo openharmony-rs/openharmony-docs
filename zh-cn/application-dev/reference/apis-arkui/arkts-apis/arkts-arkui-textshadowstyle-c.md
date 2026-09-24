@@ -1,5 +1,9 @@
 # TextShadowStyle
 
+```TypeScript
+declare class TextShadowStyle
+```
+
 文本阴影对象说明。
 
 **起始版本：** 12
@@ -28,7 +32,7 @@ ShadowOptions对象中不支持fill字段。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md)&gt; | 是 | 文本阴影设置项。 |
+| value | [ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | 文本阴影设置项。 |
 
 ## textShadow
 
@@ -38,7 +42,7 @@ readonly textShadow: Array<ShadowOptions>
 
 获取属性字符串的文本阴影。
 
-**类型：** Array&lt;[ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md)&gt;
+**类型：** Array&lt;[ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md)&gt;
 
 **起始版本：** 12
 

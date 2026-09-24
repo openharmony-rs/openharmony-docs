@@ -1,5 +1,9 @@
 # GyroscopeResponse
 
+```TypeScript
+export interface GyroscopeResponse
+```
+
 陀螺仪传感器数据变化后的回调函数的响应对象，包含设备在x、y、z三轴方向的旋转角速度数据。
 
 **起始版本：** 6

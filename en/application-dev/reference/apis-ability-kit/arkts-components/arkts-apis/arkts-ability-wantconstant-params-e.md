@@ -1,5 +1,9 @@
 # Params
 
+```TypeScript
+export enum Params
+```
+
 Defines **Params** (specifying the action that can be performed) in the Want.
 
 **Since:** 9

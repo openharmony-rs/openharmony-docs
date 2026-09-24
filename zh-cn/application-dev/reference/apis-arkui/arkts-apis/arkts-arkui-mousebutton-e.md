@@ -1,5 +1,9 @@
 # MouseButton
 
+```TypeScript
+declare enum MouseButton
+```
+
 定义鼠标按键的类型。
 
 **起始版本：** 8

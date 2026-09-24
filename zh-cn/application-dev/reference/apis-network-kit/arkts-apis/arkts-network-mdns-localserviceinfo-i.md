@@ -1,5 +1,9 @@
 # LocalServiceInfo
 
+```TypeScript
+export interface LocalServiceInfo
+```
+
 MDNS服务信息。
 
 **起始版本：** 10

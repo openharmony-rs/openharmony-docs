@@ -1,5 +1,9 @@
 # ConsumptionType (System API)
 
+```TypeScript
+export enum ConsumptionType
+```
+
 Enumerates power consumption types.
 
 **Since:** 8

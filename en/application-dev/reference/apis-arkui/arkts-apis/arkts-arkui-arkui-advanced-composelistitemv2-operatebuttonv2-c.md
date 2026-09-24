@@ -1,5 +1,9 @@
 # OperateButtonV2
 
+```TypeScript
+export declare class OperateButtonV2
+```
+
 Declare type OperateButtonV2
 
 **Since:** 26.0.0

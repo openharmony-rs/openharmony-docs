@@ -1,5 +1,9 @@
 # WeakSetConstructor
 
+```TypeScript
+interface WeakSetConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

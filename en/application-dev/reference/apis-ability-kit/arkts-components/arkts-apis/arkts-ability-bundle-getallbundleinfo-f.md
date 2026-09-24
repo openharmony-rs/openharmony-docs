@@ -34,35 +34,6 @@ Obtains the information of all bundles of the specified user. This API uses an a
 
 ```TypeScript
 import bundle from '@ohos.bundle';
-import { BusinessError } from '@ohos.base';
-
-let bundleFlag: number = 0;
-let userId: number = 100;
-
-bundle.getAllBundleInfo(bundleFlag, userId)
-  .then((data) => {
-    console.info('Operation successful. Data: ' + JSON.stringify(data));
-  }).catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  })
-```
-
-```TypeScript
-import bundle from '@ohos.bundle';
-
-let bundleFlag: number = 0;
-
-bundle.getAllBundleInfo(bundleFlag, (err, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful. Data:' + JSON.stringify(data));
-})
-```
-
-```TypeScript
-import bundle from '@ohos.bundle';
 
 let bundleFlag: number = 0;
 let userId: number = 100;
@@ -76,6 +47,8 @@ bundle.getAllBundleInfo(bundleFlag, userId, (err, data) => {
 })
 ```
 
+
+<a id="getallbundleinfo-1"></a>
 
 ## getAllBundleInfo
 
@@ -102,8 +75,22 @@ Obtains the information of all bundles of the current user. This API uses an asy
 
 **Examples**
 
-See [getAllBundleInfo](#getallbundleinfo)
+```TypeScript
+import bundle from '@ohos.bundle';
 
+let bundleFlag: number = 0;
+
+bundle.getAllBundleInfo(bundleFlag, (err, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. Data:' + JSON.stringify(data));
+})
+```
+
+
+<a id="getallbundleinfo-2"></a>
 
 ## getAllBundleInfo
 
@@ -136,4 +123,17 @@ Obtains the information of all bundles of the specified user. This API uses a pr
 
 **Examples**
 
-See [getAllBundleInfo](#getallbundleinfo)
+```TypeScript
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let bundleFlag: number = 0;
+let userId: number = 100;
+
+bundle.getAllBundleInfo(bundleFlag, userId)
+  .then((data) => {
+    console.info('Operation successful. Data: ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  })
+```

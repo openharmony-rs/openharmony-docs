@@ -1,5 +1,9 @@
 # FloatingBallController
 
+```TypeScript
+interface FloatingBallController
+```
+
 Implements a floating ball controller instance, which is used to start, update, and stop floating balls, and register callbacks.
 
 Before calling any of the following APIs, you must use [floatingBall.create()](arkts-arkui-floatingball-create-f.md) to create a floating ball controller instance.
@@ -83,6 +87,21 @@ Unregisters the listener for lifecycle state changes of the floating ball.
 | [1300023](../errorcode-window.md#1300023-internal-error-of-the-floating-ball) | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
 | [1300024](../errorcode-window.md#1300024-abnormal-floating-ball-window-state) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
+**Examples**
+
+```TypeScript
+// Define the callback function for status changes (the callback function must be the same as that registered).
+let onStateChange = (state: floatingBall.FloatingBallState) => {
+  console.info('Floating ball stateChange: ' + state);
+};
+try {
+  // Unregister the callback for listening to floating ball state changes.
+  floatingBallController.off('stateChange', onStateChange);
+} catch (e) {
+  console.error(`Failed to off stateChange floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
+
 ## off('click')
 
 ```TypeScript
@@ -109,6 +128,21 @@ Unregisters the listener for click events of the floating ball.
 | [1300019](../errorcode-window.md#1300019-floating-ball-parameter-verification-error) | Wrong parameters for operating the floating ball. Possible causes:<br>1.Mandatory parameters are left unspecified. <br>2.Callback is null or not callable. |
 | [1300023](../errorcode-window.md#1300023-internal-error-of-the-floating-ball) | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
 | [1300024](../errorcode-window.md#1300024-abnormal-floating-ball-window-state) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
+
+**Examples**
+
+```TypeScript
+// Define the callback function for the click event (the callback function must be the same as that registered).
+let onClick = () => {
+  console.info('Floating ball onClick');
+};
+try {
+  // Unregister the callback for listening to click events of the floating ball.
+  floatingBallController.off('click', onClick);
+} catch (e) {
+  console.error(`Failed to off click floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
 
 ## offDestroy
 
@@ -187,6 +221,21 @@ Registers a listener for lifecycle state changes of the floating ball. To preven
 | [1300023](../errorcode-window.md#1300023-internal-error-of-the-floating-ball) | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
 | [1300024](../errorcode-window.md#1300024-abnormal-floating-ball-window-state) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
+**Examples**
+
+```TypeScript
+// Define the callback function for status changes.
+let onStateChange = (state: floatingBall.FloatingBallState) => {
+  console.info('Floating ball stateChange: ' + state);
+};
+try {
+  // Register the callback for listening to floating ball state changes.
+  floatingBallController.on('stateChange', onStateChange);
+} catch (e) {
+  console.error(`Failed to on stateChange floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
+
 ## on('click')
 
 ```TypeScript
@@ -214,6 +263,21 @@ Registers a listener for click events of the floating ball. To prevent memory le
 | [1300022](../errorcode-window.md#1300022-repeated-floating-ball-operation) | Repeated floating ball operation. |
 | [1300023](../errorcode-window.md#1300023-internal-error-of-the-floating-ball) | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
 | [1300024](../errorcode-window.md#1300024-abnormal-floating-ball-window-state) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
+
+**Examples**
+
+```TypeScript
+// Define the click event callback function.
+let onClick = () => {
+  console.info('Floating ball onClick');
+};
+try {
+  // Register the callback for listening to click events of the floating ball.
+  floatingBallController.on('click', onClick);
+} catch (e) {
+  console.error(`Failed to on click floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
 
 ## onDestroy
 

@@ -1,5 +1,9 @@
 # StyledStringController
 
+```TypeScript
+declare interface StyledStringController
+```
+
 定义StyledString控制器。
 
 **起始版本：** 12

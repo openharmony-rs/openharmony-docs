@@ -1,5 +1,9 @@
 # KeyOptions (System API)
 
+```TypeScript
+interface KeyOptions
+```
+
 Represents combination key options.
 
 **Since:** 8

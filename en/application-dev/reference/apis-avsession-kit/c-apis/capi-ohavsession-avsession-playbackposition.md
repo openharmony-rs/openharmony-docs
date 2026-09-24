@@ -8,6 +8,8 @@ typedef struct AVSession_PlaybackPosition {...} AVSession_PlaybackPosition
 
 Defines the playback position.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Related module**: [OHAVSession](capi-ohavsession.md)

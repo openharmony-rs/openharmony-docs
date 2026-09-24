@@ -6,7 +6,9 @@ typedef struct OH_ArkUI_LineSpacingStyle OH_ArkUI_LineSpacingStyle
 
 ## Overview
 
-Defines a line spacing style.<br> [OH_ArkUI_LineSpacingStyle_Create](capi-styled-string-h.md#oh_arkui_linespacingstyle_create) can be used to create a line spacing style object.<br> [OH_ArkUI_LineSpacingStyle_Destroy](capi-styled-string-h.md#oh_arkui_linespacingstyle_destroy) can be used to destroy the line spacing style object.<br> After the object is created, [OH_ArkUI_LineSpacingStyle_SetLineSpacing](capi-styled-string-h.md#oh_arkui_linespacingstyle_setlinespacing) can be used to set a line spacing value.<br> After the object is created, [OH_ArkUI_LineSpacingStyle_SetOnlyBetweenLines](capi-styled-string-h.md#oh_arkui_linespacingstyle_setonlybetweenlines) can be used to set whether the line spacing takes effect only between lines.
+Defines a line spacing style.<br> {@link OH_ArkUI_LineSpacingStyle_Create} can be used to create a<br>line spacing style object.<br> {@link OH_ArkUI_LineSpacingStyle_Destroy} can be used to destroy the line<br>spacing style object.<br> After the object is created, {@link OH_ArkUI_LineSpacingStyle_SetLineSpacing} can<br>be used to set a line spacing value.<br> After the object is created,<br>{@link OH_ArkUI_LineSpacingStyle_SetOnlyBetweenLines} can be used to set whether the line spacing takes effect only between lines.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 

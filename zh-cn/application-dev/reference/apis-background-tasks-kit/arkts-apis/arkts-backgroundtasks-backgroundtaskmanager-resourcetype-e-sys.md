@@ -1,5 +1,9 @@
 # ResourceType（系统接口）
 
+```TypeScript
+export enum ResourceType
+```
+
 能效资源类型。
 
 **起始版本：** 9

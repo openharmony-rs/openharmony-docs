@@ -57,6 +57,8 @@ typedef void (*OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc)(OH_Ability
 
 ModularObjectExtensionAbility创建时触发的回调函数，用于初始化。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -76,6 +78,8 @@ typedef void (*OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc)(OH_Abilit
 
 ModularObjectExtensionAbility销毁前触发的回调函数。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -93,6 +97,8 @@ typedef OHIPCRemoteStub* (*OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFun
 **描述：**
 
 ModularObjectExtensionAbility被连接时触发的回调函数。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -113,6 +119,8 @@ typedef void (*OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc)(OH_Abi
 
 当前ModularObjectExtensionAbility的所有连接都断开时触发的回调函数。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -131,6 +139,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnCrea
 
 向[OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md)注册 [OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_oncreatefunc)回调函数。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -144,7 +154,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnCrea
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} 接口调用成功。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} 参数校验失败。 |
+| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 参数校验失败。 |
 
 ### OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDestroyFunc()
 
@@ -155,6 +165,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDest
 **描述：**
 
 向[OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md)注册 [OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondestroyfunc)回调函数。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -169,7 +181,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDest
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} 接口调用成功。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} 参数校验失败。 |
+| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 参数校验失败。 |
 
 ### OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnConnectFunc()
 
@@ -180,6 +192,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnConn
 **描述：**
 
 向[OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md)注册 [OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_onconnectfunc)回调函数。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -194,7 +208,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnConn
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} 接口调用成功。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} 参数校验失败。 |
+| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 参数校验失败。 |
 
 ### OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDisconnectFunc()
 
@@ -205,6 +219,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDisc
 **描述：**
 
 向[OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md)注册 [OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondisconnectfunc)回调函数。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -219,7 +235,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDisc
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} 接口调用成功。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} 参数校验失败。 |
+| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 参数校验失败。 |
 
 ### OH_AbilityRuntime_ModObjExtensionAbility_GetContextFromInstance()
 
@@ -231,6 +247,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_GetContextFrom
 
 从ModularObjectExtensionAbility实例中获取ExtensionAbility上下文。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -238,13 +256,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_GetContextFrom
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | 指向[OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md)实例的指针。 |
-| OH_AbilityRuntime_ModObjExtensionContextHandle* context | 指向{@link OH_AbilityRuntime_ModObjExtensionContextHandle}的指针，用于接收ExtensionAbility上下文。 |
+| OH_AbilityRuntime_ModObjExtensionContextHandle* context | 指向[OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md)的指针，用于接收ExtensionAbility上下文。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} 接口调用成功。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} 参数校验失败。 |
+| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 参数校验失败。 |
 
 ### OH_AbilityRuntime_ModObjExtensionAbility_GetInstanceFromBase()
 
@@ -256,19 +274,21 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_GetInstanceFro
 
 从基础ExtensionAbility实例中获取ModularObjectExtensionAbility实例。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| AbilityRuntime_ExtensionInstanceHandle baseExtensionInstance | 指向{@link AbilityRuntime_ExtensionInstance}的指针。 |
+| AbilityRuntime_ExtensionInstanceHandle baseExtensionInstance | 指向[AbilityRuntime_ExtensionInstance](capi-abilityruntime-abilityruntime-extensioninstance.md)的指针。 |
 | OH_AbilityRuntime_ModObjExtensionInstanceHandle* modObjExtensionInstance | 指向[OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md)的指针， 用于接收ModularObjectExtensionAbility实例，作为输出参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} 接口调用成功。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} 参数校验失败。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE}      ExtensionAbility实例不是ModularObjectExtensionAbility类型。 |
+| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 参数校验失败。      <br>[ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE](capi-ability-runtime-common-h.md#abilityruntime_errorcode)      ExtensionAbility实例不是ModularObjectExtensionAbility类型。 |
 
 

@@ -1,5 +1,9 @@
 # ZoomQuery
 
+```TypeScript
+interface ZoomQuery
+```
+
 提供了与设备的缩放相关的查询功能，包括获取支持的缩放比例范围。
 
 > **说明：** 
@@ -40,5 +44,5 @@ Checks whether zoom center point is supported.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |

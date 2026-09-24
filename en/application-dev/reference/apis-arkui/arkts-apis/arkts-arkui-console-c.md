@@ -1,5 +1,9 @@
 # console
 
+```TypeScript
+export declare class console
+```
+
 Provide console
 
 **Since:** 3

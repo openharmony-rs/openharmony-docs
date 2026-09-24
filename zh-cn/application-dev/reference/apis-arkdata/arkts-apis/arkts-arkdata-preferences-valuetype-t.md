@@ -1,7 +1,7 @@
 # ValueType
 
 ```TypeScript
-type ValueType = number | string | boolean | Array<number> | Array<string> | Array<boolean> | Uint8Array | object | bigint
+type ValueType = number | string | boolean | Array<number> | Array<string> | Array<boolean>  | Uint8Array | object | bigint
 ```
 
 表示支持的值类型。

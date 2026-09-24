@@ -63,35 +63,8 @@ try {
 }
 ```
 
-```TypeScript
-import { Want } from '@kit.AbilityKit';
-import { bluetoothManager } from '@kit.MDMKit';
 
-// Create an EnterpriseAdminExtensionAbility component.
-let wantTemp: Want = {
-  // Replace it as required.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-// Define the user ID.
-let accountId: number = 100;
-// Define the Bluetooth protocol array.
-let protocols: Array<bluetoothManager.Protocol> = [
-  bluetoothManager.Protocol.GATT,
-  bluetoothManager.Protocol.SPP,
-  bluetoothManager.Protocol.OPP
-];
-
-try {
-  // Add Bluetooth protocols to the blocklist and specify the transfer policy as disabling sending and receiving.
-  bluetoothManager.addDisallowedBluetoothProtocols(wantTemp, accountId, protocols, bluetoothManager.TransferPolicy.RECEIVE_SEND);
-  console.info('Succeeded in adding disallowed bluetooth protocols.');
-} catch (err) {
-  console.error(`Failed to add disallowed bluetooth protocols. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="adddisallowedbluetoothprotocols-1"></a>
 
 ## addDisallowedBluetoothProtocols
 
@@ -138,4 +111,31 @@ Adds disallowed Bluetooth protocols. After the setting, specified users cannot u
 
 **Examples**
 
-See [addDisallowedBluetoothProtocols](#adddisallowedbluetoothprotocols)
+```TypeScript
+import { Want } from '@kit.AbilityKit';
+import { bluetoothManager } from '@kit.MDMKit';
+
+// Create an EnterpriseAdminExtensionAbility component.
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+// Define the user ID.
+let accountId: number = 100;
+// Define the Bluetooth protocol array.
+let protocols: Array<bluetoothManager.Protocol> = [
+  bluetoothManager.Protocol.GATT,
+  bluetoothManager.Protocol.SPP,
+  bluetoothManager.Protocol.OPP
+];
+
+try {
+  // Add Bluetooth protocols to the blocklist and specify the transfer policy as disabling sending and receiving.
+  bluetoothManager.addDisallowedBluetoothProtocols(wantTemp, accountId, protocols, bluetoothManager.TransferPolicy.RECEIVE_SEND);
+  console.info('Succeeded in adding disallowed bluetooth protocols.');
+} catch (err) {
+  console.error(`Failed to add disallowed bluetooth protocols. Code is ${err.code}, message is ${err.message}`);
+}
+```

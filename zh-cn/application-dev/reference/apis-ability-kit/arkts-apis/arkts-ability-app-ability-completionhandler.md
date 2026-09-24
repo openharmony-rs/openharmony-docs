@@ -1,4 +1,4 @@
-# @ohos.app.ability.CompletionHandler
+# @ohos.app.ability.CompletionHandler(拉起应用结果的操作类)
 
 ## 导入模块
 

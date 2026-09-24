@@ -1,5 +1,9 @@
 # TabSegmentButtonConstructionOptions
 
+```TypeScript
+interface TabSegmentButtonConstructionOptions extends CommonSegmentButtonOptions
+```
+
 构建页签类的SegmentButtonOptions对象。
 
 继承[CommonSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-commonsegmentbuttonoptions-i.md)。

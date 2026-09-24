@@ -1,5 +1,9 @@
 # ListScrollToOptions
 
+```TypeScript
+export interface ListScrollToOptions
+```
+
 List scroll to options @interface ListScrollToOptions
 
 **Since:** 4

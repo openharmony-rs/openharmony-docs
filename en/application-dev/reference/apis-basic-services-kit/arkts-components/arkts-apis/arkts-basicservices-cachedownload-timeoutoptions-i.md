@@ -1,5 +1,9 @@
 # TimeoutOptions
 
+```TypeScript
+interface TimeoutOptions
+```
+
 Task timeout configuration.
 
 **Since:** 26.0.0

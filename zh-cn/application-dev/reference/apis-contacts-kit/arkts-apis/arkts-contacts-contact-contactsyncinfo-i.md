@@ -1,5 +1,9 @@
 # ContactSyncInfo
 
+```TypeScript
+interface ContactSyncInfo
+```
+
 调用应用程序相关的联系人同步的信息。
 
 **起始版本：** 26.0.0

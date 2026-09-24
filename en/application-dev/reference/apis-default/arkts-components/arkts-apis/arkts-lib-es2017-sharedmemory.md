@@ -20,5 +20,5 @@
 
 | Name | Description |
 | --- | --- |
-| [Atomics](arkts-libes2017sharedmemory-p.md) |  |
-| [SharedArrayBuffer](arkts-libes2017sharedmemory-p.md) |  |
+| [Atomics](arkts-lib-es2017-sharedmemory-p.md) |  |
+| [SharedArrayBuffer](arkts-lib-es2017-sharedmemory-p.md) |  |

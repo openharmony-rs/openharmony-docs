@@ -1,5 +1,9 @@
 # PhotoType
 
+```TypeScript
+const enum PhotoType
+```
+
 Enumerates media file types.
 
 **Since:** 12

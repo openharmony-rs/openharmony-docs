@@ -1,5 +1,9 @@
 # Parcelable
 
+```TypeScript
+interface Parcelable
+```
+
 在进程间通信（IPC）期间，将类的对象写入MessageSequence并从MessageSequence中恢复它们。
 
 **起始版本：** 9

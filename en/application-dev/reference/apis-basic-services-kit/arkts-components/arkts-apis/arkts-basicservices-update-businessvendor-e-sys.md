@@ -1,5 +1,9 @@
 # BusinessVendor (System API)
 
+```TypeScript
+export enum BusinessVendor
+```
+
 Represents a device vendor.
 
 **Since:** 9

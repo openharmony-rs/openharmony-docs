@@ -4,6 +4,8 @@
 
 提供image接口的访问。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 8
 
 ## 文件汇总

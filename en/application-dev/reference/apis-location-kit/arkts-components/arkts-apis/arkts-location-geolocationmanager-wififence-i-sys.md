@@ -1,5 +1,9 @@
 # WifiFence (System API)
 
+```TypeScript
+export interface WifiFence
+```
+
 Indicates Wi-Fi fence information.
 
 **Since:** 26.0.0

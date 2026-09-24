@@ -1,5 +1,9 @@
 # Point
 
+```TypeScript
+export interface Point
+```
+
 Defines the data structure of a coordinate point.
 
 **Since:** 12

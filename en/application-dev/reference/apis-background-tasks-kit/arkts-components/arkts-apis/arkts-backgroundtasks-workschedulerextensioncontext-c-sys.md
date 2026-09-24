@@ -1,5 +1,9 @@
 # WorkSchedulerExtensionContext
 
+```TypeScript
+declare class WorkSchedulerExtensionContext extends ExtensionContext
+```
+
 The **WorkSchedulerExtensionContext** module, inherited from [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md), provides a context environment for the **WorkSchedulerExtensionAbility**.
 
 This module provides APIs for accessing the resources of a **WorkSchedulerExtensionAbility**.

@@ -8,6 +8,8 @@ typedef struct OH_Camera_ZoomPointInfo {...} OH_Camera_ZoomPointInfo
 
 Describes the zoom point info.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 26.0.0
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

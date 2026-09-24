@@ -12,7 +12,7 @@ import { application } from '@kit.AbilityKit';
 export function createModuleContext(context: Context, moduleName: string): Promise<Context>
 ```
 
-创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md)资源继承自入参上下文，便于开发者获取跨HAP/HSP包资源。使用Promise异步回调。
+创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../../quick-start/resource-categories-and-access.md#访问跨HAP/HSP包资源)。使用Promise异步回调。
 
 > **说明：** 
 > 
@@ -43,7 +43,7 @@ export function createModuleContext(context: Context, moduleName: string): Promi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -67,27 +67,6 @@ export default class EntryAbility extends UIAbility {
       let code: number = (error as BusinessError).code;
       let message: string = (error as BusinessError).message;
       console.error(`createModuleContext failed, error.code: ${code}, error.message: ${message}`);
-    }
-  }
-}
-```
-
-```TypeScript
-import { UIAbility, application, common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate() {
-    let moduleContext: common.Context;
-    try {
-      application.createModuleContext(this.context, 'bundlename', 'entry').then((data: common.Context)=>{
-        moduleContext = data;
-        console.info('createModuleContext success!');
-      }).catch((error : BusinessError)=>{
-        console.error(`createModuleContext failed, error.code: ${error.code}, error.message: ${error.message}`);
-      })
-    } catch (error) {
-      console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
     }
   }
 }

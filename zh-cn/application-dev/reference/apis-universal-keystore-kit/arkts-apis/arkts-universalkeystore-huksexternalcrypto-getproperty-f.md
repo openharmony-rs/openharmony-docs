@@ -31,7 +31,7 @@ propertyId表示查询属性的ID信息，当前仅支持GMT 0016-2023中定义�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceId | string | 是 | 资源ID，可通过[导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md)获取，该接口的返回结果中附带resourceId。 |
+| resourceId | string | 是 | 资源ID，可通过[导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog-1)获取，该接口的返回结果中附带resourceId。 |
 | propertyId | string | 是 | 查找操作的属性名称，是GMT 0016-2023中定义的SKF接口名，应用开发者需要针对接口名进行适配。 |
 | params | Array&lt;[HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)&gt; | 否 | 需要传递给[Extension Ability](arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md)的输入参数。非系统应用传入[HUKS_EXT_CRYPTO_TAG_UID](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md)是非法参数。 |
 
@@ -45,7 +45,7 @@ propertyId表示查询属性的ID信息，当前仅支持GMT 0016-2023中定义�
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | API is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | API is not supported. |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed. |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | If the UKey driver operation failed. Possible causes: 1. Error reported when the provider accesses the SKF interface of UKey. |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | If the cached resource ID is not found. |

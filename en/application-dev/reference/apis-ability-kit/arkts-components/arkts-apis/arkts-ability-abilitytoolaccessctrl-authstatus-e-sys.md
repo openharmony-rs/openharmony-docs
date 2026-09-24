@@ -1,5 +1,9 @@
 # AuthStatus (System API)
 
+```TypeScript
+enum AuthStatus
+```
+
 Authorization status.
 
 **Since:** 26.0.0
@@ -18,6 +22,8 @@ Requires authorization.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -31,6 +37,8 @@ FORBIDDEN = 1
 Forbidden.
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -46,6 +54,8 @@ Authorized.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -60,6 +70,8 @@ Restricted by policy, authorization not allowed.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -73,6 +85,8 @@ REMOTE_RESTRICTED = 4
 Remote authorization restricted by policy.
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 

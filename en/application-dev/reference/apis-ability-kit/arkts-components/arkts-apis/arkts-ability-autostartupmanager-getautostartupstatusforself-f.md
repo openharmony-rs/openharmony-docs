@@ -31,7 +31,7 @@ Checks whether the current application is enabled for automatic startup at boot 
 | Error Code ID | Error Message |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: 1. Connect to system service failed; 2.System service failed to communicate with dependency module. |
+| [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
 **Examples**
 

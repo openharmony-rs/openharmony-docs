@@ -1,5 +1,9 @@
 # TripodDetectionResult (System API)
 
+```TypeScript
+interface TripodDetectionResult extends SceneFeatureDetectionResult
+```
+
 TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md) Describes the tripod detection result.
 
 **Inheritance/Implementation:** TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md)

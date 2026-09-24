@@ -1,5 +1,9 @@
 # ColorMode
 
+```TypeScript
+enum ColorMode
+```
+
 Color mode.
 
 **Since:** 9

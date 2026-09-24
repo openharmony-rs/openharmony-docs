@@ -1,5 +1,9 @@
 # EditableLeftIconType
 
+```TypeScript
+export declare enum EditableLeftIconType
+```
+
 **起始版本：** 10
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

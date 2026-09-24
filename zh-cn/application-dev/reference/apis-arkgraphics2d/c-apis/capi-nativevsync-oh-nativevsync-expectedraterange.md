@@ -8,6 +8,8 @@ typedef struct OH_NativeVSync_ExpectedRateRange {...} OH_NativeVSync_ExpectedRat
 
 期望帧率范围结构体。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeVsync
+
 **起始版本：** 20
 
 **相关模块：** [NativeVsync](capi-nativevsync.md)

@@ -1,5 +1,9 @@
 # BusType
 
+```TypeScript
+export enum BusType
+```
+
 Enumerates the device bus types.
 
 **Since:** 10

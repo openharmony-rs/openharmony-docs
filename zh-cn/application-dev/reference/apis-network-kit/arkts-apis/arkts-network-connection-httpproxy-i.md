@@ -1,5 +1,9 @@
 # HttpProxy
 
+```TypeScript
+export interface HttpProxy
+```
+
 网络代理配置信息
 
 **起始版本：** 10

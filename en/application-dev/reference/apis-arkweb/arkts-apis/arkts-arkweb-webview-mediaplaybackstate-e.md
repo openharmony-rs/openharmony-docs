@@ -1,5 +1,9 @@
 # MediaPlaybackState
 
+```TypeScript
+enum MediaPlaybackState
+```
+
 Enumerates the playback control states of the current web page.
 
 **Since:** 12

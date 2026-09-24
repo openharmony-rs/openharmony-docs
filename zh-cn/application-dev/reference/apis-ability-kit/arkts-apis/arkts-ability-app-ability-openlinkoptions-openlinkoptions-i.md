@@ -1,5 +1,9 @@
 # OpenLinkOptions
 
+```TypeScript
+export default interface OpenLinkOptions
+```
+
 OpenLinkOptions可以作为[openLink()](arkts-ability-uiabilitycontext-c.md#openlink)的入参，用于标识是否仅打开AppLinking和传递键值对可选参数。
 
 **起始版本：** 12
@@ -18,7 +22,7 @@ import { OpenLinkOptions } from '@kit.AbilityKit';
 appLinkingOnly?: boolean
 ```
 
-表示是否必须以&lt;!--RP1--&gt;[AppLinking](../../../application-models/app-linking-startup.md)&lt;!--RP1End--&gt;的方式启动UIAbility。
+表示是否必须以<!--RP1-->[AppLinking](../../../application-models/app-linking-startup.md)<!--RP1End-->的方式启动UIAbility。
 
 - 取值为true时，如果不存在与AppLinking相匹配的UIAbility，直接返回。  
 - 取值为false时，如果不存在与AppLinking相匹配的UIAbility，AppLinking会退化为[DeepLinking](../../../application-models/deep-linking-startup.md)。默认值为false。
@@ -97,3 +101,87 @@ parameters?: Record<string, Object>
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**示例**
+
+```TypeScript
+import { common, OpenLinkOptions, wantConstant, CompletionHandler, bundleManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const DOMAIN = 0xeeee;
+const TAG: string = '[openLinkDemo]';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'I am caller';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+        Button('start browser', { type: ButtonType.Capsule, stateEffect: true })
+          .width('87%')
+          .height('5%')
+          .margin({ bottom: '12vp' })
+          .onClick(() => {
+            // 获取UIAbilityContext
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let link: string = 'https://www.example.com';
+            let completionHandler: CompletionHandler = {
+              onRequestSuccess: (elementName: bundleManager.ElementName, message: string): void => {
+                console.info(`${elementName.bundleName}-${elementName.moduleName}-${elementName.abilityName} start succeeded: ${message}`);
+              },
+              onRequestFailure: (elementName: bundleManager.ElementName, message: string): void => {
+                console.error(`${elementName.bundleName}-${elementName.moduleName}-${elementName.abilityName} start failed: ${message}`);
+              }
+            };
+            let openLinkOptions: OpenLinkOptions = {
+              appLinkingOnly: true,
+              // hideFailureTipDialog字段需要在appLinkingOnly字段是false时才生效
+              // hideFailureTipDialog: true,
+              parameters: {
+                [wantConstant.Params.CONTENT_TITLE_KEY]: 'contentTitle',
+                keyString: 'str',
+                keyNumber: 200,
+                keyBool: false,
+                keyObj: {
+                  keyObjKey: 'objValue',
+                }
+              },
+              completionHandler: completionHandler
+            };
+            try {
+              // 用openLink接口拉起目标应用。
+              context.openLink(
+                link,
+                openLinkOptions,
+                // 结果回调：err为错误信息，result包含返回码resultCode和want参数。
+                (err, result) => {
+                  if (err) {
+                    hilog.error(DOMAIN, TAG, `openLink callback error.code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`); 
+                    return;
+                  }
+                  hilog.info(DOMAIN, TAG, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
+                  hilog.info(DOMAIN, TAG, `openLink callback result data: ${JSON.stringify(result.want)}`);
+                }
+              // 调用成功打印日志，调用失败捕获错误。
+              ).then(() => {
+                hilog.info(DOMAIN, TAG, `open link success.`);
+              }).catch ((err: BusinessError) => {
+                hilog.error(DOMAIN, TAG, `open link failed, errCode: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
+              });
+            } catch (e) {
+              hilog.error(DOMAIN, TAG, `open link failed, errCode: ${JSON.stringify(e.code)}, message: ${JSON.stringify(e.message)}`);
+            }
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```

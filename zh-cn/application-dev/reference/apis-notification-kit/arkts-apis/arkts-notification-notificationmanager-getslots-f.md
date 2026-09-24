@@ -38,7 +38,7 @@ function getSlots(callback: AsyncCallback<Array<NotificationSlot>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -59,16 +59,8 @@ let getSlotsCallback = (err: BusinessError, data: Array<notificationManager.Noti
 notificationManager.getSlots(getSlotsCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.getSlots().then((data: Array<notificationManager.NotificationSlot>) => {
-  console.info(`Succeeded in getting slots, data is ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get slots. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getslots-1"></a>
 
 ## getSlots
 
@@ -88,7 +80,7 @@ function getSlots(): Promise<Array<NotificationSlot>>
 
 [addSlot](arkts-notification-notificationmanager-addslot-f.md) 创建通知频道。
 
-[removeSlot](arkts-notification-notificationmanager-removeslot-f.md) 删除指定类型的通知渠道。
+[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot-1) 删除指定类型的通知渠道。
 
 [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md) 删除所有通知渠道。
 
@@ -108,4 +100,12 @@ function getSlots(): Promise<Array<NotificationSlot>>
 
 **示例**
 
-参见 getSlots
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getSlots().then((data: Array<notificationManager.NotificationSlot>) => {
+  console.info(`Succeeded in getting slots, data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get slots. Code is ${err.code}, message is ${err.message}`);
+});
+```

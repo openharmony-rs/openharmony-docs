@@ -33,39 +33,15 @@ function isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback<boo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let isNotificationEnabledCallback = (err: BusinessError, data: boolean): void => {
-  if (err) {
-    console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info(`isNotificationEnabled success, data is ${JSON.stringify(data)}`);
-  }
-}
-
-notificationManager.isNotificationEnabled(isNotificationEnabledCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-notificationManager.isNotificationEnabled().then((data: boolean) => {
-  console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -85,49 +61,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.isNotificationEnabled(bundle, isNotificationEnabledCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundle: notificationManager.BundleOption = {
-    bundle: 'bundleName1',
-};
-notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
-    console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let isNotificationEnabledCallback = (err: BusinessError, data: boolean): void => {
-    if (err) {
-        console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-        console.info(`isNotificationEnabled success, data is ${JSON.stringify(data)}`);
-    }
-}
-
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 1;
-
-notificationManager.isNotificationEnabled(userId, isNotificationEnabledCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 1;
-
-notificationManager.isNotificationEnabled(userId).then((data: boolean) => {
-    console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="isnotificationenabled-1"></a>
 
 ## isNotificationEnabled
 
@@ -161,9 +96,9 @@ function isNotificationEnabled(bundle: BundleOption): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -171,8 +106,21 @@ function isNotificationEnabled(bundle: BundleOption): Promise<boolean>
 
 **示例**
 
-参见 [isNotificationEnabled](#isnotificationenabled)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let bundle: notificationManager.BundleOption = {
+    bundle: 'bundleName1',
+};
+notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
+    console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+
+<a id="isnotificationenabled-4"></a>
 
 ## isNotificationEnabled
 
@@ -201,9 +149,9 @@ function isNotificationEnabled(userId: number, callback: AsyncCallback<boolean>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -211,8 +159,25 @@ function isNotificationEnabled(userId: number, callback: AsyncCallback<boolean>)
 
 **示例**
 
-参见 [isNotificationEnabled](#isnotificationenabled)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let isNotificationEnabledCallback = (err: BusinessError, data: boolean): void => {
+    if (err) {
+        console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`isNotificationEnabled success, data is ${JSON.stringify(data)}`);
+    }
+}
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: number = 1;
+
+notificationManager.isNotificationEnabled(userId, isNotificationEnabledCallback);
+```
+
+
+<a id="isnotificationenabled-5"></a>
 
 ## isNotificationEnabled
 
@@ -246,9 +211,9 @@ function isNotificationEnabled(userId: number): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -256,4 +221,15 @@ function isNotificationEnabled(userId: number): Promise<boolean>
 
 **示例**
 
-参见 [isNotificationEnabled](#isnotificationenabled)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: number = 1;
+
+notificationManager.isNotificationEnabled(userId).then((data: boolean) => {
+    console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```

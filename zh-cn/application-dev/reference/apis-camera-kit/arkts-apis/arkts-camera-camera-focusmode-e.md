@@ -1,5 +1,9 @@
 # FocusMode
 
+```TypeScript
+enum FocusMode
+```
+
 枚举，焦距模式。
 
 **起始版本：** 10

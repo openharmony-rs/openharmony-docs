@@ -1,5 +1,9 @@
 # EfficiencyResourcesInfo (System API)
 
+```TypeScript
+interface EfficiencyResourcesInfo
+```
+
 Defines the efficiency resource information.
 
 **Since:** 20

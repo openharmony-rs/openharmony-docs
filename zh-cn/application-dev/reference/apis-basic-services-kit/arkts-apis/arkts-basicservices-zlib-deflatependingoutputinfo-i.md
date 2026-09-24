@@ -1,5 +1,9 @@
 # DeflatePendingOutputInfo
 
+```TypeScript
+interface DeflatePendingOutputInfo
+```
+
 压缩等待返回信息。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # DeviceType（系统接口）
 
+```TypeScript
+export enum DeviceType
+```
+
 表示设备类型。
 
 **起始版本：** 26.0.0

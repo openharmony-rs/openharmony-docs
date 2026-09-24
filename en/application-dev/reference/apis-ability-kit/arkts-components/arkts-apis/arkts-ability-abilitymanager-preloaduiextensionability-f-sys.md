@@ -12,7 +12,7 @@ import { abilityManager } from '@kit.AbilityKit';
 function preloadUIExtensionAbility(want: Want): Promise<number>
 ```
 
-Preloads a [UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md) instance and returns the instance ID. This API uses a promise to return the result.
+Preloads a [UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md) instance and returns the instance ID. This API uses a promise to return the result. Use this API when the application needs to preload a UIExtensionAbility to improve startup performance.
 
 **Since:** 23
 

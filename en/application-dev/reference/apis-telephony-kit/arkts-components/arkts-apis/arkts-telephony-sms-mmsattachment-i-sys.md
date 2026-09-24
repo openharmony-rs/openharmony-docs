@@ -1,5 +1,9 @@
 # MmsAttachment (System API)
 
+```TypeScript
+export interface MmsAttachment
+```
+
 Defines the attachment of an MMS message.
 
 **Since:** 8

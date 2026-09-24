@@ -1,5 +1,9 @@
 # IPCSkeleton
 
+```TypeScript
+class IPCSkeleton
+```
+
 用于获取IPC上下文信息，包括获取UID和PID、获取本端和对端设备ID、检查接口调用是否在同一设备上。
 
 **起始版本：** 7
@@ -34,7 +38,7 @@ static flushCmdBuffer(object: IRemoteObject): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 
 **示例**
 
@@ -56,61 +60,6 @@ class TestRemoteObject extends rpc.RemoteObject {
 try {
   let remoteObject = new TestRemoteObject('aaa');
   rpc.IPCSkeleton.flushCmdBuffer(remoteObject);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorMessage ' + e.message);
-}
-```
-
-## flushCommands
-
-```TypeScript
-static flushCommands(object: IRemoteObject): number
-```
-
-静态方法，将所有挂起的命令从指定的RemoteProxy刷新到相应的RemoteObject。建议在任何时间执行敏感操作之前调用此方法。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [flushCmdBuffer](#flushcmdbuffer)(object: IRemoteObject)
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| object | [IRemoteObject](arkts-ipc-rpc-iremoteobject-c.md) | 是 | 指定的RemoteProxy。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| number | 如果操作成功，返回0；如果输入对象为空或RemoteObject，或者操作失败，返回错误代码。 |
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): boolean | Promise<boolean> {
-    // 根据业务实际逻辑，进行相应处理
-    return true;
-  }
-}
-try {
-  let remoteObject = new TestRemoteObject('aaa');
-  let ret = rpc.IPCSkeleton.flushCommands(remoteObject);
-  hilog.info(0x0000, 'testTag', 'RpcServer: flushCommands result: ' + ret);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorCode ' + e.code);
@@ -438,7 +387,7 @@ static restoreCallingIdentity(identity: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The string length is greater than or equal to 40960; 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The string length is greater than or equal to 40960; 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 **示例**
 
@@ -458,6 +407,61 @@ class Stub extends rpc.RemoteObject {
     }
     return true;
   }
+}
+```
+
+## flushCommands
+
+```TypeScript
+static flushCommands(object: IRemoteObject): number
+```
+
+静态方法，将所有挂起的命令从指定的RemoteProxy刷新到相应的RemoteObject。建议在任何时间执行敏感操作之前调用此方法。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [flushCmdBuffer](#flushcmdbuffer)(object: IRemoteObject)
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| object | [IRemoteObject](arkts-ipc-rpc-iremoteobject-c.md) | 是 | 指定的RemoteProxy。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 如果操作成功，返回0；如果输入对象为空或RemoteObject，或者操作失败，返回错误代码。 |
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): boolean | Promise<boolean> {
+    // 根据业务实际逻辑，进行相应处理
+    return true;
+  }
+}
+try {
+  let remoteObject = new TestRemoteObject('aaa');
+  let ret = rpc.IPCSkeleton.flushCommands(remoteObject);
+  hilog.info(0x0000, 'testTag', 'RpcServer: flushCommands result: ' + ret);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorMessage ' + e.message);
 }
 ```
 

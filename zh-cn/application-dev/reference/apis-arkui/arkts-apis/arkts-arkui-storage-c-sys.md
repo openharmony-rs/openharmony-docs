@@ -1,5 +1,9 @@
 # Storage（系统接口）
 
+```TypeScript
+declare class Storage
+```
+
 持久化存储后端接口，提供基于键值对（key-value）的数据持久化能力，包括数据的读取、写入、清除和删除。PersistentStorage通过该接口实现AppStorage数据的本地持久化，适用于需要对应用数据进行灵活本地持久化存储的场景。
 
 **起始版本：** 7
@@ -18,6 +22,8 @@ clear(): void
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -31,6 +37,8 @@ constructor(needCrossThread?: boolean, file?: string)
 创建Storage实例的构造函数。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,6 +61,8 @@ delete(key: string): void
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -72,6 +82,8 @@ get(key: string): string | undefined
 根据指定key从磁盘中读取对应的存储数据。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -96,6 +108,8 @@ set(key: string, val: any): void
 将指定key对应的数据持久化存储到磁盘。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

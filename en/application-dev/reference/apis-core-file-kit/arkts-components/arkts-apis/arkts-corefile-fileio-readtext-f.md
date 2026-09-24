@@ -42,6 +42,8 @@ Reads the text content of a file. This API uses a promise to return the result.
 | Promise&lt;string&gt; | Promise that returns the file content read. |
 
 
+<a id="readtext-1"></a>
+
 ## readText
 
 ```TypeScript

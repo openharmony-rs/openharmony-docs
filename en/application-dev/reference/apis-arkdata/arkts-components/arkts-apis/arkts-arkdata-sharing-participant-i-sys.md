@@ -1,5 +1,9 @@
 # Participant (System API)
 
+```TypeScript
+interface Participant
+```
+
 Represents information about a participant of device-cloud sharing.
 
 **Since:** 11

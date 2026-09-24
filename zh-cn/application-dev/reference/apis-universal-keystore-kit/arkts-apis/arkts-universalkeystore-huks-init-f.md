@@ -19,13 +19,13 @@ huks.init、huks.update、huks.finish为三段式接口，需要一起使用。
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.initSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-initsession-f.md)替代。
+> [huks.initSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-initsession-f.md#initsession-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [initSession](arkts-universalkeystore-huks-initsession-f.md)(keyAlias: string, options: HuksOptions)
+**替代接口：** [initSession](arkts-universalkeystore-huks-initsession-f.md#initsession-1)(keyAlias: string, options: HuksOptions)
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -37,6 +37,8 @@ huks.init、huks.update、huks.finish为三段式接口，需要一起使用。
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Init操作的参数集合。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[HuksHandle](arkts-universalkeystore-huks-hukshandle-i.md)&gt; | 是 | 回调函数。当密钥操作init成功时，err为undefined，data为获取到的HuksHandle；否则为错误对象。HuksHandle的handle返回init生成的handle。 |
 
+
+<a id="init-1"></a>
 
 ## init
 
@@ -51,13 +53,13 @@ huks.init、huks.update、huks.finish为三段式接口，需要一起使用。
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.initSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-initsession-f.md)替代。
+> [huks.initSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-initsession-f.md#initsession-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [initSession](arkts-universalkeystore-huks-initsession-f.md)(keyAlias: string, options: HuksOptions)
+**替代接口：** [initSession](arkts-universalkeystore-huks-initsession-f.md#initsession-1)(keyAlias: string, options: HuksOptions)
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 

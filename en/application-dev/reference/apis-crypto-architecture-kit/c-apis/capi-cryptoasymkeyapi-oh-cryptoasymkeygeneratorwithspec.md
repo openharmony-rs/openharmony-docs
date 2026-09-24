@@ -8,6 +8,8 @@ typedef struct OH_CryptoAsymKeyGeneratorWithSpec OH_CryptoAsymKeyGeneratorWithSp
 
 Specification-based asymmetric key generator structure, representing a specification-based asymmetric key generator.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Related module**: [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)

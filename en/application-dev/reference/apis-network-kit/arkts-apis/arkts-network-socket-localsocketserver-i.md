@@ -1,5 +1,9 @@
 # LocalSocketServer
 
+```TypeScript
+export interface LocalSocketServer
+```
+
 Defines a local socket server connection. Before calling LocalSocketServer APIs, you need to call [socket.constructLocalSocketServerInstance](arkts-network-socket-constructlocalsocketserverinstance-f.md) to create a **LocalSocketServer** object.
 
 **Since:** 11
@@ -43,10 +47,32 @@ Stops listening for events of the **LocalSocketServer** object and releases the 
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let localserver: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let addr: socket.LocalAddress = {
+  address: sandboxPath
+}
+localserver.on('connect', (connection: socket.LocalSocketConnection) => {
+  console.info("connection clientId: " + connection.clientId);
+  // Logical processing
+  localserver.close(); // Stop event listening.
+  connection.close(); // Close the current connection.
+});
+localserver.listen(addr).then(() => {
+  console.info('listen success');
+}).catch((err: BusinessError) => {
+  console.error('listen fail: ' + err.code);
+});
 ```
 
 ## getExtraOptions
@@ -79,10 +105,30 @@ Obtains the socket properties of the **LocalSocketServer** object. This API uses
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let listenAddr: socket.LocalAddress = {
+  address: sandboxPath
+}
+server.listen(listenAddr).then(() => {
+  console.info("listen success");
+}).catch((err: Object) => {
+  console.error("listen fail: " + JSON.stringify(err));
+})
+server.getExtraOptions().then((options: socket.ExtraOptionsBase) => {
+  console.info('options: ' + JSON.stringify(options));
+}).catch((err: Object) => {
+  console.error('getExtraOptions fail: ' + JSON.stringify(err));
+});
 ```
 
 ## getLocalAddress
@@ -117,10 +163,31 @@ Obtains the local socket address of a **LocalSocketServer** connection. This API
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let listenAddr: socket.LocalAddress = {
+  address: sandboxPath
+}
+server.listen(listenAddr).then(() => {
+  console.info("listen success");
+  server.getLocalAddress().then((localPath: string) => {
+    console.info("SUCCESS " + JSON.stringify(localPath));
+  }).catch((err: BusinessError) => {
+    console.error("FAIL " + JSON.stringify(err));
+  })
+}).catch((err: Object) => {
+  console.error("listen fail: " + JSON.stringify(err));
+})
 ```
 
 ## getSocketFd
@@ -151,10 +218,31 @@ Obtains the file descriptor bound to the LocalSocketServer listening port. This 
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let listenAddr : socket.LocalAddress = {
+  address: sandboxPath
+}
+
+server.listen(listenAddr).then(() => {
+  console.info("listen success");
+  server.getSocketFd().then((fd: number) => {
+    console.info(`Socket FD: ${fd}`);
+  }).catch((err: Object) => {
+    console.error(`getSocketFd fail: ${JSON.stringify(err)}`);
+  });
+}).catch((err: Object) => {
+  console.error("listen fail: " + JSON.stringify(err));
+})
 ```
 
 ## getState
@@ -181,10 +269,31 @@ Obtains the status of a local socket server connection. This API uses a promise 
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+
+let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let listenAddr: socket.LocalAddress = {
+  address: sandboxPath
+}
+server.listen(listenAddr).then(() => {
+  console.info("listen success");
+}).catch((err: Object) => {
+  console.error("listen fail: " + JSON.stringify(err));
+})
+server.getState().then((data: socket.SocketStateBase) => {
+  console.info('getState success: ' + JSON.stringify(data));
+}).catch((err: Object) => {
+  console.error('getState fail: ' + JSON.stringify(err));
+});
 ```
 
 ## listen
@@ -228,10 +337,25 @@ Binds the address of the local socket file. The server listens to and accepts lo
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let addr: socket.LocalAddress = {
+  address: sandboxPath
+}
+server.listen(addr).then(() => {
+  console.info('listen success');
+}).catch((err: Object) => {
+  console.error('listen fail: ' + JSON.stringify(err));
+});
 ```
 
 ## off('connect')
@@ -259,6 +383,23 @@ Unsubscribes from **connect** events of the **LocalSocketServer** object. This A
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 
+**Examples**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+let callback = (connection: socket.LocalSocketConnection) => {
+  if (connection) {
+    console.info('accept a client')
+  }
+}
+server.on('connect', callback);
+// You can pass the callback of the on function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.
+server.off('connect', callback);
+server.off('connect');
+```
+
 ## off('error')
 
 ```TypeScript
@@ -283,6 +424,21 @@ Unsubscribes from **error** events of the **LocalSocketServer** object. This API
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
+
+**Examples**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+let callback = (err: Object) => {
+  console.error("on error, err:" + JSON.stringify(err));
+}
+server.on('error', callback);
+// You can pass the callback of the on function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.
+server.off('error', callback);
+server.off('error');
+```
 
 ## on('connect')
 
@@ -313,6 +469,19 @@ Subscribes to **connect** events of the **LocalSocketServer** object. This API u
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 
+**Examples**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+server.on('connect', (connection: socket.LocalSocketConnection) => {
+  if (connection) {
+    console.info('accept a client')
+  }
+});
+```
+
 ## on('error')
 
 ```TypeScript
@@ -341,6 +510,17 @@ Subscribes to **error** events of the **LocalSocketServer** object. This API use
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
+
+**Examples**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+server.on('error', (err: Object) => {
+  console.error("on error, err:" + JSON.stringify(err))
+});
+```
 
 ## setExtraOptions
 
@@ -379,8 +559,34 @@ Sets the socket properties of the **LocalSocketServer** object. This API uses a 
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let listenAddr: socket.NetAddress = {
+  address: sandboxPath
+}
+server.listen(listenAddr).then(() => {
+  console.info("listen success");
+}).catch((err: Object) => {
+  console.error("listen fail: " + JSON.stringify(err));
+})
+
+let options: socket.ExtraOptionsBase = {
+  receiveBufferSize: 8192,
+  sendBufferSize: 8192,
+  socketTimeout: 3000
+}
+server.setExtraOptions(options).then(() => {
+  console.info('setExtraOptions success');
+}).catch((err: Object) => {
+  console.error('setExtraOptions fail: ' + JSON.stringify(err));
+});
 ```

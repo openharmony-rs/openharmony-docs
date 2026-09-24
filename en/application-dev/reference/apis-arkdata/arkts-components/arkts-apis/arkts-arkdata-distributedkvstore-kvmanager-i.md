@@ -1,5 +1,9 @@
 # KVManager
 
+```TypeScript
+interface KVManager
+```
+
 Provides an instance to obtain information about a distributed KV store. Before calling any API in **KVManager**, you must use [createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md) to create a **KVManager** instance.
 
 **Since:** 9
@@ -82,6 +86,44 @@ try {
 }
 ```
 
+<a id="closekvstore-1"></a>
+
+## closeKVStore
+
+```TypeScript
+closeKVStore(appId: string, storeId: string, kvConfig?: Options): Promise<void>
+```
+
+Closes a distributed KV store. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.DistributedDataManager.KVStore.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| appId | string | Yes | Bundle name of the application. The value cannot be empty or exceed 256 bytes. |
+| storeId | string | Yes | Unique identifier of the KV store to close. The KV store ID allows only letters, digits, and underscores (_), and cannot exceed [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md) in length. |
+| kvConfig | [Options](arkts-arkdata-distributedkvstore-options-i.md) | No | Indicates the `Options` object used for close the KVStore database.<br>**Since:** 24 |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+
+**Examples**
+
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -120,44 +162,6 @@ try {
   console.error(`Failed to close KVStore. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-## closeKVStore
-
-```TypeScript
-closeKVStore(appId: string, storeId: string, kvConfig?: Options): Promise<void>
-```
-
-Closes a distributed KV store. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Model restriction:** This API can be used only in the stage model.
-
-**System capability:** SystemCapability.DistributedDataManager.KVStore.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| appId | string | Yes | Bundle name of the application. The value cannot be empty or exceed 256 bytes. |
-| storeId | string | Yes | Unique identifier of the KV store to close. The KV store ID allows only letters, digits, and underscores (_), and cannot exceed [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md) in length. |
-| kvConfig | [Options](arkts-arkdata-distributedkvstore-options-i.md) | No | Indicates the `Options` object used for close the KVStore database.<br>**Since:** 24 |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
-
-**Examples**
-
-See [closeKVStore](#closekvstore)
 
 ## deleteKVStore
 
@@ -231,44 +235,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let kvStore: distributedKVStore.SingleKVStore | null = null;
-
-const options: distributedKVStore.Options = {
-  createIfMissing: true,
-  encrypt: false,
-  backup: false,
-  autoSync: false,
-  kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-  schema: undefined,
-  securityLevel: distributedKVStore.SecurityLevel.S3,
-  // From API version 24, you can use rootDir to specify the database storage path.
-  rootDir: "/data/storage/el2/database/entry"
-}
-try {
-  kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then(async (store: distributedKVStore.SingleKVStore | null) => {
-    console.info('Succeeded in getting KVStore');
-    kvStore = store;
-    kvStore = null;
-    store = null;
-    if (kvManager != undefined) {
-      // appId refers to the appId in createKVManager. If rootDir is not configured in options, the deleteKVStore does not require the options parameter.
-      kvManager.deleteKVStore(appId, 'storeId', options).then(() => {
-        console.info('Succeeded in deleting KVStore');
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to delete KVStore. Code: ${err.code}, message: ${err.message}`);
-      });
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get KVStore. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to delete KVStore. Code: ${error.code}, message: ${error.message}`);
-}
-```
+<a id="deletekvstore-1"></a>
 
 ## deleteKVStore
 
@@ -307,7 +274,44 @@ Deletes a distributed KV store. This API uses a promise to return the result.
 
 **Examples**
 
-See [deleteKVStore](#deletekvstore)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let kvStore: distributedKVStore.SingleKVStore | null = null;
+
+const options: distributedKVStore.Options = {
+  createIfMissing: true,
+  encrypt: false,
+  backup: false,
+  autoSync: false,
+  kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+  schema: undefined,
+  securityLevel: distributedKVStore.SecurityLevel.S3,
+  // From API version 24, you can use rootDir to specify the database storage path.
+  rootDir: "/data/storage/el2/database/entry"
+}
+try {
+  kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then(async (store: distributedKVStore.SingleKVStore | null) => {
+    console.info('Succeeded in getting KVStore');
+    kvStore = store;
+    kvStore = null;
+    store = null;
+    if (kvManager != undefined) {
+      // appId refers to the appId in createKVManager. If rootDir is not configured in options, the deleteKVStore does not require the options parameter.
+      kvManager.deleteKVStore(appId, 'storeId', options).then(() => {
+        console.info('Succeeded in deleting KVStore');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to delete KVStore. Code: ${err.code}, message: ${err.message}`);
+      });
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get KVStore. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to delete KVStore. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## getAllKVStoreId
 
@@ -357,23 +361,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // appId is the one in createKVManager.
-  console.info('GetAllKVStoreId');
-  kvManager.getAllKVStoreId(appId).then((data: string[]) => {
-    console.info('Succeeded in getting AllKVStoreId');
-    console.info(`GetAllKVStoreId size = ${data.length}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get AllKVStoreId. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to get AllKVStoreId. Code: ${error.code}, message: ${error.message}`);
-}
-```
+<a id="getallkvstoreid-1"></a>
 
 ## getAllKVStoreId
 
@@ -409,7 +397,23 @@ Obtains the IDs of all distributed KV stores that are created by getKVStore and 
 
 **Examples**
 
-See [getAllKVStoreId](#getallkvstoreid)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // appId is the one in createKVManager.
+  console.info('GetAllKVStoreId');
+  kvManager.getAllKVStoreId(appId).then((data: string[]) => {
+    console.info('Succeeded in getting AllKVStoreId');
+    console.info(`GetAllKVStoreId size = ${data.length}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get AllKVStoreId. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get AllKVStoreId. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## getKVStore
 
@@ -482,32 +486,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let kvStore: distributedKVStore.SingleKVStore | null = null;
-try {
-  const options: distributedKVStore.Options = {
-    createIfMissing: true,
-    encrypt: false,
-    backup: false,
-    autoSync: false,
-    kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-    securityLevel: distributedKVStore.SecurityLevel.S3,
-    // From API version 24, you can use rootDir to specify the database storage path.
-    rootDir: "/data/storage/el2/database/entry"
-  };
-  kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then((store: distributedKVStore.SingleKVStore) => {
-    console.info('Succeeded in getting KVStore');
-    kvStore = store;
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get KVStore. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
-}
-```
+<a id="getkvstore-1"></a>
 
 ## getKVStore
 
@@ -554,7 +533,32 @@ Creates and obtains a distributed KV store based on the specified **options** an
 
 **Examples**
 
-See [getKVStore](#getkvstore)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let kvStore: distributedKVStore.SingleKVStore | null = null;
+try {
+  const options: distributedKVStore.Options = {
+    createIfMissing: true,
+    encrypt: false,
+    backup: false,
+    autoSync: false,
+    kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+    securityLevel: distributedKVStore.SecurityLevel.S3,
+    // From API version 24, you can use rootDir to specify the database storage path.
+    rootDir: "/data/storage/el2/database/entry"
+  };
+  kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then((store: distributedKVStore.SingleKVStore) => {
+    console.info('Succeeded in getting KVStore');
+    kvStore = store;
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get KVStore. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## off
 
@@ -581,6 +585,23 @@ Unsubscribes from the termination (death) of the distributed data service. The *
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  console.info('KVManagerOff');
+  const deathCallback = () => {
+    console.info('death callback call');
+  }
+  kvManager.off('distributedDataServiceDie', deathCallback);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on
 
 ```TypeScript
@@ -605,3 +626,20 @@ Subscribes to the termination (death) of the distributed data service. If the se
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  console.info('KVManagerOn');
+  const deathCallback = () => {
+    console.info('death callback call');
+  }
+  kvManager.on('distributedDataServiceDie', deathCallback);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```

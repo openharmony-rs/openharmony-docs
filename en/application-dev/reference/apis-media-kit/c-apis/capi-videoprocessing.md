@@ -4,6 +4,8 @@
 
 Provide APIs for video quality processing.
 
+**System capability**: SystemCapability.Multimedia.VideoProcessingEngine
+
 **Since**: 12
 
 ## Files

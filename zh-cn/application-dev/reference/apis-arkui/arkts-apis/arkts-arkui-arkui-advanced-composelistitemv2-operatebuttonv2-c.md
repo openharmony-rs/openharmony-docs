@@ -1,5 +1,9 @@
 # OperateButtonV2
 
+```TypeScript
+export declare class OperateButtonV2
+```
+
 列表项右侧按钮元素的类型。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # FeatureAbility
 
+```TypeScript
+export declare class FeatureAbility
+```
+
 **Since:** 5
 
 **Deprecated since:** 8

@@ -1,5 +1,9 @@
 # AlbumPickerController
 
+```TypeScript
+export declare class AlbumPickerController
+```
+
 A controller that enables applications to send data to the **AlbumPickerComponent**.
 
 **Since:** 20
@@ -32,4 +36,4 @@ Sets the font size of the album list.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fontSize | number &#124; string | Yes | Font size. For details about the value range, see fontSize. |
+| fontSize | number &#124; string | Yes | Font size. For details about the value range, see [fontSize](../../apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#fontsize). |

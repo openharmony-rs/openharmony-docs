@@ -1,5 +1,9 @@
 # ScanResults
 
+```TypeScript
+interface ScanResults
+```
+
 Represents the scanning results.
 
 **Since:** 26.0.0

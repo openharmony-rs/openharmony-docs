@@ -1,5 +1,9 @@
 # AdLoader
 
+```TypeScript
+export class AdLoader
+```
+
 提供加载广告的功能。
 
 **起始版本：** 11
@@ -34,8 +38,16 @@ constructor(context: common.Context)
 
 **示例**
 
-```TypeScript
 其中context的获取方式参见[各类context的获取方式](../../../application-models/application-context-stage.md#context的获取方式)。
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { advertising } from '@kit.AdsKit';
+// ...
+
+function createAdLoader(context: common.Context): void {
+  const adLoader: advertising.AdLoader = new advertising.AdLoader(context);
+}
 ```
 
 ## loadAd
@@ -64,15 +76,40 @@ loadAd(adParam: AdRequestParams, adOptions: AdOptions, listener: AdLoadListener)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3.Parameter verification failed |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3.Parameter verification failed |
 | [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 | [21800003](../errorcode-ads.md#21800003-广告请求加载失败) | Failed to load the ad request. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 12+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 12+ |
 
 **示例**
 
-```TypeScript
 其中context的获取方式参见[各类context的获取方式](../../../application-models/application-context-stage.md#context的获取方式)。
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { advertising } from '@kit.AdsKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// ...
+function loadAd(context: common.Context, adRequestParams: advertising.AdRequestParams): void {
+  // 广告配置参数，开发者可根据项目实际情况设置
+  const adOptions: advertising.AdOptions = {};
+  // 广告请求回调监听
+  const adLoaderListener: advertising.AdLoadListener = {
+    onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+      hilog.error(0x0000, 'testTag', `Failed to load ad. Code is ${errorCode}, message is ${errorMsg}`);
+    },
+    onAdLoadSuccess: (ads: Array<advertising.Advertisement>) => {
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading ad');
+      // 保存请求到的广告内容用于展示
+      const returnAds: advertising.Advertisement[] = ads;
+    }
+  };
+  // 创建AdLoader广告对象
+  const adLoader: advertising.AdLoader = new advertising.AdLoader(context);
+  // 调用广告请求接口
+  adLoader.loadAd(adRequestParams, adOptions, adLoaderListener);
+}
 ```
 
 ## loadAdWithMultiSlots
@@ -101,13 +138,39 @@ loadAdWithMultiSlots(adParams: AdRequestParams[], adOptions: AdOptions, listener
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3.Parameter verification failed |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3.Parameter verification failed |
 | [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 | [21800003](../errorcode-ads.md#21800003-广告请求加载失败) | Failed to load the ad request. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 12+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 12+ |
 
 **示例**
 
-```TypeScript
 其中context的获取方式参见[各类context的获取方式](../../../application-models/application-context-stage.md#context的获取方式)。
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { advertising } from '@kit.AdsKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// ...
+function loadAdWithMultiSlots(context: common.Context, adRequestParamsArray: advertising.AdRequestParams[]): void {
+  // 广告配置参数，开发者可根据项目实际情况设置
+  const adOptions: advertising.AdOptions = {};
+  // 广告请求回调监听
+  const multiSlotsAdLoaderListener: advertising.MultiSlotsAdLoadListener = {
+    onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+      hilog.error(0x0000, 'testTag', `Failed to load multiSlots ad. Code is ${errorCode}, message is ${errorMsg}`);
+    },
+    onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading multiSlots ad');
+      // 保存请求到的广告内容用于展示
+      const returnAds: advertising.Advertisement[] = [];
+      ads.forEach((adsArray) => returnAds.push(...adsArray));
+    }
+  };
+  // 创建AdLoader广告对象
+  const adLoader: advertising.AdLoader = new advertising.AdLoader(context);
+  // 调用广告请求接口
+  adLoader.loadAdWithMultiSlots(adRequestParamsArray, adOptions, multiSlotsAdLoaderListener);
+}
 ```

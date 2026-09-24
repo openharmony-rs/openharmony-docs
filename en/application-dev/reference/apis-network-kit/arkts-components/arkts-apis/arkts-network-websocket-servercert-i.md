@@ -1,5 +1,9 @@
 # ServerCert
 
+```TypeScript
+export interface ServerCert
+```
+
 Certificate information, which includes the paths of the WebSocketServer certificate file and private key file.
 
 **Since:** 19

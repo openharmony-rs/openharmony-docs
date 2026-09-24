@@ -1,5 +1,9 @@
 # PacketsType
 
+```TypeScript
+export enum PacketsType
+```
+
 网络探测数据包类型。
 
 **起始版本：** 26.0.0

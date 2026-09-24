@@ -1,5 +1,9 @@
 # AVTimedMetaData
 
+```TypeScript
+interface AVTimedMetaData
+```
+
 Interface for defining time base metadata
 
 **Since:** 26.0.0

@@ -47,14 +47,50 @@ Obtains the accessibility application list. This API uses a promise to return th
 
 **Examples**
 
-```TypeScript
 Query all installed accessibility applications.
-```
 
 ```TypeScript
-Query all enabled accessibility applications with voice feedback.
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityType: accessibility.AbilityType = 'all'; // The accessibility app type is all types.
+let abilityState: accessibility.AbilityState = 'install'; // The accessibility app state is installed.
+
+accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get accessibility extension list. Code: ${err.code}, message: ${err.message}`);
+});
+
+// For example, an accessibility app with the package name com.example.myaccessibilityapp is installed in the system.
+// The log output is:
+// [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
+// "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
+// "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
+// "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
+// "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
+// "announceForAccessibility","announceForAccessibilityNotInterrupt",
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
 ```
 
+Query all enabled accessibility applications with voice feedback.
+
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityType: accessibility.AbilityType = 'spoken'; // The accessibility app type is spoken feedback.
+let abilityState: accessibility.AbilityState = 'enable'; // The accessibility app state is enabled.
+
+accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get accessibility extension list. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+
+<a id="getaccessibilityextensionlist-1"></a>
 
 ## getAccessibilityExtensionList
 
@@ -92,4 +128,48 @@ Obtains the accessibility application list. This API uses an asynchronous callba
 
 **Examples**
 
-See [getAccessibilityExtensionList](#getaccessibilityextensionlist)
+Query all installed accessibility applications.
+
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityType: accessibility.AbilityType = 'all'; // The accessibility app type is all types.
+let abilityState: accessibility.AbilityState = 'install'; // The accessibility app state is installed.
+
+accessibility.getAccessibilityExtensionList(abilityType, abilityState, (err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
+  if (err) {
+    console.error(`Failed to get accessibility extension list. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+});
+
+// For example, an accessibility app with the bundle name com.example.myaccessibilityapp is installed in the system.
+// The log is printed as follows:
+// [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
+// "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
+// "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
+// "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
+// "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
+// "announceForAccessibility","announceForAccessibilityNotInterrupt",
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
+```
+
+Query all enabled accessibility applications with voice feedback.
+
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityType: accessibility.AbilityType = 'spoken'; // The accessibility app type is spoken feedback.
+let abilityState: accessibility.AbilityState = 'enable'; // The accessibility app state is enabled.
+
+accessibility.getAccessibilityExtensionList(abilityType, abilityState, (err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
+  if (err) {
+    console.error(`Failed to get accessibility extension list. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+});
+```

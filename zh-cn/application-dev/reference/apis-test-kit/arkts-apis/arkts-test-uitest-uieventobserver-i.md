@@ -1,5 +1,9 @@
 # UIEventObserver
 
+```TypeScript
+declare interface UIEventObserver
+```
+
 UI事件监听器。
 
 **起始版本：** 10
@@ -42,7 +46,29 @@ once(type: 'toastShow', callback: Callback<UIElementInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+// xxx.test.ets
+import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
+
+async function demo() {
+  // 创建Driver对象。
+  let driver: Driver = Driver.create();
+  // 创建UI事件监听器。
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  // 定义回调函数，输出toast控件的属性信息。
+  let callback = (UIElementInfo: UIElementInfo) => {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+  }
+  // 订阅toast控件出现事件。
+  observer.once('toastShow', callback);
+}
+```
 
 ## once('dialogShow')
 
@@ -71,7 +97,25 @@ once(type: 'dialogShow', callback: Callback<UIElementInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+// xxx.test.ets
+import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let callback = (UIElementInfo: UIElementInfo) => {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+  }
+  observer.once('dialogShow', callback);
+}
+```
 
 ## once('windowChange')
 
@@ -79,7 +123,7 @@ once(type: 'dialogShow', callback: Callback<UIElementInfo>): void
 once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowChangeOptions, callback: Callback<UIElementInfo>): void
 ```
 
-开始监听指定类型的窗口变化事件，支持设置事件监听的扩展配置，监听到指定窗口变化事件时触发callback回调。仅支持自由多窗模式的窗口监听。
+开始监听指定类型的窗口变化事件，支持设置事件监听的扩展配置，监听到指定窗口变化事件时触发callback回调。仅支持[自由多窗模式](../../../windowmanager/window-terminology.md#自由多窗模式)的窗口监听。
 
 **起始版本：** 22
 
@@ -104,6 +148,30 @@ once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowCh
 | --- | --- |
 | [17000005](../errorcode-uitest.md#17000005-操作不支持) | This operation is not supported. |
 | [17000007](../errorcode-uitest.md#17000007-参数不合法) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+// xxx.test.ets
+import { Driver, UIElementInfo, UIEventObserver, WindowChangeOptions, WindowChangeType } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let options: WindowChangeOptions = {
+    timeout: 20000,
+    bundleName: 'com.example.myapplication'  // 请开发者替换为实际包名。
+  }
+  let callback = (UIElementInfo: UIElementInfo) => {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+    console.info(UIElementInfo.windowChangeType?.toString());
+    console.info(UIElementInfo.windowId?.toString());
+  }
+  observer.once('windowChange', WindowChangeType.WINDOW_ADDED, options, callback);
+}
+```
 
 ## once('componentEventOccur')
 
@@ -136,3 +204,32 @@ once(type: 'componentEventOccur', componentEventType: ComponentEventType, option
 | --- | --- |
 | [17000005](../errorcode-uitest.md#17000005-操作不支持) | This operation is not supported. |
 | [17000007](../errorcode-uitest.md#17000007-参数不合法) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+// xxx.test.ets
+import { Driver, UIElementInfo, UIEventObserver, ComponentEventOptions, ComponentEventType, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let option: ComponentEventOptions = {
+    timeout: 20000,
+    on: ON.id('123')  // 请开发者替换为实际存在的控件id值。
+  };
+  let callback = (UIElementInfo: UIElementInfo) => {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+    console.info(UIElementInfo.componentEventType?.toString());
+    console.info(UIElementInfo.windowId?.toString());
+    console.info(UIElementInfo.componentId);
+    console.info(UIElementInfo.componentRect?.left.toString());
+    console.info(UIElementInfo.componentRect?.top.toString());
+    console.info(UIElementInfo.componentRect?.right.toString());
+    console.info(UIElementInfo.componentRect?.bottom.toString());
+  };
+  observer.once('componentEventOccur', ComponentEventType.COMPONENT_CLICKED, option, callback);
+}
+```

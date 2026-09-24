@@ -1,5 +1,9 @@
 # Transliterator
 
+```TypeScript
+export class Transliterator
+```
+
 Provides text transliteration capabilities, such as obtaining the supported language IDs and transliterating text.
 
 **Since:** 9

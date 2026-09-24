@@ -30,6 +30,8 @@ function deleteRdbStore(context: Context, name: string, callback: AsyncCallback<
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当操作成功，err为undefined；否则为错误对象。 |
 
 
+<a id="deleterdbstore-1"></a>
+
 ## deleteRdbStore
 
 ```TypeScript

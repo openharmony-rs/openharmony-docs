@@ -1,5 +1,9 @@
 # FilterMode
 
+```TypeScript
+enum FilterMode
+```
+
 过滤模式枚举。
 
 **起始版本：** 12

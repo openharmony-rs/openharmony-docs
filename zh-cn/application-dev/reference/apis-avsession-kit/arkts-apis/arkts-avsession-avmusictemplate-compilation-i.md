@@ -1,5 +1,9 @@
 # Compilation
 
+```TypeScript
+interface Compilation extends OperResult
+```
+
 合集的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。
 
 @extends OperResult @interface Compilation

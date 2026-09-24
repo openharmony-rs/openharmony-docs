@@ -1,7 +1,7 @@
 # @ohos.app.ability.CompletionHandlerForAbilityStartCallback
 
 **CompletionHandlerForAbilityStartCallback** is an optional parameter of
- AbilityStartCallback. It provides callback results for launching ability
+ [AbilityStartCallback](arkts-ability-abilitystartcallback-c.md). It provides callback results for launching ability
  components of specific types through the vertical panel.
 
 

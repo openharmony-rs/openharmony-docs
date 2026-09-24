@@ -1,5 +1,9 @@
 # DataProxyErrorCode
 
+```TypeScript
+enum DataProxyErrorCode
+```
+
 Enumerates the status code returned by the batch operations of shared configuration.
 
 **Since:** 20

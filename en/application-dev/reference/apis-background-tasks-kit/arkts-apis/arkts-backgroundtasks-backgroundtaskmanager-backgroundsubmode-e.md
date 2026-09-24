@@ -1,5 +1,9 @@
 # BackgroundSubMode
 
+```TypeScript
+export enum BackgroundSubMode
+```
+
 Defines the subtype of a continuous task.
 
 **Since:** 16

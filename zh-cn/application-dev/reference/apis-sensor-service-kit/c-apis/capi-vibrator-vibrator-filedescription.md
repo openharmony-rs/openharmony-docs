@@ -8,6 +8,8 @@ typedef struct Vibrator_FileDescription {...} Vibrator_FileDescription
 
 振动文件描述。用于描述自定义振动序列的文件信息，支持使用自定义振动文件实现精确振动控制。
 
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
 **起始版本：** 11
 
 **相关模块：** [Vibrator](capi-vibrator.md)

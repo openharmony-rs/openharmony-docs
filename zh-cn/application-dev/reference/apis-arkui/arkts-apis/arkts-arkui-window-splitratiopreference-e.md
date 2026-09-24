@@ -1,5 +1,9 @@
 # SplitRatioPreference
 
+```TypeScript
+enum SplitRatioPreference
+```
+
 描述分屏窗口分屏比例
 
 @enum { number }

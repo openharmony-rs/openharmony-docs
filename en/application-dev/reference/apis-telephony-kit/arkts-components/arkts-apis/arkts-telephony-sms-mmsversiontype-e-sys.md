@@ -1,5 +1,9 @@
 # MmsVersionType (System API)
 
+```TypeScript
+export enum MmsVersionType
+```
+
 Enumerates MMS versions.
 
 **Since:** 8

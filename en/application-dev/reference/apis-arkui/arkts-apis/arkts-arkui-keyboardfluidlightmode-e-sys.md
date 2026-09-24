@@ -1,5 +1,9 @@
 # KeyboardFluidLightMode (System API)
 
+```TypeScript
+declare enum KeyboardFluidLightMode
+```
+
 Enumerates keyboard fluid lighting effects.
 
 **Since:** 20

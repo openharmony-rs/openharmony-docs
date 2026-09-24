@@ -1,5 +1,9 @@
 # Button
 
+```TypeScript
+export interface Button
+```
+
 定义按钮的提示信息。
 
 **起始版本：** 3
@@ -24,6 +28,8 @@ color: string
 
 **起始版本：** 3
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -39,6 +45,8 @@ text: string
 **类型：** string
 
 **起始版本：** 3
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

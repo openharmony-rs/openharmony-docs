@@ -1,5 +1,9 @@
 # AccessibilityOptions
 
+```TypeScript
+export interface AccessibilityOptions
+```
+
 后缀图标的无障碍朗读功能属性。
 
 **起始版本：** 14

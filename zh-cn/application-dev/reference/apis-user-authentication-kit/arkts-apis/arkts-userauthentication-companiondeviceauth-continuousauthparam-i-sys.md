@@ -1,5 +1,9 @@
 # ContinuousAuthParam（系统接口）
 
+```TypeScript
+interface ContinuousAuthParam
+```
+
 持续认证参数。用于配置订阅持续认证状态时的相关参数，如指定订阅的目标模板。
 
 **起始版本：** 23

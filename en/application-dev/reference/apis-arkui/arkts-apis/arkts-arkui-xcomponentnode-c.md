@@ -1,5 +1,9 @@
 # XComponentNode
 
+```TypeScript
+export declare class XComponentNode extends FrameNode
+```
+
 Defines XComponent Node.
 
 @extends FrameNode

@@ -1,5 +1,9 @@
 # WebHeader
 
+```TypeScript
+export declare interface WebHeader
+```
+
 Describes the request/response header returned by the **AtomicServiceWeb** component.
 
 **Since:** 12

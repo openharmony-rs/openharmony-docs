@@ -1,5 +1,9 @@
 # Position
 
+```TypeScript
+interface Position
+```
+
 Describes a coordinate position. In the global coordinate system, the origin is the top-left corner of the primary screen. In the relative coordinate system, the origin is the top-left corner of the specified screen.
 
 **Since:** 20

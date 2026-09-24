@@ -1,5 +1,9 @@
 # SetPropertyType（系统接口）
 
+```TypeScript
+enum SetPropertyType
+```
+
 表示要设置的属性类型的枚举。
 
 **起始版本：** 8

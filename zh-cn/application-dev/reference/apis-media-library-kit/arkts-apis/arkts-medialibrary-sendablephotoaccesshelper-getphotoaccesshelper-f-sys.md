@@ -6,6 +6,8 @@
 import { sendablePhotoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
+<a id="getphotoaccesshelper-1"></a>
+
 ## getPhotoAccessHelper
 
 ```TypeScript
@@ -41,31 +43,11 @@ function getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelp
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument |
 
 **示例**
-
-```TypeScript
-// 此处获取的phAccessHelper实例为全局对象，后续使用到phAccessHelper的地方默认为使用此处获取的对象，如未添加此段代码报phAccessHelper未定义的错误请自行添加。
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-import { common } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      Button("example").onClick(async () => {
-        let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        let phAccessHelper = sendablePhotoAccessHelper.getPhotoAccessHelper(context);
-      }).width('100%')
-    }
-    .height('90%')
-  }
-}
-```
 
 ```TypeScript
 // 此处获取的phAccessHelper实例为全局对象，后续使用到phAccessHelper的地方默认为使用此处获取的对象，如未添加此段代码报phAccessHelper未定义的错误请自行添加。

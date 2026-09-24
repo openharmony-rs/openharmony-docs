@@ -8,6 +8,8 @@ typedef struct OH_Drawing_ShaderEffect OH_Drawing_ShaderEffect
 
 Defines a struct for a shader effect, which is used to describe the source color of the drawn content.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)

@@ -4,6 +4,8 @@
 
 Provides the capability to manage access token.
 
+**系统能力：** SystemCapability.Security.AccessToken
+
 **起始版本：** 12
 
 ## 文件汇总

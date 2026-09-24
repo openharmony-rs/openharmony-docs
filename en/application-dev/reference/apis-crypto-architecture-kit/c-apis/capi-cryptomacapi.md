@@ -4,6 +4,8 @@
 
 Describes the message authentication code (MAC) interfaces provided by OpenHarmony for applications.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 ## Files

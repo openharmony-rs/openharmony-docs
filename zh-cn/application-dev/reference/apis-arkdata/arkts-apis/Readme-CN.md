@@ -8,7 +8,8 @@
   - [UpdateOperation(系统接口)](arkts-arkdata-updateoperation-t-sys.md)<!--DelEnd-->
 - [@ohos.data.cloudData(端云服务)](arkts-arkdata-data-clouddata.md)
   - [cloudData](arkts-arkdata-clouddata-n.md)
-    - [sharing](arkts-arkdata-clouddata-sharing-n.md)
+    <!--Del-->
+    - [sharing(系统接口)](arkts-arkdata-clouddata-sharing-n.md)<!--DelEnd-->
       <!--Del-->
       - [allocResourceAndShare(系统接口)](arkts-arkdata-sharing-allocresourceandshare-f-sys.md)<!--DelEnd-->
       <!--Del-->
@@ -70,7 +71,8 @@
     - [SyncStatus(系统接口)](arkts-arkdata-clouddata-syncstatus-e-sys.md)<!--DelEnd-->
     <!--Del-->
     - [常量(系统接口)](arkts-arkdata-clouddata-con-sys.md)<!--DelEnd-->
-- [@ohos.data.cloudExtension(端云共享Extension)](arkts-arkdata-data-cloudextension.md)
+<!--Del-->
+- [@ohos.data.cloudExtension(端云共享Extension)](arkts-arkdata-data-cloudextension.md)<!--DelEnd-->
   <!--Del-->
   - [createAssetLoaderStub(系统接口)](arkts-arkdata-cloudextension-createassetloaderstub-f-sys.md)<!--DelEnd-->
   <!--Del-->

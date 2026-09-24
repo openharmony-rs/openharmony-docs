@@ -1,5 +1,9 @@
 # LocalizedPosition
 
+```TypeScript
+declare interface LocalizedPosition
+```
+
 Defines the coordinates of a point.
 
 **Since:** 12

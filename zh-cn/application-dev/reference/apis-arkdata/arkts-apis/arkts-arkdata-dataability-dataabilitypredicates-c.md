@@ -1,5 +1,9 @@
 # DataAbilityPredicates
 
+```TypeScript
+class DataAbilityPredicates
+```
+
 提供用于实现不同查询方法的谓词。
 
 **起始版本：** 7

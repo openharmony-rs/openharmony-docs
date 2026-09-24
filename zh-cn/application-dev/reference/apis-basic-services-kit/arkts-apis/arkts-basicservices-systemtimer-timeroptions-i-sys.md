@@ -1,5 +1,9 @@
 # TimerOptions（系统接口）
 
+```TypeScript
+interface TimerOptions
+```
+
 创建系统定时器的初始化选项。
 
 **起始版本：** 7

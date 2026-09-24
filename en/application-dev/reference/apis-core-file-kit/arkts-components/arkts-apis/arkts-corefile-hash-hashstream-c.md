@@ -1,5 +1,9 @@
 # HashStream
 
+```TypeScript
+class HashStream extends stream.Transform
+```
+
 The **HashStream** class is a utility for creating a message digest of data. You can use [createHash](../../../reference/apis-core-file-kit/js-apis-file-hash.md#hashcreatehash12) to create a **HashStream** instance.
 
 **Inheritance/Implementation:** HashStream extends [stream.Transform](../../apis-arkts/arkts-apis/arkts-arkts-stream-transform-c.md)

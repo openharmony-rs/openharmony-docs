@@ -1,5 +1,9 @@
 # PriorityEnableStatus (System API)
 
+```TypeScript
+export enum PriorityEnableStatus
+```
+
 Describes the enabling status of the priority notification for an application.
 
 **Since:** 23

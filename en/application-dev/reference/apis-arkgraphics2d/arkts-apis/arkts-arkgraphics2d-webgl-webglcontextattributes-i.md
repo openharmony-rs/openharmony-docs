@@ -1,5 +1,9 @@
 # WebGLContextAttributes
 
+```TypeScript
+export interface WebGLContextAttributes
+```
+
 WebGL 1.0
 
 **Since:** 7

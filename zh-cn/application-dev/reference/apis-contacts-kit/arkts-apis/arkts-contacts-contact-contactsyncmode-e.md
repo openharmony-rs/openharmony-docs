@@ -1,5 +1,9 @@
 # ContactSyncMode
 
+```TypeScript
+enum ContactSyncMode
+```
+
 同步模式的类型。
 
 **起始版本：** 26.0.0

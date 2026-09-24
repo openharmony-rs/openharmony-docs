@@ -1,5 +1,9 @@
 # MapConstructor
 
+```TypeScript
+interface MapConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

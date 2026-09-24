@@ -8,6 +8,8 @@ typedef struct Print_Resolution {...} Print_Resolution
 
 表示以 dpi 为单位的打印分辨率。
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 12
 
 **相关模块：** [Print](capi-print.md)

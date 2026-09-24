@@ -1,5 +1,9 @@
 # QueryParam (System API)
 
+```TypeScript
+interface QueryParam
+```
+
 Param when query insight intent entity.
 
 @typedef QueryParam

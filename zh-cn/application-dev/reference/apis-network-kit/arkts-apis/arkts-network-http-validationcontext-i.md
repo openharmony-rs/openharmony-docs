@@ -1,5 +1,9 @@
 # ValidationContext
 
+```TypeScript
+export interface ValidationContext
+```
+
 [ValidationCallback](arkts-network-http-validationcallback-t.md)的验证上下文
 
 **起始版本：** 26.0.0

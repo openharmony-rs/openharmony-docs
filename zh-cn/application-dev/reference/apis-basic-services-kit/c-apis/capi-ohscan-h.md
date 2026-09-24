@@ -62,6 +62,8 @@ enum Scan_ErrorCode
 
 定义错误码
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -95,6 +97,8 @@ typedef void (*Scan_ScannerDiscoveryCallback)(Scan_ScannerDevice** devices, int3
 
 扫描仪设备发现回调，通过[OH_Scan_StartScannerDiscovery](capi-ohscan-h.md#oh_scan_startscannerdiscovery)注册指针指向的内存将在回调函数结束时释放
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -113,6 +117,8 @@ int32_t OH_Scan_Init()
 **描述：**
 
 此API检查并拉起扫描服务，初始化扫描客户端，并建立与扫描服务的连接
+
+**系统能力：** SystemCapability.Print.PrintFramework
 
 **需要权限：** {@code ohos.permission.PRINT}
 
@@ -133,6 +139,8 @@ int32_t OH_Scan_StartScannerDiscovery(Scan_ScannerDiscoveryCallback callback)
 **描述：**
 
 此API开始发现扫描仪，注册回调函数处理发现的扫描仪设备
+
+**系统能力：** SystemCapability.Print.PrintFramework
 
 **需要权限：** {@code ohos.permission.PRINT}
 
@@ -160,6 +168,8 @@ int32_t OH_Scan_OpenScanner(const char* scannerId)
 
 此API连接到扫描仪设备
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **需要权限：** {@code ohos.permission.PRINT}
 
 **起始版本：** 12
@@ -185,6 +195,8 @@ int32_t OH_Scan_CloseScanner(const char* scannerId)
 **描述：**
 
 此API用于关闭已连接的扫描仪设备
+
+**系统能力：** SystemCapability.Print.PrintFramework
 
 **需要权限：** {@code ohos.permission.PRINT}
 
@@ -212,6 +224,8 @@ Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t*
 
 此API可用于获取扫描仪可设置的选项列表返回的结构体指针指向的内存会在[OH_Scan_Exit](capi-ohscan-h.md#oh_scan_exit)时自动释放，每个型号在内存中只会存储一份副本
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **需要权限：** {@code ohos.permission.PRINT}
 
 **起始版本：** 12
@@ -238,6 +252,8 @@ int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option,
 **描述：**
 
 此API可用于设置扫描仪的某个选项参数传入的选项和值从[OH_Scan_GetScannerParameter](capi-ohscan-h.md#oh_scan_getscannerparameter)获取
+
+**系统能力：** SystemCapability.Print.PrintFramework
 
 **需要权限：** {@code ohos.permission.PRINT}
 
@@ -267,6 +283,8 @@ int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)
 
 此API允许扫描仪开始扫描
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **需要权限：** {@code ohos.permission.PRINT}
 
 **起始版本：** 12
@@ -294,6 +312,8 @@ int32_t OH_Scan_CancelScan(const char* scannerId)
 
 此API允许扫描仪取消扫描
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **需要权限：** {@code ohos.permission.PRINT}
 
 **起始版本：** 12
@@ -319,6 +339,8 @@ int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanPr
 **描述：**
 
 此API可获取扫描仪扫描图片的进度。必须传入非空值，扫描进度将写入指针指向的结构体
+
+**系统能力：** SystemCapability.Print.PrintFramework
 
 **需要权限：** {@code ohos.permission.PRINT}
 
@@ -346,6 +368,8 @@ int32_t OH_Scan_Exit()
 **描述：**
 
 此API可用于退出扫描服务，释放扫描框架内存，并注销扫描仪发现回调
+
+**系统能力：** SystemCapability.Print.PrintFramework
 
 **需要权限：** {@code ohos.permission.PRINT}
 

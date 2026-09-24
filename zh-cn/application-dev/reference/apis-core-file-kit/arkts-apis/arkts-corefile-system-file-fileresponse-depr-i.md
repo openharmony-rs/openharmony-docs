@@ -1,5 +1,9 @@
 # FileResponse
 
+```TypeScript
+export interface FileResponse
+```
+
 文件返回。包含文件的信息。
 
 **起始版本：** 3

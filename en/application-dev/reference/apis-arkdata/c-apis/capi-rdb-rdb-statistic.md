@@ -8,6 +8,8 @@ typedef struct Rdb_Statistic {...} Rdb_Statistic
 
 Describes the statistic of the cloud sync process.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 11
 
 **Related module**: [RDB](capi-rdb.md)

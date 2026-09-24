@@ -8,7 +8,7 @@
 
 **库：** libavimage_generator.so
 
-**系统能力：** SystemCapability.Multimedia.Media.Core
+**系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **起始版本：** 18
 
@@ -33,6 +33,8 @@ enum OH_AVImageGenerator_QueryOptions
 **描述：**
 
 指定查询视频帧时，时间点与帧对应关系选项的枚举类型。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **起始版本：** 18
 

@@ -25,7 +25,7 @@ Send key event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [KeyEvent](../arkts-components/arkts-arkui-keyevent-i.md) | Yes | KeyEvent to be sent. |
+| event | [KeyEvent](../arkts-components/arkts-arkui-common-comp-keyevent-i.md) | Yes | KeyEvent to be sent. |
 
 **Return value:**
 

@@ -8,6 +8,8 @@ typedef struct OH_CryptoEcPoint OH_CryptoEcPoint
 
 椭圆曲线点结构体，表示椭圆曲线上的点。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **相关模块：** [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)

@@ -1,8 +1,12 @@
 # NavRouter属性/事件
 
+```TypeScript
+declare class NavRouterAttribute extends CommonMethod<NavRouterAttribute>
+```
+
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** NavRouterAttribute extends CommonMethod&lt;NavRouterAttribute&gt;
+**继承/实现关系：** NavRouterAttribute extends CommonMethod<NavRouterAttribute>
 
 **起始版本：** 9
 
@@ -36,7 +40,7 @@ mode(mode: NavRouteMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [NavRouteMode](arkts-arkui-navroutemode-e.md) | 是 | 指定点击NavRouter跳转到NavDestination页面时，使用的路由模式。<br>默认值：NavRouteMode.PUSH_WITH_RECREATE |
+| mode | [NavRouteMode](arkts-arkui-navrouter-comp-navroutemode-e.md) | 是 | 指定点击NavRouter跳转到NavDestination页面时，使用的路由模式。<br>默认值：NavRouteMode.PUSH_WITH_RECREATE |
 
 ## onStateChange
 

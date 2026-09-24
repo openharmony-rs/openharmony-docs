@@ -8,6 +8,8 @@ typedef struct OH_AudioResourceManager OH_AudioResourceManager
 
 Declare the audio resource manager. Audio resource manager provides many functions for developer to manage system resources to avoid underrun or overrun in audio playback and recording.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Related module**: [OHAudio](capi-ohaudio.md)

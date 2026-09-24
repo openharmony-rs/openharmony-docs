@@ -1,5 +1,9 @@
 # TextRectSize
 
+```TypeScript
+interface TextRectSize
+```
+
 文本矩形尺寸，用于描述文本的矩形宽高属性。值为浮点数，单位为物理像素px。
 
 **起始版本：** 24

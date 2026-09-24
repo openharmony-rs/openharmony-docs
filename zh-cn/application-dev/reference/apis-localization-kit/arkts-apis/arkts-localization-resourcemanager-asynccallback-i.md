@@ -1,5 +1,9 @@
 # AsyncCallback
 
+```TypeScript
+export interface AsyncCallback<T>
+```
+
 异步回调接口
 
 **起始版本：** 6

@@ -32,9 +32,9 @@ function getForegroundUIAbilities(callback: AsyncCallback<Array<AbilityStateData
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
@@ -52,17 +52,8 @@ abilityManager.getForegroundUIAbilities((err: BusinessError, data: Array<ability
 });
 ```
 
-```TypeScript
-import { abilityManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-abilityManager.getForegroundUIAbilities().then((data: Array<abilityManager.AbilityStateData>) => {
-  console.info(`Get foreground ui abilities data is: ${JSON.stringify(data)}`);
-}).catch((error: BusinessError) => {
-  console.error(`Get foreground ui abilities failed, error: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="getforegrounduiabilities-1"></a>
 
 ## getForegroundUIAbilities
 
@@ -90,10 +81,19 @@ function getForegroundUIAbilities(): Promise<Array<AbilityStateData>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
 
-参见 [getForegroundUIAbilities](#getforegrounduiabilities)
+```TypeScript
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+abilityManager.getForegroundUIAbilities().then((data: Array<abilityManager.AbilityStateData>) => {
+  console.info(`Get foreground ui abilities data is: ${JSON.stringify(data)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Get foreground ui abilities failed, error: ${JSON.stringify(error)}`);
+});
+```

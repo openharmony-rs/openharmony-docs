@@ -4,6 +4,8 @@
 
 Provide the definition of the C interface for the camera module.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 ## Files

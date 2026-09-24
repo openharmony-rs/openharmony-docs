@@ -4,6 +4,8 @@
 
 Declares the time zone capabilities provided by TimeService to an application.
 
+**System capability**: SystemCapability.MiscServices.Time
+
 **Since**: 12
 
 ## Files

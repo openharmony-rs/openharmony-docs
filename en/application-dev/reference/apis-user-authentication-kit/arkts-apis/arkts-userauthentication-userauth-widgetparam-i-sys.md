@@ -1,5 +1,9 @@
 # WidgetParam
 
+```TypeScript
+interface WidgetParam
+```
+
 Represents the information presented on the user authentication page. This API is used to configure the display style and interaction mode of the authentication screen, including the title, navigation button text, and window mode. By properly setting these parameters, you can provide clear authentication guidance and good interaction experience for users.
 
 **Since:** 10

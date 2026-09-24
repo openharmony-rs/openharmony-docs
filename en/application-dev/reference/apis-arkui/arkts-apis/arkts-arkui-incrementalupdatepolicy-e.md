@@ -1,5 +1,9 @@
 # IncrementalUpdatePolicy
 
+```TypeScript
+declare enum IncrementalUpdatePolicy
+```
+
 Defines incremental update policies for text rendering.
 
 **Since:** 26.0.0

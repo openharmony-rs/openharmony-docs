@@ -1,5 +1,9 @@
 # TCPSendOptions
 
+```TypeScript
+export interface TCPSendOptions
+```
+
 Defines the parameters for sending data over a TCP socket connection.
 
 **Since:** 7

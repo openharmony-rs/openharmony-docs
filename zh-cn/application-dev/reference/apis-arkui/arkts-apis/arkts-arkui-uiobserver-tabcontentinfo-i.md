@@ -1,5 +1,9 @@
 # TabContentInfo
 
+```TypeScript
+export interface TabContentInfo
+```
+
 TabContent页面的切换信息。
 
 **起始版本：** 12
@@ -54,7 +58,7 @@ TabContent组件的下标索引。索引从0开始。
 lastIndex?: number
 ```
 
-最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在 [on('tabChange')](arkts-arkui-arkui-uicontext-uiobserver-c.md#ontabchange)的回调函数中存在。
+最近一次聚焦的TabContent组件的下标索引。索引从0开始。仅在[on('tabChange')](../../../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#ontabchange22)的回调函数中存在。
 
 **类型：** number
 
@@ -90,7 +94,7 @@ TabContent组件的状态。
 tabContentId: string
 ```
 
-TabContent id.
+TabContent组件的id。
 
 **类型：** string
 
@@ -108,7 +112,7 @@ TabContent id.
 tabContentUniqueId: number
 ```
 
-TabContent uniqueId.
+TabContent组件的uniqueId。
 
 **类型：** number
 

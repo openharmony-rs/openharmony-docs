@@ -18,5 +18,5 @@ declare type VP = `${number}vp` | number
 
 | 类型 | 说明 |
 | --- | --- |
-| `&#36;{number}vp` | Viewport pixel unit. The unit vp can be included, for example, **'10vp'**. |
+| `${number}vp` | Viewport pixel unit. The unit vp can be included, for example, **'10vp'**. |
 | number | 需要指定数字，如10。 |

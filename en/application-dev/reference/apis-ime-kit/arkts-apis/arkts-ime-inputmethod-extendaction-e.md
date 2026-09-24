@@ -1,5 +1,9 @@
 # ExtendAction
 
+```TypeScript
+export enum ExtendAction
+```
+
 Describes the type of the extended edit action on the text box.
 
 **Since:** 10

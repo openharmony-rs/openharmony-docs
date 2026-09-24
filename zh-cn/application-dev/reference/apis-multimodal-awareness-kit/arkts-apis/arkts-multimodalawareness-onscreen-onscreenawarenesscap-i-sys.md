@@ -1,5 +1,9 @@
 # OnscreenAwarenessCap（系统接口）
 
+```TypeScript
+export interface OnscreenAwarenessCap
+```
+
 屏上感知能力（包括但不限于阅读场景感知、OCR识别等功能）。
 
 参数约束说明：

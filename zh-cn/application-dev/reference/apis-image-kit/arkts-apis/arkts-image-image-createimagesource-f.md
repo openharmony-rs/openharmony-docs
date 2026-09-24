@@ -85,69 +85,8 @@ async function CreateImageSource(context : Context) {
 }
 ```
 
-```TypeScript
-async function CreateImageSource(context : Context) {
-  let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
-  // 此处'test.png'仅作示例，请开发者自行替换。否则imageSource会创建失败，导致后续无法正常执行。
-  const path: string = context.filesDir + "/test.png";
-  let imageSourceObj: image.ImageSource = image.createImageSource(path, sourceOptions);
-}
-```
 
-```TypeScript
-import { fileIo } from '@kit.CoreFileKit';
-
-async function CreateImageSource(context : Context) {
-  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
-  let filePath: string = context.filesDir + "/test.jpg";
-  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-  const imageSourceObj: image.ImageSource = image.createImageSource(file.fd);
-}
-```
-
-```TypeScript
-import { fileIo } from '@kit.CoreFileKit';
-
-async function CreateImageSource(context : Context) {
-  let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
-  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-  const filePath: string = context.filesDir + "/test.jpg";
-  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-  const imageSourceObj: image.ImageSource = image.createImageSource(file.fd, sourceOptions);
-}
-```
-
-```TypeScript
-async function CreateImageSource() {
-  const buf: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
-  const imageSourceObj: image.ImageSource = image.createImageSource(buf);
-}
-```
-
-```TypeScript
-async function CreateImageSource() {
-  const data: ArrayBuffer = new ArrayBuffer(112);
-  let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
-  const imageSourceObj: image.ImageSource = image.createImageSource(data, sourceOptions);
-}
-```
-
-```TypeScript
-import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-  
-async function CreateImageSource(context : Context) {
-  // 获取resourceManager资源管理器。
-  const resourceMgr: resourceManager.ResourceManager = context.resourceManager;
-  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-  resourceMgr.getRawFd('test.jpg').then((rawFileDescriptor: resourceManager.RawFileDescriptor) => {
-    const imageSourceObj: image.ImageSource = image.createImageSource(rawFileDescriptor);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to get RawFileDescriptor.code is ${error.code}, message is ${error.message}`);
-  })
-}
-```
-
+<a id="createimagesource-2"></a>
 
 ## createImageSource
 
@@ -212,7 +151,7 @@ function createImageSource(uri: string, options: SourceOptions): ImageSource
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | 图片路径，当前仅支持应用沙箱路径（可参考使用说明）。<br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC&lt;sup&gt;12+&lt;/sup&gt;、WBMP&lt;sup&gt;23+&lt;/sup&gt;、HEIFS&lt;sup&gt;23+&lt;/sup&gt;、TIFF&lt;sup&gt;23+&lt;/ sup&gt;、SVG&lt;sup&gt;10+&lt;/sup&gt;、ICO&lt;sup&gt;11+&lt;/sup&gt;。从API版本26.0.0开始，增加支持AVIF、AVIS格式。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](arkts-image-image-getimagesourcesupportedformats-f.md)接口，动态查询当前设备上的解码能力。 |
+| uri | string | 是 | 图片路径，当前仅支持应用沙箱路径（可参考[使用说明](../../../reference/apis-core-file-kit/js-apis-file-fs.md#使用说明)）。<br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC&lt;sup&gt;12+&lt;/sup&gt;、WBMP&lt;sup&gt;23+&lt;/sup&gt;、HEIFS&lt;sup&gt;23+&lt;/sup&gt;、TIFF&lt;sup&gt;23+&lt;/ sup&gt;、SVG&lt;sup&gt;10+&lt;/sup&gt;、ICO&lt;sup&gt;11+&lt;/sup&gt;。从API版本26.0.0开始，增加支持AVIF、AVIS格式。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](arkts-image-image-getimagesourcesupportedformats-f.md)接口，动态查询当前设备上的解码能力。 |
 | options | [SourceOptions](arkts-image-image-sourceoptions-i.md) | 是 | 图片属性，包括图片像素密度、像素格式和图片尺寸。 |
 
 **返回值：**
@@ -223,8 +162,17 @@ function createImageSource(uri: string, options: SourceOptions): ImageSource
 
 **示例**
 
-参见 createImageSource
+```TypeScript
+async function CreateImageSource(context : Context) {
+  let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
+  // 此处'test.png'仅作示例，请开发者自行替换。否则imageSource会创建失败，导致后续无法正常执行。
+  const path: string = context.filesDir + "/test.png";
+  let imageSourceObj: image.ImageSource = image.createImageSource(path, sourceOptions);
+}
+```
 
+
+<a id="createimagesource-4"></a>
 
 ## createImageSource
 
@@ -256,8 +204,19 @@ function createImageSource(fd: number): ImageSource
 
 **示例**
 
-参见 createImageSource
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
 
+async function CreateImageSource(context : Context) {
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+  let filePath: string = context.filesDir + "/test.jpg";
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  const imageSourceObj: image.ImageSource = image.createImageSource(file.fd);
+}
+```
+
+
+<a id="createimagesource-6"></a>
 
 ## createImageSource
 
@@ -292,8 +251,20 @@ function createImageSource(fd: number, options: SourceOptions): ImageSource
 
 **示例**
 
-参见 createImageSource
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
 
+async function CreateImageSource(context : Context) {
+  let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+  const filePath: string = context.filesDir + "/test.jpg";
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  const imageSourceObj: image.ImageSource = image.createImageSource(file.fd, sourceOptions);
+}
+```
+
+
+<a id="createimagesource-8"></a>
 
 ## createImageSource
 
@@ -327,8 +298,15 @@ function createImageSource(buf: ArrayBuffer): ImageSource
 
 **示例**
 
-参见 createImageSource
+```TypeScript
+async function CreateImageSource() {
+  const buf: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
+  const imageSourceObj: image.ImageSource = image.createImageSource(buf);
+}
+```
 
+
+<a id="createimagesource-10"></a>
 
 ## createImageSource
 
@@ -363,8 +341,16 @@ function createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSourc
 
 **示例**
 
-参见 createImageSource
+```TypeScript
+async function CreateImageSource() {
+  const data: ArrayBuffer = new ArrayBuffer(112);
+  let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
+  const imageSourceObj: image.ImageSource = image.createImageSource(data, sourceOptions);
+}
+```
 
+
+<a id="createimagesource-12"></a>
 
 ## createImageSource
 
@@ -397,4 +383,18 @@ function createImageSource(rawfile: resourceManager.RawFileDescriptor, options?:
 
 **示例**
 
-参见 createImageSource
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+  
+async function CreateImageSource(context : Context) {
+  // 获取resourceManager资源管理器。
+  const resourceMgr: resourceManager.ResourceManager = context.resourceManager;
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+  resourceMgr.getRawFd('test.jpg').then((rawFileDescriptor: resourceManager.RawFileDescriptor) => {
+    const imageSourceObj: image.ImageSource = image.createImageSource(rawFileDescriptor);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get RawFileDescriptor.code is ${error.code}, message is ${error.message}`);
+  })
+}
+```

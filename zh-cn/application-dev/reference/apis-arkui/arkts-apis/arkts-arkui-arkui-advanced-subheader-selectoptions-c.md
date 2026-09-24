@@ -1,5 +1,9 @@
 # SelectOptions
 
+```TypeScript
+export declare class SelectOptions
+```
+
 Declare type SelectOption
 
 **起始版本：** 10
@@ -93,7 +97,7 @@ options: Array<SelectOption>
 
 下拉选项内容。
 
-**类型：** Array&lt;[SelectOption](../arkts-components/arkts-arkui-selectoption-i.md)&gt;
+**类型：** Array&lt;[SelectOption](../arkts-components/arkts-arkui-select-comp-selectoption-i.md)&gt;
 
 **起始版本：** 10
 

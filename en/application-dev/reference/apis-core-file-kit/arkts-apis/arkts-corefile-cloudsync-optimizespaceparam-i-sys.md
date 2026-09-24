@@ -1,5 +1,9 @@
 # OptimizeSpaceParam (System API)
 
+```TypeScript
+interface OptimizeSpaceParam
+```
+
 Sets the total optimization space and aging days.
 
 **Since:** 17

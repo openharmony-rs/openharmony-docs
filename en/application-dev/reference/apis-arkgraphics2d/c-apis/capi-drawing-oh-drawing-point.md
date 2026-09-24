@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Point OH_Drawing_Point
 
 Defines a struct for a coordinate point.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)

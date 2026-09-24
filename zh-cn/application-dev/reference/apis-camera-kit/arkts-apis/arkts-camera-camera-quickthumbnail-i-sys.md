@@ -1,5 +1,9 @@
 # QuickThumbnail（系统接口）
 
+```TypeScript
+interface QuickThumbnail
+```
+
 Quick thumbnail object
 
 **起始版本：** 19
@@ -38,7 +42,7 @@ Release quick thumbnail object.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
 ## captureId
 

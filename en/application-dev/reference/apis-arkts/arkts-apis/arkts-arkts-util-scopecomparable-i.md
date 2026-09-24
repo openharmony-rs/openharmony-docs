@@ -1,5 +1,9 @@
 # ScopeComparable
 
+```TypeScript
+interface ScopeComparable
+```
+
 The values of the **ScopeComparable** type are used to implement the **compareTo** method. Therefore, ensure that the input parameters are comparable.
 
 **Since:** 7
@@ -40,6 +44,26 @@ Compares two values and returns a Boolean value.
 
 **Examples**
 
-```TypeScript
 Create a class to implement the compareTo method. The Temperature class is used as an example in the following sample code.
+
+```TypeScript
+class Temperature implements util.ScopeComparable {
+  private readonly _temp: number;
+
+  constructor(value: number) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp() {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
 ```

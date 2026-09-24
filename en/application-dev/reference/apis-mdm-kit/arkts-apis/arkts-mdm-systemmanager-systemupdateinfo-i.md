@@ -1,5 +1,9 @@
 # SystemUpdateInfo
 
+```TypeScript
+export interface SystemUpdateInfo
+```
+
 Represents information about the system version to update.
 
 **Since:** 12

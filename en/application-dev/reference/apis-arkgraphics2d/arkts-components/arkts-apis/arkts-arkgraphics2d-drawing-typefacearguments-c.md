@@ -1,5 +1,9 @@
 # TypefaceArguments
 
+```TypeScript
+class TypefaceArguments
+```
+
 This module defines a struct for setting typeface arguments.
 
 > **NOTE:** 
@@ -47,6 +51,8 @@ Defines the typeface weight.
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-abnormal-parameter-value) | Parameter error. Possible causes: Incorrect parameter range. |
 
+**Examples**
+
 ## constructor
 
 ```TypeScript
@@ -60,3 +66,10 @@ Constructor for typeface arguments.
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
 **System capability:** SystemCapability.Graphics.Drawing
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+let typefaceArgument = new drawing.TypefaceArguments();
+```

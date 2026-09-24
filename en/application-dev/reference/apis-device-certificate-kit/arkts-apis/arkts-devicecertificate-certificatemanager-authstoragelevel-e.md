@@ -1,5 +1,9 @@
 # AuthStorageLevel
 
+```TypeScript
+export enum AuthStorageLevel
+```
+
 Enumerates the credential storage levels.
 
 **Since:** 18

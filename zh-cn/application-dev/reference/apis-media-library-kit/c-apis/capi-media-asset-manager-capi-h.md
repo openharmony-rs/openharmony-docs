@@ -25,7 +25,7 @@
 | [MediaLibrary_ErrorCode OH_MediaAssetManager_RequestMovingPhoto(OH_MediaAssetManager* manager, OH_MediaAsset* mediaAsset, MediaLibrary_RequestOptions requestOptions, MediaLibrary_RequestId* requestId, OH_MediaLibrary_OnMovingPhotoDataPrepared callback)](#oh_mediaassetmanager_requestmovingphoto) | 根据不同的策略模式请求动态照片资源。 |
 | [MediaLibrary_ErrorCode OH_MediaAssetManager_RequestImage(OH_MediaAssetManager* manager, OH_MediaAsset* mediaAsset, MediaLibrary_RequestOptions requestOptions, MediaLibrary_RequestId* requestId, OH_MediaLibrary_OnImageDataPrepared callback)](#oh_mediaassetmanager_requestimage) | 根据不同的策略模式请求图像资源。 |
 | [MediaLibrary_ErrorCode OH_MediaAssetManager_QuickRequestImage(OH_MediaAssetManager* manager, OH_MediaAsset* mediaAsset, MediaLibrary_RequestOptions requestOptions, MediaLibrary_RequestId* requestId, OH_MediaLibrary_OnQuickImageDataPrepared callback)](#oh_mediaassetmanager_quickrequestimage) | 根据不同的策略模式请求图像资源。 |
-| [MediaLibrary_ErrorCode OH_MediaAssetManager_Release(OH_MediaAssetManager* manager)](#oh_mediaassetmanager_release) | 释放{@link OH_MediaAssetManager}实例。 |
+| [MediaLibrary_ErrorCode OH_MediaAssetManager_Release(OH_MediaAssetManager* manager)](#oh_mediaassetmanager_release) | 释放[OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)实例。 |
 
 ## 函数说明
 
@@ -38,6 +38,8 @@ OH_MediaAssetManager* OH_MediaAssetManager_Create(void)
 **描述：**
 
 创建一个媒体资产管理器。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 12
 
@@ -56,6 +58,8 @@ MediaLibrary_RequestId OH_MediaAssetManager_RequestImageForPath(OH_MediaAssetMan
 **描述：**
 
 请求具有目标路径的图像资源。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -87,6 +91,8 @@ MediaLibrary_RequestId OH_MediaAssetManager_RequestVideoForPath(OH_MediaAssetMan
 
 请求具有目标路径的视频资源。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **起始版本：** 12
@@ -117,6 +123,8 @@ bool OH_MediaAssetManager_CancelRequest(OH_MediaAssetManager* manager, const Med
 
 通过请求Id取消请求。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **起始版本：** 12
@@ -144,6 +152,8 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_RequestMovingPhoto(OH_MediaAssetMana
 
 根据不同的策略模式请求动态照片资源。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **起始版本：** 13
@@ -152,11 +162,11 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_RequestMovingPhoto(OH_MediaAssetMana
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_MediaAssetManager* manager | {@link OH_MediaAssetManager}实例指针。 |
-| OH_MediaAsset* mediaAsset | 要请求的媒体文件对象的{@link OH_MediaAsset}实例。 |
-| MediaLibrary_RequestOptions requestOptions | 用于图像请求策略模式的{@link MediaLibrary_RequestOptions}。 |
-| MediaLibrary_RequestId* requestId | 请求的{@link MediaLibrary_RequestId}，出参。 |
-| OH_MediaLibrary_OnMovingPhotoDataPrepared callback | 当请求的动态照片准备就绪时调用{@link OH_MediaLibrary_OnMovingPhotoDataPrepared}。 |
+| OH_MediaAssetManager* manager | [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)实例指针。 |
+| OH_MediaAsset* mediaAsset | 要请求的媒体文件对象的[OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)实例。 |
+| MediaLibrary_RequestOptions requestOptions | 用于图像请求策略模式的[MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md)。 |
+| MediaLibrary_RequestId* requestId | 请求的[MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)，出参。 |
+| OH_MediaLibrary_OnMovingPhotoDataPrepared callback | 当请求的动态照片准备就绪时调用[OH_MediaLibrary_OnMovingPhotoDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onmovingphotodataprepared)。 |
 
 **返回值：**
 
@@ -174,6 +184,8 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_RequestImage(OH_MediaAssetManager* m
 
 根据不同的策略模式请求图像资源。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **起始版本：** 12
@@ -182,11 +194,11 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_RequestImage(OH_MediaAssetManager* m
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_MediaAssetManager* manager | {@link OH_MediaAssetManager}实例指针。 |
-| OH_MediaAsset* mediaAsset | 要请求的媒体文件对象的{@link OH_MediaAsset}实例。 |
-| MediaLibrary_RequestOptions requestOptions | 用于图像请求策略模式的{@link MediaLibrary_RequestOptions}。 |
-| MediaLibrary_RequestId* requestId | 请求的{@link MediaLibrary_RequestId}，出参。 |
-| OH_MediaLibrary_OnImageDataPrepared callback | 当请求的图像源准备就绪时调用{@link OH_MediaLibrary_OnImageDataPrepared}。 |
+| OH_MediaAssetManager* manager | [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)实例指针。 |
+| OH_MediaAsset* mediaAsset | 要请求的媒体文件对象的[OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)实例。 |
+| MediaLibrary_RequestOptions requestOptions | 用于图像请求策略模式的[MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md)。 |
+| MediaLibrary_RequestId* requestId | 请求的[MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)，出参。 |
+| OH_MediaLibrary_OnImageDataPrepared callback | 当请求的图像源准备就绪时调用[OH_MediaLibrary_OnImageDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onimagedataprepared)。 |
 
 **返回值：**
 
@@ -203,6 +215,8 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_QuickRequestImage(OH_MediaAssetManag
 **描述：**
 
 根据不同的策略模式请求图像资源。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -232,7 +246,9 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_Release(OH_MediaAssetManager* manage
 
 **描述：**
 
-释放{@link OH_MediaAssetManager}实例。
+释放[OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)实例。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 13
 
@@ -240,7 +256,7 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_Release(OH_MediaAssetManager* manage
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_MediaAssetManager* manager | 要释放的{@link OH_MediaAssetManager}实例。 |
+| OH_MediaAssetManager* manager | 要释放的[OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)实例。 |
 
 **返回值：**
 

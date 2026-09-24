@@ -55,10 +55,72 @@ Starts an [ArkTS child process](../../../application-models/ability-terminology.
 
 **Examples**
 
-```TypeScript
 Sample code for the child process:
-```
 
 ```TypeScript
+// Create the DemoProcess.ets child process class under src/main/ets/process of the module1 module:
+// module1/src/main/ets/process/DemoProcess.ets
+import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
+
+export default class DemoProcess extends ChildProcess {
+
+  onStart(args?: ChildProcessArgs) {
+    let entryParams = args?.entryParams;
+    let fd = args?.fds?.key1;
+    // ..
+  }
+}
+```
+
 Sample code for the main process is provided below. For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+// Use the childProcessManager.startArkChildProcess method to start a child process:
+// module1/src/main/ets/tool/Tool.ets
+import { common, ChildProcessArgs, ChildProcessOptions, childProcessManager } from '@kit.AbilityKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import DemoProcess from '../process/DemoProcess';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('Click')
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            try {
+              DemoProcess.toString(); // Call any API of the DemoProcess class to prevent the code from being directly optimized by the compiler because it is not being referenced.
+              let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+              let path = context.filesDir + "/test.txt";
+              let file = fileIo.openSync(path, fileIo.OpenMode.READ_ONLY | fileIo.OpenMode.CREATE);
+              let args: ChildProcessArgs = {
+                entryParams: "testParam",
+                fds: {
+                  "key1": file.fd
+                }
+              };
+              let options: ChildProcessOptions = {
+                isolationMode: false
+              };
+              childProcessManager.startArkChildProcess("module1/ets/process/DemoProcess.ets", args, options)
+                .then((pid) => {
+                  console.info(`startArkChildProcess success, pid: ${pid}`);
+                })
+                .catch((err: BusinessError) => {
+                  console.error(`startArkChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
+                })
+            } catch (err: BusinessError) {
+              console.error(`startArkChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+            }
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
 ```

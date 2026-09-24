@@ -8,6 +8,8 @@ typedef struct OH_Drawing_BitmapFormat {...} OH_Drawing_BitmapFormat
 
 This struct describes the pixel format of a bitmap, including the color type and alpha type.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)

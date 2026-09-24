@@ -40,7 +40,7 @@ function getUserNonStopApps(admin: Want): Array<common.ApplicationInstance>
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
@@ -62,18 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { applicationManager, common } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  let result: Array<common.ApplicationInstance> = applicationManager.getUserNonStopApps(null);
-  console.info(`Succeeded in getting UserNonStop applications, result : ${JSON.stringify(result)}`);
-} catch(err) {
-  console.error(`Failed to get UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="getusernonstopapps-1"></a>
 
 ## getUserNonStopApps
 
@@ -109,8 +99,18 @@ function getUserNonStopApps(admin: Want | null): Array<common.ApplicationInstanc
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
-参见 getUserNonStopApps
+```TypeScript
+import { applicationManager, common } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: Array<common.ApplicationInstance> = applicationManager.getUserNonStopApps(null);
+  console.info(`Succeeded in getting UserNonStop applications, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
+}
+```

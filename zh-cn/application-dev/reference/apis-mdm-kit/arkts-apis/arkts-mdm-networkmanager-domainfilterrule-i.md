@@ -1,5 +1,9 @@
 # DomainFilterRule
 
+```TypeScript
+interface DomainFilterRule
+```
+
 域名过滤规则。
 
 API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。

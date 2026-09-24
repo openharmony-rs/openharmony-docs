@@ -1,5 +1,9 @@
 # LinkedList
 
+```TypeScript
+declare class LinkedList<T>
+```
+
 LinkedList底层通过双向链表实现，每个节点都包含对前一个元素和后一个元素的引用。查询元素时，可以从头或从尾部遍历，插入和删除效率高，查询效率低。LinkedList允许元素为null。
 
 **起始版本：** 8

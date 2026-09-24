@@ -1,5 +1,9 @@
 # TimeZoneType
 
+```TypeScript
+export enum TimeZoneType
+```
+
 时区类型。用于时区变更时，按照变更后的时区重新计算提醒的目标时间。
 
 **起始版本：** 26.0.0

@@ -8,6 +8,8 @@ typedef struct ImageSourceNative_ ImageSourceNative
 
 为图像源方法定义native层图像源对象。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
 **起始版本：** 10
 
 **相关模块：** [Image](capi-image.md)

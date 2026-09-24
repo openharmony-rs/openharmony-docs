@@ -8,6 +8,8 @@ typedef struct OH_AVScreenCapture_UserSelectionInfo OH_AVScreenCapture_UserSelec
 
 The OH_AVScreenCapture_UserSelectionInfo struct describes the parameters selected by the user on the authorization UI (selection UI).
 
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
 **Since**: 20
 
 **Related module**: [AVScreenCapture](capi-avscreencapture.md)

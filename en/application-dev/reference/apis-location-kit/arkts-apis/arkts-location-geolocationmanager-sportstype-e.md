@@ -1,5 +1,9 @@
 # SportsType
 
+```TypeScript
+export enum SportsType
+```
+
 Enum for sports type
 
 **Since:** 18

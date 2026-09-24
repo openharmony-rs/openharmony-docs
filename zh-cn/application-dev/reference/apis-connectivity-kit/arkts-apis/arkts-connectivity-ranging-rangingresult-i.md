@@ -1,5 +1,9 @@
 # RangingResult
 
+```TypeScript
+interface RangingResult
+```
+
 描述测距结果，每次测距测量完成后通过[startRanging](arkts-connectivity-ranging-startranging-f.md)的callback回调返回。
 
 **起始版本：** 26.0.0

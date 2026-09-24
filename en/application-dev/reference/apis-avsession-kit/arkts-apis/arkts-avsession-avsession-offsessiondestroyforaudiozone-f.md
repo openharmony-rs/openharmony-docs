@@ -14,7 +14,7 @@ function offSessionDestroyForAudioZone(userId: number, callback?: Callback<AVSes
 
 Unregister session destroy callback for a specific audio zone.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_MEDIA_RESOURCES
 

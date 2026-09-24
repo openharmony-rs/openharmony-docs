@@ -1,5 +1,9 @@
 # ChipV2PrefixImageIconConfig
 
+```TypeScript
+export interface ChipV2PrefixImageIconConfig extends ChipV2ImageIconConfig
+```
+
 ChipV2PrefixImageIconConfig定义前缀图标的属性配置。
 
 继承自[ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md)。

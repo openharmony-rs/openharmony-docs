@@ -1,5 +1,9 @@
 # ImsRegState（系统接口）
 
+```TypeScript
+export enum ImsRegState
+```
+
 Obtains IMS registration status.
 
 **起始版本：** 9

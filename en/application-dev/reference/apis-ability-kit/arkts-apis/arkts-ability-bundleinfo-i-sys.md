@@ -1,5 +1,9 @@
 # BundleInfo
 
+```TypeScript
+export interface BundleInfo
+```
+
 The module defines the bundle information.
 
 **Since:** 9
@@ -16,7 +20,7 @@ App sandbox policy for dual-mode (2in1/tablet) scenarios.
 
 **Type:** [bundleManager.AppSandboxPolicy](arkts-ability-bundlemanager-appsandboxpolicy-e-sys.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -34,7 +38,7 @@ Define the enumeration of device mode distribution policies, which is used to sp
 
 **Type:** [bundleManager.DeviceModeDistributionPolicy](arkts-ability-bundlemanager-devicemodedistributionpolicy-e-sys.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

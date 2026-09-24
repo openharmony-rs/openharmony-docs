@@ -32,8 +32,8 @@ function queryPrintJobList(callback: AsyncCallback<Array<PrintJob>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 
 **示例**
 
@@ -50,17 +50,8 @@ print.queryPrintJobList((error: BusinessError, printJobs : print.PrintJob[]) => 
 });
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-print.queryPrintJobList().then((printJobs : print.PrintJob[]) => {
-    console.info('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
-}).catch((error: BusinessError) => {
-    console.error(`Failed to query print job list. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="queryprintjoblist-1"></a>
 
 ## queryPrintJobList
 
@@ -88,9 +79,18 @@ function queryPrintJobList(): Promise<Array<PrintJob>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 
 **示例**
 
-参见 [queryPrintJobList](#queryprintjoblist)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+print.queryPrintJobList().then((printJobs : print.PrintJob[]) => {
+    console.info('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
+}).catch((error: BusinessError) => {
+    console.error(`Failed to query print job list. Code: ${error.code}, message: ${error.message}`);
+});
+```

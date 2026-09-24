@@ -1,5 +1,9 @@
 # AdvertisingSettings
 
+```TypeScript
+interface AdvertisingSettings
+```
+
 Represents the advertising settings.
 
 **Since:** 26.0.0

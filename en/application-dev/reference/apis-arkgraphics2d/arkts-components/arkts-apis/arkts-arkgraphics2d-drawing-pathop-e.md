@@ -1,5 +1,9 @@
 # PathOp
 
+```TypeScript
+enum PathOp
+```
+
 Enumerates the path operation types. It is often used in path combination and clipping scenarios.
 
 **Since:** 12

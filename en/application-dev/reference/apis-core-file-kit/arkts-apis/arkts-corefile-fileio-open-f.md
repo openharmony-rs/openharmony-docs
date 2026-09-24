@@ -36,6 +36,8 @@ Opens a file. This API uses a promise to return the result.
 | Promise&lt;number&gt; | Promise that returns the file descriptor of the file opened. |
 
 
+<a id="open-1"></a>
+
 ## open
 
 ```TypeScript
@@ -59,6 +61,8 @@ Opens a file. This API uses an asynchronous callback to return the result.
 | path | string | Yes | Application sandbox path of the file. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback invoked when the file is opened asynchronously, which is used to return the file descriptor. |
 
+
+<a id="open-2"></a>
 
 ## open
 
@@ -84,6 +88,8 @@ Opens a file. This API uses an asynchronous callback to return the result.
 | flags | number | Yes | Option for opening the file. You must specify one of the following options. By default, the file is opened in read-only mode.<br>- **0o0**: Open the file in read-only mode.<br>- **0o1**: Open the file in write-only mode.<br>- **0o2**: Open the file in read/write mode.<br>In addition, you can specify the following options, separated using a bitwise OR operator (&#124;). By default, no additional option is specified.<br>- **0o100**: If the file does not exist, create it. If you use this option, you must also specify **mode**.<br>- **0o200**: If **0o100** is added and the file already exists, throw an exception.<br>- **0o1000**: If the file exists and is opened in write mode, truncate the file length to 0.<br>- **0o2000**: Open the file in append mode. New data will be appended to the file (added to the end of the file).<br>- **0o4000**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the open file and in subsequent I/Os.<br>- **0o200000**: If **path** does not point to a directory, throw an exception.<br>- **0o400000**: If **path** points to a symbolic link, throw an exception.<br>- **0o4010000**: Open the file in synchronous I/O mode. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback invoked when the file is opened asynchronously, which is used to return the file descriptor. |
 
+
+<a id="open-3"></a>
 
 ## open
 

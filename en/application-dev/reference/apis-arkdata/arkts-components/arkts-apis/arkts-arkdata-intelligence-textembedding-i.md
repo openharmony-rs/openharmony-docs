@@ -1,5 +1,9 @@
 # TextEmbedding
 
+```TypeScript
+interface TextEmbedding
+```
+
 Describes the text embedding functions of the multi-modal embedding model. Chinese and English are supported.
 
 @interface TextEmbedding
@@ -67,24 +71,7 @@ textEmbedding.loadModel()
   })
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Obtain textEmbedding by calling intelligence.getTextEmbeddingModel first.
-textEmbedding.loadModel()
-  .then(() => {
-    let batchTexts = ['text1', 'text2'];
-    textEmbedding.getEmbedding(batchTexts)
-      .then((data: Array<Array<number>>) => {
-        console.info("Succeeded in getting Embedding");
-      })
-      .catch((err: BusinessError) => {
-        console.error(`Failed to get Embedding. Code: ${err.code}, message: ${err.message}`);
-      })
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to load Model. Code: ${err.code}, message: ${err.message}`);
-  })
-```
+<a id="getembedding-1"></a>
 
 ## getEmbedding
 
@@ -119,25 +106,6 @@ Obtains the embedding vector of a given batch of text. The model can process up 
 | [31300000](../errorcode-intelligence.md#31300000-internal-error) | Inner error. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Obtain textEmbedding first via intelligence.getTextEmbeddingModel.
-textEmbedding.loadModel()
-  .then(() => {
-    let text = 'text';
-    textEmbedding.getEmbedding(text)
-      .then((data: Array<number>) => {
-        console.info("Succeeded in getting Embedding");
-      })
-      .catch((err: BusinessError) => {
-        console.error(`Failed to get Embedding. Code: ${err.code}, message: ${err.message}`);
-      })
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to load Model. Code: ${err.code}, message: ${err.message}`);
-  })
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

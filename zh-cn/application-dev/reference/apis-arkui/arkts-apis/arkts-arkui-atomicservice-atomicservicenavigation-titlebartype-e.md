@@ -1,5 +1,9 @@
 # TitleBarType
 
+```TypeScript
+export declare enum TitleBarType
+```
+
 标题栏类型的可选项，默认值为ROUND_ICON。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # ToneAttrs（系统接口）
 
+```TypeScript
+interface ToneAttrs
+```
+
 管理铃声属性。在调用ToneAttrs&lt;sup&gt;12+&lt;/sup&gt;的接口前，需要先通过[createCustomizedToneAttrs](arkts-audio-systemsoundmanager-createcustomizedtoneattrs-f-sys.md)或[getDefaultRingtoneAttrs](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getdefaultringtoneattrs)、[getRingtoneAttrList](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneattrlist)等方法获取实例。
 
 **起始版本：** 12
@@ -32,13 +36,13 @@ getCategory(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 铃声类别，取值参考铃声类别的常量。 |
+| number | 铃声类别，取值参考[铃声类别的常量](../../../reference/apis-audio-kit/js-apis-systemSoundManager-sys.md#常量)。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
 **示例**
 
@@ -70,7 +74,7 @@ getCustomizedType(): ToneCustomizedType
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
 **示例**
 
@@ -102,7 +106,7 @@ getFileName(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
 **示例**
 
@@ -128,13 +132,13 @@ getMediaType():MediaType
 
 | 类型 | 说明 |
 | --- | --- |
-| [MediaType](arkts-audio-systemsoundmanager-mediatype-e-sys.md) | 媒体类型，如果应用未调用过setMediaType设置mediatype，则此函数返回的默认值为AUDIO。 |
+| [MediaType](arkts-audio-systemsoundmanager-mediatype-e-sys.md) | 媒体类型，如果应用未调用过setMediaType设置媒体类型，则此函数返回的默认值为AUDIO。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
 **示例**
 
@@ -166,7 +170,7 @@ getTitle(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
 **示例**
 
@@ -200,7 +204,7 @@ getUri(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
 **示例**
 
@@ -226,14 +230,14 @@ setCategory(category: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| category | number | 是 | 铃声类别，取值参考铃声类别的常量。 |
+| category | number | 是 | 铃声类别，取值参考[铃声类别的常量](../../../reference/apis-audio-kit/js-apis-systemSoundManager-sys.md#常量)。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -267,8 +271,8 @@ setFileName(name: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -302,7 +306,7 @@ setMediaType(type:MediaType):void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
 **示例**
 
@@ -336,8 +340,8 @@ setTitle(title: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 

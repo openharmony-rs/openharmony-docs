@@ -1,5 +1,9 @@
 # FetchOptions
 
+```TypeScript
+interface FetchOptions
+```
+
 检索条件。
 
 **起始版本：** 10

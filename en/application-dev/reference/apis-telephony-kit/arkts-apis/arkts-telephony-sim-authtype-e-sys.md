@@ -1,5 +1,9 @@
 # AuthType (System API)
 
+```TypeScript
+export enum AuthType
+```
+
 Indicates the Authentication type
 
 **Since:** 14

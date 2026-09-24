@@ -1,5 +1,9 @@
 # NetFirewallRuleType
 
+```TypeScript
+enum NetFirewallRuleType
+```
+
 枚举类型，防火墙规则类型，包含IP、Domain、DNS。
 
 **起始版本：** 15

@@ -1,5 +1,9 @@
 # ViewModel
 
+```TypeScript
+export interface ViewModel
+```
+
 View model @interface ViewModel
 
 **Since:** 4
@@ -12,7 +16,7 @@ View model @interface ViewModel
 $t(path: string, param?: object | Array<any>): string
 ```
 
-Displays content based on the current system language and a path of the language resource key specified through &#36;t.
+Displays content based on the current system language and a path of the language resource key specified through $t.
 
 **Since:** 4
 
@@ -25,7 +29,7 @@ Displays content based on the current system language and a path of the language
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | path | string | Yes | Path of the language resource key |
-| param | object &#124; Array&lt;any&gt; | No | Content used to replace placeholders during runtime. There are two types of placeholders available: 1. Named placeholder, for example, {name}. The actual content must be of the object type, for example, &#36;t('strings.object', {name: 'Hello world'}). 2. Digit placeholder, for example, {0}. The actual content must be of the array type, for example, &#36;t('strings.array', ['Hello world']). |
+| param | object &#124; Array&lt;any&gt; | No | Content used to replace placeholders during runtime. There are two types of placeholders available: 1. Named placeholder, for example, {name}. The actual content must be of the object type, for example, $t('strings.object', {name: 'Hello world'}). 2. Digit placeholder, for example, {0}. The actual content must be of the array type, for example, $t('strings.array', ['Hello world']). |
 
 **Return value:**
 

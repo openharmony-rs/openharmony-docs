@@ -1,5 +1,9 @@
 # ImagePacker
 
+```TypeScript
+interface ImagePacker
+```
+
 ImagePacker类，用于图片压缩和编码。
 
 在调用ImagePacker的方法前，需要先通过[image.createImagePacker](arkts-image-image-createimagepacker-f.md)构建一个ImagePacker实例。
@@ -54,6 +58,43 @@ packBinaryImageToTiffData(bufferInfo: BinaryBufferInfo, options?: PackingOptions
 | [7800202](../errorcode-image.md#7800202-imagepacker无效参数) | Invalid parameter. Possible causes: 1. Invalid FD; 2. Compression algorithm mismatch. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+
+const DOMAIN = 0X00000;
+const TAG: string = 'PackBinaryImageToTiffData';
+
+async function PackBinaryImageToTiffData() {
+  const width = 100;
+  const height = 100;
+  const rowBytes = 13;
+  const bufferSize = rowBytes * height;
+  const data: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+  let bufferInfo: image.BinaryBufferInfo = {
+    size: { width: width, height: height },
+    data: data,
+    bytesPerRow: rowBytes
+  };
+
+  let tiffOptions: image.PackingOptionsForTiff = {
+    compression: 4 // CCITT G4压缩
+  };
+
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  await imagePackerObj.packBinaryImageToTiffData(bufferInfo, tiffOptions)
+    .then((data: ArrayBuffer) => {
+      hilog.info(DOMAIN, TAG, 'Succeeded in packing binary image to tiff data.');
+    }).catch((error: BusinessError) => {
+      hilog.error(DOMAIN, TAG, `Failed to pack binary image to tiff data. code ${error.code}, message is ${error.message}`);
+    });
+}
+```
+
 ## packBinaryImageToTiffFile
 
 ```TypeScript
@@ -89,6 +130,113 @@ packBinaryImageToTiffFile(bufferInfo: BinaryBufferInfo, fd: number, options?: Pa
 | [7800202](../errorcode-image.md#7800202-imagepacker无效参数) | Invalid parameter. Possible causes: 1. Invalid FD; 2. Compression algorithm mismatch. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+
+const DOMAIN = 0X00000;
+const TAG: string = 'PackBinaryImageToTiffFile';
+
+async function PackBinaryImageToTiffFile(context: Context) {
+  const width = 100;
+  const height = 100;
+  const rowBytes = 13;
+  const bufferSize = rowBytes * height;
+  const data: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+  let bufferInfo: image.BinaryBufferInfo = {
+    size: { width: width, height: height },
+    data: data,
+    bytesPerRow: rowBytes
+  };
+
+  const filePath: string = context.filesDir + "/output.tiff";
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+
+  let tiffOptions: image.PackingOptionsForTiff = {
+    compression: 4 // CCITT G4压缩
+  };
+
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  await imagePackerObj.packBinaryImageToTiffFile(bufferInfo, file.fd, tiffOptions)
+    .then(() => {
+      hilog.info(DOMAIN, TAG, 'Succeeded in packing binary image to tiff file.');
+    }).catch((error: BusinessError) => {
+      hilog.error(DOMAIN, TAG, `Failed to pack binary image to tiff file. code ${error.code}, message is ${error.message}`);
+    });
+  fileIo.closeSync(file);
+}
+```
+
+<a id="packing-4"></a>
+
+## packing
+
+```TypeScript
+packing(picture: Picture, options: PackingOption): Promise<ArrayBuffer>
+```
+
+将图像压缩或重新编码。使用Promise异步回调。
+
+**起始版本：** 13
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| picture | [Picture](arkts-image-image-picture-i.md) | 是 | 编码的Picture对象。 |
+| options | [PackingOption](arkts-image-image-packingoption-i.md) | 是 | 设置编码参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Packing(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("test.jpg");
+  let ops: image.SourceOptions = {
+    sourceDensity: 98,
+  }
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, ops);
+  let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
+  let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  let funcName = "Packing";
+  if (imagePackerObj != null) {
+    let opts: image.PackingOption = {
+      format: "image/jpeg",
+      quality: 98,
+      desiredDynamicRange: image.PackingDynamicRange.AUTO,
+      needsPackProperties: true};
+    await imagePackerObj.packing(pictureObj, opts).then((data: ArrayBuffer) => {
+      console.info(funcName, 'Succeeded in packing the image.'+ data);
+    }).catch((error: BusinessError) => {
+      console.error(funcName, `Failed to pack the image.code ${error.code},message is ${error.message}`);
+    });
+  }
+}
+```
+
 ## packing
 
 ```TypeScript
@@ -118,6 +266,29 @@ packing(source: ImageSource, option: PackingOption, callback: AsyncCallback<Arra
 | source | [ImageSource](arkts-image-image-imagesource-i.md) | 是 | 编码的ImageSource。 |
 | option | [PackingOption](arkts-image-image-packingoption-i.md) | 是 | 设置编码参数。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ArrayBuffer&gt; | 是 | 回调函数，当图片编码成功，err为undefined，data为获取到的压缩或编码数据；否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Packing(context : Context) {
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+  let filePath: string = context.filesDir + "/test.jpg";
+  const imageSourceObj: image.ImageSource = image.createImageSource(filePath);
+  let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  imagePackerObj.packing(imageSourceObj, packOpts, (err: BusinessError, data: ArrayBuffer) => {
+    if (err) {
+      console.error(`Failed to pack the image.code ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in packing the image.');
+    }
+  })
+}
+```
+
+<a id="packing-1"></a>
 
 ## packing
 
@@ -154,6 +325,28 @@ packing(source: ImageSource, option: PackingOption): Promise<ArrayBuffer>
 | --- | --- |
 | Promise&lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Packing(context : Context) {
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+  let filePath: string = context.filesDir + "/test.jpg";
+  const imageSourceObj: image.ImageSource = image.createImageSource(filePath);
+  let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  imagePackerObj.packing(imageSourceObj, packOpts)
+    .then((data: ArrayBuffer) => {
+      console.info('Succeeded in packing the image.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to pack the image.code ${error.code},message is ${error.message}`);
+    })
+}
+```
+
+<a id="packing-2"></a>
+
 ## packing
 
 ```TypeScript
@@ -187,6 +380,32 @@ packing(source: PixelMap, option: PackingOption, callback: AsyncCallback<ArrayBu
 | source | [PixelMap](arkts-image-image-pixelmap-i.md) | 是 | 编码的PixelMap资源。 |
 | option | [PackingOption](arkts-image-image-packingoption-i.md) | 是 | 设置编码参数。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ArrayBuffer&gt; | 是 | 回调函数，当图片编码成功，err为undefined，data为获取到的压缩或编码数据；否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Packing() {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+    let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
+    const imagePackerObj: image.ImagePacker = image.createImagePacker();
+    imagePackerObj.packing(pixelMap, packOpts, (err: BusinessError, data: ArrayBuffer) => {
+      if (err) {
+        console.error(`Failed to pack the image.code ${err.code},message is ${err.message}`);
+      } else {
+        console.info('Succeeded in packing the image.');
+      }
+    })
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to create the PixelMap.code ${error.code},message is ${error.message}`);
+  })
+}
+```
+
+<a id="packing-3"></a>
 
 ## packing
 
@@ -227,37 +446,28 @@ packing(source: PixelMap, option: PackingOption): Promise<ArrayBuffer>
 | --- | --- |
 | Promise&lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
 
-## packing
+**示例**
 
 ```TypeScript
-packing(picture: Picture, options: PackingOption): Promise<ArrayBuffer>
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Packing() {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+    let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
+    const imagePackerObj: image.ImagePacker = image.createImagePacker();
+    imagePackerObj.packing(pixelMap, packOpts)
+      .then((data: ArrayBuffer) => {
+        console.info('Succeeded in packing the image.');
+      }).catch((error: BusinessError) => {
+      console.error(`Failed to pack the image.code ${error.code},message is ${error.message}`);
+    })
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to create PixelMap.code ${error.code},message is ${error.message}`);
+  })
+}
 ```
-
-将图像压缩或重新编码。使用Promise异步回调。
-
-**起始版本：** 13
-
-**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| picture | [Picture](arkts-image-image-picture-i.md) | 是 | 编码的Picture对象。 |
-| options | [PackingOption](arkts-image-image-packingoption-i.md) | 是 | 设置编码参数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
 
 ## packToData
 
@@ -290,7 +500,7 @@ packToData(source: ImageSource, options: PackingOption): Promise<ArrayBuffer>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | If the parameter is invalid. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | If the parameter is invalid. |
 | [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
 | [62980101](../errorcode-image.md#62980101-图片输入数据错误) | The image data is abnormal. |
 | [62980106](../errorcode-image.md#62980106-图片数据太大) | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
@@ -299,6 +509,28 @@ packToData(source: ImageSource, options: PackingOption): Promise<ArrayBuffer>
 | [62980120](../errorcode-image.md#62980120-图片添加像素映射失败) | Add pixelmap out of range. |
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function PackToData(context : Context) {
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+  let filePath: string = context.filesDir + "/test.jpg";
+  const imageSourceObj: image.ImageSource = image.createImageSource(filePath);
+  let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  imagePackerObj.packToData(imageSourceObj, packOpts)
+    .then((data: ArrayBuffer) => {
+      console.info('Succeeded in packing the image.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to pack the image.code ${error.code},message is ${error.message}`);
+    })
+}
+```
+
+<a id="packtodata-1"></a>
 
 ## packToData
 
@@ -335,7 +567,7 @@ packToData(source: PixelMap, options: PackingOption): Promise<ArrayBuffer>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | If the parameter is invalid. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | If the parameter is invalid. |
 | [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
 | [62980101](../errorcode-image.md#62980101-图片输入数据错误) | The image data is abnormal. |
 | [62980106](../errorcode-image.md#62980106-图片数据太大) | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
@@ -344,6 +576,29 @@ packToData(source: PixelMap, options: PackingOption): Promise<ArrayBuffer>
 | [62980120](../errorcode-image.md#62980120-图片添加像素映射失败) | Add pixelmap out of range. |
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function PackToData() {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+  let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+  image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+    let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
+    const imagePackerObj: image.ImagePacker = image.createImagePacker();
+    imagePackerObj.packToData(pixelMap, packOpts)
+      .then((data: ArrayBuffer) => {
+        console.info('Succeeded in packing the image.');
+      }).catch((error: BusinessError) => {
+      console.error(`Failed to pack the image.code ${error.code},message is ${error.message}`);
+    })
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to create PixelMap.code ${error.code},message is ${error.message}`);
+  })
+}
+```
 
 ## packToDataFromPixelmapSequence
 
@@ -374,8 +629,36 @@ packToDataFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, options: Packi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Failed to encode image. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function PackToDataFromPixelmapSequence(context : Context) {
+  const resourceMgr = context.resourceManager;
+  // 此处'moving_test.gif'仅作示例，请开发者自行替换。否则imageSource会创建失败，导致后续无法正常执行。
+  const fileData = await resourceMgr.getRawFileContent('moving_test.gif');
+  const color = fileData.buffer as ArrayBuffer;
+  let imageSource = image.createImageSource(color);
+  let pixelMapList = await imageSource.createPixelMapList();
+  let ops: image.PackingOptionsForSequence = {
+    frameCount: 3,  // 指定GIF编码中的帧数为3。
+    delayTimeList: [10, 10, 10],  // 指定GIF编码中3帧的延迟时间分别为100ms、100ms、100ms。
+    disposalTypes: [3, 2, 3], // 指定GIF编码中3帧的帧过渡模式分别为3（恢复到之前的状态）、2（恢复背景色)、3(恢复到之前的状态)。
+    loopCount: 0 // 指定GIF编码中循环次数为无限循环。
+  };
+  let packer = image.createImagePacker();
+  packer.packToDataFromPixelmapSequence(pixelMapList, ops)
+    .then((data: ArrayBuffer) => {
+      console.info('Succeeded in packing.');
+    }).catch((error: BusinessError) => {
+    console.error('Failed to packing.');
+  })
+}
+```
 
 ## packToFile
 
@@ -411,6 +694,32 @@ packToFile(source: ImageSource, fd: number, options: PackingOption, callback: As
 | [62980120](../errorcode-image.md#62980120-图片添加像素映射失败) | Add pixelmap out of range. |
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+async function PackToFile(context : Context) {
+  // 此处'test.png'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+  const path: string = context.filesDir + "/test.png";
+  const imageSourceObj: image.ImageSource = image.createImageSource(path);
+  let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
+  const filePath: string = context.filesDir + "/image_source.jpg";
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  imagePackerObj.packToFile(imageSourceObj, file.fd, packOpts, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to pack the image to file.code ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in packing the image to file.');
+    }
+  })
+}
+```
+
+<a id="packtofile-1"></a>
 
 ## packToFile
 
@@ -452,6 +761,30 @@ packToFile(source: ImageSource, fd: number, options: PackingOption): Promise<voi
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+async function PackToFile(context : Context) {
+  // 此处'test.png'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+  const path: string = context.filesDir + "/test.png";
+  const imageSourceObj: image.ImageSource = image.createImageSource(path);
+  let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
+  const filePath: string = context.filesDir + "/image_source.jpg";
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  imagePackerObj.packToFile(imageSourceObj, file.fd, packOpts).then(() => {
+    console.info('Succeeded in packing the image to file.');
+  }).catch((error: BusinessError) => { 
+    console.error(`Failed to pack the image to file.code ${error.code},message is ${error.message}`);
+  })
+}
+```
+
+<a id="packtofile-2"></a>
+
 ## packToFile
 
 ```TypeScript
@@ -490,6 +823,33 @@ packToFile(source: PixelMap, fd: number, options: PackingOption, callback: Async
 | [62980120](../errorcode-image.md#62980120-图片添加像素映射失败) | Add pixelmap out of range. |
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+async function PackToFile(context : Context) {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  const path: string = context.filesDir + "/pixel_map.jpg";
+  image.createPixelMap(color, opts).then((pixelmap: image.PixelMap) => {
+    let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
+    let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+    const imagePackerObj: image.ImagePacker = image.createImagePacker();
+    imagePackerObj.packToFile(pixelmap, file.fd, packOpts, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to pack the image to file.code ${err.code},message is ${err.message}`);
+      } else {
+        console.info('Succeeded in packing the image to file.');
+      }
+    })
+  })
+}
+```
+
+<a id="packtofile-3"></a>
 
 ## packToFile
 
@@ -535,6 +895,32 @@ packToFile(source: PixelMap, fd: number, options: PackingOption): Promise<void>
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+async function PackToFile(context : Context) {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  const path: string = context.filesDir + "/pixel_map.jpg";
+  image.createPixelMap(color, opts).then((pixelmap: image.PixelMap) => {
+    let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
+    let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+    const imagePackerObj: image.ImagePacker = image.createImagePacker();
+    imagePackerObj.packToFile(pixelmap, file.fd, packOpts)
+      .then(() => {
+        console.info('Succeeded in packing the image to file.');
+      }).catch((error: BusinessError) => {
+      console.error(`Failed to pack the image to file.code ${error.code},message is ${error.message}`);
+    })
+  })
+}
+```
+
+<a id="packtofile-4"></a>
+
 ## packToFile
 
 ```TypeScript
@@ -565,8 +951,43 @@ packToFile(picture: Picture, fd: number, options: PackingOption): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+async function PackToFile(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("test.jpg");
+  let ops: image.SourceOptions = {
+    sourceDensity: 98,
+  }
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, ops);
+  let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
+  let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
+
+  let funcName = "PackToFile";
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  if (imagePackerObj != null) {
+    const filePath: string = context.filesDir + "/test.jpg";
+    let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+    let packOpts: image.PackingOption = {
+      format: "image/jpeg",
+      quality: 98,
+      desiredDynamicRange: image.PackingDynamicRange.AUTO,
+      needsPackProperties: true};
+    await imagePackerObj.packToFile(pictureObj, file.fd, packOpts).then(() => {
+      console.info(funcName, 'Succeeded in packing the image to file.');
+    }).catch((error: BusinessError) => {
+      console.error(funcName, `Failed to pack the image to file.code ${error.code},message is ${error.message}`);
+    });
+  }
+}
+```
 
 ## packToFileFromPixelmapSequence
 
@@ -598,8 +1019,39 @@ packToFileFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, fd: number, op
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types;3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types;3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Failed to encode image. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+async function PackToFile(context : Context) {
+  const resourceMgr = context.resourceManager;
+  // 此处'moving_test.gif'仅作示例，请开发者自行替换。否则imageSource会创建失败，导致后续无法正常执行。
+  const fileData = await resourceMgr.getRawFileContent('moving_test.gif');
+  const color = fileData.buffer;
+  let imageSource = image.createImageSource(color);
+  let pixelMapList = await imageSource.createPixelMapList();
+  let path: string = context.cacheDir + '/result.gif';
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  let ops: image.PackingOptionsForSequence = {
+    frameCount: 3,  // 指定GIF编码中的帧数为3。
+    delayTimeList: [10, 10, 10],  // 指定GIF编码中3帧的延迟时间分别为100ms、100ms、100ms。
+    disposalTypes: [3, 2, 3], // 指定GIF编码中3帧的帧过渡模式分别为3（恢复到之前的状态）、2（恢复背景色)、3(恢复到之前的状态)。
+    loopCount: 0 // 指定GIF编码中循环次数为无限循环。
+  };
+  let packer = image.createImagePacker();
+  packer.packToFileFromPixelmapSequence(pixelMapList, file.fd, ops)
+    .then(() => {
+      console.info('Succeeded in packToFileMultiFrames.');
+    }).catch((error: BusinessError) => {
+    console.error('Failed to packToFileMultiFrames.');
+  })
+}
+```
 
 ## release
 
@@ -623,6 +1075,25 @@ release(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当释放图片编码实例成功，err为undefined，否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Release() {
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  imagePackerObj.release((err: BusinessError)=>{
+    if (err) {
+      console.error(`Failed to release image packaging.code ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in releasing image packaging.');
+    }
+  })
+}
+```
+
+<a id="release-1"></a>
+
 ## release
 
 ```TypeScript
@@ -644,6 +1115,21 @@ release(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Release() {
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  imagePackerObj.release().then(() => {
+    console.info('Succeeded in releasing image packaging.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to release image packaging.code ${error.code},message is ${error.message}`);
+  })
+}
+```
 
 ## supportedFormats
 

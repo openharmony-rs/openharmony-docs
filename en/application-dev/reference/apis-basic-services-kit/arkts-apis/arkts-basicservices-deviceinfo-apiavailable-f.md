@@ -12,9 +12,11 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 function apiAvailable(version: string | number): boolean
 ```
 
-Checks whether a specified API version is available on the current device. This API provides compatibility check for OpenHarmony and its distribution OS API versions. A suitable version check method is automatically selected based on the input format and supported API versions.
+Checks whether a specified API version is available on the current device. This API provides compatibility check across different OpenHarmony/Distribution OS versions. A suitable version check method is automatically selected based on the input format and supported API versions.
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
@@ -24,13 +26,13 @@ Checks whether a specified API version is available on the current device. This 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| version | string &#124; number | Yes | API version to be verified. Supports both integer and string formats.   - The string uses the M.S.F format (for example, "26.0.0" and "5.0.1"): for API 26.0.0 and   later (version &gt;= 26.0.0), it represents the OpenHarmony and distribution OS API version.   - For API earlier than 26.0.0 (version &lt; 26.0.0), it represents the distribution OS API version.   - The integer format (for example, 13) represents the OpenHarmony SDK API version. (Only API earlier   than 26 is supported.) M&gt;=26,0&lt;=S&lt;=99,0&lt;=F&lt;=99. A compilation error occurs when an invalid literal is passed. |
+| version | string &#124; number | Yes | API version number to be verified. The value can be an integer or in the dotted format.   - String format shall be in M.S.F. (e.g., "26.0.0", "5.0.1"):   - For API 26.0.0 & 26.0.0+ (version &gt;= 26.0.0): Represents both OpenHarmony and Distribution OS API versions   - For API 26.0.0- (version &lt; 26.0.0): Represents Distribution OS API version   - Number format (e.g., 13): Represents OpenHarmony SDK API version (API 26- only)   M&gt;=26,0&lt;=S&lt;=99,0&lt;=F&lt;=99. A compilation error occurs when an invalid literal is input. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Boolean value. If **true** is returned, the API version of the device is the version specified in the input parameter or a later version. If **false** is returned, the API version is earlier than the version specified in the input parameter, the version format is invalid, or the version does not exist. |
+| boolean | Boolean value. The value **true** indicates that the current version number is later than or equal to the input parameter version number; **false** indicates that the current device's API version is lower than the input version number, or the input version number is in an invalid format, or the specified version does not exist. |
 
 **Examples**
 

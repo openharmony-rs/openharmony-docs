@@ -1,5 +1,9 @@
 # Photo
 
+```TypeScript
+interface Photo
+```
+
 Photo defines a full-quality image object.
 
 **Since:** 11

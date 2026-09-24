@@ -32,7 +32,6 @@ Creates an HTTP request. You can use this API to initiate or destroy an HTTP req
 
 **Examples**
 
-```TypeScript
 createHttp(): HttpRequest
 
 Creates an HTTP request. You can use this API to initiate or destroy an HTTP request, or enable or disable listening for HTTP Response Header events. To initiate multiple HTTP requests, you must create an HttpRequest object for each HTTP request. An HttpRequest object corresponds to an HTTP request.
@@ -44,9 +43,13 @@ Atomic service API: This API can be used in atomic services since API version 11
 System capability: SystemCapability.Communication.NetStack
 
 Return value
-```
 
 ```TypeScript
+import { http } from '@kit.NetworkKit';
+
+let httpRequest = http.createHttp();
+```
+
 createHttp(): HttpRequest
 
 Creates an HTTP request. You can use this API to initiate or destroy an HTTP request, or enable or disable listening for HTTP Response Header events. To initiate multiple HTTP requests, you must create an HttpRequest object for each HTTP request. An HttpRequest object corresponds to an HTTP request.
@@ -60,4 +63,9 @@ System capability: SystemCapability.Communication.NetStack
 Return value
 
 Defines an HTTP request task. Before invoking APIs provided by HttpRequest, you must call createHttp() to create an HttpRequestTask object.
+
+```TypeScript
+import { http } from '@kit.NetworkKit';
+
+let httpRequest = http.createHttp();
 ```

@@ -1,5 +1,9 @@
 # CallStateInfo
 
+```TypeScript
+export interface CallStateInfo
+```
+
 Defines information about the call status.
 
 **Since:** 11

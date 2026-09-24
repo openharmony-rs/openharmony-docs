@@ -1,5 +1,9 @@
 # LocalServiceInfo
 
+```TypeScript
+export interface LocalServiceInfo
+```
+
 MDNS service information.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # USBDevicePipe
 
+```TypeScript
+interface USBDevicePipe
+```
+
 Define a USB device pipe, which is used to determine the bus address and device address.
 
 **Since:** 9

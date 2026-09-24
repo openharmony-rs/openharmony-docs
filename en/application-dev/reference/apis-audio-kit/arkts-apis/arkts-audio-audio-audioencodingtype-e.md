@@ -1,5 +1,9 @@
 # AudioEncodingType
 
+```TypeScript
+enum AudioEncodingType
+```
+
 Enumerates the audio encoding types.
 
 **Since:** 8

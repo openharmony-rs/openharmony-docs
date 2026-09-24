@@ -60,20 +60,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.isBadgeDisplayed(bundle, isBadgeDisplayedCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
-};
-
-notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
-    console.info(`isBadgeDisplayed success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`isBadgeDisplayed failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="isbadgedisplayed-1"></a>
 
 ## isBadgeDisplayed
 
@@ -118,4 +106,16 @@ Checks whether the notification badge is enabled for a specified application. Th
 
 **Examples**
 
-See [isBadgeDisplayed](#isbadgedisplayed)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundle: notificationManager.BundleOption = {
+  bundle: "bundleName1",
+};
+
+notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
+    console.info(`isBadgeDisplayed success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`isBadgeDisplayed failed, code is ${err.code}, message is ${err.message}`);
+});
+```

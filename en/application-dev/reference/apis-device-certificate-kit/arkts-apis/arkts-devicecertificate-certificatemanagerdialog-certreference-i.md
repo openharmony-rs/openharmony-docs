@@ -1,5 +1,9 @@
 # CertReference
 
+```TypeScript
+export interface CertReference
+```
+
 Represents the reference information of the credential.
 
 **Since:** 22

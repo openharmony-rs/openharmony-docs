@@ -1,5 +1,9 @@
 # AddressFamily
 
+```TypeScript
+export enum AddressFamily
+```
+
 枚举，解析目标域名时限定的地址类型。
 
 **起始版本：** 15

@@ -45,6 +45,8 @@ enum ArkUI_NativeAPIVariantKind
 
 Defines the native API types.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -67,6 +69,8 @@ void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const
 **Description**
 
 Obtains the native API set of a specified type.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -92,6 +96,8 @@ const char* OH_ArkUI_NativeModule_GetErrorMessage()
 **Description**
 
 Retrieves the latest error message, which includes the error code, method name, and error cause. When other interfaces return an error code, they save the corresponding error message, and this interface can retrieve the currently stored error message. The information returned by this interface may evolve with versions and is intended solely for output to aid in analysis and troubleshooting. It should not be used for logical decisions.<br> The returned string is a thread-local global string created by the system. The caller must not modify its content. If any editing is required, create a copy of the string content yourself. No memory deallocation is required by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 

@@ -1,5 +1,9 @@
 # RectInVP
 
+```TypeScript
+interface RectInVP
+```
+
 Describes the rectangular area of the window, in vp.
 
 **Since:** 23

@@ -8,6 +8,8 @@ typedef struct Print_PageSize {...} Print_PageSize
 
 表示纸张尺寸信息。
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 12
 
 **相关模块：** [Print](capi-print.md)

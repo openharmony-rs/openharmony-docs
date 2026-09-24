@@ -19,7 +19,7 @@ Defines the structure and enumeration.<br> include "neural_network_runtime/neura
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_NN_UInt32Array](capi-neuralnetworkruntime-oh-nn-uint32array.md) | OH_NN_UInt32Array | This structure is used to store a 32-bit unsigned integer array. |
-| [OH_NN_QuantParam](capi-neuralnetworkruntime-oh-nn-quantparam.md) | OH_NN_QuantParam | Quantization information.<br> In quantization scenarios, the 32-bit floating-point data type is quantized into the fixed-point data type according to the following formula: \f[<br> q = clamp(round(\frac{r}{s}+z), q_{min}, q_{max})<br> \f]<br>s and z are quantization parameters, which are stored by <b>scale</b> and <b>zeroPoint</b><br>in [OH_NN_QuantParam](capi-neuralnetworkruntime-oh-nn-quantparam.md).<br>r is a floating point number, q is the quantization result, q_min is the lower bound of the quantization result, and<br>q_max is an upper bound of a quantization result. The calculation method is as follows:<br> \f[<br> \text{clamp}(x,min,max) =<br> \begin{cases}<br> q_{min} = -(1 << (numBits - 1)) \ q_{max} = (1 << (numBits - 1)) \ \end{cases}<br> \f]<br>The clamp function is defined as follows:<br> \f[<br> \text{clamp}(x,min,max) =<br> \begin{cases}<br> \text{max} & \text{ if } x > \text{ max } \ \text{min} & \text{ if } x < \text{ min } \ x & \text{ otherwise } \ \end{cases}<br> \f] |
+| [OH_NN_QuantParam](capi-neuralnetworkruntime-oh-nn-quantparam.md) | OH_NN_QuantParam | Quantization information.<br> In quantization scenarios, the 32-bit floating-point data type is quantized into the fixed-point data type according to the following formula: \f[<br> q = clamp(round(\frac{r}{s}+z), q_{min}, q_{max})<br> \f]<br>s and z are quantization parameters, which are stored by <b>scale</b> and <b>zeroPoint</b><br>in {@link OH_NN_QuantParam}.<br>r is a floating point number, q is the quantization result, q_min is the lower bound of the quantization result, and<br>q_max is an upper bound of a quantization result. The calculation method is as follows:<br> \f[<br> \text{clamp}(x,min,max) =<br> \begin{cases}<br> q_{min} = -(1 << (numBits - 1)) \ q_{max} = (1 << (numBits - 1)) \ \end{cases}<br> \f]<br>The clamp function is defined as follows:<br> \f[<br> \text{clamp}(x,min,max) =<br> \begin{cases}<br> \text{max} & \text{ if } x > \text{ max } \ \text{min} & \text{ if } x < \text{ min } \ x & \text{ otherwise } \ \end{cases}<br> \f] |
 | [OH_NN_Tensor](capi-neuralnetworkruntime-oh-nn-tensor.md) | OH_NN_Tensor | Defines the tensor structure.<br> It is usually used to construct data nodes and operator parameters in a model graph. When constructing a tensor, you need to specify the data type, number of dimensions, dimension information, and quantization information. |
 | [OH_NN_Memory](capi-neuralnetworkruntime-oh-nn-memory.md) | OH_NN_Memory | Defines the memory structure. |
 | [OH_NNModel](capi-neuralnetworkruntime-oh-nnmodel.md) | OH_NNModel | Defines the handles of models. |
@@ -69,6 +69,8 @@ enum OH_NN_PerformanceMode
 
 Defines the hardware performance mode.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 | Enum item | Description |
@@ -89,6 +91,8 @@ enum OH_NN_Priority
 
 Defines the model inference task priority.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 | Enum item | Description |
@@ -107,6 +111,8 @@ enum OH_NN_ReturnCode
 **Description**
 
 Defines error codes.
+
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
 
@@ -138,6 +144,8 @@ enum OH_NN_FuseType
 
 Defines activation function types in the fusion operator.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 | Enum item | Description |
@@ -155,6 +163,8 @@ enum OH_NN_Format
 **Description**
 
 Defines the layout type of tensor data.
+
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
 
@@ -175,6 +185,8 @@ enum OH_NN_DeviceType
 
 Defines device types.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 | Enum item | Description |
@@ -193,6 +205,8 @@ enum OH_NN_DataType
 **Description**
 
 Defines tensor data types.
+
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
 
@@ -221,6 +235,8 @@ enum OH_NN_OperationType
 **Description**
 
 Defines operator types.
+
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
 
@@ -344,6 +360,8 @@ enum OH_NN_TensorType
 **Description**
 
 Enumerates the tensor data types.<br> Tensors are usually used to set the input, output, and operator parameters of a model. When a tensor is used as the input or output of a model (or operator), set the tensor type to [OH_NN_TENSOR](capi-neural-network-runtime-type-h.md#oh_nn_tensortype).<br>When the tensor is used as an operator parameter, select an enumerated value other than [OH_NN_TENSOR](capi-neural-network-runtime-type-h.md#oh_nn_tensortype)<br>as the tensor type. Assume that the <b>pad</b> parameter of the [OH_NN_OPS_CONV2D](capi-neural-network-runtime-type-h.md#oh_nn_operationtype) operator is being set.<br>You need to set the <b>type</b> attribute of the [OH_NN_Tensor](capi-neuralnetworkruntime-oh-nn-tensor.md) instance to [OH_NN_CONV2D_PAD](capi-neural-network-runtime-type-h.md#oh_nn_tensortype). The settings of other operator parameters are similar. The enumerated values are named in the format OH_NN_{<i>Operator name</i>}_{<i>Attribute name</i>}.
+
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
 
@@ -526,6 +544,8 @@ typedef void (*NN_OnRunDone)(void *userData, OH_NN_ReturnCode errCode, void *out
 
 Defines the callback function handle for the post-process when the asynchronous execution has been done.<br> Use <b>userData</b> to identify the asynchronous execution you want to get. It is the argument <b>userData</b> passed to {@link OH_NNExecutor_RunAsync}.<br>Use <b>errCode</b> of type [OH_NN_ReturnCode](capi-neural-network-runtime-type-h.md#oh_nn_returncode) to get the error code returned by the asynchronous execution.<br>The <b>outputTensor</b> and <b>outputCount</b> are the inference results, which is the same as ones passed to<br>{@link OH_NNExecutor_RunAsync}.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 11
 
 **Parameters**:
@@ -546,6 +566,8 @@ typedef void (*NN_OnServiceDied)(void *userData)
 **Description**
 
 Defines the callback function handle for the post-process when the device driver service is dead during asynchronous execution.<br> You should recompile the model if this callback function is called.<br> Use <b>userData</b> to identify the asynchronous execution you want to get. It is the argument <b>userData</b> passed to {@link OH_NNExecutor_RunAsync}.
+
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
 

@@ -1,5 +1,9 @@
 # ActionSheet
 
+```TypeScript
+declare class ActionSheet
+```
+
 **Since:** 8
 
 **Deprecated since:** 26.0.0
@@ -27,6 +31,8 @@ Shows an action sheet in the given settings.
 **Deprecated since:** 18
 
 **Substitutes:** [showActionSheet](arkts-arkui-arkui-uicontext-uicontext-c.md#showactionsheet)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

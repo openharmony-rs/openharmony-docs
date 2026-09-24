@@ -1,5 +1,9 @@
 # ActionType
 
+```TypeScript
+export enum ActionType
+```
+
 Enumerates the actions to be performed when the file's permission expiration time is reached. The default value is **NOT_OPEN**.
 
 **Since:** 21

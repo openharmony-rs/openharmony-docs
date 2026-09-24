@@ -1,5 +1,9 @@
 # NodeParam
 
+```TypeScript
+export interface NodeParam
+```
+
 Declare NodeParam
 
 **Since:** 10
@@ -208,7 +212,7 @@ Symbol edit icon, which has a higher priority than **editIcon**.
 
 Default value: **undefined**
 
-**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **Since:** 18
 
@@ -228,7 +232,7 @@ Symbol icon, which has higher priority than **icon**.
 
 Default value: **undefined**
 
-**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **Since:** 18
 
@@ -248,7 +252,7 @@ Symbol icon of the selected node., which has higher priority than **selectedIcon
 
 Default value: **undefined**
 
-**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **Since:** 18
 

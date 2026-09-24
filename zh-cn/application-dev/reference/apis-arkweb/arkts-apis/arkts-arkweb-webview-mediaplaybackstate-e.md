@@ -1,5 +1,9 @@
 # MediaPlaybackState
 
+```TypeScript
+enum MediaPlaybackState
+```
+
 当前网页的播放控制状态。
 
 **起始版本：** 12

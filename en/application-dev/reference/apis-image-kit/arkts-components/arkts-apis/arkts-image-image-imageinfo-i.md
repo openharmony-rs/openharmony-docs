@@ -1,5 +1,9 @@
 # ImageInfo
 
+```TypeScript
+interface ImageInfo
+```
+
 Describes image information.
 
 **Since:** 6

@@ -1,5 +1,9 @@
 # RequestFullWindowOptions
 
+```TypeScript
+export interface RequestFullWindowOptions
+```
+
 Defines the option of RequestFullWindow interface.
 
 **Since:** 3
@@ -23,6 +27,8 @@ Defines the number of animation options.
 **Type:** number
 
 **Since:** 3
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

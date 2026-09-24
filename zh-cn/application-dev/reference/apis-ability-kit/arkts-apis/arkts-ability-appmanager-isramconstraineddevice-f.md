@@ -45,18 +45,8 @@ appManager.isRamConstrainedDevice().then((data) => {
 });
 ```
 
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
 
-appManager.isRamConstrainedDevice((err, data) => {
-  if (err) {
-    console.error(`isRamConstrainedDevice fail, code: ${err.code}, msg:${err.message}`);
-  } else {
-    console.info(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
-  }
-});
-```
-
+<a id="isramconstraineddevice-1"></a>
 
 ## isRamConstrainedDevice
 
@@ -82,9 +72,19 @@ function isRamConstrainedDevice(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
 
-参见 isRamConstrainedDevice
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+
+appManager.isRamConstrainedDevice((err, data) => {
+  if (err) {
+    console.error(`isRamConstrainedDevice fail, code: ${err.code}, msg:${err.message}`);
+  } else {
+    console.info(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
+  }
+});
+```

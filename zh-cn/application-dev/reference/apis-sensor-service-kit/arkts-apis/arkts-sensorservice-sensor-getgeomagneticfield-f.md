@@ -55,20 +55,8 @@ sensor.getGeomagneticField({ latitude: 80, longitude: 0, altitude: 0 }, 15804864
 });
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-const promise = sensor.getGeomagneticField({ latitude: 80, longitude: 0, altitude: 0 }, 1580486400000);
-promise.then((data: sensor.GeomagneticResponse) => {
-  console.info('Succeeded in getting sensor_getGeomagneticField_promise x: ' + data.x + ',y: ' + data.y + ',z: ' +
-  data.z + ',geomagneticDip: ' + data.geomagneticDip + ',deflectionAngle: ' + data.deflectionAngle +
-  ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity);
-}).catch((reason: BusinessError) => {
-  console.error(`Failed to operate.`);
-})
-```
-
+<a id="getgeomagneticfield-1"></a>
 
 ## getGeomagneticField
 
@@ -107,4 +95,16 @@ function getGeomagneticField(locationOptions: LocationOptions, timeMillis: numbe
 
 **示例**
 
-参见 getGeomagneticField
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const promise = sensor.getGeomagneticField({ latitude: 80, longitude: 0, altitude: 0 }, 1580486400000);
+promise.then((data: sensor.GeomagneticResponse) => {
+  console.info('Succeeded in getting sensor_getGeomagneticField_promise x: ' + data.x + ',y: ' + data.y + ',z: ' +
+  data.z + ',geomagneticDip: ' + data.geomagneticDip + ',deflectionAngle: ' + data.deflectionAngle +
+  ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity);
+}).catch((reason: BusinessError) => {
+  console.error(`Failed to operate.`);
+})
+```

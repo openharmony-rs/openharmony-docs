@@ -1,6 +1,12 @@
 # ChipV2ImageIcon
 
-ChipV2 icon common option
+```TypeScript
+export abstract class ChipV2ImageIcon extends ChipV2Icon
+```
+
+Defines the base class of icon images.
+
+This API inherits from [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md).
 
 **Inheritance/Implementation:** ChipV2ImageIcon extends [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md)
 
@@ -22,7 +28,7 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 constructor(config: ChipV2ImageIconConfig)
 ```
 
-The constructor of ChipV2ImageIcon
+A constructor used to create a **ChipV2ImageIcon** object.
 
 **Since:** 26.0.0
 
@@ -36,7 +42,7 @@ The constructor of ChipV2ImageIcon
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md) | Yes | config of icon common Mandatory parameter. |
+| config | [ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md) | Yes | Common icon attribute configuration, which is used to set the basic display attributes of the image icon, including configuration options such as **src**, **size**, **fillColor**, **activatedFillColor**. |
 
 ## activatedFillColor
 
@@ -44,7 +50,15 @@ The constructor of ChipV2ImageIcon
 public activatedFillColor?: ColorMetrics
 ```
 
-Image filled color when chip is activated.
+Icon fill color when **ChipV2** is activated.
+
+Default value: **$r('sys.color.chip_active_icon_color')**. The default value is not applied to non-SVG images.
+
+If the value is **undefined**, the default value is used.
+
+This attribute takes effect only when the image format is SVG.
+
+**Decorator:** @Trace
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -64,7 +78,15 @@ Image filled color when chip is activated.
 public fillColor?: ColorMetrics
 ```
 
-Image filled color.
+Icon fill color.
+
+Default value: **$r('sys.color.chip_usually_icon_color')**. The default value is not applied to non-SVG images.
+
+If the value is **undefined**, the default value is used.
+
+This attribute takes effect only when the image format is SVG.
+
+**Decorator:** @Trace
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -84,7 +106,11 @@ Image filled color.
 public modifier?: ImageModifier
 ```
 
-Modifier for icon.
+Icon modifier, which is used to set common attributes of the icon. Pass this parameter when you need to dynamically modify icon attributes (such as **opacity** and **objectFit**) through the modifier. If this parameter is not passed or is **undefined**, the modifier is not applied, and the icon uses the default attribute settings.
+
+Default value: **undefined**, meaning the modifier is not applied.
+
+**Decorator:** @Trace
 
 **Type:** [ImageModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
@@ -104,7 +130,20 @@ Modifier for icon.
 public size?: SizeT<LengthMetrics>
 ```
 
-Image size option.
+Icon size. Percentage values are not supported. If an invalid value is passed, the default value will be used.
+
+Default value:
+
+- When **ChipV2Options.size** is **ChipV2Size.SMALL**, the default value is  
+**{width: $r('sys.float.chip_small_icon_size'), height: $r('sys.float.chip_small_icon_size')}**.  
+- When **ChipV2Options.size** is **ChipV2Size.NORMAL**, the default value is  
+**{width: $r('sys.float.chip_normal_icon_size'), height: $r('sys.float.chip_normal_icon_size')}**.
+
+Unit: vp
+
+If the value is **undefined**, the default value is used.
+
+**Decorator:** @Trace
 
 **Type:** [SizeT](arkts-arkui-graphics-sizet-i.md)&lt;[LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)&gt;
 
@@ -124,7 +163,9 @@ Image size option.
 public src: ResourceStr
 ```
 
-Image resource.
+Icon image or image address reference.
+
+**Decorator:** @Trace
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

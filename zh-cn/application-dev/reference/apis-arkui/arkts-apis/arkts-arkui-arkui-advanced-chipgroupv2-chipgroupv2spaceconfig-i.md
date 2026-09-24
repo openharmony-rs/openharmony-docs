@@ -1,5 +1,9 @@
 # ChipGroupV2SpaceConfig
 
+```TypeScript
+export interface ChipGroupV2SpaceConfig
+```
+
 ChipGroupV2SpaceConfig定义了ChipGroupV2左右内边距，以及ChipV2与ChipV2之间的间距配置。
 
 **起始版本：** 26.0.0

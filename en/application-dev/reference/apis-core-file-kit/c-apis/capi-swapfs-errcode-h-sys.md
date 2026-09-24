@@ -20,7 +20,7 @@ Declare the error codes of swapfs module.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_Swapfs_ErrCode(System API)](#oh_swapfs_errcode) | OH_Swapfs_ErrCode | Error codes of swapfs module.**System API:** This is a system API. |
+| [OH_Swapfs_ErrCode(System API)](#oh_swapfs_errcode) | OH_Swapfs_ErrCode | Error codes of swapfs module.<br>**System API:** This is a system API. |
 
 ## Enum type description
 
@@ -33,6 +33,8 @@ enum OH_Swapfs_ErrCode
 **Description**
 
 Error codes of swapfs module.
+
+**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 

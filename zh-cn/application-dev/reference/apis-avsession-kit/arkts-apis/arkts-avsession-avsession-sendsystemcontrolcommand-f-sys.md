@@ -33,9 +33,9 @@ function sendSystemControlCommand(command: AVControlCommand, callback: AsyncCall
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command. |
 | [6600107](../errorcode-avsession.md#6600107-命令消息过载) | Too many commands or events. |
@@ -64,28 +64,8 @@ avSession.sendSystemControlCommand(avcommand, () => {
 });
 ```
 
-```TypeScript
-let cmd : avSession.AVControlCommandType = 'play';
-// let cmd : avSession.AVControlCommandType = 'pause';
-// let cmd : avSession.AVControlCommandType = 'stop';
-// let cmd : avSession.AVControlCommandType = 'playNext';
-// let cmd : avSession.AVControlCommandType = 'playPrevious';
-// let cmd : avSession.AVControlCommandType = 'fastForward';
-// let cmd : avSession.AVControlCommandType = 'rewind';
-let avcommand: avSession.AVControlCommand = {command:cmd};
-// let cmd : avSession.AVControlCommandType = 'seek';
-// let avcommand = {command:cmd, parameter:10};
-// let cmd : avSession.AVControlCommandType = 'setSpeed';
-// let avcommand = {command:cmd, parameter:2.6};
-// let cmd : avSession.AVControlCommandType = 'setLoopMode';
-// let avcommand = {command:cmd, parameter:avSession.LoopMode.LOOP_MODE_SINGLE};
-// let cmd : avSession.AVControlCommandType = 'toggleFavorite';
-// let avcommand = {command:cmd, parameter:"false"};
-avSession.sendSystemControlCommand(avcommand).then(() => {
-  console.info('Succeeded in sending system control command.');
-});
-```
 
+<a id="sendsystemcontrolcommand-1"></a>
 
 ## sendSystemControlCommand
 
@@ -119,13 +99,33 @@ function sendSystemControlCommand(command: AVControlCommand): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command. |
 | [6600107](../errorcode-avsession.md#6600107-命令消息过载) | Too many commands or events. |
 
 **示例**
 
-参见 [sendSystemControlCommand](#sendsystemcontrolcommand)
+```TypeScript
+let cmd : avSession.AVControlCommandType = 'play';
+// let cmd : avSession.AVControlCommandType = 'pause';
+// let cmd : avSession.AVControlCommandType = 'stop';
+// let cmd : avSession.AVControlCommandType = 'playNext';
+// let cmd : avSession.AVControlCommandType = 'playPrevious';
+// let cmd : avSession.AVControlCommandType = 'fastForward';
+// let cmd : avSession.AVControlCommandType = 'rewind';
+let avcommand: avSession.AVControlCommand = {command:cmd};
+// let cmd : avSession.AVControlCommandType = 'seek';
+// let avcommand = {command:cmd, parameter:10};
+// let cmd : avSession.AVControlCommandType = 'setSpeed';
+// let avcommand = {command:cmd, parameter:2.6};
+// let cmd : avSession.AVControlCommandType = 'setLoopMode';
+// let avcommand = {command:cmd, parameter:avSession.LoopMode.LOOP_MODE_SINGLE};
+// let cmd : avSession.AVControlCommandType = 'toggleFavorite';
+// let avcommand = {command:cmd, parameter:"false"};
+avSession.sendSystemControlCommand(avcommand).then(() => {
+  console.info('Succeeded in sending system control command.');
+});
+```

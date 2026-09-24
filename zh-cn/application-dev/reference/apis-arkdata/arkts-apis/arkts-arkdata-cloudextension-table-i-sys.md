@@ -1,5 +1,9 @@
 # Table（系统接口）
 
+```TypeScript
+export interface Table
+```
+
 表结构信息。
 
 **起始版本：** 11

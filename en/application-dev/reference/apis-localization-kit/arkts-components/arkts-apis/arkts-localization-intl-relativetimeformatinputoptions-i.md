@@ -1,5 +1,9 @@
 # RelativeTimeFormatInputOptions
 
+```TypeScript
+export interface RelativeTimeFormatInputOptions
+```
+
 Defines the configuration options for a **RelativeTimeFormat** object. Since API version 9, the attributes in **RelativeTimeFormatInputOptions** are optional.
 
 **Since:** 8

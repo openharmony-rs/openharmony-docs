@@ -1,5 +1,9 @@
 # TouchPoint
 
+```TypeScript
+interface TouchPoint
+```
+
 Represents information about a single touch point on the display.
 
 **Since:** 26.0.0

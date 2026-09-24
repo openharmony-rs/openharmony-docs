@@ -8,6 +8,8 @@ typedef struct OH_AVScreenCaptureHighlightConfig {...} OH_AVScreenCaptureHighlig
 
 The struct describes the style of the highlight border shown during screen capture, including its shape, thickness, and color.
 
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
 **Since**: 22
 
 **Related module**: [AVScreenCapture](capi-avscreencapture.md)

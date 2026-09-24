@@ -1,5 +1,9 @@
 # GestureCollectIntervention
 
+```TypeScript
+declare enum GestureCollectIntervention
+```
+
 Define the gesture and events collection intervention operations.
 
 **Since:** 26.0.0

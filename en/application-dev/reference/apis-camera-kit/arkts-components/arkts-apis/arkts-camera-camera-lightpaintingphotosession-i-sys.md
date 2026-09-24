@@ -1,5 +1,9 @@
 # LightPaintingPhotoSession (System API)
 
+```TypeScript
+interface LightPaintingPhotoSession extends Session, Flash, Focus, Zoom, ColorEffect
+```
+
 LightPaintingPhotoSession extends Session, Flash, Focus, Zoom, ColorEffect Implements a light painting photo session, which sets the parameters of the light painting photo mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md).
 
 **Inheritance/Implementation:** LightPaintingPhotoSession extends [Session](arkts-camera-camera-session-i.md), [Flash](arkts-camera-camera-flash-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->
@@ -115,6 +119,14 @@ Unsubscribes from HighResolutionPhotoSession error events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+**Examples**
+
+```TypeScript
+function unregisterSessionError(lightPaintingPhotoSession: camera.LightPaintingPhotoSession): void {
+  lightPaintingPhotoSession.off('error');
+}
+```
+
 ## off('focusStateChange')
 
 ```TypeScript
@@ -141,6 +153,14 @@ Unsubscribes from focus state change events.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
+
+**Examples**
+
+```TypeScript
+function unregisterFocusStateChange(lightPaintingPhotoSession: camera.LightPaintingPhotoSession): void {
+  lightPaintingPhotoSession.off('focusStateChange');
+}
+```
 
 ## off('smoothZoomInfoAvailable')
 
@@ -169,6 +189,14 @@ Unsubscribes from smooth zoom state change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+**Examples**
+
+```TypeScript
+function unregisterSmoothZoomInfo(lightPaintingPhotoSession: camera.LightPaintingPhotoSession): void {
+  lightPaintingPhotoSession.off('smoothZoomInfoAvailable');
+}
+```
+
 ## on('error')
 
 ```TypeScript
@@ -195,6 +223,20 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`LightPaintingPhotoSession error code: ${err.code}`);
+}
+
+function registerSessionError(lightPaintingPhotoSession: camera.LightPaintingPhotoSession): void {
+  lightPaintingPhotoSession.on('error', callback);
+}
+```
 
 ## on('focusStateChange')
 
@@ -223,6 +265,24 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, focusState: camera.FocusState): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`Focus state: ${focusState}`);
+}
+
+function registerFocusStateChange(lightPaintingPhotoSession: camera.LightPaintingPhotoSession): void {
+  lightPaintingPhotoSession.on('focusStateChange', callback);
+}
+```
+
 ## on('smoothZoomInfoAvailable')
 
 ```TypeScript
@@ -249,6 +309,24 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, smoothZoomInfo: camera.SmoothZoomInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`The duration of smooth zoom: ${smoothZoomInfo.duration}`);
+}
+
+function registerSmoothZoomInfo(lightPaintingPhotoSession: camera.LightPaintingPhotoSession): void {
+  lightPaintingPhotoSession.on('smoothZoomInfoAvailable', callback);
+}
+```
 
 ## setLightPaintingType
 

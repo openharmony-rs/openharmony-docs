@@ -1,5 +1,9 @@
 # DoorPositionResponse (System API)
 
+```TypeScript
+export interface DoorPositionResponse
+```
+
 Interface for indoor or outdoor identify result @interface DoorPositionResponse
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # ImageAnalyzerConfig
 
+```TypeScript
+declare interface ImageAnalyzerConfig
+```
+
 Provides AI image analyzer configuration.
 
 **Since:** 12

@@ -8,6 +8,8 @@ typedef struct Scan_ScannerDevice {...} Scan_ScannerDevice
 
 表示扫描仪设备信息
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 12
 
 **相关模块：** [OH_Scan](capi-oh-scan.md)

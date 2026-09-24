@@ -31,29 +31,12 @@ function getFormsInfo(filter: formInfo.FormInfoFilter, callback: AsyncCallback<A
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
 **示例**
-
-```TypeScript
-import { formProvider } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  formProvider.getFormsInfo((error, data) => {
-    if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
-      return;
-    }
-    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
 
 ```TypeScript
 import { formInfo, formProvider } from '@kit.FormKit';
@@ -76,25 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formInfo, formProvider } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-const filter: formInfo.FormInfoFilter = {
-  // 获取指定module的卡片信息
-  moduleName: 'entry'
-};
-try {
-  formProvider.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
+<a id="getformsinfo-1"></a>
 
 ## getFormsInfo
 
@@ -120,15 +86,32 @@ function getFormsInfo(callback: AsyncCallback<Array<formInfo.FormInfo>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
 **示例**
 
-参见 getFormsInfo
+```TypeScript
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+  formProvider.getFormsInfo((error, data) => {
+    if (error) {
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
+      return;
+    }
+    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+
+<a id="getformsinfo-2"></a>
 
 ## getFormsInfo
 
@@ -160,11 +143,28 @@ function getFormsInfo(filter?: formInfo.FormInfoFilter): Promise<Array<formInfo.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
 **示例**
 
-参见 getFormsInfo
+```TypeScript
+import { formInfo, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const filter: formInfo.FormInfoFilter = {
+  // 获取指定module的卡片信息
+  moduleName: 'entry'
+};
+try {
+  formProvider.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
+    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```

@@ -1,5 +1,9 @@
 # AutoDeviceSwitchStatus
 
+```TypeScript
+interface AutoDeviceSwitchStatus
+```
+
 自动切换镜头状态信息。
 
 **起始版本：** 13

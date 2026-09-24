@@ -1,5 +1,9 @@
 # AnimationPropertyType
 
+```TypeScript
+declare enum AnimationPropertyType
+```
+
 用于动画的属性类型。
 
 **起始版本：** 20

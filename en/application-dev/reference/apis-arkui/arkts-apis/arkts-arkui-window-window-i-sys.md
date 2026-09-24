@@ -1,5 +1,9 @@
 # Window
 
+```TypeScript
+interface Window
+```
+
 Represents a window instance, which is the basic unit managed by the window manager.
 
 In the following API examples, you must use [getLastWindow()](arkts-arkui-window-getlastwindow-f.md), [createWindow()](arkts-arkui-window-createwindow-f.md), or [findWindow()](arkts-arkui-window-findwindow-f.md) to obtain a Window instance (named windowClass in this example) and then call a method in this instance.
@@ -176,6 +180,91 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
     };
     try {
       window.createWindow(config, (err: BusinessError, data) => {
+        const errCode: number = err?.code;
+        if (errCode) {
+          console.error(`Failed to create the window. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        if (!data) {
+          console.error('data is null');
+          return;
+        }
+        let token = want.parameters?.['ohos.ability.params.request.token'] as Property;
+        let value = token.value as rpc.RemoteObject;
+        let promise = data.bindDialogTarget(value, () => {
+          console.info('Dialog Window Need Destroy.');
+        });
+        promise.then(() => {
+          console.info('Succeeded in binding dialog target.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`);
+        });
+      });
+    } catch (err) {
+      console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`)
+    }
+  }
+}
+```
+
+<a id="binddialogtarget-1"></a>
+
+## bindDialogTarget
+
+```TypeScript
+bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>, callback: AsyncCallback<void>): void
+```
+
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**System capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| token | [rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md) | Yes | Token of the target window. |
+| deathCallback | [Callback](arkts-arkui-window-callback-i.md)&lt;void&gt; | Yes | Callback used to listen for modal window destruction events. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: Incorrect parameter types. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. |
+| [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
+
+**Examples**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { Want, ServiceExtensionAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export class Property {
+  public value: Object
+
+  constructor(value: Object) {
+    this.value = value
+  }
+}
+
+export default class ServiceExtAbility extends ServiceExtensionAbility {
+  onRequest(want: Want, startId: number) {
+    console.info('onRequest');
+    let config: window.Configuration = {
+      name: 'test',
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
+    try {
+      window.createWindow(config, (err: BusinessError, data) => {
         let errCode: number = err?.code;
         if (errCode) {
           console.error(`Failed to create the window. Cause code: ${err?.code}, message: ${err?.message}`);
@@ -205,26 +294,55 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 }
 ```
 
+<a id="binddialogtarget-2"></a>
+
+## bindDialogTarget
+
 ```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { Want, ServiceExtensionAbility } from '@kit.AbilityKit';
+bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback<void>): Promise<void>
+```
+
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses a promise to return the result.
+
+**Since:** 9
+
+**System capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| requestInfo | [dialogRequest.RequestInfo](../../apis-ability-kit/arkts-apis/arkts-ability-dialogrequest-requestinfo-i.md) | Yes | **RequestInfo** of the target window. |
+| deathCallback | [Callback](arkts-arkui-window-callback-i.md)&lt;void&gt; | Yes | Callback used to listen for modal window destruction events. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: Incorrect parameter types. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. |
+| [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
+
+**Examples**
+
+```TypeScript
+import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-
-export class Property {
-  public value: Object
-
-  constructor(value: Object) {
-    this.value = value
-  }
-}
 
 export default class ServiceExtAbility extends ServiceExtensionAbility {
   onRequest(want: Want, startId: number) {
     console.info('onRequest');
     let config: window.Configuration = {
-      name: 'test',
-      windowType: window.WindowType.TYPE_DIALOG,
-      ctx: this.context
+      name: 'test', windowType: window.WindowType.TYPE_DIALOG, ctx: this.context
     };
     try {
       window.createWindow(config, (err: BusinessError, data) => {
@@ -237,9 +355,8 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
           console.error('data is null');
           return;
         }
-        let token = want.parameters?.['ohos.ability.params.request.token'] as Property;
-        let value = token.value as rpc.RemoteObject;
-        let promise = data.bindDialogTarget(value, () => {
+        let requestInfo = dialogRequest.getRequestInfo(want);
+        let promise = data.bindDialogTarget(requestInfo, () => {
           console.info('Dialog Window Need Destroy.');
         });
         promise.then(() => {
@@ -254,6 +371,41 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
   }
 }
 ```
+
+<a id="binddialogtarget-3"></a>
+
+## bindDialogTarget
+
+```TypeScript
+bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback<void>, callback: AsyncCallback<void>): void
+```
+
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**System capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| requestInfo | [dialogRequest.RequestInfo](../../apis-ability-kit/arkts-apis/arkts-ability-dialogrequest-requestinfo-i.md) | Yes | **RequestInfo** of the target window. |
+| deathCallback | [Callback](arkts-arkui-window-callback-i.md)&lt;void&gt; | Yes | Callback used to listen for modal window destruction events. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: Incorrect parameter types. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. |
+| [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
+
+**Examples**
 
 ```TypeScript
 import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
@@ -294,154 +446,6 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
   }
 }
 ```
-
-```TypeScript
-import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class ServiceExtAbility extends ServiceExtensionAbility {
-  onRequest(want: Want, startId: number) {
-    console.info('onRequest');
-    let config: window.Configuration = {
-      name: 'test', windowType: window.WindowType.TYPE_DIALOG, ctx: this.context
-    };
-    try {
-      window.createWindow(config, (err: BusinessError, data) => {
-        const errCode: number = err?.code;
-        if (errCode) {
-          console.error(`Failed to create the window. Cause code: ${err?.code}, message: ${err?.message}`);
-          return;
-        }
-        if (!data) {
-          console.error('data is null');
-          return;
-        }
-        let requestInfo = dialogRequest.getRequestInfo(want);
-        let promise = data.bindDialogTarget(requestInfo, () => {
-          console.info('Dialog Window Need Destroy.');
-        });
-        promise.then(() => {
-          console.info('Succeeded in binding dialog target.');
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`);
-        });
-      });
-    } catch (err) {
-      console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`)
-    }
-  }
-}
-```
-
-## bindDialogTarget
-
-```TypeScript
-bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>, callback: AsyncCallback<void>): void
-```
-
-Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**System capability:** SystemCapability.WindowManager.WindowManager.Core
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| token | [rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md) | Yes | Token of the target window. |
-| deathCallback | [Callback](arkts-arkui-window-callback-i.md)&lt;void&gt; | Yes | Callback used to listen for modal window destruction events. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: Incorrect parameter types. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. |
-| [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
-
-**Examples**
-
-See [bindDialogTarget](#binddialogtarget)
-
-## bindDialogTarget
-
-```TypeScript
-bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback<void>): Promise<void>
-```
-
-Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses a promise to return the result.
-
-**Since:** 9
-
-**System capability:** SystemCapability.WindowManager.WindowManager.Core
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| requestInfo | [dialogRequest.RequestInfo](../../apis-ability-kit/arkts-apis/arkts-ability-dialogrequest-requestinfo-i.md) | Yes | **RequestInfo** of the target window. |
-| deathCallback | [Callback](arkts-arkui-window-callback-i.md)&lt;void&gt; | Yes | Callback used to listen for modal window destruction events. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: Incorrect parameter types. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. |
-| [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
-
-**Examples**
-
-See [bindDialogTarget](#binddialogtarget)
-
-## bindDialogTarget
-
-```TypeScript
-bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback<void>, callback: AsyncCallback<void>): void
-```
-
-Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**System capability:** SystemCapability.WindowManager.WindowManager.Core
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| requestInfo | [dialogRequest.RequestInfo](../../apis-ability-kit/arkts-apis/arkts-ability-dialogrequest-requestinfo-i.md) | Yes | **RequestInfo** of the target window. |
-| deathCallback | [Callback](arkts-arkui-window-callback-i.md)&lt;void&gt; | Yes | Callback used to listen for modal window destruction events. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: Incorrect parameter types. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. |
-| [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
-
-**Examples**
-
-See [bindDialogTarget](#binddialogtarget)
 
 ## detachLayoutToParentWindow
 
@@ -634,16 +638,7 @@ windowClass.hide((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let promise = windowClass.hide();
-promise.then(() => {
-  console.info('Succeeded in hiding the window.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to hide the window. Cause code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="hide-1"></a>
 
 ## hide
 
@@ -674,7 +669,16 @@ Hides this window. This API uses a promise to return the result. This API takes 
 
 **Examples**
 
-See [hide](#hide)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = windowClass.hide();
+promise.then(() => {
+  console.info('Succeeded in hiding the window.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to hide the window. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## hideNonSystemFloatingWindows
 
@@ -755,48 +759,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    // Load the page corresponding to the main window.
-    windowStage.loadContent('pages/Index', (err) => {
-      if (err.code) {
-        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info('Succeeded in loading the content.');
-    });
-
-    // Obtain the main window.
-    let mainWindow: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err, data) => {
-      if (err.code) {
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      mainWindow = data;
-      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-
-      let shouldHide = true;
-      try {
-        // Call hideNonSystemFloatingWindows to obtain a promise object.
-        let promise = mainWindow.hideNonSystemFloatingWindows(shouldHide);
-        promise.then(() => {
-          console.info('Succeeded in hiding the non-system floating windows.');
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to hide the non-system floating windows. Cause code: ${err.code}, message: ${err.message}`);
-        });
-      } catch (exception) {
-        console.error(`Failed to hide the non-system floating windows. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
-    });
-  }
-}
-```
+<a id="hidenonsystemfloatingwindows-1"></a>
 
 ## hideNonSystemFloatingWindows
 
@@ -839,7 +802,48 @@ A non-system floating window is a floating window created by a non-system applic
 
 **Examples**
 
-See [hideNonSystemFloatingWindows](#hidenonsystemfloatingwindows)
+```TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Load the page corresponding to the main window.
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+    });
+
+    // Obtain the main window.
+    let mainWindow: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err, data) => {
+      if (err.code) {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      mainWindow = data;
+      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+
+      let shouldHide = true;
+      try {
+        // Call hideNonSystemFloatingWindows to obtain a promise object.
+        let promise = mainWindow.hideNonSystemFloatingWindows(shouldHide);
+        promise.then(() => {
+          console.info('Succeeded in hiding the non-system floating windows.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to hide the non-system floating windows. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to hide the non-system floating windows. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
 
 ## hideWithAnimation
 
@@ -885,16 +889,7 @@ windowClass.hideWithAnimation((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let promise = windowClass.hideWithAnimation();
-promise.then(() => {
-  console.info('Succeeded in hiding the window with animation.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to hide the window with animation. Cause code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="hidewithanimation-1"></a>
 
 ## hideWithAnimation
 
@@ -927,7 +922,16 @@ Hides this window and plays an animation during the process. This API uses a pro
 
 **Examples**
 
-See [hideWithAnimation](#hidewithanimation)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = windowClass.hideWithAnimation();
+promise.then(() => {
+  console.info('Succeeded in hiding the window with animation.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to hide the window with animation. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## isMainWindowFullScreenAcrossDisplays
 
@@ -1007,6 +1011,24 @@ Unsubscribes from events indicating whether the main window is in full-screen mo
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
+**Examples**
+
+```TypeScript
+const callback = (mainWindowFullScreenAcrossDisplaysChanged: boolean) => {
+  // ...
+}
+try {
+  // Enable listening through the on API.
+  windowClass.on('mainWindowFullScreenAcrossDisplaysChanged', callback);
+  // Disable the listening of a specified callback.
+  windowClass.off('mainWindowFullScreenAcrossDisplaysChanged', callback);
+  // Unregister all the callbacks that have been registered through on().
+  windowClass.off('mainWindowFullScreenAcrossDisplaysChanged');
+} catch (exception) {
+  console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## on('mainWindowFullScreenAcrossDisplaysChanged')
 
 ```TypeScript
@@ -1037,6 +1059,19 @@ Subscribes to events indicating whether the main window is in full-screen mode a
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
+
+**Examples**
+
+```TypeScript
+const callback = (mainWindowFullScreenAcrossDisplaysChanged: boolean) => {
+  console.info(`main window across displays changed. Data: ${mainWindowFullScreenAcrossDisplaysChanged}`);
+}
+try {
+  windowClass.on('mainWindowFullScreenAcrossDisplaysChanged', callback);
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
 
 ## opacity
 
@@ -1154,43 +1189,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-// EntryAbility.ets
-import { window } from '@kit.ArkUI';
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    console.info('onWindowStageCreate');
-    let windowClass: window.Window;
-    // Create a child window.
-    try {
-      windowStage.createSubWindow('testSubWindow').then((data) => {
-        if (data == null) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
-          return;
-        }
-        windowClass = data;
-        windowClass.showWindow().then(() => {
-          // The windowClass must be obtained above the targetWindow.
-          let targetWindow: window.Window = windowClass;
-          let properties = targetWindow.getWindowProperties();
-          let targetId = properties.id;
-          windowClass.raiseAboveTarget(targetId).then(() => {
-            console.info('Succeeded in raising the subWindow to target subWindow top.');
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to raise the subWindow to target subWindow top. Cause code: ${err.code}, message: ${err.message}`);
-          });
-        });
-      });
-    } catch (exception) {
-      console.error(`Failed to create the subWindow. Cause code: ${exception.code}, message: ${exception.message}`);
-    }
-  }
-}
-```
+<a id="raiseabovetarget-1"></a>
 
 ## raiseAboveTarget
 
@@ -1234,7 +1233,43 @@ Before calling this API, ensure that the child window to raise and the target ch
 
 **Examples**
 
-See [raiseAboveTarget](#raiseabovetarget)
+```TypeScript
+// EntryAbility.ets
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window;
+    // Create a child window.
+    try {
+      windowStage.createSubWindow('testSubWindow').then((data) => {
+        if (data == null) {
+          console.error("Failed to create the subWindow. Cause: The data is empty");
+          return;
+        }
+        windowClass = data;
+        windowClass.showWindow().then(() => {
+          // The windowClass must be obtained above the targetWindow.
+          let targetWindow: window.Window = windowClass;
+          let properties = targetWindow.getWindowProperties();
+          let targetId = properties.id;
+          windowClass.raiseAboveTarget(targetId).then(() => {
+            console.info('Succeeded in raising the subWindow to target subWindow top.');
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to raise the subWindow to target subWindow top. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        });
+      });
+    } catch (exception) {
+      console.error(`Failed to create the subWindow. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
 
 ## raiseMainWindowAboveTarget
 
@@ -1541,7 +1576,7 @@ Sets the rotation parameters for this window. This API can be used only when you
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| rotateOptions | [RotateOptions](../arkts-components/arkts-arkui-rotateoptions-i.md) | Yes | Rotation parameters to set. |
+| rotateOptions | [RotateOptions](../arkts-components/arkts-arkui-common-comp-rotateoptions-i.md) | Yes | Rotation parameters to set. |
 
 **Error codes:**
 
@@ -1587,7 +1622,7 @@ Sets the scale parameters for this window. This API can be used only when you [c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scaleOptions | [ScaleOptions](../arkts-components/arkts-arkui-scaleoptions-i.md) | Yes | Scale parameters to set. |
+| scaleOptions | [ScaleOptions](../arkts-components/arkts-arkui-common-comp-scaleoptions-i.md) | Yes | Scale parameters to set. |
 
 **Error codes:**
 
@@ -1676,7 +1711,7 @@ Sets the blur style for the background of this window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| blurStyle | [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md) | Yes | Blur style to set for the background of the window. |
+| blurStyle | [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md) | Yes | Blur style to set for the background of the window. |
 
 **Error codes:**
 
@@ -1887,38 +1922,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      const errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      windowClass = data;
-      let isForbidSplitMove: boolean = true;
-      try {
-        let promise = windowClass.setForbidSplitMove(isForbidSplitMove);
-        promise.then(() => {
-          console.info('Succeeded in forbidding window moving in split screen mode.');
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
-        });
-      } catch (exception) {
-        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
-    });
-  }
-}
-```
+<a id="setforbidsplitmove-1"></a>
 
 ## setForbidSplitMove
 
@@ -1959,7 +1963,38 @@ Sets whether the main window is forbidden to move in split-screen mode. This API
 
 **Examples**
 
-See [setForbidSplitMove](#setforbidsplitmove)
+```TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      const errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      windowClass = data;
+      let isForbidSplitMove: boolean = true;
+      try {
+        let promise = windowClass.setForbidSplitMove(isForbidSplitMove);
+        promise.then(() => {
+          console.info('Succeeded in forbidding window moving in split screen mode.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
 
 ## setHandwritingFlag
 
@@ -2170,15 +2205,15 @@ Allows a [system window](../../../windowmanager/window-terminology.md#system-win
 
 > **NOTE:** 
 > 
-> - If the main window sets the display orientation via [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)while rotation is locked, the window restores the last orientation request when brought to the foreground after unlocking.
+> - If the main window sets the display orientation via [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1)while rotation is locked, the window restores the last orientation request when brought to the foreground after unlocking.
 > 
-> - If the system window sets the display orientation via [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)while rotation is locked, the window restores the last orientation request when brought to the foreground with the highest level after unlocking. The rotation lock set by a lower-level window using **setRotationLocked**does not hinder the system window at a higher level to set the display orientation by calling [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation).
+> - If the system window sets the display orientation via [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1)while rotation is locked, the window restores the last orientation request when brought to the foreground with the highest level after unlocking. The rotation lock set by a lower-level window using **setRotationLocked**does not hinder the system window at a higher level to set the display orientation by calling [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1).
 > 
 > - If the sensor orientation changes while rotation is locked, the last sensor orientation is restored after unlocking.
 > 
 > - If the application calls [setOrientation()](arkts-arkui-screen-screen-i-sys.md#setorientation)to set the screen orientation while rotation is locked, that screen?orientation setting is ignored.
 > 
-> - When rotation is unlocked, the application's display orientation is determined based on the main window's display orientation set via [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation), the sensor orientation, and more. For details, see [Window Rotation Overview](../../../windowmanager/window-rotation.md#overview).
+> - When rotation is unlocked, the application's display orientation is determined based on the main window's display orientation set via [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1), the sensor orientation, and more. For details, see [Window Rotation Overview](../../../windowmanager/window-rotation.md#overview).
 > 
 > - The API does not affect the launch orientation set by the **orientation** under [**abilities** in the module.json5 file](../../../quick-start/module-configuration-file.md#abilities) of the application.
 
@@ -2571,22 +2606,6 @@ Adds or deletes the watermark flag for this window. This API uses an asynchronou
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let enable = true;
-  let promise = windowClass.setWaterMarkFlag(enable);
-  promise.then(() => {
-    console.info('Succeeded in setting water mark flag of window.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set water mark flag of window. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed to set water mark flag of window. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
   let enable: boolean = true;
   windowClass.setWaterMarkFlag(enable, (err: BusinessError) => {
     const errCode: number = err.code;
@@ -2600,6 +2619,8 @@ try {
   console.error(`Failed to set water mark flag of window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<a id="setwatermarkflag-1"></a>
 
 ## setWaterMarkFlag
 
@@ -2639,7 +2660,21 @@ Adds or deletes the watermark flag for this window. This API uses a promise to r
 
 **Examples**
 
-See [setWaterMarkFlag](#setwatermarkflag)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let enable = true;
+  let promise = windowClass.setWaterMarkFlag(enable);
+  promise.then(() => {
+    console.info('Succeeded in setting water mark flag of window.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set water mark flag of window. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set water mark flag of window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
 
 ## setWindowMode
 
@@ -2697,41 +2732,6 @@ export default class EntryAbility extends UIAbility {
       windowClass = data;
       let mode = window.WindowMode.FULLSCREEN;
       try {
-        windowClass.setWindowMode(mode, (err: BusinessError) => {
-          const errCode: number = err.code;
-          if (errCode) {
-            console.error(`Failed to set the window mode. Cause code: ${err.code}, message: ${err.message}`);
-            return;
-          }
-          console.info('Succeeded in setting the window mode.');
-        });
-      } catch (exception) {
-        console.error(`Failed to set the window mode. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
-    });
-  }
-}
-```
-
-```TypeScript
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      const errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      windowClass = data;
-      let mode = window.WindowMode.FULLSCREEN;
-      try {
         let promise = windowClass.setWindowMode(mode);
         promise.then(() => {
           console.info('Succeeded in setting the window mode.');
@@ -2745,6 +2745,8 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<a id="setwindowmode-1"></a>
 
 ## setWindowMode
 
@@ -2778,7 +2780,40 @@ Sets the mode of the main window. This API uses an asynchronous callback to retu
 
 **Examples**
 
-See [setWindowMode](#setwindowmode)
+```TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      const errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      windowClass = data;
+      let mode = window.WindowMode.FULLSCREEN;
+      try {
+        windowClass.setWindowMode(mode, (err: BusinessError) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(`Failed to set the window mode. Cause code: ${err.code}, message: ${err.message}`);
+            return;
+          }
+          console.info('Succeeded in setting the window mode.');
+        });
+      } catch (exception) {
+        console.error(`Failed to set the window mode. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
 
 ## setWindowType
 
@@ -2814,20 +2849,6 @@ Sets the type of this window. This API uses a promise to return the result.
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let type = window.WindowType.TYPE_SYSTEM_ALERT;
-windowClass.setWindowType(type, (err: BusinessError) => {
-  const errCode: number = err.code;
-  if (errCode) {
-    console.error(`Failed to set the window type. Cause code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in setting the window type.');
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let type = window.WindowType.TYPE_SYSTEM_ALERT;
 let promise = windowClass.setWindowType(type);
 promise.then(() => {
   console.info('Succeeded in setting the window type.');
@@ -2835,6 +2856,8 @@ promise.then(() => {
   console.error(`Failed to set the window type. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="setwindowtype-1"></a>
 
 ## setWindowType
 
@@ -2861,7 +2884,19 @@ Sets the type of this window. This API uses an asynchronous callback to return t
 
 **Examples**
 
-See [setWindowType](#setwindowtype)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let type = window.WindowType.TYPE_SYSTEM_ALERT;
+windowClass.setWindowType(type, (err: BusinessError) => {
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to set the window type. Cause code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in setting the window type.');
+});
+```
 
 ## showWithAnimation
 
@@ -2907,16 +2942,7 @@ windowClass.showWithAnimation((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let promise = windowClass.showWithAnimation();
-promise.then(() => {
-  console.info('Succeeded in showing the window with animation.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to show the window with animation. Cause code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="showwithanimation-1"></a>
 
 ## showWithAnimation
 
@@ -2949,7 +2975,16 @@ Shows this window and plays an animation during the process. This API uses a pro
 
 **Examples**
 
-See [showWithAnimation](#showwithanimation)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = windowClass.showWithAnimation();
+promise.then(() => {
+  console.info('Succeeded in showing the window with animation.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to show the window with animation. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## startMovingWithOptions
 
@@ -3057,7 +3092,7 @@ Sets the translation parameters for this window. This API can be used only when 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| translateOptions | [TranslateOptions](../arkts-components/arkts-arkui-translateoptions-i.md) | Yes | Translation parameters. The unit is px. |
+| translateOptions | [TranslateOptions](../arkts-components/arkts-arkui-common-comp-translateoptions-i.md) | Yes | Translation parameters. The unit is px. |
 
 **Error codes:**
 

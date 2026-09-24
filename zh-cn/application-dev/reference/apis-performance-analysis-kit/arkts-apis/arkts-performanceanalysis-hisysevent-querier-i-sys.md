@@ -1,5 +1,9 @@
 # Querier（系统接口）
 
+```TypeScript
+interface Querier
+```
+
 系统事件查询者对象接口。
 
 **起始版本：** 9

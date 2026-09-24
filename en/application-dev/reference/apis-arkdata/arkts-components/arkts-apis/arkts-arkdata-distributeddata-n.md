@@ -1,5 +1,9 @@
 # distributedData(Distributed Data Management)
 
+```TypeScript
+declare namespace distributedData
+```
+
 The distributed data management module implements collaboration between databases of different devices for applications. The APIs provided by distributed data management can be used to save data to distributed databases and perform operations such as adding, deleting, modifying, querying, and synchronizing data in distributed databases. This module provides the following functions:
 
 - [KVManager](arkts-arkdata-distributeddata-kvmanagerconfig-i.md): provides a **KVManager** instance to manage key-value (KV)  
@@ -42,8 +46,8 @@ device KV store. This class inherits from [KVStore](arkts-arkdata-distributeddat
 
 | Name | Description |
 | --- | --- |
-| [createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md) | Creates a **KVManager** instance to manage KV stores. This API uses an asynchronous callback to return the result. |
-| [createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md) | Creates a **KVManager** instance to manage KV stores. This API uses a promise to return the result. |
+| [createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager) | Creates a **KVManager** instance to manage KV stores. This API uses an asynchronous callback to return the result. |
+| [createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager-1) | Creates a **KVManager** instance to manage KV stores. This API uses a promise to return the result. |
 
 ### Classes
 

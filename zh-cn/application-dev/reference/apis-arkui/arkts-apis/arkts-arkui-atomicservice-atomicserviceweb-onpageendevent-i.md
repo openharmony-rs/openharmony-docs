@@ -1,5 +1,9 @@
 # OnPageEndEvent
 
+```TypeScript
+export declare interface OnPageEndEvent
+```
+
 定义网页加载结束时触发该回调。
 
 **起始版本：** 12

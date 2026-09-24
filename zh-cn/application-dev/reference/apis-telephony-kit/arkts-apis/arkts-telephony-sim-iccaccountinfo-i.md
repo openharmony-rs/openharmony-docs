@@ -1,5 +1,9 @@
 # IccAccountInfo
 
+```TypeScript
+export interface IccAccountInfo
+```
+
 Icc账户信息。
 
 **起始版本：** 10

@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="cancel-3"></a>
+
 ## cancel
 
 ```TypeScript
@@ -49,44 +51,6 @@ The current application must have a proxy relationship with another application,
 | [1600017](../errorcode-notification.md#1600017-no-configured-proxy-relationship) | There is no corresponding agent relationship configuration. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// cancel callback
-let cancelCallback = (err: BusinessError): void => {
-  if (err) {
-    console.error(`Failed to cancel notification. Code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info(`Succeeded in canceling notification.`);
-  } 
-}
-notificationManager.cancel(0, "label", cancelCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-notificationManager.cancel(0).then(() => {
-  console.info(`Succeeded in canceling notification.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to cancel notification. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// cancel callback
-let cancelCallback = (err: BusinessError): void => {
-  if (err) {
-    console.error(`Failed to cancel notification. Code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info(`Succeeded in canceling notification.`);
-  }
-}
-notificationManager.cancel(0, cancelCallback);
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -8,6 +8,8 @@ typedef struct OH_MIDIDeviceStruct OH_MIDIDevice
 
 Declares a MIDI device.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Related module**: [OHMIDI](capi-ohmidi.md)

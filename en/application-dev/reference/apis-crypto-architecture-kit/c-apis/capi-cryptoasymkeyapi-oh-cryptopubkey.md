@@ -8,6 +8,8 @@ typedef struct OH_CryptoPubKey OH_CryptoPubKey
 
 Public key structure, representing a public key.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Related module**: [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)

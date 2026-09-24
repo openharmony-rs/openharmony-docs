@@ -1,5 +1,9 @@
 # SwiperItemInfo
 
+```TypeScript
+export interface SwiperItemInfo
+```
+
 Swiper子组件的信息，包含子组件的唯一标识符和索引，可通过SwiperContentInfo获取。
 
 **起始版本：** 22

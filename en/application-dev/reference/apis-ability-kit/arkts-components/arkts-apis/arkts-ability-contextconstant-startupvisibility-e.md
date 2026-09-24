@@ -1,6 +1,10 @@
 # StartupVisibility
 
-Enumerates the visibility statuses of the UIAbility after it is started. If the target UIAbility is set to invisible, the window of the target UIAbility is not displayed in the foreground, there is no icon in the dock, and the **onForeground** lifecycle of the target UIAbility is not triggered. As a property of [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md), **StartupVisibility** takes effect only in [UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startability) and specifies the visibility of the target UIAbility after it is started. This value takes effect only on 2-in-1 devices and tablets. If it is used on other devices, error code 801 is returned.
+```TypeScript
+export enum StartupVisibility
+```
+
+Enumerates the visibility statuses of the UIAbility after it is started. If the target UIAbility is set to invisible, the window of the target UIAbility is not displayed in the foreground, there is no icon in the dock, and the **onForeground** lifecycle of the target UIAbility is not triggered. As a property of [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md), **StartupVisibility** takes effect only in [UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startability-1) and specifies the visibility of the target UIAbility after it is started. This value takes effect only on 2-in-1 devices and tablets. If it is used on other devices, error code 801 is returned.
 
 **Since:** 12
 

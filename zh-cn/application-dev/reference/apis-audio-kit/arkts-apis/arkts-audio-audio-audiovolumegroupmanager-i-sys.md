@@ -1,6 +1,10 @@
 # AudioVolumeGroupManager
 
-管理音频组音量。在调用AudioVolumeGroupManager的接口前，需要先通过[getVolumeGroupManager](arkts-audio-audio-audiovolumemanager-i.md#getvolumegroupmanager)创建实例。
+```TypeScript
+interface AudioVolumeGroupManager
+```
+
+管理音频组音量，支持设置和调节指定音量流、控制静音状态、设置铃声模式等。适用于需要对特定音量组进行独立管理、实现铃声模式切换、调节系统音量的场景。在调用AudioVolumeGroupManager的接口前，需要先通过[getVolumeGroupManager](arkts-audio-audio-audiovolumemanager-i.md#getvolumegroupmanager)创建实例。
 
 **起始版本：** 9
 
@@ -18,7 +22,7 @@ import { audio } from '@kit.AudioKit';
 adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustType, callback: AsyncCallback<void>): void
 ```
 
-单步设置指定流的音量。使用callback异步回调。
+调节指定音量类型的系统音量，使音量等级按步长加或减，适用于音量条滑动调节场景。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -40,8 +44,8 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by callback. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by callback. |
 
@@ -59,15 +63,7 @@ audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, au
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, audio.VolumeAdjustType.VOLUME_UP).then(() => {
-  console.info('Success to adjust the system volume by step.');
-}).catch((error: BusinessError) => {
-  console.error('Fail to adjust the system volume by step.');
-});
-```
+<a id="adjustsystemvolumebystep-1"></a>
 
 ## adjustSystemVolumeByStep
 
@@ -75,7 +71,7 @@ audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, au
 adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustType): Promise<void>
 ```
 
-单步设置指定流的音量。使用Promise异步回调。
+调节指定音量类型的系统音量，使音量等级按步长加或减，适用于音量条滑动调节场景。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -96,20 +92,28 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by promise. |
 
 **示例**
 
-参见 [adjustSystemVolumeByStep](#adjustsystemvolumebystep)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, audio.VolumeAdjustType.VOLUME_UP).then(() => {
+  console.info('Success to adjust the system volume by step.');
+}).catch((error: BusinessError) => {
+  console.error('Fail to adjust the system volume by step.');
+});
+```
 
 ## adjustVolumeByStep
 
@@ -117,7 +121,7 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 adjustVolumeByStep(adjustType: VolumeAdjustType, callback: AsyncCallback<void>): void
 ```
 
-调节当前最高优先级的流的音量，使音量值按步长加或减。使用callback异步回调。
+调节当前最高优先级的音频播放流对应音量类型的系统音量，使音量等级按步长加或减，适用于音量条滑动调节场景。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -138,8 +142,8 @@ adjustVolumeByStep(adjustType: VolumeAdjustType, callback: AsyncCallback<void>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by callback. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by callback. |
 
@@ -158,15 +162,7 @@ audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP, (er
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP).then(() => {
-  console.info('Success to adjust the volume by step.');
-}).catch((error: BusinessError) => {
-  console.error('Fail to adjust the volume by step.');
-});
-```
+<a id="adjustvolumebystep-1"></a>
 
 ## adjustVolumeByStep
 
@@ -174,7 +170,7 @@ audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP).the
 adjustVolumeByStep(adjustType: VolumeAdjustType): Promise<void>
 ```
 
-单步设置当前最高优先级的流的音量。使用Promise异步回调。
+调节当前最高优先级的音频播放流对应音量类型的系统音量，使音量等级按步长加或减，适用于音量条滑动调节场景。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -194,20 +190,28 @@ adjustVolumeByStep(adjustType: VolumeAdjustType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by promise. |
 
 **示例**
 
-参见 [adjustVolumeByStep](#adjustvolumebystep)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP).then(() => {
+  console.info('Success to adjust the volume by step.');
+}).catch((error: BusinessError) => {
+  console.error('Fail to adjust the volume by step.');
+});
+```
 
 ## getActiveVolumeTypeSync
 
@@ -233,14 +237,14 @@ getActiveVolumeTypeSync(uid: number): AudioVolumeType
 
 | 类型 | 说明 |
 | --- | --- |
-| [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 音频音量类型。 |
+| [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 当前活跃的音频音量类型。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters unspecified. 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters unspecified. 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -277,8 +281,8 @@ isPersistentMicMute(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
 **示例**
 
@@ -324,11 +328,7 @@ audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessEr
 });
 ```
 
-```TypeScript
-audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
-  console.info('Promise returned to indicate that the stream is muted.');
-});
-```
+<a id="mute-1"></a>
 
 ## mute
 
@@ -357,21 +357,9 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to mute the stream. ${err}`);
-    return;
-  }
-  console.info('Callback invoked to indicate that the stream is muted.');
-});
-```
 
 ```TypeScript
 audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
@@ -385,7 +373,7 @@ audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
 setMicMute(mute: boolean): Promise<void>
 ```
 
-设置麦克风静音状态。使用Promise异步回调。
+设置麦克风静音状态。此设置不会持久化保存，系统重启时会重置。使用Promise异步回调。
 
 **起始版本：** 11
 
@@ -405,15 +393,15 @@ setMicMute(mute: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -430,7 +418,7 @@ audioVolumeGroupManager.setMicMute(true).then(() => {
 setMicMutePersistent(mute: boolean, type: PolicyType): Promise<void>
 ```
 
-设置麦克风持久化静音状态。使用Promise异步回调。
+设置麦克风持久化静音状态。设置后，静音状态将按照指定的策略类型保持，直至显式取消。使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -457,9 +445,9 @@ setMicMutePersistent(mute: boolean, type: PolicyType): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters missing. 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters missing. 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -507,11 +495,7 @@ audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (e
 });
 ```
 
-```TypeScript
-audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL).then(() => {
-  console.info('Promise returned to indicate a successful setting of the ringer mode.');
-});
-```
+<a id="setringermode-1"></a>
 
 ## setRingerMode
 
@@ -539,21 +523,9 @@ setRingerMode(mode: AudioRingMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to set the ringer mode. ${err}`);
-    return;
-  }
-  console.info('Callback invoked to indicate a successful setting of the ringer mode.');
-});
-```
 
 ```TypeScript
 audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL).then(() => {
@@ -599,11 +571,7 @@ audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: Busines
 });
 ```
 
-```TypeScript
-audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10).then(() => {
-  console.info('Promise returned to indicate a successful volume setting.');
-});
-```
+<a id="setvolume-1"></a>
 
 ## setVolume
 
@@ -632,21 +600,9 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to set the volume. ${err}`);
-    return;
-  }
-  console.info('Callback invoked to indicate a successful volume setting.');
-});
-```
 
 ```TypeScript
 audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10).then(() => {
@@ -676,20 +632,20 @@ setVolumeWithFlag(volumeType: AudioVolumeType, volume: number, flags: number): P
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 | volume | number | 是 | 音量等级，可设置范围通过[getMinVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getminvolume)和[getMaxVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getmaxvolume)获取。 |
-| flags | number | 是 | 音量等级，可设置范围通过[getMinVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getminvolume)和[getMaxVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getmaxvolume)获取。 |
+| flags | number | 是 | 是否需要显示系统音量条，0为不需要显示，1为需要显示。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
 **示例**
 

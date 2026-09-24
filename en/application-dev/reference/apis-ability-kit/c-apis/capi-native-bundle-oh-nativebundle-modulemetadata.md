@@ -8,6 +8,8 @@ typedef struct OH_NativeBundle_ModuleMetadata {...} OH_NativeBundle_ModuleMetada
 
 The struct describes the metadata of a module.
 
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
 **Since**: 20
 
 **Related module**: [Native_Bundle](capi-native-bundle.md)

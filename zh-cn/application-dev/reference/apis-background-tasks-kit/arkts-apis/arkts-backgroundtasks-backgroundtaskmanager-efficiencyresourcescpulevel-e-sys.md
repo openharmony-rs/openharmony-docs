@@ -1,5 +1,9 @@
 # EfficiencyResourcesCpuLevel（系统接口）
 
+```TypeScript
+export enum EfficiencyResourcesCpuLevel
+```
+
 能效资源CPU级别。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # ThumbnailType (System API)
 
+```TypeScript
+enum ThumbnailType
+```
+
 Enumerates thumbnail types.
 
 **Since:** 13

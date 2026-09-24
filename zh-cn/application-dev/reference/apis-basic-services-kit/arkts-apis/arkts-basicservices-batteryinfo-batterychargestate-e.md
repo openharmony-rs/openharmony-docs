@@ -1,5 +1,9 @@
 # BatteryChargeState
 
+```TypeScript
+export enum BatteryChargeState
+```
+
 表示电池充电状态的枚举。
 
 **起始版本：** 6

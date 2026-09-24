@@ -1,6 +1,10 @@
 # NodeContent
 
-NodeContent是ArkUI提供的ContentSlot的管理器，用于管理挂载到ContentSlot上的FrameNode节点内容，支持动态添加、删除FrameNode节点。适用于需要通过ContentSlot动态管理FrameNode节点内容的场景，例如根据用户交互动态新增或移除文本、图片等自定义FrameNode节点。
+```TypeScript
+export class NodeContent extends Content
+```
+
+NodeContent是ArkUI提供的[ContentSlot](../arkts-components/arkts-arkui-contentslot-comp.md#content_slot)的管理器，用于管理挂载到ContentSlot上的FrameNode节点内容，支持动态添加、删除FrameNode节点。适用于需要通过ContentSlot动态管理FrameNode节点内容的场景，例如根据用户交互动态新增或移除文本、图片等自定义FrameNode节点。
 
 > **说明：** 
 > 
@@ -104,6 +108,73 @@ removeFrameNode(node: FrameNode): void
 
 **示例**
 
-```TypeScript
 添加和删除NodeContent中的FrameNode节点。
+
+```TypeScript
+// xxx.ets
+import { NodeContent, typeNode } from '@kit.ArkUI';
+
+class NodeContentCtrl {
+  content: NodeContent;
+  textNode: Array<typeNode.Text> = new Array();
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    this.content = new NodeContent();
+    this.uiContext = uiContext;
+  }
+
+  addNode() {
+    let node = typeNode.createNode(this.uiContext, 'Text');
+    node.initialize('ContentText:' + this.textNode.length).fontSize(20);
+    this.textNode.push(node);
+    this.content.addFrameNode(node);
+  }
+
+  removeNode() {
+    let node = this.textNode.pop();
+    if (node) {
+      this.content.removeFrameNode(node);
+    }
+  }
+
+  removeFront() {
+    let node = this.textNode.shift();
+    if (node) {
+      this.content.removeFrameNode(node);
+    }
+  }
+
+  getContent(): NodeContent {
+    return this.content;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  controller = new NodeContentCtrl(this.getUIContext());
+
+  build() {
+    Row() {
+      Column() {
+        ContentSlot(this.controller.getContent())
+        Button('AddToSlot')
+          .onClick(() => {
+            this.controller.addNode();
+          })
+        Button('RemoveBack')
+          .onClick(() => {
+            this.controller.removeNode();
+          })
+        Button('RemoveFront')
+          .onClick(() => {
+            this.controller.removeFront();
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
 ```

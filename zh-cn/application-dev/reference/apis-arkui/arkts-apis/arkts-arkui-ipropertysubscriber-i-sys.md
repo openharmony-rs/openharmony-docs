@@ -1,5 +1,9 @@
 # IPropertySubscriber（系统接口）
 
+```TypeScript
+interface IPropertySubscriber
+```
+
 属性订阅者接口，定义订阅者需要实现的方法，用于接收属性变化通知和生命周期回调。
 
 **起始版本：** 7
@@ -17,6 +21,8 @@ aboutToBeDeleted(owningView?: IPropertySubscriber): void
 销毁时调用。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,6 +43,8 @@ id(): number
 获取ID时调用。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

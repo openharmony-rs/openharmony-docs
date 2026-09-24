@@ -4,6 +4,8 @@
 
 Provides native api of ArkTS native module.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Napi
+
 **Since**: 10
 
 ## Files

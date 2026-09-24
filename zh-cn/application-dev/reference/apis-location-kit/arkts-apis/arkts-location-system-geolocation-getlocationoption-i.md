@@ -1,5 +1,9 @@
 # GetLocationOption
 
+```TypeScript
+export interface GetLocationOption
+```
+
 单次定位请求的配置参数。
 
 **起始版本：** 3

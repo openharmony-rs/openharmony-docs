@@ -1,5 +1,9 @@
 # ShareOptions
 
+```TypeScript
+enum ShareOptions
+```
+
 Enumerates the options for using **UnifiedData** in a device.
 
 **Since:** 12

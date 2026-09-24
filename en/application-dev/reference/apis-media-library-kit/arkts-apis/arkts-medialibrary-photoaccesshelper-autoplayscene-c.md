@@ -1,5 +1,9 @@
 # AutoPlayScene
 
+```TypeScript
+export class AutoPlayScene
+```
+
 Defines the playback mode of the moving photo in different scenarios.
 
 **Since:** 23

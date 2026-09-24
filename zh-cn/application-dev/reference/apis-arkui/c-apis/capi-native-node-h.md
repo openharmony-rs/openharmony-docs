@@ -165,7 +165,7 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)](#oh
 | [int32_t OH_ArkUI_PostAsyncUITask(ArkUI_ContextHandle context, void* asyncUITaskData, void (\*asyncUITask)(void* asyncUITaskData), void (\*onFinish)(void* asyncUITaskData))](#oh_arkui_postasyncuitask) | - | 将asyncUITask函数提交至ArkUI框架提供的非UI线程中执行，asyncUITask函数执行完毕后，在UI线程调用onFinish函数。 适用于多线程创建UI组件的场景，开发者可使用此接口在非UI线程创建UI组件，随后在UI线程将创建完成的组件挂载至主树上。 |
 | [int32_t OH_ArkUI_PostUITask(ArkUI_ContextHandle context, void* taskData, void (\*task)(void* taskData))](#oh_arkui_postuitask) | - | 将task函数提交至UI线程中执行。 适用于多线程创建UI组件的场景，当开发者在自建的线程中创建UI组件时，可以使用此接口将创建完成的组件挂载到UI线程的主树上。 |
 | [int32_t OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible(ArkUI_ContextHandle uiContext, bool visible)](#oh_arkui_nativemodule_atomicservicemenubarsetvisible) | - | 设置菜单栏的可见性。 |
-| [int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node, float expectedUpdateInterval, void* userData, void (\*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonareaapproximatechangeevent) | - | Registers a callback for listening for component dimension and area changes.<br> This function can be called for a valid {@link ArkUI_NodeHandle} node at any time. The newly registered callback will replace the previously registered callback for this event and will take effect from the next frame. When the callback is no longer needed, call [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](capi-native-node-h.md#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released. |
+| [int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node, float expectedUpdateInterval, void* userData, void (\*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonareaapproximatechangeevent) | - | Registers a callback for listening for component dimension and area changes.<br> This function can be called for a valid [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node at any time. The newly registered callback will replace the previously registered callback for this event and will take effect from the next frame. When the callback is no longer needed, call [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](capi-native-node-h.md#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released. |
 | [int32_t OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node)](#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) | - | Unregisters the callback bound to the dimensions and area changes of a component. |
 | [int32_t OH_ArkUI_PostUITaskAndWait(ArkUI_ContextHandle context, void* taskData, void (\*task)(void* taskData))](#oh_arkui_postuitaskandwait) | - | 将task函数提交至UI线程中执行，调用此接口的线程将阻塞，直至task函数执行完成。在UI线程调用此接口等同于同步调用task函数。 适用于多线程创建UI组件的场景，当开发者在多线程创建组件过程中需要调用仅支持UI线程的函数时，使用此接口返回UI线程调用函数，调用完成后继续多线程创建组件。 当UI线程负载较高时，调用此接口的非UI线程可能长时间阻塞，影响多线程创建UI组件的性能，不建议频繁使用。 |
 | [int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)](#oh_arkui_swiper_startfakedrag) | - | Start a fake drag of the Swiper node. Call OH_ArkUI_Swiper_FakeDragBy to simulate the drag motion. Call OH_ArkUI_Swiper_StopFakeDrag to complete the fake drag. A fake drag can be interrupted by a real drag. If you need to ignore touch events and other user input during a fake drag, use NODE_SWIPER_DISABLE_SWIPE. |
@@ -196,6 +196,8 @@ enum ArkUI_NodeType
 **描述：**
 
 Enumerates ArkUI component types that can be created on the native side.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -257,6 +259,8 @@ enum ArkUI_NodeDirtyFlag
 
 Defines the dirty area flag passed in the <b>::markDirty</b> API.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -274,6 +278,8 @@ enum ArkUI_NodeCustomEventType
 **描述：**
 
 Defines the custom component event type.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -297,6 +303,8 @@ enum ArkUI_NodeAdapterEventType
 
 Enumerates component adapter events.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -317,6 +325,8 @@ enum ArkUI_NodeContentEventType
 
 Defines the node content event type.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -333,6 +343,8 @@ enum ArkUI_InspectorErrorCode
 **描述：**
 
 Enumerates the inspector error codes.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -353,6 +365,8 @@ ArkUI_NodeEventType OH_ArkUI_NodeEvent_GetEventType(ArkUI_NodeEvent* event)
 **描述：**
 
 Obtains the type of a component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -378,6 +392,8 @@ int32_t OH_ArkUI_NodeEvent_GetTargetId(ArkUI_NodeEvent* event)
 
 Obtains the custom ID of a component event.<br> The event ID is passed in as a parameter when the [registerNodeEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent) function is called and can be applied to the dispatch logic of the same event entry function [registerNodeEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver).
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -401,6 +417,8 @@ ArkUI_NodeHandle OH_ArkUI_NodeEvent_GetNodeHandle(ArkUI_NodeEvent* event)
 **描述：**
 
 Obtains the component object that triggers a component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -426,6 +444,8 @@ ArkUI_UIInputEvent* OH_ArkUI_NodeEvent_GetInputEvent(ArkUI_NodeEvent* event)
 
 获取组件事件中的输入事件（如触碰事件）数据。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -449,6 +469,8 @@ ArkUI_NodeComponentEvent* OH_ArkUI_NodeEvent_GetNodeComponentEvent(ArkUI_NodeEve
 **描述：**
 
 Obtains the numerical data in a component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -474,6 +496,8 @@ ArkUI_StringAsyncEvent* OH_ArkUI_NodeEvent_GetStringAsyncEvent(ArkUI_NodeEvent* 
 
 Obtains the string data in a component event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -497,6 +521,8 @@ ArkUI_TextChangeEvent* OH_ArkUI_NodeEvent_GetTextChangeEvent(ArkUI_NodeEvent* ev
 **描述：**
 
 Obtains the ArkUI_TextChangeEvent data from a component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -522,6 +548,8 @@ void* OH_ArkUI_NodeEvent_GetUserData(ArkUI_NodeEvent* event)
 
 Obtains the custom data in a component event.<br> This parameter is passed in [registerNodeEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent) and can be applied to the service logic when the event is triggered.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -546,6 +574,8 @@ int32_t OH_ArkUI_NodeEvent_GetNumberValue(ArkUI_NodeEvent* event, int32_t index,
 
 获取组件回调事件的数字类型参数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -560,7 +590,7 @@ int32_t OH_ArkUI_NodeEvent_GetNumberValue(ArkUI_NodeEvent* event, int32_t index,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE} 组件事件中参数长度超限。 \n<br>        {@link ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID} 组件事件中不存在该数据。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 组件事件中参数长度超限。 \n          [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 组件事件中不存在该数据。 |
 
 ### OH_ArkUI_NodeEvent_GetStringValue()
 
@@ -571,6 +601,8 @@ int32_t OH_ArkUI_NodeEvent_GetStringValue(ArkUI_NodeEvent* event, int32_t index,
 **描述：**
 
 获取组件回调事件的字符串类型参数，字符串数据仅在事件回调过程中有效，需要在事件回调外使用建议进行额外拷贝处理。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -587,7 +619,7 @@ int32_t OH_ArkUI_NodeEvent_GetStringValue(ArkUI_NodeEvent* event, int32_t index,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE} 组件事件中参数长度超限。 \n<br>        {@link ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID} 组件事件中不存在该数据。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 组件事件中参数长度超限。 \n          [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 组件事件中不存在该数据。 |
 
 ### OH_ArkUI_NodeEvent_SetReturnNumberValue()
 
@@ -598,6 +630,8 @@ int32_t OH_ArkUI_NodeEvent_SetReturnNumberValue(ArkUI_NodeEvent* event, ArkUI_Nu
 **描述：**
 
 设置组件回调事件的返回值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -613,7 +647,7 @@ int32_t OH_ArkUI_NodeEvent_SetReturnNumberValue(ArkUI_NodeEvent* event, ArkUI_Nu
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID} 组件事件中不存在该数据。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 组件事件中不存在该数据。 |
 
 ### OH_ArkUI_NodeEvent_GetTouchTestInfo()
 
@@ -624,6 +658,8 @@ ArkUI_TouchTestInfo* OH_ArkUI_NodeEvent_GetTouchTestInfo(ArkUI_NodeEvent* nodeEv
 **描述：**
 
 获取组件事件中的触摸测试信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -637,7 +673,7 @@ ArkUI_TouchTestInfo* OH_ArkUI_NodeEvent_GetTouchTestInfo(ArkUI_NodeEvent* nodeEv
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_TouchTestInfo* | 返回指向{@link ArkUI_TouchTestInfo}对象的指针。若传入的参数无效或并非触摸测试信息，则返回null。 |
+| ArkUI_TouchTestInfo* | 返回指向[ArkUI_TouchTestInfo](capi-arkui-eventmodule-arkui-touchtestinfo.md)对象的指针。若传入的参数无效或并非触摸测试信息，则返回null。 |
 
 ### OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEvent()
 
@@ -649,13 +685,15 @@ OH_ArkUI_TextEditorChangeEvent* OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEven
 
 获取组件事件中的TextEditor组件文本内容变化数据。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_NodeEvent* event | 指向{@link ArkUI_NodeEvent}组件事件对象的指针。 |
+| ArkUI_NodeEvent* event | 指向[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)组件事件对象的指针。 |
 
 **返回值：**
 
@@ -673,6 +711,8 @@ ArkUI_NodeAdapterHandle OH_ArkUI_NodeAdapter_Create()
 
 Creates a component adapter.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 ### OH_ArkUI_NodeAdapter_Dispose()
@@ -684,6 +724,8 @@ void OH_ArkUI_NodeAdapter_Dispose(ArkUI_NodeAdapterHandle handle)
 **描述：**
 
 Destroys a component adapter.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -703,6 +745,8 @@ int32_t OH_ArkUI_NodeAdapter_SetTotalNodeCount(ArkUI_NodeAdapterHandle handle, u
 
 设置Adapter中的元素总数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -716,7 +760,7 @@ int32_t OH_ArkUI_NodeAdapter_SetTotalNodeCount(ArkUI_NodeAdapterHandle handle, u
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n         {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n         [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n         [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeAdapter_GetTotalNodeCount()
 
@@ -727,6 +771,8 @@ uint32_t OH_ArkUI_NodeAdapter_GetTotalNodeCount(ArkUI_NodeAdapterHandle handle)
 **描述：**
 
 Obtains the total number of elements in the specified adapter.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -753,6 +799,8 @@ ArkUI_NodeAdapterHandle handle, void* userData, void (*receiver)(ArkUI_NodeAdapt
 
 注册Adapter相关回调事件。在相关回调事件不需要之后，需要执行[OH_ArkUI_NodeAdapter_UnregisterEventReceiver](capi-native-node-h.md#oh_arkui_nodeadapter_unregistereventreceiver)接口注销相关回调事件。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -767,7 +815,7 @@ ArkUI_NodeAdapterHandle handle, void* userData, void (*receiver)(ArkUI_NodeAdapt
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n         {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n         [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n         [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeAdapter_UnregisterEventReceiver()
 
@@ -778,6 +826,8 @@ void OH_ArkUI_NodeAdapter_UnregisterEventReceiver(ArkUI_NodeAdapterHandle handle
 **描述：**
 
 Deregisters an event callback for the adapter.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -797,6 +847,8 @@ int32_t OH_ArkUI_NodeAdapter_ReloadAllItems(ArkUI_NodeAdapterHandle handle)
 
 通知Adapter进行全量元素变化。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -809,7 +861,7 @@ int32_t OH_ArkUI_NodeAdapter_ReloadAllItems(ArkUI_NodeAdapterHandle handle)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n         {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n         [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n         [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeAdapter_ReloadItem()
 
@@ -821,6 +873,8 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 **描述：**
 
 通知Adapter进行局部元素变化。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -836,7 +890,7 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n         {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n<br>        {@link ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_NO_LISTENER_ERROR} NodeAdapter需要添加监听器。 |
+| int32_t | 错误码。 \n         [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 \n         {@link ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_NO_LISTENER_ERROR} NodeAdapter需要添加监听器。 |
 
 ### OH_ArkUI_NodeAdapter_RemoveItem()
 
@@ -848,6 +902,8 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 **描述：**
 
 通知Adapter进行局部元素删除。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -863,7 +919,7 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n         {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n<br>        {@link ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_NO_LISTENER_ERROR} NodeAdapter需要添加监听器。 |
+| int32_t | 错误码。 \n         [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 \n         {@link ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_NO_LISTENER_ERROR} NodeAdapter需要添加监听器。 |
 
 ### OH_ArkUI_NodeAdapter_InsertItem()
 
@@ -875,6 +931,8 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 **描述：**
 
 通知Adapter进行局部元素插入。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -890,7 +948,7 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n         {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n<br>        {@link ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_NO_LISTENER_ERROR} NodeAdapter需要添加监听器。 |
+| int32_t | 错误码。 \n         [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 \n         {@link ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_NO_LISTENER_ERROR} NodeAdapter需要添加监听器。 |
 
 ### OH_ArkUI_NodeAdapter_MoveItem()
 
@@ -901,6 +959,8 @@ int32_t OH_ArkUI_NodeAdapter_MoveItem(ArkUI_NodeAdapterHandle handle, uint32_t f
 **描述：**
 
 通知Adapter进行局部元素移位。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -916,7 +976,7 @@ int32_t OH_ArkUI_NodeAdapter_MoveItem(ArkUI_NodeAdapterHandle handle, uint32_t f
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n         {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n<br>        {@link ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_NO_LISTENER_ERROR} NodeAdapter需要添加监听器。 |
+| int32_t | 错误码。 \n         [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 \n         {@link ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_NO_LISTENER_ERROR} NodeAdapter需要添加监听器。 |
 
 ### OH_ArkUI_NodeAdapter_GetAllItems()
 
@@ -927,6 +987,8 @@ int32_t OH_ArkUI_NodeAdapter_GetAllItems(ArkUI_NodeAdapterHandle handle, ArkUI_N
 **描述：**
 
 获取存储在Adapter中的所有元素。<br> 接口调用会返回元素的数组对象指针，该指针指向的内存数据需要开发者手动释放。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -942,7 +1004,7 @@ int32_t OH_ArkUI_NodeAdapter_GetAllItems(ArkUI_NodeAdapterHandle handle, ArkUI_N
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n         {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n<br>        {@link ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_NO_LISTENER_ERROR} NodeAdapter需要添加监听器。 |
+| int32_t | 错误码。 \n         [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 \n         {@link ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_NO_LISTENER_ERROR} NodeAdapter需要添加监听器。 |
 
 ### OH_ArkUI_NodeAdapterEvent_GetUserData()
 
@@ -953,6 +1015,8 @@ void* OH_ArkUI_NodeAdapterEvent_GetUserData(ArkUI_NodeAdapterEvent* event)
 **描述：**
 
 Obtains the custom data passed in during registration of the specified event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -971,6 +1035,8 @@ ArkUI_NodeAdapterEventType OH_ArkUI_NodeAdapterEvent_GetType(ArkUI_NodeAdapterEv
 **描述：**
 
 Obtains the event type.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -996,6 +1062,8 @@ ArkUI_NodeHandle OH_ArkUI_NodeAdapterEvent_GetRemovedNode(ArkUI_NodeAdapterEvent
 
 Obtains the element to be removed for the event to be destroyed.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1019,6 +1087,8 @@ uint32_t OH_ArkUI_NodeAdapterEvent_GetItemIndex(ArkUI_NodeAdapterEvent* event)
 **描述：**
 
 Obtains the index of the element to be operated for the specified adapter event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1044,6 +1114,8 @@ ArkUI_NodeHandle OH_ArkUI_NodeAdapterEvent_GetHostNode(ArkUI_NodeAdapterEvent* e
 
 Obtains the scrollable container node that uses the specified adapter.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1068,6 +1140,8 @@ int32_t OH_ArkUI_NodeAdapterEvent_SetItem(ArkUI_NodeAdapterEvent* event, ArkUI_N
 
 设置需要新增到Adapter中的组件。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1081,7 +1155,7 @@ int32_t OH_ArkUI_NodeAdapterEvent_SetItem(ArkUI_NodeAdapterEvent* event, ArkUI_N
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n         {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n         [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n         [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeAdapterEvent_SetNodeId()
 
@@ -1092,6 +1166,8 @@ int32_t OH_ArkUI_NodeAdapterEvent_SetNodeId(ArkUI_NodeAdapterEvent* event, int32
 **描述：**
 
 设置生成的组件标识。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1106,7 +1182,7 @@ int32_t OH_ArkUI_NodeAdapterEvent_SetNodeId(ArkUI_NodeAdapterEvent* event, int32
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n         {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n         [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n         [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeCustomEvent_GetLayoutConstraintInMeasure()
 
@@ -1117,6 +1193,8 @@ ArkUI_LayoutConstraint* OH_ArkUI_NodeCustomEvent_GetLayoutConstraintInMeasure(Ar
 **描述：**
 
 Obtains the size constraint for measurement through a custom component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1142,6 +1220,8 @@ ArkUI_IntOffset OH_ArkUI_NodeCustomEvent_GetPositionInLayout(ArkUI_NodeCustomEve
 
 Obtains the expected position of a component relative to its parent component in the layout phase through a custom component event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1165,6 +1245,8 @@ ArkUI_DrawContext* OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(ArkUI_NodeCusto
 **描述：**
 
 Obtains the drawing context through a custom component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1190,6 +1272,8 @@ int32_t OH_ArkUI_NodeCustomEvent_GetEventTargetId(ArkUI_NodeCustomEvent* event)
 
 Obtains the ID of a custom component event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1213,6 +1297,8 @@ void* OH_ArkUI_NodeCustomEvent_GetUserData(ArkUI_NodeCustomEvent* event)
 **描述：**
 
 Obtains custom event parameters through a custom component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1238,6 +1324,8 @@ ArkUI_NodeHandle OH_ArkUI_NodeCustomEvent_GetNodeHandle(ArkUI_NodeCustomEvent* e
 
 Obtains a component object through a custom component event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1261,6 +1349,8 @@ ArkUI_NodeCustomEventType OH_ArkUI_NodeCustomEvent_GetEventType(ArkUI_NodeCustom
 **描述：**
 
 Obtains the event type through a custom component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1286,6 +1376,8 @@ int32_t OH_ArkUI_NodeCustomEvent_GetCustomSpanMeasureInfo(ArkUI_NodeCustomEvent*
 
 Obtains the measurement information of a custom span through a custom component event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1299,7 +1391,7 @@ Obtains the measurement information of a custom span through a custom component 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the result code.         Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs.         <br> Possible causes: Parameter verification failed, the parameter should not be nullptr. |
+| int32_t | Returns the result code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.         <br> Possible causes: Parameter verification failed, the parameter should not be nullptr. |
 
 ### OH_ArkUI_NodeCustomEvent_SetCustomSpanMetrics()
 
@@ -1310,6 +1402,8 @@ int32_t OH_ArkUI_NodeCustomEvent_SetCustomSpanMetrics(ArkUI_NodeCustomEvent* eve
 **描述：**
 
 Sets the measurement metrics of a custom span through a custom component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1324,7 +1418,7 @@ Sets the measurement metrics of a custom span through a custom component event.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the result code.         Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs.         <br> Possible causes: Parameter verification failed, the parameter should not be nullptr. |
+| int32_t | Returns the result code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.         <br> Possible causes: Parameter verification failed, the parameter should not be nullptr. |
 
 ### OH_ArkUI_NodeCustomEvent_GetCustomSpanDrawInfo()
 
@@ -1335,6 +1429,8 @@ int32_t OH_ArkUI_NodeCustomEvent_GetCustomSpanDrawInfo(ArkUI_NodeCustomEvent* ev
 **描述：**
 
 Obtains the drawing information of a custom span through a custom component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1349,7 +1445,7 @@ Obtains the drawing information of a custom span through a custom component even
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the result code.         Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs.         <br> Possible causes: Parameter verification failed, the parameter should not be nullptr. |
+| int32_t | Returns the result code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.         <br> Possible causes: Parameter verification failed, the parameter should not be nullptr. |
 
 ### ArkUI_NodeContentCallback()
 
@@ -1360,6 +1456,8 @@ typedef void (*ArkUI_NodeContentCallback)(ArkUI_NodeContentEvent* event)
 **描述：**
 
 Defines the callback function of a node content event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1372,6 +1470,8 @@ int32_t OH_ArkUI_NodeContent_RegisterCallback(ArkUI_NodeContentHandle content, A
 **描述：**
 
 注册NodeContent事件函数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1386,7 +1486,7 @@ int32_t OH_ArkUI_NodeContent_RegisterCallback(ArkUI_NodeContentHandle content, A
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeContentEvent_GetEventType()
 
@@ -1397,6 +1497,8 @@ ArkUI_NodeContentEventType OH_ArkUI_NodeContentEvent_GetEventType(ArkUI_NodeCont
 **描述：**
 
 Obtains the type of a node content event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1422,6 +1524,8 @@ ArkUI_NodeContentHandle OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_Nod
 
 Obtains the node content object that triggers a node content event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1446,6 +1550,8 @@ int32_t OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* 
 
 Saves custom data on the specified node content.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1459,7 +1565,7 @@ Saves custom data on the specified node content.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.          Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_NodeContent_GetUserData()
 
@@ -1470,6 +1576,8 @@ void* OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)
 **描述：**
 
 Obtains the custom data saved on the specified node content.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1495,6 +1603,8 @@ int32_t OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_Node
 
 将一个ArkUI组件节点添加到对应的NodeContent对象下。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1508,7 +1618,7 @@ int32_t OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_Node
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n<br>        {@link ARKUI_ERROR_CODE_NODE_IS_ADOPTED} 子节点已经被接纳。从API version 22开始支持。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 \n          [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 子节点已经被接纳。从API version 22开始支持。 |
 
 ### OH_ArkUI_NodeContent_RemoveNode()
 
@@ -1519,6 +1629,8 @@ int32_t OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_N
 **描述：**
 
 删除NodeContent对象下的一个ArkUI组件节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1533,7 +1645,7 @@ int32_t OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_N
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeContent_InsertNode()
 
@@ -1544,6 +1656,8 @@ int32_t OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_N
 **描述：**
 
 将一个ArkUI组件节点插入到对应的NodeContent对象的特定位置下。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1559,7 +1673,7 @@ int32_t OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_N
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n<br>        {@link ARKUI_ERROR_CODE_NODE_IS_ADOPTED} 子节点已经被接纳。从API version 22开始支持。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 \n          [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 子节点已经被接纳。从API version 22开始支持。 |
 
 ### OH_ArkUI_NodeUtils_GetLayoutSize()
 
@@ -1570,6 +1684,8 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutSize(ArkUI_NodeHandle node, ArkUI_IntSize* s
 **描述：**
 
 获取组件布局区域的大小。 布局区域大小不包含图形变化属性，如缩放。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1584,7 +1700,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutSize(ArkUI_NodeHandle node, ArkUI_IntSize* s
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeUtils_GetLayoutPosition()
 
@@ -1595,6 +1711,8 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPosition(ArkUI_NodeHandle node, ArkUI_IntOff
 **描述：**
 
 获取组件布局区域相对父组件的位置。 布局区域相对位置不包含图形变化属性，如平移。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1609,7 +1727,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPosition(ArkUI_NodeHandle node, ArkUI_IntOff
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeUtils_GetLayoutPositionInWindow()
 
@@ -1620,6 +1738,8 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInWindow(ArkUI_NodeHandle node, ArkU
 **描述：**
 
 获取组件布局区域相对窗口的位置。 布局区域相对位置不包含图形变化属性，如平移。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1634,7 +1754,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInWindow(ArkUI_NodeHandle node, ArkU
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeUtils_GetLayoutPositionInScreen()
 
@@ -1645,6 +1765,8 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInScreen(ArkUI_NodeHandle node, ArkU
 **描述：**
 
 获取组件布局区域相对屏幕的位置。 布局区域相对位置不包含图形变化属性，如平移。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1659,7 +1781,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInScreen(ArkUI_NodeHandle node, ArkU
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeUtils_GetLayoutPositionInGlobalDisplay()
 
@@ -1670,6 +1792,8 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInGlobalDisplay(ArkUI_NodeHandle nod
 **描述：**
 
 获取组件相对于全局屏幕的偏移。 布局区域相对位置不包含图形变化属性，如平移。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1684,7 +1808,7 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInGlobalDisplay(ArkUI_NodeHandle nod
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeUtils_GetPositionWithTranslateInWindow()
 
@@ -1696,6 +1820,8 @@ int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInWindow(ArkUI_NodeHandle nod
 
 Obtain the position of the component in the window, including the properties of graphic translation changes.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1709,7 +1835,7 @@ Obtain the position of the component in the window, including the properties of 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.          Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_GetPositionWithTranslateInScreen()
 
@@ -1721,6 +1847,8 @@ int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInScreen(ArkUI_NodeHandle nod
 
 Obtain the position of the component on the screen, including the attributes of graphic translation changes.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1734,7 +1862,7 @@ Obtain the position of the component on the screen, including the attributes of 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.          Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_AddCustomProperty()
 
@@ -1745,6 +1873,8 @@ void OH_ArkUI_NodeUtils_AddCustomProperty(ArkUI_NodeHandle node, const char* nam
 **描述：**
 
 设置组件的自定义属性。该接口仅在主线程生效。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
 
@@ -1766,6 +1896,8 @@ void OH_ArkUI_NodeUtils_RemoveCustomProperty(ArkUI_NodeHandle node, const char* 
 
 移除组件已设置的自定义属性。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 13
 
 **参数：**
@@ -1785,6 +1917,8 @@ int32_t OH_ArkUI_NodeUtils_GetCustomProperty(ArkUI_NodeHandle node, const char* 
 
 获取组件的自定义属性的值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 14
 
 **参数：**
@@ -1799,7 +1933,7 @@ int32_t OH_ArkUI_NodeUtils_GetCustomProperty(ArkUI_NodeHandle node, const char* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeUtils_GetParentInPageTree()
 
@@ -1810,6 +1944,8 @@ ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetParentInPageTree(ArkUI_NodeHandle node)
 **描述：**
 
 获取父节点，可获取由ArkTs创建的组件节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 14
 
@@ -1835,6 +1971,8 @@ int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_Ac
 
 获取某个节点所有活跃的子节点。Span将不会被计入子节点的统计中。 在LazyForEach场景中，推荐使用[OH_ArkUI_NodeUtils_GetChildWithExpandMode](capi-native-node-h.md#oh_arkui_nodeutils_getchildwithexpandmode)接口进行遍历。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 14
 
 **参数：**
@@ -1848,7 +1986,7 @@ int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_Ac
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeUtils_GetCurrentPageRootNode()
 
@@ -1859,6 +1997,8 @@ ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetCurrentPageRootNode(ArkUI_NodeHandle node
 **描述：**
 
 获取当前页面的根节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 14
 
@@ -1884,6 +2024,8 @@ bool OH_ArkUI_NodeUtils_IsCreatedByNDK(ArkUI_NodeHandle node)
 
 获取组件是否由C-API创建的标签。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 14
 
 **参数：**
@@ -1907,6 +2049,8 @@ int32_t OH_ArkUI_NodeUtils_GetNodeType(ArkUI_NodeHandle node)
 **描述：**
 
 获取节点的类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 14
 
@@ -1932,6 +2076,8 @@ int32_t OH_ArkUI_NodeUtils_GetWindowInfo(ArkUI_NodeHandle node, ArkUI_HostWindow
 
 获取节点所属的窗口信息。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -1939,13 +2085,13 @@ int32_t OH_ArkUI_NodeUtils_GetWindowInfo(ArkUI_NodeHandle node, ArkUI_HostWindow
 | 参数项 | 描述 |
 | -- | -- |
 | ArkUI_NodeHandle node | 目标节点对象。 |
-| ArkUI_HostWindowInfo** info | 窗口信息。使用{@link OH_ArkUI_HostWindowInfo_Destroy}释放内存。 |
+| ArkUI_HostWindowInfo** info | 窗口信息。使用[OH_ArkUI_HostWindowInfo_Destroy](capi-native-type-h.md#oh_arkui_hostwindowinfo_destroy)释放内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化错误。<br>    <br>{@link ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE} 节点未挂载到节点树上。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化错误。      <br>[ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 节点未挂载到节点树上。 |
 
 ### OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand()
 
@@ -1957,6 +2103,8 @@ int32_t OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand(ArkUI_NodeHandle node
 
 获取目标节点在树上的第一个子节点的下标。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -1970,7 +2118,7 @@ int32_t OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand(ArkUI_NodeHandle node
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand()
 
@@ -1982,6 +2130,8 @@ int32_t OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(ArkUI_NodeHandle node,
 
 获取目标节点在树上的最后一个子节点的下标。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -1995,7 +2145,7 @@ int32_t OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(ArkUI_NodeHandle node,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeUtils_GetChildWithExpandMode()
 
@@ -2007,6 +2157,8 @@ int32_t OH_ArkUI_NodeUtils_GetChildWithExpandMode(ArkUI_NodeHandle node, int32_t
 
 用不同的展开模式获取对应下标的子节点。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -2016,13 +2168,13 @@ int32_t OH_ArkUI_NodeUtils_GetChildWithExpandMode(ArkUI_NodeHandle node, int32_t
 | ArkUI_NodeHandle node | 目标节点的指针。 |
 | int32_t position | 对应子节点的下标。 |
 | ArkUI_NodeHandle* subnode | 获取子节点的指针。 |
-| uint32_t expandMode | 节点遍历展开方式。 {@link ArkUI_ExpandMode}。 |
+| uint32_t expandMode | 节点遍历展开方式。 [ArkUI_ExpandMode](capi-native-type-h.md#arkui_expandmode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_List_CloseAllSwipeActions()
 
@@ -2033,6 +2185,8 @@ int32_t OH_ArkUI_List_CloseAllSwipeActions(ArkUI_NodeHandle node, void* userData
 **描述：**
 
 收起展开状态下的ListItem。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2048,7 +2202,7 @@ int32_t OH_ArkUI_List_CloseAllSwipeActions(ArkUI_NodeHandle node, void* userData
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n<br>        {@link ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED} 组件不支持该事件。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 \n          [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 组件不支持该事件。 |
 
 ### OH_ArkUI_GetContextByNode()
 
@@ -2059,6 +2213,8 @@ ArkUI_ContextHandle OH_ArkUI_GetContextByNode(ArkUI_NodeHandle node)
 **描述：**
 
 Obtain the UIContext pointer to the page where the node is located.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2084,6 +2240,8 @@ int32_t OH_ArkUI_RegisterSystemColorModeChangeEvent(ArkUI_NodeHandle node, void*
 
 The event called when the system color mode changes. Only one system color change callback can be registered for the same component.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -2098,7 +2256,7 @@ The event called when the system color mode changes. Only one system color chang
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.         {@link ARKUI_ERROR_CODE_NO_ERROR} Success.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} Function parameter exception. |
+| int32_t | Error code.         [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.         [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
 
 ### OH_ArkUI_UnregisterSystemColorModeChangeEvent()
 
@@ -2109,6 +2267,8 @@ void OH_ArkUI_UnregisterSystemColorModeChangeEvent(ArkUI_NodeHandle node)
 **描述：**
 
 Unregister the event callback when the system color mode changes.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2128,6 +2288,8 @@ int32_t OH_ArkUI_RegisterSystemFontStyleChangeEvent(ArkUI_NodeHandle node, void*
 
 The event called when the system font style changes. Only one system font change callback can be registered for the same component.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -2142,7 +2304,7 @@ The event called when the system font style changes. Only one system font change
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.         {@link ARKUI_ERROR_CODE_NO_ERROR} Success.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} Function parameter exception. |
+| int32_t | Error code.         [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.         [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
 
 ### OH_ArkUI_UnregisterSystemFontStyleChangeEvent()
 
@@ -2153,6 +2315,8 @@ void OH_ArkUI_UnregisterSystemFontStyleChangeEvent(ArkUI_NodeHandle node)
 **描述：**
 
 Unregister the event callback when the system font style changes.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2171,6 +2335,8 @@ float OH_ArkUI_SystemFontStyleEvent_GetFontSizeScale(const ArkUI_SystemFontStyle
 **描述：**
 
 Retrieve the font size value for system font change events.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2196,6 +2362,8 @@ float OH_ArkUI_SystemFontStyleEvent_GetFontWeightScale(const ArkUI_SystemFontSty
 
 Retrieve the font thickness values for system font change events.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -2220,6 +2388,8 @@ int32_t OH_ArkUI_NodeUtils_GetAttachedNodeHandleById(const char* id, ArkUI_NodeH
 
 根据用户id获取目标节点。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -2233,7 +2403,7 @@ int32_t OH_ArkUI_NodeUtils_GetAttachedNodeHandleById(const char* id, ArkUI_NodeH
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeUtils_MoveTo()
 
@@ -2244,6 +2414,8 @@ int32_t OH_ArkUI_NodeUtils_MoveTo(ArkUI_NodeHandle node, ArkUI_NodeHandle target
 **描述：**
 
 将节点移动到目标父节点下，作为子节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 18
 
@@ -2259,7 +2431,7 @@ int32_t OH_ArkUI_NodeUtils_MoveTo(ArkUI_NodeHandle node, ArkUI_NodeHandle target
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>        {@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化错误。<br>        {@link ARKUI_ERROR_CODE_NODE_IS_ADOPTED} 子节点已经被接纳。从API version 22开始支持。 |
+| int32_t | 错误码。          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。          [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化错误。          [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 子节点已经被接纳。从API version 22开始支持。 |
 
 ### OH_ArkUI_NativeModule_InvalidateAttributes()
 
@@ -2270,6 +2442,8 @@ int32_t OH_ArkUI_NativeModule_InvalidateAttributes(ArkUI_NodeHandle node)
 **描述：**
 
 在当前帧触发节点属性更新。 当前节点的属性在构建阶段后被修改，这些改动不会立即生效，而是延迟到下一帧统一处理。 此功能强制当前帧内即时节点更新，确保同步应用渲染效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -2283,7 +2457,7 @@ int32_t OH_ArkUI_NativeModule_InvalidateAttributes(ArkUI_NodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeUtils_SetCrossLanguageOption()
 
@@ -2295,6 +2469,8 @@ int32_t OH_ArkUI_NodeUtils_SetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_C
 
 设置目标节点跨语言设置属性的能力。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -2302,13 +2478,13 @@ int32_t OH_ArkUI_NodeUtils_SetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_C
 | 参数项 | 描述 |
 | -- | -- |
 | ArkUI_NodeHandle node | 目标节点的指针。 |
-| ArkUI_CrossLanguageOption* option | 跨语言配置项 {@link ArkUI_CrossLanguageOption}。 |
+| ArkUI_CrossLanguageOption* option | 跨语言配置项 [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeUtils_GetCrossLanguageOption()
 
@@ -2320,6 +2496,8 @@ int32_t OH_ArkUI_NodeUtils_GetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_C
 
 获取目标节点跨语言设置属性的配置项。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -2327,13 +2505,13 @@ int32_t OH_ArkUI_NodeUtils_GetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_C
 | 参数项 | 描述 |
 | -- | -- |
 | ArkUI_NodeHandle node | 目标节点的指针。 |
-| ArkUI_CrossLanguageOption* option | 跨语言配置项 {@link ArkUI_CrossLanguageOption}。 |
+| ArkUI_CrossLanguageOption* option | 跨语言配置项 [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_RegisterLayoutCallbackOnNodeHandle()
 
@@ -2344,6 +2522,8 @@ int32_t OH_ArkUI_RegisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node, void*
 **描述：**
 
 Registers a callback for node when layout is completed.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -2359,7 +2539,7 @@ Registers a callback for node when layout is completed.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | error code          {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter is incorrect. |
+| int32_t | error code          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_RegisterDrawCallbackOnNodeHandle()
 
@@ -2370,6 +2550,8 @@ int32_t OH_ArkUI_RegisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node, void* u
 **描述：**
 
 Registers a callback for node when draw is completed.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -2385,7 +2567,7 @@ Registers a callback for node when draw is completed.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | error code          {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter is incorrect. |
+| int32_t | error code          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle()
 
@@ -2397,6 +2579,8 @@ int32_t OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node)
 
 Unregisters the layout completed callback for node.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -2409,7 +2593,7 @@ Unregisters the layout completed callback for node.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | error code          {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter is incorrect. |
+| int32_t | error code          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_UnregisterDrawCallbackOnNodeHandle()
 
@@ -2421,6 +2605,8 @@ int32_t OH_ArkUI_UnregisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node)
 
 Unregisters the draw completed callback for node.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -2433,7 +2619,7 @@ Unregisters the draw completed callback for node.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | error code          {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter is incorrect. |
+| int32_t | error code          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_GetNodeSnapshot()
 
@@ -2445,6 +2631,8 @@ int32_t OH_ArkUI_GetNodeSnapshot(ArkUI_NodeHandle node, ArkUI_SnapshotOptions* s
 
 Obtains a snapshot of a given component. If the node is not in the component tree or has not been rendered, the snapshot operation will fail. When the <b>Pixelmap</b> object created is no longer in use, it should be released by calling {@link OH_PixelmapNative_Release}.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **参数：**
@@ -2452,14 +2640,14 @@ Obtains a snapshot of a given component. If the node is not in the component tre
 | 参数项 | 描述 |
 | -- | -- |
 | ArkUI_NodeHandle node | Target node. |
-| ArkUI_SnapshotOptions* snapshotOptions | Snapshot settings. If the value is null, the default settings are used. Snapshot settings include scaling, color space, and dynamic range configuration. Scaling: floating-point value greater than 0. Color space: <b>3</b> (DISPLAY_P3), <b>4</b> (SRGB), <b>27</b> (DISPLAY_BT2020_SRGB). Dynamic range: {@link ArkUI_DynamicRangeMode}. |
+| ArkUI_SnapshotOptions* snapshotOptions | Snapshot settings. If the value is null, the default settings are used. Snapshot settings include scaling, color space, and dynamic range configuration. Scaling: floating-point value greater than 0. Color space: <b>3</b> (DISPLAY_P3), <b>4</b> (SRGB), <b>27</b> (DISPLAY_BT2020_SRGB). Dynamic range: [ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode). |
 | OH_PixelmapNative** pixelmap | Pointer to the <b>Pixelmap</b> object created by the system. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Result code.          {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs.<br>        Returns {@link ARKUI_ERROR_CODE_INTERNAL_ERROR} if the snapshot fails, returning a null pointer.<br>        Returns {@link ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT} if the snapshot operation times out.<br>        Returns {@link ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED} if the provided color space or<br>        dynamic range mode is not supported.<br>        Returns {@link ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED} if the isAuto parameter of the color          space or dynamic range mode is set to true for offscreen node snapshot. |
+| int32_t | Result code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.          Returns [ARKUI_ERROR_CODE_INTERNAL_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the snapshot fails, returning a null pointer.          Returns [ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the snapshot operation times out.          Returns [ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the provided color space or          dynamic range mode is not supported.          Returns [ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the isAuto parameter of the color          space or dynamic range mode is set to true for offscreen node snapshot. |
 
 ### OH_ArkUI_GetNodeSnapshotSizeLimitation()
 
@@ -2470,6 +2658,8 @@ int32_t OH_ArkUI_GetNodeSnapshotSizeLimitation(int32_t* maxWidth, int32_t* maxHe
 **描述：**
 
 Query the size limitation of the component snapshot.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -2484,7 +2674,7 @@ Query the size limitation of the component snapshot.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          {@link ARKUI_ERROR_CODE_NO_ERROR} Success.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} Invalid function parameter. |
+| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Invalid function parameter. |
 
 ### OH_ArkUI_NodeUtils_GetPositionToParent()
 
@@ -2495,6 +2685,8 @@ int32_t OH_ArkUI_NodeUtils_GetPositionToParent(ArkUI_NodeHandle node, ArkUI_IntO
 **描述：**
 
 获取目标节点相对于父节点的偏移值，单位：px。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -2509,7 +2701,7 @@ int32_t OH_ArkUI_NodeUtils_GetPositionToParent(ArkUI_NodeHandle node, ArkUI_IntO
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AddSupportedUIStates()
 
@@ -2520,6 +2712,8 @@ ArkUI_ErrorCode OH_ArkUI_AddSupportedUIStates(ArkUI_NodeHandle node, int32_t uiS
 **描述：**
 
 设置组件支持的多态样式状态。为了更高效地处理，需传入所关注的状态值及对应的状态处理函数，当关注的状态发生时，处理函数会被执行。 可在回调中根据当前状态调整UI样式。当在同一个节点上多次调用该方法时，将以最后一次传入的状态及处理函数为准。 有些类型的组件节点，系统内部已有对某些状态的默认处理。例如，Button组件默认具备对PRESSED状态的样式变化，当在此类组件上使用此方法自定义状态处理时， 会先应用系统默认样式变化，再执行自定义的样式处理，最终效果为两者叠加。 可以通过指定excludeInner为true来禁用系统内部的默认样式效果，但这通常取决于系统内部实现规范是否允许。当调用该函数时，传入的statesChangeHandler函数会立即执行一次， 且无需特意注册对NORMAL状态的监听，只要注册了非NORMAL状态，当状态从任意状态变化回NORMAL时，系统都会进行回调，以便应用进行样式复原。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2537,7 +2731,7 @@ ArkUI_ErrorCode OH_ArkUI_AddSupportedUIStates(ArkUI_NodeHandle node, int32_t uiS
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_RemoveSupportedUIStates()
 
@@ -2548,6 +2742,8 @@ ArkUI_ErrorCode OH_ArkUI_RemoveSupportedUIStates(ArkUI_NodeHandle node, int32_t 
 **描述：**
 
 删除注册的状态处理。当通过OH_ArkUI_AddSupportedUIStates注册的状态都被删除时，所注册的stateChangeHandler也不会再被执行。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2562,7 +2758,7 @@ ArkUI_ErrorCode OH_ArkUI_RemoveSupportedUIStates(ArkUI_NodeHandle node, int32_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_RunTaskInScope()
 
@@ -2573,6 +2769,8 @@ int32_t OH_ArkUI_RunTaskInScope(ArkUI_ContextHandle uiContext, void* userData, v
 **描述：**
 
 在目标UI上下文中执行传入的自定义回调函数。示例请参考：[在NDK中保证多实例场景功能正常](../../../ui/ndk-scope-task.md)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2588,7 +2786,7 @@ int32_t OH_ArkUI_RunTaskInScope(ArkUI_ContextHandle uiContext, void* userData, v
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化错误。<br>    <br>{@link ARKUI_ERROR_CODE_UI_CONTEXT_INVALID} UIContext对象无效。<br>    <br>{@link ARKUI_ERROR_CODE_CALLBACK_INVALID} 回调函数无效。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化错误。      <br>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) UIContext对象无效。      <br>[ARKUI_ERROR_CODE_CALLBACK_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 回调函数无效。 |
 
 ### OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId()
 
@@ -2599,6 +2797,8 @@ int32_t OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId(const uint32_t uniqueId, ArkU
 **描述：**
 
 Get the node handle by uniqueId.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2613,7 +2813,7 @@ Get the node handle by uniqueId.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          {@link ARKUI_ERROR_CODE_NO_ERROR} success.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} Function parameter exception.<br>        {@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} if the CAPI init error. |
+| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception.          [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the CAPI init error. |
 
 ### OH_ArkUI_NodeUtils_GetNodeUniqueId()
 
@@ -2624,6 +2824,8 @@ int32_t OH_ArkUI_NodeUtils_GetNodeUniqueId(ArkUI_NodeHandle node, int32_t* uniqu
 **描述：**
 
 获取目标节点的uniqueId。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2638,7 +2840,7 @@ int32_t OH_ArkUI_NodeUtils_GetNodeUniqueId(ArkUI_NodeHandle node, int32_t* uniqu
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 方法参数错误。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化错误。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 方法参数错误。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化错误。 |
 
 ### OH_ArkUI_NativeModule_IsInRenderState()
 
@@ -2649,6 +2851,8 @@ int32_t OH_ArkUI_NativeModule_IsInRenderState(ArkUI_NodeHandle node, bool* isInR
 **描述：**
 
 获取节点是否处于渲染状态，如果一个节点的对应RenderNode在渲染树上，则处于渲染状态。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -2663,7 +2867,7 @@ int32_t OH_ArkUI_NativeModule_IsInRenderState(ArkUI_NodeHandle node, bool* isInR
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 方法参数错误。 \n<br>        {@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化错误。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 方法参数错误。 \n          [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化错误。 |
 
 ### OH_ArkUI_NativeModule_AdoptChild()
 
@@ -2674,6 +2878,8 @@ int32_t OH_ArkUI_NativeModule_AdoptChild(ArkUI_NodeHandle node, ArkUI_NodeHandle
 **描述：**
 
 当前节点接纳目标节点为附属节点。被接纳的节点不能已有父节点。 调用该接口实际上不会将其添加为子节点，而是仅允许其接收对应子节点的生命周期回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -2688,7 +2894,7 @@ int32_t OH_ArkUI_NativeModule_AdoptChild(ArkUI_NodeHandle node, ArkUI_NodeHandle
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化错误。 \n<br>        {@link ARKUI_ERROR_CODE_NODE_HAS_PARENT} 被接纳的节点已有父节点。 \n<br>        {@link ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED} 节点无法被接纳为附属节点。 \n<br>        {@link ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO} 节点无法接纳其它附属节点。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化错误。 \n          [ARKUI_ERROR_CODE_NODE_HAS_PARENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 被接纳的节点已有父节点。 \n          [ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 节点无法被接纳为附属节点。 \n          [ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 节点无法接纳其它附属节点。 |
 
 ### OH_ArkUI_NativeModule_RemoveAdoptedChild()
 
@@ -2699,6 +2905,8 @@ int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_No
 **描述：**
 
 移除被接纳的目标附属节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -2713,7 +2921,7 @@ int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_No
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化错误。 \n<br>        {@link ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN} 节点不是被目标节点接纳的附属节点。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化错误。 \n          [ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 节点不是被目标节点接纳的附属节点。 |
 
 ### OH_ArkUI_SetForceDarkConfig()
 
@@ -2724,6 +2932,8 @@ int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDar
 **描述：**
 
 为组件和实例设置反色算法。详细介绍请参考：[利用反色能力快速适配深色模式](../../../ui/ui-dark-light-color-adaptation.md#利用反色能力快速适配深色模式)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2740,7 +2950,7 @@ int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDar
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化错误。 \n<br>        {@link ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID} 反色能力入参错误。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化错误。 \n          [ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 反色能力入参错误。 |
 
 ### OH_ArkUI_NativeModule_RegisterCommonEvent()
 
@@ -2751,6 +2961,8 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_N
 **描述：**
 
 注册目标节点的基础事件回调。<br> 当前支持的事件类型如下: 参考[ArkUI_NodeEventType](capi-native-node-h.md#arkui_nodeeventtype)中的NODE_ON_CLICK_EVENT、NODE_TOUCH_EVENT、NODE_EVENT_ON_APPEAR、 NODE_EVENT_ON_DISAPPEAR、NODE_ON_KEY_EVENT、NODE_ON_FOCUS、NODE_ON_BLUR、NODE_ON_HOVER、NODE_ON_MOUSE、NODE_ON_SIZE_CHANGE。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -2767,7 +2979,7 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_N
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE} 暂不支持该事件类型。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。      <br>[ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 暂不支持该事件类型。 |
 
 ### OH_ArkUI_NativeModule_UnregisterCommonEvent()
 
@@ -2778,6 +2990,8 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonEvent(ArkUI_NodeHandle node, ArkUI
 **描述：**
 
 注销目标节点的基础事件回调。 当前支持的事件类型请参考[OH_ArkUI_NativeModule_RegisterCommonEvent](capi-native-node-h.md#oh_arkui_nativemodule_registercommonevent)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -2792,7 +3006,7 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonEvent(ArkUI_NodeHandle node, ArkUI
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n<br>        {@link ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE} 暂不支持该事件类型。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 \n          [ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 暂不支持该事件类型。 |
 
 ### OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent()
 
@@ -2803,6 +3017,8 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(Ar
 **描述：**
 
 注册限制回调间隔的可见区域变化的基础事件回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -2821,7 +3037,7 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(Ar
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent()
 
@@ -2832,6 +3048,8 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent(
 **描述：**
 
 注销限制回调间隔的可见区域变化的基础事件回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -2845,7 +3063,7 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent(
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_ConvertPositionToWindow()
 
@@ -2856,6 +3074,8 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionToWindow(ArkUI_NodeHandle currentNo
 **描述：**
 
 将点的坐标从指定节点的坐标系转换至当前窗口的坐标系。节点的坐标系考虑节点本身的变换，例如，节点A的变换效果为向左平移100，会使得其坐标系中的点的坐标也向左平移100。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -2871,7 +3091,7 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionToWindow(ArkUI_NodeHandle currentNo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n<br>        {@link ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE} 节点未挂载到节点树上。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 \n          [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 节点未挂载到节点树上。 |
 
 ### OH_ArkUI_NativeModule_ConvertPositionFromWindow()
 
@@ -2882,6 +3102,8 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetN
 **描述：**
 
 将点的坐标从当前窗口的坐标系转换至目标节点的坐标系。节点的坐标系考虑节点本身的变换，例如，节点A的变换效果为向左平移100，会使得其坐标系中的点的坐标也向左平移100。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -2897,7 +3119,7 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetN
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n<br>        {@link ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE} 节点未挂载到节点树上。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 \n          [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 节点未挂载到节点树上。 |
 
 ### OH_ArkUI_Swiper_FinishAnimation()
 
@@ -2908,6 +3130,8 @@ int32_t OH_ArkUI_Swiper_FinishAnimation(ArkUI_NodeHandle node)
 **描述：**
 
 停止指定的Swiper节点正在执行的翻页动画。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -2921,7 +3145,7 @@ int32_t OH_ArkUI_Swiper_FinishAnimation(ArkUI_NodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。 \n          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_PostAsyncUITask()
 
@@ -2932,6 +3156,8 @@ int32_t OH_ArkUI_PostAsyncUITask(ArkUI_ContextHandle context, void* asyncUITaskD
 **描述：**
 
 将asyncUITask函数提交至ArkUI框架提供的非UI线程中执行，asyncUITask函数执行完毕后，在UI线程调用onFinish函数。 适用于多线程创建UI组件的场景，开发者可使用此接口在非UI线程创建UI组件，随后在UI线程将创建完成的组件挂载至主树上。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -2948,7 +3174,7 @@ int32_t OH_ArkUI_PostAsyncUITask(ArkUI_ContextHandle context, void* asyncUITaskD
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} context对象无效或asyncUITask为空指针。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) context对象无效或asyncUITask为空指针。 |
 
 ### OH_ArkUI_PostUITask()
 
@@ -2959,6 +3185,8 @@ int32_t OH_ArkUI_PostUITask(ArkUI_ContextHandle context, void* taskData, void (*
 **描述：**
 
 将task函数提交至UI线程中执行。 适用于多线程创建UI组件的场景，当开发者在自建的线程中创建UI组件时，可以使用此接口将创建完成的组件挂载到UI线程的主树上。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -2974,7 +3202,7 @@ int32_t OH_ArkUI_PostUITask(ArkUI_ContextHandle context, void* taskData, void (*
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} context对象无效或task为空指针。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) context对象无效或task为空指针。 |
 
 ### OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible()
 
@@ -2985,6 +3213,8 @@ int32_t OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible(ArkUI_ContextHandle
 **描述：**
 
 设置菜单栏的可见性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -2999,7 +3229,7 @@ int32_t OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible(ArkUI_ContextHandle
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 操作成功。 \n<br>        {@link ARKUI_ERROR_CODE_UI_CONTEXT_INVALID} 实例异常（uiContext为空指针、无法通过uiContext获取容器、uiContext不属于原子化服务）。 |
+| int32_t | 错误码。 \n          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 操作成功。 \n          [ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 实例异常（uiContext为空指针、无法通过uiContext获取容器、uiContext不属于原子化服务）。 |
 
 ### OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent()
 
@@ -3009,7 +3239,9 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_Nod
 
 **描述：**
 
-Registers a callback for listening for component dimension and area changes.<br> This function can be called for a valid {@link ArkUI_NodeHandle} node at any time. The newly registered callback will replace the previously registered callback for this event and will take effect from the next frame. When the callback is no longer needed, call [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](capi-native-node-h.md#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released.
+Registers a callback for listening for component dimension and area changes.<br> This function can be called for a valid [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node at any time. The newly registered callback will replace the previously registered callback for this event and will take effect from the next frame. When the callback is no longer needed, call [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](capi-native-node-h.md#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -3017,7 +3249,7 @@ Registers a callback for listening for component dimension and area changes.<br>
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_NodeHandle node | Pointer to {@link ArkUI_NodeHandle}. |
+| rkUI_NodeHandle node | Pointer to [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md). |
 | float expectedUpdateInterval | Expected calculation interval, in milliseconds. |
 | void\* userData | Pointer to custom data. |
 | void (\*callback)(ArkUI_NodeEvent\* event) | Event callback. |
@@ -3026,7 +3258,7 @@ Registers a callback for listening for component dimension and area changes.<br>
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Result code. \n          Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful. \n<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. \n |
+| int32_t | Result code. \n          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful. \n          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. \n |
 
 ### OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent()
 
@@ -3038,19 +3270,21 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent(ArkUI_N
 
 Unregisters the callback bound to the dimensions and area changes of a component.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_NodeHandle node | Pointer to {@link ArkUI_NodeHandle}. |
+| ArkUI_NodeHandle node | Pointer to [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md). |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Result code. \n          Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful. \n<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. \n |
+| int32_t | Result code. \n          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful. \n          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. \n |
 
 ### OH_ArkUI_PostUITaskAndWait()
 
@@ -3061,6 +3295,8 @@ int32_t OH_ArkUI_PostUITaskAndWait(ArkUI_ContextHandle context, void* taskData, 
 **描述：**
 
 将task函数提交至UI线程中执行，调用此接口的线程将阻塞，直至task函数执行完成。在UI线程调用此接口等同于同步调用task函数。 适用于多线程创建UI组件的场景，当开发者在多线程创建组件过程中需要调用仅支持UI线程的函数时，使用此接口返回UI线程调用函数，调用完成后继续多线程创建组件。 当UI线程负载较高时，调用此接口的非UI线程可能长时间阻塞，影响多线程创建UI组件的性能，不建议频繁使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -3076,7 +3312,7 @@ int32_t OH_ArkUI_PostUITaskAndWait(ArkUI_ContextHandle context, void* taskData, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} context对象无效或task为空指针。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) context对象无效或task为空指针。 |
 
 ### OH_ArkUI_Swiper_StartFakeDrag()
 
@@ -3087,6 +3323,8 @@ int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)
 **描述：**
 
 Start a fake drag of the Swiper node. Call OH_ArkUI_Swiper_FakeDragBy to simulate the drag motion. Call OH_ArkUI_Swiper_StopFakeDrag to complete the fake drag. A fake drag can be interrupted by a real drag. If you need to ignore touch events and other user input during a fake drag, use NODE_SWIPER_DISABLE_SWIPE.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -3101,7 +3339,7 @@ Start a fake drag of the Swiper node. Call OH_ArkUI_Swiper_FakeDragBy to simulat
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          {@link ARKUI_ERROR_CODE_NO_ERROR} Success.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} Function parameter exception. |
+| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
 
 ### OH_ArkUI_Swiper_FakeDragBy()
 
@@ -3112,6 +3350,8 @@ int32_t OH_ArkUI_Swiper_FakeDragBy(ArkUI_NodeHandle node, float offset, bool* is
 **描述：**
 
 Fake drag by an offset of the Swiper node. The OH_ArkUI_Swiper_StartFakeDrag must be called first.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -3127,7 +3367,7 @@ Fake drag by an offset of the Swiper node. The OH_ArkUI_Swiper_StartFakeDrag mus
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          {@link ARKUI_ERROR_CODE_NO_ERROR} Success.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} Function parameter exception. |
+| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
 
 ### OH_ArkUI_Swiper_StopFakeDrag()
 
@@ -3138,6 +3378,8 @@ int32_t OH_ArkUI_Swiper_StopFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)
 **描述：**
 
 Stop a fake drag of the Swiper node.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -3152,7 +3394,7 @@ Stop a fake drag of the Swiper node.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          {@link ARKUI_ERROR_CODE_NO_ERROR} Success.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} Function parameter exception. |
+| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
 
 ### OH_ArkUI_Swiper_IsFakeDragging()
 
@@ -3163,6 +3405,8 @@ int32_t OH_ArkUI_Swiper_IsFakeDragging(ArkUI_NodeHandle node, bool* isFakeDraggi
 **描述：**
 
 Get the fake drag state of the Swiper node.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -3177,7 +3421,7 @@ Get the fake drag state of the Swiper node.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          {@link ARKUI_ERROR_CODE_NO_ERROR} Success.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} Function parameter exception. |
+| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
 
 ### OH_ArkUI_Swiper_ShowPrevious()
 
@@ -3189,6 +3433,8 @@ int32_t OH_ArkUI_Swiper_ShowPrevious(ArkUI_NodeHandle node)
 
 Show the previous page of the Swiper node.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **参数：**
@@ -3201,7 +3447,7 @@ Show the previous page of the Swiper node.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          {@link ARKUI_ERROR_CODE_NO_ERROR} Success.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} Function parameter exception. |
+| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
 
 ### OH_ArkUI_Swiper_ShowNext()
 
@@ -3213,6 +3459,8 @@ int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)
 
 Show the next page of the Swiper node.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **参数：**
@@ -3225,7 +3473,7 @@ Show the next page of the Swiper node.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          {@link ARKUI_ERROR_CODE_NO_ERROR} Success.<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} Function parameter exception. |
+| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
 
 ### OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext()
 
@@ -3236,6 +3484,8 @@ int32_t OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext(ArkUI_ContextHandle
 **描述：**
 
 获取指定实例的页面的根节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -3250,7 +3500,7 @@ int32_t OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext(ArkUI_ContextHandle
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} CAPI初始化错误。<br>    <br>{@link ARKUI_ERROR_CODE_UI_CONTEXT_INVALID} 实例异常。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) CAPI初始化错误。      <br>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 实例异常。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo()
 
@@ -3261,6 +3511,8 @@ ArkUI_GestureCollectInterceptInfo* OH_ArkUI_NodeEvent_GetGestureCollectIntercept
 **描述：**
 
 Obtains the <b>ArkUI_GestureCollectInterceptInfo</b> object from a specified <b>ArkUI_NodeEvent</b> object.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -3286,6 +3538,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_SetChildMountPolicy(ArkUI_NodeHandle node,
 
 Set the subnode mounting policy of the target node.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -3293,13 +3547,13 @@ Set the subnode mounting policy of the target node.
 | 参数项 | 描述 |
 | -- | -- |
 | ArkUI_NodeHandle node | the target node handle. |
-| OH_ArkUI_NodeMountPolicy policy | the policy to set. Valid values correspond to {@link OH_ArkUI_NodeMountPolicy}. |
+| OH_ArkUI_NodeMountPolicy policy | the policy to set. Valid values correspond to [OH_ArkUI_NodeMountPolicy](capi-native-type-h.md#oh_arkui_nodemountpolicy). |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Error code.      <ul><li>{@link ARKUI_ERROR_CODE_NO_ERROR} Success.<br>    </li><li>{@link ARKUI_ERROR_CODE_PARAM_INVALID} Function parameter exception.<br>    </li><li>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} if CAPI init error.</li></ul> |
+| ArkUI_ErrorCode | Error code.      <ul><li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.      </li><li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception.      </li><li>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if CAPI init error.</li></ul> |
 
 ### OH_ArkUI_NodeUtils_SetUiDvsyncSwitch()
 
@@ -3311,7 +3565,9 @@ ArkUI_ErrorCode OH_ArkUI_NodeUtils_SetUiDvsyncSwitch(ArkUI_ContextHandle context
 
 设置UI Dvsync开关。开启后系统会更及时地响应Vsync请求，更频繁执行渲染任务。通常在自渲染框架中动效开始时使能，结束后关闭，以确保动画效果更加流畅，同时避免频繁的Vsync影响其他业务。在非UI线程上调用此函数将导致应用退出。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -3324,6 +3580,6 @@ ArkUI_ErrorCode OH_ArkUI_NodeUtils_SetUiDvsyncSwitch(ArkUI_ContextHandle context
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果。  <ul><li>{@link ARKUI_ERROR_CODE_NO_ERROR}成功。<br></li><li>{@link RKUI_ERROR_CODE_CAPI_INIT_ERROR}如果CAPI初始化错误。<br></li><li>{@link ARKUI_ERROR_CODE_PARAM_INVALID}函数参数异常。</li></ul> |
+| ArkUI_ErrorCode | 返回结果。  <ul><li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)成功。  </li><li>[RKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)如果CAPI初始化错误。  </li><li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)函数参数异常。</li></ul> |
 
 

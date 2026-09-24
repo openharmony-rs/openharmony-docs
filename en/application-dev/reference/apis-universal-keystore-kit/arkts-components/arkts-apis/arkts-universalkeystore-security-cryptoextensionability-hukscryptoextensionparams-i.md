@@ -1,5 +1,9 @@
 # HuksCryptoExtensionParams
 
+```TypeScript
+export interface HuksCryptoExtensionParams
+```
+
 Defines options used in the APIs.
 
 **Since:** 26.0.0

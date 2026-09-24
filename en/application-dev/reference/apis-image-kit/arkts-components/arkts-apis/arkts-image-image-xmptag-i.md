@@ -1,5 +1,9 @@
 # XMPTag
 
+```TypeScript
+interface XMPTag
+```
+
 Describes XMP Tag parameters.
 
 **Since:** 26.0.0

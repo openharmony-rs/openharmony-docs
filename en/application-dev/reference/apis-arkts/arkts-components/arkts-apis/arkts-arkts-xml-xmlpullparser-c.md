@@ -1,5 +1,9 @@
 # XmlPullParser
 
+```TypeScript
+class XmlPullParser
+```
+
 The XmlPullParser interface is used to parse the existing xml file.
 
 **Since:** 8

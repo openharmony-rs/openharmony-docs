@@ -1,5 +1,9 @@
 # WebGLRenderingContextOverloads
 
+```TypeScript
+interface WebGLRenderingContextOverloads
+```
+
 WebGL 1.0
 
 **Since:** 7
@@ -27,6 +31,8 @@ Sets buffer data
 | target | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Buffer target |
 | size | [GLsizeiptr](arkts-arkgraphics2d-glsizeiptr-t.md) | Yes | Buffer size |
 | usage | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Buffer usage |
+
+<a id="bufferdata-1"></a>
 
 ## bufferData
 
@@ -214,6 +220,8 @@ Sets texture image 2D from pixels
 | type | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | pixels | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) &#124; null | Yes | Pixel data |
 
+<a id="teximage2d-1"></a>
+
 ## texImage2D
 
 ```TypeScript
@@ -283,6 +291,8 @@ Sets texture sub image 2D from pixels
 | format | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel format |
 | type | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | pixels | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) &#124; null | Yes | Pixel data |
+
+<a id="texsubimage2d-1"></a>
 
 ## texSubImage2D
 

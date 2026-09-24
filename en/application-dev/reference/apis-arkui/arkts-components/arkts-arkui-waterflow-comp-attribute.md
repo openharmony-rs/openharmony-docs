@@ -1,5 +1,9 @@
 # WaterFlow properties/events
 
+```TypeScript
+declare class WaterFlowAttribute extends ScrollableCommonMethod<WaterFlowAttribute>
+```
+
 In addition to universal attributes and [scrollable component common attributes](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#attributes), the following attributes are also supported.
 
 In addition to universal events and [scrollable component common events](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#events), the following events are also supported.
@@ -32,7 +36,9 @@ This attribute takes effect only in [LazyForEach](../../../ui/rendering-control/
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Number of water flow items to be preloaded (cached).<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: 0, +∞).<br>Values less than 0 are treated as **1**. |
+| value | number | Yes | Number of water flow items to be preloaded (cached).<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**. |
+
+<a id="cachedcount-1"></a>
 
 ## cachedCount
 
@@ -42,7 +48,7 @@ cachedCount(count: number, show: boolean)
 
 Sets the number of flow items to be cached (preloaded) and specifies whether to display the preloaded nodes.
 
-This attribute can be combined with the [clip or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
+This attribute can be combined with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
 
 This parameter takes effect only when used with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) or the [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) component that has virtualScroll enabled. **FlowItem** elements outside the visible area and cache range will be released.
 
@@ -71,6 +77,8 @@ Sets the gap between columns.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -95,6 +103,8 @@ You can use **columnsTemplate('repeat(auto-fill,track-size)')** to automatically
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -104,6 +114,8 @@ You can use **columnsTemplate('repeat(auto-fill,track-size)')** to automatically
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | string | Yes | Number of columns in the layout.<br>Default value: **'1fr'** |
+
+<a id="columnstemplate-1"></a>
 
 ## columnsTemplate
 
@@ -157,7 +169,7 @@ Sets whether to support the scrolling gesture.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to support scroll gestures. With the value **true**, scrolling via finger or mouse is enabled. With the value **false**, scrolling via finger or mouse is disabled, but this does not affect the scrolling APIs of the [Scroller](arkts-arkui-scroller-c.md).<br>Default value: **true** |
+| value | boolean | Yes | Whether to support scroll gestures. With the value **true**, scrolling via finger or mouse is enabled. With the value **false**, scrolling via finger or mouse is disabled, but this does not affect the scrolling APIs of the [Scroller](arkts-arkui-scroll-comp-scroller-c.md).<br>Default value: **true** |
 
 ## friction
 
@@ -191,6 +203,8 @@ Sets the size constraints of the child components during layout. For details abo
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -199,7 +213,7 @@ Sets the size constraints of the child components during layout. For details abo
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | Yes | Size constraints of the child components during layout. If the value specified is less than **0**, this parameter does not take effect.<br>**NOTE:** <br>1. If both **itemConstraintSize** and the constraintSize attribute of the **FlowItem** are set, the **minWidth** (or **minHeight**) will be the larger of the two values, and the **maxWidth** (or **maxHeight**) will be the smaller of the two values. The resulting values will then be used as the **constraintSize** for the **FlowItem**.<br>2. When only **itemConstraintSize** is set, it effectively applies a uniform size constraint to all child components in the **WaterFlow**.<br>3. The **itemConstraintSize** attribute, once converted to the **constraintSize** attribute of the **FlowItem** through the two methods mentioned above, follows the same rules for taking effect as the universal attribute constraintSize. |
+| value | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | Yes | Size constraints of the child components during layout. If the value specified is less than **0**, this parameter does not take effect.<br>**NOTE:** <br>1. If both **itemConstraintSize** and the [constraintSize](arkts-arkui-common-comp-commonmethod-c.md#constraintsize) attribute of the **FlowItem** are set, the **minWidth** (or **minHeight**) will be the larger of the two values, and the **maxWidth** (or **maxHeight**) will be the smaller of the two values. The resulting values will then be used as the **constraintSize** for the **FlowItem**.<br>2. When only **itemConstraintSize** is set, it effectively applies a uniform size constraint to all child components in the **WaterFlow**.<br>3. The **itemConstraintSize** attribute, once converted to the **constraintSize** attribute of the **FlowItem** through the two methods mentioned above, follows the same rules for taking effect as the universal attribute [constraintSize](arkts-arkui-common-comp-commonmethod-c.md#constraintsize). |
 
 ## layoutDirection
 
@@ -210,6 +224,8 @@ layoutDirection(value: FlexDirection)
 Sets the main axis direction of the layout.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -241,7 +257,7 @@ Sets the nested scrolling mode in the forward and backward directions to impleme
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [NestedScrollOptions](arkts-arkui-nestedscrolloptions-i.md) | Yes | Nested scrolling options. |
+| value | [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | Yes | Nested scrolling options. |
 
 ## onReachEnd
 
@@ -252,6 +268,8 @@ onReachEnd(event: () => void)
 Triggered when the **WaterFlow** content reaches the end position.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -272,6 +290,8 @@ onReachStart(event: () => void)
 Triggered when the **WaterFlow** content reaches the start position.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -295,11 +315,11 @@ This event is triggered when either of the following conditions is met:
 
 1. Scrolling is initiated by user interaction (for example, finger swipe, keyboard, or mouse operation).
 2. The **WaterFlow** component scrolls by inertia.
-3. Scrolling is triggered by calling the fling API.
+3. Scrolling is triggered by calling the [fling](arkts-arkui-scroll-comp-scroller-c.md#fling) API.
 
 This event is not triggered in the following scenarios:
 
-1. A scroll control API other than fling is called.
+1. A scroll control API other than [fling](arkts-arkui-scroll-comp-scroller-c.md#fling) is called.
 2. The out-of-bounds bounce effect is active.
 3. The scrollbar is dragged.
 
@@ -315,7 +335,7 @@ This event is not triggered in the following scenarios:
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [OnScrollFrameBeginCallback](arkts-arkui-onscrollframebegincallback-t.md) | Yes | Callback triggered when each frame scrolling starts.<br>**Since:** 20 |
+| event | [OnScrollFrameBeginCallback](arkts-arkui-scroll-comp-onscrollframebegincallback-t.md) | Yes | Callback triggered when each frame scrolling starts.<br>**Since:** 20 |
 
 ## onScrollIndex
 
@@ -349,6 +369,8 @@ Sets the gap between rows.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -373,6 +395,8 @@ You can use **rowsTemplate('repeat(auto-fill,track-size)')** to automatically ca
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -393,9 +417,9 @@ Defines whether the **WaterFlow** component supports the generation of empty bra
 
 > **NOTE:** 
 > 
-> When [WaterFlowSections](arkts-arkui-waterflowsections-c.md) is set using the [sections](arkts-arkui-waterflowoptions-i.md) parameter,
-> or when the [SLIDING_WINDOW](arkts-arkui-waterflowlayoutmode-e.md) layout mode is set using the
-> [layoutMode](arkts-arkui-waterflowoptions-i.md) parameter, the **FlowItem** after the empty branch is displayed regardless
+> When [WaterFlowSections](arkts-arkui-waterflow-comp-waterflowsections-c.md) is set using the [sections](arkts-arkui-waterflow-comp-waterflowoptions-i.md) parameter,
+> or when the [SLIDING_WINDOW](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md) layout mode is set using the
+> [layoutMode](arkts-arkui-waterflow-comp-waterflowoptions-i.md) parameter, the **FlowItem** after the empty branch is displayed regardless
 > of the **supportEmptyBranchInLazyLoading** setting.
 
 **Since:** 26.0.0
@@ -432,4 +456,4 @@ Sets whether to synchronously load all child components in the **WaterFlow** com
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to synchronously load all child components in the **WaterFlow** component.<br> **true**: synchronous loading; false: asynchronous loading<br>Default value: **true**<br>**NOTE:** <br>When this parameter is set to **false**, in the first display or [scrollToIndex](arkts-arkui-scroller-c.md#scrolltoindex) jumps without animation, if the time consumed by the frame layout exceeds 50 ms, the child components that have not been laid out in the **WaterFlow** component are delayed to the next frame for layout. |
+| enable | boolean | Yes | Whether to synchronously load all child components in the **WaterFlow** component.<br> **true**: synchronous loading; false: asynchronous loading<br>Default value: **true**<br>**NOTE:** <br>When this parameter is set to **false**, in the first display or [scrollToIndex](arkts-arkui-scroll-comp-scroller-c.md#scrolltoindex) jumps without animation, if the time consumed by the frame layout exceeds 50 ms, the child components that have not been laid out in the **WaterFlow** component are delayed to the next frame for layout. |

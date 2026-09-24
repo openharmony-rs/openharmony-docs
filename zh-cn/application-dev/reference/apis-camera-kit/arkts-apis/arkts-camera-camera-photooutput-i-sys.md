@@ -1,5 +1,9 @@
 # PhotoOutput
 
+```TypeScript
+interface PhotoOutput extends CameraOutput
+```
+
 拍照会话中使用的输出信息，继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。
 
 **继承/实现关系：** PhotoOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
@@ -44,7 +48,7 @@ Starts the burst mode, in which users can capture a series of photos in quick su
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
@@ -92,7 +96,7 @@ Confirms photo capture. This API is generally used in night photo mode when user
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
@@ -135,7 +139,7 @@ Enables deferred delivery of a certain type.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
@@ -172,7 +176,7 @@ Enable auto cloud image enhancement
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
@@ -200,7 +204,7 @@ Enables automatic high quality for photos. Before using this API, call [isAutoHi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | session is not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
@@ -239,7 +243,7 @@ Enable depth data delivery.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
@@ -262,7 +266,7 @@ Enable offline processing.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | session is not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
@@ -292,7 +296,7 @@ Enable original image generation.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
 ## enableQuickThumbnail
@@ -320,7 +324,7 @@ Enables or disables the quick thumbnail feature. This API takes effect after [ad
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | session is not running. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12+ |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect.<br>**适用版本：** 12+ |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
 
@@ -383,7 +387,7 @@ Enable raw image image delivery.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
@@ -412,7 +416,7 @@ Confirm if the auto cloud image enhancement is supported.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
 ## isAutoHighQualityPhotoSupported
@@ -439,7 +443,7 @@ Checks whether automatic high quality is supported for photos.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | session is not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
@@ -483,7 +487,7 @@ Checks whether deferred delivery of a certain type is enabled.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
@@ -528,7 +532,7 @@ Checks whether deferred delivery of a certain type is supported.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
@@ -567,7 +571,7 @@ Check if the depth data delivery is supported.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
@@ -595,7 +599,7 @@ Confirm if offline processing is supported.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
 ## isOriginalImageGenerationSupported
@@ -624,7 +628,7 @@ Confirm if original image generation supported.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
 ## isQuickThumbnailSupported
@@ -652,7 +656,7 @@ Checks whether the quick thumbnail feature is supported. This API takes effect a
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | session is not running. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -713,7 +717,7 @@ Confirm if the raw image delivery is supported
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
@@ -742,7 +746,28 @@ Unsubscribes from events indicating available thumbnail proxies.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+function callback(err: BusinessError, proxyObj: camera.DeferredPhotoProxy): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  proxyObj.getThumbnail().then((thumbnail: image.PixelMap) => {
+    AppStorage.setOrCreate('proxyThumbnail', thumbnail);
+  });
+}
+
+function unRegisterPhotoOutputDeferredPhotoProxyAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.off('deferredPhotoProxyAvailable', callback);
+}
+```
 
 ## off('quickThumbnail')
 
@@ -764,6 +789,14 @@ Unsubscribes from quick thumbnail output events.
 | --- | --- | --- | --- |
 | type | 'quickThumbnail' | 是 | Event type. The value is fixed at **'quickThumbnail'**. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('quickThumbnail')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+
+**示例**
+
+```TypeScript
+function unregisterQuickThumbnail(photoOutput: camera.PhotoOutput): void {
+  photoOutput.off('quickThumbnail');
+}
+```
 
 ## off('offlineDeliveryFinished')
 
@@ -790,7 +823,7 @@ Unsubscribes offline Delivery finished events. This method is valid only after e
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
 ## on('deferredPhotoProxyAvailable')
 
@@ -817,7 +850,28 @@ Subscribes to events indicating available thumbnail proxies. This API uses an as
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+function callback(err: BusinessError, proxyObj: camera.DeferredPhotoProxy): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  proxyObj.getThumbnail().then((thumbnail: image.PixelMap) => {
+    AppStorage.setOrCreate('proxyThumbnail', thumbnail);
+  });
+}
+
+function registerPhotoOutputDeferredPhotoProxyAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.on('deferredPhotoProxyAvailable', callback);
+}
+```
 
 ## on('quickThumbnail')
 
@@ -839,6 +893,53 @@ Subscribes to quick thumbnail output events. This API uses an asynchronous callb
 | --- | --- | --- | --- |
 | type | 'quickThumbnail' | 是 | Event type. The value is fixed at **'quickThumbnail'**. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | 是 | Callback that returns a PixelMap instance. |
+
+**示例**
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { camera } from '@kit.CameraKit';
+
+function callback(err: BusinessError, pixelMap: image.PixelMap): void {
+  if (err || pixelMap === undefined) {
+      console.error('photoOutput on thumbnail failed');
+      return;
+  }
+  // 显示或保存pixelMap。
+  // 执行操作。
+}
+
+async function registerQuickThumbnail(context: common.BaseContext, mode: camera.SceneMode, photoProfile: camera.Profile): Promise<void> {
+  let cameraManager: camera.CameraManager = camera.getCameraManager(context);
+  let cameras: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
+  // 创建CaptureSession实例。
+  let session: camera.Session = cameraManager.createSession(mode);
+  // 开始配置会话。
+  session.beginConfig();
+  // 把CameraInput加入到会话。
+  let cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameras[0]);
+  await cameraInput.open();
+  session.addInput(cameraInput);
+  // 把PhotoOutPut加入到会话。
+  let photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
+  session.addOutput(photoOutput);
+  let isSupported: boolean = photoOutput.isQuickThumbnailSupported();
+  if (!isSupported) {
+    console.info('Quick Thumbnail is not supported to be turned on.');
+    return;
+  }
+  try {
+    photoOutput.enableQuickThumbnail(true);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The enableQuickThumbnail call failed. error code: ${err.code}`);
+  }
+
+  photoOutput.on('quickThumbnail', callback);
+}
+```
 
 ## on('offlineDeliveryFinished')
 
@@ -865,7 +966,7 @@ Subscribes offline Delivery finished events. This method is valid only after ena
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
 ## setEditData
 
@@ -893,5 +994,5 @@ Set edit data.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |

@@ -95,13 +95,15 @@ uint32_t OH_Drawing_RegisterFontByIndex(OH_Drawing_FontCollection* fontCollectio
 
 使用ttc/otc文件注册自定义字体，通过index参数指定需要注册的字体索引。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 23
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | 指向{@link OH_Drawing_FontCollection}对象的指针。 |
+| OH_Drawing_FontCollection* fontCollection | 指向[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)对象的指针。 |
 | const char* fontFamily | 需要注册的字体名称。 |
 | const char* familySrc | 需要注册的字体文件的路径。 |
 | uint32_t index | 字体在ttc/otc文件中的索引，取值范围为[0, 字体数量-1]，非ttc/otc格式文件需设置为0。 |
@@ -122,13 +124,15 @@ uint32_t OH_Drawing_RegisterFontBufferByIndex(OH_Drawing_FontCollection* fontCol
 
 使用ttc/otc文件字节流注册字体。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 23
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | 指向{@link OH_Drawing_FontCollection}对象的指针。 |
+| OH_Drawing_FontCollection* fontCollection | 指向[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)对象的指针。 |
 | const char* fontFamily | 需要注册的字体的字体名称。 |
 | uint8_t* fontBuffer | 需要注册的字体文件的字节流数据。 |
 | size_t length | 字节流数据长度，需与fontBuffer实际长度保持一致。 |
@@ -158,7 +162,7 @@ uint32_t OH_Drawing_UnregisterFont(OH_Drawing_FontCollection* fontCollection, co
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | 指向{@link OH_Drawing_FontCollection}对象的指针。 |
+| OH_Drawing_FontCollection* fontCollection | 指向[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)对象的指针。 |
 | const char* fontFamily | 需要取消注册的字体名称。 |
 
 **返回值：**
@@ -176,6 +180,8 @@ bool OH_Drawing_IsFontSupportedFromPath(const char* path)
 **描述：**
 
 检查系统是否支持指定路径的字体格式。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
 
@@ -200,6 +206,8 @@ bool OH_Drawing_IsFontSupportedFromBuffer(uint8_t* data, size_t dataLength)
 **描述：**
 
 检查系统是否支持缓冲区中指定的字体格式。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
 

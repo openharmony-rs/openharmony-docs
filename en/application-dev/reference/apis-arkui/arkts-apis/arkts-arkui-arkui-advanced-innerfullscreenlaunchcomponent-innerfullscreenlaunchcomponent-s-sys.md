@@ -1,5 +1,9 @@
 # InnerFullScreenLaunchComponent (System API)
 
+```TypeScript
+export declare struct InnerFullScreenLaunchComponent
+```
+
 **InnerFullScreenLaunchComponent** is a component that allows the invoker to choose the timing for launching an atomic service. If the invoked app (the one being launched) grants the invoker the authorization to run the atomic service in an embedded manner, the invoker can operate the atomic service in full-screen embedded mode. If authorization is not provided, the invoker will launch the atomic service in a pop-up manner.
 
 > **NOTE:** 
@@ -96,7 +100,7 @@ onTerminated?: Callback<TerminationInfo>
 
 Callback triggered when an embedded atomic service exits normally. Exit scenarios include user-triggered exit button taps or edge swipes, or calls to terminateSelfWithResult or terminateSelf.
 
-**Type:** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[TerminationInfo](../arkts-components/arkts-arkui-terminationinfo-i.md)&gt;
+**Type:** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[TerminationInfo](../arkts-components/arkts-arkui-embeddedcomponent-comp-terminationinfo-i.md)&gt;
 
 **Since:** 23
 

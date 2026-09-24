@@ -1,5 +1,9 @@
 # XmlSerializer
 
+```TypeScript
+class XmlSerializer
+```
+
 The XmlSerializer interface is used to generate an xml file.
 
 **Since:** 8

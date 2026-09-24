@@ -1,5 +1,9 @@
 # NfcRfType
 
+```TypeScript
+enum NfcRfType
+```
+
 Enumerates the NFC field strength states.
 
 **Since:** 8

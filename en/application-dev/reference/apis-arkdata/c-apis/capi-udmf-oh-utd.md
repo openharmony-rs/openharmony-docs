@@ -8,6 +8,8 @@ typedef struct OH_Utd OH_Utd
 
 Describes the unified data type descriptor.
 
+**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+
 **Since**: 12
 
 **Related module**: [UDMF](capi-udmf.md)

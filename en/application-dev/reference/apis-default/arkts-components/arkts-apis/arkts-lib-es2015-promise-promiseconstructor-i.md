@@ -1,5 +1,9 @@
 # PromiseConstructor
 
+```TypeScript
+interface PromiseConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -93,6 +97,8 @@ Creates a new resolved promise.
 | --- | --- |
 | Promise&lt;void&gt; | A resolved promise. |
 
+<a id="resolve-1"></a>
+
 ## resolve
 
 ```TypeScript
@@ -112,6 +118,8 @@ Creates a new resolved promise for the provided value.
 | Type | Description |
 | --- | --- |
 | Promise&lt;Awaited&lt;T&gt;&gt; | A promise whose internal state matches the provided promise. |
+
+<a id="resolve-2"></a>
 
 ## resolve
 

@@ -33,6 +33,8 @@ Releases a widget. After this API is called, the application can no longer use t
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the widget is released, **error** is undefined; otherwise, **error** is an error object. |
 
 
+<a id="releaseform-1"></a>
+
 ## releaseForm
 
 ```TypeScript
@@ -61,6 +63,8 @@ Releases a widget. After this API is called, the application can no longer use t
 | isReleaseCache | boolean | Yes | Whether to release the cache. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the widget is released, **error** is undefined; otherwise, **error** is an error object. |
 
+
+<a id="releaseform-2"></a>
 
 ## releaseForm
 

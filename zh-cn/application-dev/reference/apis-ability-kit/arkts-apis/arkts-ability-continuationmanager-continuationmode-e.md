@@ -1,5 +1,9 @@
 # ContinuationMode
 
+```TypeScript
+export enum ContinuationMode
+```
+
 设备选择模块连接模式。
 
 **起始版本：** 8

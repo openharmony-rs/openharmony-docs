@@ -1,5 +1,9 @@
 # DngPropertyKey
 
+```TypeScript
+enum DngPropertyKey
+```
+
 表示DNG图片信息的枚举。
 
 > **说明：** 

@@ -33,7 +33,7 @@ function getRealTime(isNano: boolean, callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
 
 **示例**
 
@@ -54,38 +54,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  systemDateTime.getRealTime((error: BusinessError, time: number) => {
-    if (error) {
-      console.error(`Failed to get real time. Code: ${error.code}, message: ${error.message}`);
-      return;
-    }
-    console.info(`Succeeded in getting real time : ${time}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to get real time. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  systemDateTime.getRealTime().then((time: number) => {
-    console.info(`Succeeded in getting real time : ${time}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to get real time. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to get real time. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="getrealtime-1"></a>
 
 ## getRealTime
 
@@ -113,12 +83,29 @@ function getRealTime(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
 
 **示例**
 
-参见 getRealTime
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+  systemDateTime.getRealTime((error: BusinessError, time: number) => {
+    if (error) {
+      console.error(`Failed to get real time. Code: ${error.code}, message: ${error.message}`);
+      return;
+    }
+    console.info(`Succeeded in getting real time : ${time}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real time. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
+<a id="getrealtime-2"></a>
 
 ## getRealTime
 
@@ -152,8 +139,21 @@ function getRealTime(isNano?: boolean): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
 
 **示例**
 
-参见 getRealTime
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  systemDateTime.getRealTime().then((time: number) => {
+    console.info(`Succeeded in getting real time : ${time}`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get real time. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real time. Code: ${error.code}, message: ${error.message}`);
+}
+```

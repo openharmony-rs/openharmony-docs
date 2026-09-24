@@ -8,6 +8,8 @@ typedef struct OH_CryptoSymKey OH_CryptoSymKey
 
 对称密钥结构体，表示对称密钥。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **相关模块：** [CryptoSymKeyApi](capi-cryptosymkeyapi.md)

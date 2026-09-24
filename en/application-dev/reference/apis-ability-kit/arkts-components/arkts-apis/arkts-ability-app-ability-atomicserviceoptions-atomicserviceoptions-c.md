@@ -1,5 +1,9 @@
 # AtomicServiceOptions
 
+```TypeScript
+export default class AtomicServiceOptions extends StartOptions
+```
+
 **AtomicServiceOptions** is used as an input parameter of [openAtomicService()](arkts-ability-uiabilitycontext-c.md#openatomicservice) to carry arguments. It inherits from [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md).
 
 **Inheritance/Implementation:** AtomicServiceOptions extends [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)
@@ -20,7 +24,7 @@ import { AtomicServiceOptions } from '@kit.AbilityKit';
 completionHandlerForAtomicService?: CompletionHandlerForAtomicService
 ```
 
-Operation class for receiving the result of opening an atomic service.
+Operation class for the result of opening an atomic service, used to receive the result of opening an atomic service.
 
 **Type:** [CompletionHandlerForAtomicService](arkts-ability-app-ability-completionhandlerforatomicservice-completionhandlerforatomicservice-c.md)
 

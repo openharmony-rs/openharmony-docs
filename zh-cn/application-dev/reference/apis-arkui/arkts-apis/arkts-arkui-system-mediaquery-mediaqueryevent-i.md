@@ -1,5 +1,9 @@
 # MediaQueryEvent
 
+```TypeScript
+export interface MediaQueryEvent
+```
+
 定义MediaQuery事件。
 
 **起始版本：** 3

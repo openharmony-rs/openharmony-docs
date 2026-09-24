@@ -8,6 +8,8 @@ typedef struct OH_VideoEncInfo {...} OH_VideoEncInfo
 
 The struct describes the video encoding information.
 
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
 **Since**: 10
 
 **Related module**: [AVScreenCapture](capi-avscreencapture.md)

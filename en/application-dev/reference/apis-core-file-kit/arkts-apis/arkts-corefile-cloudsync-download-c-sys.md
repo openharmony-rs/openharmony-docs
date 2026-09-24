@@ -1,5 +1,9 @@
 # Download (System API)
 
+```TypeScript
+class Download
+```
+
 Provides APIs for downloading image files to **Gallery**. Before using the APIs of **Download**, you need to create a **Download** instance.
 
 **Since:** 10
@@ -66,6 +70,22 @@ Removes the specified callback from the device-cloud download progress.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
+**Examples**
+
+```TypeScript
+let download = new cloudSync.Download();
+
+let callback = (pg: cloudSync.DownloadProgress) => {
+  console.info("download state: " + pg.state);
+}
+
+download.on('progress', callback);
+
+download.off('progress', callback);
+```
+
+<a id="off-1"></a>
+
 ## off
 
 ```TypeScript
@@ -96,6 +116,18 @@ Removes all callbacks from the device-cloud download progress.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
+
+**Examples**
+
+```TypeScript
+let download = new cloudSync.Download();
+
+download.on('progress', (pg: cloudSync.DownloadProgress) => {
+    console.info("download state: " + pg.state);
+});
+
+download.off('progress');
+```
 
 ## on
 
@@ -128,6 +160,16 @@ Registers a listener for the download progress of a cloud file.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
+
+**Examples**
+
+```TypeScript
+let download = new cloudSync.Download();
+
+download.on('progress', (pg: cloudSync.DownloadProgress) => {
+  console.info("download state: " + pg.state);
+});
+```
 
 ## start
 
@@ -186,20 +228,7 @@ download.start(uri).then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let download = new cloudSync.Download();
-let uri: string = "file:///media/Photo/1";
-
-download.start(uri, (err: BusinessError) => {
-  if (err) {
-    console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
-  } else {
-    console.info("start download successfully");
-  }
-});
-```
+<a id="start-1"></a>
 
 ## start
 
@@ -235,23 +264,6 @@ Starts downloading a cloud file. This API uses an asynchronous callback to retur
 | 13900025 | No space left on device. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let download = new cloudSync.Download();
-let uri: string = "file:///media/Photo/1";
-
-download.on('progress', (pg: cloudSync.DownloadProgress) => {
-  console.info("download state: " + pg.state);
-});
-
-download.start(uri).then(() => {
-  console.info("start download successfully");
-}).catch((err: BusinessError) => {
-  console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -324,20 +336,7 @@ download.stop(uri).then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let download = new cloudSync.Download();
-let uri: string = "file:///media/Photo/1";
-
-download.stop(uri, (err: BusinessError) => {
-  if (err) {
-    console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
-  } else {
-    console.info("stop download successfully");
-  }
-});
-```
+<a id="stop-1"></a>
 
 ## stop
 
@@ -376,19 +375,6 @@ Stops downloading a cloud file. This API uses an asynchronous callback to return
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let download = new cloudSync.Download();
-let uri: string = "file:///media/Photo/1";
-
-download.stop(uri).then(() => {
-  console.info("stop download successfully");
-}).catch((err: BusinessError) => {
-  console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

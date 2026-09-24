@@ -1,5 +1,9 @@
 # XmlDynamicSerializer
 
+```TypeScript
+class XmlDynamicSerializer
+```
+
 The XmlDynamicSerializer interface is used to dynamically generate an xml file.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # SyncProgress
 
+```TypeScript
+interface SyncProgress
+```
+
 Represents information about the device-cloud sync progress.
 
 **Since:** 12

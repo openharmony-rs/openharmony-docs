@@ -33,9 +33,9 @@ function requestPrintPreview(jobInfo: PrintJob, callback: Callback<number>): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
@@ -65,34 +65,8 @@ print.requestPrintPreview(jobInfo, (num : number) => {
 });
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let jobInfo : print.PrintJob = {
-    fdList : [44, 45], // fdList中的fd可通过fs.open等文件操作获取文件描述符
-    jobId : 'jobId_12',
-    printerId : 'printerId_32',
-    jobState : print.PrintJobState.PRINT_JOB_COMPLETED,
-    jobSubstate : print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS,
-    copyNumber : 1,
-    pageRange : {},
-    isSequential : false,
-    pageSize : {id : '', name : '', width : 10, height : 20},
-    isLandscape : false,
-    colorMode : print.PrintColorMode.COLOR_MODE_COLOR,
-    duplexMode : print.PrintDuplexMode.DUPLEX_MODE_NONE,
-    margin : undefined,
-    preview : undefined,
-    options : undefined
-};
-print.requestPrintPreview(jobInfo).then((num: number) => {
-    console.info('requestPrintPreview success, num : ' + JSON.stringify(num));
-}).catch((error: BusinessError) => {
-    console.error(`Failed to request print preview. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="requestprintpreview-1"></a>
 
 ## requestPrintPreview
 
@@ -126,10 +100,36 @@ function requestPrintPreview(jobInfo: PrintJob): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
-参见 [requestPrintPreview](#requestprintpreview)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let jobInfo : print.PrintJob = {
+    fdList : [44, 45], // fdList中的fd可通过fs.open等文件操作获取文件描述符
+    jobId : 'jobId_12',
+    printerId : 'printerId_32',
+    jobState : print.PrintJobState.PRINT_JOB_COMPLETED,
+    jobSubstate : print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS,
+    copyNumber : 1,
+    pageRange : {},
+    isSequential : false,
+    pageSize : {id : '', name : '', width : 10, height : 20},
+    isLandscape : false,
+    colorMode : print.PrintColorMode.COLOR_MODE_COLOR,
+    duplexMode : print.PrintDuplexMode.DUPLEX_MODE_NONE,
+    margin : undefined,
+    preview : undefined,
+    options : undefined
+};
+print.requestPrintPreview(jobInfo).then((num: number) => {
+    console.info('requestPrintPreview success, num : ' + JSON.stringify(num));
+}).catch((error: BusinessError) => {
+    console.error(`Failed to request print preview. Code: ${error.code}, message: ${error.message}`);
+});
+```

@@ -8,6 +8,8 @@ typedef struct OH_NativeXComponent_MouseEvent {...} OH_NativeXComponent_MouseEve
 
 鼠标事件。 用于在XComponent的鼠标事件回调中传递鼠标事件信息，包含触点相对于组件和屏幕的坐标、事件时间戳、鼠标动作及按键信息。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 9
 
 **相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)

@@ -1,5 +1,9 @@
 # RectEvent
 
+```TypeScript
+interface RectEvent
+```
+
 Defines a rectangle.
 
 **Since:** 12

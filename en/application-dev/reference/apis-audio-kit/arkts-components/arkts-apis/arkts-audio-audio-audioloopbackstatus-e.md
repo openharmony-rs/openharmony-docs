@@ -1,5 +1,9 @@
 # AudioLoopbackStatus
 
+```TypeScript
+enum AudioLoopbackStatus
+```
+
 Enumerates the audio loopback statuses.
 
 **Since:** 20

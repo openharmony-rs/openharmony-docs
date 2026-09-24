@@ -8,6 +8,8 @@ typedef struct OH_RDB_TransOptions OH_RDB_TransOptions
 
 定义OH_RDB_TransOptions结构体类型。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 18
 
 **相关模块：** [RDB](capi-rdb.md)

@@ -1,5 +1,9 @@
 # AnimatorOptions
 
+```TypeScript
+export interface AnimatorOptions
+```
+
 定义动画选项。
 
 **起始版本：** 6

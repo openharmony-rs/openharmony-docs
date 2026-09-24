@@ -1,5 +1,9 @@
 # LetterSpacingStyle
 
+```TypeScript
+declare class LetterSpacingStyle
+```
+
 文本字符间距对象说明。适用于需要调整字符间距的场景，例如标题文字加宽间距以增强视觉效果、密集文本缩小间距以节省空间等。
 
 **起始版本：** 12
@@ -26,7 +30,7 @@ constructor(value: LengthMetrics)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 是 | 文本字符间距设置项。如果LengthMetrics的unit值是PERCENT，该设置不生效。 |
+| value | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 是 | 文本字符间距设置项。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，该设置不生效。 |
 
 ## letterSpacing
 
@@ -36,7 +40,7 @@ readonly letterSpacing: number
 
 获取属性字符串的文本字符间距。
 
-单位：[vp](arkts-arkui-length-t.md)
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 

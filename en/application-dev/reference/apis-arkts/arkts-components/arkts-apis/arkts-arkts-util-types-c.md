@@ -1,5 +1,9 @@
 # types
 
+```TypeScript
+class types
+```
+
 Provides APIs to check different types of built-in objects, such as ArrayBuffer, Map, and Set, so as to avoid exceptions caused by type errors.
 
 **Since:** 8

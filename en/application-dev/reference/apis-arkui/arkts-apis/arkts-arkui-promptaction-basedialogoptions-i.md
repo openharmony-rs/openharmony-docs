@@ -1,5 +1,9 @@
 # BaseDialogOptions
 
+```TypeScript
+interface BaseDialogOptions
+```
+
 Defines the options of the dialog box.
 
 **Since:** 11
@@ -122,7 +126,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 Options for customizing the background blur style. For details about the default value, see **BackgroundBlurStyleOptions**.
 
-**Type:** [BackgroundBlurStyleOptions](../arkts-components/arkts-arkui-backgroundblurstyleoptions-i.md)
+**Type:** [BackgroundBlurStyleOptions](../arkts-components/arkts-arkui-common-comp-backgroundblurstyleoptions-i.md)
 
 **Since:** 19
 
@@ -140,7 +144,7 @@ backgroundEffect?: BackgroundEffectOptions
 
 Options for customizing the background effect. For details about the default value, see **BackgroundEffectOptions**.
 
-**Type:** [BackgroundEffectOptions](../arkts-components/arkts-arkui-backgroundeffectoptions-i.md)
+**Type:** [BackgroundEffectOptions](../arkts-components/arkts-arkui-common-comp-backgroundeffectoptions-i.md)
 
 **Since:** 19
 
@@ -158,7 +162,7 @@ dialogTransition?: TransitionEffect
 
 Transition effect for the dialog box content. By default, there is no transition effect.
 
-**Type:** [TransitionEffect](../arkts-components/arkts-arkui-transitioneffect-c.md)
+**Type:** [TransitionEffect](../arkts-components/arkts-arkui-common-comp-transitioneffect-c.md)
 
 **Since:** 19
 
@@ -236,7 +240,7 @@ hoverModeArea?: HoverModeAreaType
 
 Display area of the dialog box in the hover state. <br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**
 
-**Type:** [HoverModeAreaType](../arkts-components/arkts-arkui-hovermodeareatype-e.md)
+**Type:** [HoverModeAreaType](../arkts-components/arkts-arkui-common-comp-hovermodeareatype-e.md)
 
 **Default:** HoverModeAreaType.BOTTOM_SCREEN
 
@@ -410,7 +414,7 @@ maskRect?: Rectangle
 
 Mask area. <br>Default value: **{ x: 0, y: 0, width: '100%', height: '100%' }** <br>**NOTE:** <br>**maskRect** does not take effect when **showInSubWindow** is set to **true**. <br>If only some properties in [Rectangle](../arkui-ts/ts-methods-alert-dialog-box.md#rectangle8) are set, the unset properties default to 0.
 
-**Type:** [Rectangle](../arkts-components/arkts-arkui-rectangle-i.md)
+**Type:** [Rectangle](../arkts-components/arkts-arkui-common-comp-rectangle-i.md)
 
 **Since:** 11
 
@@ -428,7 +432,7 @@ maskTransition?: TransitionEffect
 
 Transition effect for the mask. By default, there is no transition effect.
 
-**Type:** [TransitionEffect](../arkts-components/arkts-arkui-transitioneffect-c.md)
+**Type:** [TransitionEffect](../arkts-components/arkts-arkui-common-comp-transitioneffect-c.md)
 
 **Since:** 19
 
@@ -502,7 +506,7 @@ systemMaterial?: SystemUiMaterial
 
 System material of the dialog box. Different materials have different effects and can affect visual attributes such as the background color, border, and shadow of the dialog box.
 
-**Type:** [SystemUiMaterial](../arkts-components/arkts-arkui-systemuimaterial-t.md)
+**Type:** [SystemUiMaterial](../arkts-components/arkts-arkui-common-comp-systemuimaterial-t.md)
 
 **Since:** 26.0.0
 
@@ -520,7 +524,7 @@ transition?: TransitionEffect
 
 Transition effect for the appearance and disappearance of the dialog box.<br>**NOTE:** <br> 1. If this parameter is not set, the default effect is used. <br> 2. Touching the Back button during the appearance animation pauses the appearance animation and starts the disappearance animation. The final effect is one obtained after the curves of the appearance and disappearance animations are combined. <br> 3. Touching the Back button during the exit animation does not affect the animation playback. Touching the Back button again closes the application.
 
-**Type:** [TransitionEffect](../arkts-components/arkts-arkui-transitioneffect-c.md)
+**Type:** [TransitionEffect](../arkts-components/arkts-arkui-common-comp-transitioneffect-c.md)
 
 **Since:** 12
 

@@ -8,6 +8,8 @@ typedef struct FileShare_PolicyErrorResult {...} FileShare_PolicyErrorResult
 
 Define the FileShare_PolicyErrorResult structure type.<br> Failed policy result on URI.
 
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
 **Since**: 12
 
 **Related module**: [fileShare](capi-fileshare.md)

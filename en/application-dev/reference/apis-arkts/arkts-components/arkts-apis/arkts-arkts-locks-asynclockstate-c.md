@@ -1,5 +1,9 @@
 # AsyncLockState
 
+```TypeScript
+class AsyncLockState
+```
+
 Information about all lock operations on the AsyncLock instance.
 
 **Since:** 12

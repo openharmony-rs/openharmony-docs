@@ -8,6 +8,8 @@ typedef struct AbilityBase_Want AbilityBase_Want
 
 Want data structure.
 
+**System capability**: SystemCapability.Ability.AbilityBase
+
 **Since**: 15
 
 **Related module**: [AbilityBase](capi-abilitybase.md)

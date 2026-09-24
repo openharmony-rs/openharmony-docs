@@ -277,7 +277,7 @@
   - [FollowXMode(系统接口)](arkts-basicservices-configpolicy-followxmode-e-sys.md)<!--DelEnd-->
 - [@ohos.customization.customConfig(定制配置)](arkts-basicservices-customization-customconfig.md)
   - [getChannelId](arkts-basicservices-customconfig-getchannelid-f.md)
-- [@ohos.deviceInfo](arkts-basicservices-deviceinfo.md)
+- [@ohos.deviceInfo(设备信息)](arkts-basicservices-deviceinfo.md)
   - [apiAvailable](arkts-basicservices-deviceinfo-apiavailable-f.md)
   - [DeviceTypes](arkts-basicservices-deviceinfo-devicetypes-e.md)
   - [PerformanceClassLevel](arkts-basicservices-deviceinfo-performanceclasslevel-e.md)
@@ -671,7 +671,7 @@
   - [updateNtpTime(系统接口)](arkts-basicservices-systemdatetime-updatentptime-f-sys.md)<!--DelEnd-->
   - [TimeType](arkts-basicservices-systemdatetime-timetype-e.md)
 <!--Del-->
-- [@ohos.systemparameter](arkts-basicservices-systemparameter.md)<!--DelEnd-->
+- [@ohos.systemparameter(系统属性)](arkts-basicservices-systemparameter.md)<!--DelEnd-->
   <!--Del-->
   - [get(系统接口)](arkts-basicservices-systemparameter-get-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -681,7 +681,7 @@
   <!--Del-->
   - [setSync(系统接口)](arkts-basicservices-systemparameter-setsync-f-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.systemParameterEnhance](arkts-basicservices-systemparameterenhance.md)<!--DelEnd-->
+- [@ohos.systemParameterEnhance(系统参数)](arkts-basicservices-systemparameterenhance.md)<!--DelEnd-->
   <!--Del-->
   - [get(系统接口)](arkts-basicservices-systemparameterenhance-get-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1075,7 +1075,7 @@
   - [SetBrightnessModeOptions](arkts-basicservices-system-brightness-setbrightnessmodeoptions-i.md)
   - [SetBrightnessOptions](arkts-basicservices-system-brightness-setbrightnessoptions-i.md)
   - [SetKeepScreenOnOptions](arkts-basicservices-system-brightness-setkeepscreenonoptions-i.md)
-- [@system.device](arkts-basicservices-system-device.md)
+- [@system.device(设备信息)](arkts-basicservices-system-device.md)
   - [Device](arkts-basicservices-system-device-device-c.md)
   - [DeviceResponse](arkts-basicservices-system-device-deviceresponse-i.md)
   - [GetDeviceOptions](arkts-basicservices-system-device-getdeviceoptions-i.md)

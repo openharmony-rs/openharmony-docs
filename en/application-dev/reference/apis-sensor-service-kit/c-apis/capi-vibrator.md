@@ -4,6 +4,8 @@
 
 Provides the enums, structs, and error codes used in the vibrator APIs.
 
+**System capability**: SystemCapability.Sensors.MiscDevice
+
 **Since**: 11
 
 ## Files

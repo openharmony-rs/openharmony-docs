@@ -1,5 +1,9 @@
 # BundleStatsInfo
 
+```TypeScript
+interface BundleStatsInfo
+```
+
 Application bundle statistics.
 
 **Since:** 26.0.0

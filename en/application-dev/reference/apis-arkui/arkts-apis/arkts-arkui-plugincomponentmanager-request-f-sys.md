@@ -6,6 +6,8 @@
 import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 ```
 
+<a id="request-1"></a>
+
 ## request
 
 ```TypeScript

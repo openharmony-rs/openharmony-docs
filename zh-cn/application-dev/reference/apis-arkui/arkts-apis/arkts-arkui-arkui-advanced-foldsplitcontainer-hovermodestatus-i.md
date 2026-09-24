@@ -1,5 +1,9 @@
 # HoverModeStatus
 
+```TypeScript
+export interface HoverModeStatus
+```
+
 设备或应用的折叠、悬停、旋转、窗口状态信息。
 
 **起始版本：** 12

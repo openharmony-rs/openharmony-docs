@@ -1,5 +1,9 @@
 # VirtualScreenOption（系统接口）
 
+```TypeScript
+interface VirtualScreenOption
+```
+
 创建虚拟屏幕的参数。
 
 **起始版本：** 9

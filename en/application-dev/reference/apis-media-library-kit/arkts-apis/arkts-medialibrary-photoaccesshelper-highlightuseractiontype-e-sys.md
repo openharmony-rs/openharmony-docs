@@ -1,5 +1,9 @@
 # HighlightUserActionType (System API)
 
+```TypeScript
+enum HighlightUserActionType
+```
+
 Enumerates the user behavior types of the highlights album.
 
 **Since:** 12

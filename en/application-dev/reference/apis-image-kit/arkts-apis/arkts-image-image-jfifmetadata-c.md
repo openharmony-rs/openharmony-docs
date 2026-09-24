@@ -1,5 +1,9 @@
 # JfifMetadata
 
+```TypeScript
+class JfifMetadata
+```
+
 JFIF metadata.
 
 **Since:** 26.0.0

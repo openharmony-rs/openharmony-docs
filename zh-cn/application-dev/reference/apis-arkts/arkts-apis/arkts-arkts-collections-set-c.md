@@ -1,5 +1,9 @@
 # Set
 
+```TypeScript
+class Set<T>
+```
+
 一种存储唯一值的非线性数据结构，能够高效地进行元素存在性检测和去重操作。
 
 > **说明：** 
@@ -126,6 +130,8 @@ constructor(values?: readonly T[] | null)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The ArkTS Set's constructor cannot be directly invoked. |
+
+<a id="constructor-1"></a>
 
 ## constructor
 

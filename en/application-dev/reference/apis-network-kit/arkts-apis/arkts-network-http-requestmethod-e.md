@@ -1,5 +1,9 @@
 # RequestMethod
 
+```TypeScript
+export enum RequestMethod
+```
+
 Defines an HTTP request method.
 
 **Since:** 6

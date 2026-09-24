@@ -1,5 +1,9 @@
 # FloatViewState
 
+```TypeScript
+enum FloatViewState
+```
+
 Enumerates the states of the float view.
 
 **Since:** 26.0.0

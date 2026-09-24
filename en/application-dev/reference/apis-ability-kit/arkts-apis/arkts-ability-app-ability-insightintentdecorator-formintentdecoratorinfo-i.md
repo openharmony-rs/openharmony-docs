@@ -1,5 +1,9 @@
 # FormIntentDecoratorInfo
 
+```TypeScript
+declare interface FormIntentDecoratorInfo extends IntentDecoratorInfo
+```
+
 Inherits from [IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intentdecoratorinfo-i.md) and is used to describe the parameters supported by the [@InsightIntentForm](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentform) decorator.
 
 **Inheritance/Implementation:** FormIntentDecoratorInfo extends [IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intentdecoratorinfo-i.md)

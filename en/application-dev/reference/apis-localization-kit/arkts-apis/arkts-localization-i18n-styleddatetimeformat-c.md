@@ -1,5 +1,9 @@
 # StyledDateTimeFormat
 
+```TypeScript
+export class StyledDateTimeFormat
+```
+
 Provide a DateTime formatting interface which could format DateTime to StyleString.
 
 **Since:** 23

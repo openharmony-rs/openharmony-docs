@@ -1,5 +1,9 @@
 # SystemDefinedPixelMap
 
+```TypeScript
+class SystemDefinedPixelMap extends SystemDefinedRecord
+```
+
 Represents the image data type corresponding to [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) defined by the system. It is a child class of [SystemDefinedRecord](arkts-arkdata-unifieddatachannel-systemdefinedrecord-c.md) and holds only binary data of **PixelMap**.
 
 **Inheritance/Implementation:** SystemDefinedPixelMap extends [SystemDefinedRecord](arkts-arkdata-unifieddatachannel-systemdefinedrecord-c.md)

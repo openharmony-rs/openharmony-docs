@@ -1,5 +1,9 @@
 # PairingRequestParam
 
+```TypeScript
+interface PairingRequestParam
+```
+
 配对请求参数说明。
 
 **起始版本：** 26.0.0

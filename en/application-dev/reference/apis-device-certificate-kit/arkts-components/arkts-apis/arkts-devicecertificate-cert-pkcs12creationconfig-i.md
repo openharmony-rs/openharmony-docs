@@ -1,5 +1,9 @@
 # Pkcs12CreationConfig
 
+```TypeScript
+interface Pkcs12CreationConfig
+```
+
 Represents the configuration for creating .p12 files.
 
 **Since:** 21

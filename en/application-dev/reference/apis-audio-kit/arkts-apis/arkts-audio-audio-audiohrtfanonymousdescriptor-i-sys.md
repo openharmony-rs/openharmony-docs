@@ -1,5 +1,9 @@
 # AudioHRTFAnonymousDescriptor (System API)
 
+```TypeScript
+interface AudioHRTFAnonymousDescriptor
+```
+
 Anonymous personalzied HRTF file descriptor for cross-process transfer.
 
 **Since:** 26.0.0

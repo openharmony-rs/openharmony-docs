@@ -24,13 +24,13 @@ function createHfpHfProfile(): HandsFreeHfProfile
 
 | 类型 | 说明 |
 | --- | --- |
-| HandsFreeHfProfile | 返回HF实例，可用于获取和其他设备间的蓝牙通话音频连接状态等操作。 |
+| [HandsFreeHfProfile](arkts-connectivity-hfp-handsfreehfprofile-i-sys.md) | 返回HF实例，可用于获取和其他设备间的蓝牙通话音频连接状态等操作。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 

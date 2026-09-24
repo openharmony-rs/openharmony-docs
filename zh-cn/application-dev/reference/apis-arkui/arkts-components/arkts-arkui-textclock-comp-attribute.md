@@ -1,10 +1,12 @@
 # TextClock属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性。
+```TypeScript
+declare class TextClockAttribute extends CommonMethod<TextClockAttribute>
+```
 
-除支持[通用事件](arkts-arkui-commonmethod-c.md)外，还支持以下事件。
+除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
 
-**继承/实现关系：** TextClockAttribute extends CommonMethod&lt;TextClockAttribute&gt;
+**继承/实现关系：** TextClockAttribute extends CommonMethod<TextClockAttribute>
 
 **起始版本：** 8
 
@@ -30,7 +32,7 @@ contentModifier(modifier: ContentModifier<TextClockConfiguration>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[TextClockConfiguration](arkts-arkui-textclockconfiguration-i.md)&gt; | 是 | 在TextClock组件上，定制内容区的方法。<br>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[TextClockConfiguration](arkts-arkui-textclock-comp-textclockconfiguration-i.md)&gt; | 是 | 在TextClock组件上，定制内容区的方法。<br>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## dateTimeOptions
 
@@ -54,7 +56,7 @@ dateTimeOptions(dateTimeOptions: Optional<DateTimeOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dateTimeOptions | [Optional](arkts-arkui-optional-t.md)&lt;[DateTimeOptions](arkts-arkui-datetimeoptions-t.md)&gt; | 是 | 设置小时是否显示前导0，只支持设置hour参数，参数值为{hour: "2-digit"}时表示显示前导0，参数值为{hour: "numeric"}时表示不显示前导0。<br>默认值：undefined，默认状态下，24小时制显示前导0，12小时制不显示前导0。 |
+| dateTimeOptions | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[DateTimeOptions](arkts-arkui-timepicker-comp-datetimeoptions-t.md)&gt; | 是 | 设置小时是否显示前导0，只支持设置hour参数，参数值为{hour: "2-digit"}时表示显示前导0，参数值为{hour: "numeric"}时表示不显示前导0。<br>默认值：undefined，默认状态下，24小时制显示前导0，12小时制不显示前导0。 |
 
 ## fontColor
 
@@ -340,4 +342,4 @@ textShadow(value: ShadowOptions | Array<ShadowOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ShadowOptions](arkts-arkui-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-shadowoptions-i.md)&gt; | 是 | 文字阴影效果。支持单个阴影对象或阴影数组实现多重阴影效果。ShadowOptions对象包含radius（模糊半径）、color（阴影颜色）、offsetX（X轴偏移）、offsetY（Y轴偏移）等属性。<br>不支持fill字段，不支持智能取色模式。具体属性说明请参考[ShadowOptions对象说明](arkts-arkui-shadowoptions-i.md)。 |
+| value | [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | 文字阴影效果。支持单个阴影对象或阴影数组实现多重阴影效果。ShadowOptions对象包含radius（模糊半径）、color（阴影颜色）、offsetX（X轴偏移）、offsetY（Y轴偏移）等属性。<br>不支持fill字段，不支持智能取色模式。具体属性说明请参考[ShadowOptions](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions)。 |

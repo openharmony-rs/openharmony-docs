@@ -1,6 +1,12 @@
 # Response
 
+```TypeScript
+interface Response
+```
+
 传感器数据的时间戳与精度信息基类，所有传感器Response类型均继承于此。
+
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **起始版本：** 8
 

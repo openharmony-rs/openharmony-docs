@@ -1,5 +1,9 @@
 # TechnologyType (System API)
 
+```TypeScript
+export enum TechnologyType
+```
+
 Enum for distance measurement technology types.
 
 @enum { int } TechnologyType

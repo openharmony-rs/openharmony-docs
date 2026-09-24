@@ -1,5 +1,9 @@
 # ZipOutputInfo
 
+```TypeScript
+interface ZipOutputInfo
+```
+
 压缩和解压缩的返回值信息。
 
 **起始版本：** 12

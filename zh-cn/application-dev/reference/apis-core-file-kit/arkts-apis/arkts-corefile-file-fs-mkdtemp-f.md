@@ -51,6 +51,8 @@ declare function mkdtemp(prefix: string): Promise<string>
 | 13900042 | Unknown error |
 
 
+<a id="mkdtemp-1"></a>
+
 ## mkdtemp
 
 ```TypeScript

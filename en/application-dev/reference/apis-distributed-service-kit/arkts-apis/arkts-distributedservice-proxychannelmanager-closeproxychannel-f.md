@@ -26,7 +26,7 @@ Closes an opened proxy channel. This is applicable to scenarios where the phone-
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| channelId | number | Yes | Channel ID obtained when opening the proxy channel. The value range is 1 to 2147483647. Using an invalid or closed channelId returns error code 32390004. If the value is out of range, error code 3239 0006 is returned. The channelId takes effect only when the proxy channel is available, and becomes unavailable after the channel is closed or disconnected. |
+| channelId | number | Yes | Channel ID obtained when opening the proxy channel. The value range is 1 to 2147483647. Using an invalid or closed channelId returns error code 32390004. If the value is out of range, error code 32390006 is returned. The channelId takes effect only when the proxy channel is available, and becomes unavailable after the channel is closed or disconnected. |
 
 **Error codes:**
 

@@ -1,5 +1,9 @@
 # ConnectionChangeState
 
+```TypeScript
+interface ConnectionChangeState
+```
+
 Defines the connection status reporting parameters.
 
 **Since:** 26.0.0

@@ -32,8 +32,8 @@ function makeMirror(mainScreen:number, mirrorScreen:Array<number>, callback: Asy
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例**
@@ -55,20 +55,8 @@ screen.makeMirror(mainScreenId, mirrorScreenIds, (err: BusinessError, data: numb
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 屏幕ID需通过getAllScreens()获取
-let mainScreenId: number = 0; // 主屏ID
-let mirrorScreenIds: Array<number> = [1, 2, 3]; // 镜像屏ID集合
-// 设置屏幕为镜像模式
-screen.makeMirror(mainScreenId, mirrorScreenIds).then((data: number) => {
-  console.info(`Succeeded in setting screen mirroring. Data: ${data}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set screen mirroring. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="makemirror-1"></a>
 
 ## makeMirror
 
@@ -101,10 +89,22 @@ function makeMirror(mainScreen:number, mirrorScreen:Array<number>): Promise<numb
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例**
 
-参见 [makeMirror](#makemirror)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 屏幕ID需通过getAllScreens()获取
+let mainScreenId: number = 0; // 主屏ID
+let mirrorScreenIds: Array<number> = [1, 2, 3]; // 镜像屏ID集合
+// 设置屏幕为镜像模式
+screen.makeMirror(mainScreenId, mirrorScreenIds).then((data: number) => {
+  console.info(`Succeeded in setting screen mirroring. Data: ${data}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set screen mirroring. Code: ${err.code}, message: ${err.message}`);
+});
+```

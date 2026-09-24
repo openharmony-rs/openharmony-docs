@@ -62,25 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { display } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let displayClass: display.Display | null = null;
-displayClass = display.getDefaultDisplaySync();
-
-try {
-  let promise = window.minimizeAll(displayClass.id);
-  promise.then(() => {
-    console.info('Succeeded in minimizing all windows.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to minimize all windows. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed to minimize all windows. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
+<a id="minimizeall-1"></a>
 
 ## minimizeAll
 
@@ -118,4 +101,21 @@ Minimizes all main windows on a display. This API uses a promise to return the r
 
 **Examples**
 
-See [minimizeAll](#minimizeall)
+```TypeScript
+import { display } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: display.Display | null = null;
+displayClass = display.getDefaultDisplaySync();
+
+try {
+  let promise = window.minimizeAll(displayClass.id);
+  promise.then(() => {
+    console.info('Succeeded in minimizing all windows.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to minimize all windows. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to minimize all windows. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```

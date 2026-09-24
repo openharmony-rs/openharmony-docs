@@ -1,4 +1,4 @@
-# @ohos.prompt
+# @ohos.prompt(弹窗)
 
 创建并显示文本提示框、对话框和操作菜单。
 
@@ -11,6 +11,8 @@
 **废弃版本：** 9
 
 **替代接口：** [promptAction/promptAction](arkts-arkui-promptaction-n.md)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,10 +28,10 @@ import { prompt } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md) | 创建并显示操作菜单，菜单响应结果异步返回。 |
-| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md) | 创建并显示操作菜单，菜单响应后同步返回结果。 |
-| [showDialog](arkts-arkui-prompt-showdialog-f.md) | 创建并显示对话框，对话框响应结果异步返回。 |
-| [showDialog](arkts-arkui-prompt-showdialog-f.md) | 创建并显示对话框，对话框响应后同步返回结果。 |
+| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md#showactionmenu) | 创建并显示操作菜单，菜单响应结果异步返回。 |
+| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md#showactionmenu-1) | 创建并显示操作菜单，菜单响应后同步返回结果。 |
+| [showDialog](arkts-arkui-prompt-showdialog-f.md#showdialog) | 创建并显示对话框，对话框响应结果异步返回。 |
+| [showDialog](arkts-arkui-prompt-showdialog-f.md#showdialog-1) | 创建并显示对话框，对话框响应后同步返回结果。 |
 | [showToast](arkts-arkui-prompt-showtoast-f.md) | 创建并显示文本提示框。 |
 
 ### 接口

@@ -1,5 +1,9 @@
 # RanType (System API)
 
+```TypeScript
+export enum RanType
+```
+
 RAN type.
 
 **Since:** 7

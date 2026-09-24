@@ -1,6 +1,10 @@
 # ChipV2LabelMarginConfig
 
-Defines label margin.
+```TypeScript
+export interface ChipV2LabelMarginConfig
+```
+
+Defines the margin configuration between the text and the left and right icons.
 
 **Since:** 26.0.0
 
@@ -18,7 +22,21 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 left?: LengthMetrics
 ```
 
-Left label margin length.
+Margin between the text and the left icon. Percentage values are not supported. If a percentage value is passed in, the default value is used.
+
+Default values:
+
+When there is no left icon, the default value of **left** is **0**.
+
+When there is a left icon and **size** is **ChipV2Size.SMALL**, the default value of **left** is **4**.
+
+When there is a left icon and **size** is **ChipV2Size.NORMAL**, the default value of **left** is **6**.
+
+Unit: vp
+
+If the value is out of range, the default value is used.
+
+Value range: [0, +∞)
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -36,7 +54,21 @@ Left label margin length.
 right?: LengthMetrics
 ```
 
-Right label margin length.
+Margin between the text and the right icon. Percentage values are not supported. If a percentage value is passed in, the default value is used.
+
+Default values:
+
+When there is no right icon, the default value of **right** is **0**.
+
+When there is a right icon and **size** is **ChipV2Size.SMALL**, the default value of **right** is **4**.
+
+When there is a right icon and **size** is **ChipV2Size.NORMAL**, the default value of **right** is **6**.
+
+Unit: vp
+
+If the value is out of range, the default value is used.
+
+Value range: [0, +∞)
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 

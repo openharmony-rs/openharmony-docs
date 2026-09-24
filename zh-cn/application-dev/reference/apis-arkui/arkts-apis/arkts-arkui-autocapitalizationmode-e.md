@@ -1,5 +1,9 @@
 # AutoCapitalizationMode
 
+```TypeScript
+declare enum AutoCapitalizationMode
+```
+
 自动大小写模式类型，只提供接口能力，具体实现由输入法应用决定。
 
 **起始版本：** 20

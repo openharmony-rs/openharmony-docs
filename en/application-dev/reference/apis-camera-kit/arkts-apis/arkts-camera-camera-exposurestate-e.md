@@ -1,5 +1,9 @@
 # ExposureState
 
+```TypeScript
+enum ExposureState
+```
+
 Enumerates the exposure states.
 
 **Since:** 26.0.0

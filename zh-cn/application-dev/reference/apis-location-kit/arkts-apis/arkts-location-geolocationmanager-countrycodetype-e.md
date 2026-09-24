@@ -1,5 +1,9 @@
 # CountryCodeType
 
+```TypeScript
+export enum CountryCodeType
+```
+
 国家码来源类型。
 
 **起始版本：** 9

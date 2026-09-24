@@ -1,5 +1,9 @@
 # VertexMode
 
+```TypeScript
+enum VertexMode
+```
+
 顶点绘制的连接方式枚举。
 
 **起始版本：** 23

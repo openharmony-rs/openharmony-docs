@@ -8,6 +8,8 @@ typedef struct JSVM_CpuProfiler__* JSVM_CpuProfiler
 
 表示一个JavaScript CPU时间性能分析器。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 12
 
 **相关模块：** [JSVM](capi-jsvm.md)

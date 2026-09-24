@@ -1,5 +1,9 @@
 # TextBaseController
 
+```TypeScript
+declare interface TextBaseController
+```
+
 文本选择控制器。
 
 **起始版本：** 12
@@ -61,7 +65,9 @@ selectionStart和selectionEnd均为-1时表示全选。
 在非2in1设备中，options取值为MenuPolicy.DEFAULT时，遵循以下规则：
 
 1. 组件内有手柄菜单时，接口调用后不关闭菜单，并且调整菜单位置。
+
 2. 组件内有不带手柄的菜单时，接口调用后不关闭菜单，并且菜单位置不变。
+
 3. 组件内无菜单时，接口调用后也无菜单显示。
 
 **起始版本：** 12
@@ -78,4 +84,4 @@ selectionStart和selectionEnd均为-1时表示全选。
 | --- | --- | --- | --- |
 | selectionStart | number | 是 | 选中开始位置。<br>取值小于0时，按0处理。取值大于文本长度时，按当前文本长度处理。<br>特殊取值效果：当selectionStart和selectionEnd均为-1时，表示全选。 |
 | selectionEnd | number | 是 | 选中结束位置。<br>取值小于0时，按0处理。取值大于文本长度时，按当前文本长度处理。<br>特殊取值效果：当selectionStart和selectionEnd均为-1时，表示全选。 |
-| options | [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md) | 否 | 选择项配置。 默认值继承[SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md)。 |
+| options | [SelectionOptions](../arkts-components/arkts-arkui-common-comp-selectionoptions-i.md) | 否 | 选择项配置。 默认值继承[SelectionOptions](../arkts-components/arkts-arkui-common-comp-selectionoptions-i.md)。 |

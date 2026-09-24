@@ -1,5 +1,9 @@
 # BusinessCapability
 
+```TypeScript
+interface BusinessCapability
+```
+
 Describes the business capabilities of the application.
 
 @typedef BusinessCapability

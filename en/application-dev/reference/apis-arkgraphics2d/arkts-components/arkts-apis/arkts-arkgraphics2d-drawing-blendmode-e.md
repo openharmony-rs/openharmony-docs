@@ -1,5 +1,9 @@
 # BlendMode
 
+```TypeScript
+enum BlendMode
+```
+
 Enumerates the blend modes. A blend mode combines two colors (source color and destination color) in a specific way to create a new color. This is commonly used in graphics operations like overlaying, filtering, and masking. The blending process applies the same logic to the red, green, and blue color channels separately. The alpha channel, however, is handled according to the specific definitions of each blend mode. For brevity, the following abbreviations are used: s: source. d: destination. sa: source alpha. da: destination alpha. The following abbreviations are used in the calculation result: r: used when the calculation method is the same for the four channels (alpha, red, green, and blue channels). ra: used when only the alpha channel is manipulated. **rc**: used when the other three color channels are manipulated. The table below shows the effect of each blend mode, where the yellow rectangle is the source and the blue circle is the destination.
 
 **Since:** 11

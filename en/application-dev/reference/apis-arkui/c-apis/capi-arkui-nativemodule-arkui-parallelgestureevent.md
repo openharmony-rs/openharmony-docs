@@ -6,7 +6,9 @@ typedef struct ArkUI_ParallelGestureEvent ArkUI_ParallelGestureEvent
 
 ## Overview
 
-Defines a parallel gesture event. This struct is used by the callback function [setGestureParallelTo](capi-arkui-nativemodule-arkui-nativegestureapi-3.md#setgestureparallelto) for the parallel gesture event.
+Defines a parallel gesture event. This struct is used by the callback function {@link setGestureParallelTo} for the parallel gesture event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 

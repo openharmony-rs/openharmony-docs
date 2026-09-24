@@ -1,5 +1,9 @@
 # CellInformation
 
+```TypeScript
+export interface CellInformation
+```
+
 Defines the cell information.
 
 **Since:** 8

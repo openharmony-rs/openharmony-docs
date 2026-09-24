@@ -1,5 +1,9 @@
 # FetchOptions
 
+```TypeScript
+interface FetchOptions
+```
+
 Defines the retrieval options.
 
 **Since:** 10

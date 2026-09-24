@@ -51,6 +51,8 @@ wifi.getLinkedInfo().then(data => {
 ```
 
 
+<a id="getlinkedinfo-1"></a>
+
 ## getLinkedInfo
 
 ```TypeScript

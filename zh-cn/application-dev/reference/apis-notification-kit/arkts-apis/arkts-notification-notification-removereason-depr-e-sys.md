@@ -1,5 +1,9 @@
 # RemoveReason（系统接口）
 
+```TypeScript
+export enum RemoveReason
+```
+
 通知删除原因。
 
 **起始版本：** 7

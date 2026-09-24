@@ -1,5 +1,9 @@
 # ApplicationContext
 
+```TypeScript
+declare class ApplicationContext extends Context
+```
+
 ApplicationContext作为应用上下文，继承自Context，提供了应用生命周期监听、进程管理、应用环境设置等应用级别的管控能力。
 
 > **说明：** 
@@ -11,6 +15,94 @@ ApplicationContext作为应用上下文，继承自Context，提供了应用生�
 **起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## preloadUIExtensionAbility
+
+```TypeScript
+preloadUIExtensionAbility(want: Want): Promise<void>
+```
+
+预加载指定UIExtensionAbility实例。使用Promise异步回调。
+
+被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的onCreate生命周期，然后等待被当前应用正式加载。
+
+被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的onCreate生命周期，然后等待被当前应用正式加载。
+
+**起始版本：** 12
+
+**需要权限：** ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| want | Want | 是 | 预加载UIExtensionAbility的want信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
+| [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
+| [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+
+**示例**
+
+```TypeScript
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    // 构造预加载UIExtensionAbility的want参数
+    let want: Want = {
+      bundleName: 'com.ohos.uiextensionprovider',
+      abilityName: 'UIExtensionProvider',
+      moduleName: 'entry',
+      parameters: {
+        // 与UIExtensionAbility在module.json5中"type"字段配置一致
+        'ability.want.params.uiExtensionType': 'sys/commonUI'
+      }
+    };
+    try {
+      // 获取ApplicationContext实例
+      let applicationContext = this.context.getApplicationContext();
+      // 预加载UIExtensionAbility
+      applicationContext.preloadUIExtensionAbility(want)
+        .then(() => {
+          // 预加载成功处理
+          console.info('preloadUIExtensionAbility succeed');
+        })
+        .catch((err: BusinessError) => {
+          // 预加载失败处理
+          console.error('preloadUIExtensionAbility failed');
+        });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`preloadUIExtensionAbility failed. code: ${code}, msg: ${message}`);
+    }
+  }
+}
+```
 
 ## getProcessRunningInformation
 
@@ -64,23 +156,7 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-
-export default class MyAbility extends UIAbility {
-  onForeground() {
-    // 获取ApplicationContext实例
-    let applicationContext = this.context.getApplicationContext();
-    applicationContext.getProcessRunningInformation((err, data) => {
-      if (err) {
-        console.error(`getProcessRunningInformation failed, err: ${JSON.stringify(err)}`);
-      } else {
-        console.info(`The process running information is: ${JSON.stringify(data)}`);
-      }
-    })
-  }
-}
-```
+<a id="getprocessrunninginformation-1"></a>
 
 ## getProcessRunningInformation
 
@@ -117,92 +193,20 @@ getProcessRunningInformation(callback: AsyncCallback<Array<ProcessInformation>>)
 
 **示例**
 
-参见 [getProcessRunningInformation](#getprocessrunninginformation)
-
-## preloadUIExtensionAbility
-
 ```TypeScript
-preloadUIExtensionAbility(want: Want): Promise<void>
-```
+import { UIAbility } from '@kit.AbilityKit';
 
-预加载指定UIExtensionAbility实例。使用Promise异步回调。
-
-被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的onCreate生命周期，然后等待被当前应用正式加载。
-
-被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的onCreate生命周期，然后等待被当前应用正式加载。
-
-**起始版本：** 12
-
-**需要权限：** ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| want | Want | 是 | 预加载UIExtensionAbility的want信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
-| [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
-| [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
-| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-
-**示例**
-
-```TypeScript
-import { UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate() {
-    // 构造预加载UIExtensionAbility的want参数
-    let want: Want = {
-      bundleName: 'com.ohos.uiextensionprovider',
-      abilityName: 'UIExtensionProvider',
-      moduleName: 'entry',
-      parameters: {
-        // 与UIExtensionAbility在module.json5中"type"字段配置一致
-        'ability.want.params.uiExtensionType': 'sys/commonUI'
+export default class MyAbility extends UIAbility {
+  onForeground() {
+    // 获取ApplicationContext实例
+    let applicationContext = this.context.getApplicationContext();
+    applicationContext.getProcessRunningInformation((err, data) => {
+      if (err) {
+        console.error(`getProcessRunningInformation failed, err: ${JSON.stringify(err)}`);
+      } else {
+        console.info(`The process running information is: ${JSON.stringify(data)}`);
       }
-    };
-    try {
-      // 获取ApplicationContext实例
-      let applicationContext = this.context.getApplicationContext();
-      // 预加载UIExtensionAbility
-      applicationContext.preloadUIExtensionAbility(want)
-        .then(() => {
-          // 预加载成功处理
-          console.info('preloadUIExtensionAbility succeed');
-        })
-        .catch((err: BusinessError) => {
-          // 预加载失败处理
-          console.error('preloadUIExtensionAbility failed');
-        });
-    } catch (err) {
-      // 处理入参错误异常
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`preloadUIExtensionAbility failed. code: ${code}, msg: ${message}`);
-    }
+    })
   }
 }
 ```
@@ -423,25 +427,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let lifecycleId: number;
-
-export default class MyAbility extends UIAbility {
-  onDestroy() {
-    // 获取ApplicationContext实例
-    let applicationContext = this.context.getApplicationContext();
-    console.info(`stage applicationContext: ${applicationContext}`);
-    try {
-      applicationContext.unregisterAbilityLifecycleCallback(lifecycleId);
-    } catch (paramError) {
-      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
-    }
-  }
-}
-```
+<a id="unregisterabilitylifecyclecallback-1"></a>
 
 ## unregisterAbilityLifecycleCallback
 
@@ -481,11 +467,29 @@ unregisterAbilityLifecycleCallback(callbackId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例**
 
-参见 [unregisterAbilityLifecycleCallback](#unregisterabilitylifecyclecallback)
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let lifecycleId: number;
+
+export default class MyAbility extends UIAbility {
+  onDestroy() {
+    // 获取ApplicationContext实例
+    let applicationContext = this.context.getApplicationContext();
+    console.info(`stage applicationContext: ${applicationContext}`);
+    try {
+      applicationContext.unregisterAbilityLifecycleCallback(lifecycleId);
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
 
 ## unregisterEnvironmentCallback
 
@@ -543,24 +547,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let callbackId: number;
-
-export default class MyAbility extends UIAbility {
-  onDestroy() {
-    // 获取ApplicationContext实例
-    let applicationContext = this.context.getApplicationContext();
-    try {
-      applicationContext.unregisterEnvironmentCallback(callbackId);
-    } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
-    }
-  }
-}
-```
+<a id="unregisterenvironmentcallback-1"></a>
 
 ## unregisterEnvironmentCallback
 
@@ -598,8 +585,25 @@ unregisterEnvironmentCallback(callbackId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例**
 
-参见 [unregisterEnvironmentCallback](#unregisterenvironmentcallback)
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callbackId: number;
+
+export default class MyAbility extends UIAbility {
+  onDestroy() {
+    // 获取ApplicationContext实例
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      applicationContext.unregisterEnvironmentCallback(callbackId);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```

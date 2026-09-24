@@ -1,5 +1,9 @@
 # TreeListenType
 
+```TypeScript
+export declare enum TreeListenType
+```
+
 Enumerates the listening types of tree view nodes.
 
 **Since:** 10

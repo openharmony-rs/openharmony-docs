@@ -1,5 +1,9 @@
 # AdvancedMeasureFormat
 
+```TypeScript
+export class AdvancedMeasureFormat
+```
+
 提供数字格式化能力，支持根据单位使用场景自动转换合适的单位。
 
 **起始版本：** 23

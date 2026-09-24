@@ -1,5 +1,9 @@
 # WithTheme属性/事件
 
+```TypeScript
+declare class WithThemeAttribute
+```
+
 不支持通用属性。
 
 不支持通用事件。

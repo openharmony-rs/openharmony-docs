@@ -72,39 +72,8 @@ notificationManager.setNotificationEnableSlot(
     setNotificationEnableSlotCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let setNotificationEnableSlotCallback = (err: BusinessError): void => {
-    if (err) {
-        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-        console.info("setNotificationEnableSlot success");
-    }
-};
-
-notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
-    notificationManager.SlotType.SOCIAL_COMMUNICATION,
-    true,
-    false,
-    setNotificationEnableSlotCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// setNotificationEnableSlot
-notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
-    notificationManager.SlotType.SOCIAL_COMMUNICATION,
-    true).then(() => {
-        console.info("setNotificationEnableSlot success");
-    }).catch((err: BusinessError) => {
-        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
-    });
-```
-
+<a id="setnotificationenableslot-1"></a>
 
 ## setNotificationEnableSlot
 
@@ -156,8 +125,59 @@ This API can be properly called on devices other than wearables. If it is called
 
 **Examples**
 
-See [setNotificationEnableSlot](#setnotificationenableslot)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// setNotificationEnableSlot
+let setNotificationEnableSlotCallback = (err: BusinessError): void => {
+    if (err) {
+        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("setNotificationEnableSlot success");
+    }
+};
+notificationManager.setNotificationEnableSlot(
+    { bundle: "ohos.samples.notification", },
+    notificationManager.SlotType.SOCIAL_COMMUNICATION,
+    true,
+    setNotificationEnableSlotCallback);
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let setNotificationEnableSlotCallback = (err: BusinessError): void => {
+    if (err) {
+        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("setNotificationEnableSlot success");
+    }
+};
+
+notificationManager.setNotificationEnableSlot(
+    { bundle: "ohos.samples.notification", },
+    notificationManager.SlotType.SOCIAL_COMMUNICATION,
+    true,
+    false,
+    setNotificationEnableSlotCallback);
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// setNotificationEnableSlot
+notificationManager.setNotificationEnableSlot(
+    { bundle: "ohos.samples.notification", },
+    notificationManager.SlotType.SOCIAL_COMMUNICATION,
+    true).then(() => {
+        console.info("setNotificationEnableSlot success");
+    }).catch((err: BusinessError) => {
+        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+    });
+```
+
+
+<a id="setnotificationenableslot-2"></a>
 
 ## setNotificationEnableSlot
 
@@ -208,4 +228,16 @@ This API can be properly called on devices other than wearables. If it is called
 
 **Examples**
 
-See [setNotificationEnableSlot](#setnotificationenableslot)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// setNotificationEnableSlot
+notificationManager.setNotificationEnableSlot(
+    { bundle: "ohos.samples.notification", },
+    notificationManager.SlotType.SOCIAL_COMMUNICATION,
+    true).then(() => {
+        console.info("setNotificationEnableSlot success");
+    }).catch((err: BusinessError) => {
+        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+    });
+```

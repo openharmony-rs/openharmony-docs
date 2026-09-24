@@ -1,5 +1,9 @@
 # SharingCode (System API)
 
+```TypeScript
+enum SharingCode
+```
+
 Enumerates the error codes for device-cloud sharing.
 
 **Since:** 11

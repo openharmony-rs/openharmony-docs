@@ -12,7 +12,7 @@ declare type FontVariation = import('../api/@ohos.graphics.text').default.FontVa
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.0.1开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

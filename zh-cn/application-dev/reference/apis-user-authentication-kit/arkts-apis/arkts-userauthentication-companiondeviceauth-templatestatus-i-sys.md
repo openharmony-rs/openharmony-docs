@@ -1,5 +1,9 @@
 # TemplateStatus（系统接口）
 
+```TypeScript
+interface TemplateStatus
+```
+
 用于描述已注册的伴随设备认证模板的完整状态信息，包括模板ID、数据确认状态、有效性、用户ID、添加时间、支持的业务范围以及关联的设备状态等。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # Pinch
 
+```TypeScript
+export declare interface Pinch
+```
+
 Defines a pinch event.
 
 **Since:** 10

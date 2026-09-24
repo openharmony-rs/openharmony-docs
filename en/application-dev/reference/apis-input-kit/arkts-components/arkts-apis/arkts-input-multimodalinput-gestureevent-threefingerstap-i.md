@@ -1,5 +1,9 @@
 # ThreeFingersTap
 
+```TypeScript
+export declare interface ThreeFingersTap
+```
+
 Defines a three-finger tap gesture event.
 
 **Since:** 11

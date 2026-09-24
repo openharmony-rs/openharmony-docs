@@ -1,5 +1,9 @@
 # NsaState
 
+```TypeScript
+export enum NsaState
+```
+
 非独立组网状态。
 
 **起始版本：** 6

@@ -1,5 +1,9 @@
 # DataSendProgressInfo
 
+```TypeScript
+export interface DataSendProgressInfo
+```
+
 数据发送信息。
 
 **起始版本：** 11

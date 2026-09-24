@@ -1,5 +1,9 @@
 # OtaMode（系统接口）
 
+```TypeScript
+export enum OtaMode
+```
+
 升级模式。
 
 **起始版本：** 20

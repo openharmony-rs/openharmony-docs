@@ -1,5 +1,9 @@
 # ContinuousAuthParam (System API)
 
+```TypeScript
+interface ContinuousAuthParam
+```
+
 Defines continuous authentication parameters. They are used to configure parameters related to the subscription to the continuous authentication status, for example, specifying the target template to be subscribed to.
 
 **Since:** 23

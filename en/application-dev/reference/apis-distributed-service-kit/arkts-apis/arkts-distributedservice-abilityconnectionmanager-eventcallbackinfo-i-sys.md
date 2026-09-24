@@ -1,5 +1,9 @@
 # EventCallbackInfo
 
+```TypeScript
+interface EventCallbackInfo
+```
+
 Defines the event callback information.
 
 **Since:** 18

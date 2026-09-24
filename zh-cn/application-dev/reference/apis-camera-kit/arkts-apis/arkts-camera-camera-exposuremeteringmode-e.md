@@ -1,5 +1,9 @@
 # ExposureMeteringMode
 
+```TypeScript
+enum ExposureMeteringMode
+```
+
 枚举，曝光测光模式。
 
 **起始版本：** 24

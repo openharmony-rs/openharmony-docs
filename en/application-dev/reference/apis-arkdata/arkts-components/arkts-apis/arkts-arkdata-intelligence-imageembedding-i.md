@@ -1,5 +1,9 @@
 # ImageEmbedding
 
+```TypeScript
+interface ImageEmbedding
+```
+
 Describes the image embedding functions of the multi-modal embedding model.
 
 @interface ImageEmbedding

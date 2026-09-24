@@ -1,5 +1,9 @@
 # TipInfo
 
+```TypeScript
+interface TipInfo
+```
+
 表示认证过程中的提示信息，用于提供认证过程的反馈。
 
 **起始版本：** 9

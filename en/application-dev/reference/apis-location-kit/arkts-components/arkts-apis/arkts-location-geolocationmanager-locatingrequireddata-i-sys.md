@@ -1,5 +1,9 @@
 # LocatingRequiredData (System API)
 
+```TypeScript
+export interface LocatingRequiredData
+```
+
 Describes the structure of the data required for locating.
 
 **Since:** 10

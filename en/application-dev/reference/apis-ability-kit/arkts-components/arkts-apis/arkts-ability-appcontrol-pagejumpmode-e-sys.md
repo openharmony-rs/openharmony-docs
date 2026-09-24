@@ -1,5 +1,9 @@
 # PageJumpMode (System API)
 
+```TypeScript
+export enum PageJumpMode
+```
+
 Enumerates the page jump modes used when an application is blocked.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # ProfileState (System API)
 
+```TypeScript
+export enum ProfileState
+```
+
 Enumerates the profile states.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # FormParam
 
+```TypeScript
+enum FormParam
+```
+
 卡片参数枚举。
 
 **起始版本：** 9

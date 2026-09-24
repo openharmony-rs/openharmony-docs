@@ -1,5 +1,9 @@
 # ContinuousTaskActiveInfo
 
+```TypeScript
+interface ContinuousTaskActiveInfo
+```
+
 Describes the activation information of a continuous task.
 
 **Since:** 20

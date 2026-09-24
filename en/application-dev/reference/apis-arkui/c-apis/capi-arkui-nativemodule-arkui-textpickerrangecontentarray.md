@@ -8,6 +8,8 @@ typedef struct ArkUI_TextPickerRangeContentArray ArkUI_TextPickerRangeContentArr
 
 Defines the data list for the text picker.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

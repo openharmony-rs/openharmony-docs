@@ -1,5 +1,9 @@
 # NotificationRequestProxy
 
+```TypeScript
+interface NotificationRequestProxy
+```
+
 Notification request proxy.
 
 **Since:** 26.0.0

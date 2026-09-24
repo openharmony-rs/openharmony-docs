@@ -37,6 +37,8 @@ DDK_RetCode OH_DDK_CreateAshmem(const uint8_t *name, uint32_t size, DDK_Ashmem *
 
 创建共享内存。为了防止资源泄漏，应通过调用[OH_DDK_DestroyAshmem](capi-ddk-api-h.md#oh_ddk_destroyashmem)接口来销毁不再需要的共享内存。
 
+**系统能力：** SystemCapability.Driver.DDK.Extension
+
 **起始版本：** 12
 
 **参数：**
@@ -51,7 +53,7 @@ DDK_RetCode OH_DDK_CreateAshmem(const uint8_t *name, uint32_t size, DDK_Ashmem *
 
 | 类型 | 说明 |
 | -- | -- |
-| DDK_RetCode | {@link DDK_SUCCESS} 调用接口成功。共享内存已成功创建并初始化完成。<br>    <br>{@link DDK_INVALID_PARAMETER} 入参name为空指针，size的大小为0或者入参ashmem是空指针。请检查传入的参数值。<br>    <br>{@link DDK_FAILURE} 创建共享内存失败或者创建结构体DDK_Ashmem失败。请检查申请的内存大小和权限。 |
+| DDK_RetCode | [DDK_SUCCESS](capi-ddk-types-h.md#ddk_retcode) 调用接口成功。共享内存已成功创建并初始化完成。      <br>[DDK_INVALID_PARAMETER](capi-ddk-types-h.md#ddk_retcode) 入参name为空指针，size的大小为0或者入参ashmem是空指针。请检查传入的参数值。      <br>[DDK_FAILURE](capi-ddk-types-h.md#ddk_retcode) 创建共享内存失败或者创建结构体DDK_Ashmem失败。请检查申请的内存大小和权限。 |
 
 ### OH_DDK_MapAshmem()
 
@@ -62,6 +64,8 @@ DDK_RetCode OH_DDK_MapAshmem(DDK_Ashmem *ashmem, const uint8_t ashmemMapType)
 **描述：**
 
 映射创建的共享内存到用户空间。需先调用[OH_DDK_CreateAshmem](capi-ddk-api-h.md#oh_ddk_createashmem)接口创建共享内存。通过调用[OH_DDK_UnmapAshmem](capi-ddk-api-h.md#oh_ddk_unmapashmem)接口取消映射不需要的共享内存。
+
+**系统能力：** SystemCapability.Driver.DDK.Extension
 
 **起始版本：** 12
 
@@ -76,7 +80,7 @@ DDK_RetCode OH_DDK_MapAshmem(DDK_Ashmem *ashmem, const uint8_t ashmemMapType)
 
 | 类型 | 说明 |
 | -- | -- |
-| DDK_RetCode | {@link DDK_SUCCESS} 调用接口成功。共享内存已映射到用户空间。<br>    <br>{@link DDK_NULL_PTR} 入参ashmem为空指针。请检查传入的参数值。<br>    <br>{@link DDK_FAILURE} 共享内存的文件描述符无效或未先创建共享内存。请检查共享内存是否已被创建、确保文件描述符未被关闭。<br>    <br>{@link DDK_INVALID_OPERATION} 调用接口映射共享内存失败。可能原因包括映射状态异常或权限不足，请检查共享内存的映射状态和权限后重试。 |
+| DDK_RetCode | [DDK_SUCCESS](capi-ddk-types-h.md#ddk_retcode) 调用接口成功。共享内存已映射到用户空间。      <br>[DDK_NULL_PTR](capi-ddk-types-h.md#ddk_retcode) 入参ashmem为空指针。请检查传入的参数值。      <br>[DDK_FAILURE](capi-ddk-types-h.md#ddk_retcode) 共享内存的文件描述符无效或未先创建共享内存。请检查共享内存是否已被创建、确保文件描述符未被关闭。      <br>[DDK_INVALID_OPERATION](capi-ddk-types-h.md#ddk_retcode) 调用接口映射共享内存失败。可能原因包括映射状态异常或权限不足，请检查共享内存的映射状态和权限后重试。 |
 
 ### OH_DDK_UnmapAshmem()
 
@@ -87,6 +91,8 @@ DDK_RetCode OH_DDK_UnmapAshmem(DDK_Ashmem *ashmem)
 **描述：**
 
 取消映射共享内存。需先调用[OH_DDK_MapAshmem](capi-ddk-api-h.md#oh_ddk_mapashmem)接口映射共享内存。不再访问共享内存时应取消映射，以节省地址空间。
+
+**系统能力：** SystemCapability.Driver.DDK.Extension
 
 **起始版本：** 12
 
@@ -100,7 +106,7 @@ DDK_RetCode OH_DDK_UnmapAshmem(DDK_Ashmem *ashmem)
 
 | 类型 | 说明 |
 | -- | -- |
-| DDK_RetCode | {@link DDK_SUCCESS} 调用接口成功。共享内存已成功从用户空间取消映射。<br>    <br>{@link DDK_NULL_PTR} 入参ashmem为空指针。请检查传入的参数值。<br>    <br>{@link DDK_FAILURE} 共享内存的文件描述符无效或未先执行映射。 |
+| DDK_RetCode | [DDK_SUCCESS](capi-ddk-types-h.md#ddk_retcode) 调用接口成功。共享内存已成功从用户空间取消映射。      <br>[DDK_NULL_PTR](capi-ddk-types-h.md#ddk_retcode) 入参ashmem为空指针。请检查传入的参数值。      <br>[DDK_FAILURE](capi-ddk-types-h.md#ddk_retcode) 共享内存的文件描述符无效或未先执行映射。 |
 
 ### OH_DDK_DestroyAshmem()
 
@@ -111,6 +117,8 @@ DDK_RetCode OH_DDK_DestroyAshmem(DDK_Ashmem *ashmem)
 **描述：**
 
 销毁由[OH_DDK_CreateAshmem](capi-ddk-api-h.md#oh_ddk_createashmem)创建的共享内存。建议先调用[OH_DDK_UnmapAshmem](capi-ddk-api-h.md#oh_ddk_unmapashmem)接口取消映射。共享内存不再使用时应及时销毁以释放系统资源。
+
+**系统能力：** SystemCapability.Driver.DDK.Extension
 
 **起始版本：** 12
 
@@ -124,6 +132,6 @@ DDK_RetCode OH_DDK_DestroyAshmem(DDK_Ashmem *ashmem)
 
 | 类型 | 说明 |
 | -- | -- |
-| DDK_RetCode | {@link DDK_SUCCESS} 调用接口成功。共享内存已成功销毁释放。<br>    <br>{@link DDK_NULL_PTR} 入参ashmem为空指针。请检查传入的参数值。<br>    <br>{@link DDK_FAILURE} 共享内存的文件描述符无效。可能原因包括共享内存已被释放或多次销毁，请检查其状态。 |
+| DDK_RetCode | [DDK_SUCCESS](capi-ddk-types-h.md#ddk_retcode) 调用接口成功。共享内存已成功销毁释放。      <br>[DDK_NULL_PTR](capi-ddk-types-h.md#ddk_retcode) 入参ashmem为空指针。请检查传入的参数值。      <br>[DDK_FAILURE](capi-ddk-types-h.md#ddk_retcode) 共享内存的文件描述符无效。可能原因包括共享内存已被释放或多次销毁，请检查其状态。 |
 
 

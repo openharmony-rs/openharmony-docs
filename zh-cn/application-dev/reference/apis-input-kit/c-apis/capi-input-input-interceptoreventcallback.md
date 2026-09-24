@@ -8,6 +8,8 @@ typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallba
 
 拦截回调事件结构体，用于定义输入事件拦截所需的回调函数类型，支持拦截鼠标事件、触屏输入事件、按键事件和轴事件。
 
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
 **起始版本：** 12
 
 **相关模块：** [input](capi-input.md)

@@ -1,5 +1,9 @@
 # XMPMetadata
 
+```TypeScript
+class XMPMetadata
+```
+
 XMPMetadata instance.
 
 **起始版本：** 26.0.0

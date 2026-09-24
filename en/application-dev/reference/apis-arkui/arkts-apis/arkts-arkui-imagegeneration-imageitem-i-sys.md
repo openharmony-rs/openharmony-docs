@@ -1,5 +1,9 @@
 # ImageItem (System API)
 
+```TypeScript
+interface ImageItem
+```
+
 Image information for AI-generated images.
 
 @interface ImageItem

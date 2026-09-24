@@ -1,5 +1,9 @@
 # BeaconManufactureData
 
+```TypeScript
+export interface BeaconManufactureData
+```
+
 Beacon equipment manufacturer data.
 
 **Since:** 20

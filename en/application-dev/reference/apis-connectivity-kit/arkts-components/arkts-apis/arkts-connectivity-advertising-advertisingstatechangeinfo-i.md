@@ -1,5 +1,9 @@
 # AdvertisingStateChangeInfo
 
+```TypeScript
+interface AdvertisingStateChangeInfo
+```
+
 Represents the advertising state change information.
 
 **Since:** 26.0.0

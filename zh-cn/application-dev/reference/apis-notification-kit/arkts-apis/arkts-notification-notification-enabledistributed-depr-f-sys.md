@@ -33,6 +33,8 @@ function enableDistributed(enable: boolean, callback: AsyncCallback<void>): void
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置设备是否支持分布式通知的回调函数。 |
 
 
+<a id="enabledistributed-1"></a>
+
 ## enableDistributed
 
 ```TypeScript

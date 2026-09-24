@@ -1,5 +1,9 @@
 # Router
 
+```TypeScript
+export default class Router
+```
+
 通过不同的uri访问不同的页面。
 
 **起始版本：** 3

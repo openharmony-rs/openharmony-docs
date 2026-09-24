@@ -1,5 +1,9 @@
 # ExifMetadata
 
+```TypeScript
+class ExifMetadata implements Metadata
+```
+
 ExifMetadata implements Metadata
 
 Exchangeable Image File Format (Exif) metadata.
@@ -36,6 +40,36 @@ Clones the Exif metadata. This API returns the result asynchronously through a p
 | --- | --- |
 | Promise&lt;[ExifMetadata](arkts-image-image-exifmetadata-c.md)&gt; | Promise used to return the Exif metadata instance if the operation is successful. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function exifMetadataClone(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    let new_metadata = await metaData.exifMetadata.clone();
+    new_metadata.getProperties(["ImageWidth"]).then((data1) => {
+      console.info(`Succeeded in cloning metadata and getting properties. Data: ${JSON.stringify(data1)}.`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to clone metadata and get properties. Code: ${err.code}, message: ${err.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## createInstance
 
 ```TypeScript
@@ -55,6 +89,17 @@ Creates an empty [ExifMetadata](arkts-image-image-exifmetadata-c.md) instance.
 | Type | Description |
 | --- | --- |
 | [ExifMetadata](arkts-image-image-exifmetadata-c.md) | Empty **ExifMetadata** instance. |
+
+**Examples**
+
+```TypeScript
+async function exifMetadataCreateInstance(context: Context) {
+  let exifMetadata = image.ExifMetadata.createInstance();
+  if (exifMetadata != undefined) {
+    console.info("Succeeded in creating an ExifMetadata instance.");
+  }
+}
+```
 
 ## getAllProperties
 
@@ -76,6 +121,36 @@ Obtains all properties and their values from the image metadata. This API return
 | --- | --- |
 | Promise&lt;Record&lt;string, string &#124; null&gt;&gt; | Promise used to return the values of all properties. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function exifMetadataGetAllProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    await metaData.exifMetadata.getAllProperties().then((data) => {
+      const count = Object.keys(data).length;
+      console.info(`Succeeded in getting all properties. Count: ${count}, data: ${JSON.stringify(data)}.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get all properties. Code: ${error.code}, message: ${error.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## getBlob
 
 ```TypeScript
@@ -95,6 +170,31 @@ Obtains the metadata in binary format. This API uses a promise to return the res
 | Type | Description |
 | --- | --- |
 | Promise&lt;ArrayBuffer&gt; | Promise that returns the binary data of the metadata. |
+
+**Examples**
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function exifMetadataGetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    let blob = await metaData.exifMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+    }
+  }
+}
+```
 
 ## getProperties
 
@@ -130,6 +230,35 @@ For details about the properties, see [PropertyKey](arkts-image-image-propertyke
 | --- | --- |
 | [7600202](../errorcode-image.md#7600202-unsupported-metadata-readwrite-operation) | Unsupported metadata. Possible causes: unsupported metadata type. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function exifMetadataGetProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    await metaData.exifMetadata.getProperties(["ImageWidth", "ImageLength"]).then((data) => {
+      console.info(`Succeeded in getting properties. Data: ${JSON.stringify(data)}.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get properties. Code: ${error.code}, message: ${error.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## setBlob
 
 ```TypeScript
@@ -161,6 +290,36 @@ Replaces the current metadata with binary data. This API uses a promise to retur
 | Error Code ID | Error Message |
 | --- | --- |
 | [7600206](../errorcode-image.md#7600206-invalid-parameter) | Invalid parameter. Possible causes: The blob is empty or has a length of 0. |
+
+**Examples**
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function exifMetadataSetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    let blob = await metaData.exifMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+      metaData.exifMetadata.setBlob(blob);
+    }
+    let new_blob = metaData.exifMetadata.getBlob();
+    if (new_blob != undefined) {
+      console.info("new_blob is not undefined");
+    }
+  }
+}
+```
 
 ## setProperties
 
@@ -195,6 +354,39 @@ For details about the properties, see [PropertyKey](arkts-image-image-propertyke
 | Error Code ID | Error Message |
 | --- | --- |
 | [7600202](../errorcode-image.md#7600202-unsupported-metadata-readwrite-operation) | Unsupported metadata. Possible causes: unsupported metadata type. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function exifMetadataSetProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    let setkey: Record<string, string | null> = {
+      "ImageWidth": "200",
+      "ImageLength": "300"
+    };
+    await metaData.exifMetadata.setProperties(setkey).then(async () => {
+      console.info('Succeeded in setting properties.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
+    })
+  } else {
+    console.error('metadata is null. ');
+  }
+}
+```
 
 ## apertureValue
 

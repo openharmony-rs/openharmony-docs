@@ -8,6 +8,8 @@ typedef struct OHIPCParcel OHIPCParcel
 
 IPC序列化结构体，用于在跨进程通信中序列化和反序列化数据。该对象需要通过相关函数创建和销毁，开发者需要遵循对象的生命周期管理规范，正确管理内存资源。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 **起始版本：** 12
 
 **相关模块：** [OHIPCParcel](capi-ohipcparcel.md)

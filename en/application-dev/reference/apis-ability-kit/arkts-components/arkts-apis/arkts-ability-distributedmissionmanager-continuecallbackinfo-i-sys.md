@@ -1,5 +1,9 @@
 # ContinueCallbackInfo (System API)
 
+```TypeScript
+interface ContinueCallbackInfo
+```
+
 Defines the information about the callback that is triggered for mission continuation state changes.
 
 **Since:** 11

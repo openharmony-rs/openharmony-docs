@@ -1,5 +1,9 @@
 # TargetInfo
 
+```TypeScript
+export interface TargetInfo
+```
+
 指定组件绑定的目标节点。
 
 **起始版本：** 18
@@ -41,7 +45,7 @@ id: string | number
 
 指定popup或menu绑定的目标节点。<br>**说明：** <br>
 1. 当id是number时，对应组件实例的UniqueID，此id由系统保证唯一性。<br>
-2. 当id是string时，对应通用属性id所指定的组件
+2. 当id是string时，对应[通用属性id](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id)所指定的组件
 此id的唯一性需由开发者确保，但实际可能会有多个相同id的组件的可能性。
 
 **类型：** string &#124; number

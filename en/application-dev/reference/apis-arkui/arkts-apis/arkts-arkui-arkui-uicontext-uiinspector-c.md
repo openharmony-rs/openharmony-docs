@@ -1,5 +1,9 @@
 # UIInspector
 
+```TypeScript
+export class UIInspector
+```
+
 Provides APIs for registering the component layout and drawing display completion callbacks.
 
 **Since:** 10
@@ -35,13 +39,58 @@ Registers a callback for layout and drawing display completion notifications for
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | ID of the target component, set using the universal attributes id or key. |
+| id | string | Yes | ID of the target component, set using the universal attributes [id](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id) or [key](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#key). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
 | [inspector.ComponentObserver](arkts-arkui-inspector-componentobserver-i.md) | Component observer, which is used to register or unregister listeners for completion of component layout or drawing display. |
+
+**Examples**
+
+```TypeScript
+import { inspector, UIInspector } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct UIInspectorExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Text('UIInspector')
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('TEXT_ID')
+        }.width(80)
+      }.width(80)
+    }.height(320).width(360).padding({ right: 10, top: 10 })
+  }
+
+  uiInspector: UIInspector = this.getUIContext().getUIInspector();
+  listener:inspector.ComponentObserver = this.uiInspector.createComponentObserver('TEXT_ID');
+
+  aboutToAppear() {
+    let onLayoutComplete: () => void = (): void => {
+      console.info('TEXT_ID layout complete');
+    }
+    let onDrawComplete: () => void = (): void => {
+      console.info('TEXT_ID draw complete');
+    }
+
+    this.listener.on('layout', onLayoutComplete);
+    this.listener.on('draw', onDrawComplete);
+
+    // Unregister callbacks through the handle. You should decide when to call these APIs.
+    // this.listener.off('layout', onLayoutComplete)
+    // this.listener.off('draw', onDrawComplete)
+  }
+}
+```
+
+<a id="createcomponentobserver-1"></a>
 
 ## createComponentObserver
 
@@ -63,10 +112,59 @@ Registers a callback for layout and drawing display completion notifications for
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string &#124; number | Yes | When the type is string, it indicates the ID of the specified component, set using the universal attributes id or key.<br>When the type is number, it indicates the unique ID of the node allocated by the system, obtained through <br>getUniqueId. When using the unique ID to create a listener handle, <br>ensure that the node corresponding to the unique ID exists. Otherwise, the listener does not take effect. <br>The value of the parameter in the number type is an integer ranging from 1 to 2147483647. |
+| id | string &#124; number | Yes | When the type is string, it indicates the ID of the specified component, set using the universal attributes [id](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id) or [key](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#key). <br>When the type is number, it indicates the unique ID of the node allocated by the system, obtained through <br>[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid). When using the unique ID to create a listener handle, <br>ensure that the node corresponding to the unique ID exists. Otherwise, the listener does not take effect. <br>The value of the parameter in the number type is an integer ranging from 1 to 2147483647. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
 | [inspector.ComponentObserver](arkts-arkui-inspector-componentobserver-i.md) | Component observer, which is used to register or unregister listeners for completion of component layout or drawing display. |
+
+**Examples**
+
+```TypeScript
+import { inspector, UIInspector } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct UIInspectorExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Text('UIInspector')
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('TEXT_ID')
+        }.width(80)
+      }.width(80)
+    }.height(320).width(360).padding({ right: 10, top: 10 })
+  }
+
+  uiInspector: UIInspector = this.getUIContext().getUIInspector();
+  listener:inspector.ComponentObserver = this.uiInspector.createComponentObserver('TEXT_ID');
+
+  aboutToAppear() {
+    let onLayoutComplete: () => void = (): void => {
+      console.info('TEXT_ID layout complete');
+    }
+    let onDrawComplete: () => void = (): void => {
+      console.info('TEXT_ID draw complete');
+    }
+    let onLayoutChildrenComplete: () => void = (): void => {
+      console.info('UIInspectorExample children layout');
+    }
+
+    this.listener.on('layout', onLayoutComplete);
+    this.listener.on('draw', onDrawComplete);
+
+    let listenerForThis = this.getUIContext().getUIInspector().createComponentObserver(this.getUniqueId());
+    listenerForThis.onLayoutChildren(onLayoutChildrenComplete);
+
+    // Unregister callbacks through the handle. You should decide when to call these APIs.
+    // this.listener.off('layout', onLayoutComplete)
+    // this.listener.off('draw', onDrawComplete)
+  }
+}
+```

@@ -1,5 +1,9 @@
 # Frame
 
+```TypeScript
+export declare interface Frame
+```
+
 Sets or returns the layout size and position of the component.
 
 **Since:** 11

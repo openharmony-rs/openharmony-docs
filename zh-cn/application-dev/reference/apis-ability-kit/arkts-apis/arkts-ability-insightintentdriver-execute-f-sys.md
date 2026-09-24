@@ -35,9 +35,9 @@ function execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.Exec
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -89,32 +89,8 @@ import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
   }
 ```
 
-```TypeScript
-import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  async function executeSearchMusicIntentPromise() {
-    let param: insightIntentDriver.ExecuteParam = {
-      bundleName: 'com.ohos.intentexecutedemo',
-      moduleName: 'entry',
-      abilityName: 'EntryAbility',
-      insightIntentName: 'PlayMusic',
-      insightIntentParam: {
-        songName: 'City Of Stars',
-      },
-      executeMode: insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND,
-    };
-
-    try {
-      let resultData: insightIntent.ExecuteResult = await insightIntentDriver.execute(param);
-      hilog.info(0x0000, 'testTag', 'execute insight intent return %{public}d', resultData.code);
-      hilog.info(0x0000, 'testTag', 'execute insight intent result %{public}s', JSON.stringify(resultData.result));
-    } catch (error) {
-      hilog.error(0x0000, 'testTag', 'execute insight intent error caught %{public}s', JSON.stringify(error));
-    }
-  }
-```
-
+<a id="execute-1"></a>
 
 ## execute
 
@@ -150,9 +126,9 @@ function execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -172,4 +148,28 @@ function execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 
 **示例**
 
-参见 [execute](#execute)
+```TypeScript
+import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  async function executeSearchMusicIntentPromise() {
+    let param: insightIntentDriver.ExecuteParam = {
+      bundleName: 'com.ohos.intentexecutedemo',
+      moduleName: 'entry',
+      abilityName: 'EntryAbility',
+      insightIntentName: 'PlayMusic',
+      insightIntentParam: {
+        songName: 'City Of Stars',
+      },
+      executeMode: insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND,
+    };
+
+    try {
+      let resultData: insightIntent.ExecuteResult = await insightIntentDriver.execute(param);
+      hilog.info(0x0000, 'testTag', 'execute insight intent return %{public}d', resultData.code);
+      hilog.info(0x0000, 'testTag', 'execute insight intent result %{public}s', JSON.stringify(resultData.result));
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', 'execute insight intent error caught %{public}s', JSON.stringify(error));
+    }
+  }
+```

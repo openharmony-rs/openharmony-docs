@@ -1,5 +1,9 @@
 # HighlightAlbumChangeAttribute (System API)
 
+```TypeScript
+enum HighlightAlbumChangeAttribute
+```
+
 Enumerates the attributes of a highlights album.
 
 **Since:** 21

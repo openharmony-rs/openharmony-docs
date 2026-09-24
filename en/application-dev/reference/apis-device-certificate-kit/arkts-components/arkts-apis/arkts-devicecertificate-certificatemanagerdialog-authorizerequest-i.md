@@ -1,5 +1,9 @@
 # AuthorizeRequest
 
+```TypeScript
+export interface AuthorizeRequest
+```
+
 Represents the authorization request information of the credentials.
 
 **Since:** 22

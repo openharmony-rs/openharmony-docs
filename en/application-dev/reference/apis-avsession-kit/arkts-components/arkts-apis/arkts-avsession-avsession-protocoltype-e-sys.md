@@ -1,5 +1,9 @@
 # ProtocolType
 
+```TypeScript
+enum ProtocolType
+```
+
 Define different protocol capability
 
 **Since:** 11

@@ -33,9 +33,9 @@ function importVCard(context: Context, filePath: string, accountId: number, call
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs.<br>**适用版本：** 11 - 22 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs.<br>**适用版本：** 11 - 22 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
@@ -59,41 +59,8 @@ class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { window } from '@kit.ArkUI';
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { vcard } from '@kit.TelephonyKit';
 
-class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage) {
-        let filePath: string = '/data/storage/vcf/contacts.vcf';
-        let accountId: number = 0;
-        vcard.importVCard(this.context, filePath, accountId).then(() => {
-            console.info(`importVCard success.`);
-        }).catch((err: BusinessError) => {
-            console.error(`importVCard failed, promise: err->${JSON.stringify(err)}`);
-        });
-    }
-}
-```
-
-```TypeScript
-import { window } from '@kit.ArkUI';
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { vcard } from '@kit.TelephonyKit';
-
-class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage) {
-        let filePath: string = "/data/storage/vcf/contacts.vcf";
-        vcard.importVCard(this.context, filePath, (err: BusinessError) => {
-            console.error(`callback: err->${JSON.stringify(err)}`);
-        });
-    }
-}
-```
-
+<a id="importvcard-1"></a>
 
 ## importVCard
 
@@ -127,17 +94,36 @@ function importVCard(context: Context, filePath: string, accountId?: number): Pr
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs.<br>**适用版本：** 11 - 22 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs.<br>**适用版本：** 11 - 22 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
 **示例**
 
-参见 importVCard
+```TypeScript
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { vcard } from '@kit.TelephonyKit';
 
+class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+        let filePath: string = '/data/storage/vcf/contacts.vcf';
+        let accountId: number = 0;
+        vcard.importVCard(this.context, filePath, accountId).then(() => {
+            console.info(`importVCard success.`);
+        }).catch((err: BusinessError) => {
+            console.error(`importVCard failed, promise: err->${JSON.stringify(err)}`);
+        });
+    }
+}
+```
+
+
+<a id="importvcard-2"></a>
 
 ## importVCard
 
@@ -165,13 +151,27 @@ function importVCard(context: Context, filePath: string, callback: AsyncCallback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs.<br>**适用版本：** 11 - 22 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs.<br>**适用版本：** 11 - 22 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
 **示例**
 
-参见 importVCard
+```TypeScript
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { vcard } from '@kit.TelephonyKit';
+
+class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+        let filePath: string = "/data/storage/vcf/contacts.vcf";
+        vcard.importVCard(this.context, filePath, (err: BusinessError) => {
+            console.error(`callback: err->${JSON.stringify(err)}`);
+        });
+    }
+}
+```

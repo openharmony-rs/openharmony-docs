@@ -1,5 +1,9 @@
 # OffscreenCanvas
 
+```TypeScript
+export declare class OffscreenCanvas
+```
+
 OffscreenCanvas provides a Canvas object that can be rendered off-screen. It works in both window and Web worker environments.
 
 **Since:** 11

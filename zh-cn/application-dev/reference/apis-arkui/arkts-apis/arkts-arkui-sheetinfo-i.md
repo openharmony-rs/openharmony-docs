@@ -1,5 +1,9 @@
 # SheetInfo
 
+```TypeScript
+interface SheetInfo
+```
+
 弹窗中的选项内容，每一项支持设置文本、图标以及选中的回调。
 
 **起始版本：** 8
@@ -15,6 +19,8 @@ action: VoidCallback
 选项选中的回调。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -33,6 +39,8 @@ string格式可用于加载网络图片和本地图片，常用于加载网络�
 **类型：** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -53,6 +61,8 @@ title: string | Resource
 **类型：** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

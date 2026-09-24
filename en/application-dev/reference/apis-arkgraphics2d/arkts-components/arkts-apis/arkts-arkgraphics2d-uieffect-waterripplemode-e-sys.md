@@ -1,5 +1,9 @@
 # WaterRippleMode (System API)
 
+```TypeScript
+enum WaterRippleMode
+```
+
 Water ripple scene mode enumeration.
 
 **Since:** 12

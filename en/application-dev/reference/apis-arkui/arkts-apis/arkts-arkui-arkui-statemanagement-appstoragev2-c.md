@@ -1,5 +1,9 @@
 # AppStorageV2
 
+```TypeScript
+export declare class AppStorageV2
+```
+
 For details about how to use AppStorageV2, see [AppStorageV2: Storing Application-wide UI State](../../../ui/state-management/arkts-new-appstoragev2.md).
 
 **Since:** 12

@@ -8,6 +8,8 @@ typedef struct ArkUI_AccessibilityState ArkUI_AccessibilityState
 
 Defines the accessibility state for the component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

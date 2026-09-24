@@ -1,5 +1,9 @@
 # VideoLiveControlGroup
 
+```TypeScript
+enum VideoLiveControlGroup
+```
+
 视频直播控件组枚举。仅当[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md) 为VIDEO_LIVE时使用。
 
 **起始版本：** 12

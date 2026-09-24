@@ -1,5 +1,9 @@
 # LocatingPriority
 
+```TypeScript
+export enum LocatingPriority
+```
+
 Enum for locating priority.
 
 **Since:** 12

@@ -43,6 +43,8 @@ Synchronizes the cached data of a file to storage. This API uses a promise to re
 | 13900042 | Unknown error |
 
 
+<a id="fsync-1"></a>
+
 ## fsync
 
 ```TypeScript

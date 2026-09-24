@@ -1,5 +1,9 @@
 # PublishedItem（系统接口）
 
+```TypeScript
+interface PublishedItem
+```
+
 指定发布的数据类型。
 
 **起始版本：** 10

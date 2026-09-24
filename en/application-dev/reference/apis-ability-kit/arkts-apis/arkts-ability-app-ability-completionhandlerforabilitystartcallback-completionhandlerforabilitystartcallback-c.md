@@ -1,5 +1,9 @@
 # CompletionHandlerForAbilityStartCallback
 
+```TypeScript
+export class CompletionHandlerForAbilityStartCallback
+```
+
 CompletionHandlerForAbilityStartCallback provides two callback functions, **onRequestSuccess** and **onRequestFailure**, which are invoked when launching the specified ability succeeds or fails, respectively.
 
 **Since:** 21

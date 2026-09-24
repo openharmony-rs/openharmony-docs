@@ -1,5 +1,9 @@
 # Vec4
 
+```TypeScript
+export interface Vec4
+```
+
 A four-dimensional vector used to represent a point, a direction, or a vector transformation in 4D space. It consists of four components: x, y, z, and w. The fourth component (w) enhances normalization and convenience for various calculations and transformations.
 
 @typedef Vec4

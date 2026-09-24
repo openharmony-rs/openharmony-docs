@@ -40,9 +40,9 @@ function cancelAsBundle(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -70,33 +70,8 @@ let userId: number = 100;
 notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBundleCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 被代理应用的包名
-let representativeBundle: string = 'com.example.demo';
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 100;
-notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
-    console.info('cancelAsBundle success');
-}).catch((err: BusinessError) => {
-    console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let representativeBundle: notificationManager.BundleOption = {
-  bundle: 'bundleName1',
-};
-notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
-    console.info('cancelAsBundle success');
-}).catch((err: BusinessError) => {
-    console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="cancelasbundle-1"></a>
 
 ## cancelAsBundle
 
@@ -132,9 +107,9 @@ function cancelAsBundle(id: number, representativeBundle: string, userId: number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -144,8 +119,22 @@ function cancelAsBundle(id: number, representativeBundle: string, userId: number
 
 **示例**
 
-参见 [cancelAsBundle](#cancelasbundle)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// 被代理应用的包名
+let representativeBundle: string = 'com.example.demo';
+// 用户ID，使用时需替换为真实的userId。
+let userId: number = 100;
+notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
+    console.info('cancelAsBundle success');
+}).catch((err: BusinessError) => {
+    console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+
+<a id="cancelasbundle-2"></a>
 
 ## cancelAsBundle
 
@@ -180,9 +169,9 @@ function cancelAsBundle(representativeBundle: BundleOption, id: number): Promise
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -193,4 +182,15 @@ function cancelAsBundle(representativeBundle: BundleOption, id: number): Promise
 
 **示例**
 
-参见 [cancelAsBundle](#cancelasbundle)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let representativeBundle: notificationManager.BundleOption = {
+  bundle: 'bundleName1',
+};
+notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
+    console.info('cancelAsBundle success');
+}).catch((err: BusinessError) => {
+    console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # CmsRecipientEncryptionAlgorithm
 
+```TypeScript
+enum CmsRecipientEncryptionAlgorithm
+```
+
 Enumerates the content-encryption algorithms for CMS enveloped data.
 
 **Since:** 22

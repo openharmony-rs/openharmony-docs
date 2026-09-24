@@ -1,5 +1,9 @@
 # CpuUsageHighPolicy
 
+```TypeScript
+interface CpuUsageHighPolicy
+```
+
 提供CPU高负载事件配置策略的定义。
 
 > **注意：**

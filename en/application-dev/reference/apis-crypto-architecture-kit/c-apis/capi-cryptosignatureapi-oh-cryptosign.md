@@ -8,6 +8,8 @@ typedef struct OH_CryptoSign OH_CryptoSign
 
 Signing structure, representing a signing context.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Related module**: [CryptoSignatureApi](capi-cryptosignatureapi.md)

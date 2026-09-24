@@ -1,5 +1,9 @@
 # CredentialInfo (System API)
 
+```TypeScript
+interface CredentialInfo
+```
+
 Defines the credential information.
 
 **Since:** 8

@@ -1,12 +1,16 @@
 # TabTitleBar
 
+```TypeScript
+export declare struct TabTitleBar
+```
+
 TabTitleBar是页签型标题栏组件，支持页签列表与关联内容的联动切换，并可配置右侧菜单项。适用于需要通过页签切换页面内容的场景，如顶部导航栏等。该组件通过页签和菜单项的灵活配置，可满足不同的交互需求。仅支持一级页面的页签切换。
 
 > **说明：** 
 > 
 > - 该组件仅可在Stage模型下使用。
 > 
-> - 设置TabTitleBar的通用属性或通用事件时，编译工具链会在__Common__节点上挂载而非直接应用到组件本身，可能导致设置不生效或不符合预期，因此不建议设置。
+> - 设置TabTitleBar的[通用属性](../arkts-components/arkts-arkui-common-comp.md#common)或[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)时，编译工具链会在__Common__节点上挂载而非直接应用到组件本身，可能导致设置不生效或不符合预期，因此不建议设置。
 
 ## 子组件
 

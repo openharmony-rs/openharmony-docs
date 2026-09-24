@@ -1,5 +1,9 @@
 # EfficiencyResourcesInfo（系统接口）
 
+```TypeScript
+interface EfficiencyResourcesInfo
+```
+
 能效资源信息。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # SnapshotOptions
 
+```TypeScript
+interface SnapshotOptions
+```
+
 定义截图额外选项。
 
 **起始版本：** 12

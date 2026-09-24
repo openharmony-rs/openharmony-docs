@@ -1,5 +1,9 @@
 # MediaKeyRequestType
 
+```TypeScript
+enum MediaKeyRequestType
+```
+
 Enumerates the types of media key requests.
 
 **Since:** 11

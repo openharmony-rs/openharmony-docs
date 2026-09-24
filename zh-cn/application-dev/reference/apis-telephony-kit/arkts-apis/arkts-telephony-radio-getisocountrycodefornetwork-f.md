@@ -29,7 +29,7 @@ function getISOCountryCodeForNetwork(slotId: number, callback: AsyncCallback<str
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -50,17 +50,8 @@ radio.getISOCountryCodeForNetwork(slotId, (err: BusinessError, data: string) => 
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-radio.getISOCountryCodeForNetwork(slotId).then((data: string) => {
-    console.info(`getISOCountryCodeForNetwork success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getISOCountryCodeForNetwork failed, promise: err code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getisocountrycodefornetwork-1"></a>
 
 ## getISOCountryCodeForNetwork
 
@@ -90,7 +81,7 @@ function getISOCountryCodeForNetwork(slotId: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -98,4 +89,13 @@ function getISOCountryCodeForNetwork(slotId: number): Promise<string>
 
 **示例**
 
-参见 getISOCountryCodeForNetwork
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+radio.getISOCountryCodeForNetwork(slotId).then((data: string) => {
+    console.info(`getISOCountryCodeForNetwork success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getISOCountryCodeForNetwork failed, promise: err code: ${err.code}, message: ${err.message}`);
+});
+```

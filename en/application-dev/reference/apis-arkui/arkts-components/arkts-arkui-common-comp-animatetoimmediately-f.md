@@ -20,5 +20,5 @@ Delivers an explicit animation immediately.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [AnimateParam](arkts-arkui-animateparam-i.md) | Yes | Animation settings. |
+| value | [AnimateParam](arkts-arkui-common-comp-animateparam-i.md) | Yes | Animation settings. |
 | event | () =&gt; void | Yes | Closure function that displays the animation. The system automatically inserts a transition animation for state changes caused by the closure function. |

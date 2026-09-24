@@ -1,5 +1,9 @@
 # InputEventSubTypeMask
 
+```TypeScript
+declare enum InputEventSubTypeMask
+```
+
 Defines the input event subtype mask for monitoring.
 
 **Since:** 26.0.0

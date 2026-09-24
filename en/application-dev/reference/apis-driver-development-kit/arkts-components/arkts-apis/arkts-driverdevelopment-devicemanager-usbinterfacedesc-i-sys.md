@@ -1,5 +1,9 @@
 # USBInterfaceDesc (System API)
 
+```TypeScript
+interface USBInterfaceDesc
+```
+
 Defines the interface descriptor of a USB device.
 
 **Since:** 12

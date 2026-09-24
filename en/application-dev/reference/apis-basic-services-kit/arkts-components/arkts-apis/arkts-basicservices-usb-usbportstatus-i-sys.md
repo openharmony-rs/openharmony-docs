@@ -1,5 +1,9 @@
 # USBPortStatus (System API)
 
+```TypeScript
+interface USBPortStatus
+```
+
 Enumerates USB port roles.
 
 **Since:** 9

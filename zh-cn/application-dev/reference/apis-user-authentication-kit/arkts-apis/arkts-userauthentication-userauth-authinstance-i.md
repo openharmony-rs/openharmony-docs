@@ -1,5 +1,9 @@
 # AuthInstance
 
+```TypeScript
+interface AuthInstance
+```
+
 执行用户认证的对象。
 
 **起始版本：** 9
@@ -43,8 +47,8 @@ cancel: () => void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
 **示例**
@@ -83,7 +87,7 @@ off: (name: AuthEventKey) => void
 
 **废弃版本：** 10
 
-**替代接口：** off
+**替代接口：** [off](arkts-userauthentication-userauth-userauthinstance-i.md#off)
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -97,7 +101,7 @@ off: (name: AuthEventKey) => void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
 **示例**
@@ -144,7 +148,7 @@ on: (name: AuthEventKey, callback: AuthEvent) => void
 
 **废弃版本：** 10
 
-**替代接口：** on
+**替代接口：** [on](arkts-userauthentication-userauth-userauthinstance-i.md#on)
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -159,7 +163,7 @@ on: (name: AuthEventKey, callback: AuthEvent) => void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
 **示例**
@@ -227,8 +231,8 @@ start: () => void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [12500001](../errorcode-useriam.md#12500001-认证不通过) | Authentication failed. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 | [12500003](../errorcode-useriam.md#12500003-认证被取消) | The operation is canceled. |

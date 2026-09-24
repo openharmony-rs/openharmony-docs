@@ -1,5 +1,9 @@
 # NetQuotaPolicy (System API)
 
+```TypeScript
+export interface NetQuotaPolicy
+```
+
 Defines the quota policy for the specified network.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # TransientTaskInfo
 
+```TypeScript
+interface TransientTaskInfo
+```
+
 Describes all transient task information.
 
 **Since:** 20

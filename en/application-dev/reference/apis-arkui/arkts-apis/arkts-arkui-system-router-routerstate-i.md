@@ -1,5 +1,9 @@
 # RouterState
 
+```TypeScript
+export interface RouterState
+```
+
 Defines the routing state.
 
 **Since:** 3

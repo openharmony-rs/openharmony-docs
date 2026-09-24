@@ -1,5 +1,9 @@
 # CylinderGeometry
 
+```TypeScript
+export declare class CylinderGeometry extends GeometryDefinition
+```
+
 A cylinder geometry type that inherits from GeometryDefinition.
 
 > **NOTE:** 

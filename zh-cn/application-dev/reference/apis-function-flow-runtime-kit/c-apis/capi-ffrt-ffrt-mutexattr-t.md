@@ -8,6 +8,8 @@ typedef struct ffrt_mutexattr_t {...} ffrt_mutexattr_t
 
 互斥锁属性结构体，用于存储互斥锁的属性信息。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 10
 
 **相关模块：** [FFRT](capi-ffrt.md)

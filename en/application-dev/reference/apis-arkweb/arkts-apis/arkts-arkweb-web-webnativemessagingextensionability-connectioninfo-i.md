@@ -1,5 +1,9 @@
 # ConnectionInfo
 
+```TypeScript
+export interface ConnectionInfo
+```
+
 Represents the information object of the web native messaging connection.
 
 **Since:** 21

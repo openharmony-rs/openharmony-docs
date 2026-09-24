@@ -1,5 +1,9 @@
 # CmsCertType
 
+```TypeScript
+enum CmsCertType
+```
+
 从CMS中获取证书不同类型的枚举。
 
 **起始版本：** 22

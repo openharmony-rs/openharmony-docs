@@ -1,5 +1,9 @@
 # TcpNetPortStatesInfo
 
+```TypeScript
+export interface TcpNetPortStatesInfo
+```
+
 Describes the TCP port state information.
 
 **Since:** 24

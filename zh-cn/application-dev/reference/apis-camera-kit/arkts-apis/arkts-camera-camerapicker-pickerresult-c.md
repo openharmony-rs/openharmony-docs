@@ -1,5 +1,9 @@
 # PickerResult
 
+```TypeScript
+class PickerResult
+```
+
 相机选择器的处理结果。
 
 **起始版本：** 11

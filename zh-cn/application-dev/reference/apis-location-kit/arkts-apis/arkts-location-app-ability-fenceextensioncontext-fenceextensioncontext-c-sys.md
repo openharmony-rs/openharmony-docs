@@ -1,5 +1,9 @@
 # FenceExtensionContext
 
+```TypeScript
+export default class FenceExtensionContext extends ExtensionContext
+```
+
 FenceExtensionContext，继承自ExtensionContext，是FenceExtensionAbility的上下文环境。
 
 @extends ExtensionContext
@@ -48,8 +52,8 @@ startAbility(want: Want): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -64,38 +68,3 @@ startAbility(want: Want): Promise<void>
 | [16200001](../../apis-ability-kit/errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
 **示例**
-
-```TypeScript
-import { FenceExtensionAbility, geoLocationManager } from '@kit.LocationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-
-export class MyFenceExtensionAbility extends FenceExtensionAbility {
-  onFenceStatusChange(transition: geoLocationManager.GeofenceTransition, additions: Record<string, string>): void {
-    // 接受围栏状态变化事件，处理业务逻辑
-    console.info(`on geofence transition,id:${transition.geofenceId},event:${transition.transitionEvent},additions:${JSON.stringify(additions)}`);
-    let want: Want = {
-      bundleName: "com.example.myapp",
-      abilityName: "MyServiceExtensionAbility"
-    };
-    try {
-      this.context.startAbility(want)
-        .then(() => {
-          // 执行正常业务
-          console.info('startAbility succeed');
-        })
-        .catch((error: BusinessError) => {
-          // 处理业务逻辑错误
-          console.error('startAbility failed, error.code: ' + JSON.stringify(error.code) +
-            ' error.message: ' + JSON.stringify(error.message));
-        });
-    } catch (paramError) {
-      // 处理入参错误异常
-      let code = (paramError as BusinessError).code;
-      let message = (paramError as BusinessError).message;
-      console.error('startAbility failed, error.code: ' + JSON.stringify(code) +
-        ' error.message: ' + JSON.stringify(message));
-    }
-  }
-}
-```

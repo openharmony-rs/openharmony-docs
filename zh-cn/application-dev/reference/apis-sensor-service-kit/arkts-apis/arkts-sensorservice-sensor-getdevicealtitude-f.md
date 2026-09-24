@@ -30,7 +30,7 @@ function getDeviceAltitude(seaPressure: number, currentPressure: number, callbac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**
@@ -56,26 +56,8 @@ try {
 }
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 使用try catch对可能出现的异常进行捕获
-try {
-  let seaPressure = 1013.2;
-  let currentPressure = 1500.0;
-  const promise = sensor.getDeviceAltitude(seaPressure, currentPressure);
-  promise.then((data: number) => {
-    console.info('Succeeded in getting sensor_getDeviceAltitude_Promise', data);
-  }, (err: BusinessError) => {
-    console.error(`Failed to get altitude. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to get altitude. Code: ${e.code}, message: ${e.message}`);
-}
-```
-
+<a id="getdevicealtitude-1"></a>
 
 ## getDeviceAltitude
 
@@ -106,9 +88,27 @@ function getDeviceAltitude(seaPressure: number, currentPressure: number): Promis
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**
 
-参见 getDeviceAltitude
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let seaPressure = 1013.2;
+  let currentPressure = 1500.0;
+  const promise = sensor.getDeviceAltitude(seaPressure, currentPressure);
+  promise.then((data: number) => {
+    console.info('Succeeded in getting sensor_getDeviceAltitude_Promise', data);
+  }, (err: BusinessError) => {
+    console.error(`Failed to get altitude. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get altitude. Code: ${e.code}, message: ${e.message}`);
+}
+```

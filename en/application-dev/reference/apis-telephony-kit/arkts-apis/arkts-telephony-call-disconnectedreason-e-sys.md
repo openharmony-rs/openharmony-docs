@@ -1,5 +1,9 @@
 # DisconnectedReason (System API)
 
+```TypeScript
+export enum DisconnectedReason
+```
+
 Enumerates call disconnection causes.
 
 **Since:** 8

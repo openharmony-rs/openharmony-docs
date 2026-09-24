@@ -1,5 +1,9 @@
 # AccessibilityCustomAction
 
+```TypeScript
+declare interface AccessibilityCustomAction
+```
+
 Custom accessibility action API.
 
 **Since:** 26.0.0

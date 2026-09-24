@@ -1,5 +1,9 @@
 # DeviceEventStats (System API)
 
+```TypeScript
+interface DeviceEventStats
+```
+
 **Since:** 9
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App

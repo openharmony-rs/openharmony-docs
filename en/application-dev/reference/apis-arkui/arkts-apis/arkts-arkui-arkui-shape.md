@@ -30,6 +30,43 @@ import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 
 ## Examples
 
-```TypeScript
 This example demonstrates how to use [clipShape](../arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12) and [maskShape](../arkui-ts/ts-universal-attributes-sharp-clipping.md#maskshape12) to clip and mask images into different shapes.
+
+```TypeScript
+import { CircleShape, EllipseShape, PathShape, RectShape } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ShapeExample {
+  build() {
+    Column({ space: 15 }) {
+      Text('CircleShape, position').fontSize(20).width('75%').fontColor('#DCDCDC')
+      // Replace $r('app.media.startIcon') with the resource file you use.
+      Image($r('app.media.startIcon'))
+        .clipShape(new CircleShape({ width: '280px', height: '280px' }).position({ x: '20px', y: '20px' }))
+        .width('500px').height('280px')
+
+      Text('EllipseShape, offset').fontSize(20).width('75%').fontColor('#DCDCDC')
+      // Replace $r('app.media.startIcon') with the resource file you use.
+      Image($r('app.media.startIcon'))
+        .clipShape(new EllipseShape({ width: '350px', height: '280px' }).offset({ x: '10px', y: '10px' }))
+        .width('500px').height('280px')
+
+      Text('PathShape, fill').fontSize(20).width('75%').fontColor('#DCDCDC')
+      // Replace $r('app.media.startIcon') with the resource file you use.
+      Image($r('app.media.startIcon'))
+        // Use SVG path commands to draw a triangle as the mask shape.
+        .maskShape(new PathShape().commands('M100 0 L200 240 L0 240 Z').fill(Color.Red))
+        .width('500px').height('280px')
+    
+      Text('RectShape, width, height, fill').fontSize(20).width('75%').fontColor('#DCDCDC')
+      // Replace $r('app.media.startIcon') with the resource file you use.
+      Image($r('app.media.startIcon'))
+        .maskShape(new RectShape().width('350px').height('280px').fill(Color.Red))
+        .width('500px').height('280px')
+    }
+    .width('100%')
+    .margin({ top: 15 })
+  }
+}
 ```

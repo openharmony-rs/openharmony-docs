@@ -32,6 +32,8 @@ Obtains the ability running information. This API uses a promise to return the r
 | Promise&lt;Array&lt;[AbilityRunningInfo](arkts-ability-abilityrunninginfo-i.md)&gt;&gt; | Promise used to return the ability running information. |
 
 
+<a id="getabilityrunninginfos-1"></a>
+
 ## getAbilityRunningInfos
 
 ```TypeScript

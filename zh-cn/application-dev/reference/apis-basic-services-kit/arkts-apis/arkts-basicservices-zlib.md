@@ -18,8 +18,8 @@ import { zlib } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [compressFile](arkts-basicservices-zlib-compressfile-f.md) | 压缩文件，压缩的结果。使用callback异步回调。 |
-| [compressFile](arkts-basicservices-zlib-compressfile-f.md) | 压缩文件，压缩的结果。使用Promise异步回调。 |
+| [compressFile](arkts-basicservices-zlib-compressfile-f.md#compressfile) | 压缩文件，压缩的结果。使用callback异步回调。 |
+| [compressFile](arkts-basicservices-zlib-compressfile-f.md#compressfile-1) | 压缩文件，压缩的结果。使用Promise异步回调。 |
 | [compressFiles](arkts-basicservices-zlib-compressfiles-f.md) | 压缩指定的多个文件。使用Promise异步回调。 |
 | [createChecksum](arkts-basicservices-zlib-createchecksum-f.md) | 创建校验对象。使用Promise异步回调。 |
 | [createChecksumSync](arkts-basicservices-zlib-createchecksumsync-f.md) | 创建校验对象。成功时返回Checksum对象实例。 |
@@ -27,9 +27,9 @@ import { zlib } from '@kit.BasicServicesKit';
 | [createGZipSync](arkts-basicservices-zlib-creategzipsync-f.md) | 创建GZip对象。成功时返回GZip对象实例。 |
 | [createZip](arkts-basicservices-zlib-createzip-f.md) | 创建压缩解压缩对象实例。使用Promise异步回调。 |
 | [createZipSync](arkts-basicservices-zlib-createzipsync-f.md) | 创建压缩解压缩对象实例，成功时返回压缩解压缩对象实例。 |
-| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md) | 解压文件，解压的结果。使用callback异步回调。 |
-| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md) | 解压文件，解压的结果。使用callback异步回调。 |
-| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md) | 解压文件，解压的结果。使用Promise异步回调。 |
+| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile) | 解压文件，解压的结果。使用callback异步回调。 |
+| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile-1) | 解压文件，解压的结果。使用callback异步回调。 |
+| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile-2) | 解压文件，解压的结果。使用Promise异步回调。 |
 | [getOriginalSize](arkts-basicservices-zlib-getoriginalsize-f.md) | 获取压缩文件的原始大小。使用Promise异步回调。 |
 | [unzipFile](arkts-basicservices-zlib-unzipfile-f.md) | 解压文件，解压完成后返回执行结果。使用Promise异步回调。 |
 | [zipFile](arkts-basicservices-zlib-zipfile-f.md) | 压缩接口，压缩完成后返回执行结果。使用Promise异步回调。 |
@@ -50,6 +50,13 @@ import { zlib } from '@kit.BasicServicesKit';
 | [ZipOutputInfo](arkts-basicservices-zlib-zipoutputinfo-i.md) | 压缩和解压缩的返回值信息。 |
 | [ZStream](arkts-basicservices-zlib-zstream-i.md) | 处理所有用于压缩和解压缩所需的信息。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [InflateBackInputCallback](arkts-basicservices-zlib-inflatebackinputcallback-t.md) | 一个用于读取用户提供的输入数据的回调函数。当解压缩过程需要更多输入数据时，zlib 将调用此函数。此函数应从数据源读取数据并将其写入缓冲区中。 |
+| [InflateBackOutputCallback](arkts-basicservices-zlib-inflatebackoutputcallback-t.md) | 用户提供的输出数据会被写入回调函数中。每当解压后的数据准备好进行输出时，zlib 就会调用此函数将缓冲区中的数据写入目标位置。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -64,10 +71,3 @@ import { zlib } from '@kit.BasicServicesKit';
 | [ParallelStrategy](arkts-basicservices-zlib-parallelstrategy-e.md) | ParallelStrategy作为[Options](arkts-basicservices-zlib-options-i.md)的一个属性，用于指定压缩或解压时的串行或并行策略。 |
 | [PathSeparatorStrategy](arkts-basicservices-zlib-pathseparatorstrategy-e.md) | PathSeparatorStrategy作为[Options](arkts-basicservices-zlib-options-i.md)的一个属性，用于指定解压时目标压缩包内文件路径中分隔符的处理策略。 |
 | [ReturnStatus](arkts-basicservices-zlib-returnstatus-e.md) | 压缩/解压缩函数的返回代码。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [InflateBackInputCallback](arkts-basicservices-zlib-inflatebackinputcallback-t.md) | 一个用于读取用户提供的输入数据的回调函数。当解压缩过程需要更多输入数据时，zlib 将调用此函数。此函数应从数据源读取数据并将其写入缓冲区中。 |
-| [InflateBackOutputCallback](arkts-basicservices-zlib-inflatebackoutputcallback-t.md) | 用户提供的输出数据会被写入回调函数中。每当解压后的数据准备好进行输出时，zlib 就会调用此函数将缓冲区中的数据写入目标位置。 |

@@ -1,5 +1,9 @@
 # PhotoSelectOptions
 
+```TypeScript
+class PhotoSelectOptions extends BaseSelectOptions
+```
+
 图库选择选项子类，继承于BaseSelectOptions。用于拉起对应userId空间的picker。
 
 **继承/实现关系：** PhotoSelectOptions extends [BaseSelectOptions](arkts-medialibrary-photoaccesshelper-baseselectoptions-c.md)

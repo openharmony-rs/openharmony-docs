@@ -1,6 +1,10 @@
 # UIFontAdjustInfo
 
-系统的UI字体配置信息。
+```TypeScript
+interface UIFontAdjustInfo
+```
+
+字体原本的weight值和显示实际值的映射列表。
 
 **起始版本：** 11
 

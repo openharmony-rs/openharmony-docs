@@ -1,5 +1,9 @@
 # DepthProfile（系统接口）
 
+```TypeScript
+interface DepthProfile
+```
+
 Describes the profile of depth data. It inherits from [Profile](arkts-camera-camera-profile-i.md).
 
 **起始版本：** 13

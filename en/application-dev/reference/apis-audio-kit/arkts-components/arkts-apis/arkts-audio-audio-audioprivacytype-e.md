@@ -1,5 +1,9 @@
 # AudioPrivacyType
 
+```TypeScript
+enum AudioPrivacyType
+```
+
 Enumerates whether an audio stream can be recorded by other applications.
 
 **Since:** 10

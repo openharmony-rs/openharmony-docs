@@ -1,5 +1,9 @@
 # HapModuleQuickFixInfo (System API)
 
+```TypeScript
+export interface HapModuleQuickFixInfo
+```
+
 Defines the quick fix information at the HAP file level.
 
 **Since:** 9

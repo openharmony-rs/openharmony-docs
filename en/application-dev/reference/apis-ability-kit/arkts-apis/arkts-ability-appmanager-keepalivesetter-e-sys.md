@@ -1,5 +1,9 @@
 # KeepAliveSetter (System API)
 
+```TypeScript
+export enum KeepAliveSetter
+```
+
 Enumerates the types of parties that set to keep applications alive.
 
 **Since:** 14

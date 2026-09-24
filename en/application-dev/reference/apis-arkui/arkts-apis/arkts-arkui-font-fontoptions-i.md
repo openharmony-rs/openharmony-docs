@@ -1,5 +1,9 @@
 # FontOptions
 
+```TypeScript
+interface FontOptions
+```
+
 Information about the custom font to register.
 
 > **NOTE:** 

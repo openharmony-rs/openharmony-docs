@@ -1,5 +1,9 @@
 # CallAbilityParam
 
+```TypeScript
+export interface CallAbilityParam
+```
+
 @typedef CallAbilityParam
 
 **Since:** 5

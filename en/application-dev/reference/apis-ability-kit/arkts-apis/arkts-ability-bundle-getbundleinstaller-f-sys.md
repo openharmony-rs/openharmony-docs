@@ -58,6 +58,8 @@ bundle.getBundleInstaller((err, data) => {
 ```
 
 
+<a id="getbundleinstaller-1"></a>
+
 ## getBundleInstaller
 
 ```TypeScript

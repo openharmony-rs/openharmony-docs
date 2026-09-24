@@ -1,5 +1,9 @@
 # BaseSelectOptions
 
+```TypeScript
+export class BaseSelectOptions
+```
+
 Defines the basic options for selecting media files from Gallery.
 
 **Since:** 12

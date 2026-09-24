@@ -1,5 +1,9 @@
 # AudioEncoder
 
+```TypeScript
+enum AudioEncoder
+```
+
 
 > **说明：** 
 > 

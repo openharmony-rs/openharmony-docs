@@ -51,17 +51,8 @@ data.getCellularDataFlowType((err: BusinessError, contextData: data.DataFlowType
 });
 ```
 
-```TypeScript
-import { data } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-data.getCellularDataFlowType().then((contextData: data.DataFlowType) => {
-    console.info(`getCellularDataFlowType success, contextData: ${contextData}`);
-}).catch((err: BusinessError) => {
-    console.error(`getCellularDataFlowType fail. code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getcellulardataflowtype-1"></a>
 
 ## getCellularDataFlowType
 
@@ -95,4 +86,13 @@ Obtains the data flow type of the cellular network (corresponding to the uplink 
 
 **Examples**
 
-See [getCellularDataFlowType](#getcellulardataflowtype)
+```TypeScript
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.getCellularDataFlowType().then((contextData: data.DataFlowType) => {
+    console.info(`getCellularDataFlowType success, contextData: ${contextData}`);
+}).catch((err: BusinessError) => {
+    console.error(`getCellularDataFlowType fail. code: ${err.code}, message: ${err.message}`);
+});
+```

@@ -1,8 +1,12 @@
 # RemoteInfo (System API)
 
+```TypeScript
+interface RemoteInfo
+```
+
 Remote device information.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -23,7 +27,9 @@ Domain ID.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -39,7 +45,9 @@ interaction params in remote control.
 
 **Type:** [RemoteControlParams](arkts-ability-abilitytoolaccessctrl-remotecontrolparams-i-sys.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -55,7 +63,9 @@ Remote device ID.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -71,7 +81,9 @@ Device role.
 
 **Type:** [Role](arkts-ability-abilitytoolaccessctrl-role-e-sys.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 

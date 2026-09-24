@@ -1,5 +1,9 @@
 # MultithreadingDetectionOptions
 
+```TypeScript
+interface MultithreadingDetectionOptions
+```
+
 Multi-thread detection functional parameter configuration
 
 **Since:** 26.0.0

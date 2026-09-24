@@ -1,5 +1,9 @@
 # SolvableErrors (System API)
 
+```TypeScript
+export enum SolvableErrors
+```
+
 Enumerates the solvable errors.
 
 **Since:** 18

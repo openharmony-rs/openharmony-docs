@@ -1,5 +1,9 @@
 # BackgroundBlur
 
+```TypeScript
+export interface BackgroundBlur
+```
+
 Sets a background blur effect.
 
 **Since:** 26.0.0

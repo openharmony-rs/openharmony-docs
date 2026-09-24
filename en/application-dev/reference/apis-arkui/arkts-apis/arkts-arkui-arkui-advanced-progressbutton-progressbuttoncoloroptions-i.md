@@ -1,10 +1,12 @@
 # ProgressButtonColorOptions
 
-Declare Color options of the ProgressButton.
+```TypeScript
+export declare interface ProgressButtonColorOptions
+```
 
-@interface ProgressButtonColorOptions
+Defines the color options for the download button.
 
-**Since:** 22
+**Since:** 18
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,15 +22,17 @@ import { ProgressButton } from '@kit.ArkUI';
 backgroundColor?: ResourceColor
 ```
 
-Set background color of the ProgressButton.
+Background color of the button.
+
+Default value: **$r('sys.color.ohos_id_color_foreground_contrary')**
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
-**Since:** 22
+**Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,15 +42,17 @@ Set background color of the ProgressButton.
 borderColor?: ResourceColor
 ```
 
-Set border color of the ProgressButton.
+Border color of the button.
+
+Default value: **#330A59F7**
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
-**Since:** 22
+**Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,15 +62,17 @@ Set border color of the ProgressButton.
 progressColor?: ResourceColor
 ```
 
-Set progress color of the ProgressButton.
+Color of the progress indicator.
+
+Default value: **#330A59F7**
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
-**Since:** 22
+**Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,14 +82,16 @@ Set progress color of the ProgressButton.
 textColor?: ResourceColor
 ```
 
-Set text color of the ProgressButton.
+Text color of the button.
+
+Default value: system default value **#CE000000**
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
-**Since:** 22
+**Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

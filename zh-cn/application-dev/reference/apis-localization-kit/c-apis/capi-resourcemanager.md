@@ -4,6 +4,8 @@
 
 通过resourcemanager模块，开发者可以在Native层通过资源ID或资源名称获取应用资源或系统资源，实现多语言、多设备和多屏幕密度的 资源适配。具体包括： <br>- 获取基础类型资源：获取颜色值（ARGB格式）、整数、浮点数、布尔值等基础类型资源。 <br>- 获取字符串资源：获取普通字符串、格式化字符串（支持%d、%s、%f占位符）、字符串数组、复数字符串。 <br>- 获取媒体资源：获取媒体资源的原始二进制数据或Base64编码。 <br>- 资源覆盖：运行时动态加载和移除overlay资源，实现主题切换或资源覆盖。 <br>本模块依赖rawfile模块，需先通过rawfile模块获取NativeResourceManager对象。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 ## 文件汇总

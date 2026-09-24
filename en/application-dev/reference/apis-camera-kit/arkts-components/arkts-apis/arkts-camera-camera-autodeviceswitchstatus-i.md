@@ -1,5 +1,9 @@
 # AutoDeviceSwitchStatus
 
+```TypeScript
+interface AutoDeviceSwitchStatus
+```
+
 Describes the information about the automatic camera switch status.
 
 **Since:** 13

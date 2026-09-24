@@ -8,6 +8,8 @@ typedef struct OH_AudioRoutingManager OH_AudioRoutingManager
 
 声明音频路由管理器，用于路由和设备相关功能的音频路由管理器的句柄。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 12
 
 **相关模块：** [OHAudio](capi-ohaudio.md)

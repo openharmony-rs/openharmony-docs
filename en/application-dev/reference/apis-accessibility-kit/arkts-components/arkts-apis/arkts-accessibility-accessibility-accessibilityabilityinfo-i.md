@@ -1,5 +1,9 @@
 # AccessibilityAbilityInfo
 
+```TypeScript
+interface AccessibilityAbilityInfo
+```
+
 Provides information about an accessibility application.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # TransitionAnimation
 
+```TypeScript
+interface TransitionAnimation
+```
+
 Describes the window transition animation.
 
 **Since:** 20

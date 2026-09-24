@@ -36,7 +36,7 @@ This API is used to obtain the DLP sandbox gathering policy of the current syste
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
@@ -52,18 +52,8 @@ dlpPermission.getDLPGatheringPolicy().then((gatheringPolicy: dlpPermission.Gathe
 }); // Obtain the sandbox gathering policy.
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.getDLPGatheringPolicy((err, gatheringPolicy) => {
-  if (err) {
-    console.error(`Failed to get DLPGatheringPolicy. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('gatheringPolicy: ', JSON.stringify(gatheringPolicy));
-  }
-}); // Obtain the sandbox gathering policy.
-```
-
+<a id="getdlpgatheringpolicy-1"></a>
 
 ## getDLPGatheringPolicy
 
@@ -96,10 +86,20 @@ This API is used to obtain the DLP sandbox gathering policy of the current syste
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
 **Examples**
 
-See [getDLPGatheringPolicy](#getdlpgatheringpolicy)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+dlpPermission.getDLPGatheringPolicy((err, gatheringPolicy) => {
+  if (err) {
+    console.error(`Failed to get DLPGatheringPolicy. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('gatheringPolicy: ', JSON.stringify(gatheringPolicy));
+  }
+}); // Obtain the sandbox gathering policy.
+```

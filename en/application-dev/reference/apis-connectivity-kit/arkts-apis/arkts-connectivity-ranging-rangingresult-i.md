@@ -1,5 +1,9 @@
 # RangingResult
 
+```TypeScript
+interface RangingResult
+```
+
 Describes the contents of the ranging results.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # HiRetrievalConfig
 
+```TypeScript
+interface HiRetrievalConfig
+```
+
 HiRetrieval functionality config.
 
 **Since:** 26.0.0
@@ -24,6 +28,8 @@ Custom device model set by developers. No restrictions on format or character ty
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.HiviewDFX.HiRetrieval
@@ -40,6 +46,8 @@ Custom device type set by developers. No restrictions on format or character typ
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.HiviewDFX.HiRetrieval
@@ -55,6 +63,8 @@ Custom user type set by developers. No restrictions on format or character types
 **Type:** string
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 

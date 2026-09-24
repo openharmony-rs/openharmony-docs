@@ -27,6 +27,7 @@
 | [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) | OH_UdmfOptions | 数据操作选项，定义数据操作的可选参数。 |
 | [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) | OH_UdmfDataLoadParams | 表示数据加载参数结构体。 |
 | [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) | OH_UdmfDataLoadInfo | 表示数据加载信息结构体。 |
+| [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) | OH_UDMF_Summary | 描述统一数据的汇总信息。 |
 
 ### 枚举
 
@@ -64,27 +65,27 @@
 | [OH_UdmfRecord* OH_UdmfRecord_Create()](#oh_udmfrecord_create) | - | 创建统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdmfRecord_Destroy](capi-udmf-h.md#oh_udmfrecord_destroy)销毁实例对象，否则会导致内存泄漏。 |
 | [void OH_UdmfRecord_Destroy(OH_UdmfRecord* pThis)](#oh_udmfrecord_destroy) | - | 销毁统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)指针指向的实例对象。 |
 | [int OH_UdmfRecord_AddGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsigned char* entry, unsigned int count)](#oh_udmfrecord_addgeneralentry) | - | 添加用户自定义的通用数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。对于已定义UDS的类型（比如PlainText、Link、Pixelmap等）不可使用该接口。 |
-| [int OH_UdmfRecord_AddPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)](#oh_udmfrecord_addplaintext) | - | 增加纯文本类型{@link OH_UdsPlainText}数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
-| [int OH_UdmfRecord_AddHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)](#oh_udmfrecord_addhyperlink) | - | 增加超链接类型{@link OH_UdsHyperlink}数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
-| [int OH_UdmfRecord_AddHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)](#oh_udmfrecord_addhtml) | - | 增加超文本标记语言类型{@link OH_UdsHtml}数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
-| [int OH_UdmfRecord_AddAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)](#oh_udmfrecord_addappitem) | - | 增加桌面图标类型{@link OH_UdsAppItem}数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
-| [int OH_UdmfRecord_AddFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)](#oh_udmfrecord_addfileuri) | - | 增加文件Uri类型{@link OH_UdsFileUri}数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
-| [int OH_UdmfRecord_AddPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)](#oh_udmfrecord_addpixelmap) | - | 增加像素图片类型{@link OH_UdsPixelMap}数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
-| [int OH_UdmfRecord_AddArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)](#oh_udmfrecord_addarraybuffer) | - | 增加一个ArrayBuffer类型{@link OH_UdsArrayBuffer}的数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
-| [int OH_UdmfRecord_AddContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)](#oh_udmfrecord_addcontentform) | - | 增加一个内容卡片类型{@link OH_UdsContentForm}的数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
+| [int OH_UdmfRecord_AddPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)](#oh_udmfrecord_addplaintext) | - | 增加纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
+| [int OH_UdmfRecord_AddHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)](#oh_udmfrecord_addhyperlink) | - | 增加超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
+| [int OH_UdmfRecord_AddHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)](#oh_udmfrecord_addhtml) | - | 增加超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
+| [int OH_UdmfRecord_AddAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)](#oh_udmfrecord_addappitem) | - | 增加桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
+| [int OH_UdmfRecord_AddFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)](#oh_udmfrecord_addfileuri) | - | 增加文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
+| [int OH_UdmfRecord_AddPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)](#oh_udmfrecord_addpixelmap) | - | 增加像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
+| [int OH_UdmfRecord_AddArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)](#oh_udmfrecord_addarraybuffer) | - | 增加一个ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)的数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
+| [int OH_UdmfRecord_AddContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)](#oh_udmfrecord_addcontentform) | - | 增加一个内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)的数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
 | [char** OH_UdmfRecord_GetTypes(OH_UdmfRecord* pThis, unsigned int* count)](#oh_udmfrecord_gettypes) | - | 获取统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中所有类型的结果集。 |
 | [int OH_UdmfRecord_GetGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsigned char** entry, unsigned int* count)](#oh_udmfrecord_getgeneralentry) | - | 获取统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中的特定类型的数据结果集。 |
-| [int OH_UdmfRecord_GetPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)](#oh_udmfrecord_getplaintext) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取纯文本类型{@link OH_UdsPlainText}数据。 |
-| [int OH_UdmfRecord_GetHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)](#oh_udmfrecord_gethyperlink) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超链接类型{@link OH_UdsHyperlink}数据。 |
-| [int OH_UdmfRecord_GetHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)](#oh_udmfrecord_gethtml) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超文本标记语言类型{@link OH_UdsHtml}数据。 |
-| [int OH_UdmfRecord_GetAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)](#oh_udmfrecord_getappitem) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取桌面图标类型{@link OH_UdsAppItem}数据。 |
-| [int OH_UdmfRecord_GetFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)](#oh_udmfrecord_getfileuri) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取文件Uri类型{@link OH_UdsFileUri}数据。 |
-| [int OH_UdmfRecord_GetPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)](#oh_udmfrecord_getpixelmap) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取像素图片类型{@link OH_UdsPixelMap}数据。 |
+| [int OH_UdmfRecord_GetPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)](#oh_udmfrecord_getplaintext) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)数据。 |
+| [int OH_UdmfRecord_GetHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)](#oh_udmfrecord_gethyperlink) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)数据。 |
+| [int OH_UdmfRecord_GetHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)](#oh_udmfrecord_gethtml) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)数据。 |
+| [int OH_UdmfRecord_GetAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)](#oh_udmfrecord_getappitem) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)数据。 |
+| [int OH_UdmfRecord_GetFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)](#oh_udmfrecord_getfileuri) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)数据。 |
+| [int OH_UdmfRecord_GetPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)](#oh_udmfrecord_getpixelmap) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)数据。 |
 | [int OH_UdmfRecord_SetProvider(OH_UdmfRecord* pThis, const char* const* types, unsigned int count, OH_UdmfRecordProvider* provider)](#oh_udmfrecord_setprovider) | - | 将指定类型的统一数据提供者[OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md)设置至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
-| [int OH_UdmfRecord_GetArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)](#oh_udmfrecord_getarraybuffer) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取ArrayBuffer类型{@link OH_UdsArrayBuffer}数据。 |
-| [int OH_UdmfRecord_GetContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)](#oh_udmfrecord_getcontentform) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取内容卡片类型{@link OH_UdsContentForm}数据。 |
-| [int OH_UdmfData_GetPrimaryPlainText(OH_UdmfData* data, OH_UdsPlainText* plainText)](#oh_udmfdata_getprimaryplaintext) | - | 向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个纯文本类型{@link OH_UdsPlainText}数据。 |
-| [int OH_UdmfData_GetPrimaryHtml(OH_UdmfData* data, OH_UdsHtml* html)](#oh_udmfdata_getprimaryhtml) | - | 向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个超文本标记语言类型{@link OH_UdsHtml}数据。 |
+| [int OH_UdmfRecord_GetArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)](#oh_udmfrecord_getarraybuffer) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)数据。 |
+| [int OH_UdmfRecord_GetContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)](#oh_udmfrecord_getcontentform) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)数据。 |
+| [int OH_UdmfData_GetPrimaryPlainText(OH_UdmfData* data, OH_UdsPlainText* plainText)](#oh_udmfdata_getprimaryplaintext) | - | 向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)数据。 |
+| [int OH_UdmfData_GetPrimaryHtml(OH_UdmfData* data, OH_UdsHtml* html)](#oh_udmfdata_getprimaryhtml) | - | 向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)数据。 |
 | [int OH_UdmfData_GetRecordCount(OH_UdmfData* data)](#oh_udmfdata_getrecordcount) | - | 获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中包含的所有记录数量。 |
 | [OH_UdmfRecord* OH_UdmfData_GetRecord(OH_UdmfData* data, unsigned int index)](#oh_udmfdata_getrecord) | - | 获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中指定位置的数据记录。 |
 | [bool OH_UdmfData_IsLocal(OH_UdmfData* data)](#oh_udmfdata_islocal) | - | 检查统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)是否是来自本端设备的数据。 |
@@ -109,6 +110,11 @@
 | [int OH_UdmfOptions_Reset(OH_UdmfOptions* pThis)](#oh_udmfoptions_reset) | - | 重置数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例为空。 |
 | [Udmf_Visibility OH_UdmfOptions_GetVisibility(OH_UdmfOptions* pThis)](#oh_udmfoptions_getvisibility) | - | 从数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例中获取数据可见性等级。 |
 | [int OH_UdmfOptions_SetVisibility(OH_UdmfOptions* pThis, Udmf_Visibility visibility)](#oh_udmfoptions_setvisibility) | - | 设置数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例中的数据可见性等级。 |
+| [OH_UDMF_Summary *OH_UDMF_CreateSummary(void)](#oh_udmf_createsummary) | - | 创建[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例。 |
+| [void OH_UDMF_DestroySummary(OH_UDMF_Summary *summary)](#oh_udmf_destroysummary) | - | 销毁[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)指针指向的堆内存。 请注意，对于同一个指针，不能重复调用此函数。 |
+| [int OH_UDMF_GetSummaryOverviewTypes(const OH_UDMF_Summary *summary, const char *const **types, int64_t *count)](#oh_udmf_getsummaryoverviewtypes) | - | 获取[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例概览中的所有数据类型。<br> 返回的数组和字符串由summary拥有。调用者不得修改或释放它们。它们在摘要被 [OH_UDMF_DestroySummary](capi-udmf-h.md#oh_udmf_destroysummary)销毁之前一直有效。每个返回的数据类型都是非空的、以NUL结尾的UTF-8字符串。 返回的数据类型顺序未指定。如果概览为空，则*types为nullptr，*count为0。 |
+| [int OH_UDMF_GetSummaryOverviewSize(const OH_UDMF_Summary *summary, const char *type, int64_t *dataSize)](#oh_udmf_getsummaryoverviewsize) | - | 获取与[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的概述中的数据类型关联的数据大小。 |
+| [int OH_UDMF_GetSummaryFilenameExtensions(const OH_UDMF_Summary *summary, const char *const **filenameExtensions, int64_t *count)](#oh_udmf_getsummaryfilenameextensions) | - | 获取[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例中的所有文件扩展名。<br> 每个返回的扩展名包括前导句点，并使用小写ASCII字母，是非空的、以NUL结尾的字符串。 返回的数组和字符串由summary拥有。调用者不得修改或释放它们。它们在摘要被[OH_UDMF_DestroySummary](capi-udmf-h.md#oh_udmf_destroysummary)销毁 或再次成功填充之前一直有效。如果没有有效的文件扩展名可用，*filenameExtensions为nullptr，*count为0。 |
 | [int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfData* unifiedData)](#oh_udmf_getunifieddata) | - | 向统一数据管理框架数据库中获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
 | [int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)](#oh_udmf_getunifieddatabyoptions) | - | 通过数据通路类型从统一数据管理框架数据库中获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
 | [int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)](#oh_udmf_setunifieddata) | - | 向统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
@@ -158,6 +164,8 @@ enum Udmf_Intention
 
 描述UDMF数据通路枚举类型。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -179,6 +187,8 @@ enum Udmf_ShareOption
 
 UDMF支持的设备内使用范围类型枚举。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -197,6 +207,8 @@ enum Udmf_FileConflictOptions
 
 定义文件拷贝冲突时的选项。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 15
 
 | 枚举项 | 描述 |
@@ -214,6 +226,8 @@ enum Udmf_ProgressIndicator
 
 定义进度条指示选项，可选择是否采用系统默认进度显示。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 15
 
 | 枚举项 | 描述 |
@@ -230,6 +244,8 @@ enum Udmf_Visibility
 **描述：**
 
 定义数据的可见性等级。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 20
 
@@ -251,6 +267,8 @@ typedef void (*OH_Udmf_DataProgressListener)(OH_Udmf_ProgressInfo* progressInfo,
 
 定义获取进度信息和数据的监听回调函数。 <br>使用时需要判断数据是否返回空指针。只有当进度达到100%时，才会返回数据。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 15
 
 **参数：**
@@ -269,6 +287,8 @@ typedef OH_UdmfData* (*OH_Udmf_DataLoadHandler)(OH_UdmfDataLoadInfo* acceptableI
 **描述：**
 
 表示用于加载数据的回调函数。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 20
 
@@ -294,6 +314,8 @@ OH_UdmfData* OH_UdmfData_Create()
 
 创建统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdmfData_Destroy](capi-udmf-h.md#oh_udmfdata_destroy)销毁实例对象，否则会导致内存泄漏。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **返回值：**
@@ -316,6 +338,8 @@ void OH_UdmfData_Destroy(OH_UdmfData* pThis)
 **描述：**
 
 销毁统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)指针指向的实例对象。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -340,6 +364,8 @@ int OH_UdmfData_AddRecord(OH_UdmfData* pThis, OH_UdmfRecord* record)
 
 添加一个数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)到统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -353,7 +379,7 @@ int OH_UdmfData_AddRecord(OH_UdmfData* pThis, OH_UdmfRecord* record)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -369,6 +395,8 @@ bool OH_UdmfData_HasType(OH_UdmfData* pThis, const char* type)
 **描述：**
 
 检查统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中是否存在指定类型。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -400,6 +428,8 @@ char** OH_UdmfData_GetTypes(OH_UdmfData* pThis, unsigned int* count)
 
 获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中包含的所有类型结果集。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -429,6 +459,8 @@ OH_UdmfRecord** OH_UdmfData_GetRecords(OH_UdmfData* pThis, unsigned int* count)
 **描述：**
 
 获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中包含的所有记录结果集。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -460,6 +492,8 @@ typedef void (*UdmfData_Finalize)(void* context)
 
 定义用于释放上下文的回调函数，统一数据提供者对象销毁时触发。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -477,6 +511,8 @@ OH_UdmfRecordProvider* OH_UdmfRecordProvider_Create()
 **描述：**
 
 创建一个统一数据提供者[OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdmfRecordProvider_Destroy](capi-udmf-h.md#oh_udmfrecordprovider_destroy)销毁实例对象， 否则会导致内存泄漏。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 13
 
@@ -501,6 +537,8 @@ int OH_UdmfRecordProvider_Destroy(OH_UdmfRecordProvider* provider)
 
 销毁统一数据提供者[OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md)指针指向的实例对象。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -513,7 +551,7 @@ int OH_UdmfRecordProvider_Destroy(OH_UdmfRecordProvider* provider)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -529,6 +567,8 @@ typedef void* (*OH_UdmfRecordProvider_GetData)(void* context, const char* type)
 **描述：**
 
 定义用于按类型获取数据的回调函数。当从[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取数据时，会触发此回调函数，得到的数据就是这个回调函数返回的数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 13
 
@@ -555,6 +595,8 @@ int OH_UdmfRecordProvider_SetData(OH_UdmfRecordProvider* provider, void* context
 
 设置统一数据提供者的数据提供回调函数。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -570,7 +612,7 @@ int OH_UdmfRecordProvider_SetData(OH_UdmfRecordProvider* provider, void* context
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -586,6 +628,8 @@ OH_UdmfRecord* OH_UdmfRecord_Create()
 **描述：**
 
 创建统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdmfRecord_Destroy](capi-udmf-h.md#oh_udmfrecord_destroy)销毁实例对象，否则会导致内存泄漏。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -610,6 +654,8 @@ void OH_UdmfRecord_Destroy(OH_UdmfRecord* pThis)
 
 销毁统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)指针指向的实例对象。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -633,6 +679,8 @@ int OH_UdmfRecord_AddGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsi
 
 添加用户自定义的通用数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。对于已定义UDS的类型（比如PlainText、Link、Pixelmap等）不可使用该接口。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -648,7 +696,7 @@ int OH_UdmfRecord_AddGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsi
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -663,7 +711,9 @@ int OH_UdmfRecord_AddPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)
 
 **描述：**
 
-增加纯文本类型{@link OH_UdsPlainText}数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+增加纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -672,13 +722,13 @@ int OH_UdmfRecord_AddPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
-| OH_UdsPlainText* plainText | 表示指向纯文本类型{@link OH_UdsPlainText}实例的指针。 |
+| OH_UdsPlainText* plainText | 表示指向纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -693,7 +743,9 @@ int OH_UdmfRecord_AddHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)
 
 **描述：**
 
-增加超链接类型{@link OH_UdsHyperlink}数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+增加超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -702,13 +754,13 @@ int OH_UdmfRecord_AddHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
-| OH_UdsHyperlink* hyperlink | 表示指向超链接类型{@link OH_UdsHyperlink}实例的指针。 |
+| OH_UdsHyperlink* hyperlink | 表示指向超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -723,7 +775,9 @@ int OH_UdmfRecord_AddHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)
 
 **描述：**
 
-增加超文本标记语言类型{@link OH_UdsHtml}数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+增加超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -732,13 +786,13 @@ int OH_UdmfRecord_AddHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
-| OH_UdsHtml* html | 表示指向超文本标记语言类型{@link OH_UdsHtml}实例的指针。 |
+| OH_UdsHtml* html | 表示指向超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -753,7 +807,9 @@ int OH_UdmfRecord_AddAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)
 
 **描述：**
 
-增加桌面图标类型{@link OH_UdsAppItem}数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+增加桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -762,13 +818,13 @@ int OH_UdmfRecord_AddAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
-| OH_UdsAppItem* appItem | 表示指向桌面图标类型{@link OH_UdsAppItem}实例的指针。 |
+| OH_UdsAppItem* appItem | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -783,7 +839,9 @@ int OH_UdmfRecord_AddFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)
 
 **描述：**
 
-增加文件Uri类型{@link OH_UdsFileUri}数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+增加文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 13
 
@@ -792,13 +850,13 @@ int OH_UdmfRecord_AddFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
-| OH_UdsFileUri* fileUri | 表示指向文件Uri类型{@link OH_UdsFileUri}实例的指针。 |
+| OH_UdsFileUri* fileUri | 表示指向文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -813,7 +871,9 @@ int OH_UdmfRecord_AddPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)
 
 **描述：**
 
-增加像素图片类型{@link OH_UdsPixelMap}数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+增加像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 13
 
@@ -822,13 +882,13 @@ int OH_UdmfRecord_AddPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
-| OH_UdsPixelMap* pixelMap | 表示指向像素图片类型{@link OH_UdsPixelMap}实例的指针。 |
+| OH_UdsPixelMap* pixelMap | 表示指向像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -843,7 +903,9 @@ int OH_UdmfRecord_AddArrayBuffer(OH_UdmfRecord* record, const char* type, OH_Uds
 
 **描述：**
 
-增加一个ArrayBuffer类型{@link OH_UdsArrayBuffer}的数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+增加一个ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)的数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 13
 
@@ -853,13 +915,13 @@ int OH_UdmfRecord_AddArrayBuffer(OH_UdmfRecord* record, const char* type, OH_Uds
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* record | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
 | const char* type | 表示自定义的ArrayBuffer数据的数据类型标识，不可与已有的数据类型标识重复。 |
-| OH_UdsArrayBuffer* buffer | 表示指向ArrayBuffer类型{@link OH_UdsArrayBuffer}实例的指针。 |
+| OH_UdsArrayBuffer* buffer | 表示指向ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -874,7 +936,9 @@ int OH_UdmfRecord_AddContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* conten
 
 **描述：**
 
-增加一个内容卡片类型{@link OH_UdsContentForm}的数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+增加一个内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)的数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 14
 
@@ -883,13 +947,13 @@ int OH_UdmfRecord_AddContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* conten
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
-| OH_UdsContentForm* contentForm | 表示指向内容卡片类型{@link OH_UdsContentForm}实例的指针。 |
+| OH_UdsContentForm* contentForm | 表示指向内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -905,6 +969,8 @@ char** OH_UdmfRecord_GetTypes(OH_UdmfRecord* pThis, unsigned int* count)
 **描述：**
 
 获取统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中所有类型的结果集。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -936,6 +1002,8 @@ int OH_UdmfRecord_GetGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsi
 
 获取统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中的特定类型的数据结果集。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -951,7 +1019,7 @@ int OH_UdmfRecord_GetGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsi
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -966,7 +1034,9 @@ int OH_UdmfRecord_GetPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)
 
 **描述：**
 
-向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取纯文本类型{@link OH_UdsPlainText}数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -975,13 +1045,13 @@ int OH_UdmfRecord_GetPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
-| OH_UdsPlainText* plainText | 该参数是输出参数，表示指向纯文本类型{@link OH_UdsPlainText}实例的指针。 |
+| OH_UdsPlainText* plainText | 该参数是输出参数，表示指向纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -996,7 +1066,9 @@ int OH_UdmfRecord_GetHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)
 
 **描述：**
 
-向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超链接类型{@link OH_UdsHyperlink}数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -1005,13 +1077,13 @@ int OH_UdmfRecord_GetHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
-| OH_UdsHyperlink* hyperlink | 该参数是输出参数，表示指向超链接类型{@link OH_UdsHyperlink}实例的指针。 |
+| OH_UdsHyperlink* hyperlink | 该参数是输出参数，表示指向超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1026,7 +1098,9 @@ int OH_UdmfRecord_GetHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)
 
 **描述：**
 
-向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超文本标记语言类型{@link OH_UdsHtml}数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -1035,13 +1109,13 @@ int OH_UdmfRecord_GetHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
-| OH_UdsHtml* html | 该参数是输出参数，表示指向超文本标记语言类型{@link OH_UdsHtml}实例的指针。 |
+| OH_UdsHtml* html | 该参数是输出参数，表示指向超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1056,7 +1130,9 @@ int OH_UdmfRecord_GetAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)
 
 **描述：**
 
-向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取桌面图标类型{@link OH_UdsAppItem}数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -1065,13 +1141,13 @@ int OH_UdmfRecord_GetAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
-| OH_UdsAppItem* appItem | 该参数是输出参数，表示指向桌面图标类型{@link OH_UdsAppItem}实例的指针。 |
+| OH_UdsAppItem* appItem | 该参数是输出参数，表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1086,7 +1162,9 @@ int OH_UdmfRecord_GetFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)
 
 **描述：**
 
-向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取文件Uri类型{@link OH_UdsFileUri}数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 13
 
@@ -1095,13 +1173,13 @@ int OH_UdmfRecord_GetFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
-| OH_UdsFileUri* fileUri | 该参数是输出参数，表示指向文件Uri类型{@link OH_UdsFileUri}实例的指针。 |
+| OH_UdsFileUri* fileUri | 该参数是输出参数，表示指向文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1116,7 +1194,9 @@ int OH_UdmfRecord_GetPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)
 
 **描述：**
 
-向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取像素图片类型{@link OH_UdsPixelMap}数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 13
 
@@ -1125,13 +1205,13 @@ int OH_UdmfRecord_GetPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
-| OH_UdsPixelMap* pixelMap | 该参数是输出参数，表示指向像素图片类型{@link OH_UdsPixelMap}实例的指针。 |
+| OH_UdsPixelMap* pixelMap | 该参数是输出参数，表示指向像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1148,6 +1228,8 @@ int OH_UdmfRecord_SetProvider(OH_UdmfRecord* pThis, const char* const* types, un
 
 将指定类型的统一数据提供者[OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md)设置至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -1163,7 +1245,7 @@ int OH_UdmfRecord_SetProvider(OH_UdmfRecord* pThis, const char* const* types, un
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1178,7 +1260,9 @@ int OH_UdmfRecord_GetArrayBuffer(OH_UdmfRecord* record, const char* type, OH_Uds
 
 **描述：**
 
-向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取ArrayBuffer类型{@link OH_UdsArrayBuffer}数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 13
 
@@ -1188,13 +1272,13 @@ int OH_UdmfRecord_GetArrayBuffer(OH_UdmfRecord* record, const char* type, OH_Uds
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* record | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
 | const char* type | 表示要获取的ArrayBuffer类型数据的数据类型标识。 |
-| OH_UdsArrayBuffer* buffer | 该参数是输出参数，表示指向ArrayBuffer类型{@link OH_UdsArrayBuffer}实例的指针。 |
+| OH_UdsArrayBuffer* buffer | 该参数是输出参数，表示指向ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1209,7 +1293,9 @@ int OH_UdmfRecord_GetContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* conten
 
 **描述：**
 
-向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取内容卡片类型{@link OH_UdsContentForm}数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 14
 
@@ -1218,13 +1304,13 @@ int OH_UdmfRecord_GetContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* conten
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
-| OH_UdsContentForm* contentForm | 该参数是输出参数，表示指向内容卡片类型{@link OH_UdsContentForm}实例的指针。 |
+| OH_UdsContentForm* contentForm | 该参数是输出参数，表示指向内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1239,7 +1325,9 @@ int OH_UdmfData_GetPrimaryPlainText(OH_UdmfData* data, OH_UdsPlainText* plainTex
 
 **描述：**
 
-向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个纯文本类型{@link OH_UdsPlainText}数据。
+向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 13
 
@@ -1248,13 +1336,13 @@ int OH_UdmfData_GetPrimaryPlainText(OH_UdmfData* data, OH_UdsPlainText* plainTex
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfData](capi-udmf-oh-udmfdata.md)* data | 表示指向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)实例的指针。 |
-| OH_UdsPlainText* plainText | 该参数是输出参数，表示指向纯文本类型{@link OH_UdsPlainText}实例的指针。 |
+| OH_UdsPlainText* plainText | 该参数是输出参数，表示指向纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1269,7 +1357,9 @@ int OH_UdmfData_GetPrimaryHtml(OH_UdmfData* data, OH_UdsHtml* html)
 
 **描述：**
 
-向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个超文本标记语言类型{@link OH_UdsHtml}数据。
+向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 13
 
@@ -1278,13 +1368,13 @@ int OH_UdmfData_GetPrimaryHtml(OH_UdmfData* data, OH_UdsHtml* html)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfData](capi-udmf-oh-udmfdata.md)* data | 表示指向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)实例的指针。 |
-| OH_UdsHtml* html | 该参数是输出参数，表示指向超文本标记语言类型{@link OH_UdsHtml}实例的指针。 |
+| OH_UdsHtml* html | 该参数是输出参数，表示指向超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1300,6 +1390,8 @@ int OH_UdmfData_GetRecordCount(OH_UdmfData* data)
 **描述：**
 
 获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中包含的所有记录数量。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 13
 
@@ -1329,6 +1421,8 @@ OH_UdmfRecord* OH_UdmfData_GetRecord(OH_UdmfData* data, unsigned int index)
 **描述：**
 
 获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中指定位置的数据记录。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 13
 
@@ -1360,6 +1454,8 @@ bool OH_UdmfData_IsLocal(OH_UdmfData* data)
 
 检查统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)是否是来自本端设备的数据。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -1388,6 +1484,8 @@ OH_UdmfProperty* OH_UdmfProperty_Create(OH_UdmfData* unifiedData)
 **描述：**
 
 创建统一数据对象中数据记录属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdmfProperty_Destroy](capi-udmf-h.md#oh_udmfproperty_destroy)销毁实例对象，否则会导致内存泄漏。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -1418,6 +1516,8 @@ void OH_UdmfProperty_Destroy(OH_UdmfProperty* pThis)
 
 销毁数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)指针指向的实例对象。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -1440,6 +1540,8 @@ const char* OH_UdmfProperty_GetTag(OH_UdmfProperty* pThis)
 **描述：**
 
 从数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中获取用户自定义标签值。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -1470,6 +1572,8 @@ int64_t OH_UdmfProperty_GetTimestamp(OH_UdmfProperty* pThis)
 
 从数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中获取时间戳。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -1499,6 +1603,8 @@ Udmf_ShareOption OH_UdmfProperty_GetShareOption(OH_UdmfProperty* pThis)
 
 从数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中获取设备内适用范围属性。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -1527,6 +1633,8 @@ int OH_UdmfProperty_GetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, i
 **描述：**
 
 从数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中获取自定义的附加整型参数。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -1559,6 +1667,8 @@ const char* OH_UdmfProperty_GetExtrasStringParam(OH_UdmfProperty* pThis, const c
 
 从数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中获取自定义的附加字符串参数。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -1589,6 +1699,8 @@ int OH_UdmfProperty_SetTag(OH_UdmfProperty* pThis, const char* tag)
 
 设置数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)的自定义标签值。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -1602,7 +1714,7 @@ int OH_UdmfProperty_SetTag(OH_UdmfProperty* pThis, const char* tag)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1619,6 +1731,8 @@ int OH_UdmfProperty_SetShareOption(OH_UdmfProperty* pThis, Udmf_ShareOption opti
 
 设置数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)的设备内适用范围[Udmf_ShareOption](capi-udmf-h.md#udmf_shareoption)参数。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -1632,7 +1746,7 @@ int OH_UdmfProperty_SetShareOption(OH_UdmfProperty* pThis, Udmf_ShareOption opti
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1649,6 +1763,8 @@ int OH_UdmfProperty_SetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, i
 
 设置数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)的附加整型参数。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -1663,7 +1779,7 @@ int OH_UdmfProperty_SetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, i
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1680,6 +1796,8 @@ int OH_UdmfProperty_SetExtrasStringParam(OH_UdmfProperty* pThis, const char* key
 
 设置数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)附加字符串参数。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -1694,7 +1812,7 @@ int OH_UdmfProperty_SetExtrasStringParam(OH_UdmfProperty* pThis, const char* key
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1711,6 +1829,8 @@ int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolic
 
 在[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中设置权限，对[OH_UdmfData](capi-udmf-oh-udmfdata.md)生效。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -1718,13 +1838,13 @@ int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolic
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)* pThis | 表示指向[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)实例的指针。 <br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
-| uint32_t authPolicy | 表示拖拽场景下的URI授权策略，默认值READ+WRITE+PERSIST，只对单次数据生效，优先级较低。具体策略见{@link Udmf_AuthPermission}。 |
+| uint32_t authPolicy | 表示拖拽场景下的URI授权策略，默认值READ+WRITE+PERSIST，只对单次数据生效，优先级较低。具体策略见[Udmf_AuthPermission](capi-uds-h.md#udmf_authpermission)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1740,6 +1860,8 @@ OH_UdmfOptions* OH_UdmfOptions_Create()
 **描述：**
 
 创建指向[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。当不再需要使用指针时，请使用[OH_UdmfOptions_Destroy](capi-udmf-h.md#oh_udmfoptions_destroy)销毁实例对象，否则会导致内存泄漏。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 20
 
@@ -1764,6 +1886,8 @@ void OH_UdmfOptions_Destroy(OH_UdmfOptions* pThis)
 
 销毁指向[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -1786,6 +1910,8 @@ const char* OH_UdmfOptions_GetKey(OH_UdmfOptions* pThis)
 **描述：**
 
 从数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例中获取数据的唯一标识符信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 20
 
@@ -1816,6 +1942,8 @@ int OH_UdmfOptions_SetKey(OH_UdmfOptions* pThis, const char* key)
 
 设置数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例中的数据的唯一标识符内容参数。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -1829,7 +1957,7 @@ int OH_UdmfOptions_SetKey(OH_UdmfOptions* pThis, const char* key)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1845,6 +1973,8 @@ Udmf_Intention OH_UdmfOptions_GetIntention(OH_UdmfOptions* pThis)
 **描述：**
 
 从数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例中获取数据通路信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 20
 
@@ -1875,6 +2005,8 @@ int OH_UdmfOptions_SetIntention(OH_UdmfOptions* pThis, Udmf_Intention intention)
 
 设置数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例中的数据通路内容参数。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -1888,7 +2020,7 @@ int OH_UdmfOptions_SetIntention(OH_UdmfOptions* pThis, Udmf_Intention intention)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1905,6 +2037,8 @@ int OH_UdmfOptions_Reset(OH_UdmfOptions* pThis)
 
 重置数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例为空。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -1917,7 +2051,7 @@ int OH_UdmfOptions_Reset(OH_UdmfOptions* pThis)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -1933,6 +2067,8 @@ Udmf_Visibility OH_UdmfOptions_GetVisibility(OH_UdmfOptions* pThis)
 **描述：**
 
 从数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例中获取数据可见性等级。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 20
 
@@ -1963,6 +2099,8 @@ int OH_UdmfOptions_SetVisibility(OH_UdmfOptions* pThis, Udmf_Visibility visibili
 
 设置数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例中的数据可见性等级。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -1976,11 +2114,167 @@ int OH_UdmfOptions_SetVisibility(OH_UdmfOptions* pThis, Udmf_Visibility visibili
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。请参阅错误码定义{@link Udmf_ErrCode}。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+| int | 返回执行结果。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
 
 **参考：**
 
 OH_UdmfOptions Udmf_Visibility Udmf_ErrCode
+
+
+### OH_UDMF_CreateSummary()
+
+```c
+OH_UDMF_Summary *OH_UDMF_CreateSummary(void)
+```
+
+**描述：**
+
+创建[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.0.1
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_UDMF_Summary *](capi-udmf-oh-udmf-summary.md) | 如果操作成功，返回一个指向[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针，调用者拥有该实例的所有权，  不再需要时必须调用[OH_UDMF_DestroySummary](capi-udmf-h.md#oh_udmf_destroysummary)释放。如果内存不足，则返回nullptr。 |
+
+**参考：**
+
+[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
+[OH_UDMF_DestroySummary](capi-udmf-h.md#oh_udmf_destroysummary)
+
+
+### OH_UDMF_DestroySummary()
+
+```c
+void OH_UDMF_DestroySummary(OH_UDMF_Summary *summary)
+```
+
+**描述：**
+
+销毁[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)指针指向的堆内存。 请注意，对于同一个指针，不能重复调用此函数。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) *summary | [in] 表示指向[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针。 该实例必须是[OH_UDMF_CreateSummary](capi-udmf-h.md#oh_udmf_createsummary)创建的有效实例。 该指针不能为NULL。 |
+
+**参考：**
+
+[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
+[OH_UDMF_CreateSummary](capi-udmf-h.md#oh_udmf_createsummary)
+
+
+### OH_UDMF_GetSummaryOverviewTypes()
+
+```c
+int OH_UDMF_GetSummaryOverviewTypes(const OH_UDMF_Summary *summary, const char *const **types, int64_t *count)
+```
+
+**描述：**
+
+获取[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例概览中的所有数据类型。<br> 返回的数组和字符串由summary拥有。调用者不得修改或释放它们。它们在摘要被 [OH_UDMF_DestroySummary](capi-udmf-h.md#oh_udmf_destroysummary)销毁之前一直有效。每个返回的数据类型都是非空的、以NUL结尾的UTF-8字符串。 返回的数据类型顺序未指定。如果概览为空，则*types为nullptr，*count为0。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) *summary | [in] 表示指向[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针。该指针不能为NULL。 |
+| const char *const **types | [out] 表示数据类型的输出数组。每个元素都是非空的、以NUL结尾的UTF-8字符串。 调用[OH_UDMF_DestroySummary](capi-udmf-h.md#oh_udmf_destroysummary)方法后该参数失效。该指针不能为NULL。 如果本函数返回非[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)的任何值，则*types保持不变。 |
+| int64_t *count | [out] 表示输出数组中的数据类型的数量。该值为非负整数，且在int64_t范围内；概览为空时为0。该指针不能为NULL。 如果本函数返回非[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)的任何值，则*count保持不变。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
+
+**参考：**
+
+[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
+[OH_UDMF_GetSummaryOverviewSize](capi-udmf-h.md#oh_udmf_getsummaryoverviewsize)
+[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)
+
+
+### OH_UDMF_GetSummaryOverviewSize()
+
+```c
+int OH_UDMF_GetSummaryOverviewSize(const OH_UDMF_Summary *summary, const char *type, int64_t *dataSize)
+```
+
+**描述：**
+
+获取与[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的概述中的数据类型关联的数据大小。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) *summary | [in] 表示指向[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针。该指针不能为NULL。 |
+| const char *type | [in] 表示用作概述键的数据类型，是以NUL结尾的UTF-8字符串，且不能为空。该指针不能为NULL。 |
+| int64_t *dataSize | [out] 表示以字节为单位的输出数据大小。只有当该函数返回[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)时，该值才有效。 如果未找到该数据类型，则*dataSize被设置为-1。如果本函数返回[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode)，则*dataSize保持不变。 该指针不能为NULL。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
+
+**参考：**
+
+[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
+[OH_UDMF_GetSummaryOverviewTypes](capi-udmf-h.md#oh_udmf_getsummaryoverviewtypes)
+[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)
+
+
+### OH_UDMF_GetSummaryFilenameExtensions()
+
+```c
+int OH_UDMF_GetSummaryFilenameExtensions(const OH_UDMF_Summary *summary, const char *const **filenameExtensions, int64_t *count)
+```
+
+**描述：**
+
+获取[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例中的所有文件扩展名。<br> 每个返回的扩展名包括前导句点，并使用小写ASCII字母，是非空的、以NUL结尾的字符串。 返回的数组和字符串由summary拥有。调用者不得修改或释放它们。它们在摘要被[OH_UDMF_DestroySummary](capi-udmf-h.md#oh_udmf_destroysummary)销毁 或再次成功填充之前一直有效。如果没有有效的文件扩展名可用，*filenameExtensions为nullptr，*count为0。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) *summary | [in] 表示指向[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针。该指针不能为NULL。 |
+| const char *const **filenameExtensions | [out] 表示文件扩展名的输出数组。每个元素都是非空的、以NUL结尾的ASCII字符串。 调用[OH_UDMF_DestroySummary](capi-udmf-h.md#oh_udmf_destroysummary)方法后该参数失效。该指针不能为NULL。 如果本函数返回非[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)的任何值，则*filenameExtensions保持不变。 |
+| int64_t *count | [out] 表示输出数组中的文件扩展名的数量。该值为非负整数，且在int64_t范围内；没有有效的文件扩展名时为0。该指针不能为NULL。 如果本函数返回非[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)的任何值，则*count保持不变。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
+
+**参考：**
+
+[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
+[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)
 
 
 ### OH_Udmf_GetUnifiedData()
@@ -1992,6 +2286,8 @@ int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfDat
 **描述：**
 
 向统一数据管理框架数据库中获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
@@ -2007,7 +2303,7 @@ int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfDat
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -2024,6 +2320,8 @@ int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataA
 
 通过数据通路类型从统一数据管理框架数据库中获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -2038,7 +2336,7 @@ int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataA
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -2055,6 +2353,8 @@ int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, c
 
 向统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -2070,7 +2370,7 @@ int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, c
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -2087,6 +2387,8 @@ int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData* unifie
 
 向统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -2095,14 +2397,14 @@ int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData* unifie
 | -- | -- |
 | [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)* options | 指向数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。 |
 | [OH_UdmfData](capi-udmf-oh-udmfdata.md)* unifiedData | 指向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)实例的指针。 |
-| char* key | 成功将数据设置到数据库后对应数据的唯一标识符，内存大小不小于{@link UDMF_KEY_BUFFER_LEN}。 |
+| char* key | 成功将数据设置到数据库后对应数据的唯一标识符，内存大小不小于[UDMF_KEY_BUFFER_LEN](capi-udmf-h.md#宏定义)。 |
 | unsigned int keyLen | 唯一标识符参数的空间大小。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -2119,6 +2421,8 @@ int OH_Udmf_UpdateUnifiedData(OH_UdmfOptions* options, OH_UdmfData* unifiedData)
 
 对统一数据管理框架数据库中的统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据进行数据更改。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -2132,7 +2436,7 @@ int OH_Udmf_UpdateUnifiedData(OH_UdmfOptions* options, OH_UdmfData* unifiedData)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -2149,6 +2453,8 @@ int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, 
 
 删除统一数据管理框架数据库中的统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -2163,7 +2469,7 @@ int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
 **参考：**
 
@@ -2179,6 +2485,8 @@ OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int inde
 **描述：**
 
 向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数组中获取指定下标的统一数据对象数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 22
 
@@ -2210,6 +2518,8 @@ void OH_Udmf_DestroyDataArray(OH_UdmfData** dataArray, unsigned int dataSize)
 
 销毁数据数组内存。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -2233,6 +2543,8 @@ int OH_UdmfProgressInfo_GetProgress(OH_Udmf_ProgressInfo* progressInfo)
 **描述：**
 
 从进度信息[OH_Udmf_ProgressInfo](capi-udmf-oh-udmf-progressinfo.md)中获取进度百分比数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 15
 
@@ -2263,6 +2575,8 @@ int OH_UdmfProgressInfo_GetStatus(OH_Udmf_ProgressInfo* progressInfo)
 
 从进度信息[OH_Udmf_ProgressInfo](capi-udmf-oh-udmf-progressinfo.md)中获取状态信息。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 15
 
 **参数：**
@@ -2292,6 +2606,8 @@ OH_UdmfGetDataParams* OH_UdmfGetDataParams_Create()
 
 创建异步获取UDMF数据的请求参数[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)指针及实例对象。 <br>当不再需要使用指针时，请使用[OH_UdmfGetDataParams_Destroy](capi-udmf-h.md#oh_udmfgetdataparams_destroy)销毁实例对象，否则会导致内存泄漏。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 15
 
 **返回值：**
@@ -2315,6 +2631,8 @@ void OH_UdmfGetDataParams_Destroy(OH_UdmfGetDataParams* pThis)
 
 销毁异步请求参数[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)指针指向的实例对象。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 15
 
 **参数：**
@@ -2337,6 +2655,8 @@ void OH_UdmfGetDataParams_SetDestUri(OH_UdmfGetDataParams* params, const char* d
 **描述：**
 
 设置异步请求参数[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)中的目标路径。 <br>若设置了目标路径，会将文件类型的数据进行拷贝到指定路径。回调中获取到的文件类型数据会被替换为目标路径的URI。 <br>若不设置目标路径，则不会执行拷贝文件操作。回调中获取到的文件类型数据为源端路径URI。 <br>若应用涉及复杂文件处理策略，或需要将文件拷贝在多个路径下时，建议不设置此参数，由应用自行完成文件拷贝相关处理。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 15
 
@@ -2362,6 +2682,8 @@ void OH_UdmfGetDataParams_SetFileConflictOptions(OH_UdmfGetDataParams* params, c
 
 设置异步请求参数[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)中的文件冲突选项。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 15
 
 **参数：**
@@ -2385,6 +2707,8 @@ void OH_UdmfGetDataParams_SetProgressIndicator(OH_UdmfGetDataParams* params, con
 **描述：**
 
 设置异步请求参数[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)中的进度条指示选项。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 15
 
@@ -2410,6 +2734,8 @@ void OH_UdmfGetDataParams_SetDataProgressListener(OH_UdmfGetDataParams* params, 
 
 设置异步请求参数[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)中的监听回调函数。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 15
 
 **参数：**
@@ -2433,6 +2759,8 @@ void OH_UdmfGetDataParams_SetAcceptableInfo(OH_UdmfGetDataParams* params, OH_Udm
 **描述：**
 
 设置异步请求参数[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)中可接收的数据描述信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 20
 
@@ -2458,6 +2786,8 @@ OH_UdmfDataLoadParams* OH_UdmfDataLoadParams_Create()
 
 创建指向数据加载参数[OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md)实例的指针。 <br>当不再需要使用指针时，请使用[OH_UdmfDataLoadParams_Destroy](capi-udmf-h.md#oh_udmfdataloadparams_destroy)销毁实例对象，否则会导致内存泄漏。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **返回值：**
@@ -2481,6 +2811,8 @@ void OH_UdmfDataLoadParams_Destroy(OH_UdmfDataLoadParams* pThis)
 
 销毁数据加载参数[OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md)指针指向的实例对象。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -2503,6 +2835,8 @@ void OH_UdmfDataLoadParams_SetLoadHandler(OH_UdmfDataLoadParams* params, const O
 **描述：**
 
 设置数据加载参数[OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md)中的数据加载处理函数。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 20
 
@@ -2528,6 +2862,8 @@ void OH_UdmfDataLoadParams_SetDataLoadInfo(OH_UdmfDataLoadParams* params, OH_Udm
 
 设置数据加载参数[OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md)中的数据加载信息。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -2552,6 +2888,8 @@ OH_UdmfDataLoadInfo* OH_UdmfDataLoadInfo_Create()
 
 创建指向数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)实例的指针。 <br>当不再需要使用指针时，请使用[OH_UdmfDataLoadInfo_Destroy](capi-udmf-h.md#oh_udmfdataloadinfo_destroy)销毁实例对象，否则会导致内存泄漏。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **返回值：**
@@ -2575,6 +2913,8 @@ void OH_UdmfDataLoadInfo_Destroy(OH_UdmfDataLoadInfo* dataLoadInfo)
 
 销毁数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)指针指向的实例对象。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -2597,6 +2937,8 @@ char** OH_UdmfDataLoadInfo_GetTypes(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned 
 **描述：**
 
 从数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中获取数据类型列表。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 20
 
@@ -2628,6 +2970,8 @@ void OH_UdmfDataLoadInfo_SetType(OH_UdmfDataLoadInfo* dataLoadInfo, const char* 
 
 设置数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的数据类型。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -2651,6 +2995,8 @@ int OH_UdmfDataLoadInfo_GetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo)
 **描述：**
 
 获取数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的记录数量。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 20
 
@@ -2680,6 +3026,8 @@ void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsig
 **描述：**
 
 设置数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的记录数量。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 20
 

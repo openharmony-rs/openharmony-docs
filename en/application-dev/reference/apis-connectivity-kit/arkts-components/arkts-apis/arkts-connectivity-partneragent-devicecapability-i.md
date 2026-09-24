@@ -1,5 +1,9 @@
 # DeviceCapability
 
+```TypeScript
+interface DeviceCapability
+```
+
 Describes the capability of a partner device.
 
 @typedef DeviceCapability

@@ -1,5 +1,9 @@
 # PresetSplitRatio
 
+```TypeScript
+export declare enum PresetSplitRatio
+```
+
 区域比例。
 
 **起始版本：** 12

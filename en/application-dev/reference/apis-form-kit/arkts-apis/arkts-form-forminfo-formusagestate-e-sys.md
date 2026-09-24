@@ -1,5 +1,9 @@
 # FormUsageState (System API)
 
+```TypeScript
+enum FormUsageState
+```
+
 Enumerates the usage statuses of a widget.
 
 **Since:** 11

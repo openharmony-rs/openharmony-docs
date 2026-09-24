@@ -1,5 +1,9 @@
 # File
 
+```TypeScript
+class File extends UnifiedRecord
+```
+
 File类型数据，是[UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md)的子类，也是文件类型数据的基类，用于描述文件类型数据，推荐开发者优先使用File的子类描述数据，如[Image](arkts-arkdata-unifieddatachannel-image-c.md)、[Video](arkts-arkdata-unifieddatachannel-video-c.md)、[Folder](arkts-arkdata-unifieddatachannel-folder-c.md)等具体子类。
 
 **继承/实现关系：** File extends [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md)

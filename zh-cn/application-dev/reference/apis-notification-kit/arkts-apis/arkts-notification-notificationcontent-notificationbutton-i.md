@@ -1,5 +1,9 @@
 # NotificationButton
 
+```TypeScript
+export interface NotificationButton
+```
+
 描述通知按钮，用于在实况窗中展示可交互的按钮。
 
 > **说明：** 

@@ -1,5 +1,9 @@
 # DistributedConfig
 
+```TypeScript
+interface DistributedConfig
+```
+
 Defines a struct for distributed configuration of a table.
 
 **Since:** 10

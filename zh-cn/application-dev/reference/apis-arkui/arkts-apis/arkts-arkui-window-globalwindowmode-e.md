@@ -1,5 +1,9 @@
 # GlobalWindowMode
 
+```TypeScript
+enum GlobalWindowMode
+```
+
 窗口模式。
 
 **起始版本：** 20

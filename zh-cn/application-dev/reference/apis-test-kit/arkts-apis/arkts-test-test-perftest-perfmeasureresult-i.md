@@ -1,5 +1,9 @@
 # PerfMeasureResult
 
+```TypeScript
+declare interface PerfMeasureResult
+```
+
 性能指标对应测量结果数据。
 
 **起始版本：** 20

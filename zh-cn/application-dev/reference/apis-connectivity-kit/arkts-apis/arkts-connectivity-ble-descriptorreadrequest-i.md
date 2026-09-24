@@ -1,5 +1,9 @@
 # DescriptorReadRequest
 
+```TypeScript
+interface DescriptorReadRequest
+```
+
 描述server端订阅client端读描述符请求事件后，接收到的事件参数结构。
 
 **起始版本：** 10

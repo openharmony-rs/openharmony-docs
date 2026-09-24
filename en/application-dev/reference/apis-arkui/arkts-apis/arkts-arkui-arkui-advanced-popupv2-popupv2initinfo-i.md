@@ -1,5 +1,9 @@
 # PopupV2InitInfo
 
+```TypeScript
+export interface PopupV2InitInfo
+```
+
 Defines the popup init info.
 
 @typedef PopupV2InitInfo

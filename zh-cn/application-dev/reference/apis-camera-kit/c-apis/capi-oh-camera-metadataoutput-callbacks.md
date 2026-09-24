@@ -8,6 +8,8 @@ typedef struct MetadataOutput_Callbacks {...} MetadataOutput_Callbacks
 
 元数据输出的回调。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

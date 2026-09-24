@@ -49,22 +49,8 @@ sensor.getAngleModify([1, 0, 0, 0, 1, 0, 0, 0, 1], [1, 0, 0, 0, 0.87, -0.50, 0, 
 })
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-const promise = sensor.getAngleModify([1, 0, 0, 0, 1, 0, 0, 0, 1], [1, 0, 0, 0, 0.87, -0.50, 0, 0.50, 0.87]);
-promise.then((data: Array<number>) => {
-  console.info('Succeeded in getting AngleModify_promise.');
-  for (let i = 0; i < data.length; i++) {
-    console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
-  }
-}).catch((reason: BusinessError) => {
-  let e: BusinessError = reason as BusinessError;
-  console.info('Succeeded in getting promise::catch', e);
-})
-```
-
+<a id="getanglemodify-1"></a>
 
 ## getAngleModify
 
@@ -97,4 +83,18 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 
 **Examples**
 
-See [getAngleModify](#getanglemodify)
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const promise = sensor.getAngleModify([1, 0, 0, 0, 1, 0, 0, 0, 1], [1, 0, 0, 0, 0.87, -0.50, 0, 0.50, 0.87]);
+promise.then((data: Array<number>) => {
+  console.info('Succeeded in getting AngleModify_promise.');
+  for (let i = 0; i < data.length; i++) {
+    console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
+  }
+}).catch((reason: BusinessError) => {
+  let e: BusinessError = reason as BusinessError;
+  console.info('Succeeded in getting promise::catch', e);
+})
+```

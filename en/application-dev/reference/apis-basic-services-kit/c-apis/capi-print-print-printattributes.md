@@ -8,6 +8,8 @@ typedef struct Print_PrintAttributes {...} Print_PrintAttributes
 
 Defines a struct for the print attributes.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 13
 
 **Related module**: [Print](capi-print.md)

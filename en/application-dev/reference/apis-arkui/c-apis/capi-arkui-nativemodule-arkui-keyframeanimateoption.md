@@ -8,6 +8,8 @@ typedef struct ArkUI_KeyframeAnimateOption ArkUI_KeyframeAnimateOption
 
 Defines the keyframe animation parameter object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

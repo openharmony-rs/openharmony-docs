@@ -1,5 +1,9 @@
 # Rotate
 
+```TypeScript
+export declare interface Rotate
+```
+
 Defines a rotation gesture event.
 
 **Since:** 11

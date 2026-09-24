@@ -1,5 +1,9 @@
 # WorkInfo
 
+```TypeScript
+export interface WorkInfo
+```
+
 Represents the deferred task information, which is used to set the trigger condition.
 
 **Since:** 9
@@ -221,12 +225,12 @@ Network type.
 ## parameters
 
 ```TypeScript
-parameters?: Record<string, number | number | string | boolean>
+parameters?: Record<string, number | string | boolean>
 ```
 
 Carried parameters.
 
-**Type:** Record&lt;string, number &#124; number &#124; string &#124; boolean&gt;
+**Type:** Record&lt;string, number &#124; string &#124; boolean&gt;
 
 **Since:** 9
 

@@ -1,5 +1,9 @@
 # ErrorCode
 
+```TypeScript
+export enum ErrorCode
+```
+
 错误码。
 
 **起始版本：** 7

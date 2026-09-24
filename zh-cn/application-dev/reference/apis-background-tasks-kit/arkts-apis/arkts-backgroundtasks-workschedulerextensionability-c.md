@@ -1,5 +1,9 @@
 # WorkSchedulerExtensionAbility
 
+```TypeScript
+declare class WorkSchedulerExtensionAbility
+```
+
 延迟任务回调，当满足调度条件或调度结束时，系统会回调应用WorkSchedulerExtensionAbility中[onWorkStart()](#onworkstart)或[onWorkStop()](#onworkstop)的方法。
 
 **起始版本：** 9

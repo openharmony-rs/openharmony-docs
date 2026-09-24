@@ -1,5 +1,9 @@
 # TransferPolicy
 
+```TypeScript
+export enum TransferPolicy
+```
+
 Transfer policy.
 
 **Since:** 26.0.0

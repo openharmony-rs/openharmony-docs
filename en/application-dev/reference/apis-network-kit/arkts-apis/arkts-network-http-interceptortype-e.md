@@ -1,5 +1,9 @@
 # InterceptorType
 
+```TypeScript
+export enum InterceptorType
+```
+
 Enumerates the types of HTTP interceptors.
 
 | Name | Value|Description |  

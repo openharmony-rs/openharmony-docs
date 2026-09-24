@@ -1,5 +1,9 @@
 # DecorationStyle
 
+```TypeScript
+declare class DecorationStyle
+```
+
 Describes the text decorative line style.
 
 **Since:** 12
@@ -27,6 +31,8 @@ A constructor used to create a text decorative line style.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [DecorationStyleInterface](arkts-arkui-decorationstyleinterface-i.md) | Yes | Text decorative line options.<br>Default value:<br>{<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID <br>} |
+
+<a id="constructor-1"></a>
 
 ## constructor
 

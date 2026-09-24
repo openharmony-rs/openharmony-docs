@@ -1,5 +1,9 @@
 # FileReadArrayBufferResponse
 
+```TypeScript
+export interface FileReadArrayBufferResponse
+```
+
 Returns the file read, including the file content.
 
 **Since:** 3

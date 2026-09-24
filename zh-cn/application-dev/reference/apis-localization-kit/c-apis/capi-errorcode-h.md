@@ -32,6 +32,8 @@ enum I18n_ErrorCode
 
 i18n错误码
 
+**系统能力：** SystemCapability.Global.I18n
+
 **起始版本：** 22
 
 | 枚举项 | 描述 |

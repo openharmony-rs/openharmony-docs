@@ -1,5 +1,9 @@
 # AbilityStateData
 
+```TypeScript
+declare class AbilityStateData
+```
+
 The AbilityStateData module defines a struct for ability state information. Once a lifecycle change listener is registered using [on](arkts-ability-appmanager-on-f.md#onapplicationstate), you can obtain an instance of this struct from the input parameter of the **onAbilityStateChanged** callback of ApplicationStateObserver.
 
 **Since:** 14
@@ -40,7 +44,7 @@ abilityType: number
 appCloneIndex?: number
 ```
 
-Index of an [application clone](../../../quick-start/app-clone.md).
+Index of an [application clone](../../../quick-start/app-clone.md). The value **0** indicates the main instance, and **1** or above indicates a clone instance. If not returned, the default value is the main instance.
 
 **Type:** number
 

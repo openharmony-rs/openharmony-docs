@@ -1,5 +1,9 @@
 # MetallicRoughnessMaterial
 
+```TypeScript
+export interface MetallicRoughnessMaterial extends Material
+```
+
 Material resource for creating realistic appearances, using the Metallic-Roughness model based on PBR. It simulates the surface lighting and reflection effects of different materials like metal and plastic by adjusting metallicity and roughness parameters. It inherits from Material.
 
 @extends Material @interface MetallicRoughnessMaterial

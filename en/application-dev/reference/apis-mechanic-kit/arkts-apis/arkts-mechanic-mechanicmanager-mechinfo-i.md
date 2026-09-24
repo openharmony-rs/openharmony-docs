@@ -1,5 +1,9 @@
 # MechInfo
 
+```TypeScript
+export interface MechInfo
+```
+
 Mechanical device information. @typedef MechInfo
 
 **Since:** 20

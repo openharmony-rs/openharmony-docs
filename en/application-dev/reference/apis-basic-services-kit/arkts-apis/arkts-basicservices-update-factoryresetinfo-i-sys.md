@@ -1,5 +1,9 @@
 # FactoryResetInfo (System API)
 
+```TypeScript
+export interface FactoryResetInfo
+```
+
 Describes the information of restoring factory settings.
 
 **Since:** 26.0.0

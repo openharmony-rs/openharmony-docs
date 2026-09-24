@@ -1,5 +1,9 @@
 # ImageAnalyzerType
 
+```TypeScript
+declare enum ImageAnalyzerType
+```
+
 Defines the AI image analysis type. If it is not set, subject recognition and text recognition are enabled by default.
 
 **Since:** 12

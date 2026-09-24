@@ -1,5 +1,9 @@
 # KeyPolicy
 
+```TypeScript
+enum KeyPolicy
+```
+
 按键策略。MDM应用下发按键策略的按键编码与系统按键事件匹配后的系统行为。
 
 **起始版本：** 23

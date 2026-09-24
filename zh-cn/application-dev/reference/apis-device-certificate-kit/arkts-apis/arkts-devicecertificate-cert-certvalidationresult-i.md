@@ -1,5 +1,9 @@
 # CertValidationResult
 
+```TypeScript
+interface CertValidationResult
+```
+
 证书验证的结果。
 
 **起始版本：** 26.0.0

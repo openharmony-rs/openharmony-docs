@@ -1,5 +1,9 @@
 # WebStorageOrigin
 
+```TypeScript
+interface WebStorageOrigin
+```
+
 Provides usage information of the Web SQL Database.
 
 @interface WebStorageOrigin [since 9 - 11]

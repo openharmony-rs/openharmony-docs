@@ -1,5 +1,9 @@
 # MeasureText
 
+```TypeScript
+export default class MeasureText
+```
+
 Defines the Measure interface.
 
 **Since:** 9

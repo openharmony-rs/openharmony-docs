@@ -1,5 +1,9 @@
 # EnableAlertOptions
 
+```TypeScript
+interface EnableAlertOptions
+```
+
 Describes the page routing state.
 
 **Since:** 8

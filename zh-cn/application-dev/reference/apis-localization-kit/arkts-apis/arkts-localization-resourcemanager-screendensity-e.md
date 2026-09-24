@@ -1,5 +1,9 @@
 # ScreenDensity
 
+```TypeScript
+export enum ScreenDensity
+```
+
 用于表示当前设备屏幕密度。
 
 **起始版本：** 6

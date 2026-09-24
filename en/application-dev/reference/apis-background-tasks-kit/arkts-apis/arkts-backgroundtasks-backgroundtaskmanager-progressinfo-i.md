@@ -1,8 +1,12 @@
 # ProgressInfo
 
+```TypeScript
+export interface ProgressInfo
+```
+
 Notify progress data.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -22,7 +26,7 @@ Notification content.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -38,7 +42,7 @@ Whether to ring when the download progress reaches 100%.
 
 **Type:** boolean
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -54,7 +58,7 @@ Download progress. If this field does not exist, the progress ring will not be d
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +74,7 @@ Notification title.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

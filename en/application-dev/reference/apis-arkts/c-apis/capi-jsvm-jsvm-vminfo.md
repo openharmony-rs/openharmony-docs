@@ -8,6 +8,8 @@ typedef struct JSVM_VMInfo {...} JSVM_VMInfo
 
 JavaScript VM info.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 11
 
 **Related module**: [JSVM](capi-jsvm.md)

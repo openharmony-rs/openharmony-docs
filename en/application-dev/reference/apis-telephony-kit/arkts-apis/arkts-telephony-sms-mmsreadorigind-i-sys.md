@@ -1,5 +1,9 @@
 # MmsReadOrigInd (System API)
 
+```TypeScript
+export interface MmsReadOrigInd
+```
+
 Defines the original MMS message reading index.
 
 **Since:** 8

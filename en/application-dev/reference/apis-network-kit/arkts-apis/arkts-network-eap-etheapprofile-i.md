@@ -1,5 +1,9 @@
 # EthEapProfile
 
+```TypeScript
+interface EthEapProfile
+```
+
 Represents the EAP profile information.
 
 **Since:** 20

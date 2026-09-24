@@ -1,5 +1,9 @@
 # RenderOptions
 
+```TypeScript
+export interface RenderOptions
+```
+
 Provides optional parameters for creating a BuilderNode.
 
 **Since:** 11

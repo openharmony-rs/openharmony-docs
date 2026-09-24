@@ -1,5 +1,9 @@
 # CommonController
 
+```TypeScript
+class CommonController
+```
+
 Implements a common controller for managing components related to **promptAction**.
 
 **Since:** 18

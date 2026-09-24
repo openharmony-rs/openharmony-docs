@@ -1,5 +1,9 @@
 # PlaneGeometry
 
+```TypeScript
+export declare class PlaneGeometry extends GeometryDefinition
+```
+
 平面几何类型，继承自GeometryDefinition。
 
 @extends GeometryDefinition

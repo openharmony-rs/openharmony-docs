@@ -1,5 +1,9 @@
 # ObscuredReasons
 
+```TypeScript
+declare enum ObscuredReasons
+```
+
 Sets how the component content is obscured.
 
 **Since:** 10

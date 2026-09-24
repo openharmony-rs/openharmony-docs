@@ -8,6 +8,8 @@ typedef struct Asset_Result {...} Asset_Result
 
 单条关键资的产查询结果。
 
+**系统能力：** SystemCapability.Security.Asset
+
 **起始版本：** 11
 
 **相关模块：** [AssetType](capi-assettype.md)

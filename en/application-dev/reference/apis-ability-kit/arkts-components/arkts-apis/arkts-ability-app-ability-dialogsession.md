@@ -24,8 +24,8 @@ import { dialogSession } from '@kit.AbilityKit';
 | Name | Description |
 | --- | --- |
 | [getDialogSessionInfo](arkts-ability-dialogsession-getdialogsessioninfo-f-sys.md) | Obtains the session information based on the session ID. |
-| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md) | Sends a request for a dialog box. This API uses a promise to return the result. |
-| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md) | Sends a request for a dialog box. This API uses an asynchronous callback to return the result. |
+| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md#senddialogresult) | Sends a request for a dialog box. This API uses a promise to return the result. |
+| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md#senddialogresult-1) | Sends a request for a dialog box. This API uses an asynchronous callback to return the result. |
 <!--DelEnd-->
 
 <!--Del-->
@@ -34,5 +34,5 @@ import { dialogSession } from '@kit.AbilityKit';
 | Name | Description |
 | --- | --- |
 | [DialogAbilityInfo](arkts-ability-dialogsession-dialogabilityinfo-i-sys.md) | Provides DialogAbility information, including the bundle name, module name, and ability name. |
-| [DialogSessionInfo](arkts-ability-dialogsession-dialogsessioninfo-i-sys.md) | Provides session information, including the requester information, target ability information list, and other parameters. |
+| [DialogSessionInfo](arkts-ability-dialogsession-dialogsessioninfo-i-sys.md) | Provides session information, including the requester component information, target component information list, and other parameters. |
 <!--DelEnd-->

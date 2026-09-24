@@ -1,5 +1,9 @@
 # AnalysisConfig (System API)
 
+```TypeScript
+interface AnalysisConfig
+```
+
 Defines the asset analysis configuration.
 
 **Since:** 24

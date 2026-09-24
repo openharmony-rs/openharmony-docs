@@ -1,5 +1,9 @@
 # PiPControlType
 
+```TypeScript
+enum PiPControlType
+```
+
 Enumerates the types of components displayed on the PiP controller.
 
 **Since:** 12

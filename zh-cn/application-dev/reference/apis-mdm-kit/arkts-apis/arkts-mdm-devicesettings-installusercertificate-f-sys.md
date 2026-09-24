@@ -43,9 +43,9 @@ function installUserCertificate(admin: Want, certificate: CertBlob, callback: As
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [9201001](../errorcode-enterpriseDeviceManager.md#9201001-管理证书失败) | Failed to manage the certificate. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -79,35 +79,8 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 });
 ```
 
-```TypeScript
-import { deviceSettings } from '@kit.MDMKit';
-import { common, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-let certFileArray: Uint8Array = new Uint8Array();
-// 变量context需要在MainAbility的onCreate回调函数中进行初始化
-// test.cer需要放置在rawfile目录下
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-context.resourceManager.getRawFileContent("test.cer").then((value) => {
-  certFileArray = value
-  deviceSettings.installUserCertificate(wantTemp, { inData: certFileArray, alias: "cert_alias_xts" })
-    .then((result) => {
-      console.info(`Succeeded in installing user certificate, result : ${JSON.stringify(result)}`);
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
-  })
-}).catch((error: BusinessError) => {
-  console.error(`Failed to get raw file content. message: ${error.message}`);
-  return;
-});
-```
-
+<a id="installusercertificate-1"></a>
 
 ## installUserCertificate
 
@@ -151,10 +124,37 @@ function installUserCertificate(admin: Want, certificate: CertBlob): Promise<str
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [9201001](../errorcode-enterpriseDeviceManager.md#9201001-管理证书失败) | Failed to manage the certificate. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
-参见 [installUserCertificate](#installusercertificate)
+```TypeScript
+import { deviceSettings } from '@kit.MDMKit';
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let certFileArray: Uint8Array = new Uint8Array();
+// 变量context需要在MainAbility的onCreate回调函数中进行初始化
+// test.cer需要放置在rawfile目录下
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+context.resourceManager.getRawFileContent("test.cer").then((value) => {
+  certFileArray = value
+  deviceSettings.installUserCertificate(wantTemp, { inData: certFileArray, alias: "cert_alias_xts" })
+    .then((result) => {
+      console.info(`Succeeded in installing user certificate, result : ${JSON.stringify(result)}`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+}).catch((error: BusinessError) => {
+  console.error(`Failed to get raw file content. message: ${error.message}`);
+  return;
+});
+```

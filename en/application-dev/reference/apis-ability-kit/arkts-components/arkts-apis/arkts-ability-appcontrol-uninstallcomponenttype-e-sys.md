@@ -1,5 +1,9 @@
 # UninstallComponentType (System API)
 
+```TypeScript
+export enum UninstallComponentType
+```
+
 Enumerates the types of abilities during uninstallation.
 
 **Since:** 15

@@ -1,5 +1,9 @@
 # DateTimeFormat
 
+```TypeScript
+export class DateTimeFormat
+```
+
 Performs date and time formatting.
 
 **Since:** 6
@@ -45,15 +49,7 @@ import { intl } from '@kit.LocalizationKit';
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
 ```
 
-```TypeScript
-import { intl } from '@kit.LocalizationKit';
-
-// Create a DateTimeFormat object with locale ID being zh-CN, dateStyle being full, and timeStyle being medium.
-let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('zh-CN', { dateStyle: 'full', timeStyle: 'medium' });
-
-// Create a DateTimeFormat object with a locale ID array. The locale ID ban is invalid and therefore locale ID zh is used.
-formatter = new intl.DateTimeFormat(['ban', 'zh'], { dateStyle: 'full', timeStyle: 'medium' });
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -83,13 +79,6 @@ Creates a **DateTimeOptions** object for the specified locale.
 | options | [DateTimeOptions](arkts-localization-intl-datetimeoptions-i.md) | No | Options for creating the **DateTimeOptions** object. If no options are set, the default values of **year**, **month**, and **day** are **numeric**. |
 
 **Examples**
-
-```TypeScript
-import { intl } from '@kit.LocalizationKit';
-
-// Create a DateTimeFormat object using the current system locale ID.
-let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
-```
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';

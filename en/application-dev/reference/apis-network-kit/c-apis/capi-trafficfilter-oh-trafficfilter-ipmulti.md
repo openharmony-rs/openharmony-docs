@@ -8,6 +8,8 @@ typedef struct OH_TrafficFilter_IPMulti {...} OH_TrafficFilter_IPMulti
 
 IP match value for multi-IP match
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Since**: 26.0.0
 
 **Related module**: [TrafficFilter](capi-trafficfilter.md)

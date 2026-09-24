@@ -1,5 +1,9 @@
 # AppResponse
 
+```TypeScript
+export interface AppResponse
+```
+
 Defines the application response information.
 
 **Since:** 3
@@ -24,6 +28,8 @@ Bundle name of an application. It uniquely identifies the application.
 
 **Since:** 6
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -39,6 +45,8 @@ Application name.
 **Type:** string
 
 **Since:** 3
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -56,6 +64,8 @@ Application version number.
 
 **Since:** 3
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
@@ -71,6 +81,8 @@ Application version name.
 **Type:** string
 
 **Since:** 3
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 

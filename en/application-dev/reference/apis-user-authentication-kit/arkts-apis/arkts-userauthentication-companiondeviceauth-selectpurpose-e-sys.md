@@ -1,5 +1,9 @@
 # SelectPurpose (System API)
 
+```TypeScript
+enum SelectPurpose
+```
+
 Selects the purpose of the companion device.
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # ResourceType
 
+```TypeScript
+enum ResourceType
+```
+
 枚举，写入资源的类型。
 
 **起始版本：** 11

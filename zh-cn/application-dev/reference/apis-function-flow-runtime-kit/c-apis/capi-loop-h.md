@@ -50,6 +50,8 @@ FFRT_C_API ffrt_loop_t ffrt_loop_create(ffrt_queue_t queue)
 
 在指定的队列上创建loop，用于运行事件循环。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -74,6 +76,8 @@ FFRT_C_API int ffrt_loop_destroy(ffrt_loop_t loop)
 
 销毁loop。<br> 调用该接口可释放与loop关联的资源。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -97,6 +101,8 @@ FFRT_C_API int ffrt_loop_run(ffrt_loop_t loop)
 **描述：**
 
 启动一次loop循环。<br> 该函数会独占调用线程，在当前调用线程中同步运行事件循环，直到调用[ffrt_loop_stop](capi-loop-h.md#ffrt_loop_stop)后才会返回。
+
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 12
 
@@ -127,6 +133,8 @@ FFRT_C_API void ffrt_loop_stop(ffrt_loop_t loop)
 
 停止loop循环。<br> 调用后，正在执行[ffrt_loop_run](capi-loop-h.md#ffrt_loop_run)的线程将停止循环并返回。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -149,6 +157,8 @@ FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t ev
 **描述：**
 
 在ffrt loop上控制epoll文件描述符。<br> 在目标文件描述符上添加、修改或删除监听的事件。
+
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 12
 
@@ -178,6 +188,8 @@ FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout
 **描述：**
 
 在ffrt loop上启动定时器。<br> 超时后调用回调函数；若`repeat`为`true`，则周期性重复触发。
+
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 12
 
@@ -211,6 +223,8 @@ FFRT_C_API int ffrt_loop_timer_stop(ffrt_loop_t loop, ffrt_timer_t handle)
 **描述：**
 
 在ffrt loop上停止定时器。<br> 调用后，该定时器不再触发。
+
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 12
 

@@ -14,13 +14,13 @@ function offRefueling(callback?: Callback<RefuelingInfo>): void
 
 禁用加油感知。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.vehicle.MMA_ENERGYREFILL
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
@@ -34,5 +34,5 @@ function offRefueling(callback?: Callback<RefuelingInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [34000001](../errorcode-carAwareness.md#34000001-服务异常) | Service exception. |

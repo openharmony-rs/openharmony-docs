@@ -1,5 +1,9 @@
 # Rect
 
+```TypeScript
+interface Rect
+```
+
 Describes the region of the screen to capture.
 
 **Since:** 12

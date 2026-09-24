@@ -1,5 +1,9 @@
 # MessageType (System API)
 
+```TypeScript
+export enum MessageType
+```
+
 Message type.
 
 **Since:** 8

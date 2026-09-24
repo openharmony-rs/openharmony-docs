@@ -1,5 +1,9 @@
 # GridObjectSortComponentOptions
 
+```TypeScript
+export interface GridObjectSortComponentOptions
+```
+
 Provides configuration options for the **GridObjectSortComponent** component.
 
 **Since:** 11

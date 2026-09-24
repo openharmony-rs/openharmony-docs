@@ -1,5 +1,9 @@
 # MapMseProfile
 
+```TypeScript
+interface MapMseProfile extends BaseProfile
+```
+
 Manager MAP MSE profile.
 
 **Inheritance/Implementation:** MapMseProfile extends [BaseProfile](arkts-connectivity-map-baseprofile-t.md)

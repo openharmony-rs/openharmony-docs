@@ -1,5 +1,9 @@
 # AssetLoader（系统接口）
 
+```TypeScript
+export interface AssetLoader
+```
+
 提供资产上传下载接口的类。
 
 **起始版本：** 11

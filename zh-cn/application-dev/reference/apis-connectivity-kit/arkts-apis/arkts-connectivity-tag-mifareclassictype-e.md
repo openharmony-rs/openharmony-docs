@@ -1,5 +1,9 @@
 # MifareClassicType
 
+```TypeScript
+enum MifareClassicType
+```
+
 MIFARE Classic标签类型的定义。
 
 **起始版本：** 9

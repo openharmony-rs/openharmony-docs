@@ -1,5 +1,9 @@
 # HuksUserAuthType
 
+```TypeScript
+export enum HuksUserAuthType
+```
+
 表示用户认证类型。
 
 **起始版本：** 9

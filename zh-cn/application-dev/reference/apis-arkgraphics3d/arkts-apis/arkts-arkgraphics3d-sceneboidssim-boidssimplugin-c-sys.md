@@ -1,5 +1,9 @@
 # BoidsSimPlugin（系统接口）
 
+```TypeScript
+export declare class BoidsSimPlugin
+```
+
 群组模拟插件，提供静态方法用于获取群组模拟世界。
 
 **起始版本：** 26.0.0

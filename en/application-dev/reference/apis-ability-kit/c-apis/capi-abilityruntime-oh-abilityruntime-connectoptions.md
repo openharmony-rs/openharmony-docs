@@ -8,6 +8,8 @@ typedef struct OH_AbilityRuntime_ConnectOptions OH_AbilityRuntime_ConnectOptions
 
 Defines the OH_AbilityRuntime_ConnectOptions structure type.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

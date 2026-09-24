@@ -36,57 +36,13 @@ function getTargetOverlayModuleInfosByBundleName(targetBundleName: string,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700035](../errorcode-bundle.md#17700035-指定的应用只包含overlay特征的module) | The specified bundle is an overlay bundle. |
 
 **示例**
-
-```TypeScript
-import { overlay } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let targetBundleName = "com.example.myapplication_xxxxx";
-let moduleName = "feature";
-
-(async () => {
-  try {
-    let overlayModuleInfos = await overlay.getTargetOverlayModuleInfosByBundleName(targetBundleName, moduleName);
-    console.info('overlayModuleInfos are ' + JSON.stringify(overlayModuleInfos));
-  } catch (err) {
-    let code = (err as BusinessError).code;
-    let message = (err as BusinessError).message;
-    console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + code + ' ' + 'message :' +
-      message);
-  }
-})();
-```
-
-```TypeScript
-import { overlay } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let targetBundleName = "com.example.myapplication_xxxxx";
-let moduleName = "feature";
-
-try {
-  overlay.getTargetOverlayModuleInfosByBundleName(targetBundleName, moduleName, (err, data) => {
-    if (err) {
-      console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + err.code + ' ' + 'message :' +
-      err.message);
-      return;
-    }
-    console.info('overlayModuleInfo is ' + JSON.stringify(data));
-  });
-} catch (err) {
-  let code = (err as BusinessError).code;
-  let message = (err as BusinessError).message;
-  console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + code + ' ' + 'message :' +
-    message);
-}
-```
 
 ```TypeScript
 import { overlay } from '@kit.AbilityKit';
@@ -111,6 +67,8 @@ try {
 }
 ```
 
+
+<a id="gettargetoverlaymoduleinfosbybundlename-1"></a>
 
 ## getTargetOverlayModuleInfosByBundleName
 
@@ -142,9 +100,9 @@ function getTargetOverlayModuleInfosByBundleName(targetBundleName: string, modul
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
 | [17700034](../errorcode-bundle.md#17700034-指定的module是overlay特征的module) | The specified module is an overlay module. |
@@ -152,8 +110,32 @@ function getTargetOverlayModuleInfosByBundleName(targetBundleName: string, modul
 
 **示例**
 
-参见 [getTargetOverlayModuleInfosByBundleName](#gettargetoverlaymoduleinfosbybundlename)
+```TypeScript
+import { overlay } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let targetBundleName = "com.example.myapplication_xxxxx";
+let moduleName = "feature";
+
+try {
+  overlay.getTargetOverlayModuleInfosByBundleName(targetBundleName, moduleName, (err, data) => {
+    if (err) {
+      console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + err.code + ' ' + 'message :' +
+      err.message);
+      return;
+    }
+    console.info('overlayModuleInfo is ' + JSON.stringify(data));
+  });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + code + ' ' + 'message :' +
+    message);
+}
+```
+
+
+<a id="gettargetoverlaymoduleinfosbybundlename-2"></a>
 
 ## getTargetOverlayModuleInfosByBundleName
 
@@ -190,9 +172,9 @@ function getTargetOverlayModuleInfosByBundleName(targetBundleName: string, modul
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
 | [17700034](../errorcode-bundle.md#17700034-指定的module是overlay特征的module) | The specified module is an overlay module. |
@@ -200,4 +182,22 @@ function getTargetOverlayModuleInfosByBundleName(targetBundleName: string, modul
 
 **示例**
 
-参见 [getTargetOverlayModuleInfosByBundleName](#gettargetoverlaymoduleinfosbybundlename)
+```TypeScript
+import { overlay } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let targetBundleName = "com.example.myapplication_xxxxx";
+let moduleName = "feature";
+
+(async () => {
+  try {
+    let overlayModuleInfos = await overlay.getTargetOverlayModuleInfosByBundleName(targetBundleName, moduleName);
+    console.info('overlayModuleInfos are ' + JSON.stringify(overlayModuleInfos));
+  } catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error('getTargetOverlayModuleInfosByBundleName failed due to err code : ' + code + ' ' + 'message :' +
+      message);
+  }
+})();
+```

@@ -1,5 +1,9 @@
 # IpInfo
 
+```TypeScript
+interface IpInfo
+```
+
 IPV4信息。
 
 **起始版本：** 9

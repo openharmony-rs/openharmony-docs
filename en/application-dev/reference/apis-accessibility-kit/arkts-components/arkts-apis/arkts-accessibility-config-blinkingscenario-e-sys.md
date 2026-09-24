@@ -1,5 +1,9 @@
 # BlinkingScenario (System API)
 
+```TypeScript
+export enum BlinkingScenario
+```
+
 Enumerates the blinking scenarios.
 
 **Since:** 26.0.0

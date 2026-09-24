@@ -1,5 +1,9 @@
 # NetFirewallPolicy
 
+```TypeScript
+interface NetFirewallPolicy
+```
+
 Defines the firewall policy, including the firewall switch status and default inbound or outbound action (allow or deny).
 
 **Since:** 15

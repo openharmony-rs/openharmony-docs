@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="addslot-2"></a>
+
 ## addSlot
 
 ```TypeScript
@@ -61,48 +63,8 @@ let addSlotCallBack = (err: BusinessError): void => {
 notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, addSlotCallBack);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION).then(() => {
-  console.info(`Succeeded in adding slot.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to add slot. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// addSlot callback
-let addSlotCallBack = (err: BusinessError): void => {
-    if (err) {
-        console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-        console.info("addSlot success");
-    }
-}
-// NotificationSlot object
-let notificationSlot: notificationManager.NotificationSlot = {
-    notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
-};
-notificationManager.addSlot(notificationSlot, addSlotCallBack);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// NotificationSlot object
-let notificationSlot: notificationManager.NotificationSlot = {
-    notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
-};
-notificationManager.addSlot(notificationSlot).then(() => {
-    console.info("addSlot success");
-}).catch((err: BusinessError) => {
-    console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="addslot-3"></a>
 
 ## addSlot
 
@@ -122,7 +84,7 @@ The notification slot NotificationSlot defines the reminder type (such as alert 
 
 [getSlot](arkts-notification-notificationmanager-getslot-f.md) obtains a notification slot of a specified type.
 
-[removeSlot](arkts-notification-notificationmanager-removeslot-f.md) removes a notification slot of a specified type for this application.
+[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot-1) removes a notification slot of a specified type for this application.
 
 [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md) removes all notificationslots for this application.
 
@@ -150,4 +112,12 @@ The notification slot NotificationSlot defines the reminder type (such as alert 
 
 **Examples**
 
-See [addSlot](#addslot)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION).then(() => {
+  console.info(`Succeeded in adding slot.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to add slot. Code is ${err.code}, message is ${err.message}`);
+});
+```

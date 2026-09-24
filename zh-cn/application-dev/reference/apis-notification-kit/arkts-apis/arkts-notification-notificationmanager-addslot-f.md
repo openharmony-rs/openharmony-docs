@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="addslot-2"></a>
+
 ## addSlot
 
 ```TypeScript
@@ -39,7 +41,7 @@ function addSlot(type: SlotType, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -61,48 +63,8 @@ let addSlotCallBack = (err: BusinessError): void => {
 notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, addSlotCallBack);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION).then(() => {
-  console.info(`Succeeded in adding slot.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to add slot. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// addSlot回调
-let addSlotCallBack = (err: BusinessError): void => {
-    if (err) {
-        console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-        console.info('addSlot success');
-    }
-}
-// 通知slot对象
-let notificationSlot: notificationManager.NotificationSlot = {
-    notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
-};
-notificationManager.addSlot(notificationSlot, addSlotCallBack);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 通知slot对象
-let notificationSlot: notificationManager.NotificationSlot = {
-    notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
-};
-notificationManager.addSlot(notificationSlot).then(() => {
-    console.info('addSlot success');
-}).catch((err: BusinessError) => {
-    console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="addslot-3"></a>
 
 ## addSlot
 
@@ -122,7 +84,7 @@ function addSlot(type: SlotType): Promise<void>
 
 [getSlot](arkts-notification-notificationmanager-getslot-f.md) 获取指定类型的通知渠道。
 
-[removeSlot](arkts-notification-notificationmanager-removeslot-f.md) 删除当前应用指定类型的通知渠道。
+[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot-1) 删除当前应用指定类型的通知渠道。
 
 [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md) 删除当前应用的所有渠道通知。
 
@@ -142,7 +104,7 @@ function addSlot(type: SlotType): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -150,4 +112,12 @@ function addSlot(type: SlotType): Promise<void>
 
 **示例**
 
-参见 addSlot
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION).then(() => {
+  console.info(`Succeeded in adding slot.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to add slot. Code is ${err.code}, message is ${err.message}`);
+});
+```

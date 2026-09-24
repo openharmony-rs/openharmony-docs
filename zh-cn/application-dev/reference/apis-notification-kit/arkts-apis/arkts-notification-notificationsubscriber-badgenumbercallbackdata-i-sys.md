@@ -1,5 +1,9 @@
 # BadgeNumberCallbackData（系统接口）
 
+```TypeScript
+export interface BadgeNumberCallbackData
+```
+
 应用角标数量变化的回调函数类型。
 
 **起始版本：** 10
@@ -56,6 +60,22 @@ readonly bundle: string
 
 **系统接口：** 此接口为系统接口。
 
+## uid
+
+```TypeScript
+readonly uid: number
+```
+
+应用的uid。
+
+**类型：** number
+
+**起始版本：** 10
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
 ## instanceKey
 
 ```TypeScript
@@ -71,22 +91,6 @@ readonly instanceKey?: number
 **废弃版本：** 15
 
 **替代接口：** [appInstanceKey](#appinstancekey)
-
-**系统能力：** SystemCapability.Notification.Notification
-
-**系统接口：** 此接口为系统接口。
-
-## uid
-
-```TypeScript
-readonly uid: number
-```
-
-应用的uid。
-
-**类型：** number
-
-**起始版本：** 10
 
 **系统能力：** SystemCapability.Notification.Notification
 

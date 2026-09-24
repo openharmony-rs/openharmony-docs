@@ -1,5 +1,9 @@
 # MediaSourceLoader
 
+```TypeScript
+interface MediaSourceLoader
+```
+
 Defines a media data loader, which needs to be implemented by applications.
 
 **Since:** 18

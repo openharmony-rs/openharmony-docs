@@ -1,5 +1,9 @@
 # AudioHapticManager
 
+```TypeScript
+interface AudioHapticManager
+```
+
 Manages the audio-haptic feature. Before calling any API in AudioHapticManager, you must use [getAudioHapticManager](arkts-audio-audiohaptic-getaudiohapticmanager-f.md) to create an AudioHapticManager instance.
 
 **Since:** 11

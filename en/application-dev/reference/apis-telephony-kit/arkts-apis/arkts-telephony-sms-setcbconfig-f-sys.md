@@ -59,25 +59,8 @@ sms.setCBConfig(cbConfigOptions, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { sms } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let cbConfigOptions: sms.CBConfigOptions = {
-    slotId: 0,
-    enable: true,
-    startMessageId: 100,
-    endMessageId: 200,
-    ranType: sms.RanType.TYPE_GSM
-};
-let promise = sms.setCBConfig(cbConfigOptions);
-promise.then(() => {
-    console.info(`setCBConfig success.`);
-}).catch((err: BusinessError) => {
-    console.error(`setCBConfig failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="setcbconfig-1"></a>
 
 ## setCBConfig
 
@@ -121,4 +104,21 @@ Sets the cell broadcast configuration. This API uses a promise to return the res
 
 **Examples**
 
-See [setCBConfig](#setcbconfig)
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let cbConfigOptions: sms.CBConfigOptions = {
+    slotId: 0,
+    enable: true,
+    startMessageId: 100,
+    endMessageId: 200,
+    ranType: sms.RanType.TYPE_GSM
+};
+let promise = sms.setCBConfig(cbConfigOptions);
+promise.then(() => {
+    console.info(`setCBConfig success.`);
+}).catch((err: BusinessError) => {
+    console.error(`setCBConfig failed, promise: err->${JSON.stringify(err)}`);
+});
+```

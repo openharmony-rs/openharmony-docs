@@ -8,6 +8,8 @@ typedef struct Scan_PictureScanProgress {...} Scan_PictureScanProgress
 
 表示扫描仪扫描图片的进度
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 12
 
 **相关模块：** [OH_Scan](capi-oh-scan.md)

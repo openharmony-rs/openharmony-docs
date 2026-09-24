@@ -1,5 +1,9 @@
 # BusinessType（系统接口）
 
+```TypeScript
+export enum BusinessType
+```
+
 此枚举值用于标识过滤条件类型。
 
 **起始版本：** 10

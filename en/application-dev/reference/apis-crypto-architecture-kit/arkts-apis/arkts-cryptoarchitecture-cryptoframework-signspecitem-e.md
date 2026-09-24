@@ -1,5 +1,9 @@
 # SignSpecItem
 
+```TypeScript
+enum SignSpecItem
+```
+
 Enumerates the signing and signature verification parameters, which can be set by using [setSignSpec](arkts-cryptoarchitecture-cryptoframework-sign-i.md#setsignspec) and [setVerifySpec](arkts-cryptoarchitecture-cryptoframework-verify-i.md#setverifyspec), and obtained by using [getSignSpec](arkts-cryptoarchitecture-cryptoframework-sign-i.md#getsignspec) and [getVerifySpec](arkts-cryptoarchitecture-cryptoframework-verify-i.md#getverifyspec).
 
 <br>Currently, only RSA and SM2 are supported. For details, see [Signing and Signature Verification Overview and Algorithm Specifications](../../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md).

@@ -23,8 +23,8 @@ import { businessAbilityRouter } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [queryBusinessAbilityInfo](arkts-ability-businessabilityrouter-querybusinessabilityinfo-f-sys.md) | Query the business ability info of by the given filter. ohos.permission.GET_BUNDLE_INFO_PRIVILEGED is required for cross user access. |
-| [queryBusinessAbilityInfo](arkts-ability-businessabilityrouter-querybusinessabilityinfo-f-sys.md) | Query the business ability info of by the given filter. ohos.permission.GET_BUNDLE_INFO_PRIVILEGED is required for cross user access. |
+| [queryBusinessAbilityInfo](arkts-ability-businessabilityrouter-querybusinessabilityinfo-f-sys.md#querybusinessabilityinfo) | Query the business ability info of by the given filter. ohos.permission.GET_BUNDLE_INFO_PRIVILEGED is required for cross user access. |
+| [queryBusinessAbilityInfo](arkts-ability-businessabilityrouter-querybusinessabilityinfo-f-sys.md#querybusinessabilityinfo-1) | Query the business ability info of by the given filter. ohos.permission.GET_BUNDLE_INFO_PRIVILEGED is required for cross user access. |
 <!--DelEnd-->
 
 <!--Del-->

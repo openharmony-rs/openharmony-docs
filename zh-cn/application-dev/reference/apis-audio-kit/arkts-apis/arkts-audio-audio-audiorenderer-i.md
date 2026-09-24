@@ -1,5 +1,9 @@
 # AudioRenderer
 
+```TypeScript
+interface AudioRenderer
+```
+
 音频渲染。在使用AudioRenderer的接口之前，需先通过[audio.createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md)获取AudioRenderer实例。
 
 **起始版本：** 8
@@ -30,6 +34,22 @@ drain(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当检查缓冲区是否已被耗尽成功，err为undefined，否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.drain((err: BusinessError) => {
+  if (err) {
+    console.error('Renderer drain failed');
+  } else {
+    console.info('Renderer drained.');
+  }
+});
+```
+
+<a id="drain-1"></a>
+
 ## drain
 
 ```TypeScript
@@ -47,6 +67,18 @@ drain(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.drain().then(() => {
+  console.info('Renderer drained successfully');
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
 
 ## flush
 
@@ -72,6 +104,18 @@ flush(): Promise<void>
 | --- | --- |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permit at current state. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.flush().then(() => {
+  console.info('Renderer flushed successfully');
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
 ## getAudioEffectMode
 
 ```TypeScript
@@ -89,6 +133,22 @@ getAudioEffectMode(callback: AsyncCallback<AudioEffectMode>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AudioEffectMode](arkts-audio-audio-audioeffectmode-e.md)&gt; | 是 | 回调函数。当获取当前音效模式成功，err为undefined，data为获取到的当前音效模式；否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getAudioEffectMode((err: BusinessError, effectMode: audio.AudioEffectMode) => {
+  if (err) {
+    console.error('Failed to get params');
+  } else {
+    console.info(`getAudioEffectMode: ${effectMode}`);
+  }
+});
+```
+
+<a id="getaudioeffectmode-1"></a>
 
 ## getAudioEffectMode
 
@@ -108,6 +168,18 @@ getAudioEffectMode(): Promise<AudioEffectMode>
 | --- | --- |
 | Promise&lt;[AudioEffectMode](arkts-audio-audio-audioeffectmode-e.md)&gt; | Promise对象，返回当前音效模式。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getAudioEffectMode().then((effectMode: audio.AudioEffectMode) => {
+  console.info(`getAudioEffectMode: ${effectMode}`);
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
 ## getAudioStreamId
 
 ```TypeScript
@@ -125,6 +197,18 @@ getAudioStreamId(callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取音频流id成功，err为undefined，data为获取到的音频流id；否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getAudioStreamId((err: BusinessError, streamId: number) => {
+  console.info(`Renderer GetStreamId: ${streamId}`);
+});
+```
+
+<a id="getaudiostreamid-1"></a>
 
 ## getAudioStreamId
 
@@ -144,6 +228,18 @@ getAudioStreamId(): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回音频流id。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getAudioStreamId().then((streamId: number) => {
+  console.info(`Renderer getAudioStreamId: ${streamId}`);
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
 ## getAudioStreamIdSync
 
 ```TypeScript
@@ -161,6 +257,20 @@ getAudioStreamIdSync(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 返回音频流id。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let streamId: number = audioRenderer.getAudioStreamIdSync();
+  console.info(`Renderer getAudioStreamIdSync: ${streamId}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
+```
 
 ## getAudioTime
 
@@ -180,6 +290,18 @@ getAudioTime(callback: AsyncCallback<number>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取时间戳成功，err为undefined，data为获取到的时间戳；否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getAudioTime((err: BusinessError, timestamp: number) => {
+  console.info(`Current timestamp: ${timestamp}`);
+});
+```
+
+<a id="getaudiotime-1"></a>
+
 ## getAudioTime
 
 ```TypeScript
@@ -198,13 +320,39 @@ getAudioTime(): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回时间戳。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getAudioTime().then((timestamp: number) => {
+  console.info(`Current timestamp: ${timestamp}`);
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
 ## getAudioTimestampInfo
 
 ```TypeScript
 getAudioTimestampInfo(): Promise<AudioTimestampInfo>
 ```
 
-获取输出音频流时间戳和位置信息，适配倍速接口。使用Promise异步回调。获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐。注意，当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正开始播放时才会更新。当调用Flush接口时实际播放位置也会被重置。当音频流路由（route）变化时，例如设备变化或者输出类型变化时，播放位置也会被重置，但此时时间戳仍会持续增长。推荐当实际播放位置和时间戳的变化稳定后再使用该接口获取的值。该接口适配倍速接口，例如当播放速度设置为2倍时，播放位置的增长速度也会返回为正常的2倍。
+获取输出音频流时间戳和位置信息，适配倍速接口。使用Promise异步回调。获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐，播放位置单位为采样数（samples），时间戳单位为纳秒（ns）。当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。该接口通常用来实现音画同步，调用频率建议高于200ms一次，推荐频率为每分钟一次。在能保证音画同步效果的情况下，不需要频繁地查询时间戳，避免出现功耗问题。
+
+> **说明：** 
+> 
+> - 当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正开始播放时才会更新。
+> 
+> - 播放位置（framePosition）单位为采样数，采样数计算方式为采样率乘以时间（例如，当采样率为48000Hz时，20ms音频数据对应的采样数为48000*0.02，即采样点为960）。
+> 
+> - 当调用Flush接口时实际播放位置也会被重置。
+> 
+> - 在调用此函数之前，确保音频流处于运行状态，并且至少已成功播放一帧数据。
+> 
+> - 当音频流路由（route）变化时，例如设备变化或者输出类型变化时，播放位置可能也会被重置，但此时时间戳仍会持续增长。推荐当实际播放位置和时间戳的变化稳定后再使用该接口获取的值。
+> 
+> - 该接口适配倍速接口，例如当播放速度设置为2倍时，播放位置的增长速度也会返回为正常的2倍。
 
 **起始版本：** 19
 
@@ -221,6 +369,18 @@ getAudioTimestampInfo(): Promise<AudioTimestampInfo>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permit at current state. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getAudioTimestampInfo().then((audioTimestampInfo: audio.AudioTimestampInfo) => {
+  console.info(`Current timestamp: ${audioTimestampInfo.timestamp}`);
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
 
 ## getAudioTimestampInfoSync
 
@@ -246,6 +406,20 @@ getAudioTimestampInfoSync(): AudioTimestampInfo
 | --- | --- |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permit at current state. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let audioTimestampInfo: audio.AudioTimestampInfo = audioRenderer.getAudioTimestampInfoSync();
+  console.info(`Current timestamp: ${audioTimestampInfo.timestamp}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
+```
+
 ## getAudioTimeSync
 
 ```TypeScript
@@ -263,6 +437,20 @@ getAudioTimeSync(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 返回时间戳。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let timestamp: number = audioRenderer.getAudioTimeSync();
+  console.info(`Current timestamp: ${timestamp}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
+```
 
 ## getBufferSize
 
@@ -282,6 +470,25 @@ getBufferSize(callback: AsyncCallback<number>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取音频渲染器的最小缓冲区大小成功，err为undefined，data为获取到的最小缓冲区大小；否则为错误对象。<br>单位为字节。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bufferSize: number;
+
+audioRenderer.getBufferSize((err: BusinessError, data: number) => {
+  if (err) {
+    console.error('getBufferSize error');
+  } else {
+    console.info(`AudioFrameworkRenderLog: getBufferSize: SUCCESS ${data}`);
+    bufferSize = data;
+  }
+});
+```
+
+<a id="getbuffersize-1"></a>
+
 ## getBufferSize
 
 ```TypeScript
@@ -298,7 +505,22 @@ getBufferSize(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回缓冲区大小。  单位为字节。 |
+| Promise&lt;number&gt; | Promise对象，返回缓冲区大小。  单位为字节（Byte）。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bufferSize: number;
+
+audioRenderer.getBufferSize().then((data: number) => {
+  console.info(`AudioFrameworkRenderLog: getBufferSize: SUCCESS ${data}`);
+  bufferSize = data;
+}).catch((err: BusinessError) => {
+  console.error(`AudioFrameworkRenderLog: getBufferSize: ERROR: ${err}`);
+});
+```
 
 ## getBufferSizeSync
 
@@ -316,7 +538,23 @@ getBufferSizeSync(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回缓冲区大小，单位为字节。 |
+| number | 返回缓冲区大小，单位为字节（Byte）。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bufferSize: number = 0;
+
+try {
+  bufferSize = audioRenderer.getBufferSizeSync();
+  console.info(`AudioFrameworkRenderLog: getBufferSize: SUCCESS ${bufferSize}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`AudioFrameworkRenderLog: getBufferSize: ERROR: ${error}`);
+}
+```
 
 ## getCurrentOutputDevices
 
@@ -336,6 +574,31 @@ getCurrentOutputDevices(callback: AsyncCallback<AudioDeviceDescriptors>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)&gt; | 是 | 回调函数。当获取音频流输出设备信息成功，err为undefined，data为获取到的音频流输出设备信息；否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getCurrentOutputDevices((err: BusinessError, deviceInfo: audio.AudioDeviceDescriptors) => {
+  if (err) {
+    console.error(`getCurrentOutputDevices Fail: ${err}`);
+  } else {
+    for (let i = 0; i < deviceInfo.length; i++) {
+      console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
+      console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
+      console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
+      console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
+      console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
+      console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
+      console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
+      console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
+    }
+  }
+});
+```
+
+<a id="getcurrentoutputdevices-1"></a>
+
 ## getCurrentOutputDevices
 
 ```TypeScript
@@ -354,6 +617,27 @@ getCurrentOutputDevices(): Promise<AudioDeviceDescriptors>
 | --- | --- |
 | Promise&lt;[AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)&gt; | Promise对象，返回音频流的输出设备信息。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getCurrentOutputDevices().then((deviceInfo: audio.AudioDeviceDescriptors) => {
+  for (let i = 0; i < deviceInfo.length; i++) {
+    console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
+    console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
+    console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
+    console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
+    console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
+    console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
+    console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
+    console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Get current output devices Fail: ${err}`);
+});
+```
+
 ## getCurrentOutputDevicesSync
 
 ```TypeScript
@@ -371,6 +655,29 @@ getCurrentOutputDevicesSync(): AudioDeviceDescriptors
 | 类型 | 说明 |
 | --- | --- |
 | [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | 返回音频流的输出设备信息。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let deviceInfo: audio.AudioDeviceDescriptors = audioRenderer.getCurrentOutputDevicesSync();
+  for (let i = 0; i < deviceInfo.length; i++) {
+    console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
+    console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
+    console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
+    console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
+    console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
+    console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
+    console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
+    console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
+  }
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Get current output devices Fail: ${error}`);
+}
+```
 
 ## getLatency
 
@@ -404,7 +711,7 @@ getLatency(type: AudioLatencyType): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回音频时延，单位为毫秒。 |
+| number | 返回音频时延，单位为毫秒（ms）。 |
 
 **错误码：**
 
@@ -413,6 +720,20 @@ getLatency(type: AudioLatencyType): number
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permitted in release state. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System internal error, like audio service error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const latency: number = audioRenderer.getLatency(audio.AudioLatencyType.LATENCY_TYPE_ALL);
+  console.info(`Current audio latency: ${latency}ms`);
+} catch (err) {
+  const error = err as BusinessError;
+  console.error(`Failed to get latency. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## getLoudnessGain
 
@@ -430,7 +751,13 @@ getLoudnessGain(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回播放的响度值，单位为分贝。 |
+| number | 返回播放的响度值，单位为分贝（dB）。 |
+
+**示例**
+
+```TypeScript
+let loudnessGain = audioRenderer.getLoudnessGain();
+```
 
 ## getMaxStreamVolume
 
@@ -450,6 +777,22 @@ getMaxStreamVolume(callback: AsyncCallback<number>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取音频流的最大音量成功，err为undefined，data为获取到的应用基于音频流的最大音量；否则为错误对象。<br>音量范围为[0.0, 1.0]。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getMaxStreamVolume((err: BusinessError, maxVolume: number) => {
+  if (err) {
+    console.error(`getMaxStreamVolume Fail: ${err}`);
+  } else {
+    console.info(`getMaxStreamVolume Success! ${maxVolume}`);
+  }
+});
+```
+
+<a id="getmaxstreamvolume-1"></a>
+
 ## getMaxStreamVolume
 
 ```TypeScript
@@ -467,6 +810,18 @@ getMaxStreamVolume(): Promise<number>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回音频流最大音量。  音量范围为[0.0, 1.0]。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getMaxStreamVolume().then((value: number) => {
+  console.info(`Get max stream volume Success! ${value}`);
+}).catch((err: BusinessError) => {
+  console.error(`Get max stream volume Fail: ${err}`);
+});
+```
 
 ## getMaxStreamVolumeSync
 
@@ -486,6 +841,20 @@ getMaxStreamVolumeSync(): number
 | --- | --- |
 | number | 返回音频流最大音量，音量范围为[0.0, 1.0]。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: number = audioRenderer.getMaxStreamVolumeSync();
+  console.info(`Get max stream volume Success! ${value}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Get max stream volume Fail: ${error}`);
+}
+```
+
 ## getMinStreamVolume
 
 ```TypeScript
@@ -503,6 +872,22 @@ getMinStreamVolume(callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取音频流的最小音量成功，err为undefined，data为获取到的应用基于音频流的最小音量；否则为错误对象。<br>音量范围为[0.0, 1.0]。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getMinStreamVolume((err: BusinessError, minVolume: number) => {
+  if (err) {
+    console.error(`getMinStreamVolume error: ${err}`);
+  } else {
+    console.info(`getMinStreamVolume Success! ${minVolume}`);
+  }
+});
+```
+
+<a id="getminstreamvolume-1"></a>
 
 ## getMinStreamVolume
 
@@ -522,6 +907,18 @@ getMinStreamVolume(): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回音频流最小音量。  音量范围为[0.0, 1.0]。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getMinStreamVolume().then((value: number) => {
+  console.info(`Get min stream volume Success! ${value}`);
+}).catch((err: BusinessError) => {
+  console.error(`Get min stream volume Fail: ${err}`);
+});
+```
+
 ## getMinStreamVolumeSync
 
 ```TypeScript
@@ -540,25 +937,19 @@ getMinStreamVolumeSync(): number
 | --- | --- |
 | number | 返回音频流最小音量，音量范围为[0.0, 1.0]。 |
 
-## getNoiseReductionMode
+**示例**
 
 ```TypeScript
-getNoiseReductionMode(): NoiseReductionMode
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: number = audioRenderer.getMinStreamVolumeSync();
+  console.info(`Get min stream volume Success! ${value}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Get min stream volume Fail: ${error}`);
+}
 ```
-
-Gets the noise reduction mode for current audio renderer. The mode will only consider the default and setted status, audio output device and stream concurrency will not be considered.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [NoiseReductionMode](arkts-audio-audio-noisereductionmode-e.md) | The noise reduction mode for current audio renderer, the default value is [FIDELITY](arkts-audio-audio-noisereductionmode-e.md#fidelity). |
 
 ## getRendererInfo
 
@@ -578,6 +969,22 @@ getRendererInfo(callback: AsyncCallback<AudioRendererInfo>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AudioRendererInfo](arkts-audio-audio-audiorendererinfo-i.md)&gt; | 是 | 回调函数。当获取音频渲染器的信息成功，err为undefined，data为获取到的音频渲染器的信息；否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getRendererInfo((err: BusinessError, audioRendererInfo: audio.AudioRendererInfo) => {
+  if (err) {
+    console.error(`Failed to get renderer info. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getting renderer info, AudioRendererInfo: ${JSON.stringify(audioRendererInfo)}.`);
+  }
+});
+```
+
+<a id="getrendererinfo-1"></a>
+
 ## getRendererInfo
 
 ```TypeScript
@@ -595,6 +1002,18 @@ getRendererInfo(): Promise<AudioRendererInfo>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[AudioRendererInfo](arkts-audio-audio-audiorendererinfo-i.md)&gt; | Promise对象，返回音频渲染器信息。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getRendererInfo().then((audioRendererInfo: audio.AudioRendererInfo) => {
+  console.info(`Succeeded in getting renderer info, AudioRendererInfo: ${JSON.stringify(audioRendererInfo)}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get renderer info. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## getRendererInfoSync
 
@@ -614,83 +1033,19 @@ getRendererInfoSync(): AudioRendererInfo
 | --- | --- |
 | [AudioRendererInfo](arkts-audio-audio-audiorendererinfo-i.md) | 返回音频渲染器信息。 |
 
-## getRenderRate
+**示例**
 
 ```TypeScript
-getRenderRate(callback: AsyncCallback<AudioRendererRate>): void
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let audioRendererInfo = audioRenderer.getRendererInfoSync();
+  console.info(`Succeeded in getting renderer info, AudioRendererInfo: ${JSON.stringify(audioRendererInfo)}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get renderer info. Code: ${error.code}, message: ${error.message}`);
+}
 ```
-
-获取音频渲染速率。使用callback异步回调。
-
-> **说明：** 
-> 
-> 从API version 8开始支持，从API version 11开始废弃，建议使用[getSpeed](#getspeed)替代。
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-**替代接口：** [getSpeed](#getspeed)
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AudioRendererRate](arkts-audio-audio-audiorendererrate-e.md)&gt; | 是 | 回调函数。当获取当前渲染速率成功，err为undefined，data为获取到的当前渲染速率；否则为错误对象。 |
-
-## getRenderRate
-
-```TypeScript
-getRenderRate(): Promise<AudioRendererRate>
-```
-
-获取音频渲染速率。使用Promise异步回调。
-
-> **说明：** 
-> 
-> 从API version 8开始支持，从API version 11开始废弃，建议使用[getSpeed](#getspeed)替代。
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-**替代接口：** [getSpeed](#getspeed)
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[AudioRendererRate](arkts-audio-audio-audiorendererrate-e.md)&gt; | Promise对象，返回渲染速率。 |
-
-## getRenderRateSync
-
-```TypeScript
-getRenderRateSync(): AudioRendererRate
-```
-
-获取音频渲染速率。同步返回结果。
-
-> **说明：** 
-> 
-> 从API version 10开始支持，从API version 11开始废弃，建议使用[getSpeed](#getspeed)替代。
-
-**起始版本：** 10
-
-**废弃版本：** 11
-
-**替代接口：** [getSpeed](#getspeed)
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [AudioRendererRate](arkts-audio-audio-audiorendererrate-e.md) | 返回渲染速率。 |
 
 ## getSilentModeAndMixWithOthers
 
@@ -710,6 +1065,12 @@ getSilentModeAndMixWithOthers(): boolean
 | --- | --- |
 | boolean | 静音并发播放模式状态。返回true表示打开，返回false表示关闭。 |
 
+**示例**
+
+```TypeScript
+let on = audioRenderer.getSilentModeAndMixWithOthers();
+```
+
 ## getSpeed
 
 ```TypeScript
@@ -727,6 +1088,12 @@ getSpeed(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 返回播放的倍速值，倍速范围为[0.25, 4.0]。 |
+
+**示例**
+
+```TypeScript
+let speed = audioRenderer.getSpeed();
+```
 
 ## getStreamInfo
 
@@ -746,6 +1113,22 @@ getStreamInfo(callback: AsyncCallback<AudioStreamInfo>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AudioStreamInfo](arkts-audio-audio-audiostreaminfo-i.md)&gt; | 是 | 回调函数。当获取音频流信息成功，err为undefined，data为获取到的音频流信息；否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getStreamInfo((err: BusinessError, streamInfo: audio.AudioStreamInfo) => {
+  console.info('Renderer GetStreamInfo:');
+  console.info(`Renderer sampling rate: ${streamInfo.samplingRate}`);
+  console.info(`Renderer channel: ${streamInfo.channels}`);
+  console.info(`Renderer format: ${streamInfo.sampleFormat}`);
+  console.info(`Renderer encoding type: ${streamInfo.encodingType}`);
+});
+```
+
+<a id="getstreaminfo-1"></a>
+
 ## getStreamInfo
 
 ```TypeScript
@@ -763,6 +1146,22 @@ getStreamInfo(): Promise<AudioStreamInfo>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[AudioStreamInfo](arkts-audio-audio-audiostreaminfo-i.md)&gt; | Promise对象，返回音频流信息。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getStreamInfo().then((streamInfo: audio.AudioStreamInfo) => {
+  console.info('Renderer GetStreamInfo:');
+  console.info(`Renderer sampling rate: ${streamInfo.samplingRate}`);
+  console.info(`Renderer channel: ${streamInfo.channels}`);
+  console.info(`Renderer format: ${streamInfo.sampleFormat}`);
+  console.info(`Renderer encoding type: ${streamInfo.encodingType}`);
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
 
 ## getStreamInfoSync
 
@@ -782,31 +1181,22 @@ getStreamInfoSync(): AudioStreamInfo
 | --- | --- |
 | [AudioStreamInfo](arkts-audio-audio-audiostreaminfo-i.md) | 返回音频流信息。 |
 
-## getSupportedNoiseReductionModes
+**示例**
 
 ```TypeScript
-getSupportedNoiseReductionModes(): Array<NoiseReductionMode>
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let streamInfo: audio.AudioStreamInfo = audioRenderer.getStreamInfoSync();
+  console.info(`Renderer sampling rate: ${streamInfo.samplingRate}`);
+  console.info(`Renderer channel: ${streamInfo.channels}`);
+  console.info(`Renderer format: ${streamInfo.sampleFormat}`);
+  console.info(`Renderer encoding type: ${streamInfo.encodingType}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
 ```
-
-Gets all the supported noise reduction modes for current device platform. Currently the noise reduction effect is only supported when using [STREAM_USAGE_VOICE_MESSAGE](arkts-audio-audio-streamusage-e.md#stream_usage_voice_message), other supported usage may be extened later. The supported modes will only consider the audio format and device platform, audio output device and stream concurrency will not be considered.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Array&lt;[NoiseReductionMode](arkts-audio-audio-noisereductionmode-e.md)&gt; | The supported noise reduction mode array, at least [FIDELITY](arkts-audio-audio-noisereductionmode-e.md#fidelity) is supported. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio server process died. |
 
 ## getUnderflowCount
 
@@ -826,6 +1216,22 @@ getUnderflowCount(callback: AsyncCallback<number>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取当前播放音频流的欠载音频帧数量成功，err为undefined，data为获取到的当前播放音频流的欠载音频帧数量；否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getUnderflowCount((err: BusinessError, underflowCount: number) => {
+  if (err) {
+    console.error(`getUnderflowCount Fail: ${err}`);
+  } else {
+    console.info(`getUnderflowCount Success! ${underflowCount}`);
+  }
+});
+```
+
+<a id="getunderflowcount-1"></a>
+
 ## getUnderflowCount
 
 ```TypeScript
@@ -843,6 +1249,18 @@ getUnderflowCount(): Promise<number>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回音频流的欠载音频帧数量。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getUnderflowCount().then((value: number) => {
+  console.info(`Get underflow count Success! ${value}`);
+}).catch((err: BusinessError) => {
+  console.error(`Get underflow count Fail: ${err}`);
+});
+```
 
 ## getUnderflowCountSync
 
@@ -862,6 +1280,20 @@ getUnderflowCountSync(): number
 | --- | --- |
 | number | 返回音频流的欠载音频帧数量。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: number = audioRenderer.getUnderflowCountSync();
+  console.info(`Get underflow count Success! ${value}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Get underflow count Fail: ${error}`);
+}
+```
+
 ## getVolume
 
 ```TypeScript
@@ -879,6 +1311,20 @@ getVolume(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 返回音量大小，音量值范围为[0.0, 1.0]。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: number = audioRenderer.getVolume();
+  console.info(`Indicate that the volume is obtained ${value}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the volume, error ${error}.`);
+}
+```
 
 ## off('audioInterrupt')
 
@@ -905,6 +1351,69 @@ off(type: 'audioInterrupt', callback?: Callback<InterruptEvent>): void
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+// 取消该事件的所有监听。
+audioRenderer.off('audioInterrupt');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let isPlaying: boolean; // 标识符，表示是否正在渲染。
+let isDucked: boolean; // 标识符，表示是否被降低音量。
+
+let audioInterruptCallback = (interruptEvent: audio.InterruptEvent) => {
+  // 在发生音频打断事件时，audioRenderer收到interruptEvent回调，此处根据其内容做相应处理。
+  // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
+  // 注意：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
+  // 2. 必选：读取interruptEvent.hintType的类型，做出相应的处理。
+  if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
+    // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
+        // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
+        console.info('Force paused. Update playing status and stop writing');
+        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_STOP:
+        // 音频流已被停止，永久失去焦点，若想恢复渲染，需用户主动触发。
+        console.info('Force stopped. Update playing status and stop writing');
+        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_DUCK:
+        // 音频流已被降低音量渲染。
+        console.info('Force ducked. Update volume status');
+        isDucked = true; // 简化处理，代表应用更新音量状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
+        // 音频流已被恢复正常音量渲染。
+        console.info('Force unducked. Update volume status');
+        isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
+        break;
+      default:
+        console.info('Invalid interruptEvent');
+        break;
+    }  
+  } else if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_SHARE) {
+    // 音频焦点事件需由应用进行操作，应用可以自主选择如何处理该事件，建议应用遵从InterruptHint提示处理。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_RESUME:
+        // 建议应用继续渲染（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复渲染）。
+        // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
+        console.info('Resume force paused renderer or ignore');
+        // 若选择继续渲染，需在此处主动执行开始渲染的若干操作。
+        break;
+      default:
+        console.info('Invalid interruptEvent');
+        break;
+    }
+  }
+};
+
+audioRenderer.on('audioInterrupt', audioInterruptCallback);
+
+audioRenderer.off('audioInterrupt', audioInterruptCallback);
+```
+
 ## off('markReach')
 
 ```TypeScript
@@ -924,6 +1433,24 @@ off(type: 'markReach', callback?: Callback<number>): void
 | type | 'markReach' | 是 | 事件回调类型，支持的事件为'markReach'，当取消监听标记到达事件时，触发该事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 回调函数，返回frame参数的值。 |
 
+**示例**
+
+```TypeScript
+// 取消该事件的所有监听。
+audioRenderer.off('markReach');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let markReachCallback = (position: number) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+};
+
+audioRenderer.on('markReach', 1000, markReachCallback);
+
+audioRenderer.off('markReach', markReachCallback);
+```
+
 ## off('periodReach')
 
 ```TypeScript
@@ -942,6 +1469,24 @@ off(type: 'periodReach', callback?: Callback<number>): void
 | --- | --- | --- | --- |
 | type | 'periodReach' | 是 | 事件回调类型，支持的事件为'periodReach'，当取消监听标记到达事件时，触发该事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 回调函数，返回frame参数的值。 |
+
+**示例**
+
+```TypeScript
+// 取消该事件的所有监听。
+audioRenderer.off('periodReach');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let periodReachCallback = (position: number) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+};
+
+audioRenderer.on('periodReach', 1000, periodReachCallback);
+
+audioRenderer.off('periodReach', periodReachCallback);
+```
 
 ## off('stateChange')
 
@@ -968,6 +1513,27 @@ off(type: 'stateChange', callback?: Callback<AudioState>): void
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+// 取消该事件的所有监听。
+audioRenderer.off('stateChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let stateChangeCallback = (state: audio.AudioState) => {
+  if (state == 1) {
+    console.info('audio renderer state is: STATE_PREPARED');
+  }
+  if (state == 2) {
+    console.info('audio renderer state is: STATE_RUNNING');
+  }
+};
+
+audioRenderer.on('stateChange', stateChangeCallback);
+
+audioRenderer.off('stateChange', stateChangeCallback);
+```
+
 ## off('outputDeviceChange')
 
 ```TypeScript
@@ -991,8 +1557,26 @@ off(type: 'outputDeviceChange', callback?: Callback<AudioDeviceDescriptors>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+// 取消该事件的所有监听。
+audioRenderer.off('outputDeviceChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let outputDeviceChangeCallback = (deviceInfo: audio.AudioDeviceDescriptors) => {
+  console.info(`DeviceInfo id: ${deviceInfo[0].id}`);
+  console.info(`DeviceInfo name: ${deviceInfo[0].name}`);
+  console.info(`DeviceInfo address: ${deviceInfo[0].address}`);
+};
+
+audioRenderer.on('outputDeviceChange', outputDeviceChangeCallback);
+
+audioRenderer.off('outputDeviceChange', outputDeviceChangeCallback);
+```
 
 ## off('outputDeviceChangeWithInfo')
 
@@ -1017,8 +1601,27 @@ off(type: 'outputDeviceChangeWithInfo', callback?: Callback<AudioStreamDeviceCha
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+// 取消该事件的所有监听。
+audioRenderer.off('outputDeviceChangeWithInfo');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let outputDeviceChangeWithInfoCallback = (deviceChangeInfo: audio.AudioStreamDeviceChangeInfo) => {
+  console.info(`DeviceInfo id: ${deviceChangeInfo.devices[0].id}`);
+  console.info(`DeviceInfo name: ${deviceChangeInfo.devices[0].name}`);
+  console.info(`DeviceInfo address: ${deviceChangeInfo.devices[0].address}`);
+  console.info(`Device change reason: ${deviceChangeInfo.changeReason}`);
+};
+
+audioRenderer.on('outputDeviceChangeWithInfo', outputDeviceChangeWithInfoCallback);
+
+audioRenderer.off('outputDeviceChangeWithInfo', outputDeviceChangeWithInfoCallback);
+```
 
 ## off('writeData')
 
@@ -1037,14 +1640,30 @@ off(type: 'writeData', callback?: AudioRendererWriteDataCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'writeData' | 是 | 事件回调类型，支持的事件为'writeData'，当取消监听音频数据写入回调事件时，触发该事件。 |
-| callback | [AudioRendererWriteDataCallback](arkts-audio-audio-audiorendererwritedatacallback-t.md) | 否 | 回调函数，入参代表应用接收待写入的数据缓冲区。<br>API version 11 不支持返回回调结果，从 API version 1 2 开始支持返回回调结果[AudioDataCallbackResult](arkts-audio-audio-audiodatacallbackresult-e.md)。 |
+| callback | [AudioRendererWriteDataCallback](arkts-audio-audio-audiorendererwritedatacallback-t.md) | 否 | 回调函数，入参代表应用接收待写入的数据缓冲区。<br>API version 11 不支持返回回调结果，从 API version 12 开始支持返回回调结果[AudioDataCallbackResult](arkts-audio-audio-audiodatacallbackresult-e.md)。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+// 取消该事件的所有监听。
+audioRenderer.off('writeData');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let writeDataCallback = (data: ArrayBuffer) => {
+    console.info(`write data: ${data}`);
+};
+
+audioRenderer.on('writeData', writeDataCallback);
+
+audioRenderer.off('writeData', writeDataCallback);
+```
 
 ## on('audioInterrupt')
 
@@ -1052,7 +1671,7 @@ off(type: 'writeData', callback?: AudioRendererWriteDataCallback): void
 on(type: 'audioInterrupt', callback: Callback<InterruptEvent>): void
 ```
 
-监听音频中断事件（当音频焦点发生变化时触发）。使用callback异步回调。AudioRenderer对象在start事件时获取焦点，在pause、stop等事件时释放焦点，无需开发者主动申请。调用此方法后，如果AudioRenderer对象获取焦点失败或发生中断事件（如被其他音频打断等），会收到[InterruptEvent](arkts-audio-audio-interruptevent-i.md)。建议应用根据InterruptEvent的信息进行进一步处理。更多信息请参阅音频焦点介绍文档。
+监听音频中断事件（当音频焦点发生变化时触发）。使用callback异步回调。AudioRenderer对象在start事件时获取焦点，在pause、stop等事件时释放焦点，无需开发者主动申请。调用此方法后，如果AudioRenderer对象获取焦点失败或发生中断事件（如被其他音频打断等），会收到[InterruptEvent](arkts-audio-audio-interruptevent-i.md)。建议应用根据InterruptEvent的信息进行进一步处理。更多信息请参阅文档[音频焦点介绍](../../../media/audio/audio-playback-concurrency.md)。
 
 **起始版本：** 9
 
@@ -1069,8 +1688,65 @@ on(type: 'audioInterrupt', callback: Callback<InterruptEvent>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+let isPlaying: boolean = false; // 标识符，表示是否正在渲染。
+let isDucked: boolean = false; // 标识符，表示是否被降低音量。
+
+audioRenderer.on('audioInterrupt', (interruptEvent: audio.InterruptEvent) => {
+  // 在发生音频打断事件时，audioRenderer收到interruptEvent回调，此处根据其内容做相应处理。
+  // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
+  // 注意：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
+  // 2. 必选：读取interruptEvent.hintType的类型，做出相应的处理。
+  if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
+    // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
+        // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
+        console.info('Force paused. Update playing status and stop writing');
+        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_STOP:
+        // 音频流已被停止，永久失去焦点，若想恢复渲染，需用户主动触发。
+        console.info('Force stopped. Update playing status and stop writing');
+        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_DUCK:
+        // 音频流已被降低音量渲染。
+        console.info('Force ducked. Update volume status');
+        isDucked = true; // 简化处理，代表应用更新音量状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
+        // 音频流已被恢复正常音量渲染。
+        console.info('Force unducked. Update volume status');
+        isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
+        break;
+      default:
+        console.info('Invalid interruptEvent');
+        break;
+    }
+  } else if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_SHARE) {
+    // 音频焦点事件需由应用进行操作，应用可以自主选择如何处理该事件，建议应用遵从InterruptHint提示处理。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_RESUME:
+        // 建议应用继续渲染（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复渲染）。
+        // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
+        console.info('Resume force paused renderer or ignore');
+        // 若选择继续渲染，需在此处主动执行开始渲染的若干操作。
+        break;
+      default:
+        console.info('Invalid interruptEvent');
+        break;
+    }
+  }
+});
+```
 
 ## on('markReach')
 
@@ -1092,6 +1768,16 @@ on(type: 'markReach', frame: number, callback: Callback<number>): void
 | frame | number | 是 | 触发事件的帧数。该值必须大于0。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数，返回frame参数的值。 |
 
+**示例**
+
+```TypeScript
+audioRenderer.on('markReach', 1000, (position: number) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+});
+```
+
 ## on('periodReach')
 
 ```TypeScript
@@ -1112,6 +1798,16 @@ on(type: 'periodReach', frame: number, callback: Callback<number>): void
 | frame | number | 是 | 触发事件的帧数。该值必须大于 0。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数，返回frame参数的值。 |
 
+**示例**
+
+```TypeScript
+audioRenderer.on('periodReach', 1000, (position: number) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+});
+```
+
 ## on('stateChange')
 
 ```TypeScript
@@ -1130,6 +1826,19 @@ on(type: 'stateChange', callback: Callback<AudioState>): void
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 事件回调类型，支持的事件为'stateChange'，当AudioRenderer的状态发生变化时，触发该事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioState](arkts-audio-audio-audiostate-e.md)&gt; | 是 | 回调函数，返回当前音频的状态。 |
+
+**示例**
+
+```TypeScript
+audioRenderer.on('stateChange', (state: audio.AudioState) => {
+  if (state == 1) {
+    console.info('audio renderer state is: STATE_PREPARED');
+  }
+  if (state == 2) {
+    console.info('audio renderer state is: STATE_RUNNING');
+  }
+});
+```
 
 ## on('outputDeviceChange')
 
@@ -1154,8 +1863,18 @@ on(type: 'outputDeviceChange', callback: Callback<AudioDeviceDescriptors>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+audioRenderer.on('outputDeviceChange', (deviceInfo: audio.AudioDeviceDescriptors) => {
+  console.info(`DeviceInfo id: ${deviceInfo[0].id}`);
+  console.info(`DeviceInfo name: ${deviceInfo[0].name}`);
+  console.info(`DeviceInfo address: ${deviceInfo[0].address}`);
+});
+```
 
 ## on('outputDeviceChangeWithInfo')
 
@@ -1180,8 +1899,19 @@ on(type: 'outputDeviceChangeWithInfo', callback: Callback<AudioStreamDeviceChang
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+audioRenderer.on('outputDeviceChangeWithInfo', (deviceChangeInfo: audio.AudioStreamDeviceChangeInfo) => {
+  console.info(`DeviceInfo id: ${deviceChangeInfo.devices[0].id}`);
+  console.info(`DeviceInfo name: ${deviceChangeInfo.devices[0].name}`);
+  console.info(`DeviceInfo address: ${deviceChangeInfo.devices[0].address}`);
+  console.info(`Device change reason: ${deviceChangeInfo.changeReason}`);
+});
+```
 
 ## on('writeData')
 
@@ -1206,14 +1936,59 @@ on(type: 'writeData', callback: AudioRendererWriteDataCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'writeData' | 是 | 事件回调类型，支持的事件为'writeData'，当需要写入音频数据时，触发该事件。 |
-| callback | [AudioRendererWriteDataCallback](arkts-audio-audio-audiorendererwritedatacallback-t.md) | 是 | 回调函数，入参代表应用接收待写入的数据缓冲区。<br>API version 11 不支持返回回调结果，从 API version 1 2 开始支持返回回调结果[AudioDataCallbackResult](arkts-audio-audio-audiodatacallbackresult-e.md)。 |
+| callback | [AudioRendererWriteDataCallback](arkts-audio-audio-audiorendererwritedatacallback-t.md) | 是 | 回调函数，入参代表应用接收待写入的数据缓冲区。<br>API version 11 不支持返回回调结果，从 API version 12 开始支持返回回调结果[AudioDataCallbackResult](arkts-audio-audio-audiodatacallbackresult-e.md)。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import {fileIo as fs} from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+class Options {
+  offset?: number;
+  length?: number;
+}
+
+let bufferSize: number = 0;
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let path = context.cacheDir;
+// 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
+let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+let writeDataCallback = (buffer: ArrayBuffer) => {
+  let options: Options = {
+    offset: bufferSize,
+    length: buffer.byteLength
+  };
+
+  try {
+    fs.readSync(file.fd, buffer, options);
+    bufferSize += buffer.byteLength;
+    // API version 11 不支持返回回调结果，从 API version 12 开始支持返回回调结果。
+    return audio.AudioDataCallbackResult.VALID;
+  } catch (error) {
+    console.error('Error reading file:', error);
+    // API version 11 不支持返回回调结果，从 API version 12 开始支持返回回调结果。
+    return audio.AudioDataCallbackResult.INVALID;
+  }
+};
+
+audioRenderer.on('writeData', writeDataCallback);
+audioRenderer.start().then(() => {
+  console.info('Renderer started');
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
 
 ## pause
 
@@ -1233,6 +2008,22 @@ pause(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当暂停渲染成功，err为undefined，否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.pause((err: BusinessError) => {
+  if (err) {
+    console.error('Renderer pause failed');
+  } else {
+    console.info('Renderer paused.');
+  }
+});
+```
+
+<a id="pause-1"></a>
+
 ## pause
 
 ```TypeScript
@@ -1250,6 +2041,18 @@ pause(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.pause().then(() => {
+  console.info('Renderer paused');
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
 
 ## release
 
@@ -1269,6 +2072,22 @@ release(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当释放音频渲染器成功，err为undefined，否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.release((err: BusinessError) => {
+  if (err) {
+    console.error('Renderer release failed');
+  } else {
+    console.info('Renderer released.');
+  }
+});
+```
+
+<a id="release-1"></a>
+
 ## release
 
 ```TypeScript
@@ -1286,6 +2105,18 @@ release(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.release().then(() => {
+  console.info('Renderer released successfully');
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
 
 ## setAudioEffectMode
 
@@ -1310,8 +2141,24 @@ setAudioEffectMode(mode: AudioEffectMode, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT, (err: BusinessError) => {
+  if (err) {
+    console.error('Failed to set params');
+  } else {
+    console.info('Callback invoked to indicate a successful audio effect mode setting.');
+  }
+});
+```
+
+<a id="setaudioeffectmode-1"></a>
 
 ## setAudioEffectMode
 
@@ -1341,8 +2188,20 @@ setAudioEffectMode(mode: AudioEffectMode): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT).then(() => {
+  console.info('setAudioEffectMode SUCCESS');
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
 
 ## setChannelBlendMode
 
@@ -1366,9 +2225,18 @@ setChannelBlendMode(mode: ChannelBlendMode): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permit at current state. |
+
+**示例**
+
+```TypeScript
+let mode = audio.ChannelBlendMode.MODE_DEFAULT;
+
+audioRenderer.setChannelBlendMode(mode);
+console.info(`BlendMode: ${mode}`);
+```
 
 ## setDefaultOutputDevice
 
@@ -1382,7 +2250,9 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise<void>
 > 
 > - 本接口仅适用于[StreamUsage](arkts-audio-audio-streamusage-e.md)为语音消息、VoIP语音通话或者VoIP视频通话的场景，支持听筒、扬声器和系统默认设备。
 > 
-> - 本接口允许在AudioRenderer创建后随时调用，系统会记录应用设置的默认本机内置发声设备。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声；否则，系统遵循应用设置的默认本机内置发声设备。
+> - 本接口允许在AudioRenderer创建后随时调用，系统会记录应用设置的默认本机内置发声设备。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声；否则，系统遵循应用设置的默认本机内置发声设备。具体请参阅文档[设置音频默认输出设备](../../../media/audio/audio-output-device-switcher.md#设置默认输出设备)。
+> 
+> - 本接口优先级低于AudioSessionManager的[setDefaultOutputDevice](arkts-audio-audio-audiosessionmanager-i.md#setdefaultoutputdevice)。如果使用AudioSessionManager的setDefaultOutputDevice设置了默认音频输出设备，本接口的设置将不会生效。
 
 **起始版本：** 12
 
@@ -1404,9 +2274,24 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permit at current state. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 本接口允许在AudioRenderer创建以后的任何时间被调用。
+// 未播放时调用，系统会记录应用设置的默认本机内置发声设备，当应用启动播放时从设置的默认本机内置发声设备发声。
+// 正在播放时调用，在没有外接设备如蓝牙耳机/有线耳机，系统会立即切换到设置的默认本机内置发声设备发声；否则系统会先记录应用设置的默认本机内置发声设备，等外接设备移除后再切换到设置的默认本机内置发声设备发声。
+audioRenderer.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+  console.info('setDefaultOutputDevice Success!');
+}).catch((err: BusinessError) => {
+  console.error(`setDefaultOutputDevice Fail: ${err}`);
+});
+```
 
 ## setIndependentAudioSessionStrategy
 
@@ -1441,6 +2326,16 @@ setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: num
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permit at current state. |
 
+**示例**
+
+```TypeScript
+let strategy: audio.AudioSessionStrategy = {
+  concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+};
+let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+audioRenderer.setIndependentAudioSessionStrategy(strategy, behavior);
+```
+
 ## setInterruptMode
 
 ```TypeScript
@@ -1459,6 +2354,23 @@ setInterruptMode(mode: InterruptMode, callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | mode | [InterruptMode](arkts-audio-audio-interruptmode-e.md) | 是 | 焦点模型。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置应用的焦点模型成功，err为undefined，否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mode = 1;
+
+audioRenderer.setInterruptMode(mode, (err: BusinessError) => {
+  if(err){
+    console.error(`setInterruptMode Fail: ${err}`);
+  }
+  console.info('setInterruptMode Success!');
+});
+```
+
+<a id="setinterruptmode-1"></a>
 
 ## setInterruptMode
 
@@ -1484,6 +2396,20 @@ setInterruptMode(mode: InterruptMode): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mode = 0;
+
+audioRenderer.setInterruptMode(mode).then(() => {
+  console.info('setInterruptMode Success!');
+}).catch((err: BusinessError) => {
+  console.error(`setInterruptMode Fail: ${err}`);
+});
+```
+
 ## setInterruptModeSync
 
 ```TypeScript
@@ -1506,8 +2432,22 @@ setInterruptModeSync(mode: InterruptMode): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  audioRenderer.setInterruptModeSync(0);
+  console.info('setInterruptMode Success!');
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`setInterruptMode Fail: ${error}`);
+}
+```
 
 ## setLoudnessGain
 
@@ -1535,7 +2475,7 @@ setLoudnessGain(loudnessGain: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| loudnessGain | number | 是 | 设置播放的响度值，单位为dB，响度范围为[-90.0, 24.0]。默认值为0.0dB。 |
+| loudnessGain | number | 是 | 设置播放的响度值，单位为分贝（dB），响度范围为[-90.0, 24.0]。默认值为0.0dB。 |
 
 **返回值：**
 
@@ -1550,93 +2490,11 @@ setLoudnessGain(loudnessGain: number): Promise<void>
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Operation is not supported on this renderer, e.g. the stream usage of this renderer is not one of [STREAM_USAGE_MUSIC](arkts-audio-audio-streamusage-e.md#stream_usage_music), [STREAM_USAGE_MOVIE](arkts-audio-audio-streamusage-e.md#stream_usage_movie) or [STREAM_USAGE_AUDIOBOOK](arkts-audio-audio-streamusage-e.md#stream_usage_audiobook). |
 
-## setNoiseReductionMode
+**示例**
 
 ```TypeScript
-setNoiseReductionMode(noiseReductionMode: NoiseReductionMode): void
+audioRenderer.setLoudnessGain(1.0);
 ```
-
-Sets noise reduction mode for current audio renderer. The supported mode should be obtained by getSupportedNoiseReductionModes. The actual effect may vary from different audio devices, and will be invalid when there are multiple direct streams running simultaneously. The mode can only be changed in created and stopped state.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| noiseReductionMode | [NoiseReductionMode](arkts-audio-audio-noisereductionmode-e.md) | 是 | The noise reduction mode to set. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-| [6800103](../errorcode-audio.md#6800103-状态不支持) | Illegal state, audio renderer is in running or released state. |
-| [6800104](../errorcode-audio.md#6800104-参数选项不支持) | The setted mode is not supported. |
-| [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio server process died. |
-
-## setRenderRate
-
-```TypeScript
-setRenderRate(rate: AudioRendererRate, callback: AsyncCallback<void>): void
-```
-
-设置音频渲染速率。使用callback异步回调。
-
-> **说明：** 
-> 
-> 从API version 8开始支持，从API version 11开始废弃，建议使用[setSpeed](#setspeed)替代。
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-**替代接口：** setSpeed
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| rate | [AudioRendererRate](arkts-audio-audio-audiorendererrate-e.md) | 是 | 渲染的速率。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置音频渲染速率成功，err为undefined，否则为错误对象。 |
-
-## setRenderRate
-
-```TypeScript
-setRenderRate(rate: AudioRendererRate): Promise<void>
-```
-
-设置音频渲染速率。使用Promise异步回调。
-
-> **说明：** 
-> 
-> 从API version 8开始支持，从API version 11开始废弃，建议使用[setSpeed](#setspeed)替代。
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-**替代接口：** setSpeed
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| rate | [AudioRendererRate](arkts-audio-audio-audiorendererrate-e.md) | 是 | 渲染的速率。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 ## setSilentModeAndMixWithOthers
 
@@ -1655,6 +2513,12 @@ setSilentModeAndMixWithOthers(on: boolean): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | on | boolean | 是 | 打开/关闭静音并发播放模式。true表示设置当前播放的音频流静音播放，并且不会打断其它音频流播放。false表示取消当前播放的音频流静音播放，音频流可根据系统焦点策略抢占焦点。 |
+
+**示例**
+
+```TypeScript
+audioRenderer.setSilentModeAndMixWithOthers(true);
+```
 
 ## setSpeed
 
@@ -1678,8 +2542,14 @@ setSpeed(speed: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+audioRenderer.setSpeed(1.5);
+```
 
 ## setVolume
 
@@ -1699,6 +2569,22 @@ setVolume(volume: number, callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | volume | number | 是 | 音量值范围为[0.0, 1.0]。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置应用的音量成功，err为undefined，否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.setVolume(0.5, (err: BusinessError) => {
+  if(err){
+    console.error(`setVolume Fail: ${err}`);
+    return;
+  }
+  console.info('setVolume Success!');
+});
+```
+
+<a id="setvolume-1"></a>
 
 ## setVolume
 
@@ -1724,6 +2610,18 @@ setVolume(volume: number): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.setVolume(0.5).then(() => {
+  console.info('setVolume Success!');
+}).catch((err: BusinessError) => {
+  console.error(`setVolume Fail: ${err}`);
+});
+```
+
 ## setVolumeWithRamp
 
 ```TypeScript
@@ -1741,14 +2639,24 @@ setVolumeWithRamp(volume: number, duration: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volume | number | 是 | 渐变目标音量值，音量范围为[0.0, 1.0]。 |
-| duration | number | 是 | 渐变持续时间，单位为ms。 |
+| duration | number | 是 | 渐变持续时间，单位为毫秒（ms）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+let volume = 0.5;
+let duration = 1000;
+
+audioRenderer.setVolumeWithRamp(volume, duration);
+console.info(`setVolumeWithRamp: ${volume}`);
+```
 
 ## start
 
@@ -1768,6 +2676,22 @@ start(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当启动音频渲染器成功，err为undefined，否则为错误对象。异常将返回error对象：<br>错误码6800301：表示包含状态检查异常、焦点抢占失败、系统处理异常（具体错误查看系统日志）。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.start((err: BusinessError) => {
+  if (err) {
+    console.error('Renderer start failed.');
+  } else {
+    console.info('Renderer start success.');
+  }
+});
+```
+
+<a id="start-1"></a>
+
 ## start
 
 ```TypeScript
@@ -1785,6 +2709,18 @@ start(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，成功表示启动音频渲染器成功。异常将返回error对象：  错误码6800301：表示包含状态检查异常、焦点抢占失败、系统处理异常（具体错误查看系统日志）。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.start().then(() => {
+  console.info('Renderer started');
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
 
 ## stop
 
@@ -1804,6 +2740,22 @@ stop(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当停止渲染成功，err为undefined，否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.stop((err: BusinessError) => {
+  if (err) {
+    console.error('Renderer stop failed');
+  } else {
+    console.info('Renderer stopped.');
+  }
+});
+```
+
+<a id="stop-1"></a>
+
 ## stop
 
 ```TypeScript
@@ -1822,6 +2774,221 @@ stop(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.stop().then(() => {
+  console.info('Renderer stopped successfully');
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
+## getRenderRate
+
+```TypeScript
+getRenderRate(callback: AsyncCallback<AudioRendererRate>): void
+```
+
+获取音频渲染速率。使用callback异步回调。
+
+> **说明：** 
+> 
+> 从 API version 8开始支持，从API version 11开始废弃。建议使用[getSpeed](#getspeed)替代。
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+**替代接口：** [getSpeed](#getspeed)
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AudioRendererRate](arkts-audio-audio-audiorendererrate-e.md)&gt; | 是 | 回调函数。当获取当前渲染速率成功，err为undefined，data为获取到的当前渲染速率；否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getRenderRate((err: BusinessError, renderRate: audio.AudioRendererRate) => {
+  console.info(`getRenderRate: ${renderRate}`);
+});
+```
+
+<a id="getrenderrate-1"></a>
+
+## getRenderRate
+
+```TypeScript
+getRenderRate(): Promise<AudioRendererRate>
+```
+
+获取音频渲染速率。使用Promise异步回调。
+
+> **说明：** 
+> 
+> 从 API version 8开始支持，从API version 11开始废弃。建议使用[getSpeed](#getspeed)替代。
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+**替代接口：** [getSpeed](#getspeed)
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[AudioRendererRate](arkts-audio-audio-audiorendererrate-e.md)&gt; | Promise对象，返回渲染速率。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getRenderRate().then((renderRate: audio.AudioRendererRate) => {
+  console.info(`getRenderRate: ${renderRate}`);
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
+## getRenderRateSync
+
+```TypeScript
+getRenderRateSync(): AudioRendererRate
+```
+
+获取音频渲染速率。同步返回结果。
+
+> **说明：** 
+> 
+> 从 API version 10开始支持，从API version 11开始废弃。建议使用[getSpeed](#getspeed)替代。
+
+**起始版本：** 10
+
+**废弃版本：** 11
+
+**替代接口：** [getSpeed](#getspeed)
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [AudioRendererRate](arkts-audio-audio-audiorendererrate-e.md) | 返回渲染速率。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let renderRate: audio.AudioRendererRate = audioRenderer.getRenderRateSync();
+  console.info(`getRenderRate: ${renderRate}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
+```
+
+## setRenderRate
+
+```TypeScript
+setRenderRate(rate: AudioRendererRate, callback: AsyncCallback<void>): void
+```
+
+设置音频渲染速率。使用callback异步回调。
+
+> **说明：** 
+> 
+> 从 API version 8开始支持，从API version 11开始废弃。建议使用[setSpeed](#setspeed)替代。
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+**替代接口：** setSpeed
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| rate | [AudioRendererRate](arkts-audio-audio-audiorendererrate-e.md) | 是 | 渲染的速率。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置音频渲染速率成功，err为undefined，否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.setRenderRate(audio.AudioRendererRate.RENDER_RATE_NORMAL, (err: BusinessError) => {
+  if (err) {
+    console.error('Failed to set params');
+  } else {
+    console.info('Callback invoked to indicate a successful render rate setting.');
+  }
+});
+```
+
+<a id="setrenderrate-1"></a>
+
+## setRenderRate
+
+```TypeScript
+setRenderRate(rate: AudioRendererRate): Promise<void>
+```
+
+设置音频渲染速率。使用Promise异步回调。
+
+> **说明：** 
+> 
+> 从 API version 8开始支持，从API version 11开始废弃。建议使用[setSpeed](#setspeed)替代。
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+**替代接口：** setSpeed
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| rate | [AudioRendererRate](arkts-audio-audio-audiorendererrate-e.md) | 是 | 渲染的速率。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.setRenderRate(audio.AudioRendererRate.RENDER_RATE_NORMAL).then(() => {
+  console.info('setRenderRate SUCCESS');
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
 ## write
 
 ```TypeScript
@@ -1832,7 +2999,7 @@ write(buffer: ArrayBuffer, callback: AsyncCallback<number>): void
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 11开始废弃，建议使用[on('writeData')](#onwritedata)替代。
+> 从 API version 8开始支持，从API version 11开始废弃。建议使用[on('writeData')](#onwritedata)替代。
 
 **起始版本：** 8
 
@@ -1849,6 +3016,55 @@ write(buffer: ArrayBuffer, callback: AsyncCallback<number>): void
 | buffer | ArrayBuffer | 是 | 要写入缓冲区的数据。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当写入缓冲区成功，err为undefined，data为获取到的写入的字节数；否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+let bufferSize: number;
+class Options {
+  offset?: number;
+  length?: number;
+}
+audioRenderer.getBufferSize().then((data: number)=> {
+  console.info(`AudioFrameworkRenderLog: getBufferSize: SUCCESS ${data}`);
+  bufferSize = data;
+  console.info(`Buffer size: ${bufferSize}`);
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let path = context.cacheDir;
+  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
+  let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+  let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+  fs.stat(filePath).then(async (stat: fs.Stat) => {
+    let buf = new ArrayBuffer(bufferSize);
+    let len = stat.size % bufferSize == 0 ? Math.floor(stat.size / bufferSize) : Math.floor(stat.size / bufferSize + 1);
+    for (let i = 0;i < len; i++) {
+      let options: Options = {
+        offset: i * bufferSize,
+        length: bufferSize
+      };
+      await fs.read(file.fd, buf, options);
+      await new Promise((resolve,reject)=>{
+        audioRenderer.write(buf,(err: BusinessError, writeSize: number)=>{
+          if(err){
+            reject(err)
+          }else{
+            resolve(writeSize)
+          }
+        })
+      })
+    }
+  });
+  }).catch((err: BusinessError) => {
+    console.error(`AudioFrameworkRenderLog: getBufferSize: ERROR: ${err}`);
+});
+```
+
+<a id="write-1"></a>
+
 ## write
 
 ```TypeScript
@@ -1859,7 +3075,7 @@ write(buffer: ArrayBuffer): Promise<number>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 11开始废弃，建议使用[on('writeData')](#onwritedata)替代。
+> 从 API version 8开始支持，从API version 11开始废弃。建议使用[on('writeData')](#onwritedata)替代。
 
 **起始版本：** 8
 
@@ -1880,6 +3096,50 @@ write(buffer: ArrayBuffer): Promise<number>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回写入的字节数。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+let bufferSize: number;
+class Options {
+  offset?: number;
+  length?: number;
+}
+audioRenderer.getBufferSize().then((data: number) => {
+  console.info(`AudioFrameworkRenderLog: getBufferSize: SUCCESS ${data}`);
+  bufferSize = data;
+  console.info(`BufferSize: ${bufferSize}`);
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let path = context.cacheDir;
+  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
+  let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+  let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+  fs.stat(filePath).then(async (stat: fs.Stat) => {
+    let buf = new ArrayBuffer(bufferSize);
+    let len = stat.size % bufferSize == 0 ? Math.floor(stat.size / bufferSize) : Math.floor(stat.size / bufferSize + 1);
+    for (let i = 0;i < len; i++) {
+      let options: Options = {
+        offset: i * bufferSize,
+        length: bufferSize
+      };
+      await fs.read(file.fd, buf, options);
+      try{
+        await audioRenderer.write(buf);
+      } catch(err) {
+        let error = err as BusinessError;
+        console.error(`audioRenderer.write err: ${error}`);
+      }
+    }
+  });
+}).catch((err: BusinessError) => {
+  console.error(`AudioFrameworkRenderLog: getBufferSize: ERROR: ${err}`);
+});
+```
 
 ## state
 

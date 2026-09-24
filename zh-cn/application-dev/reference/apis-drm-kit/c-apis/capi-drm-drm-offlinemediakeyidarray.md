@@ -8,6 +8,8 @@ typedef struct DRM_OfflineMediakeyIdArray {...} DRM_OfflineMediakeyIdArray
 
 离线媒体密钥ID数组。
 
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
 **起始版本：** 11
 
 **相关模块：** [Drm](capi-drm.md)

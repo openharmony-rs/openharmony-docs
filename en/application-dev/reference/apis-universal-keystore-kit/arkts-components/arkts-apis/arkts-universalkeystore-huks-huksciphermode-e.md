@@ -1,5 +1,9 @@
 # HuksCipherMode
 
+```TypeScript
+export enum HuksCipherMode
+```
+
 Enumerates the cipher modes.
 
 **Since:** 8
@@ -16,6 +20,8 @@ Electronic Code Block (ECB) mode.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -29,6 +35,8 @@ HUKS_MODE_CBC = 2
 Cipher Block Chaining (CBC) mode.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -44,6 +52,8 @@ Counter (CTR) mode.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -57,6 +67,8 @@ HUKS_MODE_OFB = 4
 Output Feedback (OFB) mode.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -74,6 +86,8 @@ Ciphertext Feedback (CFB) mode.
 
 **Since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -87,6 +101,8 @@ HUKS_MODE_CCM = 31
 Counter with CBC-MAC (CCM) mode.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -103,6 +119,8 @@ HUKS_MODE_GCM = 32
 Galois/Counter (GCM) mode.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

@@ -1,8 +1,12 @@
 # Flex properties/events
 
-The [universal attributes](arkts-arkui-commonmethod-c.md) are supported.
+```TypeScript
+declare class FlexAttribute extends CommonMethod<FlexAttribute>
+```
 
-The [universal events](arkts-arkui-commonmethod-c.md) are supported.
+The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) are supported.
+
+The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Inheritance/Implementation:** FlexAttribute extends CommonMethod<FlexAttribute>
 

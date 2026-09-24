@@ -1,5 +1,9 @@
 # PINAuth (System API)
 
+```TypeScript
+class PINAuth
+```
+
 Provides APIs for PIN authentication.
 
 **Since:** 8

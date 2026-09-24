@@ -1,5 +1,9 @@
 # StepCounterResponse
 
+```TypeScript
+export interface StepCounterResponse
+```
+
 Callback invoked when the step counter sensor data changes.
 
 **Since:** 3

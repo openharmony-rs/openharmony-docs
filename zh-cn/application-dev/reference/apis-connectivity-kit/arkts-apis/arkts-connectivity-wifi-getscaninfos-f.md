@@ -57,6 +57,8 @@ wifi.getScanInfos().then(result => {
 ```
 
 
+<a id="getscaninfos-1"></a>
+
 ## getScanInfos
 
 ```TypeScript
@@ -87,4 +89,4 @@ function getScanInfos(callback: AsyncCallback<Array<WifiScanInfo>>): void
 
 **示例**
 
-参见 getScanInfos
+参见 [getScanInfos](#getscaninfos)

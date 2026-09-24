@@ -38,6 +38,8 @@ enum FileIO_FileLocation
 
 Enumerates the file location.
 
+**System capability**: SystemCapability.FileManagement.File.FileIO
+
 **Since**: 12
 
 | Enum item | Description |
@@ -58,6 +60,8 @@ FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileI
 **Description**
 
 Obtains the location of a file.
+
+**System capability**: SystemCapability.FileManagement.File.FileIO
 
 **Since**: 12
 

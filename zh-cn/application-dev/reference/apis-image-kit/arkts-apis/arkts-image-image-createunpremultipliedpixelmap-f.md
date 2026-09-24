@@ -31,7 +31,7 @@ Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha for
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [62980103](../errorcode-image.md#62980103-图片类型不支持) | The image data is not supported. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [62980246](../errorcode-image.md#62980246-读取pixelmap失败) | Failed to read the pixelMap. |
 | [62980248](../errorcode-image.md#62980248-pixelmap不允许修改) | Pixelmap not allow modify. |
 
@@ -63,30 +63,8 @@ function createUnpremultipliedPixelMap() {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-function createUnpremultipliedPixelMap() {
-  const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素缓冲区大小，取值为：width * height * 4。
-  let bufferArr = new Uint8Array(color);
-  for (let i = 0; i < bufferArr.length; i += 4) {
-    bufferArr[i] = 255;
-    bufferArr[i + 1] = 255;
-    bufferArr[i + 2] = 122;
-    bufferArr[i + 3] = 122;
-  }
-  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.PREMUL};
-  let srcPixelMap = image.createPixelMapSync(color, optsForPre);
-  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.UNPREMUL};
-  let dstPixelMap = image.createPixelMapSync(optsForUnpre);
-  image.createUnpremultipliedPixelMap(srcPixelMap, dstPixelMap).then(() => {
-    console.info('Succeeded in converting the PixelMap.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to convert the PixelMap. Code: ${err.code}, message: ${err.message}`);
-  });
-}
-```
-
+<a id="createunpremultipliedpixelmap-1"></a>
 
 ## createUnpremultipliedPixelMap
 
@@ -118,10 +96,32 @@ Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha for
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [62980103](../errorcode-image.md#62980103-图片类型不支持) | The image data is not supported. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [62980246](../errorcode-image.md#62980246-读取pixelmap失败) | Failed to read the pixelMap. |
 | [62980248](../errorcode-image.md#62980248-pixelmap不允许修改) | Pixelmap not allow modify. |
 
 **示例**
 
-参见 createUnpremultipliedPixelMap
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function createUnpremultipliedPixelMap() {
+  const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素缓冲区大小，取值为：width * height * 4。
+  let bufferArr = new Uint8Array(color);
+  for (let i = 0; i < bufferArr.length; i += 4) {
+    bufferArr[i] = 255;
+    bufferArr[i + 1] = 255;
+    bufferArr[i + 2] = 122;
+    bufferArr[i + 3] = 122;
+  }
+  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.PREMUL};
+  let srcPixelMap = image.createPixelMapSync(color, optsForPre);
+  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.UNPREMUL};
+  let dstPixelMap = image.createPixelMapSync(optsForUnpre);
+  image.createUnpremultipliedPixelMap(srcPixelMap, dstPixelMap).then(() => {
+    console.info('Succeeded in converting the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to convert the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```

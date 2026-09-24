@@ -35,6 +35,8 @@ function getSupportedPowerModel(): Promise<Array<PowerModel>>
 | Promise&lt;Array&lt;[PowerModel](arkts-connectivity-wifiext-powermodel-e.md)&gt;&gt; | Promise对象。表示功率模式。 |
 
 
+<a id="getsupportedpowermodel-1"></a>
+
 ## getSupportedPowerModel
 
 ```TypeScript

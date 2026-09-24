@@ -1,0 +1,39 @@
+# VerifyPinEvent
+
+```TypeScript
+declare interface VerifyPinEvent
+```
+
+定义当需要用户进行PIN码认证时触发回调。
+
+**起始版本：** 22
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## handler
+
+```TypeScript
+handler: VerifyPinHandler
+```
+
+通知Web组件用户操作行为。
+
+**类型：** [VerifyPinHandler](arkts-arkweb-web-comp-verifypinhandler-c.md)
+
+**起始版本：** 22
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## identity
+
+```TypeScript
+identity: string
+```
+
+用于认证的证书凭据标识。
+
+**类型：** string
+
+**起始版本：** 22
+
+**系统能力：** SystemCapability.Web.Webview.Core

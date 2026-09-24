@@ -55,17 +55,8 @@ data.enableCellularData((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { data } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-data.enableCellularData().then(() => {
-    console.info(`enableCellularData success.`);
-}).catch((err: BusinessError) => {
-    console.error(`enableCellularData fail. code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="enablecellulardata-1"></a>
 
 ## enableCellularData
 
@@ -101,4 +92,13 @@ Enables the cellular data service. This API uses a promise to return the result.
 
 **Examples**
 
-See [enableCellularData](#enablecellulardata)
+```TypeScript
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.enableCellularData().then(() => {
+    console.info(`enableCellularData success.`);
+}).catch((err: BusinessError) => {
+    console.error(`enableCellularData fail. code: ${err.code}, message: ${err.message}`);
+});
+```

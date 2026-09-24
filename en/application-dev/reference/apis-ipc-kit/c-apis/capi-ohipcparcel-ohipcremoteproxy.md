@@ -8,6 +8,8 @@ typedef struct OHIPCRemoteProxy OHIPCRemoteProxy
 
 Defines an IPC remote proxy object.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 **Since**: 12
 
 **Related module**: [OHIPCParcel](capi-ohipcparcel.md)

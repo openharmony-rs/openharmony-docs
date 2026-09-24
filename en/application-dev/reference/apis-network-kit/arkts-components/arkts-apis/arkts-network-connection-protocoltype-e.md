@@ -1,5 +1,9 @@
 # ProtocolType
 
+```TypeScript
+export enum ProtocolType
+```
+
 Enumerates network protocol types.
 
 **Since:** 23

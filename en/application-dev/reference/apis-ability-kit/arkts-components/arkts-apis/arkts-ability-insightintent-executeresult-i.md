@@ -1,5 +1,9 @@
 # ExecuteResult
 
+```TypeScript
+interface ExecuteResult
+```
+
 Enumerates the return results of intent execution.
 
 **Since:** 11

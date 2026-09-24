@@ -1,5 +1,9 @@
 # FormType
 
+```TypeScript
+declare enum FormType
+```
+
 内容卡片类型枚举，提供了大、中、小三种尺寸。
 
 **起始版本：** 20

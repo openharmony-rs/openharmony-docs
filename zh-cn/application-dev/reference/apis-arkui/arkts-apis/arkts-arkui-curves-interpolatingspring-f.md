@@ -35,7 +35,7 @@ function interpolatingSpring(velocity: number, mass: number, stiffness: number, 
 
 | 类型 | 说明 |
 | --- | --- |
-| [ICurve](arkts-arkui-curves-icurve-i.md) | 曲线对象。<br>**说明：** 弹性动画曲线为物理曲线，animation、animateTo、pageTransition等动画参数中的duration参数不生效，动画持续时间取决于interpolatingSpring动画曲线参数。时间不能归一，故不能通过该曲线的[interpolate](arkts-arkui-curves-icurve-i.md#interpolate)函数获得插值。 |
+| [ICurve](arkts-arkui-curves-icurve-i.md) | 曲线对象。<br>**说明：** 弹性动画曲线为物理曲线，[animation](../arkts-components/arkts-arkui-common-comp.md#common)、[animateTo](../arkts-components/arkts-arkui-common-comp.md#common)、[pageTransition](../arkts-components/arkts-arkui-pagetransitionenter-comp.md#page_transition)等动画参数中的duration参数不生效，动画持续时间取决于interpolatingSpring动画曲线参数。时间不能归一，故不能通过该曲线的[interpolate](arkts-arkui-curves-icurve-i.md#interpolate)函数获得插值。 |
 
 **示例**
 

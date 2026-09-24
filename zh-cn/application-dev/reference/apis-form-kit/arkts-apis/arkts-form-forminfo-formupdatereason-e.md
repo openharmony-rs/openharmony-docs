@@ -1,5 +1,9 @@
 # FormUpdateReason
 
+```TypeScript
+enum FormUpdateReason
+```
+
 卡片更新原因枚举。
 
 **起始版本：** 24

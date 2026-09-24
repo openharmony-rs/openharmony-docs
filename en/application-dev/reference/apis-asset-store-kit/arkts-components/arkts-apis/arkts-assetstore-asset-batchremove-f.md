@@ -18,6 +18,8 @@ Only assets with the same [GROUP_ID](arkts-assetstore-asset-tag-e.md#group_id) a
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **Parameters:**

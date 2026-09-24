@@ -1,5 +1,9 @@
 # MissionCallback (System API)
 
+```TypeScript
+export interface MissionCallback
+```
+
 MissionCallback registered by app.
 
 @interface MissionCallback

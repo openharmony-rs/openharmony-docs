@@ -1,5 +1,9 @@
 # AudioDebuggingManager
 
+```TypeScript
+interface AudioDebuggingManager
+```
+
 Provides audio debug management capabilities.
 
 **Since:** 26.0.0

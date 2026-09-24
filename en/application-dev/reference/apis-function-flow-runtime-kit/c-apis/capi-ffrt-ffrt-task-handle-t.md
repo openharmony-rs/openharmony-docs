@@ -8,6 +8,8 @@ typedef void* ffrt_task_handle_t
 
 Defines the task handle, which identifies different tasks.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 10
 
 **Related module**: [FFRT](capi-ffrt.md)

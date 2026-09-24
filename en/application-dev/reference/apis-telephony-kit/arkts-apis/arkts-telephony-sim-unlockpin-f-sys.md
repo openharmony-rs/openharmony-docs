@@ -56,18 +56,8 @@ sim.unlockPin(0, pin, (err: BusinessError, data: sim.LockStatusResponse) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-let pin: string = '1234';
-sim.unlockPin(0, pin).then((data: sim.LockStatusResponse) => {
-    console.info(`unlockPin success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`unlockPin failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="unlockpin-1"></a>
 
 ## unlockPin
 
@@ -114,4 +104,14 @@ Unlock the SIM card password of the specified card slot.
 
 **Examples**
 
-See [unlockPin](#unlockpin)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+let pin: string = '1234';
+sim.unlockPin(0, pin).then((data: sim.LockStatusResponse) => {
+    console.info(`unlockPin success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`unlockPin failed, promise: err->${JSON.stringify(err)}`);
+});
+```

@@ -1,5 +1,9 @@
 # DragAction
 
+```TypeScript
+interface DragAction
+```
+
 监听状态改变，启动拖拽服务的对象。
 
 **起始版本：** 11

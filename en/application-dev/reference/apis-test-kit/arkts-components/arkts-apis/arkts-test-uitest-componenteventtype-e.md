@@ -1,5 +1,9 @@
 # ComponentEventType
 
+```TypeScript
+declare enum ComponentEventType
+```
+
 Enumerates the component operation event types that can be listened for.
 
 **Since:** 22

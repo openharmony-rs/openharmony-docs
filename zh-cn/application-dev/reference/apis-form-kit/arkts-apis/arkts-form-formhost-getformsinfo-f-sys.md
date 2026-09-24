@@ -33,9 +33,9 @@ function getFormsInfo(bundleName: string, callback: AsyncCallback<Array<formInfo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permissions denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
@@ -59,55 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formHost, formInfo } from '@kit.FormKit';
 
-try {
-  formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry', (error: BusinessError, data: formInfo.FormInfo[]) => {
-    if (error) {
-      console.error(`error, code: ${error.code}, message: ${error.message}`);
-    } else {
-      console.info('formHost getFormsInfo success.');
-    }
-  });
-} catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
-}
-```
-
-```TypeScript
-import { formHost, formInfo } from '@kit.FormKit';
-
-try {
-  formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
-    console.info('formHost getFormsInfo success.');
-  }).catch((error: BusinessError) => {
-    console.error(`error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
-}
-```
-
-```TypeScript
-import { formHost, formInfo } from '@kit.FormKit';
-
-const filter: formInfo.FormInfoFilter = {
-  bundleName: 'ohos.samples.FormApplication',
-  moduleName: 'entry',
-  supportedDimensions: [FormDimension.Dimension_1_2, FormDimension.Dimension_2_2, FormDimension.Dimension_2_4]
-};
-try {
-  formHost.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.info('formHost getFormsInfo success.');
-  }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="getformsinfo-1"></a>
 
 ## getFormsInfo
 
@@ -141,9 +94,9 @@ function getFormsInfo(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permissions denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
@@ -151,8 +104,24 @@ function getFormsInfo(
 
 **示例**
 
-参见 [getFormsInfo](#getformsinfo)
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
 
+try {
+  formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry', (error: BusinessError, data: formInfo.FormInfo[]) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info('formHost getFormsInfo success.');
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
+<a id="getformsinfo-2"></a>
 
 ## getFormsInfo
 
@@ -187,9 +156,9 @@ function getFormsInfo(bundleName: string, moduleName?: string): Promise<Array<fo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permissions denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
@@ -197,8 +166,22 @@ function getFormsInfo(bundleName: string, moduleName?: string): Promise<Array<fo
 
 **示例**
 
-参见 [getFormsInfo](#getformsinfo)
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
 
+try {
+  formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
+    console.info('formHost getFormsInfo success.');
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
+<a id="getformsinfo-3"></a>
 
 ## getFormsInfo
 
@@ -232,9 +215,9 @@ function getFormsInfo(filter: formInfo.FormInfoFilter): Promise<Array<formInfo.F
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permissions denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
@@ -242,4 +225,21 @@ function getFormsInfo(filter: formInfo.FormInfoFilter): Promise<Array<formInfo.F
 
 **示例**
 
-参见 [getFormsInfo](#getformsinfo)
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
+
+const filter: formInfo.FormInfoFilter = {
+  bundleName: 'ohos.samples.FormApplication',
+  moduleName: 'entry',
+  supportedDimensions: [FormDimension.Dimension_1_2, FormDimension.Dimension_2_2, FormDimension.Dimension_2_4]
+};
+try {
+  formHost.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
+    console.info('formHost getFormsInfo success.');
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```

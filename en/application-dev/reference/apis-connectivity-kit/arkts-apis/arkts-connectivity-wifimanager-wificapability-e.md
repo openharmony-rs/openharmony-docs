@@ -1,5 +1,9 @@
 # WifiCapability
 
+```TypeScript
+enum WifiCapability
+```
+
 Wi-Fi Capability
 
 **Since:** 26.0.0

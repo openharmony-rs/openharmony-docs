@@ -4,9 +4,11 @@
 declare const Extend: MethodDecorator & ((value: any) => MethodDecorator)
 ```
 
-Defining Extend MethodDecorator
+The @Extend decorator is used to extend the styles of specified components. It supports defining multiple style attributes in a unified manner within the decorated function, and enables flexible style reuse through parameter passing. This is suitable for scenarios where the same styles need to be applied to multiple components, reducing style code duplication.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

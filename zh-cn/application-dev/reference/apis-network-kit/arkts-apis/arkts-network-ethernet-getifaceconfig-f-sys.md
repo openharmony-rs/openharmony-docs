@@ -33,9 +33,9 @@ function getIfaceConfig(iface: string, callback: AsyncCallback<InterfaceConfigur
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2200001](../errorcode-net-ethernet.md#2200001-非法参数值) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
@@ -61,22 +61,8 @@ ethernet.getIfaceConfig("eth0", (error: BusinessError, value: ethernet.Interface
 });
 ```
 
-```TypeScript
-import { ethernet } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => {
-  console.info("getIfaceConfig promise mode = " + JSON.stringify(data.mode));
-  console.info("getIfaceConfig promise ipAddr = " + JSON.stringify(data.ipAddr));
-  console.info("getIfaceConfig promise route = " + JSON.stringify(data.route));
-  console.info("getIfaceConfig promise gateway = " + JSON.stringify(data.gateway));
-  console.info("getIfaceConfig promise netMask = " + JSON.stringify(data.netMask));
-  console.info("getIfaceConfig promise dnsServers = " + JSON.stringify(data.dnsServers));
-}).catch((error: BusinessError) => {
-  console.error("getIfaceConfig promise error = " + JSON.stringify(error));
-});
-```
-
+<a id="getifaceconfig-1"></a>
 
 ## getIfaceConfig
 
@@ -110,9 +96,9 @@ function getIfaceConfig(iface: string): Promise<InterfaceConfiguration>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2200001](../errorcode-net-ethernet.md#2200001-非法参数值) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
@@ -120,4 +106,18 @@ function getIfaceConfig(iface: string): Promise<InterfaceConfiguration>
 
 **示例**
 
-参见 [getIfaceConfig](#getifaceconfig)
+```TypeScript
+import { ethernet } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => {
+  console.info("getIfaceConfig promise mode = " + JSON.stringify(data.mode));
+  console.info("getIfaceConfig promise ipAddr = " + JSON.stringify(data.ipAddr));
+  console.info("getIfaceConfig promise route = " + JSON.stringify(data.route));
+  console.info("getIfaceConfig promise gateway = " + JSON.stringify(data.gateway));
+  console.info("getIfaceConfig promise netMask = " + JSON.stringify(data.netMask));
+  console.info("getIfaceConfig promise dnsServers = " + JSON.stringify(data.dnsServers));
+}).catch((error: BusinessError) => {
+  console.error("getIfaceConfig promise error = " + JSON.stringify(error));
+});
+```

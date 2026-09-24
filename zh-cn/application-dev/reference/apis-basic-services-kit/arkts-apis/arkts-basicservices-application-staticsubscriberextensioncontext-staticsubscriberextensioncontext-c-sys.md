@@ -1,5 +1,9 @@
 # StaticSubscriberExtensionContext（系统接口）
 
+```TypeScript
+declare class StaticSubscriberExtensionContext extends ExtensionContext
+```
+
 StaticSubscriberExtensionContext模块是StaticSubscriberExtensionAbility的上下文环境，继承自ExtensionContext。
 
 StaticSubscriberExtensionContext模块提供StaticSubscriberExtensionAbility具有的接口和能力。
@@ -47,9 +51,9 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -99,37 +103,7 @@ class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbilit
 }
 ```
 
-```TypeScript
-import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-
-let want: Want = {
-  bundleName: 'com.example.myapp',
-  abilityName: 'MyAbility'
-};
-
-class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
-  onReceiveEvent(event: commonEventManager.CommonEventData) {
-    console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
-    try {
-      this.context.startAbility(want)
-        .then(() => {
-          // 执行正常业务
-          console.info('startAbility succeed');
-        })
-        .catch((error: BusinessError) => {
-          // 处理业务逻辑错误
-          console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}.`);
-        });
-    } catch (paramError) {
-      // 处理入参错误异常
-      let code = (paramError as BusinessError).code;
-      let message = (paramError as BusinessError).message;
-      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
-    }
-  }
-}
-```
+<a id="startability-1"></a>
 
 ## startAbility
 
@@ -165,9 +139,9 @@ startAbility(want: Want): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -184,4 +158,34 @@ startAbility(want: Want): Promise<void>
 
 **示例**
 
-参见 [startAbility](#startability)
+```TypeScript
+import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+let want: Want = {
+  bundleName: 'com.example.myapp',
+  abilityName: 'MyAbility'
+};
+
+class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+  onReceiveEvent(event: commonEventManager.CommonEventData) {
+    console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+    try {
+      this.context.startAbility(want)
+        .then(() => {
+          // 执行正常业务
+          console.info('startAbility succeed');
+        })
+        .catch((error: BusinessError) => {
+          // 处理业务逻辑错误
+          console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}.`);
+        });
+    } catch (paramError) {
+      // 处理入参错误异常
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+    }
+  }
+}
+```

@@ -1,5 +1,9 @@
 # AVSession
 
+```TypeScript
+interface AVSession
+```
+
 调用[avSession.createAVSession](arkts-avsession-avsession-createavsession-f.md)后，返回会话的实例，可以获得会话ID，完成设置元数据，播放状态信息等操作。
 
 > **说明：** 
@@ -41,6 +45,22 @@ activate(callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.activate((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to activate, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in activating.');
+});
+```
+
+<a id="activate-1"></a>
+
 ## activate
 
 ```TypeScript
@@ -67,6 +87,14 @@ activate(): Promise<void>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.activate().then(() => {
+  console.info('Succeeded in activating.');
+});
+```
 
 ## deactivate
 
@@ -95,6 +123,22 @@ deactivate(callback: AsyncCallback<void>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.deactivate((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to deactivate, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in deactivating.');
+});
+```
+
+<a id="deactivate-1"></a>
+
 ## deactivate
 
 ```TypeScript
@@ -122,6 +166,14 @@ deactivate(): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+currentAVSession.deactivate().then(() => {
+  console.info('Succeeded in deactivating.');
+});
+```
+
 ## destroy
 
 ```TypeScript
@@ -146,6 +198,22 @@ destroy(callback: AsyncCallback<void>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.destroy((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to destroy, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in destroying.');
+});
+```
+
+<a id="destroy-1"></a>
 
 ## destroy
 
@@ -174,6 +242,14 @@ destroy(): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+currentAVSession.destroy().then(() => {
+  console.info('Succeeded in destroying.');
+});
+```
+
 ## dispatchSessionEvent
 
 ```TypeScript
@@ -183,6 +259,8 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 媒体提供方设置一个会话内自定义事件，包括事件名和键值对形式的事件内容。使用callback异步回调。
 
 **起始版本：** 10
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -198,9 +276,26 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let eventName: string = "dynamic_lyric";
+currentAVSession.dispatchSessionEvent(eventName, {lyric : "This is lyric"}, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to dispatch session event, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in dispatching session event.');
+});
+```
+
+<a id="dispatchsessionevent-2"></a>
 
 ## dispatchSessionEvent
 
@@ -211,6 +306,8 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise<void
 媒体提供方设置一个会话内自定义事件，包括事件名和键值对形式的事件内容。使用Promise异步回调。
 
 **起始版本：** 10
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -233,9 +330,18 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise<void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+let eventName = "dynamic_lyric";
+currentAVSession.dispatchSessionEvent(eventName, {lyric : "This is lyric"}).then(() => {
+  console.info('Succeeded in dispatching session event.');
+});
+```
 
 ## enableDesktopLyric
 
@@ -271,6 +377,16 @@ enableDesktopLyric(enable: boolean): Promise<void>
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
+**示例**
+
+```TypeScript
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).enableDesktopLyric(true).then(() => {
+    console.info('Succeeded in enabling desktop lyric.');
+  })
+}
+```
+
 ## getAllCastDisplays
 
 ```TypeScript
@@ -298,6 +414,17 @@ getAllCastDisplays(): Promise<Array<CastDisplayInfo>>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+let castDisplay: avSession.CastDisplayInfo;
+currentAVSession.getAllCastDisplays().then((data: Array< avSession.CastDisplayInfo >) => {
+    if (data.length >= 1) {
+       castDisplay = data[0];
+     }
+    });
+```
+
 ## getAVCastController
 
 ```TypeScript
@@ -322,6 +449,24 @@ getAVCastController(callback: AsyncCallback<AVCastController>): void
 | --- | --- |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avCastController: avSession.AVCastController;
+currentAVSession.getAVCastController((err: BusinessError, avcontroller: avSession.AVCastController) => {
+  if (err) {
+    console.error(`Failed to get AV cast controller, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  avCastController = avcontroller;
+  console.info('Succeeded in getting AV cast controller.');
+});
+```
+
+<a id="getavcastcontroller-2"></a>
 
 ## getAVCastController
 
@@ -350,6 +495,16 @@ getAVCastController(): Promise<AVCastController>
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
+**示例**
+
+```TypeScript
+let avCastController: avSession.AVCastController;
+currentAVSession.getAVCastController().then((avcontroller: avSession.AVCastController) => {
+  avCastController = avcontroller;
+  console.info('Succeeded in getting AV cast controller.');
+});
+```
+
 ## getController
 
 ```TypeScript
@@ -374,6 +529,20 @@ getController(callback: AsyncCallback<AVSessionController>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.getController((err: BusinessError, avcontroller: avSession.AVSessionController) => {
+  if (err) {
+    console.error(`Failed to get controller, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting controller, sessionid: ${avcontroller.sessionId}`);
+});
+```
+
+<a id="getcontroller-1"></a>
 
 ## getController
 
@@ -401,6 +570,14 @@ getController(): Promise<AVSessionController>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.getController().then((avcontroller: avSession.AVSessionController) => {
+  console.info(`Succeeded in getting controller, sessionid: ${avcontroller.sessionId}`);
+});
+```
 
 ## getDesktopLyricState
 
@@ -431,6 +608,17 @@ getDesktopLyricState(): Promise<DesktopLyricState>
 | [6600110](../errorcode-avsession.md#6600110-应用程序的桌面歌词功能未开启) | The desktop lyrics feature of this application is not enabled. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
+**示例**
+
+```TypeScript
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).getDesktopLyricState()
+    .then((state: avSession.DesktopLyricState) => {
+    console.info(`getDesktopLyricState: ${state.isLocked}`);
+  })
+}
+```
+
 ## getOutputDevice
 
 ```TypeScript
@@ -455,6 +643,22 @@ getOutputDevice(callback: AsyncCallback<OutputDeviceInfo>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.getOutputDevice((err: BusinessError, outputDeviceInfo: avSession.OutputDeviceInfo) => {
+  if (err) {
+    console.error(`Failed to get output device, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting output device, devices length: ${outputDeviceInfo.devices.length}`);
+});
+```
+
+<a id="getoutputdevice-1"></a>
 
 ## getOutputDevice
 
@@ -483,6 +687,14 @@ getOutputDevice(): Promise<OutputDeviceInfo>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+currentAVSession.getOutputDevice().then((outputDeviceInfo: avSession.OutputDeviceInfo) => {
+  console.info(`Succeeded in getting output device, devices length: ${outputDeviceInfo.devices.length}`);
+})
+```
+
 ## getOutputDeviceSync
 
 ```TypeScript
@@ -509,6 +721,12 @@ getOutputDeviceSync(): OutputDeviceInfo
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+let currentOutputDevice: avSession.OutputDeviceInfo = currentAVSession.getOutputDeviceSync();
+```
 
 ## isDesktopLyricVisible
 
@@ -539,6 +757,16 @@ isDesktopLyricVisible(): Promise<boolean>
 | [6600110](../errorcode-avsession.md#6600110-应用程序的桌面歌词功能未开启) | The desktop lyrics feature of this application is not enabled. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
+**示例**
+
+```TypeScript
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).isDesktopLyricVisible().then((visible: boolean) => {
+    console.info(`isDesktopLyricVisible: ${visible}`);
+  })
+}
+```
+
 ## off('play')
 
 ```TypeScript
@@ -564,9 +792,15 @@ off(type: 'play', callback?: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('play');
+```
 
 ## off('pause')
 
@@ -593,9 +827,15 @@ off(type: 'pause', callback?: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('pause');
+```
 
 ## off('stop')
 
@@ -622,9 +862,15 @@ off(type: 'stop', callback?: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('stop');
+```
 
 ## off('playNext')
 
@@ -651,9 +897,15 @@ off(type: 'playNext', callback?: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('playNext');
+```
 
 ## off('playPrevious')
 
@@ -680,9 +932,15 @@ off(type: 'playPrevious', callback?: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('playPrevious');
+```
 
 ## off('fastForward')
 
@@ -709,9 +967,15 @@ off(type: 'fastForward', callback?: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('fastForward');
+```
 
 ## off('rewind')
 
@@ -738,9 +1002,539 @@ off(type: 'rewind', callback?: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('rewind');
+```
+
+## off('playWithAssetId')
+
+```TypeScript
+off(type: 'playWithAssetId', callback?: Callback<string>): void
+```
+
+取消指定资源id进行播放的事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'playWithAssetId' | 是 | 关闭对应的监听事件，支持的事件是`'playWithAssetId'`。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('playWithAssetId');
+```
+
+## off('seek')
+
+```TypeScript
+off(type: 'seek', callback?: (time: number) => void): void
+```
+
+取消跳转节点事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'seek' | 是 | 关闭对应的监听事件，支持关闭事件`'seek'`。 |
+| callback | (time: number) =&gt; void | 否 | 回调函数，参数time是时间节点，单位为毫秒。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('seek');
+```
+
+## off('setSpeed')
+
+```TypeScript
+off(type: 'setSpeed', callback?: (speed: number) => void): void
+```
+
+取消播放速率变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'setSpeed' | 是 | 关闭对应的监听事件，支持关闭事件`'setSpeed'`。 |
+| callback | (speed: number) =&gt; void | 否 | 回调函数，参数speed是播放倍速。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('setSpeed');
+```
+
+## off('setLoopMode')
+
+```TypeScript
+off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
+```
+
+取消循环模式变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'setLoopMode' | 是 | 关闭对应的监听事件，支持关闭事件`'setLoopMode'`。 |
+| callback | (mode: LoopMode) =&gt; void | 否 | 回调函数，参数mode是循环模式。<br>- 当监听事件取消成功，err为undefined，否则返回错误对象。<br>- 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('setLoopMode');
+```
+
+## off('setTargetLoopMode')
+
+```TypeScript
+off(type: 'setTargetLoopMode', callback?: Callback<LoopMode>): void
+```
+
+取消目标循环模式变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'setTargetLoopMode' | 是 | 关闭对应的监听事件，支持关闭事件`'setTargetLoopMode'`。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LoopMode](arkts-avsession-avsession-loopmode-e.md)&gt; | 否 | 回调函数，参数表示目标循环模式。<br>- 当监听事件取消成功，err为undefined，否则返回错误对象。<br>- 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('setTargetLoopMode');
+```
+
+## off('toggleFavorite')
+
+```TypeScript
+off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
+```
+
+取消是否收藏的事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'toggleFavorite' | 是 | 关闭对应的监听事件，支持关闭事件`'toggleFavorite'`。 |
+| callback | (assetId: string) =&gt; void | 否 | 回调函数，参数assetId是媒体ID。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('toggleFavorite');
+```
+
+## off('handleKeyEvent')
+
+```TypeScript
+off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
+```
+
+取消按键事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'handleKeyEvent' | 是 | 关闭对应的监听事件，支持关闭事件`'handleKeyEvent'`。 |
+| callback | (event: KeyEvent) =&gt; void | 否 | 回调函数，参数event是按键事件。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('handleKeyEvent');
+```
+
+## off('outputDeviceChange')
+
+```TypeScript
+off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: OutputDeviceInfo) => void): void
+```
+
+取消播放设备变化的事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'outputDeviceChange' | 是 | 关闭对应的监听事件，支持关闭事件`'outputDeviceChange'`。 |
+| callback | (state: ConnectionState, device: OutputDeviceInfo) =&gt; void | 否 | 回调函数，参数device是设备相关信息。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('outputDeviceChange');
+```
+
+## off('commonCommand')
+
+```TypeScript
+off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Object}) => void): void
+```
+
+取消自定义控制命令的变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**起始版本：** 10
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'commonCommand' | 是 | 取消对应的监听事件，支持事件`'commonCommand'`。 |
+| callback | (command: string, args: {[key: string]: Object}) =&gt; void | 否 | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('commonCommand');
+```
+
+## off('skipToQueueItem')
+
+```TypeScript
+off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
+```
+
+取消播放列表单项选中的事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'skipToQueueItem' | 是 | 关闭对应的监听事件，支持关闭事件`'skipToQueueItem'`。 |
+| callback | (itemId: number) =&gt; void | 否 | 回调函数，参数itemId是播放列表单项ID。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('skipToQueueItem');
+```
+
+## off('answer')
+
+```TypeScript
+off(type: 'answer', callback?: Callback<void>): void
+```
+
+取消通话接听事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'answer' | 是 | 关闭对应的监听事件，支持的事件是`'answer'`。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('answer');
+```
+
+## off('hangUp')
+
+```TypeScript
+off(type: 'hangUp', callback?: Callback<void>): void
+```
+
+取消通话挂断事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'hangUp' | 是 | 关闭对应的监听事件，支持的事件是`'hangUp'`。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('hangUp');
+```
+
+## off('toggleCallMute')
+
+```TypeScript
+off(type: 'toggleCallMute', callback?: Callback<void>): void
+```
+
+取消通话静音事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'toggleCallMute' | 是 | 关闭对应的监听事件，支持的事件是`'toggleCallMute'`。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('toggleCallMute');
+```
+
+## off('castDisplayChange')
+
+```TypeScript
+off(type: 'castDisplayChange', callback?: Callback<CastDisplayInfo>): void
+```
+
+取消扩展屏投播显示设备变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'castDisplayChange' | 是 | 关闭对应的监听事件，支持的事件是`'castDisplayChange'`。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CastDisplayInfo](arkts-avsession-avsession-castdisplayinfo-i.md)&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('castDisplayChange');
+```
+
+## off('customDataChange')
+
+```TypeScript
+off(type: 'customDataChange', callback?: Callback<Record<string, Object>>): void
+```
+
+Unsubscribes from custom data changes.
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'customDataChange' | 是 | Custom data type. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Record&lt;string, Object&gt;&gt; | 否 | Callback used to return the custom data. |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.off('customDataChange');
+```
 
 ## off('playFromAssetId')
 
@@ -777,441 +1571,15 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-## off('playWithAssetId')
+**示例**
 
 ```TypeScript
-off(type: 'playWithAssetId', callback?: Callback<string>): void
+currentAVSession.off('playFromAssetId');
 ```
-
-取消指定资源id进行播放的事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**起始版本：** 20
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'playWithAssetId' | 是 | 关闭对应的监听事件，支持的事件是`'playWithAssetId'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## off('seek')
-
-```TypeScript
-off(type: 'seek', callback?: (time: number) => void): void
-```
-
-取消跳转节点事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'seek' | 是 | 关闭对应的监听事件，支持关闭事件`'seek'`。 |
-| callback | (time: number) =&gt; void | 否 | 回调函数，参数time是时间节点，单位为毫秒。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## off('setSpeed')
-
-```TypeScript
-off(type: 'setSpeed', callback?: (speed: number) => void): void
-```
-
-取消播放速率变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'setSpeed' | 是 | 关闭对应的监听事件，支持关闭事件`'setSpeed'`。 |
-| callback | (speed: number) =&gt; void | 否 | 回调函数，参数speed是播放倍速。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## off('setLoopMode')
-
-```TypeScript
-off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
-```
-
-取消循环模式变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'setLoopMode' | 是 | 关闭对应的监听事件，支持关闭事件`'setLoopMode'`。 |
-| callback | (mode: LoopMode) =&gt; void | 否 | 回调函数，参数mode是循环模式。<br>- 当监听事件取消成功，err为undefined，否则返回错误对象。<br>- 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## off('setTargetLoopMode')
-
-```TypeScript
-off(type: 'setTargetLoopMode', callback?: Callback<LoopMode>): void
-```
-
-取消目标循环模式变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'setTargetLoopMode' | 是 | 关闭对应的监听事件，支持关闭事件`'setTargetLoopMode'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LoopMode](arkts-avsession-avsession-loopmode-e.md)&gt; | 否 | 回调函数，参数表示目标循环模式。<br>- 当监听事件取消成功，err为undefined，否则返回错误对象。<br>- 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## off('toggleFavorite')
-
-```TypeScript
-off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
-```
-
-取消是否收藏的事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'toggleFavorite' | 是 | 关闭对应的监听事件，支持关闭事件`'toggleFavorite'`。 |
-| callback | (assetId: string) =&gt; void | 否 | 回调函数，参数assetId是媒体ID。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## off('handleKeyEvent')
-
-```TypeScript
-off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
-```
-
-取消按键事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'handleKeyEvent' | 是 | 关闭对应的监听事件，支持关闭事件`'handleKeyEvent'`。 |
-| callback | (event: KeyEvent) =&gt; void | 否 | 回调函数，参数event是按键事件。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## off('outputDeviceChange')
-
-```TypeScript
-off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: OutputDeviceInfo) => void): void
-```
-
-取消播放设备变化的事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'outputDeviceChange' | 是 | 关闭对应的监听事件，支持关闭事件`'outputDeviceChange'`。 |
-| callback | (state: ConnectionState, device: OutputDeviceInfo) =&gt; void | 否 | 回调函数，参数device是设备相关信息。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
-
-## off('commonCommand')
-
-```TypeScript
-off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Object}) => void): void
-```
-
-取消自定义控制命令的变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'commonCommand' | 是 | 取消对应的监听事件，支持事件`'commonCommand'`。 |
-| callback | (command: string, args: {[key: string]: Object}) =&gt; void | 否 | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## off('skipToQueueItem')
-
-```TypeScript
-off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
-```
-
-取消播放列表单项选中的事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'skipToQueueItem' | 是 | 关闭对应的监听事件，支持关闭事件`'skipToQueueItem'`。 |
-| callback | (itemId: number) =&gt; void | 否 | 回调函数，参数itemId是播放列表单项ID。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## off('answer')
-
-```TypeScript
-off(type: 'answer', callback?: Callback<void>): void
-```
-
-取消通话接听事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'answer' | 是 | 关闭对应的监听事件，支持的事件是`'answer'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## off('hangUp')
-
-```TypeScript
-off(type: 'hangUp', callback?: Callback<void>): void
-```
-
-取消通话挂断事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'hangUp' | 是 | 关闭对应的监听事件，支持的事件是`'hangUp'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## off('toggleCallMute')
-
-```TypeScript
-off(type: 'toggleCallMute', callback?: Callback<void>): void
-```
-
-取消通话静音事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'toggleCallMute' | 是 | 关闭对应的监听事件，支持的事件是`'toggleCallMute'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## off('castDisplayChange')
-
-```TypeScript
-off(type: 'castDisplayChange', callback?: Callback<CastDisplayInfo>): void
-```
-
-取消扩展屏投播显示设备变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
-
-**起始版本：** 12
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'castDisplayChange' | 是 | 关闭对应的监听事件，支持的事件是`'castDisplayChange'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CastDisplayInfo](arkts-avsession-avsession-castdisplayinfo-i.md)&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
-
-## off('customDataChange')
-
-```TypeScript
-off(type: 'customDataChange', callback?: Callback<Record<string, Object>>): void
-```
-
-Unsubscribes from custom data changes.
-
-**起始版本：** 20
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'customDataChange' | 是 | Custom data type. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Record&lt;string, Object&gt;&gt; | 否 | Callback used to return the custom data. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
 ## offDesktopLyricStateChanged
 
@@ -1240,6 +1608,14 @@ offDesktopLyricStateChanged(callback?: Callback<DesktopLyricState>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).offDesktopLyricStateChanged();
+}
+```
+
 ## offDesktopLyricVisibilityChanged
 
 ```TypeScript
@@ -1266,6 +1642,14 @@ offDesktopLyricVisibilityChanged(callback?: Callback<boolean>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).offDesktopLyricVisibilityChanged();
+}
+```
 
 ## offFastForward
 
@@ -1294,6 +1678,12 @@ offFastForward(callback?: TwoParamCallback<number, CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+currentAVSession.offFastForward();
+```
+
 ## offPlay
 
 ```TypeScript
@@ -1320,6 +1710,12 @@ offPlay(callback?: Callback<CommandInfo>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.offPlay();
+```
 
 ## offPlayNext
 
@@ -1348,6 +1744,12 @@ offPlayNext(callback?: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+currentAVSession.offPlayNext();
+```
+
 ## offPlayPrevious
 
 ```TypeScript
@@ -1374,6 +1776,12 @@ offPlayPrevious(callback?: Callback<CommandInfo>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.offPlayPrevious();
+```
 
 ## offRewind
 
@@ -1402,6 +1810,12 @@ offRewind(callback?: TwoParamCallback<number, CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+currentAVSession.offRewind();
+```
+
 ## on('play')
 
 ```TypeScript
@@ -1429,9 +1843,17 @@ on(type: 'play', callback: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('play', () => {
+  console.info('on play entry');
+});
+```
 
 ## on('pause')
 
@@ -1460,9 +1882,17 @@ on(type: 'pause', callback: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('pause', () => {
+  console.info('on pause entry');
+});
+```
 
 ## on('stop')
 
@@ -1491,9 +1921,17 @@ on(type: 'stop', callback: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('stop', () => {
+  console.info('on stop entry');
+});
+```
 
 ## on('playNext')
 
@@ -1522,9 +1960,17 @@ on(type: 'playNext', callback: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('playNext', () => {
+  console.info('on playNext entry');
+});
+```
 
 ## on('playPrevious')
 
@@ -1553,9 +1999,17 @@ on(type: 'playPrevious', callback: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('playPrevious', () => {
+  console.info('on playPrevious entry');
+});
+```
 
 ## on('fastForward')
 
@@ -1584,9 +2038,17 @@ on(type: 'fastForward', callback: (time ?: number) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('fastForward', (time?: number) => {
+  console.info('on fastForward entry');
+});
+```
 
 ## on('rewind')
 
@@ -1615,9 +2077,608 @@ on(type: 'rewind', callback: (time ?: number) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('rewind', (time?: number) => {
+  console.info('on rewind entry');
+});
+```
+
+## on('playWithAssetId')
+
+```TypeScript
+on(type: 'playWithAssetId', callback: Callback<string>): void
+```
+
+设置指定资源id进行播放的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'playWithAssetId' | 是 | 事件回调类型，支持的事件是`'playWithAssetId'`，当指定资源id进行播放时，触发该事件回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | 是 | 回调函数。参数assetId是媒体ID。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+let playWithAssetIdCallback = (assetId: string) => {
+  console.info(`on playWithAssetId entry,  assetId = ${assetId}`);
+}
+currentAVSession.on('playWithAssetId', playWithAssetIdCallback);
+```
+
+## on('seek')
+
+```TypeScript
+on(type: 'seek', callback: (time: number) => void): void
+```
+
+设置跳转节点监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'seek' | 是 | 事件回调类型，支持事件`'seek'`：当跳转节点命令被发送到会话时，触发该事件。 |
+| callback | (time: number) =&gt; void | 是 | 回调函数。参数time是时间节点，单位为毫秒。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('seek', (time: number) => {
+  console.info(`on seek entry time : ${time}`);
+});
+```
+
+## on('setSpeed')
+
+```TypeScript
+on(type: 'setSpeed', callback: (speed: number) => void): void
+```
+
+设置播放速率的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'setSpeed' | 是 | 事件回调类型，支持事件`'setSpeed'`：当设置播放速率的命令被发送到会话时，触发该事件。 |
+| callback | (speed: number) =&gt; void | 是 | 回调函数。参数speed是播放倍速。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('setSpeed', (speed: number) => {
+  console.info(`on setSpeed speed : ${speed}`);
+});
+```
+
+## on('setLoopMode')
+
+```TypeScript
+on(type: 'setLoopMode', callback: (mode: LoopMode) => void): void
+```
+
+设置循环模式的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'setLoopMode' | 是 | 事件回调类型，支持事件`'setLoopMode'`：当设置循环模式的命令被发送到会话时，触发该事件。 |
+| callback | (mode: LoopMode) =&gt; void | 是 | 回调函数。参数mode是循环模式。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('setLoopMode', (mode: avSession.LoopMode) => {
+  console.info(`on setLoopMode mode : ${mode}`);
+});
+```
+
+## on('setTargetLoopMode')
+
+```TypeScript
+on(type: 'setTargetLoopMode', callback: Callback<LoopMode>): void
+```
+
+设置目标循环模式的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'setTargetLoopMode' | 是 | 事件回调类型，支持事件`'setTargetLoopMode'`。<br>- `'setTargetLoopMode'`：当设置目标循环模式的命令被发送到会话时，触发该事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LoopMode](arkts-avsession-avsession-loopmode-e.md)&gt; | 是 | 回调函数。参数表示目标循环模式。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('setTargetLoopMode', (mode: avSession.LoopMode) => {
+  console.info(`on setTargetLoopMode mode : ${mode}`);
+});
+```
+
+## on('toggleFavorite')
+
+```TypeScript
+on(type: 'toggleFavorite', callback: (assetId: string) => void): void
+```
+
+设置是否收藏的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'toggleFavorite' | 是 | 事件回调类型，支持事件`'toggleFavorite'`：当是否收藏的命令被发送到会话时，触发该事件。 |
+| callback | (assetId: string) =&gt; void | 是 | 回调函数。参数assetId是媒体ID。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('toggleFavorite', (assetId: string) => {
+  console.info(`on toggleFavorite mode : ${assetId}`);
+});
+```
+
+## on('handleKeyEvent')
+
+```TypeScript
+on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
+```
+
+设置蓝牙/有线等外设接入的按键输入事件的监听，监听多媒体按键事件中播放、暂停、上下一首、快进、快退的指令。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'handleKeyEvent' | 是 | 事件回调类型，支持事件`'handleKeyEvent'`：当按键事件被发送到会话时，触发该事件。 |
+| callback | (event: KeyEvent) =&gt; void | 是 | 回调函数。参数event是按键事件。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+import { KeyEvent } from '@kit.InputKit';
+
+currentAVSession.on('handleKeyEvent', (event: KeyEvent) => {
+  console.info(`on handleKeyEvent event : ${event}`);
+});
+```
+
+## on('outputDeviceChange')
+
+```TypeScript
+on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: OutputDeviceInfo) => void): void
+```
+
+设置播放设备变化的监听事件。应用接入[multimedia.avCastPicker (投播组件)](arkts-avsession-multimedia-avcastpicker-avcastpicker-s.md)，当用户通过组件切换设备时，会收到设备切换的回调。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'outputDeviceChange' | 是 | 事件回调类型，支持事件`'outputDeviceChange'`：当播放设备变化时，触发该事件。 |
+| callback | (state: ConnectionState, device: OutputDeviceInfo) =&gt; void | 是 | 回调函数，参数device是设备相关信息。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('outputDeviceChange', (state: avSession.ConnectionState, device: avSession.OutputDeviceInfo) => {
+  console.info(`on outputDeviceChange device : ${device}`);
+});
+```
+
+## on('commonCommand')
+
+```TypeScript
+on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Object}) => void): void
+```
+
+设置自定义控制命令变化的监听器。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**起始版本：** 10
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'commonCommand' | 是 | 事件回调类型，支持事件`'commonCommand'`：当自定义控制命令变化时，触发该事件。 |
+| callback | (command: string, args: {[key: string]: Object}) =&gt; void | 是 | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与sendCommonCommand)}方法设置的参数内容完全一致。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('commonCommand', (commonCommand, args) => {
+  console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
+});
+```
+
+## on('skipToQueueItem')
+
+```TypeScript
+on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
+```
+
+设置播放列表其中某项被选中的监听事件，session端可以选择对这个单项歌曲进行播放。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'skipToQueueItem' | 是 | 事件回调类型，支持事件`'skipToQueueItem'`：当播放列表选中单项的命令被发送到会话时，触发该事件。 |
+| callback | (itemId: number) =&gt; void | 是 | 回调函数。参数itemId是选中的播放列表项的ID。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('skipToQueueItem', (itemId: number) => {
+  console.info(`on skipToQueueItem id : ${itemId}`);
+});
+```
+
+## on('answer')
+
+```TypeScript
+on(type: 'answer', callback: Callback<void>): void
+```
+
+设置通话接听的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'answer' | 是 | 事件回调类型，支持事件`'answer'`：当通话接听时，触发该事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('answer', () => {
+  console.info('on call answer');
+});
+```
+
+## on('hangUp')
+
+```TypeScript
+on(type: 'hangUp', callback: Callback<void>): void
+```
+
+设置通话挂断的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'hangUp' | 是 | 事件回调类型，支持事件`'hangUp'`：当通话挂断时，触发该事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('hangUp', () => {
+  console.info('on call hangUp');
+});
+```
+
+## on('toggleCallMute')
+
+```TypeScript
+on(type: 'toggleCallMute', callback: Callback<void>): void
+```
+
+设置通话静音的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'toggleCallMute' | 是 | 事件回调类型，支持事件`'toggleCallMute'`：当通话静音或解除静音时，触发该事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('toggleCallMute', () => {
+  console.info('on call toggleCallMute');
+});
+```
+
+## on('castDisplayChange')
+
+```TypeScript
+on(type: 'castDisplayChange', callback: Callback<CastDisplayInfo>): void
+```
+
+设置扩展屏投播显示设备变化的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'castDisplayChange' | 是 | 事件回调类型，支持事件`'castDisplayChange'`：当扩展屏投播显示设备变化时触发事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CastDisplayInfo](arkts-avsession-avsession-castdisplayinfo-i.md)&gt; | 是 | 回调函数。参数是扩展屏投播显示设备信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
+
+**示例**
+
+```TypeScript
+let castDisplay: avSession.CastDisplayInfo;
+currentAVSession.on('castDisplayChange', (display: avSession.CastDisplayInfo) => {
+    if (display.state === avSession.CastDisplayState.STATE_ON) {
+        castDisplay = display;
+        console.info(`Succeeded in castDisplayChange display : ${display.id} ON`);
+    } else if (display.state === avSession.CastDisplayState.STATE_OFF){
+        console.info(`Succeeded in castDisplayChange display : ${display.id} OFF`);
+    }
+});
+```
+
+## on('customDataChange')
+
+```TypeScript
+on(type: 'customDataChange', callback: Callback<Record<string, Object>>): void
+```
+
+注册从远程设备发送的自定义数据的监听器。
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'customDataChange' | 是 | 事件回调类型，支持事件'customDataChange'，当媒体提供方发送自定义数据时，触发该事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Record&lt;string, Object&gt;&gt; | 是 | 回调函数，用于接收自定义数据。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.on('customDataChange', (callback) => {
+    console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
+});
+```
 
 ## on('playFromAssetId')
 
@@ -1654,469 +2715,17 @@ on(type: 'playFromAssetId', callback: (assetId: number) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-## on('playWithAssetId')
+**示例**
 
 ```TypeScript
-on(type: 'playWithAssetId', callback: Callback<string>): void
+currentAVSession.on('playFromAssetId', (assetId: number) => {
+  console.info('on playFromAssetId entry');
+});
 ```
-
-设置指定资源id进行播放的监听事件。
-
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
-
-**起始版本：** 20
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'playWithAssetId' | 是 | 事件回调类型，支持的事件是`'playWithAssetId'`，当指定资源id进行播放时，触发该事件回调。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | 是 | 回调函数。参数assetId是媒体ID。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## on('seek')
-
-```TypeScript
-on(type: 'seek', callback: (time: number) => void): void
-```
-
-设置跳转节点监听事件。
-
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'seek' | 是 | 事件回调类型，支持事件`'seek'`：当跳转节点命令被发送到会话时，触发该事件。 |
-| callback | (time: number) =&gt; void | 是 | 回调函数。参数time是时间节点，单位为毫秒。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## on('setSpeed')
-
-```TypeScript
-on(type: 'setSpeed', callback: (speed: number) => void): void
-```
-
-设置播放速率的监听事件。
-
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'setSpeed' | 是 | 事件回调类型，支持事件`'setSpeed'`：当设置播放速率的命令被发送到会话时，触发该事件。 |
-| callback | (speed: number) =&gt; void | 是 | 回调函数。参数speed是播放倍速。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## on('setLoopMode')
-
-```TypeScript
-on(type: 'setLoopMode', callback: (mode: LoopMode) => void): void
-```
-
-设置循环模式的监听事件。
-
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'setLoopMode' | 是 | 事件回调类型，支持事件`'setLoopMode'`：当设置循环模式的命令被发送到会话时，触发该事件。 |
-| callback | (mode: LoopMode) =&gt; void | 是 | 回调函数。参数mode是循环模式。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## on('setTargetLoopMode')
-
-```TypeScript
-on(type: 'setTargetLoopMode', callback: Callback<LoopMode>): void
-```
-
-设置目标循环模式的监听事件。
-
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'setTargetLoopMode' | 是 | 事件回调类型，支持事件`'setTargetLoopMode'`。<br>- `'setTargetLoopMode'`：当设置目标循环模式的命令被发送到会话时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LoopMode](arkts-avsession-avsession-loopmode-e.md)&gt; | 是 | 回调函数。参数表示目标循环模式。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## on('toggleFavorite')
-
-```TypeScript
-on(type: 'toggleFavorite', callback: (assetId: string) => void): void
-```
-
-设置是否收藏的监听事件。
-
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'toggleFavorite' | 是 | 事件回调类型，支持事件`'toggleFavorite'`：当是否收藏的命令被发送到会话时，触发该事件。 |
-| callback | (assetId: string) =&gt; void | 是 | 回调函数。参数assetId是媒体ID。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## on('handleKeyEvent')
-
-```TypeScript
-on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
-```
-
-设置蓝牙/有线等外设接入的按键输入事件的监听，监听多媒体按键事件中播放、暂停、上下一首、快进、快退的指令。
-
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'handleKeyEvent' | 是 | 事件回调类型，支持事件`'handleKeyEvent'`：当按键事件被发送到会话时，触发该事件。 |
-| callback | (event: KeyEvent) =&gt; void | 是 | 回调函数。参数event是按键事件。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## on('outputDeviceChange')
-
-```TypeScript
-on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: OutputDeviceInfo) => void): void
-```
-
-设置播放设备变化的监听事件。应用接入[multimedia.avCastPicker (投播组件)](arkts-avsession-multimedia-avcastpicker-avcastpicker-s.md)，当用户通过组件切换设备时，会收到设备切换的回调。
-
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'outputDeviceChange' | 是 | 事件回调类型，支持事件`'outputDeviceChange'`：当播放设备变化时，触发该事件。 |
-| callback | (state: ConnectionState, device: OutputDeviceInfo) =&gt; void | 是 | 回调函数，参数device是设备相关信息。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
-
-## on('commonCommand')
-
-```TypeScript
-on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Object}) => void): void
-```
-
-设置自定义控制命令变化的监听器。
-
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'commonCommand' | 是 | 事件回调类型，支持事件`'commonCommand'`：当自定义控制命令变化时，触发该事件。 |
-| callback | (command: string, args: {[key: string]: Object}) =&gt; void | 是 | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与sendCommonCommand)}方法设置的参数内容完全一致。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## on('skipToQueueItem')
-
-```TypeScript
-on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
-```
-
-设置播放列表其中某项被选中的监听事件，session端可以选择对这个单项歌曲进行播放。
-
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'skipToQueueItem' | 是 | 事件回调类型，支持事件`'skipToQueueItem'`：当播放列表选中单项的命令被发送到会话时，触发该事件。 |
-| callback | (itemId: number) =&gt; void | 是 | 回调函数。参数itemId是选中的播放列表项的ID。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## on('answer')
-
-```TypeScript
-on(type: 'answer', callback: Callback<void>): void
-```
-
-设置通话接听的监听事件。
-
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'answer' | 是 | 事件回调类型，支持事件`'answer'`：当通话接听时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## on('hangUp')
-
-```TypeScript
-on(type: 'hangUp', callback: Callback<void>): void
-```
-
-设置通话挂断的监听事件。
-
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'hangUp' | 是 | 事件回调类型，支持事件`'hangUp'`：当通话挂断时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## on('toggleCallMute')
-
-```TypeScript
-on(type: 'toggleCallMute', callback: Callback<void>): void
-```
-
-设置通话静音的监听事件。
-
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'toggleCallMute' | 是 | 事件回调类型，支持事件`'toggleCallMute'`：当通话静音或解除静音时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
-
-## on('castDisplayChange')
-
-```TypeScript
-on(type: 'castDisplayChange', callback: Callback<CastDisplayInfo>): void
-```
-
-设置扩展屏投播显示设备变化的监听事件。
-
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
-
-**起始版本：** 12
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'castDisplayChange' | 是 | 事件回调类型，支持事件`'castDisplayChange'`：当扩展屏投播显示设备变化时触发事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CastDisplayInfo](arkts-avsession-avsession-castdisplayinfo-i.md)&gt; | 是 | 回调函数。参数是扩展屏投播显示设备信息。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
-
-## on('customDataChange')
-
-```TypeScript
-on(type: 'customDataChange', callback: Callback<Record<string, Object>>): void
-```
-
-注册从远程设备发送的自定义数据的监听器。
-
-**起始版本：** 20
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'customDataChange' | 是 | 事件回调类型，支持事件'customDataChange'，当媒体提供方发送自定义数据时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Record&lt;string, Object&gt;&gt; | 是 | 回调函数，用于接收自定义数据。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
 ## onDesktopLyricStateChanged
 
@@ -2145,6 +2754,16 @@ onDesktopLyricStateChanged(callback: Callback<DesktopLyricState>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
+    console.info(`desktop lyric isLocked : ${state.isLocked}`);
+  })
+}
+```
+
 ## onDesktopLyricVisibilityChanged
 
 ```TypeScript
@@ -2171,6 +2790,16 @@ onDesktopLyricVisibilityChanged(callback: Callback<boolean>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).onDesktopLyricVisibilityChanged((visible: boolean) => {
+    console.info(`desktop lyric visible state: ${visible}`);
+  });
+}
+```
 
 ## onFastForward
 
@@ -2199,6 +2828,14 @@ onFastForward(callback: TwoParamCallback<number, CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+currentAVSession.onFastForward((time: number, info: avSession.CommandInfo) => {
+  console.info('on fastForward entry');
+});
+```
+
 ## onPlay
 
 ```TypeScript
@@ -2226,6 +2863,14 @@ onPlay(callback: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+currentAVSession.onPlay((info: avSession.CommandInfo) => {
+  console.info('on play entry');
+});
+```
+
 ## onPlayNext
 
 ```TypeScript
@@ -2252,6 +2897,14 @@ onPlayNext(callback: Callback<CommandInfo>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.onPlayNext((info: avSession.CommandInfo) => {
+  console.info('on playNext entry');
+});
+```
 
 ## onPlayPrevious
 
@@ -2282,6 +2935,14 @@ onPlayPrevious(callback: Callback<CommandInfo>): void
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+currentAVSession.onPlayPrevious((info: avSession.CommandInfo) => {
+  console.info('on playPrevious entry');
+});
+```
+
 ## onRewind
 
 ```TypeScript
@@ -2308,6 +2969,14 @@ onRewind(callback: TwoParamCallback<number, CommandInfo>): void
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.onRewind((time: number, info: avSession.CommandInfo) => {
+  console.info('on rewind entry');
+});
+```
 
 ## sendCustomData
 
@@ -2342,6 +3011,14 @@ sendCustomData(data: Record<string, Object>): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+currentAVSession.sendCustomData({customData : "This is custom data"}).then(() => {
+  console.info('Succeeded in sending custom data.');
+});
+```
+
 ## setAVCallState
 
 ```TypeScript
@@ -2365,9 +3042,29 @@ setAVCallState(state: AVCallState, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avcalldata: avSession.AVCallState = {
+  state: avSession.CallState.CALL_STATE_ACTIVE,
+  muted: false
+};
+currentAVSession.setAVCallState(avcalldata, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVCallState, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in setting AVCallState.');
+});
+```
+
+<a id="setavcallstate-1"></a>
 
 ## setAVCallState
 
@@ -2397,9 +3094,21 @@ setAVCallState(state: AVCallState): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+let calldata: avSession.AVCallState = {
+  state: avSession.CallState.CALL_STATE_ACTIVE,
+  muted: false
+};
+currentAVSession.setAVCallState(calldata).then(() => {
+  console.info('Succeeded in setting AVCallState.');
+});
+```
 
 ## setAVMetadata
 
@@ -2424,9 +3133,46 @@ setAVMetadata(data: AVMetadata, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let metadata: avSession.AVMetadata = {
+  assetId: "121278",
+  title: "lose yourself",
+  artist: "Eminem",
+  author: "ST",
+  album: "Slim shady",
+  writer: "ST",
+  composer: "ST",
+  duration: 2222,
+  mediaImage: "https://www.example.com/example.jpg",
+  subtitle: "8 Mile",
+  description: "Rap",
+  // LRC中有两类元素：一种是时间标签+歌词，一种是ID标签。
+  // 例如：[00:25.44]xxx\r\n[00:26.44]xxx\r\n
+  lyric: "lrc格式歌词内容",
+  // singleLyricText字段存储单条歌词文本，不包含时间戳。
+  // 例如："单条歌词内容"。
+  singleLyricText: "单条歌词内容",
+  previousAssetId: "121277",
+  nextAssetId: "121279"
+};
+currentAVSession.setAVMetadata(metadata, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVMetadata, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in setting AVMetadata.');
+});
+```
+
+<a id="setavmetadata-1"></a>
 
 ## setAVMetadata
 
@@ -2458,9 +3204,38 @@ setAVMetadata(data: AVMetadata): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+let metadata: avSession.AVMetadata = {
+  assetId: "121278",
+  title: "lose yourself",
+  artist: "Eminem",
+  author: "ST",
+  album: "Slim shady",
+  writer: "ST",
+  composer: "ST",
+  duration: 2222,
+  mediaImage: "https://www.example.com/example.jpg",
+  subtitle: "8 Mile",
+  description: "Rap",
+  // LRC中有两类元素：一种是时间标签+歌词，一种是ID标签。
+  // 例如：[00:25.44]xxx\r\n[00:26.44]xxx\r\n
+  lyric: "lrc格式歌词内容",
+  // singleLyricText字段存储单条歌词文本，不包含时间戳。
+  // 例如："单条歌词内容"。
+  singleLyricText: "单条歌词内容",
+  previousAssetId: "121277",
+  nextAssetId: "121279"
+};
+currentAVSession.setAVMetadata(metadata).then(() => {
+  console.info('Succeeded in setting AVMetadata.');
+});
+```
 
 ## setAVPlaybackState
 
@@ -2485,9 +3260,33 @@ setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let playbackState: avSession.AVPlaybackState = {
+  state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
+  speed: 1.0,
+  position:{elapsedTime:10, updateTime:(new Date()).getTime()},
+  bufferedTime:1000,
+  loopMode:avSession.LoopMode.LOOP_MODE_SINGLE,
+  isFavorite:true
+};
+currentAVSession.setAVPlaybackState(playbackState, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVPlaybackState, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in setting AVPlaybackState.');
+});
+```
+
+<a id="setavplaybackstate-1"></a>
 
 ## setAVPlaybackState
 
@@ -2519,9 +3318,25 @@ setAVPlaybackState(state: AVPlaybackState): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+let playbackState: avSession.AVPlaybackState = {
+  state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
+  speed: 1.0,
+  position:{elapsedTime:10, updateTime:(new Date()).getTime()},
+  bufferedTime:1000,
+  loopMode:avSession.LoopMode.LOOP_MODE_SINGLE,
+  isFavorite:true
+};
+currentAVSession.setAVPlaybackState(playbackState).then(() => {
+  console.info('Succeeded in setting AVPlaybackState.');
+});
+```
 
 ## setAVQueueItems
 
@@ -2546,9 +3361,56 @@ setAVQueueItems(items: Array<AVQueueItem>, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+// Index.ets
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+let imageSource = await image.createImageSource(value.buffer);
+let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+let queueItemDescription_1: avSession.AVMediaDescription = {
+  assetId: '001',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage: imagePixel,
+  extras: { extras: 'any' }
+};
+let queueItem_1: avSession.AVQueueItem = {
+  itemId: 1,
+  description: queueItemDescription_1
+};
+let queueItemDescription_2: avSession.AVMediaDescription = {
+  assetId: '002',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage: imagePixel,
+  extras: { extras: 'any' }
+};
+let queueItem_2: avSession.AVQueueItem = {
+  itemId: 2,
+  description: queueItemDescription_2
+};
+let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+currentAVSession.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVQueueItems, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in setting AVQueueItems.');
+});
+```
+
+<a id="setavqueueitems-1"></a>
 
 ## setAVQueueItems
 
@@ -2580,9 +3442,49 @@ setAVQueueItems(items: Array<AVQueueItem>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+// Index.ets
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+let imageSource = await image.createImageSource(value.buffer);
+let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+let queueItemDescription_1: avSession.AVMediaDescription = {
+  assetId: '001',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage : imagePixel,
+  extras: {extras:'any'}
+};
+let queueItem_1: avSession.AVQueueItem = {
+  itemId: 1,
+  description: queueItemDescription_1
+} as avSession.AVQueueItem;
+let queueItemDescription_2: avSession.AVMediaDescription = {
+  assetId: '002',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage: imagePixel,
+  extras: {extras:'any'}
+};
+let queueItem_2: avSession.AVQueueItem = {
+  itemId: 2,
+  description: queueItemDescription_2
+} as avSession.AVQueueItem;
+let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
+  console.info('Succeeded in setting AVQueueItems.');
+});
+```
 
 ## setAVQueueTitle
 
@@ -2607,9 +3509,26 @@ setAVQueueTitle(title: string, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let queueTitle = 'QUEUE_TITLE';
+currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVQueueTitle, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in setting AVQueueTitle.');
+});
+```
+
+<a id="setavqueuetitle-1"></a>
 
 ## setAVQueueTitle
 
@@ -2641,9 +3560,18 @@ setAVQueueTitle(title: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+let queueTitle = 'QUEUE_TITLE';
+currentAVSession.setAVQueueTitle(queueTitle).then(() => {
+  console.info('Succeeded in setting AVQueueTitle.');
+});
+```
 
 ## setBackgroundPlayMode
 
@@ -2679,6 +3607,16 @@ setBackgroundPlayMode(mode: BackgroundPlayMode): Promise<void>
 | --- | --- |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+try {
+  await currentAVSession.setBackgroundPlayMode(avSession.BackgroundPlayMode.ENABLE_BACKGROUND_PLAY);
+} catch (err) {
+  console.error(`setBackgroundPlayMode BusinessError: code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## setCallMetadata
 
 ```TypeScript
@@ -2702,9 +3640,56 @@ setCallMetadata(data: CallMetadata, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+// Index.ets
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text('Hello World')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+class CallManager {
+  private currentAVSession: avSession.AVSession | null = null;
+
+  async setCallMetadata() {
+    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+    let imageSource = await image.createImageSource(value.buffer);
+    let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+    let calldata: avSession.CallMetadata = {
+      name: "xiaoming",
+      phoneNumber: "111xxxxxxxx",
+      avatar: imagePixel
+    };
+    this.currentAVSession?.setCallMetadata(calldata, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to set call metadata, code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in setting call metadata.');
+    });
+  }
+}
+```
+
+<a id="setcallmetadata-1"></a>
 
 ## setCallMetadata
 
@@ -2734,9 +3719,53 @@ setCallMetadata(data: CallMetadata): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+// Index.ets
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { avSession } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text('Hello World')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+class CallManager {
+  private currentAVSession: avSession.AVSession | null = null;
+
+  async setCallMetadata() {
+    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+    let imageSource = await image.createImageSource(value.buffer);
+    let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+    let calldata: avSession.CallMetadata = {
+      name: "xiaoming",
+      phoneNumber: "111xxxxxxxx",
+      avatar: imagePixel
+    };
+    this.currentAVSession?.setCallMetadata(calldata).then(() => {
+      console.info('Succeeded in setting call metadata.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set call metadata, code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
 
 ## setDesktopLyricState
 
@@ -2773,6 +3802,17 @@ setDesktopLyricState(state: DesktopLyricState): Promise<void>
 | [6600110](../errorcode-avsession.md#6600110-应用程序的桌面歌词功能未开启) | The desktop lyrics feature of this application is not enabled. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
+**示例**
+
+```TypeScript
+let state: avSession.DesktopLyricState = {
+  isLocked: true,
+};
+currentAVSession.setDesktopLyricState(state).then(() => {
+  console.info('Succeeded in setting desktop lyric state.');
+})
+```
+
 ## setDesktopLyricVisible
 
 ```TypeScript
@@ -2808,6 +3848,14 @@ setDesktopLyricVisible(visible: boolean): Promise<void>
 | [6600110](../errorcode-avsession.md#6600110-应用程序的桌面歌词功能未开启) | The desktop lyrics feature of this application is not enabled. |
 | [6600111](../errorcode-avsession.md#6600111-当前设备不支持桌面歌词功能) | The desktop lyrics feature is not supported. |
 
+**示例**
+
+```TypeScript
+currentAVSession.setDesktopLyricVisible(true).then(() => {
+  console.info('Succeeded in setting desktop lyric visible.');
+});
+```
+
 ## setExtras
 
 ```TypeScript
@@ -2817,6 +3865,8 @@ setExtras(extras: {[key: string]: Object}, callback: AsyncCallback<void>): void
 媒体提供方设置键值对形式的自定义媒体数据包，使用callback异步回调。
 
 **起始版本：** 10
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2831,9 +3881,25 @@ setExtras(extras: {[key: string]: Object}, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.setExtras({extras : "This is custom media packet"}, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set extras, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in setting extras.');
+})
+```
+
+<a id="setextras-2"></a>
 
 ## setExtras
 
@@ -2844,6 +3910,8 @@ setExtras(extras: {[key: string]: Object}): Promise<void>
 媒体提供方设置键值对形式的自定义媒体数据包。使用Promise异步回调。
 
 **起始版本：** 10
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -2865,9 +3933,17 @@ setExtras(extras: {[key: string]: Object}): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+currentAVSession.setExtras({extras : "This is custom media packet"}).then(() => {
+  console.info('Succeeded in setting extras.');
+});
+```
 
 ## setLaunchAbility
 
@@ -2894,9 +3970,56 @@ setLaunchAbility(ability: WantAgent, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+import { wantAgent } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// WantAgentInfo对象。
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: "deviceId",
+      bundleName: "com.example.myapplication",
+      abilityName: "EntryAbility",
+      action: "action1",
+      entities: ["entity1"],
+      type: "MIMETYPE",
+      uri: "key = {true,true,false}",
+      parameters:
+        {
+          mykey0: 2222,
+          mykey1: [1, 2, 3],
+          mykey2: "[1, 2, 3]",
+          mykey3: "ssssssssssssssssssssssssss",
+          mykey4: [false, true, false],
+          mykey5: ["qqqqq", "wwwwww", "aaaaaaaaaaaaaaaaa"],
+          mykey6: true
+        }
+    }
+  ],
+  operationType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+  wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+}
+
+wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
+  currentAVSession.setLaunchAbility(agent, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to set launch ability, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in setting launch ability.');
+  });
+});
+```
+
+<a id="setlaunchability-1"></a>
 
 ## setLaunchAbility
 
@@ -2930,9 +4053,49 @@ setLaunchAbility(ability: WantAgent): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+import { wantAgent } from '@kit.AbilityKit';
+
+// WantAgentInfo对象。
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: "deviceId",
+      bundleName: "com.example.myapplication",
+      abilityName: "EntryAbility",
+      action: "action1",
+      entities: ["entity1"],
+      type: "MIMETYPE",
+      uri: "key = {true,true,false}",
+      parameters:
+        {
+          mykey0: 2222,
+          mykey1: [1, 2, 3],
+          mykey2: "[1, 2, 3]",
+          mykey3: "ssssssssssssssssssssssssss",
+          mykey4: [false, true, false],
+          mykey5: ["qqqqq", "wwwwww", "aaaaaaaaaaaaaaaaa"],
+          mykey6: true
+        }
+    }
+  ],
+  operationType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+  wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+}
+
+wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
+  currentAVSession.setLaunchAbility(agent).then(() => {
+    console.info('Succeeded in setting launch ability.');
+  });
+});
+```
 
 ## setMediaCenterControlType
 
@@ -2969,6 +4132,23 @@ setMediaCenterControlType(type: Array<AVMediaCenterControlType>): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+try {
+  let controlTypes: avSession.AVMediaCenterControlType[] = [
+    'playNext',
+    'playPrevious',
+    'setSpeed',
+    'setLoopMode'
+  ];
+  await currentAVSession.setMediaCenterControlType(controlTypes);
+  console.info('Succeeded in setting media center control type.');
+} catch (err) {
+  console.error(`setMediaCenterControlType BusinessError: code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## setSupportedLoopModes
 
 ```TypeScript
@@ -3003,6 +4183,22 @@ setSupportedLoopModes(loopModes: Array<LoopMode>): Promise<void>
 | --- | --- |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+try {
+  let loopModes: avSession.LoopMode[] = [
+    avSession.LoopMode.LOOP_MODE_SEQUENCE,
+    avSession.LoopMode.LOOP_MODE_SINGLE,
+    avSession.LoopMode.LOOP_MODE_LIST
+  ];
+  await currentAVSession.setSupportedLoopModes(loopModes);
+  console.info('Succeeded in setting supported loop modes.');
+} catch (err) {
+  console.error(`setSupportedLoopModes BusinessError: code: ${err.code}, message: ${err.message}`);
+}
+```
 
 ## setSupportedPlaySpeeds
 
@@ -3039,6 +4235,18 @@ setSupportedPlaySpeeds(speeds: Array<number>): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+**示例**
+
+```TypeScript
+try {
+  let speeds: number[] = [0.5, 1, 1.25, 1.5];
+  await currentAVSession.setSupportedPlaySpeeds(speeds);
+  console.info('Succeeded in setting supported play speeds.');
+} catch (err) {
+  console.error(`setSupportedPlaySpeeds BusinessError: code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## stopCasting
 
 ```TypeScript
@@ -3062,6 +4270,16 @@ stopCasting(callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+
+**示例**
+
+```TypeScript
+currentAVSession.stopCasting(() => {
+  console.info('Succeeded in stopping casting.');
+});
+```
+
+<a id="stopcasting-1"></a>
 
 ## stopCasting
 
@@ -3088,6 +4306,14 @@ stopCasting(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+
+**示例**
+
+```TypeScript
+currentAVSession.stopCasting().then(() => {
+  console.info('Succeeded in stopping casting.');
+});
+```
 
 ## sessionId
 

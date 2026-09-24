@@ -1,5 +1,9 @@
 # BuildOptions
 
+```TypeScript
+export interface BuildOptions
+```
+
 build的可选参数。
 
 **起始版本：** 12

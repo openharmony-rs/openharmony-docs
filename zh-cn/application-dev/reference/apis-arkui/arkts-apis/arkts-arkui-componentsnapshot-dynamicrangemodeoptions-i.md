@@ -1,5 +1,9 @@
 # DynamicRangeModeOptions
 
+```TypeScript
+interface DynamicRangeModeOptions
+```
+
 定义截图所使用的动态范围模式。
 
 **起始版本：** 23
@@ -20,7 +24,7 @@ dynamicRangeMode?: DynamicRangeMode
 
 指定截图使用的动态范围模式。
 
-默认情况下，系统以[STANDARD](../arkts-components/arkts-arkui-dynamicrangemode-e.md)模式进行截图。如果知道被截图组件使用的动态范围模式，可通过`dynamicRangeMode`字段指定具体的动态范围模式，并将`isAuto`设置为false，以达到预期的截图效果。
+默认情况下，系统以[STANDARD](../arkts-components/arkts-arkui-image-comp-dynamicrangemode-e.md)模式进行截图。如果知道被截图组件使用的动态范围模式，可通过`dynamicRangeMode`字段指定具体的动态范围模式，并将`isAuto`设置为false，以达到预期的截图效果。
 
 虽然动态范围模式有三种，但是HIGH和CONSTRAINT的表现均为HDR（高动态范围）。STANDARD模式对应表现为SDR（标准动态范围）。
 
@@ -32,13 +36,13 @@ dynamicRangeMode?: DynamicRangeMode
 4. 如果被截图组件同时包含SDR和HDR两种动态范围的子组件时，则当作HDR处理。
 5. 如果3和4的条件同时被满足，则截图实际采用的动态范围为SDR。
 
-取值范围：[DynamicRangeMode](../arkts-components/arkts-arkui-dynamicrangemode-e.md) 枚举值。
+取值范围：[DynamicRangeMode](../arkts-components/arkts-arkui-image-comp-dynamicrangemode-e.md) 枚举值。
 
 默认值：STANDARD
 
 如果值为undefined、null或未设置，则使用默认值截图；其他异常值会导致截图失败，返回错误码160003。
 
-**类型：** [DynamicRangeMode](../arkts-components/arkts-arkui-dynamicrangemode-e.md)
+**类型：** [DynamicRangeMode](../arkts-components/arkts-arkui-image-comp-dynamicrangemode-e.md)
 
 **起始版本：** 23
 

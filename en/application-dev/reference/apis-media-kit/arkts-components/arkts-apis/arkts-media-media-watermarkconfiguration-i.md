@@ -1,5 +1,9 @@
 # WatermarkConfiguration
 
+```TypeScript
+interface WatermarkConfiguration
+```
+
 Set configuration of a watermark. The position starts at top left corner.
 
 @typedef WatermarkConfiguration

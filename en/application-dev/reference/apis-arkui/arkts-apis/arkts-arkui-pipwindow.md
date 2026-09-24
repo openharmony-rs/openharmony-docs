@@ -24,8 +24,8 @@ import { PiPWindow } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [create](arkts-arkui-pipwindow-create-f.md) | Creates a PiP controller. This API uses a promise to return the result. |
-| [create](arkts-arkui-pipwindow-create-f.md) | Creates a PiP controller. This API uses **typeNode** to add a custom UI node for PiP. This API uses a promise to return the result. |
+| [create](arkts-arkui-pipwindow-create-f.md#create) | Creates a PiP controller. This API uses a promise to return the result. |
+| [create](arkts-arkui-pipwindow-create-f.md#create-1) | Creates a PiP controller. This API uses **typeNode** to add a custom UI node for PiP. This API uses a promise to return the result. |
 | [isPiPEnabled](arkts-arkui-pipwindow-ispipenabled-f.md) | Checks whether the current device supports the PiP feature. |
 
 ### Interfaces

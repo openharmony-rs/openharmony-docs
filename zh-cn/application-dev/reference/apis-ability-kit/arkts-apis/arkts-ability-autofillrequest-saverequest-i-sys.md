@@ -1,5 +1,9 @@
 # SaveRequest（系统接口）
 
+```TypeScript
+export interface SaveRequest
+```
+
 保存自动填充的请求。
 
 **起始版本：** 11

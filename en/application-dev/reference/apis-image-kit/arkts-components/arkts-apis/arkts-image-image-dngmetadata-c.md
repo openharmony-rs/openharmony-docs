@@ -1,5 +1,9 @@
 # DngMetadata
 
+```TypeScript
+class DngMetadata
+```
+
 DNG metadata.
 
 **Since:** 24

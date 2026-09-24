@@ -1,5 +1,9 @@
 # CanvasPattern
 
+```TypeScript
+export interface CanvasPattern
+```
+
 Describes an opaque object of a template, which is created using the createPattern() method.
 
 @interface CanvasPattern

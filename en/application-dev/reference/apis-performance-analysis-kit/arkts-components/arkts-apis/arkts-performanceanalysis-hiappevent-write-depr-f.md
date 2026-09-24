@@ -45,25 +45,6 @@ let eventParams: Record<string, number | string> = {
   "int_data": 100,
   "str_data": "strValue",
 };
-hiAppEvent.write("test_event", hiAppEvent.EventType.FAULT, eventParams, (err: BusinessError) => {
-  if (err) {
-    // Event writing error: Write the event to the event file after the invalid parameters in the event are ignored, or stop writing the event if the event verification fails.
-    hilog.error(0x0000, 'hiAppEvent', `failed to write event, code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  // Event writing success
-  hilog.info(0x0000, 'hiAppEvent', `success to write event`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@ohos.base';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let eventParams: Record<string, number | string> = {
-  "int_data": 100,
-  "str_data": "strValue",
-};
 hiAppEvent.write("test_event", hiAppEvent.EventType.FAULT, eventParams).then(() => {
   // Event writing success
   hilog.info(0x0000, 'hiAppEvent', `success to write event`);
@@ -73,6 +54,8 @@ hiAppEvent.write("test_event", hiAppEvent.EventType.FAULT, eventParams).then(() 
 });
 ```
 
+
+<a id="write-1"></a>
 
 ## write
 
@@ -101,4 +84,21 @@ Writes event information to the event file of the current day. This API uses an 
 
 **Examples**
 
-See [write](#write)
+```TypeScript
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let eventParams: Record<string, number | string> = {
+  "int_data": 100,
+  "str_data": "strValue",
+};
+hiAppEvent.write("test_event", hiAppEvent.EventType.FAULT, eventParams, (err: BusinessError) => {
+  if (err) {
+    // Event writing error: Write the event to the event file after the invalid parameters in the event are ignored, or stop writing the event if the event verification fails.
+    hilog.error(0x0000, 'hiAppEvent', `failed to write event, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  // Event writing success
+  hilog.info(0x0000, 'hiAppEvent', `success to write event`);
+});
+```

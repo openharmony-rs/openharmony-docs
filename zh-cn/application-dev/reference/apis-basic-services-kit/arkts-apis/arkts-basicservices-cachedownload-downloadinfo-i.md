@@ -1,5 +1,9 @@
 # DownloadInfo
 
+```TypeScript
+interface DownloadInfo
+```
+
 预下载的下载信息。
 
 **起始版本：** 20

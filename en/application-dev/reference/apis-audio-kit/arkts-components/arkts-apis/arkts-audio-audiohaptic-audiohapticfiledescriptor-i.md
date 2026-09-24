@@ -1,5 +1,9 @@
 # AudioHapticFileDescriptor
 
+```TypeScript
+interface AudioHapticFileDescriptor
+```
+
 Describes the audio-haptic file descriptor.
 
 > **NOTE:** 

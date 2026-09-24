@@ -1,5 +1,9 @@
 # FactoryResetScope (System API)
 
+```TypeScript
+export enum FactoryResetScope
+```
+
 Describes the scope of restoring factory settings.
 
 **Since:** 26.0.0

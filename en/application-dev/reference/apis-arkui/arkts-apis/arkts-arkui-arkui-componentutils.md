@@ -1,4 +1,4 @@
-# @ohos.arkui.componentUtils
+# @ohos.arkui.componentUtils(ComponentUtils)
 
 The **componentUtils** module provides API for obtaining the coordinates and size of the drawing area of a component.
 
@@ -59,8 +59,52 @@ import { componentUtils } from '@kit.ArkUI';
 
 ## Examples
 
-```TypeScript
 ### Example 1: Obtaining the ComponentUtils Object
 
 You are advised to use the [getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the ComponentUtils object associated with the current UI context.
+
+```TypeScript
+import { matrix4 } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Utils {
+  @State translateX: number = 120;
+  @State translateY: number = 10;
+  @State translateZ: number = 100;
+  @State value: string = '';
+  private matrix1 = matrix4.identity().translate({ x: this.translateX, y: this.translateY, z: this.translateZ });
+
+  build() {
+    Column() {
+      // Replace $r("app.media.img") with the image resource file you use.
+      Image($r('app.media.img'))
+        .transform(this.matrix1)
+        .translate({ x: 20, y: 20, z: 20 })
+        .scale({ x: 0.5, y: 0.5, z: 1 })
+        .rotate({
+          x: 1,
+          y: 1,
+          z: 1,
+          centerX: '50%',
+          centerY: '50%',
+          angle: 300
+        })
+        .width(300)
+        .height(100)
+        .key('image_01')
+      Button('getRectangleById')
+        .onClick(() => {
+          this.value = JSON.stringify(this.getUIContext()
+            .getComponentUtils()
+            .getRectangleById('image_01')); // You are advised to use the this.getUIContext().getComponentUtils() API instead.
+        }).margin(10).id('onClick')
+      Text(this.value)
+        .margin(20)
+        .width(300)
+        .height(300)
+        .borderWidth(2)
+    }.margin({ left: 50 })
+  }
+}
 ```

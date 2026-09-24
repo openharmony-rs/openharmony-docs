@@ -6,7 +6,9 @@ typedef struct OH_ArkUI_DecorationStyle OH_ArkUI_DecorationStyle
 
 ## Overview
 
-Defines a text decoration style.<br> [OH_ArkUI_DecorationStyle_Create](capi-styled-string-h.md#oh_arkui_decorationstyle_create) can be used to create a text decoration style object.<br> [OH_ArkUI_DecorationStyle_Destroy](capi-styled-string-h.md#oh_arkui_decorationstyle_destroy) can be used to destroy the text decoration style object.<br> After the object is created, the **OH_ArkUI_DecorationStyle_SetXXX** series APIs can be used to set the specific styles that take effect. For example, you can use [OH_ArkUI_DecorationStyle_SetTextDecorationType](capi-styled-string-h.md#oh_arkui_decorationstyle_settextdecorationtype) to set the decoration type.
+Defines a text decoration style.<br> {@link OH_ArkUI_DecorationStyle_Create} can be used to create a<br>text decoration style object.<br> {@link OH_ArkUI_DecorationStyle_Destroy} can be used to destroy the text<br>decoration style object.<br> After the object is created, the **OH_ArkUI_DecorationStyle_SetXXX** series APIs<br>can be used to set the specific styles that take effect. For example, you can use<br>{@link OH_ArkUI_DecorationStyle_SetTextDecorationType} to set the decoration type.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 

@@ -39,6 +39,8 @@ enum OH_Drawing_LatticeRectType
 
 Enumerates the types of rectangles used to fill the lattices. It is applicable only to rectangular lattice objects.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 | Enum item | Description |
@@ -60,13 +62,15 @@ OH_Drawing_ErrorCode OH_Drawing_LatticeDestroy(OH_Drawing_Lattice* lattice)
 
 Destroys an **OH_Drawing_Lattice** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Lattice* lattice | Pointer to an {@link OH_Drawing_Lattice} object. |
+| OH_Drawing_Lattice* lattice | Pointer to an [OH_Drawing_Lattice](capi-drawing-oh-drawing-lattice.md) object. |
 
 **Returns**:
 
@@ -84,6 +88,8 @@ OH_Drawing_ErrorCode OH_Drawing_LatticeCreate(const int* xDivs, const int* yDivs
 
 Divides the image into lattices. The lattices on both even columns and even rows are fixed, and they are drawn at their original size if the target is large enough. If the target is too small to hold the fixed lattices, all the fixed lattices are scaled down to fit the target, and the lattices that are not on even columns and even rows are scaled to accommodate the remaining space.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
@@ -99,7 +105,7 @@ Divides the image into lattices. The lattices on both even columns and even rows
 | uint32_t rectTypeCount | Size of the **rectTypes** array. If **rectTypes** is not a null pointer, the array size must be **(xCount + 1)*(yCount + 1)**. If **rectTypes** is a null pointer, the array size must be **0**. |
 | const uint32_t* colors | Array of colors used to fill the lattice. |
 | uint32_t colorCount | Size of the **colors** array. If **colors** is not a null pointer, the array size must be **( xCount + 1)*(yCount + 1)**. If **colors** is a null pointer, the array size must be **0**. |
-| OH_Drawing_Lattice** lattice | Double pointer to an {@link OH_Drawing_Lattice} object, which serves as an output parameter returned to the caller. |
+| OH_Drawing_Lattice** lattice | Double pointer to an [OH_Drawing_Lattice](capi-drawing-oh-drawing-lattice.md) object, which serves as an output parameter returned to the caller. |
 
 **Returns**:
 

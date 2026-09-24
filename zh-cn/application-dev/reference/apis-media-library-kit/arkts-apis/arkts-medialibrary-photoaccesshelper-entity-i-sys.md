@@ -1,5 +1,9 @@
 # Entity（系统接口）
 
+```TypeScript
+interface Entity
+```
+
 标签返回结构
 
 **起始版本：** 23

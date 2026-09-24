@@ -1,5 +1,9 @@
 # ChipV2SuffixImageIcon
 
+```TypeScript
+export declare class ChipV2SuffixImageIcon extends ChipV2ImageIcon
+```
+
 ChipV2SuffixImageIcon定义后缀图标类。
 
 继承自[ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md)。

@@ -1,5 +1,9 @@
 # DeviceStateChangeAction (System API)
 
+```TypeScript
+enum DeviceStateChangeAction
+```
+
 Enumerates the device states.
 
 **Since:** 7

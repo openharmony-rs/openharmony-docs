@@ -65,33 +65,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { inputDevice } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Key repeat rate 60ms/time
-            inputDevice.setKeyboardRepeatRate(60).then(() => {
-              console.info(`Succeeded in setting keyboard repeat rate.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="setkeyboardrepeatrate-1"></a>
 
 ## setKeyboardRepeatRate
 
@@ -128,4 +103,29 @@ Sets the keyboard repeat rate. This API uses a promise to return the result.
 
 **Examples**
 
-See [setKeyboardRepeatRate](#setkeyboardrepeatrate)
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // Key repeat rate 60ms/time
+            inputDevice.setKeyboardRepeatRate(60).then(() => {
+              console.info(`Succeeded in setting keyboard repeat rate.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

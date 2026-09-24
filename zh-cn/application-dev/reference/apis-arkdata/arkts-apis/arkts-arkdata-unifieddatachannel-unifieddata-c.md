@@ -1,5 +1,9 @@
 # UnifiedData
 
+```TypeScript
+class UnifiedData
+```
+
 表示UDMF统一数据对象，提供封装一组数据记录的方法。
 
 **起始版本：** 10
@@ -38,7 +42,7 @@ addRecord(record: UnifiedRecord): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **示例**
 
@@ -88,13 +92,9 @@ constructor(record: UnifiedRecord)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **示例**
-
-```TypeScript
-let unifiedData = new unifiedDataChannel.UnifiedData();
-```
 
 ```TypeScript
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
@@ -106,6 +106,8 @@ let plainText : uniformDataStruct.PlainText = {
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 ```
+
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -127,17 +129,6 @@ constructor()
 
 ```TypeScript
 let unifiedData = new unifiedDataChannel.UnifiedData();
-```
-
-```TypeScript
-import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-let plainText : uniformDataStruct.PlainText = {
-  uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-};
-let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
-let unifiedData = new unifiedDataChannel.UnifiedData(text);
 ```
 
 ## getRecords
@@ -277,7 +268,7 @@ hasType(type: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **示例**
 

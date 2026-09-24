@@ -1,5 +1,9 @@
 # FormMenuItemStyle
 
+```TypeScript
+export interface FormMenuItemStyle
+```
+
 Defines the form menu item style.
 
 **Since:** 12

@@ -64,27 +64,8 @@ try {
 }
 ```
 
-```TypeScript
-import { distributedMissionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  distributedMissionManager.startSyncRemoteMissions(
-    {
-      deviceId: "",
-      fixConflict: false,
-      tag: 0
-    }
-  ).then(() => {
-      console.info('startSyncRemoteMissions finished successfully');
-    }).catch((error: BusinessError) => {
-    console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="startsyncremotemissions-1"></a>
 
 ## startSyncRemoteMissions
 
@@ -125,4 +106,23 @@ Starts to synchronize the remote mission list. This API uses a promise to return
 
 **Examples**
 
-See [startSyncRemoteMissions](#startsyncremotemissions)
+```TypeScript
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedMissionManager.startSyncRemoteMissions(
+    {
+      deviceId: "",
+      fixConflict: false,
+      tag: 0
+    }
+  ).then(() => {
+      console.info('startSyncRemoteMissions finished successfully');
+    }).catch((error: BusinessError) => {
+    console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
+}
+```

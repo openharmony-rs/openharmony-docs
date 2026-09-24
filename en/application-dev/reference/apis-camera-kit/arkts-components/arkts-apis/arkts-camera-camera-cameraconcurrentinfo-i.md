@@ -1,5 +1,9 @@
 # CameraConcurrentInfo
 
+```TypeScript
+interface CameraConcurrentInfo
+```
+
 Describes the camera's concurrency information.
 
 **Since:** 18

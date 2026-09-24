@@ -1,4 +1,4 @@
-# @ohos.app.ability.AtomicServiceOptions
+# @ohos.app.ability.AtomicServiceOptions(openAtomicService可选参数)
 
 ## 导入模块
 

@@ -1,5 +1,9 @@
 # HuksKeyDigest
 
+```TypeScript
+export enum HuksKeyDigest
+```
+
 Enumerates the digest algorithms.
 
 **Since:** 8
@@ -18,6 +22,8 @@ No digest algorithm
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -33,6 +39,8 @@ HUKS_DIGEST_MD5 = 1
 MD5
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -50,6 +58,8 @@ SM3
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -65,6 +75,8 @@ HUKS_DIGEST_SHA1 = 10
 SHA-1
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -82,6 +94,8 @@ SHA-224
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -97,6 +111,8 @@ HUKS_DIGEST_SHA256 = 12
 SHA-256
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -114,6 +130,8 @@ SHA-384
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -129,6 +147,8 @@ HUKS_DIGEST_SHA512 = 14
 SHA-512
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 

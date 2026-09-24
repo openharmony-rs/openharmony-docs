@@ -8,6 +8,8 @@ typedef struct NativeWindowBuffer OHNativeWindowBuffer
 
 定义结构体NativeWindowBuffer的新类型名OHNativeWindowBuffer。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
+
 **起始版本：** 12
 
 **相关模块：** [OH_NativeImage](capi-oh-nativeimage.md)

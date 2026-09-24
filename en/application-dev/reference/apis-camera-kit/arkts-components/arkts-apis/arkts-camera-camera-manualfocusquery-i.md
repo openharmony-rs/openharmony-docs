@@ -1,5 +1,9 @@
 # ManualFocusQuery
 
+```TypeScript
+interface ManualFocusQuery
+```
+
 Manual Focus Query object.
 
 **Since:** 24

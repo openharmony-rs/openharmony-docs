@@ -1,5 +1,9 @@
 # HotkeyOptions
 
+```TypeScript
+interface HotkeyOptions
+```
+
 Defines shortcut key options.
 
 **Since:** 14

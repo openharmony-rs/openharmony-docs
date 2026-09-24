@@ -1,5 +1,9 @@
 # RingtoneType (System API)
 
+```TypeScript
+enum RingtoneType
+```
+
 Enum for ringtone type.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # Bias
 
+```TypeScript
+declare interface Bias
+```
+
 Defines offset parameters for a component under anchor constraints.
 
 Taking horizontal bias as an example, the value is the ratio of D&lt;sub&gt;start&lt;/sub&gt; (the distance from the component to the left anchor) to D&lt;sub&gt;start&lt;/sub&gt; + D&lt;sub&gt;end&lt;/sub&gt; (the total horizontal distance between anchors). In a mirrored language, D&lt;sub&gt;start&lt;/sub&gt; represents the distance from the component to the right anchor. In the following figure, D&lt;sub&gt;width&lt;/sub&gt; indicates the width of the component.

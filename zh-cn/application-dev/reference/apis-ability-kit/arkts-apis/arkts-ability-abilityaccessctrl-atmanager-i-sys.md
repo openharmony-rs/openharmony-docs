@@ -1,5 +1,9 @@
 # AtManager
 
+```TypeScript
+interface AtManager
+```
+
 程序访问控制管理类，提供权限校验、运行时权限弹窗申请、设置页授权引导、全局开关请求和权限状态监听等能力。通过[createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md)获取实例。
 
 **起始版本：** 8
@@ -24,6 +28,8 @@ getPermissionFlags(tokenID: number, permissionName: Permissions): Promise<number
 
 **需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS or ohos.permission.GRANT_SENSITIVE_PERMISSIONS or ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -45,9 +51,9 @@ getPermissionFlags(tokenID: number, permissionName: Permissions): Promise<number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters. |
 | [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified tokenID does not exist. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist or is not declared in the module.json file. |
@@ -81,6 +87,8 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise<Permissio
 
 **需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -101,12 +109,12 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise<Permissio
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionName exceeds 256 characters, or the specified permission is not a user_grant permission. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist. |
-| [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**适用版本：** 26.1.0+ |
+| [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**适用版本：** 26.0.1+ |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
 **示例**
@@ -129,19 +137,7 @@ atManager.getPermissionRequestToggleStatus(permission).then((res: abilityAccessC
 });
 ```
 
-```TypeScript
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let permission: Permissions = 'ohos.permission.CAMERA';
-let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
-atManager.getPermissionRequestToggleStatus(permission, subProfileId).then((status: abilityAccessCtrl.PermissionRequestToggleStatus) => {
-  console.info(`getPermissionRequestToggleStatus success, status: ${status}`);
-}).catch((err: BusinessError): void => {
-  console.error(`getPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="getpermissionrequesttogglestatus-1"></a>
 
 ## getPermissionRequestToggleStatus
 
@@ -153,7 +149,7 @@ getPermissionRequestToggleStatus(
 
 获取指定子身份资料下指定权限的弹窗开关状态。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
@@ -180,9 +176,9 @@ getPermissionRequestToggleStatus(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, or the specified subProfileId does not exist for the current user. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
@@ -190,7 +186,19 @@ getPermissionRequestToggleStatus(
 
 **示例**
 
-参见 [getPermissionRequestToggleStatus](#getpermissionrequesttogglestatus)
+```TypeScript
+import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let permission: Permissions = 'ohos.permission.CAMERA';
+let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
+atManager.getPermissionRequestToggleStatus(permission, subProfileId).then((status: abilityAccessCtrl.PermissionRequestToggleStatus) => {
+  console.info(`getPermissionRequestToggleStatus success, status: ${status}`);
+}).catch((err: BusinessError): void => {
+  console.error(`getPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## getPermissionsStatus
 
@@ -203,6 +211,8 @@ getPermissionsStatus(tokenID: number, permissionList: Array<Permissions>): Promi
 **起始版本：** 12
 
 **需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -225,9 +235,9 @@ getPermissionsStatus(tokenID: number, permissionList: Array<Permissions>): Promi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GET_SENSITIVE_PERMISSIONS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GET_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0 or the permissionList is empty or exceeds the size limit. |
 | [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified tokenID does not exist. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
@@ -257,6 +267,8 @@ getVersion(): Promise<number>
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -271,7 +283,7 @@ getVersion(): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 
 **示例**
 
@@ -300,6 +312,8 @@ grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: n
 
 **需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -322,8 +336,8 @@ grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: n
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified tokenID does not exist. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist. |
@@ -361,6 +375,8 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 
 **需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -383,9 +399,9 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified tokenID does not exist. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist or is not a user_grant permission. |
@@ -408,21 +424,7 @@ atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', perm
 });
 ```
 
-```TypeScript
-import { abilityAccessCtrl } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
-let permissionFlags: number = 1;
-atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
-  if (err) {
-    console.error(`grantUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('grantUserGrantedPermission success');
-  }
-});
-```
+<a id="grantusergrantedpermission-1"></a>
 
 ## grantUserGrantedPermission
 
@@ -441,6 +443,8 @@ grantUserGrantedPermission(
 
 **需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -458,9 +462,9 @@ grantUserGrantedPermission(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified tokenID does not exist. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist or is not a user_grant permission. |
@@ -469,7 +473,21 @@ grantUserGrantedPermission(
 
 **示例**
 
-参见 [grantUserGrantedPermission](#grantusergrantedpermission)
+```TypeScript
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+let permissionFlags: number = 1;
+atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
+  if (err) {
+    console.error(`grantUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('grantUserGrantedPermission success');
+  }
+});
+```
 
 ## off('permissionStateChange')
 
@@ -493,6 +511,8 @@ off(
 
 **需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -510,30 +530,13 @@ off(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GET_SENSITIVE_PERMISSIONS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GET_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenIDList or permissionList is not in the listening list. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
 **示例**
-
-```TypeScript
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // 创建权限管理实例
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  // 设置需要取消订阅的权限列表
-  let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
-  // 取消订阅权限状态变化
-  atManager.off('selfPermissionStateChange', permissionList);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Code: ${error.code}, message: ${error.message}`);
-}
-```
 
 ```TypeScript
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
@@ -574,6 +577,8 @@ on(
 
 **需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -591,35 +596,15 @@ on(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GET_SENSITIVE_PERMISSIONS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GET_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. Possible causes: 1. The tokenIDList or permissionList exceeds the size limit; 2. The tokenIDs or permissionNames in the list are all invalid. |
 | [12100005](../errorcode-access-token.md#12100005-监听器数量超过限制) | The registration time has exceeded the limit. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100008](../errorcode-access-token.md#12100008-内存申请失败) | Out of memory. |
 
 **示例**
-
-```TypeScript
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // 创建权限管理实例
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  // 设置需要订阅的权限列表
-  let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
-  // 订阅权限状态变化
-  atManager.on('selfPermissionStateChange', permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
-    console.info('receive permission state change');
-    console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Code: ${error.code}, message: ${error.message}`);
-}
-```
 
 ```TypeScript
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
@@ -676,8 +661,8 @@ queryStatusByPermission(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GET_SENSITIVE_PERMISSIONS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. Interface caller is not a system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GET_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. Interface caller is not a system application. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionList is empty or exceeds the size limit. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
@@ -732,8 +717,8 @@ queryStatusByTokenID(tokenIDList: Array<number>): Promise<Array<PermissionStatus
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission "ohos.permission.GET_SENSITIVE_PERMISSIONS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. Interface caller is not a system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission "ohos.permission.GET_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. Interface caller is not a system application. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenIDList is empty or exceeds the size limit. |
 | [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified tokenID does not exist. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
@@ -787,7 +772,7 @@ requestPermissionOnApplicationSetting(tokenID: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0. |
 | [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified tokenID does not exist. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
@@ -853,10 +838,29 @@ requestPermissionsFromUserWithWindowId(
 
 **示例**
 
-```TypeScript
 下述示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 关于向用户申请授权的完整流程及示例，请参见[向用户申请授权](../../../security/AccessToken/request-user-authorization.md)。
+
+```TypeScript
+import { abilityAccessCtrl, Context, PermissionRequestResult } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
+let context: Context = this.getUIContext().getHostContext() as Context;
+let windowId = 0; // 获取方式 let windowId = window.findWindow(窗口名).getWindowProperties().id;
+// 基于窗口ID请求用户授权指定权限
+atManager.requestPermissionsFromUserWithWindowId(context, windowId, ['ohos.permission.CAMERA']).then((data: PermissionRequestResult) => {
+  console.info(`requestPermissionsFromUserWithWindowId success, result: ${data}`);
+  console.info('requestPermissionsFromUserWithWindowId data permissions:' + data.permissions);
+  console.info('requestPermissionsFromUserWithWindowId data authResults:' + data.authResults);
+  console.info('requestPermissionsFromUserWithWindowId data dialogShownResults:' + data.dialogShownResults);
+  console.info('requestPermissionsFromUserWithWindowId data errorReasons:' + data.errorReasons);
+}).catch((err: BusinessError): void => {
+  console.error(`requestPermissionsFromUserWithWindowId fail, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## revokePermission
@@ -876,6 +880,8 @@ revokePermission(
 **起始版本：** 21
 
 **需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -900,8 +906,8 @@ revokePermission(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. The interface invoker does not have permission"ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not a system application. The interface invoker is not a system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. The interface invoker does not have permission"ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not a system application. The interface invoker is not a system application. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The token ID is 0, the permission name exceeds 256 characters or is not declared in the module.json file, or the value of flags is invalid. |
 | [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified tokenID does not exist. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist. |
@@ -948,6 +954,8 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 
 **需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -970,9 +978,9 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified tokenID does not exist. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist or is not a user_grant permission. |
@@ -995,21 +1003,7 @@ atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', per
 });
 ```
 
-```TypeScript
-import { abilityAccessCtrl } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
-let permissionFlags: number = 1;
-atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
-  if (err) {
-    console.error(`revokeUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('revokeUserGrantedPermission success');
-  }
-});
-```
+<a id="revokeusergrantedpermission-1"></a>
 
 ## revokeUserGrantedPermission
 
@@ -1028,6 +1022,8 @@ revokeUserGrantedPermission(
 
 **需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -1045,9 +1041,9 @@ revokeUserGrantedPermission(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified tokenID does not exist. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist or is not a user_grant permission. |
@@ -1056,7 +1052,21 @@ revokeUserGrantedPermission(
 
 **示例**
 
-参见 [revokeUserGrantedPermission](#revokeusergrantedpermission)
+```TypeScript
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+let permissionFlags: number = 1;
+atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
+  if (err) {
+    console.error(`revokeUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('revokeUserGrantedPermission success');
+  }
+});
+```
 
 ## setPermissionRequestToggleStatus
 
@@ -1069,6 +1079,8 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 **起始版本：** 12
 
 **需要权限：** ohos.permission.DISABLE_PERMISSION_DIALOG
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -1091,12 +1103,12 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, or the status value is invalid. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist. |
-| [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**适用版本：** 26.1.0+ |
+| [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**适用版本：** 26.0.1+ |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. A database error occurs. |
 
@@ -1116,19 +1128,7 @@ atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.Permiss
 });
 ```
 
-```TypeScript
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let permission: Permissions = 'ohos.permission.CAMERA';
-let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
-atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED, subProfileId).then(() => {
-  console.info('setPermissionRequestToggleStatus success');
-}).catch((err: BusinessError): void => {
-  console.error(`setPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="setpermissionrequesttogglestatus-1"></a>
 
 ## setPermissionRequestToggleStatus
 
@@ -1141,7 +1141,7 @@ setPermissionRequestToggleStatus(
 
 设置指定子身份资料下指定权限的弹窗开关状态。调用成功后，该权限的弹窗开关状态将被设置为指定值。当状态为CLOSED时，应用请求该权限时不会弹出权限弹窗；当状态为OPEN时，应用请求该权限时会正常弹出权限弹窗。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.DISABLE_PERMISSION_DIALOG
 
@@ -1169,9 +1169,9 @@ setPermissionRequestToggleStatus(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, the status value is invalid, or the specified subProfileId does not exist for the current user. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist. |
 | [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus). |
@@ -1180,4 +1180,16 @@ setPermissionRequestToggleStatus(
 
 **示例**
 
-参见 [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus)
+```TypeScript
+import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let permission: Permissions = 'ohos.permission.CAMERA';
+let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
+atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED, subProfileId).then(() => {
+  console.info('setPermissionRequestToggleStatus success');
+}).catch((err: BusinessError): void => {
+  console.error(`setPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+});
+```

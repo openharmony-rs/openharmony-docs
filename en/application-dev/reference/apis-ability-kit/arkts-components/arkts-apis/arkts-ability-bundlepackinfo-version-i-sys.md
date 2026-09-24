@@ -1,5 +1,9 @@
 # Version (System API)
 
+```TypeScript
+export interface Version
+```
+
 Version: the bundle version class.
 
 **Since:** 9

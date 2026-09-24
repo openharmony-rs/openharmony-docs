@@ -1,5 +1,9 @@
 # AudioDevicePair
 
+```TypeScript
+interface AudioDevicePair
+```
+
 描述返听使用的音频设备对，包含输入设备和输出设备。
 
 **起始版本：** 26.0.0

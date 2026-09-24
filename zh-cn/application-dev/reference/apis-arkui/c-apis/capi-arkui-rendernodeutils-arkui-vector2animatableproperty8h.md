@@ -8,6 +8,8 @@ typedef struct ArkUI_Vector2AnimatableProperty* ArkUI_Vector2AnimatablePropertyH
 
 定义可动画的二维向量属性指针。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

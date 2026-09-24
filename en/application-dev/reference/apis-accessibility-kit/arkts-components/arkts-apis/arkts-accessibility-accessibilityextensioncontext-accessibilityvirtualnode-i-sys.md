@@ -1,5 +1,9 @@
 # AccessibilityVirtualNode (System API)
 
+```TypeScript
+export declare interface AccessibilityVirtualNode
+```
+
 Defines an accessibility virtual node.
 
 **Since:** 26.0.0

@@ -8,6 +8,8 @@ typedef struct OH_VObject {...} OH_VObject
 
 Define the OH_VObject structure type.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 10
 
 **Related module**: [RDB](capi-rdb.md)
@@ -27,11 +29,11 @@ Define the OH_VObject structure type.
 
 | Name | Description |
 | -- | -- |
-| [int (\*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)](#putint64) | Convert the int64 input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md). |
-| [int (\*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)](#putdouble) | Convert the double input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md). |
-| [int (\*putText)(OH_VObject *valueObject, const char *value)](#puttext) | Convert the char input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md). |
-| [int (\*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)](#puttexts) | Convert the char * array input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md). |
-| [int (\*destroy)(OH_VObject *valueObject)](#destroy) | Destroy the [OH_VObject](capi-rdb-oh-vobject.md) object and reclaim the memory occupied by the object. |
+| [int (\*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)](#putint64) | Convert the int64 input parameter to a value of type {@link OH_VObject}. |
+| [int (\*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)](#putdouble) | Convert the double input parameter to a value of type {@link OH_VObject}. |
+| [int (\*putText)(OH_VObject *valueObject, const char *value)](#puttext) | Convert the char input parameter to a value of type {@link OH_VObject}. |
+| [int (\*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)](#puttexts) | Convert the char * array input parameter to a value of type {@link OH_VObject}. |
+| [int (\*destroy)(OH_VObject *valueObject)](#destroy) | Destroy the {@link OH_VObject} object and reclaim the memory occupied by the object. |
 
 ## Member function description
 
@@ -43,7 +45,7 @@ int (*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)
 
 **Description**
 
-Convert the int64 input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md).
+Convert the int64 input parameter to a value of type {@link OH_VObject}.
 
 **Since**: 10
 
@@ -51,7 +53,7 @@ Convert the int64 input parameter to a value of type [OH_VObject](capi-rdb-oh-vo
 
 | Parameter | Description |
 | -- | -- |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Represents a pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance. |
+| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 |  int64_t *value | Represents a pointer to an int64_t input parameter or the array of type int64_t. |
 |  uint32_t count | If value is a pointer to a single numerical value, count = 1; if value is a pointer to an array, count is the size of the array. |
 
@@ -74,7 +76,7 @@ int (*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)
 
 **Description**
 
-Convert the double input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md).
+Convert the double input parameter to a value of type {@link OH_VObject}.
 
 **Since**: 10
 
@@ -82,7 +84,7 @@ Convert the double input parameter to a value of type [OH_VObject](capi-rdb-oh-v
 
 | Parameter | Description |
 | -- | -- |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Represents a pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance. |
+| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 |  double *value | Represents a pointer to an double input parameter or the array of type double. |
 |  uint32_t count | If value is a pointer to a single numerical value, count = 1; if value is a pointer to an array, count is the size of the array. |
 
@@ -105,7 +107,7 @@ int (*putText)(OH_VObject *valueObject, const char *value)
 
 **Description**
 
-Convert the char input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md).
+Convert the char input parameter to a value of type {@link OH_VObject}.
 
 **Since**: 10
 
@@ -113,7 +115,7 @@ Convert the char input parameter to a value of type [OH_VObject](capi-rdb-oh-vob
 
 | Parameter | Description |
 | -- | -- |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Represents a pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance. |
+| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 |  const char *value | Indicates the const char * input parameter. |
 
 **Returns**:
@@ -135,7 +137,7 @@ int (*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)
 
 **Description**
 
-Convert the char * array input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md).
+Convert the char * array input parameter to a value of type {@link OH_VObject}.
 
 **Since**: 10
 
@@ -143,7 +145,7 @@ Convert the char * array input parameter to a value of type [OH_VObject](capi-rd
 
 | Parameter | Description |
 | -- | -- |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Represents a pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance. |
+| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 |  const char **value | Indicates the const char * array input parameter. |
 |  uint32_t count | Indicates the size of the value. |
 
@@ -166,7 +168,7 @@ int (*destroy)(OH_VObject *valueObject)
 
 **Description**
 
-Destroy the [OH_VObject](capi-rdb-oh-vobject.md) object and reclaim the memory occupied by the object.
+Destroy the {@link OH_VObject} object and reclaim the memory occupied by the object.
 
 **Since**: 10
 
@@ -174,7 +176,7 @@ Destroy the [OH_VObject](capi-rdb-oh-vobject.md) object and reclaim the memory o
 
 | Parameter | Description |
 | -- | -- |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Represents a pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance. |
+| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Represents a pointer to an {@link OH_VObject} instance. |
 
 **Returns**:
 

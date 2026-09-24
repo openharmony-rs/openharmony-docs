@@ -67,6 +67,12 @@ import { text } from '@kit.ArkGraphics2D';
 | [TextTab](arkts-arkgraphics2d-text-texttab-i.md) | 段落风格的文本制表符，储存了对齐方式和位置。 |
 | [TypographicBounds](arkts-arkgraphics2d-text-typographicbounds-i.md) | 文本行的排版边界。文本行排版边界与排版字体、排版字号有关，与字符本身无关，例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，排版边界就包括行首和末尾空格的边界。例如字符串为"j"或"E"，排版边界相同，即与字符本身无关。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [CaretOffsetsCallback](arkts-arkgraphics2d-text-caretoffsetscallback-t.md) | 将文本行中每个字符的偏移量和索引值作为参数的回调方法。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -95,9 +101,3 @@ import { text } from '@kit.ArkGraphics2D';
 | [TextUndefinedGlyphDisplay](arkts-arkgraphics2d-text-textundefinedglyphdisplay-e.md) | 文本未定义字形时的显示方式枚举。 |
 | [TextVerticalAlign](arkts-arkgraphics2d-text-textverticalalign-e.md) | 文本垂直对齐方式枚举。 |
 | [WordBreak](arkts-arkgraphics2d-text-wordbreak-e.md) | 断词策略枚举。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [CaretOffsetsCallback](arkts-arkgraphics2d-text-caretoffsetscallback-t.md) | 将文本行中每个字符的偏移量和索引值作为参数的回调方法。 |

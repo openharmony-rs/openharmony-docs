@@ -8,7 +8,9 @@ typedef struct OH_AbilityRuntime_ChildProcessInfo *OH_AbilityRuntime_ChildProces
 
 Defines the pointer to OH_AbilityRuntime_ChildProcessInfo.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Since**: 26.0.1
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
 

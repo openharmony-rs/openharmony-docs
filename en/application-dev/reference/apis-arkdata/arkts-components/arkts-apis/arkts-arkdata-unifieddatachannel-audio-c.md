@@ -1,5 +1,9 @@
 # Audio
 
+```TypeScript
+class Audio extends File
+```
+
 Represents audio data. It is a child class of [File](arkts-arkdata-unifieddatachannel-file-c.md) and is used to describe an audio file.
 
 **Inheritance/Implementation:** Audio extends [File](arkts-arkdata-unifieddatachannel-file-c.md)

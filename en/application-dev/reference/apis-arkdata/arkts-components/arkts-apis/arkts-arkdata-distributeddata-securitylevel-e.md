@@ -1,5 +1,9 @@
 # SecurityLevel
 
+```TypeScript
+enum SecurityLevel
+```
+
 Enumerates the KV store security levels.
 
 **Since:** 7

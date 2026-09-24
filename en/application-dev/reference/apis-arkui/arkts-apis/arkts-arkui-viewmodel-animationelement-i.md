@@ -1,5 +1,9 @@
 # AnimationElement
 
+```TypeScript
+export interface AnimationElement extends Element
+```
+
 animation element
 
 @extends Element @interface AnimationElement

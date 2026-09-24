@@ -8,6 +8,8 @@ typedef struct DrmSubsample {...} DrmSubsample
 
 Subsample结构类型定义。
 
+**系统能力：** SystemCapability.Multimedia.Media.Spliter
+
 **起始版本：** 12
 
 **相关模块：** [Multimedia_Drm](capi-multimedia-drm.md)

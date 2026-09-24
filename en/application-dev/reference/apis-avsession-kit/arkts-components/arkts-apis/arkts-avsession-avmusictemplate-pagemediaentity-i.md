@@ -1,5 +1,9 @@
 # PageMediaEntity
 
+```TypeScript
+interface PageMediaEntity extends OperResult
+```
+
 The definition of pagination object.
 
 @extends OperResult @interface PageMediaEntity

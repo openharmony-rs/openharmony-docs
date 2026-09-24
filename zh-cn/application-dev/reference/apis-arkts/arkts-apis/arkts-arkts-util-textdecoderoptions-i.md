@@ -1,5 +1,9 @@
 # TextDecoderOptions
 
+```TypeScript
+interface TextDecoderOptions
+```
+
 描述解码相关的选项，包含 **fatal** 和 **ignoreBOM**。
 
 **起始版本：** 11

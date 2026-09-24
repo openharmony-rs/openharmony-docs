@@ -1,5 +1,9 @@
 # FaultLogExtensionAbility
 
+```TypeScript
+declare class FaultLogExtensionAbility
+```
+
 本模块实现故障的延迟通知功能。
 
 [HiAppEvent](arkts-performanceanalysis-hiappevent-n.md)订阅崩溃、应用冻屏事件时，只有当应用下次启动后才能接收上一次的事件。如果应用无法启动或长时间未打开，则存在故障无法及时上报的局限性。
@@ -12,7 +16,7 @@
 > 
 > - 本模块接口从API version 21开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> - 本模块设置了不允许调用的API名单，调用名单中的API将导致功能异常，详情请参见附录。
+> - 本模块设置了不允许调用的API名单，调用名单中的API将导致功能异常，详情请参见[附录](../../../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#附录)。
 
 **起始版本：** 21
 

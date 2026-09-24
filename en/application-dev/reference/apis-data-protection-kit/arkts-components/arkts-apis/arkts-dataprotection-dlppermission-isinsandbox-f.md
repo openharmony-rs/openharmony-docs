@@ -30,7 +30,7 @@ This API is used to determine whether the current application is running in a DL
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
@@ -46,18 +46,8 @@ dlpPermission.isInSandbox().then((isInSandbox) => { // Check whether the applica
 });
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.isInSandbox((err, isInSandbox) => {
-  if (err) {
-    console.error(`Failed to check sandbox status. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('isInSandbox: ', JSON.stringify(isInSandbox));
-  }
-}); // Whether the application is running in a sandbox.
-```
-
+<a id="isinsandbox-1"></a>
 
 ## isInSandbox
 
@@ -84,10 +74,20 @@ This API is used to determine whether the current application is running in a DL
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
 **Examples**
 
-See [isInSandbox](#isinsandbox)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+dlpPermission.isInSandbox((err, isInSandbox) => {
+  if (err) {
+    console.error(`Failed to check sandbox status. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('isInSandbox: ', JSON.stringify(isInSandbox));
+  }
+}); // Whether the application is running in a sandbox.
+```

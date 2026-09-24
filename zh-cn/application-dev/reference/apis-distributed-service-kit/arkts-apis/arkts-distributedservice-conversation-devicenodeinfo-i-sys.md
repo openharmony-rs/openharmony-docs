@@ -1,8 +1,12 @@
 # DeviceNodeInfo（系统接口）
 
+```TypeScript
+interface DeviceNodeInfo
+```
+
 设备节点信息，包括networkId、设备名称、设备类型标识符、近场状态和UDID。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Communication.SoftBus.Core
 
@@ -24,7 +28,7 @@ deviceName: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,7 +46,7 @@ deviceTypeId: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,7 +64,7 @@ nearby: boolean
 
 **类型：** boolean
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -78,7 +82,7 @@ networkId: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,7 +100,7 @@ udid: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

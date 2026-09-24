@@ -1,5 +1,9 @@
 # FilterCondition
 
+```TypeScript
+enum FilterCondition
+```
+
 枚举，过滤条件。
 
 **起始版本：** 15

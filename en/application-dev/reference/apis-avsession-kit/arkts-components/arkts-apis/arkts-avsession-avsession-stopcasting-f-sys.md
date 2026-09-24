@@ -47,16 +47,8 @@ avSession.stopCasting(myToken, () => {
 });
 ```
 
-```TypeScript
-let sessionId = 'xxx'; // Obtain the session ID after creating a session using avSession.createAVSession.
-let myToken: avSession.SessionToken = {
-  sessionId: sessionId,
-}
-avSession.stopCasting(myToken).then(() => {
-  console.info('Succeeded in stopping casting.');
-});
-```
 
+<a id="stopcasting-1"></a>
 
 ## stopCasting
 
@@ -93,16 +85,6 @@ Stop current cast and disconnect device connection.
 | [6600109](../errorcode-avsession.md#6600109-remote-session-does-not-exist) | The remote connection is not established. |
 
 **Examples**
-
-```TypeScript
-let sessionId = 'xxx'; // Obtain the session ID after creating a session using avSession.createAVSession.
-let myToken: avSession.SessionToken = {
-  sessionId: sessionId,
-}
-avSession.stopCasting(myToken, () => {
-    console.info('Succeeded in stopping casting.');
-});
-```
 
 ```TypeScript
 let sessionId = 'xxx'; // Obtain the session ID after creating a session using avSession.createAVSession.

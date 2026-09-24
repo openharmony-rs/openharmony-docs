@@ -4,6 +4,8 @@
 
 提供创建色彩空间及获取色彩空间相关属性的能力。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
 **起始版本：** 13
 
 ## 文件汇总

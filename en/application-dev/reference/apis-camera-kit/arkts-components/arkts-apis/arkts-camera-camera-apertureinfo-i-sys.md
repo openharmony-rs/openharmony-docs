@@ -1,5 +1,9 @@
 # ApertureInfo (System API)
 
+```TypeScript
+interface ApertureInfo
+```
+
 Describes the aperture information.
 
 **Since:** 12

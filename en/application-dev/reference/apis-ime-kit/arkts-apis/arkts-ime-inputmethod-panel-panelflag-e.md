@@ -1,5 +1,9 @@
 # PanelFlag
 
+```TypeScript
+export enum PanelFlag
+```
+
 Enumerates the state types of the input method panel. <br> <br>  
 > **NOTE:** <br>
 > <br>

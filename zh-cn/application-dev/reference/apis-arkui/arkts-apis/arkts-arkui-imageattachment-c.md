@@ -1,5 +1,9 @@
 # ImageAttachment
 
+```TypeScript
+declare class ImageAttachment
+```
+
 图片对象说明。
 
 **起始版本：** 12
@@ -28,6 +32,8 @@ constructor(value: ImageAttachmentInterface)
 | --- | --- | --- | --- |
 | value | [ImageAttachmentInterface](arkts-arkui-imageattachmentinterface-i.md) | 是 | 图片设置项。 |
 
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -48,7 +54,7 @@ constructor(attachment: Optional<AttachmentType>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| attachment | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;[AttachmentType](arkts-arkui-attachmenttype-t.md)&gt; | 是 | PixelMap类型或[ResourceStr](arkts-arkui-resourcestr-t.md)类型图片设置项。 |
+| attachment | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;[AttachmentType](arkts-arkui-attachmenttype-t.md)&gt; | 是 | PixelMap类型或[ResourceStr](arkts-arkui-resourcestr-t.md)类型图片设置项。 |
 
 ## colorFilter
 
@@ -112,13 +118,13 @@ readonly resizable?: ResizableOptions
 
 获取属性字符串的图片拉伸选项。
 
-**类型：** [ResizableOptions](../arkts-components/arkts-arkui-resizableoptions-i.md)
+**类型：** [ResizableOptions](../arkts-components/arkts-arkui-image-comp-resizableoptions-i.md)
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,11 +154,7 @@ readonly size?: SizeOptions
 readonly sizeInVp?: SizeOptions
 ```
 
-获取属性字符串的图片尺寸。
-
-返回number类型值的单位为`vp`。
-
-当ImageAttachment尺寸设置为负数值或undefined时，返回为undefined。
+获取属性字符串的图片尺寸。返回number类型值的单位为`vp`。当ImageAttachment尺寸设置为负数值或undefined时，返回为undefined。
 
 **类型：** [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
@@ -170,7 +172,7 @@ readonly sizeInVp?: SizeOptions
 readonly supportSvg2?: boolean
 ```
 
-获取属性字符串是否开启SVG标签解析能力增强功能。
+获取属性字符串是否开启[SVG标签解析能力增强功能](../../../reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md)。
 
 true：支持SVG解析新能力；false：保持原有SVG解析能力。
 
@@ -194,7 +196,7 @@ readonly value: PixelMap
 
 获取属性字符串的图片数据源。
 
-**类型：** [PixelMap](../arkts-components/arkts-arkui-pixelmap-t.md)
+**类型：** [PixelMap](../arkts-components/arkts-arkui-common-comp-pixelmap-t.md)
 
 **起始版本：** 12
 

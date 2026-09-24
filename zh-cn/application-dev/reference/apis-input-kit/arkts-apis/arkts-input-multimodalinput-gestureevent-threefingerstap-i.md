@@ -1,5 +1,9 @@
 # ThreeFingersTap
 
+```TypeScript
+export declare interface ThreeFingersTap
+```
+
 三指轻点手势事件。
 
 **起始版本：** 11

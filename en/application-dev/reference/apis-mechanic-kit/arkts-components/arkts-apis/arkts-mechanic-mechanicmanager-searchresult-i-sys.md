@@ -1,5 +1,9 @@
 # SearchResult (System API)
 
+```TypeScript
+export interface SearchResult
+```
+
 Search result.
 
 @typedef SearchResult

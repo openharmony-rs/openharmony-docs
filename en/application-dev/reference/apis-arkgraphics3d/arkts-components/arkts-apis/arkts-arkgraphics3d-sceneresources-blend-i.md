@@ -1,5 +1,9 @@
 # Blend
 
+```TypeScript
+export interface Blend
+```
+
 Controls the transparency of materials.
 
 @interface Blend

@@ -4,6 +4,8 @@
 
 提供文件压缩及解压缩、数据的流式压缩及解压缩、缓冲区压缩及解压缩的能力。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 ## 文件汇总

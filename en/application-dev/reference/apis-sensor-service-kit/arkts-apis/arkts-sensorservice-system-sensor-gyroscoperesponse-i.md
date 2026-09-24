@@ -1,5 +1,9 @@
 # GyroscopeResponse
 
+```TypeScript
+export interface GyroscopeResponse
+```
+
 Defines a **GyroscopeResponse** object.
 
 **Since:** 6

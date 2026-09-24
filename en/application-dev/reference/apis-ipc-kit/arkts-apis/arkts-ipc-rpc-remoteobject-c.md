@@ -1,5 +1,9 @@
 # RemoteObject
 
+```TypeScript
+class RemoteObject extends IRemoteObject
+```
+
 Provides methods to implement **RemoteObject**. The service provider must inherit from this class.
 
 **Inheritance/Implementation:** RemoteObject extends [IRemoteObject](arkts-ipc-rpc-iremoteobject-c.md)
@@ -448,6 +452,135 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 
   onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): boolean {
+    if (code === 1) {
+      hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
+      return true;
+    } else {
+      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+      return false;
+    }
+  }
+}
+```
+
+```TypeScript
+// Override **onRemoteMessageRequest** to process requests asynchronously.
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+
+  async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): Promise<boolean> {
+    if (code === 1) {
+      hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
+    } else {
+      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+      return false;
+    }
+    await new Promise((resolve: (data: rpc.RequestResult) => void) => {
+      setTimeout(resolve, 100);
+    })
+    return true;
+  }
+}
+```
+
+```TypeScript
+// Override **onRemoteMessageRequest** and **onRemoteRequest** to process requests synchronously.
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+
+  onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+     if (code === 1) {
+        hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
+        return true;
+     } else {
+        hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+        return false;
+     }
+  }
+    // Only onRemoteMessageRequest is executed.
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): boolean | Promise<boolean> {
+    if (code === 1) {
+      hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
+    } else {
+      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+      return false;
+    }
+    return true;
+  }
+}
+```
+
+<a id="onremotemessagerequest-1"></a>
+
+## onRemoteMessageRequest
+
+```TypeScript
+onRemoteMessageRequest(
+      code: number,
+      data: MessageSequence,
+      reply: MessageSequence,
+      options: MessageOption,
+      callingInfo?: CallingInfo
+    ): boolean | Promise<boolean>
+```
+
+Provides a response to **sendMessageRequest()**. The server processes the request and returns a response in this API. The IPC context can be obtained from the input parameter **callingInfo**.
+
+> **NOTE:** 
+> 
+> You are advised to overload the **onRemoteMessageRequest** method with the **CallingInfo** parameter to
+> implement synchronous and asynchronous message processing.
+> If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only
+> **onRemoteMessageRequest()** takes effect.
+
+**Since:** 23
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**System capability:** SystemCapability.Communication.IPC.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| code | number | Yes | Service request code sent by the remote end. |
+| data | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | Yes | **MessageSequence** object that holds the parameters called by the client. |
+| reply | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | Yes | **MessageSequence** object to which the result is written. |
+| options | [MessageOption](arkts-ipc-rpc-messageoption-c.md) | Yes | Whether the operation is synchronous or asynchronous. |
+| callingInfo | [CallingInfo](arkts-ipc-rpc-callinginfo-c.md) | No | IPC context. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean &#124; Promise&lt;boolean&gt; | If the request is processed synchronously in **onRemoteMessageRequest**, a Boolean value is returned. The value **true** means that the operation is successful, and **false** means the opposite.<br>- If the request is processed asynchronously in **onRemoteMessageRequest**, a promise object is returned. The value **true** means that the operation is successful, and **false** means the opposite. |
+
+**Examples**
+
+```TypeScript
+// Override **onRemoteMessageRequest** to process requests synchronously.
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
     option: rpc.MessageOption, callingInfo?: rpc.CallingInfo): boolean | Promise<boolean> {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
@@ -521,133 +654,6 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 ```
-
-```TypeScript
-// Override **onRemoteMessageRequest** to process requests synchronously.
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): boolean {
-    if (code === 1) {
-      hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
-      return true;
-    } else {
-      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-      return false;
-    }
-  }
-}
-```
-
-```TypeScript
-// Override **onRemoteMessageRequest** to process requests asynchronously.
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): Promise<boolean> {
-    if (code === 1) {
-      hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
-    } else {
-      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-      return false;
-    }
-    await new Promise((resolve: (data: rpc.RequestResult) => void) => {
-      setTimeout(resolve, 100);
-    })
-    return true;
-  }
-}
-```
-
-```TypeScript
-// Override **onRemoteMessageRequest** and **onRemoteRequest** to process requests synchronously.
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
-     if (code === 1) {
-        hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
-        return true;
-     } else {
-        hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-        return false;
-     }
-  }
-    // Only onRemoteMessageRequest is executed.
-  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): boolean | Promise<boolean> {
-    if (code === 1) {
-      hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
-    } else {
-      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-      return false;
-    }
-    return true;
-  }
-}
-```
-
-## onRemoteMessageRequest
-
-```TypeScript
-onRemoteMessageRequest(
-      code: number,
-      data: MessageSequence,
-      reply: MessageSequence,
-      options: MessageOption,
-      callingInfo?: CallingInfo
-    ): boolean | Promise<boolean>
-```
-
-Provides a response to **sendMessageRequest()**. The server processes the request and returns a response in this API. The IPC context can be obtained from the input parameter **callingInfo**.
-
-> **NOTE:** 
-> 
-> You are advised to overload the **onRemoteMessageRequest** method with the **CallingInfo** parameter to
-> implement synchronous and asynchronous message processing.
-> If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only
-> **onRemoteMessageRequest()** takes effect.
-
-**Since:** 23
-
-**System capability:** SystemCapability.Communication.IPC.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| code | number | Yes | Service request code sent by the remote end. |
-| data | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | Yes | **MessageSequence** object that holds the parameters called by the client. |
-| reply | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | Yes | **MessageSequence** object to which the result is written. |
-| options | [MessageOption](arkts-ipc-rpc-messageoption-c.md) | Yes | Whether the operation is synchronous or asynchronous. |
-| callingInfo | [CallingInfo](arkts-ipc-rpc-callinginfo-c.md) | No | IPC context. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| boolean &#124; Promise&lt;boolean&gt; | If the request is processed synchronously in **onRemoteMessageRequest**, a Boolean value is returned. The value **true** means that the operation is successful, and **false** means the opposite.<br>- If the request is processed asynchronously in **onRemoteMessageRequest**, a promise object is returned. The value **true** means that the operation is successful, and **false** means the opposite. |
-
-**Examples**
-
-See [onRemoteMessageRequest](#onremotemessagerequest)
 
 ## onRemoteRequest
 
@@ -838,6 +844,8 @@ try {
 }
 ```
 
+<a id="sendmessagerequest-1"></a>
+
 ## sendMessageRequest
 
 ```TypeScript
@@ -985,49 +993,7 @@ try {
 }
 ```
 
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-  onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
-    // Process services based on the actual service logic.
-    return true;
-  }
-}
-try {
-  let testRemoteObject = new TestRemoteObject("testObject");
-  let option = new rpc.MessageOption();
-  let data = rpc.MessageParcel.create();
-  let reply = rpc.MessageParcel.create();
-  data.writeInt(1);
-  data.writeString("hello");
-  let a = testRemoteObject.sendRequest(1, data, reply, option) as Object;
-  let b = a as Promise<rpc.SendRequestResult>;
-  b.then((result: rpc.SendRequestResult) => {
-    if (result.errCode === 0) {
-      hilog.info(0x0000, 'testTag', 'sendRequest got result');
-      let num = result.reply.readInt();
-      let msg = result.reply.readString();
-      hilog.info(0x0000, 'testTag', 'reply num: ' + num);
-      hilog.info(0x0000, 'testTag', 'reply msg: ' + msg);
-    } else {
-      hilog.error(0x0000, 'testTag', 'sendRequest failed, errCode: ' + result.errCode);
-    }
-  }).catch((e: Error) => {
-    hilog.error(0x0000, 'testTag', 'sendRequest failed, error: ' + JSON.stringify(e));
-  }).finally (() => {
-    hilog.info(0x0000, 'testTag', 'sendRequest ends, reclaim parcel');
-    data.reclaim();
-    reply.reclaim();
-  });
-} catch (error) {
-  hilog.error(0x0000, 'testTag', 'error: ' + error);
-}
-```
+<a id="sendrequest-1"></a>
 
 ## sendRequest
 
@@ -1071,40 +1037,6 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-class testRemoteObject extends rpc.RemoteObject {
-  onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
-    option: rpc.MessageOption): boolean {
-    // Process services based on the actual service logic.
-    return true;
-  }
-}
-try {
-  let testRemoteObject = new TestRemoteObject("testObject");
-  let option = new rpc.MessageOption();
-  let data = rpc.MessageParcel.create();
-  let reply = rpc.MessageParcel.create();
-  data.writeInt(1);
-  data.writeString("hello");
-  let ret: boolean = testRemoteObject.sendRequest(1, data, reply, option);
-  if (ret) {
-    hilog.info(0x0000, 'testTag', 'sendRequest got result');
-    let msg = reply.readString();
-    hilog.info(0x0000, 'testTag', 'reply msg: ' + msg);
-  } else {
-    hilog.error(0x0000, 'testTag', 'sendRequest failed');
-  }
-  hilog.info(0x0000, 'testTag', 'sendRequest ends, reclaim parcel');
-  data.reclaim();
-  reply.reclaim();
-} catch (error) {
-  hilog.error(0x0000, 'testTag', 'error ' + error);
-}
-```
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
 class TestRemoteObject extends rpc.RemoteObject {
   constructor(descriptor: string) {
     super(descriptor);
@@ -1144,6 +1076,8 @@ try {
   hilog.error(0x0000, 'testTag', 'error: ' + error);
 }
 ```
+
+<a id="sendrequest-2"></a>
 
 ## sendRequest
 

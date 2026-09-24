@@ -1,5 +1,9 @@
 # SeiMessage
 
+```TypeScript
+interface SeiMessage
+```
+
 Describes the information of an SEI message.
 
 **Since:** 18

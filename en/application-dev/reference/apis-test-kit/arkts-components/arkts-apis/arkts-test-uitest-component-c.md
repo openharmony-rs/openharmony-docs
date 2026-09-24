@@ -1,5 +1,9 @@
 # Component
 
+```TypeScript
+declare class Component
+```
+
 Represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
 **Since:** 9
@@ -456,7 +460,7 @@ async function demo() {
 getOriginalText(): Promise<string>
 ```
 
-Obtains the text information of this component. This API uses a promise to return the result. If the accessibilityLevel attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext) cannot.
+Obtains the text information of this component. This API uses a promise to return the result. If the [accessibilityLevel](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext) cannot.
 
 **Since:** 20
 
@@ -502,7 +506,7 @@ Obtains the text information of this component. This API uses a promise to retur
 
 > **NOTE:** 
 > 
-> If the accessibilityLevel
+> If the [accessibilityLevel](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel)
 > attribute of the component is set to **no** or **no-hide-descendants**, this API cannot be used to obtain the
 > text information of the component. In this case, you can use
 > [Component.getOriginalText ()](#getoriginaltext) instead.
@@ -635,16 +639,7 @@ async function demo() {
 }
 ```
 
-```TypeScript
-// xxx.test.ets
-import { Component, Driver, ON } from '@kit.TestKit';
-
-async function mode_demo() {
-  let driver: Driver = Driver.create();
-  let text: Component = await driver.findComponent(ON.text('hello world'));
-  await text.inputText('123', { paste: true, addition: false });
-}
-```
+<a id="inputtext-1"></a>
 
 ## inputText
 
@@ -685,20 +680,6 @@ Inputs text to a component in a specified text input mode. This API takes effect
 | [17000004](../errorcode-uitest.md#17000004-target-componentwindow-invisible-or-destroyed) | The window or component is invisible or destroyed. |
 
 **Examples**
-
-```TypeScript
-// xxx.test.ets
-import { Component, Driver, ON } from '@kit.TestKit';
-
-async function demo() {
-  // Create a Driver object.
-  let driver: Driver = Driver.create();
-  // Search for the component whose text is 'hello world'.
-  let text: Component = await driver.findComponent(ON.text('hello world'));
-  // Clear the original text and enter '123'.
-  await text.inputText('123');
-}
-```
 
 ```TypeScript
 // xxx.test.ets
@@ -1271,16 +1252,7 @@ async function demo() {
 }
 ```
 
-```TypeScript
-// xxx.test.ets
-import { Component, Driver, ON } from '@kit.TestKit';
-
-async function demo() {
-  let driver: Driver = Driver.create();
-  let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
-  let button = await scrollBar.scrollSearch(ON.text('next page'));
-}
-```
+<a id="scrollsearch-1"></a>
 
 ## scrollSearch
 
@@ -1321,20 +1293,6 @@ Scrolls on this component to search for the target component. This API is applic
 | [17000004](../errorcode-uitest.md#17000004-target-componentwindow-invisible-or-destroyed) | The window or component is invisible or destroyed. |
 
 **Examples**
-
-```TypeScript
-// xxx.test.ets
-import { Component, Driver, ON } from '@kit.TestKit';
-
-async function demo() {
-  // Create a Driver object.
-  let driver: Driver = Driver.create();
-  // Obtain the scrollable Scroll component.
-  let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
-  // Scroll on the Scroll component to search for the component whose text is 'next page'.
-  let button = await scrollBar.scrollSearch(ON.text('next page'));
-}
-```
 
 ```TypeScript
 // xxx.test.ets

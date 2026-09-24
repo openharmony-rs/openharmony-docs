@@ -1,5 +1,9 @@
 # ComponentType（系统接口）
 
+```TypeScript
+export enum ComponentType
+```
+
 组件类型。
 
 **起始版本：** 9

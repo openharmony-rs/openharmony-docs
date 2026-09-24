@@ -20,9 +20,7 @@ This API is used to quickly check whether the current application is allowed to 
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:**
-
-[requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md) requests notification to be enabled for this application.
+**See also:** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-3) requests notification to be enabled for this application.
 
 **Return value:**
 

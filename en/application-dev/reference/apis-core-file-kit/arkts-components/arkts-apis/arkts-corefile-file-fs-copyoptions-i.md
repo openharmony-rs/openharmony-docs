@@ -1,5 +1,9 @@
 # CopyOptions
 
+```TypeScript
+interface CopyOptions
+```
+
 Defines the callback for listening for the copy progress.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # EditorAttribute
 
+```TypeScript
+interface EditorAttribute
+```
+
 编辑框属性值。
 
 **起始版本：** 8

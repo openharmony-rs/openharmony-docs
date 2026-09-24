@@ -37,16 +37,3 @@ import { bundleManager } from '@kit.AbilityKit';
 
 let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility();
 ```
-
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility(100);
-  console.info('Succeeded in getting system input method config ability, bundleName: ' + inputMethodConfig.bundleName);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to getSystemInputMethodConfigAbility. Code: ${error.code}, message: ${error.message}`);
-}
-```

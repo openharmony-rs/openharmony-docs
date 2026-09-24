@@ -1,5 +1,9 @@
 # EditableTitleV2
 
+```TypeScript
+export declare class EditableTitleV2
+```
+
 Declaration of the title configuration.
 
 **Since:** 26.0.0

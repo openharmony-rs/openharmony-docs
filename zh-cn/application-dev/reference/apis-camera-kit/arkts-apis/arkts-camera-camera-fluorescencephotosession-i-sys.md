@@ -1,5 +1,9 @@
 # FluorescencePhotoSession（系统接口）
 
+```TypeScript
+interface FluorescencePhotoSession extends Session, AutoExposure, Focus, Zoom
+```
+
 Fluorescence photo session object.
 
 **继承/实现关系：** FluorescencePhotoSession extends [Session](arkts-camera-camera-session-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md)
@@ -41,7 +45,7 @@ Unsubscribes from error events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
 ## off('focusStateChange')
 
@@ -68,7 +72,7 @@ Unsubscribes from focus state change event callback.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
 ## on('error')
 
@@ -95,7 +99,7 @@ Subscribes to error events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
 ## on('focusStateChange')
 
@@ -122,4 +126,4 @@ Subscribes focus state change event callback.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |

@@ -1,5 +1,9 @@
 # DialScene（系统接口）
 
+```TypeScript
+export enum DialScene
+```
+
 拨号场景。
 
 **起始版本：** 8

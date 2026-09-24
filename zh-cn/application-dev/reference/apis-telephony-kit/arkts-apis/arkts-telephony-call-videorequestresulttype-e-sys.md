@@ -1,5 +1,9 @@
 # VideoRequestResultType（系统接口）
 
+```TypeScript
+export enum VideoRequestResultType
+```
+
 视频通话升降级请求结果类型。
 
 **起始版本：** 11

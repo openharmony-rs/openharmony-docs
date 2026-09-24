@@ -1,5 +1,9 @@
 # ContactType (System API)
 
+```TypeScript
+export enum ContactType
+```
+
 Indicates the contact types.
 
 **Since:** 8
@@ -45,6 +49,8 @@ SDN_DIALING = 3
 Service dialing number.
 
 **Since:** 24
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Telephony.CoreService
 

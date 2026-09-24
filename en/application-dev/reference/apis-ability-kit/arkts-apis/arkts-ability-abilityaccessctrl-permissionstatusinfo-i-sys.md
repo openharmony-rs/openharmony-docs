@@ -1,5 +1,9 @@
 # PermissionStatusInfo (System API)
 
+```TypeScript
+interface PermissionStatusInfo
+```
+
 Indicates the permission status.
 
 **Since:** 26.0.0

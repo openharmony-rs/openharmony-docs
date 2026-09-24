@@ -1,5 +1,9 @@
 # LazyLayoutHelper
 
+```TypeScript
+export class LazyLayoutHelper
+```
+
 Helper class for lazy layout algorithm. Provides layout direction and view position information for lazy layout.
 
 **Since:** 26.0.0

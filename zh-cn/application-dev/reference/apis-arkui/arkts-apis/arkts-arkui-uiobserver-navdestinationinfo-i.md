@@ -1,5 +1,9 @@
 # NavDestinationInfo
 
+```TypeScript
+export interface NavDestinationInfo
+```
+
 NavDestination组件信息，由系统返回给开发者。
 
 **起始版本：** 11
@@ -18,7 +22,9 @@ import { uiObserver } from '@kit.ArkUI';
 index: number
 ```
 
-NavDestination在页面栈中的索引。取值应≥0。
+NavDestination在页面栈中的索引。
+
+取值范围：[0, +∞)
 
 **类型：** number
 
@@ -36,9 +42,9 @@ NavDestination在页面栈中的索引。取值应≥0。
 mode?: NavDestinationMode
 ```
 
-NavDestination类型。默认值：NavDestinationMode.Standard。
+NavDestination类型。
 
-**类型：** [NavDestinationMode](../arkts-components/arkts-arkui-navdestinationmode-e.md)
+**类型：** [NavDestinationMode](../arkts-components/arkts-arkui-navdestination-comp-navdestinationmode-e.md)
 
 **起始版本：** 15
 
@@ -72,7 +78,7 @@ NavDestination组件的名称。
 navDestinationId: string
 ```
 
-Auto-generated navDestination id, which is different from common property id of Component.
+NavDestination组件的唯一标识ID。
 
 **类型：** string
 
@@ -108,7 +114,7 @@ navigationId: ResourceStr
 param?: Object
 ```
 
-The detailed parameter of NavDestination.
+NavDestination组件的参数。
 
 **类型：** Object
 
@@ -126,7 +132,7 @@ The detailed parameter of NavDestination.
 size?: Size
 ```
 
-NavDestination组件的大小,单位是vp。
+NavDestination组件的大小，单位是vp。
 
 **类型：** Size
 

@@ -1,5 +1,9 @@
 # RotationAxesStateChangeInfo (System API)
 
+```TypeScript
+export interface RotationAxesStateChangeInfo
+```
+
 Rotation axes state change information. @typedef RotationAxesStateChangeInfo
 
 **Since:** 20

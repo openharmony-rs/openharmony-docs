@@ -1,5 +1,9 @@
 # PolyToPolyOptions
 
+```TypeScript
+export interface PolyToPolyOptions
+```
+
 多边形到多边形的映射选项。
 
 **起始版本：** 12

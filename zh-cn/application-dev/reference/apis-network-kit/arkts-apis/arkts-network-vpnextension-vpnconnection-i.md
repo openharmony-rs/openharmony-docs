@@ -1,5 +1,9 @@
 # VpnConnection
 
+```TypeScript
+export interface VpnConnection
+```
+
 VPN连接对象。在调用VpnConnection的方法前，需要先通过vpnExt.createVpnConnection创建VPN连接对象。
 
 **起始版本：** 11
@@ -80,7 +84,7 @@ create(config: VpnConfig): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2200001](../errorcode-net-ethernet.md#2200001-非法参数值) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Operation failed. Cannot connect to service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
@@ -223,7 +227,7 @@ destroy(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Operation failed. Cannot connect to service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 
@@ -248,24 +252,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 }
 ```
 
-```TypeScript
-import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
-import { BusinessError } from "@kit.BasicServicesKit";
-
-export default class MyVpnExtAbility extends VpnExtensionAbility {
-  onCreate() {
-    let vpnConnection = vpnExtension.createVpnConnection(this.context);
-
-    // 可通过generateVpnId()获取vpnId
-    let vpnId = 'testVpnId';
-    vpnConnection.destroy(vpnId).then(() => {
-      console.info("destroy success");
-    }).catch((error: BusinessError) => {
-      console.error(`destroy fail, Code is ${error.code}, message is ${error.message}`);
-    });
-  }
-}
-```
+<a id="destroy-1"></a>
 
 ## destroy
 
@@ -300,7 +287,24 @@ destroy(vpnId: string): Promise<void>
 
 **示例**
 
-参见 [destroy](#destroy)
+```TypeScript
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
+import { BusinessError } from "@kit.BasicServicesKit";
+
+export default class MyVpnExtAbility extends VpnExtensionAbility {
+  onCreate() {
+    let vpnConnection = vpnExtension.createVpnConnection(this.context);
+
+    // 可通过generateVpnId()获取vpnId
+    let vpnId = 'testVpnId';
+    vpnConnection.destroy(vpnId).then(() => {
+      console.info("destroy success");
+    }).catch((error: BusinessError) => {
+      console.error(`destroy fail, Code is ${error.code}, message is ${error.message}`);
+    });
+  }
+}
+```
 
 ## generateVpnId
 
@@ -381,7 +385,7 @@ protect(socketFd: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2200001](../errorcode-net-ethernet.md#2200001-非法参数值) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Operation failed. Cannot connect to service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |

@@ -1,5 +1,9 @@
 # ReportType (System API)
 
+```TypeScript
+export enum ReportType
+```
+
 Enumerates report types.
 
 **Since:** 8

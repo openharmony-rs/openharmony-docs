@@ -1,5 +1,9 @@
 # AsyncCallback
 
+```TypeScript
+export interface AsyncCallback<T>
+```
+
 Asynchronous callback interface.
 
 **Since:** 6

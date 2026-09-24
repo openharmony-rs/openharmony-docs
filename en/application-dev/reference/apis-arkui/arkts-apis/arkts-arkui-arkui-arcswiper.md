@@ -44,21 +44,191 @@ import { ArcSwiper, ArcSwiperAttribute, ArcDotIndicator, ArcDirection, ArcSwiper
 
 | Name | Description |
 | --- | --- |
-| [ArcSwiper](arkts-arkui-ohosarkuiarcswiper-p.md) | Defines the ArcSwiper Component that can provide the ability for sub components to swipe and display. |
-| [ArcSwiperInstance](arkts-arkui-ohosarkuiarcswiper-p.md) | Defines ArcSwiper Component instance. |
+| [ArcSwiper](arkts-arkui-arkui-arcswiper-p.md) | Defines the ArcSwiper Component that can provide the ability for sub components to swipe and display. |
+| [ArcSwiperInstance](arkts-arkui-arkui-arcswiper-p.md) | Defines ArcSwiper Component instance. |
 
 ## Examples
 
-```TypeScript
 ### Example 1: Configuring the Basic Attributes of ArcSwiper
 
 This example demonstrates the basic functionality of the component by configuring the basic attributes of ArcSwiper.
 
 
-```
 
 ```TypeScript
+// xxx.ets
+import {
+  CircleShape,
+  ArcSwiper,
+  ArcSwiperAttribute, 
+  ArcDotIndicator,
+  ArcDirection,
+  ArcSwiperController
+} from '@kit.ArkUI';
+// Starting from API version 22, you do not need to manually import ArcSwiperAttribute. For details, refer to the Modules to Import section of the ArcSwiper reference document.
+
+class MyDataSource implements IDataSource {
+  private list: Color[] = [];
+
+  constructor(list: Color[]) {
+    this.list = list;
+  }
+
+  totalCount(): number {
+    return this.list.length;
+  }
+
+  getData(index: number): Color {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+  }
+
+  unregisterDataChangeListener() {
+  }
+}
+
+@Entry
+@Component
+struct TestNewInterface {
+  @State itemSimpleColor: Color | number | string = '';
+  @State selectedItemSimpleColor: Color | number | string = '';
+  private wearableSwiperController: ArcSwiperController = new ArcSwiperController();
+  private arcDotIndicator: ArcDotIndicator = new ArcDotIndicator();
+  private data: MyDataSource = new MyDataSource([]);
+  @State backgroundColors: Color[] =
+    [Color.Green, Color.Blue, Color.Yellow, Color.Pink, Color.White, Color.Gray, Color.Orange, Color.Transparent];
+  innerSelectedIndex: number = 0;
+
+  aboutToAppear(): void {
+    this.data = new MyDataSource(this.backgroundColors);
+  }
+
+  build() {
+    Column() {
+      Row() {
+        ArcSwiper(this.wearableSwiperController) {
+          LazyForEach(this.data, (backgroundColor: Color, index: number) => {
+            Text(index.toString())
+              .width(233)
+              .height(233)
+              .backgroundColor(backgroundColor)
+              .textAlign(TextAlign.Center)
+              .fontSize(30)
+          })
+        }
+        .clipShape(new CircleShape({ width: 233, height: 233 }))
+        .effectMode(EdgeEffect.None)
+        .backgroundColor(Color.Transparent)
+        .index(0)
+        .duration(400)
+        .vertical(false)
+        .indicator(this.arcDotIndicator
+          .arcDirection(ArcDirection.SIX_CLOCK_DIRECTION)
+          .itemColor(this.itemSimpleColor)
+          .selectedItemColor(this.selectedItemSimpleColor)
+        )
+        .disableSwipe(false)
+        .digitalCrownSensitivity(CrownSensitivity.MEDIUM)
+        .onChange((index: number) => {
+          console.info('onChange:' + index.toString());
+        })
+        .onAnimationStart((index: number, targetIndex: number, extraInfo: SwiperAnimationEvent) => {
+          this.innerSelectedIndex = targetIndex;
+          console.info('index: ' + index);
+          console.info('targetIndex: ' + targetIndex);
+          console.info('current offset: ' + extraInfo.currentOffset);
+          console.info('target offset: ' + extraInfo.targetOffset);
+          console.info('velocity: ' + extraInfo.velocity);
+        })
+        .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+          others: Array<GestureRecognizer>): GestureJudgeResult => { // When the implementation is about to succeed, set the recognizer enabling state based on the current component state.
+          if (current) {
+            let target = current.getEventTargetInfo();
+            if (target && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+              // Check whether the ArcSwiper has scrolled to the beginning: swiperTarget.isBegin() or innerSelectedIndex === 0.
+              let swiperTarget = target as ScrollableTargetInfo;
+              if (swiperTarget instanceof ScrollableTargetInfo &&
+                (swiperTarget.isBegin() || this.innerSelectedIndex === 0)) {
+                let panEvent = event as PanGestureEvent;
+                if (panEvent && panEvent.offsetX > 0 && (swiperTarget.isBegin() || this.innerSelectedIndex === 0)) {
+                  return GestureJudgeResult.REJECT;
+                }
+              }
+            }
+          }
+          return GestureJudgeResult.CONTINUE;
+        })
+        .onAnimationEnd((index: number, extraInfo: SwiperAnimationEvent) => {
+          console.info('index: ' + index);
+          console.info('current offset: ' + extraInfo.currentOffset);
+        })
+        .disableTransitionAnimation(false)
+      }.height('100%')
+    }.width('100%')
+  }
+}
+```
+
 ### Example 2: Customizing a Page Transition Animation for ArcSwiper
 
 In this example, the customContentTransition API is used to define a custom switching animation for the ArcSwiper component.
+
+```TypeScript
+import { Decimal } from '@kit.ArkTS';
+import { CircleShape, ArcSwiper, ArcSwiperAttribute } from '@kit.ArkUI';
+
+// Starting from API version 22, you do not need to manually import ArcSwiperAttribute. For details, refer to the Modules to Import section of the ArcSwiper reference document.
+@Entry
+@Component
+struct TestNewInterface {
+  private backgroundColors: Color[] =
+    [Color.Green, Color.Blue, Color.Yellow, Color.Pink, Color.White, Color.Gray, Color.Orange];
+  @State scaleList: number[] = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < this.backgroundColors.length; i++) {
+      this.scaleList.push(1.0);
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        ArcSwiper() {
+          ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
+            Text(index.toString())
+              .width(233)
+              .height(233)
+              .backgroundColor(backgroundColor)
+              .textAlign(TextAlign.Center)
+              .fontSize(30)
+              .scale({ x: this.scaleList[index], y: this.scaleList[index] })
+          })
+        }
+        .clipShape(new CircleShape({ width: 233, height: 233 }))
+        .effectMode(EdgeEffect.None)
+        .onChange((index: number) => {
+          console.info('onChange:' + index.toString());
+        })
+        .customContentTransition({
+          // The page is removed from the render tree when 1000 ms (timeout time) has elapsed.
+          timeout: 1000,
+          // Trigger the transition callback frame by frame for all pages within the viewport; modify the scale property value within the callback to implement a custom animation.
+          transition: (proxy: SwiperContentTransitionProxy) => {
+            if (proxy.position <= -1 || proxy.position >= 1) {
+              // When a group of pages is completely scrolled out of the viewport, reset the attribute values.
+              this.scaleList[proxy.index] = 1.0;
+            } else {
+              let position: number = Decimal.abs(proxy.position).toNumber();
+              this.scaleList[proxy.index] = 1 - position;
+            }
+          }
+        })
+        .disableTransitionAnimation(false)
+      }.height('100%')
+    }.width('100%')
+  }
+}
 ```

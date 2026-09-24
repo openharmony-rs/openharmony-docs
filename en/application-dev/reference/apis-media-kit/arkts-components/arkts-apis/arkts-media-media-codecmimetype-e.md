@@ -1,5 +1,9 @@
 # CodecMimeType
 
+```TypeScript
+enum CodecMimeType
+```
+
 Enumerates the codec MIME types.
 
 **Since:** 8

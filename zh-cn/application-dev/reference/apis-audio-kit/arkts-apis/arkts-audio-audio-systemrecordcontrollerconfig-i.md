@@ -1,5 +1,9 @@
 # SystemRecordControllerConfig
 
+```TypeScript
+interface SystemRecordControllerConfig
+```
+
 系统录音控制面板的配置信息。
 
 **起始版本：** 26.0.0

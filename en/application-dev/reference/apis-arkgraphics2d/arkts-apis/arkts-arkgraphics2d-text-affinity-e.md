@@ -1,5 +1,9 @@
 # Affinity
 
+```TypeScript
+enum Affinity
+```
+
 Enumerates the affinity modes.
 
 **Since:** 12

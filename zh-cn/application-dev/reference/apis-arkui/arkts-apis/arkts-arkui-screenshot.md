@@ -26,9 +26,9 @@ import { screenshot } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [save](arkts-arkui-screenshot-save-f-sys.md) | 获取屏幕截图，使用callback异步回调。 |
-| [save](arkts-arkui-screenshot-save-f-sys.md) | 获取屏幕截图，使用callback异步回调。 |
-| [save](arkts-arkui-screenshot-save-f-sys.md) | 获取屏幕截图，使用Promise异步回调。 |
+| [save](arkts-arkui-screenshot-save-f-sys.md#save) | 获取屏幕截图，使用callback异步回调。 |
+| [save](arkts-arkui-screenshot-save-f-sys.md#save-1) | 获取屏幕截图，使用callback异步回调。 |
+| [save](arkts-arkui-screenshot-save-f-sys.md#save-2) | 获取屏幕截图，使用Promise异步回调。 |
 | [saveHdrPicture](arkts-arkui-screenshot-savehdrpicture-f-sys.md) | 获取屏幕截图，使用Promise异步回调。SDR为标准动态范围图，HDR为高动态范围图。 |
 <!--DelEnd-->
 

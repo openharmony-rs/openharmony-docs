@@ -1,5 +1,11 @@
 # VideoSession
 
+```TypeScript
+interface VideoSession extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, Stabilization,
+    ColorManagement, ControlCenter, AutoDeviceSwitch, Macro, ManualExposure, ManualFocus, ManualIso, OIS,
+    Aperture
+```
+
 VideoSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)、[Stabilization](arkts-camera-camera-stabilization-i.md)、[ColorManagement](arkts-camera-camera-colormanagement-i.md)、[AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md)、[Macro](arkts-camera-camera-macro-i.md)、[ControlCenter](arkts-camera-camera-controlcenter-i.md)、[ManualExposure](../../../reference/apis-camera-kit/arkts-apis-camera-ManualExposure.md)、[ManualFocus](../../../reference/apis-camera-kit/arkts-apis-camera-ManualFocus.md)、[ManualIso](../../../reference/apis-camera-kit/arkts-apis-camera-ManualIso.md)、[OIS](../../../reference/apis-camera-kit/arkts-apis-camera-OIS.md)、[Aperture](../../../reference/apis-camera-kit/arkts-apis-camera-Aperture.md)。
 
 普通录像模式会话类，提供了对闪光灯、曝光、白平衡、对焦、变焦、视频防抖、色彩空间、微距及控制器、手动曝光、手动对焦、手动ISO、光学防抖及光圈的操作。
@@ -44,7 +50,7 @@ Gets session conflict functions.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
 ## getSessionFunctions
 
@@ -76,8 +82,8 @@ Gets session functions.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 ## off('lcdFlashStatus')
 
@@ -104,7 +110,15 @@ Unsubscribes from LCD flash status change events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterLcdFlashStatus(videoSession: camera.VideoSession): void {
+  videoSession.off('lcdFlashStatus');
+}
+```
 
 ## off('focusTrackingInfoAvailable')
 
@@ -131,7 +145,15 @@ Unsubscribes from focus tracking information events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterFocusTrackingInfoChanged(session: camera.VideoSessionForSys): void {
+  session.off('focusTrackingInfoAvailable');
+}
+```
 
 ## off('effectSuggestionChange')
 
@@ -158,7 +180,7 @@ Unsubscribes from effect suggestion change events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
 ## off('lightStatusChange')
 
@@ -185,7 +207,31 @@ Unsubscribes from camera light status changes.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function LightStatusCallback(err: BusinessError, lightStatus: camera.LightStatus) : void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`lightStatus: ${lightStatus}`);
+}
+
+function handleLightStatusOff(mSession: camera.VideoSessionForSys): void {
+  console.info('handleLightStatusOff');
+  try {
+    mSession.on('lightStatusChange', LightStatusCallback);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`handleLightStatusOff err:${err}`);
+  }
+}
+```
 
 ## offApertureInfoChange
 
@@ -195,7 +241,7 @@ offApertureInfoChange(callback?: Callback<ApertureInfo>): void
 
 Unsubscribes from aperture info event callback.
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -213,7 +259,7 @@ Unsubscribes from aperture info event callback.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
 ## on('lcdFlashStatus')
 
@@ -240,7 +286,26 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, lcdFlashStatus: camera.LcdFlashStatus): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`isLcdFlashNeeded: ${lcdFlashStatus.isLcdFlashNeeded}`);
+  console.info(`lcdCompensation: ${lcdFlashStatus.lcdCompensation}`);
+}
+
+function registerLcdFlashStatus(videoSession: camera.VideoSession): void {
+  videoSession.on('lcdFlashStatus', callback);
+}
+```
 
 ## on('focusTrackingInfoAvailable')
 
@@ -267,7 +332,23 @@ Subscribes to focus tracking information events. This API uses an asynchronous c
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function callback(focusTrackingInfo: camera.FocusTrackingInfo): void {
+  console.info(`Focus tracking mode: ${focusTrackingInfo.trackingMode}`);
+  console.info(`Focus tracking Region: topLeftX ${focusTrackingInfo.trackingRegion.topLeftX}
+                                       topLeftY ${focusTrackingInfo.trackingRegion.topLeftY}
+                                       width ${focusTrackingInfo.trackingRegion.width}
+                                       height ${focusTrackingInfo.trackingRegion.height}`);
+}
+
+function registerFocusTrackingInfoChanged(session: camera.VideoSessionForSys): void {
+  session.on('focusTrackingInfoAvailable', callback);
+}
+```
 
 ## on('effectSuggestionChange')
 
@@ -294,7 +375,7 @@ Subscribes to effect suggestion change events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
 ## on('lightStatusChange')
 
@@ -321,7 +402,31 @@ Subscribes to camera light status changes. This API uses an asynchronous callbac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function handleLightStatusCallback(err: BusinessError, lightStatus: camera.LightStatus) : void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`lightStatus: ${lightStatus}`);
+}
+
+function handleLightStatusOn(mSession: camera.VideoSessionForSys): void {
+  console.info('handleLightStatusOn');
+  try {
+    mSession.on('lightStatusChange', handleLightStatusCallback);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`handleLightStatusOn err:${err}`);
+  }
+}
+```
 
 ## onApertureInfoChange
 
@@ -331,7 +436,7 @@ onApertureInfoChange(callback: Callback<ApertureInfo>): void
 
 Subscribes aperture info event callback.
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -349,4 +454,4 @@ Subscribes aperture info event callback.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |

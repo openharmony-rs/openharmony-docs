@@ -38,7 +38,7 @@ function removeAllSlots(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -58,16 +58,8 @@ let removeAllSlotsCallback = (err: BusinessError): void => {
 notificationManager.removeAllSlots(removeAllSlotsCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.removeAllSlots().then(() => {
-  console.info(`Succeeded in removing all slots.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to remove all slots. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="removeallslots-1"></a>
 
 ## removeAllSlots
 
@@ -87,9 +79,9 @@ function removeAllSlots(): Promise<void>
 
 [addSlot](arkts-notification-notificationmanager-addslot-f.md) 创建通知频道。
 
-[getSlot](arkts-notification-notificationmanager-getslot-f.md) 获取指定类型的通知渠道。
+[getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot-2) 获取指定类型的通知渠道。
 
-[removeSlot](arkts-notification-notificationmanager-removeslot-f.md) 删除指定类型的通知渠道。
+[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot-1) 删除指定类型的通知渠道。
 
 **返回值：**
 
@@ -107,4 +99,12 @@ function removeAllSlots(): Promise<void>
 
 **示例**
 
-参见 removeAllSlots
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.removeAllSlots().then(() => {
+  console.info(`Succeeded in removing all slots.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to remove all slots. Code is ${err.code}, message is ${err.message}`);
+});
+```

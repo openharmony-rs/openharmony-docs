@@ -8,6 +8,8 @@ typedef struct OHIPCDeathRecipient OHIPCDeathRecipient
 
 Defines an object that receives death notifications.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 **Since**: 12
 
 **Related module**: [OHIPCRemoteObject](capi-ohipcremoteobject.md)

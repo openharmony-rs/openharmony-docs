@@ -33,34 +33,14 @@ function getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
 **示例**
-
-```TypeScript
-import { volumeManager } from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
-  if (volumes == null || volumes.length <= 0) {
-    console.error("volumes is null or length is invalid");
-    return;
-  }
-  let uuid: string = volumes[0].uuid;
-  storageStatistics.getFreeSizeOfVolume(uuid).then((number: number) => {
-    console.info("getFreeSizeOfVolume successfully:" + number);
-  }).catch((err: BusinessError) => {
-    console.error(`getFreeSizeOfVolume failed with err, code is: ${err.code}, message is: ${err.message}`);
-  });
-}).catch((err: BusinessError) => {
-  console.error(`getAllVolumes failed with err, code is: ${err.code}, message is: ${err.message}`);
-});
-```
 
 ```TypeScript
 import { volumeManager } from '@kit.CoreFileKit';
@@ -85,6 +65,8 @@ volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
 });
 ```
 
+
+<a id="getfreesizeofvolume-1"></a>
 
 ## getFreeSizeOfVolume
 
@@ -118,13 +100,31 @@ function getFreeSizeOfVolume(volumeUuid: string): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
 **示例**
 
-参见 [getFreeSizeOfVolume](#getfreesizeofvolume)
+```TypeScript
+import { volumeManager } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
+  if (volumes == null || volumes.length <= 0) {
+    console.error("volumes is null or length is invalid");
+    return;
+  }
+  let uuid: string = volumes[0].uuid;
+  storageStatistics.getFreeSizeOfVolume(uuid).then((number: number) => {
+    console.info("getFreeSizeOfVolume successfully:" + number);
+  }).catch((err: BusinessError) => {
+    console.error(`getFreeSizeOfVolume failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+}).catch((err: BusinessError) => {
+  console.error(`getAllVolumes failed with err, code is: ${err.code}, message is: ${err.message}`);
+});
+```

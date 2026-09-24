@@ -1,5 +1,9 @@
 # NROptionMode（系统接口）
 
+```TypeScript
+export enum NROptionMode
+```
+
 Obtains the option mode of NR.
 
 **起始版本：** 10

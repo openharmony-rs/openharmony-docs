@@ -1,5 +1,9 @@
 # InterruptType
 
+```TypeScript
+enum InterruptType
+```
+
 Enumerates the audio interruption types.
 
 **Since:** 7

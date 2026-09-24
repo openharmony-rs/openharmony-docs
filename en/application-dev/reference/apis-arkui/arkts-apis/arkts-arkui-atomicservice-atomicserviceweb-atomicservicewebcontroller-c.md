@@ -1,5 +1,9 @@
 # AtomicServiceWebController
 
+```TypeScript
+export declare class AtomicServiceWebController
+```
+
 Implements an **AtomicServiceWebController** object for controlling the behavior of the **AtomicServiceWeb** component. An **AtomicServiceWebController** can control only one **AtomicServiceWeb** component, and the APIs on the **AtomicServiceWebController** can be called only after it has been bound to the target **AtomicServiceWeb** component.
 
 **Since:** 12

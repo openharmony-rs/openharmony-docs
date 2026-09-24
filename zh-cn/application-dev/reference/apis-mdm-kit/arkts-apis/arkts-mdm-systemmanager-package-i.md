@@ -1,5 +1,9 @@
 # Package
 
+```TypeScript
+interface Package
+```
+
 系统更新包详情。
 
 **起始版本：** 12

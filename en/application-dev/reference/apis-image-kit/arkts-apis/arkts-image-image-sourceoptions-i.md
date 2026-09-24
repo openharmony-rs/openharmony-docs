@@ -1,5 +1,9 @@
 # SourceOptions
 
+```TypeScript
+interface SourceOptions
+```
+
 Defines image source initialization options.
 
 **Since:** 9

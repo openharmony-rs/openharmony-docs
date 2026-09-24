@@ -1,5 +1,9 @@
 # IMEClient
 
+```TypeScript
+declare interface IMEClient
+```
+
 Defines the input method client type bound to an input component.
 
 **Since:** 20

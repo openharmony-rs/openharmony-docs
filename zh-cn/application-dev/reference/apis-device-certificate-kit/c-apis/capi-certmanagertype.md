@@ -4,6 +4,8 @@
 
 Defines the macros, enumerated values, data structures, and error codes used by OpenHarmony Certificate Manager APIs.
 
+**系统能力：** SystemCapability.Security.CertificateManager
+
 **起始版本：** 22
 
 ## 文件汇总

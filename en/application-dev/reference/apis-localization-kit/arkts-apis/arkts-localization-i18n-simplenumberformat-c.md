@@ -1,5 +1,9 @@
 # SimpleNumberFormat
 
+```TypeScript
+export class SimpleNumberFormat
+```
+
 Formats a number based on the specified skeleton string.
 
 **Since:** 18

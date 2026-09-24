@@ -1,8 +1,12 @@
 # MemberInfo (System API)
 
+```TypeScript
+export class MemberInfo
+```
+
 Member information
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,7 +28,7 @@ Member identity information.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -42,7 +46,7 @@ Member status.
 
 **Type:** [ShareMemberStatus](arkts-medialibrary-photoaccesshelper-sharememberstatus-e-sys.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

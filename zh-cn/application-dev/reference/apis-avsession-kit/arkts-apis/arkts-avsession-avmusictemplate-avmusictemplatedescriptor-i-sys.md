@@ -1,5 +1,9 @@
 # AVMusicTemplateDescriptor（系统接口）
 
+```TypeScript
+interface AVMusicTemplateDescriptor
+```
+
 音频模板描述。包含音频模板唯一标识，应用的包名和用户ID。
 
 @typedef {AVMusicTemplateDescriptor}

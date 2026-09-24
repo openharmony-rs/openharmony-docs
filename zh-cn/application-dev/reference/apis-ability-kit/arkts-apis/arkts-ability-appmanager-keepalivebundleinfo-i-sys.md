@@ -1,5 +1,9 @@
 # KeepAliveBundleInfo（系统接口）
 
+```TypeScript
+export interface KeepAliveBundleInfo
+```
+
 定义应用保活信息，可以通过[getKeepAliveBundles](arkts-ability-appmanager-getkeepalivebundles-f-sys.md)或[getKeepAliveAppServiceExtensions](arkts-ability-appmanager-getkeepaliveappserviceextensions-f-sys.md)获取。
 
 **起始版本：** 14

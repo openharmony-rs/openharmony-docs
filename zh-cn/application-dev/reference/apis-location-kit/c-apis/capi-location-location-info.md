@@ -8,6 +8,8 @@ typedef struct Location_Info Location_Info
 
 定义位置信息的结构体。
 
+**系统能力：** SystemCapability.Location.Location.Core
+
 **起始版本：** 13
 
 **相关模块：** [Location](capi-location.md)

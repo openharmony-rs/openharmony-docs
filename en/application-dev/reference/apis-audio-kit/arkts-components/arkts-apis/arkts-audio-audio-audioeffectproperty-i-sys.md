@@ -1,5 +1,9 @@
 # AudioEffectProperty (System API)
 
+```TypeScript
+interface AudioEffectProperty
+```
+
 Describes an audio effect property.
 
 **Since:** 18

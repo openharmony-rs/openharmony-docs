@@ -1,5 +1,9 @@
 # FailureCode
 
+```TypeScript
+declare enum FailureCode
+```
+
 打开原子化服务失败的特定错误码。
 
 **起始版本：** 20

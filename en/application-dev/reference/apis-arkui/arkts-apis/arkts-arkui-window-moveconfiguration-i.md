@@ -1,5 +1,9 @@
 # MoveConfiguration
 
+```TypeScript
+interface MoveConfiguration
+```
+
 Describes the window movement configuration.
 
 **Since:** 15

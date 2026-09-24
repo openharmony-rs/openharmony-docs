@@ -1,5 +1,9 @@
 # IpSetMode
 
+```TypeScript
+enum IpSetMode
+```
+
 Enumerates Ethernet connection configuration modes.
 
 **Since:** 23

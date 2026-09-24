@@ -1,5 +1,9 @@
 # USBDeviceRequestParams
 
+```TypeScript
+interface USBDeviceRequestParams
+```
+
 Describes control transfer parameters.
 
 **Since:** 12

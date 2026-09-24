@@ -1,5 +1,9 @@
 # HardwareDescriptor (System API)
 
+```TypeScript
+interface HardwareDescriptor
+```
+
 Represents the distributed hardware information.
 
 @typedef HardwareDescriptor

@@ -1,8 +1,12 @@
 # WarpedRingParam (System API)
 
+```TypeScript
+interface WarpedRingParam
+```
+
 WarpedRingParam specifies the ring's radius, width, variation, rotation, 3D orientation and noise evolution.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -24,7 +28,7 @@ Defines half the ring's thickness, measured from the centerline to either edge. 
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -42,7 +46,7 @@ Defines the evolution of the noise pattern over time. The value is unrestricted,
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -60,7 +64,7 @@ Defines the ring radius, measured from the ring's center to the midpoint of its 
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -78,7 +82,7 @@ Defines the progress of the ring's 3D orientation cycle. The input value is redu
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -96,7 +100,7 @@ Defines the angle by which the ring is rotated around its center. The value is u
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -114,7 +118,7 @@ Defines the amount of variation along the ring's circumference. The value is unr
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -1,5 +1,9 @@
 # FocusBoxStyle
 
+```TypeScript
+declare interface FocusBoxStyle
+```
+
 设置当前组件系统焦点框样式。
 
 **起始版本：** 12

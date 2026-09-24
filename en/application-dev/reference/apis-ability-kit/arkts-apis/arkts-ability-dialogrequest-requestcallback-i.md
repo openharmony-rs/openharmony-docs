@@ -1,5 +1,9 @@
 # RequestCallback
 
+```TypeScript
+export interface RequestCallback
+```
+
 Provides a callback for setting the modal dialog box request result.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # FluorescencePhotoSession (System API)
 
+```TypeScript
+interface FluorescencePhotoSession extends Session, AutoExposure, Focus, Zoom
+```
+
 Fluorescence photo session object.
 
 **Inheritance/Implementation:** FluorescencePhotoSession extends [Session](arkts-camera-camera-session-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md)

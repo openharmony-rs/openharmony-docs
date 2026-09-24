@@ -1,5 +1,9 @@
 # ShortMessageClass
 
+```TypeScript
+export enum ShortMessageClass
+```
+
 Enumerates SMS message types.
 
 **Since:** 6

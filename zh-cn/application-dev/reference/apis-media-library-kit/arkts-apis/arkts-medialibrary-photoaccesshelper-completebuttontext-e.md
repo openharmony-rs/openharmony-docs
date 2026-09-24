@@ -1,5 +1,9 @@
 # CompleteButtonText
 
+```TypeScript
+enum CompleteButtonText
+```
+
 配置完成按钮显示内容。
 
 **起始版本：** 14

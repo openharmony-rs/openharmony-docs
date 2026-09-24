@@ -1,5 +1,9 @@
 # ObservedResult
 
+```TypeScript
+export interface ObservedResult
+```
+
 对象是否可被观察的结果。
 
 **起始版本：** 23

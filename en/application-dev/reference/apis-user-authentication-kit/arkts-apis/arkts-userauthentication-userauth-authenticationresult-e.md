@@ -1,5 +1,9 @@
 # AuthenticationResult
 
+```TypeScript
+export enum AuthenticationResult
+```
+
 Enumerates the authentication results.
 
 **Since:** 6

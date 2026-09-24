@@ -17,7 +17,7 @@ function run(startupTasks: Array<string>, config?: StartupConfig): Promise<void>
 > **说明：** 
 > 
 > 本接口不支持执行feature类型HAP中的启动任务，如需要使用相关能力请调用
-> startupManager.run
+> [startupManager.run](#run-1)
 > 接口。
 
 **起始版本：** 12
@@ -43,7 +43,7 @@ function run(startupTasks: Array<string>, config?: StartupConfig): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [28800001](../errorcode-ability.md#28800001-启动任务或其依赖项不存在) | Startup task or its dependency not found. |
 | [28800002](../errorcode-ability.md#28800002-启动任务之间存在循环依赖关系) | The startup tasks have circular dependencies. |
@@ -79,44 +79,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { AbilityStage, startupManager, StartupListener, StartupConfig } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class MyAbilityStage extends AbilityStage {
-  onCreate(): void {
-    hilog.info(0x0000, 'testTag', 'AbilityStage onCreate');
-    let onCompletedCallback = (error: BusinessError) => {
-      if (error) {
-        hilog.error(0x0000, 'testTag', `onCompletedCallback error code: ${error.code}, error msg: ${error.message}`);
-      } else {
-        hilog.info(0x0000, 'testTag', 'onCompletedCallback: success.');
-      }
-    };
-    let startupListener: StartupListener = {
-      'onCompleted': onCompletedCallback
-    };
-    let config: StartupConfig = {
-      'timeoutMs': 10000,
-      'startupListener': startupListener
-    };
-
-    try {
-      // 手动调用run方法
-      startupManager.run(['StartupTask_001', 'libentry_001'], this.context, config).then(() => {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'startupManager.run success');
-      }).catch((error: BusinessError) => {
-        hilog.error(0x0000, 'testTag', `startupManager.run promise catch error code: ${error.code}, error msg: ${error.message}`);
-      });
-    } catch (error) {
-      hilog.error(0x0000, 'testTag', `startupManager.run catch error code: ${error.code}, error msg: ${error.message}`);
-    }
-  }
-  // ...
-}
-```
-
+<a id="run-1"></a>
 
 ## run
 
@@ -163,4 +127,40 @@ function run(startupTasks: Array<string>, context: common.AbilityStageContext, c
 
 **示例**
 
-参见 run
+```TypeScript
+import { AbilityStage, startupManager, StartupListener, StartupConfig } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onCreate(): void {
+    hilog.info(0x0000, 'testTag', 'AbilityStage onCreate');
+    let onCompletedCallback = (error: BusinessError) => {
+      if (error) {
+        hilog.error(0x0000, 'testTag', `onCompletedCallback error code: ${error.code}, error msg: ${error.message}`);
+      } else {
+        hilog.info(0x0000, 'testTag', 'onCompletedCallback: success.');
+      }
+    };
+    let startupListener: StartupListener = {
+      'onCompleted': onCompletedCallback
+    };
+    let config: StartupConfig = {
+      'timeoutMs': 10000,
+      'startupListener': startupListener
+    };
+
+    try {
+      // 手动调用run方法
+      startupManager.run(['StartupTask_001', 'libentry_001'], this.context, config).then(() => {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'startupManager.run success');
+      }).catch((error: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `startupManager.run promise catch error code: ${error.code}, error msg: ${error.message}`);
+      });
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', `startupManager.run catch error code: ${error.code}, error msg: ${error.message}`);
+    }
+  }
+  // ...
+}
+```

@@ -1,5 +1,9 @@
 # VideoMetaType (System API)
 
+```TypeScript
+enum VideoMetaType
+```
+
 Video meta type.
 
 **Since:** 12

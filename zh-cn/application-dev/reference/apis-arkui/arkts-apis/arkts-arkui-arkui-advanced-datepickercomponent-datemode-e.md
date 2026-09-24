@@ -1,5 +1,9 @@
 # DateMode
 
+```TypeScript
+export declare enum DateMode
+```
+
 DateMode枚举用于定义日期选择器的模式。
 
 **起始版本：** 26.0.0

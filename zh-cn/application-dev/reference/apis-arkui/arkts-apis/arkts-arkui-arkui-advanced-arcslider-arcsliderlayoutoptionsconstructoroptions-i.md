@@ -1,5 +1,9 @@
 # ArcSliderLayoutOptionsConstructorOptions
 
+```TypeScript
+interface ArcSliderLayoutOptionsConstructorOptions
+```
+
 ArcSliderLayoutOptions的构造信息。
 
 **起始版本：** 18

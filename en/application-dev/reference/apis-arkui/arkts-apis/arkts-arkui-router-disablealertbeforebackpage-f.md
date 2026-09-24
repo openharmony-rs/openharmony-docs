@@ -24,7 +24,6 @@ Disables the display of a confirm dialog box before returning to the previous pa
 
 **Examples**
 
-```TypeScript
 disableAlertBeforeBackPage(): void
 
 Disables the display of a confirm dialog box before returning to the previous page. After this API is called, the return confirm dialog box enabled by enableAlertBeforeBackPage will be closed, and the back operation will no longer display a confirm dialog box but will directly perform the page return.
@@ -34,4 +33,9 @@ Disables the display of a confirm dialog box before returning to the previous pa
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use hideAlertBeforeBackPage instead.
 
 System capability: SystemCapability.ArkUI.ArkUI.Full
+
+```TypeScript
+import { router } from '@kit.ArkUI';
+
+router.disableAlertBeforeBackPage();
 ```

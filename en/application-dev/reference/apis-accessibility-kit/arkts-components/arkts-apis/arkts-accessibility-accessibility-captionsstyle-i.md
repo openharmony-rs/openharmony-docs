@@ -1,5 +1,9 @@
 # CaptionsStyle
 
+```TypeScript
+interface CaptionsStyle
+```
+
 Describes the style of captions.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # SplitRatioPreference
 
+```TypeScript
+enum SplitRatioPreference
+```
+
 Describes the type of split ratio preference.
 
 @enum { number }

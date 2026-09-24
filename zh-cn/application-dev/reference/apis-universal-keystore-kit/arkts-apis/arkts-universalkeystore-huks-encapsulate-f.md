@@ -17,6 +17,8 @@ function encapsulate(keyAlias: string, params: HuksParam[],
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -40,7 +42,7 @@ function encapsulate(keyAlias: string, params: HuksParam[],
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | API is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | API is not supported. |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | Algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | Algorithm parameters are missing, please check the algorithm parameters. |
 | [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | The algorithm parameters are invalid, please check the algorithm parameters. |

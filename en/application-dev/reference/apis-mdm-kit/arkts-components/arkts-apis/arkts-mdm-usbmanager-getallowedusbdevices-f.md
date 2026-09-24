@@ -63,6 +63,8 @@ try {
 ```
 
 
+<a id="getallowedusbdevices-1"></a>
+
 ## getAllowedUsbDevices
 
 ```TypeScript

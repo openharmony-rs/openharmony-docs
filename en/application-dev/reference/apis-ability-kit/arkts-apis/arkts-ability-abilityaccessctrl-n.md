@@ -1,6 +1,12 @@
 # abilityAccessCtrl(Application Access Control)
 
+```TypeScript
+declare namespace abilityAccessCtrl
+```
+
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 

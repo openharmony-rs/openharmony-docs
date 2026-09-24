@@ -69,34 +69,8 @@ print.startPrintJob(jobInfo, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let jobInfo : print.PrintJob = {
-    fdList : [44, 45], // fd in fdList can be obtained through file operations such as fs.open to get the file descriptor.
-    jobId : 'jobId_12',
-    printerId : 'printerId_32',
-    jobState : print.PrintJobState.PRINT_JOB_COMPLETED,
-    jobSubstate : print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS,
-    copyNumber : 1,
-    pageRange : {},
-    isSequential : false,
-    pageSize : {id : '', name : '', width : 10, height : 20},
-    isLandscape : false,
-    colorMode : print.PrintColorMode.COLOR_MODE_COLOR,
-    duplexMode : print.PrintDuplexMode.DUPLEX_MODE_NONE,
-    margin : undefined,
-    preview : undefined,
-    options : undefined
-};
-print.startPrintJob(jobInfo).then(() => {
-    console.info('start Print success');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to start print job. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="startprintjob-1"></a>
 
 ## startPrintJob
 
@@ -136,4 +110,30 @@ Starts the specified print job. This API uses a promise to return the result.
 
 **Examples**
 
-See [startPrintJob](#startprintjob)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let jobInfo : print.PrintJob = {
+    fdList : [44, 45], // fd in fdList can be obtained through file operations such as fs.open to get the file descriptor.
+    jobId : 'jobId_12',
+    printerId : 'printerId_32',
+    jobState : print.PrintJobState.PRINT_JOB_COMPLETED,
+    jobSubstate : print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS,
+    copyNumber : 1,
+    pageRange : {},
+    isSequential : false,
+    pageSize : {id : '', name : '', width : 10, height : 20},
+    isLandscape : false,
+    colorMode : print.PrintColorMode.COLOR_MODE_COLOR,
+    duplexMode : print.PrintDuplexMode.DUPLEX_MODE_NONE,
+    margin : undefined,
+    preview : undefined,
+    options : undefined
+};
+print.startPrintJob(jobInfo).then(() => {
+    console.info('start Print success');
+}).catch((error: BusinessError) => {
+    console.error(`Failed to start print job. Code: ${error.code}, message: ${error.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # Range
 
+```TypeScript
+interface Range
+```
+
 Defines the range.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # RectShape
 
+```TypeScript
+export declare class RectShape extends BaseShape<RectShape>
+```
+
 Represents a rectangle shape used in the **clipShape** and **maskShape** APIs.
 
 This API inherits from [BaseShape](arkts-arkui-arkui-shape-baseshape-c.md).

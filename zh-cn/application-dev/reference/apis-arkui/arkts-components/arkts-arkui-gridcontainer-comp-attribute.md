@@ -1,8 +1,12 @@
 # GridContainer属性/事件
 
-支持[通用属性](arkts-arkui-commonmethod-c.md)和Column组件的[属性方法](arkts-arkui-column-comp-attribute.md)。
+```TypeScript
+declare class GridContainerAttribute extends ColumnAttribute
+```
 
-支持[通用事件](arkts-arkui-commonmethod-c.md)。
+支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)和Column组件的[属性方法](arkts-arkui-column-comp-attribute.md)。
+
+支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
 **继承/实现关系：** GridContainerAttribute extends [ColumnAttribute](arkts-arkui-column-comp-attribute.md)
 

@@ -1,5 +1,9 @@
 # FetchOptions (System API)
 
+```TypeScript
+interface FetchOptions
+```
+
 Defines the options for fetching file attributes.
 
 **Since:** 9

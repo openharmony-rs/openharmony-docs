@@ -1,5 +1,9 @@
 # GifMetadata
 
+```TypeScript
+class GifMetadata
+```
+
 Gif metadata.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # DateOptions
 
+```TypeScript
+export declare class DateOptions extends CommonOptions
+```
+
 DateOptions defines options for the date picker.
 
 Inherits from [CommonOptions](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md).

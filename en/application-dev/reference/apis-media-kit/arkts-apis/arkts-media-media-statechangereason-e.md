@@ -1,5 +1,9 @@
 # StateChangeReason
 
+```TypeScript
+enum StateChangeReason
+```
+
 Enumerates the reasons for the state transition of the AVPlayer or AVRecorder instance. The enum value is reported together with **state**.
 
 **Since:** 9

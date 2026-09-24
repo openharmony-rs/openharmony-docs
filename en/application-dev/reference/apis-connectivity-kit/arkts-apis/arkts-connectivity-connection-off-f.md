@@ -39,6 +39,21 @@ Unsubscribe the event reported when a remote Bluetooth device is discovered.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900099 | Operation failed. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+function onReceiveEvent(data: Array<string>) {
+    console.info('bluetooth device find = '+ JSON.stringify(data));
+}
+try {
+    connection.on('bluetoothDeviceFind', onReceiveEvent);
+    connection.off('bluetoothDeviceFind', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 
 ## off('discoveryResult')
 
@@ -73,6 +88,21 @@ Unsubscribe the event reported when a remote Bluetooth device is discovered.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900099 | Operation failed. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let onReceiveEvent: (data: Array<connection.DiscoveryResult>) => void = (data: Array<connection.DiscoveryResult>) => { // data is an array of Bluetooth devices discovered.
+    console.info('bluetooth device find = '+ JSON.stringify(data));
+}
+try {
+    connection.on('discoveryResult', onReceiveEvent);
+    connection.off('discoveryResult', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 
 ## off('bondStateChange')
 
@@ -105,6 +135,21 @@ Unsubscribe the event reported when a remote Bluetooth device is bonded.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900099 | Operation failed. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+function onReceiveEvent(data: connection.BondStateParam) {
+    console.info('bond state = '+ JSON.stringify(data));
+}
+try {
+    connection.on('bondStateChange', onReceiveEvent);
+    connection.off('bondStateChange', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 
 ## off('pinRequired')
@@ -139,6 +184,21 @@ Unsubscribe the event of a pairing request from a remote Bluetooth device.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900099 | Operation failed. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+function onReceiveEvent(data: connection.PinRequiredParam) {
+    console.info('pin required = '+ JSON.stringify(data));
+}
+try {
+    connection.on('pinRequired', onReceiveEvent);
+    connection.off('pinRequired', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 
 ## off('batteryChange')
 
@@ -169,3 +229,18 @@ Unsubscribe the event of battery state changed from a remote device.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | 2900099 | Operation failed. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let onReceiveEvent: (data: connection.BatteryInfo) => void = (data: connection.BatteryInfo) => {
+    console.info('BatteryInfo = '+ JSON.stringify(data));
+}
+try {
+    connection.on('batteryChange', onReceiveEvent);
+    connection.off('batteryChange', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```

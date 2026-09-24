@@ -1,5 +1,9 @@
 # SharedTransitionEffectType
 
+```TypeScript
+declare enum SharedTransitionEffectType
+```
+
 SharedTransitionEffectType enumeration description
 
 **Since:** 7

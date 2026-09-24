@@ -4,6 +4,8 @@
 
 Provide functions for querying the status of bluetooth switch.
 
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
 **Since**: 13
 
 ## Files

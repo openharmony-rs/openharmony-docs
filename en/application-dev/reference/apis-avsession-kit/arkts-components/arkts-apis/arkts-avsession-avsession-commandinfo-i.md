@@ -1,5 +1,9 @@
 # CommandInfo
 
+```TypeScript
+interface CommandInfo
+```
+
 The definition of command information to be sent to the session
 
 **Since:** 22

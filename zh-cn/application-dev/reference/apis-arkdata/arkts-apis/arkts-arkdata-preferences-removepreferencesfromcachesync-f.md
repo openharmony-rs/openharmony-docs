@@ -37,19 +37,36 @@ function removePreferencesFromCacheSync(context: Context, name: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error.<br>**适用版本：** 11+ |
 
 **示例**
 
-```TypeScript
 FA模型示例：
-```
 
 ```TypeScript
-Stage模型示例：
+// 获取context
+import { featureAbility } from '@kit.AbilityKit';
+
+let context = featureAbility.getContext();
+preferences.removePreferencesFromCacheSync(context, 'myStore');
 ```
 
+Stage模型示例：
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    preferences.removePreferencesFromCacheSync(this.context, 'myStore');
+  }
+}
+```
+
+
+<a id="removepreferencesfromcachesync-1"></a>
 
 ## removePreferencesFromCacheSync
 
@@ -82,12 +99,35 @@ function removePreferencesFromCacheSync(context: Context, options: Options): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [15501001](../errorcode-preferences.md#15501001-上下文环境非stage模型) | The operations is supported in stage mode only. |
 | [15501002](../errorcode-preferences.md#15501002-options中传入的datagroupid参数非法) | Invalid dataGroupId. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error.<br>**适用版本：** 11+ |
 
 **示例**
 
-参见 removePreferencesFromCacheSync
+FA模型示例：
+
+```TypeScript
+// 获取context
+import { featureAbility } from '@kit.AbilityKit';
+
+let context = featureAbility.getContext();
+let options: preferences.Options = { name: 'myStore' };
+preferences.removePreferencesFromCacheSync(context, options);
+```
+
+Stage模型示例：
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let options: preferences.Options = { name: 'myStore' };
+    preferences.removePreferencesFromCacheSync(this.context, options);
+  }
+}
+```

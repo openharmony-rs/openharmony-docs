@@ -53,18 +53,8 @@ print.queryPrinterCapability(printerId, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let printerId: string = 'printerId_32';
-print.queryPrinterCapability(printerId).then(() => {
-    console.info('start query Printer success');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to query printer capability. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="queryprintercapability-1"></a>
 
 ## queryPrinterCapability
 
@@ -104,4 +94,14 @@ Queries the printer capability. This API uses a promise to return the result.
 
 **Examples**
 
-See [queryPrinterCapability](#queryprintercapability)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let printerId: string = 'printerId_32';
+print.queryPrinterCapability(printerId).then(() => {
+    console.info('start query Printer success');
+}).catch((error: BusinessError) => {
+    console.error(`Failed to query printer capability. Code: ${error.code}, message: ${error.message}`);
+});
+```

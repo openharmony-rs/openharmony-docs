@@ -1,5 +1,9 @@
 # DecodeToStringOptions
 
+```TypeScript
+interface DecodeToStringOptions
+```
+
 Describes the behavioral parameters for the **decodeToString** method when decoding byte streams.
 
 **Since:** 12

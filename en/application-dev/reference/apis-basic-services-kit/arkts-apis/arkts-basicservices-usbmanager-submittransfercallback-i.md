@@ -1,5 +1,9 @@
 # SubmitTransferCallback
 
+```TypeScript
+interface SubmitTransferCallback
+```
+
 Transfers USB data packets in an asynchronous manner.
 
 **Since:** 18

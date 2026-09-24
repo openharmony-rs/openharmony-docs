@@ -1,5 +1,9 @@
 # PermissionRequestResult
 
+```TypeScript
+interface PermissionRequestResult
+```
+
 授权结果信息。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # ImageSource
 
+```TypeScript
+interface ImageSource
+```
+
 The **ImageSource** class provides APIs to obtain image information.
 
 Before calling any API in ImageSource, you must use [image.createImageSource](arkts-image-image-createimagesource-f.md) to create an ImageSource instance.

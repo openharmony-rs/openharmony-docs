@@ -1,5 +1,9 @@
 # NavDestinationSwitchObserverOptions
 
+```TypeScript
+export interface NavDestinationSwitchObserverOptions
+```
+
 Provides the observer options for the page switching event of the **Navigation** component.
 
 **Since:** 12

@@ -14,7 +14,7 @@ function getLastError(errType: HyperSnapErrorType): Promise<HyperSnapErrorInfo>
 
 Gets the last Hyper Snap error information of the current application for a specified scenario. Error information for each scenario is stored independently and cleared after a successful request. All error information will be cleared when the device restarts.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

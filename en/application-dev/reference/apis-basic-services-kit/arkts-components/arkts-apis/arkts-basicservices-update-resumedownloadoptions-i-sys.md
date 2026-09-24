@@ -1,5 +1,9 @@
 # ResumeDownloadOptions (System API)
 
+```TypeScript
+export interface ResumeDownloadOptions
+```
+
 Defines the resuming download options, which are used to specify the network type for resuming download. The object includes the **allowNetwork** field, which specifies the network type allowed for download.
 
 **Since:** 9

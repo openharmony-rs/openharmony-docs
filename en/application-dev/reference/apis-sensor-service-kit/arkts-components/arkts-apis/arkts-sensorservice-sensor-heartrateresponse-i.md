@@ -1,5 +1,9 @@
 # HeartRateResponse
 
+```TypeScript
+interface HeartRateResponse extends Response
+```
+
 Describes the heart rate sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** HeartRateResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

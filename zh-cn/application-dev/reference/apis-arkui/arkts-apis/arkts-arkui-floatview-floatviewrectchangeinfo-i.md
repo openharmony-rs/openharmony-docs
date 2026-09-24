@@ -1,5 +1,9 @@
 # FloatViewRectChangeInfo
 
+```TypeScript
+interface FloatViewRectChangeInfo
+```
+
 标准悬浮窗矩形区域变化信息。
 
 **起始版本：** 26.0.0

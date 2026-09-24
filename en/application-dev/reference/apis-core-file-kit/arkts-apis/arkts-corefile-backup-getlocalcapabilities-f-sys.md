@@ -44,30 +44,6 @@ Obtain a Json file that describes local capabilities.
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo, backup } from '@kit.CoreFileKit';
 
-try {
-  backup.getLocalCapabilities((err: BusinessError, fileData: backup.FileData) => {
-    if (err) {
-      console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('getLocalCapabilities success');
-    console.info('fileData info:' + fileData.fd);
-    fileIo.closeSync(fileData.fd);
-  });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-```TypeScript
-The capability file can be obtained by using fileIo.stat of the [@ohos.file.fs](arkts-corefile-fileio-n.md) module. The following is an example of the capability file.
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo, backup } from '@kit.CoreFileKit';
-
 async function getLocalCapabilities() {
   try {
     let fileData = await backup.getLocalCapabilities();
@@ -81,31 +57,27 @@ async function getLocalCapabilities() {
 }
 ```
 
-```TypeScript
 The capability file can be obtained by using fileIo.stat of the [@ohos.file.fs](arkts-corefile-fileio-n.md) module. The following is an example of the capability file.
-```
 
 ```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo, backup } from '@kit.CoreFileKit';
-
-async function getLocalCapabilities() {
-  try {
-    let backupApps: backup.IncrementalBackupTime[] = [{
-      bundleName: "com.example.hiworld",
-      lastIncrementalTime: 1700107870 // Time of the last incremental backup.
-    }];
-    let fileData = await backup.getLocalCapabilities(backupApps);
-    console.info('getLocalCapabilities success');
-    console.info('fileData info:' + fileData.fd);
-    fileIo.closeSync(fileData.fd);
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
-  }
+{
+ "backupVersion" : "16.0",
+ "bundleInfos" :[{
+   "allToBackup" : true,
+   "extensionName" : "BackupExtensionAbility",
+   "name" : "com.example.hiworld",
+   "needToInstall" : false,
+   "spaceOccupied" : 0,
+   "versionCode" : 1000000,
+   "versionName" : "1.0.0"
+   }],
+ "deviceType" : "default",
+ "systemFullName" : "OpenHarmony-4.0.0.0"
 }
 ```
 
+
+<a id="getlocalcapabilities-1"></a>
 
 ## getLocalCapabilities
 
@@ -161,52 +133,27 @@ try {
 }
 ```
 
-```TypeScript
 The capability file can be obtained by using fileIo.stat of the [@ohos.file.fs](arkts-corefile-fileio-n.md) module. The following is an example of the capability file.
-```
 
 ```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo, backup } from '@kit.CoreFileKit';
-
-async function getLocalCapabilities() {
-  try {
-    let fileData = await backup.getLocalCapabilities();
-    console.info('getLocalCapabilities success');
-    console.info('fileData info:' + fileData.fd);
-    fileIo.closeSync(fileData.fd);
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
-  }
+{
+ "backupVersion" : "16.0",
+ "bundleInfos" :[{
+   "allToBackup" : true,
+   "extensionName" : "BackupExtensionAbility",
+   "name" : "com.example.hiworld",
+   "needToInstall" : false,
+   "spaceOccupied" : 0,
+   "versionCode" : 1000000,
+   "versionName" : "1.0.0"
+   }],
+ "deviceType" : "default",
+ "systemFullName" : "OpenHarmony-4.0.0.0"
 }
 ```
 
-```TypeScript
-The capability file can be obtained by using fileIo.stat of the [@ohos.file.fs](arkts-corefile-fileio-n.md) module. The following is an example of the capability file.
-```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo, backup } from '@kit.CoreFileKit';
-
-async function getLocalCapabilities() {
-  try {
-    let backupApps: backup.IncrementalBackupTime[] = [{
-      bundleName: "com.example.hiworld",
-      lastIncrementalTime: 1700107870 // Time of the last incremental backup.
-    }];
-    let fileData = await backup.getLocalCapabilities(backupApps);
-    console.info('getLocalCapabilities success');
-    console.info('fileData info:' + fileData.fd);
-    fileIo.closeSync(fileData.fd);
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
-  }
-}
-```
-
+<a id="getlocalcapabilities-2"></a>
 
 ## getLocalCapabilities
 
@@ -250,51 +197,6 @@ Obtain a json file that describes local capabilities.
 | 13900042 | Unknown error |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo, backup } from '@kit.CoreFileKit';
-
-try {
-  backup.getLocalCapabilities((err: BusinessError, fileData: backup.FileData) => {
-    if (err) {
-      console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('getLocalCapabilities success');
-    console.info('fileData info:' + fileData.fd);
-    fileIo.closeSync(fileData.fd);
-  });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-```TypeScript
-The capability file can be obtained by using fileIo.stat of the [@ohos.file.fs](arkts-corefile-fileio-n.md) module. The following is an example of the capability file.
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo, backup } from '@kit.CoreFileKit';
-
-async function getLocalCapabilities() {
-  try {
-    let fileData = await backup.getLocalCapabilities();
-    console.info('getLocalCapabilities success');
-    console.info('fileData info:' + fileData.fd);
-    fileIo.closeSync(fileData.fd);
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
-  }
-}
-```
-
-```TypeScript
-The capability file can be obtained by using fileIo.stat of the [@ohos.file.fs](arkts-corefile-fileio-n.md) module. The following is an example of the capability file.
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

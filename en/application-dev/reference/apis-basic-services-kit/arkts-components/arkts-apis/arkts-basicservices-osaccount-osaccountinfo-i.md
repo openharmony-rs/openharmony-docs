@@ -1,5 +1,9 @@
 # OsAccountInfo
 
+```TypeScript
+interface OsAccountInfo
+```
+
 Represents the OS account information.
 
 **Since:** 7

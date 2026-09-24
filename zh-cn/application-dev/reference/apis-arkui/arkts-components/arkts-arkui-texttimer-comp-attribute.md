@@ -1,10 +1,12 @@
 # TextTimer属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性。
+```TypeScript
+declare class TextTimerAttribute extends CommonMethod<TextTimerAttribute>
+```
 
-除支持[通用事件](arkts-arkui-commonmethod-c.md)外，还支持以下事件。
+除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
 
-**继承/实现关系：** TextTimerAttribute extends CommonMethod&lt;TextTimerAttribute&gt;
+**继承/实现关系：** TextTimerAttribute extends CommonMethod<TextTimerAttribute>
 
 **起始版本：** 8
 
@@ -30,7 +32,7 @@ contentModifier(modifier: ContentModifier<TextTimerConfiguration>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[TextTimerConfiguration](arkts-arkui-texttimerconfiguration-i.md)&gt; | 是 | 在TextTimer组件上，定制内容区的方法。<br>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[TextTimerConfiguration](arkts-arkui-texttimer-comp-texttimerconfiguration-i.md)&gt; | 是 | 在TextTimer组件上，定制内容区的方法。<br>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## fontColor
 
@@ -96,7 +98,7 @@ fontSize(value: Length)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 字体大小。<br>默认值：16fp <br>value为Length中的number类型时，单位为fp。value为Length中的string类型时，若设置值为非数字开头，则按0fp处理；若设置值为数字开头，当数字后内容包含除像素单位外的字符（如字母、特殊符号等）时，取值字符串开头的数字部分，单位为fp。<br>例如：设置值为"abc"时取值为0fp，设置值为"10vp"时取值为10vp，设置值为"10vp11abc"时取值为10fp。不支持设置百分比字符串。 |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 字体大小。<br>默认值：16fp <br>value为Length中的number类型时，单位为fp。value为Length中的string类型时，若设置值为非数字开头，则按0fp处理；若设置值为数字开头，当数字后内容包含除[像素单位](arkts-arkui-common-comp.md#common)外的字符（如字母、特殊符号等）时，取值字符串开头的数字部分，单位为fp。<br>例如：设置值为"abc"时取值为0fp，设置值为"10vp"时取值为10vp，设置值为"10vp11abc"时取值为10fp。不支持设置百分比字符串。 |
 
 ## fontStyle
 
@@ -186,7 +188,7 @@ onTimer(event: (utc: number, elapsedTime: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (utc: number, elapsedTime: number) =&gt; void | 是 | utc: Linux timestamp, which is the amount of time that has elapsed since January 1, 197 0, in the minimum unit of the format.<br>elapsedTime: Elapsed time of the timer, in the minimum unit of the format. |
+| event | (utc: number, elapsedTime: number) =&gt; void | 是 | utc: Linux timestamp, which is the amount of time that has elapsed since January 1, 1970, in the minimum unit of the format.<br>elapsedTime: Elapsed time of the timer, in the minimum unit of the format. |
 
 ## textShadow
 
@@ -198,7 +200,7 @@ textShadow(value: ShadowOptions | Array<ShadowOptions>)
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -212,4 +214,4 @@ textShadow(value: ShadowOptions | Array<ShadowOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ShadowOptions](arkts-arkui-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-shadowoptions-i.md)&gt; | 是 | 文字阴影效果的参数，包括颜色、模糊半径、偏移量。 |
+| value | [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | 文字阴影效果的参数，包括颜色、模糊半径、偏移量。 |

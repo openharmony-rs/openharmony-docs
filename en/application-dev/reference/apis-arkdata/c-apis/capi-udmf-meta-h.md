@@ -2,7 +2,7 @@
 
 ## Overview
 
-Declaration the uniform data type information.
+Declares the uniform data type information.
 
 **Library**: libudmf.so
 
@@ -18,141 +18,141 @@ Declaration the uniform data type information.
 
 | Name | Description |
 | -- | -- |
-| UDMF_META_ENTITY "general.entity" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OBJECT "general.object" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_COMPOSITE_OBJECT "general.composite-object" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_TEXT "general.text" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_PLAIN_TEXT "general.plain-text" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_HTML "general.html" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_HYPERLINK "general.hyperlink" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_XML "general.xml" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_SOURCE_CODE "general.source-code" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_SCRIPT "general.script" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_SHELL_SCRIPT "general.shell-script" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_CSH_SCRIPT "general.csh-script" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_PERL_SCRIPT "general.perl-script" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_PHP_SCRIPT "general.php-script" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_PYTHON_SCRIPT "general.python-script" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_RUBY_SCRIPT "general.ruby-script" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_TYPE_SCRIPT "general.type-script" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_JAVA_SCRIPT "general.java-script" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_C_HEADER "general.c-header" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_C_SOURCE "general.c-source" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_C_PLUS_PLUS_HEADER "general.c-plus-plus-header" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_C_PLUS_PLUS_SOURCE "general.c-plus-plus-source" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_JAVA_SOURCE "general.java-source" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_EBOOK "general.ebook" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_EPUB "general.epub" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_AZW "com.amazon.azw" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_AZW3 "com.amazon.azw3" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_KFX "com.amazon.kfx" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_MOBI "com.amazon.mobi" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_MEDIA "general.media" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_IMAGE "general.image" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_JPEG "general.jpeg" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_PNG "general.png" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_RAW_IMAGE "general.raw-image" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_TIFF "general.tiff" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_BMP "com.microsoft.bmp" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_ICO "com.microsoft.ico" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_PHOTOSHOP_IMAGE "com.adobe.photoshop-image" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_AI_IMAGE "com.adobe.illustrator.ai-image" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_WORD_DOC "com.microsoft.word.doc" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_EXCEL "com.microsoft.excel.xls" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_PPT "com.microsoft.powerpoint.ppt" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_PDF "com.adobe.pdf" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_POSTSCRIPT "com.adobe.postscript" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_ENCAPSULATED_POSTSCRIPT "com.adobe.encapsulated-postscript" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_VIDEO "general.video" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_AVI "general.avi" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_MPEG "general.mpeg" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_MPEG4 "general.mpeg-4" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_VIDEO_3GPP "general.3gpp" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_VIDEO_3GPP2 "general.3gpp2" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_WINDOWS_MEDIA_WM "com.microsoft.windows-media-wm" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_WINDOWS_MEDIA_WMV "com.microsoft.windows-media-wmv" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_WINDOWS_MEDIA_WMP "com.microsoft.windows-media-wmp" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_AUDIO "general.audio" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_AAC "general.aac" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_AIFF "general.aiff" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_ALAC "general.alac" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_FLAC "general.flac" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_MP3 "general.mp3" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OGG "general.ogg" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_PCM "general.pcm" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_WINDOWS_MEDIA_WMA "com.microsoft.windows-media-wma" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_WAVEFORM_AUDIO "com.microsoft.waveform-audio" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_WINDOWS_MEDIA_WMX "com.microsoft.windows-media-wmx" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_WINDOWS_MEDIA_WVX "com.microsoft.windows-media-wvx" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_WINDOWS_MEDIA_WAX "com.microsoft.windows-media-wax" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_GENERAL_FILE "general.file" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_DIRECTORY "general.directory" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_FOLDER "general.folder" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_SYMLINK "general.symlink" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_ARCHIVE "general.archive" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_BZ2_ARCHIVE "general.bz2-archive" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_DISK_IMAGE "general.disk-image" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_TAR_ARCHIVE "general.tar-archive" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_ZIP_ARCHIVE "general.zip-archive" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_JAVA_ARCHIVE "com.sun.java-archive" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_GNU_TAR_ARCHIVE "org.gnu.gnu-tar-archive" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_GNU_ZIP_ARCHIVE "org.gnu.gnu-zip-archive" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_GNU_ZIP_TAR_ARCHIVE "org.gnu.gnu-zip-tar-archive" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_CALENDAR "general.calendar" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_CONTACT "general.contact" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_DATABASE "general.database" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_MESSAGE "general.message" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_VCARD "general.vcard" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_NAVIGATION "general.navigation" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_LOCATION "general.location" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENHARMONY_FORM "openharmony.form" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENHARMONY_APP_ITEM "openharmony.app-item" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENHARMONY_PIXEL_MAP "openharmony.pixel-map" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENHARMONY_ATOMIC_SERVICE "openharmony.atomic-service" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENHARMONY_PACKAGE "openharmony.package" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENHARMONY_HAP "openharmony.hap" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_SMIL "com.real.smil" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_MARKDOWN "general.markdown" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_FAX "general.fax" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_JFX_FAX "com.j2.jfx-fax" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_EFX_FAX "com.js.efx-fax" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_XBITMAP_IMAGE "general.xbitmap-image" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_TGA_IMAGE "com.truevision.tga-image" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_SGI_IMAGE "com.sgi.sgi-image" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENEXR_IMAGE "com.ilm.openexr-image" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_FLASHPIX_IMAGE "com.kodak.flashpix.image" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_REALMEDIA "com.real.realmedia" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_AU_AUDIO "general.au-audio" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_AIFC_AUDIO "general.aifc-audio" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_SD2_AUDIO "com.digidesign.sd2-audio" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_REALAUDIO "com.real.realaudio" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENXML "org.openxmlformats.openxml" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_WORDPROCESSINGML_DOCUMENT "org.openxmlformats.wordprocessingml.document" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_SPREADSHEETML_SHEET "org.openxmlformats.spreadsheetml.sheet" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_PRESENTATIONML_PRESENTATION "org.openxmlformats.presentationml.presentation" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENDOCUMENT "org.oasis.opendocument" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENDOCUMENT_TEXT "org.oasis.opendocument.text" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENDOCUMENT_SPREADSHEET "org.oasis.opendocument.spreadsheet" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENDOCUMENT_PRESENTATION "org.oasis.opendocument.presentation" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENDOCUMENT_GRAPHICS "org.oasis.opendocument.graphics" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENDOCUMENT_FORMULA "org.oasis.opendocument.formula" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_STUFFIT_ARCHIVE "com.allume.stuffit-archive" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_VCS "general.vcs" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_ICS "general.ics" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_EXECUTABLE "general.executable" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_PORTABLE_EXECUTABLE "com.microsoft.portable-executable" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_SUN_JAVA_CLASS "com.sun.java-class" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_FONT "general.font" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_TRUETYPE_FONT "general.truetype-font" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_TRUETYPE_COLLECTION_FONT "general.truetype-collection-font" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENTYPE_FONT "general.opentype-font" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_POSTSCRIPT_FONT "com.adobe.postscript-font" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_POSTSCRIPT_PFB_FONT "com.adobe.postscript-pfb-font" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_POSTSCRIPT_PFA_FONT "com.adobe.postscript-pfa-font" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENHARMONY_HDOC "openharmony.hdoc" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENHARMONY_HINOTE "openharmony.hinote" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENHARMONY_STYLED_STRING "openharmony.styled-string" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_OPENHARMONY_WANT "openharmony.want" | A specific type of uniform data type.<br>**Since**: 12 |
-| UDMF_META_GENERAL_FILE_URI "general.file-uri" | A specific type of uniform data type.<br>**Since**: 13 |
-| UDMF_METE_GENERAL_CONTENT_FORM "general.content-form" | A specific type of uniform data type.<br>**Since**: 14 |
+| UDMF_META_ENTITY "general.entity" | Generic type that represents all physical storage types. It is used to define physical properties of a type. This type is uncategorized.<br>**Since**: 12 |
+| UDMF_META_OBJECT "general.object" | Generic type that represents all logical content types. It is used to define physical properties of a type. This type is uncategorized.<br>**Since**: 12 |
+| UDMF_META_COMPOSITE_OBJECT "general.composite-object" | Generic composite content type. For example, a PDF file that contains text and image. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_TEXT "general.text" | Generic text type. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_PLAIN_TEXT "general.plain-text" | Text without specific encoding or identifier. This type belongs to TEXT.<br>**Since**: 12 |
+| UDMF_META_HTML "general.html" | HTML. This type belongs to TEXT.<br>**Since**: 12 |
+| UDMF_META_HYPERLINK "general.hyperlink" | Hyperlink. This type belongs to TEXT.<br>**Since**: 12 |
+| UDMF_META_XML "general.xml" | XML. This type belongs to TEXT.<br>**Since**: 12 |
+| UDMF_META_SOURCE_CODE "general.source-code" | Generic source code type. This type belongs to PLAIN_TEXT.<br>**Since**: 12 |
+| UDMF_META_SCRIPT "general.script" | Source code in any scripting language. This type belongs to SOURCE_CODE.<br>**Since**: 12 |
+| UDMF_META_SHELL_SCRIPT "general.shell-script" | Shell script. This type belongs to SCRIPT.<br>**Since**: 12 |
+| UDMF_META_CSH_SCRIPT "general.csh-script" | C shell script. This type belongs to SHELL_SCRIPT.<br>**Since**: 12 |
+| UDMF_META_PERL_SCRIPT "general.perl-script" | Perl script. This type belongs to SHELL_SCRIPT.<br>**Since**: 12 |
+| UDMF_META_PHP_SCRIPT "general.php-script" | PHP script. This type belongs to SHELL_SCRIPT.<br>**Since**: 12 |
+| UDMF_META_PYTHON_SCRIPT "general.python-script" | Python script. This type belongs to SHELL_SCRIPT.<br>**Since**: 12 |
+| UDMF_META_RUBY_SCRIPT "general.ruby-script" | Ruby script. This type belongs to SHELL_SCRIPT.<br>**Since**: 12 |
+| UDMF_META_TYPE_SCRIPT "general.type-script" | TypeScript source code. This type belongs to SCRIPT.<br>**Since**: 12 |
+| UDMF_META_JAVA_SCRIPT "general.java-script" | JavaScript source code. This type belongs to SCRIPT.<br>**Since**: 12 |
+| UDMF_META_C_HEADER "general.c-header" | Header file in C. This type belongs to SOURCE_CODE.<br>**Since**: 12 |
+| UDMF_META_C_SOURCE "general.c-source" | Source code in C. This type belongs to SOURCE_CODE.<br>**Since**: 12 |
+| UDMF_META_C_PLUS_PLUS_HEADER "general.c-plus-plus-header" | Header file in C++. This type belongs to SOURCE_CODE.<br>**Since**: 12 |
+| UDMF_META_C_PLUS_PLUS_SOURCE "general.c-plus-plus-source" | Source code in C++. This type belongs to SOURCE_CODE.<br>**Since**: 12 |
+| UDMF_META_JAVA_SOURCE "general.java-source" | Source code in Java. This type belongs to SOURCE_CODE.<br>**Since**: 12 |
+| UDMF_META_EBOOK "general.ebook" | Generic eBook file format type. This type belongs to COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_EPUB "general.epub" | Electronic publication (EPUB). This type belongs to EBOOK.<br>**Since**: 12 |
+| UDMF_META_AZW "com.amazon.azw" | AZW. This type belongs to EBOOK.<br>**Since**: 12 |
+| UDMF_META_AZW3 "com.amazon.azw3" | AZW3. This type belongs to EBOOK.<br>**Since**: 12 |
+| UDMF_META_KFX "com.amazon.kfx" | KFX. This type belongs to EBOOK.<br>**Since**: 12 |
+| UDMF_META_MOBI "com.amazon.mobi" | MOBI. This type belongs to EBOOK.<br>**Since**: 12 |
+| UDMF_META_MEDIA "general.media" | Generic media type. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_IMAGE "general.image" | Image. This type belongs to MEDIA.<br>**Since**: 12 |
+| UDMF_META_JPEG "general.jpeg" | JPEG. This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_PNG "general.png" | PNG. This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_RAW_IMAGE "general.raw-image" | Raw image. This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_TIFF "general.tiff" | TIFF. This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_BMP "com.microsoft.bmp" | BMP. This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_ICO "com.microsoft.ico" | Windows icon. This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_PHOTOSHOP_IMAGE "com.adobe.photoshop-image" | Adobe Photoshop image. This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_AI_IMAGE "com.adobe.illustrator.ai-image" | Adobe Illustrator image (.ai). This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_WORD_DOC "com.microsoft.word.doc" | Microsoft Word. This type belongs to COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_EXCEL "com.microsoft.excel.xls" | Microsoft Excel. This type belongs to COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_PPT "com.microsoft.powerpoint.ppt" | Microsoft PowerPoint presentation format. This type belongs to COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_PDF "com.adobe.pdf" | PDF. This type belongs to COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_POSTSCRIPT "com.adobe.postscript" | PostScript. This type belongs to COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_ENCAPSULATED_POSTSCRIPT "com.adobe.encapsulated-postscript" | Encapsulated PostScript. This type belongs to POSTSCRIPT.<br>**Since**: 12 |
+| UDMF_META_VIDEO "general.video" | Base video type. This type belongs to MEDIA.<br>**Since**: 12 |
+| UDMF_META_AVI "general.avi" | AVI. This type belongs to VIDEO.<br>**Since**: 12 |
+| UDMF_META_MPEG "general.mpeg" | MPEG-1 or MPEG-2. This type belongs to VIDEO.<br>**Since**: 12 |
+| UDMF_META_MPEG4 "general.mpeg-4" | MPEG-4. This type belongs to VIDEO.<br>**Since**: 12 |
+| UDMF_META_VIDEO_3GPP "general.3gpp" | 3GP (3GPP file format). This type belongs to VIDEO.<br>**Since**: 12 |
+| UDMF_META_VIDEO_3GPP2 "general.3gpp2" | 3G2 (3GPP2 file format). This type belongs to VIDEO.<br>**Since**: 12 |
+| UDMF_META_WINDOWS_MEDIA_WM "com.microsoft.windows-media-wm" | Windows WM format. This type belongs to VIDEO.<br>**Since**: 12 |
+| UDMF_META_WINDOWS_MEDIA_WMV "com.microsoft.windows-media-wmv" | Windows WMV format. This type belongs to VIDEO.<br>**Since**: 12 |
+| UDMF_META_WINDOWS_MEDIA_WMP "com.microsoft.windows-media-wmp" | Windows WMP format. This type belongs to VIDEO.<br>**Since**: 12 |
+| UDMF_META_AUDIO "general.audio" | Generic audio type. This type belongs to MEDIA.<br>**Since**: 12 |
+| UDMF_META_AAC "general.aac" | AAC. This type belongs to AUDIO.<br>**Since**: 12 |
+| UDMF_META_AIFF "general.aiff" | AIFF. This type belongs to AUDIO.<br>**Since**: 12 |
+| UDMF_META_ALAC "general.alac" | ALAC. This type belongs to AUDIO.<br>**Since**: 12 |
+| UDMF_META_FLAC "general.flac" | FLAC. This type belongs to AUDIO.<br>**Since**: 12 |
+| UDMF_META_MP3 "general.mp3" | MP3. This type belongs to AUDIO.<br>**Since**: 12 |
+| UDMF_META_OGG "general.ogg" | OGG. This type belongs to AUDIO.<br>**Since**: 12 |
+| UDMF_META_PCM "general.pcm" | PCM. This type belongs to AUDIO.<br>**Since**: 12 |
+| UDMF_META_WINDOWS_MEDIA_WMA "com.microsoft.windows-media-wma" | Windows WMA format. This type belongs to AUDIO.<br>**Since**: 12 |
+| UDMF_META_WAVEFORM_AUDIO "com.microsoft.waveform-audio" | Windows Waveform. This type belongs to AUDIO.<br>**Since**: 12 |
+| UDMF_META_WINDOWS_MEDIA_WMX "com.microsoft.windows-media-wmx" | Windows WMX format. This type belongs to VIDEO.<br>**Since**: 12 |
+| UDMF_META_WINDOWS_MEDIA_WVX "com.microsoft.windows-media-wvx" | Windows WVX format. This type belongs to VIDEO.<br>**Since**: 12 |
+| UDMF_META_WINDOWS_MEDIA_WAX "com.microsoft.windows-media-wax" | Windows WAX format. This type belongs to AUDIO.<br>**Since**: 12 |
+| UDMF_META_GENERAL_FILE "general.file" | Generic file type. This type belongs to ENTITY.<br>**Since**: 12 |
+| UDMF_META_DIRECTORY "general.directory" | Generic directory type. This type belongs to ENTITY.<br>**Since**: 12 |
+| UDMF_META_FOLDER "general.folder" | Generic folder type. This type belongs to DIRECTORY.<br>**Since**: 12 |
+| UDMF_META_SYMLINK "general.symlink" | Generic symbolic type. This type belongs to ENTITY.<br>**Since**: 12 |
+| UDMF_META_ARCHIVE "general.archive" | Generic archive file type. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_BZ2_ARCHIVE "general.bz2-archive" | BZ2. This type belongs to ARCHIVE.<br>**Since**: 12 |
+| UDMF_META_DISK_IMAGE "general.disk-image" | Generic type of any file that can be mounted as a volume. This type belongs to ARCHIVE.<br>**Since**: 12 |
+| UDMF_META_TAR_ARCHIVE "general.tar-archive" | TAR. This type belongs to ARCHIVE.<br>**Since**: 12 |
+| UDMF_META_ZIP_ARCHIVE "general.zip-archive" | ZIP. This type belongs to ARCHIVE.<br>**Since**: 12 |
+| UDMF_META_JAVA_ARCHIVE "com.sun.java-archive" | JAR (Java archive). This type belongs to ARCHIVE and EXECUTABLE.<br>**Since**: 12 |
+| UDMF_META_GNU_TAR_ARCHIVE "org.gnu.gnu-tar-archive" | GUN archive. This type belongs to ARCHIVE.<br>**Since**: 12 |
+| UDMF_META_GNU_ZIP_ARCHIVE "org.gnu.gnu-zip-archive" | GZIP archive. This type belongs to ARCHIVE.<br>**Since**: 12 |
+| UDMF_META_GNU_ZIP_TAR_ARCHIVE "org.gnu.gnu-zip-tar-archive" | GZIP TAR. This type belongs to ARCHIVE.<br>**Since**: 12 |
+| UDMF_META_CALENDAR "general.calendar" | Generic calendar type. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_CONTACT "general.contact" | Generic contact type. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_DATABASE "general.database" | Generic database file type. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_MESSAGE "general.message" | Generic message type. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_VCARD "general.vcard" | Generic electronic business card type. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_NAVIGATION "general.navigation" | Generic navigation data type. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_LOCATION "general.location" | Location data. This type belongs to NAVIGATION.<br>**Since**: 12 |
+| UDMF_META_OPENHARMONY_FORM "openharmony.form" | Widget defined for the system. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_OPENHARMONY_APP_ITEM "openharmony.app-item" | Home screen icon defined for the system. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_OPENHARMONY_PIXEL_MAP "openharmony.pixel-map" | Pixel map defined for the system. This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_OPENHARMONY_ATOMIC_SERVICE "openharmony.atomic-service" | Atomic service type defined for the system. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_OPENHARMONY_PACKAGE "openharmony.package" | Package (compressed folder) defined for the system. This type belongs to DIRECTORY.<br>**Since**: 12 |
+| UDMF_META_OPENHARMONY_HAP "openharmony.hap" | Ability package defined for the system. This type belongs to OPENHARMONY_PACKAGE.<br>**Since**: 12 |
+| UDMF_META_SMIL "com.real.smil" | Synchronized Multimedia Integration Language (SMIL). This type belongs to XML.<br>**Since**: 12 |
+| UDMF_META_MARKDOWN "general.markdown" | Markdown. This type belongs to PLAIN_TEXT.<br>**Since**: 12 |
+| UDMF_META_FAX "general.fax" | Generic type of the fax. This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_JFX_FAX "com.j2.jfx-fax" | J2 jConnect fax file format. This type belongs to FAX.<br>**Since**: 12 |
+| UDMF_META_EFX_FAX "com.js.efx-fax" | EFX file format. This type belongs to FAX.<br>**Since**: 12 |
+| UDMF_META_XBITMAP_IMAGE "general.xbitmap-image" | X BitMAP (XBM) used in the X Window system (X11). This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_TGA_IMAGE "com.truevision.tga-image" | Tagged Graphics (TGA) format. This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_SGI_IMAGE "com.sgi.sgi-image" | Silicon Graphics image (SGI) format. This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_OPENEXR_IMAGE "com.ilm.openexr-image" | OpenXR image format. This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_FLASHPIX_IMAGE "com.kodak.flashpix.image" | FlashPix image format. This type belongs to IMAGE.<br>**Since**: 12 |
+| UDMF_META_REALMEDIA "com.real.realmedia" | RealMedia format. This type belongs to VIDEO.<br>**Since**: 12 |
+| UDMF_META_AU_AUDIO "general.au-audio" | AU format. This type belongs to AUDIO.<br>**Since**: 12 |
+| UDMF_META_AIFC_AUDIO "general.aifc-audio" | AIFC. This type belongs to AUDIO.<br>**Since**: 12 |
+| UDMF_META_SD2_AUDIO "com.digidesign.sd2-audio" | Digidesign Sound Designer II (SDII). This type belongs to AUDIO.<br>**Since**: 12 |
+| UDMF_META_REALAUDIO "com.real.realaudio" | RealAudio. This type belongs to AUDIO.<br>**Since**: 12 |
+| UDMF_META_OPENXML "org.openxmlformats.openxml" | OpenXML base type. This type belongs to ARCHIVE.<br>**Since**: 12 |
+| UDMF_META_WORDPROCESSINGML_DOCUMENT "org.openxmlformats.wordprocessingml.document" | WordProcessingML format. This type belongs to OPENXML and COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_SPREADSHEETML_SHEET "org.openxmlformats.spreadsheetml.sheet" | SpreadsheetML format. This type belongs to OPENXML and COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_PRESENTATIONML_PRESENTATION "org.openxmlformats.presentationml.presentation" | PresentationML format. This type belongs to OPENXML and COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_OPENDOCUMENT "org.oasis.opendocument" | OpenDocument format for Office applications. This type belongs to ARCHIVE.<br>**Since**: 12 |
+| UDMF_META_OPENDOCUMENT_TEXT "org.oasis.opendocument.text" | OpenDocument format for word processing (text) documents. This type belongs to OPENDOCUMENT and COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_OPENDOCUMENT_SPREADSHEET "org.oasis.opendocument.spreadsheet" | OpenDocument format for spreadsheets. This type belongs to OPENDOCUMENT and COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_OPENDOCUMENT_PRESENTATION "org.oasis.opendocument.presentation" | OpenDocument format for presentations. This type belongs to OPENDOCUMENT and COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_OPENDOCUMENT_GRAPHICS "org.oasis.opendocument.graphics" | OpenDocument format for graphics. This type belongs to OPENDOCUMENT and COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_OPENDOCUMENT_FORMULA "org.oasis.opendocument.formula" | OpenDocument format for formula. This type belongs to OPENDOCUMENT.<br>**Since**: 12 |
+| UDMF_META_STUFFIT_ARCHIVE "com.allume.stuffit-archive" | Stuffit compression format (stuffit archive). This type belongs to ARCHIVE.<br>**Since**: 12 |
+| UDMF_META_VCS "general.vcs" | VCalendar (VCS) format. This type belongs to CALENDAR and TEXT.<br>**Since**: 12 |
+| UDMF_META_ICS "general.ics" | Internet Calendaring and Scheduling (ICS) format. This type belongs to CALENDAR and TEXT.<br>**Since**: 12 |
+| UDMF_META_EXECUTABLE "general.executable" | Generic type of all executable files. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_PORTABLE_EXECUTABLE "com.microsoft.portable-executable" | Microsoft Windows portable executable format. This type belongs to EXECUTABLE.<br>**Since**: 12 |
+| UDMF_META_SUN_JAVA_CLASS "com.sun.java-class" | Java class file format. This type belongs to EXECUTABLE.<br>**Since**: 12 |
+| UDMF_META_FONT "general.font" | Basic type of fonts. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_TRUETYPE_FONT "general.truetype-font" | TrueType font format. This type belongs to FONT.<br>**Since**: 12 |
+| UDMF_META_TRUETYPE_COLLECTION_FONT "general.truetype-collection-font" | TrueType Collection font format. This type belongs to FONT.<br>**Since**: 12 |
+| UDMF_META_OPENTYPE_FONT "general.opentype-font" | OpenType font format. This type belongs to FONT.<br>**Since**: 12 |
+| UDMF_META_POSTSCRIPT_FONT "com.adobe.postscript-font" | PostScript font format. This type belongs to FONT.<br>**Since**: 12 |
+| UDMF_META_POSTSCRIPT_PFB_FONT "com.adobe.postscript-pfb-font" | PostScript Font Binary font format. This type belongs to FONT.<br>**Since**: 12 |
+| UDMF_META_POSTSCRIPT_PFA_FONT "com.adobe.postscript-pfa-font" | Adobe Type 1 font format. This type belongs to FONT.<br>**Since**: 12 |
+| UDMF_META_OPENHARMONY_HDOC "openharmony.hdoc" | Memo format defined for the system. This type belongs to COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_OPENHARMONY_HINOTE "openharmony.hinote" | Note format defined for the system. This type belongs to COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_OPENHARMONY_STYLED_STRING "openharmony.styled-string" | Style string type defined for the system. This type belongs to COMPOSITE_OBJECT.<br>**Since**: 12 |
+| UDMF_META_OPENHARMONY_WANT "openharmony.want" | Want defined for the system. This type belongs to OBJECT.<br>**Since**: 12 |
+| UDMF_META_GENERAL_FILE_URI "general.file-uri" | File address type. This type belongs to TEXT.<br>**Since**: 13 |
+| UDMF_METE_GENERAL_CONTENT_FORM "general.content-form" | Content card type. This type belongs to OBJECT.<br>**Since**: 14 |
 

@@ -1,5 +1,9 @@
 # ServerResponse
 
+```TypeScript
+interface ServerResponse
+```
+
 Defines a response to a client request.
 
 **Since:** 26.0.0

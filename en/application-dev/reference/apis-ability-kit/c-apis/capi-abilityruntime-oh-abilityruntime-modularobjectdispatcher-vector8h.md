@@ -8,6 +8,8 @@ typedef struct OH_AbilityRuntime_ModularObjectDispatcher_Vector* OH_AbilityRunti
 
 Defines a pointer to OH_AbilityRuntime_ModularObjectDispatcher_Vector.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

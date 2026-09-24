@@ -1,5 +1,9 @@
 # CommonState
 
+```TypeScript
+enum CommonState
+```
+
 自定义弹窗的状态。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # ModuleAbilityInfo（系统接口）
 
+```TypeScript
+export interface ModuleAbilityInfo
+```
+
 module包含的ability组件信息。
 
 **起始版本：** 9

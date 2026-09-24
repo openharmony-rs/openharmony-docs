@@ -41,8 +41,8 @@ function getKeepAliveApps(admin: Want, accountId: number): Array<string>
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.The application does not have the permission required to call the API |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
 
 **示例**
 
@@ -64,18 +64,8 @@ try {
 }
 ```
 
-```TypeScript
-import { applicationManager } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  let result: Array<string> = applicationManager.getKeepAliveApps(null, 100);
-  console.info('Succeeded in getting keep alive apps.');
-} catch (err) {
-  console.error(`Failed to get keep alive apps. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="getkeepaliveapps-1"></a>
 
 ## getKeepAliveApps
 
@@ -112,9 +102,19 @@ function getKeepAliveApps(admin: Want | null, accountId: number): Array<string>
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.The application does not have the permission required to call the API |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
 
 **示例**
 
-参见 getKeepAliveApps
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: Array<string> = applicationManager.getKeepAliveApps(null, 100);
+  console.info('Succeeded in getting keep alive apps.');
+} catch (err) {
+  console.error(`Failed to get keep alive apps. Code is ${err.code}, message is ${err.message}`);
+}
+```

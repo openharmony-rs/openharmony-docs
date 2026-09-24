@@ -1,5 +1,9 @@
 # ConnectionReason
 
+```TypeScript
+enum ConnectionReason
+```
+
 Enum for the connection reason.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # IntentEntity
 
+```TypeScript
+interface IntentEntity
+```
+
 Defines the struct of an intent entity. It represents key information objects involved during intent execution, including intent parameters and execution results.
 
 You can define intent entities by inheriting this class. The child class must be decorated with [@InsightIntentEntity](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity).

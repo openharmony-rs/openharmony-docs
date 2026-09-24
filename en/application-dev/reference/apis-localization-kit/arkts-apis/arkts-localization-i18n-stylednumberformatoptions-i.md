@@ -1,5 +1,9 @@
 # StyledNumberFormatOptions
 
+```TypeScript
+export interface StyledNumberFormatOptions
+```
+
 Represents optional configuration items for the **NumberFormat** object.
 
 **Since:** 18

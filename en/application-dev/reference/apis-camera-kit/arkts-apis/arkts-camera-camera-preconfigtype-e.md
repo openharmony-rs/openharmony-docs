@@ -1,5 +1,9 @@
 # PreconfigType
 
+```TypeScript
+enum PreconfigType
+```
+
 Enumerates the preconfigured resolution types.
 
 **Since:** 12

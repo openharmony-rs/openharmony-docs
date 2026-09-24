@@ -1,5 +1,9 @@
 # PixelMapParams
 
+```TypeScript
+interface PixelMapParams
+```
+
 Defines the format parameters of the video thumbnail to be obtained.
 
 **Since:** 12

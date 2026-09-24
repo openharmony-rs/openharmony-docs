@@ -14,7 +14,7 @@ function updateSpatialActionZone(zone: number): void
 
 Updates the voice zone when the voice subscribes to the spatial point engine capability.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.vehicle.MMA_SPATIALACTION
 

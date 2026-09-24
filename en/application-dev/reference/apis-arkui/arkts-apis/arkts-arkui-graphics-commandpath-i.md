@@ -1,5 +1,9 @@
 # CommandPath
 
+```TypeScript
+export interface CommandPath
+```
+
 Describes the command for drawing a path.
 
 **Since:** 12
@@ -12,7 +16,7 @@ Describes the command for drawing a path.
 commands: string
 ```
 
-Commands for drawing a path. For details about how to convert pixel units, see Pixel Units.
+Commands for drawing a path. For details about how to convert pixel units, see [Pixel Units](../arkts-components/arkts-arkui-common-comp.md#common).
 
 Unit: px
 

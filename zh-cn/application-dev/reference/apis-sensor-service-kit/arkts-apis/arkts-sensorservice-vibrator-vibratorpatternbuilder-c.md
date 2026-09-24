@@ -1,5 +1,9 @@
 # VibratorPatternBuilder
 
+```TypeScript
+class VibratorPatternBuilder
+```
+
 提供添加长振、短振事件和生成VibratorPattern对象的方法。使用流程：先通过[addContinuousEvent](#addcontinuousevent)或[addTransientEvent](#addtransientevent)添加振动事件，再通过[build](#build)方法生成VibratorPattern对象，最后将该对象作为[VibrateFromPattern](arkts-sensorservice-vibrator-vibratefrompattern-i.md)的pattern参数传入[vibrator.startVibration](arkts-sensorservice-vibrator-startvibration-f.md)接口触发振动。当开发者需要通过灵活组合振动事件（长振和短振）构建自定义振动序列时使用此接口。适用于需要动态排列振动事件的交互反馈场景（如表情包拟真效果、游戏场景反馈），相比VibrateFromFile以文件描述符方式传递振动事件，VibratorPatternBuilder以振动事件数组形式传递，支持更灵活的振动事件排列组合。
 
 **起始版本：** 18
@@ -42,7 +46,7 @@ addContinuousEvent(time: number, duration: number, options?: ContinuousParam): V
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -109,7 +113,7 @@ addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilde
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 

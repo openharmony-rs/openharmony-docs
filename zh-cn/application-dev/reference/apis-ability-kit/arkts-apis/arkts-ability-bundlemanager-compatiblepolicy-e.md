@@ -1,5 +1,9 @@
 # CompatiblePolicy
 
+```TypeScript
+export enum CompatiblePolicy
+```
+
 标识动态共享库的版本兼容类型。
 
 **起始版本：** 10

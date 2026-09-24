@@ -48,31 +48,6 @@ Replaces the current page with another one in the application and destroys the c
 ```TypeScript
 import { router } from '@kit.ArkUI';
 
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class RouterParams {
-  data1: string;
-
-  constructor(str: string) {
-    this.data1 = str;
-  }
-}
-
-router.replaceUrl({
-  url: 'pages/detail',
-  params: new RouterParams('message')
-})
-  .then(() => {
-    console.info(`replaceUrl finish`);
-  })
-  .catch((err: BusinessError) => {
-    console.error(`replaceUrl failed. Code: ${err.code}, message: ${err.message}`);
-  })
-```
-
-```TypeScript
-import { router } from '@kit.ArkUI';
-
 class RouterParams {
   data1: string;
 
@@ -93,54 +68,8 @@ router.replaceUrl({
 })
 ```
 
-```TypeScript
-import { router } from '@kit.ArkUI';
 
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class RouterParams {
-  data1: string;
-
-  constructor(str: string) {
-    this.data1 = str;
-  }
-}
-
-router.replaceUrl({
-  url: 'pages/detail',
-  params: new RouterParams('message')
-}, router.RouterMode.Standard)
-  .then(() => {
-    console.info(`replaceUrl finish`);
-  })
-  .catch((err: BusinessError) => {
-    console.error(`replaceUrl failed. Code: ${err.code}, message: ${err.message}`);
-  })
-```
-
-```TypeScript
-import { router } from '@kit.ArkUI';
-
-class RouterParams {
-  data1: string;
-
-  constructor(str: string) {
-    this.data1 = str;
-  }
-}
-
-router.replaceUrl({
-  url: 'pages/detail',
-  params: new RouterParams('message')
-}, router.RouterMode.Standard, (err) => {
-  if (err) {
-    console.error(`replaceUrl failed. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('replaceUrl success');
-});
-```
-
+<a id="replaceurl-1"></a>
 
 ## replaceUrl
 
@@ -158,7 +87,7 @@ Replaces the current page with another one in the application and destroys the c
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions)
+**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)(options: router.RouterOptions)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -186,8 +115,33 @@ Replaces the current page with another one in the application and destroys the c
 
 **Examples**
 
-See [replaceUrl](#replaceurl)
+```TypeScript
+import { router } from '@kit.ArkUI';
 
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class RouterParams {
+  data1: string;
+
+  constructor(str: string) {
+    this.data1 = str;
+  }
+}
+
+router.replaceUrl({
+  url: 'pages/detail',
+  params: new RouterParams('message')
+})
+  .then(() => {
+    console.info(`replaceUrl finish`);
+  })
+  .catch((err: BusinessError) => {
+    console.error(`replaceUrl failed. Code: ${err.code}, message: ${err.message}`);
+  })
+```
+
+
+<a id="replaceurl-2"></a>
 
 ## replaceUrl
 
@@ -205,7 +159,7 @@ Replaces the current page with another one in the application and destroys the c
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-2)(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -229,8 +183,31 @@ Replaces the current page with another one in the application and destroys the c
 
 **Examples**
 
-See [replaceUrl](#replaceurl)
+```TypeScript
+import { router } from '@kit.ArkUI';
 
+class RouterParams {
+  data1: string;
+
+  constructor(str: string) {
+    this.data1 = str;
+  }
+}
+
+router.replaceUrl({
+  url: 'pages/detail',
+  params: new RouterParams('message')
+}, router.RouterMode.Standard, (err) => {
+  if (err) {
+    console.error(`replaceUrl failed. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('replaceUrl success');
+});
+```
+
+
+<a id="replaceurl-3"></a>
 
 ## replaceUrl
 
@@ -248,7 +225,7 @@ Replaces the current page with another one in the application and destroys the c
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions, mode: router.RouterMode)
+**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-3)(options: router.RouterOptions, mode: router.RouterMode)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -277,4 +254,27 @@ Replaces the current page with another one in the application and destroys the c
 
 **Examples**
 
-See [replaceUrl](#replaceurl)
+```TypeScript
+import { router } from '@kit.ArkUI';
+
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class RouterParams {
+  data1: string;
+
+  constructor(str: string) {
+    this.data1 = str;
+  }
+}
+
+router.replaceUrl({
+  url: 'pages/detail',
+  params: new RouterParams('message')
+}, router.RouterMode.Standard)
+  .then(() => {
+    console.info(`replaceUrl finish`);
+  })
+  .catch((err: BusinessError) => {
+    console.error(`replaceUrl failed. Code: ${err.code}, message: ${err.message}`);
+  })
+```

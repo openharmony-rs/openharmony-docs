@@ -1,5 +1,9 @@
 # ChangeNotification
 
+```TypeScript
+interface ChangeNotification
+```
+
 数据变更时通知的对象，包括插入的数据、更新的数据、删除的数据和设备ID。
 
 **起始版本：** 9

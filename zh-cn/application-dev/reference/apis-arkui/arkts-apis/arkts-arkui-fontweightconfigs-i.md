@@ -1,5 +1,9 @@
 # FontWeightConfigs
 
+```TypeScript
+declare interface FontWeightConfigs
+```
+
 字体粗细配置项。当传入该配置对象时（包括空对象{}），未显式设置的属性将使用默认值。当传入null或undefined时，不应用默认值，字体粗细行为与父组件文本保持一致。
 
 **起始版本：** 24

@@ -24,8 +24,8 @@ Adds the configuration information of the data processor. The configuration file
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| processorName | string | Yes | Name of a data processor. It can contain only letters, digits, underscores (_), and dollar signs (&#36;). It cannot start with a digit and cannot exceed 256 characters. |
-| configName | string | No | Name of the data processor configuration. The corresponding configuration can be loaded from the configuration file. The default value is **SDK_OCG**. It can contain only letters, digits, underscores (_), and dollar signs (&#36;). It cannot start with a digit and cannot exceed 256 characters. |
+| processorName | string | Yes | Name of a data processor. It can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters. |
+| configName | string | No | Name of the data processor configuration. The corresponding configuration can be loaded from the configuration file. The default value is **SDK_OCG**. It can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters. |
 
 **Return value:**
 

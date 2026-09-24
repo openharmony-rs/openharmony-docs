@@ -1,5 +1,9 @@
 # VibrateFromPattern
 
+```TypeScript
+interface VibrateFromPattern
+```
+
 Defines the custom vibration effect.
 
 **Since:** 18

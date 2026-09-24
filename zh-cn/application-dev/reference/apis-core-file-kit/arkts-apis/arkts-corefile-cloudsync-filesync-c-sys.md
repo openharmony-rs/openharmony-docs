@@ -1,5 +1,9 @@
 # FileSync
 
+```TypeScript
+class FileSync
+```
+
 云盘同步对象，用于支撑文件管理器应用完成云盘文件的端云同步流程。在使用前，需要先创建FileSync实例。
 
 **起始版本：** 12
@@ -11,6 +15,8 @@
 ```TypeScript
 import { cloudSync } from '@kit.CoreFileKit';
 ```
+
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -36,14 +42,10 @@ constructor(bundleName: string)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 **示例**
-
-```TypeScript
-let fileSync = new cloudSync.FileSync()
-```
 
 ```TypeScript
 let fileSync = new cloudSync.FileSync("com.ohos.demo")
@@ -83,8 +85,8 @@ getUploadList(uris: Array<string>): Promise<Array<UploadProgress>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | 13900010 | Try again. |
 | 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit. <br>3.The input parameter contains an invalid uri. |
 
@@ -134,8 +136,8 @@ pauseUpload(uri: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 14000002 | Invalid uri. |
@@ -187,8 +189,8 @@ registerUploadProgress(callback: Callback<UploadProgress>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | 13900010 | Try again. |
 | 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameter are left unspecified. <br>2.The number of instances registered at the same time exceeds the upper limit. |
 
@@ -240,8 +242,8 @@ resumeUpload(uri: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 14000002 | Invalid uri. |
@@ -287,8 +289,8 @@ unregisterUploadProgress(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | 13900010 | Try again. |
 
 **示例**

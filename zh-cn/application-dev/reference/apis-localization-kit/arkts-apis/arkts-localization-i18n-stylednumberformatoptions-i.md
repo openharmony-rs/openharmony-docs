@@ -1,5 +1,9 @@
 # StyledNumberFormatOptions
 
+```TypeScript
+export interface StyledNumberFormatOptions
+```
+
 创建富文本显示的数字格式化对象时的可选配置项。
 
 **起始版本：** 18

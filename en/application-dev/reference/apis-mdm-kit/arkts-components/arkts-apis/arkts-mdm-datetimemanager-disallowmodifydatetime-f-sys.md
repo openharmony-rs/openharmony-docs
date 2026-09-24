@@ -18,7 +18,7 @@ Disallows the device to modify the system time. This API uses an asynchronous ca
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_SET_DATETIME
 
@@ -67,24 +67,8 @@ dateTimeManager.disallowModifyDateTime(wantTemp, true, (err) => {
 })
 ```
 
-```TypeScript
-import { dateTimeManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-dateTimeManager.disallowModifyDateTime(wantTemp, true).then(() => {
-  console.info('Succeeded in disallowing modify date time');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to disallow modify date time. Code is ${err.code}, message is ${err.message}`);
-})
-```
-
+<a id="disallowmodifydatetime-1"></a>
 
 ## disallowModifyDateTime
 
@@ -98,7 +82,7 @@ Disallows the device to modify the system time. This API uses a promise to retur
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_SET_DATETIME
 
@@ -133,4 +117,20 @@ Disallows the device to modify the system time. This API uses a promise to retur
 
 **Examples**
 
-See [disallowModifyDateTime](#disallowmodifydatetime)
+```TypeScript
+import { dateTimeManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+dateTimeManager.disallowModifyDateTime(wantTemp, true).then(() => {
+  console.info('Succeeded in disallowing modify date time');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to disallow modify date time. Code is ${err.code}, message is ${err.message}`);
+})
+```

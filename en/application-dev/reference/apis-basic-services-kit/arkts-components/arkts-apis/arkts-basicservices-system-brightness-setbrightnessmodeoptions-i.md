@@ -1,5 +1,9 @@
 # SetBrightnessModeOptions
 
+```TypeScript
+export interface SetBrightnessModeOptions
+```
+
 Options for setting the screen brightness mode.
 
 **Since:** 3
@@ -26,6 +30,8 @@ Called when an API call is complete.
 
 **Deprecated since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 ## fail
@@ -39,6 +45,8 @@ Called when an API call has failed. **data** indicates the error information, an
 **Since:** 3
 
 **Deprecated since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -61,6 +69,8 @@ Called when an API call is successful.
 
 **Deprecated since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 ## mode
@@ -76,5 +86,7 @@ The value **0** indicates the manual adjustment mode, and the value **1** indica
 **Since:** 3
 
 **Deprecated since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite

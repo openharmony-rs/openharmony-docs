@@ -1,5 +1,9 @@
 # BrightnessResponse
 
+```TypeScript
+export interface BrightnessResponse
+```
+
 包含屏幕亮度的对象。
 
 **起始版本：** 3
@@ -27,5 +31,7 @@ value: number
 **起始版本：** 3
 
 **废弃版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite

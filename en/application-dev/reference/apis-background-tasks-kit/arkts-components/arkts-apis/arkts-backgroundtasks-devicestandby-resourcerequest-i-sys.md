@@ -1,5 +1,9 @@
 # ResourceRequest (System API)
 
+```TypeScript
+export interface ResourceRequest
+```
+
 The request of standby resources.
 
 @interface ResourceRequest

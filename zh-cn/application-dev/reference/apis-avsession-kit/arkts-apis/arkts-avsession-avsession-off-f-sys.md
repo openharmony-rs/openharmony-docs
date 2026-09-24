@@ -31,9 +31,34 @@ function off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) =>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+
+**示例**
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.on('sessionCreate', (descriptor: avSession.AVSessionDescriptor) => {
+            });
+            avSession.off('sessionCreate');
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 
 ## off('sessionDestroy')
@@ -61,9 +86,34 @@ function off(type: 'sessionDestroy', callback?: (session: AVSessionDescriptor) =
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+
+**示例**
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.on('sessionDestroy', (descriptor: avSession.AVSessionDescriptor) => {
+            });
+            avSession.off('sessionDestroy');
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 
 ## off('topSessionChange')
@@ -91,9 +141,34 @@ function off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+
+**示例**
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.on('topSessionChange', (descriptor: avSession.AVSessionDescriptor) => {
+            });
+            avSession.off('topSessionChange');
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 
 ## off('sessionServiceDie')
@@ -121,9 +196,15 @@ function off(type: 'sessionServiceDie', callback?: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+
+**示例**
+
+```TypeScript
+avSession.off('sessionServiceDie');
+```
 
 
 ## off('distributedSessionChange')
@@ -152,8 +233,14 @@ function off(type: 'distributedSessionChange', distributedSessionType: Distribut
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+
+**示例**
+
+```TypeScript
+avSession.off('distributedSessionChange', avSession.DistributedSessionType.TYPE_SESSION_REMOTE);
+```
 
 
 ## off('deviceAvailable')
@@ -181,8 +268,14 @@ function off(type: 'deviceAvailable', callback?: (device: OutputDeviceInfo) => v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+avSession.off('deviceAvailable');
+```
 
 
 ## off('deviceOffline')
@@ -210,8 +303,14 @@ function off(type: 'deviceOffline', callback?: (deviceId: string) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+avSession.off('deviceOffline');
+```
 
 
 ## off('deviceLogEvent')
@@ -239,10 +338,16 @@ function off(type: 'deviceLogEvent', callback?: Callback<DeviceLogEventCode>): v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+
+**示例**
+
+```TypeScript
+avSession.off('deviceLogEvent');
+```
 
 
 ## off('deviceStateChanged')
@@ -272,5 +377,11 @@ function off(type: 'deviceStateChanged', callback?: Callback<DeviceState>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+
+**示例**
+
+```TypeScript
+avSession.off('deviceStateChanged');
+```

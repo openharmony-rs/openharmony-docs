@@ -1,5 +1,9 @@
 # DataType
 
+```TypeScript
+export enum DataType
+```
+
 表示锁屏下访问敏感数据类型的枚举。
 
 **起始版本：** 12

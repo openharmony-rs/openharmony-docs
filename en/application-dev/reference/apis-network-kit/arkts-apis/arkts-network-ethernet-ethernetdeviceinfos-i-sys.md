@@ -1,5 +1,9 @@
 # EthernetDeviceInfos (System API)
 
+```TypeScript
+export interface EthernetDeviceInfos
+```
+
 Defines Ethernet device information.
 
 **Since:** 20

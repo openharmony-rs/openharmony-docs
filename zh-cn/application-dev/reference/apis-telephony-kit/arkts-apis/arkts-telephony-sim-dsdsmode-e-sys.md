@@ -1,5 +1,9 @@
 # DsdsMode（系统接口）
 
+```TypeScript
+export enum DsdsMode
+```
+
 Indicates the Dsds Mode.
 
 **起始版本：** 11

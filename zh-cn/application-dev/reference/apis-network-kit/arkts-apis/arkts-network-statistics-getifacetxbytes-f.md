@@ -29,7 +29,7 @@ function getIfaceTxBytes(nic: string, callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [2103005](../errorcode-net-statistics.md#2103005-读取系统map失败) | Failed to read the system map. |
@@ -51,17 +51,8 @@ statistics.getIfaceTxBytes("wlan0", (error: BusinessError, stats: number) => {
 });
 ```
 
-```TypeScript
-import { statistics } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-statistics.getIfaceTxBytes("wlan0").then((stats: number) => {
-  console.info(`getIfaceTxBytes success, ${JSON.stringify(stats)}`);
-}).catch((err: BusinessError) => {
-   console.error(`getIfaceTxBytes error, ${JSON.stringify(err)}`);
-});
-```
-
+<a id="getifacetxbytes-1"></a>
 
 ## getIfaceTxBytes
 
@@ -91,7 +82,7 @@ function getIfaceTxBytes(nic: string): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [2103005](../errorcode-net-statistics.md#2103005-读取系统map失败) | Failed to read the system map. |
@@ -100,4 +91,13 @@ function getIfaceTxBytes(nic: string): Promise<number>
 
 **示例**
 
-参见 [getIfaceTxBytes](#getifacetxbytes)
+```TypeScript
+import { statistics } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+statistics.getIfaceTxBytes("wlan0").then((stats: number) => {
+  console.info(`getIfaceTxBytes success, ${JSON.stringify(stats)}`);
+}).catch((err: BusinessError) => {
+   console.error(`getIfaceTxBytes error, ${JSON.stringify(err)}`);
+});
+```

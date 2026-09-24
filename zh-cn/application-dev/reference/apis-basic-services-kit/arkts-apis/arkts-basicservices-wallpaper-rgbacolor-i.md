@@ -1,5 +1,9 @@
 # RgbaColor
 
+```TypeScript
+interface RgbaColor
+```
+
 定义壁纸颜色信息结构。<br>  
 > **说明：** 
 > 

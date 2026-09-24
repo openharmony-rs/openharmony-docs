@@ -1,5 +1,9 @@
 # SaveMode
 
+```TypeScript
+export declare enum SaveMode
+```
+
 Enumerates the modes for saving images or videos.
 
 **Since:** 15

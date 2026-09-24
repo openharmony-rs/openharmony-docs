@@ -1,5 +1,9 @@
 # HuksExternalErrorInfo
 
+```TypeScript
+export interface HuksExternalErrorInfo
+```
+
 Defines detailed error information.
 
 **Since:** 26.0.0

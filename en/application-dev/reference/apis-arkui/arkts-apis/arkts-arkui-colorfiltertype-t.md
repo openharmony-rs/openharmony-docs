@@ -17,4 +17,4 @@ Defines the type for image color filter settings.
 | Type | Description |
 | --- | --- |
 | [ColorFilter](arkts-arkui-colorfilter-c.md) | Color filter settings of the ColorFilter type. |
-| [DrawingColorFilter](../arkts-components/arkts-arkui-drawingcolorfilter-t.md) | Color filter settings of the DrawingColorFilter type. |
+| [DrawingColorFilter](../arkts-components/arkts-arkui-image-comp-drawingcolorfilter-t.md) | Color filter settings of the DrawingColorFilter type. |

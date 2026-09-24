@@ -1,5 +1,9 @@
 # BleScanner
 
+```TypeScript
+interface BleScanner
+```
+
 Manages the ble scanner. Before calling a ble scanner method, you must use [createBleScanner](arkts-connectivity-ble-createblescanner-f.md) to create an BleScanner instance.
 
 **Since:** 15
@@ -46,6 +50,23 @@ Unsubscribe BLE scan result.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900099 | Operation failed. |
 
+**Examples**
+
+```TypeScript
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { ble } from '@kit.ConnectivityKit';
+function onReceiveEvent(scanReport: ble.ScanReport) {
+    console.info('bluetooth device find = '+ JSON.stringify(scanReport));
+}
+let bleScanner: ble.BleScanner = ble.createBleScanner();
+try {
+    bleScanner.on('BLEDeviceFind', onReceiveEvent);
+    bleScanner.off('BLEDeviceFind', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 ## on('BLEDeviceFind')
 
 ```TypeScript
@@ -82,6 +103,22 @@ Subscribe BLE scan result. On API 26.0.0 and above, if the application has ohos.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>**Applicable version:** 15 - 24 |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900099 | Operation failed. |
+
+**Examples**
+
+```TypeScript
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { ble } from '@kit.ConnectivityKit';
+function onReceiveEvent(scanReport: ble.ScanReport) {
+    console.info('bluetooth device find = '+ JSON.stringify(scanReport));
+}
+let bleScanner: ble.BleScanner = ble.createBleScanner();
+try {
+    bleScanner.on('BLEDeviceFind', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 ## startScan
 

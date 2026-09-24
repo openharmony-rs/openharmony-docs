@@ -8,6 +8,8 @@ typedef struct Camera_ControlCenterStatusInfo {...} Camera_ControlCenterStatusIn
 
 The struct describes the effect status information of a camera controller.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 20
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

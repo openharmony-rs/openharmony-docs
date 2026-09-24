@@ -1,5 +1,9 @@
 # BackgroundModeType
 
+```TypeScript
+export enum BackgroundModeType
+```
+
 长时任务类型类别。
 
 **起始版本：** 16

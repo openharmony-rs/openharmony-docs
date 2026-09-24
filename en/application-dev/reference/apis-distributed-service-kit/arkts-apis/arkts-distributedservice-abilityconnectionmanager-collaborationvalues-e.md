@@ -1,5 +1,9 @@
 # CollaborationValues
 
+```TypeScript
+export enum CollaborationValues
+```
+
 Enumerates application collaboration key values.
 
 **Since:** 18

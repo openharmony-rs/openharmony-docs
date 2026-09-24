@@ -1,5 +1,9 @@
 # LazyLayoutAlgorithm
 
+```TypeScript
+export interface LazyLayoutAlgorithm
+```
+
 Defines lazy layout algorithm.
 
 **Since:** 26.0.0

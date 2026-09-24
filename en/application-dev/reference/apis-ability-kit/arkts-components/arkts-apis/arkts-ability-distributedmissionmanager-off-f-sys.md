@@ -37,3 +37,18 @@ Unsubscribes from continuation state change events of the current mission.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { distributedMissionManager } from '@kit.AbilityKit';
+
+  try {
+    // Unregister listening for mission continuation state change events.
+    distributedMissionManager.off('continueStateChange', (data) => {
+      console.info("continueStateChange off:" + JSON.stringify(data));
+    });
+  } catch (err) {
+    console.error(`continueStateChange failed. Code: ${err.code}, message: ${err.message}`);
+  }
+```

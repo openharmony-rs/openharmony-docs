@@ -1,5 +1,9 @@
 # TextStyle
 
+```TypeScript
+declare interface TextStyle
+```
+
 Describes the word break rule of the message in the dialog box.
 
 **Since:** 12

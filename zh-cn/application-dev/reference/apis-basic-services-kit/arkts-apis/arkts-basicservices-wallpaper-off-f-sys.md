@@ -34,5 +34,37 @@ function off(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | permission verification failed, application which is not a system application uses system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | permission verification failed, application which is not a system application uses system API. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let listener = (wallpaperType: wallpaper.WallpaperType, resourceType: wallpaper.WallpaperResourceType): void => {
+    console.info(`wallpaper changed.`);
+};
+try {
+    wallpaper.on('wallpaperChange', listener);
+} catch (error: BusinessError) {
+    let err = error as BusinessError;
+    console.error(`Failed to on. Code: ${err.code}, message: ${err.message}`);
+}
+
+try {
+    // 取消订阅listener
+    wallpaper.off('wallpaperChange', listener);
+} catch (error) {
+    let err = error as BusinessError;
+    console.error(`Failed to off. Code: ${err.code}, message: ${err.message}`);
+}
+
+try {
+    // 取消所有'wallpaperChange'类型的订阅
+    wallpaper.off('wallpaperChange');
+} catch (error) {
+    let err = error as BusinessError;
+    console.error(`Failed to off. Code: ${err.code}, message: ${err.message}`);
+}
+```

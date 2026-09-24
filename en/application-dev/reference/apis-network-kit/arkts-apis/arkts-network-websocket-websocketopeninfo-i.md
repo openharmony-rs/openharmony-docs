@@ -1,5 +1,9 @@
 # WebSocketOpenInfo
 
+```TypeScript
+export interface WebSocketOpenInfo
+```
+
 The result for open info of a WebSocket connection.
 
 **Since:** 26.0.0

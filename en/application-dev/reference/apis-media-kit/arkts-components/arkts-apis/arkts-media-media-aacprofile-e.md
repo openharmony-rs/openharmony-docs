@@ -1,5 +1,9 @@
 # AacProfile
 
+```TypeScript
+enum AacProfile
+```
+
 Enumerates the supported Advanced Audio Coding (AAC) formats.
 
 **Since:** 22

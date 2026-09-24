@@ -51,6 +51,8 @@ enum FileShare_OperationMode
 
 Enumerates the uri operate mode types.
 
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
 **Since**: 12
 
 | Enum item | Description |
@@ -67,6 +69,8 @@ enum FileShare_PolicyErrorCode
 **Description**
 
 Enumerates the error code of the permission policy for the URI operation.
+
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **Since**: 12
 
@@ -89,6 +93,8 @@ FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo
 **Description**
 
 Set persistent permissions for the URI.
+
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **Required permission**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -119,6 +125,8 @@ FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo 
 
 Revoke persistent permissions for the URI.
 
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
 **Required permission**: ohos.permission.FILE_ACCESS_PERSIST
 
 **Since**: 12
@@ -147,6 +155,8 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 **Description**
 
 Enable the URI that have been permanently authorized.
+
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **Required permission**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -177,6 +187,8 @@ FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyI
 
 Stop the authorized URI that has been enabled.
 
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
 **Required permission**: ohos.permission.FILE_ACCESS_PERSIST
 
 **Since**: 12
@@ -206,6 +218,8 @@ FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_Po
 
 Check persistent permissions for the URI.
 
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
 **Required permission**: ohos.permission.FILE_ACCESS_PERSIST
 
 **Since**: 12
@@ -234,6 +248,8 @@ void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorRes
 **Description**
 
 Free FileShare_PolicyErrorResult pointer points to address memory.
+
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **Since**: 12
 

@@ -1,5 +1,9 @@
 # BlurBubblesRiseEffectParam (System API)
 
+```TypeScript
+interface BlurBubblesRiseEffectParam
+```
+
 The parameters of blur bubbles rise effect.
 
 **Since:** 26.0.0

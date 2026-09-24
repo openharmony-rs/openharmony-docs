@@ -1,5 +1,9 @@
 # VideoDurationFilter
 
+```TypeScript
+class VideoDurationFilter
+```
+
 Describes the configuration for video duration filtering.
 
 **Since:** 19

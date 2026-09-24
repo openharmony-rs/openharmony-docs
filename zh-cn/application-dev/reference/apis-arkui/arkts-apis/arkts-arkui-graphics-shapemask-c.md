@@ -1,5 +1,9 @@
 # ShapeMask
 
+```TypeScript
+export declare class ShapeMask
+```
+
 用于设置图形遮罩，支持矩形、圆角矩形、圆形、椭圆及自定义路径等多种形状，可作用于RenderNode实现形状遮罩效果。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # DeviceRotationRadian (System API)
 
+```TypeScript
+export interface DeviceRotationRadian
+```
+
 Interface for device rotation radian
 
 **Since:** 20

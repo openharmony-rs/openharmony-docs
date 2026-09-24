@@ -8,6 +8,8 @@ typedef struct ArkUI_Matrix4RotationOptions ArkUI_Matrix4RotationOptions
 
 Defines a matrix rotation object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

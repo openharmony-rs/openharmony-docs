@@ -1,5 +1,9 @@
 # CmKeyDigest
 
+```TypeScript
+export enum CmKeyDigest
+```
+
 表示签名、验签使用的摘要算法的枚举。
 
 **起始版本：** 11

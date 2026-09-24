@@ -1,5 +1,9 @@
 # ScrollType
 
+```TypeScript
+enum ScrollType
+```
+
 Enumerates the scroll types for [setScrollable](arkts-arkweb-webview-webviewcontroller-c.md#setscrollable).
 
 **Since:** 12

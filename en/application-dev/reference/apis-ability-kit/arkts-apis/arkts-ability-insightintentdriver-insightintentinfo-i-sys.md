@@ -1,5 +1,9 @@
 # InsightIntentInfo (System API)
 
+```TypeScript
+interface InsightIntentInfo
+```
+
 Defines the intent information, which is the specific parameter configuration of the intent in the device.
 
 **Since:** 20

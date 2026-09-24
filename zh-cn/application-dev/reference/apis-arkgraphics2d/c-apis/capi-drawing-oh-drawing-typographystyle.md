@@ -8,6 +8,8 @@ typedef struct OH_Drawing_TypographyStyle OH_Drawing_TypographyStyle
 
 用于管理排版风格，如文字方向等。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **相关模块：** [Drawing](capi-drawing.md)

@@ -4,6 +4,8 @@
 
 Provides C APIs for the ethernet module.
 
+**System capability**: SystemCapability.Communication.NetManager.Ethernet
+
 **Since**: 26.0.0
 
 ## Files

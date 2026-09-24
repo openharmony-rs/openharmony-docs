@@ -1,5 +1,9 @@
 # EnvironmentCallback
 
+```TypeScript
+export default class EnvironmentCallback
+```
+
 EnvironmentCallback模块提供对系统环境变化监听回调的能力。
 
 **起始版本：** 9
@@ -36,9 +40,7 @@ onConfigurationUpdated(config: Configuration): void
 
 **示例**
 
-```TypeScript
 参见EnvironmentCallback使用。
-```
 
 ## onMemoryLevel
 
@@ -64,6 +66,4 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 **示例**
 
-```TypeScript
 参见EnvironmentCallback使用。
-```

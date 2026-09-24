@@ -1,5 +1,9 @@
 # ContactSyncProgress
 
+```TypeScript
+interface ContactSyncProgress
+```
+
 联系人同步进度的信息。
 
 包含同步ID、当前批次和总批次。

@@ -1,5 +1,9 @@
 # LocationRequest
 
+```TypeScript
+export interface LocationRequest
+```
+
 Configuring parameters in location requests.
 
 **Since:** 9

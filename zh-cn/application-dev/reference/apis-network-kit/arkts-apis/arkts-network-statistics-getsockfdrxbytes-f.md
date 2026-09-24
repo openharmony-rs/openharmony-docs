@@ -33,7 +33,7 @@ function getSockfdRxBytes(sockfd: number, callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
@@ -54,18 +54,8 @@ statistics.getSockfdRxBytes(sockfd, (error: BusinessError, stats: number) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { statistics } from '@kit.NetworkKit';
 
-let sockfd = 50; // 实际开发中需要先根据自己创建的Socket获取到。
-statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
-  console.info(JSON.stringify(stats));
-}).catch((err: BusinessError) => {
-  console.error(JSON.stringify(err));
-});
-```
-
+<a id="getsockfdrxbytes-1"></a>
 
 ## getSockfdRxBytes
 
@@ -99,11 +89,21 @@ function getSockfdRxBytes(sockfd: number): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
 **示例**
 
-参见 [getSockfdRxBytes](#getsockfdrxbytes)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
+
+let sockfd = 50; // 实际开发中需要先根据自己创建的Socket获取到。
+statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
+  console.info(JSON.stringify(stats));
+}).catch((err: BusinessError) => {
+  console.error(JSON.stringify(err));
+});
+```

@@ -1,5 +1,9 @@
 # AudioCapturerChangeInfo
 
+```TypeScript
+interface AudioCapturerChangeInfo
+```
+
 Describes the audio capturer change event.
 
 **Since:** 9

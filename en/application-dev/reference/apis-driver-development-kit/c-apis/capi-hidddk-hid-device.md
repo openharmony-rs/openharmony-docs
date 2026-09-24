@@ -8,6 +8,8 @@ typedef struct Hid_Device {...} Hid_Device
 
 Defines a struct for basic device information.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 11
 
 **Related module**: [HidDdk](capi-hidddk.md)
@@ -25,7 +27,7 @@ Defines a struct for basic device information.
 | uint16_t productId | Product ID. |
 | uint16_t version | Version number. |
 | uint16_t bustype | Bus type. |
-| [Hid_DeviceProp](capi-hid-ddk-types-h.md#hid_deviceprop) *properties | Device properties indicated by [Hid_DeviceProp](capi-hid-ddk-types-h.md#hid_deviceprop). |
+| [Hid_DeviceProp](capi-hid-ddk-types-h.md#hid_deviceprop) *properties | Device properties indicated by {@link Hid_DeviceProp}. |
 | uint16_t propLength | Number of device properties. |
 
 

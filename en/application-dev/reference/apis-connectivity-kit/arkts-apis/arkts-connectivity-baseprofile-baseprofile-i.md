@@ -1,5 +1,9 @@
 # BaseProfile
 
+```TypeScript
+export interface BaseProfile
+```
+
 Base interface of profile.
 
 **Since:** 10
@@ -180,3 +184,20 @@ Subscribe the event reported when the profile connection state changes . On API 
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>**Applicable version:** 10 - 24 |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { a2dp } from '@kit.ConnectivityKit';
+
+function onReceiveEvent(data: baseProfile.StateChangeParam) {
+    console.info('a2dp state = '+ JSON.stringify(data));
+}
+try {
+    let a2dpSrc = a2dp.createA2dpSrcProfile(); // A2DP is used as an example.
+    a2dpSrc.on('connectionStateChange', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```

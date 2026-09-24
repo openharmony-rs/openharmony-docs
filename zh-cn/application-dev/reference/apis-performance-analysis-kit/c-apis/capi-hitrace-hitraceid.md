@@ -8,6 +8,8 @@ typedef struct HiTraceId {...} HiTraceId
 
 用于标识调用链的结构体。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 12
 
 **相关模块：** [HiTrace](capi-hitrace.md)

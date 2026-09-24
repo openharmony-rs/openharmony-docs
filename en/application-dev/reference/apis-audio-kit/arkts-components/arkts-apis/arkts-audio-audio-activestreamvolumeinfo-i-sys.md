@@ -1,5 +1,9 @@
 # ActiveStreamVolumeInfo (System API)
 
+```TypeScript
+interface ActiveStreamVolumeInfo
+```
+
 Volume information for active audio streams.
 
 **Since:** 24

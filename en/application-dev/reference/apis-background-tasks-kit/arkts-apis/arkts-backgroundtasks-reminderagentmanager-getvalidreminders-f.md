@@ -28,7 +28,7 @@ Obtains all [valid (not yet expired) reminders](../../../task-management/agent-p
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | If the input parameter is not valid parameter. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1700004](../errorcode-reminderAgentManager.md#1700004-nonexistent-bundle-name) | The bundle name does not exist. |
 
 **Examples**
@@ -66,6 +66,36 @@ reminderAgentManager.getValidReminders((err: BusinessError, reminders: Array<rem
 });
 ```
 
+
+<a id="getvalidreminders-1"></a>
+
+## getValidReminders
+
+```TypeScript
+function getValidReminders(): Promise<Array<ReminderRequest>>
+```
+
+Obtains all [valid (not yet expired) reminders](../../../task-management/agent-powered-reminder.md#constraints) set by the current application. This API uses a promise to return the result.
+
+**Since:** 9
+
+**System capability:** SystemCapability.Notification.ReminderAgent
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;[ReminderRequest](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md)&gt;&gt; | Promise used to return all the valid reminders. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [1700004](../errorcode-reminderAgentManager.md#1700004-nonexistent-bundle-name) | The bundle name does not exist. |
+
+**Examples**
+
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
@@ -96,33 +126,3 @@ reminderAgentManager.getValidReminders().then((reminders: Array<reminderAgentMan
   console.error("promise err code:" + err.code + " message:" + err.message);
 });
 ```
-
-
-## getValidReminders
-
-```TypeScript
-function getValidReminders(): Promise<Array<ReminderRequest>>
-```
-
-Obtains all [valid (not yet expired) reminders](../../../task-management/agent-powered-reminder.md#constraints) set by the current application. This API uses a promise to return the result.
-
-**Since:** 9
-
-**System capability:** SystemCapability.Notification.ReminderAgent
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Array&lt;[ReminderRequest](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md)&gt;&gt; | Promise used to return all the valid reminders. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | If the input parameter is not valid parameter. |
-| [1700004](../errorcode-reminderAgentManager.md#1700004-nonexistent-bundle-name) | The bundle name does not exist. |
-
-**Examples**
-
-See [getValidReminders](#getvalidreminders)

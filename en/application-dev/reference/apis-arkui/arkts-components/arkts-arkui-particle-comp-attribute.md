@@ -1,5 +1,9 @@
 # Particle properties/events
 
+```TypeScript
+declare class ParticleAttribute extends CommonMethod<ParticleAttribute>
+```
+
 Defines the Particle component attribute functions.
 
 @extends CommonMethod&lt;ParticleAttribute&gt;
@@ -30,7 +34,7 @@ Sets the disturbance fields.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fields | Array&lt;[DisturbanceFieldOptions](arkts-arkui-disturbancefieldoptions-i.md)&gt; | Yes | Array of disturbance fields. |
+| fields | Array&lt;[DisturbanceFieldOptions](arkts-arkui-particle-comp-disturbancefieldoptions-i.md)&gt; | Yes | Array of disturbance fields. |
 
 ## emitter
 
@@ -52,7 +56,7 @@ Sets the emitter parameters.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;[EmitterProperty](arkts-arkui-emitterproperty-i.md)&gt; | Yes | Array of emitter parameters to set. |
+| value | Array&lt;[EmitterProperty](arkts-arkui-particle-comp-emitterproperty-i.md)&gt; | Yes | Array of emitter parameters to set. |
 
 ## rippleFields
 
@@ -74,7 +78,7 @@ Sets the particle wave field. The wave field applies a force that changes accord
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fields | Array&lt;[RippleFieldOptions](arkts-arkui-ripplefieldoptions-i.md)&gt; &#124; undefined | Yes | Particle wave field array. You can set multiple particle wave fields in array form. If this parameter is set to undefined, no wave field is available. |
+| fields | Array&lt;[RippleFieldOptions](arkts-arkui-particle-comp-ripplefieldoptions-i.md)&gt; &#124; undefined | Yes | Particle wave field array. You can set multiple particle wave fields in array form. If this parameter is set to undefined, no wave field is available. |
 
 ## velocityFields
 
@@ -96,4 +100,4 @@ Sets the particle velocity field. The velocity field applies a force to particle
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fields | Array&lt;[VelocityFieldOptions](arkts-arkui-velocityfieldoptions-i.md)&gt; &#124; undefined | Yes | Particle velocity field array. You can set multiple particle velocity fields in array form. If this parameter is set to undefined, there is no velocity field. |
+| fields | Array&lt;[VelocityFieldOptions](arkts-arkui-particle-comp-velocityfieldoptions-i.md)&gt; &#124; undefined | Yes | Particle velocity field array. You can set multiple particle velocity fields in array form. If this parameter is set to undefined, there is no velocity field. |

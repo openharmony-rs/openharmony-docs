@@ -1,5 +1,9 @@
 # MainWindowInfo
 
+```TypeScript
+interface MainWindowInfo
+```
+
 主窗口信息。
 
 **起始版本：** 21

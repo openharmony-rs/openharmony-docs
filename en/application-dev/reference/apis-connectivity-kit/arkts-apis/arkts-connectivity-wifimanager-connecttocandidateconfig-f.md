@@ -51,17 +51,8 @@ import { wifiManager } from '@kit.ConnectivityKit';
   }
 ```
 
-```TypeScript
-import { wifiManager } from '@kit.ConnectivityKit';
 
-  try {
-    let setting:wifiManager.ConnectSettings = { networkId: 0 }; // Candidate network ID, generated when adding a candidate network.
-    wifiManager.connectToCandidateConfig(setting);
-  }catch(error){
-    console.error("failed:" + JSON.stringify(error));
-  }
-```
-
+<a id="connecttocandidateconfig-1"></a>
 
 ## connectToCandidateConfig
 
@@ -107,4 +98,13 @@ Connect to the specified candidate hotspot using connect settings.
 
 **Examples**
 
-See [connectToCandidateConfig](#connecttocandidateconfig)
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+
+  try {
+    let setting:wifiManager.ConnectSettings = { networkId: 0 }; // Candidate network ID, generated when adding a candidate network.
+    wifiManager.connectToCandidateConfig(setting);
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
+```

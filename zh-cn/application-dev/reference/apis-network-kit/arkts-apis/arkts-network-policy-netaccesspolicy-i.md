@@ -1,5 +1,9 @@
 # NetAccessPolicy
 
+```TypeScript
+export interface NetAccessPolicy
+```
+
 应用联网策略信息。
 
 **起始版本：** 26.0.0

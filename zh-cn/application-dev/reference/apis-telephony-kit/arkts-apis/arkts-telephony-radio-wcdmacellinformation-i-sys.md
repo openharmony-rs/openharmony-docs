@@ -1,5 +1,9 @@
 # WcdmaCellInformation（系统接口）
 
+```TypeScript
+export interface WcdmaCellInformation
+```
+
 Obtains WCDMA cell information.
 
 **起始版本：** 8

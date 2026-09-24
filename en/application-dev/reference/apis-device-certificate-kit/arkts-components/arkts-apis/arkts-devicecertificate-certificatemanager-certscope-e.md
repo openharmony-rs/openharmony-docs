@@ -1,5 +1,9 @@
 # CertScope
 
+```TypeScript
+export enum CertScope
+```
+
 Enumerates the certificate scopes.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # FilterType
 
+```TypeScript
+export declare enum FilterType
+```
+
 声明筛选器类型
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # GesturePath
 
+```TypeScript
+export declare class GesturePath
+```
+
 Represents gesture path information, used to simulate user touch gestures (such as tap, swipe, etc.) in accessibility services.
 
 **Since:** 9

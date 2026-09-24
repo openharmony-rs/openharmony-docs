@@ -1,5 +1,9 @@
 # MetadataObject
 
+```TypeScript
+interface MetadataObject
+```
+
 Describes the camera metadata, which is the data source of [CameraInput](arkts-camera-camera-camerainput-i.md). The metadata is obtained through **metadataOutput.on('metadataObjectsAvailable')**.
 
 **Since:** 10

@@ -1,8 +1,12 @@
 # GridCol properties/events
 
-In addition to the [universal attributes](arkts-arkui-commonmethod-c.md), the following attributes are supported.
+```TypeScript
+declare class GridColAttribute extends CommonMethod<GridColAttribute>
+```
 
-The [universal events](arkts-arkui-commonmethod-c.md) are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
+
+The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Inheritance/Implementation:** GridColAttribute extends CommonMethod<GridColAttribute>
 
@@ -16,7 +20,7 @@ The [universal events](arkts-arkui-commonmethod-c.md) are supported.
 gridColOffset(value: number | GridColColumnOption)
 ```
 
-Sets the number of offset columns relative to the original position of the component.
+Sets the number of columns by which the grid child component is offset relative to its original position.
 
 **Since:** 9
 
@@ -30,7 +34,7 @@ Sets the number of offset columns relative to the original position of the compo
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md) | Yes | Number of offset columns relative to the previous child component of the grid<br>The value must be a non-negative integer. Default value: **0**.<br>Invalid values are treated as the default value. |
+| value | number &#124; [GridColColumnOption](arkts-arkui-gridcol-comp-gridcolcolumnoption-i.md) | Yes | Number of columns offset relative to the original position. A value of **0** for **gridColOffset** indicates no offset. <br>The value is a non-negative integer, with a default value of **0**. <br>Illegal value: processed as the default value. <br>**Note:** This attribute has breakpoint inheritance. For details, see [GridColOptions](arkts-arkui-gridcol-comp-gridcoloptions-i.md). |
 
 ## order
 
@@ -52,7 +56,7 @@ Sets the display order of the grid child component. Grid child components are so
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md) | Yes | Sequence number of the component. Child components of the grid are sorted in ascending order based on their sequence numbers.<br>The value must be a non-negative integer. Default value: **0**.<br>Invalid values are treated as the default value. |
+| value | number &#124; [GridColColumnOption](arkts-arkui-gridcol-comp-gridcolcolumnoption-i.md) | Yes | Element order number, sorted in ascending order based on the order numbers of grid child components. <br>The value is a non-negative integer. The default value is **0**. <br>Illegal value: handled as the default value. <br>**Note:** This attribute supports breakpoint inheritance. For details, see [GridColOptions](arkts-arkui-gridcol-comp-gridcoloptions-i.md). |
 
 ## span
 
@@ -60,7 +64,7 @@ Sets the display order of the grid child component. Grid child components are so
 span(value: number | GridColColumnOption)
 ```
 
-Sets the number of columns occupied by the component. If it is set to **0**, the element is not involved in layout calculation, that is, the element is not rendered.
+Sets the number of columns occupied by the grid child component. After the call is successful, the grid child component occupies a grid area of the corresponding width based on the set column count. A span of **0** indicates that the element does not participate in layout calculation, meaning it will not be rendered.
 
 **Since:** 9
 
@@ -74,4 +78,4 @@ Sets the number of columns occupied by the component. If it is set to **0**, the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md) | Yes | Number of occupied columns.<br>The value must be a non-negative integer. Default value: **1**.<br>Invalid values are treated as the default value. |
+| value | number &#124; [GridColColumnOption](arkts-arkui-gridcol-comp-gridcolcolumnoption-i.md) | Yes | Number of occupied columns. If **span** is **0**, the element does not participate in layout calculation and is not rendered. <br>The value is a non-negative integer, and the default value is **1**. <br>Illegal value: processed as the default value. <br>**Note:** This attribute has breakpoint inheritance. For details, see [GridColOptions](arkts-arkui-gridcol-comp-gridcoloptions-i.md). Since API version 20, the default value inheritance rule has changed. For details, see [GridColColumnOption](arkts-arkui-gridcol-comp-gridcolcolumnoption-i.md). |

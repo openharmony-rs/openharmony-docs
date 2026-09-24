@@ -1,5 +1,9 @@
 # PhotoSubtype
 
+```TypeScript
+export enum PhotoSubtype
+```
+
 PhotoSubtype是不同[PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasset-i.md)类型的枚举。
 
 **起始版本：** 12
@@ -28,7 +32,7 @@ CINEMATIC_VIDEO = 5
 
 电影视频文件类型。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -70,7 +74,7 @@ CINEMATIC_VIDEO_V2 = 8
 
 电影版本2视频文件。与CINEMATIC_VIDEO相比，它增加了更多效果，如希区柯克风格。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -1,5 +1,9 @@
 # DistanceMeasurementConfigParams (System API)
 
+```TypeScript
+export interface DistanceMeasurementConfigParams
+```
+
 Configuration parameters for the distance measurement interface @interface DistanceMeasurementConfigParams
 
 **Since:** 23

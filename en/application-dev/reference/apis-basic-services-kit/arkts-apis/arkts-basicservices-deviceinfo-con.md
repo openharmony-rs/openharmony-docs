@@ -150,7 +150,7 @@ Example: default
 const buildVersion: number
 ```
 
-Build version number. The value is the fourth digit in **osFullName**. You are advised to use **deviceInfo.buildVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.
+Build version number, which identifies the build version. The value is the fourth digit in **osFullName**. You are advised to use **deviceInfo.buildVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.
 
 Example: 1
 
@@ -166,7 +166,9 @@ Example: 1
 const chipType: string
 ```
 
-Obtains the device CPU chipType by a string.
+CPU chip model of the device.
+
+**Use scenarios**: This parameter can be used for performance adaptation, device feature identification, and compatibility check based on the chip model. Different chip models may have different GPU performance and AI acceleration capabilities.
 
 Example: xxxxx
 
@@ -184,6 +186,8 @@ const deviceColor: string
 
 Device color. If the value cannot be obtained, an empty string is returned.
 
+Example: gold
+
 **Type:** string
 
 **Since:** 26.0.0
@@ -198,7 +202,7 @@ Device color. If the value cannot be obtained, an empty string is returned.
 const deviceType: string
 ```
 
-Device type. For details, see [deviceTypes tag](../../../quick-start/module-configuration-file.md#devicetypes).
+Device type. For details, see [deviceTypes](../../../quick-start/module-configuration-file.md#devicetypes).
 
 Example: &lt;!--RP1--&gt;wearable&lt;!--RP1End--&gt;
 
@@ -220,9 +224,9 @@ Serial number of the disk. This API will start a temporary process during execut
 
 **NOTE:** 
 
-This field can be queried only on the 2-in-1 device. For other devices, the query result is empty.
+This field can be queried only on some 2-in-1 devices. The query result is empty on other devices.
 
-ohos.permission.ACCESS_DISK_PHY_INFO
+**Required permissions**: ohos.permission.ACCESS_DISK_PHY_INFO(for system applications and enterprise applications only)
 
 Example: 2502EM400567
 
@@ -240,7 +244,7 @@ Example: 2502EM400567
 const displayVersion: string
 ```
 
-Product version.
+Product version.&lt;!--RP14--&gt;&lt;!--RP14End--&gt;
 
 Example: &lt;!--RP8--&gt;XXX X.X.X.X&lt;!--RP8End--&gt;
 
@@ -256,7 +260,11 @@ Example: &lt;!--RP8--&gt;XXX X.X.X.X&lt;!--RP8End--&gt;
 const distributionOSApiName: string
 ```
 
-Distribution OS API name.<!--Del--> It is defined by the issuer.<!--DelEnd-->
+Distribution OS API name.<!--Del--> It is defined by the issuer.<!--DelEnd-->.&lt;!--RP16--&gt; **NOTE:** 
+
+It is not recommended that this field be used to determine the version number.
+
+Example: 5.0.1&lt;!--RP16End--&gt;
 
 **Type:** string
 
@@ -270,7 +278,7 @@ Distribution OS API name.<!--Del--> It is defined by the issuer.<!--DelEnd-->
 const distributionOSApiVersion: number
 ```
 
-Distribution OS API version.<!--Del--> It is defined by the issuer.<!--DelEnd-->
+Distribution OS API version.<!--Del--> It is defined by the issuer.<!--DelEnd-->.&lt;!--RP15--&gt;&lt;!--RP15End--&gt;
 
 Example: 50001
 
@@ -286,7 +294,7 @@ Example: 50001
 const distributionOSName: string
 ```
 
-Distribution OS name.<!--Del--> It is defined by the issuer.<!--DelEnd-->
+Distribution OS name<!--Del-->, which is defined by the issuer<!--DelEnd-->.
 
 Example: OpenHarmony
 
@@ -302,7 +310,7 @@ Example: OpenHarmony
 const distributionOSReleaseType: string
 ```
 
-Distribution OS release type.<!--Del--> It is defined by the issuer.<!--DelEnd-->
+Distribution OS release type<!--Del-->, which is defined by the issuer<!--DelEnd-->.
 
 Example: Release
 
@@ -318,7 +326,7 @@ Example: Release
 const distributionOSVersion: string
 ```
 
-Distribution OS version.<!--Del--> It is defined by the issuer.<!--DelEnd-->&lt;!--RP11--&gt;&lt;!--RP11End--&gt;
+Distribution OS version<!--Del-->, which is defined by the issuer<!--DelEnd-->.&lt;!--RP11--&gt;&lt;!--RP11End--&gt;
 
 Example: 5.0.0
 
@@ -334,7 +342,7 @@ Example: 5.0.0
 const featureVersion: number
 ```
 
-Feature version number. The value is the third digit in **osFullName**. You are advised to use **deviceInfo.featureVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.
+Feature version number, which identifies the planned new feature version. The value is the third digit in **osFullName**. You are advised to use **deviceInfo.featureVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.
 
 Example: 0
 
@@ -406,7 +414,7 @@ const incrementalVersion: string
 
 Incremental version, which is the Ohos version number generated during compilation.
 
-Example: default
+Example: 6.1.1.120
 
 **Type:** string
 
@@ -466,13 +474,13 @@ Example: &lt;!--RP2--&gt;Mate XX&lt;!--RP2End--&gt;
 const ODID: string
 ```
 
-Open device identifier.
+Open device identifier (ODID).
 
 An ODID will be regenerated in the following scenarios:
 
 Restore a phone to its factory settings.
 
-Uninstall and reinstall all applications with the same **developerId** on one device.
+Uninstall and reinstall all apps with the same **developerId** on one device.
 
 An ODID is generated based on the following rules:
 
@@ -506,7 +514,7 @@ const osFullName: string
 
 System version. The version number is in the format of **&lt;!--RP12--&gt;OpenHarmony-x.x.x.x**, where **x** is a placeholder for digits. &lt;!--RP12End--&gt;To obtain the value of a segment in the version number, you are advised to use **majorVersion**, **seniorVersion**, **featureVersion**, or **buildVersion**, which can improve efficiency. Parsing **osFullName** is not recommended.
 
-Example: &lt;!--RP10--&gt;Openharmony-5.0.0.1&lt;!--RP10End--&gt;
+Example: &lt;!--RP10--&gt;OpenHarmony-5.0.0.1&lt;!--RP10End--&gt;
 
 **Type:** string
 
@@ -545,6 +553,8 @@ const performanceClass: PerformanceClassLevel
 ```
 
 Device capability level, which is evaluated based on factors such as CPU, memory, storage read/write performance, and screen resolution.
+
+**Use scenarios**: This parameter can be used for performance adaptation based on device capabilities, such as adjusting animation complexity, selecting resources of different quality, and dynamically controlling features.
 
 Example: 0
 
@@ -702,15 +712,15 @@ Example: 0
 const serial: string
 ```
 
-Serial number of the device. This API will start a temporary process during execution. When the system load is high, blocking may occur. To ensure the response of the main thread of your application, you are advised not to call this API in the main thread. This value varies depending on the device and is fixed. To improve performance, you can store this information on a local device after obtaining it for the first time..
+Serial number of the device. This API will start a temporary process during execution. When the system load is high, blocking may occur. To ensure the response of the main thread of your application, you are advised not to call this API in the main thread. This value varies depending on the device and is fixed. To improve performance, you can store this information on a local device after obtaining it for the first time.
 
 **NOTE:** 
 
-The device SN can be used as the unique identifier of a device.
+The device serial number can be used as the unique identifier of a device.
 
-**Required permission**: ohos.permission.sec.ACCESS_UDID (for system applications and enterprise applications only)
+**Required permissions**: ohos.permission.sec.ACCESS_UDID(for system applications and enterprise applications only)
 
-Example: The SN varies with the device.
+Example: The serial number varies with the device.
 
 **Type:** string
 
@@ -746,9 +756,9 @@ UDID of the device. This API will start a temporary process during execution. Wh
 
 **NOTE:** 
 
-The data length is 65 bytes. The UDID can be used as the unique identifier of a device.
+The data length is 65 bytes (including the terminator). The UDID can be used as the unique identifier of a device.
 
-**Required permission**: ohos.permission.sec.ACCESS_UDID (for system applications and enterprise applications only)
+**Required permissions**: ohos.permission.sec.ACCESS_UDID(for system applications and enterprise applications only)
 
 Example: 9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412
 

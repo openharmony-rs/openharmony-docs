@@ -1,5 +1,9 @@
 # MakeCallOptions
 
+```TypeScript
+export interface MakeCallOptions
+```
+
 Provides an option for determining whether a call is a video call.
 
 **Since:** 24
@@ -24,6 +28,8 @@ Whether the third-party app supports custom accessibility features. Default valu
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.Applications.Contacts
@@ -39,6 +45,8 @@ Whether to hide the dial screen. **true**: yes; **false**: no.
 **Type:** boolean
 
 **Since:** 24
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 

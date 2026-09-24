@@ -1,5 +1,9 @@
 # BarcodeTag
 
+```TypeScript
+export interface BarcodeTag extends TagSession
+```
+
 BarcodeTag提供读取条形码标签的属性和访问I/O操作的能力，继承自TagSession。
 
 TagSession是所有NFC Tag 技术类型的基类， 提供建立连接和发送数据等共同接口。具体请参见[TagSession](arkts-connectivity-tagsession-tagsession-i.md)。
@@ -40,6 +44,6 @@ getBarcode(): Promise<ArrayBuffer>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [3100201](../errorcode-nfc.md#3100201-nfc服务读写tag错误) | The tag running state is abnormal in the service. |
 | [3100204](../errorcode-nfc.md#3100204-nfc芯片io异常) | The tag I/O operation failed. |

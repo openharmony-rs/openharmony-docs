@@ -1,5 +1,9 @@
 # UpdatePackageInfo
 
+```TypeScript
+export interface UpdatePackageInfo
+```
+
 系统更新包信息。
 
 **起始版本：** 12

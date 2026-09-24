@@ -58,24 +58,8 @@ policy.updateRemindPolicy(
 );
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .updateRemindPolicy(
-    connection.NetBearType.BEARER_CELLULAR,
-    '1',
-    policy.RemindType.REMIND_TYPE_WARNING
-  )
-  .then(() => {
-    console.info('updateRemindPolicy success');
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
-```
-
+<a id="updateremindpolicy-1"></a>
 
 ## updateRemindPolicy
 
@@ -120,4 +104,20 @@ Updates a reminder policy. This API uses a promise to return the result.
 
 **Examples**
 
-See [updateRemindPolicy](#updateremindpolicy)
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+policy
+  .updateRemindPolicy(
+    connection.NetBearType.BEARER_CELLULAR,
+    '1',
+    policy.RemindType.REMIND_TYPE_WARNING
+  )
+  .then(() => {
+    console.info('updateRemindPolicy success');
+  })
+  .catch((error: BusinessError) => {
+    console.error(JSON.stringify(error));
+  });
+```

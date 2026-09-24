@@ -1,10 +1,12 @@
 # SymbolSpan属性/事件
 
-不支持[通用属性](arkts-arkui-commonmethod-c.md)，支持以下属性。
+```TypeScript
+declare class SymbolSpanAttribute extends CommonMethod<SymbolSpanAttribute>
+```
 
-不支持[通用事件](arkts-arkui-commonmethod-c.md)。
+不支持[通用属性](arkts-arkui-common-comp.md#common)，支持以下属性：
 
-**继承/实现关系：** SymbolSpanAttribute extends CommonMethod&lt;SymbolSpanAttribute&gt;
+**继承/实现关系：** SymbolSpanAttribute extends CommonMethod<SymbolSpanAttribute>
 
 **起始版本：** 11
 
@@ -30,7 +32,7 @@ attributeModifier(modifier: AttributeModifier<SymbolSpanAttribute>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [AttributeModifier](arkts-arkui-attributemodifier-i.md)&lt;[SymbolSpanAttribute](arkts-arkui-symbolspan-comp-attribute.md)&gt; | 是 | 动态设置组件的属性。 |
+| modifier | [AttributeModifier](arkts-arkui-common-comp-attributemodifier-i.md)&lt;[SymbolSpanAttribute](arkts-arkui-symbolspan-comp-attribute.md)&gt; | 是 | 动态设置组件的属性。 |
 
 ## effectStrategy
 
@@ -42,11 +44,11 @@ effectStrategy(value: SymbolEffectStrategy)
 
 NONE表示无动效，适用于静态展示场景；SCALE表示整体缩放动效，适用于需要吸引用户注意力的场景，如按钮点击反馈；HIERARCHICAL表示层级动效，适用于需要突出图标层次感的场景。
 
-不同动效策略效果可以参考示例1（设置渲染和动效策略）。
+不同动效策略效果可以参考[示例1（设置渲染和动效策略）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#示例1设置渲染和动效策略)。
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -62,7 +64,7 @@ NONE表示无动效，适用于静态展示场景；SCALE表示整体缩放动�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [SymbolEffectStrategy](arkts-arkui-symboleffectstrategy-e.md) | 是 | SymbolSpan动效策略。 |
+| value | [SymbolEffectStrategy](arkts-arkui-symbolglyph-comp-symboleffectstrategy-e.md) | 是 | SymbolSpan动效策略。 |
 
 ## fontColor
 
@@ -70,11 +72,11 @@ NONE表示无动效，适用于静态展示场景；SCALE表示整体缩放动�
 fontColor(value: Array<ResourceColor>)
 ```
 
-设置SymbolSpan组件颜色。未通过该接口设置时，默认颜色随[renderingStrategy](#renderingstrategy)变化，单色渲染策略（SINGLE）下默认为单色；多色渲染策略（MULTIPLE_COLOR）和分层渲染策略（MULTIPLE_OPACITY）下默认取图标资源预设的多色配置。具体说明请参考[SymbolRenderingStrategy](arkts-arkui-symbolrenderingstrategy-e.md)。
+设置SymbolSpan组件颜色。未通过该接口设置时，默认颜色随[renderingStrategy](#renderingstrategy)变化，单色渲染策略（SINGLE）下默认为单色；多色渲染策略（MULTIPLE_COLOR）和分层渲染策略（MULTIPLE_OPACITY）下默认取图标资源预设的多色配置。具体说明请参考[SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md)。
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -90,7 +92,7 @@ fontColor(value: Array<ResourceColor>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | SymbolSpan组件颜色。具体颜色渲染模式及其说明请参考[SymbolRenderingStrategy](arkts-arkui-symbolrenderingstrategy-e.md)。 |
+| value | Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | SymbolSpan组件颜色。具体颜色渲染模式及其说明请参考[SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md)。 |
 
 ## fontSize
 
@@ -102,7 +104,7 @@ fontSize(value: number | string | Resource)
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -118,7 +120,7 @@ fontSize(value: number | string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | SymbolSpan组件大小。<br>取值范围：[0, +∞) <br>单位：[fp](../arkts-apis/arkts-arkui-length-t.md) |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | SymbolSpan组件大小。<br>取值范围：[0, +∞) <br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 ## fontWeight
 
@@ -132,7 +134,7 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -149,6 +151,8 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | 是 | SymbolSpan组件字体粗细。<br>number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“ lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。传入超出取值范围或不符合间隔要求的值时取默认值。 |
+
+<a id="fontweight-1"></a>
 
 ## fontWeight
 
@@ -175,7 +179,7 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | SymbolSpan组件字体粗细。<br>number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“ lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br>传入超出取值范围的值时取默认值。传入不符合间隔要求的值时，若设置fontWeightConfigs的enableVariableFontWeight为true，使用传入值；若设置为false，使用默认值。 |
-| fontWeightConfigs | [FontWeightConfigs](../arkts-apis/arkts-arkui-fontweightconfigs-i.md) | 否 | 字体粗细配置。当需要启用可变字重调节（设置非100整数倍的精细字重值如220、660）或跟随设备字体粗细级别自动更新字重时传入此参数。默认值继承[FontWeightConfigs](../arkts-apis/arkts-arkui-fontweightconfigs-i.md)。 |
+| fontWeightConfigs | [FontWeightConfigs](../arkts-apis/arkts-arkui-fontweightconfigs-i.md) | 否 | 字体粗细配置。当需要启用可变字重调节（设置非100整数倍的精细字重值如220、660）或跟随设备字体粗细级别自动更新字重时传入此参数。<br>默认值：{ enableVariableFontWeight: false, enableDeviceFontWeightCategory: true } |
 
 ## renderingStrategy
 
@@ -189,7 +193,7 @@ SINGLE表示单色渲染，适用于需要统一颜色的图标显示场景；MU
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -205,4 +209,4 @@ SINGLE表示单色渲染，适用于需要统一颜色的图标显示场景；MU
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [SymbolRenderingStrategy](arkts-arkui-symbolrenderingstrategy-e.md) | 是 | SymbolSpan渲染策略。 |
+| value | [SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md) | 是 | SymbolSpan渲染策略。 |

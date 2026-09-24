@@ -1,5 +1,9 @@
 # CmsKeyAgreeRecipientDigestAlgorithm
 
+```TypeScript
+enum CmsKeyAgreeRecipientDigestAlgorithm
+```
+
 CMS KeyAgree类型接收者摘要算法的枚举。
 
 **起始版本：** 22

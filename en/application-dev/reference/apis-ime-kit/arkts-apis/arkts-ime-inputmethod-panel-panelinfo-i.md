@@ -1,5 +1,9 @@
 # PanelInfo
 
+```TypeScript
+export interface PanelInfo
+```
+
 Defines the attributes of the input method panel.
 
 **Since:** 11

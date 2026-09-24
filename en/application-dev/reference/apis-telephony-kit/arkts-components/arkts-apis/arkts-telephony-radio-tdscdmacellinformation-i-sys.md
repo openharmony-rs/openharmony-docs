@@ -1,5 +1,9 @@
 # TdscdmaCellInformation (System API)
 
+```TypeScript
+export interface TdscdmaCellInformation
+```
+
 Obtains TDSCDMA cell information.
 
 **Since:** 8

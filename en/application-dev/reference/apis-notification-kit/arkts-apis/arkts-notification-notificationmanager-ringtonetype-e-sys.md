@@ -1,5 +1,9 @@
 # RingtoneType (System API)
 
+```TypeScript
+export enum RingtoneType
+```
+
 Enumerates the custom ringtone types.
 
 **Since:** 21

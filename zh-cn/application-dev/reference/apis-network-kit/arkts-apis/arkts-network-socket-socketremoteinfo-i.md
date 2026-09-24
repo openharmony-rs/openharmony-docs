@@ -1,5 +1,9 @@
 # SocketRemoteInfo
 
+```TypeScript
+export interface SocketRemoteInfo
+```
+
 Socket的连接信息。
 
 **起始版本：** 7

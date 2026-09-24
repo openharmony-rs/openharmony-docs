@@ -8,6 +8,8 @@ typedef struct OH_NativeBuffer_Config {...} OH_NativeBuffer_Config
 
 <b>OH_NativeBuffer</b> config. Used to allocating new <b>OH_NativeBuffer</b> and query parameters if existing ones.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **Since**: 9
 
 **Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)

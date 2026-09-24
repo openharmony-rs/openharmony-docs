@@ -1,5 +1,9 @@
 # AdvertisingState
 
+```TypeScript
+enum AdvertisingState
+```
+
 The enum of BLE advertising state.
 
 **Since:** 11

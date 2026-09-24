@@ -1,8 +1,12 @@
 # FormHostServiceInfo (System API)
 
+```TypeScript
+interface FormHostServiceInfo
+```
+
 FormHostServiceInfo
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -24,7 +28,7 @@ The custom data.
 
 **Type:** Record&lt;string, string&gt;
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -42,7 +46,7 @@ The display Id.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -60,7 +64,7 @@ The service display name.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -78,7 +82,7 @@ The service name.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

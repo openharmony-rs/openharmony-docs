@@ -1,5 +1,9 @@
 # ContextRecoveryInfo
 
+```TypeScript
+export class ContextRecoveryInfo
+```
+
 Describes the information about the context of exiting the PhotoPicker. It can be used during the subsequent launch of the PhotoPicker to restore the state from the previous exit.
 
 **Since:** 21

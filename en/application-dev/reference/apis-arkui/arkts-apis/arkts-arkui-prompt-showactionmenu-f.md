@@ -20,6 +20,8 @@ Displays the menu.
 
 **Substitutes:** showActionMenu
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -54,6 +56,41 @@ prompt.showActionMenu({
 })
 ```
 
+
+<a id="showactionmenu-1"></a>
+
+## showActionMenu
+
+```TypeScript
+function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessResponse>
+```
+
+Displays the menu.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** showActionMenu
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| options | [ActionMenuOptions](arkts-arkui-prompt-actionmenuoptions-i.md) | Yes | Options. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[ActionMenuSuccessResponse](arkts-arkui-prompt-actionmenusuccessresponse-i.md)&gt; |  |
+
+**Examples**
+
 ```TypeScript
 import prompt from '@ohos.prompt'
 prompt.showActionMenu({
@@ -76,36 +113,3 @@ prompt.showActionMenu({
     console.info('showActionMenu error: ' + err);
   })
 ```
-
-
-## showActionMenu
-
-```TypeScript
-function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessResponse>
-```
-
-Displays the menu.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** showActionMenu
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| options | [ActionMenuOptions](arkts-arkui-prompt-actionmenuoptions-i.md) | Yes | Options. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[ActionMenuSuccessResponse](arkts-arkui-prompt-actionmenusuccessresponse-i.md)&gt; |  |
-
-**Examples**
-
-See [showActionMenu](#showactionmenu)

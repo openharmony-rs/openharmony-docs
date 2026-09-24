@@ -1,5 +1,9 @@
 # CredentialAbstract
 
+```TypeScript
+export interface CredentialAbstract
+```
+
 表示凭据的简要信息。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # RequestPhotoType (System API)
 
+```TypeScript
+enum RequestPhotoType
+```
+
 Enumerates the types of the operation for obtaining image or video thumbnails.
 
 **Since:** 11

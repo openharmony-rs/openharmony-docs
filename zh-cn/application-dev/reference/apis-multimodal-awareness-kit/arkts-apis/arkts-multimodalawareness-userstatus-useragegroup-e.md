@@ -1,5 +1,9 @@
 # UserAgeGroup
 
+```TypeScript
+export enum UserAgeGroup
+```
+
 表示用户具体的年龄分类群组，例如，儿童或成年人。
 
 **起始版本：** 20

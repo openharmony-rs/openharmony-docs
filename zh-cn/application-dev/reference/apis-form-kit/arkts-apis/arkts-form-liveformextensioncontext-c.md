@@ -1,5 +1,9 @@
 # LiveFormExtensionContext
 
+```TypeScript
+declare class LiveFormExtensionContext extends ExtensionContext
+```
+
 LiveFormExtensionContext是[LiveFormExtensionAbility](arkts-form-app-form-liveformextensionability-liveformextensionability-c.md)的上下文，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。它提供访问特定于LiveFormExtensionAbility资源的能力，支持在互动卡片中拉起应用页面，适用于需要在互动卡片中响应用户点击并跳转到应用页面的场景，解决了互动卡片无法主动拉起应用页面的限制问题。
 
 **继承/实现关系：** LiveFormExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
@@ -46,7 +50,7 @@ startAbilityByLiveForm(want: Want): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported due to limited device capabilities. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | An IPC connection error happened. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |

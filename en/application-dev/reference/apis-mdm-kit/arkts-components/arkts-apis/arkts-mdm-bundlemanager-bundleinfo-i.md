@@ -1,5 +1,9 @@
 # BundleInfo
 
+```TypeScript
+interface BundleInfo
+```
+
 Describes the application bundle information.
 
 **Since:** 20

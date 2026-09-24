@@ -1,5 +1,9 @@
 # BrightnessBlenderParam（系统接口）
 
+```TypeScript
+export declare interface BrightnessBlenderParam
+```
+
 BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包括灰度调整系数、饱和度和混合比例等参数。
 
 **起始版本：** 12

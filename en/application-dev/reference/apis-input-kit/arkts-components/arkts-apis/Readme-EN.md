@@ -238,7 +238,8 @@
   - [RightClickType](arkts-input-pointer-rightclicktype-e.md)
 <!--Del-->
 - [@ohos.multimodalInput.shortKey(Preset Global Shortcut Keys)](arkts-input-multimodalinput-shortkey.md)<!--DelEnd-->
-  - [shortKey](arkts-input-shortkey-n.md)
+  <!--Del-->
+  - [shortKey(system api)](arkts-input-shortkey-n.md)<!--DelEnd-->
     <!--Del-->
     - [setKeyDownDuration(system api)](arkts-input-shortkey-setkeydownduration-f-sys.md)<!--DelEnd-->
   <!--Del-->

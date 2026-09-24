@@ -1,5 +1,9 @@
 # NetPortStatesInfo
 
+```TypeScript
+export interface NetPortStatesInfo
+```
+
 Describes the information about the TCP and UDP ports that are currently listened for by the system.
 
 **Since:** 24

@@ -14,7 +14,7 @@ function setExecFrequency(info: FrequencyInfo): void
 
 Set the execution frequency.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.SET_WORK_SCHEDULER_PROPERTY
 
@@ -37,4 +37,4 @@ Set the execution frequency.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [9700003](../errorcode-workScheduler.md#9700003-system-service-failure) | System service operation failed. |
-| 9700006 | Failed to check the execution frequency parameters. |
+| [9700006](../errorcode-workScheduler.md#9700006-failed-to-verify-the-execution-frequency-parameters) | Failed to check the execution frequency parameters. |

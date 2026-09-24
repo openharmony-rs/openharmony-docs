@@ -1,4 +1,4 @@
-# @ohos.app.form.LiveFormExtensionAbility
+# @ohos.app.form.LiveFormExtensionAbility(LiveFormExtensionAbility)
 
 The **LiveFormExtensionAbility** module, inherited from
  [ExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-extensionability-extensionability-c.md), provides interactive widget functions,

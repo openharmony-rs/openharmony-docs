@@ -1,5 +1,9 @@
 # FileHolder (System API)
 
+```TypeScript
+interface FileHolder
+```
+
 Describes the file info for transfer
 
 **Since:** 16

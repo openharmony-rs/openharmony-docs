@@ -40,10 +40,10 @@ function deleteKeyItemAsUser(userId: number, keyAlias: string, huksOptions: Huks
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application permission is not sufficient, which may be caused by lack of<br>cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | the application permission is not sufficient, which may be caused by lack of<br>cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | non-system applications are not allowed to use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | api is not supported |
 | [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
@@ -53,6 +53,71 @@ function deleteKeyItemAsUser(userId: number, keyAlias: string, huksOptions: Huks
 
 **示例**
 
-```TypeScript
 以下代码示例接口调用的前置条件同上文generateKeyItemAsUser的前置条件
+
+```TypeScript
+/* 以删除AES密钥为例 */
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const aesKeyAlias = 'test_aesKeyAlias';
+const userId = 100;
+const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
+
+function GetAesGenerateProperties(): Array<huks.HuksParam> {
+  return [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_AES
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT |
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_CBC
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+    value: userIdStorageLevel,
+  }]
+}
+/* 1. 生成密钥 */
+async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
+  const options: huks.HuksOptions = {
+    properties: genProperties
+  }
+  await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
+  }).catch((err: BusinessError) => {
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
+  })
+}
+/* 2. 删除密钥 */
+async function DeleteKey(keyAlias: string) {
+  const options: huks.HuksOptions = {
+    properties: [{
+      tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+      value: userIdStorageLevel,
+    }]
+  }
+  await huks.deleteKeyItemAsUser(userId, keyAlias, options).then((data) => {
+    console.info(`别名为：${keyAlias} 密钥删除成功！`)
+  }).catch((err: BusinessError) => {
+    console.error(`密钥删除失败，错误码是：${err.code} 错误码信息：${err.message}`)
+  })
+}
+
+async function TestHuksDelete() {
+  await GenerateKey(aesKeyAlias, GetAesGenerateProperties())
+  await DeleteKey(aesKeyAlias)
+}
+
+export default function HuksAsUserTest() {
+  console.info('begin huks as user test')
+  TestHuksDelete()
+}
 ```

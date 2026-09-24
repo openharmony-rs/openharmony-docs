@@ -1,5 +1,9 @@
 # DecodingOptionsForThumbnail
 
+```TypeScript
+interface DecodingOptionsForThumbnail
+```
+
 Describes thumbnail decoding parameters.
 
 **Since:** 26.0.0

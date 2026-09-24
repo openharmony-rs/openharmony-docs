@@ -1,5 +1,9 @@
 # SessionToken (System API)
 
+```TypeScript
+interface SessionToken
+```
+
 Session token. Used to judge the legitimacy of the session.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # AccountType
 
+```TypeScript
+export enum AccountType
+```
+
 Enumerates the types of authorized accounts.
 
 **Since:** 21

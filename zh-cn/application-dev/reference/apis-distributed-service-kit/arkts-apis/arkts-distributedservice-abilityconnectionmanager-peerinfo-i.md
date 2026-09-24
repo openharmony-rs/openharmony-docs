@@ -1,5 +1,9 @@
 # PeerInfo
 
+```TypeScript
+interface PeerInfo
+```
+
 应用协同信息。
 
 **起始版本：** 18

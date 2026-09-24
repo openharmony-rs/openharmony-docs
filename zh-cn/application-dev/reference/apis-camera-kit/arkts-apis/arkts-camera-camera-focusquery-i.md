@@ -1,5 +1,9 @@
 # FocusQuery
 
+```TypeScript
+interface FocusQuery
+```
+
 提供了查询是否支持当前对焦模式的方法。
 
 > **说明：** 
@@ -48,6 +52,24 @@ isFocusModeSupported(afMode: FocusMode): boolean
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isFocusModeSupported(photoSession: camera.PhotoSession): boolean {
+  let status: boolean = false;
+  try {
+    status = photoSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_AUTO);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The isFocusModeSupported call failed. error code: ${err.code}`);
+  }
+  return status;
+}
+```
+
 ## isLockFocusTrackingSupported
 
 ```TypeScript
@@ -75,3 +97,5 @@ isLockFocusTrackingSupported(): boolean
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
+
+**示例**

@@ -1,5 +1,9 @@
 # ScanMode
 
+```TypeScript
+enum ScanMode
+```
+
 Enumerates the scan modes.
 
 **Since:** 26.0.0

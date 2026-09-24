@@ -8,6 +8,8 @@ typedef struct ArkUI_TextMarqueeOptions ArkUI_TextMarqueeOptions
 
 Defines the marquee options of text.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

@@ -41,13 +41,6 @@ import { errorManager } from '@kit.AbilityKit';
 | --- | --- |
 | [GlobalError](arkts-ability-errormanager-globalerror-i.md) | 有关异常事件名字、消息、错误堆栈信息、异常线程名称和类型的对象。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [InstanceType](arkts-ability-errormanager-instancetype-e.md) | 虚拟机的实例类型。 |
-| [ResourceType](arkts-ability-errormanager-resourcetype-e.md) | 应用资源超基线的类型。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -59,3 +52,10 @@ import { errorManager } from '@kit.AbilityKit';
 | [LoopObserver](arkts-ability-errormanager-loopobserver-t.md) | LoopObserver模块。定义异常监听，可作为 `errormanager.on` 函数的参数，监听并处理当前应用主线程超时的事件。 |
 | [ResourceUsageObserver](arkts-ability-errormanager-resourceusageobserver-t.md) | 定义应用资源使用情况的观察者回调函数，作为[errorManager.setDefaultResourceUsageObserver](arkts-ability-errormanager-setdefaultresourceusageobserver-f.md)的入参，用于监听各类资源占用变化，并支持应用执行自定义资源处理逻辑。 |
 | [UnhandledRejectionObserver](arkts-ability-errormanager-unhandledrejectionobserver-t.md) | 定义异常监听，用于捕获Promise异步操作失败的原因。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [InstanceType](arkts-ability-errormanager-instancetype-e.md) | 虚拟机的实例类型。 |
+| [ResourceType](arkts-ability-errormanager-resourcetype-e.md) | 应用资源超基线的类型。 |

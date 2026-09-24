@@ -8,6 +8,8 @@ struct NetStack_CertBlob {...}
 
 Defines the certificate data structure.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 11
 
 **Related module**: [netstack](capi-netstack.md)

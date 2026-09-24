@@ -1,5 +1,9 @@
 # StrongAuthReasonFlags (System API)
 
+```TypeScript
+enum StrongAuthReasonFlags
+```
+
 Indicates the strong authentication reason flags used to request.
 
 @enum { int }

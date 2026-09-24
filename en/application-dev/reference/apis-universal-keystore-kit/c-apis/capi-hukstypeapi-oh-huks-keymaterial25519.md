@@ -8,6 +8,8 @@ typedef struct OH_Huks_KeyMaterial25519 {...} OH_Huks_KeyMaterial25519
 
 Defines a struct of a 25519 key.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 **Related module**: [HuksTypeApi](capi-hukstypeapi.md)

@@ -1,5 +1,9 @@
 # Locale
 
+```TypeScript
+export class Locale
+```
+
 Provides APIs for obtaining locale information.
 
 **Since:** 6
@@ -47,13 +51,7 @@ let locale = new intl.Locale();
 let localeID = locale.toString();
 ```
 
-```TypeScript
-import { intl } from '@kit.LocalizationKit';
-
-// Create a zh-CN locale object.
-let locale = new intl.Locale('zh-CN');
-let localeID = locale.toString(); // localeID = 'zh-CN'
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -83,15 +81,6 @@ Creates a **Locale** object.
 | options | [LocaleOptions](arkts-localization-intl-localeoptions-i.md) | No | Options for creating the **Locale** object.<br>**Since:** 12 |
 
 **Examples**
-
-```TypeScript
-import { intl } from '@kit.LocalizationKit';
-
-// The current locale ID is used by the default constructor.
-let locale = new intl.Locale();
-// Return the current system locale ID.
-let localeID = locale.toString();
-```
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';

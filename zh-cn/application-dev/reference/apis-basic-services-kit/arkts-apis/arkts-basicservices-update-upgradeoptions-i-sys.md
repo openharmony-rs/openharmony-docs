@@ -1,5 +1,9 @@
 # UpgradeOptions（系统接口）
 
+```TypeScript
+export interface UpgradeOptions
+```
+
 升级选项，包含升级指令等配置，用于指定升级操作类型。
 
 **起始版本：** 9

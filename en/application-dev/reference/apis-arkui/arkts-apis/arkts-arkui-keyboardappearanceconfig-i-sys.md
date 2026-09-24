@@ -1,5 +1,9 @@
 # KeyboardAppearanceConfig (System API)
 
+```TypeScript
+declare interface KeyboardAppearanceConfig
+```
+
 Describes the keyboard visual style configuration.
 
 **Since:** 20

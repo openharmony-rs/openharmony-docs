@@ -1,5 +1,9 @@
 # ModuleDistroInfo (System API)
 
+```TypeScript
+export interface ModuleDistroInfo
+```
+
 ModuleDistroInfo: the bundle info summary class.
 
 **Since:** 9

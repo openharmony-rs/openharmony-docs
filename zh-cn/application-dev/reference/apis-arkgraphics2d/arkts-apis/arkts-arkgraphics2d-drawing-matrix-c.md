@@ -1,5 +1,9 @@
 # Matrix
 
+```TypeScript
+class Matrix
+```
+
 矩阵对象，用于图形的坐标变换，支持平移、旋转、缩放和倾斜等变换操作。通过矩阵变换可实现不同坐标系之间的映射。
 
 表示为3×3的矩阵，如下图所示：
@@ -42,6 +46,16 @@ constructor()
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+```
+
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -60,6 +74,15 @@ constructor(matrix: Matrix)
 | --- | --- | --- | --- |
 | matrix | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 被拷贝的矩阵。 |
 
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+let matrix2 = new drawing.Matrix(matrix);
+```
+
 ## getAll
 
 ```TypeScript
@@ -77,6 +100,15 @@ getAll(): Array<number>
 | 类型 | 说明 |
 | --- | --- |
 | Array&lt;number&gt; | 存储矩阵元素值的浮点数组，长度为9。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+console.info("matrix "+ matrix.getAll());
+```
 
 ## getValue
 
@@ -106,7 +138,18 @@ getValue(index: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+for (let i = 0; i < 9; i++) {
+    console.info("matrix "+matrix.getValue(i).toString());
+}
+```
 
 ## invert
 
@@ -136,7 +179,23 @@ invert(matrix: Matrix): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+if (matrix1.invert(matrix2)) {
+  console.info("matrix1 is invertible and matrix2 is set as an inverse matrix of the matrix1.");
+} else {
+  console.info("matrix1 is not invertible and matrix2 is not changed.");
+}
+```
 
 ## isAffine
 
@@ -155,6 +214,17 @@ isAffine(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 返回当前矩阵是否为仿射矩阵。true表示是仿射矩阵，false表示不是仿射矩阵。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
+let isAffine = matrix.isAffine();
+console.info('isAffine :', isAffine);
+```
 
 ## isEqual
 
@@ -184,7 +254,23 @@ isEqual(matrix: Matrix): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+if (matrix1.isEqual(matrix2)) {
+  console.info("matrix1 and matrix2 are equal.");
+} else {
+  console.info("matrix1 and matrix2 are not equal.");
+}
+```
 
 ## isIdentity
 
@@ -203,6 +289,19 @@ isIdentity(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 返回矩阵是否是单位矩阵。true表示矩阵是单位矩阵，false表示矩阵不是单位矩阵。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+if (matrix.isIdentity()) {
+  console.info("matrix is identity.");
+} else {
+  console.info("matrix is not identity.");
+}
+```
 
 ## mapPoints
 
@@ -232,7 +331,22 @@ mapPoints(src: Array<common2D.Point>): Array<common2D.Point>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing, common2D } from "@kit.ArkGraphics2D";
+
+let src: Array<common2D.Point> = [];
+src.push({x: 15, y: 20});
+src.push({x: 20, y: 15});
+src.push({x: 30, y: 10});
+let matrix = new drawing.Matrix();
+let dst: Array<common2D.Point> = matrix.mapPoints(src);
+console.info("matrix= src: "+JSON.stringify(src));
+console.info("matrix= dst: "+JSON.stringify(dst));
+```
 
 ## mapRadius
 
@@ -257,6 +371,17 @@ mapRadius(radius: number): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 返回经过变换之后的平均半径。单位为物理像素px。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let radius = matrix.mapRadius(10);
+console.info('radius', radius);
+```
 
 ## mapRect
 
@@ -289,7 +414,20 @@ mapRect(dst: common2D.Rect, src: common2D.Rect): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing, common2D } from "@kit.ArkGraphics2D";
+
+let dst: common2D.Rect = { left: 100, top: 20, right: 130, bottom: 60 };
+let src: common2D.Rect = { left: 100, top: 80, right: 130, bottom: 120 };
+let matrix = new drawing.Matrix();
+if (matrix.mapRect(dst, src)) {
+    console.info("matrix= dst "+JSON.stringify(dst));
+}
+```
 
 ## postConcat
 
@@ -308,6 +446,25 @@ postConcat(matrix: Matrix): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | matrix | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 表示用于运算的矩阵，位于乘法表达式左侧。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+if (matrix.isIdentity()) {
+  console.info("matrix is identity.");
+} else {
+  console.info("matrix is not identity.");
+}
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+matrix1.postConcat(matrix2);
+```
 
 ## postRotate
 
@@ -333,7 +490,20 @@ postRotate(degree: number, px: number, py: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let degree: number = 2;
+let px: number = 3;
+let py: number = 4;
+matrix.postRotate(degree, px, py);
+console.info("matrix= "+matrix.getAll().toString());
+```
 
 ## postScale
 
@@ -360,7 +530,21 @@ postScale(sx: number, sy: number, px: number, py: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let sx: number = 2;
+let sy: number = 0.5;
+let px: number = 1;
+let py: number = 1;
+matrix.postScale(sx, sy, px, py);
+console.info("matrix= "+matrix.getAll().toString());
+```
 
 ## postSkew
 
@@ -382,6 +566,15 @@ postSkew(kx: number, ky: number, px: number, py: number): void
 | ky | number | 是 | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。 |
 | px | number | 是 | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。 |
 | py | number | 是 | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+matrix.postSkew(2.0, 1.0, 2.0, 1.0);
+```
 
 ## postTranslate
 
@@ -406,7 +599,19 @@ postTranslate(dx: number, dy: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let dx: number = 3;
+let dy: number = 4;
+matrix.postTranslate(dx, dy);
+console.info("matrix= "+matrix.getAll().toString());
+```
 
 ## preConcat
 
@@ -430,7 +635,19 @@ preConcat(matrix: Matrix): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+matrix1.preConcat(matrix2);
+```
 
 ## preRotate
 
@@ -456,7 +673,20 @@ preRotate(degree: number, px: number, py: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let degree: number = 2;
+let px: number = 3;
+let py: number = 4;
+matrix.preRotate(degree, px, py);
+console.info("matrix= "+matrix.getAll().toString());
+```
 
 ## preScale
 
@@ -483,7 +713,21 @@ preScale(sx: number, sy: number, px: number, py: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let sx: number = 2;
+let sy: number = 0.5;
+let px: number = 1;
+let py: number = 1;
+matrix.preScale(sx, sy, px, py);
+console.info("matrix"+matrix.getAll().toString());
+```
 
 ## preSkew
 
@@ -505,6 +749,15 @@ preSkew(kx: number, ky: number, px: number, py: number): void
 | ky | number | 是 | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。 |
 | px | number | 是 | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。 |
 | py | number | 是 | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+matrix.preSkew(2.0, 1.0, 2.0, 1.0);
+```
 
 ## preTranslate
 
@@ -529,7 +782,19 @@ preTranslate(dx: number, dy: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let dx: number = 3;
+let dy: number = 4;
+matrix.preTranslate(dx, dy);
+console.info("matrix"+matrix.getAll().toString());
+```
 
 ## rectStaysRect
 
@@ -549,6 +814,18 @@ rectStaysRect(): boolean
 | --- | --- |
 | boolean | 返回经过该矩阵映射后的矩形的形状是否仍为矩形。true表示仍是矩形，false表示不是矩形。 |
 
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
+let matrix2 = new drawing.Matrix(matrix);
+let isRect = matrix2.rectStaysRect();
+console.info('isRect :', isRect);
+```
+
 ## reset
 
 ```TypeScript
@@ -560,6 +837,17 @@ reset(): void
 **起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+matrix.postScale(2, 3, 4, 5);
+matrix.reset();
+console.info("matrix= "+matrix.getAll().toString());
+```
 
 ## setConcat
 
@@ -579,6 +867,18 @@ setConcat(matrixA: Matrix, matrixB: Matrix): void
 | --- | --- | --- | --- |
 | matrixA | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 用于运算的矩阵A，位于乘法表达式左侧。 |
 | matrixB | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 用于运算的矩阵B，位于乘法表达式右侧。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+matrix1.setConcat(matrix2, matrix1);
+```
 
 ## setMatrix
 
@@ -602,7 +902,19 @@ setMatrix(values: Array<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+let value : Array<number> = [2, 2, 2, 2, 2, 2, 2, 2, 2];
+matrix.setMatrix(value);
+```
+
+<a id="setmatrix-1"></a>
 
 ## setMatrix
 
@@ -621,6 +933,17 @@ setMatrix(matrix: Array<number> | Matrix): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | matrix | Array&lt;number&gt; &#124; [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 用于更新的数组或矩阵。当类型为数组时，长度固定为9。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix1.setMatrix(matrix2);
+```
 
 ## setPolyToPoly
 
@@ -652,7 +975,20 @@ setPolyToPoly(src: Array<common2D.Point>, dst: Array<common2D.Point>, count: num
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing, common2D } from "@kit.ArkGraphics2D";
+
+let srcPoints: Array<common2D.Point> = [ {x: 10, y: 20}, {x: 200, y: 150} ];
+let dstPoints: Array<common2D.Point> = [{ x:0, y: 10 }, { x:300, y: 600 }];
+let matrix = new drawing.Matrix();
+if (matrix.setPolyToPoly(srcPoints, dstPoints, 2)) {
+    console.info("matrix"+matrix.getAll().toString());
+}
+```
 
 ## setRectToRect
 
@@ -684,7 +1020,21 @@ setRectToRect(src: common2D.Rect, dst: common2D.Rect, scaleToFit: ScaleToFit): b
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { drawing, common2D } from "@kit.ArkGraphics2D";
+
+let src: common2D.Rect = { left: 100, top: 100, right: 300, bottom: 300 };
+let dst: common2D.Rect = { left: 200, top: 200, right: 600, bottom: 600 };
+let scaleToFit: drawing.ScaleToFit = drawing.ScaleToFit.FILL_SCALE_TO_FIT;
+let matrix = new drawing.Matrix();
+if (matrix.setRectToRect(src, dst, scaleToFit)) {
+    console.info("matrix"+matrix.getAll().toString());
+}
+```
 
 ## setRotation
 
@@ -710,7 +1060,16 @@ setRotation(degree: number, px: number, py: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setRotation(90, 100, 100);
+```
 
 ## setScale
 
@@ -737,7 +1096,16 @@ setScale(sx: number, sy: number, px: number, py: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setScale(100, 100, 150, 150);
+```
 
 ## setSinCos
 
@@ -760,6 +1128,16 @@ setSinCos(sinValue: number, cosValue: number, px: number, py: number): void
 | px | number | 是 | 旋转中心的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。 |
 | py | number | 是 | 旋转中心的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。 |
 
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
+matrix.setSinCos(0, 1, 1, 0);
+```
+
 ## setSkew
 
 ```TypeScript
@@ -780,6 +1158,16 @@ setSkew(kx: number, ky: number, px: number, py: number): void
 | ky | number | 是 | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。 |
 | px | number | 是 | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。 |
 | py | number | 是 | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
+matrix.setSkew(2, 0.5, 0.5, 2);
+```
 
 ## setTranslation
 
@@ -804,4 +1192,13 @@ setTranslation(dx: number, dy: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setTranslation(100, 100);
+```

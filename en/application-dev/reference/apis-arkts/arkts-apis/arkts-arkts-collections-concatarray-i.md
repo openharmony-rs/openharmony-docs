@@ -1,5 +1,9 @@
 # ConcatArray
 
+```TypeScript
+interface ConcatArray<T> extends ISendable
+```
+
 An array-like object that can be concatenated. This API extends **ISendable**.
 
 > **NOTE:** 

@@ -1,5 +1,9 @@
 # AudioLoopback
 
+```TypeScript
+interface AudioLoopback
+```
+
 This interface provides APIs for audio monitoring.
 
 Before calling any API in AudioLoopback, you must use [audio.createAudioLoopback](arkts-audio-audio-createaudioloopback-f.md) to create an AudioLoopback instance.

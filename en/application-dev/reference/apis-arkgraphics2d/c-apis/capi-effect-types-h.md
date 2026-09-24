@@ -41,6 +41,8 @@ enum EffectErrorCode
 
 Enumerates the status codes of the filter effect.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -59,6 +61,8 @@ enum EffectTileMode
 **Description**
 
 Enumerates the tile modes of the shader effect.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 14
 

@@ -1,5 +1,9 @@
 # ExpandOption（系统接口）
 
+```TypeScript
+interface ExpandOption
+```
+
 扩展屏幕的参数。
 
 **起始版本：** 9

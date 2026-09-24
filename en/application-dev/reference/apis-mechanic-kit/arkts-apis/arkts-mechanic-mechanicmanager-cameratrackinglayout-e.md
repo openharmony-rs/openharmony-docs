@@ -1,5 +1,9 @@
 # CameraTrackingLayout
 
+```TypeScript
+export enum CameraTrackingLayout
+```
+
 Enumerates the camera tracking layouts. @enum { int }
 
 **Since:** 20

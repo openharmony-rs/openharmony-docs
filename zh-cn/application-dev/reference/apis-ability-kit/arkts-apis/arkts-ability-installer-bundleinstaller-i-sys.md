@@ -1,5 +1,9 @@
 # BundleInstaller（系统接口）
 
+```TypeScript
+interface BundleInstaller
+```
+
 Bundle installer interface, include install uninstall recover.
 
 **起始版本：** 9
@@ -47,9 +51,9 @@ addExtResource(bundleName: string, filePaths: Array<string>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700301](../errorcode-bundle.md#17700301-扩展资源添加失败) | AddExtResource failed due to parse file failed. |
 
@@ -110,9 +114,9 @@ createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): P
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_CLONE_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_CLONE_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The appIndex is not in valid range or already exists. |
@@ -181,9 +185,9 @@ destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.UNINSTALL_CLONE_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.UNINSTALL_CLONE_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
@@ -215,38 +219,7 @@ try {
 }
 ```
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'com.ohos.camera';
-let index = 1;
-let userId = 100;
-let key = 'ohos.bms.param.verifyUninstallRule';
-let value = 'false';
-let item: installer.Parameters = {key, value};
-let destroyAppCloneOpt: installer.DestroyAppCloneParam = {
-    userId: userId,
-    parameters: [item]
-};
-
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.destroyAppClone(bundleName, index, destroyAppCloneOpt)
-            .then(() => {
-                console.info('destroyAppClone successfully.');
-        }).catch((error: BusinessError) => {
-            console.error('destroyAppClone failed:' + error.message);
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+<a id="destroyappclone-1"></a>
 
 ## destroyAppClone
 
@@ -282,9 +255,9 @@ destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: Des
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.UNINSTALL_CLONE_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.UNINSTALL_CLONE_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
@@ -292,7 +265,38 @@ destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: Des
 
 **示例**
 
-参见 [destroyAppClone](#destroyappclone)
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.ohos.camera';
+let index = 1;
+let userId = 100;
+let key = 'ohos.bms.param.verifyUninstallRule';
+let value = 'false';
+let item: installer.Parameters = {key, value};
+let destroyAppCloneOpt: installer.DestroyAppCloneParam = {
+    userId: userId,
+    parameters: [item]
+};
+
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.destroyAppClone(bundleName, index, destroyAppCloneOpt)
+            .then(() => {
+                console.info('destroyAppClone successfully.');
+        }).catch((error: BusinessError) => {
+            console.error('destroyAppClone failed:' + error.message);
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## install
 
@@ -310,6 +314,7 @@ install(hapFilePaths: Array<string>, installParam: InstallParam, callback: Async
 **起始版本：** 9
 
 **需要权限：** 
+- API版本26+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE) or ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
 - API版本23+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
 - API版本13-22：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE
 - API版本10-12：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
@@ -331,9 +336,9 @@ install(hapFilePaths: Array<string>, installParam: InstallParam, callback: Async
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE'or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE'). |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE'or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE') or 'ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the HAP because the HAP fails to be parsed. |
 | [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the HAP because the HAP signature fails to be verified. |
@@ -391,57 +396,7 @@ try {
 }
 ```
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.install(hapFilePaths, (err: BusinessError) => {
-            if (err) {
-                console.error('install failed:' + err.message);
-            } else {
-                console.info('install successfully.');
-            }
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
-
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
-let installParam: installer.InstallParam = {
-    userId: 100,
-    isKeepData: false,
-    installFlag: 1,
-};
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.install(hapFilePaths, installParam)
-            .then((data: void) => {
-                console.info('install successfully: ' + JSON.stringify(data));
-        }).catch((error: BusinessError) => {
-            console.error('install failed:' + error.message);
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+<a id="install-1"></a>
 
 ## install
 
@@ -459,6 +414,7 @@ install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 **起始版本：** 9
 
 **需要权限：** 
+- API版本26+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE) or ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
 - API版本23+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
 - API版本13-22：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE
 - API版本10-12：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
@@ -479,9 +435,9 @@ install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE'or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE'). |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE'or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE') or 'ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the HAP because the HAP fails to be parsed. |
 | [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the HAP because the HAP signature fails to be verified. |
 | [17700012](../errorcode-bundle.md#17700012-安装包路径无效或者文件过大导致应用安装失败) | Failed to install the HAP because the HAP path is invalid or the HAP is too large. |
@@ -509,7 +465,31 @@ install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 
 **示例**
 
-参见 [install](#install)
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.install(hapFilePaths, (err: BusinessError) => {
+            if (err) {
+                console.error('install failed:' + err.message);
+            } else {
+                console.info('install successfully.');
+            }
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
+<a id="install-2"></a>
 
 ## install
 
@@ -527,6 +507,7 @@ install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 **起始版本：** 9
 
 **需要权限：** 
+- API版本26+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE) or ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
 - API版本23+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
 - API版本13-22：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE
 - API版本10-12：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
@@ -553,9 +534,9 @@ install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE'or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE'). |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE'or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE') or 'ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the HAP because the HAP fails to be parsed. |
 | [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the HAP because the HAP signature fails to be verified. |
@@ -584,7 +565,33 @@ install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 
 **示例**
 
-参见 [install](#install)
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.install(hapFilePaths, installParam)
+            .then((data: void) => {
+                console.info('install successfully: ' + JSON.stringify(data));
+        }).catch((error: BusinessError) => {
+            console.error('install failed:' + error.message);
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## installPlugin
 
@@ -620,8 +627,8 @@ installPlugin(hostBundleName: string, pluginFilePaths: Array<string>, pluginPara
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_PLUGIN_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_PLUGIN_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified hostBundleName cannot be found or the bundle is not installed by the specified user. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
 | [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the plugin because the plugin fails to be parsed. |
@@ -706,9 +713,9 @@ installPreexistingApp(bundleName: string, userId?: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
 | [17700071](../errorcode-bundle.md#17700071-不允许企业应用安装) | It is not allowed to install the enterprise bundle. |
@@ -768,9 +775,9 @@ recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.RECOVER_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.RECOVER_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
@@ -807,57 +814,7 @@ try {
 }
 ```
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'com.ohos.demo';
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.recover(bundleName, (err: BusinessError) => {
-            if (err) {
-                console.error('recover failed:' + err.message);
-            } else {
-                console.info('recover successfully.');
-            }
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
-
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'com.ohos.demo';
-let installParam: installer.InstallParam = {
-    userId: 100,
-    isKeepData: false,
-    installFlag: 1,
-};
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.recover(bundleName, installParam)
-            .then((data: void) => {
-                console.info('recover successfully: ' + JSON.stringify(data));
-        }).catch((error: BusinessError) => {
-            console.error('recover failed:' + error.message);
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+<a id="recover-1"></a>
 
 ## recover
 
@@ -886,16 +843,40 @@ recover(bundleName: string, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.RECOVER_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.RECOVER_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
 | [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**适用版本：** 14+ |
 
 **示例**
 
-参见 [recover](#recover)
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.ohos.demo';
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.recover(bundleName, (err: BusinessError) => {
+            if (err) {
+                console.error('recover failed:' + err.message);
+            } else {
+                console.info('recover successfully.');
+            }
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
+<a id="recover-2"></a>
 
 ## recover
 
@@ -930,9 +911,9 @@ recover(bundleName: string, installParam?: InstallParam): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.RECOVER_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.RECOVER_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
@@ -940,7 +921,33 @@ recover(bundleName: string, installParam?: InstallParam): Promise<void>
 
 **示例**
 
-参见 [recover](#recover)
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.ohos.demo';
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.recover(bundleName, installParam)
+            .then((data: void) => {
+                console.info('recover successfully: ' + JSON.stringify(data));
+        }).catch((error: BusinessError) => {
+            console.error('recover failed:' + error.message);
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## removeExtResource
 
@@ -975,9 +982,9 @@ removeExtResource(bundleName: string, moduleNames: Array<string>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700302](../errorcode-bundle.md#17700302-扩展资源删除失败) | RemoveExtResource failed due to module does not exist. |
 
@@ -1033,9 +1040,9 @@ uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallbac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700020](../errorcode-bundle.md#17700020-预置应用无法卸载) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
@@ -1076,83 +1083,7 @@ try {
 }
 ```
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'com.ohos.demo';
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.uninstall(bundleName, (err: BusinessError) => {
-            if (err) {
-                console.error('uninstall failed:' + err.message);
-            } else {
-                console.info('uninstall successfully.');
-            }
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
-
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'com.ohos.demo';
-let installParam: installer.InstallParam = {
-    userId: 100,
-    isKeepData: false,
-    installFlag: 1,
-};
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.uninstall(bundleName, installParam)
-            .then((data: void) => {
-                console.info('uninstall successfully: ' + JSON.stringify(data));
-        }).catch((error: BusinessError) => {
-            console.error('uninstall failed:' + error.message);
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
-
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let uninstallParam: installer.UninstallParam = {
-    bundleName: "com.ohos.demo",
-};
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.uninstall(uninstallParam, (err: BusinessError) => {
-            if (err) {
-                console.error('uninstall failed:' + err.message);
-            } else {
-                console.info('uninstall successfully.');
-            }
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+<a id="uninstall-1"></a>
 
 ## uninstall
 
@@ -1181,9 +1112,9 @@ uninstall(bundleName: string, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700020](../errorcode-bundle.md#17700020-预置应用无法卸载) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
 | [17700040](../errorcode-bundle.md#17700040-不允许卸载应用间共享库) | The specified bundle is a shared bundle and cannot be uninstalled. |
@@ -1193,7 +1124,31 @@ uninstall(bundleName: string, callback: AsyncCallback<void>): void
 
 **示例**
 
-参见 [uninstall](#uninstall)
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.ohos.demo';
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstall(bundleName, (err: BusinessError) => {
+            if (err) {
+                console.error('uninstall failed:' + err.message);
+            } else {
+                console.info('uninstall successfully.');
+            }
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
+<a id="uninstall-2"></a>
 
 ## uninstall
 
@@ -1228,9 +1183,9 @@ uninstall(bundleName: string, installParam?: InstallParam): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700020](../errorcode-bundle.md#17700020-预置应用无法卸载) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
@@ -1242,7 +1197,35 @@ uninstall(bundleName: string, installParam?: InstallParam): Promise<void>
 
 **示例**
 
-参见 [uninstall](#uninstall)
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.ohos.demo';
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstall(bundleName, installParam)
+            .then((data: void) => {
+                console.info('uninstall successfully: ' + JSON.stringify(data));
+        }).catch((error: BusinessError) => {
+            console.error('uninstall failed:' + error.message);
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
+<a id="uninstall-3"></a>
 
 ## uninstall
 
@@ -1271,16 +1254,42 @@ uninstall(uninstallParam: UninstallParam, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700020](../errorcode-bundle.md#17700020-预置应用无法卸载) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
 | [17700037](../errorcode-bundle.md#17700037-被卸载的shared-library版本被其他应用依赖) | The version of shared bundle is dependent on other applications. |
 | [17700038](../errorcode-bundle.md#17700038-被卸载的shared-library不存在) | The specified shared bundle does not exist. |
 
 **示例**
 
-参见 [uninstall](#uninstall)
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uninstallParam: installer.UninstallParam = {
+    bundleName: "com.ohos.demo",
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstall(uninstallParam, (err: BusinessError) => {
+            if (err) {
+                console.error('uninstall failed:' + err.message);
+            } else {
+                console.info('uninstall successfully.');
+            }
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
+<a id="uninstall-4"></a>
 
 ## uninstall
 
@@ -1314,16 +1323,40 @@ uninstall(uninstallParam: UninstallParam): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700020](../errorcode-bundle.md#17700020-预置应用无法卸载) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
 | [17700037](../errorcode-bundle.md#17700037-被卸载的shared-library版本被其他应用依赖) | The version of shared bundle is dependent on other applications. |
 | [17700038](../errorcode-bundle.md#17700038-被卸载的shared-library不存在) | The specified shared bundle does not exist. |
 
 **示例**
 
-参见 [uninstall](#uninstall)
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uninstallParam: installer.UninstallParam = {
+    bundleName: "com.ohos.demo",
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstall(uninstallParam, (err: BusinessError) => {
+            if (err) {
+                console.error('uninstall failed:' + err.message);
+            } else {
+                console.info('uninstall successfully.');
+            }
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## uninstallNewPreinstalledApps
 
@@ -1359,8 +1392,8 @@ uninstallNewPreinstalledApps(bundleNames: Array<string>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 
 **示例**
 
@@ -1421,8 +1454,8 @@ uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.UNINSTALL_PLUGIN_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.UNINSTALL_PLUGIN_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The user id is invalid. |
 | [17700092](../errorcode-bundle.md#17700092-插件包名不存在) | Failed to uninstall the plugin because the specified plugin is not found. |
@@ -1489,9 +1522,9 @@ uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700045](../errorcode-bundle.md#17700045-企业设备管理不允许卸载该应用) | Failed to uninstall because enterprise device management disallow uninstall. |
 | [17700057](../errorcode-bundle.md#17700057-指定的应用不是预置应用) | Failed to uninstall updates because the HAP is not pre-installed. |
@@ -1556,9 +1589,9 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam: InstallParam, cal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3 000. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3 000. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the HAP because the HAP fails to be parsed. |
 | [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the HAP because the HAP signature fails to be verified. |
@@ -1609,57 +1642,7 @@ try {
 }
 ```
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.updateBundleForSelf(hapFilePaths, (err: BusinessError) => {
-            if (err) {
-                console.error('updateBundleForSelf failed:' + err.message);
-            } else {
-                console.info('updateBundleForSelf successfully.');
-            }
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
-
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
-let installParam: installer.InstallParam = {
-    userId: 100,
-    isKeepData: false,
-    installFlag: 1,
-};
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.updateBundleForSelf(hapFilePaths, installParam)
-            .then((data: void) => {
-                console.info('updateBundleForSelf successfully: ' + JSON.stringify(data));
-        }).catch((error: BusinessError) => {
-            console.error('updateBundleForSelf failed:' + error.message);
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+<a id="updatebundleforself-1"></a>
 
 ## updateBundleForSelf
 
@@ -1688,9 +1671,9 @@ updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the HAP because the HAP fails to be parsed. |
 | [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the HAP because the HAP signature fails to be verified. |
 | [17700012](../errorcode-bundle.md#17700012-安装包路径无效或者文件过大导致应用安装失败) | Failed to install the HAP because the HAP path is invalid or the HAP is too large. |
@@ -1711,7 +1694,31 @@ updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>):
 
 **示例**
 
-参见 [updateBundleForSelf](#updatebundleforself)
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.updateBundleForSelf(hapFilePaths, (err: BusinessError) => {
+            if (err) {
+                console.error('updateBundleForSelf failed:' + err.message);
+            } else {
+                console.info('updateBundleForSelf successfully.');
+            }
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
+<a id="updatebundleforself-2"></a>
 
 ## updateBundleForSelf
 
@@ -1746,9 +1753,9 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): P
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3 000. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3 000. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the HAP because the HAP fails to be parsed. |
 | [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the HAP because the HAP signature fails to be verified. |
@@ -1770,4 +1777,30 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): P
 
 **示例**
 
-参见 [updateBundleForSelf](#updatebundleforself)
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.updateBundleForSelf(hapFilePaths, installParam)
+            .then((data: void) => {
+                console.info('updateBundleForSelf successfully: ' + JSON.stringify(data));
+        }).catch((error: BusinessError) => {
+            console.error('updateBundleForSelf failed:' + error.message);
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```

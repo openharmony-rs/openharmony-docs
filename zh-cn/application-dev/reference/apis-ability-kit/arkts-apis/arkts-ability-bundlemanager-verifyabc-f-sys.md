@@ -34,10 +34,10 @@ function verifyAbc(abcPaths: Array<string>, deleteOriginalFiles: boolean, callba
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700201](../errorcode-bundle.md#17700201-abc文件校验失败) | Failed to verify the abc file. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -62,25 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let abcPaths: Array<string> = ['/data/storage/el2/base/a.abc'];
-
-try {
-  bundleManager.verifyAbc(abcPaths, true).then((data) => {
-    hilog.info(0x0000, 'testTag', 'verifyAbc successfully');
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'verifyAbc failed. Cause: %{public}s', err.message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'verifyAbc failed. Cause: %{public}s', message);
-}
-```
-
+<a id="verifyabc-1"></a>
 
 ## verifyAbc
 
@@ -115,11 +98,28 @@ function verifyAbc(abcPaths: Array<string>, deleteOriginalFiles: boolean): Promi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700201](../errorcode-bundle.md#17700201-abc文件校验失败) | Failed to verify the abc file. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
 **示例**
 
-参见 [verifyAbc](#verifyabc)
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let abcPaths: Array<string> = ['/data/storage/el2/base/a.abc'];
+
+try {
+  bundleManager.verifyAbc(abcPaths, true).then((data) => {
+    hilog.info(0x0000, 'testTag', 'verifyAbc successfully');
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'verifyAbc failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'verifyAbc failed. Cause: %{public}s', message);
+}
+```

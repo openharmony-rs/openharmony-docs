@@ -31,8 +31,8 @@ function uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback<voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500002](../errorcode-certManager.md#17500002-证书不存在) | The certificate does not exist. |
 
@@ -55,23 +55,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri: string = 'test'; /* 业务删除私有凭据，需要使用凭据的唯一标识符，此处省略 */
-try {
-  certificateManager.uninstallPrivateCertificate(uri).then(() => {
-    console.info('Succeeded in uninstalling private certificate.');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  console.error(`Failed to uninstall private certificate. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="uninstallprivatecertificate-1"></a>
 
 ## uninstallPrivateCertificate
 
@@ -103,11 +88,26 @@ function uninstallPrivateCertificate(keyUri: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500002](../errorcode-certManager.md#17500002-证书不存在) | The certificate does not exist. |
 
 **示例**
 
-参见 uninstallPrivateCertificate
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uri: string = 'test'; /* 业务删除私有凭据，需要使用凭据的唯一标识符，此处省略 */
+try {
+  certificateManager.uninstallPrivateCertificate(uri).then(() => {
+    console.info('Succeeded in uninstalling private certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to uninstall private certificate. Code: ${error.code}, message: ${error.message}`);
+}
+```

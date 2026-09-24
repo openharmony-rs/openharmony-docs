@@ -18,6 +18,8 @@ function getPermissionUsedRecordToggleStatus(): Promise<boolean>
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -32,9 +34,9 @@ function getPermissionUsedRecordToggleStatus(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_USED_STATS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system app. Interface caller is not a system app. |
-| [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | This API must be used together with [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md).<br>**适用版本：** 26.1.0+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_USED_STATS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system app. Interface caller is not a system app. |
+| [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | This API must be used together with [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md).<br>**适用版本：** 26.0.1+ |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
 **示例**
@@ -56,18 +58,8 @@ privacyManager.getPermissionUsedRecordToggleStatus().then((status) => {
 });
 ```
 
-```TypeScript
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
-privacyManager.getPermissionUsedRecordToggleStatus(subProfileId).then((status: boolean) => {
-  console.info(`getPermissionUsedRecordToggleStatus success, status: ${status}`);
-}).catch((err: BusinessError): void => {
-  console.error(`getPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getpermissionusedrecordtogglestatus-1"></a>
 
 ## getPermissionUsedRecordToggleStatus
 
@@ -77,7 +69,7 @@ function getPermissionUsedRecordToggleStatus(subProfileId: number): Promise<bool
 
 系统应用调用此接口，可以获取指定子身份资料的权限使用记录开关状态，例如在权限管理界面展示当前开关设置状态。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -103,12 +95,22 @@ function getPermissionUsedRecordToggleStatus(subProfileId: number): Promise<bool
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_USED_STATS". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system app. Interface caller is not a system app. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_USED_STATS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system app. Interface caller is not a system app. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The specified subProfileId does not exist for the current user. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
 **示例**
 
-参见 [getPermissionUsedRecordToggleStatus](#getpermissionusedrecordtogglestatus)
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
+privacyManager.getPermissionUsedRecordToggleStatus(subProfileId).then((status: boolean) => {
+  console.info(`getPermissionUsedRecordToggleStatus success, status: ${status}`);
+}).catch((err: BusinessError): void => {
+  console.error(`getPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+});
+```

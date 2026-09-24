@@ -31,12 +31,24 @@ function on(type: 'networkStateChange', callback: Callback<NetworkState>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+try {
+    observer.on('networkStateChange', (data: observer.NetworkState) => {
+        console.info("on networkStateChange, data:" + JSON.stringify(data));
+    });
+} catch (err) {
+    console.error(`observer.on networkStateChange failed: ${JSON.stringify(err)}`);
+}
+```
 
 
 ## on('networkStateChange')
@@ -65,12 +77,25 @@ function on(type: 'networkStateChange', options: ObserverOptions, callback: Call
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+// 设置订阅参数，指定卡槽ID为0（卡槽1）
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+// 订阅指定卡槽的网络状态变化事件
+observer.on('networkStateChange', options, (data: observer.NetworkState) => {
+    console.info("on networkStateChange, data:" + JSON.stringify(data));
+});
+```
 
 
 ## on('signalInfoChange')
@@ -96,11 +121,21 @@ function on(type: 'signalInfoChange', callback: Callback<Array<SignalInformation
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+import { radio } from '@kit.TelephonyKit';
+
+observer.on('signalInfoChange', (data: Array<radio.SignalInformation>) => {
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
+});
+```
 
 
 ## on('signalInfoChange')
@@ -127,11 +162,24 @@ function on(type: 'signalInfoChange', options: ObserverOptions, callback: Callba
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+import { radio } from '@kit.TelephonyKit';
+
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+observer.on('signalInfoChange', options, (data: Array<radio.SignalInformation>) => {
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
+});
+```
 
 
 ## on('cellularDataConnectionStateChange')
@@ -157,11 +205,19 @@ function on(type: 'cellularDataConnectionStateChange', callback: Callback<DataCo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+observer.on('cellularDataConnectionStateChange', (data: observer.DataConnectionStateInfo) => {
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+});
+```
 
 
 ## on('cellularDataConnectionStateChange')
@@ -189,11 +245,22 @@ function on(type: 'cellularDataConnectionStateChange', options: ObserverOptions,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+observer.on('cellularDataConnectionStateChange', options, (data: observer.DataConnectionStateInfo) => {
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+});
+```
 
 
 ## on('cellularDataFlowChange')
@@ -219,11 +286,21 @@ function on(type: 'cellularDataFlowChange', callback: Callback<DataFlowType>): v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+import { data } from '@kit.TelephonyKit';
+
+observer.on('cellularDataFlowChange', (data: data.DataFlowType) => {
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
+});
+```
 
 
 ## on('cellularDataFlowChange')
@@ -250,11 +327,24 @@ function on(type: 'cellularDataFlowChange', options: ObserverOptions, callback: 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+import { data } from '@kit.TelephonyKit';
+
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+observer.on('cellularDataFlowChange', options, (data: data.DataFlowType) => {
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
+});
+```
 
 
 ## on('callStateChange')
@@ -280,11 +370,19 @@ function on(type: 'callStateChange', callback: Callback<CallStateInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+observer.on('callStateChange', (data: observer.CallStateInfo) => {
+    console.info("on callStateChange, data:" + JSON.stringify(data));
+});
+```
 
 
 ## on('callStateChange')
@@ -311,11 +409,22 @@ function on(type: 'callStateChange', options: ObserverOptions, callback: Callbac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+observer.on('callStateChange', options, (data: observer.CallStateInfo) => {
+    console.info("on callStateChange, data:" + JSON.stringify(data));
+});
+```
 
 
 ## on('callStateChangeEx')
@@ -347,6 +456,30 @@ function on(type: 'callStateChangeEx', callback: Callback<TelCallState>, options
 | [8800003](../errorcode-telephony.md#8800003-系统内部错误) | System internal error. |
 | [8800999](../errorcode-telephony.md#8800999-内部错误) | Unknown error. |
 
+**示例**
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+
+// 定义通话状态变化拓展事件回调
+let callback: (data: call.TelCallState) => void = (data: call.TelCallState) => {
+    console.info("on callStateChangeEx, data:" + JSON.stringify(data));
+}
+// 设置订阅参数，指定卡槽ID
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+
+try {
+    // 订阅通话状态变化拓展事件（指定卡槽）
+    observer.on('callStateChangeEx', callback, options);
+    // 订阅通话状态变化拓展事件（不指定卡槽，监听所有卡槽）
+    observer.on('callStateChangeEx', callback);
+} catch (err) {
+    console.error(`observer.on callStateChangeEx failed: ${JSON.stringify(err)}`);
+}
+```
+
 
 ## on('simStateChange')
 
@@ -375,11 +508,19 @@ function on(type: 'simStateChange', callback: Callback<SimStateData>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+observer.on('simStateChange', (data: observer.SimStateData) => {
+    console.info("on simStateChange, data:" + JSON.stringify(data));
+});
+```
 
 
 ## on('simStateChange')
@@ -406,11 +547,22 @@ function on(type: 'simStateChange', options: ObserverOptions, callback: Callback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+observer.on('simStateChange', options, (data: observer.SimStateData) => {
+    console.info("on simStateChange, data:" + JSON.stringify(data));
+});
+```
 
 
 ## on('iccAccountInfoChange')
@@ -436,8 +588,16 @@ function on(type: 'iccAccountInfoChange', callback: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+observer.on('iccAccountInfoChange', () => {
+    console.info("on iccAccountInfoChange success");
+});
+```

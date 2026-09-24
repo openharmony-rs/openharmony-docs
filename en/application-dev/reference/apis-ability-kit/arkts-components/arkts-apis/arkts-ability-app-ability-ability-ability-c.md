@@ -1,5 +1,9 @@
 # Ability
 
+```TypeScript
+declare class Ability
+```
+
 The Ability class is the fundamental unit for application lifecycle scheduling. It is the base class of [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) and [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md), and provides callbacks for system configuration updates and memory level updates. However, you cannot inherit directly from this base class. You should opt for either [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) or [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md) based on your service needs. For details, see [Introduction to Ability Kit](../../../application-models/abilitykit-overview.md).
 
 **Since:** 9
@@ -26,6 +30,9 @@ Called when a system environment variable changes. You can override this callbac
 > language by calling [setLanguage](arkts-ability-applicationcontext-c.md#setlanguage), the
 > system does not trigger the **onConfigurationUpdate** callback even if the system language changes. For details,
 > see [When to Use](../../../application-models/subscribe-system-environment-variable-changes.md#when-to-use).
+> 
+> If you need to monitor the environment variables of the Ability in the page, you can use the
+> ApplicationContext.on('environment') method.
 
 **Since:** 9
 
@@ -39,7 +46,7 @@ Called when a system environment variable changes. You can override this callbac
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| newConfig | [Configuration](arkts-ability-app-ability-configuration-configuration-i.md) | Yes | New configuration. |
+| newConfig | [Configuration](arkts-ability-app-ability-configuration-configuration-i.md) | Yes | Updated configuration information, including language, color mode, and other system configuration items. |
 
 **Examples**
 
@@ -66,6 +73,9 @@ Called when the available memory of the entire device changes to a specified lev
 > 
 > Releasing UI components in the **onMemoryLevel** callback may block the main thread tasks of the current process.
 > Therefore, you are advised not to release UI components in this callback.
+> 
+> If you need to monitor the environment variables of the Ability in the page, you can use the
+> ApplicationContext.on('environment') method.
 
 **Since:** 9
 

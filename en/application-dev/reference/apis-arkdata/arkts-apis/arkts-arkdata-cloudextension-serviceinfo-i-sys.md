@@ -1,5 +1,9 @@
 # ServiceInfo (System API)
 
+```TypeScript
+export interface ServiceInfo
+```
+
 Represents the cloud service information.
 
 **Since:** 11

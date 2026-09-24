@@ -44,6 +44,37 @@ To obtain information about accessibility applications in the system, you are ad
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+
+// When one or more accessibility apps are installed on the system:
+// 1. Enabling an accessibility app: When the first accessibility app is enabled, the callback returns **true**.
+// 2. Disabling an accessibility app: If one or more accessibility apps are enabled, when the last enabled accessibility app is disabled, the callback returns **false**.
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe accessibility state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    accessibility.on('accessibilityStateChange', this.callback);
+  }
+
+  aboutToDisappear(): void {
+    accessibility.off('accessibilityStateChange', this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
 
 ## on('touchGuideStateChange')
 
@@ -82,6 +113,37 @@ To obtain information about accessibility applications in the system, you are ad
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+
+// When one or more accessibility applications with touch guide mode (touchGuide is set in Capability) have been installed in the system:
+// 1. Scenario where a touch browsing accessibility app is enabled: When the first touch browsing accessibility app is enabled, the callback returns **true**.
+// 2. Scenario where a touch browsing accessibility app is disabled: If one or more touch browsing accessibility apps are enabled, when the last enabled touch browsing accessibility app is disabled, the callback returns **false**.
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe touch guide state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    accessibility.on('touchGuideStateChange', this.callback);
+  }
+
+  aboutToDisappear(): void {
+    accessibility.off('touchGuideStateChange', this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
 
 ## on('screenReaderStateChange')
 
@@ -118,6 +180,34 @@ Subscribes to the state changes of screen reader mode. This API uses an asynchro
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe screen reader state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    accessibility.on('screenReaderStateChange', this.callback);
+  }
+
+  aboutToDisappear(): void {
+    accessibility.off('screenReaderStateChange', this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
 
 ## on('touchModeChange')
 
@@ -153,3 +243,31 @@ Subscribes to the single-tap/double-tap operation mode change event in touch gui
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (mode: string) => void = this.eventCallback;
+  eventCallback(mode: string): void {
+    console.info(`current touch mode: ${JSON.stringify(mode)}`);
+  }
+
+  aboutToAppear(): void {
+    accessibility.on('touchModeChange', this.callback);
+  }
+
+  aboutToDisappear(): void {
+    accessibility.off('touchModeChange', this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```

@@ -1,5 +1,9 @@
 # KeyProcessingMode
 
+```TypeScript
+declare enum KeyProcessingMode
+```
+
 Enumerates the modes for processing key events.
 
 **Since:** 15

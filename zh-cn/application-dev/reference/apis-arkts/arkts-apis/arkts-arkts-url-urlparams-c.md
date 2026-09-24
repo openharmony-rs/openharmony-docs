@@ -1,5 +1,9 @@
 # URLParams
 
+```TypeScript
+class URLParams
+```
+
 URLParams是一个用于解析、构造和操作URL参数的实用类。该类提供了统一的接口来处理URL查询参数。
 
 **起始版本：** 9
@@ -82,7 +86,7 @@ paramsObject.append('fod', '3');
 ## constructor
 
 ```TypeScript
-constructor(init?: string[][] | Record<string, string> | string | URLParams)
+constructor(init?: string[][] | Record<string, string>  | string | URLParams)
 ```
 
 ArkTS-Sta: constructor(init?: [string, string][] | Record&lt;string, string&gt; | string | URLParams)

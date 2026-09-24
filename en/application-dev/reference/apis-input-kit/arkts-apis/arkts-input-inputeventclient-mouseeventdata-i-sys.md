@@ -1,5 +1,9 @@
 # MouseEventData (System API)
 
+```TypeScript
+interface MouseEventData
+```
+
 Defines the mouse event data.
 
 **Since:** 11

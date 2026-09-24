@@ -1,5 +1,9 @@
 # IntentDecoratorInfo
 
+```TypeScript
+declare interface IntentDecoratorInfo
+```
+
 Common properties for intent decorators, used to define basic information about an intent (including the intent name and version number). It applies to all decorators provided by this module.
 
 > **NOTE:** 

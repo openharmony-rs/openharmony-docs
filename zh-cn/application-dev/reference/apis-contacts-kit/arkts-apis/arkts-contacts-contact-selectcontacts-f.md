@@ -30,7 +30,7 @@ function selectContacts(callback: AsyncCallback<Array<Contact>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例**
 
@@ -48,42 +48,8 @@ contact.selectContacts((err: BusinessError, data) => {
 });
 ```
 
-```TypeScript
-import { contact } from '@kit.ContactsKit';
 
-// 打开选择联系人UI界面
-let promise = contact.selectContacts();
-promise.then((data) => {
-  console.info(`Succeeded in selecting Contacts. data->${JSON.stringify(data)}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { contact } from '@kit.ContactsKit';
-
-// 打开选择联系人UI界面，支持选择一个联系人
-contact.selectContacts({
-  isMultiSelect:false
-}, (err: BusinessError, data) => {
-  if (err) {
-    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info(`Succeeded in selecting Contacts. data->${JSON.stringify(data)}`);
-});
-```
-
-```TypeScript
-import { contact } from '@kit.ContactsKit';
-
-// 打开选择联系人UI界面，支持选择一个联系人
-let promise = contact.selectContacts({isMultiSelect:false});
-promise.then((data) => {
-  console.info(`Succeeded in selecting Contacts. data->${JSON.stringify(data)}`);
-});
-```
-
+<a id="selectcontacts-1"></a>
 
 ## selectContacts
 
@@ -107,8 +73,18 @@ function selectContacts(): Promise<Array<Contact>>
 
 **示例**
 
-参见 selectContacts
+```TypeScript
+import { contact } from '@kit.ContactsKit';
 
+// 打开选择联系人UI界面
+let promise = contact.selectContacts();
+promise.then((data) => {
+  console.info(`Succeeded in selecting Contacts. data->${JSON.stringify(data)}`);
+});
+```
+
+
+<a id="selectcontacts-2"></a>
 
 ## selectContacts
 
@@ -135,12 +111,28 @@ function selectContacts(options: ContactSelectionOptions, callback: AsyncCallbac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例**
 
-参见 selectContacts
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { contact } from '@kit.ContactsKit';
 
+// 打开选择联系人UI界面，支持选择一个联系人
+contact.selectContacts({
+  isMultiSelect:false
+}, (err: BusinessError, data) => {
+  if (err) {
+    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in selecting Contacts. data->${JSON.stringify(data)}`);
+});
+```
+
+
+<a id="selectcontacts-3"></a>
 
 ## selectContacts
 
@@ -172,8 +164,16 @@ function selectContacts(options: ContactSelectionOptions): Promise<Array<Contact
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例**
 
-参见 selectContacts
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+
+// 打开选择联系人UI界面，支持选择一个联系人
+let promise = contact.selectContacts({isMultiSelect:false});
+promise.then((data) => {
+  console.info(`Succeeded in selecting Contacts. data->${JSON.stringify(data)}`);
+});
+```

@@ -30,4 +30,4 @@ Obtains the Context object associated with a component on the page.
 
 | Type | Description |
 | --- | --- |
-| [Context](arkts-arkui-context-t.md) | The context type depends on the ability type. For example, if this API is called on a page of the UIAbility, the return value type is UIAbilityContext; if this API is called on a page of the ExtensionAbility, the return value type is ExtensionContext. |
+| [Context](arkts-arkui-common-comp-context-t.md) | The context type depends on the ability type. For example, if this API is called on a page of the UIAbility, the return value type is UIAbilityContext; if this API is called on a page of the ExtensionAbility, the return value type is ExtensionContext. |

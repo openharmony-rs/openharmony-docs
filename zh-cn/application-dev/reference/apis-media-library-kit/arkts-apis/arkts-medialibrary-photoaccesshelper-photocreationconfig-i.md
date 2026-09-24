@@ -1,5 +1,9 @@
 # PhotoCreationConfig
 
+```TypeScript
+interface PhotoCreationConfig
+```
+
 保存图片/视频到媒体库的配置，包括保存的文件名等。
 
 **起始版本：** 12

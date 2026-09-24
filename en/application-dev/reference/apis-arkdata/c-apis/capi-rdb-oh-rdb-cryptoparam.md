@@ -8,6 +8,8 @@ typedef struct OH_Rdb_CryptoParam OH_Rdb_CryptoParam
 
 Specifies the cryptographic parameters used when opening an encrypted database.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 20
 
 **Related module**: [RDB](capi-rdb.md)

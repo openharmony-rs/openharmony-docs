@@ -1,5 +1,9 @@
 # RequestInfo
 
+```TypeScript
+interface RequestInfo
+```
+
 Describes the information about the resource request sent by the **Web** component.
 
 **Since:** 12

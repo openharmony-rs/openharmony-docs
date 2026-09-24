@@ -1,5 +1,9 @@
 # DistributedBundleEnableInfo (System API)
 
+```TypeScript
+export interface DistributedBundleEnableInfo
+```
+
 Describes the bundle information of an application that enables cross-device collaboration.
 
 **Since:** 20

@@ -33,6 +33,8 @@ Removes all notifications for a specified application. This API uses an asynchro
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
+<a id="removeall-1"></a>
+
 ## removeAll
 
 ```TypeScript
@@ -59,6 +61,8 @@ Removes all notifications. This API uses an asynchronous callback to return the 
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+
+<a id="removeall-2"></a>
 
 ## removeAll
 
@@ -87,6 +91,8 @@ Removes all notifications for a specified user. This API uses an asynchronous ca
 | userId | number | Yes | User ID. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+
+<a id="removeall-3"></a>
 
 ## removeAll
 
@@ -120,6 +126,8 @@ Removes all notifications for a specified user. This API uses a promise to retur
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+
+<a id="removeall-4"></a>
 
 ## removeAll
 

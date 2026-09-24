@@ -49,6 +49,8 @@ typedef struct InputMethod_TextEditorProxy InputMethod_TextEditorProxy
 \| -- \| -- \|
 \| [OH_TextEditorProxy_SetCallbackInMainThread](capi-inputmethod-text-editor-proxy-capi-h. md#oh_texteditorproxy_setcallbackinmainthread) \| 配置回调函数的执行线程策略。 \| <br> <br>关联关系： <br> <br>- 与InputMethodProxy的关系：[InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md)负 责向输入法服务发送请求和通知，InputMethod_TextEditorProxy负责接收输入法应用的请求和通知。两者在Attach时同时建立关联，构成双向 通信通道。 <br>- 与TextConfig的关系：[InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)在GetTextConfigFunc 回调中使用，用于向输入法传递编辑框的配置信息。GetTextConfigFunc回调被触发时，开发者需在回调内对config参数赋值以填充配置信息。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 **起始版本：** 12
 
 **相关模块：** [InputMethod](capi-inputmethod.md)

@@ -1,5 +1,9 @@
 # PhyType
 
+```TypeScript
+enum PhyType
+```
+
 枚举，指定扫描过程中接收BLE广播报文的物理通道。
 
 **起始版本：** 12

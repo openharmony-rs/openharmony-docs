@@ -1,5 +1,9 @@
 # MediaTabContent
 
+```TypeScript
+interface MediaTabContent extends OperResult
+```
+
 The definition of the tab page content.
 
 @extends OperResult @interface MediaTabContent

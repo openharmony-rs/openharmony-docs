@@ -1,5 +1,9 @@
 # PackageDescription
 
+```TypeScript
+interface PackageDescription
+```
+
 Represents the description of a system update package.
 
 **Since:** 12

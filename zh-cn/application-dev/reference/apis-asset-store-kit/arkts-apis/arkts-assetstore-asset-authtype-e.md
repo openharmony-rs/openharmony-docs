@@ -1,5 +1,9 @@
 # AuthType
 
+```TypeScript
+enum AuthType
+```
+
 枚举，关键资产支持的用户认证类型。
 
 **起始版本：** 11

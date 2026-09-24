@@ -1,5 +1,9 @@
 # CmsRecipientInfo
 
+```TypeScript
+interface CmsRecipientInfo
+```
+
 Represents recipient information for the CMS message.
 
 > **NOTE:** 

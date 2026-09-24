@@ -1,5 +1,9 @@
 # HiTraceOutputLevel
 
+```TypeScript
+enum HiTraceOutputLevel
+```
+
 Enumerates trace output levels.
 
 The trace output level lower than the threshold does not take effect. The log version threshold is **INFO**, and the nolog version threshold is **COMMERCIAL**.

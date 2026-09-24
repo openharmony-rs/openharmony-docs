@@ -1,7 +1,7 @@
 # ValueType
 
 ```TypeScript
-type ValueType = number | number | number | string | boolean | image.PixelMap | Want | ArrayBuffer | object | null | undefined
+type ValueType = number | number | string | boolean | image.PixelMap | Want | ArrayBuffer | object | null | undefined
 ```
 
 用于表示统一数据记录允许的数据字段类型。

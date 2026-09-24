@@ -1,5 +1,9 @@
 # LogType
 
+```TypeScript
+enum LogType
+```
+
 Enumerates the log types.
 
 **Since:** 23

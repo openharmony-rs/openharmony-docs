@@ -1,5 +1,9 @@
 # DevelopType (System API)
 
+```TypeScript
+enum DevelopType
+```
+
 Enumerates the modes that define how an intent is developed.
 
 **Since:** 23

@@ -8,6 +8,8 @@ typedef struct OH_ArkUI_ShadowOptions OH_ArkUI_ShadowOptions
 
 Defines shadow options.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

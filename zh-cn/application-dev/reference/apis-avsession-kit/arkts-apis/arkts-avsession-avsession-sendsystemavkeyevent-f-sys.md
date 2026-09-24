@@ -33,9 +33,9 @@ function sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback<void>): v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command. |
 
@@ -52,17 +52,8 @@ avSession.sendSystemAVKeyEvent(event, () => {
 });
 ```
 
-```TypeScript
-import { KeyEvent } from '@kit.InputKit';
 
-let keyItem: KeyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
-let event: KeyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
-
-avSession.sendSystemAVKeyEvent(event).then(() => {
-  console.info('Succeeded in sending system AV key event.');
-});
-```
-
+<a id="sendsystemavkeyevent-1"></a>
 
 ## sendSystemAVKeyEvent
 
@@ -96,12 +87,21 @@ function sendSystemAVKeyEvent(event: KeyEvent): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command. |
 
 **示例**
 
-参见 [sendSystemAVKeyEvent](#sendsystemavkeyevent)
+```TypeScript
+import { KeyEvent } from '@kit.InputKit';
+
+let keyItem: KeyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
+let event: KeyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
+
+avSession.sendSystemAVKeyEvent(event).then(() => {
+  console.info('Succeeded in sending system AV key event.');
+});
+```

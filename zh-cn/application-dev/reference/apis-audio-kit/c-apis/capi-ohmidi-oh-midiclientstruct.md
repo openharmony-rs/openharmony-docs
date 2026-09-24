@@ -8,6 +8,8 @@ typedef struct OH_MIDIClientStruct OH_MIDIClient
 
 声明MIDI客户端。
 
+**系统能力：** SystemCapability.Multimedia.Audio.MIDI
+
 **起始版本：** 24
 
 **相关模块：** [OHMIDI](capi-ohmidi.md)

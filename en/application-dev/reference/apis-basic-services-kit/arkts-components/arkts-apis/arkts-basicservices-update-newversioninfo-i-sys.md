@@ -1,5 +1,9 @@
 # NewVersionInfo (System API)
 
+```TypeScript
+export interface NewVersionInfo
+```
+
 Represents information about the new version.
 
 **Since:** 9

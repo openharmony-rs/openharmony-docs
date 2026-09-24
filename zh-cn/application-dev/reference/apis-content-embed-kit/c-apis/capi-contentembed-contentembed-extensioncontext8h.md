@@ -8,6 +8,8 @@ typedef struct ContentEmbed_ExtensionContext* ContentEmbed_ExtensionContextHandl
 
 声明OE Extension上下文对象指针类型。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **相关模块：** [ContentEmbed](capi-contentembed.md)

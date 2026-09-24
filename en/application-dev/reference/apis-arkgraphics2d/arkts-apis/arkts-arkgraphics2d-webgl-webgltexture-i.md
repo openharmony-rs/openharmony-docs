@@ -1,5 +1,9 @@
 # WebGLTexture
 
+```TypeScript
+interface WebGLTexture
+```
+
 WebGL 1.0
 
 **Since:** 7

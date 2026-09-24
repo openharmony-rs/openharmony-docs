@@ -1,5 +1,9 @@
 # UpdatedCallback
 
+```TypeScript
+interface UpdatedCallback
+```
+
 UpdatedCallback是监听系统环境变化的回调函数，开发者可通过[ApplicationContext.onSystemConfigurationUpdated](arkts-ability-applicationcontext-c.md#onsystemconfigurationupdated)方法注册自定义的UpdatedCallback，来监听系统环境变化。
 
 **起始版本：** 24

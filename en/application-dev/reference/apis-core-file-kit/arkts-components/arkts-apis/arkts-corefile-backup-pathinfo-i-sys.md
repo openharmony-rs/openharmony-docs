@@ -1,5 +1,9 @@
 # PathInfo (System API)
 
+```TypeScript
+interface PathInfo
+```
+
 Path information for file migration.
 
 **Since:** 26.0.0

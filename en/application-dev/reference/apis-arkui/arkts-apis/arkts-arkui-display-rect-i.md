@@ -1,5 +1,9 @@
 # Rect
 
+```TypeScript
+interface Rect
+```
+
 Describes a rectangle on the display.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # AsyncLockMode
 
+```TypeScript
+enum AsyncLockMode
+```
+
 Mode of lock operations.
 
 **Since:** 12

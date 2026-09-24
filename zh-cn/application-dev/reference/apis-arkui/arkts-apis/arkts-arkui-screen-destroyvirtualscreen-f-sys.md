@@ -31,8 +31,8 @@ function destroyVirtualScreen(screenId:number, callback: AsyncCallback<void>): v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400002](../errorcode-display.md#1400002-无权限操作) | Unauthorized operation. |
 
@@ -54,19 +54,8 @@ screen.destroyVirtualScreen(screenId, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 屏幕ID需通过getAllScreens()获取或从createVirtualScreen()返回值获取
-let screenId: number = 1; // 虚拟屏ID
-// 销毁虚拟屏幕
-screen.destroyVirtualScreen(screenId).then(() => {
-  console.info('Succeeded in destroying the virtual screen.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to destroy the virtual screen. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="destroyvirtualscreen-1"></a>
 
 ## destroyVirtualScreen
 
@@ -98,11 +87,22 @@ function destroyVirtualScreen(screenId:number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400002](../errorcode-display.md#1400002-无权限操作) | Unauthorized operation. |
 
 **示例**
 
-参见 [destroyVirtualScreen](#destroyvirtualscreen)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 屏幕ID需通过getAllScreens()获取或从createVirtualScreen()返回值获取
+let screenId: number = 1; // 虚拟屏ID
+// 销毁虚拟屏幕
+screen.destroyVirtualScreen(screenId).then(() => {
+  console.info('Succeeded in destroying the virtual screen.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to destroy the virtual screen. Code: ${err.code}, message: ${err.message}`);
+});
+```

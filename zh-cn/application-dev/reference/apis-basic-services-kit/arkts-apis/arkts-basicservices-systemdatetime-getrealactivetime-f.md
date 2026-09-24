@@ -33,7 +33,7 @@ function getRealActiveTime(isNano: boolean, callback: AsyncCallback<number>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
 
 **示例**
 
@@ -54,38 +54,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  systemDateTime.getRealActiveTime((error: BusinessError, time: number) => {
-    if (error) {
-      console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
-      return;
-    }
-    console.info(`Succeeded in getting real active time : ${time}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  systemDateTime.getRealActiveTime().then((time: number) => {
-    console.info(`Succeeded in getting real active time : ${time}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="getrealactivetime-1"></a>
 
 ## getRealActiveTime
 
@@ -113,12 +83,29 @@ function getRealActiveTime(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
 
 **示例**
 
-参见 getRealActiveTime
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+  systemDateTime.getRealActiveTime((error: BusinessError, time: number) => {
+    if (error) {
+      console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
+      return;
+    }
+    console.info(`Succeeded in getting real active time : ${time}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
+<a id="getrealactivetime-2"></a>
 
 ## getRealActiveTime
 
@@ -152,8 +139,21 @@ function getRealActiveTime(isNano?: boolean): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
 
 **示例**
 
-参见 getRealActiveTime
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  systemDateTime.getRealActiveTime().then((time: number) => {
+    console.info(`Succeeded in getting real active time : ${time}`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
+}
+```

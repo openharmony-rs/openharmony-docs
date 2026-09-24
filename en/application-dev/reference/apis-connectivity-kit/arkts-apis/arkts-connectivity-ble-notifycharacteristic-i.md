@@ -1,5 +1,9 @@
 # NotifyCharacteristic
 
+```TypeScript
+interface NotifyCharacteristic
+```
+
 Describes the value of the indication or notification sent by the Gatt server.
 
 **Since:** 10

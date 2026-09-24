@@ -14,7 +14,7 @@ function offSpatialMotion(callback?: Callback<SpatialMotionInfo>): void
 
 Disables spatial motion awareness and subscribes to spatial motion awareness results.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.vehicle.MMA_SPATIALACTION
 

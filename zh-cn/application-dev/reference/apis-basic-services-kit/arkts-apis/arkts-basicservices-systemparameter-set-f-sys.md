@@ -32,15 +32,6 @@ function set(key: string, value: string, callback: AsyncCallback<void>): void
 | value | string | 是 | 待设置的系统参数值。长度限制请参考[系统参数](../../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于异步返回设置结果。当设置成功时，err为undefined；当设置失败时，err为错误对象。 |
 
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
-| [14700102](../errorcode-system-parameterV9.md#14700102-系统参数值无效) | Invalid system parameter value. |
-| [14700103](../errorcode-device-info.md#14700103-操作因权限被拒绝) | The operation on the system permission is denied. |
-| [14700104](../errorcode-system-parameterV9.md#14700104-系统内部错误包括内存不足死锁等) | System internal error such as out memory or deadlock. |
-
 **示例**
 
 ```TypeScript
@@ -59,21 +50,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@ohos.base';
 
-try {
-  let setPromise: Promise<void> = systemParameter.set('test.parameter.key', 'testValue');
-  setPromise.then(() => {
-    console.info('set test.parameter.key success');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set system parameter. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (e) {
-  console.error('set unexpected error: ' + e);
-}
-```
-
+<a id="set-1"></a>
 
 ## set
 
@@ -106,15 +84,19 @@ function set(key: string, value: string): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise实例，用于异步获取结果。 |
 
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
-| [14700102](../errorcode-system-parameterV9.md#14700102-系统参数值无效) | Invalid system parameter value. |
-| [14700103](../errorcode-device-info.md#14700103-操作因权限被拒绝) | The operation on the system permission is denied. |
-| [14700104](../errorcode-system-parameterV9.md#14700104-系统内部错误包括内存不足死锁等) | System internal error such as out memory or deadlock. |
-
 **示例**
 
-参见 [set](#set)
+```TypeScript
+import { BusinessError } from '@ohos.base';
+
+try {
+  let setPromise: Promise<void> = systemParameter.set('test.parameter.key', 'testValue');
+  setPromise.then(() => {
+    console.info('set test.parameter.key success');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set system parameter. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  console.error('set unexpected error: ' + e);
+}
+```

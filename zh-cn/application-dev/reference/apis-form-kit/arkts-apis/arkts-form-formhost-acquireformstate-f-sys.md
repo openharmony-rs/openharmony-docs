@@ -33,9 +33,9 @@ function acquireFormState(want: Want, callback: AsyncCallback<formInfo.FormState
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permissions denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
@@ -71,32 +71,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formHost, formInfo } from '@kit.FormKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let want: Want = {
-  'deviceId': '',
-  'bundleName': 'ohos.samples.FormApplication',
-  'abilityName': 'FormAbility',
-  'parameters': {
-    'ohos.extra.param.key.module_name': 'entry',
-    'ohos.extra.param.key.form_name': 'widget',
-    'ohos.extra.param.key.form_dimension': 2
-  }
-};
-try {
-  formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
-    console.info(`formHost acquireFormState, data: ${data.formState}`);
-  }).catch((error: BusinessError) => {
-    console.error(`error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="acquireformstate-1"></a>
 
 ## acquireFormState
 
@@ -130,9 +106,9 @@ function acquireFormState(want: Want): Promise<formInfo.FormStateInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permissions denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
@@ -140,4 +116,28 @@ function acquireFormState(want: Want): Promise<formInfo.FormStateInfo>
 
 **示例**
 
-参见 [acquireFormState](#acquireformstate)
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  'deviceId': '',
+  'bundleName': 'ohos.samples.FormApplication',
+  'abilityName': 'FormAbility',
+  'parameters': {
+    'ohos.extra.param.key.module_name': 'entry',
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.form_dimension': 2
+  }
+};
+try {
+  formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
+    console.info(`formHost acquireFormState, data: ${data.formState}`);
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```

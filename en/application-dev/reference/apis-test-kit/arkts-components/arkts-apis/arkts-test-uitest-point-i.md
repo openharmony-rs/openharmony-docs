@@ -1,5 +1,9 @@
 # Point
 
+```TypeScript
+declare interface Point
+```
+
 Represents the point on the device screen.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # MaximizePresentation
 
+```TypeScript
+enum MaximizePresentation
+```
+
 Enumerates the layout when the window is maximized.
 
 **Since:** 12

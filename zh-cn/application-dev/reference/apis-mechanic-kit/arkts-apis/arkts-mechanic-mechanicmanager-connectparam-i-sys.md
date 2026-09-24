@@ -1,5 +1,9 @@
 # ConnectParam（系统接口）
 
+```TypeScript
+export interface ConnectParam
+```
+
 连接参数定义
 
 **起始版本：** 26.0.0

@@ -60,16 +60,8 @@ connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle)
 });
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
 
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  connection.reportNetDisconnected(netHandle).then( () => {
-    console.info(`report success`);
-  });
-});
-```
-
+<a id="reportnetdisconnected-1"></a>
 
 ## reportNetDisconnected
 
@@ -111,4 +103,12 @@ Reports the network unavailability to the network management module. This API us
 
 **Examples**
 
-See [reportNetDisconnected](#reportnetdisconnected)
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  connection.reportNetDisconnected(netHandle).then( () => {
+    console.info(`report success`);
+  });
+});
+```

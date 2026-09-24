@@ -30,13 +30,34 @@ function parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid input parameter.Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid input parameter.Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 | [21800005](../errorcode-ads.md#21800005-广告数据解析失败) | Failed to parse the ad response. |
 
 **示例**
 
-```TypeScript
 其中context的获取方式参见[各类context的获取方式](../../../application-models/application-context-stage.md#context的获取方式)。
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { advertising } from '@kit.AdsKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+function parseAdResponse(adResponse: string, context: common.UIAbilityContext): void {
+  // 广告解析处理回调监听
+  const multiSlotsAdLoaderListener: advertising.MultiSlotsAdLoadListener = {
+    onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+      hilog.error(0x0000, 'testTag', `Failed to load multiSlots ad. Code is ${errorCode}, message is ${errorMsg}`);
+    },
+    onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading multiSlots ad');
+      // 保存解析处理完成的广告内容用于展示
+      const returnAds: advertising.Advertisement[] = [];
+      ads.forEach((adsArray) => returnAds.push(...adsArray));
+    }
+  };
+  // 调用响应体解析接口
+  advertising.parseAdResponse(adResponse, multiSlotsAdLoaderListener, context);
+}
 ```

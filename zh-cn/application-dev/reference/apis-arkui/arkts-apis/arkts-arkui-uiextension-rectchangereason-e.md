@@ -1,5 +1,9 @@
 # RectChangeReason
 
+```TypeScript
+enum RectChangeReason
+```
+
 组件（EmbeddedComponent或UIExtensionComponent）矩形（位置及尺寸）变化的原因。
 
 **起始版本：** 14

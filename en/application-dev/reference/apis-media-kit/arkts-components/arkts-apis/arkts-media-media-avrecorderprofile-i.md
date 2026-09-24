@@ -1,5 +1,9 @@
 # AVRecorderProfile
 
+```TypeScript
+interface AVRecorderProfile
+```
+
 Describes the audio and video recording profile.
 
 **Since:** 9
@@ -106,6 +110,20 @@ Indicates whether enable B Frame. Default is disabled.
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
+## enableStableQualityMode
+
+```TypeScript
+enableStableQualityMode?: boolean
+```
+
+Whether to enable video encoding policy to quality stable encoding.
+
+**Type:** boolean
+
+**Since:** 26.2.0
+
+**System capability:** SystemCapability.Multimedia.Media.AVRecorder
+
 ## enableTemporalScale
 
 ```TypeScript
@@ -147,6 +165,22 @@ HDR encoding. This parameter is optional for video recording. The default value 
 **Type:** boolean
 
 **Since:** 11
+
+**System capability:** SystemCapability.Multimedia.Media.AVRecorder
+
+## sqrFactor
+
+```TypeScript
+sqrFactor?: number
+```
+
+Set the quality parameter in StableQualityMode. The value range is [0, 51]. A smaller value indicates a higher output bit rate and better quality.
+
+**Type:** number
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 

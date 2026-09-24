@@ -1,5 +1,9 @@
 # ShareOptions
 
+```TypeScript
+enum ShareOptions
+```
+
 UDMF支持的设备内使用范围类型枚举。
 
 **起始版本：** 12

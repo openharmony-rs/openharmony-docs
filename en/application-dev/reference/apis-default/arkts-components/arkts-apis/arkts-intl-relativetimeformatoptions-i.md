@@ -1,5 +1,9 @@
 # RelativeTimeFormatOptions
 
+```TypeScript
+interface RelativeTimeFormatOptions
+```
+
 An object with some or all of properties of `options` parameter of `Intl.RelativeTimeFormat` constructor.
 
 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat#Parameters).

@@ -17,7 +17,7 @@ function moveMainWindowToTargetDisplay(displayId: number, windowId: number, user
 - 对于[主屏](../../../displaymanager/display-terminology.md#主屏)/[扩展屏](../../../displaymanager/display-terminology.md#扩展屏)与[虚拟屏](../../../displaymanager/display-terminology.md#虚拟屏)之间以及虚拟屏与虚拟屏之间的窗口迁移，仅主窗及其子窗会一起被迁移到对应屏幕上且被抬升，如果存在子窗，最上层可获焦子窗会获取焦点，否则主窗口获焦。  
 - 对于主屏与扩展屏之间的窗口迁移，只会将主窗口迁移到对应屏幕，抬升并获取焦点。
 
-&lt;!--RP3--&gt;&lt;!--RP3End--&gt;
+<!--RP3--><!--RP3End-->
 
 **起始版本：** 26.0.0
 
@@ -45,8 +45,8 @@ function moveMainWindowToTargetDisplay(displayId: number, windowId: number, user
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not found or has been destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: The window is not a main window. |

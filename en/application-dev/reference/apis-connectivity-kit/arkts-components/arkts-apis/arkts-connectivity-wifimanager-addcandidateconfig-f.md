@@ -64,23 +64,8 @@ import { wifiManager } from '@kit.ConnectivityKit';
   }
 ```
 
-```TypeScript
-import { wifiManager } from '@kit.ConnectivityKit';
 
-  try {
-    let config:wifiManager.WifiDeviceConfig = {
-      ssid : "****",
-      preSharedKey : "****",
-      securityType : 0
-    }
-    wifiManager.addCandidateConfig(config,(error,result) => {
-      console.info("result:" + JSON.stringify(result));
-    });  
-  }catch(error){
-    console.error("failed:" + JSON.stringify(error));
-  }
-```
-
+<a id="addcandidateconfig-1"></a>
 
 ## addCandidateConfig
 
@@ -116,4 +101,19 @@ Add a specified candidate hotspot configuration and returns the networkId. This 
 
 **Examples**
 
-See [addCandidateConfig](#addcandidateconfig)
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+
+  try {
+    let config:wifiManager.WifiDeviceConfig = {
+      ssid : "****",
+      preSharedKey : "****",
+      securityType : 0
+    }
+    wifiManager.addCandidateConfig(config,(error,result) => {
+      console.info("result:" + JSON.stringify(result));
+    });  
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
+```

@@ -1,6 +1,10 @@
 # ContextMenu
 
-在页面范围内关闭通过[bindContextMenu](../arkts-components/arkts-arkui-commonmethod-c.md#bindcontextmenu)属性绑定的菜单。
+```TypeScript
+declare class ContextMenu
+```
+
+在页面范围内关闭通过[bindContextMenu](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1)属性绑定的菜单。
 
 **起始版本：** 8
 
@@ -12,7 +16,7 @@
 static close()
 ```
 
-在页面范围内关闭通过[bindContextMenu](../arkts-components/arkts-arkui-commonmethod-c.md#bindcontextmenu)绑定的菜单。常用于页面跳转、拖拽开始等需要主动关闭已显示菜单的交互场景。
+在页面范围内关闭通过[bindContextMenu](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1)绑定的菜单。常用于页面跳转、拖拽开始等需要主动关闭已显示菜单的交互场景。
 
 > **说明：** 
 > 

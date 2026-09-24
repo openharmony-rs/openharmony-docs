@@ -1,5 +1,9 @@
 # AdRequestParams
 
+```TypeScript
+export interface AdRequestParams
+```
+
 广告请求参数。
 
 **起始版本：** 11
@@ -20,7 +24,7 @@ import { advertising } from '@kit.AdsKit';
 
 自定义参数。
 
-&lt;!--RP2--&gt;&lt;!--RP2End--&gt;
+<!--RP2--><!--RP2End-->
 
 **类型：** number &#124; boolean &#124; string &#124; undefined
 

@@ -27,8 +27,8 @@ import { socket } from '@kit.NetworkKit';
 | [constructMulticastSocketInstance](arkts-network-socket-constructmulticastsocketinstance-f.md) | 创建一个MulticastSocket对象。 |
 | [constructTCPSocketInstance](arkts-network-socket-constructtcpsocketinstance-f.md) | 创建一个TCPSocket对象。 |
 | [constructTCPSocketServerInstance](arkts-network-socket-constructtcpsocketserverinstance-f.md) | 创建一个TCPSocketServer对象。 |
-| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md) | 创建并返回一个TLSSocket对象。 |
-| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md) | 将TCPSocket升级为TLSSocket，创建并返回一个TLSSocket对象。 |
+| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance) | 创建并返回一个TLSSocket对象。 |
+| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance-1) | 将TCPSocket升级为TLSSocket，创建并返回一个TLSSocket对象。 |
 | [constructTLSSocketServerInstance](arkts-network-socket-constructtlssocketserverinstance-f.md) | 创建并返回一个TLSSocketServer对象。 |
 | [constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md) | 创建一个UDPSocket对象。 |
 
@@ -64,18 +64,18 @@ import { socket } from '@kit.NetworkKit';
 | [UDPSendOptions](arkts-network-socket-udpsendoptions-i.md) | UDPSocket发送参数。 |
 | [UDPSocket](arkts-network-socket-udpsocket-i.md) | UDPSocket连接。在调用UDPSocket的方法前，需要先通过[socket.constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md)创建UDPSocket对象。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [X509CertRawData](arkts-network-socket-x509certrawdata-t.md) | 存储证书的数据。 |
+
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
 | [Protocol](arkts-network-socket-protocol-e.md) | TLS通信的协议版本。 |
 | [ProxyTypes](arkts-network-socket-proxytypes-e.md) | Socket代理类型。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [X509CertRawData](arkts-network-socket-x509certrawdata-t.md) | 存储证书的数据。 |
 
 ### 属性
 

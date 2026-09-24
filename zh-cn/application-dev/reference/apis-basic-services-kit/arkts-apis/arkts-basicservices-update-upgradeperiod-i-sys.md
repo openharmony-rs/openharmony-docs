@@ -1,5 +1,9 @@
 # UpgradePeriod（系统接口）
 
+```TypeScript
+export interface UpgradePeriod
+```
+
 升级时间段。
 
 **起始版本：** 9

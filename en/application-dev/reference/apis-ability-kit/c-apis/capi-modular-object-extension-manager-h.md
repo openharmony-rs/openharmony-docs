@@ -57,6 +57,8 @@ enum OH_AbilityRuntime_LaunchMode
 
 The launch mode of a modular object extension.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -73,6 +75,8 @@ enum OH_AbilityRuntime_ProcessMode
 **Description**
 
 The process mode of a modular object extension.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -91,6 +95,8 @@ enum OH_AbilityRuntime_ThreadMode
 **Description**
 
 The thread mode of a modular object extension.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -113,6 +119,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoLaunchMo
 
 Gets the launch mode from modular object extension info.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -126,7 +134,7 @@ Gets the launch mode from modular object extension info.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.           {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the operation is successful.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided are invalid. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.           [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.           [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid. |
 
 ### OH_AbilityRuntime_GetModularObjectExtensionInfoProcessMode()
 
@@ -137,6 +145,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoProcessM
 **Description**
 
 Gets the process mode from modular object extension info.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -151,7 +161,7 @@ Gets the process mode from modular object extension info.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.           {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the operation is successful.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided are invalid. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.           [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.           [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid. |
 
 ### OH_AbilityRuntime_GetModularObjectExtensionInfoThreadMode()
 
@@ -162,6 +172,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoThreadMo
 **Description**
 
 Gets the thread mode from modular object extension info.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -176,7 +188,7 @@ Gets the thread mode from modular object extension info.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.           {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the operation is successful.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided are invalid. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.           [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.           [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid. |
 
 ### OH_AbilityRuntime_GetModularObjectExtensionInfoElementName()
 
@@ -187,6 +199,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoElementN
 **Description**
 
 Gets elementName from modular object extension info.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -201,7 +215,7 @@ Gets elementName from modular object extension info.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.           {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the operation is successful.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided are invalid. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.           [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.           [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid. |
 
 ### OH_AbilityRuntime_GetModularObjectExtensionInfoDisableState()
 
@@ -212,6 +226,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoDisableS
 **Description**
 
 Gets the disable state of modular object extension.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -226,7 +242,7 @@ Gets the disable state of modular object extension.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.           {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the operation is successful.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided are invalid. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.           [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.           [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid. |
 
 ### OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfos()
 
@@ -237,6 +253,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfo
 **Description**
 
 Acquires all modular object extension infos within the self application.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -250,7 +268,7 @@ Acquires all modular object extension infos within the self application.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.           {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the operation is successful.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided are invalid.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED} if the device does not support. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.           [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.           [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid.           [ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the device does not support. |
 
 ### OH_AbilityRuntime_ReleaseAllExtensionInfos()
 
@@ -261,6 +279,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ReleaseAllExtensionInfos(OH_AbilityRu
 **Description**
 
 Releases the specified all modular object extension infos.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -274,7 +294,7 @@ Releases the specified all modular object extension infos.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.           {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the operation is successful.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided are invalid. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.           [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.           [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid. |
 
 **Reference**:
 
@@ -291,6 +311,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos(O
 
 Gets the exact count of modular object extension infos present in the collection.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -304,7 +326,7 @@ Gets the exact count of modular object extension infos present in the collection
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.           {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the operation is successful.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided are invalid. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.           [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.           [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid. |
 
 ### OH_AbilityRuntime_GetModObjExtensionInfoByIndex()
 
@@ -315,6 +337,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModObjExtensionInfoByIndex(OH_Abil
 **Description**
 
 Retrieves a specific modular object extension info handle from the collection by its index.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -330,7 +354,7 @@ Retrieves a specific modular object extension info handle from the collection by
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.           {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the operation is successful.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided are invalid. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.           [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.           [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid. |
 
 ### OH_AbilityRuntime_ConnectModularObjectExtensionAbility()
 
@@ -341,6 +365,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectModularObjectExtensionAbility(
 **Description**
 
 Connect to a modular object extension ability.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -356,7 +382,7 @@ Connect to a modular object extension ability.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>       <li>{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the call is successful.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided are invalid.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED} if the device does not support connecting modular<br>     object extension ability.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY} if the target ability does not exist.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE} if the ability type is incorrect.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_VISIBILITY_VERIFICATION_FAILED} - Cannot start an invisible<br>     component.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_STATIC_CFG_PERMISSION} The specified process does not have<br>     the permission.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_CROSS_USER_OPERATION} Cross-user operations are not allowed.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED} if the crowdtesting application expires.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_INTERNAL} if an internal error occurs.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY} if the caller is not a foreground process.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED} The number of instances with the same<br>     ability name is more than twenty.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_NO_RUNNING_ABILITIES_WITH_UI} if the target application does not have<br>     running abilities with UI.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_UPPER_RATE_LIMIT} The API call frequency is too high and<br>     exceeds 20 times per second.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_UPPER_CONNECTION_NUMBER_LIMIT} The number of connections to<br>     the same ability name from the same pid exceeds five.</li><br>     <li>{@link ABILITY_RUNTIME_ERROR_CODE_CROSS_APP_IN_PROCESS} Caller and target are not in the       same application for [OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS](capi-modular-object-extension-manager-h.md#oh_abilityruntime_launchmode) mode.</li>       </ul> |
+| AbilityRuntime_ErrorCode | <ul>       <li>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the call is successful.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the device does not support connecting modular       object extension ability.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the target ability does not exist.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the ability type is incorrect.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_VISIBILITY_VERIFICATION_FAILED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) - Cannot start an invisible       component.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_STATIC_CFG_PERMISSION](capi-ability-runtime-common-h.md#abilityruntime_errorcode) The specified process does not have       the permission.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_CROSS_USER_OPERATION](capi-ability-runtime-common-h.md#abilityruntime_errorcode) Cross-user operations are not allowed.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the crowdtesting application expires.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if an internal error occurs.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the caller is not a foreground process.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) The number of instances with the same       ability name is more than twenty.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_NO_RUNNING_ABILITIES_WITH_UI](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the target application does not have       running abilities with UI.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_UPPER_RATE_LIMIT](capi-ability-runtime-common-h.md#abilityruntime_errorcode) The API call frequency is too high and       exceeds 20 times per second.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_UPPER_CONNECTION_NUMBER_LIMIT](capi-ability-runtime-common-h.md#abilityruntime_errorcode) The number of connections to       the same ability name from the same pid exceeds five.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_CROSS_APP_IN_PROCESS](capi-ability-runtime-common-h.md#abilityruntime_errorcode) Caller and target are not in the       same application for [OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS](capi-modular-object-extension-manager-h.md#oh_abilityruntime_launchmode) mode.</li>       </ul> |
 
 ### OH_AbilityRuntime_DisconnectModularObjectExtensionAbility()
 
@@ -367,6 +393,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_DisconnectModularObjectExtensionAbili
 **Description**
 
 Disconnect the modular object extension ability.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -380,6 +408,6 @@ Disconnect the modular object extension ability.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.           {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} if the call is successful.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} if the arguments provided are invalid.<br>         {@link ABILITY_RUNTIME_ERROR_CODE_INTERNAL} if an internal error occurs. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.           [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the call is successful.           [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid.           [ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if an internal error occurs. |
 
 

@@ -1,5 +1,9 @@
 # AudioLatencyType
 
+```TypeScript
+enum AudioLatencyType
+```
+
 Enumerates the audio latency types.
 
 **Since:** 23

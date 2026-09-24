@@ -1,5 +1,9 @@
 # HeifsMetadata
 
+```TypeScript
+class HeifsMetadata implements Metadata
+```
+
 HeifsMetadata implements Metadata
 
 HEIF image sequence metadata.
@@ -36,6 +40,36 @@ Clones the HEIFS metadata. This API returns the result asynchronously through a 
 | --- | --- |
 | Promise&lt;[HeifsMetadata](arkts-image-image-heifsmetadata-c.md)&gt; | Promise used to return the HEIFS metadata instance. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // An image containing HeifsMetadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function heifsMetadataClone(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    let new_metadata = await metaData.heifsMetadata.clone();
+    new_metadata.getProperties(["HeifsDelayTime"]).then((data1) => {
+      console.info(`Succeeded in cloning metadata and getting properties. Data: ${JSON.stringify(data1)}.`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to clone metadata and get properties. Code: ${err.code}, message: ${err.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## createInstance
 
 ```TypeScript
@@ -55,6 +89,17 @@ Creates an empty [HeifsMetadata](arkts-image-image-heifsmetadata-c.md) instance.
 | Type | Description |
 | --- | --- |
 | [HeifsMetadata](arkts-image-image-heifsmetadata-c.md) | Empty **HeifsMetadata** instance. |
+
+**Examples**
+
+```TypeScript
+async function heifsMetadataCreateInstance(context: Context) {
+  let heifsMetadata = image.HeifsMetadata.createInstance();
+  if (heifsMetadata != undefined) {
+    console.info("Succeeded in creating a HeifsMetadata instance.");
+  }
+}
+```
 
 ## getAllProperties
 
@@ -78,6 +123,36 @@ For details about the properties, see [HeifsPropertyKey](arkts-image-image-heifs
 | --- | --- |
 | Promise&lt;Record&lt;string, string &#124; null&gt;&gt; | Promise used to return the values of all properties. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // An image containing HeifsMetadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function heifsMetadataGetAllProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    await metaData.heifsMetadata.getAllProperties().then((data) => {
+      const count = Object.keys(data).length;
+      console.info(`Succeeded in getting all properties. Count: ${count}, data: ${JSON.stringify(data)}.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get all properties. Code: ${error.code}, message: ${error.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## getBlob
 
 ```TypeScript
@@ -97,6 +172,31 @@ Obtains the metadata in binary format. This API uses a promise to return the res
 | Type | Description |
 | --- | --- |
 | Promise&lt;ArrayBuffer&gt; | Promise that returns the binary data of the metadata. |
+
+**Examples**
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // An image containing HeifsMetadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function heifsMetadataGetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    let blob = await metaData.heifsMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+    }
+  }
+}
+```
 
 ## getProperties
 
@@ -130,6 +230,35 @@ Obtains the property values of image metadata. This API returns the result async
 | --- | --- |
 | [7600202](../errorcode-image.md#7600202-unsupported-metadata-readwrite-operation) | Unsupported metadata. Possible causes: unsupported metadata type |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // An image containing HeifsMetadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function heifsMetadataGetProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    await metaData.heifsMetadata.getProperties(["HeifsDelayTime"]).then((data) => {
+      console.info('Succeeded in getting properties. ',JSON.stringify(data));
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get properties. error.code is ${error.code}, error.message is ${error.message}`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## setBlob
 
 ```TypeScript
@@ -161,6 +290,36 @@ Replaces the current metadata with binary data. This API uses a promise to retur
 | Error Code ID | Error Message |
 | --- | --- |
 | [7600206](../errorcode-image.md#7600206-invalid-parameter) | Invalid parameter. Possible causes: The blob is empty or has a length of 0. |
+
+**Examples**
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // An image containing HeifsMetadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function heifsMetadataSetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    let blob = await metaData.heifsMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+      metaData.heifsMetadata.setBlob(blob);
+    }
+    let new_blob = metaData.heifsMetadata.getBlob();
+    if (new_blob != undefined) {
+      console.info("new_blob is not undefined");
+    }
+  }
+}
+```
 
 ## setProperties
 
@@ -195,6 +354,38 @@ For details about the properties, see [HeifsPropertyKey](arkts-image-image-heifs
 | Error Code ID | Error Message |
 | --- | --- |
 | [7600202](../errorcode-image.md#7600202-unsupported-metadata-readwrite-operation) | Unsupported metadata. Possible causes: unsupported metadata type. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // An image containing HeifsMetadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function heifsMetadataSetProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    let setkey: Record<string, string | null> = {
+      "HeifsDelayTime": "200",
+    };
+    await metaData.heifsMetadata.setProperties(setkey).then(async () => {
+      console.info('Succeeded in setting properties.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
+    })
+  } else {
+    console.error('metadata is null. ');
+  }
+}
+```
 
 ## heifsCanvasHeight
 

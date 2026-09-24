@@ -1,5 +1,9 @@
 # DataRoleType（系统接口）
 
+```TypeScript
+export enum DataRoleType
+```
+
 数据角色类型。
 
 **起始版本：** 9

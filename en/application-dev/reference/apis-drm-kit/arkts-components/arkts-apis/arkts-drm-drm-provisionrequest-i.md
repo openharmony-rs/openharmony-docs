@@ -1,5 +1,9 @@
 # ProvisionRequest
 
+```TypeScript
+interface ProvisionRequest
+```
+
 Defines a device certificate provisioning request.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # FontFeature
 
+```TypeScript
+interface FontFeature
+```
+
 Defines font features, which are typesetting rules within a font that determine how glyphs look, such as ligatures, alternates, and superscripts/subscripts.
 
 **Since:** 20

@@ -8,7 +8,8 @@
   - [UpdateOperation(system api)](arkts-arkdata-updateoperation-t-sys.md)<!--DelEnd-->
 - [@ohos.data.cloudData(Device-Cloud Service)](arkts-arkdata-data-clouddata.md)
   - [cloudData](arkts-arkdata-clouddata-n.md)
-    - [sharing](arkts-arkdata-clouddata-sharing-n.md)
+    <!--Del-->
+    - [sharing(system api)](arkts-arkdata-clouddata-sharing-n.md)<!--DelEnd-->
       <!--Del-->
       - [allocResourceAndShare(system api)](arkts-arkdata-sharing-allocresourceandshare-f-sys.md)<!--DelEnd-->
       <!--Del-->

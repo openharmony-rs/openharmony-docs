@@ -32,32 +32,8 @@ import { socket } from '@kit.NetworkKit';
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
-let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx',
-  port: 8080
-}
-let tcpconnectoptions: socket.TCPConnectOptions = {
-  address: netAddress,
-  timeout: 6000
-}
-
-tcp.connect(tcpconnectoptions, (err: BusinessError) => {
-  if (err) {
-    console.error('connect fail');
-    return;
-  }
-  console.info('connect success');
-
-  // 确保TCPSocket已连接后，再升级TLSSocket
-  let tls: socket.TLSSocket = socket.constructTLSSocketInstance(tcp);
-})
-```
-
+<a id="constructtlssocketinstance-1"></a>
 
 ## constructTLSSocketInstance
 
@@ -91,11 +67,35 @@ function constructTLSSocketInstance(tcpSocket: TCPSocket): TLSSocket
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2300002](../errorcode-net-socket.md#2300002-系统内部错误) | System internal error. |
 | [2303601](../errorcode-net-socket.md#2303601-socket文件描述符无效) | Invalid socket FD. |
 | [2303602](../errorcode-net-socket.md#2303602-套接字未连接) | Socket is not connected. |
 
 **示例**
 
-参见 [constructTLSSocketInstance](#constructtlssocketinstance)
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+let netAddress: socket.NetAddress = {
+  address: '192.168.xx.xxx',
+  port: 8080
+}
+let tcpconnectoptions: socket.TCPConnectOptions = {
+  address: netAddress,
+  timeout: 6000
+}
+
+tcp.connect(tcpconnectoptions, (err: BusinessError) => {
+  if (err) {
+    console.error('connect fail');
+    return;
+  }
+  console.info('connect success');
+
+  // 确保TCPSocket已连接后，再升级TLSSocket
+  let tls: socket.TLSSocket = socket.constructTLSSocketInstance(tcp);
+})
+```

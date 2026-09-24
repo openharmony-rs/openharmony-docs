@@ -1,5 +1,9 @@
 # OnPageBeginEvent
 
+```TypeScript
+export declare interface OnPageBeginEvent
+```
+
 Represents the callback invoked when the web page loading begins.
 
 **Since:** 12

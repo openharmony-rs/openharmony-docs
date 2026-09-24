@@ -1,5 +1,9 @@
 # MultiNavigation
 
+```TypeScript
+export declare struct MultiNavigation
+```
+
 **MultiNavigation** is a component designed for multi-column display and routing navigation on large-screen devices.
 
 > **NOTE:** 

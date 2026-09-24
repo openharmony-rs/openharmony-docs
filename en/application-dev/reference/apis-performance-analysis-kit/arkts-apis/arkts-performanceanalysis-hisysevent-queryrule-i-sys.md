@@ -1,5 +1,9 @@
 # QueryRule (System API)
 
+```TypeScript
+interface QueryRule
+```
+
 Defines event query rules.
 
 **Since:** 9

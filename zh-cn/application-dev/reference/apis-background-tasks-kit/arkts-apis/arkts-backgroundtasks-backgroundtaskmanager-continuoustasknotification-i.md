@@ -1,5 +1,9 @@
 # ContinuousTaskNotification
 
+```TypeScript
+interface ContinuousTaskNotification
+```
+
 长时任务通知信息。
 
 **起始版本：** 12

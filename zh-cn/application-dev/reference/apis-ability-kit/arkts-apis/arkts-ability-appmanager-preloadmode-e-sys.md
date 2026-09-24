@@ -1,5 +1,9 @@
 # PreloadMode（系统接口）
 
+```TypeScript
+export enum PreloadMode
+```
+
 表示预加载应用进程模式的枚举。
 
 **起始版本：** 12

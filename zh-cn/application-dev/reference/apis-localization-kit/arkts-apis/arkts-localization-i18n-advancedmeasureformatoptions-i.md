@@ -1,5 +1,9 @@
 # AdvancedMeasureFormatOptions
 
+```TypeScript
+export interface AdvancedMeasureFormatOptions
+```
+
 创建数字格式化对象时的可选配置项。
 
 **起始版本：** 23

@@ -33,9 +33,9 @@ function removeAll(bundle: BundleOption, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -59,56 +59,8 @@ let bundle: notificationSubscribe.BundleOption = {
 notificationSubscribe.removeAll(bundle, removeAllCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let removeAllCallback = (err: BusinessError) => {
-    if (err) {
-        console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-        console.info('removeAll success');
-    }
-}
-notificationSubscribe.removeAll(removeAllCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 不指定应用时，删除所有通知
-notificationSubscribe.removeAll().then(() => {
-  console.info('removeAll success');
-}).catch((err: BusinessError) => {
-  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let removeAllCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('removeAll success');
-  }
-}
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 1;
-notificationSubscribe.removeAll(userId, removeAllCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userId: number = 1;
-notificationSubscribe.removeAll(userId).then(() => {
-  console.info('removeAll success');
-}).catch((err: BusinessError) => {
-  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="removeall-1"></a>
 
 ## removeAll
 
@@ -136,17 +88,30 @@ function removeAll(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
 **示例**
 
-参见 [removeAll](#removeall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let removeAllCallback = (err: BusinessError) => {
+    if (err) {
+        console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info('removeAll success');
+    }
+}
+notificationSubscribe.removeAll(removeAllCallback);
+```
+
+
+<a id="removeall-2"></a>
 
 ## removeAll
 
@@ -175,9 +140,9 @@ function removeAll(userId: number, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -185,8 +150,23 @@ function removeAll(userId: number, callback: AsyncCallback<void>): void
 
 **示例**
 
-参见 [removeAll](#removeall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let removeAllCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('removeAll success');
+  }
+}
+// 用户ID，使用时需替换为真实的userId。
+let userId: number = 1;
+notificationSubscribe.removeAll(userId, removeAllCallback);
+```
+
+
+<a id="removeall-3"></a>
 
 ## removeAll
 
@@ -220,9 +200,9 @@ function removeAll(userId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -230,8 +210,19 @@ function removeAll(userId: number): Promise<void>
 
 **示例**
 
-参见 [removeAll](#removeall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let userId: number = 1;
+notificationSubscribe.removeAll(userId).then(() => {
+  console.info('removeAll success');
+}).catch((err: BusinessError) => {
+  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+
+<a id="removeall-4"></a>
 
 ## removeAll
 
@@ -265,9 +256,9 @@ function removeAll(bundle?: BundleOption): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -275,4 +266,13 @@ function removeAll(bundle?: BundleOption): Promise<void>
 
 **示例**
 
-参见 [removeAll](#removeall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 不指定应用时，删除所有通知
+notificationSubscribe.removeAll().then(() => {
+  console.info('removeAll success');
+}).catch((err: BusinessError) => {
+  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
+});
+```

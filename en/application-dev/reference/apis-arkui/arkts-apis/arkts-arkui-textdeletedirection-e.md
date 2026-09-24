@@ -1,5 +1,9 @@
 # TextDeleteDirection
 
+```TypeScript
+declare enum TextDeleteDirection
+```
+
 Defines the direction for deleting text.
 
 **Since:** 12

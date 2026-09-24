@@ -8,6 +8,8 @@ typedef struct OH_UdsDetails OH_UdsDetails
 
 Describes the key-value object of UDS data.
 
+**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+
 **Since**: 22
 
 **Related module**: [UDMF](capi-udmf.md)

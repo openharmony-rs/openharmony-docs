@@ -33,27 +33,15 @@ Get the current cell information.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-radio.getCellInformation((err: BusinessError, data: Array<radio.CellInformation>) => {
-    if (err) {
-        console.error(`getCellInformation failed, callback: err->${JSON.stringify(err)}`);
-        return;
-    }
-    console.info(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -68,17 +56,8 @@ radio.getCellInformation(slotId, (err: BusinessError, data: Array<radio.CellInfo
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-radio.getCellInformation(slotId).then((data: Array<radio.CellInformation>) => {
-    console.info(`getCellInformation success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getCellInformation failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getcellinformation-1"></a>
 
 ## getCellInformation
 
@@ -112,9 +91,9 @@ Get the current cell information.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -122,8 +101,19 @@ Get the current cell information.
 
 **示例**
 
-参见 [getCellInformation](#getcellinformation)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let slotId: number = 0;
+radio.getCellInformation(slotId).then((data: Array<radio.CellInformation>) => {
+    console.info(`getCellInformation success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getCellInformation failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+
+<a id="getcellinformation-2"></a>
 
 ## getCellInformation
 
@@ -151,9 +141,9 @@ Get the current cell information.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -161,4 +151,14 @@ Get the current cell information.
 
 **示例**
 
-参见 [getCellInformation](#getcellinformation)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+radio.getCellInformation((err: BusinessError, data: Array<radio.CellInformation>) => {
+    if (err) {
+        console.error(`getCellInformation failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
+});
+```

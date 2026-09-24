@@ -1,5 +1,9 @@
 # RejectMessageOptions (System API)
 
+```TypeScript
+export interface RejectMessageOptions
+```
+
 Defines options for the call rejection message.
 
 **Since:** 7

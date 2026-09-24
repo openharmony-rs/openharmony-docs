@@ -1,8 +1,12 @@
 # SpatialMotionInfo
 
+```TypeScript
+export interface SpatialMotionInfo
+```
+
 空间运动响应信息的接口。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
@@ -22,7 +26,7 @@ event: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +42,7 @@ pointX: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -54,7 +58,7 @@ pointY: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -70,7 +74,7 @@ timestamp: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

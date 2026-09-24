@@ -1,5 +1,9 @@
 # Button
 
+```TypeScript
+interface Button
+```
+
 菜单中的菜单项按钮。
 
 **起始版本：** 8
@@ -32,6 +36,8 @@ color: string
 
 **替代接口：** [color](arkts-arkui-promptaction-button-i.md#color)
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -49,5 +55,7 @@ text: string
 **废弃版本：** 9
 
 **替代接口：** [text](arkts-arkui-promptaction-button-i.md#text)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

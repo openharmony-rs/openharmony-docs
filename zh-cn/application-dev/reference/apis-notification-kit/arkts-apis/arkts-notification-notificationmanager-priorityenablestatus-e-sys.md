@@ -1,5 +1,9 @@
 # PriorityEnableStatus（系统接口）
 
+```TypeScript
+export enum PriorityEnableStatus
+```
+
 描述应用通知的优先级开关状态。
 
 **起始版本：** 23

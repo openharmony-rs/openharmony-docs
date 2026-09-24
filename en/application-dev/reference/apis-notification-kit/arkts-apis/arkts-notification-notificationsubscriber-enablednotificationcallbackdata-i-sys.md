@@ -1,5 +1,9 @@
 # EnabledNotificationCallbackData (System API)
 
+```TypeScript
+export interface EnabledNotificationCallbackData
+```
+
 Returns the changes of the application enabling state.
 
 **Since:** 8

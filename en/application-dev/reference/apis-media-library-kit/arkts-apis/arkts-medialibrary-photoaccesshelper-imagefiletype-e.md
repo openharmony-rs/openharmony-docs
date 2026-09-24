@@ -1,5 +1,9 @@
 # ImageFileType
 
+```TypeScript
+enum ImageFileType
+```
+
 Enumerates the types of image files to save.
 
 **Since:** 13

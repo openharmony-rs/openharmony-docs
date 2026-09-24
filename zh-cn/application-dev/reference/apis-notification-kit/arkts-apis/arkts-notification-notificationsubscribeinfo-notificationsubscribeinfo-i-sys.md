@@ -1,5 +1,9 @@
 # NotificationSubscribeInfo（系统接口）
 
+```TypeScript
+export interface NotificationSubscribeInfo
+```
+
 通知发布者的信息。
 
 **起始版本：** 7

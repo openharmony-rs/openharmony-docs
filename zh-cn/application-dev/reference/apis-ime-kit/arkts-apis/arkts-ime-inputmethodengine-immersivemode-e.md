@@ -1,5 +1,9 @@
 # ImmersiveMode
 
+```TypeScript
+export enum ImmersiveMode
+```
+
 枚举，输入法沉浸模式。<br>
 
 | 名称 | 值 | 说明 |  

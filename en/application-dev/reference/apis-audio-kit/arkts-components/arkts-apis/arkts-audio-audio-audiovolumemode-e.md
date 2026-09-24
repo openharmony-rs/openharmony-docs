@@ -1,5 +1,9 @@
 # AudioVolumeMode
 
+```TypeScript
+enum AudioVolumeMode
+```
+
 Enumerates the audio volume modes.
 
 **Since:** 19

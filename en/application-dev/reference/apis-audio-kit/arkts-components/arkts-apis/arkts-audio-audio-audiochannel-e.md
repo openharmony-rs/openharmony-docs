@@ -1,5 +1,9 @@
 # AudioChannel
 
+```TypeScript
+enum AudioChannel
+```
+
 Enumerates the audio channels.
 
 **Since:** 8

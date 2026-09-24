@@ -1,5 +1,9 @@
 # BundleInfo
 
+```TypeScript
+interface BundleInfo
+```
+
 描述应用包信息。
 
 **起始版本：** 20

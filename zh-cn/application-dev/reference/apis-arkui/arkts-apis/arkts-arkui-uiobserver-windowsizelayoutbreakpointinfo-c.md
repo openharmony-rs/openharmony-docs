@@ -1,5 +1,9 @@
 # WindowSizeLayoutBreakpointInfo
 
+```TypeScript
+export class WindowSizeLayoutBreakpointInfo
+```
+
 窗口尺寸布局断点变化回调的信息。
 
 **起始版本：** 22

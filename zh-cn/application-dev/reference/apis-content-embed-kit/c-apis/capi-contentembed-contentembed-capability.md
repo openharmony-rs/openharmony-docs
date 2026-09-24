@@ -8,6 +8,8 @@ typedef struct ContentEmbed_Capability ContentEmbed_Capability
 
 声明ContentEmbed_Capability结构体类型。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **相关模块：** [ContentEmbed](capi-contentembed.md)

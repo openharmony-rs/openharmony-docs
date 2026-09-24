@@ -1,5 +1,9 @@
 # AccelerometerResponse
 
+```TypeScript
+export interface AccelerometerResponse
+```
+
 感应到加速度数据变化后的回调函数的响应对象，包含设备在x、y、z三轴方向上的加速度数据。
 
 **起始版本：** 3

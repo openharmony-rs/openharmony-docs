@@ -1,5 +1,9 @@
 # UnifiedDataProperties
 
+```TypeScript
+class UnifiedDataProperties
+```
+
 Defines the properties of the data records in the unified data object, including the timestamp, tag, pasting range, and additional data.
 
 **Since:** 12

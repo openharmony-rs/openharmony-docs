@@ -1,5 +1,9 @@
 # ManufactureData
 
+```TypeScript
+interface ManufactureData
+```
+
 描述BLE广播报文中制造商数据内容。
 
 **起始版本：** 10

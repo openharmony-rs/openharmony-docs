@@ -1,8 +1,12 @@
 # AssessmentError
 
+```TypeScript
+interface AssessmentError
+```
+
 Assessment error information.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Customization.AssessmentConfiguration
 
@@ -21,7 +25,7 @@ Error code. The value 0 indicates success, and a non-zero value indicates failur
 
 **Type:** [AssessmentErrorCode](arkts-automatic-assessment-assessmenterrorcode-e.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -37,7 +41,7 @@ Error description. This field is optional and defaults to an empty string if not
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

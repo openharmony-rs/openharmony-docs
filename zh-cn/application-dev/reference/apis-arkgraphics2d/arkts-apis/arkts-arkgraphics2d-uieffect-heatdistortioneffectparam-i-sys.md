@@ -1,5 +1,9 @@
 # HeatDistortionEffectParam（系统接口）
 
+```TypeScript
+interface HeatDistortionEffectParam
+```
+
 热浪扭曲效果的参数。
 
 **起始版本：** 26.0.0

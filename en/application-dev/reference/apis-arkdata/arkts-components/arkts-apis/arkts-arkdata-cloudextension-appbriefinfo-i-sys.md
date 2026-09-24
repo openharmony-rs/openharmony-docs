@@ -1,5 +1,9 @@
 # AppBriefInfo (System API)
 
+```TypeScript
+export interface AppBriefInfo
+```
+
 Represents the brief application information.
 
 **Since:** 11

@@ -33,6 +33,8 @@ enum ArkUI_NavDestinationState
 
 定义NavDestination组件的状态。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -56,6 +58,8 @@ enum ArkUI_RouterPageState
 **描述：**
 
 定义[Router]{@link @ohos.arkui.UIContext#Router}（路由页面）的状态。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 

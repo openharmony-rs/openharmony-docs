@@ -1,5 +1,9 @@
 # RequestEventResult
 
+```TypeScript
+interface RequestEventResult
+```
+
 Provides the result returned after the request listener is registered and the requested event is received.
 
 **Since:** 8

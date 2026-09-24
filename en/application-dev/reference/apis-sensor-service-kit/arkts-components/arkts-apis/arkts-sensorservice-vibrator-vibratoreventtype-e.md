@@ -1,5 +1,9 @@
 # VibratorEventType
 
+```TypeScript
+enum VibratorEventType
+```
+
 Vibration event type.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # PermissionRequestResult
 
+```TypeScript
+interface PermissionRequestResult
+```
+
 **Since:** 7
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

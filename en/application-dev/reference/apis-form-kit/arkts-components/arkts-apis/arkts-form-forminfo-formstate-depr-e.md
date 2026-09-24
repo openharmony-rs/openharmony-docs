@@ -1,5 +1,9 @@
 # FormState
 
+```TypeScript
+enum FormState
+```
+
 Enumerates the widget states.
 
 **Since:** 8

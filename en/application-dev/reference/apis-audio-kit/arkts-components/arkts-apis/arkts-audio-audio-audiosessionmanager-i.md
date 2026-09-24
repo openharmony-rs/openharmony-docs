@@ -1,5 +1,9 @@
 # AudioSessionManager
 
+```TypeScript
+interface AudioSessionManager
+```
+
 This interface implements audio session management.
 
 Before calling any API in AudioSessionManager, you must use [getSessionManager](arkts-audio-audio-audiomanager-i.md#getsessionmanager) to obtain an AudioSessionManager instance.
@@ -54,6 +58,22 @@ Activates an audio session. This API uses a promise to return the result.
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | System error. Possible causes: 1.Focus preemption failure. 2.Audio server process died. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let strategy: audio.AudioSessionStrategy = {
+  concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+};
+
+audioSessionManager.activateAudioSession(strategy).then(() => {
+  console.info('activateAudioSession SUCCESS');
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
 ## clearSelectedMediaInputDevice
 
 ```TypeScript
@@ -77,6 +97,18 @@ Clears the media input device set by calling [selectMediaInputDevice](#selectmed
 | Error Code ID | Error Message |
 | --- | --- |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioSessionManager.clearSelectedMediaInputDevice().then(() => {
+  console.info('Succeeded in doing clearSelectedMediaInputDevice.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to clearSelectedMediaInputDevice. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## deactivateAudioSession
 
@@ -103,6 +135,18 @@ Deactivates this audio session. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [6800301](../errorcode-audio.md#6800301-system-error) | System error. Possible causes: 1.The audio session is not existed or has been released. 2.Audio server process died. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioSessionManager.deactivateAudioSession().then(() => {
+  console.info('deactivateAudioSession SUCCESS');
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
 
 ## enableMuteSuggestionWhenMixWithOthers
 
@@ -139,6 +183,12 @@ For details, see [Enabling Mute Suggestion Notifications for Mixed Playback](../
 | [6800103](../errorcode-audio.md#6800103-unsupported-state) | Function is called without setting [AudioSessionScene](arkts-audio-audio-audiosessionscene-e.md) or called after audio session activation. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, system internal error. |
 
+**Examples**
+
+```TypeScript
+audio.getAudioManager().getSessionManager().enableMuteSuggestionWhenMixWithOthers(true);
+```
+
 ## getAvailableDevices
 
 ```TypeScript
@@ -170,6 +220,20 @@ Obtains the available audio devices.
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES);
+  console.info('Succeeded in doing getAvailableDevices.');
+} catch (err) {
+  let error = err as BusinessError;
+   console.error(`Failed to getAvailableDevices. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## getBluetoothAndNearlinkPreferredRecordCategory
 
 ```TypeScript
@@ -193,6 +257,20 @@ Obtains the preferred device category for recording with Bluetooth or NearLink, 
 | Error Code ID | Error Message |
 | --- | --- |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let category: audio.BluetoothAndNearlinkPreferredRecordCategory = audioSessionManager.getBluetoothAndNearlinkPreferredRecordCategory();
+  console.info('Succeeded in doing getBluetoothAndNearlinkPreferredRecordCategory.');
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getBluetoothAndNearlinkPreferredRecordCategory. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## getDefaultOutputDevice
 
@@ -219,6 +297,12 @@ Obtains the default audio output device set by calling [setDefaultOutputDevice](
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800103](../errorcode-audio.md#6800103-unsupported-state) | Operation not permit at current state. Return by promise. |
 
+**Examples**
+
+```TypeScript
+let deviceType = audioSessionManager.getDefaultOutputDevice();
+```
+
 ## getSelectedMediaInputDevice
 
 ```TypeScript
@@ -243,6 +327,20 @@ Obtains the media input device set by calling [selectMediaInputDevice](#selectme
 | --- | --- |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let device: audio.AudioDeviceDescriptor = audioSessionManager.getSelectedMediaInputDevice();
+  console.info('Succeeded in doing getSelectedMediaInputDevice.');
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getSelectedMediaInputDevice. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## isAudioSessionActivated
 
 ```TypeScript
@@ -263,6 +361,12 @@ Checks whether this audio session is activated.
 | --- | --- |
 | boolean | Check result for whether the audio session is activated. **true** if activated, **false** otherwise. |
 
+**Examples**
+
+```TypeScript
+let isActivated = audioSessionManager.isAudioSessionActivated();
+```
+
 ## isOtherMediaPlaying
 
 ```TypeScript
@@ -282,6 +386,12 @@ Check whether any other application is currently playing audio of the four media
 | Type | Description |
 | --- | --- |
 | boolean | Whether another application is playing audio of certain media types. **true** means yes; **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+let isExistence = audioSessionManager.isOtherMediaPlaying();
+```
 
 ## off('audioSessionDeactivated')
 
@@ -311,6 +421,22 @@ Unsubscribes from the audio session deactivation event. This API uses an asynchr
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+// Cancel all subscriptions to the event.
+audioSessionManager.off('audioSessionDeactivated');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let audioSessionDeactivatedCallback = (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
+  console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+};
+
+audioSessionManager.on('audioSessionDeactivated', audioSessionDeactivatedCallback);
+
+audioSessionManager.off('audioSessionDeactivated', audioSessionDeactivatedCallback);
+```
+
 ## off('audioSessionStateChanged')
 
 ```TypeScript
@@ -336,6 +462,22 @@ Unsubscribes from the audio session state change event. This API uses an asynchr
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
+
+**Examples**
+
+```TypeScript
+// Cancel all subscriptions to the event.
+audioSessionManager.off('audioSessionStateChanged');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let audioSessionStateChangedCallback = (audioSessionStateChangedEvent: audio.AudioSessionStateChangedEvent) => {
+  console.info(`hint of audioSessionStateChanged: ${audioSessionStateChangedEvent.stateChangeHint} `);
+};
+
+audioSessionManager.on('audioSessionStateChanged', audioSessionStateChangedCallback);
+
+audioSessionManager.off('audioSessionStateChanged', audioSessionStateChangedCallback);
+```
 
 ## off('currentOutputDeviceChanged')
 
@@ -363,6 +505,22 @@ Unsubscribes from the current output device change event. This API uses an async
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+**Examples**
+
+```TypeScript
+// Cancel all subscriptions to the event.
+audioSessionManager.off('currentOutputDeviceChanged');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio.CurrentOutputDeviceChangedEvent) => {
+  console.info(`reason of currentOutputDeviceChanged: ${currentOutputDeviceChangedEvent.changeReason} `);
+};
+
+audioSessionManager.on('currentOutputDeviceChanged', currentOutputDeviceChangedCallback);
+
+audioSessionManager.off('currentOutputDeviceChanged', currentOutputDeviceChangedCallback);
+```
+
 ## off('availableDeviceChange')
 
 ```TypeScript
@@ -388,6 +546,25 @@ Unsubscribes from the event indicating that the connection status of an availabl
 | --- | --- |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+**Examples**
+
+```TypeScript
+// Cancel all subscriptions to the event.
+audioSessionManager.off('availableDeviceChange');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let availableDeviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
+  console.info('device change type : ' + deviceChanged.type);
+  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+};
+
+audioSessionManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_INPUT_DEVICES, availableDeviceChangeCallback);
+
+audioSessionManager.off('availableDeviceChange', availableDeviceChangeCallback);
+```
+
 ## off('currentInputDeviceChanged')
 
 ```TypeScript
@@ -412,6 +589,22 @@ Unsubscribes from the current input device change event.
 | Error Code ID | Error Message |
 | --- | --- |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
+
+**Examples**
+
+```TypeScript
+// Cancel all subscriptions to the event.
+audioSessionManager.off('currentInputDeviceChanged');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.CurrentInputDeviceChangedEvent) => {
+  console.info(`reason of currentInputDeviceChanged: ${currentInputDeviceChangedEvent.changeReason} `);
+};
+
+audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
+
+audioSessionManager.off('currentInputDeviceChanged', currentInputDeviceChangedCallback);
+```
 
 ## on('audioSessionDeactivated')
 
@@ -441,6 +634,15 @@ Subscribes to the audio session deactivation event, which is triggered when an a
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters unspecified. 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+audioSessionManager.on('audioSessionDeactivated',
+  (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
+  console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+});
+```
+
 ## on('audioSessionStateChanged')
 
 ```TypeScript
@@ -467,6 +669,14 @@ Subscribes to the audio session state change event, which is triggered when the 
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800102](../errorcode-audio.md#6800102-memory-allocation-failure) | Allocate memory failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
+
+**Examples**
+
+```TypeScript
+audioSessionManager.on('audioSessionStateChanged', (audioSessionStateChangedEvent: audio.AudioSessionStateChangedEvent) => {
+  console.info(`hint of audioSessionStateChanged: ${audioSessionStateChangedEvent.stateChangeHint} `);
+});
+```
 
 ## on('currentOutputDeviceChanged')
 
@@ -495,6 +705,18 @@ Subscribes to the current output device change event, which is triggered when th
 | [6800102](../errorcode-audio.md#6800102-memory-allocation-failure) | Allocate memory failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+**Examples**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio.CurrentOutputDeviceChangedEvent) => {
+  console.info(`reason of currentOutputDeviceChanged: ${currentOutputDeviceChangedEvent.changeReason} `);
+};
+
+audioSessionManager.on('currentOutputDeviceChanged', currentOutputDeviceChangedCallback);
+```
+
 ## on('availableDeviceChange')
 
 ```TypeScript
@@ -522,6 +744,17 @@ Subscribes to the event indicating that the connection status of an available au
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+**Examples**
+
+```TypeScript
+audioSessionManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_INPUT_DEVICES, (deviceChanged: audio.DeviceChangeAction) => {
+  console.info('device change type : ' + deviceChanged.type);
+  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+});
+```
+
 ## on('currentInputDeviceChanged')
 
 ```TypeScript
@@ -547,6 +780,18 @@ Subscribes to the current input device change event, which is triggered when the
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
+
+**Examples**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.CurrentInputDeviceChangedEvent) => {
+  console.info(`reason of currentInputDeviceChanged: ${currentInputDeviceChangedEvent.changeReason} `);
+};
+
+audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
+```
 
 ## selectMediaInputDevice
 
@@ -589,6 +834,28 @@ Selects a media input device. This API uses a promise to return the result.
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed, for example, the selected device does not exist. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
+  console.info('Succeeded in doing getAvailableDevices.');
+
+  if (data[0]) {
+    audioSessionManager.selectMediaInputDevice(data[0]).then(() => {
+      console.info('Succeeded in doing selectMediaInputDevice.');
+    }).catch((selectErr: BusinessError) => {
+      console.error(`Failed to selectMediaInputDevice. Code: ${selectErr.code}, message: ${selectErr.message}`);
+    });
+  }
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getAvailableDevices. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## setAudioSessionBehavior
 
 ```TypeScript
@@ -622,6 +889,13 @@ Sets audio session behavior parameters. (Multiple flags can be combined.)
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800103](../errorcode-audio.md#6800103-unsupported-state) | Operation not permitted in the current state. |
 
+**Examples**
+
+```TypeScript
+let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+audioSessionManager.setAudioSessionBehavior(behavior);
+```
+
 ## setAudioSessionScene
 
 ```TypeScript
@@ -647,6 +921,12 @@ Sets an audio session scene.
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800103](../errorcode-audio.md#6800103-unsupported-state) | Operation not permit at current state. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
+
+**Examples**
+
+```TypeScript
+audioSessionManager.setAudioSessionScene(audio.AudioSessionScene.AUDIO_SESSION_SCENE_MEDIA);
+```
 
 ## setBluetoothAndNearlinkPreferredRecordCategory
 
@@ -687,6 +967,19 @@ Sets the preferred device category for recording with Bluetooth or NearLink. Thi
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const category = audio.BluetoothAndNearlinkPreferredRecordCategory.PREFERRED_LOW_LATENCY;
+audioSessionManager.setBluetoothAndNearlinkPreferredRecordCategory(category).then(() => {
+  console.info('Succeeded in doing setBluetoothAndNearlinkPreferredRecordCategory.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setBluetoothAndNearlinkPreferredRecordCategory. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## setCapturerMuteHint
 
 ```TypeScript
@@ -718,6 +1011,18 @@ Set mute hint for all capturer streams in the current audio session. It dose not
 | Error Code ID | Error Message |
 | --- | --- |
 | [6800103](../errorcode-audio.md#6800103-unsupported-state) | Operation not permit at current state, there is no audio capturer running. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioSessionManager.setCapturerMuteHint(true).then(() => {
+  console.info('Successfully set capturer mute hint.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setCapturerMuteHint. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## setDefaultOutputDevice
 
@@ -757,6 +1062,18 @@ Sets the default audio output device. This API uses a promise to return the resu
 | [6800102](../errorcode-audio.md#6800102-memory-allocation-failure) | Allocate memory failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+  console.info('setDefaultOutputDevice Success!');
+}).catch((err: BusinessError) => {
+  console.error(`setDefaultOutputDevice Fail: ${err}`);
+});
+```
+
 ## setMediaOutputDevice
 
 ```TypeScript
@@ -789,3 +1106,15 @@ Set the audio output device to the built-in speaker, when other audio peripheral
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed, for example, the selected device type is not supported. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | System error. Possible causes: 1.Internal variable memory allocation failed. 2.Audio server process died. 3.Speaker device is not available. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioSessionManager.setMediaOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+  console.info('setMediaOutputDevice Success!');
+}).catch((err: BusinessError) => {
+  console.error(`setMediaOutputDevice Fail: ${err}`);
+});
+```

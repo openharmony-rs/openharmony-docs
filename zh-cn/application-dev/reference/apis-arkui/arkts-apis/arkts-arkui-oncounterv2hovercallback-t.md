@@ -18,4 +18,4 @@ export type OnCounterV2HoverCallback = (isHover: boolean) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isHover | boolean | 是 |  |
+| isHover | boolean | 是 | 表示鼠标是否悬浮在组件上。<br>鼠标进入时为true，离开时为false。 |

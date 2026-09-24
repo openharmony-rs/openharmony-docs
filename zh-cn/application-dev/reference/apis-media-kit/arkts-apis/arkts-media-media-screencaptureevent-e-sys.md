@@ -1,6 +1,10 @@
 # ScreenCaptureEvent（系统接口）
 
-Enumerates the states available for the system screen recorder.
+```TypeScript
+enum ScreenCaptureEvent
+```
+
+系统录屏应用录屏状态的枚举值。
 
 **起始版本：** 18
 
@@ -14,7 +18,7 @@ Enumerates the states available for the system screen recorder.
 SCREENCAPTURE_STARTED = 0
 ```
 
-The system screen recorder starts screen capture.
+表示系统录屏应用开始录屏。
 
 **起始版本：** 18
 
@@ -28,7 +32,7 @@ The system screen recorder starts screen capture.
 SCREENCAPTURE_STOPPED = 1
 ```
 
-The system screen recorder stops screen capture.
+表示系统录屏应用停止录屏。
 
 **起始版本：** 18
 
@@ -42,7 +46,7 @@ The system screen recorder stops screen capture.
 SCREENCAPTURE_DIED = 2
 ```
 
-The system screen recorder died.
+表示系统录屏服务死亡。
 
 **起始版本：** 23
 

@@ -1,10 +1,12 @@
 # SymbolGlyph属性/事件
 
-支持[通用属性](arkts-arkui-commonmethod-c.md)，不支持文本通用属性，仅支持以下特有属性。
+```TypeScript
+declare class SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>
+```
 
-支持[通用事件](arkts-arkui-commonmethod-c.md)。
+支持[通用属性](arkts-arkui-common-comp.md#common)，不支持文本通用属性，仅支持以下特有属性：
 
-**继承/实现关系：** SymbolGlyphAttribute extends CommonMethod&lt;SymbolGlyphAttribute&gt;
+**继承/实现关系：** SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>
 
 **起始版本：** 11
 
@@ -20,7 +22,7 @@ effectStrategy(value: SymbolEffectStrategy)
 
 > **说明：** 
 > 
-> - 从API version 12开始，该接口支持在attributeModifier中调用。
+> - 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 > 
 > - 动效属性，仅支持使用effectStrategy属性或单个symbolEffect属性，不支持多种动效属性混合使用。
 > 
@@ -40,7 +42,7 @@ effectStrategy(value: SymbolEffectStrategy)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [SymbolEffectStrategy](arkts-arkui-symboleffectstrategy-e.md) | 是 | SymbolGlyph组件动效策略。 |
+| value | [SymbolEffectStrategy](arkts-arkui-symbolglyph-comp-symboleffectstrategy-e.md) | 是 | SymbolGlyph组件动效策略。 |
 
 ## fontColor
 
@@ -52,7 +54,7 @@ fontColor(value: Array<ResourceColor>)
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -68,7 +70,9 @@ fontColor(value: Array<ResourceColor>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | SymbolGlyph组件字体颜色。<br> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。<br>不同渲染策略下颜色设置效果不同，详见[SymbolRenderingStrategy](arkts-arkui-symbolrenderingstrategy-e.md)枚举说明。 |
+| value | Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | SymbolGlyph组件字体颜色。<br> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。<br>不同渲染策略下颜色设置效果不同，详见[SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md)枚举说明。 |
+
+<a id="fontcolor-1"></a>
 
 ## fontColor
 
@@ -80,7 +84,7 @@ fontColor(value: Array<ResourceColor | ColorMetrics> | undefined)
 
 > **说明：** 
 > 
-> 该接口支持在attributeModifier中调用。
+> 该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 26.0.0
 
@@ -96,7 +100,7 @@ fontColor(value: Array<ResourceColor | ColorMetrics> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; ColorMetrics&gt; &#124; undefined | 是 |  |
+| value | Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; ColorMetrics&gt; &#124; undefined | 是 | SymbolGlyph组件字体颜色。支持传入`ResourceColor`或`ColorMetrics`类型的数组。<br> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
 
 ## fontSize
 
@@ -110,7 +114,7 @@ fontSize(value: number | string | Resource)
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -126,7 +130,7 @@ fontSize(value: number | string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | SymbolGlyph组件字体大小。<br>取值范围：[0, +∞) <br>单位：[fp](../arkts-apis/arkts-arkui-length-t.md) <br>不支持设置百分比字符串。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | SymbolGlyph组件字体大小。<br>取值范围：[0, +∞) <br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>不支持设置百分比字符串。 |
 
 ## fontWeight
 
@@ -140,7 +144,7 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -156,7 +160,9 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | 是 | SymbolGlyph组件字体粗细。<br>number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“ lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。传入超出取值范围或不符合间隔要求的值时取默认值。 |
+| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | 是 | SymbolGlyph组件字体粗细。<br>number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“ lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br>**说明：** <br>传入超出取值范围的值时取默认值。传入不符合间隔要求的值时也取默认值（仅支持100整数倍的值）。 |
+
+<a id="fontweight-1"></a>
 
 ## fontWeight
 
@@ -203,7 +209,7 @@ maxFontScale(scale: Optional<number|Resource>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | SymbolGlyph组件最大的字体缩放倍数。<br>取值范围：[1, +∞) <br>**说明：** <br>设置的值小于1时，按值为1处理。 |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | SymbolGlyph组件最大的字体缩放倍数。<br>取值范围：[1, +∞) <br>**说明：** <br>设置的值小于1时，按值为1处理。未设置时，不限制最大缩放倍数。 |
 
 ## minFontScale
 
@@ -225,7 +231,7 @@ minFontScale(scale: Optional<number|Resource>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | SymbolGlyph组件最小的字体缩放倍数。<br>取值范围：[0, 1] <br>设置为0，缩放最小。<br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。 |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | SymbolGlyph组件最小的字体缩放倍数。<br>取值范围：[0, 1] <br>设置为0，缩放最小。<br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1时，按值为1处理。异常值默认不生效。未设置时，不限制最小缩放倍数。 |
 
 ## renderingStrategy
 
@@ -237,7 +243,7 @@ renderingStrategy(value: SymbolRenderingStrategy)
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -253,7 +259,7 @@ renderingStrategy(value: SymbolRenderingStrategy)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [SymbolRenderingStrategy](arkts-arkui-symbolrenderingstrategy-e.md) | 是 | SymbolGlyph组件渲染策略。 |
+| value | [SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md) | 是 | SymbolGlyph组件渲染策略。 |
 
 ## shaderStyle
 
@@ -305,8 +311,10 @@ symbolEffect(symbolEffect: SymbolEffect, isActive?: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| symbolEffect | [SymbolEffect](arkts-arkui-symboleffect-c.md) | 是 | SymbolGlyph组件动效策略。 |
+| symbolEffect | [SymbolEffect](arkts-arkui-symbolglyph-comp-symboleffect-c.md) | 是 | SymbolGlyph组件动效策略。 |
 | isActive | boolean | 否 | SymbolGlyph组件动效播放状态。<br>true表示播放，false表示不播放。 |
+
+<a id="symboleffect-1"></a>
 
 ## symbolEffect
 
@@ -330,7 +338,7 @@ symbolEffect(symbolEffect: SymbolEffect, triggerValue?: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| symbolEffect | [SymbolEffect](arkts-arkui-symboleffect-c.md) | 是 | SymbolGlyph组件动效策略。 |
+| symbolEffect | [SymbolEffect](arkts-arkui-symbolglyph-comp-symboleffect-c.md) | 是 | SymbolGlyph组件动效策略。 |
 | triggerValue | number | 否 | SymbolGlyph组件动效播放触发器，在数值变更时触发动效。<br>如果首次不希望触发动效，设置-1。 |
 
 ## symbolShadow
@@ -339,7 +347,7 @@ symbolEffect(symbolEffect: SymbolEffect, triggerValue?: number)
 symbolShadow(shadow: Optional<ShadowOptions>)
 ```
 
-设置SymbolGlyph组件的阴影效果。未通过该接口设置时，默认阴影效果为{radius：0,color：Color.Black,offsetX：0,offsetY：0}。
+设置SymbolGlyph组件的阴影效果。未通过该接口设置时，默认阴影效果为{radius: 0,color: Color.Black,offsetX: 0,offsetY: 0}。
 
 **起始版本：** 20
 
@@ -355,4 +363,4 @@ symbolShadow(shadow: Optional<ShadowOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shadow | [Optional](arkts-arkui-optional-t.md)&lt;[ShadowOptions](arkts-arkui-shadowoptions-i.md)&gt; | 是 | SymbolGlyph组件的阴影效果。<br>单位：[vp](../arkts-apis/arkts-arkui-length-t.md) <br>不支持fill、type属性和color中的ColoringStrategy枚举值。 |
+| shadow | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | SymbolGlyph组件的阴影效果。<br>单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>**说明：** <br>仅支持ShadowOptions中的radius、color、offsetX、offsetY属性，不支持fill、type属性和color中的ColoringStrategy枚举值。 |

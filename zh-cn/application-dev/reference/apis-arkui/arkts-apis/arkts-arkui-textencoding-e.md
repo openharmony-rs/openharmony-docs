@@ -1,6 +1,10 @@
 # TextEncoding
 
-枚举文本布局查询接口支持的文本编码类型。
+```TypeScript
+declare enum TextEncoding
+```
+
+文本布局查询接口支持的文本编码类型。
 
 **起始版本：** 26.0.0
 

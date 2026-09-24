@@ -1,5 +1,9 @@
 # ThreadInfo
 
+```TypeScript
+class ThreadInfo
+```
+
 工作线程的内部信息。
 
 **起始版本：** 10

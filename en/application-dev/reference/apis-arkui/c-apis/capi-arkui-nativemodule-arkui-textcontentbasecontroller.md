@@ -8,6 +8,8 @@ typedef struct ArkUI_TextContentBaseController ArkUI_TextContentBaseController
 
 Defines the text content base controller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

@@ -1,5 +1,9 @@
 # MoveConfiguration
 
+```TypeScript
+interface MoveConfiguration
+```
+
 窗口移动选项。
 
 **起始版本：** 15

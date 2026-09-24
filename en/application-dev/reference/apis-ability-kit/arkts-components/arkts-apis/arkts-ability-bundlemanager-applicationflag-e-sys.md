@@ -1,5 +1,9 @@
 # ApplicationFlag (System API)
 
+```TypeScript
+enum ApplicationFlag
+```
+
 Enumerates the application flags, which indicate the type of application information to obtain.
 
 **Since:** 9

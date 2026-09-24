@@ -14,7 +14,7 @@ function bindToDisplay(inputDeviceId: number, displayId: number): Promise<void>
 
 Bind input devices to a display group. Only external USB and Bluetooth mice, touchpads, keyboards, and game controllers are supported. After binding, the device will be fixed to operate on the display group where the specified display is located. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.INPUT_DEVICE_CONTROLLER
 

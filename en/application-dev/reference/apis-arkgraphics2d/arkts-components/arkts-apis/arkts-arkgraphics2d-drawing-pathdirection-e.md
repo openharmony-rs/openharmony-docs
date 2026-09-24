@@ -1,5 +1,9 @@
 # PathDirection
 
+```TypeScript
+enum PathDirection
+```
+
 Enumerates the directions of a closed contour.
 
 **Since:** 12

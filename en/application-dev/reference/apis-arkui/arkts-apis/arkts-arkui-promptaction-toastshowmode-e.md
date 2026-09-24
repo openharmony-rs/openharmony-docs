@@ -1,5 +1,9 @@
 # ToastShowMode
 
+```TypeScript
+export enum ToastShowMode
+```
+
 Enumerates display modes for toasts. By default, the toast is displayed within the application and supports display in subwindows.
 
 @enum { number }

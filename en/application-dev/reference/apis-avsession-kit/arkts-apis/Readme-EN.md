@@ -52,6 +52,8 @@
   - [QueryMediaEntityParam](arkts-avsession-avmusictemplate-querymediaentityparam-i.md)
   - [Ranking](arkts-avsession-avmusictemplate-ranking-i.md)
   - [SearchPlayInfo](arkts-avsession-avmusictemplate-searchplayinfo-i.md)
+  - [SearchPlayKaraokeInfo](arkts-avsession-avmusictemplate-searchplaykaraokeinfo-i.md)
+  - [SearchPlayKaraokeItem](arkts-avsession-avmusictemplate-searchplaykaraokeitem-i.md)
   - [SearchPlayMusicInfo](arkts-avsession-avmusictemplate-searchplaymusicinfo-i.md)
   - [SearchPlayMusicItem](arkts-avsession-avmusictemplate-searchplaymusicitem-i.md)
   - [SearchPlayVideoInfo](arkts-avsession-avmusictemplate-searchplayvideoinfo-i.md)

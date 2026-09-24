@@ -1,5 +1,9 @@
 # ED25519KeyPairSpec
 
+```TypeScript
+interface ED25519KeyPairSpec extends AsyKeySpec
+```
+
 Defines a child class of [AsyKeySpec](arkts-cryptoarchitecture-cryptoframework-asykeyspec-i.md) used to specify full parameters of the public and private keys in the Ed25519 algorithm.
 
 <br>To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySpec()](arkts-cryptoarchitecture-cryptoframework-createasykeygeneratorbyspec-f.md) to create a key generator.

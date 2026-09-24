@@ -1,5 +1,9 @@
 # WindowAnimationConfig
 
+```TypeScript
+interface WindowAnimationConfig
+```
+
 窗口动画参数配置。
 
 **起始版本：** 20

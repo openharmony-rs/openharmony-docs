@@ -8,6 +8,8 @@ typedef struct ContentEmbed_Capability ContentEmbed_Capability
 
 Declares the ContentEmbed_Capability structure.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Related module**: [ContentEmbed](capi-contentembed.md)

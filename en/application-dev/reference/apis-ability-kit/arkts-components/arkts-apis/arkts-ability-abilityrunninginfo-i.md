@@ -1,5 +1,9 @@
 # AbilityRunningInfo
 
+```TypeScript
+export interface AbilityRunningInfo
+```
+
 AbilityRunningInfo is a struct that records the running information and state of an ability. It is obtained through [getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-f.md).
 
 **Since:** 14
@@ -76,7 +80,7 @@ Process name.
 startTime: number
 ```
 
-Ability start time.
+Ability start time, in ms.
 
 **Type:** number
 

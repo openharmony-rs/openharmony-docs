@@ -1,5 +1,9 @@
 # CmsKeyTransRecipientInfo
 
+```TypeScript
+interface CmsKeyTransRecipientInfo
+```
+
 Represents KeyTrans recipient information for CMS enveloped data.
 
 **Since:** 22

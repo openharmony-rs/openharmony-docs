@@ -1,5 +1,9 @@
 # AbstractProperty
 
+```TypeScript
+declare interface AbstractProperty<T>
+```
+
 Provides a reference to properties stored in [AppStorage](../../../ui/state-management/arkts-appstorage.md) or [LocalStorage](../../../ui/state-management/arkts-localstorage.md).
 
 **Since:** 12

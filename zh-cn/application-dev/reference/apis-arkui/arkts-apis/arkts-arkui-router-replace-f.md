@@ -17,13 +17,13 @@ function replace(options: RouterOptions): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)替代。
+> [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions)
+**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)(options: router.RouterOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 

@@ -1,5 +1,9 @@
 # AudioSessionStrategy
 
+```TypeScript
+interface AudioSessionStrategy
+```
+
 Describes an audio session strategy.
 
 @typedef AudioSessionStrategy [since 12 - 24]

@@ -8,6 +8,8 @@ typedef struct VkExternalFormatOHOS {...} VkExternalFormatOHOS
 
 Defines an externally defined format.
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Related module**: [Vulkan](capi-vulkan.md)

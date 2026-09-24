@@ -30,7 +30,7 @@ function stopCastDeviceDiscovery(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 
 **示例**
 
@@ -40,12 +40,8 @@ avSession.stopCastDeviceDiscovery(() => {
 });
 ```
 
-```TypeScript
-avSession.stopCastDeviceDiscovery().then(() => {
-  console.info('Succeeded in stopping cast device discovery.');
-});
-```
 
+<a id="stopcastdevicediscovery-1"></a>
 
 ## stopCastDeviceDiscovery
 
@@ -71,8 +67,12 @@ function stopCastDeviceDiscovery(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 
 **示例**
 
-参见 [stopCastDeviceDiscovery](#stopcastdevicediscovery)
+```TypeScript
+avSession.stopCastDeviceDiscovery().then(() => {
+  console.info('Succeeded in stopping cast device discovery.');
+});
+```

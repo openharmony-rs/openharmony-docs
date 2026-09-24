@@ -8,6 +8,8 @@ typedef struct Print_PrintAttributes {...} Print_PrintAttributes
 
 表示打印属性结构体。
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 13
 
 **相关模块：** [Print](capi-print.md)

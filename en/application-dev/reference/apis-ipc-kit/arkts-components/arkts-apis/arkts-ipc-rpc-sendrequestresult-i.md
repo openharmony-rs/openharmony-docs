@@ -1,5 +1,9 @@
 # SendRequestResult
 
+```TypeScript
+interface SendRequestResult
+```
+
 Defines the response to the request.
 
 **Since:** 8
