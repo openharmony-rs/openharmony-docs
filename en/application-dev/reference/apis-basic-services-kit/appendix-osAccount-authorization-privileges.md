@@ -17,3 +17,4 @@ The following table lists the privileges that can be granted by the OS account a
 | Privilege                                      | Privilege Value                                   | Description                           | Validity Period                           | Associated Permissions                           |
 | ----------------------------------------- | ---------------------------------------- | ------------------------------ |------------------------------ |------------------------------ |
 | ohos.privilege.operate_raw_net_packets | PRIVILEGE_OPERATE_RAW_NET_PACKETS        | Privilege to operate raw network packets. | Lifecycle of the authorized process. | ohos.permission.kernel.NET_RAW |
+<!--no_check-->

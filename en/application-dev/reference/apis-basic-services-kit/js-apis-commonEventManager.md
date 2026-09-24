@@ -5,13 +5,14 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=f1df35e744e8be0a80ac7cb20765106cc0424535 translatedAt=2026-09-23T02:13:42.888Z pushedAt=2026-09-24T02:20:50.103Z -->
 
 This module provides APIs to publish, subscribe to, and unsubscribe from common events. This module provides a system-level event notification mechanism that allows an app to send notifications to other apps that have subscribed to the event when the system status changes (such as power-on completion, battery level change, and screen on/off) or a custom service event occurs. This mechanism enables transferring information across components and apps.
 
 The key concepts involved in this module are as follows:
-- Unordered common events: common events that CES forwards regardless of whether subscribers receive the events and when they subscribe to the events.
-- Ordered common events: common events that CES forwards based on the subscriber priority. CES preferentially forwards an ordered common event to the subscriber with higher priority, waits until the subscriber receives the event, and then forwards the events to the subscriber with lower priority. Subscribers with the same priority receive common events in a random order.
-- Sticky common events: common events that can be sent to a subscriber before or after they initiate a subscription. Only system apps or services can send sticky common events.
+- [Unordered common events](../../basic-services/common-event/common-event-glossary.md#unordered-common-event): common events that CES forwards regardless of whether subscribers receive the events and when they subscribe to the events.
+- [Ordered common events](../../basic-services/common-event/common-event-glossary.md#ordered-common-event): common events that CES forwards based on the subscriber priority. CES preferentially forwards an ordered common event to the subscriber with higher priority, waits until the subscriber receives the event, and then forwards the events to the subscriber with lower priority. Subscribers with the same priority receive common events in a random order.
+- [Sticky common events](../../basic-services/common-event/common-event-glossary.md#sticky-common-event): common events that can be sent to a subscriber before or after they initiate a subscription.
 
 **APIs used in combination**
 
@@ -47,7 +48,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 ## Support
 
-System common events refer to events released by system services or system apps. Subscribing to these common events requires specific permissions and event values. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).
+[System common events](../../basic-services/common-event/common-event-glossary.md#system-common-event) refer to events released by system services or system apps. Subscribing to these common events requires specific permissions and event values. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).
 
 ## commonEventManager.publish
 
@@ -453,7 +454,7 @@ setTimeout(() => {
         console.error(`Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
         return;
       }
-      // If the subscriber is no longer used, set it to null to avoid memory leakage.
+      // If the subscriber is no longer used, set it to null to avoid memory leaks.
       subscriber = null;
       console.info(`Succeeded in unsubscribing.`);
     });
@@ -594,3 +595,4 @@ Describes the content and properties of a common event.
 | Type| Description|
 | --- | --- |
 | [_CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md) | Content and properties of a common event.|
+
