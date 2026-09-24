@@ -2054,9 +2054,9 @@ struct StyledStringFontConfigsDemo {
 
 ### 示例18（fromHtml转换）
 
-该示例通过[fromHtml](arkts-arkui-styledstring-c.md#fromhtml)接口，将HTML中<cite>、&lt;dfn&gt;、<small>、<h1>、<h2>、<h3>、<h4>、<h5>、<h6>、<ol>、<ul>、<li>标签转换为属性字符串。
+该示例通过[fromHtml](arkts-arkui-styledstring-c.md#fromhtml)接口，将HTML中&lt;cite&gt;、&lt;dfn&gt;、&lt;small&gt;、&lt;h1&gt;、&lt;h2&gt;、&lt;h3&gt;、&lt;h4&gt;、&lt;h5&gt;、&lt;h6&gt;、&lt;ol&gt;、&lt;ul&gt;、&lt;li&gt;标签转换为属性字符串。
 
-从API版本26.0.0开始，fromHtml新增支持<cite>、&lt;dfn&gt;、<small>、<h1>、<h2>、<h3>、<h4>、<h5>、<h6>、<ol>、<ul>、<li>标签。
+从API版本26.0.0开始，fromHtml新增支持&lt;cite&gt;、&lt;dfn&gt;、&lt;small&gt;、&lt;h1&gt;、&lt;h2&gt;、&lt;h3&gt;、&lt;h4&gt;、&lt;h5&gt;、&lt;h6&gt;、&lt;ol&gt;、&lt;ul&gt;、&lt;li&gt;标签。
 
 
 
