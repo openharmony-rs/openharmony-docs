@@ -45,6 +45,7 @@ import { config } from '@kit.AccessibilityKit';
 | clickResponseTime<sup>11+</sup>    | [Config](#config)&lt;[ClickResponseTime](#clickresponsetime11)&gt;                         | 否 | 否 | 表示点击持续时间功能配置。                                             |
 | ignoreRepeatClick<sup>11+</sup>    | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示忽略重复点击功能启用状态。配合repeatClickInterval使用。true表示已启用忽略重复点击功能，false表示未启用忽略重复点击功能，默认值为false。                   |
 | repeatClickInterval<sup>11+</sup>  | [Config](#config)&lt;[RepeatClickInterval](#repeatclickinterval11)&gt;                     | 否 | 否 | 表示忽略重复点击的时间间隔配置。配合ignoreRepeatClick使用，仅当ignoreRepeatClick设置为true时，此配置生效。默认值为Shortest，表示最短间隔。                                             |
+| screenMagnification<sup>12+</sup>  | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示屏幕放大功能的配置。                                            |
 
 ## config.enableAbility
 
@@ -644,7 +645,7 @@ onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 

@@ -1434,7 +1434,7 @@ export default class AccessibilityManager {
 }
 ```
 
-### findElement('elementId')
+### findElement('elementId')<sup>12+</sup>
 
 findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement>
 
@@ -1484,7 +1484,7 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
 });
 ```
 
-### findElement('textType')
+### findElement('textType')<sup>12+</sup>
 
 findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>
 
