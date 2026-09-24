@@ -227,7 +227,9 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
      ```c++
      static napi_value DestroyWatcher(napi_env env, napi_callback_info info) {
          // 销毁创建的观察者，并置systemEventWatcher为nullptr。
-         OH_HiAppEvent_DestroyWatcher(systemEventWatcher);
+         if (systemEventWatcher != nullptr) {
+            OH_HiAppEvent_DestroyWatcher(systemEventWatcher);
+         }
          systemEventWatcher = nullptr;
          return {};
      }
