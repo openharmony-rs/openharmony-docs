@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=742fd8e7f742ee980eb300ddfd075065ca362dff translatedAt=2026-09-28T01:11:29.087Z pushedAt=2026-10-09T01:40:04.269Z -->
 
 ```c
 typedef struct NetConn_TraceRouteInfo {...} NetConn_TraceRouteInfo
@@ -28,5 +29,5 @@ Defines the trace route information.
 | Name| Description|
 | -- | -- |
 | uint8_t jumpNo | Number of hops.|
-| char address[[NETCONN_MAX_STR_LEN]](capi-net-connection-type-h.md#macros)| Host name or address.|
-| uint32_t rtt[[NETCONN_MAX_RTT_NUM]](capi-net-connection-type-h.md#macros)| Round-trip time in ms, including the maximum, minimum, average, and standard deviations.|
+| char address[[NETCONN_MAX_STR_LEN](capi-net-connection-type-h.md#macros)] | Host name or address. |
+| uint32_t rtt[[NETCONN_MAX_RTT_NUM](capi-net-connection-type-h.md#macros)] | Round-trip time (in ms), including the maximum, minimum, average, and standard deviation. |
