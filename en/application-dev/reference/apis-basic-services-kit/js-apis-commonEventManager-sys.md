@@ -5,8 +5,9 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-23T02:12:51.247Z pushedAt=2026-09-24T01:42:56.500Z -->
 
-This module provides system APIs to publish common events to specified users, remove sticky common events, enable or disable static subscription events.
+This module provides system APIs to publish common events to specified users, remove [sticky common events](../../basic-services/common-event/common-event-glossary.md#sticky-common-event), enable or disable [static subscription](../../basic-services/common-event/common-event-glossary.md#static-subscription) events.
 
 > **NOTE**
 >
@@ -22,7 +23,16 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 ## Support
 
-A system common event is an event that is published by a system service or system app and requires specific permissions to subscribe to. To publish or subscribe to this type of event, you must follow the event-specific definitions.
+[System common events](../../basic-services/common-event/common-event-glossary.md#system-common-event) refer to events released by system services or system apps. Subscribing to these events requires specific permissions. To publish or subscribe to this type of event, you must follow the event-specific definitions.
+
+
+
+
+
+
+
+
+
 
 For details about the enums of all system common events, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md).
 
@@ -144,7 +154,7 @@ try {
 
 removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
 
-Removes a sticky common event. This API uses an asynchronous callback to return the result.
+Removes a [sticky common event](../../basic-services/common-event/common-event-glossary.md#sticky-common-event). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -190,7 +200,7 @@ commonEventManager.removeStickyCommonEvent('sticky_event', (err: BusinessError) 
 
 removeStickyCommonEvent(event: string): Promise\<void>
 
-Removes a sticky common event that has been published. This API uses a promise to return the result.
+Removes a published [sticky common event](../../basic-services/common-event/common-event-glossary.md#sticky-common-event). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -239,7 +249,7 @@ commonEventManager.removeStickyCommonEvent('sticky_event').then(() => {
 
 setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 
-Enables or disables static subscription for an app. This API uses an asynchronous callback to return the result.
+Enables or disables a [static subscription](../../basic-services/common-event/common-event-glossary.md#static-subscription) event for the app. This API uses an asynchronous callback to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -283,7 +293,7 @@ commonEventManager.setStaticSubscriberState(true, (err: BusinessError) => {
 
 setStaticSubscriberState(enable: boolean): Promise\<void>
 
-Enables or disables static subscription for an app. This API uses a promise to return the result.
+Enables or disables a [static subscription](../../basic-services/common-event/common-event-glossary.md#static-subscription) event for the app. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -331,7 +341,7 @@ commonEventManager.setStaticSubscriberState(false).then(() => {
 
 setStaticSubscriberState(enable: boolean, events?: Array\<string>): Promise\<void>
 
-Enables or disables static subscription to a common event for the current app. This API uses a promise to return the result.
+Enables a [static subscription](../../basic-services/common-event/common-event-glossary.md#static-subscription) common event for the app. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -375,3 +385,4 @@ commonEventManager.setStaticSubscriberState(true, eventName).then(() => {
   console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMsg: ${err.message}`);
 });
 ```
+<!--no_check-->
