@@ -226,7 +226,7 @@
      }
      ```
 
-   - **分段式拍照（PhotoAvailable）开发流程**：
+   - **分段式拍照（PhotoAssetAvailable）开发流程**：
 
      - 在会话[OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)前注册分段式拍照回调。
      - 在分段式拍照回调函数中获取图片信息，解析出pixelMap数据，做自定义业务处理。

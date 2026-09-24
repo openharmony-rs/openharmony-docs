@@ -1,10 +1,11 @@
 # Enhancing Audio Performance Experience
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=665be589d79a3180083d96aee62f545380893b81 translatedAt=2026-09-18T02:10:30.088Z pushedAt=2026-09-18T07:58:14.486Z -->
 
 During the use of various terminal devices, users have different core performance requirements, such as smoothness, response speed, and power saving, for audio-related features in different scenarios. Typical scenarios include:
 
@@ -19,9 +20,9 @@ To meet these audio experience requirements, the system provides a series of aud
 
 ### Understanding the System Audio Channel
 
-Different performance metrics often cannot be optimized simultaneously due to hardware performance and power limitations. For example, shorter audio response times require faster data processing, which may lead to increased power consumption and a slight degradation in audio quality.
+Different performance metrics often cannot be optimized simultaneously due to hardware performance and power limitations. For example, shorter audio response times require faster data processing, which leads to increased power consumption and partial loss of certain effects.
 
-Therefore, the audio channel in the system is not static. To cater to different user scenarios, the system offers a variety of channel options with different focuses: some prioritize power saving, others focus on response speed, and some aim for a balanced approach.
+Therefore, the audio channel in the system is not static. To cater to different user scenarios, the system offers a variety of channel options with different focuses: some prioritize power saving, others emphasize response speed, and still others strike a relative balance.
 
 The system cannot directly perceive the specific use case for the audio functionality developed by the application. Therefore, you should specify [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage) and [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) to provide the corresponding scenario information. The system selects the default audio channel configuration based on the scenario for the output or input channel. If the default configuration is insufficient, you can also adjust it through separate settings APIs.
 
@@ -29,15 +30,15 @@ The system cannot directly perceive the specific use case for the audio function
 
 Latency refers to the time it takes for audio data to be processed and transmitted within the system. In playback scenarios, it is the time from when the system receives the data until the data is output by the hardware. In recording scenarios, it is the time from when the hardware microphone captures the data until the application receives the captured data.
 
-To support low-latency audio scenarios, the system provides a dedicated low-latency audio channel. You need to explicitly set it through API parameters. For details, please refer to [Low-Latency Audio Playback (C/C++)](audio-fast-playback.md) and [Low-Latency Audio Recording (C/C++)](audio-fast-recording.md).
+To support low-latency audio scenarios, the system provides a dedicated low-latency audio path. You need to explicitly set it through API parameters. For details, please refer to [Low-Latency Audio Playback (C/C++)](audio-fast-playback.md) and [Low-Latency Audio Recording (C/C++)](audio-fast-recording.md).
 
-Note that low latency typically uses smaller data buffers and requires higher performance for data processing. You need to optimize the performance of audio data production as much as possible to ensure that data is available for processing in a very short time when the system requests it, avoiding buffer underruns that cause noise. Additionally, to minimize latency, the system simplifies data processing at various phases, which may result in some differences in audio quality when compared with other channels. Therefore, you should decide whether to enable low-latency mode based on the actual functional scenarios of your applications. Scenarios such as game sound effects, karaoke in-ear monitoring, short notification sounds, and instrument simulation are more suitable for low-latency channels.
+Note that low latency typically uses smaller data buffers and requires higher performance for data processing. You need to optimize the performance of audio data production as much as possible to ensure that data is available for processing in a very short time when the system requests it, avoiding buffer underruns that cause noise. Additionally, to minimize latency, the system simplifies data processing at various phases, which may result in some differences in audio quality when compared with other channels. Therefore, you should decide whether to enable low-latency mode based on the actual functional scenarios of your applications. Scenarios such as game sound effects, karaoke in-ear monitoring, short notification sounds, and instrument simulation are more suitable for low-latency audio paths.
 
 ### Audio Workgroup
 
 The audio workgroup is a set of APIs that help the system identify key audio threads within an application through tagging. By providing key audio threads and workgroup runtime information, the system can ensure healthier operation of audio threads.
 
-The goals of the audio working group are to lower audio latency, avoid audio dropouts, reduce audio distortion, and provide a smoother and more reliable audio playback experience.
+The goals of the audio workgroup are to lower audio latency, avoid audio dropouts, reduce audio distortion, and provide a smoother and more reliable audio playback experience.
 
 When developing audio playback applications, you need to create an audio workgroup first and then periodically inform the system of the workgroup's runtime information. After the operation is completed, it is important to clean up the audio workgroup in a timely manner. For more usage examples of audio workgroups, see [Audio Workgroup Management](audio-workgroup.md).
 
@@ -47,11 +48,11 @@ Audio timestamps describe the actual playback or capture time of a frame of audi
 
 Due to the variety of audio hardware device channels, the time information obtained by the system from devices cannot be guaranteed to be accurate. The timestamp calculation process also involves some estimation. Therefore, it is normal for there to be some discrepancy between the timestamp and the actual hardware data time.
 
-For details about the usage of audio timestamps in typical use cases such as AV synchronization, see [AV Synchronization](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-audio-video-synchronization).
+A typical use case is audio-video synchronization. For details about how to use audio timestamps in this scenario, see [A/V Synchronization](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/audio-video-synchronization).
 
 ## Audio Performance Analysis Methods
 
-During the test of the audio feature in applications, issues such as stuttering and noise that prevent meeting consumer-end data real-time requirements are often difficult to diagnose using general log files. These issues are usually caused by insufficient system performance in certain stages of audio data processing, leading to underruns or overruns.
+When you test the audio functionality of your app and encounter issues such as stuttering or noise that fail to meet the real-time data requirements on the consumer side, general logs are usually insufficient for locating these problems. This is because such issues are typically caused by insufficient system performance in certain stages of the audio data processing chain, resulting in underrun or overrun.
 
 The following sections provide specific methods for obtaining performance logs and a brief introduction on how to use these logs to identify potential performance issues.
 
@@ -69,29 +70,45 @@ DevEco Profiler is primarily used for analyzing and optimizing the runtime proce
 
 HiSmartPerf is a standalone performance tuning tool used to collect system, CPU, and GPU performance data during a test period. It presents the data through a visual interface, making it easier for you to analyze the performance of your applications and identify the causes of performance issues, which can then be used as a basis for in-depth performance optimization to make the application run more smoothly.
 
+<!--Del--> <!--DelEnd-->
+
 This section describes how to use HiSmartPerf to analyze audio playback scenarios.
 
 1. Enter the CPU trace mode.
+
+<!--Del--> <!--DelEnd-->
 
    Open the HiSmartPerf tool and navigate to the **CPU Trace** page for game performance analysis. Although titled for game performance analysis, the tool is not limited to game scenarios.
 
 2. Configure capture.
 
+<!--Del--> <!--DelEnd-->
+
    The main configuration items include the data file name, buffer capacity, maximum file size, data items, and capture duration. To capture system audio-related data items, select **zaudio**. The capture duration can be adjusted according to the test scenario. Note that the test duration and the number of selected data items will affect the file size and often need to be adjusted simultaneously.
 
 3. Start capture.
+
+<!--Del--> <!--DelEnd-->
 
    After the capture is complete, a message is displayed, indicating that the file is sent back. If the file is large, wait patiently.
 
 4. View the trace information.
 
+   ![Trace result](figures/trace_res_all.png)
+
    View the CPU performance analysis results during the capture period.
 
 5. Locate the audio data processing thread.
 
+   ![Audio data](figures/trace_res_audio.png)
+
    For audio playback services, you can search for the location where the test application inputs playback data to the system using **OnWriteData**, and further analyze the performance of the data production source.
 
-    Runnable indicates that the thread is waiting for scheduling. If there are cases where data is not written in time due to prolonged runnable states, including the application's own data production threads, consider integrating the audio workgroup to enhance thread priority and ensure CPU resource allocation.
+   ![Resource Allocation](figures/trace_res_explain.png)
+
+    Runnable indicates that a thread is waiting for scheduling. If data fails to be written in time due to an excessively long Runnable state — including the app's own data production thread — consider joining the audio workgroup to raise the thread priority and ensure CPU resource allocation.
+
+    ![CPU Usage](figures/trace_cpu_usage.png)
 
     In CPU Usage, you can view the CPU usage of each task.
 
@@ -104,7 +121,7 @@ This section describes how to use HiSmartPerf to analyze audio playback scenario
 
 Playback stuttering is one of the most common audio performance issues. The causes are diverse, as the audio data production and playback chain is relatively long, and any link in the chain can lead to playback stuttering.
 
-Audio data processing typically uses a producer-consumer model, where the producer generates audio data and writes it to a shared buffer, and the consumer takes data from the buffer as needed for further processing. When the consumer fetches data and finds it insufficient, to avoid affecting subsequent processes, it does not block and wait. Instead, it uses silent frame data for processing. During playback, intermittent silent frames manifest as electrical noise, and a large number of silent frames result in noticeable stuttering.
+Audio data processing typically follows the producer-consumer model: the producer generates audio data and writes it into a shared buffer, while the consumer retrieves data from the buffer as needed for further processing. When the consumer attempts to retrieve data and finds it insufficient, it does not block and wait — to avoid affecting subsequent processes — but instead directly processes silent frames. During playback, intermittent silent frames are perceived as crackling noise, while a large number of silent frames are perceived as stuttering.
 
 To diagnose such issues, start from the consumer side and analyze layer by layer upwards. If a buffer layer has silent frames, it is likely due to untimely production in the previous layer. Common causes of untimely data production and their solutions include:
 

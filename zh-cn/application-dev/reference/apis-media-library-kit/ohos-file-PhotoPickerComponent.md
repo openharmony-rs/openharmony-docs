@@ -74,7 +74,7 @@ PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) =
 | onPhotoBrowserChangeStart<sup>23+</sup> | [PhotoBrowserChangeStartCallback](#photobrowserchangestartcallback23) | 否 | - | 宫格视图进入到大图视图、大图浏览切换时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | onError<sup>23+</sup> | [ErrorCallback](#errorcallback23) | 否 | - | 使用图片选择器组件发生错误时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | onPhotoBrowserZoom| [PhotoBrowserZoomCallback](#photobrowserzoomcallback) | 否 | - | 图片选择器组件进入大图后，双指放大缩小时的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0 |
-| onUnselectableItemClicked| [UnselectableItemClickedCallback](#unselectableitemclickedcallback) | 否 | - | 在picker宫格或大图预览界面，当不可选中的图片被点击时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.1.0 |
+| onUnselectableItemClicked| [UnselectableItemClickedCallback](#unselectableitemclickedcallback) | 否 | - | 在picker宫格或大图预览界面，当不可选中的图片被点击时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.1 |
 
 ## PickerOptions
 
@@ -94,7 +94,7 @@ Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-p
 | selectMode                      | [SelectMode](#selectmode)               | 否  | 是  | 图片选择器组件选择模式，包括多选和单选。<br>当不设置该参数时，默认为多选。<br>当仅需要用户选择单个文件时应设置为SINGLE_SELECT（单选模式）。<br>当需要用户选择多个文件时使用MULTI_SELECT（多选模式）或不填写此参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    |
 | maxPhotoSelectNumber            | number                                  | 否  | 是 | 图片最大的选择数量。取值范围[1, 500]，默认为500。单位：个。<br>受到最大选择总数[BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions).maxSelectNumber的限制。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
 | maxVideoSelectNumber            | number                                  | 否  | 是 | 视频最大的选择数量。取值范围[1, 500]，默认为500。单位：个。<br>受到最大选择总数[BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions).maxSelectNumber的限制。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
-| isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | 否  | 是 | 是否支持滑动多选，true表示支持，false表示不支持。当不设置该参数时，默认值为false。重复选择场景不支持滑动多选。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。                                            |
+| isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | 否  | 是 | 是否支持滑动多选，true表示支持，false表示不支持。当不设置该参数时，默认值为false。重复选择场景不支持滑动多选。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 从API版本26.0.1开始，select方法支持Car设备，但isSlidingSelectionSupported属性不支持Car设备，所以在Car设备上配置本属性不会生效。                                           |
 | photoBrowserCheckboxPosition<sup>13+</sup>    | [number, number]                        | 否  | 是 | 设置大图页checkbox的位置。第一个参数为X方向偏移量，第二个参数为Y方向偏移量。传参范围[0, 1]，代表距离组件左上角0%-100%的偏移量。当不设置该参数时，默认值为[0, 0]。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | gridMargin<sup>14+</sup>        | [Margin](../../reference/apis-arkui/arkui-ts/ts-types.md#margin)                        | 否  | 是 | 设置组件宫格页margin。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | photoBrowserMargin<sup>14+</sup>    | [Margin](../../reference/apis-arkui/arkui-ts/ts-types.md#margin)                        | 否  | 是 | 设置组件大图页margin。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
@@ -457,9 +457,9 @@ type UnselectableItemClickedCallback = (unselectableItemInfo: UnselectableItemIn
  
 在picker宫格或大图预览界面，当不可选中的图片被点击时产生的回调。
  
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
  
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
  
 **模型约束：** 此接口仅可在Stage模型下使用。
  
@@ -945,11 +945,11 @@ Picker上次退出时现场的信息。
  
 被点击的不可选中的图片详情。
  
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
  
 **模型约束：** 此接口仅可在Stage模型下使用。
  
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
  
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
  

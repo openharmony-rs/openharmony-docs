@@ -1,4 +1,4 @@
-# UIAbilityContext
+# UIAbilityContext (UIAbility上下文)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -3058,7 +3058,7 @@ setAbilityInstanceInfo(label: string, icon: image.PixelMap, groupId: string): Pr
 
 设置当前UIAbility实例的图标、标签和图标聚合标签信息。图标与标签信息可在任务中心和快捷栏的界面中显示，groupId用于设置快捷栏中应用内UIAbility的图标聚合标签。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限**： ohos.permission.SET_ABILITY_INSTANCE_INFO
 
@@ -3770,7 +3770,7 @@ restartApp(want: Want): Promise\<void>
 | 801 | Capability not supported. |
 | 16000011 | The context does not exist. |
 | 16000050 | Connect to system server error. |
-| 16000063 | The target to restart does not belong to the caller or is not a UIAbility. |
+| 16000063 | The target to restart does not belong to the current application or is not a UIAbility. |
 | 16000064 | Restart too frequently. |
 | 16000065 | The API can be called only when the ability is focused. |
 

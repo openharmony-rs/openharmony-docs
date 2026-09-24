@@ -60,7 +60,7 @@ allowedTypes(types: Array\<SourceTool>): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前手势处理器对象。 |
 
 ## BaseHandlerOptions<sup>15+</sup>
 
@@ -739,7 +739,7 @@ onActionCancel(event: Callback\<GestureEvent>): RotationGestureHandler
 
 | 名称         | 类型                                |只读   |可选 | 说明                 |
 | ------------ | ---------------------------------|----- | ---- | -------------------- |
-| fingers | number | 否 | 是 | 触发旋转的最少手指数，最小为2指，最大为5指。<br>默认值：2 <br>取值范围：[2, 5]，包含2和5。设置值小于2或大于5时，按默认值2处理。<br>未开启isFingerCountLimited时，触发手势时手指数量可以多于fingers参数值，但仅最先落下的两指参与手势计算；开启isFingerCountLimited时，触摸手指数量需等于fingers参数值，否则手势不会被识别。 |
+| fingers | number | 否 | 是 | 触发旋转的最少手指数，最小为2指，最大为5指。<br>默认值：2 <br>取值范围：[2, 5]，包含2和5。设置值小于2或大于5时，按默认值2处理。<br>未开启isFingerCountLimited时，触发手势时手指数量可以多于fingers参数值，但仅最先落下的与fingers参数值相同数量的手指参与手势计算；开启isFingerCountLimited时，触摸手指数量需等于fingers参数值，否则手势不会被识别。 |
 | angle | number | 否 | 是 | 触发旋转手势的最小改变度数，单位为deg。需要更灵敏地识别轻微旋转时可设置较小的正数角度；需要减少误触或只响应明显旋转时可设置较大的角度。推荐先使用默认值，再根据旋转交互精度要求调整。不传入时默认值为1。<br>默认值：1 <br>取值范围：(0, 360]<br>**说明：** <br>当改变度数的值小于等于0或大于360时，会被转化为默认值。|
 | isFingerCountLimited<sup>15+</sup> | boolean | 否 | 是 | 是否检查触摸屏幕的手指数量。true表示检查触摸屏幕的手指数量，false表示不检查触摸屏幕的手指数量。若触摸屏幕的手指数量不等于设置的触发旋转的最少手指数（即上述fingers参数），手势将不会被识别。只有当触摸屏幕的手指数等于设置的触发旋转的最少手指数，并且旋转角度变化达到angle阈值时，手势才能被成功识别；若旋转角度变化未达到angle阈值，手势不会被成功识别（只有先落下的两根手指参与手势计算，若抬起其中的一个，手势识别失败）。<br>对于已成功识别的手势，后续改变触摸屏幕的手指数量，不会触发[onActionUpdate](ts-basic-gestures-rotationgesture.md#onactionupdate)事件，但可以触发[onActionEnd](ts-basic-gestures-rotationgesture.md#onactionend)事件。<br>默认值：false<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 

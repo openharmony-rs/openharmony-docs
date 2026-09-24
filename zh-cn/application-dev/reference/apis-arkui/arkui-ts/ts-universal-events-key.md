@@ -237,6 +237,7 @@ struct KeyEventExample {
   build() {
     Column({ space: 10 }) {
       Button('KeyEvent')
+        .defaultFocus(true)
         .onKeyEvent((event?: KeyEvent) => {
           if (event) {
             if (event.type === KeyType.Down) {
@@ -281,11 +282,12 @@ struct PreImeEventExample {
       Search({
         placeholder: 'Search...'
       })
+        .defaultFocus(true)
         .width('80%')
         .height('40vp')
         .border({ radius: '20vp' })
         .onKeyPreIme((event: KeyEvent) => {
-          // 使用方向左键不生效
+          // 使方向左键失效
           if (event.keyCode === KeyCode.KEYCODE_DPAD_LEFT) {
             return true;
           }

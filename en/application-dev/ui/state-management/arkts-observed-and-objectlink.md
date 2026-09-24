@@ -339,7 +339,7 @@ When \@ObjectLink decorates a class that inherits from Set, the overall assignme
 
    ![observed-sync-0](./figures/observed-sync-0.gif)
 
-## Use Cases
+## When to Use
 
 ### Object Type
 

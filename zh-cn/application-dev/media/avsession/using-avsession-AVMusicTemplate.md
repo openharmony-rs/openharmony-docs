@@ -157,7 +157,7 @@
          tabName: '首页'
        };
        let mineTab: avMusicTemplate.MediaTab = {
-         tabId: 'mine',
+         tabId: 'minePage',
          tabName: '我的'
        };
        let mainTabs: avMusicTemplate.MediaTab[] = [homeTab, mineTab];

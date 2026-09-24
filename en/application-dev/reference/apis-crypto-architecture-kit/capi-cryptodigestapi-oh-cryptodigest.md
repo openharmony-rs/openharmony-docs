@@ -14,7 +14,7 @@ typedef struct OH_CryptoDigest OH_CryptoDigest
 
 ## Overview
 
-Defines a digest struct.
+Defines a struct, which indicates the digest context.
 
 **Since**: 12
 

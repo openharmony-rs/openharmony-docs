@@ -1,12 +1,11 @@
 # NotificationSubscriber (System API)
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:09:34.229Z pushedAt=2026-07-21T09:32:02.622Z -->
+<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:15:48.600Z pushedAt=2026-09-22T08:29:58.372Z -->
 
 The **NotificationSubscriber** module serves as the input parameter of [subscribeNotification](js-apis-notificationSubscribe-sys.md#notificationsubscribesubscribenotification) and provides callbacks for receiving or removing notifications.
 
@@ -62,7 +61,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -100,7 +99,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -110,7 +109,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 onUpdate?: (data: NotificationSortingMap) => void
 
-Called when notification sorting is updated. Not supported currently.
+Triggered to update [notification sorting](../../notification/notification-glossary.md#notification-sorting). This is a reserved capability and is not supported yet.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -134,7 +133,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -170,7 +169,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -201,7 +200,7 @@ let unsubscribeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`unsubscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("unsubscribeCallback");
+    console.info('unsubscribeCallback');
   }
 };
 
@@ -219,7 +218,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 
 // The onConnect callback is invoked when subscription to the notification is complete.
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -257,7 +256,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -281,7 +280,7 @@ Called when the DND time settings are changed.
 
 | Name| Type| Mandatory| Description|
 | ------------ | ------------------------ | ---- | -------------------------- |
-| onDoNotDisturbDateChange | (mode: notification.[DoNotDisturbDate](js-apis-notification-sys.md#donotdisturbdate8-deprecated)) => void | No| Callback used to return DND time setting updates.|
+| onDoNotDisturbDateChange | (mode: notification.[DoNotDisturbDate](js-apis-notification-sys.md#donotdisturbdate8)) => void | No | Callback that returns the change of the Do Not Disturb time option. |
 
 **Example**
 
@@ -293,7 +292,7 @@ let subscribeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("subscribeCallback");
+    console.info('subscribeCallback');
   }
 };
 
@@ -339,7 +338,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -367,9 +366,9 @@ Listens for the notification enabled state changes.
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let onEnabledNotificationChangedCallback = (callbackData: notificationSubscribe.EnabledNotificationCallbackData) => {
-  console.info("bundle: ", callbackData.bundle);
-  console.info("uid: ", callbackData.uid);
-  console.info("enable: ", callbackData.enable);
+  console.info('bundle: ', callbackData.bundle);
+  console.info('uid: ', callbackData.uid);
+  console.info('enable: ', callbackData.enable);
 };
 
 let subscriber: notificationSubscribe.NotificationSubscriber = {
@@ -377,7 +376,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -406,14 +405,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onBadgeChanged: (data) => {
-    console.info("bundle: ", data.bundle);
-    console.info("uid: ", data.uid);
-    console.info("badgeNumber: ", data.badgeNumber);
+    console.info('bundle: ', data.bundle);
+    console.info('uid: ', data.uid);
+    console.info('badgeNumber: ', data.badgeNumber);
   }
 };
 
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -451,7 +450,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -461,7 +460,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackData) => void
 
-Called when the enabling state of the priority notification changes.
+Called when the enabled state of the priority notification changes.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -484,7 +483,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   }
 };
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -494,7 +493,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByBundleCallbackData) => void
 
-Called when the enabling state of the application priority notification changes.
+Called when the enabled state of the application priority notification changes.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -517,7 +516,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   }
 };
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -535,9 +534,9 @@ Callback function for notifications of system property value changes.
 
 | Name  | Type   | Read Only| Optional| Description            |
 | ------ | ------- | ---- | --- | ---------------- |
-| onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | No| Yes| Returns notification information containing the system property value.|
-| onEnabledSilentReminderChanged | [EnabledSilentReminderChangedCallback](#enabledsilentreminderchangedcallback24) | No| Yes| Returns the changes of the enabling state of the application's silent reminder.|
-| onBadgeEnabledChanged | [BadgeEnabledChangedCallback](#badgeenabledchangedcallback12) | No| Yes| Returns the changes of the enabling state of the application's badge.|
+| onSystemUpdate<sup>23+</sup> | [SystemUpdateCallback](#systemupdatecallback23) | No | Yes | Returns notification information carrying system attribute values. |
+| onEnabledSilentReminderChanged<sup>24+</sup> | [EnabledSilentReminderChangedCallback](#enabledsilentreminderchangedcallback24) | No | Yes | Returns the enabled state change of the application notification [silent reminder](../../notification/notification-glossary.md#silent-reminder). |
+| onBadgeEnabledChanged<sup>12+</sup> | [BadgeEnabledChangedCallback](#badgeenabledchangedcallback12) | No | Yes | Returns the enabled state change of the application badge. |
 | onNotificationSwitchChanged | [NotificationSwitchChangedCallback](#notificationswitchchangedcallback) | No | Yes | Returns the changes of the notification switch status set by [notificationManager.setNotificationSwitch](js-apis-notificationManager-sys.md#notificationmanagersetnotificationswitch).<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model. |
 
 ## SubscribeCallbackData
@@ -550,8 +549,8 @@ Returns notification information carrying system property values.
 
 | Name           | Type                                                                | Read Only| Optional| Description    |
 | --------------- |--------------------------------------------------------------------| ---- | --- | -------- |
-| request         | [NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) | Yes | No | Notification content.|
-| sortingMap      | [NotificationSortingMap](js-apis-inner-notification-notificationSortingMap-sys.md) | Yes | Yes | Notification sorting information.|
+| request         | [NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) | Yes  | No  | [Notification content](../../notification/notification-glossary.md#notification-content). |
+| sortingMap      | [NotificationSortingMap](js-apis-inner-notification-notificationSortingMap-sys.md) | Yes  | Yes  | [Notification sorting](../../notification/notification-glossary.md#notification-sorting) information. |
 | reason          | number                                                             | Yes | Yes | Reason for deletion. The options are as follows:<br>**1**: The notification is deleted after being tapped.<br>**2**: The notification is deleted by the user.|
 | sound           | string                                                             | Yes | Yes | Notification sound.|
 | vibrationValues | Array\<number\> | Yes | Yes | Notification vibration. |
@@ -560,7 +559,7 @@ Returns notification information carrying system property values.
 
 ## EnabledNotificationCallbackData<sup>8+</sup>
 
-Returns the changes of the application badge enabling state.
+Returns the changes of the application badge enabled state.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -574,8 +573,7 @@ Returns the changes of the application badge enabling state.
 
 ## EnabledSilentReminderCallbackData<sup>24+</sup>
 
-Returns the application
-notification silent reminder switch state.
+Triggered for the [silent reminder](../../notification/notification-glossary.md#silent-reminder) switch state of application notifications.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -605,6 +603,7 @@ Returns the changes of the application badge number.
 | instanceKey<sup>(deprecated)</sup>  | number | Yes  | Yes  | Key value of an application instance. This parameter is supported since API version 12 and deprecated since API version 15. You are advised to use **appInstanceKey** instead.  |
 | appInstanceKey<sup>15+</sup>  | string | Yes  | Yes  | Key value of an application instance.  |
 
+
 ## EnabledPriorityNotificationCallbackData<sup>23+</sup>
 
 Returns the notification priority master switch state.
@@ -613,9 +612,9 @@ Returns the notification priority master switch state.
 
 **System API**: This is a system API.
 
-| Name       | Type  | Read Only| Optional| Description        |
+| Name       | Type  | Read-only| Optional| Description        |
 | ----------- | ------ | ---- | ---- | ------------ |
-| enable | boolean | Yes | No | Whether the priority notification is enabled.<br> - **true**: The priority notification is enabled.<br> - **false**: The priority notification is disabled.|
+| enable | boolean | Yes  | No  | Priority enabled state of all notifications.<br> - **true**: Allow setting as [priority notification](../../notification/notification-glossary.md#priority-notification).<br> - **false**: Prohibit setting as priority notification. |
 
 ## EnabledPriorityNotificationByBundleCallbackData<sup>23+</sup>
 
@@ -629,7 +628,7 @@ Returns the notification priority switch state.
 | ----------- | ------ | ---- | ---- | ------------ |
 | bundle      | string | Yes  | No  | Bundle name of the application.|
 | uid         | number | Yes  | No  | UID of the application. |
-| enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | Yes | No | Whether the priority notification for an application is enabled. |
+| enableStatus | [notificationManager.PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | Yes  | No  | Priority enabled state of the application notification. |
 
 ## NotificationSwitchChangedCallbackData
 
@@ -686,7 +685,7 @@ Returns the notification classification information.
 
 type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) => void
 
-Defines a callback function to listen for the enabling state changes of the application badge.
+Defines a callback function to listen for the enabled state changes of the application badge.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -696,7 +695,7 @@ Defines a callback function to listen for the enabling state changes of the appl
 
 | Name       | Type  | Mandatory| Description    |
 | --------- | ------ | ---- | ------------ |
-| data        | [EnabledNotificationCallbackData](#enablednotificationcallbackdata8) | Yes   |   Callback used to return the listened badge enabling state.|
+| data        | [EnabledNotificationCallbackData](#enablednotificationcallbackdata8) | Yes   |   Callback used to return the listened badge enabled state.|
 
 **Example**
 
@@ -711,7 +710,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -747,7 +746,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   }
 };
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -757,7 +756,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminderCallbackData) => void
 
-Defines a callback function to listen for the enabling state changes of the application's silent reminder.
+Triggered for registering the [silent reminder](../../notification/notification-glossary.md#silent-reminder) enabled state change of application notifications.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -769,7 +768,7 @@ Defines a callback function to listen for the enabling state changes of the appl
 
 | Name       | Type  | Mandatory| Description    |
 | --------- | ------ | ---- | ------------ |
-| callbackData        | [EnabledSilentReminderCallbackData](#enabledsilentremindercallbackdata24) | Yes   |   Callback used to return the listened silent reminder enabling state.|
+| callbackData        | [EnabledSilentReminderCallbackData](#enabledsilentremindercallbackdata24) | Yes   |   Callback used to return the listened silent reminder enabled state.|
 
 **Example**
 
@@ -777,9 +776,9 @@ Defines a callback function to listen for the enabling state changes of the appl
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let onEnabledSilentReminderChangedCallback: notificationSubscribe.EnabledSilentReminderChangedCallback = (callbackData: notificationSubscribe.EnabledSilentReminderCallbackData) => {
-  console.info("bundle: ", callbackData.bundle);
-  console.info("uid: ", callbackData.uid);
-  console.info("enable: ", callbackData.enableStatus);
+  console.info('bundle: ', callbackData.bundle);
+  console.info('uid: ', callbackData.uid);
+  console.info('enable: ', callbackData.enableStatus);
 };
 
 let subscriber: notificationSubscribe.NotificationSubscriber = {
@@ -787,7 +786,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -830,3 +829,4 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+<!--no_check-->

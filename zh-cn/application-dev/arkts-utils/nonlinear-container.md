@@ -182,7 +182,7 @@ LightWeightSet支持增、删、改、查操作。常用API如下：
 | 访问元素 | forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet\<T>) => void, thisArg?: Object) | 遍历访问整个set的元素。 |
 | 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet\<T>) => void, thisArg?: Object) | 通过遍历对set中的元素进行操作，可能包括但不限于修改元素。 |
-| 删除元素 | remove(key: K) | 删除指定的元素。 |
+| 删除元素 | remove(key: T) | 删除指定的元素。 |
 | 删除元素 | removeAt(index: number) | 删除set中指定index对应的值。 |
 | 删除元素 | clear() | 清空整个set。 |
 

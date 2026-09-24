@@ -1,14 +1,15 @@
 # \@Param Decorator: Inputting External Parameters to Components
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:09:27.011Z pushedAt=2026-07-23T11:18:35.963Z -->
+<!-- md-trans-meta sourceCommit=6731353e95ca92d0b8b50de9083fe2085729362a translatedAt=2026-09-21T11:17:48.312Z pushedAt=2026-09-23T09:10:03.203Z -->
+
 
 To enhance the capability of child components to accept external parameter input, developers can use the [@Param](../../reference/apis-arkui/arkui-ts/ts-state-management-param.md#param) decorator.
+
 
 \@Param can receive not only the external input of the component, but also the synchronous change of \@Local. Before reading this topic, you are advised to read [\@Local](./arkts-new-local.md).
 
@@ -27,19 +28,14 @@ To enhance the capability of child components to accept external parameter input
 - Variables decorated with \@Param support local initialization, but cannot be directly modified in the component.
 
 - \@Param decorated variables can be passed in from outside when initializing a custom component. When the data source is also a state variable, changes of the data source will be synchronized to \@Param.
-
 - \@Param can accept data sources of any type, including common variables, state variables, constants, and function return values.
-
 - When an \@Param decorated variable changes, the component associated with the variable will be re-rendered.
-
 - \@Param supports observation of primitive types (such as number, boolean, string, Object, class), nested types (such as [Array](#decorating-variables-of-the-array-type), [Set](#decorating-variables-of-the-set-type), [Map](#decorating-variables-of-the-map-type), [Date](#decorating-variables-of-the-date-type)), as well as null, undefined, and [union types](#union-type).
-
 - For complex types such as class objects, \@Param accepts references from the data source. You can change the class object properties in the component and this change will be synchronized to the data source.
-
 - \@Param can only observe the decorated variables. For details, see [Observed Changes](#observed-changes).
 
-## Limitations of State Management V1 to Accept Decorators Passed in Externally
 
+## Limitations of State Management V1 to Accept Decorators Passed in Externally
 State management V1 has multiple decorators that can accept external input, including [\@State](arkts-state.md), [\@Prop](arkts-prop.md), [\@Link](arkts-link.md), and [\@ObjectLink](arkts-observed-and-objectlink.md). These decorators have restrictions and are difficult to distinguish. Improper use of them may cause performance problems.
 
 <!-- @[Param_Decorator_Limitations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamDecoratorLimitations.ets) -->  
@@ -124,7 +120,7 @@ In the preceding example, \@State can only receive the reference of info during 
 | Parameters        | None                                                        |
 | Allowed local modification      | No. If you need to change the value, you can use \@Param with [\@Once](./arkts-new-once.md) to change the local value of the child component. Alternatively, you can use the [\@Event](./arkts-new-event.md) decorator to change the value of the \@Param data source.|
 | Synchronization type          | One-way synchronization from the parent to the child component.                                          |
-| Allowed decorated variable types| Basic types, such as object, class, string, number, boolean, and enum, and built-in types such as Array, Date, Map, and Set. It supports null, undefined, and union types.|
+| Decoratable variable types | Basic types such as Object, class, string, number, boolean, enum, as well as built-in types such as Array, Date, Map, and Set. Supports null, undefined, and union types. |
 | Initial value for the decorated variable| Local initialization is allowed. If local initialization is not performed, this parameter must be used together with the [\@Require](./arkts-require.md) decorator and initialization must be passed from outside.|
 
 ## Variable Passing
@@ -140,7 +136,6 @@ In the preceding example, \@State can only receive the reference of info during 
 \@Param decorated variables enjoy observation capability. When a decorated variable changes, the UI component bound to the variable will be re-rendered.
 
 - When the decorated variable is of the boolean, string, or number type, the synchronized change of the data source can be observed.
-
   <!-- @[Param_Observe_Change_Variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeVariable.ets) --> 
 
   ``` TypeScript
@@ -205,10 +200,9 @@ In the preceding example, \@State can only receive the reference of info during 
   }
   ```
 
-![param-sync-1](figures/param-sync-1.gif)
+  ![param-sync-1](figures/param-sync-1.gif)
 
 - When the decorated variable is of a class object type, only changes to the overall assignment of the class object can be observed. Changes to class member properties cannot be directly observed. Observing changes to class member properties relies on the [@ObservedV2](arkts-new-observedV2-and-trace.md) and [@Trace](arkts-new-observedV2-and-trace.md) decorators. Alternatively, [makeObserved](./arkts-new-makeObserved.md) can be used to make the object observable.
-
   <!-- @[Param_Observe_Change_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeClass.ets) --> 
 
   ``` TypeScript
@@ -288,10 +282,9 @@ In the preceding example, \@State can only receive the reference of info during 
   }
   ```
 
-![param-sync-2](figures/param-sync-2.gif)
+  ![param-sync-2](figures/param-sync-2.gif)
 
 - When the decorated variable is a simple type array, the overall or item changes of the array can be observed.
-
   <!-- @[Param_Observe_Change_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeArray.ets) -->  
 
   ``` TypeScript
@@ -373,10 +366,9 @@ In the preceding example, \@State can only receive the reference of info during 
   }
   ```
 
-![param-sync-3](figures/param-sync-3.gif)
+  ![param-sync-3](figures/param-sync-3.gif)
 
 - When the decorated variable is of a nested class or is an object array, \@Param cannot observe the change of lower-level object attributes. Observation of lower-level object attributes requires the use of \@ObservedV2 and \@Trace decorators.
-
   <!-- @[Param_Observe_Change_Nested_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeNestedClass.ets) --> 
 
   ``` TypeScript
@@ -491,7 +483,7 @@ In the preceding example, \@State can only receive the reference of info during 
   }
   ```
 
-![param-sync-4](figures/param-sync-4.gif)
+  ![param-sync-4](figures/param-sync-4.gif)
 
 - If the decorated variable is of a built-in type, you can observe the changes in the overall variable assignment and API calling.
 
@@ -505,7 +497,6 @@ In the preceding example, \@State can only receive the reference of info during 
 ## Constraints
 
 The \@Param decorator has the following constraints:
-
 - The \@Param decorator can be used only in custom components decorated with the [\@ComponentV2](./arkts-create-custom-components.md#componentv2) decorator.
 
   ```ts
@@ -556,7 +547,6 @@ The \@Param decorator has the following constraints:
   ```
 
 - The variable decorated by @Param cannot be directly modified in the child component. However, if the decorated variable is of the object type, the attributes of the object can be modified in the child component.
-
   ```ts
   @ObservedV2
   class Info {
@@ -699,7 +689,6 @@ struct SubComponent {
 ![param-sync-5](figures/param-sync-5.gif)
 
 ### Decorating Variables of the Array Type
-
 By using \@Param to decorate the variables of the Array type, you can observe the value assignment to the array and the changes brought by the **push**, **pop**, **shift**, **unshift**, **splice**, **copyWithin**, **fill**, **reverse**, and **sort** APIs of the array.
 
 <!-- @[Param_Use_Scene_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneArray.ets) --> 
@@ -1039,5 +1028,3 @@ struct MyComponent {
 ```
 
 ![param-sync-10](figures/param-sync-10.gif)
-
-<!--no_check-->

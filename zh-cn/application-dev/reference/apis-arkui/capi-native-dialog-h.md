@@ -329,7 +329,7 @@ typedef void (*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, vo
 
 弹窗显示时的回调函数。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -349,7 +349,7 @@ void OH_ArkUI_CustomDialog_OpenDialogWithCallback(ArkUI_CustomDialogOptions* opt
 
 弹出自定义弹窗。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

@@ -2,11 +2,12 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-09-21T02:17:41.389Z pushedAt=2026-09-21T12:53:57.137Z -->
 
-Register your application code with frontend pages. Then you can invoke application methods with the registered object names on frontend pages.
+You can use the Web component to register application-side code with the frontend page. After registration, the frontend page can call methods on the application side by using the registered object name.
 
 ## Establishing an Interaction Channel Between the Application Side and the HTML5 Page
 
@@ -83,9 +84,10 @@ struct WebComponent {
 
 - Example 1:
 
-  <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->
-  
+  <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->    
+
   ``` TypeScript
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
   
@@ -121,6 +123,7 @@ struct WebComponent {
             }
           })
         Web({ src: $rawfile('index1.html'), controller: this.webviewController })
+        // Register before the page loads; it takes effect after the page finishes loading.
           .onControllerAttached(()=>{
             try {
               this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
@@ -141,13 +144,12 @@ struct WebComponent {
     }
   }
   ```
- 
+
 - Example 2:
 
-   <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->
-   
+   <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->    
+
    ``` TypeScript
-   // xxx.ets
    // xxx.ets
    import { webview } from '@kit.ArkWeb';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -211,8 +213,8 @@ struct WebComponent {
    }
    ```
 
-- The optional parameter permission is a JSON string. The following is an example:
-  ```json
+- The optional parameter `permission` is a JSON string. The following is an example:
+  ```json5
   {
     "javascriptProxyPermission": {
       "urlPermissionList": [       // Object-level permission. If it is granted, all methods are available.

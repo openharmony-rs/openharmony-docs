@@ -23,8 +23,8 @@
         - [\@ReusableV2 Decorator: Reusing V2 Components](state-management/arkts-new-reusableV2.md)
         - [Global Reuse: Centralized Component Recycling and Reuse](state-management/arkts-global-reuse-pool.md)<!--RP7--><!--RP7End-->
       - Custom Component Freezing<!--arkts-component-freeze-->
-        - [V1 Custom Component Freezing](state-management/arkts-custom-components-freeze.md)
-        - [Custom Component Freezing V2](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
+        - [Freezing a Custom Component (V1)](state-management/arkts-custom-components-freeze.md)
+        - [Freezing a Custom Component (V2)](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
     - Component Extension<!--arkts-extend-components-->
       - [Component Extension Overview](state-management/arkts-extend-components-overview.md)
       - [\@Builder Decorator: Custom Builder Function](state-management/arkts-builder.md)
@@ -32,7 +32,7 @@
       - [\@BuilderParam Decorator: Referencing the \@Builder Function](state-management/arkts-builderparam.md)
       - [wrapBuilder: Encapsulating Global @Builder](state-management/arkts-wrapBuilder.md)
       - [mutableBuilder: Implementing Dynamic Update of Global @Builder](state-management/arkts-mutableBuilder.md)
-      - [\@Styles Decorator: Defining Reusable Styles](state-management/arkts-style.md)
+      - [\@Styles Decorator: Defining Reusable Component Styles](state-management/arkts-style.md)
       - [\@Extend Decorator: Defining Extended Component Styles](state-management/arkts-extend.md)
       - [stateStyles: Applying Polymorphic Styles](state-management/arkts-statestyles.md)
       - [\@AnimatableExtend Decorator: Defining Animatable Properties](state-management/arkts-animatable-extend.md)
@@ -57,7 +57,7 @@
         - [Application State Management Overview](state-management/arkts-application-state-management-overview.md)
         - [LocalStorage: Storing Page-Level UI State](state-management/arkts-localstorage.md)
         - [AppStorage: Storing Application-wide UI State](state-management/arkts-appstorage.md)
-        - [PersistentStorage: Persisting Application State](state-management/arkts-persiststorage.md)
+        - [PersistentStorage: Persisting UI State](state-management/arkts-persiststorage.md)
         - [Environment: Querying the Device Environment](state-management/arkts-environment.md)
     - State Management V2<!--arkts-state-management-v2-->
       - Component State Management<!--arkts-v2-manage-component-state-->
@@ -241,7 +241,7 @@
       - [Shadow Effect](arkts-shadow-effect.md)
       - [Color Effect](arkts-color-effect.md)
       - Blur<!--arkts-blur-->
-        - [Dynamic Blur](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
+        - [Motion Blur](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
     - [Frame Animation (ohos.animator)](arkts-animator.md)<!--RP10--><!--RP10End-->
   - Using Customization Capabilities<!--arkts-user-defined-capabilities-->
     - [Customization Capability Overview](arkts-user-defined.md)

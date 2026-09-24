@@ -1,12 +1,11 @@
 # http_interceptor_type.h
-
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:49:20.738Z pushedAt=2026-06-26T03:00:41.272Z -->
+<!-- md-trans-meta sourceCommit=108aa11c2ceb50c68f8417aa3c60f1dcb55dabdd translatedAt=2026-09-23T01:16:09.828Z pushedAt=2026-09-24T06:00:14.095Z -->
 
 ## Overview
 
@@ -61,8 +60,6 @@ Defines an enum for the interceptor stages.
 
 **Since**: 24
 
-**Parameters**
-
 | Enum Item| Description|
 | -- | -- |
 | OH_STAGE_REQUEST | The interceptor processes the request.|
@@ -78,12 +75,10 @@ enum OH_Interceptor_Type
 
 Defines an enum for the interceptor types.
 
-**Parameters**
-
 | Enum Item| Description|
 | -- | -- |
-| OH_TYPE_READ_ONLY | Read-only interceptor. **Since:** 24. |
-| OH_TYPE_MODIFY_NETWORK_KIT | Modifiable interceptor. Only effective for Network Kit HTTP requests. **Since:** 26.0.0. |
+| OH_TYPE_READ_ONLY | Read-only interceptor.<br>**Since:** 24 |
+| OH_TYPE_MODIFY_NETWORK_KIT | Modifiable interceptor. Takes effect only for Network Kit HTTP requests.<br>**Since:** 26.0.0 |
 
 ### OH_Interceptor_Result
 
@@ -96,8 +91,6 @@ enum OH_Interceptor_Result
 Defines an enum for the interceptor results.
 
 **Since**: 24
-
-**Parameters**
 
 | Enum Item| Description|
 | -- | -- |
@@ -122,7 +115,6 @@ Defines the HTTP interceptor handler function.
 **Since**: 24
 
 **Parameters**
-
 | Name| Description|
 | -- | -- |
 | [OH_Http_Interceptor_Request](capi-netstack-http-interceptor-request.md) *request| Pointer to the HTTP request packet (valid only during the request phase). |

@@ -19,6 +19,7 @@
   - [@ohos.file.securityLabel (数据标签)](js-apis-file-securityLabel.md)
   - [@ohos.file.statvfs (文件系统空间统计)](js-apis-file-statvfs.md)
   - [@ohos.file.storageStatistics (应用空间统计)](js-apis-file-storage-statistics.md)
+  - [@ohos.file.volumeManager (卷管理)](js-apis-file-volumemanager.md)
   - [@ohos.fileshare (文件分享)](js-apis-fileShare.md)
   - [@ohos.file.BackupExtensionContext (备份恢复扩展能力)](js-apis-file-backupextensioncontext.md)
   <!--Del-->
@@ -82,6 +83,7 @@
     - [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)
     - [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md)
     - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
+    - [OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md)
     - [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md)
     - [OH_Archive_StreamInfo](capi-archive-oh-archive-streaminfo.md)
     - [OH_Archive_Stream_Config](capi-archive-oh-archive-stream-config.md)
