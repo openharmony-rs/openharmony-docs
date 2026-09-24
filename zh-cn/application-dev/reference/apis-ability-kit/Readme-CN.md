@@ -199,6 +199,7 @@
       - [ProcessData](js-apis-inner-application-processData.md)
       - [PhotoEditorExtensionContext](js-apis-app-ability-photoEditorExtensionContext.md)
       - [SendableContext](js-apis-inner-application-sendableContext.md)
+      - [CliToolEvent (CLI工具会话事件)](js-apis-inner-application-cliToolEvent.md)
       - [ToolEventCallback (CLI工具事件回调)](js-apis-inner-application-toolEventCallback.md)
       - [ViewData (视图数据)](js-apis-inner-application-viewData.md)
       <!--Del-->
@@ -213,7 +214,6 @@
       - [AutoFillType (自动填充类型)(系统接口)](js-apis-inner-application-autoFillType-sys.md)
       - [AutoStartupCallback (开机自启回调)(系统接口)](js-apis-inner-application-autoStartupCallback-sys.md)
       - [AutoStartupInfo (开机自启应用组件信息)(系统接口)](js-apis-inner-application-autoStartupInfo-sys.md)
-      - [CliToolEvent (CLI工具会话事件)(系统接口)](js-apis-inner-application-cliToolEvent-sys.md)
       - [Context (系统接口)](js-apis-inner-application-context-sys.md)
       - [ContinueDeviceInfo (系统接口)](js-apis-inner-application-continueDeviceInfo-sys.md)
       - [CustomData (自定义数据)(系统接口)](js-apis-inner-application-customData-sys.md)

@@ -183,7 +183,7 @@ type ToolSummary = _ToolSummary
 
 type CliToolEvent = _CliToolEvent
 
-[CliToolEvent (CLI工具会话事件)](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md)用于描述CLI工具进程运行期间产生的会话事件信息。
+[CliToolEvent (CLI工具会话事件)](../apis-ability-kit/js-apis-inner-application-cliToolEvent.md)用于描述CLI工具进程运行期间产生的会话事件信息。
 
 **起始版本：** 26.0.0
 
@@ -195,7 +195,7 @@ type CliToolEvent = _CliToolEvent
 
 | 类型 | 说明 |
 | --- | --- |
-| [_CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md) | 用于描述CLI工具进程运行期间产生的会话事件信息。 |
+| [_CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent.md) | 用于描述CLI工具进程运行期间产生的会话事件信息。 |
 
 ## ToolEventCallback
 
