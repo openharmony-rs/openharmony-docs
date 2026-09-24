@@ -214,7 +214,7 @@ void SetOffset(float x, float y)
 
 <!-- @[layout_position_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/LayoutAttributeExample.h) -->
 
-```C
+``` C
 inline std::shared_ptr<ArkUITextNode> CreatePositionedItem()
 {
     auto positioned = CreateDemoItem("position(20, 18)", POSITION_ITEM_ORANGE);
@@ -225,10 +225,10 @@ inline std::shared_ptr<ArkUITextNode> CreatePositionedItem()
 
 inline std::shared_ptr<ArkUITextNode> CreateOffsetItem()
 {
-    auto offset = CreateDemoItem("offset(110, 80)", POSITION_ITEM_BLUE);
+    auto offset = CreateDemoItem("offset(110, 18)", POSITION_ITEM_BLUE);
     offset->SetWidth(LARGE_ITEM_WIDTH);
     offset->SetMargin(OFFSET_MARGIN_TOP, 0.0F, 0.0F, 0.0F);
-    offset->SetOffset(OFFSET_X, POSITION_Y);
+    offset->SetOffset(OFFSET_X, OFFSET_Y);
     return offset;
 }
 ```
