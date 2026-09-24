@@ -4,7 +4,7 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
 - 自动化测试框架使用指导<!--arkxtest-guidelines-->
   - [单元测试框架使用指导](../application-test/unittest-guidelines.md)
   - [UI测试框架使用指导](../application-test/uitest-guidelines.md)
