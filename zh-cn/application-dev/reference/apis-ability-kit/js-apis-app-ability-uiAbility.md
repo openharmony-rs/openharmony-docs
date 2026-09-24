@@ -57,7 +57,7 @@ import { UIAbility } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context | [UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md) | 否 | 否 | UIAbility的上下文。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| context | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md) | 否 | 否 | UIAbility的上下文。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | launchWant | [Want](js-apis-app-ability-want.md) | 否 | 否 | UIAbility[冷启动](../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时接收到的Want参数，取值为[onCreate](#oncreate)接收到的Want参数。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | lastRequestWant | [Want](js-apis-app-ability-want.md) | 否 | 否 | 最近一次拉起UIAbility请求的Want参数。<br>- 首次拉起UIAbility时，取值为[onCreate](#oncreate)接收到的Want参数。<br>- 重复拉起UIAbility时，取值为[onNewWant](#onnewwant)最近一次接收到的Want参数。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
 | callee | [Callee](#callee) | 否 | 否 | 系统为UIAbility创建的后台通信对象，Callee UIAbility（被调用方）可以通过Callee对象接收Caller对象发送的数据。 |

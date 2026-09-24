@@ -31,9 +31,9 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称        | 类型                                                                    | 只读 | 可选 | 说明           |
 | ----------- | ----------------------------------------------------------------------- | ---- | ---- | ------------- |
-| type        | [AutoFillType (自动填充类型)](js-apis-inner-application-autoFillType.md)               | 否   | 否   | 自动填充类型。 |
-| viewData    | [ViewData (视图数据)](js-apis-inner-application-viewData.md)                       | 否   | 否   | 页面数据。 |
-| triggerType | [AutoFillTriggerType (自动填充拉起类型)](js-apis-inner-application-autoFillTriggerType.md) | 否   | 是   | 自动填充服务的拉起类型。 |
+| type | [AutoFillType](js-apis-inner-application-autoFillType.md) | 否 | 否 | 自动填充类型。 |
+| viewData | [ViewData](js-apis-inner-application-viewData.md) | 否 | 否 | 页面数据。 |
+| triggerType | [AutoFillTriggerType](js-apis-inner-application-autoFillTriggerType.md) | 否 | 是 | 自动填充服务的拉起类型。 |
 
 ## SaveRequest
 
@@ -49,7 +49,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称     | 类型                                              | 只读 | 可选 | 说明       |
 | -------- | ------------------------------------------------- | ---- | ---- | ---------- |
-| viewData | [ViewData (视图数据)](js-apis-inner-application-viewData.md) | 否   | 否   | 页面数据。 |
+| viewData | [ViewData](js-apis-inner-application-viewData.md) | 否 | 否 | 页面数据。 |
 
 ## FillFailureResult
 

@@ -753,7 +753,7 @@ The client has configured **forbidding HTTP plaintext access** for the related d
 **Solution**
 
 1. Check whether HTTP plaintext access interception is performed for the related domain name in the **network_config.json** file.
-2. If interception is not required, configure the domain name permission by referring to [Configuring Plaintext HTTP Access Permissions](../../network/http-request.md#configuring-plaintext-http-access-permissions).
+2. If interception is not required, configure the domain name permission by referring to [Configuring Plaintext HTTP Access Permissions](../../network/http-request.md#configuring-cleartext-http-access-permissions).
 
 ## 5410002 Seek in SEEK_CONTINUOUS Mode Is Not Supported
 
@@ -808,3 +808,4 @@ Super resolution is not enabled by using [PlaybackStrategy](./arkts-apis-media-i
 **Solution**
 
 Enable super resolution before calling related APIs.
+<!--no_check-->

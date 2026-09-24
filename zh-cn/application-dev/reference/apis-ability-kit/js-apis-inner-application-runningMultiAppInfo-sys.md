@@ -27,9 +27,9 @@
 | 名称                      | 类型   | 只读  | 可选  | 说明       |
 | ------------------------- | ------ | ---- | ---- | --------- |
 | bundleName | string | 否  | 否  | 应用的包名。 |
-| mode | [MultiAppMode (应用多开模式)](js-apis-inner-application-multiAppMode-sys.md) | 否  | 否  | 应用多开模式。 |
-| runningAppClones | Array<[RunningAppClone (分身应用运行信息)](js-apis-inner-application-runningAppClone-sys.md)> | 否  | 是  | 特定包名在运行态的分身应用信息。 |
-| runningMultiInstances<sup>14+</sup> | Array<[RunningMultiInstanceInfo (多实例应用运行信息)](js-apis-inner-application-runningMultiInstanceInfo-sys.md)> | 否  | 是  | 特定包名在运行态的多实例应用信息。 |
+| mode | [MultiAppMode](js-apis-inner-application-multiAppMode-sys.md) | 否 | 否 | 应用多开模式。 |
+| runningAppClones | Array<[RunningAppClone](js-apis-inner-application-runningAppClone-sys.md)> | 否 | 是 | 特定包名在运行态的分身应用信息。 |
+| runningMultiInstances<sup>14+</sup> | Array<[RunningMultiInstanceInfo](js-apis-inner-application-runningMultiInstanceInfo-sys.md)> | 否 | 是 | 特定包名在运行态的多实例应用信息。 |
 
 **示例：**
 
