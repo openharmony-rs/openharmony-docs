@@ -21,6 +21,8 @@ typedef struct OH_AVRange {...} OH_AVRange
 
 **所在头文件：** [native_avcapability.h](capi-native-avcapability-h.md)
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 ## 汇总
 
 ### 成员变量
