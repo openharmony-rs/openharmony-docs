@@ -33100,7 +33100,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/IoIntensiveTaskDevelopment.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":51,
 						"name":"define_concurrent_function",
 						"start_line":16
 					},
@@ -42041,7 +42041,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolCancel.ets",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":73,
 						"name":"taskpool_cancel",
 						"start_line":16
 					}
@@ -51192,12 +51192,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/SyncTaskDevelopment.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":85,
 						"name":"taskpool_handle_sync_task",
 						"start_line":16
 					},
 					{
-						"end_line":81,
+						"end_line":84,
 						"name":"worker_handle_associated_sync_task",
 						"start_line":19
 					}
@@ -51221,7 +51221,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/MyWorker2.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":47,
 						"name":"worker_handle_associated_sync_task",
 						"start_line":16
 					}
