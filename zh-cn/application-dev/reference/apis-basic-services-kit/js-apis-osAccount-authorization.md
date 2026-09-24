@@ -72,7 +72,7 @@ requestAuthorization(privilege: Privilege, context: UIAbilityContext): Promise&l
 | 参数名    | 类型                                                | 必填 | 说明                                                             |
 | --------- | --------------------------------------------------- | ---- | ---------------------------------------------------------------- |
 | privilege | [Privilege](#privilege)                             | 是   | 目标特权。      |
-| context   | [UIAbilityContext (UIAbility上下文)](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 承载授权弹窗的UIAbility上下文。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 承载授权弹窗的UIAbility上下文。 |
 
 **返回值：**
 

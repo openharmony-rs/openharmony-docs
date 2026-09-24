@@ -5,9 +5,10 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=f1df35e744e8be0a80ac7cb20765106cc0424535 translatedAt=2026-09-23T02:10:22.948Z pushedAt=2026-09-23T10:54:49.442Z -->
 
-This topic provides a list of common events defined by the system.
-Common event types are defined in [Support](../js-apis-commonEventManager.md#support) of the **ohos.commonEventManager** module.
+This document provides a list of system-defined common events.
+Common event types are defined in [Support enumeration of the ohos.commonEventManager module](../js-apis-commonEventManager.md#support).
 
 > **NOTE**
 >
@@ -18,264 +19,266 @@ Common event types are defined in [Support](../js-apis-commonEventManager.md#sup
 
 ### COMMON_EVENT_PACKAGE_RESTARTED
 
-Indicates that the user has restarted the application package and killed all its processes.
+Indicates that the user restarts an application package and terminates all its processes.
 
-When the specified user restarts the application and kills all its processes, the event notification service is triggered to publish this event.
+When a specified user restarts an application package and terminates all its processes on a device, the event notification service is triggered to publish this [system common event](../../../basic-services/common-event/common-event-glossary.md#system-common-event).
 
-> **NOTE**
+> **NOTE** 
 > 
-> <!--Del-->System applications can listen for the restart event of themselves and other applications.<!--DelEnd-->
+> <!--Del-->A system application can listen to the restart events of its own application and other applications.<!--DelEnd-->
 > 
-> Third-party applications can only listen for the restart event of themselves.
+> A third-party application can only listen to the restart event of its own application.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.PACKAGE_RESTARTED"
+**Value:** "usual.event.PACKAGE_RESTARTED"
 
 
 ### COMMON_EVENT_PACKAGE_DATA_CLEARED
 
-Indicates that the user has cleared the application package data.
+Indicates that the user clears application package data.
 
-When the specified user clears the application package data on the device, the event notification service is triggered to publish this event.
+When a specified user clears application package data on the device, this will trigger the event notification service to publish this system common event.
 
-> **NOTE**
+> **NOTE** 
 > 
-> <!--Del-->System applications can listen for the data clearance event of themselves and other applications.<!--DelEnd-->
+> <!--Del-->A system application can listen to the data clearing events of its own application and other applications.<!--DelEnd-->
 > 
-> Third-party applications can only listen for the data clearance event of themselves.
+> A third-party application can only listen to the data clearing event of its own application.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.PACKAGE_DATA_CLEARED"
+**Value:** "usual.event.PACKAGE_DATA_CLEARED"
 
 
 ### COMMON_EVENT_QUICK_FIX_APPLY_RESULT
 
-Indicates the result of applying a quick fix to the application.
+Indicates that a quick fix is applied to an application.
 
-When the specified user applies a quick fix to the application on the device, the event notification service is triggered to publish this event.
+When a quick fix is applied to an application by a specified user on the device, the common event service is triggered to publish this event.
 
-> **NOTE**
+> **NOTE** 
 > 
-> <!--Del-->System applications can listen for the quick fix event of themselves and other applications.<!--DelEnd-->
+> <!--Del-->A system application can listen to the quick fix events of its own application and other applications.<!--DelEnd-->
 > 
-> Third-party applications can only listen for the quick fix event of themselves.
+> A third-party application can only listen to the quick fix events of its own application.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.QUICK_FIX_APPLY_RESULT"
+**Value:** "usual.event.QUICK_FIX_APPLY_RESULT"
 
 
 ### COMMON_EVENT_QUICK_FIX_REVOKE_RESULT<sup>10+</sup>
 
-Indicates the result of revoking a quick fix to the application.
+Indicates the revocation of a quick fix.
 
-When a quick fix to the application is revoked on the device, the event notification service is triggered to publish this event.
+When a quick fix is revoked on the device, the common event service is triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.QUICK_FIX_REVOKE_RESULT"
+**Value:** "usual.event.QUICK_FIX_REVOKE_RESULT"
 
 
 ### COMMON_EVENT_PACKAGE_ADDED
 
-Indicates that a new application package has been installed on the device.
+Indicates the action of the common event that a new application package has been installed on the device.
 
-When a new application is installed by a specified user on the device, the event notification service is triggered to publish this event.
+When a new application is installed by a specified user on the device, the common event service is triggered to publish this system common event.
 
-> **NOTE**
+> **NOTE** 
 > 
-> <!--Del-->System applications can listen for the installation event of themselves and other applications.<!--DelEnd-->
+> <!--Del-->A system application can listen to the installation events of its own application and other applications.<!--DelEnd-->
 > 
-> By default, third-party applications can only listen for the installation event of themselves. If a third-party application needs to listen for the installation event of an InHouse application, the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appid) of the InHouse application must be configured in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) of the **app.json5** file.
+> A third-party application, by default, can only listen to the installation event of its own application. If a third-party application needs to listen to the installation event of an InHouse application, the InHouse application that needs to be listened to must configure this application's [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appidentifier) in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) in app.json5.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.PACKAGE_ADDED"
+**Value**: usual.event.PACKAGE_ADDED
 
 
 ### COMMON_EVENT_PACKAGE_REMOVED
 
-Indicates that an installed application has been uninstalled from the device with the application data retained.
+Indicates the operation of the common event that an installed application has been uninstalled from the device but its application data is retained.
 
-When a specified application package is removed by a specified user on the device, the event notification service is triggered to publish this event.
+When a specified application package is uninstalled by a specified user on the device, it will trigger the common event service to publish this system common event.
 
-> **NOTE**
+> **NOTE** 
 > 
-> <!--Del-->System applications can listen for the uninstallation event of themselves and other applications.<!--DelEnd-->
+> <!--Del-->A system application can listen to the uninstall events of its own application and other applications.<!--DelEnd-->
 > 
-> By default, third-party applications can only listen for the uninstallation event of themselves. If a third-party application needs to listen for the uninstallation event of an InHouse application, the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appid) of the InHouse application must be configured in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) of the **app.json5** file.
+> A third-party application, by default, can only listen to the uninstall event of its own application. If a third-party application needs to listen to the uninstall event of an InHouse application, the InHouse application to be listened to needs to configure its [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appidentifier) in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) in app.json5.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.PACKAGE_REMOVED"
+**Value**: usual.event.PACKAGE_REMOVED
 
 
 ### COMMON_EVENT_BUNDLE_REMOVED
 
-(Reserved, not supported yet) Indicates that an installed bundle has been uninstalled from the device.
+(Reserved event, not yet supported) Indicates the event that an existing application package is removed from the device.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
 **Value**: "usual.event.BUNDLE_REMOVED"
 
 
 ### COMMON_EVENT_PACKAGE_FULLY_REMOVED
 
-Indicates that an installed application has been completely uninstalled from the device.
+Indicates the event that an existing application program is completely removed from the device.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.PACKAGE_FULLY_REMOVED"
+**Value:** "usual.event.PACKAGE_FULLY_REMOVED"
 
 
 ### COMMON_EVENT_PACKAGE_CHANGED
 
-Indicates that an application package has been changed (for example, an ability in the package has been enabled or disabled).
+Indicates the action of the common event that an application package has changed (for example, a component in the package has been enabled or disabled).
 
-When an application package installed on the device is updated or an ability in the package is enabled or disabled, the event notification service is triggered to publish this event.
+When an installed application program package on the device is updated or a component in the package is enabled or disabled, the event notification service publishing will be triggered to publish this system common event.
 
-> **NOTE**
+> **NOTE** 
 > 
-> <!--Del-->System applications can listen for the change event of themselves and other applications.<!--DelEnd-->
+> <!--Del-->A system application can listen to change events of its own application and other applications.<!--DelEnd-->
 > 
-> By default, third-party applications can only listen for the change event of themselves. If a third-party application needs to listen for the change event of an InHouse application, the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appid) of the InHouse application must be configured in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) of the **app.json5** file.
+> By default, a third-party application can only listen to change events of its own application. If a third-party application needs to listen to update events of an InHouse application, the InHouse application that needs to be listened to must configure the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appidentifier) of this application in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) in app.json5.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.PACKAGE_CHANGED"
+**Value:** "usual.event.PACKAGE_CHANGED"
 
 
 ### COMMON_EVENT_PACKAGE_CACHE_CLEARED
 
-Indicates that the user cleared the application package cache.
+Indicates the action of the common event for a user to clear the cache data of an application package.
 
-When the cache of an application package installed on the device is cleared, the event notification service is triggered to publish this event.
+When the cache of an application package installed on the device is cleared, the event notification service will be triggered to publish this system common event.
 
-> **NOTE**
+> **NOTE** 
 > 
-> <!--Del-->System applications can listen for the cache clearance event of themselves and other applications.<!--DelEnd-->
+> <!--Del-->A system application can listen to the cache clearing events of its own application and other applications.<!--DelEnd-->
 > 
-> By default, third-party applications can only listen for the cache clearance event of themselves. If a third-party application needs to listen for the cache clearance event of an InHouse application, the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appid) of the InHouse application must be configured in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) of the **app.json5** file.
+> A third-party application, by default, can only listen to the cache clearing events of its own application. If a third-party application needs to listen to the cache clearing events of an InHouse application, the InHouse application that needs to be listened to must configure its [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appidentifier) in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) in app.json5.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.PACKAGE_CACHE_CLEARED"
+**Value:** "usual.event.PACKAGE_CACHE_CLEARED"
 
 
 ### COMMON_EVENT_PACKAGES_SUSPENDED
 
-(Reserved, not supported yet) Indicates that the package has been suspended.
+(Reserved event, not yet supported) Indicates that the package has been suspended.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.PACKAGES_SUSPENDED"
+**Value:** "usual.event.PACKAGES_SUSPENDED"
 
 
 ### COMMON_EVENT_MY_PACKAGE_SUSPENDED
 
-(Reserved, not supported yet) Indicates that application packages have been suspended by the system.
+(Reserved event, not yet supported) Sent to a package that has been suspended by the system.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.MY_PACKAGE_SUSPENDED"
+**Value:** "usual.event.MY_PACKAGE_SUSPENDED"
 
 
 ### COMMON_EVENT_MY_PACKAGE_UNSUSPENDED
 
-(Reserved, not supported yet) Indicates that application packages have been unsuspended by the system.
+(Reserved event, not yet supported) Sent to a package that has been unsuspended by the system.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.MY_PACKAGE_UNSUSPENDED"
+**Value:** "usual.event.MY_PACKAGE_UNSUSPENDED"
 
 
 ### COMMON_EVENT_MANAGE_PACKAGE_STORAGE
 
-Notifies the low memory state and package management should be started.
+Notifies the user of the low memory status and that package management should be started.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.MANAGE_PACKAGE_STORAGE"
+**Value:** "usual.event.MANAGE_PACKAGE_STORAGE"
 
-### COMMON_EVENT_SKILL_CHANGED<sup>26+</sup>
+### COMMON_EVENT_SKILL_CHANGED
 
-Indicates that the skill applied on the device has changed.
+Indicates a common event that the skill of an application on the device changes.
 
-When an application including skills is installed, updated, or uninstalled by a specified user on the device, the event notification service is triggered to publish this event.
+When an application program containing a skill is installed, updated, or uninstalled for a specified user on the device, the event notification service publishing will trigger this system common event.
 
-> **NOTE**
+> **NOTE** 
 > 
-> By default, an application can only receive skill change events of itself.
+> By default, an application can only receive the skill change event of its own application.
 > 
-> After being granted with the ohos.permission.MANAGE_SKILL_PRIVILEGE permission, an application can receive skill change events of itself and other applications.
+> After applying for the ohos.permission.MANAGE_SKILL_PRIVILEGE permission, an application can receive the skill change events of its own application and other applications.
+
+**Since**: 26.0.0
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.SKILL_CHANGED"
+**Value:** "usual.event.SKILL_CHANGED"
 
 ## Account Kit
 
 ### COMMON_EVENT_MINORSMODE_ON<sup>12+</sup>
 
-Indicates that the minor mode is enabled.
+Indicates that the user enables minor mode.
 
-When the minor mode is enabled on the device, the event notification service is triggered to publish this event.
+When the youth mode is enabled on a device, the event notification service is triggered to publish this [system common event](../../../basic-services/common-event/common-event-glossary.md#system-common-event).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Value**: "usual.event.MINORSMODE_ON"
+**Value:** "usual.event.MINORSMODE_ON"
 
 
 
 ### COMMON_EVENT_MINORSMODE_OFF<sup>12+</sup>
 
-Indicates that the minor mode is disabled.
+Indicates that the user turns off minor mode.
 
-When the minor mode is disabled on the device, the event notification service is triggered to publish this event.
+When minor mode is turned off on the device, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Value**: "usual.event.MINORSMODE_OFF"
+**Value:** "usual.event.MINORSMODE_OFF"
 
 
 ## ArkData
@@ -283,34 +286,34 @@ When the minor mode is disabled on the device, the event notification service is
 
 ### COMMON_EVENT_DATA_SHARE_READY<sup>12+</sup>
 
-Indicates that the DataShare service is available.
+Indicates that the datashare service is available.
 
-After the DataShare service is started, the event notification service is triggered to publish this event.
+After the DataShare service is started, the event notification service is triggered to publish this [system common event](../../../basic-services/common-event/common-event-glossary.md#system-common-event).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Value**: "usual.event.DATA_SHARE_READY"
+**Value:** "usual.event.DATA_SHARE_READY"
 
 
 ## ArkUI
 
 ### COMMON_EVENT_SPLIT_SCREEN
 
-Indicates a screen splitting action.
+A common event that indicates split-screen behavior.
 
-When any of the following actions is performed, the event notification service is triggered to publish this event: accessing the recent tasks screen, creating a split-screen bar, and destroying a split-screen bar.
+When any of the following actions is performed, the event notification service is triggered to publish this [system common event](../../../basic-services/common-event/common-event-glossary.md#system-common-event).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Value**: "common.event.SPLIT_SCREEN"
+**Value:** "common.event.SPLIT_SCREEN"
 
 
 
@@ -318,123 +321,123 @@ When any of the following actions is performed, the event notification service i
 
 ### COMMON_EVENT_SLOT_CHANGE
 
-  Indicates that the notification slot or notification switch settings have changed.
+Indicates that the [notification slot](../../../notification/notification-glossary.md#notification-slot) or notification switch settings have changed.
 
-  When the notification slot settings (including the switch) change or the notification feature is enabled or disabled, the notification service is triggered to publish this event.
+  When the [notification slot settings](../../../notification/notification-glossary.md#notification-setting) (including the switch) change or the notification feature is enabled or disabled, the notification service is triggered to publish this [system common event](../../../basic-services/common-event/common-event-glossary.md#system-common-event).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+**Subscriber permission:** ohos.permission.NOTIFICATION_CONTROLLER
 
-**Value**: "usual.event.SLOT_CHANGE"
+**Value:** "usual.event.SLOT_CHANGE"
 
 
 ## Background Tasks Kit
 
 
 ### COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED
-Indicates that the system idle mode has changed.
+Indicates that the device standby state changes, which triggers the action of publishing a common event.
 
-When the user does not use the device for the specified period of time and the screen is turned off, the system delays the CPU and network access by background applications, and the event notification service is triggered to publish this event.
+If the user has not used the device for a period of time and the screen is turned off, the system delays the CPU and network access by background applications, and the [common event service](../../../basic-services/common-event/common-event-glossary.md#common-event-service-ces) will be triggered to publish this [system common event](../../../basic-services/common-event/common-event-glossary.md#system-common-event).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.DEVICE_IDLE_MODE_CHANGED"
+**Value:** "usual.event.DEVICE_IDLE_MODE_CHANGED"
 
 
 ## Basic Services Kit
 
 ### COMMON_EVENT_USB_STATE
 
-Indicates that the USB device state has changed.
+Indicates that the USB device status changes.
 
-When a USB device is connected to or disconnected from the device, the event notification service is triggered to publish this event.
+When a USB device is connected to or disconnected from the device, the event notification service is triggered to publish this [system common event](../../../basic-services/common-event/common-event-glossary.md#system-common-event).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.hardware.usb.action.USB_STATE"
+**Value:** "usual.event.hardware.usb.action.USB_STATE"
 
 
 ### COMMON_EVENT_USB_PORT_CHANGED
 
-Indicates that the USB port state of the device has changed.
+Prompts the user that the USB port status of the device has changed.
 
-When the USB port state changes, the event notification service is triggered to publish this event.
+When the USB port status changes, the event notification service publishing will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.hardware.usb.action.USB_PORT_CHANGED"
+**Value:** "usual.event.hardware.usb.action.USB_PORT_CHANGED"
 
 
 ### COMMON_EVENT_USB_DEVICE_ATTACHED
 
-Indicates that a USB device has been attached to the device functioning as a USB host.
+Indicates that a USB device has been attached when the user device acts as a USB host.
 
-When a USB device is attached, the event notification service is triggered to publish this event.
+When the USB connection state changes, this will trigger the event notification service publishing this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.hardware.usb.action.USB_DEVICE_ATTACHED"
+**Value:** "usual.event.hardware.usb.action.USB_DEVICE_ATTACHED"
 
 
 ### COMMON_EVENT_USB_DEVICE_DETACHED
 
-Indicates that a USB device has been detached from the device functioning as a USB host.
+Indicates that a USB device is detached when the user device acts as a USB host.
 
-When a USB device is detached, the event notification service is triggered to publish this event.
+When the USB connection is disconnected and the state changes, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.hardware.usb.action.USB_DEVICE_DETACHED"
+**Value:** "usual.event.hardware.usb.action.USB_DEVICE_DETACHED"
 
 
 ### COMMON_EVENT_TIME_CHANGED
 
-Indicates that the system time is set.
+Action of the common event for setting the system time.
 
-When the system time is set, the event notification service is triggered to publish this event.
+When the system time is set, this will trigger the event notification service publishing this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.TIME_CHANGED"
+**Value:** "usual.event.TIME_CHANGED"
 
 
 ### COMMON_EVENT_TIME_TICK
 
-Indicates that the system time has changed.
+Action of the common event that indicates the system time changes.
 
-When the system time in the unit of minute changes, the event notification service is triggered to publish this event.
+When the system time changes in units of a whole minute, the event notification service publishing will trigger this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.TIME_TICK"
+**Value:** "usual.event.TIME_TICK"
 
 
 ### COMMON_EVENT_TIMEZONE_CHANGED
 
-Indicates that the system time zone has changed.
+Indicates the action of the common event for a system time zone change.
 
-When the system time zone changes, the event notification service is triggered to publish this event.
+When the system time zone changes, the common event service is triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.TIMEZONE_CHANGED"
+**Value:** "usual.event.TIMEZONE_CHANGED"
 
 
 
@@ -444,466 +447,466 @@ When the system time zone changes, the event notification service is triggered t
 
 Indicates that the user information has been updated.
 
-When the distributed account information, system account profile picture, or system account name is changed, the event notification service is triggered to publish this event carrying the system account ID.
+A change in the distributed account information, a change in the system account profile photo, or a change in the system account name will trigger the event notification service to publish this system common event. The event carries the system account ID.
 
-APIs related to this event: **setOsAccountName**, **setOsAccountProfilePhoto**, and **setOsAccountDistributedInfo**. The first two are system APIs, and the last is a public API. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md) and [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
+APIs related to this event: **setOsAccountName**, **setOsAccountProfilePhoto**, and **setOsAccountDistributedInfo**. The first two are system APIs, and the last is a public API. For details, see [@ohos.account.osAccount (OS Account Management)](../js-apis-osAccount.md) and [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.USER_INFO_UPDATED"
+**Value:** "usual.event.USER_INFO_UPDATED"
 
 
 ### COMMON_EVENT_USER_UNLOCKED
 
-Indicates that the credential-encrypted storage has been unlocked for the current user after the device is restarted.
+Indicates the action of the common event that the credential-encrypted storage of the current user has been unlocked when the device is unlocked after restart.
 
-When the device is unlocked with the lock screen password the first time after user switching, the event notification service is triggered to publish this event carrying the system account ID that identifies the user.
+Switching to a user with a lock screen password and unlocking for the first time will trigger the event notification service publishing this system common event. The event carries the system account ID that identifies the user.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.USER_UNLOCKED"
+**Value**: usual.event.USER_UNLOCKED
 
 
 ### COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN
 
-Indicates a successful login from a distributed account.
+Indicates the action of a successful distributed account login.
 
-When a distributed account is successfully logged in, the event notification service is triggered to publish this event carrying the system account ID and sub-profile ID.
+When a distributed account login succeeds, the event notification service publishing will trigger this system common event, and the event carries the system account ID and sub-identity ID.
 
-APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccountDistributedInfo** (discarded), and **setOsAccountDistributedInfoByLocalId**. The first two are public APIs, and the last one is a system API. For details, see [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
+APIs associated with this common event: setOsAccountDistributedInfo and updateOsAccountDistributedInfo (deprecated), which are public APIs, and setOsAccountDistributedInfoByLocalId, which is a system API. For details, see [Distributed Account API Reference](../js-apis-distributed-account.md).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Value**: "common.event.DISTRIBUTED_ACCOUNT_LOGIN"
+**Value:** "common.event.DISTRIBUTED_ACCOUNT_LOGIN"
 
 
 ### COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT
 
-Indicates a successful logout from a distributed account.
+Indicates the action of a successful distributed account logout.
 
-When a distributed account is successfully logged out, the event notification service is triggered to publish this event carrying the system account ID and sub-profile ID.
+When a distributed account logs out, the event notification service publishing will trigger this system common event. The event carries the system account ID and the sub-identity ID.
 
-APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccountDistributedInfo** (discarded), and **setOsAccountDistributedInfoByLocalId**. The first two are public APIs, and the last one is a system API. For details, see [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
+APIs associated with this common event: setOsAccountDistributedInfo and updateOsAccountDistributedInfo (deprecated), which are public APIs, and setOsAccountDistributedInfoByLocalId, which is a system API. For details, see [Distributed Account API Reference](../js-apis-distributed-account.md).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Value**: "common.event.DISTRIBUTED_ACCOUNT_LOGOUT"
+**Value:** "common.event.DISTRIBUTED_ACCOUNT_LOGOUT"
 
 
 ### COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID
 
-Indicates that the token of a distributed account is invalid.
+Indicates the action that the distributed account token is invalid.
 
-When the token of a distributed account is invalid, the event notification service is triggered to publish this event carrying the system account ID and sub-profile ID.
+When the token of a distributed account is invalid, the event notification service will trigger the publishing of this system common event. The event carries the system account ID and the sub-identity ID.
 
-APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccountDistributedInfo** (discarded), and **setOsAccountDistributedInfoByLocalId**. The first two are public APIs, and the last one is a system API. For details, see [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
+APIs associated with this common event: setOsAccountDistributedInfo and updateOsAccountDistributedInfo (deprecated), which are public APIs, and setOsAccountDistributedInfoByLocalId, which is a system API. For details, see [Distributed Account API Reference](../js-apis-distributed-account.md).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Value**: "common.event.DISTRIBUTED_ACCOUNT_TOKEN_INVALID"
+**Value:** "common.event.DISTRIBUTED_ACCOUNT_TOKEN_INVALID"
 
 
 
 ### COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF
 
-Indicates that a distributed account is deregistered.
+Indicates the action of logging off a distributed account.
 
-When a distributed account is successfully logged out, the event notification service is triggered to publish this event carrying the system account ID and sub-profile ID.
+A successful distributed account logoff will trigger the event notification service publishing of this system common event. The event carries the system account ID and the sub-identity ID.
 
-APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccountDistributedInfo** (discarded), and **setOsAccountDistributedInfoByLocalId**. The first two are public APIs, and the last one is a system API. For details, see [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
+APIs associated with this common event: setOsAccountDistributedInfo and updateOsAccountDistributedInfo (deprecated), which are public APIs, and setOsAccountDistributedInfoByLocalId, which is a system API. For details, see [Distributed Account API Reference](../js-apis-distributed-account.md).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Value**: "common.event.DISTRIBUTED_ACCOUNT_LOGOFF"
+**Value:** "common.event.DISTRIBUTED_ACCOUNT_LOGOFF"
 
 
 
 ### COMMON_EVENT_SCREEN_LOCKED
 
-Indicates that the screen has been locked.
-When the screen is locked, the event notification service is triggered to publish this event.
+Indicates the common event of screen locking.
+When the screen is locked, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Value**: "usual.event.SCREEN_LOCKED"
+**Value:** usual.event.SCREEN_LOCKED
 
 
 
 ### COMMON_EVENT_SCREEN_UNLOCKED
 
-Indicates that the screen has been unlocked.
-When the screen is unlocked, the event notification service is triggered to publish this event.
+Indicates the common event of screen unlocking.
+When the lock screen is unlocked, this will trigger the event notification service publishing of this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Value**: "usual.event.SCREEN_UNLOCKED"
+**Value:** usual.event.SCREEN_UNLOCKED
 
 
 ### COMMON_EVENT_USER_PRESENT<sup>(deprecated)</sup>
-Indicates the action of a common event that the user unlocks the device.
+Action of the common event indicating that the user unlocks the device.
 
   > **NOTE**
   >
-  > This type is supported since API version 9 and deprecated since API version 10. You are advised to use [COMMON_EVENT_SCREEN_UNLOCKED](#common_event_screen_unlocked) instead.
+  > This event is supported since API version 9 and deprecated since API version 10. You are advised to use [COMMON_EVENT_SCREEN_UNLOCKED](#common_event_screen_unlocked) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.USER_PRESENT"
+**Value:** "usual.event.USER_PRESENT"
 
 
 ### COMMON_EVENT_BATTERY_CHANGED
 
-Indicates that the charging state, level, and other information about the battery have changed.
+Indicates the action of the common event that the battery charging status, level, and other information have changed.
 
-When any of the following information changes, the event notification service is triggered to publish this event: battery level, battery temperature, battery health status, type of the charger connected to the device, maximum current of the charger, maximum voltage of the charger, battery charging status, number of charging times, total battery capacity, remaining battery capacity, battery model, and battery charging type.
+When the battery level, battery temperature, battery health status, type of charger connected to the device, maximum current of the charger, maximum voltage of the charger, battery charging status, number of charging cycles, total battery capacity, remaining battery capacity, battery technical model, or battery charging type changes, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.BATTERY_CHANGED"
+**Value:** "usual.event.BATTERY_CHANGED"
 
 
 ### COMMON_EVENT_BATTERY_LOW
 
-Indicates that the battery level is low.
+Indicates the action of the common event for low battery level.
 
-When the battery level drops to lower than the low battery level set for the device, the event notification service is triggered to publish this event. <!--Del-->For details about how to set the low battery level percentage, see [Battery Level Customization](../../../../device-dev/subsystems/subsys-power-battery-level-customization.md).<!--DelEnd-->
+When the battery level falls below the low battery percentage configured on the device, the event notification service will be triggered to publish this system common event.<!--Del-->For details about the low battery percentage configured on the device, see [*Battery Level Customization Development Guide*](../../../../device-dev/subsystems/subsys-power-battery-level-customization.md).<!--DelEnd-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.BATTERY_LOW"
+**Value:** "usual.event.BATTERY_LOW"
 
 
 ### COMMON_EVENT_BATTERY_OKAY
 
-Indicates that the battery level is normal.
+Indicates the action of the common event that the battery exits the low battery state.
 
-When the battery level increases from a low level to a level higher than the low level, the event notification service is triggered to publish this event.
+When the battery level rises from the low battery level to above the low battery level, it will trigger the event notification service to publish this system common event.
 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.BATTERY_OKAY"
+**Value:** "usual.event.BATTERY_OKAY"
 
 
 ### COMMON_EVENT_POWER_CONNECTED
 
-Indicates that the device is connected to an external power supply.
+Indicates the action of the common event that the device is connected to an external power source.
 
-When the device connects to an external charger, the event notification service is triggered to publish this event.
+When the device is connected to an external recognizable charger type for charging, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.POWER_CONNECTED"
+**Value:** "usual.event.POWER_CONNECTED"
 
 
 ### COMMON_EVENT_POWER_DISCONNECTED
 
-Indicates that the device is disconnected from the external power supply.
+Indicates the action of the common event that the device is disconnected from the external power supply.
 
-When the device is disconnected from the external power supply, the event notification service is triggered to publish this event.
+When the device is disconnected from the external power supply, the event notification service publishing will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.POWER_DISCONNECTED"
+**Value:** "usual.event.POWER_DISCONNECTED"
 
 
 ### COMMON_EVENT_DISCHARGING
 
-Indicates that the system stops charging the battery.
+Indicates the action of the common event that the system stops charging the battery.
 
-When the system stops charging the battery, the event notification service is triggered to publish this event.
+When the system stops charging the battery, this will trigger the event notification service to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.DISCHARGING"
+**Value:** "usual.event.DISCHARGING"
 
 
 ### COMMON_EVENT_CHARGING
 
-Indicates that the system starts charging the battery.
+Indicates the action of the common event that the system starts charging the battery.
 
-When the system starts charging the battery, the event notification service is triggered to publish this event.
+When the system starts charging the battery, it will trigger the event notification service to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.CHARGING"
+**Value:** "usual.event.CHARGING"
 
 
 
 ### COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED<sup>10+</sup>
 
-Indicates that the device enters the charging idle mode.
+Indicates the action of the common event that the device enters the charging idle mode.
 
-When the device starts charging in idle mode, and the temperature rise is acceptable, the event notification service is triggered to publish this event.
+When the device is in a state of being idle, charging, and with an acceptable temperature rise, the event notification service publishing will trigger this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.CHARGE_IDLE_MODE_CHANGED"
+**Value**: usual.event.CHARGE_IDLE_MODE_CHANGED
 
 
 ### COMMON_EVENT_SHUTDOWN
 
-Indicates that the device is being shut down and the final shutdown will proceed.
+Indicates the action of the common event that the device is being shut down and will continue to shut down completely.
 
-When the device is being shut down until it is powered off, the event notification service is triggered to publish this event.
+When the device is being shut down and will continue to shut down completely, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.SHUTDOWN"
+**Value:** "usual.event.SHUTDOWN"
 
 
 ### COMMON_EVENT_SCREEN_OFF
 
-Indicates that a device screen-off initiated by the power service is complete.
+Indicates the action of the common event that the device screen-off initiated by the power service is complete.
 
-When the device screen-off initiated by the power service is complete, the event notification service is triggered to release this event.
+When the device screen-off initiated by the power service is complete, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.SCREEN_OFF"
+**Value:** usual.event.SCREEN_OFF
 
 
 ### COMMON_EVENT_SCREEN_ON
 
-Indicates that a device screen-on initiated by the power service is complete.
+Indicates the action of the common event that the screen is turned on by the power service.
 
-When the device screen-on initiated by the power service is complete, the event notification service is triggered to release this event.
+When the screen is turned on by the power service, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.SCREEN_ON"
+**Value:** usual.event.SCREEN_ON
 
 
 ### COMMON_EVENT_POWER_SAVE_MODE_CHANGED
 
-Indicates that the system power-saving mode has changed.
+Indicates the action of the common event that the system power save mode changes.
 
-When the system power saving mode changes, the event notification service is triggered to publish this event.
+When the system power save mode changes, the common event service is triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.POWER_SAVE_MODE_CHANGED"
+**Value:** "usual.event.POWER_SAVE_MODE_CHANGED"
 
 
 ### COMMON_EVENT_THERMAL_LEVEL_CHANGED
 
-Indicates that the device's thermal level has changed.
+Action of the common event that indicates the thermal status of the device.
 
-When the device's thermal level changes, the event notification service is triggered to publish this event. <!--Del-->For details about how to configure the device thermal level, see [Thermal Level Customization](../../../../device-dev/subsystems/subsys-thermal_level.md).<!--DelEnd-->
+When the thermal level of the device changes, this system common event will be triggered and published by the event notification service. <!--Del-->For details about the thermal level configuration, see [Thermal Level Customization Development Guide](../../../../device-dev/subsystems/subsys-thermal_level.md). <!--DelEnd-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.THERMAL_LEVEL_CHANGED"
+**Value:** "usual.event.THERMAL_LEVEL_CHANGED"
 
 
 ### COMMON_EVENT_ENTER_FORCE_SLEEP<sup>12+</sup>
 
-Indicates that the device is about to enter the forced sleep mode.
+Indicates the action of the common event that the device is about to enter the forced sleep mode.
 
-When the device is about to enter the forced sleep mode, the event notification service is triggered to publish this event. This event should be processed within one second.
+When the device is about to enter the forced sleep mode, the event notification service publishing will trigger this system common event. All subscribers must process this event within 1 second.
 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.ENTER_FORCE_SLEEP"
+**Value:** "usual.event.ENTER_FORCE_SLEEP"
 
 ### COMMON_EVENT_EXIT_FORCE_SLEEP<sup>12+</sup>
 
-Indicates that the device exits the forced sleep mode.
+Indicates the action of the common event that the device exits the forced sleep mode.
 
-When the device exits the forced sleep mode, the event notification service is triggered to publish this event.
+When the device exits the forced sleep mode, it will trigger the event notification service to publish this system common event.
 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.EXIT_FORCE_SLEEP"
+**Value:** "usual.event.EXIT_FORCE_SLEEP"
 
 ### COMMON_EVENT_ENTER_HIBERNATE<sup>15+</sup>
 
-Indicates that the device is about to enter the hibernation mode.
+Indicates the action of the common event that the device is about to enter hibernation mode.
 
-When the device is about to enter the hibernation mode, the event notification service is triggered to publish this event. This event should be processed within one second.
+When the device is about to enter hibernation mode, the event notification service will trigger the publishing of this system common event. All subscribers must process this event within 1 second.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.ENTER_HIBERNATE"
+**Value:** "usual.event.ENTER_HIBERNATE"
 
 ### COMMON_EVENT_EXIT_HIBERNATE<sup>15+</sup>
 
-Indicates that the device exits the hibernation mode.
+Indicates the action of the common event that the device exits hibernate mode.
 
-When the device exits the hibernation mode, the event notification service is triggered to publish this event.
+When the device exits hibernate mode, the event notification service will trigger the publishing of this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.EXIT_HIBERNATE"
+**Value:** "usual.event.EXIT_HIBERNATE"
 
 ### COMMON_EVENT_VOLUME_DECRYPTED
 
 Indicates that a specific volume on the device has been decrypted.
 
-When a specific volume on the device is decrypted, the event notification service is triggered to publish this event.
+When a specific volume on the device is decrypted, the event notification service will be triggered to publish this system common event.
 
 **Since**: 26.0.0
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.VOLUME_DECRYPTED"
+**Value:** "usual.event.VOLUME_DECRYPTED"
 
 ### COMMON_EVENT_VOLUME_ENCRYPTED
 
 Indicates that a specific volume on the device has been encrypted.
 
-When a specific volume on the device is encrypted, the event notification service is triggered to publish this event.
+When a specific volume on the device is encrypted, the event notification service publishing will be triggered to publish this system common event.
 
 **Since**: 26.0.0
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.VOLUME_ENCRYPTED"
+**Value:** "usual.event.VOLUME_ENCRYPTED"
 
 ### COMMON_EVENT_VOLUME_ENCRYPTION_POLICY_SET
 
-Indicates that an encryption policy has been set for a specific volume on the device.
+Indicates that the encryption policy has been set for a specific volume on the device.
 
-When an encryption policy is set for a specific volume on the device, the event notification service is triggered to publish this event.
+When the encryption policy is set for a specific volume on the device, the event notification service publishing will be triggered to publish this system common event.
 
 **Since**: 26.0.0
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
+**Subscriber permission:** ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
 
-**Value**: "usual.event.VOLUME_ENCRYPTION_POLICY_SET"
+**Value:** "usual.event.VOLUME_ENCRYPTION_POLICY_SET"
 
 
 ## Connectivity Kit
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE<sup>20+</sup>
 
-Indicates that the Bluetooth HFP AG connection state changes.
+Indicates the operation of the common event for the Bluetooth HFP AG connection state change.
 
-When the Bluetooth HFP AG connection state changes, the event notification service is triggered to publish this event.
+When the Bluetooth HFP AG connection state changes, the event notification service is triggered to publish this [system common event](../../../basic-services/common-event/common-event-glossary.md#system-common-event).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions for subscribers:** ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.handsfree.ag.CONNECT_STATE_CHANGE"
+**Value:** "usual.event.bluetooth.handsfree.ag.CONNECT_STATE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_CHANGE<sup>20+</sup>
 
-Indicates that the Bluetooth A2DP source connection state changes.
+Indicates the operation of the common event for the Bluetooth A2DP Source connection state change.
 
-When the Bluetooth A2DP source connection state changes, the event notification service is triggered to publish this event.
+When the Bluetooth A2DP Source connection state changes, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions for subscribers:** ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.a2dpsource.CONNECT_STATE_CHANGE"
+**Value:** "usual.event.bluetooth.a2dpsource.CONNECT_STATE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_CHANGE<sup>20+</sup>
 
-Indicates that the Bluetooth AVRCP connection state changes.
+Indicates the operation of the common event for a Bluetooth AVRCP connection state change.
 
-When the Bluetooth AVRCP connection state changes, the event notification service is triggered to publish this event.
+When the Bluetooth AVRCP connection state changes, the event notification service publishing will trigger this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_CHANGE"
+**Value:** "usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_CHANGE<sup>20+</sup>
 
-Indicates that the Bluetooth media codec changes.
+Indicates the operation of the common event for a change in the Bluetooth media codec.
 
-When the Bluetooth media codec changes, the event notification service is triggered to publish this event.
+When the Bluetooth media codec changes, this will trigger the event notification service to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions for subscribers:** ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.a2dpsource.CODEC_VALUE_CHANGE"
+**Value:** "usual.event.bluetooth.a2dpsource.CODEC_VALUE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAY_STATE_CHANGE<sup>24+</sup>
 
-Indicates that the Bluetooth A2DP playback state changes.
+Indicates the action of the common event for the Bluetooth media A2DP playback state change.
 
-When the Bluetooth A2DP playback state changes, the event notification service is triggered to publish this event.
+When the Bluetooth media A2DP playback state changes, the event notification service publishing will trigger this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -914,9 +917,9 @@ When the Bluetooth A2DP playback state changes, the event notification service i
 
 ### COMMON_EVENT_BLUETOOTH_SCO_CONNECT_STATE_CHANGE<sup>24+</sup>
 
-Indicates that the Bluetooth SCO state changes.
+Indicates the operation of the common event for Bluetooth SCO state changes.
 
-When the Bluetooth SCO state changes, the event notification service is triggered to publish this event.
+When the Bluetooth SCO state changes, this will trigger the event notification service to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -927,288 +930,349 @@ When the Bluetooth SCO state changes, the event notification service is triggere
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE<sup>20+</sup>
 
-Indicates that the Bluetooth ACL connection state changes.
+Indicates the action of the common event for the ACL connection state change of a Bluetooth remote device.
 
-When the Bluetooth ACL connection state changes, the event notification service is triggered to publish this event.
+When the ACL connection state of a Bluetooth remote device changes, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.remotedevice.ACL_STATE_CHANGE"
+**Value:** "usual.event.bluetooth.remotedevice.ACL_STATE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE_CHANGE<sup>20+</sup>
 
-Indicates that the Bluetooth pairing state changes.
+Indicates the operation of the common event for Bluetooth pairing state changes.
 
-When the Bluetooth pairing state changes, the event notification service is triggered to publish this event.
+When the Bluetooth pairing state changes, this will trigger the event notification service publishing this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.remotedevice.PAIR_STATE_CHANGE"
+**Value:** "usual.event.bluetooth.remotedevice.PAIR_STATE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_CHANGE<sup>23+</sup>
 
-Indicates that the Bluetooth scanning mode changes.
+Indicates the action of the event that the Bluetooth scan mode changes.
 
-When the Bluetooth scanning mode changes, the event notification service is triggered to publish this event.
+When the Bluetooth scan mode changes, the event notification service publishing will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.host.SCAN_MODE_CHANGE"
+**Value:** "usual.event.bluetooth.host.SCAN_MODE_CHANGE"
 
 
 ### COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED
 
-Indicates that the state of the device NFC adapter has changed.
+Indicates the action of the common event that the device NFC state has changed.
 
-When the state of the device NFC adapter changes, the event notification service is triggered to publish this event.
+Indicates that when the device NFC state changes, the event notification service publishing will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.nfc.action.ADAPTER_STATE_CHANGED"
+**Value:** "usual.event.nfc.action.ADAPTER_STATE_CHANGED"
 
 
 ### COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED
 
-Indicates that the NFC RF field is on.
+Common event indicating that an NFC RF field is detected.
 
-When the NFC RF field becomes available, the event notification service is triggered to publish this event.
+When an NFC RF field is detected, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.nfc.action.RF_FIELD_ON_DETECTED"
+**Value:** "usual.event.nfc.action.RF_FIELD_ON_DETECTED"
 
 
 ### COMMON_EVENT_NFC_ACTION_RF_FIELD_OFF_DETECTED
 
-Indicates that the NFC RF field is off.
+Common event indicating that the NFC field is detected to have left.
 
-When the NFC RF field becomes unavailable, the event notification service is triggered to publish this event.
+When the NFC field is detected to have left, the event notification service publishing will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.nfc.action.RF_FIELD_OFF_DETECTED"
+**Value:** "usual.event.nfc.action.RF_FIELD_OFF_DETECTED"
 
 
 ### COMMON_EVENT_WIFI_POWER_STATE
 
-Indicates that the Wi-Fi state changes.
+Indicates the Wi-Fi state changes.
 
-When the Wi-Fi state changes (such as enabled or disabled), the event notification service is triggered to release the system public event.
+When the Wi-Fi state changes (for example, Wi-Fi is enabled or disabled), the event notification service publishing will be triggered to publish this system common event.
 
-State values: **0** indicates that the Wi-Fi is being disabled; **1** indicates that the Wi-Fi has been disabled; **2** indicates that the Wi-Fi is being enabled; **3** indicates that the Wi-Fi has been enabled.
+Status values: 0: WLAN is being disabled, 1: WLAN is disabled, 2: WLAN is being enabled, 3: WLAN is enabled.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.wifi.POWER_STATE"
+**Value:** "usual.event.wifi.POWER_STATE"
 
 
 ### COMMON_EVENT_WIFI_SCAN_FINISHED
 
-Indicates that a Wi-Fi access point is detected and proven to be available.
+Indicates the action that a Wi-Fi access point has been scanned and proven available.
 
-When a Wi-Fi access point is detected and proven to be available, the event notification service is triggered to publish this event.
+When a Wi-Fi access point has been scanned and proven available, the event notification service publishing will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.LOCATION
+**Required permissions:** ohos.permission.LOCATION
 
-**Value**: "usual.event.wifi.SCAN_FINISHED"
+**Value:** "usual.event.wifi.SCAN_FINISHED"
 
 
 ### COMMON_EVENT_WIFI_RSSI_VALUE
 
-  Indicates that the Wi-Fi signal strength (RSSI) has changed.
+  Indicates that the Wi-Fi signal strength (RSSI) changes.
 
-  When the Wi-Fi signal strength (RSSI) changes, the event notification service is triggered to publish this event.
+  When the Wi-Fi signal strength (RSSI) changes, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO
+**Required permissions for subscribers:** ohos.permission.GET_WIFI_INFO
 
-**Value**: "usual.event.wifi.RSSI_VALUE"
+**Value:** "usual.event.wifi.RSSI_VALUE"
 
 
 
 ### COMMON_EVENT_WIFI_CONN_STATE
 
-  Indicates that the Wi-Fi connection state has changed.
+  The Wi-Fi connection state changes.
 
-  When the Wi-Fi connection state changes, the event notification service is triggered to publish this event.
+  When the Wi-Fi connection state changes, the event notification service publishing will be triggered to publish this system common event.
 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.wifi.CONN_STATE"
+**Value:** "usual.event.wifi.CONN_STATE"
 
 
 ### COMMON_EVENT_WIFI_HOTSPOT_STATE
 
-Indicates that the Wi-Fi hotspot state has changed.
+Indicates the Wi-Fi hotspot state changes.
 
-When the Wi-Fi hotspot state changes, the event notification service is triggered to publish this event.
+When the Wi-Fi hotspot state changes, the event notification service will be triggered to publish this system common event.
 
-State values: **2** indicates that the AP is being enabled, **3** indicates that the AP has been enabled; **4** indicates that the AP is being disabled; **5** indicates that the AP has been disabled.
+Status values: 2: AP is being enabled, 3: AP has been enabled, 4: AP is being disabled, 5: AP has been disabled.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.wifi.HOTSPOT_STATE"
+**Value:** "usual.event.wifi.HOTSPOT_STATE"
 
 
 ### COMMON_EVENT_WIFI_AP_STA_JOIN
 
-Indicates that a client has joined the Wi-Fi hotspot of the current device.
+Indicates that a client joins the Wi-Fi hotspot of the current device.
 
-When a client joins the Wi-Fi hotspot of the current device, the event notification service is triggered to publish this event.
+When a client joins the Wi-Fi hotspot of the current device, it will trigger the event notification service to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO
+**Required permissions:** ohos.permission.GET_WIFI_INFO
 
-**Value**: "usual.event.wifi.WIFI_HS_STA_JOIN"
+**Value:** "usual.event.wifi.WIFI_HS_STA_JOIN"
 
 
 ### COMMON_EVENT_WIFI_AP_STA_LEAVE
 
-Indicates that the client is disconnected from the Wi-Fi hotspot of the current device.
+Indicates that a client has disconnected from the Wi-Fi hotspot of the current device.
 
-When a client is disconnected from the Wi-Fi hotspot of the current device, the event notification service is triggered to publish this event.
+When a client has disconnected from the Wi-Fi hotspot of the current device, the event notification service will be triggered to publish this system common event.
 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO
+**Required permissions:** ohos.permission.GET_WIFI_INFO
 
-**Value**: "usual.event.wifi.WIFI_HS_STA_LEAVE"
+**Value:** "usual.event.wifi.WIFI_HS_STA_LEAVE"
 
 
 ### COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE
 
-Indicates that the state of MPLINK (an enhanced Wi-Fi feature) has changed.
+Indicates that the MPLink (enhanced Wi-Fi) state has changed.
 
-When the state of MPLINK changes, the event notification service is triggered to publish this event (not supported yet).
+When the MPLink (enhanced Wi-Fi) state changes, the event notification service publishing will be triggered to publish this system common event (not yet supported).
 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.wifi.mplink.STATE_CHANGE"
+**Value:** "usual.event.wifi.mplink.STATE_CHANGE"
 
 
 ### COMMON_EVENT_WIFI_P2P_CONN_STATE
 
-Indicates that the Wi-Fi P2P connection state has changed.
+Indicates that the Wi-Fi P2P connection state changes.
 
-When the Wi-Fi P2P connection state changes, the event notification service is triggered to publish this event.
+When the Wi-Fi P2P connection state changes, the event notification service publishing will trigger this system common event.
 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
+**Required permissions:** ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 
-**Value**: "usual.event.wifi.p2p.CONN_STATE_CHANGE"
+**Value:** "usual.event.wifi.p2p.CONN_STATE_CHANGE"
 
 
 ### COMMON_EVENT_WIFI_P2P_STATE_CHANGED
 
-Indicates that the Wi-Fi P2P state has changed.
+Indicates the Wi-Fi P2P state change.
 
-When the Wi-Fi P2P state changes, the event notification service is triggered to publish this event.
+When the Wi-Fi P2P state changes, the event notification service publishing will trigger this system common event.
 
-State values: **2** indicates that the P2P is being enabled, **3** indicates that the P2P has been enabled; **4** indicates that the P2P is being disabled; **5** indicates that the P2P has been disabled.
+State values: 2: P2P is being enabled, 3: P2P is enabled, 4: P2P is being disabled, 5: P2P is disabled.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO
+**Required permissions:** ohos.permission.GET_WIFI_INFO
 
-**Value**: "usual.event.wifi.p2p.STATE_CHANGE"
+**Value:** "usual.event.wifi.p2p.STATE_CHANGE"
 
 
 ### COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED
 
-Indicates that the state of the Wi-Fi P2P peer device has changed.
+Indicates that the Wi-Fi P2P peer state changes.
 
-When the state of the Wi-Fi P2P peer device changes, the event notification service is triggered to publish this event.
+When the Wi-Fi P2P peer state changes, the event notification service publishing will trigger this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO
+**Required permissions for subscribers**: ohos.permission.GET_WIFI_INFO
 
-**Value**: "usual.event.wifi.p2p.DEVICES_CHANGE"
+**Value:** "usual.event.wifi.p2p.DEVICES_CHANGE"
 
 
 ### COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED
 
-Indicates that the Wi-Fi P2P discovery state has changed.
+Indicates the Wi-Fi P2P discovery state change.
 
-When the Wi-Fi P2P discovery state changes, the event notification service is triggered to publish this event.
+When the Wi-Fi P2P discovery state changes, the event notification service publishing will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO
+**Required permissions:** ohos.permission.GET_WIFI_INFO
 
-**Value**: "usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE"
+**Value:** "usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE"
 
 
 ### COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED
 
-Indicates that the state of the Wi-Fi P2P local device has changed.
+Indicates the change of the current device state of Wi-Fi P2P.
 
-When the state of the Wi-Fi P2P local device changes, the event notification service is triggered to publish this event.
+When the current device state of Wi-Fi P2P changes, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO
+**Required permissions:** ohos.permission.GET_WIFI_INFO
 
-**Value**: "usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE"
+**Value:** "usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE"
 
 
 ### COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED
 
 Indicates that the Wi-Fi P2P group information has changed.
 
-When the Wi-Fi P2P group information changes, the event notification service is triggered to publish this event.
+When the Wi-Fi P2P group information changes, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO
+**Required permissions for subscribers**: ohos.permission.GET_WIFI_INFO
 
-**Value**: "usual.event.wifi.p2p.GROUP_STATE_CHANGED"
+**Value:** "usual.event.wifi.p2p.GROUP_STATE_CHANGED"
 
+## Core File Kit
+
+### COMMON_EVENT_VOLUME_REMOVED
+
+Indicates that an external storage device was removed.
+
+This common event is triggered when an external storage device is removed.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions:** ohos.permission.STORAGE_MANAGER (for system applications only)
+
+**Value**: usual.event.data.VOLUME_REMOVED
+
+### COMMON_EVENT_VOLUME_UNMOUNTED
+
+Indicates that an external storage device was unmounted.
+
+This common event is triggered when an external storage device is successfully unmounted by calling the **unmount** API or by removing the device.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions:** ohos.permission.STORAGE_MANAGER (for system applications only)
+
+**Value**: usual.event.data.VOLUME_UNMOUNTED
+
+### COMMON_EVENT_VOLUME_MOUNTED
+
+Indicates that an external storage device was mounted.
+
+This common event is triggered when an external storage device is successfully mounted by calling the **mount** API or by inserting the device.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions:** ohos.permission.STORAGE_MANAGER (for system applications only)
+
+**Value**: usual.event.data.VOLUME_MOUNTED
+
+### COMMON_EVENT_VOLUME_BAD_REMOVAL
+
+Indicates that an external storage device was removed without being unmounted.
+
+This common event is triggered when an external storage device is directly removed without being unmounted.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions:** ohos.permission.STORAGE_MANAGER (for system applications only)
+
+**Value**: usual.event.data.VOLUME_BAD_REMOVAL
+
+### COMMON_EVENT_VOLUME_EJECT
+
+Indicates that an external storage device is about to be ejected.
+
+This common event is triggered when the user calls the **unmount** API on a mounted external storage device or removes the device.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions:** **ohos.permission.STORAGE_MANAGER** (for system applications only)
+
+**Value**: usual.event.data.VOLUME_EJECT
 
 ## MDM Kit
 
 ### COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED
 
-Indicates that the browser hosting policy has been changed.
+Indicates that the browser managed policy has changed.
 
-When the browser hosting policy changes, the event notification service is triggered to publish this system common event.
+When the browser hosting policy changes, the event notification service is triggered to publish this [system common event](../../../basic-services/common-event/common-event-glossary.md#system-common-event).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.MANAGED_BROWSER_POLICY_CHANGED"
+**Value:** "usual.event.MANAGED_BROWSER_POLICY_CHANGED"
 
 
 ## Localization Kit
@@ -1216,157 +1280,155 @@ When the browser hosting policy changes, the event notification service is trigg
 ### COMMON_EVENT_LOCALE_CHANGED
 
 Indicates that the system language is set.
-When the system language is set, the event notification service is triggered to publish this event.
+When the system language is set, the event notification service is triggered to publish this [system common event](../../../basic-services/common-event/common-event-glossary.md#system-common-event).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.LOCALE_CHANGED"
+**Value:** "usual.event.LOCALE_CHANGED"
 
 
 ## Network Kit
 
 ### COMMON_EVENT_CONNECTIVITY_CHANGE<sup>10+</sup>
 
-Indicates that the network connection state has changed.
+Indicates that the network connection status changes.
 
-When the (Ethernet, Wi-Fi, or cellular) network connection state changes (disconnected, connecting, or connected), the event notification service is triggered to publish this event.
+When the (Ethernet, Wi-Fi, or cellular) network connection state changes (disconnected, connecting, or connected), the event notification service is triggered to publish this [system common event](../../../basic-services/common-event/common-event-glossary.md#system-common-event).
 The following table lists the enum values and their corresponding connection status.
 
-| Value |  Connection State |
+| Enumeration Value | Connection Status |
 | ------ | ---------- |
-|    2   |   Connecting.  |
-|    3   |   Connected.  |
-|    4   |   Disconnecting.|
-|    5   |   Disconnected.  |
+|    2   |   Connecting   |
+|    3   |   Connected   |
+|    4   |   Disconnecting |
+|    5   |   Disconnected   |
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Value**: "usual.event.CONNECTIVITY_CHANGE"
+**Value:** "usual.event.CONNECTIVITY_CHANGE"
 
 
 ### COMMON_EVENT_AIRPLANE_MODE_CHANGED<sup>10+</sup>
 
-Indicates that the airplane mode state has changed.
+Indicates that the airplane mode state changes.
 
-When the airplane mode is enabled or disabled, the event notification service is triggered to publish this event.
+After the system airplane mode is enabled or disabled, this will trigger the event notification service to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.AIRPLANE_MODE"
+**Value:** "usual.event.AIRPLANE_MODE"
 
 
 ### COMMON_EVENT_HTTP_PROXY_CHANGE<sup>10+</sup>
 
-Indicates that the HTTP proxy configuration has changed.
+Indicates that the network HTTP proxy configuration information is updated.
 
-When the configuration information of the system global proxy or HTTP proxy on various networks (such as Ethernet, Wi-Fi, and cellular networks) changes, the event notification service is triggered to release the system common event.
+When the HTTP proxy configuration information of the system global proxy or various networks (Ethernet, Wi-Fi, cellular, etc.) changes, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.HTTP_PROXY_CHANGE"
+**Value:** "usual.event.HTTP_PROXY_CHANGE"
 
 
 ## Telephony Kit
 
-This topic lists the common system events provided by the telephony subsystem to applications.
+This topic lists the [system common events](../../../basic-services/common-event/common-event-glossary.md#system-common-event) provided by the telephony subsystem to applications.
 
 ### COMMON_EVENT_SIM_STATE_CHANGED<sup>10+</sup>
 
-Indicates that the SIM card status has changed.
+Indicates that the SIM card state is updated.
 
-When there is a change in the SIM card status of the device, the event notification service is triggered to publish this event.
+When the SIM card state on the device changes, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.SIM_STATE_CHANGED"
+**Value:** "usual.event.SIM_STATE_CHANGED"
 
 
 ### COMMON_EVENT_CALL_STATE_CHANGED<sup>10+</sup>
 
-Indicates that the call state has been updated.
+Indicates a call state update.
 
-When the call state of the device is updated, the event notification service is triggered to publish this event.
+When the call state of the device is updated, the common event service is triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.GET_TELEPHONY_STATE (for system apps only)
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE (for system applications only)
 
-**Value**: "usual.event.CALL_STATE_CHANGED"
+**Value:** "usual.event.CALL_STATE_CHANGED"
 
 
 ### COMMON_EVENT_NETWORK_STATE_CHANGED<sup>10+</sup>
 
-Indicates that the network state has been updated.
+Indicates that the network state is updated.
 
-When the network state of the device is updated, the event notification service is triggered to publish this event.
+When the network state of the device is updated, the common event service is triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.NETWORK_STATE_CHANGED"
+**Value:** usual.event.NETWORK_STATE_CHANGED
 
 
 ### COMMON_EVENT_SIGNAL_INFO_CHANGED<sup>10+</sup>
 
-Indicates that the signal information has been updated.
+Indicates that the signal information is updated.
 
-When the signal information of the device is updated, the event notification service is triggered to publish this event.
+When the signal information of the device is updated, the common event service is triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.SIGNAL_INFO_CHANGED"
+**Value:** "usual.event.SIGNAL_INFO_CHANGED"
 
 
 ## AppGallery Kit
-This topic lists the common system events provided by the AppGallery Kit to applications.
+This topic lists the [system common events](../../../basic-services/common-event/common-event-glossary.md#system-common-event) provided by the AppGallery Kit to applications.
 
 ### COMMON_EVENT_PRIVACY_STATE_CHANGED<sup>11+</sup>
 
-Indicates the privacy state has been changed.
+Common event that indicates the privacy signing result.
 
-When a user taps the agree button in the privacy statement dialog box, the event notification service is triggered to publish this event.
+In a privacy dialog box scenario, when the user taps Agree, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.PRIVACY_STATE_CHANGED"
+**Value:** "usual.event.PRIVACY_STATE_CHANGED"
 
 ## Multimodalinput Kit
-This topic lists the common system events provided by the Multimodalinput Kit to applications.
+This topic lists the [system common events](../../../basic-services/common-event/common-event-glossary.md#system-common-event) provided by the Multimodalinput Kit to applications.
 
 ### COMMON_EVENT_TABLET_MODE_CHANGED<sup>23+</sup>
 
-Indicates that the tablet mode of a device (such as a tablet with bracket) has been changed.
-When the tablet mode of a device has been changed, the event notification service is triggered to publish this event.
+Indicates a device that can sense the opening and closing of its stand, for example, a tablet with a stand. When the stand open/close state changes, the event notification service will be triggered to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Value**: "usual.event.TABLET_MODE_CHANGED "
+**Value:** "usual.event.TABLET_MODE_CHANGED"
 
 ### COMMON_EVENT_LID_STATE_CHANGED<sup>23+</sup>
 
-Indicates that the lid state of a device (such as a laptop) has been changed.
-When the lid state of a device has been changed, the event notification service is triggered to publish this event.
+Indicates a device that can sense the opening and closing of its lid, for example, a laptop with an openable and closable lid. When the lid state changes, it will trigger the event notification service to publish this system common event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Value**: "usual.event.LID_STATE_CHANGED"
+**Value:** usual.event.LID_STATE_CHANGED
 
 ## Reserved Common Event
 
@@ -1374,338 +1436,338 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_LOCKED_BOOT_COMPLETED
 
-(Reserved, not supported yet) Indicates that the guidance is complete and the system is loaded, but the screen is still locked.
+(Reserved event, not yet supported) Indicates that the user has completed boot, the system has been loaded, but the screen is still locked.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.LOCKED_BOOT_COMPLETED"
+**Value:** "usual.event.LOCKED_BOOT_COMPLETED"
 
 
 ### COMMON_EVENT_PACKAGE_FIRST_LAUNCH
 
-(Reserved, not supported yet) Indicates an initial start of an application after installation.
+(Reserved event, not yet supported) The application program is launched for the first time after installation.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.PACKAGE_FIRST_LAUNCH"
+**Value:** "usual.event.PACKAGE_FIRST_LAUNCH"
 
 
 ### COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION
 
-(Reserved, not supported yet) Indicates that a package is sent by the system verifier when the package needs verification.
+(Reserved event, not yet supported) Sent by the system package verifier when a package needs to be verified.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.PACKAGE_NEEDS_VERIFICATION"
+**Value:** "usual.event.PACKAGE_NEEDS_VERIFICATION"
 
 
 ### COMMON_EVENT_PACKAGE_VERIFIED
 
-(Reserved, not supported yet) Indicates that a package is sent by the system verifier when the package is verified.
+(Reserved event, not yet supported) Sent by the system package verifier when a package is verified.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.PACKAGE_VERIFIED"
+**Value:** "usual.event.PACKAGE_VERIFIED"
 
 ### COMMON_EVENT_PACKAGE_REPLACED
 
-(Reserved, not supported yet) Indicates the action of a common event that a new version of an installed application package has replaced the previous one on the device. Data contains the name of the package.
+(Reserved event, not yet supported) Indicates the action of installing a new version of an application package on the device and replacing the old version. The data contains the package name.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.PACKAGE_REPLACED"
+**Value:** "usual.event.PACKAGE_REPLACED"
 
 
 ### COMMON_EVENT_MY_PACKAGE_REPLACED
 
-(Reserved, not supported yet) Indicates the action of a common event that a new version of an installed application package has replaced the previous one on the device. This event does not contain additional data and is sent only to the replaced application.
+(Reserved event, not yet supported) Indicates the action of installing a new version of an application package on the device and replacing the old version. It does not contain extra data and is sent only to the replaced application.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.MY_PACKAGE_REPLACED"
+**Value:** "usual.event.MY_PACKAGE_REPLACED"
 
 
 ### COMMON_EVENT_PACKAGES_UNSUSPENDED
 
-(Reserved, not supported yet) Indicates that the package has been unsuspended.
+(Reserved event, not yet supported) Indicates that the package has been unsuspended.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.PACKAGES_UNSUSPENDED"
+**Value:** "usual.event.PACKAGES_UNSUSPENDED"
 
 
 ### COMMON_EVENT_CLOSE_SYSTEM_DIALOGS
 
-(Reserved, not supported yet) Indicates that a user closes a temporary system dialog box.
+(Reserved event, not yet supported) Indicates the action of the common event that a user closes a temporary system dialog box.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.CLOSE_SYSTEM_DIALOGS"
+**Value:** "usual.event.CLOSE_SYSTEM_DIALOGS"
 
 
 
 ### COMMON_EVENT_UID_REMOVED
 
-(Reserved, not supported yet) Indicates that a user ID has been removed from the system.
+(Reserved event, not yet supported) Indicates the action of the common event that the user ID has been removed from the system.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.UID_REMOVED"
+**Value**: usual.event.UID_REMOVED
 
 
 ### COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE
 
-(Reserved, not supported yet) Indicates that applications installed on the external storage become available for the system.
+(Reserved event, not yet supported) Indicates the operation of the common event that makes applications installed on external storage available to the system.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.EXTERNAL_APPLICATIONS_AVAILABLE"
+**Value:** "usual.event.EXTERNAL_APPLICATIONS_AVAILABLE"
 
 
 ### COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE
 
-(Reserved, not supported yet) Indicates that applications installed on the external storage become unavailable for the system.
+(Reserved event, not yet supported) Indicates the operation of the common event that application programs installed on external storage are unavailable to the system.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE"
+**Value:** "usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE"
 
 
 ### COMMON_EVENT_CONFIGURATION_CHANGED
 
-(Reserved, not supported yet) Indicates that the device state (for example, orientation and locale) has changed.
+(Reserved event, not yet supported) Indicates the action of the common event that the device status (for example, orientation and locale) has changed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.CONFIGURATION_CHANGED"
+**Value:** "usual.event.CONFIGURATION_CHANGED"
 
 
 
 ### COMMON_EVENT_DRIVE_MODE
-(Reserved, not supported yet) Indicates that the system is in driving mode.
+(Reserved event, not yet supported) Indicates the action of the common event that the system is in drive mode.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "common.event.DRIVE_MODE"
+**Value:** "common.event.DRIVE_MODE"
 
 
 
 ### COMMON_EVENT_HOME_MODE
-(Reserved, not supported yet) Indicates that the system is in home mode.
+(Reserved event, not yet supported) Indicates the action of the common event that the system is in HOME mode.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "common.event.HOME_MODE"
+**Value:** "common.event.HOME_MODE"
 
 
 
 ### COMMON_EVENT_OFFICE_MODE
-(Reserved, not supported yet) Indicates that the system is in office mode.
+(Reserved event, not yet supported) Indicates the action of the common event indicating that the system is in office mode.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "common.event.OFFICE_MODE"
+**Value:** "common.event.OFFICE_MODE"
 
 
 
 ### COMMON_EVENT_USER_STARTED
 
-(Reserved, not supported yet) Indicates that the user has been started.
+(Reserved event, not yet supported) Indicates the action of the common event that the user has started.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.USER_STARTED"
+**Value**: usual.event.USER_STARTED
 
 
 ### COMMON_EVENT_USER_BACKGROUND
 
-(Reserved, not supported yet) Indicates that the user has been brought to the background.
+(Reserved event, not yet supported) Indicates the action of the common event that the user has been brought to the background.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.USER_BACKGROUND"
+**Value**: usual.event.USER_BACKGROUND
 
 
 ### COMMON_EVENT_USER_STARTING
-(Reserved, not supported yet) Indicates that the user is going to be started.
+(Reserved event, not yet supported) Indicates the action of the common event for starting a user.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (for system applications only)
+Required permissions: **ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS** (for system applications only)
 
-**Value**: "usual.event.USER_STARTING"
+**Value**: usual.event.USER_STARTING
 
 
 
 ### COMMON_EVENT_USER_STOPPING
-(Reserved, not supported yet) Indicates that the user is going to be stopped.
+(Reserved event, not yet supported) Indicates the action of the common event for stopping a user.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (for system applications only)
+**Required permissions:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (for system applications only)
 
-**Value**: "usual.event.USER_STOPPING"
+**Value**: usual.event.USER_STOPPING
 
 
 ### COMMON_EVENT_USER_STOPPED
-(Reserved, not supported yet) Indicates that the user has been stopped.
+(Reserved event, not yet supported) Indicates the action of the common event that the user has stopped.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.USER_STOPPED"
+**Value**: usual.event.USER_STOPPED
 
 
 ### COMMON_EVENT_DISK_REMOVED
 
-(Reserved, not supported yet) Indicates that an external storage device was removed.
+(Reserved event, not yet supported) Sent when the external storage device status changes to removed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
+**Required permissions:** ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: "usual.event.data.DISK_REMOVED"
+**Value**: usual.event.data.DISK_REMOVED
 
 
 ### COMMON_EVENT_DISK_UNMOUNTED
 
-(Reserved, not supported yet) Indicates that an external storage device was unmounted.
+(Reserved event, not yet supported) This common event is sent when the status of an external storage device changes to unmounted.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
+**Required permissions:** ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: "usual.event.data.DISK_UNMOUNTED"
+**Value:** "usual.event.data.DISK_UNMOUNTED"
 
 
 ### COMMON_EVENT_DISK_MOUNTED
 
-(Reserved, not supported yet) Indicates that an external storage device was mounted.
+(Reserved event, not yet supported) This common event is sent when the status of an external storage device changes to mounted.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
+**Required permissions:** **ohos.permission.STORAGE_MANAGER** (for system applications only)
 
-**Value**: "usual.event.data.DISK_MOUNTED"
+**Value:** usual.event.data.DISK_MOUNTED
 
 
 
 ### COMMON_EVENT_DISK_BAD_REMOVAL
 
-(Reserved, not supported yet) Indicates that an external storage device was removed without being unmounted.
+(Reserved event, not yet supported) This common event is published when the external storage device is removed while in the mounted state.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
+**Required permissions:** ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: "usual.event.data.DISK_BAD_REMOVAL"
+**Value**: usual.event.data.DISK_BAD_REMOVAL
 
 
 ### COMMON_EVENT_DISK_UNMOUNTABLE
 
-(Reserved, not supported yet) Indicates that an external storage device becomes unmountable.
+(Reserved event, not yet supported) This common event is sent when the external storage device status changes to a state where it cannot be mounted while a card is inserted.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
+**Required permissions:** ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: "usual.event.data.DISK_UNMOUNTABLE"
+**Value:** "usual.event.data.DISK_UNMOUNTABLE"
 
 
 ### COMMON_EVENT_DISK_EJECT
 
-(Reserved, not supported yet) Indicates that an external storage device was ejected.
+(Reserved event, not yet supported) This common event is sent when the user has indicated the desire to remove the external storage medium.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
+**Required permissions:** **ohos.permission.STORAGE_MANAGER** (for system applications only)
 
-**Value**: "usual.event.data.DISK_EJECT"
+**Value**: usual.event.data.DISK_EJECT
 
 
 ### COMMON_EVENT_DATE_CHANGED
 
-(Reserved, not supported yet) Indicates that the system time has changed.
+(Reserved event, not yet supported) Indicates the action of the common event that the system date has changed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.DATE_CHANGED"
+**Value:** "usual.event.DATE_CHANGED"
 
 ### COMMON_EVENT_USB_ACCESSORY_ATTACHED
 
-Indicates that a USB accessory has been attached.
+Indicates the action of the common event that a USB accessory is attached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.hardware.usb.action.USB_ACCESSORY_ATTACHED"
+**Value:** "usual.event.hardware.usb.action.USB_ACCESSORY_ATTACHED"
 
 
 ### COMMON_EVENT_USB_ACCESSORY_DETACHED
 
-Indicates that a USB accessory has been detached.
+Indicates the action of the common event that a USB accessory is detached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.hardware.usb.action.USB_ACCESSORY_DETACHED"
+**Value:** "usual.event.hardware.usb.action.USB_ACCESSORY_DETACHED"
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event about the connection state of Bluetooth handsfree communication.
+(Reserved event, not yet supported) Action of the common event for the Bluetooth hands-free communication connection state.
 
   > **NOTE**
   >
-  > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE](#common_event_bluetooth_handsfree_ag_connect_state_change20) instead.
+  > This event is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE](#common_event_bluetooth_handsfree_ag_connect_state_change20) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+Required permissions: **ohos.permission.USE_BLUETOOTH**
 
-**Value**: "usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE"
+Value: **"usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE"**
 
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the device connected to the Bluetooth handsfree is active.
+(Reserved event, not yet supported) Indicates the action of the common event that a device connected to the Bluetooth handsfree is in the active state.
 
   > **NOTE**
   >
@@ -1713,13 +1775,13 @@ Indicates that a USB accessory has been detached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** **ohos.permission.USE_BLUETOOTH**
 
-**Value**: "usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE"
+**Value:** **"usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE"**
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the connection state of Bluetooth A2DP has changed.
+(Reserved event, not yet supported) Indicates the action of the common event that the Bluetooth A2DP connection state has changed.
 
   > **NOTE**
   >
@@ -1727,31 +1789,31 @@ Indicates that a USB accessory has been detached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** ohos.permission.USE_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE"
+**Value:** "usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE"
 
 
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event about the connection state of Bluetooth A2DP.
+(Reserved event, not yet supported) Action of the Bluetooth A2DP connection state common event.
 
   > **NOTE**
   >
-  > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_CHANGE](#common_event_bluetooth_a2dpsource_connect_state_change20) instead.
+  > This interface supports since API version 9 and is deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_CHANGE](#common_event_bluetooth_a2dpsource_connect_state_change20) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** **ohos.permission.USE_BLUETOOTH**
 
-**Value**: "usual.event.bluetooth.a2dpsource.CONNECT_STATE_UPDATE"
+**Value:** **"usual.event.bluetooth.a2dpsource.CONNECT_STATE_UPDATE"**
 
 
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the device connected using Bluetooth A2DP is active.
+(Reserved event, not yet supported) Indicates the action of the common event that a device connected via Bluetooth A2DP is in the active state.
 
   > **NOTE**
   >
@@ -1759,29 +1821,29 @@ Indicates that a USB accessory has been detached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** ohos.permission.USE_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.a2dpsource.CURRENT_DEVICE_UPDATE"
+**Value:** "usual.event.bluetooth.a2dpsource.CURRENT_DEVICE_UPDATE"
 
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the AVRCP connection state of Bluetooth A2DP has changed.
+(Reserved event, not yet supported) Indicates the action of the common event that the AVRCP connection state of Bluetooth A2DP has changed.
 
   > **NOTE**
   >
-  > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_CHANGE](#common_event_bluetooth_a2dpsource_avrcp_connect_state_change20) instead.
+  > This interface is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_CHANGE](#common_event_bluetooth_a2dpsource_avrcp_connect_state_change20) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** ohos.permission.USE_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE"
+**Value:** "usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE"
 
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the playing state of Bluetooth A2DP has changed.
+(Reserved event, not yet supported) Action of the common event indicating that the Bluetooth A2DP playing state changes.
 
   > **NOTE**
   >
@@ -1789,43 +1851,43 @@ Indicates that a USB accessory has been detached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** ohos.permission.USE_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.a2dpsource.PLAYING_STATE_UPDATE"
+**Value:** "usual.event.bluetooth.a2dpsource.PLAYING_STATE_UPDATE"
 
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the audio codec state of Bluetooth A2DP has changed.
+(Reserved event, not yet supported) Indicates the action of the common event for Bluetooth A2DP audio codec state changes.
 
   > **NOTE**
   >
-  > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_CHANGE](#common_event_bluetooth_a2dpsource_codec_value_change20) instead.
+  > This event is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_CHANGE](#common_event_bluetooth_a2dpsource_codec_value_change20) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** ohos.permission.USE_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE"
+**Value:** "usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE"
 
 
 
 
 ### COMMON_EVENT_USER_FOREGROUND
 
-(Reserved, not supported yet) Indicates that the user has been brought to the foreground.
+(Reserved event, not yet supported) Action of the common event indicating that the user has been brought to the foreground.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.USER_FOREGROUND"
+**Value**: usual.event.USER_FOREGROUND
 
 
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that a remote Bluetooth device is discovered.
+(Reserved event, not yet supported) Indicates the action of the common event for discovering a remote Bluetooth device.
 
   > **NOTE**
   >
@@ -1833,15 +1895,15 @@ Indicates that a USB accessory has been detached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.LOCATION and ohos.permission.USE_BLUETOOTH
+**Required permissions:** ohos.permission.LOCATION and ohos.permission.USE_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.remotedevice.DISCOVERED"
+**Value:** "usual.event.bluetooth.remotedevice.DISCOVERED"
 
 
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the Bluetooth class of a remote Bluetooth device has changed.
+(Reserved event, not yet supported) Indicates the action of the common event that the Bluetooth class of a remote Bluetooth device has changed.
 
   > **NOTE**
   >
@@ -1849,42 +1911,42 @@ Indicates that a USB accessory has been detached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** ohos.permission.USE_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE"
+**Value:** "usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that a low-ACL connection has been established with a remote Bluetooth device.
+(Reserved event, not yet supported) Indicates the action of the common event that a low-level (ACL) connection has been established with a remote Bluetooth device.
 
   > **NOTE**
   >
-  > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE](#common_event_bluetooth_remotedevice_acl_state_change20) instead.
+  > This interface is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE](#common_event_bluetooth_remotedevice_acl_state_change20) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.bluetooth.remotedevice.ACL_CONNECTED"
+**Value:** "usual.event.bluetooth.remotedevice.ACL_CONNECTED"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that a low-ACL connection has been disconnected from a remote Bluetooth device.
+(Reserved event, not yet supported) Indicates the action of the common event that the low-level (ACL) connection has been disconnected from the remote Bluetooth device.
 
   > **NOTE**
   >
-  > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE](#common_event_bluetooth_remotedevice_acl_state_change20) instead.
+  > This event is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE](#common_event_bluetooth_remotedevice_acl_state_change20) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** **ohos.permission.USE_BLUETOOTH**
 
-**Value**: "usual.event.bluetooth.remotedevice.ACL_DISCONNECTED"
+**Value:** **"usual.event.bluetooth.remotedevice.ACL_DISCONNECTED"**
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE<sup>(deprecated)</sup>
 
-(Reserved, not supported yet) Indicates that the friendly name of a remote Bluetooth device is retrieved for the first time or has changed since the last retrieval.
+(Reserved event, not yet supported) Indicates the operation of the common event that the friendly name of a remote Bluetooth device is retrieved for the first time or has been changed since the last retrieval.
 
   > **NOTE**
   >
@@ -1892,28 +1954,28 @@ Indicates that a USB accessory has been detached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.remotedevice.NAME_UPDATE"
+**Value:** "usual.event.bluetooth.remotedevice.NAME_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the connection state of a remote Bluetooth device has changed.
+(Reserved event, not yet supported) Action of the common event indicating that the connection state of a remote Bluetooth device changes.
 
   > **NOTE**
   >
-  > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE_CHANGE](#common_event_bluetooth_remotedevice_pair_state_change20) instead.
+  > This event is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE_CHANGE](#common_event_bluetooth_remotedevice_pair_state_change20) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** ohos.permission.USE_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.remotedevice.PAIR_STATE"
+**Value:** "usual.event.bluetooth.remotedevice.PAIR_STATE"
 
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the battery level of a remote Bluetooth device is retrieved for the first time or has changed since the last retrieval.
+(Reserved event, not yet supported) Indicates the action of the common event that the battery level of a remote Bluetooth device is retrieved for the first time or has changed since the last retrieval.
 
   > **NOTE**
   >
@@ -1921,13 +1983,13 @@ Indicates that a USB accessory has been detached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+Required permissions: **ohos.permission.USE_BLUETOOTH**
 
-**Value**: "usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE"
+Value: **usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE**
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event about the SDP state of a remote Bluetooth device.
+(Reserved event, not yet supported) Action of the common event for the SDP status of a remote Bluetooth device.
 
   > **NOTE**
   >
@@ -1935,13 +1997,13 @@ Indicates that a USB accessory has been detached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.bluetooth.remotedevice.SDP_RESULT"
+**Value:** "usual.event.bluetooth.remotedevice.SDP_RESULT"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE<sup>(deprecated)</sup>
-Indicates the action of a common event about the UUID connection state of a remote Bluetooth device.
+Action of the common event for the UUID connection status of a remote Bluetooth device.
 
   > **NOTE**
   >
@@ -1949,13 +2011,13 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.remotedevice.UUID_VALUE"
+**Value:** "usual.event.bluetooth.remotedevice.UUID_VALUE"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event about the pairing request from a remote Bluetooth device.
+(Reserved event, not yet supported) Indicates the action of the common event for a remote Bluetooth device pairing request.
 
   > **NOTE**
   >
@@ -1963,13 +2025,13 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.DISCOVER_BLUETOOTH
+**Required permissions:** ohos.permission.DISCOVER_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.remotedevice.PAIRING_REQ"
+**Value:** "usual.event.bluetooth.remotedevice.PAIRING_REQ"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that Bluetooth pairing is canceled.
+(Reserved event, not yet supported) Action of the common event for canceling Bluetooth pairing.
 
   > **NOTE**
   >
@@ -1977,13 +2039,13 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.bluetooth.remotedevice.PAIRING_CANCEL"
+**Value:** "usual.event.bluetooth.remotedevice.PAIRING_CANCEL"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event about the connection request from a remote Bluetooth device.
+(Reserved event, not yet supported) Indicates the action of the common event for a remote Bluetooth device connection request.
 
   > **NOTE**
   >
@@ -1991,13 +2053,13 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.bluetooth.remotedevice.CONNECT_REQ"
+**Value:** "usual.event.bluetooth.remotedevice.CONNECT_REQ"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event about the response to the connection request from a remote Bluetooth device.
+(Reserved event, not yet supported) Indicates the action of the common event for the remote Bluetooth device connection request response.
 
   > **NOTE**
   >
@@ -2005,13 +2067,13 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.bluetooth.remotedevice.CONNECT_REPLY"
+**Value:** "usual.event.bluetooth.remotedevice.CONNECT_REPLY"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the connection to a remote Bluetooth device has been canceled.
+(Reserved event, not yet supported) Indicates the action of the common event for canceling the connection to a remote Bluetooth device.
 
   > **NOTE**
   >
@@ -2019,13 +2081,13 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.bluetooth.remotedevice.CONNECT_CANCEL"
+**Value:** "usual.event.bluetooth.remotedevice.CONNECT_CANCEL"
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the connection state of a Bluetooth handsfree has changed.
+(Reserved event, not yet supported) Indicates the action of the common event that the Bluetooth hands-free unit connection state has changed.
 
   > **NOTE**
   >
@@ -2033,13 +2095,13 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE"
+**Value:** "usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the audio state of a Bluetooth handsfree has changed.
+(Reserved event, not yet supported) Indicates the action of the common event that the Bluetooth hands-free audio state has changed.
 
   > **NOTE**
   >
@@ -2047,13 +2109,13 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE"
+**Value:** "usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the audio gateway state of a Bluetooth handsfree has changed.
+(Reserved event, not yet supported) Indicates the action of the common event that the Bluetooth handsfree audio gateway state has changed.
 
   > **NOTE**
   >
@@ -2061,13 +2123,13 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT"
+**Value:** "usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT"
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the calling state of a Bluetooth handsfree has changed.
+(Reserved event, not yet supported) Indicates the action of the common event that the Bluetooth hands-free call state has changed.
 
   > **NOTE**
   >
@@ -2075,13 +2137,13 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE"
+**Value:** "usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE<sup>(deprecated)</sup>
-Indicates that the state of a Bluetooth adapter has been changed, for example, Bluetooth has been enabled or disabled.
+Indicates the action of the common event that the Bluetooth adapter state has changed, for example, Bluetooth is turned on or off.
 
   > **NOTE**
   >
@@ -2089,9 +2151,9 @@ Indicates that the state of a Bluetooth adapter has been changed, for example, B
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.bluetooth.host.STATE_UPDATE"
+**Value:** "usual.event.bluetooth.host.STATE_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE<sup>(deprecated)</sup>
@@ -2100,17 +2162,17 @@ Indicates that the state of a Bluetooth adapter has been changed, for example, B
   >
   > This API is supported since API version 9 and deprecated since API version 20.
 
-(Reserved, not supported yet) Indicates the common event about the request for the user to allow Bluetooth device scanning.
+(Reserved event, not yet supported) Indicates the action of the common event that a user allows a Bluetooth scan request.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.bluetooth.host.REQ_DISCOVERABLE"
+**Value:** "usual.event.bluetooth.host.REQ_DISCOVERABLE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event about the request for the user to enable Bluetooth.
+(Reserved event, not yet supported) Indicates the action of the common event for a user request to enable Bluetooth.
 
   > **NOTE**
   >
@@ -2118,14 +2180,14 @@ Indicates that the state of a Bluetooth adapter has been changed, for example, B
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+Required permissions: **ohos.permission.USE_BLUETOOTH**
 
-**Value**: "usual.event.bluetooth.host.REQ_ENABLE"
+Value: **"usual.event.bluetooth.host.REQ_ENABLE"**
 
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event about the request for the user to disable Bluetooth.
+(Reserved event, not yet supported) Indicates the action of the common event for a user request to disable Bluetooth.
 
   > **NOTE**
   >
@@ -2133,13 +2195,13 @@ Indicates that the state of a Bluetooth adapter has been changed, for example, B
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** ohos.permission.USE_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.host.REQ_DISABLE"
+**Value:** "usual.event.bluetooth.host.REQ_DISABLE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the Bluetooth scanning mode of a device has changed.
+(Reserved event, not yet supported) Action of the common event indicating that the device Bluetooth scan mode changes.
 
   > **NOTE**
   >
@@ -2147,15 +2209,15 @@ Indicates that the state of a Bluetooth adapter has been changed, for example, B
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** ohos.permission.USE_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.host.SCAN_MODE_UPDATE"
+**Value:** "usual.event.bluetooth.host.SCAN_MODE_UPDATE"
 
 
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED<sup>(deprecated)</sup>
-Indicates that the Bluetooth scanning has been started on the device.
+Action of the common event indicating that Bluetooth scanning has started on the device.
 
   > **NOTE**
   >
@@ -2163,13 +2225,13 @@ Indicates that the Bluetooth scanning has been started on the device.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.host.DISCOVERY_STARTED"
+**Value:** "usual.event.bluetooth.host.DISCOVERY_STARTED"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED<sup>(deprecated)</sup>
-Indicates that the Bluetooth scanning is finished on the device.
+Action of the common event indicating that Bluetooth scanning is finished on the device.
 
   > **NOTE**
   >
@@ -2177,13 +2239,13 @@ Indicates that the Bluetooth scanning is finished on the device.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.host.DISCOVERY_FINISHED"
+**Value:** "usual.event.bluetooth.host.DISCOVERY_FINISHED"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE<sup>(deprecated)</sup>
-Indicates that the Bluetooth adapter name of the device has changed.
+Indicates the operation of the common event that the name of the device Bluetooth adapter has changed.
 
   > **NOTE**
   >
@@ -2191,13 +2253,13 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.host.NAME_UPDATE"
+**Value:** "usual.event.bluetooth.host.NAME_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the connection state of Bluetooth A2DP has changed.
+(Reserved event, not yet supported) Indicates the action of the common event that the Bluetooth A2DP connection state changes.
 
   > **NOTE**
   >
@@ -2205,14 +2267,14 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** ohos.permission.USE_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE"
+**Value:** "usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE"
 
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the playing state of Bluetooth A2DP has changed.
+(Reserved event, not yet supported) Action of the common event for Bluetooth A2DP playback state changes.
 
   > **NOTE**
   >
@@ -2220,13 +2282,13 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** ohos.permission.USE_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE"
+**Value:** "usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates that the audio state of Bluetooth A2DP Sink has changed.
+(Reserved event, not yet supported) Indicates the action of the common event that the audio state of the Bluetooth A2DP sink has changed.
 
   > **NOTE**
   >
@@ -2234,206 +2296,206 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.USE_BLUETOOTH
+**Required permissions:** ohos.permission.USE_BLUETOOTH
 
-**Value**: "usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE"
+**Value:** "usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE"
 
 
 ### COMMON_EVENT_ABILITY_ADDED
-(Reserved, not supported yet) Indicates that an ability has been added.
+(Reserved event, not yet supported) Indicates the action of the common event for an added ability.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.LISTEN_BUNDLE_CHANGE
+Required permissions: **ohos.permission.LISTEN_BUNDLE_CHANGE**
 
-**Value**: "usual.event.ABILITY_ADDED"
+**Value**: usual.event.ABILITY_ADDED
 
 
 ### COMMON_EVENT_ABILITY_REMOVED
-(Reserved, not supported yet) Indicates that an ability has been removed.
+(Reserved event, not yet supported) Indicates the action of the common event for a removed ability.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.LISTEN_BUNDLE_CHANGE
+**Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
 
-**Value**: "usual.event.ABILITY_REMOVED"
+**Value**: usual.event.ABILITY_REMOVED
 
 
 
 ### COMMON_EVENT_ABILITY_UPDATED
-(Reserved, not supported yet) Indicates that an ability has been updated.
+(Reserved event, not yet supported) Indicates the action of the common event that the ability has been updated.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.LISTEN_BUNDLE_CHANGE
+**Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
 
-**Value**: "usual.event.ABILITY_UPDATED"
+**Value:** "usual.event.ABILITY_UPDATED"
 
 
 ### COMMON_EVENT_LOCATION_MODE_STATE_CHANGED
-(Reserved, not supported yet) Indicates that the location mode of the system has changed.
+(Reserved event, not yet supported) Action of the common event indicating that the system location mode has changed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.location.MODE_STATE_CHANGED"
+**Value:** "usual.event.location.MODE_STATE_CHANGED"
 
 
 ### COMMON_EVENT_IVI_SLEEP
-(Reserved, not supported yet) Indicates that the in-vehicle infotainment (IVI) system of a vehicle is sleeping.
+(Reserved event, not yet supported) Indicates the action of the common event that the in-vehicle infotainment (IVI) system of the vehicle is sleeping.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "common.event.IVI_SLEEP"
+**Value:** "common.event.IVI_SLEEP"
 
 
 ### COMMON_EVENT_IVI_PAUSE
-(Reserved, not supported yet) Indicates that the IVI system of a vehicle has entered sleep mode and the playing application is instructed to stop playback.
+(Reserved event, not yet supported) Indicates that the IVI has entered sleep mode and notifies the application program to stop playing.
 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "common.event.IVI_PAUSE"
+**Value:** "common.event.IVI_PAUSE"
 
 
 
 ### COMMON_EVENT_IVI_STANDBY
-(Reserved, not supported yet) Indicates that a third-party application is instructed to pause the current work.
+(Reserved event, not yet supported) Indicates the action of the common event that a third-party application pauses the current work.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "common.event.IVI_STANDBY"
+**Value:** "common.event.IVI_STANDBY"
 
 
 ### COMMON_EVENT_IVI_LASTMODE_SAVE
-(Reserved, not supported yet) Indicates that a third-party application is instructed to save its last mode.
+(Reserved event, not yet supported) Indicates the action of the common event for a third-party application to save its last mode.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "common.event.IVI_LASTMODE_SAVE"
+**Value:** "common.event.IVI_LASTMODE_SAVE"
 
 
 ### COMMON_EVENT_IVI_VOLTAGE_ABNORMAL
-(Reserved, not supported yet) Indicates that the voltage of the vehicle's power system is abnormal.
+(Reserved event, not yet supported) Indicates the action of the common event that the vehicle power system voltage is abnormal.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "common.event.IVI_VOLTAGE_ABNORMAL"
+**Value:** "common.event.IVI_VOLTAGE_ABNORMAL"
 
 
 ### COMMON_EVENT_IVI_HIGH_TEMPERATURE
 
-(Reserved, not supported yet) Indicates that the temperature of the IVI system is high.
+(Reserved event, not yet supported) Indicates that the IVI temperature is too high.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "common.event.IVI_HIGH_TEMPERATURE"
+**Value:** "common.event.IVI_HIGH_TEMPERATURE"
 
 
 ### COMMON_EVENT_IVI_EXTREME_TEMPERATURE
-(Reserved, not supported yet) Indicates that the temperature of the IVI system is extremely high.
+(Reserved event, not yet supported) Indicates that the IVI temperature is extremely high.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "common.event.IVI_EXTREME_TEMPERATURE"
+**Value:** "common.event.IVI_EXTREME_TEMPERATURE"
 
 
 
 ### COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL
-(Reserved, not supported yet) Indicates that the IVI system has an extreme temperature.
+(Reserved event, not yet supported) Indicates the action of the common event that the in-vehicle system has an extreme temperature.
 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "common.event.IVI_TEMPERATURE_ABNORMAL"
+**Value:** "common.event.IVI_TEMPERATURE_ABNORMAL"
 
 
 ### COMMON_EVENT_IVI_VOLTAGE_RECOVERY
-(Reserved, not supported yet) Indicates that the voltage of the vehicle's power system is restored to normal.
+(Reserved event, not yet supported) Indicates the action of the common event that the voltage of the vehicle power system recovers to normal.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "common.event.IVI_VOLTAGE_RECOVERY"
+**Value:** "common.event.IVI_VOLTAGE_RECOVERY"
 
 
 ### COMMON_EVENT_IVI_TEMPERATURE_RECOVERY
-(Reserved, not supported yet) Indicates that the temperature of the IVI system is restored to normal.
+(Reserved event, not yet supported) Indicates the action of the common event that the in-vehicle system temperature returns to normal.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "common.event.IVI_TEMPERATURE_RECOVERY"
+**Value:** "common.event.IVI_TEMPERATURE_RECOVERY"
 
 
 ### COMMON_EVENT_IVI_ACTIVE
-(Reserved, not supported yet) Indicates that the battery service is active.
+(Reserved event, not yet supported) Indicates the action of the common event that the battery service is in the active state.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "common.event.IVI_ACTIVE"
+**Value:** "common.event.IVI_ACTIVE"
 
 
 
 ### COMMON_EVENT_VISIBLE_ACCOUNTS_UPDATED
-(Reserved, not supported yet) Indicates that the account visibility changed.
+(Reserved event, not yet supported) Indicates the action of the common event for visible account changes.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Required permissions**: ohos.permission.GET_APP_ACCOUNTS (for system applications only)
 
-**Value**: "usual.event.data.VISIBLE_ACCOUNTS_UPDATED"
+**Value:** "usual.event.data.VISIBLE_ACCOUNTS_UPDATED"
 
 
 ### COMMON_EVENT_ACCOUNT_DELETED
-(Reserved, not supported yet) Indicates that the account was deleted.
+(Reserved event, not yet supported) Action of the common event for deleting an account.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (for system applications only)
+**Required permissions:** **ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS** (for system applications only)
 
-**Value**: "usual.event.data.ACCOUNT_DELETED"
+**Value:** **usual.event.data.ACCOUNT_DELETED**
 
 
 
 ### COMMON_EVENT_FOUNDATION_READY
-(Reserved, not supported yet) Indicates that the foundation is ready.
+(Reserved event, not yet supported) Indicates the action of the common event that the foundation is ready.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Required permissions**: ohos.permission.RECEIVER_STARTUP_COMPLETED (for system applications only)
 
-**Value**: "usual.event.data.FOUNDATION_READY"
+**Value:** "usual.event.data.FOUNDATION_READY"
 
 
 
-### COMMON_EVENT_SPN_INFO_CHANGED 
-Indicates that the SPN information had changed.
+### COMMON_EVENT_SPN_INFO_CHANGED
+Indicates the action of the common event that the SPN display information has been updated.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: none
+**Required Permissions:** none
 
-**Value**: "usual.event.SPN_INFO_CHANGED"
- 
+**Value:** "usual.event.SPN_INFO_CHANGED"
+<!--no_check-->

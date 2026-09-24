@@ -41,7 +41,7 @@ registerMissionListener(listener: MissionListener): number
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | listener | [MissionListener (任务监听器)](js-apis-inner-application-missionListener-sys.md) | 是 | 系统任务监听器，用于监听系统任务状态变化，包括任务的创建、销毁、切换等。 |
+  | listener | [MissionListener](js-apis-inner-application-missionListener-sys.md) | 是 | 系统任务监听器，用于监听系统任务状态变化，包括任务的创建、销毁、切换等。 |
 
 **返回值：**
 
@@ -224,7 +224,7 @@ getMissionInfo(deviceId: string, missionId: number, callback: AsyncCallback&lt;M
   | -------- | -------- | -------- | -------- |
   | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
   | missionId | number | 是 | 任务ID。 |
-  | callback | AsyncCallback&lt;[MissionInfo (任务信息)](js-apis-inner-application-missionInfo-sys.md)&gt; | 是 | 回调函数，返回任务信息。获取成功时，err为undefined，data为任务快照信息；获取失败时，err为错误对象。 |
+  | callback | AsyncCallback&lt;[MissionInfo](js-apis-inner-application-missionInfo-sys.md)&gt; | 是 | 回调函数，返回任务信息。获取成功时，err为undefined，data为任务快照信息；获取失败时，err为错误对象。 |
 
 **示例：**
 
@@ -273,7 +273,7 @@ getMissionInfo(deviceId: string, missionId: number): Promise&lt;MissionInfo&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;[MissionInfo (任务信息)](js-apis-inner-application-missionInfo-sys.md)&gt; | Promise对象，返回任务信息。 |
+  | Promise&lt;[MissionInfo](js-apis-inner-application-missionInfo-sys.md)&gt; | Promise对象，返回任务信息。 |
 
 **示例：**
 
@@ -313,7 +313,7 @@ getMissionInfos(deviceId: string, numMax: number, callback: AsyncCallback&lt;Arr
   | -------- | -------- | -------- | -------- |
   | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
   | numMax | number | 是 | 任务信息数量上限。 |
-  | callback | AsyncCallback&lt;Array&lt;[MissionInfo (任务信息)](js-apis-inner-application-missionInfo-sys.md)&gt;&gt; | 是 | 回调函数，返回任务信息数组。获取成功时，err为undefined，data为任务快照信息；获取失败时，err为错误对象。 |
+  | callback | AsyncCallback&lt;Array&lt;[MissionInfo](js-apis-inner-application-missionInfo-sys.md)&gt;&gt; | 是 | 回调函数，返回任务信息数组。获取成功时，err为undefined，data为任务快照信息；获取失败时，err为错误对象。 |
 
 **示例：**
 
@@ -355,7 +355,7 @@ getMissionInfos(deviceId: string, numMax: number): Promise&lt;Array&lt;MissionIn
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;Array&lt;[MissionInfo (任务信息)](js-apis-inner-application-missionInfo-sys.md)&gt;&gt; | Promise对象，返回任务信息数组。 |
+  | Promise&lt;Array&lt;[MissionInfo](js-apis-inner-application-missionInfo-sys.md)&gt;&gt; | Promise对象，返回任务信息数组。 |
 
 **示例：**
 
@@ -394,7 +394,7 @@ getMissionSnapShot(deviceId: string, missionId: number, callback: AsyncCallback&
   | -------- | -------- | -------- | -------- |
   | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
   | missionId | number | 是 | 任务ID。 |
-  | callback | AsyncCallback&lt;[MissionSnapshot (任务快照)](js-apis-inner-application-missionSnapshot-sys.md)&gt; | 是 | 回调函数，返回任务快照信息。获取成功时，err为undefined，data为任务快照信息；获取失败时，err为错误对象。 |
+  | callback | AsyncCallback&lt;[MissionSnapshot](js-apis-inner-application-missionSnapshot-sys.md)&gt; | 是 | 回调函数，返回任务快照信息。获取成功时，err为undefined，data为任务快照信息；获取失败时，err为错误对象。 |
 
 **示例：**
 
@@ -442,7 +442,7 @@ getMissionSnapShot(deviceId: string, missionId: number): Promise&lt;MissionSnaps
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;[MissionSnapshot (任务快照)](js-apis-inner-application-missionSnapshot-sys.md)&gt; | Promise对象，返回任务快照信息。 |
+  | Promise&lt;[MissionSnapshot](js-apis-inner-application-missionSnapshot-sys.md)&gt; | Promise对象，返回任务快照信息。 |
 
 **示例：**
 

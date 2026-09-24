@@ -427,6 +427,7 @@ globalConnect参数类型。
 |key         | string   |否   |是   |传入的key，不传则使用type的名字作为key。             |
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |默认数据的构造器，建议传递，如果globalConnect是第一次连接key，不传会报错。 |
 |areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |否   |是    |加密级别：EL1-EL5，对应数值：0-4，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)。不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密级别数值不在0-4会直接运行crash。同一个key使用不同的加密级别时，以第一次globalConnect的加密级别为准。 |
+|ignoreReadOnlyProperties      | boolean   |否   |是    |是否忽略只读属性。当值为false时，反序列化含有只读属性的类（例如被[@Computed](../../ui/state-management/arkts-new-computed.md)装饰的getter函数）时会抛出错误。当值为true时，将忽略只读属性，不会抛出错误。默认值为false。<br>**起始版本：** 26.2.0 <br>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 |
 
 ## ConnectOptionsCollections\<T, S\><sup>23+</sup>
 
