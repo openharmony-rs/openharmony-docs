@@ -9,7 +9,7 @@
 
 This module provides system-level car awareness capabilities, including pointing recognition, body gesture recognition, and car state awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 > **NOTE**
 > 
@@ -25,7 +25,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 
 Enumerates the capability types supported by car awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -46,7 +46,7 @@ Enumerates the capability types supported by car awareness.
 
 Defines the general result information API for car awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -64,7 +64,7 @@ Defines the general result information API for car awareness.
 
 Defines the subscription configuration options API for car awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -82,7 +82,7 @@ onCarAwareness(capability: Capability, callback: Callback<CarAwarenessInfo[]>, o
 
 Enables car awareness and subscribes to car awareness results. If the device does not support the capability, error code 34000002 is thrown. You can call **getAllCapabilityList** to query the capabilities available on the device. The data is returned asynchronously through the callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -134,7 +134,7 @@ offCarAwareness(capability: Capability, callback: Callback<CarAwarenessInfo[]>, 
 
 Unsubscribes from the car awareness of the specified subscription type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -188,7 +188,7 @@ updateSpatialActionEnableStatus(event: number): void
 
 Updates the start/stop status of spatial action awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -241,7 +241,7 @@ updateSpatialActionZone(zone: number): void
 
 Updates the sound zone information for spatial action awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -294,7 +294,7 @@ getCarAwareness(capability: Capability, options?: CarAwarenessOptions): Promise<
 
 Obtains the car awareness result of the specified type once.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

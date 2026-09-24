@@ -163,7 +163,7 @@ generateControllerDevicePackage(remoteUserAuthResult: RemoteUserAuthResults[]): 
 
 Generates a remote authorization result package on the controller device based on the user remote authorization result. The generated package can be sent to the controlled device to perform permission authorization after integrity verification. This API uses a promise to return the result asynchronously.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 
@@ -231,7 +231,7 @@ generateControlledDevicePackage(permissionQuery: PermissionQuery[]): Promise&lt;
 
 Generates a remote authorization request package on the controlled device based on the permission query list. The generated package can be sent to the controller device, where integrity verification is completed before user authorization confirmation is initiated. This API uses a promise to return the result asynchronously.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 
@@ -298,7 +298,7 @@ verifyControllerDevicePackage(ticketInfo: RemoteAuthPackage[], remoteInfo: Remot
 
 Verifies the remote authorization result package sent by the controller device, and checks the message credential and remote device information to ensure that the authorization result is valid. This API uses a promise to return the result asynchronously.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 
@@ -361,7 +361,7 @@ verifyControlledDevicePackage(ticketInfo: RemoteAuthPackage[]): Promise&lt;boole
 
 Verifies the authorization package sent by the controlled device and checks the message credentials to ensure that the authorization request is valid. This API uses a promise to return the result asynchronously.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 
@@ -418,7 +418,7 @@ getRemoteGrantStatus(): Promise&lt;RemoteGrantStatus&gt;
 
 Queries the enable status of the remote authorization switch. When enabled, the device can initiate remote authorization to a remote device; when disabled, remote authorization is not allowed. This API uses a promise to return the result asynchronously.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 
@@ -462,7 +462,7 @@ updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): Promise&lt;void&g
 
 Updates the remote authorization status to enable or disable the remote authorization switch. When enabled, the device can initiate remote authorization to a remote device; when disabled, remote authorization is not allowed. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 
@@ -511,7 +511,7 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 
 Represents the parameters for remote control interaction.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 
@@ -555,7 +555,7 @@ Represents the permission query information.
 | operationInfo | [OperationInfo](#operationinfo)[] | No | No | List of operation information, specifying the CLI commands or APIs to be queried. |
 | needTicket | boolean | No | Yes | Whether to generate a ticket for local or remote authorization. The value **true** means to generate a ticket, and **false** means the opposite. When set to **true**, the ticket information is returned only if the query result passes.<br>Default value: **false** |
 | ticketExpireTimeMs | number | No | Yes | Expiration time of the ticket, in milliseconds. This parameter must be used together with **needTicket** and takes effect only when **needTicket** is **true**. Value range for the regular authorization scenario: 1 to 60000 (60 seconds). Value range for the long-time remote authorization scenario: 1 to 86400000 (24 hours). If the value exceeds the maximum, error code 24010000 is returned.<br>Default value: **10000** |
-| remoteInfo | [RemoteInfo](#remoteinfo) | No | Yes | Remote device information. Used in the remote authorization scenario, including the device role, device ID, Huawei account ID, and other remote device related information.<br>**Since:** 26.1.0 |
+| remoteInfo | [RemoteInfo](#remoteinfo) | No | Yes | Remote device information. Used in the remote authorization scenario, including the device role, device ID, Huawei account ID, and other remote device related information.<br>**Since:** 26.0.1 |
 | callerTokenId | number | No | Yes | Token ID of the caller process. When querying or authorizing for another process, specify the token ID of the target process.<br>If this parameter is not passed in, the token ID of the caller process is obtained by default. |
 | domainId | string | No | Yes | Domain ID.<br>If this parameter is not passed in, the current domain ID of the caller is obtained by default. |
 
@@ -563,7 +563,7 @@ Represents the permission query information.
 
 Describes the remote device information.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 
@@ -658,7 +658,7 @@ Represents ticket information.
 
 Indicates a remote authorization package.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 
@@ -689,7 +689,7 @@ Represents the user authorization result.
 
 Represents the remote user authorization result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 
@@ -704,7 +704,7 @@ Represents the remote user authorization result.
 
 Represents a remote user authorization item.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 
@@ -738,7 +738,7 @@ Enumerates the authorization statuses.
 
 Enumerates the device roles.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 
@@ -769,7 +769,7 @@ Enumerates the operation types.
 
 Enumerates the remote authorization statuses.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 

@@ -267,7 +267,7 @@ try {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;): void
 
-Requests a continuous task of a specific type. This API uses an asynchronous callback to return the result. After a continuous task is successfully requested, there will be a notification message without prompt tone. A UIAbility (ServiceAbility in the FA model) can request only one continuous task at a time through this API. You can request multiple continuous tasks by calling [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) added in API version 21.<br>Since API version 26.1.0, if the continuous task requested using this API contains the data transfer type, you can call [updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress) to update the continuous task notifications. You can choose whether to display a progress ring in the notification and whether to play the ringtone when the progress reaches 100%.
+Requests a continuous task of a specific type. This API uses an asynchronous callback to return the result. After a continuous task is successfully requested, there will be a notification message without prompt tone. A UIAbility (ServiceAbility in the FA model) can request only one continuous task at a time through this API. You can request multiple continuous tasks by calling [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) added in API version 21.<br>Since API version 26.0.1, if the continuous task requested using this API contains the data transfer type, you can call [updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress) to update the continuous task notifications. You can choose whether to display a progress ring in the notification and whether to play the ringtone when the progress reaches 100%.
 
 **Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -358,7 +358,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;
 
-Requests a continuous task of a specific type. This API uses a promise to return the result. After a continuous task is successfully requested, there will be a notification message without prompt tone. A UIAbility (ServiceAbility in the FA model) can request only one continuous task at a time through this API. You can request multiple continuous tasks by calling [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) added in API version 21.<br>Since API version 26.1.0, if the continuous task requested using this API contains the data transfer type, you can call [updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress) to update the continuous task notifications. You can choose whether to display a progress ring in the notification and whether to play the ringtone when the progress reaches 100%.
+Requests a continuous task of a specific type. This API uses a promise to return the result. After a continuous task is successfully requested, there will be a notification message without prompt tone. A UIAbility (ServiceAbility in the FA model) can request only one continuous task at a time through this API. You can request multiple continuous tasks by calling [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) added in API version 21.<br>Since API version 26.0.1, if the continuous task requested using this API contains the data transfer type, you can call [updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress) to update the continuous task notifications. You can choose whether to display a progress ring in the notification and whether to play the ringtone when the progress reaches 100%.
 
 **Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -450,7 +450,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent): Promise&lt;ContinuousTaskNotification&gt;
 
-Requests continuous tasks of multiple types. This API uses a promise to return the result. After a continuous task is successfully requested, there will be a notification message without prompt tone. A UIAbility (ServiceAbility in the FA model) can request only one continuous task at a time through this API. You can request multiple continuous tasks by calling [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) added in API version 21.<br>Since API version 26.1.0, if the continuous task requested using this API contains the data transfer type, you can call [updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress) to update the continuous task notifications. You can choose whether to display a progress ring in the notification and whether to play the ringtone when the progress reaches 100%.
+Requests continuous tasks of multiple types. This API uses a promise to return the result. After a continuous task is successfully requested, there will be a notification message without prompt tone. A UIAbility (ServiceAbility in the FA model) can request only one continuous task at a time through this API. You can request multiple continuous tasks by calling [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) added in API version 21.<br>Since API version 26.0.1, if the continuous task requested using this API contains the data transfer type, you can call [updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress) to update the continuous task notifications. You can choose whether to display a progress ring in the notification and whether to play the ringtone when the progress reaches 100%.
 
 **Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -543,7 +543,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   // The application needs to update the progress only for continuous tasks of the dataTransfer type.
-  // Since API version 26.1.0, you can use the updateDataTransferProgress API to update continuous task notifications that contain the data transfer type. You can choose whether to display a progress ring in the notification and whether to play the ringtone when the progress reaches 100%.
+  // Since API version 26.0.1, you can use the updateDataTransferProgress API to update continuous task notifications that contain the data transfer type. You can choose whether to display a progress ring in the notification and whether to play the ringtone when the progress reaches 100%.
   updateProcess(process: number) {
     // Define the notification type. The notification type of the progress update must be live view.
     let downLoadTemplate: notificationManager.NotificationTemplate = {
@@ -586,7 +586,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;
 
-Requests a continuous task. This API allows a UIAbility (ServiceAbility in the FA model) to request multiple continuous tasks and uses a promise to return the result. When using this API to request a continuous task, its notification can be combined with that of an existing continuous task. For details, see [ContinuousTaskRequest](#continuoustaskrequest21).<br>A maximum of 10 continuous tasks can be created simultaneously. Upon successful creation of a continuous task, a notification will be sent without a prompt tone.<br>If a continuous task requested via this API includes multiple task types (including data transmission tasks), two notifications will appear in the notification panel: one for the data transmission task and the other for the remaining tasks. Removing either notification will cancel the continuous task and remove the other notification. The continuous task notification ID returned by the API is the ID of the data transmission type, which is used to update the data transmission progress.<br>Since API version 26.1.0, when you use this API to apply for a continuous task, you can directly send a progress template notification for a continuous task that contains the data transfer type. You can choose whether to display a progress ring in the notification and whether to play the ringtone when the progress reaches 100%. For details, see [ProgressInfo](#progressinfo). You can also call [updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress) to update the continuous task notification.
+Requests a continuous task. This API allows a UIAbility (ServiceAbility in the FA model) to request multiple continuous tasks and uses a promise to return the result. When using this API to request a continuous task, its notification can be combined with that of an existing continuous task. For details, see [ContinuousTaskRequest](#continuoustaskrequest21).<br>A maximum of 10 continuous tasks can be created simultaneously. Upon successful creation of a continuous task, a notification will be sent without a prompt tone.<br>If a continuous task requested via this API includes multiple task types (including data transmission tasks), two notifications will appear in the notification panel: one for the data transmission task and the other for the remaining tasks. Removing either notification will cancel the continuous task and remove the other notification. The continuous task notification ID returned by the API is the ID of the data transmission type, which is used to update the data transmission progress.<br>Since API version 26.0.1, when you use this API to apply for a continuous task, you can directly send a progress template notification for a continuous task that contains the data transfer type. You can choose whether to display a progress ring in the notification and whether to play the ringtone when the progress reaches 100%. For details, see [ProgressInfo](#progressinfo). You can also call [updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress) to update the continuous task notification.
 
 **Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -1037,7 +1037,7 @@ updateDataTransferProgress(context: Context, progressInfo: DataTransferProgress)
 
 Updates continuous task notifications. Only continuous task notifications that contain the data transfer type can be updated.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1645,7 +1645,7 @@ Describes the detailed reason for canceling a continuous task.
 | SYSTEM_CANCEL_DATA_TRANSFER_NOT_UPDATE    | 12   | A continuous task of the **DATA_TRANSFER** type is requested, but the progress is not updated for a long time (the first update takes more than 10 minutes). |
 | SYSTEM_CANCEL_VOIP_NOT_RUNNING            | 13   | A continuous task of the **VOIP** type is requested, but no audio stream or recording stream is in progress. |
 | SYSTEM_CANCEL_USER_UNAUTHORIZED           | 14   | A continuous task of the special scenario type is requested, but the user is not authorized. |
-| SYSTEM_CANCEL_NOT_USE_NEARLINK            | 15   | A continuous task of the **NEARLINK** type is requested, but NearLink-related services are not used.<br>**Since:** 26.1.0|
+| SYSTEM_CANCEL_NOT_USE_NEARLINK            | 15   | A continuous task of the **NEARLINK** type is requested, but NearLink-related services are not used.<br>**Since:** 26.0.1|
 
 ## BackgroundSubMode<sup>16+</sup>
 
@@ -1777,7 +1777,7 @@ Specifies details of the continuous task being requested or updated. It is typic
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | No   | No   | Notification parameters, which are used to specify the target page that is redirected to when a continuous task notification is clicked.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 | combinedTaskNotification | boolean   | No   | Yes   | Whether to combine notifications. The value **true** means to combine notifications, and the value **false** (default) means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Note: This property does not take effect in [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) API. If notifications need to be combined for an existing task, request the task again and set the value to **true**.|
 | continuousTaskId | number   | No   | Yes   | Continuous task ID. The default value is **-1**.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Note: If **combinedTaskNotification** is set to true, this property is mandatory and the corresponding ID must exist.<br>Additionally, this property is mandatory (with the corresponding ID required) when used as an input parameter for the [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) API.<br>You can call the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API to view information about all continuous tasks.  |
-| progressInfo | [ProgressInfo](#progressinfo)   | No   | Yes   | Progress information of a continuous task notification.<br>**Since**: 26.1.0<br> **Model restriction**: This API can be used only in the stage model.<br>Note: This attribute applies only to continuous tasks requested through the [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning21) API, and the continuous task type includes the data transfer type [MODE_DATA_TRANSFER](#backgroundtaskmode21).<br>This attribute cannot be used in the [updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21) API.|
+| progressInfo | [ProgressInfo](#progressinfo)   | No   | Yes   | Progress information of a continuous task notification.<br>**Since**: 26.0.1<br> **Model restriction**: This API can be used only in the stage model.<br>Note: This attribute applies only to continuous tasks requested through the [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning21) API, and the continuous task type includes the data transfer type [MODE_DATA_TRANSFER](#backgroundtaskmode21).<br>This attribute cannot be used in the [updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21) API.|
 
 ### isModeSupported<sup>21+</sup>
 
@@ -2152,7 +2152,7 @@ Describes the user authorization result, indicating the authorization status of 
 
 Describes the notification progress information.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2169,7 +2169,7 @@ Describes the notification progress information.
 
 Describes the progress information of a continuous task notification.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Model restriction**: This API can be used only in the stage model.
 

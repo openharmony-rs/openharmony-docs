@@ -35,7 +35,7 @@ Enumerates the PiP template types.
 | Name           | Value  | Description                                  |
 |---------------|-----|--------------------------------------|
 | VIDEO_DRIVE   | 4   | In-vehicle video template, which is loaded when a PiP window is started on cars.<br>**Since:** 26.0.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br> **Device behavior differences:** This template type can be properly called on cars. If it is called on other device types, error code 401 is returned.|
-| VIDEO_NAVIGATION   | 5   | In-vehicle navigation template, which is loaded when a PiP window is started on cars.<br>**Since:** 26.1.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.1.0.<br> **Device behavior differences:** This template type can be properly called on cars. If it is called on other device types, error code 401 is returned.|
+| VIDEO_NAVIGATION   | 5   | In-vehicle navigation template, which is loaded when a PiP window is started on cars.<br>**Since:** 26.0.1<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.1.<br> **Device behavior differences:** This template type can be properly called on cars. If it is called on other device types, error code 401 is returned.|
 
 ## PiPController
 

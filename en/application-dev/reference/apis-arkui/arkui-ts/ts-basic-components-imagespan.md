@@ -132,9 +132,9 @@ When `top + bottom` is greater than the height of the original image or `left + 
 
 When the parameter type of the component is an animated image, [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12), or SVG, this attribute does not take effect.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
-**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -493,7 +493,7 @@ struct Index {
 
 This example shows how to stretch the **ImageSpan** image in different directions using the slice option of the [resizable](#resizable) attribute.
 
-Since API version 26.1.0, the **resizable** attribute is added.
+Since API version 26.0.1, the **resizable** attribute is added.
 
 ```ts
 @Entry

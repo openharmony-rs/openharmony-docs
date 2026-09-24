@@ -9,7 +9,7 @@
 
 ChildProcessInformation defines the information about a child process, including the PID of the child process, the PID of the parent process, and the name of the child process. It can be obtained through [getChildProcessInfos](js-apis-app-ability-childProcessManager.md#childprocessmanagergetchildprocessinfos) and [getUIAbilityChildProcessInfos](js-apis-inner-application-applicationContext.md#applicationcontextgetuiabilitychildprocessinfos).
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
