@@ -748,8 +748,6 @@ struct MaskDispersion {
       let imageSource = image.createImageSource(buffer);
       imageSource.createPixelMap().then(pixelMap => {
         this.pixelMap = pixelMap;
-      }).finally(() => {
-        imageSource.release();
       })
     })
   }
@@ -882,7 +880,7 @@ Provides an illumination effect based on [Mask](#mask20) and parallel light for 
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Returns the filter that mounts the parallel lighting effect controlled by the displacement map.|
+| [Filter](#filter) | Returns the filter that mounts the lighting effect controlled by the displacement map.|
 
 **Error codes**
 
@@ -1097,8 +1095,6 @@ struct BlurBubblesRiseExample {
         let imageSource: image.ImageSource = image.createImageSource(buffer);
         imageSource.createPixelMap().then((pixelmap: image.PixelMap) => {
           this.maskImage = pixelmap as PixelMap;
-        }).finally(() => {
-          imageSource.release();
         });
       });
   }
@@ -1453,7 +1449,7 @@ Applies a nonlinear distortion effect to a component. Typical application scenar
 > - The distortion effect allows drawing beyond the component boundary, but the rendering result is still affected by the clipping attribute of the parent component.
 > - Calling this API creates an off-screen rendering canvas of the same size as the distorted area. To avoid display anomalies or excessive performance overhead, it is not recommended to distort a component beyond the screen size.
 > - This API includes a foreground Filter. When used in combination with APIs that depend on background screenshots, such as [backgroundEffect](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundeffect19), [brightness](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#brightness), [blur](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blur19), and [backgroundColorBlender](#backgroundcolorblender), it must be nested in [EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md); otherwise, some visual effects may fail or behave abnormally.
-> - When a child node calls the [systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial) API, the node that calls this API must be nested in [EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md); otherwise, the system material will be lost. Note, however, that this calling method additionally increases the background distortion of the system material.
+> - When a child node calls the [systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23) API, the node that calls this API must be nested in [EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md); otherwise, the system material will be lost. Note, however, that this calling method additionally increases the background distortion of the system material.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1796,10 +1792,11 @@ struct Index {
         return undefined;
       }
       const pixelMap: image.PixelMap | null = imageSource.createPixelMapSync();
-      imageSource.release();
       if (!pixelMap) {
+        imageSource.release();
         return undefined;
       }
+      imageSource.release();
       return pixelMap;
     } catch (err) {
       return undefined;

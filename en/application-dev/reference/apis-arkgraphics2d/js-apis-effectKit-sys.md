@@ -309,7 +309,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-      let percentage: number = colorPicker.getAlphaZeroTransparentProportion();
+        let percentage: number = colorPicker.getAlphaZeroTransparentProportion();
       console.info('Get proportion of fully transparent pixels: ' + percentage);
     }
   });
@@ -359,8 +359,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-      let morandiColor = colorPicker.getMorandiShadowColor();
-      console.info('get Morandi shadow color =' + morandiColor);
+      let color = colorPicker.getMorandiShadowColor();
+      console.info('get Morandi shadow color =' + color);
     }
   });
 });
@@ -409,8 +409,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-      let deepenImmersionColor = colorPicker.getDeepenImmersionColor();
-      console.info('get deepen immersion color =' + deepenImmersionColor);
+      let color = colorPicker.getDeepenImmersionColor();
+      console.info('get deepen immersion color =' + color);
     }
   });
 });
@@ -459,8 +459,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-      let immersiveBackgroundColor = colorPicker.getImmersiveBackgroundColor();
-      console.info('get immersive background color =' + immersiveBackgroundColor);
+      let color = colorPicker.getImmersiveBackgroundColor();
+      console.info('get immersive background color =' + color);
     }
   })
 });
@@ -509,8 +509,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-      let immersiveForegroundColor = colorPicker.getImmersiveForegroundColor();
-      console.info('get immersive foreground color =' + immersiveForegroundColor);
+      let color = colorPicker.getImmersiveForegroundColor();
+      console.info('get immersive foreground color =' + color);
     }
   });
 });
@@ -617,8 +617,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-      let reverseColor = colorPicker.getReverseColor();
-      console.info('get reverse color =' + reverseColor);
+      let color = colorPicker.getReverseColor();
+      console.info('get reverse color =' + color);
     }
   });
 });
@@ -683,8 +683,6 @@ function ImageEllipticalGradientBlur(imageBuffer: ArrayBuffer): Promise<image.Pi
           resolve(imageData);
         });
       }
-    }).finally(() => {
-      imageSource.release();
     });
   });
 }
