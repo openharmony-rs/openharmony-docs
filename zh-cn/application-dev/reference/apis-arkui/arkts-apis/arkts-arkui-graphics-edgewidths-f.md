@@ -1,5 +1,11 @@
 # edgeWidths
 
+## 导入模块
+
+```TypeScript
+import { edgeWidths } from '@kit.ArkUI';
+```
+
 ## edgeWidths
 
 ```TypeScript

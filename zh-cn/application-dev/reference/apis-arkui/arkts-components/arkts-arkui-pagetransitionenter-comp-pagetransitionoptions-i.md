@@ -90,7 +90,7 @@ type?: RouteType
 
 **说明：** 
 
-当pageTransition函数中配置了多个[PageTransitionEnter](arkts-arkui-pagetransitionenter-comp.md#pagetransitionenter)或[PageTransitionExit](arkts-arkui-pagetransitionenter-comp-con.md#pagetransitionexit)时，按照RouteType匹配规则生效：系统会根据当前路由操作类型（Push或Pop）从所有配置的PageTransitionEnter/PageTransitionExit中选择最后一个匹配的组件生效；若没有匹配的组件，则使用系统默认的页面转场效果（根据设备可能会有差异）。如果存在多个匹配相同RouteType的PageTransitionEnter，则最后配置的生效；如果存在多个匹配相同RouteType的PageTransitionExit，则最后配置的生效。RouteType.None与所有路由类型均匹配。
+当pageTransition函数中配置了多个PageTransitionEnter或PageTransitionExit时，按照RouteType匹配规则生效：系统会根据当前路由操作类型（Push或Pop）从所有配置的PageTransitionEnter/PageTransitionExit中选择最后一个匹配的组件生效；若没有匹配的组件，则使用系统默认的页面转场效果（根据设备可能会有差异）。如果存在多个匹配相同RouteType的PageTransitionEnter，则最后配置的生效；如果存在多个匹配相同RouteType的PageTransitionExit，则最后配置的生效。RouteType.None与所有路由类型均匹配。
 
 取值原则：None表示对所有路由类型生效；Push仅对push路由生效；Pop仅对pop路由生效。
 

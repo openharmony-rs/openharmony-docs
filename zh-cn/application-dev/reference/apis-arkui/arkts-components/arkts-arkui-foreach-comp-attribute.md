@@ -4,9 +4,9 @@
 declare class ForEachAttribute extends DynamicNode<ForEachAttribute>
 ```
 
-支持[拖拽排序](arkts-arkui-common-comp.md#common)属性。
+支持拖拽排序属性。
 
-**继承/实现关系：** ForEachAttribute extends DynamicNode<ForEachAttribute>
+**继承/实现关系：** ForEachAttribute extends DynamicNode&lt;ForEachAttribute&gt;
 
 **起始版本：** 12
 

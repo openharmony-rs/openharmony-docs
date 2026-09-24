@@ -8,13 +8,13 @@ declare class AbilityComponentAttribute extends CommonMethod<AbilityComponentAtt
 
 @extends CommonMethod&lt;AbilityComponentAttribute&gt;
 
-**继承/实现关系：** AbilityComponentAttribute extends CommonMethod<AbilityComponentAttribute>
+**继承/实现关系：** AbilityComponentAttribute extends CommonMethod&lt;AbilityComponentAttribute&gt;
 
 **起始版本：** 9
 
 **废弃版本：** 10
 
-**替代接口：** [UIExtensionComponentAttribute](arkts-arkui-uiextensioncomponent-comp-attribute.md#uiextensioncomponentattribute系统接口)
+**替代接口：** UIExtensionComponentAttribute
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

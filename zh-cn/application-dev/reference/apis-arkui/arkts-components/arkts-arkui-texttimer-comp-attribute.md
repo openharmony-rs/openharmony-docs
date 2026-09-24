@@ -4,9 +4,9 @@
 declare class TextTimerAttribute extends CommonMethod<TextTimerAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
+除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** TextTimerAttribute extends CommonMethod<TextTimerAttribute>
+**继承/实现关系：** TextTimerAttribute extends CommonMethod&lt;TextTimerAttribute&gt;
 
 **起始版本：** 8
 
@@ -98,7 +98,7 @@ fontSize(value: Length)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 字体大小。<br>默认值：16fp <br>value为Length中的number类型时，单位为fp。value为Length中的string类型时，若设置值为非数字开头，则按0fp处理；若设置值为数字开头，当数字后内容包含除[像素单位](arkts-arkui-common-comp.md#common)外的字符（如字母、特殊符号等）时，取值字符串开头的数字部分，单位为fp。<br>例如：设置值为"abc"时取值为0fp，设置值为"10vp"时取值为10vp，设置值为"10vp11abc"时取值为10fp。不支持设置百分比字符串。 |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 字体大小。<br>默认值：16fp <br>value为Length中的number类型时，单位为fp。value为Length中的string类型时，若设置值为非数字开头，则按0fp处理；若设置值为数字开头，当数字后内容包含除像素单位外的字符（如字母、特殊符号等）时，取值字符串开头的数字部分，单位为fp。<br>例如：设置值为"abc"时取值为0fp，设置值为"10vp"时取值为10vp，设置值为"10vp11abc"时取值为10fp。不支持设置百分比字符串。 |
 
 ## fontStyle
 

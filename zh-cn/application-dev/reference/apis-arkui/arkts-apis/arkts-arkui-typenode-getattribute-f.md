@@ -1,5 +1,11 @@
 # getAttribute
 
+## 导入模块
+
+```TypeScript
+import { typeNode } from '@kit.ArkUI';
+```
+
 ## getAttribute
 
 ```TypeScript
@@ -582,7 +588,7 @@ struct FrameNodeTypeTest {
 export function getAttribute(node: FrameNode, nodeType: 'LoadingProgress'): LoadingProgressAttribute | undefined
 ```
 
-获取[LoadingProgress](../arkts-components/arkts-arkui-loadingprogress-comp.md#loading_progress)节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。
+获取LoadingProgress节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。
 
 **起始版本：** 20
 

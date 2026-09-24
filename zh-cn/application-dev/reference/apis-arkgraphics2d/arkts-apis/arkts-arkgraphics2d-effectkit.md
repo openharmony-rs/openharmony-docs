@@ -26,7 +26,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker) | 通过传入的PixelMap创建ColorPicker实例，使用Promise异步回调。 |
+| createColorPicker | 通过传入的PixelMap创建ColorPicker实例，使用Promise异步回调。 |
 | [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker-1) | 通过传入的PixelMap创建选定取色区域的ColorPicker实例，使用Promise异步回调。 |
 | [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker-2) | 通过传入的PixelMap创建ColorPicker实例，使用callback异步回调。 |
 | [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker-3) | 通过传入的PixelMap创建选定取色区域的ColorPicker实例，使用callback异步回调。 |

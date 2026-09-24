@@ -8,7 +8,7 @@ export declare class LazyVWaterFlowLayoutAttribute extends LazyWaterFlowLayoutAt
 
 @extends LazyWaterFlowLayoutAttribute&lt;LazyVWaterFlowLayoutAttribute&gt;
 
-**继承/实现关系：** LazyVWaterFlowLayoutAttribute extends LazyWaterFlowLayoutAttribute<LazyVWaterFlowLayoutAttribute>
+**继承/实现关系：** LazyVWaterFlowLayoutAttribute extends LazyWaterFlowLayoutAttribute&lt;LazyVWaterFlowLayoutAttribute&gt;
 
 **起始版本：** 26.0.0
 

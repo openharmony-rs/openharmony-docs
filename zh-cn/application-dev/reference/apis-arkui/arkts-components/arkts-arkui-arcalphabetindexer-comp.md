@@ -151,7 +151,7 @@ struct ArcListAndIndexer {
 
 ### 示例2（设置弹窗显示）
 
-该示例通过[popupColor](#popupcolor)和[popupBackground](#popupbackground)接口实现了提示弹窗的显示背景颜色和文字颜色。
+该示例通过popupColor和popupBackground接口实现了提示弹窗的显示背景颜色和文字颜色。
 
 从API version 18开始，支持popupColor和popupBackground接口。
 

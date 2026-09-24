@@ -4,11 +4,11 @@
 
 > **说明：** 
 > 
-> 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](arkts-arkui-common-comp.md#common)进行处理。
+> 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考手势拦截增强进行处理。
 
 ## 子组件
 
-仅支持[GridItem](arkts-arkui-griditem-comp.md#griditem)子组件和自定义组件。自定义组件在Grid下使用时，建议使用GridItem作为自定义组件的顶层组件，不建议给自定义组件设置属性和事件方法。
+仅支持GridItem子组件和自定义组件。自定义组件在Grid下使用时，建议使用GridItem作为自定义组件的顶层组件，不建议给自定义组件设置属性和事件方法。
 
 支持通过渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
 
@@ -57,7 +57,7 @@ Grid(scroller?: Scroller, layoutOptions?: GridLayoutOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scroller | [Scroller](arkts-arkui-scroll-comp-scroller-c.md) | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定。不设置时不绑定外部控制器，组件自行管理滚动行为。<br>**说明：** <br>不允许和其他滚动类组件，如：[ArcList](arkts-arkui-arclist-comp.md#ohosarkuiarclist)、[List](arkts-arkui-list-comp.md#list)、[Grid](#grid)、[Scroll](arkts-arkui-scroll-comp.md#scroll)和[WaterFlow](arkts-arkui-waterflow-comp.md#water_flow)绑定同一个滚动控制对象。 |
+| scroller | [Scroller](arkts-arkui-scroll-comp-scroller-c.md) | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定。不设置时不绑定外部控制器，组件自行管理滚动行为。<br>**说明：** <br>不允许和其他滚动类组件，如：ArcList、List、Grid、Scroll和WaterFlow绑定同一个滚动控制对象。 |
 | layoutOptions | [GridLayoutOptions](arkts-arkui-grid-comp-gridlayoutoptions-i.md) | 否 | Grid布局选项，用于配置GridItem跨行跨列等布局信息。不传入时，Grid按照rowsTemplate、columnsTemplate等常规属性以及GridItem自身属性进行布局，不启用GridLayoutOptions提供的布局选项。<br> |
 
 ## 汇总
@@ -67,16 +67,16 @@ Grid(scroller?: Scroller, layoutOptions?: GridLayoutOptions)
 | 名称 | 说明 |
 | --- | --- |
 | [ComputedBarAttribute](arkts-arkui-grid-comp-computedbarattribute-i.md) | 滚动条位置和长度对象。 |
-| [GridLayoutOptions](arkts-arkui-grid-comp-gridlayoutoptions-i.md) | Grid布局选项。其中，irregularIndexes和onGetIrregularSizeByIndex可对仅设置rowsTemplate或columnsTemplate的Grid使用，可以指定一个index数组，并为其中的index对应的GridItem设置其占据的行数与列数，使用方法参见[示例3](#grid)；onGetRectByIndex可对同时设置rowsTemplate和columnsTemplate的Grid使用，为指定的index对应的GridItem设置位置和大小，使用方法参见[示例1](#grid)。 |
-| [StartLineInfo](arkts-arkui-grid-comp-startlineinfo-i-sys.md) | 用于记录Grid页面内起始行的位置信息。 |
+| [GridLayoutOptions](arkts-arkui-grid-comp-gridlayoutoptions-i.md) | Grid布局选项。其中，irregularIndexes和onGetIrregularSizeByIndex可对仅设置rowsTemplate或columnsTemplate的Grid使用，可以指定一个index数组，并为其中的index对应的GridItem设置其占据的行数与列数，使用方法参见示例3；onGetRectByIndex可对同时设置rowsTemplate和columnsTemplate的Grid使用，为指定的index对应的GridItem设置位置和大小，使用方法参见示例1。 |
+| StartLineInfo | 用于记录Grid页面内起始行的位置信息。 |
 | [UIGridEvent](arkts-arkui-grid-comp-uigridevent-i.md) | frameNode中[getEvent('Grid')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-3)方法的返回值，可用于给Grid节点设置滚动事件。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnGetStartIndexByIndexCallback](arkts-arkui-grid-comp-ongetstartindexbyindexcallback-t-sys.md) | 根据指定的目标索引，计算Grid滚动到该位置时页面内对应的起始行，用于支持[scrollToIndex](arkts-arkui-scroll-comp-scroller-c.md#scrolltoindex)等操作。此回调需与onGetStartIndexByOffset同时设置才能生效。 |
-| [OnGetStartIndexByOffsetCallback](arkts-arkui-grid-comp-ongetstartindexbyoffsetcallback-t-sys.md) | 根据Grid的总偏移量，计算当前页面起始行的位置，用于快速滑动或反向滑动场景。此回调需与onGetStartIndexByIndex同时设置才能生效。 |
+| OnGetStartIndexByIndexCallback | 根据指定的目标索引，计算Grid滚动到该位置时页面内对应的起始行，用于支持[scrollToIndex](arkts-arkui-scroll-comp-scroller-c.md#scrolltoindex)等操作。此回调需与onGetStartIndexByOffset同时设置才能生效。 |
+| OnGetStartIndexByOffsetCallback | 根据Grid的总偏移量，计算当前页面起始行的位置，用于快速滑动或反向滑动场景。此回调需与onGetStartIndexByIndex同时设置才能生效。 |
 | [OnGridScrollIndexCallback](arkts-arkui-grid-comp-ongridscrollindexcallback-t.md) | Grid组件可见区域item变化事件的回调类型。 |
 
 ### 枚举
@@ -90,7 +90,7 @@ Grid(scroller?: Scroller, layoutOptions?: GridLayoutOptions)
 
 ### 示例1（固定行列Grid）
 
-可以使用[GridLayoutOptions](#gridlayoutoptions10对象说明)中的onGetRectByIndex指定GridItem的位置和大小。
+可以使用GridLayoutOptions中的onGetRectByIndex指定GridItem的位置和大小。
 
 
 
@@ -176,7 +176,7 @@ struct GridExample {
 
 可滚动Grid，包括所有滚动属性和事件。
 
-GridDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给Grid提供子组件。
+GridDataSource实现了LazyForEach数据源接口IDataSource，用于通过LazyForEach给Grid提供子组件。
 
 ```TypeScript
 // GridDataSource.ets
@@ -323,7 +323,7 @@ struct GridExample {
 
 ### 示例3（可滚动Grid设置跨行跨列节点）
 
-[GridLayoutOptions](#gridlayoutoptions10对象说明)的使用：irregularIndexes与onGetIrregularSizeByIndex。
+GridLayoutOptions的使用：irregularIndexes与onGetIrregularSizeByIndex。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -416,7 +416,7 @@ struct GridExample {
 
 ### 示例4（Grid嵌套滚动）
 
-[nestedScroll](#nestedscroll10)和[onScrollFrameBegin](#onscrollframebegin10)的使用。
+nestedScroll和onScrollFrameBegin的使用。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -598,11 +598,11 @@ struct GridExample {
 
 ### 示例5（Grid拖拽场景）
 
-通过属性[editMode](#editmode8)设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部GridItem。
+通过属性editMode设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部GridItem。
 
-在[onItemDragStart](#onitemdragstart8)回调中设置拖拽过程中显示的图片。
+在onItemDragStart回调中设置拖拽过程中显示的图片。
 
-在[onItemDrop](#onitemdrop8)中获取拖拽起始位置，和拖拽插入位置，并在[onItemDrop](#onitemdrop8)中完成交换数组位置逻辑。
+在onItemDrop中获取拖拽起始位置，和拖拽插入位置，并在onItemDrop中完成交换数组位置逻辑。
 
 设置属性支持动画。
 
@@ -704,7 +704,7 @@ struct GridExample {
 
 ### 示例6（自适应Grid）
 
-[layoutDirection](#layoutdirection8)、[maxCount](#maxcount8)、[minCount](#mincount8)、[cellLength](arkts-arkui-grid-comp-attribute.md#celllength)的使用。
+layoutDirection、maxCount、minCount、[cellLength](arkts-arkui-grid-comp-attribute.md#celllength)的使用。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -843,7 +843,7 @@ struct GridExample {
 
 ### 示例8（设置自适应列数）
 
-属性[columnsTemplate](#columnstemplate)中auto-fill、auto-fit和auto-stretch的使用示例。
+属性columnsTemplate中auto-fill、auto-fit和auto-stretch的使用示例。
 
 
 
@@ -915,7 +915,7 @@ struct GridColumnsTemplate {
 
 下面的Grid中包含两列，每列中的GridItem包括高度确定的两个Column和一个高度不确定的Text共三个子组件。
 
-在默认情况下，左右两个GridItem的高度可能是不同的；在设置了Grid的[alignItems](#alignitems12)属性为GridItemAlignment.STRETCH后，一行左右两个GridItem中原本高度较小的GridItem会以另一个高度较大的GridItem的高度作为自己的高度。
+在默认情况下，左右两个GridItem的高度可能是不同的；在设置了Grid的alignItems属性为GridItemAlignment.STRETCH后，一行左右两个GridItem中原本高度较小的GridItem会以另一个高度较大的GridItem的高度作为自己的高度。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -982,7 +982,7 @@ struct Index {
 
 ### 示例10（设置边缘渐隐）
 
-通过[fadingEdge](ts-container-scrollable-common.md#fadingedge14)属性来设置边缘渐隐效果。
+通过fadingEdge属性来设置边缘渐隐效果。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -1038,7 +1038,7 @@ struct GridExample {
 
 ### 示例11（单边边缘效果）
 
-该示例通过[edgeEffect](#edgeeffect10)接口，实现了Grid组件设置单边边缘效果。
+该示例通过edgeEffect接口，实现了Grid组件设置单边边缘效果。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -1093,7 +1093,7 @@ struct GridExample {
 
 ### 示例12（方向键走焦换行模式）
 
-从API version 20开始，该示例通过[focusWrapMode](#focuswrapmode20)接口，实现了Grid组件方向键走焦换行效果。
+从API version 20开始，该示例通过focusWrapMode接口，实现了Grid组件方向键走焦换行效果。
 
 
 
@@ -1273,7 +1273,7 @@ struct Index {
 
 ### 示例14（滚动到指定位置）
 
-该示例通过[scrollToIndex](ts-container-scroll.md#scrolltoindex)接口，实现了Grid组件滚动到指定位置。
+该示例通过scrollToIndex接口，实现了Grid组件滚动到指定位置。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -1335,7 +1335,7 @@ struct GridScrollToIndexSample {
 
 ### 示例15（实现Grid滑动选择）
 
-该示例通过[PanGesture](./ts-basic-gestures-pangesture.md#pangesture-1)接口，实现了Grid组件一边滑动一边选择的效果。
+该示例通过PanGesture接口，实现了Grid组件一边滑动一边选择的效果。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -1638,7 +1638,7 @@ struct GridExample {
 
 ### 示例16（实现GridItem自定义拖拽）
 
-该示例通过[gesture](./ts-gesture-settings.md#gesture)接口，实现了GridItem组件自定义拖拽效果。
+该示例通过gesture接口，实现了GridItem组件自定义拖拽效果。
 
 
 
@@ -1908,7 +1908,7 @@ struct GridItemExample {
 
 ### 示例17（通过拖拽事件实现GridItem拖拽）
 
-该示例通过[拖拽事件](./ts-universal-events-drag-drop.md)实现拖拽GridItem到Grid边缘时Grid自动滚动的功能。
+该示例通过拖拽事件实现拖拽GridItem到Grid边缘时Grid自动滚动的功能。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -2128,9 +2128,9 @@ struct GridExample {
 
 ### 示例20（设置多选聚拢动画）
 
-该示例通过打开Grid多选聚拢动画开关，实现了在GridItem上长按弹出菜单时，通过[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)聚拢显示范围内被选中的GridItem的效果。
+该示例通过打开Grid多选聚拢动画开关，实现了在GridItem上长按弹出菜单时，通过bindContextMenu聚拢显示范围内被选中的GridItem的效果。
 
-从API version 23开始，Grid组件新增[editModeOptions](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
+从API version 23开始，Grid组件新增editModeOptions接口，可以设置多选聚拢动画开关。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -2234,7 +2234,7 @@ struct GridExample {
 
 该示例通过使用双向绑定和事件监听在Grid上双指滑动进入多选模式的通知，实现了在Grid上边滑动边选择的效果。
 
-从API版本26.0.0开始，Grid组件新增[enableEditMode](#enableeditmode)接口和[onEditModeChange](#oneditmodechange)事件。
+从API版本26.0.0开始，Grid组件新增enableEditMode接口和onEditModeChange事件。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -2329,7 +2329,7 @@ struct GridExample {
 
 ### 示例22（使用OnMove进行拖拽）
 
-从API版本26.0.0开始，该示例展示了Grid使用LazyForEach的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口进行拖拽排序的效果，支持拖动到Grid边缘时触发Grid的自动滚动，同时Grid存在跨行跨列节点。
+从API版本26.0.0开始，该示例展示了Grid使用LazyForEach的onMove接口进行拖拽排序的效果，支持拖动到Grid边缘时触发Grid的自动滚动，同时Grid存在跨行跨列节点。
 
 ```TypeScript
 // RectGridDataSource.ets

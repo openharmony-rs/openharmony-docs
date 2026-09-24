@@ -8,8 +8,8 @@ declare interface ConstraintSizeOptions
 
 > **说明：** 
 > 
-> 在[Row](../arkts-components/arkts-arkui-row-comp.md#row)、[Column](../arkts-components/arkts-arkui-column-comp.md#column)、[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container)组件中，width、height设置auto表
-> 示自适应子组件。在[TextInput](../arkts-components/arkts-arkui-textinput-comp.md#text_input)组件中，width设置auto表示自适应文本宽度。
+> 在Row、Column、RelativeContainer组件中，width、height设置auto表
+> 示自适应子组件。在TextInput组件中，width设置auto表示自适应文本宽度。
 
 **起始版本：** 7
 

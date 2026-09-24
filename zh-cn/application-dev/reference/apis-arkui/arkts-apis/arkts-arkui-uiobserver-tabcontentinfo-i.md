@@ -58,7 +58,7 @@ TabContent组件的下标索引。索引从0开始。
 lastIndex?: number
 ```
 
-最近一次聚焦的TabContent组件的下标索引。索引从0开始。仅在[on('tabChange')](../../../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#ontabchange22)的回调函数中存在。
+最近一次聚焦的TabContent组件的下标索引。索引从0开始。仅在on('tabChange')的回调函数中存在。
 
 **类型：** number
 

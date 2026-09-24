@@ -53,7 +53,7 @@ onLayout(self: FrameNode, position: Position): void
 
 **示例**
 
-请参考DynamicLayout组件[示例1（自定义布局算法实现瀑布流布局）](../arkui-ts/ts-container-dynamiclayout.md#示例1自定义布局算法实现瀑布流布局)。
+请参考DynamicLayout组件示例1（自定义布局算法实现瀑布流布局）。
 
 ## onMeasure
 

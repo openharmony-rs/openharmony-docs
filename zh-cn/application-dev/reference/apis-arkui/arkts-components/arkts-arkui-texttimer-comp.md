@@ -47,7 +47,7 @@ TextTimer(options?: TextTimerOptions)
 
 ### 示例1（支持手动启停的文本计时器）
 
-该示例展示了TextTimer组件的基本使用方法，通过[format](#format)属性设置计时器的文本显示格式。
+该示例展示了TextTimer组件的基本使用方法，通过format属性设置计时器的文本显示格式。
 
 用户可以通过点击"start"、"pause"、"reset"按钮，开启、暂停、重置计时器。
 
@@ -88,7 +88,7 @@ struct TextTimerExample {
 
 ### 示例2（设定文本阴影样式）
 
-该示例通过[textShadow](#textshadow11)属性设置计时器的文本阴影样式。
+该示例通过textShadow属性设置计时器的文本阴影样式。
 
 
 
@@ -247,7 +247,7 @@ struct TextTimerStart {
 
 ### 示例5（设置文本样式）
 
-该示例通过[fontColor](#fontcolor)、[fontSize](#fontsize)、[fontStyle](#fontstyle)、[fontWeight](#fontweight)、[fontFamily](#fontfamily)属性展示了不同样式的文本效果。
+该示例通过fontColor、fontSize、fontStyle、fontWeight、fontFamily属性展示了不同样式的文本效果。
 
 
 
@@ -301,9 +301,9 @@ struct TextTimerDemo {
 
 ### 示例6（设置初始计时时间）
 
-该示例通过[TextTimerOptions](#texttimeroptions对象说明)的startTime属性设置计时器初始计时时间。
+该示例通过TextTimerOptions的startTime属性设置计时器初始计时时间。
 
-从API版本26.0.0开始，[TextTimerOptions](#texttimeroptions对象说明)新增了startTime属性。
+从API版本26.0.0开始，TextTimerOptions新增了startTime属性。
 
 ```TypeScript
 // xxx.ets

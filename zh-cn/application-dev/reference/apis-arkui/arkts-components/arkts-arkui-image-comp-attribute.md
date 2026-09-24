@@ -10,19 +10,19 @@ Image为图片组件，常用于在应用中显示图片。Image支持加载[Pix
 
 > - 从API version 23开始，图片类型新增支持tiff格式。
 > 
-> - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component)。
+> - 该组件从API版本26.0.0开始支持WithTheme。
 > 
 > - 使用快捷组合键对Image组件复制时，Image组件必须处于获焦状态，如何获焦请参考[设置组件是否可获焦](../../../ui/arkts-common-events-focus-event.md#设置组件是否可获焦)。Image组件默认不获焦，需将[focusable](arkts-arkui-common-comp-commonmethod-c.md#focusable)属性设置为true，即可使用Tab键将焦点切换到组件上，再将[focusOnTouch](arkts-arkui-common-comp-commonmethod-c.md#focusontouch)属性设置为true，即可实现点击获焦。
 > 
-> - 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](arkts-arkui-common-comp.md#common)。
+> - 图片格式支持SVG图源，SVG标签文档请参考SVG标签说明。
 > 
 > - 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange)事件触发的，当可见阈值ratios大于0时，表明Image处于可见状态。
 > 
 > - Image组件播放GIF动图时，帧时长取自GIF文件中各帧的delay time字段。当某帧的时长值小于等于0时，系统会将其修正为100ms；当某帧的时长值大于0时，系统直接使用该原始值，不做最小帧时长限制。 &gt;
 
-除支持[通用事件](arkts-arkui-common-comp.md#common)外，还支持以下事件：
+除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** ImageAttribute extends CommonMethod<ImageAttribute>
+**继承/实现关系：** ImageAttribute extends CommonMethod&lt;ImageAttribute&gt;
 
 **起始版本：** 7
 
@@ -312,7 +312,7 @@ enableAnalyzer(enable: boolean)
 
 不能和[overlay](arkts-arkui-common-comp-commonmethod-c.md#overlay)属性同时使用，两者同时设置时overlay中[CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)属性将失效。该特性依赖设备能力。
 
-分析图像要求是静态非矢量图，即svg、gif等图像类型不支持分析，支持传入[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)进行分析，目前仅支持[RGBA_8888](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md)类型，使用方式见[示例5（开启图像AI分析）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#示例5开启图像ai分析)。
+分析图像要求是静态非矢量图，即svg、gif等图像类型不支持分析，支持传入[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)进行分析，目前仅支持[RGBA_8888](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md)类型，使用方式见示例5（开启图像AI分析）。
 
 [alt](#alt)占位图不支持分析，[objectRepeat](#objectrepeat)属性仅在取值为ImageRepeat.NoRepeat时支持分析，隐私遮罩属性[obscured](arkts-arkui-common-comp-commonmethod-c.md#obscured)打开时不支持分析。
 
@@ -1098,7 +1098,7 @@ sourceSize(value: ImageSourceSize)
 supportSvg2(enable: boolean) : ImageAttribute
 ```
 
-开启或关闭[SVG标签解析能力增强功能](arkts-arkui-image-comp.md#image)，开启后相关SVG图片显示效果会有变化。
+开启或关闭SVG标签解析能力增强功能，开启后相关SVG图片显示效果会有变化。
 
 Image组件创建后，不支持动态修改该属性的值。
 

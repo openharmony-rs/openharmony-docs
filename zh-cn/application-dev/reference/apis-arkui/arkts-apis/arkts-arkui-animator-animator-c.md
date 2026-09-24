@@ -50,7 +50,7 @@ static create(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 **示例**
 
@@ -58,7 +58,7 @@ static create(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 
 > 说明：
 > 
-> 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的createAnimator接口明确UI上下文。
+> 推荐通过使用UIContext中的createAnimator接口明确UI上下文。
 
 ```TypeScript
 import { Animator as animator, SimpleAnimatorOptions } from '@kit.ArkUI';
@@ -104,7 +104,7 @@ static create(options: AnimatorOptions): AnimatorResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 **示例**
 
@@ -112,7 +112,7 @@ static create(options: AnimatorOptions): AnimatorResult
 
 > 说明：
 > 
-> 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的createAnimator接口明确UI上下文。
+> 推荐通过使用UIContext中的createAnimator接口明确UI上下文。
 
 ```TypeScript
 import { Animator as animator, AnimatorOptions } from '@kit.ArkUI';

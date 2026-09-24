@@ -16,7 +16,7 @@ import { avSession } from '@kit.AVSessionKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createAVSession](arkts-avsession-avsession-createavsession-f.md#createavsession) | 创建会话对象，一个应用程序仅允许存在一个会话，重复创建会失败，结果通过callback异步回调方式返回。 |
+| createAVSession | 创建会话对象，一个应用程序仅允许存在一个会话，重复创建会失败，结果通过callback异步回调方式返回。 |
 | [createAVSession](arkts-avsession-avsession-createavsession-f.md#createavsession-1) | 创建会话对象，一个应用进程仅允许存在一个会话，重复创建会失败，结果通过Promise异步回调方式返回。 |
 | [createController](arkts-avsession-avsession-createcontroller-f.md#createcontroller-1) | 根据会话ID创建会话控制器。使用Promise异步回调。 |
 | [getAllSessionDescriptors](arkts-avsession-avsession-getallsessiondescriptors-f.md#getallsessiondescriptors-1) | 获取所有设置过媒体信息且注册过控制回调的会话的描述符信息。结果通过Promise异步回调方式返回。 |

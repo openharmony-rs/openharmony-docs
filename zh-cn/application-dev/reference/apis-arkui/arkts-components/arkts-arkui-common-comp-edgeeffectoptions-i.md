@@ -18,7 +18,7 @@ edgeEffect属性参数对象。
 alwaysEnabled: boolean
 ```
 
-组件内容大小小于组件自身时，设置是否开启滑动效果。设置为true开启滑动效果，设置为false关闭滑动效果。[List](arkts-arkui-list-comp.md#list)、[Grid](arkts-arkui-grid-comp.md#grid)和[WaterFlow](arkts-arkui-waterflow-comp.md#water_flow)组件默认值是false，[Scroll](arkts-arkui-scroll-comp.md#scroll)组件默认值是true。
+组件内容大小小于组件自身时，设置是否开启滑动效果。设置为true开启滑动效果，设置为false关闭滑动效果。List、Grid和WaterFlow组件默认值是false，Scroll组件默认值是true。
 
 **类型：** boolean
 

@@ -24,7 +24,7 @@ LazyColumnLayout()
 
 ### 示例1（实现懒加载线性布局）
 
-通过[Scroll](ts-container-scroll.md)和LazyColumnLayout组件实现懒加载线性布局，并通过[onVisibleIndexesChange](#onvisibleindexeschange)在可视区域发生变化时回调起始和结束索引值。
+通过Scroll和LazyColumnLayout组件实现懒加载线性布局，并通过onVisibleIndexesChange在可视区域发生变化时回调起始和结束索引值。
 
 从API版本26.0.0开始，新增支持LazyColumnLayout组件和onVisibleIndexesChange事件。
 
@@ -164,7 +164,7 @@ struct LazyColumnLayoutSample1 {
 
 ### 示例2（设置头部组件或尾部组件及吸附效果）
 
-该示例通过[Scroll](ts-container-scroll.md)嵌套LazyColumnLayout，并通过[header](#header)、[footer](#footer)、[sticky](#sticky)实现顶部和底部吸附效果。滚动过程中header吸附在可视区域顶部，footer吸附在可视区域底部。
+该示例通过Scroll嵌套LazyColumnLayout，并通过header、footer、sticky实现顶部和底部吸附效果。滚动过程中header吸附在可视区域顶部，footer吸附在可视区域底部。
 
 从API版本26.0.0开始，新增支持header、footer和sticky属性。
 

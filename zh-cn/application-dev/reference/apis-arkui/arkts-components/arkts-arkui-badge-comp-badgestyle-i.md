@@ -9,7 +9,7 @@ Badge的样式。包括文本颜色、大小、字重、标记颜色和标记大
 > **说明：** 
 > 
 > 当`borderWidth`大于0且`borderColor`与`badgeColor`颜色不一致时，先绘制角标，再绘制描边。由于边缘像素经过抗锯齿处理，抗锯齿产生半透明像素，四角会出现 `badgeColor` 颜色的描边线。如
-> 需实现相关场景，建议使用[Text](arkts-arkui-text-comp.md#text)组件设置[outline](arkts-arkui-common-comp-commonmethod-c.md#outline)代替Badge组件。
+> 需实现相关场景，建议使用Text组件设置[outline](arkts-arkui-common-comp-commonmethod-c.md#outline)代替Badge组件。
 
 **起始版本：** 7
 

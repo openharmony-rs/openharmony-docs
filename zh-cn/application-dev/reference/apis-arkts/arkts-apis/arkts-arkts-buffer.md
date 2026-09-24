@@ -24,7 +24,7 @@ import { buffer } from '@kit.ArkTS';
 | [byteLength](arkts-arkts-buffer-bytelength-f.md) | 根据不同的编码格式，返回指定数据的字节数。 |
 | [compare](arkts-arkts-buffer-compare-f.md) | 返回两个Buffer或Uint8Array对象的比较结果，通常用于对Buffer或Uint8Array对象数组进行排序。 |
 | [concat](arkts-arkts-buffer-concat-f.md) | 将数组中的内容复制（默认复制全部内容，或复制指定字节长度）到新的Buffer对象中并返回。 |
-| [from](arkts-arkts-buffer-from-f.md#from) | 根据指定数组创建新的Buffer对象，数组中的每个元素作为对应位置的字节存储。 |
+| from | 根据指定数组创建新的Buffer对象，数组中的每个元素作为对应位置的字节存储。 |
 | [from](arkts-arkts-buffer-from-f.md#from-1) | 创建与`arrayBuffer`共享内存的指定长度的Buffer对象。共享内存意味着Buffer与arrayBuffer引用同一块内存区域，对Buffer数据的修改将同步反映到arrayBuffer中，反之亦然（注意：此方式避免内存拷贝，提升性能，但需注意内存释放时机）。 |
 | [from](arkts-arkts-buffer-from-f.md#from-3) | 当入参为Buffer对象时，创建新的Buffer对象并复制入参Buffer对象的数据，然后返回新对象。基于Uint8Array对象的内存创建新的Buffer对象并返回，新Buffer与原Uint8Array共享同一底层ArrayBuffer内存区域。 |
 | [from](arkts-arkts-buffer-from-f.md#from-4) | 根据指定的`object`类型数据，创建新的Buffer对象。当object的valueOf()返回ArrayBuffer时，按字节偏移量和长度创建Buffer；其他类型则根据编码格式将对象值转换为Buffer。 |

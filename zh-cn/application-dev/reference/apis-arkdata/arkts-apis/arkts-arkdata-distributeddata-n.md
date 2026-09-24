@@ -45,7 +45,7 @@ declare namespace distributedData
 
 | 名称 | 说明 |
 | --- | --- |
-| [createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager) | 创建一个KVManager对象实例，用于管理数据库对象，使用callback异步回调。 |
+| createKVManager | 创建一个KVManager对象实例，用于管理数据库对象，使用callback异步回调。 |
 | [createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager-1) | 创建一个KVManager对象实例，用于管理数据库对象，使用Promise异步回调。 |
 
 ### 类

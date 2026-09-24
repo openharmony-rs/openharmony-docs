@@ -4,13 +4,13 @@
 declare class EmbeddedComponentAttribute extends CommonMethod<EmbeddedComponentAttribute>
 ```
 
-支持[通用属性](arkts-arkui-common-comp.md#common)。
+支持通用属性。
 
 与屏幕坐标相关的事件信息，根据**EmbeddedComponent**的位置、宽高进行转换后，传递给EmbeddedUIExtensionAbility处理。
 
-不支持[点击事件](arkts-arkui-common-comp.md#common)等通用事件。仅支持以下事件。
+不支持点击事件等通用事件。仅支持以下事件。
 
-**继承/实现关系：** EmbeddedComponentAttribute extends CommonMethod<EmbeddedComponentAttribute>
+**继承/实现关系：** EmbeddedComponentAttribute extends CommonMethod&lt;EmbeddedComponentAttribute&gt;
 
 **起始版本：** 12
 

@@ -19,11 +19,11 @@ import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray } fr
 
 ## 属性
 
-不支持[通用属性](ts-component-general-attributes.md)。
+不支持通用属性。
 
 ## 事件
 
-不支持[通用事件](ts-component-general-events.md)。
+不支持通用事件。
 
 **起始版本：** 11
 

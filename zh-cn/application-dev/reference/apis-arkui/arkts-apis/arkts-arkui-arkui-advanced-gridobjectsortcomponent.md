@@ -6,7 +6,7 @@
 
 ## 事件
 
-不建议设置[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)，设置后可能不生效或不符合预期。
+不建议设置通用事件，设置后可能不生效或不符合预期。
 
 ## 导入模块
 

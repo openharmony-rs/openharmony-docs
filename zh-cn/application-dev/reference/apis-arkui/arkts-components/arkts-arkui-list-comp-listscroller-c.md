@@ -28,7 +28,7 @@ listScroller: ListScroller = new ListScroller();
 closeAllSwipeActions(options?: CloseSwipeActionOptions): void
 ```
 
-将[EXPANDED](arkts-arkui-listitem-comp-swipeactionstate-e.md)状态的[ListItem](arkts-arkui-listitem-comp.md#list_item)收起，并设置回调事件。
+将[EXPANDED](arkts-arkui-listitem-comp-swipeactionstate-e.md)状态的ListItem收起，并设置回调事件。
 
 **起始版本：** 11
 
@@ -42,13 +42,13 @@ closeAllSwipeActions(options?: CloseSwipeActionOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [CloseSwipeActionOptions](arkts-arkui-list-comp-closeswipeactionoptions-i.md) | 否 | 收起[EXPANDED](arkts-arkui-listitem-comp-swipeactionstate-e.md)状态的[ListItem](arkts-arkui-listitem-comp.md#list_item)的回调事件集合。不传入时不设置回调事件。 |
+| options | [CloseSwipeActionOptions](arkts-arkui-list-comp-closeswipeactionoptions-i.md) | 否 | 收起[EXPANDED](arkts-arkui-listitem-comp-swipeactionstate-e.md)状态的ListItem的回调事件集合。不传入时不设置回调事件。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
 ## getItemRectInGroup
@@ -57,7 +57,7 @@ closeAllSwipeActions(options?: CloseSwipeActionOptions): void
 getItemRectInGroup(index: number, indexInGroup: number): RectResult
 ```
 
-获取[ListItemGroup](arkts-arkui-listitemgroup-comp.md#list_item_group)中的[ListItem](arkts-arkui-listitem-comp.md#list_item)的大小和相对于List的位置。
+获取ListItemGroup中的ListItem的大小和相对于List的位置。
 
 **起始版本：** 11
 
@@ -84,7 +84,7 @@ getItemRectInGroup(index: number, indexInGroup: number): RectResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
 ## getVisibleListContentInfo
@@ -120,7 +120,7 @@ getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
 ## scrollToItemInGroup
@@ -152,5 +152,5 @@ scrollToItemInGroup(index: number, indexInGroup:number, smooth?: boolean, align?
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |

@@ -80,7 +80,7 @@ iconModifier?: ImageModifier
 
 默认值：undefined，使用系统图标属性。
 
-**类型：** [ImageModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** ImageModifier
 
 **起始版本：** 26.0.0
 
@@ -140,7 +140,7 @@ messageModifier?: TextModifier
 
 默认值：undefined，使用系统内容文本属性。
 
-**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** TextModifier
 
 **起始版本：** 26.0.0
 
@@ -212,7 +212,7 @@ titleModifier?: TextModifier
 
 默认值：undefined，使用系统标题文本属性。
 
-**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** TextModifier
 
 **起始版本：** 26.0.0
 

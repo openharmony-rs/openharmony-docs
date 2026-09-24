@@ -89,7 +89,7 @@ async function savePhotoToGallerySuppress(context: common.UIAbilityContext) {
 }
 ```
 
-// @SuppressWarnings <SuppressWarningsType>
+// @SuppressWarnings &lt;SuppressWarningsType&gt;
 
 本功能支持以单行注释形式快速抑制告警。在触发告警的代码行上方添加注释后，编译器将根据规则自动屏蔽对应的告警信息。注释中的标识符与SuppressWarningsType枚举值对应（如compatibility对应COMPATIBILITY），仅对紧随其后的代码行生效。
 

@@ -10,11 +10,11 @@ Text组件用于显示文本内容，支持设置字体样式、文本对齐、�
 
 ## 子组件
 
-可以包含[Span](arkts-arkui-span-comp.md#span)、[ImageSpan](arkts-arkui-imagespan-comp.md#image_span)、[SymbolSpan](arkts-arkui-symbolspan-comp-attribute.md)和[ContainerSpan](arkts-arkui-containerspan-comp-attribute.md)子组件。
+可以包含Span、ImageSpan、[SymbolSpan](arkts-arkui-symbolspan-comp-attribute.md)和[ContainerSpan](arkts-arkui-containerspan-comp-attribute.md)子组件。
 
 > **说明：** 
 > 
-> 使用[子组件](../../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#子组件)实现
+> 使用子组件实现
 > [图文混排](../../../ui/arkts-text-image-layout.md)场景。
 
 ## Text
@@ -35,7 +35,7 @@ Text(content?: string | Resource, value?: TextOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 否 | 文本内容。当需要直接显示文本内容时传入此参数。包含子组件[Span](arkts-arkui-span-comp.md#span)或设置了[属性字符串](../arkts-apis/arkts-arkui-styledstring.md#styled_string)时，该参数不生效。<br>默认值：' '<br>**说明：** <br>显示内容的优先级：属性字符串&gt;Span&gt;Text的文本内容。 |
+| content | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 否 | 文本内容。当需要直接显示文本内容时传入此参数。包含子组件Span或设置了属性字符串时，该参数不生效。<br>默认值：' '<br>**说明：** <br>显示内容的优先级：属性字符串&gt;Span&gt;Text的文本内容。 |
 | value | [TextOptions](arkts-arkui-text-comp-textoptions-i.md) | 否 | 文本组件初始化选项，用于配置文本控制器。当需要使用TextController的功能控制文本内容和选择时，传入此参数。<br>默认值：不设置时，不使用文本控制器。<br> |
 
 ## 汇总
@@ -56,13 +56,13 @@ Text(content?: string | Resource, value?: TextOptions)
 | [MarqueeState](arkts-arkui-text-comp-marqueestate-e.md) | Marquee状态回调的返回值。 |
 | [MarqueeUpdatePolicy](arkts-arkui-text-comp-marqueeupdatepolicy-e.md) | 跑马灯组件属性更新后，跑马灯的滚动策略。 |
 | [TextResponseType](arkts-arkui-text-comp-textresponsetype-e.md) | 选择菜单的响应类型。 |
-| [TextSpanType](arkts-arkui-text-comp-textspantype-e.md) | [Span](arkts-arkui-span-comp.md#span)类型信息。 |
+| [TextSpanType](arkts-arkui-text-comp-textspantype-e.md) | Span类型信息。 |
 
 ## 示例
 
 ### 示例1（设置文本布局）
 
-该示例通过[textAlign](#textalign)、[lineHeight](#lineheight)、[baselineOffset](#baselineoffset)、[halfLeading](#halfleading12)（从API version 12开始）属性展示了文本布局的效果。
+该示例通过textAlign、lineHeight、baselineOffset、halfLeading（从API version 12开始）属性展示了文本布局的效果。
 
 
 
@@ -144,7 +144,7 @@ struct TextExample1 {
 
 ### 示例2（设置文本样式）
 
-该示例通过[decoration](#decoration)、[letterSpacing](#letterspacing)、[textCase](#textcase)、[fontFamily](#fontfamily)、[textShadow](#textshadow10)（从API version 10开始）、[fontStyle](#fontstyle)、[textIndent](#textindent10)（从API version 10开始）、[fontWeight](#fontweight12)（从API version 12开始，支持设置字重无极调节配置项）属性展示了不同样式的文本效果。
+该示例通过decoration、letterSpacing、textCase、fontFamily、textShadow（从API version 10开始）、fontStyle、textIndent（从API version 10开始）、fontWeight（从API version 12开始，支持设置字重无极调节配置项）属性展示了不同样式的文本效果。
 
 
 
@@ -264,13 +264,13 @@ struct TextExample2 {
 
 ### 示例3（设置文本超长省略）
 
-该示例通过[maxLines](#maxlines)、[textOverflow](#textoverflow)、[ellipsisMode](#ellipsismode11)属性展示了文本超长省略以及调整省略位置的效果，通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。同时，可以通过[marqueeOptions](#marqueeoptions18)配置跑马灯模式下的配置项以及跑马灯动画进行到特定的阶段时，触发的回调[onMarqueeStateChange](arkts-arkui-text-comp-attribute.md#onmarqueestatechange)。
+该示例通过maxLines、textOverflow、ellipsisMode属性展示了文本超长省略以及调整省略位置的效果，通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。同时，可以通过marqueeOptions配置跑马灯模式下的配置项以及跑马灯动画进行到特定的阶段时，触发的回调[onMarqueeStateChange](arkts-arkui-text-comp-attribute.md#onmarqueestatechange)。
 
-从API version 11开始，通过[ellipsisMode](#ellipsismode11)属性设置文本超长时的显示方式。
+从API version 11开始，通过ellipsisMode属性设置文本超长时的显示方式。
 
-从API version 18开始，新增[marqueeOptions](#marqueeoptions18)属性设置跑马灯模式下的配置项，同时新增回调[onMarqueeStateChange](arkts-arkui-text-comp-attribute.md#onmarqueestatechange)。
+从API version 18开始，新增marqueeOptions属性设置跑马灯模式下的配置项，同时新增回调[onMarqueeStateChange](arkts-arkui-text-comp-attribute.md#onmarqueestatechange)。
 
-从API version 24开始，[EllipsisMode](ts-appendix-enums.md#ellipsismode11)新增了MULTILINE_START和MULTILINE_CENTER枚举。
+从API version 24开始，EllipsisMode新增了MULTILINE_START和MULTILINE_CENTER枚举。
 
 
 
@@ -374,7 +374,7 @@ struct TextExample3 {
 
 ### 示例4（设置文本断行及折行）
 
-该示例通过[wordBreak](#wordbreak11)（从API version 11开始）、[lineBreakStrategy](#linebreakstrategy12)（从API version 12开始）、[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性展示了文本在不同断行、折行规则下的效果以及文本超长时是否截断。
+该示例通过wordBreak（从API version 11开始）、lineBreakStrategy（从API version 12开始）、clip属性展示了文本在不同断行、折行规则下的效果以及文本超长时是否截断。
 
 
 
@@ -459,9 +459,9 @@ struct TextExample4 {
 
 ### 示例5（设置文本选中和复制）
 
-该示例通过[selection](#selection11)（从API version 11开始）、[onCopy](#oncopy11)（从API version 11开始）、[draggable](#draggable9)（从API version 9开始）、[caretColor](#caretcolor14)（从API version 14开始）、[selectedBackgroundColor](#selectedbackgroundcolor14)（从API version 14开始）、[onWillCopy](#onwillcopy)接口展示了文本选中、触发复制回调、设置文本选中可拖拽、修改手柄和选中颜色的效果以及如何拦截系统复制。
+该示例通过selection（从API version 11开始）、onCopy（从API version 11开始）、draggable（从API version 9开始）、caretColor（从API version 14开始）、selectedBackgroundColor（从API version 14开始）、onWillCopy接口展示了文本选中、触发复制回调、设置文本选中可拖拽、修改手柄和选中颜色的效果以及如何拦截系统复制。
 
-从API版本26.0.0开始，新增[onWillCopy](#onwillcopy)接口。
+从API版本26.0.0开始，新增onWillCopy接口。
 
 
 
@@ -513,7 +513,7 @@ struct TextExample5 {
 
 ### 示例6（设置文本自适应和缩放倍数限制范围）
 
-该示例通过[heightAdaptivePolicy](#heightadaptivepolicy10)（从API version 10开始）属性展示文本自适应效果以及通过[minFontScale](#minfontscale12)（从API version 12开始）、[maxFontScale](#maxfontscale12)（从API version 12开始）展示设置字体缩放倍数限制范围。
+该示例通过heightAdaptivePolicy（从API version 10开始）属性展示文本自适应效果以及通过minFontScale（从API version 12开始）、maxFontScale（从API version 12开始）展示设置字体缩放倍数限制范围。
 
 
 
@@ -558,7 +558,7 @@ struct TextExample6 {
 
 ### 示例7（设置文本识别）
 
-从API version 11开始，该示例通过[enableDataDetector](#enabledatadetector11)、[dataDetectorConfig](#datadetectorconfig11)接口实现了文本识别的功能。当[enableDataDetector](#enabledatadetector11)设为true且不设置[dataDetectorConfig](#datadetectorconfig11)时，系统会识别所有实体类型，并将识别实体的字体颜色改为蓝色、添加蓝色下划线。
+从API version 11开始，该示例通过enableDataDetector、dataDetectorConfig接口实现了文本识别的功能。当enableDataDetector设为true且不设置dataDetectorConfig时，系统会识别所有实体类型，并将识别实体的字体颜色改为蓝色、添加蓝色下划线。
 
 
 
@@ -611,7 +611,7 @@ struct TextExample7 {
 
 ### 示例8（文本绑定自定义菜单）
 
-从API version 11开始，该示例通过[bindSelectionMenu](#bindselectionmenu11)、[onTextSelectionChange](#ontextselectionchange11)、[closeSelectionMenu](#closeselectionmenu11)接口实现了文本绑定自定义菜单的功能。
+从API version 11开始，该示例通过bindSelectionMenu、onTextSelectionChange、closeSelectionMenu接口实现了文本绑定自定义菜单的功能。
 
 
 
@@ -733,7 +733,7 @@ function MenuStyles() {
 
 ### 示例9（设置文本特性与行间距）
 
-从API version 12开始，该示例通过[fontFeature](#fontfeature12)、[lineSpacing](#linespacing12)接口展示了设置文本特性与行间距的效果，同时，配置[LineSpacingOptions](ts-text-common.md#linespacingoptions20对象说明)中的onlyBetweenLines（从API version 20开始）属性，可以设置文本的行间距，是否仅在行与行之间生效。
+从API version 12开始，该示例通过fontFeature、lineSpacing接口展示了设置文本特性与行间距的效果，同时，配置LineSpacingOptions中的onlyBetweenLines（从API version 20开始）属性，可以设置文本的行间距，是否仅在行与行之间生效。
 
 
 
@@ -792,7 +792,7 @@ struct TextExample9 {
 
 ### 示例10（获取文本信息）
 
-从API version 12开始，该示例通过[getLayoutManager](#getlayoutmanager12)接口调用文本的布局管理对象获取文本信息，同时，[LayoutManager](ts-text-common.md#layoutmanager12)中的[getRectsForRange](./ts-text-common.md#getrectsforrange14)（从API version 14开始）接口可以获取指定矩形宽度样式和高度样式下，文本中任意区间范围内字符或占位符的绘制区域信息。
+从API version 12开始，该示例通过getLayoutManager接口调用文本的布局管理对象获取文本信息，同时，LayoutManager中的getRectsForRange（从API version 14开始）接口可以获取指定矩形宽度样式和高度样式下，文本中任意区间范围内字符或占位符的绘制区域信息。
 
 
 
@@ -921,7 +921,7 @@ struct TextExample11 {
 
 ### 示例12（文本扩展自定义菜单）
 
-从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#属性-1)（从API version 20开始）回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过editMenuOptions接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在onPrepareMenu（从API version 20开始）回调中，进行菜单数据的设置。
 
 
 
@@ -1010,7 +1010,7 @@ struct TextExample12 {
 
 ### 示例13（配置隐私隐藏）
 
-从API version 12开始，该示例通过[privacySensitive](#privacysensitive12)属性展示了文本如何配置隐私隐藏的效果，实际显示需要卡片框架支持。
+从API version 12开始，该示例通过privacySensitive属性展示了文本如何配置隐私隐藏的效果，实际显示需要卡片框架支持。
 
 
 
@@ -1033,7 +1033,7 @@ struct TextExample13 {
 
 ### 示例14（设置中西文自动间距）
 
-从API version 20开始，该示例通过[enableAutoSpacing](#enableautospacing20)属性设置中西文自动间距。
+从API version 20开始，该示例通过enableAutoSpacing属性设置中西文自动间距。
 
 
 
@@ -1060,7 +1060,7 @@ struct TextExample {
 
 ### 示例15（文本颜色按线性或径向渐变）
 
-从API version 20开始，该示例通过[shaderStyle](#shaderstyle20)接口实现了对Text组件显示为渐变色和纯色的功能。
+从API version 20开始，该示例通过shaderStyle接口实现了对Text组件显示为渐变色和纯色的功能。
 
 
 
@@ -1159,7 +1159,7 @@ struct TextExample16 {
 
 ### 示例17（文本垂直对齐）
 
-从API version 20开始，该示例通过[textVerticalAlign](#textverticalalign20)属性展示了文本如何设置文本垂直对齐效果。
+从API version 20开始，该示例通过textVerticalAlign属性展示了文本如何设置文本垂直对齐效果。
 
 
 
@@ -1190,7 +1190,7 @@ struct TextExample14 {
 
 ### 示例18（文本翻牌动效）
 
-从API version 20开始，该示例通过[contentTransition](#contenttransition20)属性展示了数字翻牌效果。
+从API version 20开始，该示例通过contentTransition属性展示了数字翻牌效果。
 
 
 
@@ -1224,7 +1224,7 @@ struct TextNumberTransition {
 
 ### 示例19（文本内容区垂直对齐）
 
-从API version 21开始，该示例通过[textContentAlign](#textcontentalign21)属性展示了当文本内容区高度大于组件高度时文本内容区的垂直对齐。
+从API version 21开始，该示例通过textContentAlign属性展示了当文本内容区高度大于组件高度时文本内容区的垂直对齐。
 
 
 
@@ -1250,7 +1250,7 @@ struct TextContentAlignExample {
 
 ### 示例20（倍数行高和最大最小行高）
 
-从API version 22开始，该示例通过[lineHeightMultiple](#lineheightmultiple22)属性展示了使用倍数模式设置行高，同时通过[minLineHeight](arkts-arkui-text-comp-attribute.md#minlineheight)和[maxLineHeight](arkts-arkui-text-comp-attribute.md#maxlineheight)来设置最小和最大行高值。
+从API version 22开始，该示例通过lineHeightMultiple属性展示了使用倍数模式设置行高，同时通过[minLineHeight](arkts-arkui-text-comp-attribute.md#minlineheight)和[maxLineHeight](arkts-arkui-text-comp-attribute.md#maxlineheight)来设置最小和最大行高值。
 
 
 
@@ -1294,7 +1294,7 @@ struct Index {
 
 ### 示例21（文本设置显示最小行数）
 
-从API version 22开始，该示例使用[minLines](#minlines22)属性设置文本显示的最小行数。
+从API version 22开始，该示例使用minLines属性设置文本显示的最小行数。
 
 
 
@@ -1326,7 +1326,7 @@ struct TextExample1 {
 
 ### 示例22（设置文本选择区域并高亮显示）
 
-从API version 23开始，该示例使用[TextController](arkts-arkui-text-comp-textcontroller-c.md)中的[setTextSelection](#settextselection23)设置文本选择区域并高亮显示。
+从API version 23开始，该示例使用[TextController](arkts-arkui-text-comp-textcontroller-c.md)中的setTextSelection设置文本选择区域并高亮显示。
 
 
 
@@ -1358,7 +1358,7 @@ struct Index {
 
 ### 示例23（设置行首标点符号压缩和行尾标点符号悬挂）
 
-本示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点符号压缩，通过[punctuationOverflow](#punctuationoverflow)设置行尾标点符号悬挂。
+本示例通过compressLeadingPunctuation接口设置行首标点符号压缩，通过punctuationOverflow设置行尾标点符号悬挂。
 
 左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
 
@@ -1411,9 +1411,9 @@ struct PunctuationDemo {
 
 ### 示例24（设置自适应间距）
 
-该示例通过[includeFontPadding](#includefontpadding23)接口增加首行尾行间距和[fallbackLineSpacing](#fallbacklinespacing23)接口设置自适应行间距。
+该示例通过includeFontPadding接口增加首行尾行间距和fallbackLineSpacing接口设置自适应行间距。
 
-从API version 23开始，新增[includeFontPadding](#includefontpadding23)和[fallbackLineSpacing](#fallbacklinespacing23)接口。
+从API version 23开始，新增includeFontPadding和fallbackLineSpacing接口。
 
 
 
@@ -1475,7 +1475,7 @@ struct Index {
 
 ### 示例25（设置文本拖拽时的背板样式）
 
-该示例通过[selectedDragPreviewStyle](#selecteddragpreviewstyle23)接口设置文本拖拽时的背板样式。
+该示例通过selectedDragPreviewStyle接口设置文本拖拽时的背板样式。
 
 从API version 23开始，新增selectedDragPreviewStyle接口。
 
@@ -1502,7 +1502,7 @@ struct TextTest {
 
 ### 示例26（设置文本排版方向）
 
-该示例通过[textDirection](#textdirection23)接口设置文本排版方向。
+该示例通过textDirection接口设置文本排版方向。
 
 从API version 23开始，新增textDirection接口。
 
@@ -1544,7 +1544,7 @@ struct TextExample {
 
 ### 示例27（获取指定坐标和范围对应的文本信息）
 
-从API version 24开始，支持[getCharacterPositionAtCoordinate](ts-text-common.md#getcharacterpositionatcoordinate24)，[getGlyphRangeForCharacterRange](ts-text-common.md#getglyphrangeforcharacterrange24)，[getCharacterRangeForGlyphRange](ts-text-common.md#getcharacterrangeforglyphrange24)接口。该示例通过[getLayoutManager](#getlayoutmanager12)接口调用文本的布局管理对象获取文本信息，通过[LayoutManager](ts-text-common.md#layoutmanager12)中的[getCharacterPositionAtCoordinate](ts-text-common.md#getcharacterpositionatcoordinate24)获取坐标字符的位置信息，通过[getGlyphRangeForCharacterRange](ts-text-common.md#getglyphrangeforcharacterrange24)根据字符索引范围获取字形索引范围和实际的字符索引范围，通过[getCharacterRangeForGlyphRange](ts-text-common.md#getcharacterrangeforglyphrange24)根据字形索引范围获取字符索引范围和实际的字形索引范围。
+从API version 24开始，支持getCharacterPositionAtCoordinate，getGlyphRangeForCharacterRange，getCharacterRangeForGlyphRange接口。该示例通过getLayoutManager接口调用文本的布局管理对象获取文本信息，通过LayoutManager中的getCharacterPositionAtCoordinate获取坐标字符的位置信息，通过getGlyphRangeForCharacterRange根据字符索引范围获取字形索引范围和实际的字符索引范围，通过getCharacterRangeForGlyphRange根据字形索引范围获取字符索引范围和实际的字形索引范围。
 
 
 
@@ -1623,7 +1623,7 @@ struct TextExample10 {
 
 ### 示例28（设置文本排版时是否使能孤字优化）
 
-该示例通过[orphanCharOptimization](#orphancharoptimization)接口设置使能孤字优化，确保段落最后一行不出现孤字。
+该示例通过orphanCharOptimization接口设置使能孤字优化，确保段落最后一行不出现孤字。
 
 从API版本26.0.0开始，新增orphanCharOptimization接口。
 
@@ -1662,9 +1662,9 @@ struct TextExample {
 
 ### 示例29（设置可变字体的属性）
 
-该示例通过[fontVariations](#fontvariations)接口设置可变字体的属性。
+该示例通过fontVariations接口设置可变字体的属性。
 
-从API版本26.0.0开始，新增[fontVariations](#fontvariations)接口。
+从API版本26.0.0开始，新增fontVariations接口。
 
 
 
@@ -1692,7 +1692,7 @@ struct TextExample {
 
 ### 示例30（设置图片预览菜单）
 
-该示例通过[bindSelectionMenu](#bindselectionmenu11)接口实现了文本设置图片预览菜单的功能。
+该示例通过bindSelectionMenu接口实现了文本设置图片预览菜单的功能。
 
 从API版本26.0.0开始，文本组件调用该接口时，options中的menuType属性传入MenuType.PREVIEW_MENU，设置图片预览菜单的能力生效。
 
@@ -1739,7 +1739,7 @@ struct TextExample {
 
 ### 示例31（设置属性字符串段落缓存策略）
 
-该示例通过[incrementalUpdatePolicy](#incrementalupdatepolicy)接口设置文本渲染的增量更新策略，使用段落级缓存优化渲染性能。
+该示例通过incrementalUpdatePolicy接口设置文本渲染的增量更新策略，使用段落级缓存优化渲染性能。
 
 从API版本26.0.0开始，新增incrementalUpdatePolicy属性。
 
@@ -1876,7 +1876,7 @@ struct StyledStringAppend {
 
 ### 示例32（设置文本尾部缩进）
 
-该示例通过[tailIndents](#tailindents)接口实现了文本尾部缩进的功能。
+该示例通过tailIndents接口实现了文本尾部缩进的功能。
 
 从API版本26.0.0开始，通过tailIndents属性设置文本尾部缩进。
 
@@ -1922,7 +1922,7 @@ struct TailIndentsExample {
 
 ### 示例33（设置文本选择的AI菜单）
 
-该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)，配置文本选择AI菜单功能。
+该示例通过enableSelectedDataDetector，配置文本选择AI菜单功能。
 
 从API version 22开始，新增enableSelectedDataDetector。
 
@@ -1949,7 +1949,7 @@ struct DataDetectorDemo {
 
 ### 示例34（长按含表情符号文本绘制渐变高亮背景）
 
-该示例通过[getLayoutManager](#getlayoutmanager12)接口获取文本的布局管理对象，使用[LayoutManager](ts-text-common.md#layoutmanager12)中以UTF-16编码查询的[getCharacterPositionAtCoordinate](ts-text-common.md#getcharacterpositionatcoordinate)根据长按坐标获取字符位置与亲和性，再通过[getGlyphRangeForCharacterRange](ts-text-common.md#getglyphrangeforcharacterrange)获取对应的字形索引范围与实际字符范围，最后通过[getRectsForRange](ts-text-common.md#getrectsforrange14)获取文本矩形区域，并在[Canvas](ts-components-canvas-canvas.md)上绘制渐变背景，实现对包含表情符号（字形簇）文本的高亮。
+该示例通过getLayoutManager接口获取文本的布局管理对象，使用LayoutManager中以UTF-16编码查询的getCharacterPositionAtCoordinate根据长按坐标获取字符位置与亲和性，再通过getGlyphRangeForCharacterRange获取对应的字形索引范围与实际字符范围，最后通过getRectsForRange获取文本矩形区域，并在Canvas上绘制渐变背景，实现对包含表情符号（字形簇）文本的高亮。
 
 从API版本26.0.0开始，新增带编码类型参数的getCharacterPositionAtCoordinate、getGlyphRangeForCharacterRange、getCharacterRangeForGlyphRange接口重载，以及TextEncoding枚举。
 

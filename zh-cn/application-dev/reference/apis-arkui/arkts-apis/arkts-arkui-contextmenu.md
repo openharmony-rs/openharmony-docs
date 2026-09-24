@@ -14,7 +14,7 @@
 
 > 说明：
 > 
-> 推荐通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getContextMenuController](../arkts-apis-uicontext-uicontext.md#getcontextmenucontroller)来明确UI的执行上下文。
+> 推荐通过使用UIContext中的getContextMenuController来明确UI的执行上下文。
 
 ```TypeScript
 // xxx.ets

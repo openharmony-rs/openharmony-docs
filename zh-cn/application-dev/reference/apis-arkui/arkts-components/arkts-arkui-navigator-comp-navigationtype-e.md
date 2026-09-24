@@ -10,7 +10,7 @@ declare enum NavigationType
 
 **废弃版本：** 13
 
-**替代接口：** [Navigation](arkts-arkui-navigation-comp.md#navigation)
+**替代接口：** Navigation
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

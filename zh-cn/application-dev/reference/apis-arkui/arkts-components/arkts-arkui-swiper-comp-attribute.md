@@ -12,7 +12,7 @@ declare class SwiperAttribute extends CommonMethod<SwiperAttribute>
 
 > Swiper组件通用属性[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)的默认值为true。
 
-**继承/实现关系：** SwiperAttribute extends CommonMethod<SwiperAttribute>
+**继承/实现关系：** SwiperAttribute extends CommonMethod&lt;SwiperAttribute&gt;
 
 **起始版本：** 7
 
@@ -654,7 +654,7 @@ nestedScroll(value: SwiperNestedScrollMode)
 nextMargin(value: Length, ignoreBlank?: boolean)
 ```
 
-设置后边距，用于露出后一项的一小部分，使用效果可以参考[示例1设置导航点交互及翻页动效](../../../reference/apis-arkui/arkui-ts/ts-container-swiper.md#示例1设置导航点交互及翻页动效)。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
+设置后边距，用于露出后一项的一小部分，使用效果可以参考示例1设置导航点交互及翻页动效。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
 
 当主轴方向为横向布局时，nextMargin或prevMargin中任意一个大于子组件测算的宽度，nextMargin和prevMargin均不显示。
 
@@ -947,7 +947,7 @@ pageFlipMode(mode: Optional<PageFlipMode>)
 prevMargin(value: Length, ignoreBlank?: boolean)
 ```
 
-设置前边距，用于露出前一项的一小部分，使用效果可以参考[示例1设置导航点交互及翻页动效](../../../reference/apis-arkui/arkui-ts/ts-container-swiper.md#示例1设置导航点交互及翻页动效)。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
+设置前边距，用于露出前一项的一小部分，使用效果可以参考示例1设置导航点交互及翻页动效。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
 
 当主轴方向为横向布局时，nextMargin/prevMargin中任意一个大于子组件测算的宽度，nextMargin和prevMargin均不显示。
 

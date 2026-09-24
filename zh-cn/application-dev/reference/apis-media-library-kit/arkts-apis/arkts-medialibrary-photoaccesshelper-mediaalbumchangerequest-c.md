@@ -46,13 +46,13 @@ addAssets(assets: Array<PhotoAsset>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The assets array contains assets that were already added in a previous addAssets operation, please remove duplicates; <br>2. The album to be modified is invalid, the Album passed to the MediaAlbumChangeRequest constructor is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum(); <br>3. The album type does not support addAssets, only user albums and highlight albums support this operation; <br>4. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 | 14000016 | Operation type not support. Possible causes:<br>1. Duplicate asset in addAssets, the asset was already added in a previous addAssets operation. |
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -102,12 +102,12 @@ constructor(album: Album)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The constructor was not called with the new keyword; <br>2. The album to be modified is invalid, the passed Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum(); <br>3. System memory insufficient, please retry; <br>4. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -159,12 +159,12 @@ getAlbum(): Album
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The album to be modified is invalid, the Album passed to the MediaAlbumChangeRequest constructor is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum(); <br>2. System memory insufficient, please retry; <br>3. IPC timeout, please retry; <br>4. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -204,13 +204,13 @@ removeAssets(assets: Array<PhotoAsset>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The album to be modified is invalid, the Album passed to the MediaAlbumChangeRequest constructor is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum(); <br>2. The album type does not support removeAssets, only user albums support this operation; <br>3. The assets array contains elements that are not valid PhotoAsset objects; <br>4. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 | 14000016 | Operation type not support. Possible causes:<br>1. Duplicate asset in removeAssets, the asset was already removed in a previous removeAssets operation. |
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -270,12 +270,12 @@ setAlbumName(name: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The name parameter is invalid, please check if the name meets the naming rules (non-empty, within length limit, no illegal characters); <br>2. The album to be modified is invalid, the Album passed to the MediaAlbumChangeRequest constructor is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum(); <br>3. The album type does not support setAlbumName, only user source albums, highlights, smart portrait albums and group photos support this operation; <br>4. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {

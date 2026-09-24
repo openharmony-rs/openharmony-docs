@@ -21,7 +21,7 @@ import { sendableImage } from '@kit.ImageKit';
 | [convertFromPixelMap](arkts-image-sendableimage-convertfrompixelmap-f.md) | Creates a sendable image PixelMap from image PixelMap. |
 | [convertToPixelMap](arkts-image-sendableimage-converttopixelmap-f.md) | Creates a image PixelMap from sendable image PixelMap. |
 | [createImageReceiver](arkts-image-sendableimage-createimagereceiver-f.md) | 通过图片大小、图片格式、容量创建ImageReceiver实例。 |
-| [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createimagesource) | 通过传入的uri创建ImageSource实例。 |
+| createImageSource | 通过传入的uri创建ImageSource实例。 |
 | [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createimagesource-1) | 通过传入文件描述符来创建ImageSource实例。 |
 | [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createimagesource-2) | 通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[sendableImage.createPixelMap](arkts-image-sendableimage-createpixelmap-f.md)这一类方法。 |
 | [createPixelMap](arkts-image-sendableimage-createpixelmap-f.md) | Create PixelMap by data buffer. |

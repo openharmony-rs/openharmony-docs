@@ -20,12 +20,12 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getworkstatus) | 通过workId获取延迟任务，使用Callback异步回调。 |
+| getWorkStatus | 通过workId获取延迟任务，使用Callback异步回调。 |
 | [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getworkstatus-1) | 通过workId获取延迟任务，使用Promise异步回调。 |
-| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout) | 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。 |
+| isLastWorkTimeOut | 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。 |
 | [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout-1) | 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。 |
 | [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout-2) | 检查延迟任务的最后一次执行是否超时，使用Promise形式返回。 |
-| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks) | 获取当前应用所有的延迟任务，使用Callback异步回调。 |
+| obtainAllWorks | 获取当前应用所有的延迟任务，使用Callback异步回调。 |
 | [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks-1) | 获取当前应用所有的延迟任务，使用Callback异步回调。 |
 | [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks-2) | 获取当前应用所有的延迟任务，使用Promise异步回调。 |
 | [startWork](arkts-backgroundtasks-workscheduler-startwork-f.md) | 申请延迟任务，成功后会把任务添加到执行队列，满足触发条件后由系统调度执行。 |

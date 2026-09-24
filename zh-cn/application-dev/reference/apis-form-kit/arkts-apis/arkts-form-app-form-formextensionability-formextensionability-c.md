@@ -468,7 +468,7 @@ context: FormExtensionContext
 
 FormExtensionAbility的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
 
-**类型：** [FormExtensionContext](arkts-form-formextensioncontext-c-sys.md)
+**类型：** FormExtensionContext
 
 **起始版本：** 9
 

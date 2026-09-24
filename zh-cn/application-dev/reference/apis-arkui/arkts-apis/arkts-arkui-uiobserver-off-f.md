@@ -61,7 +61,7 @@ export function off(type: 'navDestinationUpdate', callback?: Callback<NavDestina
 export function off(type: 'scrollEvent', options: ObserverOptions, callback?: Callback<ScrollEventInfo>): void
 ```
 
-取消监听指定id的滚动组件滚动事件的开始和结束。滚动组件包括[List](../arkts-components/arkts-arkui-list-comp.md#list)、[Grid](../arkts-components/arkts-arkui-grid-comp.md#grid)、[Scroll](../arkts-components/arkts-arkui-scroll-comp.md#scroll)、[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md#water_flow)、[ArcList](../arkts-components/arkts-arkui-arclist-comp.md#ohosarkuiarclist)。
+取消监听指定id的滚动组件滚动事件的开始和结束。滚动组件包括List、Grid、Scroll、WaterFlow、ArcList。
 
 **起始版本：** 12
 
@@ -155,7 +155,7 @@ struct Index {
 export function off(type: 'scrollEvent', callback?: Callback<ScrollEventInfo>): void
 ```
 
-取消监听所有滚动组件滚动事件的开始和结束。滚动组件包括[List](../arkts-components/arkts-arkui-list-comp.md#list)、[Grid](../arkts-components/arkts-arkui-grid-comp.md#grid)、[Scroll](../arkts-components/arkts-arkui-scroll-comp.md#scroll)、[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md#water_flow)、[ArcList](../arkts-components/arkts-arkui-arclist-comp.md#ohosarkuiarclist)。
+取消监听所有滚动组件滚动事件的开始和结束。滚动组件包括List、Grid、Scroll、WaterFlow、ArcList。
 
 **起始版本：** 12
 

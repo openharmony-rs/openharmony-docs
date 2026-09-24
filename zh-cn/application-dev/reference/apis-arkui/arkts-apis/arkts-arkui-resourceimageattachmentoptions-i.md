@@ -128,7 +128,7 @@ size的默认值与objectFit的值有关，不同的objectFit的值对应size的
 supportSvg2?: boolean
 ```
 
-获取属性字符串是否开启[SVG标签解析能力增强功能](../../../reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md)。
+获取属性字符串是否开启SVG标签解析能力增强功能。
 
 true：支持SVG解析新能力；false：保持原有SVG解析能力。
 

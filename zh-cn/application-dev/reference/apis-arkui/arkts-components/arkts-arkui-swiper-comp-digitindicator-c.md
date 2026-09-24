@@ -14,7 +14,7 @@ declare class DigitIndicator extends Indicator<DigitIndicator>
 
 > 页码的镜像显示依据为系统的RTL状态。
 
-**继承/实现关系：** DigitIndicator extends Indicator<DigitIndicator>
+**继承/实现关系：** DigitIndicator extends Indicator&lt;DigitIndicator&gt;
 
 **起始版本：** 10
 

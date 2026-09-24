@@ -56,7 +56,7 @@ Select(options: Array<SelectOption>)
 
 ### 示例1（设置下拉菜单）
 
-该示例通过配置[SelectOption](#selectoption对象说明)实现下拉菜单，并从API version 19开始通过设置[avoidance](arkts-arkui-select-comp-attribute.md#avoidance)属性实现菜单的避让方式。
+该示例通过配置SelectOption实现下拉菜单，并从API version 19开始通过设置[avoidance](arkts-arkui-select-comp-attribute.md#avoidance)属性实现菜单的避让方式。
 
 
 
@@ -366,7 +366,7 @@ struct SelectExample {
 
 ### 示例6（设置Select中文本和箭头样式）
 
-从API version 20开始，该示例通过[textModifier](#textmodifier20)和[arrowModifier](arkts-arkui-select-comp-attribute.md#arrowmodifier)属性设置文本以及箭头样式。
+从API version 20开始，该示例通过textModifier和[arrowModifier](arkts-arkui-select-comp-attribute.md#arrowmodifier)属性设置文本以及箭头样式。
 
 
 
@@ -518,7 +518,7 @@ struct SelectExample {
 
 ### 示例8（设置分割线模式）
 
-从API version 19开始，该示例通过配置[DividerStyleOptions](ts-types.md#dividerstyleoptions12)的mode属性设置分割线模式。
+从API version 19开始，该示例通过配置DividerStyleOptions的mode属性设置分割线模式。
 
 
 
@@ -607,7 +607,7 @@ struct SelectExample {
 
 ### 示例10（设置Select弹出菜单避让软键盘）
 
-该示例通过调用[keyboardAvoidMode](#keyboardavoidmode23)和[minKeyboardAvoidDistance](#minkeyboardavoiddistance23)接口，实现下拉菜单避让软键盘并自定义避让软键盘的最小距离。
+该示例通过调用keyboardAvoidMode和minKeyboardAvoidDistance接口，实现下拉菜单避让软键盘并自定义避让软键盘的最小距离。
 
 从API version 23开始，新增keyboardAvoidMode、minKeyboardAvoidDistance接口。
 

@@ -22,7 +22,7 @@ UnionEffectContainer(options?: UnionEffectContainerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [UnionEffectContainerOptions](arkts-arkui-unioneffectcontainer-comp-unioneffectcontaineroptions-i-sys.md) | 否 | UnionEffectContainer构造参数，用于决定收集到的后代组件形状的融合形变程度。<br>默认值：{spacing:0} |
+| options | UnionEffectContainerOptions | 否 | UnionEffectContainer构造参数，用于决定收集到的后代组件形状的融合形变程度。<br>默认值：{spacing:0} |
 
 ## 汇总
 
@@ -30,13 +30,13 @@ UnionEffectContainer(options?: UnionEffectContainerOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [UnionEffectContainerOptions](arkts-arkui-unioneffectcontainer-comp-unioneffectcontaineroptions-i-sys.md) | 设置UnionEffectContainer构造参数。 |
+| UnionEffectContainerOptions | 设置UnionEffectContainer构造参数。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [UnionMode](arkts-arkui-unioneffectcontainer-comp-unionmode-e-sys.md) | 设置融合效果模式。 |
+| UnionMode | 设置融合效果模式。 |
 
 ## 示例
 
@@ -156,7 +156,7 @@ struct UnionEffectContainerPage {
 
 ### 示例2（设置不同类型的融合形变效果）
 
-该示例主要演示如何使用[unionMode](#unionmode)接口，通过设置不同的融合类型，产生不同的融合形变效果。
+该示例主要演示如何使用unionMode接口，通过设置不同的融合类型，产生不同的融合形变效果。
 
 从API版本26.0.0开始，新增unionMode接口。
 

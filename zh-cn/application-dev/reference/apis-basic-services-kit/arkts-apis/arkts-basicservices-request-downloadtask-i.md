@@ -44,7 +44,7 @@ delete(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -103,7 +103,7 @@ delete(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -157,7 +157,7 @@ getTaskInfo(callback: AsyncCallback<DownloadInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -216,7 +216,7 @@ getTaskInfo(): Promise<DownloadInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -271,7 +271,7 @@ getTaskMimeType(callback: AsyncCallback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -330,7 +330,7 @@ getTaskMimeType(): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -380,7 +380,7 @@ off(type: 'progress', callback?: (receivedSize: number, totalSize: number) => vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| 401 | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -437,7 +437,7 @@ off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| 401 | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -520,7 +520,7 @@ off(type: 'fail', callback?: (err: number) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| 401 | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -581,7 +581,7 @@ on(type: 'progress', callback: (receivedSize: number, totalSize: number) => void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| 401 | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -630,7 +630,7 @@ on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| 401 | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -683,13 +683,13 @@ on(type: 'fail', callback: (err: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'fail' | 是 | 订阅的事件类型。<br>- 取值为'fail'，表示下载失败，任务失败时触发该事件。 |
-| callback | (err: number) =&gt; void | 是 | 下载失败的回调函数。错误原因见[下载任务的错误码](../../../reference/apis-basic-services-kit/js-apis-request.md#constants)。 |
+| callback | (err: number) =&gt; void | 是 | 下载失败的回调函数。错误原因见下载任务的错误码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| 401 | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -743,7 +743,7 @@ restore(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -802,7 +802,7 @@ restore(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -857,7 +857,7 @@ suspend(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -916,7 +916,7 @@ suspend(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -976,7 +976,7 @@ pause(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -1024,7 +1024,7 @@ pause(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -1069,7 +1069,7 @@ query(callback: AsyncCallback<DownloadInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -1117,7 +1117,7 @@ query(): Promise<DownloadInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -1162,7 +1162,7 @@ queryMimeType(callback: AsyncCallback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -1210,7 +1210,7 @@ queryMimeType(): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -1255,7 +1255,7 @@ remove(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -1303,7 +1303,7 @@ remove(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -1348,7 +1348,7 @@ resume(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 
@@ -1396,7 +1396,7 @@ resume(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+| 201 | The permissions check fails. |
 
 **示例**
 

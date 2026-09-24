@@ -23,7 +23,7 @@ import { hash } from '@kit.CoreFileKit';
 | 名称 | 说明 |
 | --- | --- |
 | [createHash](arkts-corefile-hash-createhash-f.md) | 创建并返回HashStream对象，用于生成哈希摘要。可以指定哈希计算采用的算法。HashStream采用流式处理机制，支持分批次更新数据，适用于大文件或数据流的哈希计算，避免一次性加载大文件到内存。 |
-| [hash](arkts-corefile-hash-f.md#hash) | 计算文件的哈希值，基于指定算法对文件完整内容进行哈希摘要计算。使用Promise异步回调。 |
+| hash | 计算文件的哈希值，基于指定算法对文件完整内容进行哈希摘要计算。使用Promise异步回调。 |
 | [hash](arkts-corefile-hash-f.md#hash-1) | 计算文件的哈希值，基于指定算法对文件完整内容进行哈希摘要计算。使用callback异步回调。 |
 
 ### 类

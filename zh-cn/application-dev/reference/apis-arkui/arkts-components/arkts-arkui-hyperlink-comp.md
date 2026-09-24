@@ -14,7 +14,7 @@
 
 ## 子组件
 
-可以包含[Image](arkts-arkui-image-comp.md#image)子组件。
+可以包含Image子组件。
 
 ## Hyperlink
 

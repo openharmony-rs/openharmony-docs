@@ -4,9 +4,9 @@
 declare class ListItemAttribute extends CommonMethod<ListItemAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
+除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** ListItemAttribute extends CommonMethod<ListItemAttribute>
+**继承/实现关系：** ListItemAttribute extends CommonMethod&lt;ListItemAttribute&gt;
 
 **起始版本：** 7
 
@@ -20,7 +20,7 @@ onSelect(event: (isSelected: boolean) => void)
 
 ListItem元素被鼠标框选的状态改变时触发回调。
 
-外层[List](arkts-arkui-list-comp.md#list)组件设置[multiSelectable](arkts-arkui-list-comp-attribute.md#multiselectable)为true开启鼠标框选，且当前ListItem的[selectable](#selectable)属性为true时，触发该回调。
+外层List组件设置[multiSelectable](arkts-arkui-list-comp-attribute.md#multiselectable)为true开启鼠标框选，且当前ListItem的[selectable](#selectable)属性为true时，触发该回调。
 
 **起始版本：** 8
 
@@ -44,7 +44,7 @@ ListItem元素被鼠标框选的状态改变时触发回调。
 selectable(value: boolean)
 ```
 
-设置当前ListItem元素是否可以被鼠标框选。外层[List](arkts-arkui-list-comp.md#list)组件设置[multiSelectable](arkts-arkui-list-comp-attribute.md#multiselectable)为true开启鼠标框选时，ListItem的框选才生效。
+设置当前ListItem元素是否可以被鼠标框选。外层List组件设置[multiSelectable](arkts-arkui-list-comp-attribute.md#multiselectable)为true开启鼠标框选时，ListItem的框选才生效。
 
 **起始版本：** 8
 
@@ -68,7 +68,7 @@ selectable(value: boolean)
 selected(value: boolean)
 ```
 
-设置当前ListItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置[多态样式](arkts-arkui-common-comp.md#common)前使用才能生效选中态样式。
+设置当前ListItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置多态样式前使用才能生效选中态样式。
 
 **起始版本：** 10
 

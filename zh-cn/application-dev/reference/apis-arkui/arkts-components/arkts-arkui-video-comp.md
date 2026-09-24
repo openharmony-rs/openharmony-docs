@@ -8,7 +8,7 @@ Video组件用于播放视频文件并控制其播放状态，支持播放、暂
 > <br>
 > 
 > Video组件只提供简单的视频播放功能，无法支撑复杂的视频播控场景。复杂开发场景推荐使用[AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)播控API和
-> [XComponent](arkts-arkui-xcomponent-comp.md#xcomponent)组件开发。
+> XComponent组件开发。
 > <br>
 > 
 > Video组件在使用[expandSafeArea](arkts-arkui-common-comp-commonmethod-c.md#expandsafearea)扩展安全区域时，组件视频显示内容区域不支持扩展。
@@ -64,7 +64,7 @@ Video(value: VideoOptions)
 
 ### 示例1（视频播放基础用法）
 
-基础用法包括：控制栏、预览图、自动播放、播放速度、响应快捷键（从API version 15开始，支持通过[enableShortcutKey](arkts-arkui-video-comp-attribute.md#enableshortcutkey)设置组件开启快捷键响应）、控制器（开始播放、暂停播放、停止播放、重置视频播放器、跳转等）、首帧送显（从API version 18开始，支持通过[posterOptions](#posteroptions18对象说明)设置视频播放的首帧送显选项。从API version 21开始，posterOptions支持通过[PosterOptions](#posteroptions18对象说明)的contentTransitionEffect参数来设置当前视频的预览图内容变化时的转场动效。）以及一些状态回调方法。
+基础用法包括：控制栏、预览图、自动播放、播放速度、响应快捷键（从API version 15开始，支持通过[enableShortcutKey](arkts-arkui-video-comp-attribute.md#enableshortcutkey)设置组件开启快捷键响应）、控制器（开始播放、暂停播放、停止播放、重置视频播放器、跳转等）、首帧送显（从API version 18开始，支持通过posterOptions设置视频播放的首帧送显选项。从API version 21开始，posterOptions支持通过PosterOptions的contentTransitionEffect参数来设置当前视频的预览图内容变化时的转场动效。）以及一些状态回调方法。
 
 
 
@@ -360,7 +360,7 @@ struct VideoObject {
 
 ### 示例5（onError事件上报错误码）
 
-从API version 20开始，支持通过[onError](#onerror)获取错误信息，该示例以传入不存在的视频资源路径为例。
+从API version 20开始，支持通过onError获取错误信息，该示例以传入不存在的视频资源路径为例。
 
 
 

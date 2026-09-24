@@ -138,7 +138,7 @@ static deserialize(serializedData: Uint8Array): WebDownloadItem
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types.<br>2. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Incorrect parameter types.<br>2. Parameter verification failed. |
 
 **示例**
 
@@ -1512,7 +1512,7 @@ start(downloadPath: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types.<br>2. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Incorrect parameter types.<br>2. Parameter verification failed. |
 
 **示例**
 

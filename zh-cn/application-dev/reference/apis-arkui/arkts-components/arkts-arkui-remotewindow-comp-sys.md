@@ -24,7 +24,7 @@ RemoteWindow(target: WindowAnimationTarget)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | [WindowAnimationTarget](arkts-arkui-remotewindow-comp-windowanimationtarget-i-sys.md) | 是 | 需要控制的动画窗口的描述。 |
+| target | WindowAnimationTarget | 是 | 需要控制的动画窗口的描述。 |
 
 ## 汇总
 
@@ -32,8 +32,8 @@ RemoteWindow(target: WindowAnimationTarget)
 
 | 名称 | 说明 |
 | --- | --- |
-| [RRect](arkts-arkui-remotewindow-comp-rrect-i-sys.md) | 圆角矩形。 |
-| [WindowAnimationTarget](arkts-arkui-remotewindow-comp-windowanimationtarget-i-sys.md) | 目标窗口，用来远程控制实现动画。 |
+| RRect | 圆角矩形。 |
+| WindowAnimationTarget | 目标窗口，用来远程控制实现动画。 |
 
 ## 示例
 

@@ -8,7 +8,7 @@ CommonScrollableMethod
 
 @extends CommonMethod&lt;T&gt;
 
-**继承/实现关系：** ScrollableCommonMethod extends CommonMethod<T>
+**继承/实现关系：** ScrollableCommonMethod extends CommonMethod&lt;T&gt;
 
 **起始版本：** 12
 
@@ -658,7 +658,7 @@ onWillScroll(handler: Optional<OnWillScrollCallback>): T
 
 滚动事件回调，滚动组件滚动前触发。与onDidScroll的对比：onWillScroll在滚动发生前触发，可通过返回值指定将要滚动的偏移量，适用于需要拦截或自定义滚动行为的场景；onDidScroll在滚动发生时触发，返回当前帧的实际滚动偏移量和滑动状态，适用于仅需监听滚动过程的场景。两者可同时使用。
 
-回调当前帧将要滚动的偏移量、当前滚动状态及滚动操作来源，其中回调的偏移量为计算得到的将要滚动的偏移量值，并非最终实际滚动偏移。可以通过该回调返回值指定滚动组件将要滚动的偏移。[Scroll](arkts-arkui-scroll-comp.md#scroll)组件的[onWillScroll](arkts-arkui-scroll-comp-attribute.md#onwillscroll)接口的参数类型是[ScrollOnWillScrollCallback](arkts-arkui-scroll-comp-scrollonwillscrollcallback-t.md)。
+回调当前帧将要滚动的偏移量、当前滚动状态及滚动操作来源，其中回调的偏移量为计算得到的将要滚动的偏移量值，并非最终实际滚动偏移。可以通过该回调返回值指定滚动组件将要滚动的偏移。Scroll组件的[onWillScroll](arkts-arkui-scroll-comp-attribute.md#onwillscroll)接口的参数类型是[ScrollOnWillScrollCallback](arkts-arkui-scroll-comp-scrollonwillscrollcallback-t.md)。
 
 > **说明：** 
 > 
@@ -846,7 +846,7 @@ scrollBarColor(color: Color | number | string): T
 scrollBarColor(color: Color | number | string | Resource): T
 ```
 
-设置滚动条的颜色。与[scrollBarColor&lt;sup&gt;11+&lt;/sup&gt;](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#scrollbarcolor11)相比，color参数开始支持Resource类型。
+设置滚动条的颜色。与scrollBarColor&lt;sup&gt;11+&lt;/sup&gt;相比，color参数开始支持Resource类型。
 
 **起始版本：** 22
 
@@ -1002,7 +1002,7 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 
 > **说明：** 
 > 
-> 从API version 11开始支持，从API version 12开始废弃。[List](arkts-arkui-list-comp.md#list)、[Grid](arkts-arkui-grid-comp.md#grid)和[WaterFlow](arkts-arkui-waterflow-comp.md#water_flow)
+> 从API version 11开始支持，从API version 12开始废弃。List、Grid和WaterFlow
 > 组件的onScroll事件在布局之后触发，
 
 **起始版本：** 11

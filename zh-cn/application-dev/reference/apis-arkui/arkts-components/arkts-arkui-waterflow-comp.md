@@ -8,7 +8,7 @@
 > 
 > WaterFlow组件支持展示瀑布流布局，不支持编辑模式和子元素拖动功能。
 > 
-> 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](arkts-arkui-common-comp.md#common)进行处理。
+> 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考手势拦截增强进行处理。
 
 ## 子组件
 
@@ -93,9 +93,9 @@ WaterFlow(options?: WaterFlowOptions)
 
 该示例展示了WaterFlow组件数据加载处理、属性设置和事件回调等基本使用场景。
 
-WaterFlowDataSource实现了[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给WaterFlow提供子组件。
+WaterFlowDataSource实现了[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)数据源接口IDataSource，用于通过LazyForEach给WaterFlow提供子组件。
 
-当[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)数据中影响FlowItem宽高的字段发生变化时，需要在修改数据后通知[DataChangeListener](ts-rendering-control-lazyforeach.md#datachangelistener)，例如调用[onDataChange](ts-rendering-control-lazyforeach.md#ondatachange8)或[onDataReloaded](ts-rendering-control-lazyforeach.md#ondatareloaded)。只修改数据内容但不触发数据变化通知时，LazyForEach可能不会刷新对应FlowItem。
+当[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)数据中影响FlowItem宽高的字段发生变化时，需要在修改数据后通知DataChangeListener，例如调用onDataChange或onDataReloaded。只修改数据内容但不触发数据变化通知时，LazyForEach可能不会刷新对应FlowItem。
 
 ```TypeScript
 // WaterFlowDataSource.ets
@@ -715,7 +715,7 @@ struct WaterFlowDemo {
 
 ### 示例4（双指缩放改变列数）
 
-该示例通过[priorityGesture](ts-gesture-settings.md#prioritygesture)和[PinchGesture](ts-basic-gestures-pinchgesture.md)实现了双指缩放改变列数效果。
+该示例通过priorityGesture和PinchGesture实现了双指缩放改变列数效果。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 
@@ -917,7 +917,7 @@ struct WaterFlowDemo {
 
 ### 示例5（设置边缘渐隐效果）
 
-该示例通过[fadingEdge](ts-container-scrollable-common.md#fadingedge14)实现了WaterFlow组件开启边缘渐隐效果，并通过fadingEdgeLength参数设置边缘渐隐长度。
+该示例通过fadingEdge实现了WaterFlow组件开启边缘渐隐效果，并通过fadingEdgeLength参数设置边缘渐隐长度。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 
@@ -990,7 +990,7 @@ struct WaterFlowDemo {
 
 ### 示例6（单边边缘效果）
 
-该示例通过[edgeEffect](ts-container-scrollable-common.md#edgeeffect11)接口，实现了WaterFlow组件设置单边边缘效果。
+该示例通过edgeEffect接口，实现了WaterFlow组件设置单边边缘效果。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 
@@ -1063,7 +1063,7 @@ struct WaterFlowDemo {
 
 ### 示例7（WaterFlow组件设置和改变尾部组件）
 
-从API version 18开始，该示例通过[WaterFlowOptions对象说明](#waterflowoptions对象说明)的footerContent接口，实现了WaterFlow组件设置尾部组件。通过ComponentContent的update函数更新尾部组件。
+从API version 18开始，该示例通过WaterFlowOptions对象说明的footerContent接口，实现了WaterFlow组件设置尾部组件。通过ComponentContent的update函数更新尾部组件。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 
@@ -1174,7 +1174,7 @@ struct Index {
 
 ### 示例8（WaterFlow组件实现下拉刷新）
 
-该示例通过[Refresh](ts-container-refresh.md)组件和WaterFlow组件，实现了下拉刷新瀑布流组件数据源。
+该示例通过Refresh组件和WaterFlow组件，实现了下拉刷新瀑布流组件数据源。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 

@@ -4,9 +4,9 @@
 declare class TextAttribute extends CommonMethod<TextAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md#common)，还支持以下属性：
+除支持通用属性，还支持以下属性：
 
-**继承/实现关系：** TextAttribute extends CommonMethod<TextAttribute>
+**继承/实现关系：** TextAttribute extends CommonMethod&lt;TextAttribute&gt;
 
 **起始版本：** 7
 
@@ -47,7 +47,7 @@ bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: 
 
 bindSelectionMenu的长按响应时长为600ms，[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)的长按响应时长为800ms，当两者同时绑定且触发方式均为长按时，优先响应bindSelectionMenu。
 
-自定义菜单超长时，建议内部嵌套使用[Scroll](arkts-arkui-scroll-comp.md#scroll)组件，避免键盘被遮挡。
+自定义菜单超长时，建议内部嵌套使用Scroll组件，避免键盘被遮挡。
 
 从API版本26.0.0开始，文本组件调用该接口时，options中的menuType属性传入MenuType.PREVIEW_MENU，设置图片预览菜单的能力生效。
 
@@ -164,7 +164,7 @@ copyOption(value: CopyOptions)
 
 从API version 20开始，当Text组件执行复制操作时，会将HTML格式的内容添加到剪贴板中。
 
-- 当Text组件包含子组件时，仅支持[Span](arkts-arkui-span-comp.md#span)和[ImageSpan](arkts-arkui-imagespan-comp.md#image_span)子组件向剪贴板中添加HTML格式的内容。  
+- 当Text组件包含子组件时，仅支持Span和ImageSpan子组件向剪贴板中添加HTML格式的内容。  
 - 设置Text组件的属性字符串时，请参考属性字符串[toHtml](../arkts-apis/arkts-arkui-styledstring-c.md#tohtml)接口文档，以了解支持转换为HTML的范围。
 
 设置copyOption为CopyOptions.InApp或者CopyOptions.LocalDevice时：
@@ -173,7 +173,7 @@ copyOption(value: CopyOptions)
 - 默认情况下，长按选中文本可拖拽。若要取消此功能，可将 `draggable` 设置为 `false`。  
 - 若需要支持Ctrl+C复制，需同时设置[textSelectable](#textselectable)为TextSelectableMode.SELECTABLE_FOCUSABLE。
 
-此时Text会监听onClick事件，手势事件为非冒泡事件，若需要点击Text组件区域响应父组件的点击手势事件，建议在父组件上使用[parallelGesture](arkts-arkui-common-comp-commonmethod-c.md#parallelgesture)绑定手势识别，也可参考[示例7（设置文本识别）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#示例7设置文本识别)。
+此时Text会监听onClick事件，手势事件为非冒泡事件，若需要点击Text组件区域响应父组件的点击手势事件，建议在父组件上使用[parallelGesture](arkts-arkui-common-comp-commonmethod-c.md#parallelgesture)绑定手势识别，也可参考示例7（设置文本识别）。
 
 由于卡片没有长按事件，此场景下长按文本，不会弹出文本选择菜单。
 
@@ -431,7 +431,7 @@ AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体�
 
 需要CopyOptions为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
 
-在[SelectionContainer](arkts-arkui-selectioncontainer-comp.md#ohosarkuicomponentsselectioncontainer)跨节点选中场景中该属性无效，在文本选择菜单中不会展示对应的AI菜单项。
+在SelectionContainer跨节点选中场景中该属性无效，在文本选择菜单中不会展示对应的AI菜单项。
 
 **起始版本：** 22
 
@@ -594,8 +594,8 @@ fontFeature(value: string)
 > 
 > 字体排版引擎会对开发者传入的宽度[width](arkts-arkui-common-comp-commonmethod-c.md#width)进行向下取整，保证是整型像素后进行排版。如果向上取整，可能会出现文字右侧被截断。
 > 
-> 当多个Text组件在[Row](arkts-arkui-row-comp.md#row)容器内布局且没有设置具体的布局分配信息时，Text会以Row的最大尺寸进行布局。如果需要子组件主轴累加的尺寸不超过Row容器主轴的尺寸，可以设置
-> [layoutWeight](arkts-arkui-common-comp-commonmethod-c.md#layoutweight)或者是以[Flex](arkts-arkui-common-comp.md#common)布局来约束子组件的主轴尺寸。
+> 当多个Text组件在Row容器内布局且没有设置具体的布局分配信息时，Text会以Row的最大尺寸进行布局。如果需要子组件主轴累加的尺寸不超过Row容器主轴的尺寸，可以设置
+> [layoutWeight](arkts-arkui-common-comp-commonmethod-c.md#layoutweight)或者是以Flex布局来约束子组件的主轴尺寸。
 > 
 > 系统默认字体支持的liga连字：Th fb ff fb ffb ffh ffi ffk ffl fh fi fk fl rf rt rv rx ry。常导致Span、属性字符串的效果不符合预期，关闭liga连字特性可以规避。
 > 
@@ -870,7 +870,7 @@ letterSpacing(value: number | ResourceStr)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 文本字符间距。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>从API version 20开始，支持Resource类型。<br>**适用版本：** 20 |
+| value | number &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 文本字符间距。<br>单位：fp <br>从API version 20开始，支持Resource类型。<br>**适用版本：** 20 |
 
 ## lineBreakStrategy
 
@@ -1084,7 +1084,7 @@ maxFontSize小于等于0或者maxFontSize小于minFontSize时，自适应字号�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最大显示字号。<br>取值范围：大于0且大于等于minFontSize。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>**说明：** <br>设置的值≤0或小于minFontSize时，自适应字号不生效，此时按照fontSize属性的值生效。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最大显示字号。<br>取值范围：大于0且大于等于minFontSize。<br>单位：fp <br>**说明：** <br>设置的值≤0或小于minFontSize时，自适应字号不生效，此时按照fontSize属性的值生效。 |
 
 ## maxLineHeight
 
@@ -1188,7 +1188,7 @@ minFontSize小于或等于0时，自适应字号不生效，此时按照[fontSiz
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最小显示字号。<br>取值范围：大于0。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>**说明：** <br>设置的值≤0时，自适应字号不生效，此时按照fontSize属性的值生效。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最小显示字号。<br>取值范围：大于0。<br>单位：fp <br>**说明：** <br>设置的值≤0时，自适应字号不生效，此时按照fontSize属性的值生效。 |
 
 ## minLineHeight
 
@@ -1585,7 +1585,7 @@ strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| strokeJoinStyle | [StrokeJoinStyle](../arkts-apis/arkts-arkui-strokejoinstyle-e.md) &#124; undefined | 是 | 文本描边拐角样式。<br>值为**undefined**时，按**StrokeJoinStyle.MITER_JOIN**处理。具体枚举值及其说明请参考[StrokeJoinStyle](../../../reference/apis-arkui/arkui-ts/ts-text-common.md#strokejoinstyle)。 |
+| strokeJoinStyle | [StrokeJoinStyle](../arkts-apis/arkts-arkui-strokejoinstyle-e.md) &#124; undefined | 是 | 文本描边拐角样式。<br>值为**undefined**时，按**StrokeJoinStyle.MITER_JOIN**处理。具体枚举值及其说明请参考StrokeJoinStyle。 |
 
 ## strokeWidth
 
@@ -1759,7 +1759,7 @@ textIndent(value: Length)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 首行文本缩进。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>取值范围：大于等于0。设置负数时，按默认值处理。 |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 首行文本缩进。<br>单位：fp <br>取值范围：大于等于0。设置负数时，按默认值处理。 |
 
 ## textOverflow
 
@@ -1778,7 +1778,7 @@ textOverflow(options: TextOverflowOptions)
 字母为单位进行截断，可设置wordBreak属性为WordBreak.BREAK_ALL。  
 - 折行规则参考[lineBreakStrategy](#linebreakstrategy)。该属性在[wordBreak](#wordbreak)不等  
 于WordBreak.BREAK_ALL的时候生效，不支持连词符。  
-- 从API version 11开始，建议优先组合[textOverflow](#textoverflow)和[wordBreak](#wordbreak)属性来设置截断方式，具体详见[示例4（设置文本断行及折行）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#示例4设置文本断行及折行)<!--RP1--><!--RP1 End-->。
+- 从API version 11开始，建议优先组合[textOverflow](#textoverflow)和[wordBreak](#wordbreak)属性来设置截断方式，具体详见示例4（设置文本断行及折行）<!--RP1--><!--RP1 End-->。
 
 当TextOverflowOptions设置为TextOverflow.MARQUEE时：
 

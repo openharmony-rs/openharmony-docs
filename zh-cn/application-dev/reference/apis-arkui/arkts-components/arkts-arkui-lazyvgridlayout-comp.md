@@ -2,9 +2,9 @@
 
 该组件用于实现支持懒加载的网格布局，适用于在滚动容器中按需渲染大量网格项的场景，可减少首帧渲染时间和内存开销。
 
-API版本26.0.0之前，其父组件支持[WaterFlow](arkts-arkui-waterflow-comp.md#water_flow)和[FlowItem](arkts-arkui-flowitem-comp-attribute.md)组件，并支持使用自定义组件或[NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md)组件封装后应用在WaterFlow或FlowItem中。
+API版本26.0.0之前，其父组件支持WaterFlow和[FlowItem](arkts-arkui-flowitem-comp-attribute.md)组件，并支持使用自定义组件或[NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md)组件封装后应用在WaterFlow或FlowItem中。
 
-从API版本26.0.0开始，其父组件新增支持[List](arkts-arkui-list-comp.md#list)、[Scroll](arkts-arkui-scroll-comp.md#scroll)和[LazyColumnLayout](arkts-arkui-lazycolumnlayout-comp-attribute.md#lazycolumnlayout)，同时新增支持使用自定义组件或[NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md)组件封装后应用在List、Scroll或LazyColumnLayout中。
+从API版本26.0.0开始，其父组件新增支持List、Scroll和LazyColumnLayout，同时新增支持使用自定义组件或[NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md)组件封装后应用在List、Scroll或LazyColumnLayout中。
 
 更多关于懒加载布局的使用场景和完整示例，可参考[创建懒加载布局](../../../ui/arkts-layout-development-create-lazy-layout.md)。
 
@@ -48,9 +48,9 @@ LazyVGridLayout()
 
 ### 示例1（实现懒加载网格布局）
 
-该示例通过[WaterFlow](ts-container-waterflow.md)和LazyVGridLayout实现懒加载网格布局，并通过[onVisibleIndexesChange](#onvisibleindexeschange)在可视区域发生变化时触发回调，返回当前可视区域内子组件的起始索引值和结束索引值。
+该示例通过WaterFlow和LazyVGridLayout实现懒加载网格布局，并通过onVisibleIndexesChange在可视区域发生变化时触发回调，返回当前可视区域内子组件的起始索引值和结束索引值。
 
-MyDataSource实现了[LazyForEach](ts-rendering-control-lazyforeach.md)数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给LazyVGridLayout提供子组件。
+MyDataSource实现了LazyForEach数据源接口IDataSource，用于通过LazyForEach给LazyVGridLayout提供子组件。
 
 从API版本26.0.0开始，新增onVisibleIndexesChange事件。
 
@@ -212,7 +212,7 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 
 ### 示例2（设置头部组件或尾部组件及吸附效果）
 
-该示例通过[WaterFlow](ts-container-waterflow.md)嵌套LazyVGridLayout，并通过[header](#header)、[footer](#footer)、[sticky](#sticky)实现网格顶部和底部吸附效果。滚动过程中header吸附在可视区域顶部，footer吸附在可视区域底部。
+该示例通过WaterFlow嵌套LazyVGridLayout，并通过header、footer、sticky实现网格顶部和底部吸附效果。滚动过程中header吸附在可视区域顶部，footer吸附在可视区域底部。
 
 从API版本26.0.0开始，新增支持header、footer和sticky属性。
 
@@ -292,9 +292,9 @@ struct LazyVGridLayoutStickyDemo {
 
 ### 示例3（设置自适应列数）
 
-该示例通过设置[columnsTemplate](#columnstemplate)属性实现了LazyVGridLayout组件自适应列数，并使用了属性[columnsTemplate](#columnstemplate)中的auto-fill、auto-fit和auto-stretch。
+该示例通过设置columnsTemplate属性实现了LazyVGridLayout组件自适应列数，并使用了属性columnsTemplate中的auto-fill、auto-fit和auto-stretch。
 
-从API version 19开始，新增[columnsTemplate](#columnstemplate)接口。
+从API version 19开始，新增columnsTemplate接口。
 
 ```TypeScript
 import { LazyColumnLayout, LazyColumnLayoutAttribute, LengthMetrics } from '@kit.ArkUI';

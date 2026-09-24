@@ -125,7 +125,7 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | UI上下文，获取方式可参考[UIContext获取方法](../../../reference/apis-arkui/js-apis-arkui-node.md#uicontext获取方法)。uiContext需要为一个有效的值，即UI上下文正确，如果传入非法值或者未设置，会导致创建失败。 |
+| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | UI上下文，获取方式可参考UIContext获取方法。uiContext需要为一个有效的值，即UI上下文正确，如果传入非法值或者未设置，会导致创建失败。 |
 | options | [RenderOptions](arkts-arkui-buildernode-renderoptions-i.md) | 否 | ReactiveBuilderNode的构造可选参数，参数用于构造节点的理想大小和节点的渲染类型。<br>默认值：undefined |
 
 ## dispose
@@ -895,7 +895,7 @@ offsetA为builderNode相对于父组件的偏移，offsetB为命中位置相对�
 > [onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch)。
 > 
 > 注入事件为轴事件[（AxisEvent）](../arkts-components/arkts-arkui-common-comp-axisevent-i.md)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发
-> [RotationGesture](../arkts-components/arkts-arkui-gesturecontrol-n.md)。
+> RotationGesture。
 > 
 > 转发的事件会在被分发到的目标组件所在的子树里做触摸测试（TouchTest），并触发对应手势，原始事件也会触发当前组件所在组件树中的手势。不保证两类手势的竞争结果。
 > 
@@ -950,7 +950,7 @@ postInputEventWithStrategy(event: InputEventType, competitionStrategy?: Competit
 > 
 > - 系统在处理鼠标左键点击事件时将转换为触摸事件，转发时应注意不在外层同时绑定触摸事件与鼠标事件，否则可能导致坐标偏移。这是由于在事件转换过程中，SourceType不会发生变化，规格可查看[onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch)。
 > 
-> - 注入事件为轴事件[AxisEvent](../arkts-components/arkts-arkui-common-comp-axisevent-i.md)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发旋转手势[RotationGesture](../arkts-components/arkts-arkui-gesturecontrol-n.md)。
+> - 注入事件为轴事件[AxisEvent](../arkts-components/arkts-arkui-common-comp-axisevent-i.md)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发旋转手势RotationGesture。
 > 
 > - 转发的事件会在被分发到的目标组件及其子组件里做事件处理，并触发对应手势。可以通过入参控制当前组件和目标组件手势是否为竞争关系。
 > 

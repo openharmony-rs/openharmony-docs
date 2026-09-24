@@ -12,7 +12,7 @@ import { EditorEventInfo, EditorMenuOptions, ExpandedMenuOptions, SelectionMenu,
 
 | 名称 | 说明 |
 | --- | --- |
-| [SelectionMenu](arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md) | 入参为空时，文本选择菜单组件SelectionMenu内容区大小及组件大小为零。例如，富文本组件[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor)使用[bindSelectionMenu](../arkts-components/arkts-arkui-richeditor-comp-attribute.md#bindselectionmenu)接口绑定一个SelectionMenu的右键菜单，则右键富文本组件区域时无任何菜单弹出。 |
+| [SelectionMenu](arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md) | 入参为空时，文本选择菜单组件SelectionMenu内容区大小及组件大小为零。例如，富文本组件RichEditor使用[bindSelectionMenu](../arkts-components/arkts-arkui-richeditor-comp-attribute.md#bindselectionmenu)接口绑定一个SelectionMenu的右键菜单，则右键富文本组件区域时无任何菜单弹出。 |
 
 ### 接口
 

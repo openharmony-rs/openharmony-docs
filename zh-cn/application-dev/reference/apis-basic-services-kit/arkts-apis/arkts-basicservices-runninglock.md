@@ -18,11 +18,11 @@ import { runningLock } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [create](arkts-basicservices-runninglock-create-f.md#create) | 创建RunningLock锁对象。使用callback异步回调。创建锁对象后，需调用hold()方法锁定和持有该锁，才能使锁功能生效。 |
+| create | 创建RunningLock锁对象。使用callback异步回调。创建锁对象后，需调用hold()方法锁定和持有该锁，才能使锁功能生效。 |
 | [create](arkts-basicservices-runninglock-create-f.md#create-1) | 创建RunningLock锁对象。使用Promise异步回调。创建锁对象后，需调用hold()方法锁定和持有该锁，才能使锁功能生效。 |
-| [createRunningLock](arkts-basicservices-runninglock-createrunninglock-f.md#createrunninglock) | 创建RunningLock锁。使用callback异步回调。 |
+| createRunningLock | 创建RunningLock锁。使用callback异步回调。 |
 | [createRunningLock](arkts-basicservices-runninglock-createrunninglock-f.md#createrunninglock-1) | 创建RunningLock锁。使用Promise异步回调。 |
-| [isRunningLockTypeSupported](arkts-basicservices-runninglock-isrunninglocktypesupported-f.md#isrunninglocktypesupported) | 查询系统是否支持该类型的锁。使用callback异步回调。 |
+| isRunningLockTypeSupported | 查询系统是否支持该类型的锁。使用callback异步回调。 |
 | [isRunningLockTypeSupported](arkts-basicservices-runninglock-isrunninglocktypesupported-f.md#isrunninglocktypesupported-1) | 查询系统是否支持该类型的锁。使用Promise异步回调。 |
 | [isSupported](arkts-basicservices-runninglock-issupported-f.md) | 查询系统是否支持该类型的锁。 |
 

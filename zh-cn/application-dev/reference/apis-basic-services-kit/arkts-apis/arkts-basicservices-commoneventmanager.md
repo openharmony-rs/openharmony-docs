@@ -52,10 +52,10 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber) | 创建订阅者。使用callback异步回调。 |
+| createSubscriber | 创建订阅者。使用callback异步回调。 |
 | [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-1) | 创建订阅者。使用Promise异步回调。 |
 | [createSubscriberSync](arkts-basicservices-commoneventmanager-createsubscribersync-f.md) | 同步创建订阅者的接口。 |
-| [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish) | 发布公共事件。使用callback异步回调。 |
+| publish | 发布公共事件。使用callback异步回调。 |
 | [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish-1) | 发布公共事件。使用callback异步回调。 |
 | [subscribe](arkts-basicservices-commoneventmanager-subscribe-f.md) | 订阅公共事件。使用callback异步回调。 |
 | [subscribeToEvent](arkts-basicservices-commoneventmanager-subscribetoevent-f.md) | 订阅公共事件，并返回订阅成功或失败信息。使用Promise异步回调。 |

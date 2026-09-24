@@ -8,7 +8,7 @@ declare class ColumnAttribute extends CommonMethod<ColumnAttribute>
 
 支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
-**继承/实现关系：** ColumnAttribute extends CommonMethod<ColumnAttribute>
+**继承/实现关系：** ColumnAttribute extends CommonMethod&lt;ColumnAttribute&gt;
 
 **起始版本：** 7
 

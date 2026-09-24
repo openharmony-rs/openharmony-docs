@@ -4,7 +4,7 @@
 declare class StepperItemAttribute extends CommonMethod<StepperItemAttribute>
 ```
 
-**继承/实现关系：** StepperItemAttribute extends CommonMethod<StepperItemAttribute>
+**继承/实现关系：** StepperItemAttribute extends CommonMethod&lt;StepperItemAttribute&gt;
 
 **起始版本：** 8
 

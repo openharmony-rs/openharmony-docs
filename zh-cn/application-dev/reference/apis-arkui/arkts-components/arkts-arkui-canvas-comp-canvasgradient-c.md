@@ -103,7 +103,7 @@ addColorStop(offset: number, color: string | ColorMetrics): void
 
 **示例**
 
-通过addColorStop设置指定色域的渐变断点值，包括偏移和颜色。设置窗口色域模式为广色域参照方法[setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace)。
+通过addColorStop设置指定色域的渐变断点值，包括偏移和颜色。设置窗口色域模式为广色域参照方法setWindowColorSpace。
 
 ```TypeScript
 // xxx.ets
@@ -163,7 +163,7 @@ struct AddColorStop {
 
 > 说明：
 > 
-> 使用HDR颜色时，需要将Canvas组件所在窗口的色域模式通过[setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace)方法设置为广色域模式（WIDE_GAMUT），否则HDR提亮效果不会生效。
+> 使用HDR颜色时，需要将Canvas组件所在窗口的色域模式通过setWindowColorSpace方法设置为广色域模式（WIDE_GAMUT），否则HDR提亮效果不会生效。
 
 从API版本26.0.0开始，[addColorStop](#addcolorstop)接口新增支持通过ColorMetrics类型入参进行HDR提亮。
 

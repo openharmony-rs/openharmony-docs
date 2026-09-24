@@ -18,45 +18,45 @@ import { sim } from '@kit.TelephonyKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getActiveSimAccountInfoList](arkts-telephony-sim-getactivesimaccountinfolist-f.md#getactivesimaccountinfolist) | 获取激活SIM卡账户信息列表。使用callback异步回调。 |
+| getActiveSimAccountInfoList | 获取激活SIM卡账户信息列表。使用callback异步回调。 |
 | [getActiveSimAccountInfoList](arkts-telephony-sim-getactivesimaccountinfolist-f.md#getactivesimaccountinfolist-1) | 获取激活SIM卡账户信息列表。使用Promise异步回调。 |
-| [getCardType](arkts-telephony-sim-getcardtype-f.md#getcardtype) | 获取指定卡槽SIM卡的卡类型。使用callback异步回调。 |
+| getCardType | 获取指定卡槽SIM卡的卡类型。使用callback异步回调。 |
 | [getCardType](arkts-telephony-sim-getcardtype-f.md#getcardtype-1) | 获取指定卡槽SIM卡的卡类型。使用Promise异步回调。 |
 | [getCardTypeSync](arkts-telephony-sim-getcardtypesync-f.md) | 获取指定卡槽SIM卡的卡类型。 |
-| [getDefaultVoiceSimId](arkts-telephony-sim-getdefaultvoicesimid-f.md#getdefaultvoicesimid) | 获取默认语音业务的SIM卡ID。使用callback异步回调。 |
+| getDefaultVoiceSimId | 获取默认语音业务的SIM卡ID。使用callback异步回调。 |
 | [getDefaultVoiceSimId](arkts-telephony-sim-getdefaultvoicesimid-f.md#getdefaultvoicesimid-1) | 获取默认语音业务的SIM卡ID。使用Promise异步回调。 |
-| [getDefaultVoiceSlotId](arkts-telephony-sim-getdefaultvoiceslotid-f.md#getdefaultvoiceslotid) | 获取默认语音业务的卡槽ID。使用callback异步回调。 |
+| getDefaultVoiceSlotId | 获取默认语音业务的卡槽ID。使用callback异步回调。 |
 | [getDefaultVoiceSlotId](arkts-telephony-sim-getdefaultvoiceslotid-f.md#getdefaultvoiceslotid-1) | 获取默认语音业务的卡槽ID。使用Promise异步回调。 |
-| [getISOCountryCodeForSim](arkts-telephony-sim-getisocountrycodeforsim-f.md#getisocountrycodeforsim) | 获取指定卡槽SIM卡的ISO国家码。使用callback异步回调。 |
+| getISOCountryCodeForSim | 获取指定卡槽SIM卡的ISO国家码。使用callback异步回调。 |
 | [getISOCountryCodeForSim](arkts-telephony-sim-getisocountrycodeforsim-f.md#getisocountrycodeforsim-1) | 获取指定卡槽SIM卡的ISO国家码。使用Promise异步回调。 |
 | [getISOCountryCodeForSimSync](arkts-telephony-sim-getisocountrycodeforsimsync-f.md) | 获取指定卡槽SIM卡的ISO国家码。 |
 | [getMaxSimCount](arkts-telephony-sim-getmaxsimcount-f.md) | 获取卡槽数量。 |
-| [getOpKey](arkts-telephony-sim-getopkey-f.md#getopkey) | 获取指定卡槽中SIM卡的opkey。使用callback异步回调。 |
+| getOpKey | 获取指定卡槽中SIM卡的opkey。使用callback异步回调。 |
 | [getOpKey](arkts-telephony-sim-getopkey-f.md#getopkey-1) | 获取指定卡槽中SIM卡的opkey。使用Promise异步回调。 |
 | [getOpKeySync](arkts-telephony-sim-getopkeysync-f.md) | 获取指定卡槽中SIM卡的opkey。 |
-| [getOpName](arkts-telephony-sim-getopname-f.md#getopname) | 获取指定卡槽中SIM卡的OpName。使用callback异步回调。 |
+| getOpName | 获取指定卡槽中SIM卡的OpName。使用callback异步回调。 |
 | [getOpName](arkts-telephony-sim-getopname-f.md#getopname-1) | 获取指定卡槽中SIM卡的OpName。使用Promise异步回调。 |
 | [getOpNameSync](arkts-telephony-sim-getopnamesync-f.md) | 获取指定卡槽中SIM卡的OpName。 |
-| [getSimAccountInfo](arkts-telephony-sim-getsimaccountinfo-f.md#getsimaccountinfo) | 获取SIM卡账户信息。使用callback异步回调。 |
+| getSimAccountInfo | 获取SIM卡账户信息。使用callback异步回调。 |
 | [getSimAccountInfo](arkts-telephony-sim-getsimaccountinfo-f.md#getsimaccountinfo-1) | 获取SIM卡账户信息。使用Promise异步回调。 |
-| [getSimLabel](arkts-telephony-sim-getsimlabel-f.md#getsimlabel) | 查看卡槽ID和SIM卡的对应关系： |
+| getSimLabel | 查看卡槽ID和SIM卡的对应关系： |
 | [getSimLabel](arkts-telephony-sim-getsimlabel-f.md#getsimlabel-1) | 获取SIM卡的标签信息。使用Promise异步回调。 |
 | [getSimLabelSync](arkts-telephony-sim-getsimlabelsync-f.md) | 通过传入SIM卡槽的ID，获取对应的SIM卡标签。 |
-| [getSimOperatorNumeric](arkts-telephony-sim-getsimoperatornumeric-f.md#getsimoperatornumeric) | 获取指定卡槽SIM卡的归属PLMN(Public Land Mobile Network)号。使用callback异步回调。 |
+| getSimOperatorNumeric | 获取指定卡槽SIM卡的归属PLMN(Public Land Mobile Network)号。使用callback异步回调。 |
 | [getSimOperatorNumeric](arkts-telephony-sim-getsimoperatornumeric-f.md#getsimoperatornumeric-1) | 获取指定卡槽SIM卡的归属PLMN(Public Land Mobile Network)号。使用Promise异步回调。 |
 | [getSimOperatorNumericSync](arkts-telephony-sim-getsimoperatornumericsync-f.md) | 获取指定卡槽SIM卡的归属PLMN(Public Land Mobile Network)号。 |
-| [getSimSpn](arkts-telephony-sim-getsimspn-f.md#getsimspn) | 获取指定卡槽SIM卡的服务提供商名称(Service Provider Name，SPN)。使用callback异步回调。 |
+| getSimSpn | 获取指定卡槽SIM卡的服务提供商名称(Service Provider Name，SPN)。使用callback异步回调。 |
 | [getSimSpn](arkts-telephony-sim-getsimspn-f.md#getsimspn-1) | 获取指定卡槽SIM卡的服务提供商名称(Service Provider Name，SPN)。使用Promise异步回调。 |
 | [getSimSpnSync](arkts-telephony-sim-getsimspnsync-f.md) | 获取指定卡槽SIM卡的服务提供商名称(Service Provider Name，SPN)。 |
-| [getSimState](arkts-telephony-sim-getsimstate-f.md#getsimstate) | 获取指定卡槽的SIM卡状态。使用callback异步回调。 |
+| getSimState | 获取指定卡槽的SIM卡状态。使用callback异步回调。 |
 | [getSimState](arkts-telephony-sim-getsimstate-f.md#getsimstate-1) | 获取指定卡槽的SIM卡状态。使用Promise异步回调。 |
 | [getSimStateSync](arkts-telephony-sim-getsimstatesync-f.md) | 获取指定卡槽的SIM卡状态。 |
-| [hasOperatorPrivileges](arkts-telephony-sim-hasoperatorprivileges-f.md#hasoperatorprivileges) | 检查应用(调用者)是否已被授予运营商权限。使用callback异步回调。 |
+| hasOperatorPrivileges | 检查应用(调用者)是否已被授予运营商权限。使用callback异步回调。 |
 | [hasOperatorPrivileges](arkts-telephony-sim-hasoperatorprivileges-f.md#hasoperatorprivileges-1) | 检查应用(调用者)是否已被授予运营商权限。使用Promise异步回调。 |
-| [hasSimCard](arkts-telephony-sim-hassimcard-f.md#hassimcard) | 获取指定卡槽SIM卡是否插卡。使用callback异步回调。 |
+| hasSimCard | 获取指定卡槽SIM卡是否插卡。使用callback异步回调。 |
 | [hasSimCard](arkts-telephony-sim-hassimcard-f.md#hassimcard-1) | 获取指定卡槽SIM卡是否插卡。使用Promise异步回调。 |
 | [hasSimCardSync](arkts-telephony-sim-hassimcardsync-f.md) | 获取指定卡槽SIM卡是否插卡。 |
-| [isSimActive](arkts-telephony-sim-issimactive-f.md#issimactive) | 获取指定卡槽SIM卡是否激活。使用callback异步回调。 |
+| isSimActive | 获取指定卡槽SIM卡是否激活。使用callback异步回调。 |
 | [isSimActive](arkts-telephony-sim-issimactive-f.md#issimactive-1) | 获取指定卡槽SIM卡是否激活。使用Promise异步回调。 |
 | [isSimActiveSync](arkts-telephony-sim-issimactivesync-f.md) | 获取指定卡槽SIM卡是否激活。 |
 

@@ -21,7 +21,7 @@ import { jsLeakWatcher } from '@kit.PerformanceAnalysisKit';
 | [check](arkts-performanceanalysis-jsleakwatcher-check-f.md) | 获取已通过jsLeakWatcher.watch注册发生泄漏的对象列表，触发GC后未被回收的对象会被标记为泄漏。 |
 | [dump](arkts-performanceanalysis-jsleakwatcher-dump-f.md) | 导出泄漏列表和虚拟机内存快照。 |
 | [enable](arkts-performanceanalysis-jsleakwatcher-enable-f.md) | 使能ArkTS对象泄漏检测，默认关闭。开启后会收集泄漏信息，可能增加性能开销。 |
-| [enableLeakWatcher](arkts-performanceanalysis-jsleakwatcher-enableleakwatcher-f.md#enableleakwatcher) | 使能ArkTS对象泄漏检测。 |
+| enableLeakWatcher | 使能ArkTS对象泄漏检测。 |
 | [enableLeakWatcher](arkts-performanceanalysis-jsleakwatcher-enableleakwatcher-f.md#enableleakwatcher-1) | 使能ArkTS对象泄漏检测。 |
 | [watch](arkts-performanceanalysis-jsleakwatcher-watch-f.md) | 注册待检测泄漏的对象。 |
 

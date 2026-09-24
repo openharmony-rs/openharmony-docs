@@ -31,12 +31,12 @@ import { request } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [download](arkts-basicservices-request-download-f.md#download) | 创建并启动一个下载任务，使用callback异步回调。 |
-| [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile) | 创建并启动一个下载任务，使用callback异步回调，支持HTTP协议。通过on('complete'&#124;'pause'&#124;'remove')可获取任务下载时的状态信息，包括任务完成、暂停或移除。通过on('fail')可获取任务下载时的错误信息。 |
+| download | 创建并启动一个下载任务，使用callback异步回调。 |
+| downloadFile | 创建并启动一个下载任务，使用callback异步回调，支持HTTP协议。通过on('complete'&#124;'pause'&#124;'remove')可获取任务下载时的状态信息，包括任务完成、暂停或移除。通过on('fail')可获取任务下载时的错误信息。 |
 | [download](arkts-basicservices-request-download-f.md#download-1) | 创建并启动一个下载任务，使用Promise异步回调。 |
 | [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1) | 创建并启动一个下载任务，使用Promise异步回调，支持HTTP协议。通过on('complete'&#124;'pause'&#124;'remove')可以获取任务下载时的状态信息，包括任务完成、暂停或移除。通过on('fail')可以获取任务下载时的错误信息。 |
-| [upload](arkts-basicservices-request-upload-f.md#upload) | 创建并启动一个上传任务，使用callback异步回调。 |
-| [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile) | 创建并启动一个上传任务，使用callback异步回调，支持HTTP协议。通过on('complete'&#124;'fail')可获取任务上传时的成功信息或错误信息。 |
+| upload | 创建并启动一个上传任务，使用callback异步回调。 |
+| uploadFile | 创建并启动一个上传任务，使用callback异步回调，支持HTTP协议。通过on('complete'&#124;'fail')可获取任务上传时的成功信息或错误信息。 |
 | [upload](arkts-basicservices-request-upload-f.md#upload-1) | 创建并启动一个上传任务，使用Promise异步回调。 |
 | [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1) | 创建并启动一个上传任务，使用Promise异步回调，支持HTTP协议。通过on('complete'&#124;'fail')可获取任务上传时的成功信息或错误信息。 |
 

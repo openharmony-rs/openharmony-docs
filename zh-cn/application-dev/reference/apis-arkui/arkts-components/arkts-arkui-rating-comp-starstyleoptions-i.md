@@ -28,7 +28,7 @@ backgroundUri: ResourceStr
 
 未选中的星级的图片路径，可由用户自定义或使用系统默认图片。
 
-从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](arkts-arkui-rating-comp.md#rating)代码。
+从API version 20开始，该接口支持设置Resource资源。参考示例3（通过Resource资源设置评分的样式）代码。
 
 **类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
@@ -50,7 +50,7 @@ foregroundUri: ResourceStr
 
 选中的星级的图片路径，可由用户自定义或使用系统默认图片。
 
-从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](arkts-arkui-rating-comp.md#rating)代码。
+从API version 20开始，该接口支持设置Resource资源。参考示例3（通过Resource资源设置评分的样式）代码。
 
 **类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
@@ -72,7 +72,7 @@ secondaryUri?: ResourceStr
 
 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。未设置时将优先使用backgroundUri，效果等同于仅设置foregroundUri和backgroundUri。
 
-从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](arkts-arkui-rating-comp.md#rating)代码。
+从API version 20开始，该接口支持设置Resource资源。参考示例3（通过Resource资源设置评分的样式）代码。
 
 **类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 

@@ -4,7 +4,7 @@
 
 > **说明：** 
 > 
-> - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component)。
+> - 该组件从API版本26.0.0开始支持WithTheme。
 
 ## 子组件
 

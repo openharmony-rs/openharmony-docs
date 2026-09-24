@@ -51,7 +51,7 @@ SymbolGlyph(value?: Resource)
 
 ### 示例1（设置渲染和动效策略）
 
-从API version 11开始，该示例通过[renderingStrategy](#renderingstrategy)、[effectStrategy](#effectstrategy)属性展示了不同的渲染和动效策略。
+从API version 11开始，该示例通过renderingStrategy、effectStrategy属性展示了不同的渲染和动效策略。
 
 
 
@@ -140,7 +140,7 @@ struct Index {
 
 ### 示例2（设置动效和阴影）
 
-从API version 12开始，该示例通过[symbolEffect](#symboleffect12)属性展示了各种动效的效果以及结合[symbolShadow](arkts-arkui-symbolglyph-comp-attribute.md#symbolshadow)（从API version 20开始）的阴影效果。其中禁用动效和快速替换动效需要API version 20及以上版本支持。
+从API version 12开始，该示例通过symbolEffect属性展示了各种动效的效果以及结合[symbolShadow](arkts-arkui-symbolglyph-comp-attribute.md#symbolshadow)（从API version 20开始）的阴影效果。其中禁用动效和快速替换动效需要API version 20及以上版本支持。
 
 
 
@@ -244,7 +244,7 @@ struct Index {
 
 ### 示例3（设置颜色渐变）
 
-从API version 20开始，该示例通过[shaderStyle](#shaderstyle20)接口实现了SymbolGlyph组件显示为渐变色的功能。
+从API version 20开始，该示例通过shaderStyle接口实现了SymbolGlyph组件显示为渐变色的功能。
 
 
 
@@ -384,9 +384,9 @@ struct Index {
 
 ### 示例4（设置SymbolGlyph颜色）
 
-该示例通过[fontColor](#fontcolor-1)属性传入ColorMetrics类型参数，设置SymbolGlyph组件的颜色。
+该示例通过fontColor属性传入ColorMetrics类型参数，设置SymbolGlyph组件的颜色。
 
-从API版本26.0.0开始，新增支持[fontColor](#fontcolor-1)。
+从API版本26.0.0开始，新增支持fontColor。
 
 
 
@@ -435,9 +435,9 @@ struct Index {
 
 ### 示例5（设置字体粗细）
 
-该示例通过[fontWeight](#fontweight-1)属性展示SymbolGlyph不同粗细配置下的效果：第一行图标小符号展示启用可变字重后，分别设置字重值为220和660的效果；第二行图标小符号展示在将设备的系统字体粗细设置为粗体后，分别设置跟随和不跟随设备的字体粗细级别自动更新的效果。
+该示例通过fontWeight属性展示SymbolGlyph不同粗细配置下的效果：第一行图标小符号展示启用可变字重后，分别设置字重值为220和660的效果；第二行图标小符号展示在将设备的系统字体粗细设置为粗体后，分别设置跟随和不跟随设备的字体粗细级别自动更新的效果。
 
-从API版本26.0.0开始，新增[fontWeight](#fontweight-1)属性。
+从API版本26.0.0开始，新增fontWeight属性。
 
 ```TypeScript
 // xxx.ets

@@ -211,7 +211,7 @@ struct Index {
 
 ### 示例3（设置Symbol类型图标）
 
-该示例通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)实现了[ChipGroupV2IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2icongroupsuffix-s.md)和[ChipGroupV2](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2-s.md)设置Symbol类型图标。
+该示例通过SymbolGlyphModifier实现了[ChipGroupV2IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2icongroupsuffix-s.md)和[ChipGroupV2](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2-s.md)设置Symbol类型图标。
 
 从API版本26.0.0开始，新增ChipGroupV2IconGroupSuffix和ChipGroupV2。
 

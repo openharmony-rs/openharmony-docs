@@ -20,7 +20,7 @@ import { power } from '@kit.BasicServicesKit';
 | --- | --- |
 | [getPowerMode](arkts-basicservices-power-getpowermode-f.md) | 获取当前设备的电源模式。不同电源模式对应不同的设备行为策略，开发者可根据返回的模式值调整应用行为以适配当前模式。各模式定义及说明请参见DevicePowerMode。 |
 | [isActive](arkts-basicservices-power-isactive-f.md) | 检测当前设备是否处于活动状态。可用于应用根据设备活动状态调整行为，例如在设备非活动状态下暂停后台任务等。 |
-| [isScreenOn](arkts-basicservices-power-isscreenon-f.md#isscreenon) | 检测当前设备的亮灭屏状态。使用callback异步回调。 |
+| isScreenOn | 检测当前设备的亮灭屏状态。使用callback异步回调。 |
 | [isScreenOn](arkts-basicservices-power-isscreenon-f.md#isscreenon-1) | 检测当前设备的亮灭屏状态。使用Promise异步回调。 |
 | [isStandby](arkts-basicservices-power-isstandby-f.md) | 检测当前设备是否进入待机低功耗续航模式。待机模式下系统会采取降低功耗的策略，开发者应据此调整应用的后台任务和资源使用策略，避免在待机时执行高耗能操作。 |
 | [rebootDevice](arkts-basicservices-power-rebootdevice-f.md) | 重启设备。 |

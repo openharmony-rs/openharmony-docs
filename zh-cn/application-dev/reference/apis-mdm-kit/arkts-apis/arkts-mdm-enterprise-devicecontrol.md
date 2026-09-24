@@ -22,7 +22,7 @@ import { deviceControl } from '@kit.MDMKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice) | 允许管理员对设备执行恢复出厂设置、重启、关机、锁屏等操作，例如在企业设备管理场景下，管理员可远程控制员工设备执行恢复出厂设置、重启、关机或锁屏等操作。 |
+| operateDevice | 允许管理员对设备执行恢复出厂设置、重启、关机、锁屏等操作，例如在企业设备管理场景下，管理员可远程控制员工设备执行恢复出厂设置、重启、关机或锁屏等操作。 |
 | [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice-1) | 允许管理员操作设备，例如在企业设备管理场景下，管理员可远程控制员工设备执行磁盘擦除、恢复出厂设置、重启、关机、锁屏、锁定设备或解锁设备等操作。 |
 
 <!--Del-->

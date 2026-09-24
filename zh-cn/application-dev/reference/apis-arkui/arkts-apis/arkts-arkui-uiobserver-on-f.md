@@ -172,7 +172,7 @@ struct Index {
 export function on(type: 'scrollEvent', options: ObserverOptions, callback: Callback<ScrollEventInfo>): void
 ```
 
-监听指定id的滚动组件滚动事件的开始和结束。滚动组件包括[List](../arkts-components/arkts-arkui-list-comp.md#list)、[Grid](../arkts-components/arkts-arkui-grid-comp.md#grid)、[Scroll](../arkts-components/arkts-arkui-scroll-comp.md#scroll)、[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md#water_flow)、[ArcList](../arkts-components/arkts-arkui-arclist-comp.md#ohosarkuiarclist)。
+监听指定id的滚动组件滚动事件的开始和结束。滚动组件包括List、Grid、Scroll、WaterFlow、ArcList。
 
 **起始版本：** 12
 
@@ -197,7 +197,7 @@ export function on(type: 'scrollEvent', options: ObserverOptions, callback: Call
 export function on(type: 'scrollEvent', callback: Callback<ScrollEventInfo>): void
 ```
 
-监听所有滚动组件滚动事件的开始和结束。滚动组件包括[List](../arkts-components/arkts-arkui-list-comp.md#list)、[Grid](../arkts-components/arkts-arkui-grid-comp.md#grid)、[Scroll](../arkts-components/arkts-arkui-scroll-comp.md#scroll)、[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md#water_flow)、[ArcList](../arkts-components/arkts-arkui-arclist-comp.md#ohosarkuiarclist)。
+监听所有滚动组件滚动事件的开始和结束。滚动组件包括List、Grid、Scroll、WaterFlow、ArcList。
 
 **起始版本：** 12
 
@@ -432,7 +432,7 @@ struct Index {
 export function on(type: 'tabContentUpdate', options: ObserverOptions, callback: Callback<TabContentInfo>): void
 ```
 
-监听指定Tabs组件id的TabContent页面切换事件。相比[on('tabChange')](../../../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#ontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
+监听指定Tabs组件id的TabContent页面切换事件。相比on('tabChange')，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **起始版本：** 12
 
@@ -508,7 +508,7 @@ struct TabsExample {
 export function on(type: 'tabContentUpdate', callback: Callback<TabContentInfo>): void
 ```
 
-监听TabContent页面的切换事件。相比[on('tabChange')](../../../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#ontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
+监听TabContent页面的切换事件。相比on('tabChange')，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **起始版本：** 12
 

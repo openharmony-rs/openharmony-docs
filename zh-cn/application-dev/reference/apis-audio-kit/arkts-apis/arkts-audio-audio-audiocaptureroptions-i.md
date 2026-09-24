@@ -76,7 +76,7 @@ playbackCaptureConfig?: AudioPlaybackCaptureConfig
 
 SystemCapability.Multimedia.Audio.PlaybackCapture
 
-从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。
+从API version 10开始支持，从API version 12开始废弃，建议使用录屏接口AVScreenCapture替代。
 
 **类型：** [AudioPlaybackCaptureConfig](arkts-audio-audio-audioplaybackcaptureconfig-i.md)
 

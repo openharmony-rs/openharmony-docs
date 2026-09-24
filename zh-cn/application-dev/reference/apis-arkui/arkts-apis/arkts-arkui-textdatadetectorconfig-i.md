@@ -4,7 +4,7 @@
 declare interface TextDataDetectorConfig
 ```
 
-该配置只支持[Text](../arkts-components/arkts-arkui-text-comp.md#text)组件和[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor)组件。
+该配置只支持Text组件和RichEditor组件。
 
 **起始版本：** 11
 

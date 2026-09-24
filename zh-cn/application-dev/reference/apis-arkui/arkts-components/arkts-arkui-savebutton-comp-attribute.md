@@ -4,9 +4,9 @@
 declare class SaveButtonAttribute extends SecurityComponentMethod<SaveButtonAttribute>
 ```
 
-不支持通用属性，除了继承[安全控件通用属性](../arkts-apis/arkts-arkui-securitycomponent.md#security_component)，还支持以下属性。不支持通用事件，仅支持以下事件。
+不支持通用属性，除了继承安全控件通用属性，还支持以下属性。不支持通用事件，仅支持以下事件。
 
-**继承/实现关系：** SaveButtonAttribute extends SecurityComponentMethod<SaveButtonAttribute>
+**继承/实现关系：** SaveButtonAttribute extends SecurityComponentMethod&lt;SaveButtonAttribute&gt;
 
 **起始版本：** 10
 
@@ -64,7 +64,7 @@ iconSize(size: Dimension | SizeOptions)
 onClick(event: SaveButtonCallback)
 ```
 
-点击保存控件触发该回调。用户首次点击保存控件时会展示授权弹窗，点击允许后授权成功，应用会获取访问媒体库接口的临时授权（授权持续时间见[SaveButton](arkts-arkui-savebutton-comp.md#savebutton)构造函数说明）；点击拒绝或关闭弹窗则授权失败。
+点击保存控件触发该回调。用户首次点击保存控件时会展示授权弹窗，点击允许后授权成功，应用会获取访问媒体库接口的临时授权（授权持续时间见SaveButton构造函数说明）；点击拒绝或关闭弹窗则授权失败。
 
 **起始版本：** 10
 

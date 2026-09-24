@@ -52,7 +52,7 @@ EffectComponent(options?: EffectComponentOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [EffectComponentOptions](arkts-arkui-effectcomponent-comp-effectcomponentoptions-i-sys.md) | 否 | EffectComponent构造参数。 |
+| options | EffectComponentOptions | 否 | EffectComponent构造参数。 |
 
 ## 汇总
 
@@ -60,13 +60,13 @@ EffectComponent(options?: EffectComponentOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [EffectComponentOptions](arkts-arkui-effectcomponent-comp-effectcomponentoptions-i-sys.md) | 设置当前EffectComponent构造参数，包含EffectComponent的渲染层级。 |
+| EffectComponentOptions | 设置当前EffectComponent构造参数，包含EffectComponent的渲染层级。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [EffectLayer](arkts-arkui-effectcomponent-comp-effectlayer-e-sys.md) | EffectComponent的渲染层级。 |
+| EffectLayer | EffectComponent的渲染层级。 |
 
 ## 示例
 

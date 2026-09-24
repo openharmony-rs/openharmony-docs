@@ -4,11 +4,11 @@
 declare class SecurityUIExtensionComponentAttribute extends CommonMethod<SecurityUIExtensionComponentAttribute>
 ```
 
-支持[通用属性](arkts-arkui-common-comp.md#common)。
+支持通用属性。
 
 支持以下事件：
 
-**继承/实现关系：** SecurityUIExtensionComponentAttribute extends CommonMethod<SecurityUIExtensionComponentAttribute>
+**继承/实现关系：** SecurityUIExtensionComponentAttribute extends CommonMethod&lt;SecurityUIExtensionComponentAttribute&gt;
 
 **起始版本：** 26.0.0
 

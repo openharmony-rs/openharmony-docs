@@ -82,7 +82,7 @@ EXPOSURE_MODE_MANUAL = 3
 
 手动曝光。支持设置曝光时长。
 
-设置该模式后，用户可通过[ManualExposure.setExposureDuration](../../../reference/apis-camera-kit/arkts-apis-camera-ManualExposure.md#setexposureduration24)设置曝光时长。
+设置该模式后，用户可通过ManualExposure.setExposureDuration设置曝光时长。
 
 **起始版本：** 24
 

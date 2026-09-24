@@ -43,7 +43,7 @@ changeIndex(index: number, useAnimation?: boolean)
 changeIndex(index: number, animationMode?: SwiperAnimationMode | boolean)
 ```
 
-翻页至指定页面。翻页带动效切换过程，时长通过Swiper的[duration](#duration)属性设置。
+翻页至指定页面。翻页带动效切换过程，时长通过Swiper的duration属性设置。
 
 > **说明：** 
 
@@ -209,7 +209,7 @@ preloadItems(indices: Optional<Array<number>>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter invalid. Possible causes:<br> 1. The parameter type is not Array&lt;number&gt;. <br> 2. The parameter is an empty array. <br> 3. The parameter contains an invalid index. |
+| 401 | Parameter invalid. Possible causes:<br> 1. The parameter type is not Array&lt;number&gt;. <br> 2. The parameter is an empty array. <br> 3. The parameter contains an invalid index. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to component. |
 
 ## showNext

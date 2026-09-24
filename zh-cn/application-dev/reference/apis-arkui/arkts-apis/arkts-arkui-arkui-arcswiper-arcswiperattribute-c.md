@@ -6,7 +6,7 @@ declare class ArcSwiperAttribute extends CommonMethod<ArcSwiperAttribute>
 
 除支持通用属性外，还支持以下属性。
 
-**继承/实现关系：** ArcSwiperAttribute extends CommonMethod<ArcSwiperAttribute>
+**继承/实现关系：** ArcSwiperAttribute extends CommonMethod&lt;ArcSwiperAttribute&gt;
 
 **起始版本：** 18
 

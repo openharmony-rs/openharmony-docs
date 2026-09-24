@@ -36,9 +36,9 @@ function startVibration(effect: VibrateEffect, attribute: VibrateAttribute, call
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission<br> required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device<br> capabilities. |
+| 201 | Permission verification failed. The application does not have the permission<br> required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device<br> capabilities. |
 | [14600101](../errorcode-vibrator.md#14600101-操作设备失败) | Device operation failed. |
 
 **示例**
@@ -202,9 +202,9 @@ function startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Pro
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission<br> required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device<br> capabilities. |
+| 201 | Permission verification failed. The application does not have the permission<br> required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device<br> capabilities. |
 | [14600101](../errorcode-vibrator.md#14600101-操作设备失败) | Device operation failed. |
 
 **示例**

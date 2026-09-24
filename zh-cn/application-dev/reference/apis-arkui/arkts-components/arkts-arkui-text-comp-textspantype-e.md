@@ -4,7 +4,7 @@
 declare enum TextSpanType
 ```
 
-[Span](arkts-arkui-span-comp.md#span)类型信息。
+Span类型信息。
 
 > **说明：** 
 > 

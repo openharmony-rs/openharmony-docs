@@ -4,7 +4,7 @@
 declare class RatingAttribute extends CommonMethod<RatingAttribute>
 ```
 
-**继承/实现关系：** RatingAttribute extends CommonMethod<RatingAttribute>
+**继承/实现关系：** RatingAttribute extends CommonMethod&lt;RatingAttribute&gt;
 
 **起始版本：** 7
 

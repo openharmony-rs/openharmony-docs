@@ -35,7 +35,7 @@ import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 | 名称 | 说明 |
 | --- | --- |
 | [configure](arkts-performanceanalysis-hiappevent-configure-f.md) | 应用事件打点配置方法，支持配置打点开关和目录存储配额大小。 |
-| [write](arkts-performanceanalysis-hiappevent-write-f.md#write) | 应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)）进行处理。 |
+| write | 应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)）进行处理。 |
 | [write](arkts-performanceanalysis-hiappevent-write-f.md#write-1) | 应用事件打点方法，将AppEventInfo类型的事件进行存储，使用callback方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)）进行订阅。 |
 | [setEventParam](arkts-performanceanalysis-hiappevent-seteventparam-f.md) | 事件自定义参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件领域和事件名称关联系统事件和应用事件。 |
 | [setEventConfig](arkts-performanceanalysis-hiappevent-seteventconfig-f.md) | 事件相关的配置参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件名称，设置事件相关的配置参数。 |

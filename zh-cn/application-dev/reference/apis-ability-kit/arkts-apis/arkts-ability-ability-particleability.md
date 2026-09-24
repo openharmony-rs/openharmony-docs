@@ -21,16 +21,16 @@ import { particleAbility } from '@kit.AbilityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [acquireDataAbilityHelper](arkts-ability-particleability-acquiredataabilityhelper-f.md) | 获取dataAbilityHelper对象。 |
-| [cancelBackgroundRunning](arkts-ability-particleability-cancelbackgroundrunning-f.md#cancelbackgroundrunning) | 向系统申请取消长时任务。使用callback异步回调。 |
+| cancelBackgroundRunning | 向系统申请取消长时任务。使用callback异步回调。 |
 | [cancelBackgroundRunning](arkts-ability-particleability-cancelbackgroundrunning-f.md#cancelbackgroundrunning-1) | 向系统申请取消长时任务。使用Promise异步回调。 |
 | [connectAbility](arkts-ability-particleability-connectability-f.md) | 将当前ability与指定的ServiceAbility进行连接。 |
-| [disconnectAbility](arkts-ability-particleability-disconnectability-f.md#disconnectability) | 断开当前ability与指定ServiceAbility的连接。使用callback异步回调。 |
+| disconnectAbility | 断开当前ability与指定ServiceAbility的连接。使用callback异步回调。 |
 | [disconnectAbility](arkts-ability-particleability-disconnectability-f.md#disconnectability-1) | 断开当前ability与指定ServiceAbility的连接。使用Promise异步回调。 |
-| [startAbility](arkts-ability-particleability-startability-f.md#startability) | 启动指定的particleAbility。使用callback异步回调。 |
+| startAbility | 启动指定的particleAbility。使用callback异步回调。 |
 | [startAbility](arkts-ability-particleability-startability-f.md#startability-1) | 启动指定的particleAbility。使用Promise异步回调。 |
-| [startBackgroundRunning](arkts-ability-particleability-startbackgroundrunning-f.md#startbackgroundrunning) | 向系统申请长时任务。使用callback异步回调。 |
+| startBackgroundRunning | 向系统申请长时任务。使用callback异步回调。 |
 | [startBackgroundRunning](arkts-ability-particleability-startbackgroundrunning-f.md#startbackgroundrunning-1) | 向系统申请长时任务。使用Promise异步回调。 |
-| [terminateSelf](arkts-ability-particleability-terminateself-f.md#terminateself) | 销毁当前particleAbility。使用callback异步回调。 |
+| terminateSelf | 销毁当前particleAbility。使用callback异步回调。 |
 | [terminateSelf](arkts-ability-particleability-terminateself-f.md#terminateself-1) | 销毁当前particleAbility。使用Promise异步回调。 |
 
 ### 枚举

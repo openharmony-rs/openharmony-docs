@@ -6,7 +6,7 @@ declare interface RadioConfiguration extends CommonConfiguration<RadioConfigurat
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md)。
 
-**继承/实现关系：** RadioConfiguration extends CommonConfiguration<RadioConfiguration>
+**继承/实现关系：** RadioConfiguration extends CommonConfiguration&lt;RadioConfiguration&gt;
 
 **起始版本：** 12
 

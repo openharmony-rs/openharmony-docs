@@ -4,7 +4,7 @@
 
 > **说明：** 
 > 
-> 2. 从API版本26.0.0开始请使用[canIUse("SystemCapability.Communication.NFC.Tag")](../../../reference/common/init.md#caniuse)&& [nfcController.isNfcSupported](arkts-connectivity-nfccontroller-isnfcsupported-f.md)共同判断设备是否支持NFC能力更加准确，否则可能导致应用运行稳定性问题，参考[nfc-tag开发指南](../../../connectivity/nfc/nfc-tag-access-guide.md)。
+> 2. 从API版本26.0.0开始请使用canIUse("SystemCapability.Communication.NFC.Tag")&& [nfcController.isNfcSupported](arkts-connectivity-nfccontroller-isnfcsupported-f.md)共同判断设备是否支持NFC能力更加准确，否则可能导致应用运行稳定性问题，参考[nfc-tag开发指南](../../../connectivity/nfc/nfc-tag-access-guide.md)。
 > 
 > 3. 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap)。
 

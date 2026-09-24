@@ -18,21 +18,21 @@ import { pointer } from '@kit.InputKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getPointerStyle](arkts-input-pointer-getpointerstyle-f.md#getpointerstyle) | 获取指定窗口的鼠标样式类型，此接口仅支持获取本应用进程内窗口的鼠标样式类型，使用callback异步回调。 |
+| getPointerStyle | 获取指定窗口的鼠标样式类型，此接口仅支持获取本应用进程内窗口的鼠标样式类型，使用callback异步回调。 |
 | [getPointerStyle](arkts-input-pointer-getpointerstyle-f.md#getpointerstyle-1) | 获取鼠标样式类型，此接口仅支持获取本应用进程内窗口的鼠标样式类型，使用Promise异步回调。 |
 | [getPointerStyleSync](arkts-input-pointer-getpointerstylesync-f.md) | 查询指定窗口的鼠标样式类型，如向东箭头、向西箭头、向南箭头、向北箭头等。此接口仅支持获取本应用进程内窗口的鼠标样式类型。 |
-| [getTouchpadScrollDirection](arkts-input-pointer-gettouchpadscrolldirection-f.md#gettouchpadscrolldirection) | 获取触控板滚轴方向，使用callback异步回调。 |
+| getTouchpadScrollDirection | 获取触控板滚轴方向，使用callback异步回调。 |
 | [getTouchpadScrollDirection](arkts-input-pointer-gettouchpadscrolldirection-f.md#gettouchpadscrolldirection-1) | 获取触控板滚轴方向，使用Promise异步回调。 |
-| [isPointerVisible](arkts-input-pointer-ispointervisible-f.md#ispointervisible) | 获取当前窗口的显示/隐藏状态，此状态反映的是多模进程对此窗口所在进程的光标显示/隐藏状态，并非真实的光标显示/隐藏情况，光标是否正确显示/隐藏还受渲染服务进程影响，使用callback异步回调。 |
+| isPointerVisible | 获取当前窗口的显示/隐藏状态，此状态反映的是多模进程对此窗口所在进程的光标显示/隐藏状态，并非真实的光标显示/隐藏情况，光标是否正确显示/隐藏还受渲染服务进程影响，使用callback异步回调。 |
 | [isPointerVisible](arkts-input-pointer-ispointervisible-f.md#ispointervisible-1) | 获取当前窗口的显示/隐藏状态，此状态反映的是多模进程对此窗口所在进程的光标显示/隐藏状态，并非真实的光标显示/隐藏情况，光标是否正确显示/隐藏还受渲染服务进程影响，使用Promise异步回调。 |
 | [isPointerVisibleSync](arkts-input-pointer-ispointervisiblesync-f.md) | 获取当前窗口的显示/隐藏状态，此状态反映的是多模进程对此窗口所在进程的光标显示/隐藏状态，并非真实的光标显示/隐藏情况，光标是否正确显示/隐藏还受渲染服务进程影响，函数调用使用同步方式。 |
-| [setCustomCursor](arkts-input-pointer-setcustomcursor-f.md#setcustomcursor) | 设置指定窗口的自定义光标样式，此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-cursorcontroller-c.md#setcustomcursor)，使用Promise异步回调。<br>应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。 |
+| setCustomCursor | 设置指定窗口的自定义光标样式，此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-cursorcontroller-c.md#setcustomcursor)，使用Promise异步回调。<br>应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。 |
 | [setCustomCursor](arkts-input-pointer-setcustomcursor-f.md#setcustomcursor-1) | 设置指定窗口的自定义光标样式，此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-cursorcontroller-c.md#setcustomcursor)，使用Promise异步回调。<br>应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。 |
 | [setCustomCursorSync](arkts-input-pointer-setcustomcursorsync-f.md) | 设置指定窗口的自定义光标样式，使用同步方式进行设置。此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-cursorcontroller-c.md#setcustomcursor)。<br>应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。 |
-| [setPointerStyle](arkts-input-pointer-setpointerstyle-f.md#setpointerstyle) | 设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-cursorcontroller-c.md#setcursor)，使用callback异步回调。 |
+| setPointerStyle | 设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-cursorcontroller-c.md#setcursor)，使用callback异步回调。 |
 | [setPointerStyle](arkts-input-pointer-setpointerstyle-f.md#setpointerstyle-1) | 设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-cursorcontroller-c.md#setcursor)，使用Promise异步回调。 |
 | [setPointerStyleSync](arkts-input-pointer-setpointerstylesync-f.md) | 设置指定窗口的鼠标样式类型，使用同步方式返回结果。此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-cursorcontroller-c.md#setcursor)。 |
-| [setPointerVisible](arkts-input-pointer-setpointervisible-f.md#setpointervisible) | 设置光标显示/隐藏状态，此状态作用于当前进程的所有窗口。光标在屏幕上的实际显示/隐藏效果还受渲染服务进程影响。使用callback异步回调。 |
+| setPointerVisible | 设置光标显示/隐藏状态，此状态作用于当前进程的所有窗口。光标在屏幕上的实际显示/隐藏效果还受渲染服务进程影响。使用callback异步回调。 |
 | [setPointerVisible](arkts-input-pointer-setpointervisible-f.md#setpointervisible-1) | 设置光标显示/隐藏状态，此状态作用于当前进程的所有窗口。光标在屏幕上的实际显示/隐藏效果还受渲染服务进程影响。使用Promise异步回调。 |
 | [setPointerVisibleSync](arkts-input-pointer-setpointervisiblesync-f.md) | 设置光标显示/隐藏状态，此状态作用于当前进程的所有窗口。光标在屏幕上的实际显示/隐藏效果还受渲染服务进程影响。函数调用方式为同步方式。 |
 

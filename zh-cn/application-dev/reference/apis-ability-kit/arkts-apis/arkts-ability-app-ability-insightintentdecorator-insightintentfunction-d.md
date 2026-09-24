@@ -4,7 +4,7 @@
 export declare const InsightIntentFunction: (() => ClassDecorator)
 ```
 
-该装饰器与[@InsightIntentFunctionMethod](arkts-ability-app-ability-insightintentdecorator-insightintentfunctionmethod-d.md#insightintentfunctionmethod)装饰器必须组合使用。使用该装饰器来装饰类，同时使用[@InsightIntentFunctionMethod](arkts-ability-app-ability-insightintentdecorator-insightintentfunctionmethod-d.md#insightintentfunctionmethod)装饰器来装饰类中的静态函数，可以将对应的静态函数定义为意图，便于AI入口能够快速执行此函数。
+该装饰器与@InsightIntentFunctionMethod装饰器必须组合使用。使用该装饰器来装饰类，同时使用@InsightIntentFunctionMethod装饰器来装饰类中的静态函数，可以将对应的静态函数定义为意图，便于AI入口能够快速执行此函数。
 
 **起始版本：** 20
 

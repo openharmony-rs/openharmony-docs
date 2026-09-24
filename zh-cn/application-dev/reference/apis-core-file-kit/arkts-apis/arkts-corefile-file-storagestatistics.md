@@ -19,14 +19,14 @@ import { storageStatistics } from '@kit.CoreFileKit';
 | 名称 | 说明 |
 | --- | --- |
 | [getCurrentBundleInodes](arkts-corefile-storagestatistics-getcurrentbundleinodes-f.md) | 获取当前应用的inode占用量，使用Promise异步回调。 |
-| [getCurrentBundleStats](arkts-corefile-storagestatistics-getcurrentbundlestats-f.md#getcurrentbundlestats) | 应用异步获取当前应用存储空间大小（单位为Byte），使用callback异步回调。 |
+| getCurrentBundleStats | 应用异步获取当前应用存储空间大小（单位为Byte），使用callback异步回调。 |
 | [getCurrentBundleStats](arkts-corefile-storagestatistics-getcurrentbundlestats-f.md#getcurrentbundlestats-1) | 应用异步获取当前应用存储空间大小（单位为Byte），以Promise方式返回。 |
 | [getFreeInodes](arkts-corefile-storagestatistics-getfreeinodes-f.md) | 获取文件系统的inode资源剩余量，仅支持查询系统数据分区。使用Promise异步回调。 |
-| [getFreeSize](arkts-corefile-storagestatistics-getfreesize-f.md#getfreesize) | 获取内置存储的可用空间大小（单位为Byte），以callback方式返回。 |
+| getFreeSize | 获取内置存储的可用空间大小（单位为Byte），以callback方式返回。 |
 | [getFreeSize](arkts-corefile-storagestatistics-getfreesize-f.md#getfreesize-1) | 获取内置存储的可用空间大小（单位为Byte），以Promise方式返回。 |
 | [getFreeSizeSync](arkts-corefile-storagestatistics-getfreesizesync-f.md) | 同步获取内置存储的可用空间大小（单位为Byte）。 |
 | [getTotalInodes](arkts-corefile-storagestatistics-gettotalinodes-f.md) | 获取文件系统的inode资源总量，仅支持查询系统数据分区。使用Promise异步回调。 |
-| [getTotalSize](arkts-corefile-storagestatistics-gettotalsize-f.md#gettotalsize) | 获取内置存储的总空间大小（单位为Byte），以callback方式返回。 |
+| getTotalSize | 获取内置存储的总空间大小（单位为Byte），以callback方式返回。 |
 | [getTotalSize](arkts-corefile-storagestatistics-gettotalsize-f.md#gettotalsize-1) | 获取内置存储的总空间大小（单位为Byte），以Promise方式返回。 |
 | [getTotalSizeSync](arkts-corefile-storagestatistics-gettotalsizesync-f.md) | 同步获取内置存储的总空间大小（单位为Byte）。 |
 

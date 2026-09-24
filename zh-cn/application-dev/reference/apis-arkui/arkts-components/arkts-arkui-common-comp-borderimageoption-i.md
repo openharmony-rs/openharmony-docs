@@ -180,7 +180,7 @@ source?: string | Resource | LinearGradient
 
 **说明：** 
 
-边框图源仅适用于容器组件，如[Row](arkts-arkui-row-comp.md#row)、[Column](arkts-arkui-column-comp.md#column)、[Flex](arkts-arkui-flex-comp.md#flex)，在非容器组件上使用会失效。
+边框图源仅适用于容器组件，如Row、Column、Flex，在非容器组件上使用会失效。
 
 **类型：** string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; [LinearGradient](arkts-arkui-common-comp-lineargradient-i.md)
 

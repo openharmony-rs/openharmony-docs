@@ -90,7 +90,7 @@ primaryTitleModifier?: TextModifier
 
 Text modifier for primary title.
 
-**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** TextModifier
 
 **起始版本：** 18
 
@@ -130,7 +130,7 @@ secondaryTitleModifier?: TextModifier
 
 Text modifier for secondary title.
 
-**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** TextModifier
 
 **起始版本：** 18
 

@@ -58,7 +58,7 @@ selectInputDevice(inputDevice: AudioDeviceDescriptor): Promise<void>
 
 > **说明：** 
 > 
-> - 此设置对应用下创建的所有录音流生效，除非特定流已经通过[selectInputDeviceForAudioCapturer](../../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#selectinputdeviceforaudiocapturer)指定了专属输入设备。
+> - 此设置对应用下创建的所有录音流生效，除非特定流已经通过selectInputDeviceForAudioCapturer指定了专属输入设备。
 > 
 > - 当应用实现输入设备选择功能时，可以通过[AudioRoutingManager.getAvailableDevices](arkts-audio-audio-audioroutingmanager-i.md#getavailabledevices)获取可用输入设备列表，并通过[AudioRoutingManager.getPreferredInputDeviceForCapturerInfo](arkts-audio-audio-audioroutingmanager-i.md#getpreferredinputdeviceforcapturerinfo)获取当前首选输入设备。
 > 
@@ -145,7 +145,7 @@ selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<void>
 
 > **说明：** 
 > 
-> - 此设置对应用下创建的所有播放流生效，除非特定流已经通过[selectOutputDeviceForAudioRenderer](../../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#selectoutputdeviceforaudiorenderer)指定了专属输出设备。
+> - 此设置对应用下创建的所有播放流生效，除非特定流已经通过selectOutputDeviceForAudioRenderer指定了专属输出设备。
 > 
 > - 当应用实现输出设备选择功能时，可以通过[AudioRoutingManager.getAvailableDevices](arkts-audio-audio-audioroutingmanager-i.md#getavailabledevices)获取可用输出设备列表，并通过[AudioRoutingManager.getPreferOutputDeviceForRendererInfo](arkts-audio-audio-audioroutingmanager-i.md#getpreferoutputdeviceforrendererinfo)获取当前首选输出设备。
 > 

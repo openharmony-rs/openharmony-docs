@@ -1,5 +1,11 @@
 # borderStyles
 
+## 导入模块
+
+```TypeScript
+import { borderStyles } from '@kit.ArkUI';
+```
+
 ## borderStyles
 
 ```TypeScript

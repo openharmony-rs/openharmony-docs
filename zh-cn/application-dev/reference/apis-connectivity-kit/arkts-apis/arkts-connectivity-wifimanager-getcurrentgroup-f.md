@@ -32,8 +32,8 @@ function getCurrentGroup(): Promise<WifiP2pGroupInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
 | [2801000](../errorcode-wifi.md#2801000-p2p模块异常) | Operation failed. |
 
 **示例**
@@ -83,10 +83,10 @@ function getCurrentGroup(callback: AsyncCallback<WifiP2pGroupInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
 | [2801000](../errorcode-wifi.md#2801000-p2p模块异常) | Operation failed. |
 
 **示例**
 
-参见 [getCurrentGroup](#getcurrentgroup)
+参见 getCurrentGroup

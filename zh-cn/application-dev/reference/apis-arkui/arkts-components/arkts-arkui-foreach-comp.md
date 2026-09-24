@@ -14,7 +14,7 @@ ForEach(
   )
 ```
 
-该接口需要与容器组件配合使用，且接口返回的组件应当是允许包含在ForEach父容器组件中的子组件。例如，[ListItem](arkts-arkui-listitem-comp.md#list_item)组件要求ForEach的父容器组件必须为[List](arkts-arkui-list-comp.md#list)组件或[ListItemGroup](arkts-arkui-listitemgroup-comp.md#list_item_group)组件。
+该接口需要与容器组件配合使用，且接口返回的组件应当是允许包含在ForEach父容器组件中的子组件。例如，ListItem组件要求ForEach的父容器组件必须为List组件或ListItemGroup组件。
 
 **起始版本：** 7
 

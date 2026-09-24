@@ -222,7 +222,7 @@ HEARING_AID = 30
 
 助听器设备。
 
-应用调用获取设备的相关接口时，该类型默认返回匿名类型。从API版本26.0.0开始，如需获取具体设备类型，可先调用[declareDeviceTypesCompatibility](./arkts-apis-audio-AudioRoutingManager.md#declaredevicetypescompatibility)进行设备类型兼容声明。
+应用调用获取设备的相关接口时，该类型默认返回匿名类型。从API版本26.0.0开始，如需获取具体设备类型，可先调用declareDeviceTypesCompatibility进行设备类型兼容声明。
 
 **起始版本：** 20
 
@@ -236,7 +236,7 @@ NEARLINK = 31
 
 星闪设备。
 
-应用调用获取设备的相关接口时，该类型默认返回匿名类型。从API版本26.0.0开始，如需获取具体设备类型，可先调用[declareDeviceTypesCompatibility](./arkts-apis-audio-AudioRoutingManager.md#declaredevicetypescompatibility)进行设备类型兼容声明。
+应用调用获取设备的相关接口时，该类型默认返回匿名类型。从API版本26.0.0开始，如需获取具体设备类型，可先调用declareDeviceTypesCompatibility进行设备类型兼容声明。
 
 **起始版本：** 20
 

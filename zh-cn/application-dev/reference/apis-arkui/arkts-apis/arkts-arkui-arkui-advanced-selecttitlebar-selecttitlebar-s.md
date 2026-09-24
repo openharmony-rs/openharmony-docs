@@ -10,7 +10,7 @@ export declare struct SelectTitleBar
 > 
 > - 该组件仅可在Stage模型下使用。
 > 
-> - 如果SelectTitleBar设置[通用属性](../arkts-components/arkts-arkui-common-comp.md#common)和[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SelectTitleBar本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SelectTitleBar设置通用属性和通用事件。
+> - 如果SelectTitleBar设置通用属性和通用事件，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SelectTitleBar本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SelectTitleBar设置通用属性和通用事件。
 
 ## 子组件
 

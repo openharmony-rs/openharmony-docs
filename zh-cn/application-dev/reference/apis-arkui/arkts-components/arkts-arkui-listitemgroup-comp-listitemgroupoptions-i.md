@@ -220,7 +220,7 @@ style?: ListItemGroupStyle
 
 设置为ListItemGroupStyle.NONE时无样式。
 
-设置为ListItemGroupStyle.CARD时，建议配合[ListItem](arkts-arkui-listitem-comp.md#list_item)的ListItemStyle.CARD同时使用，显示默认卡片样式。
+设置为ListItemGroupStyle.CARD时，建议配合ListItem的ListItemStyle.CARD同时使用，显示默认卡片样式。
 
 卡片样式下，ListItemGroup默认规格：左右外边距12vp，上下左右内边距4vp。
 

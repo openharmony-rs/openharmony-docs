@@ -22,7 +22,7 @@ import { identifier } from '@kit.AdsKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getOAID](arkts-ads-identifier-getoaid-f.md#getoaid) | 获取开放匿名设备标识符（OAID）。使用callback异步回调。 |
+| getOAID | 获取开放匿名设备标识符（OAID）。使用callback异步回调。 |
 | [getOAID](arkts-ads-identifier-getoaid-f.md#getoaid-1) | 获取开放匿名设备标识符（OAID）。使用Promise异步回调。 |
 
 <!--Del-->

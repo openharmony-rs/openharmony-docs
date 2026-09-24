@@ -129,7 +129,7 @@ static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, o
 
 > **说明：** 
 > 
-> - 从该接口获取的CanvasRenderingContext2D对象不允许作为参数创建[Canvas](arkts-arkui-canvas-comp.md#canvas)组件，否则会导致应用崩溃。
+> - 从该接口获取的CanvasRenderingContext2D对象不允许作为参数创建Canvas组件，否则会导致应用崩溃。
 > 
 > - 当入参的DrawingRenderingContext对象未绑定Canvas组件时，将返回错误码。
 
@@ -215,7 +215,7 @@ off(type: 'onAttach', callback?: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## off('onDetach')
 
@@ -244,7 +244,7 @@ off(type: 'onDetach', callback?: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -378,7 +378,7 @@ on(type: 'onAttach', callback: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## on('onDetach')
 
@@ -415,7 +415,7 @@ on(type: 'onDetach', callback: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## startImageAnalyzer
 
@@ -461,9 +461,9 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [110001](../arkui-ts/errorcode-image-analyzer.md#110001-ai图像分析功能不支持) | Image analysis feature is unsupported. |
-| [110002](../arkui-ts/errorcode-image-analyzer.md#110002-ai图像分析正在进行中) | Image analysis is currently being executed. |
-| [110003](../arkui-ts/errorcode-image-analyzer.md#110003-ai图像分析已停止) | Image analysis is stopped. |
+| 110001 | Image analysis feature is unsupported. |
+| 110002 | Image analysis is currently being executed. |
+| 110003 | Image analysis is stopped. |
 
 ## stopImageAnalyzer
 

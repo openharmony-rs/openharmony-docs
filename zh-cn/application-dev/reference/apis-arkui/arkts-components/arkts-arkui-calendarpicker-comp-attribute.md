@@ -4,11 +4,11 @@
 declare class CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
+除支持通用属性外，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp.md#common)，还支持以下事件：
+除支持通用事件，还支持以下事件：
 
-**继承/实现关系：** CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>
+**继承/实现关系：** CalendarPickerAttribute extends CommonMethod&lt;CalendarPickerAttribute&gt;
 
 **起始版本：** 10
 

@@ -4,11 +4,11 @@
 declare class ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
+除支持通用属性外，还支持以下属性：
 
-支持[通用事件](arkts-arkui-common-comp.md#common)。
+支持通用事件。
 
-**继承/实现关系：** ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
+**继承/实现关系：** ColumnSplitAttribute extends CommonMethod&lt;ColumnSplitAttribute&gt;
 
 **起始版本：** 7
 

@@ -4,7 +4,7 @@
 export interface ProcessRunningInfo
 ```
 
-运行进程信息，可以通过appManager中[getProcessRunningInfos](arkts-ability-appmanager-getprocessrunninginfos-depr-f.md#getprocessrunninginfos)方法来获取运行进程信息。
+运行进程信息，可以通过appManager中getProcessRunningInfos方法来获取运行进程信息。
 
 > **说明：** 
 > 

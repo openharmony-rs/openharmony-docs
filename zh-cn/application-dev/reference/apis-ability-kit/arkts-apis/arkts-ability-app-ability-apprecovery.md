@@ -28,7 +28,7 @@ import { appRecovery } from '@kit.AbilityKit';
 | --- | --- |
 | [enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md) | 使能应用恢复功能，参数按顺序填入。该接口调用后，应用从启动器启动时第一个Ability支持恢复。 |
 | [restartApp](arkts-ability-apprecovery-restartapp-f.md) | 重启当前进程，并拉起应用启动时第一个Ability，如果该Ability存在已经保存的状态，这些状态数据会在Ability的onCreate生命周期回调的want参数中作为wantParam属性传入。 |
-| [saveAppState](arkts-ability-apprecovery-saveappstate-f.md#saveappstate) | 保存当前App状态，可以配合[errorManager](arkts-ability-app-ability-errormanager.md)相关接口使用。 |
+| saveAppState | 保存当前App状态，可以配合[errorManager](arkts-ability-app-ability-errormanager.md)相关接口使用。 |
 | [saveAppState](arkts-ability-apprecovery-saveappstate-f.md#saveappstate-1) | 主动保存Ability的状态，这个状态将在下次恢复启动时使用。可以配合[errorManager](arkts-ability-app-ability-errormanager.md)相关接口使用。 |
 | [setRestartWant](arkts-ability-apprecovery-setrestartwant-f.md) | 设置下次恢复主动拉起场景下的Ability。该Ability必须为当前包下的UIAbility。 |
 

@@ -6,9 +6,9 @@ declare class GridAttribute extends ScrollableCommonMethod<GridAttribute>
 
 除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)和[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)外，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp.md#common)和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还支持以下事件：
+除支持通用事件和滚动组件通用事件外，还支持以下事件：
 
-**继承/实现关系：** GridAttribute extends ScrollableCommonMethod<GridAttribute>
+**继承/实现关系：** GridAttribute extends ScrollableCommonMethod&lt;GridAttribute&gt;
 
 **起始版本：** 7
 
@@ -20,7 +20,7 @@ declare class GridAttribute extends ScrollableCommonMethod<GridAttribute>
 alignItems(alignment: Optional<GridItemAlignment>)
 ```
 
-设置Grid中GridItem的对齐方式， 使用方法可以参考[示例9](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例9以当前行最高的griditem的高度为其他griditem的高度)。
+设置Grid中GridItem的对齐方式， 使用方法可以参考示例9。
 
 **起始版本：** 12
 
@@ -162,7 +162,7 @@ auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值�
 
 非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。需要按固定vp尺寸自动计算列数时，应使用repeat(auto-fill, track-size)。
 
-使用效果可以参考[示例8](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例8设置自适应列数)。
+使用效果可以参考示例8。
 
 设置为'0fr'时，该列的列宽为0，不显示GridItem。设置为其他非法值时，GridItem显示为固定1列。
 
@@ -239,7 +239,7 @@ edgeEffect(value: EdgeEffect, options?: EdgeEffectOptions)
 editMode(value: boolean)
 ```
 
-设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部[GridItem](arkts-arkui-griditem-comp.md#griditem)。
+设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部GridItem。
 
 > **说明：** 
 > 
@@ -287,7 +287,7 @@ editModeOptions(options?: EditModeOptions)
 enableEditMode(enabled: boolean | undefined)
 ```
 
-设置Grid是否启用编辑模式，启用编辑模式后可以在Grid组件内滑动多选[GridItem](arkts-arkui-griditem-comp.md#griditem)。未通过该接口设置时，不启用编辑模式。
+设置Grid是否启用编辑模式，启用编辑模式后可以在Grid组件内滑动多选GridItem。未通过该接口设置时，不启用编辑模式。
 
 **起始版本：** 26.0.0
 
@@ -463,7 +463,7 @@ minCount(value: number)
 multiSelectable(value: boolean)
 ```
 
-设置是否开启鼠标框选。开启框选后，可以配合GridItem的selected属性和onSelect事件获取GridItem的选中状态，还可以通过[多态样式](arkts-arkui-common-comp.md#common)设置GridItem的选中态样式（GridItem默认无选中态样式）。
+设置是否开启鼠标框选。开启框选后，可以配合GridItem的selected属性和onSelect事件获取GridItem的选中状态，还可以通过多态样式设置GridItem的选中态样式（GridItem默认无选中态样式）。
 
 **起始版本：** 8
 
@@ -601,9 +601,9 @@ onItemDragStart(event: OnItemDragStartCallback)
 
 由于拖拽检测也需要长按，且事件处理机制优先触发子组件事件，GridItem上绑定[LongPressGesture](arkts-arkui-tapgesture-comp-longpressgestureinterface-i.md)时无法触发拖拽。如有长按和拖拽同时使用的需求可以使用通用拖拽事件。
 
-拖拽浮起的GridItem可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例16实现griditem自定义拖拽)。
+拖拽浮起的GridItem可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考示例16（实现GridItem自定义拖拽）。
 
-不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现GridItem拖拽）](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例17通过拖拽事件实现griditem拖拽)。从API版本26.0.0开始，可以使用[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)的[onMove](arkts-arkui-common-comp-dynamicnode-c.md#onmove)接口实现该效果，参考[示例22（使用OnMove进行拖拽）](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例22使用onmove进行拖拽)。它同时支持跨行跨列的GridItem的拖拽，但需注意Grid必须是可滚动的。
+不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考示例17（通过拖拽事件实现GridItem拖拽）。从API版本26.0.0开始，可以使用[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)的[onMove](arkts-arkui-common-comp-dynamicnode-c.md#onmove)接口实现该效果，参考示例22（使用OnMove进行拖拽）。它同时支持跨行跨列的GridItem的拖拽，但需注意Grid必须是可滚动的。
 
 **起始版本：** 8
 
@@ -1003,7 +1003,7 @@ supportAnimation(value: boolean)
 
 仅在大小规则的Grid中支持拖拽动画，跨行或跨列场景不支持。
 
-supportAnimation动画效果参考[示例5（Grid拖拽场景）](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例5grid拖拽场景)，其他动画效果需要应用自定义拖拽实现。
+supportAnimation动画效果参考示例5（Grid拖拽场景），其他动画效果需要应用自定义拖拽实现。
 
 **起始版本：** 8
 

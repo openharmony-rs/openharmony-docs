@@ -164,7 +164,7 @@ createDeferredPreviewOutput(profile: Profile): PreviewOutput
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 23 |
+| 202 | Not System Application.<br>**适用版本：** 12 - 23 |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 24+ |
 
 **示例**
@@ -1053,7 +1053,7 @@ isTorchLevelControlSupported(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 23 - 24 |
+| 202 | Not System Application.<br>**适用版本：** 23 - 24 |
 
 **示例**
 
@@ -1416,7 +1416,7 @@ setTorchModeOnWithLevel(torchLevel: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 23 - 24 |
+| 202 | Not System Application.<br>**适用版本：** 23 - 24 |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 

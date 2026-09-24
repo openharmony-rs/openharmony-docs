@@ -43,22 +43,22 @@ import { restrictions } from '@kit.MDMKit';
 | --- | --- |
 | [addDisallowedListForAccount](arkts-mdm-restrictions-adddisallowedlistforaccount-f.md) | 为指定用户添加禁止使用某特性的应用名单。指定用户下，添加到名单中的应用不允许使用指定的特性能力。 |
 | [getDisallowedListForAccount](arkts-mdm-restrictions-getdisallowedlistforaccount-f.md) | 获取指定用户禁止使用某特性的应用名单。 |
-| [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy) | 查询某特性是否被禁用。 |
+| getDisallowedPolicy | 查询某特性是否被禁用。 |
 | [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1) | 查询指定设备特性是否被禁用。 |
-| [getDisallowedPolicyForAccount](arkts-mdm-restrictions-getdisallowedpolicyforaccount-f.md#getdisallowedpolicyforaccount) | 获取指定用户的某特性状态。 |
+| getDisallowedPolicyForAccount | 获取指定用户的某特性状态。 |
 | [getDisallowedPolicyForAccount](arkts-mdm-restrictions-getdisallowedpolicyforaccount-f.md#getdisallowedpolicyforaccount-1) | 获取指定用户的某特性状态。 |
-| [getUserRestricted](arkts-mdm-restrictions-getuserrestricted-f.md#getuserrestricted) | 获取设置项的禁用状态。 |
+| getUserRestricted | 获取设置项的禁用状态。 |
 | [getUserRestricted](arkts-mdm-restrictions-getuserrestricted-f.md#getuserrestricted-1) | 获取设置项的禁用状态 |
-| [getUserRestrictedForAccount](arkts-mdm-restrictions-getuserrestrictedforaccount-f.md#getuserrestrictedforaccount) | 获取指定用户设置项的禁用状态。 |
+| getUserRestrictedForAccount | 获取指定用户设置项的禁用状态。 |
 | [getUserRestrictedForAccount](arkts-mdm-restrictions-getuserrestrictedforaccount-f.md#getuserrestrictedforaccount-1) | 获取指定用户设置项的禁用状态。 |
 | [removeDisallowedListForAccount](arkts-mdm-restrictions-removedisallowedlistforaccount-f.md) | 为指定用户移除禁止使用某特性的应用名单。 |
-| [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy) | 设置禁用/启用某特性。 |
+| setDisallowedPolicy | 设置禁用/启用某特性。 |
 | [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1) | 设置禁用/启用指定设备特性，禁用后相关设备特性无法被使用。 |
-| [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setdisallowedpolicyforaccount) | 设置禁用/启用指定用户的某特性。 |
+| setDisallowedPolicyForAccount | 设置禁用/启用指定用户的某特性。 |
 | [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setdisallowedpolicyforaccount-1) | 设置禁用/启用指定用户的某特性。 |
-| [setUserRestriction](arkts-mdm-restrictions-setuserrestriction-f.md#setuserrestriction) | 设置用户行为的限制规则。 |
+| setUserRestriction | 设置用户行为的限制规则。 |
 | [setUserRestriction](arkts-mdm-restrictions-setuserrestriction-f.md#setuserrestriction-1) | 设置用户行为的限制规则。 |
-| [setUserRestrictionForAccount](arkts-mdm-restrictions-setuserrestrictionforaccount-f.md#setuserrestrictionforaccount) | 设置指定用户行为的限制规则。 |
+| setUserRestrictionForAccount | 设置指定用户行为的限制规则。 |
 | [setUserRestrictionForAccount](arkts-mdm-restrictions-setuserrestrictionforaccount-f.md#setuserrestrictionforaccount-1) | 限制指定用户修改指定的设置项。 |
 
 <!--Del-->

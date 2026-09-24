@@ -43,7 +43,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 | [dumpHeapData](arkts-performanceanalysis-hidebug-dumpheapdata-f.md) |  |
 | [startJsCpuProfiling](arkts-performanceanalysis-hidebug-startjscpuprofiling-f.md) | 启动虚拟机Profiling方法跟踪，`startJsCpuProfiling(filename: string)`方法的调用需要与`stopJsCpuProfiling()`方法的调用一一对应，先开启后关闭，请避免重复开启或重复关闭的调用方式，否则会接口调用异常。 |
 | [stopJsCpuProfiling](arkts-performanceanalysis-hidebug-stopjscpuprofiling-f.md) | 停止虚拟机Profiling方法跟踪，`stopJsCpuProfiling()`方法的调用需要与`startJsCpuProfiling(filename: string)`方法的调用一一对应，先开启后关闭，请避免重复开启或重复关闭的调用方式，否则会接口调用异常。 |
-| [dumpJsHeapData](arkts-performanceanalysis-hidebug-dumpjsheapdata-f.md#dumpjsheapdata) | 虚拟机堆数据转储。 |
+| dumpJsHeapData | 虚拟机堆数据转储。 |
 | [dumpJsHeapData](arkts-performanceanalysis-hidebug-dumpjsheapdata-f.md#dumpjsheapdata-1) | 虚拟机堆数据转储，支持清除nodeId缓存。 |
 | [getServiceDump](arkts-performanceanalysis-hidebug-getservicedump-f.md) | 获取系统服务信息。 |
 | [getSystemCpuUsage](arkts-performanceanalysis-hidebug-getsystemcpuusage-f.md) | 获取系统的CPU资源占用情况。 |
@@ -66,7 +66,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 | [getGraphicsMemorySync](arkts-performanceanalysis-hidebug-getgraphicsmemorysync-f.md) | 使用同步方式获取应用显存总大小（gl + graph）。 |
 | [getGraphicsMemorySummary](arkts-performanceanalysis-hidebug-getgraphicsmemorysummary-f.md) | 获取应用显存数据，使用Promise进行异步回调。 |
 | [setJsRawHeapTrimLevel](arkts-performanceanalysis-hidebug-setjsrawheaptrimlevel-f.md) | 设置当前进程转储虚拟机原始堆快照的裁剪级别。使用该接口并传入参数TRIM_LEVEL_2，可以有效减少堆快照的文件大小。 |
-| [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md#dumpjsrawheapdata) | 为当前线程转储虚拟机的原始堆快照，并生成的rawheap格式文件，使用Promise异步回调完成。该文件可通过rawheap-translator工具转化为heapsnapshot格式文件进行解析。 |
+| dumpJsRawHeapData | 为当前线程转储虚拟机的原始堆快照，并生成的rawheap格式文件，使用Promise异步回调完成。该文件可通过rawheap-translator工具转化为heapsnapshot格式文件进行解析。 |
 | [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md#dumpjsrawheapdata-1) | 为当前线程转储虚拟机的原始堆快照，并支持清除nodeId缓存。生成的文件为rawheap格式，使用Promise异步回调完成。该文件可通过rawheap-translator工具转化为heapsnapshot格式文件进行解析。 |
 | [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md#dumpjsrawheapdata-2) | 为当前线程或其所属进程生成虚拟机的原始堆快照，并支持清除nodeId缓存，生成的文件为rawheap格式。使用Promise异步回调。文件可通过rawheap-translator工具转换为heapsnapshot格式文件进行解析。 |
 | [enableGwpAsanGrayscale](arkts-performanceanalysis-hidebug-enablegwpasangrayscale-f.md) | 使能GWP-ASan，用于检测堆内存使用中的非法行为。 |

@@ -4,7 +4,7 @@
 
 > **说明：** 
 > 
-> 从API version 9开始，该组件不再维护，推荐使用新组件[GridCol](arkts-arkui-gridcol-comp.md#grid_col)、[GridRow](arkts-arkui-gridrow-comp.md#grid_row)。
+> 从API version 9开始，该组件不再维护，推荐使用新组件GridCol、GridRow。
 > 
 > 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 

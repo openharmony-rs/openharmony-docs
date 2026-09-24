@@ -4,9 +4,9 @@
 declare class TextClockAttribute extends CommonMethod<TextClockAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
+除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** TextClockAttribute extends CommonMethod<TextClockAttribute>
+**继承/实现关系：** TextClockAttribute extends CommonMethod&lt;TextClockAttribute&gt;
 
 **起始版本：** 8
 
@@ -342,4 +342,4 @@ textShadow(value: ShadowOptions | Array<ShadowOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | 文字阴影效果。支持单个阴影对象或阴影数组实现多重阴影效果。ShadowOptions对象包含radius（模糊半径）、color（阴影颜色）、offsetX（X轴偏移）、offsetY（Y轴偏移）等属性。<br>不支持fill字段，不支持智能取色模式。具体属性说明请参考[ShadowOptions](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions)。 |
+| value | [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | 文字阴影效果。支持单个阴影对象或阴影数组实现多重阴影效果。ShadowOptions对象包含radius（模糊半径）、color（阴影颜色）、offsetX（X轴偏移）、offsetY（Y轴偏移）等属性。<br>不支持fill字段，不支持智能取色模式。具体属性说明请参考ShadowOptions。 |

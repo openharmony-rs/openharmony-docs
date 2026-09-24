@@ -4,7 +4,7 @@
 
 > **说明：** 
 > 
-> - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component)。
+> - 该组件从API版本26.0.0开始支持WithTheme。
 
 ## 子组件
 
@@ -235,7 +235,7 @@ struct ImageAnimatorExample {
 
 ### 示例3（设置不可见自动停播）
 
-通过[monitorInvisibleArea](arkts-arkui-imageanimator-comp-attribute.md#monitorinvisiblearea)属性实现了当ImageAnimator的[state](#state)属性为AnimationStatus.Running时，控制组件在不可见时停止播放，在可见时恢复播放。
+通过[monitorInvisibleArea](arkts-arkui-imageanimator-comp-attribute.md#monitorinvisiblearea)属性实现了当ImageAnimator的state属性为AnimationStatus.Running时，控制组件在不可见时停止播放，在可见时恢复播放。
 
 ```TypeScript
 @Entry

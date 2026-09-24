@@ -18,7 +18,7 @@ import { AtomicServiceNavigation, NavDestinationBuilder, MixMode, GradientAlpha,
 
 | 名称 | 说明 |
 | --- | --- |
-| [AtomicServiceNavigation](arkts-arkui-atomicservice-atomicservicenavigation-atomicservicenavigation-s.md) | 作为Page页面的根容器使用，其内部默认包含了标题栏、内容区。其中，内容区在首页默认显示导航内容，在非首页显示[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)的子组件，首页和非首页通过路由进行切换。 |
+| [AtomicServiceNavigation](arkts-arkui-atomicservice-atomicservicenavigation-atomicservicenavigation-s.md) | 作为Page页面的根容器使用，其内部默认包含了标题栏、内容区。其中，内容区在首页默认显示导航内容，在非首页显示NavDestination的子组件，首页和非首页通过路由进行切换。 |
 
 ### 接口
 

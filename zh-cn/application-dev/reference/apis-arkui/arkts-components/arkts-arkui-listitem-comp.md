@@ -4,7 +4,7 @@ ListItem用于展示列表中的具体列表项，支持设置划出菜单、选
 
 > **说明：** 
 > 
-> - 该组件的父组件只能是[List](arkts-arkui-list-comp.md#list)或者[ListItemGroup](arkts-arkui-listitemgroup-comp.md#list_item_group)。
+> - 该组件的父组件只能是List或者ListItemGroup。
 > 
 > - 当ListItem配合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，ListItem子组件在ListItem创建时创建。配合[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)使用时，或父组件为List/ListItemGroup时，ListItem子组件在ListItem布局时创建。
 

@@ -1,5 +1,11 @@
 # borderRadiuses
 
+## 导入模块
+
+```TypeScript
+import { borderRadiuses } from '@kit.ArkUI';
+```
+
 ## borderRadiuses
 
 ```TypeScript

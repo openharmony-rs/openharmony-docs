@@ -40,12 +40,12 @@ Set value.
 
 | 名称 | 说明 |
 | --- | --- |
-| [CalendarDay](arkts-arkui-calendar-comp-calendarday-i-sys.md) | Provides a monthly view component to display information such as date, shift break, and schedule. |
-| [CalendarRequestedData](arkts-arkui-calendar-comp-calendarrequesteddata-i-sys.md) | Defines the struct of CalendarRequestedData. |
-| [CalendarSelectedDate](arkts-arkui-calendar-comp-calendarselecteddate-i-sys.md) | Defines the struct of CalendarSelectedDate. |
-| [CurrentDayStyle](arkts-arkui-calendar-comp-currentdaystyle-i-sys.md) | CurrentDayStyle object. |
-| [MonthData](arkts-arkui-calendar-comp-monthdata-i-sys.md) | Date object. |
-| [NonCurrentDayStyle](arkts-arkui-calendar-comp-noncurrentdaystyle-i-sys.md) | Non current day style. |
-| [TodayStyle](arkts-arkui-calendar-comp-todaystyle-i-sys.md) | Non current day style. |
-| [WeekStyle](arkts-arkui-calendar-comp-weekstyle-i-sys.md) | Week Style. |
-| [WorkStateStyle](arkts-arkui-calendar-comp-workstatestyle-i-sys.md) | Work state style. |
+| CalendarDay | Provides a monthly view component to display information such as date, shift break, and schedule. |
+| CalendarRequestedData | Defines the struct of CalendarRequestedData. |
+| CalendarSelectedDate | Defines the struct of CalendarSelectedDate. |
+| CurrentDayStyle | CurrentDayStyle object. |
+| MonthData | Date object. |
+| NonCurrentDayStyle | Non current day style. |
+| TodayStyle | Non current day style. |
+| WeekStyle | Week Style. |
+| WorkStateStyle | Work state style. |

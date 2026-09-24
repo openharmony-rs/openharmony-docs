@@ -8,7 +8,7 @@ LoadingProgress是用于显示加载进度条的组件，在数据加载过程�
 > 
 > - 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component)。
+> - 该组件从API版本26.0.0开始支持WithTheme。
 
 ## 子组件
 
@@ -48,7 +48,7 @@ LoadingProgress()
 
 ### 示例1（设置颜色）
 
-该示例通过[color](#color)接口，实现了设置加载进度条颜色的功能。
+该示例通过color接口，实现了设置加载进度条颜色的功能。
 
 
 
@@ -70,7 +70,7 @@ struct LoadingProgressExample {
 
 ### 示例2（设置定制内容区）
 
-该示例通过[contentModifier](#contentmodifier12)接口，实现了定制内容区的功能，并展示了如何基于[LoadingProgressConfiguration](#loadingprogressconfiguration12对象说明)的[enableLoading](#enableloading10)属性切换自定义内容的显示效果。
+该示例通过contentModifier接口，实现了定制内容区的功能，并展示了如何基于LoadingProgressConfiguration的enableLoading属性切换自定义内容的显示效果。
 
 ```TypeScript
 // xxx.ets

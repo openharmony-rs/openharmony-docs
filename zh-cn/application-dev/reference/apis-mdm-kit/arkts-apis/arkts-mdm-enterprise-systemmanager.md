@@ -33,12 +33,12 @@ import { systemManager } from '@kit.MDMKit';
 | [finishLogCollected](arkts-mdm-systemmanager-finishlogcollected-f.md) | 删除本MDM应用在当前用户下收集到的设备日志。 |
 | [getAllowedPrinterIPAddressesForAccount](arkts-mdm-systemmanager-getallowedprinteripaddressesforaccount-f.md) | 查询用户级打印机IP地址白名单 |
 | [getAllowedPrinterIPAddressesForDevice](arkts-mdm-systemmanager-getallowedprinteripaddressesfordevice-f.md) | 查询打印机IP地址白名单 |
-| [getAutoUnlockAfterReboot](arkts-mdm-systemmanager-getautounlockafterreboot-f.md#getautounlockafterreboot) | 获取设备是否重启自动解锁。适用于需要验证设备重启解锁策略是否正确配置的场景，帮助企业管理员确认设备自动解锁功能状态。 |
+| getAutoUnlockAfterReboot | 获取设备是否重启自动解锁。适用于需要验证设备重启解锁策略是否正确配置的场景，帮助企业管理员确认设备自动解锁功能状态。 |
 | [getAutoUnlockAfterReboot](arkts-mdm-systemmanager-getautounlockafterreboot-f.md#getautounlockafterreboot-1) | 获取设备是否重启自动解锁。适用于需要验证设备重启解锁策略是否正确配置的场景，帮助企业管理员确认设备自动解锁功能状态。 |
 | [getDisallowedNearLinkProtocols](arkts-mdm-systemmanager-getdisallowednearlinkprotocols-f.md) | 获取指定用户下禁用的星闪协议名单。适用于需要查询用户当前星闪协议访问限制的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。 |
 | [getInstallLocalEnterpriseAppEnabled](arkts-mdm-systemmanager-getinstalllocalenterpriseappenabled-f.md) | 查询是否支持本地安装企业应用。适用于需要验证设备本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保设备能够正常安装企业应用。 |
 | [getInstallLocalEnterpriseAppEnabledForAccount](arkts-mdm-systemmanager-getinstalllocalenterpriseappenabledforaccount-f.md) | 查询指定用户是否支持本地安装企业应用。适用于需要验证特定用户本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保用户能够正常安装企业应用。 |
-| [getKeyEventPolicies](arkts-mdm-systemmanager-getkeyeventpolicies-f.md#getkeyeventpolicies) | 获取按键事件处理策略。适用于需要查询当前按键事件处理策略配置的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。 |
+| getKeyEventPolicies | 获取按键事件处理策略。适用于需要查询当前按键事件处理策略配置的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。 |
 | [getKeyEventPolicies](arkts-mdm-systemmanager-getkeyeventpolicies-f.md#getkeyeventpolicies-1) | 获取按键事件处理策略。适用于需要查询当前按键事件处理策略配置的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。 |
 | [getNTPServer](arkts-mdm-systemmanager-getntpserver-f.md) | 获取NTP时间服务器信息。适用于需要查询当前设备配置的NTP服务器地址的场景，用于验证时间同步配置是否正确，或在进行策略调整前获取当前配置。 |
 | [getOtaUpdatePolicy](arkts-mdm-systemmanager-getotaupdatepolicy-f.md) | 查询升级策略。适用于需要获取当前设备OTA升级策略配置的场景，用于验证策略是否正确下发，或在进行策略调整前获取当前策略配置。 |

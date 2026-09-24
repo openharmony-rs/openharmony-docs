@@ -32,7 +32,7 @@ bypassHostnamesWithoutPeriod(): void
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## clearImplicitRules
 
@@ -50,7 +50,7 @@ clearImplicitRules(): void
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## enableReverseBypass
 
@@ -76,11 +76,11 @@ enableReverseBypass(reverse: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## getBypassRules
 
@@ -104,7 +104,7 @@ getBypassRules(): Array<string>
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## getProxyRules
 
@@ -128,7 +128,7 @@ getProxyRules(): Array<ProxyRule>
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## insertBypassRule
 
@@ -154,11 +154,11 @@ insertBypassRule(bypassRule: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## insertDirectRule
 
@@ -188,11 +188,11 @@ insertDirectRule(schemeFilter?: ProxySchemeFilter): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## insertProxyRule
 
@@ -237,11 +237,11 @@ host是带括号的IPv6字面量、IPv4字面量或由点分隔的一个或多�
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## isReverseBypassEnabled
 
@@ -265,4 +265,4 @@ isReverseBypassEnabled(): boolean
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。

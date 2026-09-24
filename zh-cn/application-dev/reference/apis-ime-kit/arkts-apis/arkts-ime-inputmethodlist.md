@@ -36,7 +36,7 @@
 
 ## 属性
 
-<br><br>不支持[通用属性](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md#common)<br><br>
+<br><br>不支持通用属性<br><br>
 
 ## 子组件
 
@@ -54,7 +54,7 @@
 
 ## 事件
 
-<br><br>不支持[通用事件](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md#common)
+<br><br>不支持通用事件
 
 ## 导入模块
 

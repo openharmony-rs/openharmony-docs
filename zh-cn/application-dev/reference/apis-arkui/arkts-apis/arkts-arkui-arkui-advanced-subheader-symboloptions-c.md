@@ -22,7 +22,7 @@ import { OperationOption, OperationType, SelectOptions, SubHeader, SymbolOptions
 effectStrategy?: SymbolEffectStrategy
 ```
 
-设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)动效策略。
+设置SymbolGlyph动效策略。
 
 默认值：SymbolEffectStrategy.NONE
 
@@ -46,7 +46,7 @@ $r('sys.symbol.ohos_*')中引用的资源仅ohos_wifi支持层级动效模式。
 fontColor?: Array<ResourceColor>
 ```
 
-设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)颜色。
+设置SymbolGlyph颜色。
 
 默认值：不同渲染策略下默认值不同。
 
@@ -66,7 +66,7 @@ fontColor?: Array<ResourceColor>
 fontSize?: number | string | Resource
 ```
 
-设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)大小。
+设置SymbolGlyph大小。
 
 number类型取值范围：大于等于0。
 
@@ -90,7 +90,7 @@ number类型取值范围：大于等于0。
 fontWeight?: number | FontWeight | string
 ```
 
-设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)粗细。
+设置SymbolGlyph粗细。
 
 number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。
 
@@ -114,7 +114,7 @@ string类型仅支持number类型取值的字符串形式，例如“400”，�
 renderingStrategy?: SymbolRenderingStrategy
 ```
 
-设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)渲染策略。
+设置SymbolGlyph渲染策略。
 
 默认值：SymbolRenderingStrategy.SINGLE
 

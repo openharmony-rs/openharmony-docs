@@ -80,7 +80,7 @@ fontSize?: LengthMetrics
 
 当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，处理为16fp。
 
-单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
+单位：fp
 
 **类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md)
 

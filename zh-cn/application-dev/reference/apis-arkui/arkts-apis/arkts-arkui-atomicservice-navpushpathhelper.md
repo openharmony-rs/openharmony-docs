@@ -6,11 +6,11 @@
 
 ## 属性
 
-不支持[通用属性](../arkts-components/arkts-arkui-common-comp.md#common)。
+不支持通用属性。
 
 ## 事件
 
-不支持[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)
+不支持通用事件
 
 ## 导入模块
 
@@ -24,7 +24,7 @@ import { NavPushPathHelper } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [NavPushPathHelper](arkts-arkui-atomicservice-navpushpathhelper-navpushpathhelper-c.md) | 当跳转的目标[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)在不同的hsp分包且未被主包依赖时，首次运行原子化服务只会下载安装主包。此时需要使用NavPushPathHelper先下载安装相应hsp分包，再将指定的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面信息入栈或替换当前栈顶页面，从而使[Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation)支持动态加载hsp分包后再跳转。 |
+| [NavPushPathHelper](arkts-arkui-atomicservice-navpushpathhelper-navpushpathhelper-c.md) | 当跳转的目标NavDestination在不同的hsp分包且未被主包依赖时，首次运行原子化服务只会下载安装主包。此时需要使用NavPushPathHelper先下载安装相应hsp分包，再将指定的NavDestination页面信息入栈或替换当前栈顶页面，从而使Navigation支持动态加载hsp分包后再跳转。 |
 
 ## 示例
 

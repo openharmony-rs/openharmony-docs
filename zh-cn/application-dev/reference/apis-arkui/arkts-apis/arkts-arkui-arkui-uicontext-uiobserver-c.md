@@ -1287,7 +1287,7 @@ Registers a callback function to be called when the navigation destination is up
 
 **示例**
 
-通过[Navigation](../arkui-ts/ts-basic-components-navigation.md)的uniqueId，可以监听[NavDestination](../arkui-ts/ts-basic-components-navdestination.md)组件的状态变化。
+通过Navigation的uniqueId，可以监听NavDestination组件的状态变化。
 
 ```TypeScript
 // Index.ets
