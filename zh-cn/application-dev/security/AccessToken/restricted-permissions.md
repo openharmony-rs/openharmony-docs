@@ -1762,6 +1762,22 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**：26.0.1
 
+## ohos.permission.HIDDEN_CAMERA_DETECTION
+
+允许应用检测隐藏摄像头。
+
+获取该权限后，在酒店、民宿等地点，应用可辅助使用人员以检测当前空间是否存在隐藏摄像头，保护用户隐私。
+
+<!--RP120--><!--RP120End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone
+
+**起始版本**：26.0.1
+
 ## ohos.permission.INPUT_RECORDING
 
 允许应用监听输入事件。

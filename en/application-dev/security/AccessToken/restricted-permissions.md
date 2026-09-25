@@ -1763,6 +1763,22 @@ After obtaining this permission, the application can add sync root folders to th
 
 **Since**: 26.0.1
 
+## ohos.permission.HIDDEN_CAMERA_DETECTION
+
+Allows an application to detect hidden cameras.
+
+With this permission, the application can assist users in detecting whether hidden cameras exist in the current space (such as hotels or guesthouses) to protect user privacy.
+
+<!--RP120--><!--RP120End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones
+
+**Valid since**: 26.0.1
+
 ## ohos.permission.INPUT_RECORDING
 
 Allows an application to listen for input events.
