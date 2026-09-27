@@ -381,10 +381,10 @@ getPreviewRotation(displayRotation?: number): ImageRotation
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function testGetPreviewRotation(previewOutput: camera.PreviewOutput, imageRotation : camera.ImageRotation): camera.ImageRotation {
+function testGetPreviewRotation(previewOutput: camera.PreviewOutput, displayRotation: number): camera.ImageRotation {
   let previewRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
-    previewRotation = previewOutput.getPreviewRotation(imageRotation);
+    previewRotation = previewOutput.getPreviewRotation(displayRotation);
     console.info(`Preview rotation is: ${previewRotation}`);
   } catch (error) {
     // 失败返回错误码error.code并处理。
@@ -402,7 +402,7 @@ function testGetPreviewRotationWithOutParam(previewOutput: camera.PreviewOutput)
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
-    console.error(`The previewOutput.testGetPreviewRotationWithOutParam call failed. error code: ${err.code}`);
+    console.error(`The previewOutput.getPreviewRotation call failed. error code: ${err.code}`);
   }
   return previewRotation;
 }

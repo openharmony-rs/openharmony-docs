@@ -1195,7 +1195,7 @@ function testGetPhotoRotationWithOutParam(photoOutput: camera.PhotoOutput): came
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
-    console.error(`The photoOutput.testGetPhotoRotationWithOutParam call failed. error code: ${err.code}`);
+    console.error(`The photoOutput.getPhotoRotation call failed. error code: ${err.code}`);
   }
   return photoRotation;
 }
