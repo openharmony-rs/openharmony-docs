@@ -66,8 +66,8 @@ queryToolSummaries(): Promise\<Array\<ToolSummary>>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.QUERY_CLI_TOOL". |
-| 202      | Not system application. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
 **示例：**
@@ -121,8 +121,8 @@ queryTools(): Promise\<Array\<ToolInfo\>\>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.QUERY_CLI_TOOL". |
-| 202      | Not system application. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
 **示例：**
@@ -182,8 +182,8 @@ getToolInfoByName(toolName: string): Promise\<ToolInfo\>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.QUERY_CLI_TOOL". |
-| 202      | Not system application. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 35600030 | No tool with the specified name exists.                      |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
@@ -245,8 +245,8 @@ execTool(toolName: string, subCommand: string, args: Record\<string, Object\>, c
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied, interface caller does not have permission "ohos.permission.EXEC_CLI_TOOL". |
-| 202 | Not system application. Interface caller is not a system app. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 35600030 | No tool with the specified name exists. |
 | 35600031 | Maximum number of processes has been reached. |
 | 35600050  | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
