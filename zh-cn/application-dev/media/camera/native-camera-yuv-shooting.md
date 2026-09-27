@@ -160,7 +160,7 @@
          OH_PixelmapNative* mainPixelmap;
          Image_ErrorCode imageErr = OH_PictureNative_GetMainPixelmap(picture, &mainPixelmap);
          if (imageErr != IMAGE_SUCCESS || mainPixelmap == nullptr) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetImageSize call failed, errorCode: %{public}d", imageErr);
+             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetMainPixelmap call failed, errorCode: %{public}d", imageErr);
              return;
          }
          pixelMap = nullptr;
