@@ -8,7 +8,7 @@
 
 ## 概述
 
-ohos-window 是 OpenHarmony 提供的窗口管理命令行工具，用于操控窗口或查询窗口信息。该工具遵循 Claw 规范，以 JSON 格式输出执行结果，并提供详细的错误码、错误原因和解决建议，ohos-window 的安装路径为 `/system/bin/cli_tool/executable/ohos-window`。
+ohos-window是OpenHarmony提供的窗口管理CLI（Command Line Interface，命令行界面）工具，用于操控窗口或查询窗口信息。该工具遵循Claw规范，以JSON格式输出执行结果，并提供详细的错误码、错误原因和解决建议，ohos-window的安装路径为`/system/bin/cli_tool/executable/ohos-window`。
 
 ## help
 
