@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -36,7 +36,7 @@ Marshalling or unmarshalling error.
 
 **错误描述**
 
-数据传输前，进行序列化或反序列化错误，方法将返回该错误码。
+数据传输前，进行序列化或反序列化时发生错误，方法将返回该错误码。
 
 **可能原因**
 
@@ -119,7 +119,7 @@ Notification deletion disabled.
 
 **处理步骤**
 
-参考[NotificationRequest](./js-apis-inner-notification-notificationRequest.md)通知禁止删除属性。
+参考[NotificationRequest](js-apis-inner-notification-notificationRequest.md)通知禁止删除属性。
 <!--DelEnd-->
 
 ## 1600007 通知不存在
