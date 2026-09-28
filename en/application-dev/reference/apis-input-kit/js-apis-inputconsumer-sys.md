@@ -51,7 +51,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api.<br/>Applicable version: 12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Applicable version: 12+  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -113,7 +113,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api.<br/>Applicable version: 12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Applicable version: 12+  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -213,7 +213,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -313,7 +313,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -408,8 +408,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | SystemAPI permission error. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -467,8 +467,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | SystemAPI permission error. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**

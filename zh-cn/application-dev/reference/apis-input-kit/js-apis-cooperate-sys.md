@@ -49,7 +49,7 @@ enable(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -113,7 +113,7 @@ enable(enable: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -167,7 +167,7 @@ start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback: AsyncCal
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 4400001  | Incorrect descriptor for the target device. |
 | 4400002  | Screen hop failed. |
@@ -238,7 +238,7 @@ start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 4400001  | Incorrect descriptor for the target device. |
 | 4400002  | Screen hop failed. |
@@ -294,7 +294,7 @@ stop(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -352,7 +352,7 @@ stop(): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 
 **示例**：
 
@@ -404,7 +404,7 @@ getState(deviceDescriptor: string, callback: AsyncCallback<{ state: boolean }>):
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -470,7 +470,7 @@ getState(deviceDescriptor: string): Promise<{ state: boolean }>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -525,7 +525,7 @@ on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, even
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -586,7 +586,7 @@ off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 

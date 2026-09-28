@@ -47,7 +47,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 801  | Capability not supported.  |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **Example:**
@@ -105,7 +105,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 801  | Capability not supported.  |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **Example:**
@@ -163,7 +163,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 801  | Capability not supported.  |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **Example:**

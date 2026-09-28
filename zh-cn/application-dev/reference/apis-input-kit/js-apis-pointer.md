@@ -42,7 +42,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801  | Capability not supported.<br/>适用版本：18+ |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br/>适用版本：18+  |
 
 **示例**：
 
@@ -102,7 +102,7 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801  | Capability not supported.<br/>适用版本：18+ |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br/>适用版本：18+  |
 
 **示例**：
 
