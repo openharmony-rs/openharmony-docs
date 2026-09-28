@@ -3,21 +3,22 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=0edaaef5de1186c959319c99afaf3d467527fe8c translatedAt=2026-09-01T02:30:44.141Z pushedAt=2026-09-02T01:50:00.610Z -->
 
 ## Overview
 
-A TextBlob is a set of texts. You can draw both a single text and a paragraph by using TextBlobs.
+A TextBlob is a collection of text. You can draw both a single character and a large block of text by using TextBlobs.
 
 In addition to the basic TextBlob drawing, you can add various drawing effects to texts. Common TextBlob drawing scenarios include [text stroke](#text-stroke) and [text gradient](#text-gradient). For more effects, see [Overview of Drawing Effects](drawing-effect-overview.md).
 
-This topic does not involve text measurement and typography. For details about how to handle text drawing requirements, see [Introduction to Text Development](text-overview.md). This topic describes the typography policies and related usage.
+This topic does not involve text measurement and typography. For details about how to handle text drawing requirements, see [Introduction to Text Development](text-overview.md).
 
 ## Basic TextBlob Drawing
 
-The Canvas component draws TextBlobs using **drawTextBlob()**. This function takes three parameters: **TextBlob** object, and X and Y coordinates of the left end point of the text baseline.
+Canvas draws TextBlobs using **drawTextBlob()**. This function takes three parameters: a **TextBlob** object, and the X and Y coordinates of the left end point of the text baseline.
 
 For details about the **Canvas** object, see [Obtaining a Canvas and Displaying Drawing Results (ArkTS)](canvas-get-result-draw-arkts.md).
 
@@ -105,7 +106,7 @@ let brush = new drawing.Brush();
 let pen = new drawing.Pen();
 // Set anti-aliasing.
 brush.setAntiAlias(true);
-// Set the stroke color.
+// Set the fill color.
 brush.setColor(0xFF, 0xFF, 0xFF, 0xFF);
 
 pen.setAntiAlias(true);
@@ -174,10 +175,10 @@ Theme fonts are specialized custom fonts available for use in theme applications
 
 The following shows the sample code and effect for setting the theme font.
 
-<!-- @[arkts_graphics_draw_theme_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+<!-- @[arkts_graphics_draw_theme_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) --> 
 
 ``` TypeScript
-// Create a linear gradient shader.
+// Create a font object.
 const font = new drawing.Font();
 // Set the text size.
 font.setSize(100);
@@ -199,7 +200,7 @@ canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 
 ## Single-Character Drawing
 
-Single-character drawing is a refined technology for controlling text rendering. Compared with TextBlob drawing, single-character drawing has the following advantages: The font degradation mechanism is used. If a character cannot be displayed in the current font, the system automatically uses the system font to draw the character, improving compatibility with special characters and avoiding character loss. In addition, single-character drawing supports character-by-character configuration of font features (such as ligatures and alternates) to meet complex typography requirements for better user experience. For details about the APIs, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#drawsinglecharacter12).
+Single character drawing is a fine-grained control technique for text rendering in graphics rendering. Compared with TextBlob drawing, its core advantage lies in leveraging the font fallback mechanism: when the current font cannot display a certain character, it automatically falls back to the system font to render the character, improving compatibility with special characters and preventing missing characters. Additionally, single character drawing supports configuring font features (such as ligatures and alternative glyphs) on a per-character basis, meeting complex typography requirements and enhancing user experience. For detailed API information, see [drawSingleCharacter](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#drawsinglecharacter12).
 
 Basic scenario: drawing characters without font features
 

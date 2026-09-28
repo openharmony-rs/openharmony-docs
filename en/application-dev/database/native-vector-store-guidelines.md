@@ -1,12 +1,12 @@
 # Persisting Vector Store Data (C/C++)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @htt1997-->
 <!--Designer: @widecode-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=6174dbe83735166d6bba14dbb2029a3e65a74471 translatedAt=2026-07-27T08:16:40.882Z pushedAt=2026-07-27T09:50:10.761Z -->
+<!-- md-trans-meta sourceCommit=6879538b2b1a4844febd6a46491da3f73fa2dd07 translatedAt=2026-09-14T08:38:05.657Z pushedAt=2026-09-15T08:03:43.614Z -->
+
 
 ## When to Use
 
@@ -16,12 +16,11 @@ Since API version 18, data in vector stores can be persisted.
 ## Basic Concepts
 
 - **ResultSet**: a set of query results, which allows access to the required data in flexible modes.
-
 - **floatvector**: vector data, for example, **[1.0, 3.0, 2.4, 5.1, 6.2, 11.7]**.
 
 ## Constraints
 
-- The default log mode is Write Ahead Log ([WAL](data-terminology.md#write-ahead-log-wal)), and the default flush mode is [FULL](data-terminology.md#full).
+- The system uses the Write Ahead Log ([WAL](data-terminology.md#write-ahead-log-wal)) mode for logging by default, and the [FULL mode](data-terminology.md#full-mode) for data persistence by default.
 
 - A vector store supports a maximum of four read connections and one write connection at a time by default. A thread can perform the read operation when acquiring an idle read connection. If there is no idle read connection, a new read connection will be created.
 
@@ -314,7 +313,6 @@ libnative_rdb_ndk.z.so
 
      DROP INDEX table_name.index_name;
      ```
-
    - The extended syntax is as follows:
 
      ```sql

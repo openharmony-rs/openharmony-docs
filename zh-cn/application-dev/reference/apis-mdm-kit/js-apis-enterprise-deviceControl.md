@@ -1,4 +1,4 @@
-# @ohos.enterprise.deviceControl（设备控制管理）
+# @ohos.enterprise.deviceControl (设备控制管理)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -107,6 +107,7 @@ operateDevice(admin: Want, operation: Operation, addition?: string): void
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200010 | A conflict policy has been configured. |
 | 9200012  | Parameter verification failed.|
+| 9201048  | Failed to operate the device.|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 

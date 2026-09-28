@@ -87,11 +87,11 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 | --------------------- | ------------------------------------------ |
 | 401                   | Parameter error.                           |
 | 201                   | Permission denied.                         |
-| 2302001               | Websocket url error.                       |
-| 2302002               | Websocket certificate file does not exist. |
-| 2302003               | Websocket connection already exists.       |
-| 2302998               | It is not allowed to access this domain.   |
-| 2302999               | Internal error.             |
+| 2302001               | Websocket url error. <br>适用版本：12+                       |
+| 2302002               | Websocket certificate file does not exist. <br>适用版本：12+ |
+| 2302003               | Websocket connection already exists. <br>适用版本：12+       |
+| 2302998               | It is not allowed to access this domain. <br>适用版本：12+   |
+| 2302999               | Websocket other unknown error. <br>适用版本：10+             |
 
 
 **示例：**
@@ -147,11 +147,11 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 | --------------------- | ------------------------------------------ |
 | 401                   | Parameter error.                           |
 | 201                   | Permission denied.                         |
-| 2302001               | Websocket url error.                       |
-| 2302002               | Websocket certificate file does not exist. |
-| 2302003               | Websocket connection already exists.       |
-| 2302998               | It is not allowed to access this domain.   |
-| 2302999               | Internal error.             |
+| 2302001               | Websocket url error. <br>适用版本：12+                       |
+| 2302002               | Websocket certificate file does not exist. <br>适用版本：12+ |
+| 2302003               | Websocket connection already exists. <br>适用版本：12+       |
+| 2302998               | It is not allowed to access this domain. <br>适用版本：12+   |
+| 2302999               | Websocket other unknown error. <br>适用版本：10+             |
 
 **示例：**
 
@@ -236,11 +236,11 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 | --------------------- | ------------------------------------------ |
 | 401                   | Parameter error.                           |
 | 201                   | Permission denied.                         |
-| 2302001               | Websocket url error.                       |
-| 2302002               | Websocket certificate file does not exist. |
-| 2302003               | Websocket connection already exists.       |
-| 2302998               | It is not allowed to access this domain.   |
-| 2302999               | Internal error.             |
+| 2302001               | Websocket url error. <br>适用版本：12+                       |
+| 2302002               | Websocket certificate file does not exist. <br>适用版本：12+ |
+| 2302003               | Websocket connection already exists. <br>适用版本：12+       |
+| 2302998               | It is not allowed to access this domain. <br>适用版本：12+   |
+| 2302999               | Websocket other unknown error. <br>适用版本：10+             |
 
 **示例：**
 
@@ -985,7 +985,7 @@ createWebSocketServer(): WebSocketServer
 >
 > 从API version 23开始支持全设备使用，之前仅支持TV设备使用。
 
-**系统能力**: SystemCapability.Communication.NetStack
+**系统能力**： SystemCapability.Communication.NetStack
 
 **返回值：**
 
@@ -1013,9 +1013,9 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 >
 > 在多次调用该接口时，应避免监听同一端口。
 
-**需要权限**: ohos.permission.INTERNET
+**需要权限**： ohos.permission.INTERNET
 
-**系统能力**: SystemCapability.Communication.NetStack
+**系统能力**： SystemCapability.Communication.NetStack
 
 **参数：**
 
@@ -1039,7 +1039,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 | 2302002   | Websocket certificate file does not exist. |
 | 2302004   | Can't listen on the given NIC.            |
 | 2302005   | Can't listen on the given Port.           |
-| 2302007   | Websocket port already occupied.           |
+| 2302007   | Websocket port already occupied. <br>适用版本：24+ |
 | 2302999   | Websocket other unknown error.             |
 
 **示例：**
@@ -1077,9 +1077,9 @@ send(data: string \| ArrayBuffer, connection: WebSocketConnection): Promise\<boo
 >
 > send接口必须在监听到connect事件后才可以调用。
 
-**需要权限**: ohos.permission.INTERNET
+**需要权限**： ohos.permission.INTERNET
 
-**系统能力**: SystemCapability.Communication.NetStack
+**系统能力**： SystemCapability.Communication.NetStack
 
 **参数：**
 
@@ -1148,7 +1148,7 @@ listAllConnections(): WebSocketConnection[]
 
 获取与服务端连接的所有客户端信息。
 
-**需要权限**: ohos.permission.INTERNET
+**需要权限**： ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetStack 
 

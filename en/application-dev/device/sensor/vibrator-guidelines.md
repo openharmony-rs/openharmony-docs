@@ -1,18 +1,18 @@
 # Vibrator Development (ArkTS)
-
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Designer: @butterls-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=170a00b0e372b90729da5ee919e1bd4343fab341 translatedAt=2026-07-28T02:36:48.758Z pushedAt=2026-07-28T06:00:41.190Z -->
+<!-- md-trans-meta sourceCommit=352fca6d2978ec6438d588ca2b739b6c08b60200 translatedAt=2026-09-20T06:24:14.883Z pushedAt=2026-09-20T07:47:29.663Z -->
 
 ## When to Use
 
 You can set different vibration effects as needed, for example, customizing the vibration intensity, frequency, and duration for button touches, alarm clocks, and incoming calls.
 
 For details about the APIs, see [@ohos.vibrator (Vibrator)](../../reference/apis-sensor-service-kit/js-apis-vibrator.md).
+
 
 ## Available APIs
 
@@ -23,15 +23,16 @@ For details about the APIs, see [@ohos.vibrator (Vibrator)](../../reference/apis
 | stopVibration(stopMode: VibratorStopMode): Promise&lt;void&gt; | Stops vibration in the specified mode. This API uses a promise to return the result.                                               |
 | stopVibration(stopMode: VibratorStopMode, callback: AsyncCallback&lt;void&gt;): void | Stops vibration in the specified mode. This API uses an asynchronous callback to return the result.                                              |
 | stopVibration(): Promise&lt;void&gt;                         | Stops vibration in all modes. This API uses a promise to return the result.                                                 |
-| stopVibration(param?: VibratorInfoParam): Promise&lt;void&gt; | Stops vibration based on the specified vibrator parameters. This API uses a promise to return the result.                                |
+| stopVibration(param?: VibratorInfoParam): Promise&lt;void&gt; | Stops vibration based on the specified vibrator parameters. If no parameter is passed, stops vibration on all vibrators of the local device. This API uses a promise to return the result.                                |
 | stopVibration(callback: AsyncCallback&lt;void&gt;): void     | Stops vibration in all modes. This API uses an asynchronous callback to return the result.                                                |
 | isSupportEffect(effectId: string): Promise&lt;boolean&gt;    | Checks whether an effect ID is supported. This API uses a promise to return the result. The return value **true** means that the effect ID is supported, and **false** means the opposite.                       |
 | isSupportEffect(effectId: string, callback: AsyncCallback&lt;boolean&gt;): void | Checks whether an effect ID is supported. This API uses an asynchronous callback to return the result. The return value **true** means that the effect ID is supported, and **false** means the opposite.                      |
 | getEffectInfoSync(effectId: string, param?: VibratorInfoParam): EffectInfo | Checks whether the effect specified by the input **effectId** is supported. The **param** parameter can be used to specify a specific vibrator. You can check the **isEffectSupported** field in the returned **EffectInfo** object to determine whether the effect is supported.|
 | getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt; | Queries the vibrator list of one or all devices. The returned **VibratorInfo** object includes the following information: device ID, vibrator ID, device name, support for HD vibration, and local device flag.      |
-| on(type: 'vibratorStateChange', callback: Callback&lt;VibratorStatusEvent&gt;): void | Enables listening for vibrator status changes. The **VibratorStatusEvent** parameter includes the following information: event timestamp, device ID, number of vibrators, and online/offline status. |
-| off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;): void | Disables listening for vibrator status changes.                                                          |
+| on(type: 'vibratorStateChange', callback: Callback&lt;VibratorStatusEvent&gt;): void | Registers a listener for vibrator online/offline state changes. The callback parameter VibratorStatusEvent can return information such as the event timestamp, device ID, number of vibrators, and online or offline status.  |
+| off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;): void | Unregisters a listener for vibrator online/offline state changes.                                                           |
 | isHdHapticSupported(): boolean | Checks whether HD vibration is supported. |
+
 
 ## Vibration Effect Description
 
@@ -109,7 +110,6 @@ The custom vibration configuration file is in JSON format. An example file is as
 ```
 
 The JSON file contains three attributes in total.
-
 1. **MetaData** contains information about the file header. You can add the following attributes under **MetaData**.
 
      | Name         | Mandatory| Description                                         |
@@ -157,6 +157,7 @@ The following requirements must be met:
 | -------- | ------------------------ |
 | Number of vibration events| No more than 128|
 | Length of the vibration configuration file| Not greater than 64 KB|
+
 
 ## How to Develop
 
@@ -537,7 +538,7 @@ The following requirements must be met:
                }
    ```
 
-   Disable listening. The specified callback must be the same as that passed to the **on** API.
+   Disable listening. The specified callback must be the same as that passed to the on API.
 
    <!-- @[vibrator_js_vibrator_off_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
 
@@ -589,3 +590,11 @@ The following requirements must be met:
       console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
     }
     ```
+
+## Samples
+
+The following samples are available:
+
+- [BasicVibration (ArkTS) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Vibrator/BasicVibration)
+
+- [CustomHaptic (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Vibrator/CustomHaptic)

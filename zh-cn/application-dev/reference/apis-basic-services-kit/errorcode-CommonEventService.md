@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -72,7 +72,7 @@ A third-party application cannot send system common events.
 
 **错误描述**
 
-第三方应用无法发送系统公共事件。
+第三方应用无法发送[系统公共事件](../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **可能原因**
 
@@ -94,7 +94,7 @@ The subscriber is not found.
 
 **可能原因**
 
-订阅者已取消订阅被系统删除。
+订阅者已取消订阅或订阅者已被系统删除。
 
 **处理步骤**
 
@@ -145,7 +145,7 @@ Failed to initialize the common event service.
 
 **错误描述**
 
-公共事件服务端在初始化过程中发生错误。
+[公共事件服务](../../basic-services/common-event/common-event-glossary.md#common-event-service-ces公共事件服务)端在初始化过程中发生错误。
 
 **可能原因**
 
@@ -177,7 +177,7 @@ Failed to obtain system parameters.
 
 **错误信息**
 
-The count of subscriber exceed system specification.
+The count of subscriber exceeds system specification.
 
 **错误描述**
 

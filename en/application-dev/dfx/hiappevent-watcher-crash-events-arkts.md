@@ -1,12 +1,11 @@
 # Subscribing to Crash Events (ArkTS)
-
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @chenshi51-->
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=2127b60c8b93aed6c0fbd46139186a0afec1bcc8 translatedAt=2026-07-29T10:50:59.126Z pushedAt=2026-07-29T12:43:47.670Z -->
+<!-- md-trans-meta sourceCommit=4fd9407c1fee7102dc341fb6e7a347fc0d435027 translatedAt=2026-09-20T06:31:02.944Z pushedAt=2026-09-20T07:48:19.903Z -->
 
 ## Overview
 
@@ -40,9 +39,10 @@ The following describes how to subscribe to the crash event triggered by a butto
     import { deviceInfo } from '@kit.BasicServicesKit';
     ```
 
-2. Edit the **entry > src > main > ets > entryability > EntryAbility.ets** file in the project, and set the [custom crash event parameters](hiappevent-watcher-crash-events.md#customizing-crash-event-parameters) and crash log [custom specification settings](hiappevent-watcher-crash-events.md#customizing-crash-log-specifications) in the `onCreate` function. The sample code is as follows:
+2. Edit the **entry > src > main > ets > entryability > EntryAbility.ets** file in the project, and set the [custom crash event parameters](hiappevent-watcher-crash-events.md#customizing-crash-event-parameters) and crash log [custom specification settings](hiappevent-watcher-crash-events.md#customizing-specifications) in the `onCreate` function. The sample code is as follows:
 
-    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+
+    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) --> 
 
     ``` TypeScript
     // Build custom parameters for the crash event.
@@ -71,11 +71,11 @@ The following describes how to subscribe to the crash event triggered by a butto
       });
     }
     
-    if (deviceInfo.sdkApiVersion >= 24) {  // API version 24 and later supports setting page switch logs.
+    if (deviceInfo.sdkApiVersion >= 24) {
       let crashEventPolicy : hiAppEvent.EventPolicy = {
         "appCrashPolicy": { // Crash event configuration policy.
-          "pageSwitchLogEnable": true, // Enable page switch logs.
-          "collectMinidump": true // Enable minidump in native crash scenarios.
+          "pageSwitchLogEnable": true, // Starting from API version 24, page switch logging is supported.
+          "collectMinidump": true // Support enabling minidump from API version 26.0.0.
         }
       };
       // You can set the crash event configuration policy.
@@ -302,14 +302,12 @@ Through HiAppEvent, you can subscribe to crash events by setting the event name 
 You can identify the specific crash event by the **crash_type** field in [hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params).
 
 The following table shows the mapping between the crash events.
-
 | Faultlogger.FaultType | hiAppEvent.AppEventInfo.params.crash_type |
 | --- | --- |
 | CPP_CRASH | NativeCrash |
 | JS_CRASH | JsError |
 
 The following table shows the mapping between [FaultLogInfo](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloginfo) and [hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params).
-
 | Faultlogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | Description|
 | --- | --- | --- |
 | pid | pid | None|
@@ -324,6 +322,5 @@ The following table shows the mapping between [FaultLogInfo](../reference/apis-p
 Both the callback-based [FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9) and the promise-based [FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1) can be replaced with [hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher) to achieve the same functionality.
 
 For details about how to use HiAppEvent to subscribe to crash events (ArkTS), see [How to Develop](#how-to-develop) and [Checking Whether a Watcher Subscribes to Crash Events](#checking-whether-a-watcher-subscribes-to-crash-events).
-
 <!--RP1-->
 <!--RP1End-->

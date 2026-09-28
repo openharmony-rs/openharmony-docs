@@ -1,18 +1,19 @@
-# Node-API FAQs
-<!--Kit: NDK-->
+# FAQs
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-08T08:11:20.000Z pushedAt=2026-09-08T08:20:12.220Z -->
 
-## Stability 
+## Stability
 1. [How do I troubleshoot the issue that an application often crashes during running?](napi-faq-about-stability.md#how-do-i-troubleshoot-the-issue-that-an-application-often-crashes-during-running) 
 2. [How to handle thread safety issues when the ArkTS method is concurrently called in the thread pool?](napi-faq-about-stability.md#how-to-handle-thread-safety-issues-when-the-arkts-method-is-concurrently-called-in-the-thread-pool) 
 3. [What should I do if the content of napi_value changes?](napi-faq-about-stability.md#what-should-i-do-if-the-content-of-napi_value-changes) 
 4. [Is there a method to obtain the latest napi_env?](napi-faq-about-stability.md#is-there-a-method-to-obtain-the-latest-napi_env) 
 5. [What should I do if napi_add_env_cleanup_hook is called incorrectly?](napi-faq-about-stability.md#what-should-i-do-if-napi_add_env_cleanup_hook-is-called-incorrectly) 
-## Memory Leak 
+## Memory Leak
 1. [Is there any mechanism to check whether napi_ref leaks?](napi-faq-about-memory-leak.md#is-there-any-mechanism-to-check-whether-napi_ref-leaks) 
 2. [How do I locate and resolve memory leaks during Node-API development?](napi-faq-about-memory-leak.md#how-do-i-locate-and-resolve-memory-leaks-during-node-api-development) 
 3. [For details about parameter leaks, see napi_open_handle_scope and napi_close_handle_scope](use-napi-life-cycle.md).  
@@ -23,7 +24,7 @@
 3. [Is there a convenient way to call back ArkTS?](napi-faq-about-common-basic.md#is-there-a-convenient-way-to-call-back-arkts) 
 4. [How do I invoke a function transferred from ArkTS in a C++ subthread?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-ndk-26) 
 5. [How to ensure the correct mapping of data types and the security of memory management?](napi-faq-about-common-basic.md#how-to-ensure-the-correct-mapping-of-data-types-and-the-security-of-memory-management) 
-6. [Integrating a Third-Party Dynamic Link Library](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-dynamic-link-library) 
+6. [Integrating a Third-Party Dynamic Link Library](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/integrate-third-party-dlls) 
 7. [What are the error codes of the napi_get_uv_event_loop API?](napi-faq-about-common-basic.md#what-are-the-error-codes-of-the-napi_get_uv_event_loop-api) 
 8. [Must a function be passed to the native layer when the native layer calls the object method of the ArkTS layer?](napi-faq-about-common-basic.md#must-a-function-be-passed-to-the-native-layer-when-the-native-layer-calls-the-object-method-of-the-arkts-layer) 
 9. [Can I call an ArkTS method and obtain the result?](napi-faq-about-common-basic.md#can-i-call-an-arkts-method-and-obtain-the-result) 

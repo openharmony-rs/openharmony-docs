@@ -4,7 +4,8 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=265662c3f1bebcccc82375e5952ee48da32366a3 translatedAt=2026-09-16T02:44:34.877Z pushedAt=2026-09-16T06:29:14.412Z -->
 
 ## Overview
 
@@ -24,20 +25,20 @@ During cross-device collaboration, when device A is running in the background an
 
 Before you get started, familiarize yourself with the following concepts:
 
-* **Distributed Message Service (DMS)**
-  
+* **Distributed Management Service (DMS)**
+
   A framework that provides distributed component management capabilities.
 * **UIAbility**
-  
+
   A component that implements tasks specific to application UIs, such as lifecycle management, user interaction, and UI rendering.
 * **ExtensionAbility**
-  
+
   A component that extends application functions or implements cross-device collaboration. It allows applications to run some tasks in the background or migrates some functions to other devices for execution, implementing distributed capabilities.
 * **Byte stream**
-  
+
   Data of the [ArrayBuffer](../arkts-utils/arraybuffer-object.md) type, which can be used to store binary data, for example, image or audio data.
 * **Transport stream**
-  
+
   Media streams that can be used to transmit images, audios, text information, and bytes.
 
 ## Implementation Principles
@@ -88,43 +89,47 @@ For details about how to use the APIs, see [@ohos.application.DistributedExtensi
 | Name                                                              | Description                      |
 | -------------------------------------------------------------------- | -------------------------- |
 | onCreate(want: Want): void;                                          | Creates a distributed collaboration task.      |
-| onDestroy(): void;                                                   | Destroys a distributed collaboration task.         |
-| onCollaborate(wantParam: Record): AbilityConstant.CollaborateResult; | Called when distributed collaboration is requested.|
+| onDestroy(): void;                                                   | Destroys a distributed collaboration task.          |
+| onCollaborate(wantParam: Record): AbilityConstant.CollaborateResult; | Called when distributed collaboration is requested. |
 
 ### Development Procedure
 
 1. Register the `Extension` component in the configuration file.
-   
+
    In the application configuration file `module.json5`, add the `"extensionAbilities"` field, set `"type"` to `"distributed"`, and add an entry whose `"name"` is `"ohos.extension.DistributedExtension"` to ["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md).
-   
+
    Example:
-   
-   ```json
-   "extensionAbilities": [
-     {
-       "name": "EntrydistributedAbility",
-       "srcEntry": "./ets/entrybackupability/EntryDistributedAbility.ets",
-       "type": "distributed",
-       "exported": false,
-       "metadata": [
-         {
-           "name": "ohos.extension.DistributedExtension",
-         }
-       ],
-       "srcEntry": "./ets/common/MDSExtension.ts",
+
+   ```json5
+   {
+     "module": {
+       "extensionAbilities": [
+        {
+          "name": "EntrydistributedAbility",
+          "type": "distributed",
+          "exported": false,
+          "metadata": [
+            {
+              "name": "ohos.extension.DistributedExtension"
+            }
+          ],
+          "srcEntry": "./ets/common/MDSExtension.ts"
+        }
+       ]
      }
-   ]
+   }
+   
    ```
 2. Import the required modules.
-   
+
    ```ts
    import { AbilityConstant, Want } from '@kit.AbilityKit';
    import { abilityConnectionManager, DistributedExtensionAbility } from '@kit.DistributedServiceKit';
    ```
 3. Customize the `MDSExtension.ets` file. Specifically, inherit the `DistributedExtensionAbility` class and rewrite the `onCreate`, `onDestroy`, and `onCollaborate` methods to create and destroy `DistributedExtension` and implement connection callback.
-   
+
    The following is an empty `MDSExtension.ets` file. You can observe its lifecycle based on the corresponding `Logger`.
-   
+
    ```ts
    import { AbilityConstant, Want } from '@kit.AbilityKit';
    import { abilityConnectionManager, DistributedExtensionAbility } from '@kit.DistributedServiceKit';   
@@ -138,11 +143,10 @@ For details about how to use the APIs, see [@ohos.application.DistributedExtensi
    
      onCollaborate(wantParam: Record<string, Object>) {
        console.info(`DistributedExtension onCollabRequest Accept to the result of Ability collaborate`);
-       let sessionId = -1;
-       const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
-       if (collaborationValues == undefined) {
-         return sessionId;
-       }
+        const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
+        if (collaborationValues == undefined) {
+          return AbilityConstant.CollaborateResult.REJECT;
+        }
    
        console.info(`onCollab, collaborationValues: ${JSON.stringify(collaborationValues)}`);
        return AbilityConstant.CollaborateResult.ACCEPT;
@@ -166,7 +170,7 @@ Devices are not networking. As a result, the connection between device A and dev
 
 Enable USB debugging on device A and device B, and use a USB cable to connect the devices to the PC. Run the following shell command on the PC:
 
-```
+```shell
 hdc shell
 hidumper -s 4700 -a "buscenter -l remote_device_info"
 ```

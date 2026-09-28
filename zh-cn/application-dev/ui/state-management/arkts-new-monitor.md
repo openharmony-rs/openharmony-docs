@@ -1070,7 +1070,7 @@ struct MonitorWildcardDate {
         .width(300)
         .margin(10)
         .onClick(() => {
-          this.date.setTime(1000000);
+            this.date.setTime(1000);
         })
       // API调用触发onDateChanged
       Button(`Assign new Date`)
@@ -1231,7 +1231,7 @@ onSetChange(m: IMonitor) {
 - `setInstance`被赋新值。
 - 调用Set的API，例如`add`、`delete`、`clear`时触发。与Array、Date不同的是，只有当变化真的发生时，回调才会触发。这意味着，当对空Set调用`clear`，对不存在的Set元素调用`delete`，以及不实际新增元素的`add`调用都不会触发@Monitor回调。
 
-与Array不同，@Monitor无法对Set的某一个key做监听。
+与Array不同，@Monitor无法对Set的某一个元素做监听。
 
 使用通配符监听Set对象的示例如下。
 
@@ -1530,6 +1530,113 @@ struct MonitorWildcardSet {
   }
   ```
 
+- 从API version 24开始，当\@Monitor监听的路径可能不存在或者路径中的变量缺少观测能力时，编辑器会提示告警`The '@Monitor' decorator needs to monitor the state variables that exist.`。以下为\@Monitor路径校验的告警场景及修复方式：
+
+  - **类未被\@ObservedV2装饰**：当\@Monitor监听的路径经过未被\@ObservedV2装饰的类时，该路径无法被正常监听，编辑器会提示告警。
+
+    告警代码：
+    ``` TypeScript
+    class Inner {
+      public num: number = 0;
+    }
+
+    @ObservedV2
+    class Outer {
+      @Trace public inner: Inner = new Inner();
+
+      // inner的类型Inner未被@ObservedV2装饰，路径'inner.num'无法监听'num'属性的修改
+      @Monitor('inner.num')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+    修复代码：使用@ObservedV2装饰Inner类，并使用@Trace装饰其属性。
+    ``` TypeScript
+    @ObservedV2
+    class Inner {
+      @Trace public num: number = 0;
+    }
+
+    @ObservedV2
+    class Outer {
+      @Trace public inner: Inner = new Inner();
+
+      @Monitor('inner.num')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **属性未被\@Trace装饰**：当\@Monitor监听的属性未被\@Trace装饰时，该属性的变化无法被监听，编辑器会提示告警。
+
+    告警代码：
+    ``` TypeScript
+    @ObservedV2
+    class Info {
+      public name: string = 'Tom';
+
+      // name未被@Trace装饰，路径'name'无法监听修改
+      @Monitor('name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+    修复代码：使用@Trace装饰name属性。
+    ``` TypeScript
+    @ObservedV2
+    class Info {
+      @Trace public name: string = 'Tom';
+
+      @Monitor('name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **路径类型为interface**：当\@Monitor监听的路径中存在类型为interface的变量时，由于interface本身对其属性没有观测能力，编辑器会提示路径可能不存在的告警。该告警无法去除，开发者需要确认interface数据有UIUtils.makeObserved封装才能被\@Monitor监听。
+
+    告警代码：
+    ``` TypeScript
+    import { UIUtils } from '@kit.ArkUI';
+
+    interface IInfo {
+      name: string;
+    }
+
+    @ObservedV2
+    class Container {
+      // 使用UIUtils.makeObserved封装的interface数据才能被@Monitor监听
+      public info: IInfo = UIUtils.makeObserved({ name: 'Name' }); 
+
+      // info的类型为interface，路径'info.name'可能无法监听'name'属性的修改
+      @Monitor('info.name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **路径类型为联合类型**：当\@Monitor监听的路径中存在类型为联合类型的变量时，编辑器会提示路径可能不存在的告警。该告警无法去除，开发者需要确认联合类型中包含目标路径的对象类型存在并具有观测能力。
+
+    告警代码：
+    ``` TypeScript
+    @ObservedV2
+    class User {
+      @Trace public age: number = 10;
+    }
+
+    @ObservedV2
+    class Page {
+      @Trace user: User | number = new User();
+
+      // user的类型为联合类型User | number，路径'user.age'可能不存在
+      @Monitor('user.age')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
 ## \@Monitor与\@Watch对比
 
 \@Monitor与\@Watch的用法、功能对比如下：
@@ -1561,7 +1668,7 @@ class Info {
 
 @ObservedV2
 class UIStyle {
-  public info: Info = new Info();
+  @Trace public info: Info = new Info();
   @Trace public color: Color = Color.Black;
   @Trace public fontSize: number = 45;
 
@@ -2301,7 +2408,7 @@ struct Index {
 ### 无法监听变量从可访问变为不可访问和从不可访问变为可访问
 \@Monitor仅会保存变量可访问时的值，当状态变量变为不可访问的状态时，并不会记录其值的变化。在下面的例子中，点击三个Button，均不会触发`onChange`的回调。
 
-从API version 20开始，如果需要监听可访问到不可访问和不可访问到可访问的状态变化，可以使用[addMonitor](./arkts-new-addMonitor-clearMonitor.md#监听变量从可访问到不访问和从不可访问到可访问)。
+从API version 20开始，可以使用addMonitor[监听变量从可访问到不可访问和从不可访问到可访问](./arkts-new-addMonitor-clearMonitor.md#监听变量从可访问到不可访问和从不可访问到可访问)的状态变化。
 
 从API版本26.0.0开始，使用配置项的\@Monitor能够正常处理变量在可访问与不可访问之间的切换。在下面的例子中，若将`@Monitor('user.age')`改写为使用配置项的形式`@Monitor({}, 'user.age')`，则点击三个Button均会触发`onChange`回调，dirty中将包含路径`user.age`，其对应的IMonitorValue的before值与now值会分别反映可访问性切换前后的状态（变量可访问时为实际值，变量不可访问时为undefined）。
 

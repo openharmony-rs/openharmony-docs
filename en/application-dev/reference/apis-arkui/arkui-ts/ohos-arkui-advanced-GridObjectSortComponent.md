@@ -16,7 +16,7 @@
 >
 > - This component can be used only in the stage model.
 >
-> - If the **GridObjectSortComponent** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **GridObjectSortComponent** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **GridObjectSortComponent** component.
+> - If the **GridObjectSortComponent** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **GridObjectSortComponent** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **GridObjectSortComponent** component.
 
 
 ## Modules to Import
@@ -63,7 +63,7 @@ Provides configuration options for the **GridObjectSortComponent** component.
 
 | Name          | Type                     | Read-Only| Optional| Description                                                         |
 | -------------- | ------------------------- |---|---|-------------------------------------------------------------|
-| type           | [GridObjectSortComponentType](#gridobjectsortcomponenttype) | No| Yes| Component display type: text only or|image with text.<br>Default value: **GridObjectSortComponentType.TEXT**|
+| type           | [GridObjectSortComponentType](#gridobjectsortcomponenttype) | No| Yes| Component display type: text only or\|image with text.<br>Default value: **GridObjectSortComponentType.TEXT**|
 | imageSize      | number \| [Resource](ts-types.md#resource) | No| Yes| Image size, in vp.<br>The value must be greater than or equal to 0.<br>Default value: **56vp**.                 |
 | normalTitle | [ResourceStr](ts-types.md#resourcestr)     | No| Yes| Title displayed in the non-editing state.<br>Default value: **Channel**                                  |
 | showAreaTitle | [ResourceStr](ts-types.md#resourcestr)     | No| Yes| First subtitle of the display area.<br>Default value: **Drag to sort**                            |

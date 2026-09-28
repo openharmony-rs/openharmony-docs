@@ -1,8 +1,8 @@
 # AVSession Kit（音视频播控服务）
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -29,7 +29,7 @@
     - [Functions](arkts-apis-avMusicTemplate-f.md)
     - [Class (AVMusicTemplate)](arkts-apis-avMusicTemplate-AVMusicTemplate.md)
     - [Class (AVMusicTemplateController)](arkts-apis-avMusicTemplate-AVMusicTemplateController.md)
-    - [Interface (其他)](arkts-apis-avMusicTemplate-i.md)
+    - [Interfaces (其他)](arkts-apis-avMusicTemplate-i.md)
     - [Enums](arkts-apis-avMusicTemplate-e.md)
     - [Types](arkts-apis-avMusicTemplate-t.md)
   <!--Del-->

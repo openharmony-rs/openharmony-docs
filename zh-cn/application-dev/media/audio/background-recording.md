@@ -89,7 +89,7 @@
          // 通过wantAgent模块下getWantAgent方法获取WantAgent对象。
          wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
            try {
-             let list: string[] = ['audioPlayback'];
+             let list: string[] = ['audioPlayback', 'audioRecording'];
              backgroundTaskManager.startBackgroundRunning(context, list, wantAgentObj)
                .then(() => {
                  console.info('Operate startBackgroundRunning succeeded');

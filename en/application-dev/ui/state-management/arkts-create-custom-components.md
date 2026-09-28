@@ -80,25 +80,15 @@ struct ParentComponent {
 
 To fully understand the preceding example, a knowledge of the following concepts is essential:
 
-- [Creating a Custom Component](#creating-a-custom-component)
-  - [Basic Usage of Custom Components](#basic-usage-of-custom-components)
-  - [Basic Structure of a Custom Component](#basic-structure-of-a-custom-component)
-    - [struct](#struct)
-    - [@Entry](#entry)
-    - [@Component](#component)
-    - [@ComponentV2](#componentv2)
-    - [build()](#build)
-    - [@Reusable](#reusable)
-    - [@ReusableV2](#reusablev2)
-  - [Member Functions/Variables](#member-functionsvariables)
-  - [Rules for Custom Component Parameters](#rules-for-custom-component-parameters)
-  - [build() Implementation Rules](#build-implementation-rules)
-  - [Universal Style of a Custom Component](#universal-style-of-a-custom-component)
-  - [Cross-Ability Migration of Custom Components](#cross-ability-migration-of-custom-components)
-  - [Constraints](#constraints)
-    - [V1 Custom Components Do Not Support Static Code Blocks](#v1-custom-components-do-not-support-static-code-blocks)
-    - [Mixing @Component and @ComponentV2](#mixing-component-and-componentv2)
-    - [Mixing @Reusable or @ReusableV2](#mixing-reusable-or-reusablev2)
+- [Basic Structure of a Custom Component](#basic-structure-of-a-custom-component)
+
+- [Member Functions/Variables](#member-functionsvariables)
+
+- [Rules for Custom Component Parameters](#rules-for-custom-component-parameters)
+
+- [build() Implementation Rules](#build-implementation-rules)
+
+- [Universal Style of a Custom Component](#universal-style-of-a-custom-component)
 
 ## Basic Structure of a Custom Component
 

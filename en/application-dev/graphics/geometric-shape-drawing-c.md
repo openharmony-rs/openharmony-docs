@@ -2,9 +2,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=39a9e003216daede3f45c712299412a7891e82ae translatedAt=2026-09-01T02:29:51.121Z pushedAt=2026-09-02T01:40:35.658Z -->
 
 
 ## Overview
@@ -30,22 +31,22 @@ Most geometric shapes can be drawn using a pen or brush. Points can only be draw
 
 ## Available APIs
 
-The following table lists the APIs for drawing geometric shapes. For details, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
+The following table lists the commonly used APIs for drawing geometric shapes. For details about usage and parameters, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md), [drawing_point.h](../reference/apis-arkgraphics2d/capi-drawing-point-h.md), [drawing_rect.h](../reference/apis-arkgraphics2d/capi-drawing-rect-h.md), [drawing_path.h](../reference/apis-arkgraphics2d/capi-drawing-path-h.md), [drawing_region.h](../reference/apis-arkgraphics2d/capi-drawing-region-h.md), and [drawing_round_rect.h](../reference/apis-arkgraphics2d/capi-drawing-round-rect-h.md).
 
 | API| Description|
 | -------- | -------- |
-| OH_Drawing_Point\* OH_Drawing_PointCreate (float x, float y) | Creates a coordinate point object.|
-| OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPoint (OH_Drawing_Canvas \*canvas, const OH_Drawing_Point2D \*point) | Draws a point.|
-| OH_Drawing_Rect\* OH_Drawing_RectCreate (float left, float top, float right, float bottom) | Creates a rectangle object.|
-| void OH_Drawing_CanvasDrawArc (OH_Drawing_Canvas\*, const OH_Drawing_Rect\*, float startAngle, float sweepAngle) | Draws an arc.|
-| void OH_Drawing_CanvasDrawCircle (OH_Drawing_Canvas\*, const OH_Drawing_Point\*, float radius) | Draws a circle.|
-| OH_Drawing_Path\* OH_Drawing_PathCreate (void) | Creates a path object.|
-| void OH_Drawing_CanvasDrawPath (OH_Drawing_Canvas\*, const OH_Drawing_Path\*) | Draws a path.|
-| OH_Drawing_Region\* OH_Drawing_RegionCreate (void) | Creates a region object.|
-| void OH_Drawing_CanvasDrawRegion (OH_Drawing_Canvas\*, const OH_Drawing_Region\*) | Draws a region.|
-| void OH_Drawing_CanvasDrawRect (OH_Drawing_Canvas\*, const OH_Drawing_Rect\*) | Draws a rectangle.|
-| OH_Drawing_RoundRect\* OH_Drawing_RoundRectCreate (const OH_Drawing_Rect\*, float xRad, float yRad) | Creates a rounded rectangle object.|
-| void OH_Drawing_CanvasDrawRoundRect (OH_Drawing_Canvas\*, const OH_Drawing_RoundRect\*) | Draws a rounded rectangle.|
+| OH_Drawing_Point\* OH_Drawing_PointCreate(float x, float y) | Creates an **OH_Drawing_Point** object. |
+| OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPoint(OH_Drawing_Canvas \*canvas, const OH_Drawing_Point2D \*point) | Draws a point. |
+| OH_Drawing_Rect\* OH_Drawing_RectCreate(float left, float top, float right, float bottom) | Creates a rectangle object. |
+| void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect, float startAngle, float sweepAngle) | Draws an arc. |
+| void OH_Drawing_CanvasDrawCircle(OH_Drawing_Canvas \*canvas, const OH_Drawing_Point \*point, float radius) | Draws a circle. |
+| OH_Drawing_Path\* OH_Drawing_PathCreate(void) | Creates a path object. |
+| void OH_Drawing_CanvasDrawPath(OH_Drawing_Canvas \*canvas, const OH_Drawing_Path \*path) | Draws a path. |
+| OH_Drawing_Region\* OH_Drawing_RegionCreate(void) | Creates a region object. |
+| void OH_Drawing_CanvasDrawRegion(OH_Drawing_Canvas \*canvas, const OH_Drawing_Region \*region) | Draws a region. |
+| void OH_Drawing_CanvasDrawRect(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect) | Draws a rectangle. |
+| OH_Drawing_RoundRect\* OH_Drawing_RoundRectCreate(const OH_Drawing_Rect \*rect, float xRad, float yRad) | Creates a rounded rectangle object. |
+| void OH_Drawing_CanvasDrawRoundRect(OH_Drawing_Canvas \*canvas, const OH_Drawing_RoundRect \*roundRect) | Draws a rounded rectangle. |
 
 
 ## Drawing Points
@@ -66,7 +67,6 @@ OH_Drawing_PenSetWidth(pen, 40);
 // Set the pen of the canvas.
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // Draw five points.
-AdaptationUtil* adaptationUtil = AdaptationUtil::GetInstance();
 OH_Drawing_Point2D point1 = {value200_, value200_};
 OH_Drawing_CanvasDrawPoint(canvas, &point1);
 OH_Drawing_Point2D point2 = {value400_, value400_};
@@ -117,7 +117,7 @@ OH_Drawing_PenSetWidth(pen, 20);
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // Create a rectangle object. The upper left corner coordinates are (100, 200) and the lower right corner coordinates are (500, 300).
 OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 200, 500, 300);
-// Draw an arc based on the rectangle object. The start angle is 10°, and the sweep angle is 200°.
+// Draw an arc based on the rectangle object, with a start angle of 10° and a sweep angle of 200°.
 OH_Drawing_CanvasDrawArc(canvas, rect, 10, 200);
 // Remove the pen from the canvas.
 OH_Drawing_CanvasDetachPen(canvas);
@@ -246,7 +246,7 @@ A region is not a specific shape. You can set it to a specified rectangle or pat
 
 You can call **OH_Drawing_RegionSetRect()** and **OH_Drawing_RegionSetPath()** to set the rectangle region and path region, respectively.
 
-The following is an example of drawing a rectangle region using a brush:
+The following is an example of drawing a combined region using a brush:
 
 <!-- @[ndk_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -266,7 +266,7 @@ OH_Drawing_Region *region2 = OH_Drawing_RegionCreate();
 OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
 OH_Drawing_RegionSetRect(region2, rect2);
 // Combination of two rectangle regions.
-OH_Drawing_RegionOp(region1, region2, OH_Drawing_RegionOpMode::REGION_OP_MODE_XOR);
+OH_Drawing_RegionOp(region1, region2, REGION_OP_MODE_XOR);
 OH_Drawing_CanvasDrawRegion(canvas, region1);
 // Remove the brush from the canvas.
 OH_Drawing_CanvasDetachBrush(canvas);
@@ -285,7 +285,7 @@ The effect is as follows:
 
 ## Drawing a Rectangle
 
-You can use a pen or brush to draw a rectangle on the canvas. Use **OH_Drawing_RectCreate()** to create a rectangle. The API needs to pass four floating points, which indicate the coordinates of the left, top, right, and bottom positions of the rectangle. The four coordinates form a rectangle.
+You can use a pen or brush to draw a rectangle on the canvas. Use **OH_Drawing_RectCreate()** to create a rectangle. The API takes four floating-point numbers, which represent the left, top, right, and bottom coordinates of the rectangle. The four coordinates form a rectangle.
 
 A simple example is as follows:
 

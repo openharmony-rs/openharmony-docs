@@ -1,10 +1,11 @@
 # Working with Latin1/UTF16 Strings Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:39:49.173Z pushedAt=2026-09-02T06:19:24.740Z -->
 
 ## Introduction
 
@@ -25,7 +26,7 @@ By using JSVM-API, you can create JavaScript strings directly in the memory allo
 
 If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ code involved in manipulating external strings.
 
-### Determining a Number Object
+### Creating an External String
 
 CPP code:
 
@@ -80,7 +81,7 @@ const char *srcCallNative = R"JS(testExternalString();)JS";
 ```
 
 ## Expected Result
-```
+```txt
 created latin1 string is : hello
 create external string failed: 0
 created utf16 string is : world

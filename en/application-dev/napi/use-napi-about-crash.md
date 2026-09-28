@@ -1,10 +1,11 @@
 # Analyzing Error Logs and Crashes Triggered by Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:29:48.029Z pushedAt=2026-09-16T08:21:13.295Z -->
 
 The maintenance and debugging measures mentioned in this topic rely on the Ark runtime multi-thread check. Therefore, you are advised to enable this feature before debugging. For details about how to enable Ark runtime multi-thread check, see [Analyzing CPP Crash](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-multi-thread-check).
 
@@ -59,7 +60,7 @@ Define a utility class to construct the two exception scenarios.
 ```cpp
 #define CHECK(cond)                                                 \
     do {                                                            \
-        if (cond) {                                                 \
+        if (!(cond)) {                                                 \
             OH_LOG_FATAL(LOG_APP, "Failed to check `" #cond "`");   \
             std::abort();                                           \
         }                                                           \
@@ -88,7 +89,7 @@ public:
         if (argc_ > 0) {
             argv_ = new napi_value[argc_];
             CHECK_NOT_NULL(argv_);
-            memset(argv_, nullptr, sizeof(argv_));
+            memset(argv_, 0, sizeof(argv_));
             napi_get_cb_info(env, info, &argc_, argv_, nullptr, nullptr);
         }
     }
@@ -236,7 +237,7 @@ napi_value TriggerDFXDelRef(napi_env, napi_callback_info info)
         napi_value obj = nullptr;
         STRICT_NAPI_CALL(napi_create_object(localEnv, &obj));
         napi_ref ref = nullptr;
-        // Call napi_delete_reference to destroy the reference to avoid memory leaks.
+        // Call napi_delete_reference after use to release the reference and avoid memory leaks.
         napi_create_reference(localEnv, obj, 1, &ref);
         if (!localEnv.RecreateSame()) {
             if (ref != nullptr) {
@@ -393,7 +394,7 @@ The following APIs may trigger this type of error:
 Sample code of **napi_add_env_cleanup_hook** and **napi_remove_env_cleanup_hook**:
 
 ```cpp
-static void EnvCLeanUpCallback(void *arg) {
+static void EnvCleanUpCallback(void *arg) {
     char* data = reinterpret_cast<char *>(arg);
     delete data;
 }
@@ -406,11 +407,11 @@ napi_value TriggerDFXClnAddXT(napi_env env, napi_callback_info info)
 {
     char* data = new char;
     CHECK_NOT_NULL(data);
-    *data = nullptr;
+    *data = '\0';
     std::thread([](napi_env env, char* data) {
-        napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+        napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     }, env, data).join();
-    napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     delete data;
     return nullptr; 
 }
@@ -423,10 +424,10 @@ napi_value TriggerDFXClnAddMT(napi_env env, napi_callback_info info)
 {
     char* data = new char;
     CHECK_NOT_NULL(data);
-    *data = nullptr;
-    napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
-    napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
-    napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    *data = '\0';
+    napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
+    napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
+    napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     delete data;
     return nullptr;
 }
@@ -439,10 +440,10 @@ napi_value TriggerDFXClnRmXT(napi_env env, napi_callback_info info)
 {
     char* data = new char;
     CHECK_NOT_NULL(data);
-    *data = nullptr;
-    napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    *data = '\0';
+    napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     std::thread([](napi_env env, char* data) {
-        napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+        napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
         delete data;
     }, env, data).join();
     return nullptr; 
@@ -456,11 +457,11 @@ napi_value TriggerDFXClnRmMT(napi_env env, napi_callback_info info)
 {
     char* data = new char;
     CHECK_NOT_NULL(data);
-    *data = nullptr;
-    napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
-    napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    *data = '\0';
+    napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
+    napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     // Ensure consistency in parameters used for registering and deregistering cleanup hooks. It is more important than the errors caused by repeated deregistration.
-    napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     delete data;
     return nullptr;
 }
@@ -518,4 +519,101 @@ napi_value TriggerDFXInsGetXT(napi_env env, napi_callback_info info)
     }, env).join();
     return nullptr;
 }
+```
+
+## Async Task Callback and Reference Callback Crashes
+
+### Coverage Scope and Key Logs
+
+When a callback function contains logic errors such as null pointer dereference or array out-of-bounds access, an app crash occurs. If a crash occurs with compilation optimization enabled, the crash call stack only shows the function that called the callback, without indicating which .so shared library the actual callback function belongs to. You can locate the issue by following these steps:
+1. Obtain the printed callback function pointer (in decimal).
+2. Convert the pointer to hexadecimal.
+3. Match the hexadecimal address in the Maps section of the crash file to identify which .so shared library the function that actually caused the crash belongs to.
+
+> **Key logs**
+>
+> Crash occurred on &lt;function name&gt;, callback: &lt;callback ptr&gt;
+
+The coverage scope of this DFX measure is as follows:
+
+1. A crash occurs during the execution of finalize_cb in napi_wrap, napi_wrap_enhance, or napi_add_finalizer.
+2. A crash occurs during the execution of finalize_cb in napi_set_instance_data.
+3. A crash occurs during the execution of complete in napi_async_work related APIs.
+4. A crash occurs during the execution of thread_finalize_cb and call_js_cb in threadsafe_function related APIs.
+
+### Cases and Sample Code
+
+> **NOTE**
+>
+> The following code is only used to construct exception scenarios and trigger DFX logs for exception branches. Do not directly apply it to business scenarios before fully understanding its intent.
+
+**Constructing a Crash Scenario**
+
+``` C++
+/*
+ * API declaration index.d.ts
+ * const wrapCb: () => void;
+ */
+static napi_value WrapCb(napi_env env, napi_callback_info info)
+{
+    napi_value obj = nullptr;
+    napi_status status = napi_create_object(env, &obj);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_create_object fail");
+        return nullptr;
+    }
+    const char* testStr = "test";
+    status = napi_wrap(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint){
+        abort();
+    }, nullptr, nullptr);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_wrap fail");
+        return nullptr;
+    }
+    return nullptr;
+}
+```
+
+After wrapCb is executed, garbage collection is triggered, which triggers the execution of the callback function.
+
+``` TypeScript
+import testNapi from 'libentry.so';
+
+declare class ArkTools {
+  static forceFullGC():void;
+}
+
+testNapi.wrapCb();
+ArkTools.forceFullGC();
+```
+
+**Analyzing Crash Logs**
+
+``` text
+Device Memory(kB): Total 11871352, Free 332976, Available 5793792
+Reason:Signal:SIGABRT(SI_TKILL)@0x01317bf10000b226 from:45606:20020209
+LastFatalMessage:[NAPI] Crash occurred on ProcessAll, callback: 385297425128
+```
+
+Convert the callback pointer address 385297425128 to hexadecimal, which is 0x59B58422E8. Search for the callback function address in the Maps section of the crash file, and subtract the start address of the libentry.so module from the obtained hexadecimal value to get the offset address 0x22E8.
+
+``` text
+59b5504000-59b5505000 rw-p 00001000 /system/lib64/lib_cpuboost.so
+59b5505000-59b5805000 rw-p 00000000 [anon:native_heap:jemalloc]
+59b5840000-59b5841000 r--p 00000000 /data/storage/el1/bundle/libs/arm64/libentry.so
+59b5841000-59b5843000 r-xp 00000000 /data/storage/el1/bundle/libs/arm64/libentry.so
+59b5843000-59b5844000 r--p 00001000 /data/storage/el1/bundle/libs/arm64/libentry.so
+59b5844000-59b5845000 rw-p 00001000 /data/storage/el1/bundle/libs/arm64/libentry.so
+59b5880000-59b5912000 r--p 00000000 /data/storage/el1/bundle/libs/arm64/libc++_shared.so
+59b5912000-59b59ac000 r-xp 00091000 /data/storage/el1/bundle/libs/arm64/libc++_shared.so
+59b59ac000-59b59b6000 r--p 0012a000 /data/storage/el1/bundle/libs/arm64/libc++_shared.so
+59b59b6000-59b59b7000 rw-p 00133000 /data/storage/el1/bundle/libs/arm64/libc++_shared.so
+```
+
+Using the [llvm-addr2line](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1735713501344) tool, you can confirm that 0x22E8 is exactly the line where the callback function is located. This confirms that the issue occurs in the callback function passed during napi_wrap.
+
+``` text
+llvm-addr2line -ifCe libentry.so 0x22e8
+WrapCb(napi_env__, napi_callback_info__)::$_0::invoke(napi_env, void, void*)
+D:/DevEcoStudioProjects/PrintCbPtr/entry/src/main/cpp/napi_init.cpp:9
 ```

@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=c07a5760b83f1fa45400fa3445af4d64e37a0206 translatedAt=2026-09-15T10:41:21.321Z pushedAt=2026-09-16T07:50:15.664Z -->
 
 ```c
 typedef struct {...} OH_Predicates
@@ -40,7 +41,7 @@ Defines a **predicates** object.
 | [OH_Predicates *(*isNotNull)(OH_Predicates *predicates, const char *field)](#isnotnull) | Pointer to the function used to create a predicates object to search for the field values that are not null.<br>This method is equivalent to **IS NOT NULL** in SQL statements.|
 | [OH_Predicates *(*like)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#like) | Pointer to the function used to create a predicates object to search for the field values that are similar to the specified string.<br>This method is equivalent to **LIKE** in SQL statements.|
 | [OH_Predicates *(*between)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#between) | Pointer to the function used to create a predicates object to search for the field values that are within the specified range.<br>This method is equivalent to **BETWEEN** in SQL statements.|
-| [OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#notbetween) | Pointer to the function used to create a predicates object to search for the field values that are out of the specified range.<br>This method is equivalent to **NOT BETWEEN** in SQL statements.|
+| [OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#notbetween) | Pointer to the function used to create a predicates object to search for the field values that are out of the specified range.<br>This method is equivalent to **NOT BETWEEN** in SQL statements. |
 | [OH_Predicates *(*greaterThan)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#greaterthan) | Pointer to the function used to create a predicates object to search for the field values that are greater than the specified value.<br>This method is equivalent to ">" in SQL statements.|
 | [OH_Predicates *(*lessThan)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#lessthan) | Pointer to the function used to create a predicates object to search for the records that are less than the given value in the specified field.<br>This method is equivalent to "<" in SQL statements.|
 | [OH_Predicates *(*greaterThanOrEqualTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#greaterthanorequalto) | Pointer to the function used to create a predicates object to search for the field values that are greater than or equal to the specified value.<br>This method is equivalent to ">=" in SQL statements.|
@@ -49,9 +50,9 @@ Defines a **predicates** object.
 | [OH_Predicates *(*distinct)(OH_Predicates *predicates)](#distinct) | Pointer to the function used to create a predicates object to filter out duplicate records.<br>This method is equivalent to **DISTINCT** in SQL statements.|
 | [OH_Predicates *(*limit)(OH_Predicates *predicates, unsigned int value)](#limit) | Pointer to the function used to create a predicates object to specify the maximum number of records.<br>This method is equivalent to **LIMIT** in SQL statements.|
 | [OH_Predicates *(*offset)(OH_Predicates *predicates, unsigned int rowOffset)](#offset) | Pointer to the function used to create a predicates object to specify the start position of the query result.<br>This method is equivalent to **OFFSET** in SQL statements.|
-| [OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, int length)](#groupby) | Pointer to the function used to create a predicates object to group the results by the specified columns.<br>This method is equivalent to **GROUP BY** in SQL statements.|
-| [OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#in) | Pointer to the function used to create a predicates object to search for the field values that are within the specified range.<br>This method is equivalent to **IN** in SQL statements.|
-| [OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#notin) | Pointer to the function used to create a predicates object to search for the field values that are out of the specified range.<br>This method is equivalent to **NOT IN** in SQL statements.|
+| [OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, int length)](#groupby) | Pointer to the function used to create a predicates object to group the results by the specified columns.<br>This method is equivalent to **GROUP BY** in SQL statements. |
+| [OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#in) | Pointer to the function used to create a predicates object to search for the field values that are within the specified set.<br>This method is equivalent to **IN** in SQL statements. |
+| [OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#notin) | Pointer to the function used to create a predicates object to search for the field values that are out of the specified set.<br>This method is equivalent to **NOT IN** in SQL statements. |
 | [OH_Predicates *(*clear)(OH_Predicates *predicates)](#clear) | Pointer to the function used to clear a predicates instance.                                        |
 | [int (*destroy)(OH_Predicates *predicates)](#destroy)        | Destroys an **OH_Predicates** object and reclaims the memory occupied.             |
 
@@ -75,8 +76,8 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                   | Description                                                        |
 | ------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates | Pointer to the **OH_Predicates** instance.                           |
-| const char *field         | Pointer to the column name in the database table.                                            |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject   | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
+| const char *field         | Column name in the database table. It must not be a null pointer.                                  |
+| OH_VObject *valueObject   | Pointer to the [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to match the predicate. |
 
 **Returns**
 
@@ -101,7 +102,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Column name in the database table.                                          |
+| const char *field                             | Column name in the database table. It must not be a null pointer.                                           |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -223,7 +224,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                   | Description                             |
 | ------------------------- | --------------------------------- |
 | OH_Predicates *predicates | Pointer to the **OH_Predicates** instance.|
-| const char *field         | Column name in the database table.               |
+| const char *field         | Column name in the database table. It must not be a null pointer.                |
 
 **Returns**
 
@@ -248,7 +249,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                   | Description                             |
 | ------------------------- | --------------------------------- |
 | OH_Predicates *predicates | Pointer to the **OH_Predicates** instance.|
-| const char *field         | Column name in the database table.               |
+| const char *field         | Column name in the database table. It must not be a null pointer.                |
 
 **Returns**
 
@@ -273,7 +274,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Column name in the database table.                                          |
+| const char *field                             | Column name in the database table. It must not be a null pointer.                                           |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -300,7 +301,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Column name in the database table.                                          |
+| const char *field                             | Column name in the database table. It must not be a null pointer.                                           |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -326,7 +327,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Column name in the database table.                                          |
+| const char *field                             | Column name in the database table. It must not be a null pointer.                                           |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -352,7 +353,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Column name in the database table.                                          |
+| const char *field                             | Column name in the database table. It must not be a null pointer.                                           |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -378,7 +379,7 @@ Pointer to the function used to create a predicates object to search for the rec
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Column name in the database table.                                          |
+| const char *field                             | Column name in the database table. It must not be a null pointer.                                           |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -404,7 +405,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Column name in the database table.                                          |
+| const char *field                             | Column name in the database table. It must not be a null pointer.                                           |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -430,8 +431,8 @@ Pointer to the function used to create a predicates object to search for the rec
 | Name                   | Description                                                        |
 | ------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates | Pointer to the **OH_Predicates** instance.                           |
-| const char *field         | Column name in the database table.                                          |
-| OH_VObject *valueObject   | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
+| const char *field         | Column name in the database table. It must not be a null pointer.                                           |
+| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject   | Pointer to the [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to match the predicate. |
 
 **Returns**
 
@@ -456,8 +457,8 @@ Pointer to the function used to create a predicates object to sort the values in
 | Name                               | Description                                          |
 | ------------------------------------- | ---------------------------------------------- |
 | OH_Predicates *predicates             | Pointer to the **OH_Predicates** instance.             |
-| const char *field                     | Column name in the database table.                            |
-| [OH_VObject](capi-rdb-oh-vobject.md) type | Sorting type, which is an [OH_VObject](capi-rdb-oh-vobject.md).|
+| const char *field                     | Column name in the database table. It must not be a null pointer.                             |
+| [OH_OrderType](capi-oh-predicates-h.md#oh_ordertype) type | Order type. |
 
 **Returns**
 
@@ -556,8 +557,8 @@ Pointer to the function used to create a predicates object to group the results 
 | Name                   | Description                                                |
 | ------------------------- | ---------------------------------------------------- |
 | OH_Predicates *predicates | Pointer to the **OH_Predicates** instance.                   |
-| char const *const *fields | Names of columns to group.                                |
-| int length                | Length of **fields**.|
+| char const *const *fields | Column name that grouping depends on. It must not be a null pointer.                                 |
+| int length                | Length of the **fields** array. This parameter is an input parameter. |
 
 **Returns**
 
@@ -573,7 +574,7 @@ OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *v
 
 **Description**
 
-Pointer to the function used to create a predicates object to search for the field values that are within the specified range.<br>This method is equivalent to **IN** in SQL statements.
+Pointer to the function used to create a predicates object to search for the field values that are within the specified set.<br>This method is equivalent to **IN** in SQL statements.
 
 **Since**: 10
 
@@ -582,7 +583,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Pointer to the column name in the database table.                                      |
+| const char *field                             | Column name in the database table. It must not be a null pointer.                                       |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -599,7 +600,7 @@ OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject
 
 **Description**
 
-Pointer to the function used to create a predicates object to search for the field values that are out of the specified range.<br>This method is equivalent to **NOT IN** in SQL statements.
+Pointer to the function used to create a predicates object to search for the field values that are out of the specified set.<br>This method is equivalent to **NOT IN** in SQL statements.
 
 **Since**: 10
 
@@ -608,7 +609,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Pointer to the column name in the database table.                                      |
+| const char *field                             | Column name in the database table. It must not be a null pointer.                                       |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -663,4 +664,11 @@ Pointer to the function used to destroy an **OH_Predicates** object and reclaim 
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
+
+
+
+
+
+
+

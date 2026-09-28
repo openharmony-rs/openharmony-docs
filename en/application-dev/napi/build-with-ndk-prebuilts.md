@@ -5,18 +5,19 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=c2e884f250bbdaa68ed3e7bd39614f9a05e4db95 translatedAt=2026-09-16T02:59:22.764Z pushedAt=2026-09-16T08:12:09.425Z -->
 
 In an NDK project, you can use the CMake syntax to import and use prebuilt libraries. When prebuilt libraries are referenced, both those in the module's **libs** directory and those declared in the **CMakeLists.txt** build script are packaged.
 
 ## Constraints for Using Prebuilt Libraries
 
-1. Ensure that the imported dynamic libraries (.so files) are compiled using the [OpenHarmony NDK toolchain](build-with-ndk-overview.md). For details about how to compile prebuilt libraries with the OpenHarmony NDK toolchain, see [Adaptation Process of Using CMake to Build Third-Party Libraries](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-cmake-adapts-to-harmonyos#section1826019653918).
+1. Ensure that the imported .so dynamic libraries are compiled using the [OpenHarmony NDK build toolchain](build-with-ndk-overview.md). For details about how to compile prebuilt libraries using the [OpenHarmony NDK build toolchain](build-with-ndk-overview.md), see [Using CMake to Configure the HarmonyOS Build Toolchain](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/toolchain-cmake-build-project#cmake-third-party-library-adaptation-process).
 
-2. Ensure that dependencies of the imported .so dynamic libraries are also imported into the project and compiled using the OpenHarmony NDK toolchain.
+2. Ensure that dependencies of the imported .so dynamic libraries are also imported into the project and compiled using the [OpenHarmony NDK toolchain](build-with-ndk-overview.md).
 
 ## Importing a Prebuilt Library
 
-You can import a prebuilt library by directly copying the library files into the project. For example, the prebuilt library **libavcodec_ffmpeg.so** is located in the following directory during development.
+You can use a prebuilt library by directly copying the prebuilt library files to your project directory. For example, if you need to use the prebuilt library `libavcodec_ffmpeg.so` in your project, the development-time storage path is as shown in the following figure:
 
 ![Snipaste_2023-10-30_14-39-27](figures/Snipaste_2023-10-30_14-39-27.png)
 

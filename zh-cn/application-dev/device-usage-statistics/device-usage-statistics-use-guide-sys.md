@@ -313,8 +313,8 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 异步方法promise方式
     usageStatistics.queryDeviceEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
-        console.info('BUNDLE_ACTIVE queryDeviceEventStates promise success.');
-        console.info('BUNDLE_ACTIVE queryDeviceEventStates promise result ' + JSON.stringify(res));
+        console.info('BUNDLE_ACTIVE queryDeviceEventStats promise success.');
+        console.info('BUNDLE_ACTIVE queryDeviceEventStats promise result ' + JSON.stringify(res));
     }).catch( (err: BusinessError) => {
         console.error('BUNDLE_ACTIVE queryDeviceEventStats promise failed. code is: ' + err.code + ',message is: ' + err.message);
     });

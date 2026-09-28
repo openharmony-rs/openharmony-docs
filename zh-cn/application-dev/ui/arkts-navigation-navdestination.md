@@ -146,5 +146,5 @@ NavDestination提供了两种类型。
   
   通过[observer.on('navDestinationUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationupdate)提供的注册接口可以注册NavDestination生命周期变化的监听。
 
-  也可以通过[observer.on('navDestinationSwitch')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationswitch12)注册页面切换的状态回调。该回调能在页面发生路由切换时拿到对应的页面信息[NavDestinationSwitchInfo](../reference/apis-arkui/js-apis-arkui-observer.md#navdestinationswitchinfo12)，并提供了[UIAbilityContext](../reference//apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)和[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)不同范围的监听。
+  也可以通过[observer.on('navDestinationSwitch')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationswitch12)注册页面切换的状态回调。该回调能在页面发生路由切换时拿到对应的页面信息[NavDestinationSwitchInfo](../reference/apis-arkui/js-apis-arkui-observer.md#navdestinationswitchinfo12)，并提供了[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)和[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)不同范围的监听。
   

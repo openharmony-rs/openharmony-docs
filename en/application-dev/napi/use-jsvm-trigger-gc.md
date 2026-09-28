@@ -1,10 +1,11 @@
 # Triggering GC Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:45:47.702Z pushedAt=2026-09-02T06:59:07.761Z -->
 
 ## Introduction
 
@@ -100,9 +101,9 @@ static JSVM_Value TriggerGC(JSVM_Env env, JSVM_CallbackInfo info)
     if (OH_JSVM_AddHandlerForGC(vm, JSVM_CB_TRIGGER_AFTER_GC, OnAfterGC2, JSVM_GC_TYPE_ALL, NULL) == JSVM_INVALID_ARG) {
         add_repeated = true;
     }
-    // Remove the OnAfter2 callback.
+    // Remove the OnAfterGC2 callback function.
     JSVM_CALL(OH_JSVM_RemoveHandlerForGC(vm, JSVM_CB_TRIGGER_AFTER_GC, OnAfterGC2, NULL));
-    // Repeated removal of OnAfter2 is invalid.
+    // Repeatedly removing OnAfterGC2 is invalid.
     if (OH_JSVM_RemoveHandlerForGC(vm, JSVM_CB_TRIGGER_AFTER_GC, OnAfterGC2, NULL) == JSVM_INVALID_ARG) {
         remove_repeated = true;
     }

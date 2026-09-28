@@ -49,7 +49,6 @@ activateOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -110,7 +109,6 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -5238,7 +5236,6 @@ static registerPlugin(plugin: DomainPlugin): void
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
 | 12300201 | The domain plugin has been registered. |
 
@@ -5472,7 +5469,6 @@ API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | No domain account is bound. |
@@ -5532,7 +5528,6 @@ API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId. |
@@ -6196,7 +6191,6 @@ openSession(accountId?: number): Promise&lt;Uint8Array&gt;
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted account. |
@@ -6318,7 +6312,6 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialInfo, i.e. authType or authSubType. |
 | 12300003 | Account not found. |

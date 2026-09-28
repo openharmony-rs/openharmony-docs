@@ -85,7 +85,7 @@ alt(value:&nbsp;PixelMap)
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 设置图片加载过程中显示的占位图，支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型。 |
+| value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 图片加载过程中显示的占位图，支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型。 |
 
 ### colorFilter<sup>14+</sup>
 
@@ -119,7 +119,7 @@ ImageSpan组件创建后，不支持动态修改该属性的值。
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enable  | Optional\<boolean> | 是   | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
+| enable  | Optional\<boolean> | 是   | 是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
 
 ## 事件
 
@@ -322,7 +322,7 @@ struct SpanExample {
   build() {
     Row() {
       Column({ space: 10 }) {
-        //创建ColorFilter对象的方式为图片设置颜色滤镜
+        // 创建ColorFilter对象的方式为图片设置颜色滤镜。
         Text() {
           // $r('app.media.sky')需要替换为实际的图像资源文件。
           ImageSpan($r('app.media.sky'))
@@ -331,7 +331,7 @@ struct SpanExample {
             .colorFilter(this.drawingColorFilterFirst)
         }
 
-        //通过drawing.ColorFilter的方式为图片设置颜色滤镜
+        // 通过drawing.ColorFilter的方式为图片设置颜色滤镜。
         Text() {
           // $r('app.media.sky')需要替换为实际的图像资源文件。
           ImageSpan($r('app.media.sky'))

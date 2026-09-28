@@ -1,10 +1,12 @@
 # JSVM_CreateVMOptions
-<!--Kit: Common Basic Capability-->
+
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-27T03:47:24.280Z pushedAt=2026-08-27T06:29:30.873Z -->
 
 ```c
 typedef struct {...} JSVM_CreateVMOptions
@@ -13,6 +15,10 @@ typedef struct {...} JSVM_CreateVMOptions
 ## Overview
 
 Defines options for creating a JavaScript VM.
+
+**Use scenario**: Scenarios where an app needs to customize the memory configuration of a JavaScript VM, needs to use the snapshot feature to accelerate VM startup, or has special requirements on VM memory usage in embedded or resource-constrained environments.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
 

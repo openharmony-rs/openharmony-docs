@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=25e362cbd0c84d5eeff6cfae5eb123fa6f04919a translatedAt=2026-09-15T10:46:09.067Z pushedAt=2026-09-16T07:50:15.672Z -->
 
 ```c
 typedef struct {...} OH_Rdb_Store
@@ -12,7 +13,7 @@ typedef struct {...} OH_Rdb_Store
 
 ## Overview
 
-Defines the RDB store type.
+Represents a database instance, which is obtained through functions such as [OH_Rdb_GetOrOpen](capi-relational-store-h.md#oh_rdb_getoropen) or [OH_Rdb_CreateOrOpen](capi-relational-store-h.md#oh_rdb_createoropen).
 
 **Since**: 10
 
@@ -27,3 +28,4 @@ Defines the RDB store type.
 | Name      | Description                            |
 | ---------- | -------------------------------- |
 | int64_t id | Unique identifier of the **OH_Rdb_Store** struct.|
+

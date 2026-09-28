@@ -24,7 +24,7 @@ import { vpn } from '@kit.NetworkKit';
 
 type LinkAddress = connection.LinkAddress
 
-获取网络链接信息。
+表示网络链路信息。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -36,7 +36,7 @@ type LinkAddress = connection.LinkAddress
 
 type RouteInfo = connection.RouteInfo
 
-获取网络路由信息。
+表示网络路由信息。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 

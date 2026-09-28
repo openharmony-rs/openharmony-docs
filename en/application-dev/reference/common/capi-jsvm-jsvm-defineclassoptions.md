@@ -1,10 +1,12 @@
 # JSVM_DefineClassOptions
-<!--Kit: Common Basic Capability-->
+
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-27T03:47:43.280Z pushedAt=2026-08-27T06:34:24.181Z -->
 
 ```c
 typedef struct {...} JSVM_DefineClassOptions
@@ -13,6 +15,8 @@ typedef struct {...} JSVM_DefineClassOptions
 ## Overview
 
 Defines the options of a class.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
 

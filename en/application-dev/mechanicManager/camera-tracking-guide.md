@@ -1,10 +1,11 @@
 # Object Tracking Photography Development
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
-<!--Owner: @hobbycao-->
-<!--Designer: @saga2025-->
-<!--Tester: @zhaodengqi-->
+<!--Owner: @qxqxqxqxqx-->
+<!--Designer: @peter_1024-->
+<!--Tester: @Aullar-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=0b93323b0f7c91ca4630a6299721102bac279fe0 translatedAt=2026-09-01T02:32:03.194Z pushedAt=2026-09-02T02:12:27.528Z -->
 
 Mechanic Manager is supported since API version 20, offering richer photography experiences with professional features such as object tracking and automatic composition for applications (including third-party applications).
 
@@ -12,21 +13,18 @@ The object camera tracking function enables automated tracking of faces and obje
 
 ## Available APIs
 
-For details about how to use the public APIs of Mechanic Manager, see [@ohos.distributedHardware.mechanicManager (Mechanic Manager)](../reference/apis-mechanic-kit/js-apis-mechanicManager.md).
+For API usage instructions, see [@ohos.distributedHardware.mechanicManager (Mechanic Manager)](../reference/apis-mechanic-kit/js-apis-mechanicManager.md).
 
 | Name                                                              | Description                      |
 | -------------------------------------------------------------------- | -------------------------- |
 |on(type: 'attachStateChange', callback: Callback\<AttachStateChangeInfo>): void | Registers the callback listener for **attachStateChange** events.<br>**Note**: This API is supported since API version 20.|
 |off(type: 'attachStateChange', callback?: Callback\<AttachStateChangeInfo>): void | Unregisters the callback listener for **attachStateChange** events.<br>**Note**: This API is supported since API version 20.|
-|getAttachedMechDevices(): MechInfo[] | Obtain the list of connected mechanic devices.<br>**Note**: This API is supported since API version 20.|
+|getAttachedMechDevices(): MechInfo[] | Obtains the list of connected mechanic devices.<br>**Note**: This API is supported since API version 20.|
 |setCameraTrackingEnabled(isEnabled: boolean): void | Enables or disables camera tracking.<br>**Note**: This API is supported since API version 20.|
 |getCameraTrackingEnabled(): boolean | Checks whether camera tracking is enabled.<br>**Note**: This API is supported since API version 20.|
 |on(type: 'trackingStateChange', callback: Callback\<TrackingEventInfo>): void | Registers a callback listener for the **trackingStateChange** events.<br>**Note**: This API is supported since API version 20.|
 |off(type: 'trackingStateChange', callback?: Callback\<TrackingEventInfo>): void | Unregisters the callback listener for **trackingStateChange** events.<br>**Note**: This API is supported since API version 20.|
-|setCameraTrackingLayout(trackingLayout: CameraTrackingLayout): void | Sets the camera tracking layout.<br>**Note**: This API is supported since API version 20.|
-|getCameraTrackingLayout(): CameraTrackingLayout | Obtains the camera tracking layout of the mechanic device.<br>**Note**: This API is supported since API version 20.|
-|on(type: 'rotationAxesStatusChange', callback: Callback\<RotationAxesStateChangeInfo>): void | Registers a callback listener for the **rotationAxesStatusChange** events.<br>**Note**: This API is supported since API version 20.|
-|off(type: 'rotationAxesStatusChange', callback?: Callback\<RotationAxesStateChangeInfo>): void | Unregisters the callback listener for **rotationAxesStatusChange** events.<br>**Note**: This API is supported since API version 20.|
+|getCameraTrackingLayout(): CameraTrackingLayout | Obtains the camera tracking layout of the mechanic device.<br>**Note:** This API is supported since API version 20.|
 
 ## How to Develop
 
@@ -34,8 +32,8 @@ For details about how to use the public APIs of Mechanic Manager, see [@ohos.dis
 
 1. Prepare a mechanic device that supports Mechanic Kit.
 2. To verify the object camera tracking function, check that the camera driver of the main device supports face detection.
-3. Update the SDK to API 20 or later. For details, please refer to https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install.
-4. Ensure that the gimbal is connected to the control device through Bluetooth.
+3. Update the SDK to API 20 or later. For details, see [Downloading and Installing DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install).
+4. Ensure that the mechanic device is connected to the main device through Bluetooth.
 
 ### Managing the Device Connection Status
 
@@ -100,7 +98,7 @@ Device connection status management helps to ensure that the application respond
 
 4. Process device connection and disconnection events.
    <!-- @[handle_device_attached_detached](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
-   
+
     ```ts
     function handleDeviceAttached(mechInfo: mechanicManager.MechInfo) {
     console.info(`New device is connected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
@@ -110,14 +108,14 @@ Device connection status management helps to ensure that the application respond
    
     function handleDeviceDetached(mechInfo: mechanicManager.MechInfo) {
     console.info(`Device disconnected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
-    savedMechanicIds.filter(id => id !== mechInfo.mechId);
+    savedMechanicIds = savedMechanicIds.filter(id => id !== mechInfo.mechId);
     // To do sth.
     }
     ```
-   
+
 5. Cancel listening for device connection state changes.
    <!-- @[off_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
-   
+
     ```ts
     // Cancel listening for device connection state changes.
     mechanicManager.off('attachStateChange', attachStateChangeCallback);
@@ -129,7 +127,7 @@ After the object tracking photography function is enabled, the device will autom
 
 1. Enable the object tracking photography function.
    <!-- @[set_cameraTracking_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
-   
+
     ```ts
     try {
     // Check whether savedMechIds is empty.
@@ -147,10 +145,10 @@ After the object tracking photography function is enabled, the device will autom
     console.error('Failed to enable camera tracking:', err);
     }
     ```
-   
+
 2. Enable listening for tracking state changes.
    <!-- @[on_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
-   
+
     ```ts
     const trackingStateCallback = (eventInfo : mechanicManager.TrackingEventInfo) => {
     switch (eventInfo.event) {
@@ -172,10 +170,10 @@ After the object tracking photography function is enabled, the device will autom
     // Register the listener for tracking state changes.
     mechanicManager.on('trackingStateChange', trackingStateCallback);
     ```
-   
+
 3. Process the tracking state change event.
    <!-- @[handle_tracking_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
-   
+
     ```ts
     function handleTrackingEnabled() {
     console.info('Handling camera tracking enable events');
@@ -212,7 +210,7 @@ After the object tracking photography function is enabled, the device will autom
     console.info('Update layout UI:', layout);
     }
     ```
-   
+
 4. Cancel listening for tracking state changes.
    <!-- @[off_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
     ```ts
@@ -238,5 +236,5 @@ To ensure proper functioning of Mechanic Manager, perform the following steps fo
 
 **Test Result Description**
 
-- If a list containing all mechanic device is returned after `getAttachedMechDevices` is called, the device identification is normal.
+- If a list containing all mechanic devices is returned after `getAttachedMechDevices` is called, the device identification is normal.
 - If **true** is returned after `getCameraTrackingEnabled` is called, the object tracking photography function is successfully enabled. After the application opens the camera, when a face appears on the screen, the device will rotate to follow the face.

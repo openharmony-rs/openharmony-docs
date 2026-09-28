@@ -1,10 +1,12 @@
 # Creating, Switching, and Destroying a Context in a Thread Using Node-API Extension APIs
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:29:17.098Z pushedAt=2026-09-16T08:21:11.179Z -->
+
 When an application is started, the main thread of the application is an ArkTS thread, which has a context managed by the system. When ArkTS interacts with C/C++, **napi_env** represents the context on the C/C++ side. Every context has an independent **globalThis** object.
 
 You can use the extension APIs **napi_create_ark_context** and **napi_destroy_ark_context** in Node-API to create and destroy a new context in the current thread. The new context and the original context in the thread share the same runtime virtual machine.
@@ -401,6 +403,7 @@ If an API does not involve context switching, it is irrelevant to the runtime co
     ```ts
     // index.ets
     import testNapi from "libentry.so"
+
     // Execute the GetLocation method in the plugin1 or plugin2 module.
     function getLocation(func: () => number) {
         return func();

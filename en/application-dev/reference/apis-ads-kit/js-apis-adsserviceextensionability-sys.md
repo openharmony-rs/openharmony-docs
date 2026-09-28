@@ -2,10 +2,11 @@
 
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
-<!--Owner: @SukiEvas-->
+<!--Owner: @ctssss-->
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=3af2c2640a0dfa1285ceb6197505adab556ff3bb translatedAt=2026-09-02T02:13:39.308Z pushedAt=2026-09-03T01:57:50.359Z -->
 
 The AdsServiceExtensionAbility module provides ExtensionAbilities for the ads service. Device vendors can implement the service logic of requesting one or multiple ads.
 
@@ -31,11 +32,11 @@ Called when the media application starts to load an ad. The device vendor needs 
 
 **Parameters**
 
-| Name      | Type                                                                 | Mandatory| Description         |
-|--------------|-----------------------------------------------------------------------|-----|-------------|
-| adParam      | advertising.[AdRequestParams](js-apis-advertising.md#adrequestparams) | Yes  | Ad request parameters.|
-| adOptions    | advertising.[AdOptions](js-apis-advertising.md#adoptions)             | Yes  | Ad configuration options.|
-| respCallback | [RespCallback](js-apis-adsserviceextensionability.md#respcallback)    | Yes  | Ad request callback.|
+| Name         | Type                                                                  | Mandatory | Description          |
+|--------------|-----------------------------------------------------------------------|-----------|----------------------|
+| adParam      | advertising.[AdRequestParams](js-apis-advertising.md#adrequestparams) | Yes       | Ad request parameters. |
+| adOptions    | advertising.[AdOptions](js-apis-advertising.md#adoptions)             | Yes       | Ad configuration parameters. |
+| respCallback | [RespCallback](js-apis-adsserviceextensionability.md#respcallback)    | Yes       | Ad request callback. |
 
 **Example**
 
@@ -64,11 +65,11 @@ Called when the media application starts to load multiple ads. The device vendor
 
 **Parameters**
 
-| Name      | Type                                                                   | Mandatory| Description         |
-|--------------|-------------------------------------------------------------------------|-----|-------------|
-| adParams     | advertising.[AdRequestParams](js-apis-advertising.md#adrequestparams)[] | Yes  | Ad request parameters.|
-| adOptions    | advertising.[AdOptions](js-apis-advertising.md#adoptions)               | Yes  | Ad configuration options.|
-| respCallback | [RespCallback](js-apis-adsserviceextensionability.md#respcallback)      | Yes  | Ad request callback.|
+| Name         | Type                                                                    | Mandatory | Description          |
+|--------------|-------------------------------------------------------------------------|-----------|----------------------|
+| adParams     | advertising.[AdRequestParams](js-apis-advertising.md#adrequestparams)[] | Yes       | Ad request parameters. |
+| adOptions    | advertising.[AdOptions](js-apis-advertising.md#adoptions)               | Yes       | Ad configuration parameters. |
+| respCallback | [RespCallback](js-apis-adsserviceextensionability.md#respcallback)      | Yes       | Ad request callback. |
 
 **Example**
 

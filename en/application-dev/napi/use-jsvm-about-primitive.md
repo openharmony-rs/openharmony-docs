@@ -1,10 +1,11 @@
 # Working with Primitives Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:41:17.011Z pushedAt=2026-09-02T06:34:43.483Z -->
 
 ## Introduction
 
@@ -14,7 +15,7 @@ JSVM-API provides APIs for converting data between C/C++ and JavaScript (JS) dat
 
 Before using JSVM to operate JS objects, you need to understand the following basic concepts:
 
-- Conversion between JS and C/C primitives: You can use JSVM-API to convert JS values to C/C++ data types, for example, convert a JS value into a C/C++ integer and convert a JS string into a C/C++ string array. You can also convert C/C++ data into a JS value and return the JS value to JS.
+- Converting JavaScript values to C/C++ types: You can use JSVM-API to convert JS values to C/C++ data types, for example, convert a JS value into a C/C++ integer and convert a JS string into a C/C++ character array. You can also convert C/C++ data into a JS value and return the JS value to JS.
 
 ## Available APIs
 
@@ -40,12 +41,15 @@ Call **OH_JSVM_CoerceToBool** to forcibly convert a JS value to a JS Boolean val
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_coerce_to_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetobool/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_CoerceToBool.
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_CoerceToBool
 static JSVM_Value CoerceToBool(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -62,19 +66,18 @@ static JSVM_Value CoerceToBool(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return boolean;
 }
-// Register the CoerceToBool callback.
+// Register callback for CoerceToBool
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CoerceToBool},
 };
 static JSVM_CallbackStruct *method = param;
-// Alias for the CoerceToBool method to be called from JS.
+// Alias for the CoerceToBool method, called from the ArkTS side
 static JSVM_PropertyDescriptor descriptor[] = {
     {"coerceToBool", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call C++ code from JS.
-const char *srcCallNative = R"JS(coerceToBool("123"))JS";
+// Sample test JS
+const char *SRC_CALL_NATIVE = R"JS(coerceToBool("123"))JS";
 ```
-<!-- @[oh_jsvm_coerce_to_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetobool/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -87,12 +90,15 @@ Call **OH_JSVM_CoerceToNumber** to forcibly convert a JS value to a JS number.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_coerce_to_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetonumber/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
+#include "hilog/log.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_CoerceToNumber.
+// ...
+
+// Sample method for OH_JSVM_CoerceToNumber
 static JSVM_Value CoerceToNumber(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -109,19 +115,18 @@ static JSVM_Value CoerceToNumber(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return number;
 }
-// Register the CoerceToNumber callback.
+// Register callback for CoerceToNumber
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CoerceToNumber},
 };
 static JSVM_CallbackStruct *method = param;
-// Alias for the CoerceToNumber method to be called from JS.
+// Alias for the CoerceToNumber method, called from the ArkTS side
 static JSVM_PropertyDescriptor descriptor[] = {
     {"coerceToNumber", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call C++ code from JS.
-const char *srcCallNative = R"JS(coerceToNumber(true))JS";
+// Sample test JS
+const char *SRC_CALL_NATIVE = R"JS(coerceToNumber(true))JS";
 ```
-<!-- @[oh_jsvm_coerce_to_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetonumber/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -134,12 +139,15 @@ Call **OH_JSVM_CoerceToObject** to forcibly convert a JS value to a JS object.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_coerce_to_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetoobject/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_CoerceToObject.
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_CoerceToObject
 static JSVM_Value CoerceToObject(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -155,19 +163,18 @@ static JSVM_Value CoerceToObject(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return obj;
 }
-// Register the CoerceToObject callback.
+// Register callback for CoerceToObject
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CoerceToObject},
 };
 static JSVM_CallbackStruct *method = param;
-// Alias for the CoerceToObject method to be called from JS.
+// Alias for the CoerceToObject method, called from the ArkTS side
 static JSVM_PropertyDescriptor descriptor[] = {
     {"coerceToObject", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call C++ code from JS.
-const char *srcCallNative = R"JS(coerceToObject(123))JS";
+// Sample test JS
+const char *SRC_CALL_NATIVE = R"JS(coerceToObject(123))JS";
 ```
-<!-- @[oh_jsvm_coerce_to_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetoobject/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -180,12 +187,15 @@ Call **OH_JSVM_CoerceToString** to forcibly convert a JS value to a JS string.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_coerce_to_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetostring/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_CoerceToString.
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_CoerceToString
 static JSVM_Value CoerceToString(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -194,26 +204,25 @@ static JSVM_Value CoerceToString(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value str = nullptr;
     JSVM_Status status = OH_JSVM_CoerceToString(env, args[0], &str);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_CoerceToString fail");
+        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_CoerceToString failed");
         return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_CoerceToString success");
     }
     return str;
 }
-// Register the CoerceToString callback.
+// Register callback for CoerceToString
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CoerceToString},
 };
 static JSVM_CallbackStruct *method = param;
-// Alias for the CoerceToString method to be called from JS.
+// Alias for the CoerceToString method, called from the ArkTS side
 static JSVM_PropertyDescriptor descriptor[] = {
     {"coerceToString", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call C++ code from JS.
-const char *srcCallNative = R"JS(coerceToString(22222))JS";
+// Sample test JS
+const char *SRC_CALL_NATIVE = R"JS(coerceToString(22222))JS";
 ```
-<!-- @[oh_jsvm_coerce_to_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetostring/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -226,15 +235,18 @@ Call **OH_JSVM_GetBoolean** to obtain a JS singleton object that is used to repr
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_boolean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getboolean/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_GetBoolean.
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_GetBoolean
 static JSVM_Value GetBoolean(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // Pass in two parameters and parse them.
+    // Pass in two arguments and parse them
     size_t argc = 2;
     JSVM_Value argv[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
@@ -250,29 +262,28 @@ static JSVM_Value GetBoolean(JSVM_Env env, JSVM_CallbackInfo info)
     }
     JSVM_Status status = OH_JSVM_GetBoolean(env, type, &returnValue);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_GetBoolean fail");
+        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_GetBoolean failed");
     } else {
         bool result = false;
         OH_JSVM_GetValueBool(env, returnValue, &result);
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_GetBoolean success:%{public}d", result);
     }
-    // Return the result.
+    // Return the result
     return returnValue;
 }
-// Register the GetBoolean callback.
+// Register callback for GetBoolean
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetBoolean},
 };
 static JSVM_CallbackStruct *method = param;
-// Alias for the GetBoolean method to be called from JS.
+// Alias for the GetBoolean method, called from JS
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getBoolean", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call C++ code from JS.
-const char *srcCallNative = R"JS(getBoolean(1, 2);
-                                 getBoolean(1, 1))JS";
+// Sample test JS
+const char *SRC_CALL_NATIVE = R"JS(getBoolean(1, 2);
+                                   getBoolean(1, 1);)JS";
 ```
-<!-- @[oh_jsvm_get_boolean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getboolean/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -287,12 +298,15 @@ Call **OH_JSVM_GetValueBool** to obtain the C Boolean primitive equivalent of th
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_value_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getvaluebool/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_GetValueBool.
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_GetValueBool
 static JSVM_Value GetValueBool(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -300,8 +314,8 @@ static JSVM_Value GetValueBool(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     bool result = false;
     JSVM_Status status = OH_JSVM_GetValueBool(env, args[0], &result);
-    if (status != JSVM_OK) {
-        // If OH_JSVM_GetValueBool is successful, JSVM_OK is returned. If a non-Boolean value is passed in, JSVM_BOOLEAN_EXPECTED is returned.
+    if (status == JSVM_BOOLEAN_EXPECTED || status != JSVM_OK) {
+        // If OH_JSVM_GetValueBool succeeds, JSVM_OK is returned; if a non-boolean value is passed in, JSVM_BOOLEAN_EXPECTED is returned
         OH_LOG_ERROR(LOG_APP, "JSVM OH_JSVM_GetValueBool fail:%{public}d", status);
         return nullptr;
     } else {
@@ -311,21 +325,20 @@ static JSVM_Value GetValueBool(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetBoolean(env, result, &boolJv);
     return boolJv;
 }
-// Register the GetValueBool callback.
+// Register callback for GetValueBool
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetValueBool},
 };
 static JSVM_CallbackStruct *method = param;
-// Alias for the GetValueBool method to be called from JS.
+// Alias for the GetValueBool method, called from JS
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getValueBool", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call C++ code from JS.
-const char *srcCallNative = R"JS(getValueBool("abc");
-                                getValueBool(true);
-                                getValueBool(false);)JS";
+// Sample test JS
+const char *SRC_CALL_NATIVE = R"JS(getValueBool("abc");
+                                   getValueBool(true);
+                                   getValueBool(false);)JS";
 ```
-<!-- @[oh_jsvm_get_value_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getvaluebool/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -340,15 +353,18 @@ Call **OH_JSVM_GetGlobal** to obtain a JS **global** object. You can use this AP
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getglobal/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_GetGlobal.
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_GetGlobal
 static JSVM_Value GetGlobal(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // Obtain the global object.
+    // Obtain the global object
     JSVM_Value value = nullptr;
     JSVM_Value global = nullptr;
     OH_JSVM_CreateInt32(env, 1, &value);
@@ -361,19 +377,18 @@ static JSVM_Value GetGlobal(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return global;
 }
-// Register the GetGlobal callback.
+// Register callback for GetGlobal
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetGlobal},
 };
 static JSVM_CallbackStruct *method = param;
-// Alias for the GetGlobal method to be called from JS.
+// Alias for the GetGlobal method, called from JS
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getGlobal", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call C++ code from JS.
-const char *srcCallNative = R"JS(getGlobal())JS";
+// Sample test JS
+const char *SRC_CALL_NATIVE = R"JS(getGlobal())JS";
 ```
-<!-- @[oh_jsvm_get_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getglobal/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -386,13 +401,17 @@ Call **OH_JSVM_GetNull** to obtain a JavaScript null object.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getnull/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_GetNull.
-static JSVM_Value GetNull(JSVM_Env env, JSVM_CallbackInfo info) {
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_GetNull
+static JSVM_Value GetNull(JSVM_Env env, JSVM_CallbackInfo info)
+{
     JSVM_Value nullValue = nullptr;
     JSVM_Status status = OH_JSVM_GetNull(env, &nullValue);
     if (status != JSVM_OK) {
@@ -402,21 +421,20 @@ static JSVM_Value GetNull(JSVM_Env env, JSVM_CallbackInfo info) {
     }
     return nullValue;
 }
-// Register the GetNull callback.
+// Register callback for GetNull
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetNull},
 };
 static JSVM_CallbackStruct *method = param;
-// Alias for the GetNull method to be called from JS.
+// Alias for the GetNull method, called from JS
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getNull", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call C++ code from JS.
-const char *srcCallNative = R"JS(getNull())JS";
+// Sample test JS
+const char *SRC_CALL_NATIVE = R"JS(getNull())JS";
 ```
-<!-- @[oh_jsvm_get_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getnull/src/main/cpp/hello.cpp) -->
 
-Expected result:
+Expected Result:
 ```txt
 JSVM OH_JSVM_GetNull success
 ```
@@ -427,19 +445,22 @@ Call **OH_JSVM_GetUndefined** to obtain a JavaScript undefined object.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getundefined/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_GetUndefined.
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_GetUndefined
 static JSVM_Value GetUndefined(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // Obtain and parse the parameters passed in.
+    // Obtain and parse the passed-in arguments
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
-    // Create the value 'undefined'.
+    // Create an undefined value
     JSVM_Value value = nullptr;
     JSVM_Status status = OH_JSVM_GetUndefined(env, &value);
     if (status != JSVM_OK) {
@@ -449,21 +470,20 @@ static JSVM_Value GetUndefined(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return value;
 }
-// Register the GetUndefined callback.
+// Register callback for GetUndefined
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetUndefined},
 };
 static JSVM_CallbackStruct *method = param;
-// Alias for the GetUndefined method to be called from JS.
+// Alias for the GetUndefined method, called from JS
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getUndefined", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call C++ code from JS.
-const char *srcCallNative = R"JS(getUndefined())JS";
+// Sample test JS
+const char *SRC_CALL_NATIVE = R"JS(getUndefined())JS";
 ```
-<!-- @[oh_jsvm_get_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getundefined/src/main/cpp/hello.cpp) -->
 
-Expected result:
+Expected Result:
 ```txt
 JSVM OH_JSVM_GetUndefined success
 ```

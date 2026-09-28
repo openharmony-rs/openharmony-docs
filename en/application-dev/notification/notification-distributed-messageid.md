@@ -2,16 +2,17 @@
 
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:16:41.147Z pushedAt=2026-08-22T07:04:01.252Z -->
 
 Since API version 20, you can clear repeated notifications across devices to prevent users from being disturbed by notifications published through different ways (for example, notifications sent from a mobile phone to the current device are the same as those published by Push Kit).
 
 ## Implementation Principles
 
-When an application publishes a notification, the notification carries the [appMessageId](../../application-dev/reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1) field, which is a unique identifier. After receiving notifications from multiple ways, the cross-device notification service checks the notification based on this field to clear duplicate notifications.
+When sending a notification, an application carries the unique identifier field [appMessageId](../../application-dev/reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1). After receiving notifications published through multiple channels, [distributed notification](notification-glossary.md#distributed-notification) determines based on this field, thereby implementing notification deduplication.
 
 Only the first notification is displayed on the device. Duplicate notifications received later will be silently cleared and will not be displayed or notified.
 
@@ -22,6 +23,7 @@ Only the first notification is displayed on the device. Duplicate notifications 
 ## Constraints
 
 - You must ensure the uniqueness of **appMessageId**. The same notification must retain the same value for this field across all device form factors.
+
 - This field is only valid within 24 hours after the notification is published. It becomes invalid after 24 hours or when the device is restarted.
 
 ## Available APIs
@@ -35,7 +37,7 @@ Only the first notification is displayed on the device. Duplicate notifications 
 1. Import the related modules.
 
    <!-- @[clear_duplicate_notifications_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
-   
+
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -43,8 +45,8 @@ Only the first notification is displayed on the device. Duplicate notifications 
 
 2. Publish a notification that contains the **appMessageId** field.
 
-   <!-- @[pub_appmsgid_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
-   
+   <!-- @[pub_appMsgId_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
+
    ``` TypeScript
    // publish callback
    let publishCallback = (err: BusinessError): void => {

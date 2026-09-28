@@ -2,10 +2,11 @@
 
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25-->
-<!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
-<!--Tester: @liuhonggang123-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=0c20469e58610438940464085fdd62df82c5b560 translatedAt=2026-09-14T09:19:17.125Z pushedAt=2026-09-15T13:11:57.482Z -->
 
 - [About This Kit](core-file-kit-intro.md)
 - Application Files<!--app-file-->
@@ -34,7 +35,7 @@
   - Selecting and Saving User Files<!--select-save-user-file-->
     - [Selecting User Files](select-user-file.md)
     - [Saving User Files](save-user-file.md)
-    - [Persisting Temporary Permissions (ArkTS)](file-persistPermission.md)
+    - [Persisting Temporary Permissions](file-persistPermission.md)
     - [Persisting Temporary Permissions (C/C++)](native-fileshare-guidelines.md)
   - [Obtaining and Accessing a User Directory](request-dir-permission.md)
   <!--Del-->
@@ -46,3 +47,9 @@
   - [Setting the Security Level of a Distributed File](set-security-label.md)
   - [Sharing and Accessing Files Across Devices](file-access-across-devices.md)
   - [Copying Files Across Devices](file-copy-across-devices.md)<!--RP1--><!--RP1End-->
+- File Compression and Decompression<!--compression-->
+  - [Compression and Decompression Overview](archive-overview.md)
+  - [Archive File Compression and Decompression (C/C++)](archive-file-compression-guidelines.md)
+  - [Streaming Compression and Decompression (C/C++)](archive-stream-compression-guidelines.md)
+  - [Buffer Compression and Decompression (C/C++)](archive-buffer-compression-guidelines.md)
+  <!--RP3--><!--RP3End-->

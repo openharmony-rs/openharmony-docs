@@ -54,7 +54,7 @@
 
 | FA模型示例 | Stage模型示例 |
 | -------- | -------- |
-| “metaData”: {<br/>    "customizeDate": [{<br/>        "name": "label",<br/>        "value": "string",<br/>        "extra": "$string:label",<br/>    }]<br/>} | “metaData”: [{<br/>    "name": "label",<br/>    "value": "string",<br/>    "resource": "$string:label",<br/>}] |
+| “metaData”: {<br/>    "customizeData": [{<br/>        "name": "label",<br/>        "value": "string",<br/>        "extra": "$string:label",<br/>    }]<br/>} | “metaData”: [{<br/>    "name": "label",<br/>    "value": "string",<br/>    "resource": "$string:label",<br/>}] |
 
 
 **表5** FA模型和Stage中abilities差异对比

@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=bf317898bcc1da8d6f679faf3e1b37fc86a4dd86 translatedAt=2026-09-15T10:07:28.447Z pushedAt=2026-09-16T07:50:15.626Z -->
 
 ## Overview
 
@@ -232,7 +233,7 @@ Sets the size of an asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| size_t size | Size of the data asset to set.|
+| size_t size | Size of the occupied space to set, in bytes, which is a non-negative integer. |
 
 **Returns**
 
@@ -258,7 +259,7 @@ Sets the status of an asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| [Data_AssetStatus](#data_assetstatus) status | Status to set. For details, see [Data_AssetStatus](capi-data-asset-h.md#data_assetstatus).|
+| [Data_AssetStatus](#data_assetstatus) status | Status code to set. For details, see [Data_AssetStatus](#data_assetstatus). |
 
 **Returns**
 
@@ -447,7 +448,7 @@ Obtains the status of a data asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| [Data_AssetStatus](#data_assetstatus) *status | Pointer to the [Data_AssetStatus](capi-data-asset-h.md#data_assetstatus) obtained.|
+| [Data_AssetStatus](#data_assetstatus) *status | Output parameter. The status code of the asset type data is written to this variable in the form of [Data_AssetStatus](#data_assetstatus). |
 
 **Returns**
 
@@ -471,7 +472,7 @@ Creates a [Data_Asset](capi-rdb-data-asset.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) | Returns the pointer to the [Data_Asset](capi-rdb-data-asset.md) instance created if the operation is successful; returns null otherwise.<br>After the instance is used, call the [OH_Data_Asset_DestroyOne](#oh_data_asset_destroyone) API to release the memory.|
+| [Data_Asset](capi-rdb-data-asset.md) * | Pointer to the [Data_Asset](capi-rdb-data-asset.md) struct instance if the creation is successful; NULL otherwise.<br>After use, the memory must be released by calling [OH_Data_Asset_DestroyOne](#oh_data_asset_destroyone). |
 
 ### OH_Data_Asset_DestroyOne()
 
@@ -514,13 +515,13 @@ Creates a specified number of [Data_Asset](capi-rdb-data-asset.md) instances.
 
 | Name| Description|
 | -- | -- |
-| uint32_t count | Number of data assets to create.|
+| uint32_t count | Number of [Data_Asset](capi-rdb-data-asset.md) type instances to create. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) | Returns the pointer to the [Data_Asset](capi-rdb-data-asset.md) instance created if the operation is successful; returns null otherwise.<br>After the instance is used, call the [OH_Data_Asset_DestroyMultiple](#oh_data_asset_destroymultiple) API to release the memory.|
+| [Data_Asset](capi-rdb-data-asset.md) ** | Pointer to an array of pointers to the [Data_Asset](capi-rdb-data-asset.md) structs if created successfully; NULL otherwise.<br>After use, the memory must be released through [OH_Data_Asset_DestroyMultiple](#oh_data_asset_destroymultiple). |
 
 ### OH_Data_Asset_DestroyMultiple()
 
@@ -539,7 +540,7 @@ Destroys multiple [Data_Asset](capi-rdb-data-asset.md) objects and reclaims the 
 
 | Name| Description|
 | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) **assets | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
+| [Data_Asset](capi-rdb-data-asset.md) **assets | Pointer to an array of pointers to the [Data_Asset](capi-rdb-data-asset.md) struct. |
 | uint32_t count | Number of [Data_Asset](capi-rdb-data-asset.md) objects to be destroyed.|
 
 **Returns**
@@ -547,3 +548,6 @@ Destroys multiple [Data_Asset](capi-rdb-data-asset.md) objects and reclaims the 
 | Type| Description|
 | -- | -- |
 | int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
+
+
+

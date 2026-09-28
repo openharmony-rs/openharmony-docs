@@ -12,11 +12,10 @@ typedef struct ArkUI_NodeEvent ArkUI_NodeEvent
 
 ## 概述
 
-定义组件事件的通用结构类型。
+定义组件事件的通用结构类型，用于在组件事件处理流程中传递事件信息。
 
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_node.h](capi-native-node-h.md)
-
+**所在头文件：** [common_type.h](capi-common-type-h.md)

@@ -1,11 +1,11 @@
 # Silent Access via DatamgrService (ArkTS) (for System Applications Only)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
-<!--Tester: @chenwan188; @logic42-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:38:29.701Z pushedAt=2026-06-25T09:20:59.340Z -->
+<!-- md-trans-meta sourceCommit=83627f931a3d4181bdf684edadfb6dd7d2e32c12 translatedAt=2026-09-14T08:40:43.373Z pushedAt=2026-09-15T08:13:10.203Z -->
 
 
 ## When to Use
@@ -58,7 +58,7 @@ The **DatamgrService** can serve as a proxy to access the following data:
 
     Currently, cloned applications are supported only in silent access mode.
 
-  - The value of **user** must be an integer. It is the user ID of the data provider. For details about the definition of **user** and how to obtain it, see [user](../reference/apis-basic-services-kit/js-apis-osAccount.md#getactivatedosaccountlocalids9). If **user** is not set, the user ID of the data consumer is used. Currently, cross-user access supports the add, delete, modify, and query operations, and does not support subscription notification.
+  - The value of **user** must be an integer. It is the user ID of the data provider. For details about the definition of **user** and how to obtain it, see [getActivatedOsAccountLocalIds](../reference/apis-basic-services-kit/js-apis-osAccount.md#getactivatedosaccountlocalids9). If **user** is not set, the user ID of the data accessor is used. Currently, cross-user access supports the add, delete, modify, and query operations, and does not support subscription notification.
 
     Currently, only the main space and privacy space support cross-user access, and the data consumer must have the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission.
 
@@ -66,7 +66,7 @@ The **DatamgrService** can serve as a proxy to access the following data:
 
 - Currently, only the RDB stores support silent access.
 - The system supports a maximum of 32 concurrent query operations. Excess query requests need to be processed with retry logic.
-- After the query is complete, the shared data result set returned should be released promptly after use. For details, see [DataShareResultSet](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close).
+- After the query is complete, the shared data result set returned should be released promptly after use. For details, see [close](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close).
 - The proxy is not allowed to create a database for persistent data. To create a database, you must start the data provider.
 - If the data provider is an application with a normal signature, the data read/write permission must be system_basic or higher.
 - Calling the silent access API (**insert**, **delete**, **update**, or **query**) must comply with the traffic control mechanism: Every 30 seconds is a traffic control period. If the number of API calls in the traffic control period is greater than or equal to 3000, the API call fails in the remaining time of the traffic control period. The API can be called again in the next traffic control period. Avoid calling the API frequently in a short period of time.
@@ -152,7 +152,7 @@ The following walks you through on how to share an RDB store.
    | path  | Data source path, in the **Database_name/Table_name** format. Currently, only RDB stores are supported.            | Yes   |
    | type  | Database type. Currently, only **rdb** is supported.            | Yes   |
    | scope | Scope of the database.<br>1. **module** indicates that the database is located in this module.<br>2. **application** indicates that the database is located in this application.| No   |
-   | allowLists          | List of applications that can access the data. **allowLists** consists of two fields: **appIdentifier** and **onlyMain**.<br>It allows a maximum of 256 records. In cross-application data access, the data consumers are checked against the settings here. If the data consumer is not listed in **allowlists**, the data access will be rejected. If **allowLists** is not configured, allowlist verification is skipped. No matter whether **allowLists** is configured, the read and write permissions in [Table 1](#data-provider-application-development) are always verified.<br>- **appIdentifier**: unique identifier (string) of the application allocated by the cloud. The data provider should obtain it from the data consumer.<br>For details about **appIdentifier**, see [SignatureInfo](../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo).<br>- **onlyMain**: a Boolean value indicating whether the data is accessible only to the application. The value **true** means only the application can access the data. The value **false** means both the application and its clone can access the data. This feature is available only to silent access.| No  |
+   | allowLists          | Consists of two fields: **appIdentifier** and **onlyMain**.<br>It specifies the list of apps that are allowed to access the data, with a maximum of 256 authorization records. During cross-app data access, this configuration is used to verify whether the data accessor is in the list configured by the data provider. If not, the access is denied. If **allowLists** is not configured, allowlist verification is skipped. Regardless of whether **allowLists** is configured, the read and write permissions in [Table 1](#data-provider-application-development) are still verified as usual.<br>**- appIdentifier**: a string representing the unique identifier of the app, allocated by the cloud. The data provider should obtain it from the data accessor.<br>For details about **appIdentifier**, see [SignatureInfo](../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo).<br>**- onlyMain**: a Boolean value indicating whether only the main app is supported. The value **true** means only the main app can access the data, and clone apps cannot. The value **false** means both the main app and clone apps can access the data. This feature is available only for silent access. | No   |
 
    **my_config.json example**
 
@@ -304,7 +304,7 @@ In the **module.json5** file, set the data to be hosted in **proxyData**. For de
 | ----------------------- | ----------------------------- | ---- |
 | uri                     | URI of the data proxy, which is the unique identifier for cross-application data access.      | Yes   |
 | requiredReadPermission  | Permission required for reading data from the data proxy. If this parameter is not set, other applications are not allowed to access data. For details about the permissions, see [Application Permissions](../security/AccessToken/app-permissions.md).<br>Note: The permission constraints for silent access are different from that for [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md). It is important to understand the difference and prevent confusion. For details, see [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md).| No   |
-| requiredWritePermission | Permission required for writing data to the data proxy. If this parameter is not set, other applications are not allowed to write data to the data proxy. For details about the permissions, see [Application Permissions](../security/AccessToken/app-permissions.md).<br>Note: The permission constraints for silent access are different from that for [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md). It is important to understand the difference and prevent confusion. For details, see [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md).| No   |
+| requiredWritePermission | Permission required for writing data to the data proxy. If this parameter is not set, other apps are not allowed to write data to the data proxy. For details about the permissions, see [Application Permissions](../security/AccessToken/app-permissions.md).<br>Note: The permission constraints for silent access are different from that for [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md). It is important to understand the difference and prevent confusion. For details, see [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md). | No    |
 
 **module.json5 example**
 

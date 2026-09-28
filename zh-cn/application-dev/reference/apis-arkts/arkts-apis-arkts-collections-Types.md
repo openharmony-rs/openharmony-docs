@@ -23,7 +23,7 @@ ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自�
 
 | 类型 | 说明   |
 | ------ | ------ |
-| [lang.ISendable](js-apis-arkts-lang.md#langisendable)   | 所有Sendable类型的父类型。 |
+| [lang.ISendable](js-apis-arkts-lang.md#isendable)   | 所有Sendable类型的父类型。 |
 
 ## ArrayFromMapFn<sup>18+</sup>
 type ArrayFromMapFn<FromElementType, ToElementType> = (value: FromElementType, index: number) => ToElementType
@@ -154,9 +154,9 @@ ArkTS TypedArray遍历函数类型，被TypedArray类的forEach()接口使用。
 
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | --------------------------- |
-| value | ElementType | 否 | 当前遍历的ArkTS TypedArray元素。 |
-| index | number | 否 | 当前遍历的ArkTS TypedArray元素索引，从0开始。 |
-| array | ArrayType | 否 | 当前遍历的ArkTS TypedArray实例。 |
+| value | ElementType | 是 | 当前遍历的ArkTS TypedArray元素。 |
+| index | number | 是 | 当前遍历的ArkTS TypedArray元素索引，从0开始。 |
+| array | ArrayType | 是 | 当前遍历的ArkTS TypedArray实例。 |
 
 ## TypedArrayMapCallback
 type TypedArrayMapCallback\<ElementType, ArrayType> = (value: ElementType, index: number, array: ArrayType) => ElementType

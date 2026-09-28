@@ -5,6 +5,7 @@
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=edbe56e8c39168a1956f05fd88c23c9bbefde40a translatedAt=2026-09-20T07:03:35.630Z pushedAt=2026-09-20T08:39:20.879Z -->
 
 During development, applications often create asynchronous threads to perform video transcoding tasks to meet various requirements, including:
 
@@ -143,14 +144,24 @@ This example uses a Worker thread to perform asynchronous transcoding. For detai
        // Callback function for the completion of transcoding.
        transcoder.on('complete', async () => {
          console.info(`transcode complete`);
-         fileIo.closeSync(transcoder.fdDst); // Close fdDst.
          await transcoder?.release()
+         if (transcoder.fdDst != undefined) {
+           fs.closeSync(transcoder.fdDst);
+         }
+         if (transcoder.fdSrc != undefined) {
+           fs.closeSync(transcoder.fdSrc.fd);
+         }
          workerPort.postMessage('complete');
        })
        // Callback function for transcoding errors.
        transcoder.on('error', async (err: BusinessError) => {
-         fileIo.closeSync(transcoder.fdDst);
          await transcoder?.release();
+         if (transcoder.fdDst != undefined) {
+           fs.closeSync(transcoder.fdDst);
+         }
+         if (transcoder.fdSrc != undefined) {
+           fs.closeSync(transcoder.fdSrc.fd);
+         }
        })
        // Callback function for updating the transcoding progress.
        transcoder.on('progressUpdate', (progress: number) => {

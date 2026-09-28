@@ -107,9 +107,9 @@ import('harlibrary').then((ns: ESObject) => {
 
 >**说明：**
 > 
-> 1.当前所有import中使用的模块名都是依赖方oh-package.json5文件中dependencies项的别名。</br>
-> 2.本地模块在依赖方的dependencies中配置的别名建议与moduleName以及packageName三者一致。moduleName指的是被依赖的HSP/HAR的module.json5中配置的名字，packageName指的是被依赖的HSP/HAR的oh-package.json5中配置的名字。</br>
-> 3.import一个模块名，实际的行为是import该模块的入口文件，一般为Index.ets/ts。
+> 1. 当前所有import中使用的模块名都是依赖方oh-package.json5文件中dependencies项的别名。</br>
+> 2. 本地模块在依赖方的dependencies中配置的别名建议与moduleName以及packageName三者一致。moduleName指的是被依赖的HSP/HAR的module.json5中配置的名字，packageName指的是被依赖的HSP/HAR的oh-package.json5中配置的名字。</br>
+> 3. import一个模块名，实际的行为是import该模块的入口文件，一般为Index.ets/ts。
 
 ## 动态import实现中的关键点
 
@@ -369,7 +369,7 @@ import('@ohos.matrix4').then((ns: ESObject) => {
 // ...
 import('@ohos.hilog').then((ns: ESObject) => {
   ns.default.info(0x0000, 'testTag', '%{public}s', 'DynamicImport @ohos.hilog.');
-  hilog.info(0x000, 'testTag', '%{public}s', ns.default.LogLevel.DEBUG);
+  hilog.info(0x000, 'testTag', '%{public}d', ns.default.LogLevel.DEBUG);
 });
 ```
 

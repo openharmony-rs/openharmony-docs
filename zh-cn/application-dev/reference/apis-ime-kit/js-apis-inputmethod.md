@@ -290,10 +290,13 @@ switchInputMethod(target: InputMethodProperty, callback: AsyncCallback&lt;boolea
 
 使用后效果：成功时系统将当前输入法切换为目标输入法，目标输入法成为新的当前输入法；失败时当前输入法不变。
 
-> **说明：**
->
->  - 在API version 9-10版本，仅支持系统应用调用且需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 11版本起，仅支持当前输入法应用调用。
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
+
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -349,10 +352,13 @@ switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
 使用后效果：成功时系统将当前输入法切换为目标输入法；失败时当前输入法不变。
 
-> **说明：**
->
->  - 在API version 9-10版本，仅支持系统应用调用且需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 11版本起，仅支持当前输入法应用调用。
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
+
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -432,11 +438,13 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype, callback: AsyncCallb
 
 切换当前输入法的子类型。使用callback异步回调。
 
-> **说明：**
->
->  - 在API version 9版本，仅支持系统应用调用且需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 10版本，支持系统应用和当前输入法应用调用；需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 11版本起，仅支持当前输入法调用。
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
+
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -498,11 +506,13 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise&lt;boolean&
 
 切换当前输入法的子类型。使用promise异步回调。
 
-> **说明：**
->
->  - 在API version 9版本，仅支持系统应用调用且需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 10版本，支持系统应用和当前输入法应用调用；需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 11版本起，仅支持当前输入法调用。
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
+
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -589,10 +599,13 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用callback异步回调。
 
-> **说明：**
->
->  - 在API version 9-10版本，仅支持系统应用调用且需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 11版本起，仅支持当前输入法调用。
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
+
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -646,10 +659,13 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用promise异步回调。
 
-> **说明：**
->
->  - 在API version 9-10版本，仅支持系统应用调用且需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 11版本起，仅支持当前输入法调用。
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
+
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -790,9 +806,9 @@ import { Callback } from '@kit.BasicServicesKit';
 
 let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
   (reason: inputMethod.AttachFailureReason): void => {
-    console.info(`Attachment failed with reason: ${reason}.`);
+    console.error(`Attachment failed with reason: ${reason}.`);
   if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
-    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+    console.error(`Failure reason is CALLER_NOT_FOCUSED.`);
   }
   };
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
@@ -819,9 +835,9 @@ import { Callback } from '@kit.BasicServicesKit';
 
 let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
   (reason: inputMethod.AttachFailureReason): void => {
-    console.info(`Attachment failed with reason: ${reason}.`);
+    console.error(`Attachment failed with reason: ${reason}.`);
   if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
-    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+    console.error(`Failure reason is CALLER_NOT_FOCUSED.`);
   }
   };
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
@@ -931,7 +947,7 @@ Enter键的功能类型。
 | enterKeyType  | [EnterKeyType](#enterkeytype10) | 否 | 否 | Enter键功能类型。                                                                                                                                                                                                               |
 | placeholder<sup>20+</sup> | string | 否 | 是 | 编辑框设置的占位符信息。 <br/>- 编辑框设置占位符信息时，长度不超过255个字符（如果超出将会自动截断为255个字符），用于提示或引导用户输入临时性文本或符号。（例如：提示输入项为"必填"或"非必填"的输入结果反馈。）<br/>- 编辑框没有设置占位符信息时，默认为空字符串。<br/>- 该字段在调用[attach](#attach10)时提供给输入法应用。                                   |
 | abilityName<sup>20+</sup> | string | 否 | 是 | 编辑框设置的ability名称。<br/>- 编辑框设置ability名称时，长度不超过127个字符（如果超出将会自动截断为127个字符）。<br/>- 编辑框未设置ability名称时，默认为空字符串。<br/>- 该字段在调用绑定[attach](#attach10)时提供给输入法应用。                                                                        |
-| consumeKeyEvents | boolean | 否 | 是 | 编辑框是否具有完整处理字母、字符、功能等按键的能力。默认值为false。<br/>- 值为true，表示具备此能力。<br/>- 值为false，表示不具备此能力。<br/>- 该字段在调用[attach](#attach10) / [InputAttribute](#inputattribute10)时提供给输入法应用。  <br/>**起始版本：** 26.0.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
+| consumeKeyEvents | boolean | 否 | 是 | 编辑框是否具有完整处理字母、字符、功能等按键的能力。默认值为false。<br/>- 值为true，表示具备此能力。<br/>- 值为false，表示不具备此能力。<br/>- 该字段在调用[attach](#attach10) / [updateAttribute](#updateattribute10)时提供给输入法应用。  <br/>**起始版本：** 26.0.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 
 ## TextConfig<sup>10+</sup>
 
@@ -3647,6 +3663,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let inputMethodProperty: inputMethod.InputMethodProperty = {
   name: 'com.example.keyboard',
   id: 'propertyId',
+  packageName: 'com.example.keyboard',
+  methodId: 'propertyId'
 }
 let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
 
@@ -3699,6 +3717,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let inputMethodProperty: inputMethod.InputMethodProperty = {
   name: 'com.example.keyboard',
   id: 'propertyId',
+  packageName: 'com.example.keyboard',
+  methodId: 'propertyId'
 }
 let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
 

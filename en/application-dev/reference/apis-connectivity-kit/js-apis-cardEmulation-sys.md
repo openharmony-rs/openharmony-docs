@@ -2,7 +2,7 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
@@ -28,6 +28,8 @@ import { cardEmulation } from '@kit.ConnectivityKit';
 getPaymentServices(): [AbilityInfo](../apis-ability-kit/js-apis-bundleManager-abilityInfo.md)[]
 
 Obtains all payment services. If an application declares the support for the HCE feature and **payment-aid**, the application is contained in the payment service list. For details, see [HCE and AID Declaration](js-apis-cardEmulation.md#hce-and-aid-declaration).
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System API**: This is a system API.
 

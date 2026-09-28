@@ -1,9 +1,9 @@
 # @ohos.file.hash (文件哈希处理)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 该模块提供文件哈希处理能力，对文件内容进行哈希处理，适用于数据完整性校验、版本比对与内容去重等场景，可确保计算结果的不可变性与一致性，并支持流式处理大文件。
@@ -20,27 +20,13 @@ import { hash } from '@kit.CoreFileKit';
 
 ## 使用说明
 
-使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：
-
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    let context = this.context;
-    let pathDir = context.filesDir;
-  }
-}
-```
-
-获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
+使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径pathDir，获取沙箱路径的方式及其接口用法可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
 
 ## hash.hash
 
 hash(path: string, algorithm: string): Promise&lt;string&gt;
 
-计算文件的哈希值。使用Promise异步回调。
+计算文件的哈希值，基于指定算法对文件完整内容进行哈希摘要计算。使用Promise异步回调。
 
 > **说明：**
 >
@@ -54,7 +40,7 @@ hash(path: string, algorithm: string): Promise&lt;string&gt;
 
 | 参数名    | 类型   | 必填 | 说明                           |
 | --------- | ------ | ---- | ------------------------------|
-| path      | string | 是   | 待计算哈希值文件的应用沙箱路径。 |
+| path      | string | 是   | 待计算哈希值文件的应用沙箱路径。文件必须存在且可读。 |
 | algorithm | string | 是   | 哈希计算采用的算法。可选&nbsp;"md5"、"sha1"&nbsp;或&nbsp;"sha256"。建议采用安全强度更高的&nbsp;"sha256"。 |
 
 **返回值：**
@@ -89,7 +75,7 @@ hash.hash(filePath, "sha256").then((str: string) => {
 
 hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): void
 
-计算文件的哈希值。使用callback异步回调。
+计算文件的哈希值，基于指定算法对文件完整内容进行哈希摘要计算。使用callback异步回调。
 
 > **说明：**
 >
@@ -103,7 +89,7 @@ hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): vo
 
 | 参数名    | 类型                        | 必填 | 说明                                                         |
 | --------- | --------------------------- | ---- | ------------------------------------------------------------ |
-| path      | string                      | 是   | 待计算哈希值文件的应用沙箱路径。                             |
+| path      | string                      | 是   | 待计算哈希值文件的应用沙箱路径。文件必须存在且可读。                             |
 | algorithm | string                      | 是   | 哈希计算采用的算法。可选&nbsp;"md5"、"sha1"&nbsp;或&nbsp;"sha256"。建议采用安全强度更高的&nbsp;"sha256"。 |
 | callback  | AsyncCallback&lt;string&gt; | 是   | 回调函数，返回哈希值（哈希值表示为十六进制数字串，所有字母均大写）。 |
 
@@ -133,7 +119,7 @@ hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): vo
 
 createHash(algorithm: string): HashStream
 
-创建并返回HashStream对象，用于生成哈希摘要。可以指定哈希计算采用的算法。
+创建并返回HashStream对象，用于生成哈希摘要。可以指定哈希计算采用的算法。HashStream采用流式处理机制，支持分批次更新数据，适用于大文件或数据流的哈希计算，避免一次性加载大文件到内存。
 
 > **说明：**
 >
@@ -196,7 +182,7 @@ HashStream类是用于创建数据的哈希摘要的实用工具。由[createHas
 
 update(data: ArrayBuffer): void
 
-使用给定的数据更新哈希内容，可多次调用。
+使用给定的数据更新哈希内容，可多次调用。每次调用的数据将被追加到已计算的哈希内容中，最终通过digest方法获取完整的哈希摘要。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -204,7 +190,7 @@ update(data: ArrayBuffer): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ----------- | -- | ----------------- |
-| data | ArrayBuffer | 是 | 待计算哈希值的数据。|
+| data | ArrayBuffer | 是 | 待计算哈希值的数据，以ArrayBuffer形式传入。|
 
 **错误码：**
 
@@ -231,7 +217,7 @@ update(data: ArrayBuffer): void
 
 digest(): string
 
-计算传递给哈希处理的所有数据的摘要。
+计算传递给哈希处理的所有数据的摘要，返回最终的哈希值。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 

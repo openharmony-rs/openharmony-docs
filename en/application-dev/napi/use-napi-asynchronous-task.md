@@ -1,10 +1,11 @@
 # Asynchronous Task Development Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:41:04.200Z pushedAt=2026-09-16T08:26:12.353Z -->
 
 ## When to Use
 
@@ -52,7 +53,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
 2. Call **napi_create_async_work** to create an asynchronous work object, and call **napi_queue_async_work** to add the object to a queue.
 
    <!-- @[napi_create_async_work_promise_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    #include "napi/native_api.h"
    // Data context provided by the caller. The data is transferred to the execute and complete functions.
@@ -94,7 +95,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
 3. Define the first callback of the asynchronous work object. This callback is executed in a worker thread to process specific service logic.
 
    <!-- @[napi_first_call_back_work_promise_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    static void ExecuteCB(napi_env env, void *data)
    {
@@ -106,7 +107,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
 4. Define the second callback of the asynchronous work object. This callback is executed in the main thread to return the result to the ArkTS side.
 
    <!-- @[napi_second_call_back_main_promise_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    static void CompleteCB(napi_env env, napi_status status, void *data)
    {
@@ -126,7 +127,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
    ```
 
 5. Register the module and call the API from the ArkTS side.
-   
+
    ``` C++
    // Initialize the module.
    static napi_value Init(napi_env env, napi_value exports)
@@ -141,7 +142,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
 
    Description of the API in the .d.ts file.
    <!-- @[promise_call_interface_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-   
+
    ``` TypeScript
    // index.d.ts
    export const asyncWork: (data: number) => Promise<number>;
@@ -153,8 +154,8 @@ You can use a callback or a promise to implement asynchronous calls as required.
    import testNapi from 'libentry.so';
    ```
 
-   <!-- @[promise_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->  
-   
+   <!-- @[promise_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    testNapi.asyncWork(1024).then((result: number) => {
      hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
@@ -172,7 +173,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
 1. Call **napi_create_async_work** to create an asynchronous work object, and call **napi_queue_async_work** to add the object to a queue.
 
    <!-- @[napi_create_queue_async_work_callback_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
-   
+
    ``` C++
    #include "napi/native_api.h"
    
@@ -212,7 +213,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
 2. Define the first callback of the asynchronous work object. This callback is executed in a worker thread to process specific service logic.
 
    <!-- @[napi_async_first_call_back_work_callback_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
-   
+
    ``` C++
    static void ExecuteCB(napi_env env, void *data)
    {
@@ -224,7 +225,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
 3. Define the second callback of the asynchronous work object. This callback is executed in the main thread to return the result to the ArkTS side.
 
    <!-- @[napi_async_second_call_back_work_callback_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
-   
+
    ``` C++
    static void CompleteCB(napi_env env, napi_status status, void *data)
    {
@@ -263,7 +264,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
 
    Description of the API in the .d.ts file.
    <!-- @[callback_call_interface_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
-   
+
    ``` TypeScript
    export const asyncWork: (arg1: number, arg2: number, callback: (result: number) => void) => void;
    ```
@@ -272,12 +273,13 @@ You can use a callback or a promise to implement asynchronous calls as required.
    ```ts
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import nativeModule from 'libentry1.so';
+
    let num1: number = 123;
    let num2: number = 456;
    ```
 
    <!-- @[callback_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->  
-   
+
    ``` TypeScript
    nativeModule.asyncWork(num1, num2, (result: number) => {
      hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
@@ -309,7 +311,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
 2. Sample code of the worker thread.
 
    <!-- @[napi_create_async_work_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/workers/Worker.ets) -->  
-   
+
    ``` TypeScript
    // entry/src/main/ets/workers/Worker.ets
    
@@ -336,7 +338,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
    ```
 
    <!-- @[AsyncWorkCallbackWorker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->  
-   
+
    ``` TypeScript
    const wk = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
    wk.postMessage({num1, num2});
@@ -382,7 +384,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
    ```
 
    <!-- @[AsyncWorkCallbackTaskPool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    testTaskpool();
    ```

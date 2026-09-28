@@ -120,7 +120,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied. <br>Applicable versions: 22+                         |
 
 **Example**
 
@@ -159,7 +159,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied. <br>Applicable versions: 22+                          |
 
 **Example**
 
@@ -180,7 +180,9 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 
 Obtains the cellular data connection status. This API uses an asynchronous callback to return the result.
 
-**Required permission**: ohos.permission.GET_NETWORK_INFO
+**Required permissions**:
+- API versions earlier than API version 22: N/A
+- API versions 22+:** ohos.permission.GET_NETWORK_INFO**
 
 **System capability**: SystemCapability.Telephony.CellularData
 
@@ -196,7 +198,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied. <br>Applicable versions: 22+                          |
 
 **Example**
 
@@ -219,7 +221,9 @@ getCellularDataState(): Promise\<DataConnectState\>
 
 Obtains the cellular data connection status. This API uses a promise to return the result.
 
-**Required permission**: ohos.permission.GET_NETWORK_INFO
+**Required permissions**:
+- API versions earlier than API version 22: N/A
+- API versions 22+:** ohos.permission.GET_NETWORK_INFO**
 
 **System capability**: SystemCapability.Telephony.CellularData
 
@@ -235,7 +239,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied. <br>Applicable versions: 22+                          |
 
 **Example**
 
@@ -277,7 +281,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                               |
 
 **Example**
 
@@ -319,7 +323,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                           |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                              |
 
 **Example**
 
@@ -359,7 +363,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                           |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                          |
+| 8300999  | Unknown error code.                          |
 
 **Example**
 
@@ -404,7 +408,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                               |
 
 **Example**
 
@@ -454,7 +458,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                               |
 
 **Example**
 
@@ -498,11 +502,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 8300001  | Invalid parameter value.                                     |
 | 8300002  | Operation failed. Cannot connect to service.                 |
 | 8300003  | System internal error.                                       |
-| 8300999  | Internal error.                                          |
+| 8300999  | Unknown error code.                                          |
 
 **Example**
 
@@ -712,6 +716,56 @@ data.getActiveApnName().then((apn: string) => {
     console.info(`getActiveApnName success, apn: ${apn}`);
 }).catch((err: BusinessError) => {
     console.error(`getActiveApnName failed. code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## data.showSystemApnSettings
+
+showSystemApnSettings(context: Context): Promise\<void>
+
+Opens the APN configuration page of the default SIM card. This API uses a promise to return the result.
+
+> **NOTE**
+>
+>- This API allows you to view and select only the existing general APNs. Creation or modification of APN is not supported.
+>
+>- If no SIM card is inserted or the device does not support APN configuration, the configuration page cannot be opened.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Telephony.CellularData
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it does not work.
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description          |
+| ------ | ------ | ---- | -------------- |
+| context    | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context of the stage model. (Only **UIAbilityContext** and **ExtensionContext** are supported.)|
+
+**Return value**
+
+| Type                                                   | Description                         |
+| ------------------------------------------------------- | ----------------------------- |
+| Promise\<void>  |Promise that returns no value.|
+
+**Example**
+
+> **NOTE**
+>
+> In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```ts
+import { data } from '@kit.TelephonyKit';
+import { common } from '@kit.AbilityKit';
+
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+data.showSystemApnSettings(context).then(() => {
+  console.info("showSystemApnSettings success");
+}).catch(() => {
+  console.error("showSystemApnSettings failed");
 });
 ```
 

@@ -39,4 +39,4 @@ None
 
 ## Example
 
-See [WaterFlow](ts-container-waterflow.md#example).
+See [WaterFlow](ts-container-waterflow.md#examples).

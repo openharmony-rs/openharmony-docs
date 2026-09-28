@@ -1,10 +1,11 @@
 # Lifecycle of the Web Component
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @xingyihang-->
+<!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:12:22.400Z pushedAt=2026-09-15T13:41:28.249Z -->
 
 ## Overview
 
@@ -16,7 +17,7 @@ The statuses of a **Web** component include binding a controller to it, the star
 
 For details about how to keep web pages alive, see [Using Offline Web Components](../web/web-offline-mode.md).
 
-If the [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) function is executed when a custom component is destructed, the **Web** component is destroyed and unbound from the WebviewController, and the JS running environment is also destroyed.
+When a custom component is destructed, the [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) function is executed. The **Web** component is then destroyed, the **Web** component is unbound from [WebviewController](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md), and the JS runtime environment is destroyed as well.
 
 **Figure 1** Callback events during the normal web page loading of the **Web** component
 
@@ -26,7 +27,7 @@ If the [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-l
 
 - [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear): executed before its build function when a new instance of a custom component is created. You are advised to set the web debug mode and customize protocol URL permissions and cookies at this status.
 
-- [onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10): triggered when the controller is successfully bound to the **Web** component. Do not call APIs related to the **Web** component before this callback. Otherwise, a js-error exception will be thrown. You are advised to inject a JS object, set a custom user agent, and use APIs irrelevant to web page operations in this event. However, the web page is not loaded when this callback is called. Therefore, APIs for web page operation, such as [zoomIn](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomin) and [zoomOut](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomout), cannot be used in this callback.
+- [onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10) event: triggered when the Controller is successfully bound to the **Web** component. Calling APIs related to the **Web** component before this event callback is prohibited; otherwise, a js-error exception is thrown. It is recommended to inject JS objects, set a custom user agent, and use APIs unrelated to web page operations in this event. However, because the web page has not been loaded when this callback is invoked, APIs for operating the web page, such as [zoomIn](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomin) and [zoomOut](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomout), cannot be used in the callback.
 
 - [onLoadIntercept](../reference/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10): triggered before the **Web** component loads a URL, which is used to determine whether to block the access. By default, the loading is allowed.
 
@@ -47,7 +48,7 @@ If the [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-l
 
 - [onDisAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear): triggered when a component is uninstalled from the component tree, This event is triggered when a component is uninstalled.
 
-Codes on the application side:
+- App-side code.
 
   ```ts
   // xxx.ets
@@ -172,9 +173,9 @@ Codes on the application side:
 
 ## Performance Indicators of Web Component Page Loading
 
-Pay attention to some important performance indicators during web page loading. Such as First Contentful Paint (FCP), First Meaningful Paint (FMP), and Largest Contentful Paint (LCP). The **Web** component provides the following APIs for notifying you these indicators of online non-PDF web pages. Local web pages and PDF web pages are not supported.
+Pay attention to some important performance indicators during web page loading. Such as First Contentful Paint (FCP), First Meaningful Paint (FMP), and Largest Contentful Paint (LCP). The **Web** component provides the following APIs for notifying you of these indicators of online non-PDF web pages. Local web pages and PDF web pages are not supported.
 
-- [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10): triggered when the web page content such as a text, image, non-blank Canvas, or SVG is drawn for the first time.
+- [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10) event: callback for the first contentful paint of a web page. It is the time when text, images, non-blank [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md), or SVG is first painted.
 
 - [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12): triggered when the first meaningful paint is drawn.
 
@@ -193,7 +194,7 @@ import { webview } from '@kit.ArkWeb';
 @Entry
 @Component
 struct WebComponent {
-  needReloadWhenVisible: boolean = false ;  // When the Web component is invisible, the page reloading is blocked after the render process exits. When the Web component is visible, the page is reloaded.
+  needReloadWhenVisible: boolean = false;  // Prevents the page from being reloaded after render exits when the Web component is invisible, and reloads the page when it becomes visible.
   webIsVisible: boolean = false;            // Check whether the Web component is visible.
 
   // The child process crash is distinguished from other exceptions. You can refine the exception handling policy based on the actual service.

@@ -1,4 +1,4 @@
-# Stage Model Development Overview
+# Application Model Overview
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -50,7 +50,7 @@ The following figure illustrates the [stage model](ability-terminology.md#stage-
   A bundle is a static file of an application during the installation and deployment phase, containing all HAPs, HSPs, and related resources. When it is installed and launched, it forms a dynamic runtime instance (Application).
 
 ## Elements
-The [Application Models](application-models.md) topic introduces the elements of the application model, which mainly include application components, configuration files, process models, thread models, and mission management models. Below, we use the Demo.app application as an example to introduce the elements of the stage model from both the development and runtime phases.
+The Application Models topic introduces the elements of the application model, which mainly include application components, configuration files, process models, thread models, and mission management models. Below, we use the Demo.app application as an example to introduce the elements of the stage model from both the development and runtime phases.
 
 The Demo.app application mainly implements the following features:
 - Implements two independent windows with UIs (UIAbilityA and UIAbilityB) for user interaction.
@@ -69,7 +69,7 @@ The Demo.app application mainly implements the following features:
 **Runtime phase**: When the application is installed and running on the device, the system uses a set of application process and thread management mechanisms to ensure orderly operation. <!--Del-->Additionally, a mission management mechanism is provided to manage mission creation, destruction, and foreground/background switching.<!--DelEnd-->
  
 
-- Process model: In this example, UIAbility components run in the main process by default, whereas FormExtensionAbility components run in separate processes. UIAbility and FormExtensionAbility components are process-isolated from each other. For details, see [Process Model](process-model-stage.md).
+- Process model: In this example, UIAbility components run in the main process by default, whereas FormExtensionAbility components run in separate processes. UIAbility and FormExtensionAbility components are process-isolated from each other. For details, see Process Model.
 
 - Thread model: The stage model provides mechanisms such as Worker and TaskPool to support multithreaded development scenarios. If the application has complex, time-consuming logic to handle, it can create Worker threads to offload the processing.
 
@@ -88,7 +88,7 @@ During application development based on the stage model, the following tasks are
 | Task| Description| Guide|
 | -------- | -------- | -------- |
 | Application component development| Use the UIAbility and ExtensionAbility components of the stage model to develop your application.| - [Application- or Component-Level Configuration](application-component-configuration-stage.md)<br>- [UIAbility Component](uiability-overview.md)<br>- [ExtensionAbility Component](extensionability-overview.md)<br>- [AbilityStage Component Manager](abilitystage.md)<br>- [Context](application-context-stage.md)<br>- [Component Startup Rules](component-startup-rules.md)|
-| Process model development| Learn the process model and common IPC modes of the stage model.| [Process Model Overview](process-model-stage.md)|
+| Process model development| Learn the process model and common IPC modes of the stage model.| Process Model Overview|
 | Thread model development| Learn the thread model and common inter-thread communication modes of the stage model.| [Thread Model Overview](thread-model-stage.md)|
 | Configuration file development| Learn the requirements for developing application configuration files in the stage model.| [Application Configuration File](config-file-stage.md)|
 

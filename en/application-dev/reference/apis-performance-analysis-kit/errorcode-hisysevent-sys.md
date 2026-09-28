@@ -6,12 +6,13 @@
 <!--Designer: @tangyyan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=bedc1fd1e691366de7edec5909196a128726df97 translatedAt=2026-09-21T02:38:53.420Z pushedAt=2026-09-22T01:29:30.397Z -->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 1120001 Invalid Event Domain
+## 11200001 Illegal Event Domain
 
 **Error Message**
 
@@ -33,7 +34,7 @@ The specified event domain name does not comply with the following rules:
 
 Specify a valid event domain name.
 
-## 1120002 Invalid Event Name
+## 11200002 Illegal Event Name
 
 **Error Message**
 
@@ -87,11 +88,11 @@ This error code is reported if the **write** API is called to perform system eve
 
 **Possible Causes**
 
-The total event length exceeds 384 KB.
+The total length of the system event exceeds 384 KB.
 
 **Solution**
 
-Check whether the total event length is greater than 384 KB.
+Check whether the total length of the system event exceeds 384 KB.
 
 ## 11200051 Invalid Event Parameter
 
@@ -101,7 +102,7 @@ Invalid event parameter.
 
 **Description**
 
-This error code is reported if the **write** API is called to perform system event logging but the system throws an exception because the input parameter name is invalid. However, the system will continue to complete the logging operation.
+When the **write** API is called for system event logging, the system throws an error because an invalid parameter name is passed in, but the system event logging is still completed.
 
 **Possible Causes**
 
@@ -127,11 +128,11 @@ This error code is reported if the **write** API is called to perform system eve
 
 **Possible Causes**
 
-The length of parameter values of the string type exceeds 10 KB.
+The length of a string-type parameter value exceeds 10 KB.
 
 **Solution**
 
-Check whether the length of parameter values of the string type exceeds 10 KB.
+Check whether the length of a string-type parameter value in the system event exceeds 10 KB.
 
 ## 11200053 Number of Event Parameters Exceeding the Limit
 
@@ -169,7 +170,7 @@ The length of a parameter values of the array type exceeds 100.
 
 Check whether the length of the parameter value of the array type exceeds 100.
 
-## 11200101 Number of Event Watchers Exceeding the Limit
+## 11200101 Number of System Event Listeners Exceeds the Limit
 
 **Error Message**
 
@@ -187,7 +188,7 @@ A total of 30 event watchers have been added.
 
 Check whether the number of event watchers exceeds 30.
 
-## 11200102 Number of Event Watcher Rules Exceeding the Limit
+## 11200102 Number of Listening Rules in a System Event Listener Exceeds the Limit
 
 **Error Message**
 
@@ -205,7 +206,7 @@ A total of 20 event watcher rules have been added.
 
 Check whether the number of event watcher rules exceeds 20.
 
-## 11200201 Event Watcher Not Exist
+## 11200201 System Event Listener Does Not Exist
 
 **Error Message**
 
@@ -213,13 +214,13 @@ The watcher does not exist.
 
 **Description**
 
-This error code is reported if the **removeWatcher** API is called to remove an event watcher but the system rejects the operation because the watcher does not exist.
+When the **removeWatcher** API is called to remove a system event listener, the system rejects the removal because the listener is not in the listening queue.
 
 **Possible Causes**
 
-1. The event watcher to be removed is empty.
+1. The system event listener to be removed is empty.
 
-2. The event watcher to be removed has not been successfully added.
+2. The system event listener to be removed has not been successfully added.
 
 **Solution**
 
@@ -249,7 +250,6 @@ Check whether the number of query rules exceeds 100.
 **Error Message**
 
 Invalid query rule.
-
 
 **Description**
 
@@ -311,7 +311,7 @@ Unsubscription failed.
 
 **Description**
 
-This error code is reported when the **unsubscribe()** API fails to be called.
+When the **unsubscribe** API is called to cancel the subscription, this error code is returned because the hiview service is abnormal.
 
 **Possible Causes**
 
@@ -319,4 +319,4 @@ The HiView service is abnormal.
 
 **Solution**
 
-Call the **unsubscribe()** API again.
+After confirming that the hiview service is normal, try calling the **unsubscribe** API again to cancel the subscription.

@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=0e931f12bb3526b5019e05e0fbb556ee6c82f51e translatedAt=2026-09-01T02:23:12.711Z pushedAt=2026-09-01T13:38:28.854Z -->
 
 This section provides the development guidelines for active update. For details about the update process, see [Active Update](./arkts-ui-widget-interaction-overview.md#active-update).
 
@@ -18,7 +19,7 @@ The following demonstrates how to add a widget to the home screen and update the
 2. Implement the widget layout, add an update button to the widget, and call the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API to trigger the **onFormEvent** callback.
 
    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
-    
+
     ``` TypeScript
     // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
     let storageUpdateByMsg = new LocalStorage();
@@ -81,7 +82,7 @@ The following demonstrates how to add a widget to the home screen and update the
 3. In the implementation of **onFormEvent**, call the **updateForm** API to update the widget data.
 
    <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
-   
+
    ``` TypeScript
    // entry/src/main/ets/entryformability/EntryFormAbility.ts
    import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
@@ -113,9 +114,16 @@ The following demonstrates how to add a widget to the home screen and update the
      }
    
      onUpdateForm(formId: string): void {
-       // ...
+       // If the widget supports interval-based updates, scheduled updates, or active update requests from the widget host, the widget provider needs to override this method to support data updates.
        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
-       // ...
+       let obj: Record<string, string> = {
+         'title': 'titleOnUpdateForm',
+         'detail': 'detailOnUpdateForm'
+       };
+       let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
+         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
+       });
      }
    
      onChangeFormVisibility(newStatus: Record<string, number>): void {
@@ -126,13 +134,12 @@ The following demonstrates how to add a widget to the home screen and update the
      onFormEvent(formId: string, message: string): void {
        // ...
        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
-   
        class FormDataClass {
          title: string = 'Title Update.'; // It matches the widget layout.
          detail: string = 'Description update success.'; // It matches the widget layout.
        }
    
-       // ...
+       // Replace the following with the actual widget data to be updated.
        let formData = new FormDataClass();
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
        formProvider.updateForm(formId, formInfo).then(() => {
@@ -168,19 +175,19 @@ The following demonstrates how to add a widget to the home screen and update the
    // entry/src/main/resources/zh_CN/element/string.json
    {
       "string": [
-   	  // ...
-   	    {
-   	      "name": "default_title",
-   	      "value": "Title default."
-   	    },
-   	    {
-   	      "name": "DescriptionDefault",
-   	      "value": "Description default."
-   	    },
-   	    {
-   	      "name": "update",
-   	      "value": "update"
-   	    }
+      // ...
+        {
+          "name": "default_title",
+          "value": "Title default."
+        },
+        {
+          "name": "DescriptionDefault",
+          "value": "Description default."
+        },
+        {
+          "name": "update",
+          "value": "Update."
+        }
       ]
    }
    ```
@@ -197,7 +204,7 @@ The following demonstrates how to add multiple widgets of an application to the 
 2. Implement the widget layout and add two **Text** components that can be updated to the widget.
 
    <!-- @[ReloadByUIAbilityCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets) --> 
-   
+
    ``` TypeScript
    // entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets
    let storageReloadForm = new LocalStorage();
@@ -231,7 +238,7 @@ The following demonstrates how to add multiple widgets of an application to the 
 3. Implement the **onUpdateForm** callback in FormExtensionAbility and use the **updateForm** API to define the widget update logic.
 
    <!-- @[EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
-   
+
    ``` TypeScript
    // entry/src/main/ets/entryformability/EntryFormAbility.ets
    import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
@@ -261,6 +268,7 @@ The following demonstrates how to add multiple widgets of an application to the 
    
        let formData = new FormDataClass();
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+       // Update the widget data.
        formProvider.updateForm(formId, formInfo).then(() => {
          hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
        }).catch((error: BusinessError) => {
@@ -286,7 +294,7 @@ The following demonstrates how to add multiple widgets of an application to the 
 4. Add two batch update buttons to the UIAbility. After the buttons are tapped, the **reloadForms** or **reloadAllForms** API is called to trigger the **onUpdateForm** callback for batch updates.
 
    <!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/pages/Index.ets) --> 
-   
+
    ``` TypeScript
    // entry/src/main/ets/pages/index.ets
    import { common } from '@kit.AbilityKit';
@@ -304,14 +312,14 @@ The following demonstrates how to add multiple widgets of an application to the 
                let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
                let moduleName: string = 'entry';
                let abilityName: string = 'EntryFormAbility';
-               let formName: string = 'reloadByUIAbilityCard';
+               let formName: string = 'ReloadByUIAbility';
                formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: number) => {
                  console.info(`reloadForms success, reload number: ${reloadNum}`);
                }).catch((error: BusinessError) => {
-                 console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+                 console.error(`promise error, code: ${error.code}, message: ${error.message}`);
                });
              } catch (error) {
-               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
              }
            })
          Button('reloadAllForms')
@@ -321,10 +329,10 @@ The following demonstrates how to add multiple widgets of an application to the 
                formProvider.reloadAllForms(context).then((reloadNum: number) => {
                  console.info(`reloadAllForms success, reload number: ${reloadNum}`);
                }).catch((error: BusinessError) => {
-                 console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+                 console.error(`promise error, code: ${error.code}, message: ${error.message}`);
                });
              } catch (error) {
-               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
              }
            })
        }
@@ -337,30 +345,32 @@ The following demonstrates how to add multiple widgets of an application to the 
 
 5. The resource file is as follows:
 
-   ```json
+   ```json5
    // entry/src/main/resources/base/element/string.json
    {
       "string": [
-   	  // ...
-   	    {
-   	      "name": "default_title",
-   	      "value": "Title default."
-   	    },
-   	    {
-   	      "name": "DescriptionDefault",
-   	      "value": "Description default."
-   	    }
+      // ...
+        {
+          "name": "default_title",
+          "value": "Title default."
+        },
+        {
+          "name": "DescriptionDefault",
+          "value": "Description default."
+        }
       ]
    }
    ```
+### Running Result
+![WidgetPrinciple](figures/batch-update-result.gif)
 
 <!--Del-->
 ## Active Update by Widget Host (for System Applications Only)
 
-Due to the time limit of interval-based and time-specific updates, the widget host can call [requestForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#requestform) to request the Widget Manager to actively update the widget. The Widget Manager calls the [onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform) lifecycle callback in the FormExtensionAbility of the widget provider. In the callback, the [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) API can be called to update the widget content.
+Due to the time restrictions on scheduled and periodic updates, a widget host can call the `requestForm` API to request the widget management service to actively trigger widget refresh. The widget management service triggers the [onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform) lifecycle callback in the widget provider's FormExtensionAbility, in which the [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) API can be used to refresh the widget content.
 
    <!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
+
    ``` TypeScript
    import { formHost } from '@kit.FormKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -388,21 +398,21 @@ Due to the time limit of interval-based and time-specific updates, the widget ho
              temporary: false,
            })
              .size({
-               width:200,
-               height:200,
+               width: 200,
+               height: 200,
              })
              .borderColor(Color.Black)
              .borderRadius(10)
              .borderWidth(1)
              .onAcquired((form: FormCallbackInfo) => {
-               hilog.info(DOMAIN_NUMBER, TAG, `onAcquired: ${JSON.stringify(form)}`)
+               hilog.info(DOMAIN_NUMBER, TAG, `onAcquired: ${form.id}`)
                this.formId = form.id.toString();
              })
              .onRouter(() => {
                hilog.info(DOMAIN_NUMBER, TAG, `onRouter`)
              })
              .onError((error) => {
-               hilog.error(DOMAIN_NUMBER, TAG, `onError: ${JSON.stringify(error)}`)
+               hilog.error(DOMAIN_NUMBER, TAG, `onError: code: ${error?.errcode}, message: ${error?.msg}`)
              })
            // ...
            Button($r('app.string.button_update'))
@@ -413,7 +423,8 @@ Due to the time limit of interval-based and time-specific updates, the widget ho
                  formHost.requestForm(this.formId).then(() => {
                    hilog.info(DOMAIN_NUMBER, TAG, 'EntryFormAbility requestForm success.');
                  }).catch((error: BusinessError) => {
-                   hilog.error(DOMAIN_NUMBER, TAG, `EntryFormAbility requestForm fail, code: ${error?.code}, message: ${error?.message}`);
+                   hilog.error(DOMAIN_NUMBER, TAG,
+                     `EntryFormAbility requestForm fail, code: ${error?.code}, message: ${error?.message}`);
                    hilog.error(DOMAIN_NUMBER, TAG, `EntryFormAbility requestForm fail, code: ${this.formId}`);
                  })
                }

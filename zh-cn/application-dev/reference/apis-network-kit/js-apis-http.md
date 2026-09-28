@@ -1340,7 +1340,7 @@ httpRequest.off("dataSendProgress");
 | expectDataType<sup>9+</sup>  | [HttpDataType](#httpdatatype9)  | 否  | 是  | 指定返回数据的类型，默认无此字段。如果设置了此参数，系统将优先返回指定的类型。当指定其类型为Object时，最大长度为65536字符数。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | usingCache<sup>9+</sup>      | boolean                         | 否  | 是  | 是否使用缓存，true表示请求时优先读取缓存，false表示不使用缓存；默认为true，请求时优先读取缓存。缓存跟随当前进程生效，新缓存会替换旧缓存。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | priority<sup>9+</sup>        | number                          | 否  | 是  | HTTP/HTTPS请求并发优先级，值越大优先级越高，范围[1,1000]，默认为1，超出范围将设置为默认值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| header                       | Object                          | 否  | 是  | HTTP请求头字段。当请求方式为"POST" "PUT" "DELETE" 或者""时，默认{'content-Type': 'application/json'}， 否则默认{'content-Type': 'application/x-www-form-urlencoded'}。<br />如果head中包含number类型的字段，最大支持int64的整数。<br />header字段支持JSON格式如 [完整示例](js-apis-http.md#完整示例) 和Record<string, string>格式输入。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| header                       | Object                          | 否  | 是  | HTTP请求头字段。当请求方式为"POST" "PUT" "DELETE" 或者""时，默认{'content-Type': 'application/json'}， 否则默认{'content-Type': 'application/x-www-form-urlencoded'}。<br />如果header中包含number类型的字段，最大支持int64的整数。<br />header字段支持JSON格式如 [完整示例](js-apis-http.md#完整示例) 和Record<string, string>格式输入。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | readTimeout                  | number                          | 否  | 是  | 读取超时时间。单位为毫秒（ms），默认为60000ms。传入值需为uint32_t范围内的整数。<br />设置为0表示不会出现超时情况。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | connectTimeout               | number                          | 否  | 是  | 连接超时时间。单位为毫秒（ms），默认为60000ms。传入值需为uint32_t范围内的整数。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | usingProtocol<sup>9+</sup>   | [HttpProtocol](#httpprotocol9)  | 否  | 是  | HTTP请求使用的协议版本。未指定时，由系统自动协商最适合的协议版本。若指定HTTP3，由于HTTP3协议的安全限制，需通过[TlsConfig](js-apis-http.md#tlsconfig18)指定TLS 版本为1.3，且目标域名支持HTTP3协议，才能启用HTTP3，否则将协商降级。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
@@ -1470,16 +1470,16 @@ request方法回调函数的返回值类型。
 
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| dnsTiming  | number | 否   | 否   | 从[request](#request)请求到DNS解析完成耗时。 |
-| tcpTiming  | number | 否   | 否   | 从[request](#request)请求到TCP连接完成耗时。 |
-| tlsTiming  | number | 否   | 否   | 从[request](#request)请求到TLS连接完成耗时。 |
-| firstSendTiming  | number | 否   | 否   | 从[request](#request)请求到开始发送第一个字节的耗时。 |
-| firstReceiveTiming  | number | 否   | 否   | 从[request](#request)请求到接收第一个字节的耗时。 |
-| totalFinishTiming  | number | 否   | 否  | 从[request](#request)请求到完成请求的耗时。 |
-| redirectTiming  | number | 否   | 否  | 从[request](#request)请求到完成所有重定向步骤的耗时。 |
-| responseHeaderTiming  | number | 否   | 否   | 从[request](#request)请求到header解析完成的耗时。 |
-| responseBodyTiming  | number | 否   | 否   | 从[request](#request)请求到body解析完成的耗时。 |
-| totalTiming  | number | 否   | 否   | 从[request](#request)请求回调到应用程序的耗时。 |
+| dnsTiming  | number | 否   | 否   | 从[request](#request)请求到DNS解析完成耗时。单位为毫秒(ms)。  |
+| tcpTiming  | number | 否   | 否   | 从[request](#request)请求到TCP连接完成耗时。单位为毫秒(ms)。  |
+| tlsTiming  | number | 否   | 否   | 从[request](#request)请求到TLS连接完成耗时。单位为毫秒(ms)。  |
+| firstSendTiming  | number | 否   | 否   | 从[request](#request)请求到开始发送第一个字节的耗时。单位为毫秒(ms)。  |
+| firstReceiveTiming  | number | 否   | 否   | 从[request](#request)请求到接收第一个字节的耗时。单位为毫秒(ms)。  |
+| totalFinishTiming  | number | 否   | 否  | 从[request](#request)请求到完成请求的耗时。单位为毫秒(ms)。  |
+| redirectTiming  | number | 否   | 否  | 从[request](#request)请求到完成所有重定向步骤的耗时。单位为毫秒(ms)。  |
+| responseHeaderTiming  | number | 否   | 否   | 从[request](#request)请求到header解析完成的耗时。单位为毫秒(ms)。  |
+| responseBodyTiming  | number | 否   | 否   | 从[request](#request)请求到body解析完成的耗时。单位为毫秒(ms)。  |
+| totalTiming  | number | 否   | 否   | 从[request](#request)请求回调到应用程序的耗时。单位为毫秒(ms)。  |
 
 ## ConnectionExtraInfo<sup>24+</sup>
 
@@ -1684,7 +1684,7 @@ let promise = httpRequest.request("EXAMPLE_URL");
 
 promise.then((data: http.HttpResponse) => {
   httpResponseCache.flush().then(() => {
-    console.error('flush success');
+    console.info('flush success');
   }).catch((err: BusinessError) => {
     console.error('flush fail');
   });
@@ -2205,7 +2205,7 @@ type SslType = 'TLS' | 'TLCP'
 | 类型   | 说明                                   |
 | ------ | -------------------------------------- |
 | 'TLS' | 表示使用TLS安全通信协议，值固定为'TLS'字符串。   |
-| 'TLCP' | 表示使用TLCP安全通信协议，值固定为'TLCP'字符串。<br>**说明**：<br>（1）证书支持字符串的规格：<br> - UTF8String（英文字符集）<br> - PrintableString<br>  - IA5String<br>从API Version 22开始支持：<br> - TeletexString<br>（2）证书支持扩展的规格：<br> - BasicConstraints（OID 2.5.29.19）<br> - KeyUsage（OID2.5.29.15）<br> - SubjectKeyIdentifier（OID2.5.29.14）<br> - AuthorityKeyIdentifier（OID2.5.29.35）<br>从API Version 22开始支持：<br> - SubjectAltName（OID 2.5.29.17）<br> - ExtendedKeyUsage（OID 2.5.29.37）<br/> |
+| 'TLCP' | 表示使用TLCP安全通信协议，值固定为'TLCP'字符串。<br>**说明**：<br>（1）证书支持字符串的规格：<br> - UTF8String（英文字符集）<br> - PrintableString<br>  - IA5String<br>从API version 22开始支持：<br> - TeletexString<br>（2）证书支持扩展的规格：<br> - BasicConstraints（OID 2.5.29.19）<br> - KeyUsage（OID2.5.29.15）<br> - SubjectKeyIdentifier（OID2.5.29.14）<br> - AuthorityKeyIdentifier（OID2.5.29.35）<br>从API version 22开始支持：<br> - SubjectAltName（OID 2.5.29.17）<br> - ExtendedKeyUsage（OID 2.5.29.37）<br/> |
 
 ## InterceptorType<sup>22+</sup>
 

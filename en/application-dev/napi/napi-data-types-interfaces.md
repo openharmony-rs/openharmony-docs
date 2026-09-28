@@ -1,10 +1,11 @@
 # Node-API Data Types and APIs
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=099d2f0bb805c74cb41780582ea4e8e363b016e3 translatedAt=2026-09-16T03:02:20.841Z pushedAt=2026-09-16T08:15:40.470Z -->
 
 ## Data Types
 
@@ -98,7 +99,7 @@ napi_release_threadsafe_function(napi_threadsafe_function func,
 
 ### napi_threadsafe_function_call_mode
 
-Defines an enum for whether the call should be blocked when the queue associated with the thread-safe function is full.
+Defines two constants used to specify the call mode of the thread-safe function.
 
 The data struct is as follows:
 
@@ -119,7 +120,7 @@ Node-API provides the following memory management types:
 
 **napi_handle_scope**
 
-Data used to manage the lifecycle of ArkTS/JS objects. It allows ArkTS/JS objects to remain active within a certain range for use in ArkTS/JS code. When **napi_handle_scope** is created, all ArkTS/JS objects created in this range remain active until the end. This minimizes their lifecycles and [prevents memory leaks](napi-guidelines.md#lifecycle-management). For details about **napi_handle_scope**, see <!--RP1-->Precautions for Lifecycle Management.<!--RP1End-->
+Data used to manage the lifecycle of ArkTS/JS objects. It allows ArkTS/JS objects to remain active within a certain range for use in ArkTS/JS code. When **napi_handle_scope** is created, all ArkTS/JS objects created in this range remain active until the end. This minimizes their lifecycles and [prevents memory leaks](napi-guidelines.md#lifecycle-management).
 
 **napi_escapable_handle_scope**
 
@@ -166,6 +167,10 @@ Reference to **napi_value**, which allows you to manage the lifecycle of ArkTS o
 
 Note: Compared with **napi_ref**, **napi_strong_ref** is more efficient in creation but supports limited functionalities (for example, strong and weak reference conversion is not supported).
 
+**napi_callsite_info (Extended Capability)**
+
+A callsite info handle used to cache object structure information for property access, accelerating subsequent property reads and writes. A separate `napi_callsite_info` handle must be created for each distinct callsite. The same handle can be reused across multiple calls but must not be used across threads.
+
 **napi_sendable_ref (Extended Capability)**
 
 Reference to **napi_value**, which allows the caller to manage the lifecycle of the Sendable ArkTS object. **napi_sendable_ref** can be operated across ArkTS threads.
@@ -210,7 +215,7 @@ Function pointer used when an async operation is complete. When an async operati
 
 **napi_threadsafe_function_call_js**
 
-Function pointer used in the event loop thread to interact with ArkTS/JS to implement more complex scenarios. It is used in **napi_create_threadsafe_function(napi_env env,…,napi_threadsafe_function_call_js call_js_cb,...)**.
+Function pointer used in the event loop thread to interact with ArkTS/JS to implement more complex scenarios. It is used in **napi_create_threadsafe_function(napi_env env,...,napi_threadsafe_function_call_js call_js_cb,...)**.
 
 **napi_cleanup_hook**
 
@@ -242,7 +247,7 @@ typedef enum {
 
 ### Event Loop Modes
 
-Node-API provides two modes for running the underlying event loop. The two modes are defined as follows:
+napi provides two modes for running the underlying event loop, defined as follows:
 
 ```c
 typedef enum {
@@ -253,12 +258,12 @@ typedef enum {
 
 | Event Loop Mode| Description|
 | -------- | -------- |
-| napi_event_mode_default | Run the underlying event loop while blocking the current thread, and exit the event loop only when there is no active **uv_handle** in the loop.|
-| napi_event_mode_nowait | Run the underlying event loop without blocking the current thread. Process a task and exit the event loop after the task is complete. If there is no task in the event loop, exit the event loop immediately.|
+| napi_event_mode_default | Runs the underlying event loop in blocking mode until there are no active uv_handle handles, and then exits the event loop. |
+| napi_event_mode_nowait | Runs the underlying event loop without blocking the current thread. Process a task and exit the event loop after the task is complete. If there is no task in the event loop, exit the event loop immediately.|
 
 ### Thread-safe Task Priority
 
-Node-API defines the priorities of thread-safe tasks, as listed below. The tasks in the underlying task queue are executed in sequence based on their priorities.
+napi provides thread-safe task priorities. Tasks in the underlying task queue are executed in order based on their priority. The priorities are defined as follows:
 
 ```c
 typedef enum {
@@ -273,7 +278,7 @@ typedef enum {
 | -------- | -------- |
 | napi_priority_immediate | Highest priority.|
 | napi_priority_high | Priority lower than **napi_priority_immediate**.|
-| napi_priority_low | Priority lower than **napi_priority_high**.|
+| napi_priority_low | Priority lower than **napi_priority_immediate** and **napi_priority_high**.|
 | napi_priority_idle | Lowest priority.|
 
 ## APIs
@@ -476,7 +481,7 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_get_property | Obtains the requested property of an object.|
 | napi_has_property | Checks whether an object has the specified property.|
 | napi_delete_property | Deletes a property from an object.|
-| napi_has_own_property | Checks whether an object has the own property specified by **key**.|
+| napi_has_own_property | Behaves the same as **napi_has_property**. Checks whether the given object has the given property. |
 | napi_set_named_property | Sets a property with the specified name for an object.|
 | napi_get_named_property | Obtains the property with the specified name in an object.|
 | napi_has_named_property | Checks whether an object has the property with the specified name.|
@@ -533,7 +538,7 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 
 ### Extended Capabilities
 
-[Node-API Extended Symbols](../reference/native-lib/napi.md#node-api-extended-symbols)
+[Node-API Extended APIs](../reference/native-lib/napi.md#node-api-component-extension-apis)
 
 | API| Description|
 | -------- | -------- |
@@ -562,7 +567,7 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_wrap_sendable | Wraps a native instance into an ArkTS object.|
 | napi_wrap_sendable_with_size | Wraps a native instance into an ArkTS object with the specified size.|
 | napi_unwrap_sendable | Unwraps the native instance from an ArkTS object.|
-| napi_remove_wrap_sendable | Removes and obtains the native instance wrapped by an ArkTS object. After removal, the callback will no longer be triggered and must be manually deleted to free memory.|
+| napi_remove_wrap_sendable | Removes and retrieves the native instance wrapped in an ArkTS object. After removal, the callback is automatically triggered later. Be careful to avoid double-free issues. |
 | napi_wrap_enhance | Wraps a native instance of the specified size into an ArkTS object. During runtime, the instance size is counted and accumulated. When the accumulated size reaches the GC triggering threshold, the garbage collection process is started. You can specify whether to execute the registered callback asynchronously (if asynchronous, it must be thread-safe).|
 | napi_create_ark_context| Creates a context.|
 | napi_switch_ark_context| Switches to the specified runtime context environment.|
@@ -577,7 +582,11 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_delete_strong_sendable_reference | Deletes a Sendable strong reference.|
 | napi_get_strong_sendable_reference_value | Obtains the ArkTS object value associated with a Sendable strong reference.|
 | napi_throw_business_error | Throws an ArkTS error with the text information, where the code property of the error object is of the number type.|
- 
+| napi_create_callsite_info | Creates a callsite information handle for caching property access information. |
+| napi_delete_callsite_info | Deletes a callsite information handle and releases the associated cached resources. |
+| napi_get_property_with_callsite_info | Quickly retrieves an object property value using callsite information. |
+| napi_set_property_with_callsite_info | Quickly sets an object property value using callsite information. |
+
 **napi_queue_async_work_with_qos**
 
 ```c
@@ -586,7 +595,7 @@ napi_status napi_queue_async_work_with_qos(napi_env env,
                                            napi_qos_t qos);
 ```
 
-This API has the same usage as **napi_queue_async_work**. The difference is you can specify the QoS for the work to run. For details about how to use **napi_queue_async_work_with_qos**, see "Prioritizing Asynchronous Tasks". For details about QoS, see [QoS Development](qos-guidelines.md).
+The usage is the same as napi_queue_async_work, but a QoS level can be specified. For details about how to use napi_queue_async_work_with_qos, see Specifying Asynchronous Task Scheduling Priority. For details about QoS, see [QoS Development](../kernel-enhance/qos-guidelines.md).
 
 **napi_run_script_path**
 
@@ -902,6 +911,40 @@ napi_status napi_get_strong_sendable_reference_value(napi_env env,
 napi_status napi_throw_business_error(napi_env env,
                                       int32_t errorCode,
                                       const char* msg);
+```
+
+**napi_create_callsite_info**
+
+```c
+napi_status napi_create_callsite_info(napi_env env, napi_callsite_info* result);
+```
+
+**napi_delete_callsite_info**
+
+```c
+napi_status napi_delete_callsite_info(napi_env env, napi_callsite_info info);
+```
+
+**napi_get_property_with_callsite_info**
+
+```c
+napi_status napi_get_property_with_callsite_info(napi_env env,
+                                                 napi_value object,
+                                                 napi_value key,
+                                                 napi_callsite_info info,
+                                                 napi_value* result,
+                                                 bool* hit);
+```
+
+**napi_set_property_with_callsite_info**
+
+```c
+napi_status napi_set_property_with_callsite_info(napi_env env,
+                                                 napi_value object,
+                                                 napi_value key,
+                                                 napi_value value,
+                                                 napi_callsite_info info,
+                                                 bool* hit);
 ```
 
 ### Other Utilities

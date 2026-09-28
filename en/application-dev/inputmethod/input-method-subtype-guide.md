@@ -1,19 +1,20 @@
 # Setting Input Method Subtypes
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=c4600a44573a6aee547e47f52cb983f9fbf70114 translatedAt=2026-08-26T02:54:11.914Z pushedAt=2026-08-26T03:21:31.831Z -->
 
 The input method subtypes allow the input method to switch to a specific mode or language, for example, the Chinese or English keyboard.
 
 ## Configuring and Implementing an Input Method Subtype
 
-1. Implement an **InputMethodExtensionAbility** instance for an input method, which will be shared by all subtypes of the input method. Add **metadata** with the name **ohos.extension.input_method** to the [module.json5](../quick-start/module-configuration-file.md) file to configure resource information for all subtypes.
+1. An input method application developer only needs to register and implement one InputMethodExtensionAbility. All input method subtypes share this InputMethodExtensionAbility. Add [metadata](../quick-start/module-configuration-file.md#metadata) in the [module.json5 configuration file](../quick-start/module-configuration-file.md), with `name` set to `ohos.extension.input_method`, to configure resource information for all subtypes.
 
    <!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
-   
+
    ``` JSON5
    "extensionAbilities": [
      {
@@ -32,7 +33,7 @@ The input method subtypes allow the input method to switch to a specific mode or
      }
    ],
    ```
-   
+
 2. Configure the subtype information based on the configuration file format and fields, and place the subtype configuration file `input_method_config.json` in the **profile** folder under the application's resource directory. For details about the fields, see [InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype). For details about how to configure the **locale** field, see [i18n-locale-culture](.././internationalization/i18n-locale-culture.md#how-it-works).
 
    ``` JSON5
@@ -55,19 +56,19 @@ The input method subtypes allow the input method to switch to a specific mode or
      ]
    }
    ```
-   
+
 3. Register a listener in the input method application for subtype changes, so as to load a subtype-specific soft keyboard UI. You can also use a state variable to change the soft keyboard layout.
 
    <!-- @[input_case_input_KeyboardControllersetSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
-   
+
    ``` TypeScript
    // Register a listener in the input method application for subtype changes.
    inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
      if (inputMethodSubtype.id === 'InputMethodExtAbility') {
-       AppStorage.setOrCreate('subtypeChange', 0);
+       AppStorage.setOrCreate('subtypeChange', CustomInputMethodSubtype.english);
      }
      if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
-       AppStorage.setOrCreate('subtypeChange', 1);
+       AppStorage.setOrCreate('subtypeChange', CustomInputMethodSubtype.chinese);
      }
    });
    ```

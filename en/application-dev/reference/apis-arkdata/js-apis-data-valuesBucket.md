@@ -1,10 +1,11 @@
-# @ohos.data.ValuesBucket (Data Set)
+# @ohos.data.ValuesBucket (Value Bucket)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @woodenarow-->
 <!--Designer: @woodenarow; @xuelei3-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=042e522979bc47f18fa0a539f7b8428853db4975 translatedAt=2026-09-15T14:09:10.710Z pushedAt=2026-09-16T07:50:15.759Z -->
 
 **ValuesBucket** is a dataset in the form of key-value (KV) pairs that can be inserted in the database.
 
@@ -27,9 +28,9 @@ type ValueType = number | string | boolean
 
 Defines the value types allowed in a **ValuesBucket** instance.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
-
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
 | Type   | Description                |
 | ------- | -------------------- |

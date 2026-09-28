@@ -1,18 +1,18 @@
 # ArkUI_AccessibilityProviderCallbacksWithInstance
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangyinhua-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
-typedef struct {...} ArkUI_AccessibilityProviderCallbacksWithInstance
+typedef struct ArkUI_AccessibilityProviderCallbacksWithInstance {...} ArkUI_AccessibilityProviderCallbacksWithInstance
 ```
 
 ## 概述
 
-适配多实例场景第三方操作[provider](capi-arkui-accessibility-arkui-accessibilityprovider.md)回调函数结构定义，包含节点信息查询、焦点查找与清除、操作执行、光标位置获取等无障碍相关回调函数。该结构需由第三方平台实现，并通过[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)注册到系统侧，以支持第三方平台接入系统无障碍服务。
+适配多实例场景第三方操作[provider](capi-arkui-accessibility-arkui-accessibilityprovider.md)回调函数结构定义，包含节点信息查询、焦点查找与清除、操作执行、光标位置获取等无障碍相关回调函数。该结构需由第三方平台实现，并通过[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)注册到系统侧，以支持第三方平台接入系统无障碍服务。所有的回调函数执行线程为IPC线程，非UI线程。
 
 **起始版本：** 15
 
@@ -82,7 +82,7 @@ int32_t (*findAccessibilityNodeInfosByText)(const char* instanceId, int64_t elem
 | -- | -- |
 | const char* instanceId | 第三方框架的实例编码。 |
 | int64_t elementId | 无障碍元素的唯一编号，需指向文本组件。 |
-|  const char* text | 组件需要匹配的文本内容。 |
+| const char* text | 组件需要匹配的文本内容。匹配规则说明：需说明匹配方式（精确匹配/模糊匹配）、是否区分大小写等。 |
 | int32_t requestId | 请求id，用于关联请求过程，建议日志打印时附带输出该信息，方便问题定位。 |
 |  [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md)* elementList | 本次查询到的所有无障碍元素列表。 |
 
@@ -208,7 +208,7 @@ int32_t (*getAccessibilityNodeCursorPosition)(const char* instanceId, int64_t el
 
 **描述：**
 
-获取当前组件中（文本组件）光标位置。由接入方平台实现的回调函数，注册给系统侧调用。支持多实例场景。
+获取当前文本组件中的光标位置。由接入方平台实现的回调函数，注册给系统侧调用。支持多实例场景。
 
 **起始版本：** 15
 

@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:39:47.465Z pushedAt=2026-06-25T06:57:00.211Z -->
+<!-- md-trans-meta sourceCommit=4672a80de73f4c73d2f9912987e31312f5fa3743 translatedAt=2026-09-20T06:19:14.559Z pushedAt=2026-09-20T07:45:41.309Z -->
 
 ## Failed to Find the Header File During Compilation or Running
 
@@ -27,7 +27,7 @@ The message "compileSdkVersion and releaseType of the app do not match the apiVe
 
 ### Solution
 
-<!--RP2-->Check whether the system version of the device is correct<!--RP2--> according to the mapping provided in [Version Mapping](#version-mapping).
+<!--RP2-->Check whether the system version of the device is correct<!--RP2End--> according to the mapping provided in [Version Mapping](#version-mapping).
 
 ### Version Mapping
 <!--RP3-->
@@ -49,3 +49,65 @@ The message "code:9568347 error: install parse native so failed" is displayed du
 ### Solution
 
 According to the solution provided in [What should I do if "code:9568347 error: install parse native so failed" is displayed during HAP installation or error message "TypeError: Cannot read property xxx of undefined" is displayed during HAP running?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-app-debugging-14-V5) in application debugging, manually set **abiFilters** in **buildOption/externalNativeOptions** in the **build-profile.json5** file.
+
+## HAP Installation Fails with Error 9568289 After the ohos.permission.ACCESS_DDK_DRIVERS Permission Is Granted
+
+### Symptom
+
+The ACL permission `ohos.permission.ACCESS_DDK_DRIVERS` has been granted and packaged into the HAP application package along with the project, but the error "9568289 grant request permissions failed" is reported during HAP installation.
+
+### Solution
+
+Currently, the application and operation process for the `ohos.permission.ACCESS_DDK_DRIVERS` permission in the application market is under maintenance. If your project uses the [bindDriverWithDeviceId](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerbinddriverwithdeviceid19) and [unbindDriverWithDeviceId](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerunbinddriverwithdeviceid19) APIs, you can replace them with the [bindDeviceDriver](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerbinddevicedriverdeprecated-1) and [unbindDevice](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerunbinddevicedeprecated-1) APIs. The service functions of these APIs are exactly the same.
+
+## When Using a DDK API That Sends Data Based on a Buffer, Data Is Not Sent According to the Specified offset and bufferLength
+
+### Symptom
+
+Take [OH_Usb_SendPipeRequest](../../reference/apis-driverdevelopment-kit/capi-usb-ddk-api-h.md#oh_usb_sendpiperequest) as an example. When using this type of buffer-based data transfer API, even if the `offset` and `bufferLength` fields of [UsbDeviceMemMap](../../reference/apis-driverdevelopment-kit/capi-usbddk-usbdevicememmap.md) are set, the API actually sends the entire buffer based on the `size` value.
+
+### Solution
+
+The implementation of such APIs uses the entire buffer for transmission according to `size`. Therefore, when sending a specific portion of data, apply for a buffer of the required size and fill it with the corresponding data to initiate the transmission. Refer to the implementation in the following code block. Note:
+- Such APIs are planned to be optimized and refactored. In later versions, the capability to transmit data based on `offset` and `bufferLength` will be provided.
+- Performance overhead: The performance overhead of creating and destroying a buffer is minimal, usually within 0.1 ms and negligible.
+
+```cpp
+/**
+ * Assume that data has been filled with valid data, deviceId is the ID of the corresponding peripheral, and pipe is the pipe information to be transferred.
+ * Preset scenario: transfer the 32-byte data starting from index 0x10 in data.*/
+uint8_t *data = new uint8_t [128];
+
+/** Create a data buffer. */
+UsbDeviceMemMap *devMmap;
+OH_Usb_CreateDeviceMemMap(deviceId, 32, &devMmap);
+
+/** Copy only the data to be transferred to the buffer. */
+memcpy(devMmap->address, data + 0x10, 32);
+
+/** Initiate the data transfer. */
+OH_Usb_SendPipeRequest(pipe, devMmap);
+
+/** After use, destroy the data buffer to reclaim resources. */
+OH_Usb_DestroyDeviceMemMap(devMmap);
+```
+
+## Calling DDK C-APIs in a Child Process or a Non-Driver Ability Fails
+
+### Symptom
+
+Calling the Driver Development Kit C-APIs in a child process created by a driver Ability or in a non-driver Ability process returns an abnormal error.
+
+### Solution
+
+The C-APIs provided by the Driver Development Kit can be used only in the DriverExtension process. To manage and communicate with peripherals in other processes, use the APIs provided by [@ohos.usbManager (USB Management)](../../reference/apis-basic-services-kit/js-apis-usbManager.md), the libusb third-party library, and so on.
+
+## When Multiple Driver Abilities Are Configured for the Same Peripheral Device Model, Inserting the Device Supports Starting Only One Driver Ability
+
+### Symptom
+
+A peripheral device of a certain model is configured in the "vids" and "pids" lists of multiple driver Abilities, but when the device is connected, only one driver Ability can be bound and started.
+
+### Solution
+
+The driver Ability is designed to allow vendors to develop a single driver application for one or more peripheral device models. The specification does not support deploying multiple driver Abilities for the same peripheral device at the same time. A peripheral with the same `VID/PID` is associated with only one driver Ability. For example, a Ukey vendor provides a driver for online banking applications. If multiple online banking Ukey devices have the same `VID/PID`, the driver Abilities of these online banking applications cannot be started at the same time, and the current binding API does not distinguish driver Abilities with the same `VID/PID`. To encapsulate the functions of peripherals with the same `VID/PID` and provide them to multiple upstream applications, use [@ohos.usbManager (USB Management)](../../reference/apis-basic-services-kit/js-apis-usbManager.md) provided by the USB system service, or the libusb third-party library.

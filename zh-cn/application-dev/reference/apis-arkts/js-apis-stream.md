@@ -112,7 +112,7 @@ writableStream.write("test", "utf8");
 
 end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writable
 
-结束可写流的写入操作。如果属性writableCorked的值大于0，会置零该值并输出缓冲区剩余数据。如果传入chunk参数且不为空值时，则根据实际运行情况，通过write或者doWrite将其作为最后一块数据写入。其中通过doWrite写入时，encoding参数的合法性检查依赖doWrite。end单独使用（不使用write）并传入chunk参数的情况下，必然通过doWrite写入。使用callback异步回调。
+结束可写流的写入操作。如果属性writableCorked的值大于0，会将该属性的值置0，并输出缓冲区剩余数据。如果传入chunk参数且不为空值时，则根据实际运行情况，通过write或者doWrite将其作为最后一块数据写入。其中通过doWrite写入时，encoding参数的合法性检查依赖doWrite。end单独使用（不使用write）并传入chunk参数的情况下，必然通过doWrite写入。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -855,7 +855,7 @@ on(event: string, callback: Callback<emitter.EventData>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data'` \| `'end'` \| `'error'` \| `'readable'` \| `'pause'` \| `'resume'` 。<br>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'error'`：流发生异常时触发。<br>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
+| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data'` \| `'end'` \| `'error'` \| `'readable'` \| `'pause'` \| `'resume'` 。<br>\- `'close'`：可读流关闭，发生error事件或end事件后触发该事件。<br>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'error'`：流发生异常时触发。<br>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\> | 是 | 回调函数，返回事件数据。 |
 
 **示例：**
@@ -892,7 +892,7 @@ off(event: string, callback?: Callback<emitter.EventData>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'error'`：流发生异常时触发。<br>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
+| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br>\- `'close'`：可读流关闭，发生error事件或end事件后触发该事件。<br>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'error'`：流发生异常时触发。<br>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\>   | 否 | 指定事件的要注销的回调函数。不传入时注销指定事件的所有回调函数。 |
 
 **示例：**
@@ -1127,7 +1127,7 @@ console.info("duplexStream result", result); // duplexStream result true
 
 end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writable
 
-结束双工流的写入操作。如果属性writableCorked的值大于0，会置零该值并输出缓冲区剩余数据。如果传入chunk参数，则根据实际运行情况，通过write或者doWrite将其作为最后一块数据写入。其中通过doWrite写入时，encoding参数的合法性检查依赖doWrite。end单独使用（不使用write）并传入chunk参数的情况下，必然通过doWrite写入。使用callback异步回调。
+结束双工流的写入操作。如果属性writableCorked的值大于0，会将该属性的值置0，并输出缓冲区剩余数据。如果传入chunk参数，则根据实际运行情况，通过write或者doWrite将其作为最后一块数据写入。其中通过doWrite写入时，encoding参数的合法性检查依赖doWrite。end单独使用（不使用write）并传入chunk参数的情况下，必然通过doWrite写入。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

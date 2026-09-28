@@ -5,20 +5,22 @@
 <!--Designer: @qkfg-->
 <!--Tester: @caixincen-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=d62a05cd3afbfcc6267bfda8bea80438a42a8ef4 translatedAt=2026-09-17T09:26:56.716Z pushedAt=2026-09-21T11:20:39.265Z -->
+
 ## Introduction
 
 wukong is a built-in command line tool that implements application stability test capabilities such as random event injection, component injection, exception capture, report generation, and data traversal of abilities. This tool allows you to conduct stability tests on the system or applications by simulating user behavior. wukong provides three types of testing: random testing, special testing, and focus testing.
 
 In random testing, test inputs are generated randomly. Available features include shell startup, whole application startup, multiple injection modes, random seeds setting, run log printing, and report generation.
 
-In special testing, specific application components are tested. Available features include shell startup, sequential traversal and screenshot, sleep and wakeup test, recording and playback, run log printing, and report generation.
+Special testing mainly tests the controls of specified applications. Available features include shell startup, sequential traversal and screenshot, sleep/wakeup testing, record and playback, run log printing, and report generation.
 
 In focus testing, specific components are injected. Available features include shell startup, device application startup, multiple injection modes, random seed setting, focus component type setting, component injection times setting, run log printing, and report generation.
 
 ## Principles
 
 The following figure shows the wukong component architecture and the responsibilities of sub-modules.
-  
+
 ![Alternate text](figures/wukongRandomTestFlow.png)
 
 - Command line parsing: obtains and parses parameters using commands.
@@ -122,6 +124,17 @@ The following figure shows the wukong component architecture and the responsibil
     -B, --checkBWScreen        black and white screen detection
     -U, --Uri                  set Uri pages
     -x, --Uri-type             set Uri-type
+    -K, --knuckle              set percent of knuckle event
+    -f, --finger               set the number of fingers and proportions for tests such as swipe and knuckle gesture
+    -P, --pinch                set percent of pinch-to-zoom event
+    -D, --direction            set the swipe directions and proportions
+    -o, --pause                pause swiping for 1 second
+    -w, --crown                set percent of watch crown rotation event
+    -g, --gestures             set percent of watch gesture recognition events
+    -l, --idle                 set percent of watch idle event
+    -j, --keypress             set percent of watch physical button press event
+    -F, --float                set percent of float and split event
+    -W, --browser              set percent of browser operation event
   $ wukong special -help    #Help menu for wukong special testing.
   usage: wukong special [<arguments>]
   These are wukong special arguments list:
@@ -147,32 +160,49 @@ The following figure shows the wukong component architecture and the responsibil
 
 ### Commands
 
-| Command           | Description                                | Mandatory| Description                                    |
+| Command           | Description                                | Mandatory| Remarks                                    |
 | --------------- | ------------------------------------ | ---- | ---------------------------------------- |
 | -h,--help       | Obtains the help information about the test.              | No  |  -                        |
-| -c,--count      | Sets the number of execution times. This command conflicts with the **-T** command. Set either of them.  | No  | The default value is 10, in times.                      |
-| -i,--interval   | Sets the test interval.                        | No  | The default value is 1500, in millisecond.                      |
+| -c,--count      | Sets the execution count, which conflicts with the total test time -T. Use one of the two.   | No   | Unit count, default value: 10.                       |
+| -i,--interval   | Sets the execution interval.                         | No   | Unit: ms, default value: 1500 ms.                       |
 | -s,--seed       | Sets the random seed.                        | No  | If the same random seed is set, the same random event sequence is generated.|
 | -b,--bundle[bundlename, ......, bundlename]    | Sets allowed bundles for the test. This command conflicts with the **-p** command.| No  | By default, all bundles on the device are allowed. Use commas (,) to separate bundle names.                |
 | -p,--prohibit[bundlename, ......, bundlename]  | Sets blocked bundles for the test. This command conflicts with the **-b** command.| No  | By default, no bundle is blocked. Use commas (,) to separate bundle names.                      |
 | -d,--page[page, ......, page]                  | Sets blocked pages for the test.| No | By default, the **pages/system** pages are blocked. Use commas (,) to separate page names.|
-| -a,--appswitch  | Sets the proportion of the random application startup event test.            | No  | The default value is 10%.                                 |
-| -t,--touch      | Sets the proportion of the random touch event test.           | No  | The default value is 10%.                                 |
-| -S,--swap       | Sets the proportion of the random swipe event test.            | No  | The default value is 3%.                                  |
-| -m,--mouse      | Sets the proportion of the random mouse event test.           | No  | The default value is 1%.                                  |
-| -k,--keyboard   | Sets the proportion of the random keyboard event test.        | No  | The default value is 2%.                                  |
-| -H,--hardkey    | Sets the proportion of the random hardkey test.             | No  | The default value is 2%.                                  |
-| -r,--rotate     | Sets the proportion of the random rotate event test.              | No  | The default value is 2%.                                  |
-| -C, --component | Sets the proportion of random component test.                | No  | The default value is 70%.                                 |
+| -a,--appswitch  | Sets the random application launch test ratio.             | No   | Value range: 0 to 1, default value: 10%.                                  |
+| -t,--touch      | Sets the random screen touch test ratio.            | No   | Value range: 0 to 1, default value: 10%.                                  |
+| -S,--swap       | Sets the random screen swipe test ratio.             | No   | Value range: 0 to 1, default value: 3%.                                   |
+| -m,--mouse      | Sets the random screen mouse test ratio.            | No   | Value range: 0 to 1, default value: 1%.                                   |
+| -k,--keyboard   | Sets the random screen keyboard operation test ratio.         | No   | Value range: 0 to 1, default value: 2%.                                   |
+| -H,--hardkey    | Sets the random physical key test ratio.              | No   | Value range: 0 to 1, default value: 2%.                                   |
+| -r,--rotate     | Sets the random screen rotation test ratio.               | No   | Value range: 0 to 1, default value: 2%.                                   |
+| -C, --component | Sets the random control test ratio.                 | No   | Value range: 0 to 1, default value: 70%.                                  |
 | -I, --screenshot | Takes a screenshot for the component test.                | No  | - |
-| -T,--time       | Sets the total test time. This command conflicts with the **-c** command. Set either of them.| No  | The default value is 10, in minute.        |
+| -T,--time       | Sets the total test time, which conflicts with the execution count -c. Use one of the two. | No   | Unit: minutes, default value: 10 minutes.         |
 | -e, --allow ability   |  Sets the ability that allows testing.| No| - |
 | -E, --block ability   |  Sets the ability that blocks testing.| No| - |
 | -Y, --blockCompId     |  Sets the blocked **CompId**.| No| - |
 | -y, --blockCompType   |  Sets the blocked **CompType**.| No| - |
 | -B, --checkBWScreen   |  Enables black and white screen check.| No| - |
-| -U, -uri              |  Sets the URI of the application startup page.| No| - |
-| -x, -uriType          |  Sets the URI type of the application startup page.| No| - |
+| -U, --Uri        | Sets the URI of the page to be launched by the application. | No | - |
+| -x, --UriType    | Sets the URIType (Uniform Resource Identifier type) of the page to be launched by the application. | No | - |
+| -K, --knuckle    | Sets the knuckle tap test ratio.       | No | Value range: 0 to 1, default value: 0.|
+| -f, --finger     | Sets the number of fingers and ratio involved in the swipe and knuckle tap tests. | No | Supports configuring 1 to 4 fingers. Format: -f <finger count 1,ratio>,<finger count 2,ratio>,<finger count 3,ratio>,<finger count 4,ratio>, for example: -f 1,0.25,2,0.25,3,0.25,4,0.25.|
+| -P, --pinch      | Sets the two-finger pinch test ratio.     | No | Value range: 0 to 1, default value: 0.|
+| -D, --direction  | Sets the swipe direction and ratio.     | No | Supports configuring four directions: up (u), down (d), left (l), and right (r). Format: -D <direction 1,ratio>,<direction 2,ratio>,<direction 3,ratio>,<direction 4,ratio>, for example: u,0.25,r,0.25,d,0.25,l,0.25.|
+| -o, --pause      | Enables pausing during the swipe.    | No | Pausing is not supported if this parameter is omitted. |
+| -w, --crown      | Sets the crown operation test ratio.     | No | Supported only on Wearable devices. Value range: 0 to 1, default value: 0.|
+| -g, --gestures   | Sets the gesture (such as swipe up, swipe down, swipe left, and swipe right) operation test ratio. | No | Supported only on Wearable devices. Value range: 0 to 1, default value: 0.|
+| -l, --idle       | Sets the operation test ratio in the standby state. | No | Supported only on Wearable devices. Value range: 0 to 1, default value: 0.|
+| -j, --keypress   | Sets the key (power key and smart window key) operation test ratio. | No | Supported only on Wearable devices. Value range: 0 to 1, default value: 0.|
+| -F, --float      | Sets the test ratio for the application split-screen mode and floating window mode. | No | Value range: 0 to 1, default value: 0.|
+| -W, --browser    | Sets the browser operation test ratio.     | No | Value range: 0 to 1, default value: 0.|
+
+> **NOTE**
+>
+> - The test ratio of the preceding parameters indicates the operations in the current test. The sum of the test ratios of all parameters must be less than or equal to 1.
+>
+> - The -K, -f, -P, -D, -o, -w, -g, -l, -j, -F, and -W parameters are supported since API version 23.
 
 ### Samples
 
@@ -195,7 +225,7 @@ The following figure shows the wukong component architecture and the responsibil
 - Specify a page to perform a pressure test.
 
   ```bash
-  > Explicit start
+  > Explicit launch
   > hdc_std shell
   $ wukong exec -b bundlename -e abilityname -U uri
 
@@ -216,18 +246,18 @@ The following figure shows the wukong component architecture and the responsibil
 
 ### Commands
 
-| Command               | Description                  | Mandatory| Description               |
+| Command               | Description                  | Mandatory| Remarks               |
 | :------------------ | ---------------------- | ---- | :------------------ |
 | -h, --help          | Obtains the help information about the special testing.| No  |  -    |
-| -k, --spec_insomnia | Powers on/off the special testing.      | No  | -                   |
-| -c, --count         | Sets the number of test times.          | No  | The default value is 10, in times.         |
-| -i, --interval      | Sets the test interval.          | No  | The default value is 1500, in millisecond. |
+| -k, --spec_insomnia | Performs the sleep/wakeup special testing.      | No  | -                   |
+| -c, --count         | Sets the execution count.           | No   | Unit Count, default value is 10.          |
+| -i, --interval      | Sets the execution interval.           | No   | Unit ms, default value is 1500ms.  |
 | -S, --swap          | Sets a swipe event for the test.              | No  | -                   |
 | -s, --start[x,y]    | Sets the coordinates of the start point of the swipe event.  | No  | The values of coordinates are positive.          |
 | -e, --end[x,y]      | Sets the coordinates of the end point of the swipe event.  | No  | The values of coordinates are positive.         |
 | -b, --bilateral     | Sets a back and forth swipe event.          | No  | By default, the back and forth swipe event is disabled.     |
 | -t, --touch[x,y]    | Sets a touch event for the test.              | No  | -                   |
-| -T, --time          | Sets the total test time.        | No  | The default value is 10, in minute.|
+| -T, --time          | Sets the total test time.         | No   | Unit Minutes, default value is 10 minutes. |
 | -C, --component     | Sets the sequential traversal test for components.      | No  | You need to set the name of the test application.|
 | -r, --record     | Records user operation.      | No  | You need to specify the recording file.|
 | -R, --replay    |  Replays user operation.     | No  | You need to specify the playback file.|
@@ -243,27 +273,27 @@ $ wukong special -C [bundlename] -p
 
 ### Commands
 
-| Command           | Description                                | Mandatory| Description                                    |
+| Command           | Description                                | Mandatory| Remarks                                    |
 | --------------- | ------------------------------------ | ---- | ---------------------------------------- |
 | -n,--numberfocus       | Sets the number of injections for each component.              | No  | Unit: times                |
 | -f, --focustypes       | Sets the types of component for the focus testing.              | No  | Use commas (,) to separate the types.                        |
 | -h,--help       | Obtains the help information about the test.              | No  |  -                       |
-| -c,--count      | Sets the number of test times. This command conflicts with the **-T** command. Set either of them.  | No  | The default value is 10, in times.                      |
-| -i,--interval   | Sets the test interval.                        | No  | The default value is 1500, in millisecond.                      |
+| -c,--count      | Sets the execution count. Conflicts with -T, which sets the execution time. Use one of the two.   | No   | Unit count, default value: 10 times.                       |
+| -i,--interval   | Sets the execution interval.                         | No   | Unit ms, default value: 1500 ms.                       |
 | -s,--seed       | Sets the random seed.                        | No  | If the same random seed is set, the same random event sequence is generated.|
 | -b,--bundle[bundlename, ......, bundlename]    | Sets allowed bundles for the test. This command conflicts with the **-p** command.| No  | By default, all bundles on the device are allowed. Use commas (,) to separate bundle names.                |
 | -p,--prohibit[bundlename, ......, bundlename]  | Sets blocked bundles for the test. This command conflicts with the **-b** command.| No  | By default, no bundle is blocked. Use commas (,) to separate bundle names.                      |
 | -d,--page[page, ......, page]                  | Sets blocked pages for the test.| No | By default, the **pages/system** pages are blocked. Use commas (,) to separate page names.|
-| -a,--appswitch  | Sets the proportion of the random application startup event test.            | No  | The default value is 10%.                                 |
-| -t,--touch      | Sets the proportion of the random touch event test.           | No  | The default value is 10%.                                 |
-| -S,--swap       | Sets the proportion of the random swipe event test.            | No  | The default value is 3%.                                  |
-| -m,--mouse      | Sets the proportion of the random mouse event test.           | No  | The default value is 1%.                                  |
-| -k,--keyboard   | Sets the proportion of the random keyboard event test.        | No  | The default value is 2%.                                  |
-| -H,--hardkey    | Sets the proportion of the random hardkey test.             | No  | The default value is 2%.                                  |
-| -r,--rotate     | Sets the proportion of the random rotate event test.              | No  | The default value is 2%.                                  |
-| -C, --component | Sets the proportion of random component test.                | No  | The default value is 70%.                                 |
+| -a,--appswitch  | Sets the random application launch test ratio.             | No   | Default value: 10%.                                  |
+| -t,--touch      | Sets the random screen touch test ratio.            | No   | Default value: 10%.                                  |
+| -S,--swap       | Sets the random screen swipe test ratio.             | No   | Default value: 3%.                                   |
+| -m,--mouse      | Sets the random screen mouse test ratio.            | No   | Default value: 1%.                                   |
+| -k,--keyboard   | Sets the random screen keyboard operation test ratio.         | No   | Default value: 2%.                                   |
+| -H,--hardkey    | Sets the random physical key test ratio.              | No   | Default value: 2%.                                   |
+| -r,--rotate     | Sets the random screen rotation test ratio.               | No   | Default value: 2%.                                   |
+| -C, --component | Sets the random control test ratio.                 | No   | Default value: 70%.                                  |
 | -I, --screenshot | Takes a screenshot for the component test.                | No  | - |
-| -T,--time       | Sets the total test time. This command conflicts with the **-c** command. Set either of them.| No  | The default value is 10, in minute.        |
+| -T,--time       | Sets the total test time. Conflicts with -c, which sets the execution count. Use one of the two. | No   | Unit minutes, default value: 10 minutes.         |
 | -e, --allow ability   |  Sets the ability that allows testing.| No| - |
 | -E, --block ability   |  Sets the ability that blocks testing.| No| - |
 | -Y, --blockCompId     |  Sets the blocked **CompId**.| No| - |
@@ -323,6 +353,52 @@ C:\Users\xxx>hdc file recv /data/local/tmp/wukong/report/20170805_170053/wukong.
 [I][2024-01-03 20:08:02] HdcFile::TransferSummary success
 FileTransfer finish, Size:76492, File count = 1, time:16ms rate:4780.75kB/s
 ```
+
+### Test Report Parsing
+
+Contains basic information, event injection statistics, Ability statistics, and exception statistics.
+
+1. Basic Information (Base Info)
+
+    | Field                     | Description              |
+    | ------------------------ | ------------------|
+    | task status              | Task status. **success** indicates success, and **fail** indicates failure.|
+    | task time                | Task execution time. Unit: seconds.|
+    | seed                     | Random seed.|
+    | task count               | Total number of event injections.|
+
+2. Input Message Statistics
+
+    | Type                            | Description                               |
+    | -------------------------------| ---------------------------------- |
+    | type                           | Type of event or control injection. For the range of event injection types, see [Random Test Command Parameters](#random-testing). The range of control injection types includes ArkTS components under ArkUI (ArkUI framework) and ArkTS components under ArkWeb (ArkWeb).|
+    | execTimes                      | Number of event or control injection executions.|
+    | proportion                     | Proportion of the current event operation in the total number of event injection executions.|
+    | inputedTimes                   | Number of traversed control types.|
+    | expectInputTimes               | Total number of application control types.|
+    | coverage                       | Control traversal coverage.|
+
+3. Ability Statistics
+
+    | Field                     | Description               |
+    | -----------------       | ------------------ |
+    | bundleName              | Bundle name of the application.|
+    | inputedAbilityCount     | Number of traversed Abilities.|
+    | abilitiesCount          | Total number of Abilities in the application.|
+    | coverage                | Ability traversal coverage.|
+
+4. Exception Message Statistics
+
+    > **NOTE**
+    >
+    > Fault log path: /data/log/faultlog/faultlogger/
+
+    | Field             | Description        |
+    | ----------------- | ------------------ |
+    | type              | Fault type. The fault types include CPP_CRASH, JS_CRASH, SYS_FREEZE, APP_FREEZE, and so on. |
+    | times             | Number of faults. |
+    | proportion        | Proportion of the current fault in the total number of faults. |
+
 
 ## FAQs
 ### What should I do if "failed to connect to AAMS" is displayed?

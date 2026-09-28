@@ -2,9 +2,9 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yuhong35-->
+<!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
-<!--Tester: @liangchengguang-->
+<!--Tester: @hid12719688-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供垂域面板管理能力，当前仅支持启动垂域应用面板选择器。
@@ -45,7 +45,7 @@ startVerticalPanel(context: common.UIAbilityContext, wantParam: Record\<string, 
 
 **返回值：**
 
-| 参数名 | 说明 |
+| 类型 | 说明 |
 | -------- |  -------- |
 | Promise\<void> | Promise对象，无返回结果。 |
 
@@ -57,7 +57,7 @@ startVerticalPanel(context: common.UIAbilityContext, wantParam: Record\<string, 
 | -------- | -------- |
 | 202 | The application is not a system application. |
 | 16000050 | Failed to connect to the system service or system server handle failed. |
-| 16000135 | The main window of this ability of this context does not exits. |
+| 16000135 | The main window of this ability of this context does not exist. |
 
 **示例：**
 
@@ -115,7 +115,7 @@ struct Index {
     // Param[3] PanelStartCallback
     let callback: verticalPanelManager.PanelStartCallback = {
       onError: (code: number, name: string, message: string): void => {
-        console.info(`startVerticalPanel onError code ${code} name: ${name} message: ${message}`);
+        console.error(`startVerticalPanel onError code ${code} name: ${name} message: ${message}`);
       },
       onResult: (result: common.AbilityResult): void => {
         console.info(`startVerticalPanel onResult result ${JSON.stringify(result)}`);
@@ -129,10 +129,10 @@ struct Index {
           console.info(`call startVerticalPanel end`);
         })
         .catch((error: BusinessError) => {
-          console.error(`call startVerticalPanel promise catch error : ${error}`);
+          console.error(`call startVerticalPanel promise catch error. Code: ${error.code}, message: ${error.message}`);
         });
     } catch (error) {
-      console.error(`call startVerticalPanel catch error : ${error}`);
+      console.error(`call startVerticalPanel catch error. Code: ${error.code}, message: ${error.message}`);
     }
   }
 }
@@ -193,11 +193,13 @@ type OnErrorFn = (code: number, name: string, message: string) => void
 **示例：**
 
 ```ts
+import { common, verticalPanelManager } from '@kit.AbilityKit';
+
 let callback: verticalPanelManager.PanelStartCallback = {
   onError: (code: number, name: string, message: string): void => {
-    console.info(`startVerticalPanel onError code ${code} name: ${name} message: ${message}`);
+    console.error(`startVerticalPanel onError code ${code} name: ${name} message: ${message}`);
   },
-  onResult: (result: common.AbilityResult):void => {
+  onResult: (result: common.AbilityResult): void => {
     console.info(`startVerticalPanel onResult result ${JSON.stringify(result)}`);
   },
 }
@@ -220,11 +222,13 @@ type OnResultFn = (parameter: AbilityResult) => void
 **示例：**
 
 ```ts
+import { common, verticalPanelManager } from '@kit.AbilityKit';
+
 let callback: verticalPanelManager.PanelStartCallback = {
   onError: (code: number, name: string, message: string): void => {
-    console.info(`startVerticalPanel onError code ${code} name: ${name} message: ${message}`);
+    console.error(`startVerticalPanel onError code ${code} name: ${name} message: ${message}`);
   },
-  onResult: (result: common.AbilityResult):void => {
+  onResult: (result: common.AbilityResult): void => {
     console.info(`startVerticalPanel onResult result ${JSON.stringify(result)}`);
   },
 }
@@ -242,4 +246,4 @@ let callback: verticalPanelManager.PanelStartCallback = {
 | SOURCE_APP_MODULE_NAME | string | 'moduleName' | 常量字符串moduleName，表示源应用的模块名。可以作为[sourceAppInfo](#panelconfig)的key值。 |
 | SOURCE_APP_ABILITY_NAME | string | 'abilityName' | 常量字符串abilityName，表示源应用的能力名。可以作为[sourceAppInfo](#panelconfig)的key值。 |
 | SOURCE_APP_WINDOW_ID | string | 'windowId' | 常量字符串windowId，表示源应用的窗口Id。可以作为[sourceAppInfo](#panelconfig)的key值。 |
-| SOURCE_APP_SCREEN_MODE | string | 'screenMode' | 常量字符串screenMode，表示源应用的屏幕模式，当前只在值为'1'的分屏模式下能正常拉起垂类面板。可以作为[sourceAppInfo](#panelconfig)的key值。 |
+| SOURCE_APP_SCREEN_MODE | string | 'screenMode' | 常量字符串screenMode，表示源应用的屏幕模式，当前只在值为'1'的分屏模式下能正常拉起垂域应用面板。可以作为[sourceAppInfo](#panelconfig)的key值。 |

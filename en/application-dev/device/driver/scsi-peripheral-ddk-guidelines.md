@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:14.315Z pushedAt=2026-06-25T06:57:15.673Z -->
+<!-- md-trans-meta sourceCommit=8e38721f5add5e1ae2a39d2b4d8821fa12c236b4 translatedAt=2026-09-14T08:44:38.695Z pushedAt=2026-09-15T10:33:57.345Z -->
 
 ## Overview
 
@@ -31,7 +31,7 @@ Before you get started, understand the following concepts:
 
 - **DDK**
 
-    The Driver Development Kit (DDK) is a tool package provided by OpenHarmony for developing drivers for non-standard SCSI peripherals based on the peripheral framework.
+    DDK is a tool package provided by OpenHarmony for developing drivers for non-standard USB devices based on the extended peripheral framework.
 
 - **Non-standard peripherals**
 
@@ -43,7 +43,7 @@ Before you get started, understand the following concepts:
 
 - **Logical block**
 
-    A logical block is a basic data storage unit. It represents a data area of a fixed size on a device and is usually used for data read and write operations. The size of a logical block may be 512 bytes, 1024 bytes, 2048 bytes, and so on. A specific size depends on a configuration of the device and a design of the file system.
+    A logical block is a basic data storage unit. It represents a data area of a fixed size on a device and is usually used for data read and write operations. The size of a logical block may be 512 bytes, 1024 bytes, 2048 bytes, and so on. A specific size depends on the configuration of the device and a design of the file system.
 
 - **CDB**
 

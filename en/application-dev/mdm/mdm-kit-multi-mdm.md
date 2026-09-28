@@ -1,27 +1,28 @@
 # Multi-App Management
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=666d11ef1da000a8a929236b7befcab0db1b1cad translatedAt=2026-09-01T02:31:47.404Z pushedAt=2026-09-02T02:11:02.035Z -->
 
 ## Overview
 
-In enterprise PC device management scenarios, an enterprise can engage multiple [EMM providers](./mdm-kit-term.md#emm-provider) to manage its PC devices, distribute management permissions, and fulfill management requirements across different use cases. In this context, MDM Kit abstracts distinct device administrator roles to enable simultaneous deployment of MDM services by multiple EMM providers on the same PC device. Since multiple [MDM apps](./mdm-kit-term.md#mdm-application-device-administrator-application) may call MDM management APIs concurrently in this scenario, it is recommended that enterprises and EMM providers agree on the management scope of each MDM app in advance to [manage policy conflicts](#policy-conflict-management). Failure to do so may lead to enterprise management breakdowns and even data leakage.
+In enterprise PC device management scenarios, an enterprise can engage multiple [EMM](./mdm-kit-term.md#enterprise-mobility-management-emm) vendors to jointly manage enterprise PC devices, distributing management authority to meet management requirements across different scenarios. In this context, MDM Kit abstracts different device administrator roles to support multiple EMM vendors in deploying their own MDM services simultaneously on PC devices. Since multiple [MDM apps](./mdm-kit-term.md#mdm-app) may call MDM management APIs concurrently in such scenarios, it is recommended that the enterprise and EMM vendors agree in advance on the management scope of their respective MDM apps to avoid policy conflicts. [Policy conflicts](#policy-conflict-management) may lead to management failures and issues such as enterprise data leakage.
 
 ## EnterpriseAdminExtensionAbility Roles
 
 The **EnterpriseAdminExtensionAbility** component can be activated in different ways, and its role varies depending on the activation mode.
 
-1. Calling the [adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerenabledeviceadmin23) API activates the [DA](./mdm-kit-term.md#da) role.
+1. Calling the [adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerenabledeviceadmin23) API activates the [DA](./mdm-kit-term.md#device-admin-da) role. When an MDM app only needs to manage the device without managing other DA apps, it can be activated as DA.
 
-2. Calling the [adminManager.startAdminProvision](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) API activates the [BDA](./mdm-kit-term.md#bda) role.
+2. Calling the [adminManager.startAdminProvision](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) API activates the [BDA](./mdm-kit-term.md#byod-device-admin-bda) role. When an MDM app needs to perform limited management (such as disabling the camera or audio recording) on employees' personal devices in specific scenarios, it can be activated as BDA.
 
 <!--Del-->
-3. Calling the [adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin) API and setting the third parameter [AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype) to **ADMIN_TYPE_SUPER** activates the [SDA](./mdm-kit-term.md#sda) role.
+3. Calling the [adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin) API and setting the third parameter [AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype) to `ADMIN_TYPE_SUPER` activates the [SDA](./mdm-kit-term.md#super-device-admin-sda) role. When an MDM app needs to manage multiple other DA apps, it can be activated as SDA.
 
-4. Calling the [adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin) API and setting the third parameter [AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype) to **ADMIN_TYPE_NORMAL** activates the [DA](./mdm-kit-term.md#da) role.<!--DelEnd-->
+4. Calling the [adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin) API and setting the third parameter [AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype) to `ADMIN_TYPE_NORMAL` activates the [DA](./mdm-kit-term.md#device-admin-da) role.<!--DelEnd-->
 
 ## Policy Conflict Management
 
@@ -33,7 +34,7 @@ When multiple MDM apps are deployed on a single device, they may call the same M
 
 ### Rule 1: Security-First
 - Design principle: Data security protection is prioritized. If an MDM app configures a data management policy with a high security level, other MDM apps will be prohibited from setting policies with lower security levels. For example, if an enterprise IT administrator uses an MDM app to set a policy that disables the camera during meetings, other MDM apps cannot cancel this camera-disabling restriction.
-- Policy validity logic: If any MDM app still requires the disabling, the disabling persists. The restriction is removed only when all MDM apps remove the disabling.
+- Policy validity logic: If any MDM app still requires disabling, the disabling persists. The restriction is removed only when all MDM apps remove the disabling.
 
 - Example:<br>
 MDM A: The camera is disabled.<br>
@@ -41,14 +42,14 @@ MDM B: The camera is not disabled.<br>
 Final policy: The camera is disabled.<br>
 
 - Changes of the **EnterpriseAdminExtensionAbility** activation status:<br>
-If there are multiple MDM apps on the device, the final status of the policies delivered by the remaining MDM apps is recalculated based on the strict management policy logic after the **EnterpriseAdminExtensionAbility** component is deactivated or an MDM app is uninstalled. If any MDM app still requires the disabling, the disabling persists.<br>
+If there are multiple MDM apps on the device, the final status of the policies delivered by the remaining MDM apps is recalculated based on the strict management policy logic after the **EnterpriseAdminExtensionAbility** component is deactivated or an MDM app is uninstalled. If any MDM app still requires disabling, the disabling persists.<br>
 If there is only one MDM app on the device, the related policies are removed completely after the **EnterpriseAdminExtensionAbility** component is deactivated or the MDM app is uninstalled.
 
 ### Rule 2: Policy Exclusivity
 - Design principle: Some features on a device may require mutually exclusive management policies, and each policy is valid in its respective application scenario. The system cannot determine which policy takes priority. Allowing MDM apps to modify policies arbitrarily would lead to chaotic policy management, which is why the policy exclusivity is designed. For example, the policies of forcibly enabling location services and forcibly disabling location services are completely contradictory.
 - Policy validity logic: The first MDM app that successfully delivers a policy gains exclusive rights to it. Other MDM apps are prohibited from delivering the same policy. If an MDM app attempts to do so, the system will report a policy conflict.
-- Example 1: If MDM A first [forcibly enables the location service](../reference/apis-mdm-kit/js-apis-enterprise-locationManager.md#locationmanagersetlocationpolicy), MDM B will receive a policy conflict error when trying to disable location services.<br>
-- Example 2: If MDM A has [disabled the location service](../reference/apis-mdm-kit/js-apis-enterprise-locationManager.md#locationmanagersetlocationpolicy), MDM B will receive a policy conflict error when trying to set a policy to forcibly enable location services.<br>
+- Example 1: If MDM A first sets the location policy to forcibly enable the location service through the [setLocationPolicy](../reference/apis-mdm-kit/js-apis-enterprise-locationManager.md#locationmanagersetlocationpolicy) API, MDM B will receive a policy conflict error when attempting to set the location policy to disable the location service.<br/>
+- Example 2: If MDM A first sets the location policy to disable the location service through the [setLocationPolicy](../reference/apis-mdm-kit/js-apis-enterprise-locationManager.md#locationmanagersetlocationpolicy) API, MDM B will receive a policy conflict error when attempting to set the location policy to forcibly enable the location service.<br/>
 - Changes of the **EnterpriseAdminExtensionAbility** activation status: If the **EnterpriseAdminExtensionAbility** component is deactivated or the MDM app is uninstalled, the policy will become invalid immediately, regardless of whether there are other MDM apps on the device. The relevant device settings will revert to their defaults, and other MDM apps can then reconfigure the policy.
 
 ### Rule 3: Latest Configuration Precedence
@@ -66,7 +67,7 @@ Final policy: Both Wi-Fi1 and Wi-Fi2 configurations are retained, but the device
 - Changes of the **EnterpriseAdminExtensionAbility** activation status: If the **EnterpriseAdminExtensionAbility** component is deactivated or the MDM app is uninstalled, the currently effective configurations remain in place regardless of whether there are other MDM apps on the device.
 
 ### Rule 4: Policy Merging
-- Design principle: Many management policies are set-based in nature and allow an MDM app to modify or add policy items multiple times. A union merging rule is designed to resolve conflicts for such policies. Multiple MDM apps can append additional settings to the same policy, and all policies configured by these apps take effect.
+- Design principle: Many management policies are set-based in nature and allow an MDM app to modify or add policy items multiple times. A merging rule is designed to resolve conflicts for such policies. Multiple MDM apps can append additional settings to the same policy, and all policies configured by these apps take effect.
 - Policy validity logic: The system combines the data sets configured by all MDM apps, takes the union of these data sets, and the merged data set takes effect. A data item is deleted from the final list only when it has been removed from the configuration lists of all MDM apps.
 - Example:<br>
 MDM app A: App 1 and app 2 are added to the allowed app list.<br>

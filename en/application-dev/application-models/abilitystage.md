@@ -4,18 +4,19 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-09-17T08:17:08.561Z pushedAt=2026-09-21T11:20:19.402Z -->
 
 ## Overview
 
-[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md) is a component manager at the [module](../quick-start/application-package-overview.md#multi-module-design-mechanism) level. When the [HAP](../quick-start/hap-package.md) of an application is loaded for the first time, an AbilityStage instance is created. You can perform operations such as initialization on the instance. An AbilityStage instance corresponds to a module.
+[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md) is a [Module](../quick-start/application-package-overview.md#multi-module-design-mechanism)-level component manager. When the application [HAP](../quick-start/hap-package.md) is loaded for the first time, an AbilityStage instance is created, which can be used to initialize the Module. AbilityStage corresponds to HAP on a one-to-one basis, that is, each HAP has one AbilityStage instance.
 
 AbilityStage has the lifecycle callbacks [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate) and [onDestroy()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#ondestroy12) and the event callbacks [onAcceptWant()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant), [onConfigurationUpdate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate), [onMemoryLevel()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel), [onNewProcessRequest()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11), and [onPrepareTermination()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onpreparetermination15).
 
 - **onCreate()** lifecycle callback: Before the first application component (such as the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) or the [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)) instance of the corresponding module is loaded, an AbilityStage instance is created. This callback is invoked when the AbilityStage instance is created. The AbilityStage module notifies you of when you can perform module initialization such as resource pre-loading and thread creation during module loading.
 
-- **onAcceptWant()** event callback: triggered when the UIAbility is started in [specified mode](uiability-launch-type.md#specified). For details, see [UIAbility Component Launch Type](uiability-launch-type.md).
+- onAcceptWant() event callback: triggered when UIAbility is started in the [specified mode](uiability-launch-type.md#specified). For details, see [UIAbility Launch Type Overview](uiability-launch-type.md).
 
 - **onConfigurationUpdate()** event callback: triggered when a system environment variable changes. The system environment variables, such as the system language and theme, are defined in the [Configuration](../reference/apis-ability-kit/js-apis-app-ability-configuration.md) class before project configuration.
 
@@ -35,9 +36,9 @@ AbilityStage has the lifecycle callbacks [onCreate()](../reference/apis-ability-
 AbilityStage is not automatically generated in the default project of DevEco Studio. To use AbilityStage, you can manually create an AbilityStage file. The procedure is as follows:
 
 
-1. In the **ets** directory of the **Module** project, right-click and choose **New > Directory** to create a directory named **myabilitystage**.
+1. In the **ets** directory of the **Module** project, right-click and choose **New > Directory** to create a directory named **exampleabilitystage**.
 
-2. In the **myabilitystage** directory, right-click and choose **New > ArkTS File** to create a file named **MyAbilityStage.ets**.
+2. In the **exampleabilitystage** directory, right-click and choose **New > ArkTS File** to create a file named **MyAbilityStage.ets**.
 
 3. Open the **MyAbilityStage.ets** file, and import the dependency package of AbilityStage. Customize a class that inherits from AbilityStage, and add the required lifecycle callbacks. The following code snippet adds the [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate) lifecycle callback.
 
@@ -96,10 +97,10 @@ Here is an example of how to use the callback functions of the AbilityStage comp
         onConfigurationUpdated(config) {
           console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
           let language = config.language; // Current language of the application.
-          let colorMode = config.colorMode; // Dark/Light mode.
+          let colorMode = config.colorMode; // Dark/light color mode.
           let direction = config.direction; // Screen orientation.
-          let fontSizeScale = config.fontSizeScale; // Font size scaling factor.
-          let fontWeightScale = config.fontWeightScale; // Font weight scaling factor.
+          let fontSizeScale = config.fontSizeScale; // Font size scale.
+          let fontWeightScale = config.fontWeightScale; // Font weight scale.
         },
         onMemoryLevel(level) {
           console.info(`onMemoryLevel level: ${level}`);

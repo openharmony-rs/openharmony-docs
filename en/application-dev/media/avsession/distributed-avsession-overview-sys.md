@@ -1,10 +1,11 @@
 # Distributed AVSession Overview (for System Applications Only)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:49:25.956Z pushedAt=2026-09-15T13:38:06.142Z -->
 
 With distributed AVSession, OpenHarmony allows users to project locally played media to a distributed device for a better playback effect. For example, users can project audio played on a tablet to a smart speaker.
 
@@ -21,7 +22,7 @@ The AVSession service on the distributed device automatically creates an AVSessi
 
 ## Distributed AVSession Process
 
-After the user triggers a projection, the remote device automatically creates an AVSession object to associate it with that on the local device. The detailed process is as follows:
+After a user initiates distributed casting, a corresponding media session is automatically created on the controlled device. The media sessions on both sides can interact with each other in the following ways:
 
 1. After receiving an audio device switching command, the AVSession service on the local device synchronizes the session information to the distributed device.
 
@@ -29,11 +30,11 @@ After the user triggers a projection, the remote device automatically creates an
 
 3. Through the AVSessionController object, the controller on the distributed device sends a control command to the AVSession object on the local device.
 
-4. Upon the receipt of the control command, the AVSession object on the local device triggers a callback to the local audio application.
+4. After receiving a remote control command, the local media session on the local device notifies the local audio app through a callback.
 
 5. The AVSession object on the local device synchronizes the new session information to the controller on the distributed device in real time.
 
-6. When the remote device is disconnected, the audio stream is switched back to the local device and the playback is paused. (The audio module completes the switchback, and the AVSession service instructs the application to pause the playback.)
+6. After the connection to the remote device is disconnected, the audio is switched back to the local controller and paused. (The audio module completes the switchback, and the media session notifies the app to pause.)
 
 ## Distributed AVSession Scenarios
 
@@ -43,18 +44,18 @@ There are two scenarios for projection implemented using the distributed AVSessi
 
   This type of projection takes effect for all applications. After a system projection, all audio files on the local device are played from the distributed device by default.
 
-- Application projection: An audio and video application integrates the projection component to initiate a projection. (This scenario is not supported yet.)
-  
+- App casting: An audio/video app initiates distributed casting within the app by integrating the casting component. (This feature is not yet supported.)
+
   This type of projection takes effect for a single application. After an application projection, audio of the application on the local device is played from the distributed device, and audio of other applications is still played from the local device.
 
-Projection preemption is supported. If application A initiates a projection to a remote device and then application B initiates a projection to the same device, then audio of application B is played on the remote device.
+In addition, casting supports preemption. An app that initiates casting later can preempt the previously casting app and play audio on the remote device.
 
 ## Relationship Between Distributed AVSession and Distributed Audio Playback
 
-The internal logic for the distributed AVSession to implement projection is as follows:
+When the media session service implements distributed media sessions for cross-device casting, the internal logic can be described as follows:
 
-- APIs related to [distributed audio playback (available only for system applications)](../audio/distributed-audio-playback-sys.md) are called to project audio streams to the distributed device.
+- APIs related to [distributed audio playback (for system applications only)](../audio/distributed-audio-playback-sys.md) are called to project audio streams to the remote device.
 
 - The distributed capability is used to project the session metadata to the distributed device for display.
 
-Projection implemented by using the distributed AVSession not only enables audio to be played on the distributed device, but also enables media information to be displayed on the distributed device. It also allows the user to perform playback control on the distributed device.
+Therefore, casting through a distributed media session not only enables audio playback on the remote device, but also allows the remote device to display playback information. In addition, with the media session mechanism, you can control the audio being played on the remote device.

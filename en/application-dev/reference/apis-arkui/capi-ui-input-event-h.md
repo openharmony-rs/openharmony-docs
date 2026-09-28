@@ -385,7 +385,7 @@ enum anonymous6
 **Description**
 
 
-Defines the axis types of the [focus axis event](./arkui-ts/ts-universal-events-focus_axis.md).
+Defines the axis types of the [focus axis event](./arkui-ts/ts-universal-events-focus-axis.md).
 
 **Since**: 15
 

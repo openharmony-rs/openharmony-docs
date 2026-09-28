@@ -5,6 +5,7 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4d06e6d604d64a9b64c2360f42cbd3fd13c9290b translatedAt=2026-09-20T08:56:09.117Z pushedAt=2026-09-20T10:56:43.186Z -->
 
 ```c
 typedef ArkUI_LightEffectOptions* ArkUI_LightEffectOptionsHandle
@@ -12,9 +13,9 @@ typedef ArkUI_LightEffectOptions* ArkUI_LightEffectOptionsHandle
 
 ## Overview
 
-Defines the pointer to a light sensing interaction effect configuration object.
+Defines the pointer to a light sensing interaction effect configuration object. You can use this pointer to set and manage the parameters of the light sensing interaction effect of immersive materials.
 
-[OH_ArkUI_NativeModule_LightEffectOptions_Create](./capi-native-material-h.md#oh_arkui_nativemodule_lighteffectoptions_create) can be used to create a light sensing interaction effect configuration object. [OH_ArkUI_NativeModule_LightEffectOptions_Destroy](./capi-native-material-h.md#oh_arkui_nativemodule_lighteffectoptions_destroy) can be used to destroy the light sensing interaction effect configuration object.
+You must create a light sensing interaction effect configuration object by calling [OH_ArkUI_NativeModule_LightEffectOptions_Create](./capi-native-material-h.md#oh_arkui_nativemodule_lighteffectoptions_create). After using the object, you must call [OH_ArkUI_NativeModule_LightEffectOptions_Destroy](./capi-native-material-h.md#oh_arkui_nativemodule_lighteffectoptions_destroy) to destroy it and release resources. Continuing to use the pointer after the destruction will lead to undefined behavior. The two APIs must be used in pairs. Failing to call **Destroy** to destroy the object will cause a resource leak.
 
 **Since**: 26.0.0
 

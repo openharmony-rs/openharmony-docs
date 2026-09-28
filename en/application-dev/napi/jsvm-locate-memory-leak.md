@@ -1,18 +1,19 @@
 # Troubleshooting JSVM-API Memory Leaks
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:38:18.596Z pushedAt=2026-09-02T03:48:02.640Z -->
 
-JSVM memory usage includes native memory usage (C/C++ memory usage) and heap memory usage of the underlying JavaScript engine. Heap memory is used for maintaining a heap and its lifecycle to manage generated JavaScript objects by the JavaScript engine. Other memory is called native memory. When using the JSVM, you may encounter the two types of memory exceptions.
+JSVM memory usage includes native memory usage (C/C++ memory usage) and heap memory usage of the underlying JavaScript engine. The JavaScript engine maintains a heap to manage the JavaScript objects it generates, and the lifecycle of these objects is maintained by the JavaScript engine. Other memory is called native memory. When using JSVM, you may encounter these two types of abnormal memory growth.
 
 This topic describes how to determine the memory leak type and how to locate the native memory leak and JavaScript engine heap memory leak.
 
 ## Determining the Memory Leak Type
 
-You can use hdc to connect to the device, run the following command to sample the memory of the target application, and compare the memory changes within a period of time to determine whether the native memory leaks or JavaScript memory leaks. In the **Pss Total** column in the following figure, **native heap** indicates the native memory usage, and **AnonPage other** indicates the JavaScript heap memory usage.
+You can connect to the device via hdc and run the following command to sample the memory of the target app, then compare the memory changes over a period of time to qualitatively determine whether the issue is a Native memory leak or abnormal JS heap memory growth. In the following figure, under the Pss Total column, native heap corresponds to Native memory usage, and AnonPage other corresponds to JS heap memory usage.
 ```hdc
 hidumper --mem $(pidof dest_app)
 ```
@@ -64,7 +65,8 @@ function createElements() {
 
 ### How to Locate
 
-Currently, JSVM provides OH_JSVM_OpenInspector to enable the inspector. For details, see [Using OH_JSVM_OpenInspector](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/jsvm-debugger-cpuprofiler-heapsnapshot#using-oh_jsvm_openinspector) and [Using Chrome Inspect](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/jsvm-debugger-cpuprofiler-heapsnapshot#using-chrome-inspect).
+Currently, JSVM provides `OH_JSVM_OpenInspector` to enable the inspector. For details, see [Using OH_JSVM_OpenInspector](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/jsvm-debugger-cpuprofiler-heapsnapshot#using-oh_jsvm_openinspector) and [Using Chrome Inspect](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/jsvm-debugger-cpuprofiler-heapsnapshot#using-chrome-inspect).
 
 Use DevTools to take a snapshot of the heap memory in the target scenario (click the garbage collection button above before taking a snapshot). Compare the snapshots to find the unreleased JavaScript objects and their locations in the source code to further locate the cause of the unreleased heap memory.
+
 <div align=left><img src="figures/jsvm_locate_memory_leak_devtool.png"/></div> 

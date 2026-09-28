@@ -3,11 +3,12 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=39a9e003216daede3f45c712299412a7891e82ae translatedAt=2026-09-01T02:29:22.728Z pushedAt=2026-09-02T01:35:36.880Z -->
 
-You can use a brush or a pen to implement complex drawing effects in addition to the basic fill color, stroke color, and style settings. The following lists some major challenges:
+You can use a brush or a pen to implement complex drawing effects in addition to the basic fill color, stroke color, and style settings. For example:
 
 
 - Blend mode
@@ -16,7 +17,7 @@ You can use a brush or a pen to implement complex drawing effects in addition to
 
 - Shader effect, such as linear gradient and radial gradient
 
-- Filtering effect, such as blurring
+- Filter effect, such as blurring
 
 
 ## Blend Mode
@@ -43,7 +44,7 @@ OH_Drawing_CanvasDrawRect(canvas, rect);
 // Set the source pixel color.
 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MIN, RGBA_MIN, 0xFF));
 // Set the blend mode to PLUS.
-OH_Drawing_BrushSetBlendMode(brush, OH_Drawing_BlendMode::BLEND_MODE_PLUS);
+OH_Drawing_BrushSetBlendMode(brush, BLEND_MODE_PLUS);
 // Attach the brush effect of the source pixels to the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // Create a point object for the circle center.
@@ -103,9 +104,9 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_PathEffectDestroy(pathEffect);
 ```
 
-| Path Without Dashed Lines| Path With Dashed Lines|
+| No Dashed Line Path | With Dashed Line Path |
 | -------- | -------- |
-| ![Path-Without-Dashed-Lines](figures/Path-Without-Dashed-Lines.png)| ![Path-With-Dashed-Lines](figures/Path-With-Dashed-Lines.png)|
+| ![Path-Without-Dashed-Lines](figures/Path-Without-Dashed-Lines.png) | ![Path-With-Dashed-Lines](figures/Path-With-Dashed-Lines.png) |
 
 
 ## Shader Effect
@@ -117,7 +118,7 @@ For details about shader-related APIs and parameters, see [drawing_shader_effect
 
 ### Linear Gradient Shader Effect
 
-You can use the **OH_Drawing_ShaderEffectCreateLinearGradient()** API to create the linear gradient shader effect to be set. The API takes six parameters, which are the start point, end point, color array, relative position array, color array size, and tiling mode.
+You can use the **OH_Drawing_ShaderEffectCreateLinearGradient()** API to create the linear gradient shader effect to be set. The API takes six parameters, which are the start point, end point, color array, relative position array, color array size, and tile mode.
 
 - The start point and end point are used to determine the gradient direction.
 
@@ -125,7 +126,7 @@ You can use the **OH_Drawing_ShaderEffectCreateLinearGradient()** API to create 
 
 - The relative position array is used to determine the relative position of each color in the gradient. If the relative position is empty, the colors are evenly distributed between the start point and end point.
 
-- The tiling mode is used to determine how to continue the gradient effect outside the gradient area. The options are as follows:
+- The tile mode is used to determine how to continue the gradient effect outside the gradient area. The options are as follows:
   - **CLAMP**: Replicates the edge color if the image exceeds its original boundary.
   - **REPEAT**: Repeats the image in both horizontal and vertical directions.
   - **MIRROR**: Repeats the image in both horizontal and vertical directions and alternates the mirrored image between adjacent images.
@@ -146,7 +147,7 @@ uint32_t colors[] = {0xFFFFFF00, 0xFFFF0000, 0xFF0000FF};
 float pos[] = {0.0f, 0.5f, 1.0f};
 // Create a linear gradient shader effect.
 OH_Drawing_ShaderEffect *colorShaderEffect =
-    OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, OH_Drawing_TileMode::CLAMP);
+    OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, CLAMP);
 // Create a brush object.
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the shader effect based on the brush.
@@ -173,11 +174,11 @@ The following figure shows the rectangle with the linear gradient shader effect.
 
 ### Radial Gradient Shader Effect
 
-You can use the **OH_Drawing_ShaderEffectCreateRadialGradient()** API to create the radial gradient shader effect to be set. The API takes six parameters, which are the center coordinates (**centerPt**), radius (**radius**), color array (**colors**), relative position array (**pos**), number of colors and positions (**size**), and tiling mode (**OH_Drawing_TileMode**).
+You can use the **OH_Drawing_ShaderEffectCreateRadialGradient()** API to create the radial gradient shader effect to be set. The API takes six parameters, which are the center coordinates (**centerPt**), radius (**radius**), color array (**colors**), relative position array (**pos**), number of colors and positions (**size**), and tile mode (**OH_Drawing_TileMode**).
 
 The implementation method is similar to that of the linear gradient shader. The difference is that the radial gradient starts from the center and gradually changes outward.
 
-The following uses the rectangle drawing and the radial gradient shader effect implemented by a brush as an example. The sample code and effect are as follows:
+The following example draws a rectangle and applies a radial gradient shader effect using a brush. The sample code and effect are as follows:
 
 <!-- @[ndk_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -192,7 +193,7 @@ uint32_t gColors[] = {0xFFFF0000, 0xFF00FF00, 0xFF0000FF};
 float_t gPos[] = {0.0f, 0.25f, 0.75f};
 // Create a radial gradient shader.
 OH_Drawing_ShaderEffect *colorShaderEffect =
-    OH_Drawing_ShaderEffectCreateRadialGradient(centerPt, radius, gColors, gPos, 3, OH_Drawing_TileMode::REPEAT);
+    OH_Drawing_ShaderEffectCreateRadialGradient(centerPt, radius, gColors, gPos, 3, REPEAT);
 // Create a brush object.
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the shader effect based on the brush.
@@ -218,11 +219,11 @@ The following figure shows the rectangle with the radial gradient shader effect.
 
 ### Sector Gradient Shader Effect
 
-You can use the **OH_Drawing_ShaderEffectCreateSweepGradient()** API to create the sector gradient shader effect to be set. The API takes five parameters, which are the center point, color array, relative position array, number of colors and relative positions, and tiling mode.
+You can use the **OH_Drawing_ShaderEffectCreateSweepGradient()** API to create the sector gradient shader effect to be set. The API takes five parameters, which are the center point, color array, relative position array, number of colors and relative positions, and tile mode.
 
 The implementation method is similar to that of the linear gradient shader. The difference is that the sector gradient is gradually changed during rotation around the center point.
 
-The following uses the rectangle drawing and the sector gradient shader effect implemented by a brush as an example. The sample code and effect are as follows:
+The following example draws a rectangle and applies a sector gradient shader effect using a brush. The sample code and effect are as follows:
 
 <!-- @[ndk_graphics_draw_sector_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -235,7 +236,7 @@ uint32_t colors[3] = {0xFF00FFFF, 0xFFFF00FF, 0xFFFFFF00};
 float pos[3] = {0.0f, 0.5f, 1.0f};
 // Create a sector gradient shader.
 OH_Drawing_ShaderEffect* colorShaderEffect =
-    OH_Drawing_ShaderEffectCreateSweepGradient(centerPt, colors, pos, 3, OH_Drawing_TileMode::CLAMP);
+    OH_Drawing_ShaderEffectCreateSweepGradient(centerPt, colors, pos, 3, CLAMP);
 // Create a brush object.
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the shader effect based on the brush.
@@ -306,7 +307,7 @@ B' = c0\*R + c1\*G + c2\*B + c3\*A + c4
 
 A' = d0\*R + d1\*G + d2\*B + d3\*A + d4
 
-The following uses the rectangle drawing and the color filter effect with a 5 x 4 color matrix implemented by a brush as an example. The sample code and effect are as follows:
+The following example draws a rectangle and uses a brush to apply a color filter effect with a 5 x 4 color matrix. The sample code and effect are as follows:
 
 <!-- @[ndk_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -325,7 +326,7 @@ const float matrix[20] = {
     0, 0, 0.5f, 0.5f, 0
 };
     
-// Create a filter color.
+// Create the color filter.
 OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateMatrix(matrix);
 // Create a filter object.
 OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
@@ -350,7 +351,7 @@ OH_Drawing_FilterDestroy(filter);
 
 | Original Image| Image with a Color Filter Based on a 5×4 Color Matrix|
 | -------- | -------- |
-| ![Original-Image6](figures/Original-Image6.png)| ![Image-with-a-Color](figures/Image-with-a-Color.png)|
+| ![Original-Image6](figures/Original-Image6.png) | ![Image with a Color Filter](figures/Image-with-a-Color.png) |
 
 
 ### Image Filter Effects
@@ -365,11 +366,11 @@ Currently, only the following two types of image filters are supported:
 
 - Image filter with a given blur effect
 
-  You can call **OH_Drawing_ImageFilterCreateBlur()** to create a blur filter. The API takes four parameters, which are the blur standard deviation on the X axis, blur standard deviation on the Y axis, tiling mode, and image filter (**input**).
+  You can call **OH_Drawing_ImageFilterCreateBlur()** to create a blur filter. The API takes four parameters, which are the blur standard deviation on the X axis, blur standard deviation on the Y axis, tile mode, and image filter (**input**).
 
   The final effect is to blur the input image filter **input**. That is, the filter effect can be superimposed. **input** can be empty, which means that only the blur effect is added.
 
-The following uses the rectangle drawing and the blur effect implemented by a pen as an example. The sample code and effect are as follows:
+The following example demonstrates drawing a rectangle and applying a blur image filter effect using a pen. The sample code and effect are as follows:
 
 <!-- @[ndk_graphics_draw_image_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -384,7 +385,7 @@ OH_Drawing_PenSetColor(pen, 0xffff0000);
 OH_Drawing_PenSetWidth(pen, 20);
 // Create an image filter to implement the blur effect.
 OH_Drawing_ImageFilter *imageFilter =
-    OH_Drawing_ImageFilterCreateBlur(20.0f, 20.0f, OH_Drawing_TileMode::CLAMP, nullptr);
+    OH_Drawing_ImageFilterCreateBlur(20.0f, 20.0f, CLAMP, nullptr);
 // Create a filter object.
 OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
 // Set an image filter object for the filter object.
@@ -408,7 +409,7 @@ OH_Drawing_FilterDestroy(filter);
 
 | Original Image| Image with the Filter Effect|
 | -------- | -------- |
-| ![Original-Image5](figures/Original-Image5.png)| ![Image-with-the-Filter](figures/Image-with-the-Filter.png)|
+| ![Original-Image5](figures/Original-Image5.png) | ![Image-with-the-Filter](figures/Image-with-the-Filter.png) |
 
 
 ### Mask Filter Effect
@@ -439,7 +440,7 @@ OH_Drawing_PenSetColor(pen, 0xffff0000);
 // Set the pen width to 20.
 OH_Drawing_PenSetWidth(pen, 20);
 // Create a mask filter.
-OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 20, true);
+OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 20, true);
 // Create a filter object.
 OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
 // Set a mask filter object for the filter object.
@@ -463,7 +464,7 @@ OH_Drawing_FilterDestroy(filter);
 
 | Original Image| Image with the Mask Effect|
 | -------- | -------- |
-| ![Original-Image4](figures/Original-Image4.png)| ![Image-with-the-Mask-Effect](figures/Image-with-the-Mask-Effect.png)|
+| ![Original-Image4](figures/Original-Image4.png) | ![Image-with-the-Mask-Effect](figures/Image-with-the-Mask-Effect.png) |
 
 <!--RP1-->
 ## Samples

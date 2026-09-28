@@ -41,7 +41,7 @@ import { request } from '@kit.BasicServicesKit';
 | EXCEPTION_PERMISSION<sup>9+</sup> | number |   201   | 通用错误码：权限校验失败。 |
 | EXCEPTION_PARAMCHECK<sup>9+</sup> | number |   401   | 通用错误码：参数检查失败。 |
 | EXCEPTION_UNSUPPORTED<sup>9+</sup> | number |   801   | 通用错误码：该设备不支持此API。 |
-| EXCEPTION_FILEIO<sup>9+</sup> | number |   13400001   | 特有错误码：文件操作异常。 |
+| EXCEPTION_FILEIO<sup>9+</sup> | number |   13400001   | 特有错误码：文件操作异常。具体请参考[13400001错误的处理方法](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faq-basics-service-kit-20)。 |
 | EXCEPTION_FILEPATH<sup>9+</sup> | number |   13400002   | 特有错误码：文件路径异常。 |
 | EXCEPTION_SERVICE<sup>9+</sup> | number |   13400003   | 特有错误码：服务异常。 |
 | EXCEPTION_OTHERS<sup>9+</sup> | number |   13499999   | 特有错误码：其他错误。 |
@@ -55,7 +55,7 @@ import { request } from '@kit.BasicServicesKit';
 | ERROR_INSUFFICIENT_SPACE<sup>7+</sup> | number |   5   | 下载任务错误码：存储空间不足。 |
 | ERROR_TOO_MANY_REDIRECTS<sup>7+</sup> | number |   6   | 下载任务错误码：网络重定向过多导致的错误。 |
 | ERROR_UNHANDLED_HTTP_CODE<sup>7+</sup> | number |   7   | 下载任务错误码：无法识别的HTTP代码。 |
-| ERROR_UNKNOWN<sup>7+</sup> | number |   8   | 下载任务错误码：未知错误。<br>例如：API version 12及以下版本，系统仅支持串行地尝试连接域名相关IP，不支持单个IP的连接时间控制。若DNS返回的首个IP被阻塞，可能会由于握手超时导致ERROR_UNKNOWN错误。 |
+| ERROR_UNKNOWN<sup>7+</sup> | number |   8   | 下载任务错误码：未知错误。<br>例如：API version 12及以下版本，系统仅支持串行地尝试连接域名相关IP，不支持单个IP的连接时间控制。若DNS返回的首个IP被阻塞，可能会由于握手超时导致ERROR_UNKNOWN错误。具体请参考[ERROR_UNKNOWN错误的处理方法](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faq-basics-service-kit-73)。 |
 | ERROR_OFFLINE<sup>9+</sup> | number |   9   | 下载任务错误码：网络未连接。 |
 | ERROR_UNSUPPORTED_NETWORK_TYPE<sup>9+</sup> | number |   10   | 下载任务错误码：网络类型不匹配。 |
 | PAUSED_QUEUED_FOR_WIFI<sup>7+</sup> | number |   0   | 下载任务暂停原因：文件大小超过了使用蜂窝网络会话允许的最大值，下载被暂停并等待WLAN连接。 |
@@ -529,7 +529,7 @@ off(type: 'headerReceive', callback?: (header: object) =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | the parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
 
@@ -2739,7 +2739,7 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 
 ### on('progress')<sup>10+</sup>
 
-on(event: 'progress', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+on(event: 'progress', callback: (progress: Progress) =&gt; void): void
 
 订阅任务进度的事件，使用callback异步回调。
 
@@ -2818,7 +2818,7 @@ on(event: 'progress', callback: (progress: [Progress](#requestagentprogress10)) 
 
 ### on('completed')<sup>10+</sup>
 
-on(event: 'completed', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+on(event: 'completed', callback: (progress: Progress) =&gt; void): void
 
 订阅任务完成事件，使用callback异步回调。
 
@@ -2897,7 +2897,7 @@ on(event: 'completed', callback: (progress: [Progress](#requestagentprogress10))
 
 ### on('failed')<sup>10+</sup>
 
-on(event: 'failed', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+on(event: 'failed', callback: (progress: Progress) =&gt; void): void
 
 订阅任务失败事件，使用callback异步回调。可通过调用[request.agent.show](#requestagentshow10-1)查看错误原因。
 
@@ -2976,7 +2976,7 @@ on(event: 'failed', callback: (progress: [Progress](#requestagentprogress10)) =&
 
 ### on('pause')<sup>11+</sup>
 
-on(event: 'pause', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+on(event: 'pause', callback: (progress: Progress) =&gt; void): void
 
 订阅任务暂停事件，使用callback异步回调。
 
@@ -3057,7 +3057,7 @@ on(event: 'pause', callback: (progress: [Progress](#requestagentprogress10)) =&g
 
 ### on('resume')<sup>11+</sup>
 
-on(event: 'resume', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+on(event: 'resume', callback: (progress: Progress) =&gt; void): void
 
 订阅任务恢复事件，使用callback异步回调。
 
@@ -3143,7 +3143,7 @@ on(event: 'resume', callback: (progress: [Progress](#requestagentprogress10)) =&
 
 ### on('remove')<sup>11+</sup>
 
-on(event: 'remove', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+on(event: 'remove', callback: (progress: Progress) =&gt; void): void
 
 订阅任务移除事件，使用callback异步回调。
 
@@ -3454,7 +3454,7 @@ on(event: 'wait', callback: Callback&lt;WaitingReason&gt;): void
 
 ### off('progress')<sup>10+</sup>
 
-off(event: 'progress', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+off(event: 'progress', callback?: (progress: Progress) =&gt; void): void
 
 取消订阅任务进度事件。
 
@@ -3542,7 +3542,7 @@ off(event: 'progress', callback?: (progress: [Progress](#requestagentprogress10)
 
 ### off('completed')<sup>10+</sup>
 
-off(event: 'completed', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+off(event: 'completed', callback?: (progress: Progress) =&gt; void): void
 
 取消订阅任务完成事件。
 
@@ -3630,7 +3630,7 @@ off(event: 'completed', callback?: (progress: [Progress](#requestagentprogress10
 
 ### off('failed')<sup>10+</sup>
 
-off(event: 'failed', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+off(event: 'failed', callback?: (progress: Progress) =&gt; void): void
 
 取消订阅任务失败事件。
 
@@ -3717,7 +3717,7 @@ off(event: 'failed', callback?: (progress: [Progress](#requestagentprogress10)) 
 
 ### off('pause')<sup>11+</sup>
 
-off(event: 'pause', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+off(event: 'pause', callback?: (progress: Progress) =&gt; void): void
 
 取消订阅任务暂停事件。
 
@@ -3801,7 +3801,7 @@ off(event: 'pause', callback?: (progress: [Progress](#requestagentprogress10)) =
 
 ### off('resume')<sup>11+</sup>
 
-off(event: 'resume', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+off(event: 'resume', callback?: (progress: Progress) =&gt; void): void
 
 取消订阅任务恢复事件。
 
@@ -3885,7 +3885,7 @@ off(event: 'resume', callback?: (progress: [Progress](#requestagentprogress10)) 
 
 ### off('remove')<sup>11+</sup>
 
-off(event: 'remove', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+off(event: 'remove', callback?: (progress: Progress) =&gt; void): void
 
 取消订阅任务移除事件。
 

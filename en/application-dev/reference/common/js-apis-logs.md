@@ -1,10 +1,10 @@
-# Console
+# Class (Console)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @yao_dashuai-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @wang_zhaoyong-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 The **console** module provides a simple debugging console, which is similar to the JavaScript console provided by the browser.
 
@@ -78,7 +78,7 @@ console.log('count:'); // Print the message only.
 
 static info(message: string, ...arguments: any[]): void
 
-Prints log information in formatted output mode. This API is the alias of **console.log ()**.
+Prints log information in formatted output mode (alias of **console.log()**).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -368,14 +368,16 @@ If the information to be printed is provided, the information is printed without
 
 ```js
 console.info("outer");
-// outer
 console.group();
 console.info("level 1");
-//   level 1
 console.group("in level1");
-//   in level1
 console.info("level 2");
-//     level 2
+/**
+ * outer
+ *   level 1
+ *   in level1
+ *     level 2
+ */
 ```
 
 ## console.groupCollapsed<sup>10+</sup>
@@ -398,14 +400,16 @@ Creates a new inline group in collapsed mode. The usage and function of this API
 
 ```js
 console.groupCollapsed("outer");
-// outer
 console.groupCollapsed();
 console.info("level 1");
-//   level 1
 console.groupCollapsed("in level1");
-//   in level1
 console.info("level 2");
-//     level 2
+/**
+ * outer
+ *   level 1
+ *   in level1
+ *     level 2
+ */
 ```
 
 ## console.groupEnd<sup>10+</sup>
@@ -422,13 +426,15 @@ Reduces the indentation of subsequent lines by two spaces.
 
 ```js
 console.info("outer");
-// outer
 console.group();
 console.info("level 1");
-//   level 1
 console.groupEnd();
 console.info("outer");
-// outer
+/**
+ * outer
+ *   level 1
+ * outer
+ */
 ```
 
 ## console.table<sup>10+</sup>
@@ -587,11 +593,13 @@ Creates a stack trace.
 
 ```js
 console.trace();
-// Trace:
-//     xxxxxxxxxx (current stack information)
 console.trace("Show the trace");
-// Trace: Show the trace
-//     xxxxxxxxxx (current stack information)
+/**
+ * Trace:
+ *     xxxxxxxxxx(current stack information)
+ * Trace: Show the trace
+ *     xxxxxxxxxx(current stack information)
+ */
 ```
 
 ## console.traceHybridStack<sup>12+</sup>
@@ -608,6 +616,8 @@ Prints information about the current hybrid stack of the calling thread in the m
 
 ```ts
 console.traceHybridStack();
-// TraceHybridStack:
-//     xxxxxxxxxx (information about the current hybrid stack of the calling thread)
+/**
+ * TraceHybridStack:
+ *     xxxxxxxxxx(information about the current hybrid stack of the calling thread)
+ */
 ```

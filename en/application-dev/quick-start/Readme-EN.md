@@ -3,8 +3,9 @@
 <!--Subsystem: Common-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9389b4377843102b8f7fb1d104bdafe9f6f56511 translatedAt=2026-08-26T02:58:24.915Z pushedAt=2026-08-26T03:53:01.207Z -->
 
 <!--Del-->
 - Getting Started<!--quick-start-->
@@ -16,9 +17,7 @@
 - Development Fundamentals<!--development-fundamentals-->
   - Application Package Fundamentals<!--application-package-fundamentals-->
     - [Application Package Overview](application-package-overview.md)
-    - Application Package Structure<!--application-package-structure-->
-      - [Application Package Structure in Stage Model](application-package-structure-stage.md)
-      - [Application Package Structure in FA Model](application-package-structure-fa.md)
+    - [Application Package Structure](application-package-structure-stage.md)
     - Application Package Development and Usage<!--application-package-dev-->
       - [HAP](hap-package.md)
       - [HAR](har-package.md)
@@ -26,15 +25,10 @@
     - Application Management<!--application-package-install-->
       - [Application Installation, Uninstall, and Update](application-package-install-uninstall.md)
       - [Consistency Verification for Application Installation and Update](install-and-update-consistency-verification.md)
-  - Application Configuration Files in Stage Model<!--application-configuration-file-stage-->
-    - [Overview of Application Configuration Files in Stage Model](application-configuration-file-overview-stage.md)
+  - Application Configuration Files<!--application-configuration-file-stage-->
+    - [Application Configuration Files](application-configuration-file-overview-stage.md)
     - [app.json5 Configuration File](app-configuration-file.md)
     - [module.json5 Configuration File](module-configuration-file.md)
-  - Application Configuration Files in FA Model<!--application-configuration-file-fa-->
-    - [Overview of Application Configuration Files in FA Model](application-configuration-file-overview-fa.md)
-    - [Structure of the app Tag](app-structure.md)
-    - [Structure of the deviceConfig Tag](deviceconfig-structure.md)
-    - [Structure of the module Tag](module-structure.md)
   - Typical Scenarios Development<!--application-typical-scenarios-->
     - [Creating a Static Shortcut of the Application](typical-scenario-configuration.md)
     - [Creating an Application Clone](app-clone.md)
@@ -43,7 +37,7 @@
     - [Converting HAR to HSP](har-to-hsp.md)
     - [Converting HSP to HAR](hsp-to-har.md)
     - [Converting HAP to HAR](hap-to-har.md)
-    - [Integrated HSP](integrated-hsp.md)
+    - [Integrated HSP](integrated-hsp.md)<!--RP3--><!--RP3End-->
   - [FAQs About Application Packages](common-problem-of-application.md)
   - [Application Package Glossary](application-package-glossary.md)
 - [Resource Categories and Access](resource-categories-and-access.md)

@@ -12,7 +12,7 @@
 >
 > The initial APIs of this module are supported since API version 7 and effective since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> For the settings to take effect, [geometryTransition](ts-transition-animation-geometrytransition.md) must be used together with [animateTo](../arkts-apis-uicontext-uicontext.md#animateto). The animation duration and curve follow the settings in animateTo](../arkts-apis-uicontext-uicontext.md#animateto). [animation](ts-animatorproperty.md) is not supported.
+> For the settings to take effect, [geometryTransition](ts-transition-animation-geometrytransition.md) must be used together with [animateTo](../arkts-apis-uicontext-uicontext.md#animateto). The animation duration and curve follow the settings in [animateTo](../arkts-apis-uicontext-uicontext.md#animateto). [animation](ts-animatorproperty.md) is not supported.
 
 ## geometryTransition
 

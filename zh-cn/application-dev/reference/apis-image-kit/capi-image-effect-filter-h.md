@@ -118,7 +118,7 @@ enum ImageEffect_DataType
 | 枚举项 | 描述 |
 | -- | -- |
 | EFFECT_DATA_TYPE_UNKNOWN = 0 | 未定义类型。 |
-| EFFECT_DATA_TYPE_INT32 = 1 | 整形。 |
+| EFFECT_DATA_TYPE_INT32 = 1 | 整型。 |
 | EFFECT_DATA_TYPE_FLOAT = 2 | 单精度浮点型。 |
 | EFFECT_DATA_TYPE_DOUBLE = 3 | 双精度浮点型。 |
 | EFFECT_DATA_TYPE_CHAR = 4 | 字节类型。 |

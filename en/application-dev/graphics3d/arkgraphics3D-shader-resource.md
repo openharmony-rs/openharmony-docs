@@ -5,6 +5,7 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9337b894cc276e9d41c374e020c39c9ad5e59a9d translatedAt=2026-09-20T06:51:30.989Z pushedAt=2026-09-20T08:27:17.778Z -->
 
 In ArkGraphics 3D, .shader files are based on the JSON format and must adhere to JSON syntax. These files consist of the following sections:
 
@@ -85,7 +86,7 @@ Specifies the properties of the rasterization process. The options are as follow
 Specifies the properties for depth and stencil testing. The options are as follows:
    - **enableDepthTest**: specifies whether depth testing is enabled. **true** if enabled, **false** otherwise. If enabled, non-transparent objects are rendered with occlusion based on their depth values. If disabled, objects are rendered in the order they are drawn.
    - **enableDepthWrite**: specifies whether the depth value of an object is written to the depth attachment during rendering. **true** if written, **false** otherwise.
-   - **enableDepthBoundsTest**: specifies whether an additional depth range check is enabled on top of depth testing. Values outside the specified range fail the depth test. **true** if enabled, **false** otherwise. Currently, this property must be set to **false**.
+   - **enableDepthBoundsTest**: specifies the minimum and maximum depth range for passing the depth test, in addition to the depth test itself. Values outside this range do not pass the depth test. **true** if enabled, **false** otherwise. Currently, this property must be set to **false**.
    - **enableStencilTest**: specifies whether stencil testing is enabled. **true** if enabled, **false** otherwise. If enabled, only objects that pass the stencil test are rendered. If disabled, stencil testing is bypassed.
    - **depthCompareOp**: specifies the comparison operation of depth testing. The following table lists the values and their meanings.
       | Value| Description|
@@ -100,8 +101,8 @@ Specifies the properties for depth and stencil testing. The options are as follo
       | "always" | Always passes the depth test.|
 
 ### colorBlendState
-Specifies the blending properties of the rendering source and destination, including **colorAttachments**, which specifies blending properties for color attachments. **colorAttachments** includes the following items:
-   - **enableBlend**: specifies whether blending is enabled between the source and destination. **true** if enabled, **false** otherwise. If enabled, the source and destination are blended in the specified mode. If disabled, no blending is performed.
+Specifies the blending properties of the rendering source and destination in this rendering, and specifies the blending mode for color attachments through **colorAttachments**. **colorAttachments** includes the following items:
+   - **enableBlend**: specifies whether blending between the rendering source and destination is enabled. **true** if blending is enabled, **false** otherwise. If enabled, the rendering source and destination are blended in the specified manner; if disabled, no blending is performed.
    - **colorWriteMask**: specifies the channel mask of the rendered color attachment. If a channel mask is specified, the channel is blended. If no channel mask is specified, no blending is performed. The value can be **r_bit**, **g_bit**, **b_bit**, **a_bit**, and any of their combinations using the vertical bar (|). The following table lists the values and their meanings.
      | Value| Description|
      | :----: | :----: |
@@ -229,7 +230,7 @@ Identifies the material component name. The current valid value is **MaterialCom
 
 ### customProperties
 Specifies custom properties passed during rendering. These custom properties are contained in a data array. Each object in the data array includes the following properties:
-   - **name**: specifies the name of custom data passed during rendering, which corresponds to the data name in custom rendering.
+   - **name**: specifies the name of the custom data, which must be consistent with the data name referenced in the custom shader.
    - **displayName**: specifies the name displayed in the 3D editor.
    - **type**: specifies the data type. The following table lists the values and their meanings.
      | Value| Description|

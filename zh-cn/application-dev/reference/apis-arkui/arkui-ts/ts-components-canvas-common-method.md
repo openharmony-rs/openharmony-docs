@@ -1187,9 +1187,9 @@ roundRect(x: number, y: number, w: number, h: number, radii?: number | Array\<nu
 
 以下错误码的详细介绍请参见[Canvas组件错误码](../errorcode-canvas.md)。
 
-| 错误码ID | 错误信息 | 可能原因 |
-| -------- | -------- | -------- |
-| 103701   | Parameter error.| 1. The param radii is a list that has zero or more than four elements; 2. The param radii contains negative value. |
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 103701   | Parameter error. Possible causes: 1. The param radii is a list that has zero or more than four elements; 2. The param radii contains negative value. |
 
 **示例：**
 
@@ -1761,7 +1761,7 @@ scale(x: number, y: number): void
 
 transform(a: number, b: number, c: number, d: number, e: number, f: number): void
 
-transform方法对应一个变换矩阵，想对一个图形进行变化的时候，只要设置此变换矩阵相应的参数，对图形的各个定点的坐标分别乘以这个矩阵，就能得到新的定点的坐标。矩阵变换效果可叠加。
+transform方法对应一个变换矩阵，当需要对一个图形进行变换的时候，只要设置此变换矩阵相应的参数，对图形的各个顶点的坐标分别乘以这个矩阵，就能得到新的顶点的坐标。矩阵变换效果可叠加。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -2650,7 +2650,7 @@ setLineDash(segments: number[]): void
   ```
   ![Dotted-circle](figures/Dotted-circle.png)
 
-### transferFromImageBitmap
+## transferFromImageBitmap
 
 transferFromImageBitmap(bitmap: ImageBitmap): void
 

@@ -44,10 +44,10 @@ Enumerates the types of sources for the caller.
 
 | Name            | Value          | Description                                  |
 |----------------|-------------|--------------------------------------|
-| TYPE_CAST      | "cast"      | The caller comes from casting.                            |
-| TYPE_BLUETOOTH | "bluetooth" | The caller comes from Bluetooth.                               |
-| TYPE_APP       | "app"       | The caller comes from an application.                               |
-| TYPE_NEARLINK  | "nearlink"  | The caller comes from NearLink.<br>**Model restriction**: This API can be used only in the stage model.|
+| TYPE_CAST      | 'cast'      | The caller comes from casting.                            |
+| TYPE_BLUETOOTH | 'bluetooth' | The caller comes from Bluetooth.                               |
+| TYPE_APP       | 'app'       | The caller comes from an application.                               |
+| TYPE_NEARLINK  | 'nearlink'  | The caller comes from NearLink.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## ConnectionState<sup>10+</sup>
 
@@ -76,7 +76,7 @@ Enumerates the call states.
 | CALL_STATE_IDLE             | 0    | The phone is idle.  |
 | CALL_STATE_INCOMING         | 1    | The phone is ringing.    |
 | CALL_STATE_ACTIVE           | 2    | The call is connected.    |
-| CALL_STATE_DIALING          | 3    | The caller is dialing.    |
+| CALL_STATE_DIALING          | 3    | Dialing.    |
 | CALL_STATE_WAITING          | 4    | The call is waiting for connection. |
 | CALL_STATE_HOLDING          | 5    | The call is placed on hold.    |
 | CALL_STATE_DISCONNECTING    | 6    | The call is disconnecting.    |
@@ -89,7 +89,7 @@ Enumerates the display tags of the media asset. The display tag is a special typ
 
 | Name                       | Value  | Description          |
 | --------------------------  | ---- | ------------ |
-| TAG_AUDIO_VIVID             | 1    | AUDIO VIVID  |
+| TAG_AUDIO_VIVID             | 1    | Audio Vivid attribute of the media asset. |
 
 ## DecoderType<sup>19+</sup>
 
@@ -101,9 +101,9 @@ Enumerates the decoding formats supported by the device.
 
 | Name                       | Value  | Description          |
 | --------------------------  | ---- | ------------ |
-| OH_AVCODEC_MIMETYPE_VIDEO_AVC      | "video/avc"  | VIDEO AVC. |
-| OH_AVCODEC_MIMETYPE_VIDEO_HEVC     | "video/hevc" | VIDEO HEVC. |
-| OH_AVCODEC_MIMETYPE_AUDIO_VIVID    | "audio/av3a" | AUDIO AV3A. |
+| OH_AVCODEC_MIMETYPE_VIDEO_AVC      | 'video/avc'  | Video AVC. |
+| OH_AVCODEC_MIMETYPE_VIDEO_HEVC     | 'video/hevc' | Video HEVC. |
+| OH_AVCODEC_MIMETYPE_AUDIO_VIVID    | 'audio/av3a' | AUDIO AV3A |
 
 ## ResolutionLevel<sup>19+</sup>
 
@@ -115,11 +115,11 @@ Enumerates the resolution levels supported by the device.
 
 | Name                       | Value  | Description          |
 | --------------------------  | ---- | ------------ |
-| RESOLUTION_480P             | 0    | 480p (640 x 480 dpi).    |
-| RESOLUTION_720P             | 1    | 720p (1280 x 720 dpi).   |
-| RESOLUTION_1080P            | 2    | 1080p (1920 x 1080 dpi).  |
-| RESOLUTION_2K               | 3    | 2K (2560 x 1440 dpi).  |
-| RESOLUTION_4K               | 4    | 4K (4096 x 3840 dpi).  |
+| RESOLUTION_480P             | 0    | 480p (640 x 480 px).    |
+| RESOLUTION_720P             | 1    | 720p (1280 x 720 px).   |
+| RESOLUTION_1080P            | 2    | 1080p (1920 x 1080 px).  |
+| RESOLUTION_2K               | 3    | 2K (2560 x 1440 px).  |
+| RESOLUTION_4K               | 4    | 4K (3840 x 2160 px).  |
 
 ## AVCastCategory<sup>10+</sup>
 
@@ -142,10 +142,15 @@ Enumerates the output device types.
 
 | Name                       | Value  | Description        |
 | --------------------------- | ---- | ----------- |
-| DEVICE_TYPE_LOCAL      | 0    | Local device.<br> **System capability**: SystemCapability.Multimedia.AVSession.Core|
-| DEVICE_TYPE_BLUETOOTH      | 10   | Bluetooth device.<br> **System capability**: SystemCapability.Multimedia.AVSession.Core|
-| DEVICE_TYPE_TV      | 2    | TV.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast|
-| DEVICE_TYPE_SMART_SPEAKER      | 3   | Speaker.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| DEVICE_TYPE_LOCAL      | 0    | Local device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Multimedia.AVSession.Core|
+| DEVICE_TYPE_TV      | 2    | TV.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| DEVICE_TYPE_SMART_SPEAKER      | 3   | Speaker.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| DEVICE_TYPE_CAR      | 4    | Vehicle-mounted device.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| DEVICE_TYPE_PAD      | 6    | Tablet.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| DEVICE_TYPE_DEFAULT_CAST_PLUS_STREAM      | 7    | Default device using the Cast+ protocol.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| DEVICE_TYPE_2IN1      | 8    | PC/2-in-1 device.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| DEVICE_TYPE_BLUETOOTH      | 10   | Bluetooth device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Multimedia.AVSession.Core|
+| DEVICE_TYPE_HIPLAY      | 15    | HiPlay device.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br> **System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 
 ## LoopMode<sup>10+</sup>
 
@@ -225,7 +230,7 @@ Enumerates the error codes used in the media session.
 | ERR_CODE_CAST_CONTROL_IO_FILE_NOT_FOUND<sup>13+</sup>   | 6612005 | The file does not exist.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_IO_NO_PERMISSION<sup>13+</sup>    | 6612006 | The input/output operation is not allowed.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_IO_CLEARTEXT_NOT_PERMITTED<sup>13+</sup>    | 6612007 | The network security configuration of the application does not allow access to plaintext HTTP traffic.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
-| ERR_CODE_CAST_CONTROL_IO_READ_POSITION_OUT_OF_RANGE<sup>13+</sup>        | 6612008 | Data is read from data binding.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| ERR_CODE_CAST_CONTROL_IO_READ_POSITION_OUT_OF_RANGE<sup>13+</sup>        | 6612008 | The read position is out of range.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_IO_NO_CONTENTS<sup>13+</sup>     | 6612100 | No content can be played in the media.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_IO_READ_ERROR<sup>13+</sup>        | 6612101 | The media cannot be read.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_IO_CONTENT_BUSY<sup>13+</sup>         | 6612102 | The resource is in use.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
@@ -238,12 +243,12 @@ Enumerates the error codes used in the media session.
 | ERR_CODE_CAST_CONTROL_PARSING_CONTAINER_MALFORMED<sup>13+</sup>    | 6613001 | The format of the media container bit stream is incorrectly parsed.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_MALFORMED<sup>13+</sup>     | 6613002 | An error occurred when parsing the media list.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_PARSING_CONTAINER_UNSUPPORTED<sup>13+</sup>   | 6613003 | The media container format or feature of the file is not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
-| ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_UNSUPPORTED<sup>13+</sup>      | 6613004 | The feature is not supported in the media list.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_UNSUPPORTED<sup>13+</sup>      | 6613004 | This feature is not supported in the media manifest.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_DECODING_UNSPECIFIED<sup>13+</sup>     | 6614000 | An unspecified decoding error occurs.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_DECODING_INIT_FAILED<sup>13+</sup>   | 6614001 | Initializing the decoder fails.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_DECODING_QUERY_FAILED<sup>13+</sup>     | 6614002 | Querying the decoder fails.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_DECODING_FAILED<sup>13+</sup>     | 6614003 | Decoding the media sample fails.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
-| ERR_CODE_CAST_CONTROL_DECODING_FORMAT_EXCEEDS_CAPABILITIES<sup>13+</sup>    | 6614004 | The device cannot decode the current format.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| ERR_CODE_CAST_CONTROL_DECODING_FORMAT_EXCEEDS_CAPABILITIES<sup>13+</sup>    | 6614004 | The decoding capability of the device does not meet the requirements.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_DECODING_FORMAT_UNSUPPORTED<sup>13+</sup>    | 6614005 | The decoding format is not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_AUDIO_RENDERER_UNSPECIFIED<sup>13+</sup>       | 6615000 | An unspecified audio renderer error occurs.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_AUDIO_RENDERER_INIT_FAILED <sup>13+</sup>     | 6615001 | Initializing the audio renderer fails.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
@@ -267,9 +272,9 @@ Enumerates the fast-forward or rewind intervals supported by the media session.
 
 | Name                  | Value| Description                    |
 | ---------------------- | -- | ----------------------- |
-| SECONDS_10             | 10 | The time is 10 seconds.            |
-| SECONDS_15             | 15 | The time is 15 seconds.            |
-| SECONDS_30             | 30 | The time is 30 seconds.            |
+| SECONDS_10             | 10 | The interval is 10s.            |
+| SECONDS_15             | 15 | The interval is 15s.            |
+| SECONDS_30             | 30 | The interval is 30s.            |
 
 ## BackgroundPlayMode<sup>24+</sup>
 
@@ -292,9 +297,11 @@ Enumerates the extra keys used in different scenarios.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 | Name                       | Value  | Description        |
 | --------------------------- | ---- | ----------- |
-| DLNA_CURRENT_URI_METADATA      | "CurrentURIMetadata"    | Key used to provide resource-related metadata in the DLNA casting scenario.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
-| DLNA_DIDL_LITE      | "DIDL-Lite"    | Key used to describe content metadata during transmission in the DLNA casting scenario.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| REQUIRE_ABILITY_LIST      | 'requireAbilityList'    | Key passed to the [setExtras](arkts-apis-avsession-AVSession.md#setextras10) API to set the capabilities required by the application.<br>**System capability**: SystemCapability.Multimedia.AVSession.Core|
+| SUPPORT_URL_CASTING      | 'url-cast'    | Used as the [setExtras](arkts-apis-avsession-AVSession.md#setextras10) API to transfer the values of capabilities to the **REQUIRE_ABILITY_LIST** key to notify the system that the current application supports URL-based casting.<br>The input parameter {[avSession.ExtraKey.REQUIRE_ABILITY_LIST]: [avSession.ExtraKey.SUPPORT_URL_CASTING]} of the [setExtras](arkts-apis-avsession-AVSession.md#setextras10) API indicates that the current application supports URL-based casting.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| DLNA_CURRENT_URI_METADATA      | 'CurrentURIMetadata'    | Key that can be passed to the **extras** attribute in [AVMediaDescription](arkts-apis-avsession-i.md#avmediadescription10). The value is of the string type.<br>It is used to add content to the **CurrentURIMetaData** tag in the packet sent to the peer end in DLNA casting scenarios.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| DLNA_DIDL_LITE      | 'DIDL-Lite'    | Key that can be passed to the **extras** attribute in [AVMediaDescription](arkts-apis-avsession-i.md#avmediadescription10). The value is of the string type.<br>It is used to add content to the **DIDL-Lite** tag in the packet sent to the peer end in DLNA projection scenarios.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|

@@ -25,7 +25,7 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 ## AbilityDelegator
 
-### addAbilityMonitor<sup>9+</sup>
+### addAbilityMonitor
 
 addAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<void>): void
 
@@ -48,7 +48,7 @@ addAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityMonitor failed. |
 
 **示例：**
@@ -78,7 +78,7 @@ abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
 });
 ```
 
-### addAbilityMonitor<sup>9+</sup>
+### addAbilityMonitor
 
 addAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 
@@ -106,7 +106,7 @@ addAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityMonitor failed. |
 
 **示例：**
@@ -152,7 +152,7 @@ addAbilityMonitorSync(monitor: AbilityMonitor): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityMonitorSync failed. |
 
 **示例：**
@@ -176,11 +176,11 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.addAbilityMonitorSync(monitor);
 ```
 
-### removeAbilityMonitor<sup>9+</sup>
+### removeAbilityMonitor
 
 removeAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<void>): void
 
-删除已经添加的AbilityMonitor实例。使用callback异步回调。
+删除已经添加的AbilityMonitor实例。使用callback异步回调。不支持多线程并发调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -199,7 +199,7 @@ removeAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<void>): v
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityMonitor failed. |
 
 **示例：**
@@ -226,7 +226,7 @@ abilityDelegator.removeAbilityMonitor(monitor, (error: BusinessError) => {
 });
 ```
 
-### removeAbilityMonitor<sup>9+</sup>
+### removeAbilityMonitor
 
 removeAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 
@@ -254,7 +254,7 @@ removeAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityMonitor failed. |
 
 **示例**：
@@ -301,7 +301,7 @@ removeAbilityMonitorSync(monitor: AbilityMonitor): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityMonitorSync failed. |
 
 **示例：**
@@ -324,7 +324,7 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.removeAbilityMonitorSync(monitor);
 ```
 
-### waitAbilityMonitor<sup>9+</sup>
+### waitAbilityMonitor
 
 waitAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<UIAbility>): void
 
@@ -347,7 +347,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<UIAbility>)
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityMonitor failed. |
 
 **示例：**
@@ -377,7 +377,7 @@ abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError, data: UIAbil
 });
 ```
 
-### waitAbilityMonitor<sup>9+</sup>
+### waitAbilityMonitor
 
 waitAbilityMonitor(monitor: AbilityMonitor, timeout: number, callback: AsyncCallback\<UIAbility>): void
 
@@ -401,7 +401,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, timeout: number, callback: AsyncCall
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityMonitor failed. |
 
 **示例：**
@@ -439,7 +439,7 @@ abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, dat
 
 
 
-### waitAbilityMonitor<sup>9+</sup>
+### waitAbilityMonitor
 
 waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise\<UIAbility>
 
@@ -468,7 +468,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise\<UIAbilit
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityMonitor failed. |
 
 **示例：**
@@ -493,7 +493,7 @@ abilityDelegator.waitAbilityMonitor(monitor).then((data: UIAbility) => {
 });
 ```
 
-### getAppContext<sup>9+</sup>
+### getAppContext
 
 getAppContext(): Context
 
@@ -521,7 +521,7 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 let context = abilityDelegator.getAppContext();
 ```
 
-### getAbilityState<sup>9+</sup>
+### getAbilityState
 
 getAbilityState(ability: UIAbility): number
 
@@ -549,7 +549,7 @@ getAbilityState(ability: UIAbility): number
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -570,11 +570,11 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### getCurrentTopAbility<sup>9+</sup>
+### getCurrentTopAbility
 
 getCurrentTopAbility(callback: AsyncCallback\<UIAbility>): void
 
-获取当前应用顶部Ability。使用callback异步回调。不支持Worker线程调用。
+获取当前应用顶部Ability。使用callback异步回调。不支持Worker线程调用。不支持多线程并发调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -592,7 +592,7 @@ getCurrentTopAbility(callback: AsyncCallback\<UIAbility>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling GetCurrentTopAbility failed. |
 
 **示例：**
@@ -612,11 +612,11 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### getCurrentTopAbility<sup>9+</sup>
+### getCurrentTopAbility
 
 getCurrentTopAbility(): Promise\<UIAbility>
 
-获取当前应用顶部Ability。使用Promise异步回调。不支持Worker线程调用。
+获取当前应用顶部Ability。使用Promise异步回调。不支持Worker线程调用。不支持多线程并发调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -652,11 +652,11 @@ abilityDelegator.getCurrentTopAbility().then((data: UIAbility) => {
 });
 ```
 
-### startAbility<sup>9+</sup>
+### startAbility
 
 startAbility(want: Want, callback: AsyncCallback\<void>): void
 
-启动指定Ability。使用callback异步回调。
+启动指定Ability。使用callback异步回调。不支持多线程并发调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -675,7 +675,7 @@ startAbility(want: Want, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -715,11 +715,11 @@ abilityDelegator.startAbility(want, (err: BusinessError, data: void) => {
 });
 ```
 
-### startAbility<sup>9+</sup>
+### startAbility
 
 startAbility(want: Want): Promise\<void>
 
-启动指定Ability。使用Promise异步回调。
+启动指定Ability。使用Promise异步回调。不支持多线程并发调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -743,7 +743,7 @@ startAbility(want: Want): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -778,11 +778,11 @@ abilityDelegator.startAbility(want).then((data: void) => {
 });
 ```
 
-### doAbilityForeground<sup>9+</sup>
+### doAbilityForeground
 
 doAbilityForeground(ability: UIAbility, callback: AsyncCallback\<void>): void
 
-调度指定Ability生命周期状态到Foreground状态。使用callback异步回调。
+调度指定Ability生命周期状态到Foreground状态。使用callback异步回调。不支持多线程并发调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -801,7 +801,7 @@ doAbilityForeground(ability: UIAbility, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling DoAbilityForeground failed. |
 
 **示例：**
@@ -816,19 +816,27 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
-  abilityDelegator.doAbilityForeground(ability, (err: BusinessError) => {
-    console.info("doAbilityForeground callback");
-  });
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    abilityDelegator.doAbilityForeground(ability, (err: BusinessError) => {
+      if (err) {
+        console.error(`doAbilityForeground fail. Code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.info('doAbilityForeground callback');
+      }
+    });
+  }
 });
 ```
 
-### doAbilityForeground<sup>9+</sup>
+### doAbilityForeground
 
 doAbilityForeground(ability: UIAbility): Promise\<void>
 
-调度指定Ability生命周期状态到Foreground状态。使用Promise异步回调。
+调度指定Ability生命周期状态到Foreground状态。使用Promise异步回调。不支持多线程并发调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -852,7 +860,7 @@ doAbilityForeground(ability: UIAbility): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling DoAbilityForeground failed. |
 
 **示例：**
@@ -875,11 +883,11 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### doAbilityBackground<sup>9+</sup>
+### doAbilityBackground
 
 doAbilityBackground(ability: UIAbility, callback: AsyncCallback\<void>): void
 
-调度指定Ability生命周期状态到Background状态。使用callback异步回调。
+调度指定Ability生命周期状态到Background状态。使用callback异步回调。不支持多线程并发调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -898,7 +906,7 @@ doAbilityBackground(ability: UIAbility, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling DoAbilityBackground failed. |
 
 **示例：**
@@ -921,11 +929,11 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### doAbilityBackground<sup>9+</sup>
+### doAbilityBackground
 
 doAbilityBackground(ability: UIAbility): Promise\<void>
 
-调度指定Ability生命周期状态到Background状态。使用Promise异步回调。
+调度指定Ability生命周期状态到Background状态。使用Promise异步回调。不支持多线程并发调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -949,7 +957,7 @@ doAbilityBackground(ability: UIAbility): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling DoAbilityBackground failed. |
 
 **示例：**
@@ -972,7 +980,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### printSync<sup>9+</sup>
+### printSync
 
 printSync(msg: string): void
 
@@ -994,7 +1002,7 @@ printSync(msg: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -1080,7 +1088,7 @@ abilityDelegator.print(msg).then(() => {
 
 executeShellCommand(cmd: string, callback: AsyncCallback\<ShellCmdResult>): void
 
-执行指定的shell命令。使用callback异步回调。
+执行指定的shell命令。使用callback异步回调。不支持多线程并发调用。
 
 仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof。
 
@@ -1117,7 +1125,7 @@ abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDele
 
 executeShellCommand(cmd: string, timeoutSecs: number, callback: AsyncCallback\<ShellCmdResult>): void
 
-指定超时时间，并执行指定的shell命令。使用callback异步回调。
+指定超时时间，并执行指定的shell命令。使用callback异步回调。不支持多线程并发调用。
 
 仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof。
 
@@ -1153,7 +1161,7 @@ abilityDelegator.executeShellCommand(cmd, timeout, (err: BusinessError, data: ab
 
 executeShellCommand(cmd: string, timeoutSecs?: number): Promise\<ShellCmdResult>
 
-指定超时时间，并执行指定的shell命令。使用Promise异步回调。
+指定超时时间，并执行指定的shell命令。使用Promise异步回调。不支持多线程并发调用。
 
 仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof。
 
@@ -1189,7 +1197,7 @@ abilityDelegator.executeShellCommand(cmd, timeout).then((data) => {
 });
 ```
 
-### finishTest<sup>9+</sup>
+### finishTest
 
 finishTest(msg: string, code: number, callback: AsyncCallback\<void>): void
 
@@ -1204,7 +1212,7 @@ finishTest(msg: string, code: number, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                 | 必填 | 说明               |
 | -------- | -------------------- | ---- | ------------------ |
 | msg      | string               | 是   | 日志字符串。         |
-| code     | number               | 是   | 日志码。             |
+| code     | number               | 是   | 日志码。            |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当结束测试并打印日志信息到单元测试终端控制台成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -1213,7 +1221,7 @@ finishTest(msg: string, code: number, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling FinishTest failed. |
 
 **示例：**
@@ -1231,7 +1239,7 @@ abilityDelegator.finishTest(msg, 0, (err: BusinessError) => {
 });
 ```
 
-### finishTest<sup>9+</sup>
+### finishTest
 
 finishTest(msg: string, code: number): Promise\<void>
 
@@ -1260,7 +1268,7 @@ finishTest(msg: string, code: number): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling FinishTest failed. |
 
 **示例：**
@@ -1277,11 +1285,11 @@ abilityDelegator.finishTest(msg, 0).then(() => {
 });
 ```
 
-### addAbilityStageMonitor<sup>9+</sup>
+### addAbilityStageMonitor
 
 addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<void>): void
 
-添加一个AbilityStageMonitor对象，用于监视指定AbilityStage的生命周期状态更改。使用callback异步回调。
+添加一个AbilityStageMonitor对象，用于监视指定AbilityStage的生命周期状态更改。使用callback异步回调。不支持多线程并发调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1300,7 +1308,7 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<vo
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityStageMonitor failed. |
 
 **示例：**
@@ -1320,7 +1328,7 @@ abilityDelegator.addAbilityStageMonitor({
 });
 ```
 
-### addAbilityStageMonitor<sup>9+</sup>
+### addAbilityStageMonitor
 
 addAbilityStageMonitor(monitor: AbilityStageMonitor): Promise\<void>
 
@@ -1348,7 +1356,7 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityStageMonitor failed. |
 
 **示例：**
@@ -1389,7 +1397,7 @@ addAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityStageMonitorSync failed. |
 
 **示例：**
@@ -1406,7 +1414,7 @@ abilityDelegator.addAbilityStageMonitorSync({
 });
 ```
 
-### removeAbilityStageMonitor<sup>9+</sup>
+### removeAbilityStageMonitor
 
 removeAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<void>): void
 
@@ -1429,7 +1437,7 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityStageMonitor failed. |
 
 **示例：**
@@ -1449,7 +1457,7 @@ abilityDelegator.removeAbilityStageMonitor({
 });
 ```
 
-### removeAbilityStageMonitor<sup>9+</sup>
+### removeAbilityStageMonitor
 
 removeAbilityStageMonitor(monitor: AbilityStageMonitor): Promise\<void>
 
@@ -1477,7 +1485,7 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityStageMonitor failed. |
 
 **示例：**
@@ -1518,7 +1526,7 @@ removeAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityStageMonitorSync failed. |
 
 
@@ -1536,7 +1544,7 @@ abilityDelegator.removeAbilityStageMonitorSync({
 });
 ```
 
-### waitAbilityStageMonitor<sup>9+</sup>
+### waitAbilityStageMonitor
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<AbilityStage>): void
 
@@ -1559,7 +1567,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<A
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityStageMonitor failed. |
 
 **示例：**
@@ -1580,7 +1588,7 @@ abilityDelegator.waitAbilityStageMonitor({
 });
 ```
 
-### waitAbilityStageMonitor<sup>9+</sup>
+### waitAbilityStageMonitor
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise\<AbilityStage>
 
@@ -1609,7 +1617,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityStageMonitor failed. |
 
 **示例：**
@@ -1629,7 +1637,7 @@ abilityDelegator.waitAbilityStageMonitor({
 });
 ```
 
-### waitAbilityStageMonitor<sup>9+</sup>
+### waitAbilityStageMonitor
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback: AsyncCallback\<AbilityStage>): void
 
@@ -1653,7 +1661,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback:
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityStageMonitor failed. |
 
 **示例：**
@@ -1697,7 +1705,7 @@ setMockList(mockList: Record\<string, string>): void
 
 | 错误码ID | 错误信息        |
 | -------- | --------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000050 | Internal error. |
 
 **示例：**

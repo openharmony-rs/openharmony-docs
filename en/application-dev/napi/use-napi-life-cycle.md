@@ -1,10 +1,11 @@
 # Performing Lifecycle Management Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:42:33.961Z pushedAt=2026-09-16T08:26:18.271Z -->
 
 ## Introduction
 
@@ -66,7 +67,7 @@ For details about the code of lifecycle management, see:
 
 [Lifecycle Management](napi-guidelines.md#lifecycle-management) 
 
-For details about the code of typical incorrect usage, see:
+For the code examples of typical incorrect usage, see the following link:
 
 [Typical Error Scenarios](napi-faq-about-stability.md#what-are-the-typical-error-scenarios-of-lifecycle-related-development-between-napi_open_handle_scope-and-napi_close_handle_scope)
 
@@ -151,7 +152,7 @@ try {
 ```
 
 
-The framework layer defines the API mapping table between the ArkTS and native sides in the core initialization function **Init**. When the ArkTS side accesses the native function through the API in the mapping table, the framework layer automatically adds the scope. You do not need to add the **napi_open_handle_scope** and **napi_close_handle_scope** APIs to manage the lifecycle of ArkTS objects. That is, the scope is automatically opened when the native function is called and automatically closed when the native function ends. The lifecycle of the ArkTS object created in the native function ends when the native function returns, and no memory leak occurs. The following example defines the **NewObject** function. (You do not need to add **napi_open_handle_scope** and **napi_close_handle_scope** to define the function in the API mapping table to manage the lifecycle of the ArkTS object.)
+The framework layer defines the interface mapping table between the ArkTS side and the native side in the core initialization function Init. When a function on the native side is accessed from the ArkTS side through the mapping table, the framework layer automatically adds a scope, eliminating the need to call `napi_open_handle_scope` and `napi_close_handle_scope` to manage the lifecycle of ArkTS objects. That is, a scope is automatically opened before entering a native function written by you and automatically closed after the native function returns. The lifecycle of ArkTS objects created in the native function ends when the native function returns, so no memory leak occurs. The following example uses the `NewObject` function (functions mapped in the interface mapping table do not require manual calls to `napi_open_handle_scope` and `napi_close_handle_scope` to manage the lifecycle of ArkTS objects):
 ```cpp
 // Open the scope before calling NewObject.
 napi_value NewObject(napi_env env, napi_callback_info info)
@@ -189,7 +190,7 @@ static napi_value Init(napi_env env, napi_value exports)
 
 Use **napi_open_escapable_handle_scope** to open an escapable scope, which allows the declared values in the scope to be returned to the parent scope. The scope must be closed using **napi_close_escapable_handle_scope**. Use **napi_escape_handle** to promote the lifecycle of an ArkTS object so that it is valid for the lifetime of the parent scope.
 
-These APIs are helpful for managing ArkTS objects more flexibly in C/C++, especially when passing cross-scope values.
+The preceding APIs allow you to manage incoming ArkTS objects more flexibly, and are particularly useful when handling cross-scope value passing.
 
 CPP code:
 
@@ -311,7 +312,7 @@ static napi_value CreateWeakReference(napi_env env, napi_callback_info info)
 
 static napi_value GetWeakReferenceValue(napi_env env, napi_callback_info info)
 {
-    napi_value weakValue;
+    napi_value weakValue = nullptr;
     napi_status status = napi_get_reference_value(env, g_weakRef, &weakValue);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Failed to get reference value");

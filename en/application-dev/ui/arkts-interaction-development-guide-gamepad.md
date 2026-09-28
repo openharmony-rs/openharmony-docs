@@ -110,7 +110,7 @@ After setting the parameters mentioned above, the focus is always on the **JoySt
 
 ## Handling Joystick Input
 
-The joystick input of the gamepad triggers the focus axis event. You can bind the [onFocusAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-focus_axis.md#onfocusaxisevent) callback to the focused component to process the corresponding event logic. Example:
+The joystick input of the gamepad triggers the focus axis event. You can bind the [onFocusAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-focus-axis.md#onfocusaxisevent) callback to the focused component to process the corresponding event logic. Example:
 <!-- @[gamepad_joystick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/Joystick.ets) -->
 
 ``` TypeScript

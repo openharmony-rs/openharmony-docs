@@ -5,10 +5,11 @@
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=f3efdb02e23121aaefae0a5dab0a37bc284fa9d3 translatedAt=2026-09-23T08:21:00.370Z pushedAt=2026-09-23T08:30:32.772Z -->
 
 Starting from API version 20, NDK (C/C++) APIs are provided for video transcoding.
 
-You can use the [AVTranscoder](media-kit-intro.md#avtranscoder) to implement video transcoding. <!--RP1--><!--RP1End--> You can call [canIUse](../../reference/common/init.md#caniuse) to check whether the device supports AVTranscoder and continue the operations described in this topic only when the return value of **canIUse("SystemCapability.Multimedia.Media.AVTranscoder")** is **true**.
+You can use the [AVTranscoder](media-kit-intro.md#avtranscoder) to implement video transcoding<!--RP1--><!--RP1End-->. You can call [canIUse](../../reference/common/syscap-ndk-8h.md#caniuse) to check whether the device supports AVTranscoder. When the return value of `canIUse("SystemCapability.Multimedia.Media.AVTranscoder")` is `true`, the transcoding capability is available.
 
 This topic describes how to use the AVTranscoder to implement video transcoding, covering the process of starting, pausing, resuming, and exiting transcoding.
 
@@ -32,7 +33,7 @@ To use system logging, include the following header file:
 #include <hilog/log.h>
 ```
 
-In addition, link the following dynamic libraries in the CMake script:
+Link the following dynamic library in the CMake script:
 
 ```c
 target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
@@ -221,7 +222,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the
 
     ```c++
     const std::int32_t AUDIO_BITRATE = 200000;
-    OH_AVTranscoderConfig_SetDstAudioBitrate(config, AUDIO_BITRATE); // (Optional) Audio bit rate.
+    OH_AVTranscoderConfig_SetDstAudioBitrate(config, AUDIO_BITRATE); // Refer to the avcodec audio encoder bitrate setting. Adjust based on actual requirements.
     ```
 
 10. (Optional) Call **OH_AVTranscoderConfig_SetDstVideoBitrate()** to set the bit rate of the output video.

@@ -6,6 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=67e03cb5f2694f739f98a438811ea6f4514e5238 translatedAt=2026-09-21T02:33:43.177Z pushedAt=2026-09-22T01:29:30.390Z -->
 
 ## Overview
 
@@ -27,18 +28,18 @@ Defines the structs of the HiDebug module.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md) | HiDebug_ThreadCpuUsage | Defines the CPU usage of all threads in an application.|
-| [HiDebug_SystemMemInfo](capi-hidebug-hidebug-systemmeminfo.md) | HiDebug_SystemMemInfo | Defines the system memory information.|
+| [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md) | HiDebug_ThreadCpuUsage | Defines the CPU usage structure for all threads in the current process. Use cases: Application performance monitoring: Obtain thread CPU usage to monitor the running status and performance bottlenecks of the application. Thread performance optimization: Analyze the CPU usage of each thread to optimize thread scheduling and resource allocation. System debugging: Track thread CPU usage during debugging to locate performance issues. |
+| [HiDebug_SystemMemInfo](capi-hidebug-hidebug-systemmeminfo.md) | HiDebug_SystemMemInfo | Defines the system memory information structure type. It is used to obtain key information such as the total, free, and available system memory, and is applicable to scenarios such as system performance analysis, memory monitoring, and fault diagnosis, helping developers understand system memory usage and optimize memory management strategies. |
 | [HiDebug_NativeMemInfo](capi-hidebug-hidebug-nativememinfo.md) | HiDebug_NativeMemInfo | Defines the local memory information of an application process.|
 | [HiDebug_MemoryLimit](capi-hidebug-hidebug-memorylimit.md) | HiDebug_MemoryLimit | Defines the memory limit of an application process.|
-| [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md) | OH_HiDebug_RequestTraceConfig | Defines the trace collection configuration.|
-| [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md) | HiDebug_JsStackFrame | Defines the JS stack frame content.|
+| [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md) | OH_HiDebug_RequestTraceConfig | Defines the configuration structure type for requesting trace collection. It is used to configure trace collection parameters in application performance analysis and debugging scenarios, such as locating performance issues like slow application startup, UI lag, and high CPU usage. |
+| [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md) | HiDebug_JsStackFrame | Defines the js stack frame content. It is used to record frame information of the js call stack in performance analysis and debugging scenarios, including key information such as code location, function name, and mapping region. |
 | [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) | HiDebug_NativeStackFrame | Defines the native stack frame content.|
-| [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md) | HiDebug_StackFrame | Defines the stack frame content.|
-| [HiDebug_MallocDispatch](capi-hidebug-hidebug-mallocdispatch.md) | HiDebug_MallocDispatch | Defines the struct types of the replaceable/restorable **HiDebug_MallocDispatch** table of the application process.|
+| [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md) | HiDebug_StackFrame | Defines the stack frame content. This structure is used to represent stack frame information during debugging, and supports obtaining the type of the current stack and the corresponding js stack frame or Native stack frame content, helping developers locate issues and perform debugging analysis. |
+| [HiDebug_MallocDispatch](capi-hidebug-hidebug-mallocdispatch.md) | HiDebug_MallocDispatch | Defines the HiDebug_MallocDispatch table structure type that can be replaced/restored by the application process. Through this structure, developers can customize memory management function pointers to monitor and customize process memory allocation and deallocation. Key features include: supporting dynamic replacement and restoration of memory management functions, providing comprehensive memory operation interfaces (malloc, calloc, realloc, free, mmap, munmap), and not affecting the default system memory management behavior. Use cases include: memory leak detection, memory usage performance analysis, custom memory allocation strategies, and memory safety monitoring. It helps developers promptly identify and resolve memory issues, improving application stability and performance. |
 | [HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md) | HiDebug_GraphicsMemorySummary | Defines the application graphics memory usage details.|
 | [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md) | HiDebug_ProcessSamplerConfig | Defines the sampling configuration.|
-| [HiDebug_Backtrace_Object__*](capi-hidebug-hidebug-backtrace-object--8h.md) | HiDebug_Backtrace_Object | Defines the object used for stack backtracing and stack parsing.|
+| [HiDebug_Backtrace_Object__*](capi-hidebug-hidebug-backtrace-object--8h.md) | HiDebug_Backtrace_Object | Defines the object used for stack backtrace and stack parsing. This object encapsulates the context information required for stack backtrace, including data such as call stack addresses and thread states. Detailed stack frame information and symbol parsing results can be obtained through related interfaces. This object is created through HiDebug-related interfaces and must be released by calling the corresponding destruction interface after use. |
 | [HiDebug_ThreadCpuUsage*](capi-hidebug-hidebug-threadcpuusage.md) | HiDebug_ThreadCpuUsagePtr | Defines the pointer to **HiDebug_ThreadCpuUsage**.|
 | [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md) | OH_HiDebug_ResProfilerConfig | Defines the resource profiling configurations.|
 | [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md) | OH_HiDebug_ProfilingResult | Define the encapsulated result of a single resource profiling.|
@@ -47,12 +48,12 @@ Defines the structs of the HiDebug module.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [HiDebug_ErrorCode](#hidebug_errorcode) | HiDebug_ErrorCode | Enumerates the error codes used in the HiDebug module.|
+| [HiDebug_ErrorCode](#hidebug_errorcode) | HiDebug_ErrorCode | Enumerates the error codes. They are used as the return status identifier for each functional API of the HiDebug module, including success, invalid parameter, permission issue, system internal error, device not supported, and other cases. Developers can locate the cause of an issue based on the error code and take corresponding error handling measures. |
 | [HiDebug_TraceFlag](#hidebug_traceflag) | HiDebug_TraceFlag | Enumerates the thread types for trace collection.|
 | [HiDebug_StackFrameType](#hidebug_stackframetype) | HiDebug_StackFrameType | Enumerates the stack frame types.|
 | [HiDebug_CrashObjType](#hidebug_crashobjtype) | HiDebug_CrashObjType | Enumerates the data types of debugging information.|
 | [OH_HiDebug_ResourceType](#oh_hidebug_resourcetype) | OH_HiDebug_ResourceType | Enumerates the resource profiling types.|
-| [OH_HiDebug_MemListenerType](#oh_hidebug_memlistenertype) | OH_HiDebug_MemListenerType | Enumerates the memory listener callback types. You can process the related logic based on the callback type.|
+| [OH_HiDebug_MemListenerType](#oh_hidebug_memlistenertype) | OH_HiDebug_MemListenerType | Enumerates the memory listener callback types. Developers handle related logic based on the callback type. |
 
 ### Macros
 
@@ -108,7 +109,7 @@ enum HiDebug_ErrorCode
 
 **Description**
 
-Enumerates the error codes used in the HiDebug module.
+Enumerates the error codes. They are used as the return status identifier for each functional API of the HiDebug module, including success, invalid parameter, permission issue, system internal error, device not supported, and other cases. Developers can locate the cause of an issue based on the error code and take corresponding error handling measures.
 
 **Since**: 12
 
@@ -120,8 +121,8 @@ Enumerates the error codes used in the HiDebug module.
 | HIDEBUG_NO_PERMISSION = 11400103 | No file write permission.|
 | HIDEBUG_TRACE_ABNORMAL = 11400104 | Internal system error.|
 | HIDEBUG_NO_TRACE_RUNNING = 11400105 | No trace task is running.|
-| OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120 | The trace file storage reaches the upper limit.<br>**Since**: 24|
-| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | PC address passed to the symbol parsing function is invalid.<br>**Since**: 20|
+| OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120 | Trace file storage reaches the limit.<br/>**since:** 24 |
+| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | The pc address passed to the symbol resolution function is invalid.<br/>**since:** 20 |
 | HIDEBUG_NOT_SUPPORTED = 11400300 | Current device is not supported.<br>**Since**: 22|
 | HIDEBUG_UNDER_SAMPLING = 11400301 | Current process is being sampled.<br>**Since**: 22|
 | HIDEBUG_RESOURCE_UNAVAILABLE = 11400302 | Sampling resources are unavailable.<br>**Since**: 22|
@@ -228,7 +229,7 @@ enum OH_HiDebug_MemListenerType
 
 **Description**
 
-Enumerates the memory listener callback types. You can process the related logic based on the callback type.
+Enumerates the memory listener callback types. Developers handle related logic based on the callback type.
 
 **Since:** 26.0.0
 

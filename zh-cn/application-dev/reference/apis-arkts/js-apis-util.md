@@ -205,7 +205,7 @@ async function fn(input: string) {
 }
 let cb = util.callbackWrapper(fn);
 cb('hello world', (err : Object, ret : string) => {
-  if (err) throw new Error;
+  if (err) throw new Error();
   console.info(ret);
 });
 // 输出结果：hello world
@@ -221,7 +221,7 @@ async function fn(args: Array<string | number | Function>) {
 let cb = util.callbackWrapper(fn);
 let args: Array<string | number | Function> = ['hello world', 8]
 cb(args, (err : Object, ret : string) => {
-  if (err) throw new Error;
+  if (err) throw new Error();
   console.info(ret); // 输出结果：hello world
 });
 ```
@@ -261,7 +261,7 @@ const addCall = util.promisify(util.callbackWrapper(fn));
     console.info(res);
     // 输出结果：hello world
   } catch (err) {
-    console.info(err);
+    console.error(`Failed to call promisify. Code: ${err.code}, message: ${err.message}`);
   }
 })();
 ```
@@ -1251,7 +1251,7 @@ console.info("retStr = " + retStr);
 // 输出结果：retStr = abc
 let retJson = JSON.stringify(retStr)
 console.info("retJson = " + retJson);
-// 输出结果：retJson = ab/u0000c
+// 输出结果：retJson = "ab\u0000c"
 ```
 
 ### decodeWithStream<sup>(deprecated)</sup>
@@ -1322,7 +1322,7 @@ TextDecoder的构造函数。
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | encoding | string | 否 | 编码格式，默认值是'utf-8'。 |
-| options | { fatal?: boolean; ignoreBOM?: boolean } | 否 | 解码相关选项参数，存在两个属性fatal和ignoreBOM。此参数不填时，对应各属性取其默认值。 |
+| options | { fatal?: boolean; ignoreBOM?: boolean } | 否 | 解码相关选项参数，存在两个属性fatal和ignoreBOM。此参数不填时，对应各属性取其默认值false。 |
 
   **表1** options
 
@@ -2840,7 +2840,7 @@ for (let value of pro) {
 // 3, 15
 ```
 
-## ScopeComparable<sup>8+</sup>
+## ScopeComparable<sup>7+</sup>
 
 ScopeComparable类型的值需要实现compareTo方法，确保传入的数据具有可比性。
 
@@ -2860,7 +2860,7 @@ compareTo(other: ScopeComparable): boolean
 
 | 参数名 | 类型 | 必填 | 说明           |
 | ------ | ---- | ---- | -------------- |
-| other  | [ScopeComparable](#scopecomparable8) | 是  | 表示要比较的值。 |
+| other  | [ScopeComparable](#scopecomparable7) | 是  | 表示要比较的值。 |
 
 **返回值：**
 
@@ -2907,7 +2907,7 @@ type ScopeType = ScopeComparable | number
 | 类型 | 说明 |
 | -------- | -------- |
 | number | 表示值的类型为数字。 |
-| [ScopeComparable](#scopecomparable8) | 表示值的类型为ScopeComparable。|
+| [ScopeComparable](#scopecomparable7) | 表示值的类型为ScopeComparable。|
 
 ## ScopeHelper<sup>9+</sup>
 
@@ -3909,7 +3909,7 @@ end(chunk?: string | Uint8Array): string
 
 | 参数名 | 类型       | 必填 | 说明                |
 | ------ | ---------- | ---- | ------------------- |
-| chunk  | string \| Uint8Array | 否   | 需要解码的最后一部分数据。当还有剩余数据需要在结束解码时一并处理时传入此参数；不传入时默认为undefined，即仅返回内部缓冲区中存储的不完整字节序列的解码结果，不再处理新数据。要解码的字符串。默认为undefined。 |
+| chunk  | string \| Uint8Array | 否   | 需要解码的最后一部分数据，默认为undefined。当还有剩余数据需要在结束解码时一并处理时传入此参数；不传入时默认为undefined，即仅返回内部缓冲区中存储的不完整字节序列的解码结果，不再处理新数据。 |
 
 **返回值：**
 
@@ -6778,7 +6778,7 @@ Base64的构造函数。
 **示例：**
 
   ```ts
-  let base64 = new  util.Base64();
+  let base64 = new util.Base64();
   ```
 
 ### encodeSync<sup>(deprecated)</sup>

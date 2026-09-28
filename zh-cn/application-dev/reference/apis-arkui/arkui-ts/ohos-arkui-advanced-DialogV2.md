@@ -127,11 +127,11 @@ AlertDialogV2({primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, content
 
 | 名称              | 类型                                                | 必填 | 装饰器类型                | 说明                   |
 | --------------- | ------------------------------------------------- | -- | :------------------- | -------------------- |
-| primaryTitle    | [ResourceStr](ts-types.md#resourcestr)            | 否  | @Param               | 确认弹出框标题。<br/>默认不显示。<br/>**说明：** 标题超过两行会显示“...”。  |
-| secondaryTitle  | [ResourceStr](ts-types.md#resourcestr)            | 否  | @Param               | 确认弹出框辅助文本。<br/>默认不显示。<br/>**说明：** 辅助文本超过两行会显示“...”。       |
-| content         | [ResourceStr](ts-types.md#resourcestr)            | 是  | @Param<br/>@Require | 确认弹出框内容。       |
-| primaryButton   | [AdvancedDialogV2Button](#advanceddialogv2button) | 否  | @Param               | 确认弹出框左侧按钮。<br/>默认不显示。 |
-| secondaryButton | [AdvancedDialogV2Button](#advanceddialogv2button) | 否  | @Param               | 确认弹出框右侧按钮。<br/>默认不显示。 |
+| primaryTitle    | [ResourceStr](ts-types.md#resourcestr)            | 否  | @Param               | 警告弹出框标题。<br/>默认不显示。<br/>**说明：** 标题超过两行会显示“...”。  |
+| secondaryTitle  | [ResourceStr](ts-types.md#resourcestr)            | 否  | @Param               | 警告弹出框辅助文本。<br/>默认不显示。<br/>**说明：** 辅助文本超过两行会显示“...”。       |
+| content         | [ResourceStr](ts-types.md#resourcestr)            | 是  | @Param<br/>@Require | 警告弹出框内容。       |
+| primaryButton   | [AdvancedDialogV2Button](#advanceddialogv2button) | 否  | @Param               | 警告弹出框左侧按钮。<br/>默认不显示。 |
+| secondaryButton | [AdvancedDialogV2Button](#advanceddialogv2button) | 否  | @Param               | 警告弹出框右侧按钮。<br/>默认不显示。 |
 
 ## LoadingDialogV2
 
@@ -151,7 +151,7 @@ LoadingDialogV2({content?: ResourceStr})
 
 ## CustomContentDialogV2
 
-CustomContentDialogV2({contentBuilder: () => void, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, contentAreaPadding?: LocalizedPadding, buttons?: AdvancedDialogV2Button\[]})
+CustomContentDialogV2({contentBuilder: CustomBuilder, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, contentAreaPadding?: LocalizedPadding, buttons?: AdvancedDialogV2Button\[]})
 
 自定义内容区弹出框，同时支持定义操作区按钮样式。适用于需要展示复杂或自定义内容的场景，如用户协议确认、表单输入等。
 
@@ -295,7 +295,7 @@ AdvancedDialogV2Button的构造函数。
 上图下文弹出框，包含imageRes、content等内容。
 
 ```ts
-import { TipsDialogV2, AdvancedDialogV2Button, UIContext, ButtonRole  } from '@kit.ArkUI';
+import { TipsDialogV2, AdvancedDialogV2Button, UIContext } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -307,7 +307,7 @@ struct Index {
     // 构建提示弹出框，配置图片、内容、勾选状态和操作按钮
     TipsDialogV2({
       imageRes: $r('sys.media.ohos_ic_public_voice'),
-      content: '想要卸载这个APP嘛?',
+      content: '想要卸载这个APP吗?',
       title: 'TipsDialogV2',
       checkTips: '不再提示',
       checked: this.checked,
@@ -501,7 +501,7 @@ struct Index {
 纯文本弹出框，包含primaryTitle、secondaryTitle、content等内容。
 
 ```ts
-import { AlertDialogV2, AdvancedDialogV2Button, UIContext, ButtonRole  } from '@kit.ArkUI';
+import { AlertDialogV2, AdvancedDialogV2Button, UIContext } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -606,7 +606,7 @@ struct Index {
 使用WithTheme自定义主题的弹出框，通过WithTheme包装LoadingDialogV2实现主题风格定制。
 
 ```ts
-import { CustomColors, CustomTheme, LoadingDialogV2, UIContext, WithTheme  } from '@kit.ArkUI';
+import { CustomColors, CustomTheme, LoadingDialogV2, UIContext } from '@kit.ArkUI';
 
 class CustomThemeImpl implements CustomTheme {
   colors?: CustomColors;
@@ -665,7 +665,7 @@ struct Index {
 支持自定义内容弹出框，包含contentBuilder、buttons等内容。
 
 ```ts
-import { CustomContentDialogV2, AdvancedDialogV2Button, UIContext, ButtonStyleMode, ButtonRole  } from '@kit.ArkUI';
+import { CustomContentDialogV2, AdvancedDialogV2Button, UIContext } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2

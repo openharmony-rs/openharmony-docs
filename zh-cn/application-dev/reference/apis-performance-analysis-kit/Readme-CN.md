@@ -17,7 +17,7 @@
   - [@ohos.hiviewdfx.FaultLogExtensionContext (故障延迟通知上下文)](js-apis-hiviewdfx-FaultLogExtensionContext.md)
   - [@ohos.hiviewdfx.hiAppEvent (应用事件打点)](js-apis-hiviewdfx-hiappevent.md)
   - [@ohos.hiviewdfx.hiRetrieval (应用灰度)](js-apis-hiretrieval.md)
-  - [@ohos.hiviewdfx.jsLeakWatcher (js泄露检测)](js-apis-jsleakwatcher.md)
+  - [@ohos.hiviewdfx.jsLeakWatcher (ArkTS泄漏检测)](js-apis-jsleakwatcher.md)
   <!--Del-->
   - [@ohos.hiSysEvent (系统事件打点)(系统接口)](js-apis-hisysevent-sys.md)
   - [@ohos.logLibrary (维测日志获取)(系统接口)](js-apis-loglibrary-sys.md)
@@ -32,7 +32,7 @@
     - [HiCollie](capi-hicollie.md)
     - [HiDebug](capi-hidebug.md)
     - [HiLog](capi-hilog.md)
-    - [Hitrace](capi-hitrace.md)
+    - [HiTrace](capi-hitrace.md)
   - 头文件<!--performance-analysis-headerfile-->
     - [hiappevent.h](capi-hiappevent-h.md)
     - [hiappevent_cfg.h](capi-hiappevent-cfg-h.md)
@@ -68,7 +68,7 @@
     - [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md)
     - [HiTraceId](capi-hitrace-hitraceid.md)
 - 错误码<!--performance-analysis-errcode-->
-  - [Faultlogger错误码](errorcode-faultlogger.md)
+  - [Faultlogger 错误码](errorcode-faultlogger.md)
   - [应用事件打点错误码](errorcode-hiappevent.md)
   - [HiDebug错误码](errorcode-hiviewdfx-hidebug.md)
   - [HiDebug CpuUsage错误码](errorcode-hiviewdfx-hidebug-cpuusage.md)

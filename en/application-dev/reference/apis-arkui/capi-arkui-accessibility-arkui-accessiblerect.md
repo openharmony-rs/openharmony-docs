@@ -5,6 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=5a5f201351bc507eed1f4198e52fee2b1f6735cb translatedAt=2026-09-18T11:17:43.502Z pushedAt=2026-09-20T07:16:17.830Z -->
 
 ```c
 typedef struct {...} ArkUI_AccessibleRect
@@ -12,7 +13,7 @@ typedef struct {...} ArkUI_AccessibleRect
 
 ## Overview
 
-Provides the coordinate position where the node is located.
+Provides the coordinate position of the rectangular area of a node on a screen. This struct is used to describe the bounding rectangle of an accessibility node, define the visible area of the node on the screen through the coordinates of the upper-left and lower-right corners, and support the accessibility service in obtaining the position and size information of the node.
 
 **Since**: 13
 
@@ -26,7 +27,9 @@ Provides the coordinate position where the node is located.
 
 | Name| Description|
 | -- | -- |
-| int32_t leftTopX | X-coordinate of the upper left corner.|
-| int32_t leftTopY | Y-coordinate of the upper left corner.|
-| int32_t rightBottomX | X-coordinate of the lower right corner.|
-| int32_t rightBottomY | Y-coordinate of the lower right corner.|
+| int32_t leftTopX | X-coordinate of the upper left corner. Unit: px. |
+| int32_t leftTopY | Y-coordinate of the upper left corner. Unit: px. |
+| int32_t rightBottomX | X-coordinate of the lower right corner. Unit: px. |
+| int32_t rightBottomY | Y-coordinate of the lower right corner. Unit: px. |
+
+

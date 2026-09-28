@@ -6,6 +6,7 @@
 <!--Designer: @zhuguodong8; @jjfeing-->
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=16eef75e062f613eca9abc4e5dfa6ceab5ea3f1e translatedAt=2026-09-17T08:12:53.664Z pushedAt=2026-09-21T11:20:07.818Z -->
 
 ## When to Use
 
@@ -23,7 +24,7 @@ The following table list some APIs for using MindSpore Lite for model training. 
 |OH_AI_DeviceInfoHandle OH_AI_DeviceInfoCreate(OH_AI_DeviceType device_type)|Creates a runtime device information object.|
 |void OH_AI_ContextDestroy(OH_AI_ContextHandle *context)|Destroys a context object.|
 |void OH_AI_ContextAddDeviceInfo(OH_AI_ContextHandle context, OH_AI_DeviceInfoHandle device_info)|Adds a runtime device information object.|
-|OH_AI_TrainCfgHandle OH_AI_TrainCfgCreate()|Creates the pointer to a training configuration object.|
+|OH_AI_TrainCfgHandle OH_AI_TrainCfgCreate()|Creates a training configuration object.|
 |void OH_AI_TrainCfgDestroy(OH_AI_TrainCfgHandle *train_cfg)|Destroys the pointer to a training configuration object.|
 |OH_AI_ModelHandle OH_AI_ModelCreate()|Creates a model object.|
 |OH_AI_Status OH_AI_TrainModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path, OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context, const OH_AI_TrainCfgHandle train_cfg)|Loads and builds a MindSpore Lite training model from a model file.|
@@ -126,7 +127,7 @@ The development process consists of the following main steps:
 
 4. Input data.
 
-    Before executing model training, you need to populate data to the input tensor. In this example, random data is used to populate the model.
+    Before the model is executed, data must be filled into the input [tensor](mindspore-lite-term.md#tensor). In this example, random data is used to fill the model.
 
     ```c
     // Get Inputs
@@ -201,7 +202,7 @@ The development process consists of the following main steps:
 
 7. Destroy the model.
 
-    If the MindSpore Lite inference framework is no longer needed, you need to destroy the created model.
+    When the MindSpore Lite framework is no longer used, release the created model.
 
     ```c
     // Delete model and context.
@@ -289,7 +290,7 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
   return OH_AI_STATUS_SUCCESS;
 }
 
-int ModelPredict(char* model_file) {
+int ModelPredict(const char* model_file) {
   // Create and init context, add CPU device info
   OH_AI_ContextHandle context = OH_AI_ContextCreate();
   if (context == NULL) {

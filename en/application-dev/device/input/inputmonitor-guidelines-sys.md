@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:55.552Z pushedAt=2026-06-25T06:58:09.383Z -->
+<!-- md-trans-meta sourceCommit=20afaef788761bf2910ca233e927684c4314041b translatedAt=2026-09-14T08:47:02.898Z pushedAt=2026-09-15T10:35:46.290Z -->
 
 ## When to Use
 
@@ -28,14 +28,14 @@ The following table lists common APIs for input monitor. For details, see [@ohos
 | on(type: 'touch', receiver: TouchEventReceiver): void | Enables listening for touchscreen events.|
 | on(type: 'pinch', receiver: TouchEventReceiver): void | Listens for pinch events.|
 | on(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void | Listens for three-finger swipe-up events.|
-| on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersSwipe&gt;): void | Listens for three-finger tap events.|
+| on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersTap&gt;): void | Listens for three-finger tap events. |
 | on(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void | Listens for four-finger swipe events.|
 | on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void | Listens for rotation events.|
 | off(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void |Cancels listening for mouse events.|
 | off(type: 'touch', receiver: TouchEventReceiver): void | Disables listening for touchscreen events.|
 | off(type: 'pinch', receiver: TouchEventReceiver): void | Cancels listening for pinch events.|
 | off(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void | Cancels listening for three-finger swipe-up events.|
-| off(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersSwipe&gt;): void | Cancels listening for three-finger tap events.|
+| off(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersTap&gt;): void | Cancels listening for three-finger tap events. |
 | off(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void | Cancels listening for four-finger swipe events.|
 | off(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void | Cancels listening for rotation events.|
 

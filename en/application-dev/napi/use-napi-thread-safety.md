@@ -1,10 +1,11 @@
 # Thread Safety Development Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:46:00.099Z pushedAt=2026-09-16T08:26:46.566Z -->
 
 
 ## When to Use
@@ -16,7 +17,7 @@
 
 - Data sharing: When multiple threads need to access the same data, using a thread-safe function can prevent race conditions or deadlocks during data read and write operations.
 
-- Multithread programming: In the case of multithread programming, a thread-safe function can ensure communication and synchronization between multiple threads.
+- Multithreaded programming: In the case of multithread programming, a thread-safe function can ensure communication and synchronization between multiple threads.
 
 
 ## Example
@@ -46,7 +47,7 @@
 2. Define a thread-safe function at the native entry.
 
    <!-- @[napi_thread_safety_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
-   
+
    ``` C++
    #include "napi/native_api.h"
    #include "hilog/log.h"
@@ -66,7 +67,9 @@
        CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
        std::promise<std::string> promise;
        auto future = promise.get_future();
+       napi_acquire_threadsafe_function(callbackData->tsfn);
        napi_call_threadsafe_function(callbackData->tsfn, &promise, napi_tsfn_nonblocking);
+       napi_release_threadsafe_function(callbackData->tsfn, napi_tsfn_release);
        try {
            auto result = future.get();
            OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", result.c_str());
@@ -130,6 +133,7 @@
        napi_delete_async_work(env, callbackData->work);
        callbackData->tsfn = nullptr;
        callbackData->work = nullptr;
+       delete callbackData;
    }
    
    static napi_value StartThread(napi_env env, napi_callback_info info)
@@ -185,7 +189,7 @@
 4. ArkTS code:
 
    <!-- @[napi_thread_safety_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
-   
+
    ``` TypeScript
    export const startThread: (a: () => Promise<string>) => void;
    ```
@@ -194,9 +198,9 @@
    ``` ts
    import nativeModule from 'libentry1.so';
    ```
-   
+
    <!-- @[napi_thread_safety_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    // index.ets
    let callback = (): Promise<string> => {
@@ -241,7 +245,7 @@
 2. Define a thread-safe function and create a child thread at the native entry.
 
    <!-- @[napi_call_threadsafe_function_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
-   
+
    ``` C++
    #include "napi/native_api.h"
    #include "hilog/log.h"
@@ -261,7 +265,7 @@
    void NativeThread(void* arg)
    {
        auto* data = static_cast<ThreadData*>(arg);
-       OH_LOG_INFO(LOG_APP, "[C++ SubThread] Received from Worker: %{public}s\n", data->inputStr.c_str());
+       OH_LOG_INFO(LOG_APP, "[C++ SubThread] Received from %{public}s\n", data->inputStr.c_str());
        std::string str = "Hello from C++!";
        std::string msg = "Echo of " + str;
        char* cstr = strdup(msg.c_str());
@@ -375,7 +379,7 @@
 5. Sample code of the worker thread.
 
    <!-- @[napi_call_threadsafe_function_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/workers/Worker.ets) -->
-   
+
    ``` TypeScript
    // entry/src/main/ets/workers/Worker.ets
    
@@ -386,7 +390,7 @@
    
    port.onmessage = (e: MessageEvents) => {
      console.info('Worker thread received:' + e.data);
-     nativeModule.startWithCallback('Hello', (result: string) => {
+     nativeModule.startWithCallback('Worker', (result: string) => {
        console.info('[Worker] Got from native:', result);
        port.postMessage(result);
      });
@@ -396,7 +400,7 @@
 6. Description of the API in the .d.ts file.
 
    <!-- @[napi_call_threadsafe_function_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
-   
+
    ``` TypeScript
    export const startWithCallback: (input: string, callback: (msg: string) => void) => void;
    ```
@@ -408,7 +412,7 @@
    ```
 
    <!-- @[napi_call_threadsafe_function_worker_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->  
-   
+
    ``` TypeScript
    // index.ets
    const wk = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
@@ -422,9 +426,9 @@
    ``` txt
    Execution result:
    Worker thread received:Start
-   [C++ SubThread] Received from Worker: Hello
+   [C++ SubThread] Received from Worker
    [Worker] Got from native: Echo of Hello from C++!
-   [Main] Received: Echo of Hello from C++
+   [Main] Received: Echo of Hello from C++!
    ```
 
 ### C++ and ArkTS Child Thread Interaction Based on [Taskpool](../../application-dev/arkts-utils/taskpool-introduction.md)
@@ -440,7 +444,7 @@
    @Concurrent
    function nativeCall(input : string): void {
      console.info('Taskpool thread received:%s', input);
-     nativeModule.startWithCallback('Hello', (result: string) => {
+     nativeModule.startWithCallback('Taskpool', (result: string) => {
        console.info('[Taskpool] Got from native:', result);
      });
    }
@@ -456,7 +460,7 @@
    ```
 
    <!-- @[napi_call_threadsafe_function_taskpool_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    // index.ets
    testTaskpool();
@@ -465,6 +469,6 @@
    ``` txt
    Execution result:
    Taskpool thread received:Start
-   [C++ SubThread] Received from Worker: Hello
+   [C++ SubThread] Received from Taskpool
    [Taskpool] Got from native: Echo of Hello from C++!
    ```

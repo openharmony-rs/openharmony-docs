@@ -1,10 +1,11 @@
 # Loading a Module Using Node-API
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:43:21.390Z pushedAt=2026-09-16T08:26:36.867Z -->
 
 You can use **napi_load_module_with_info** to load a module. After the module is loaded, you can use **napi_get_property** to obtain the variables of the module or use **napi_get_named_property** to obtain the functions of the module. The **napi_load_module_with_info** API can be used in a [new ArkTS runtime environment](use-napi-ark-runtime.md) created by the **napi_create_ark_runtime** API.
 
@@ -92,30 +93,30 @@ export {value, test};
     > 2. The file path must start with **packageName**, which is the value of **name** in the **oh-package.json5** file of the module.
 
 
-    ~~~c++
+    ``` C++
     static napi_value loadModule(napi_env env, napi_callback_info info) {
         napi_value result;
-        // 1. Call napi_load_module_with_info to load the module from the Test.ets file.
+        // 1. Use napi_load_module_with_info to load the module in the Test file.
         napi_status status = napi_load_module_with_info(env, "entry/src/main/ets/Test", "com.example.application/entry", &result);
         if (status != napi_ok) {
             return nullptr;
         }
 
         napi_value testFn;
-        // 2. Call napi_get_named_property to obtain the test function.
+        // 2. Use napi_get_named_property to obtain the test function.
         napi_get_named_property(env, result, "test", &testFn);
-        // 3. Call napi_call_function to invoke the test function.
+        // 3. Use napi_call_function to call the test function.
         napi_call_function(env, result, testFn, 0, nullptr, nullptr);
 
         napi_value value;
         napi_value key;
         std::string keyStr = "value";
         napi_create_string_utf8(env, keyStr.c_str(), keyStr.size(), &key);
-        // 4. Call napi_get_property to obtain a variable value.
+        // 4. Use napi_get_property to obtain the value variable.
         napi_get_property(env, result, key, &value);
         return result;
     }
-    ~~~
+    ```
 
 - **Loading a source code HAR module**
 

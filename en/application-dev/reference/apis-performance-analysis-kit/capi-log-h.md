@@ -2,14 +2,15 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @liuyifeifei; @buzhenwang-->
-<!--Designer: @shenchenkai-->
-<!--Tester: @liyang2235-->
+<!--Owner: @suxunquan-->
+<!--Designer: @milkbread123-->
+<!--Tester: @yufeifei-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=d279d307cd9e8aff378b718e4c6eab1a3f2598f8 translatedAt=2026-09-21T02:38:15.725Z pushedAt=2026-09-22T01:29:30.398Z -->
 
 ## Overview
 
-Defines the logging functions of the HiLog module. Before outputting logs, you must define the service domain, and log tag, use the API with the specified log type and level, and specify the privacy identifier.<br> **Service domain**: service domain of logs. You can define the value as required. Its value is a hexadecimal integer ranging from 0x0 to 0xFFFF. If the value exceeds the range, logs cannot be printed.<br> **Log tag**: a string used to identify the class, file, or service behavior.<br> **Log level**: DEBUG, INFO, WARN, ERROR, or FATAL.<br> **Parameter format**: printf format string, which starts with a % character, including a parameter type identifier and a variable parameter.<br> **Privacy identifier**: **{public}** or **{private}** added between the % character and the parameter type identifier in each parameter. **Note**: If no privacy identifier is added, the parameter is considered to be **private**.
+Defines the log APIs of the HiLog module, through which log printing related functions are implemented. When outputting logs, a user first defines the business domain to which the logs belong and the log TAG, then selects the corresponding API based on the type and level, and specifies the parameter privacy identifier to output the log content.<br> Business domain: specifies the business domain to which the specified log corresponds. It is user-defined and used to identify the subsystem and module of a service. It is a hexadecimal base integer ranging from 0x0 to 0xFFFF. If it is out of range, the log cannot be printed.<br> Log TAG: a string constant used to identify the class or service where the call is located.<br> Log level: DEBUG, INFO, WARN, ERROR, and FATAL.<br> Parameter format: a printf-like `%` format, including a format string (including parameter type identifiers) and variable arguments.<br> Privacy parameter identifier: add {public} or {private} after the `%` symbol and before the type in each parameter of the format string. Note: if no privacy identifier is specified for a parameter, the parameter is private by default.
 
 **File to include**: <hilog/log.h>
 
@@ -27,8 +28,8 @@ Defines the logging functions of the HiLog module. Before outputting logs, you m
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [LogType](#logtype) | LogType | Enumerates the log types. You can use this function to specify the type of output logs. Currently, only **LOG_APP** is available.<br>|
-| [LogLevel](#loglevel) | LogLevel | Enumerates the log levels. You are advised to select log levels based on their respective use cases. Log levels:<br> **DEBUG**: provides more detailed process information than INFO logs to help developers analyze service processes and locate faults. DEBUG logs are not recorded in official versions by default. They are available in debug versions or in official versions with the debug function enabled.<br> **INFO**: indicates the key service process nodes and exceptions (for example, no network signal or login failure) that occur during service running. These logs should be recorded by the dominant module in the service to avoid repeated logging conducted by multiple invoked modules or low-level functions.<br> **WARN**: indicates a severe, unexpected fault that has little impact on users and can be rectified by the programs themselves or through simple operations.<br> **ERROR**: indicates a program or functional error that affects the normal running or use of the functionality and can be fixed at a high cost, for example, by resetting data.<br> **FATAL**: indicates that a program or functionality is about to crash and the fault cannot be rectified.<br>|
+| [LogType](#logtype) | LogType | Enumerates the log types. You can use this enum to specify the type of output logs. Currently, only **LOG_APP** is available.<br>|
+| [LogLevel](#loglevel) | LogLevel | Enumerates the log levels. This enum is used to define log levels. Recommended usage of each level: <br> DEBUG: Used to record process details more detailed than the INFO level. Logs at this level help analyze business processes and locate problems in more detail. DEBUG logs are not printed by default in official release versions; they are printed only in debug versions or when the debug switch is enabled. <br> INFO: Used to record key business process nodes to reproduce the main running process of a business; records abnormal information that is expected (such as no network signal, login failure, etc.). These logs should be recorded by the dominant module in the business to avoid duplicate recording in multiple called modules or low-level functions. <br> WARN: A relatively serious unexpected situation occurs, but it has little impact on users, and the program can recover automatically or through simple operations. <br> ERROR: An error occurs in the program or function, which affects the normal running of the function or normal use by users. It can be recovered but at a high cost, such as resetting data. <br> FATAL: A major fatal exception, indicating that the program or function is about to crash and the fault cannot be recovered. <br> |
 | [PreferStrategy](#preferstrategy) | PreferStrategy | Enumerates the preference strategies. This enum is used in [OH_LOG_SetLogLevel](#oh_log_setloglevel). The minimum log level that takes effect varies according to the strategy.|
 
 ### Macros
@@ -89,7 +90,7 @@ enum LogLevel
 
 **Description**
 
-Enumerates the log levels. You are advised to select log levels based on their respective use cases. Log levels:<br> **DEBUG**: provides more detailed process information than INFO logs to help developers analyze service processes and locate faults. DEBUG logs are not recorded in official versions by default. They are available in debug versions or in official versions with the debug function enabled.<br> **INFO**: indicates the key service process nodes and exceptions (for example, no network signal or login failure) that occur during service running. These logs should be recorded by the dominant module in the service to avoid repeated logging conducted by multiple invoked modules or low-level functions.<br> **WARN**: indicates a severe, unexpected fault that has little impact on users and can be rectified by the programs themselves or through simple operations.<br> **ERROR**: indicates a program or functional error that affects the normal running or use of the functionality and can be fixed at a high cost, for example, by resetting data.<br> **FATAL**: indicates that a program or functionality is about to crash and the fault cannot be rectified.<br>
+Enumerates the log levels. This enum is used to define log levels. Recommended usage of each level: <br> DEBUG: Used to record process details more detailed than the INFO level. Logs at this level help analyze business processes and locate problems in more detail. DEBUG logs are not printed by default in official release versions; they are printed only in debug versions or when the debug switch is enabled. <br> INFO: Used to record key business process nodes to reproduce the main running process of a business; records abnormal information that is expected (such as no network signal, login failure, etc.). These logs should be recorded by the dominant module in the business to avoid duplicate recording in multiple called modules or low-level functions. <br> WARN: A relatively serious unexpected situation occurs, but it has little impact on users, and the program can recover automatically or through simple operations. <br> ERROR: An error occurs in the program or function, which affects the normal running of the function or normal use by users. It can be recovered but at a high cost, such as resetting data. <br> FATAL: A major fatal exception, indicating that the program or function is about to crash and the fault cannot be recovered. <br>
 
 **Since**: 8
 
@@ -115,11 +116,13 @@ Enumerates the preference strategies. This enum is used in [OH_LOG_SetLogLevel](
 
 | Enum Item| Description|
 | -- | -- |
-| UNSET_LOGLEVEL = 0 | The setting is cleared. The minimum log level that actually takes effect is the system-controlled minimum log level.|
+| UNSET_LOGLEVEL = 0 | Clears the setting. The minimum log level that actually takes effect is the minimum level controlled by the system. |
 | PREFER_CLOSE_LOG = 1 | The minimum log level that actually takes effect is the larger value of the new log level and the system-controlled minimum log level.|
 | PREFER_OPEN_LOG = 2 | The minimum log level that actually takes effect is the smaller value of the new log level and the system-controlled minimum log level.|
 
 ## Function Description
+
+For detailed usage of each interface, see [Using HiLog (C/C++)](../../dfx/hilog-guidelines-ndk.md).
 
 ### OH_LOG_Print()
 
@@ -129,7 +132,7 @@ int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *
 
 **Description**
 
- Outputs logs of the specified **type**, **level**, **domain**, **tag**, and variables determined by the format specifier and privacy identifier in the printf format.
+Outputs logs of the specified **type**, **level**, **domain**, **tag**, and variables determined by the format specifier and privacy identifier in the printf format.
 
 **Since**: 8
 
@@ -141,7 +144,7 @@ int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *
 | [LogLevel](capi-log-h.md#loglevel) level | Log level. The value can be **LOG_DEBUG**, **LOG_INFO**, **LOG_WARN**, **LOG_ERROR**, and **LOG_FATAL**.|
 | unsigned int domain | Service domain. Its value is a hexadecimal integer ranging from 0x0 to 0xFFFF. If the value exceeds the range, logs cannot be printed.|
 | const char *tag | Log tag, which is a string used to identify the class, file, or service. A tag can contain a maximum of 31 bytes. If a tag exceeds this limit, it will be truncated. Chinese characters are not recommended because garbled characters or alignment problems may occur.|
-| const char *fmt | Format string, which is an enhancement of a printf format string and supports the privacy identifier. Specifically, **{public}** or **{private}** is added between the % character and the format specifier in each parameter.|
+| const char *fmt | Format string, which is an enhancement of a printf format string and supports the privacy identifier. Specifically, **{public}** or **{private}** is added between the `%` character and the format specifier in each parameter. |
 | ... | Parameter list corresponding to the parameter type in the format string. The number and type of parameters must be mapped onto the identifier in the format string.|
 
 **Returns**
@@ -158,7 +161,7 @@ int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const cha
 
 **Description**
 
- Outputs constant log strings of the specified **type**, **level**, **domain**, and **tag**.
+Outputs constant log strings of the specified **type**, **level**, **domain**, and **tag**.
 
 **Since**: 18
 
@@ -186,7 +189,7 @@ int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, cons
 
 **Description**
 
- Outputs log constant strings of the specified **domain**, **tag**, and **level**. The tag and string length must be specified. Unlike **OH_LOG_PrintMsg**, this API allows strings without terminators.
+Outputs log constant strings of the specified **domain**, **tag**, and **level**. The tag and string length must be specified. Unlike **OH_LOG_PrintMsg**, this API allows strings without terminators.
 
 **Since**: 18
 
@@ -216,7 +219,7 @@ int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char 
 
 **Description**
 
- Outputs logs of the specified **type**, **level**, **domain**, **tag**, and variables determined by the format specifier and privacy identifier in the printf format. The variables are of the **va_list** type.
+Outputs logs of the specified **type**, **level**, **domain**, **tag**, and variables determined by the format specifier and privacy identifier in the printf format. The variables are of the **va_list** type.
 
 **Since**: 18
 
@@ -228,7 +231,7 @@ int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char 
 | [LogLevel](capi-log-h.md#loglevel) level | Log level. The value can be **LOG_DEBUG**, **LOG_INFO**, **LOG_WARN**, **LOG_ERROR**, and **LOG_FATAL**.|
 | unsigned int domain | Service domain. Its value is a hexadecimal integer ranging from 0x0 to 0xFFFF. If the value exceeds the range, logs cannot be printed.|
 | const char *tag | Log tag, which is a string used to identify the class, file, or service. A tag can contain a maximum of 31 bytes. If a tag exceeds this limit, it will be truncated. Chinese characters are not recommended because garbled characters or alignment problems may occur.|
-| const char *fmt | Format string, which is an enhancement of a printf format string and supports the privacy identifier. Specifically, **{public}** or **{private}** is added between the % character and the format specifier in each parameter.|
+| const char *fmt | Format string, which is an enhancement of a printf format string and supports the privacy identifier. Specifically, **{public}** or **{private}** is added between the `%` character and the format specifier in each parameter. |
 | va_list ap | Parameter list of the **va_list** type that corresponds to the parameter type in the format string. The number and type of parameters must be mapped onto the identifier in the format string.|
 
 **Returns**
@@ -280,7 +283,7 @@ Indicates DEBUG logs. This is a function-like macro. Before using this macro, de
 | Name| Description|
 | -- | -- |
 | type | Log type. The third-party application log type is [LOG_APP](capi-log-h.md#logtype).|
-| fmt | Format string, which is an enhancement of a printf format string and supports the privacy identifier. Specifically, **{public}** or **{private}** is added between the % character and the format specifier in each parameter.|
+| fmt | Format string, which is an enhancement of a printf format string and supports the privacy identifier. Specifically, **{public}** or **{private}** is added between the `%` character and the format specifier in each parameter. |
 | ... | Parameter list corresponding to the parameter type in the format string. The number and type of parameters must be mapped onto the identifier in the format string.|
 
 **See also**
@@ -305,7 +308,7 @@ Indicates INFO logs. This is a function-like macro. Before using this macro, def
 | Name| Description|
 | -- | -- |
 | type | Log type. The type for third-party applications is defined by **LOG_APP**.|
-| fmt | Format string, which is an enhancement of a printf format string and supports the privacy identifier. Specifically, **{public}** or **{private}** is added between the % character and the format specifier in each parameter.|
+| fmt | Format string, which is an enhancement of a printf format string and supports the privacy identifier. Specifically, **{public}** or **{private}** is added between the `%` character and the format specifier in each parameter. |
 | ... | Parameter list corresponding to the parameter type in the format string. The number and type of parameters must be mapped onto the identifier in the format string.|
 
 **See also**
@@ -330,7 +333,7 @@ Indicates WARN logs. This is a function-like macro. Before using this macro, def
 | Name| Description|
 | -- | -- |
 | type | Log type. The third-party application log type is [LOG_APP](capi-log-h.md#logtype).|
-| fmt | Format string, which is an enhancement of a printf format string and supports the privacy identifier. Specifically, **{public}** or **{private}** is added between the % character and the format specifier in each parameter.|
+| fmt | Format string, which is an enhancement of a printf format string and supports the privacy identifier. Specifically, {public} or {private} is added between the `%` character and the format specifier in each parameter. |
 | ... | Parameter list corresponding to the parameter type in the format string. The number and type of parameters must be mapped onto the identifier in the format string.|
 
 **See also**
@@ -355,7 +358,7 @@ Indicates ERROR logs. This is a function-like macro. Before using this macro, de
 | Name| Description|
 | -- | -- |
 | type | Log type. The third-party application log type is [LOG_APP](capi-log-h.md#logtype).|
-| fmt | Format string, which is an enhancement of a printf format string and supports the privacy identifier. Specifically, **{public}** or **{private}** is added between the % character and the format specifier in each parameter.|
+| fmt | Format string, which is an enhancement of a printf format string and supports the privacy identifier. Specifically, **{public}** or **{private}** is added between the `%` character and the format specifier in each parameter. |
 | ... | Parameter list corresponding to the parameter type in the format string. The number and type of parameters must be mapped onto the identifier in the format string.|
 
 **See also**
@@ -380,7 +383,7 @@ Indicates FATAL logs. This is a function-like macro. Before using this macro, de
 | Name| Description|
 | -- | -- |
 | type | Log type. The third-party application log type is [LOG_APP](capi-log-h.md#logtype).|
-| fmt | Format string, which is an enhancement of a printf format string and supports the privacy identifier. Specifically, **{public}** or **{private}** is added between the % character and the format specifier in each parameter.|
+| fmt | Format string, which is an enhancement of a printf format string and supports the privacy identifier. Specifically, **{public}** or **{private}** is added between the `%` character and the format specifier in each parameter. |
 | ... | Parameter list corresponding to the parameter type in the format string. The number and type of parameters must be mapped onto the identifier in the format string.|
 
 **See also**

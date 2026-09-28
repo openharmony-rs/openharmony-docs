@@ -5,10 +5,12 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-Form Kit provides a development framework and APIs for embedding application information into system entries like the home screen <!--RP3--><!--RP3End-->. It can extract key user information or frequent operations into service widgets (referred to as "widgets"), which can be added to the home screen <!--RP3--><!--RP3End--> for easy access to information and direct service interactions.
+<!-- md-trans-meta sourceCommit=828e43f2d444a1ccec6e0e0a50f347ffb4390aa2 translatedAt=2026-09-14T09:27:26.921Z pushedAt=2026-09-15T13:16:16.994Z -->
+
+Form Kit provides a development framework and APIs for embedding app information on the home screen<!--RP3--><!--RP3End-->. It allows you to extract important information or frequently used operations from an app into service widgets (widgets for short). By adding widgets to the home screen<!--RP3--><!--RP3End-->, you can achieve convenient information display and direct service access.
 
 ## Scenarios for Widget Usage
-- Supported devices: smartphones, tablets, PCs/2-in-1 devices, smart TVs, smart watches, and head units. This kit is not supported on lite wearables.
+- Supported device types: phones, tablets, PCs/2-in-1 devices, TVs, wearables, and head units. Lightweight smart wearable devices do not support this Kit.
 - Supported application types: Widgets can be developed in both applications and atomic services.
 - Supported positions: Users can add widgets to the home screen <!--RP3--><!--RP3End-->. Widgets cannot be embedded in common applications.
 - To use a widget:
@@ -31,6 +33,7 @@ Form Kit provides a development framework and APIs for embedding application inf
 - Widget provider: an application or atomic service that provides the widget. It is responsible for implementing the widget features, including designing the UI, updating data, and handling click interactions.
 - Widget manager: a system service within the operating system that manages all widget information on the device. As a bridge between widget providers and hosts, it offers capabilities such as querying, adding, and deleting widget information to the hosts, and provides notifications like widget addition, deletion, refresh, and click events to the providers.
 
+<!--RP4--><!--RP4End-->
 
 ## Features
 - Information display: Key information from applications or atomic services is displayed on the home screen as widgets. The information can be updated periodically so that users can view relevant information at any time.
@@ -59,10 +62,21 @@ ArkTS widgets and JS widgets have different implementation principles and featur
 | Custom animation  | Not supported   | Supported      |
 | Custom drawing  | Not supported   | Supported      |
 | Logic code execution| Not supported   | Supported      |
+<!--Del-->
+
+## Constraints
+
+The system imposes certain limits on the number of widgets that can be added. The default limits for persistent widgets and temporary widgets are as follows:
+
+| Dimension | Default Limit | Description |
+| --- | --- | --- |
+| Single device | 512 persistent widgets, 256 temporary widgets | Maximum total number of widgets on the device |
+| Single host | 256 | Number of persistent widgets for a single host |
+<!--DelEnd-->
 
 ## Related Kits
 
 - Ability Kit: Form Kit relies on the Extension abilities of Ability Kit for its internal implementation and interacts with Ability Kit during lifecycle scheduling.
-- ArkUI: Form Kit widget hosts can use some components, events, animations, and state management capabilities provided by ArkUI on their pages.
+- ArkUI: Form Kit widget providers can use some components, events, animations, and state management capabilities provided by ArkUI on their pages.
 
 <!--RP1--><!--RP1End-->

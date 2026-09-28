@@ -1,10 +1,12 @@
 # JSVM_VMScope__*
-<!--Kit: Common Basic Capability-->
+
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-27T03:49:51.887Z pushedAt=2026-08-27T06:46:58.679Z -->
 
 ```c
 typedef struct JSVM_VMScope__* JSVM_VMScope
@@ -13,6 +15,8 @@ typedef struct JSVM_VMScope__* JSVM_VMScope
 ## Overview
 
 Defines the JavaScript VM scope.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
 

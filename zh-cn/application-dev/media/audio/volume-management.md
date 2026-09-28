@@ -106,6 +106,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 通过设置监听事件，可以监听系统音量的变化：
 
+> **说明：**
+>
+> 不同输出设备的系统音量相互独立。当音频流的输出设备发生变更时，当前设备上该流类型的系统音量可能与原设备不同，应用可[监听最高优先级输出设备变化](audio-output-device-management.md#监听最高优先级输出设备变化)，在设备变化后通过系统音量查询接口[getVolumeByStream](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)重新获取音量值，以更新应用侧维护的音量状态。
+
 <!-- @[onStreamVolumeChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/VolumeManagement.ets) -->
 
 ``` TypeScript

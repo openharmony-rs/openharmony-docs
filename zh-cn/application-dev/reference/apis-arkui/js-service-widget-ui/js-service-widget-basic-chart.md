@@ -107,7 +107,7 @@
 
 | 名称         | 类型     | 默认值  | 必填   | 描述                                       |
 | ---------- | ------ | ---- | ---- | ---------------------------------------- |
-| startColor | Color  | -    | 否    | 起始位置的颜色，设置startColor必须设置endColor。不设置startColor时，会使用系统默认预置的颜色数组，具体颜色值见下表。 |
+| startColor | Color  | -    | 否    | 起始位置的颜色，必须与endColor同时设置。不设置startColor时，会使用系统默认预置的颜色数组，具体颜色值见下表。 |
 | endColor   | Color  | -    | 否    | 终止位置的颜色，设置endColor必须设置startColor。<br/>不设置startColor时，会使用系统默认预置的颜色数组。 |
 | value      | number | 0    | 是    | 占比数据的所占份额，最大100。                         |
 | name       | string | -    | 否    | 此类数据的名称。                                 |

@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=ea995360514e4a997c0b326ffcf6b6b3cfa19571 translatedAt=2026-09-16T02:39:44.044Z pushedAt=2026-09-16T06:14:43.657Z -->
 
 uinput can simulate operations on devices such as the mouse, keyboard, and touchpad for pressure tests like stability tests.
 
@@ -35,7 +36,7 @@ uinput <option> <command> <arg> ...
 
 > **NOTE**
 >
-> The unit of the coordinate-related parameters in the command is [px (pixel units)](../reference/apis-arkui/arkui-ts/ts-pixel-units.md).
+> All coordinate-related parameters in commands use px as the unit. For details, see [Pixel Units](../reference/apis-arkui/arkui-ts/ts-pixel-units.md).
 
 ## Help Command
 
@@ -97,6 +98,7 @@ uinput --mouse --move <dx1> <dy1> <dx2> <dy2> [smooth time] --trace
 # <dx2> and <dy2> are coordinates of the end point in the relative coordinate system with the upper left corner of the screen as the origin.
 # The --trace option can be used to simulate the movement position and trace of the mouse to the coordinates in a relative coordinate system whose origin is the upper left corner of the specified screen.
 # [smooth time] specifies the moving time, in milliseconds. The default value is 1000. The value range is [1,15000]. The value must be an integer.
+# During the movement, a mouse movement event is injected approximately every 7 ms until the movement ends. If the moving time is not an integer multiple of 7 ms, the last injection is placed directly at the end point coordinates.
 ```
 
 **Example**
@@ -192,6 +194,7 @@ uinput --mouse --drag <dx1> <dy1> <dx2> <dy2> [total time]
 # <dx1> and <dy1> are coordinates of the start point in the relative coordinate system with the upper left corner of the screen as the origin.
 # <dx2> and <dy2> are coordinates of the end point in the relative coordinate system with the upper left corner of the screen as the origin.
 # [total time] specifies the total drag time, in milliseconds. The default value is 1000. The value must be an integer between 1 and 15000. This parameter is optional.
+# During the drag, a mouse movement event is injected approximately every 7 ms until the drag ends. If the total drag time is not an integer multiple of 7 ms, the last injection is placed directly at the end point coordinates.
 ```
 
 **Example**
@@ -232,7 +235,7 @@ uinput -M -c 0 -i 500 -c 0
 ### Querying Mouse Pointer Information
 Queries the current mouse pointer information.
 
-When the mouse pointer is visible, the mouse pointer status and [style](../reference/apis-input-kit/js-apis-pointer.md#pointerstyle) are displayed. If the **filePath** parameter is passed in and the mouse pointer is a third-party custom pointer (the enumerated value of the style is **-100**), the mouse pointer style image is saved in binary format to the specified file. You need to create the **filePath** file. If the **filePath** parameter is not passed in, the style image is not saved. When the mouse pointer is not visible, the style information is not displayed, and the style image is not saved.
+If the mouse cursor is visible, the cursor display state and [PointerStyle](../reference/apis-input-kit/js-apis-pointer.md#pointerstyle) are output. If the `filePath` parameter is passed and the mouse cursor uses an app-defined custom style (style enumeration value -100), the cursor style image is saved to the specified file in binary format. You must create the `filePath` file beforehand. If the `filePath` parameter is not passed, the style image is not saved. When the mouse cursor is hidden, no style information is output and no style image is saved.
 
 **Command**
 ```bash
@@ -256,7 +259,7 @@ uinput -M -q /data/local/tmp/testfile
 Simulates a keyboard input event.
 
 ### Key Down Event
-Simulates a key press. You are advised to use this event together with the key up event to close the event. For details about **keyCode**, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
+Simulates a key press on the keyboard. It is recommended to use this together with the key up event to ensure event closure. For keyCode, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
 
 **Command**
 ```bash
@@ -265,7 +268,7 @@ uinput --keyboard --down <keyCode>
 ```
 
 ### Key Up Event
-Simulates a key release. You are advised to use this event together with the key down event to close the event. For details about **keyCode**, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
+Simulates a key release on the keyboard. This must be used together with the key down event to ensure event closure. For keyCode, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
 
 **Command**
 ```bash
@@ -280,7 +283,7 @@ uinput -K -d 2017 -u 2017
 ```
 
 ### Long-Press Key Event
-Simulates a long press on the key for a specified duration. You do not need to inject the key release event. No key press event is injected during the long press. For details about **keyCode**, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
+Simulates pressing a key on the keyboard and releasing it after a specified duration, without needing to inject a key up event again. During the long press, press events are not repeatedly injected. For keyCode, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
 
 **Command**
 ```bash
@@ -297,7 +300,7 @@ uinput -K -l 2017 6000
 ```
 
 ### Repeat Key Event
-Simulates pressing a key and repeating the pressing for a specified time. You do not need to inject the key up event. Key press events are repeatedly injected during the long press. For details about **keyCode**, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
+Simulates pressing a key on the keyboard, continuously injecting press events for a specified duration, and then releasing the key, without needing to inject a key up event again. During the long press, press events are repeatedly injected. For keyCode, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
 
 **Command**
 ```bash
@@ -347,7 +350,7 @@ uinput -K -t Hello,World!
 
 ## Controlling the Injected Modifier Key Status
 
-Since API version 22, the capability of controlling the injected modifier key status can be enabled or disabled. The supported modifier keys include **KEYCODE_ALT_LEFT**, **KEYCODE_ALT_RIGHT**, **KEYCODE_SHIFT_LEFT**, **KEYCODE_SHIFT_RIGHT**, **KEYCODE_CTRL_LEFT**, **KEYCODE_CTRL_RIGHT**, **KEYCODE_META_LEFT** and **KEYCODE_META_RIGHT**. For details, see [Keycode](../reference/apis-input-kit/js-apis-keycode.md).
+Starting from API version 22, you can enable or disable the capability of controlling the injected modifier key status. The supported modifier keys include: KEYCODE_ALT_LEFT, KEYCODE_ALT_RIGHT, KEYCODE_SHIFT_LEFT, KEYCODE_SHIFT_RIGHT, KEYCODE_CTRL_LEFT, KEYCODE_CTRL_RIGHT, KEYCODE_META_LEFT, and KEYCODE_META_RIGHT. For details, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
 
 ### Enabling the Capability of Controlling the Injected Modifier Key Status
 
@@ -432,6 +435,7 @@ uinput --stylus --move <dx1> <dy1> <dx2> <dy2> [smooth time] [-k keep time]
 # <dx2> and <dy2> are coordinates of the end point in the relative coordinate system with the upper left corner of the screen as the origin.
 # [smooth time] specifies the moving time, in milliseconds. The value must be an integer between 1 and 15000. The default value is 1000. This parameter is optional.
 # [-k keep time] specifies the duration before releasing after the stylus moves to the target position, in milliseconds. The value must be an integer between 0 and 60000. The default value is 0. This parameter is optional.
+# During the movement and hold, a movement event is injected approximately every 7 ms until the stylus is released. If the moving time is not an integer multiple of 7 ms, the last injection is placed directly at the end point coordinates.
 ```
 
 **Example**
@@ -470,6 +474,7 @@ uinput --stylus --drag <dx1> <dy1> <dx2> <dy2> [press time] [total time]
 # <dx2> and <dy2> are coordinates of the end point in the relative coordinate system with the upper left corner of the screen as the origin.
 # [press time] specifies the press time, in milliseconds. The value is an integer between 500 and 14500. The default value is 500. This parameter is optional and must be used together with the total time parameter. If either of the parameters is not specified, the command does not take effect. If both parameters are not specified, the command takes effect.
 # [total time] specifies the drag time, in milliseconds. The value is an integer between 1000 and 15000. The default value is 1000. This parameter is optional and must be used together with the press time parameter. If either of the two parameters is not specified, the command does not take effect. If both parameters are not specified, the command takes effect. The value of [total time] minus [press time] must be greater than or equal to 500.
+# During the drag, a movement event is injected approximately every 7 ms until the drag ends. If the drag time is not an integer multiple of 7 ms, the last injection is placed directly at the end point coordinates.
 ```
 
 **Example**
@@ -539,6 +544,7 @@ uinput --touch --move <dx1> <dy1> <dx2> <dy2> [-k keep time] [smooth time]
 # <dx2> and <dy2> are coordinates of the end point in the relative coordinate system with the upper left corner of the screen as the origin.
 # [-k keep time] specifies the hold time, in milliseconds. The value must be an integer between 0 and 60000. The default value is 0. This parameter is optional.
 # [smooth time] specifies the moving time, in milliseconds. The value must be an integer between 1 and 15000. The default value is 1000. This parameter is optional.
+# During the movement and hold, a touch movement event is injected approximately every 7 ms until the touch is released. If the moving time is not an integer multiple of 7 ms, the last injection is placed directly at the end point coordinates.
 ```
 
 **Example**
@@ -546,7 +552,7 @@ uinput --touch --move <dx1> <dy1> <dx2> <dy2> [-k keep time] [smooth time]
 # Simulate touching at (100, 1000), moving to (100, 2000) over 1000 ms, holding for 1000 ms and then lifting the finger.
 uinput -T -m 100 1000 100 2000 -k 1000 1000
 
-# Simulate moving three fingers for 200 ms, with the first one from (300, 900) to (300,2000), the second one from (600, 900) to (600, 2000), and the third one from (900, 900) to (900, 2000). After the movement, hold the screen for 1000 ms and then lift the fingers.
+# Simulate a three-finger swipe. The first finger presses at (300, 900) and moves to (300, 2000), the second finger presses at (600, 900) and moves to (600, 2000), and the third finger presses at (900, 900) and moves to (900, 2000). The total movement duration is 200 ms. After the movement ends, the fingers pause on the screen for 1000 ms before lifting.
 uinput -T -m 300 900 300 2000 600 900 600 2000 900 900 900 2000 -k 1000 200
 ```
 
@@ -580,6 +586,7 @@ uinput --touch --drag <dx1> <dy1> <dx2> <dy2> [press time] [total time]
 # <dx2> and <dy2> are coordinates of the end point in the relative coordinate system with the upper left corner of the screen as the origin.
 # [press time] specifies the press time, in milliseconds. The value is an integer between 500 and 14500. The default value is 500. This parameter is optional and must be used together with the total time parameter. If either of the parameters is not specified, the command does not take effect. If both parameters are not specified, the command takes effect.
 # [total time] specifies the drag time, in milliseconds. The value is an integer between 1000 and 15000. The default value is 1000. This parameter is optional and must be used together with the press time parameter. If either of the two parameters is not specified, the command does not take effect. If both parameters are not specified, the command takes effect. The value of [total time] minus [press time] must be greater than or equal to 500.
+# During the drag, a movement event is injected approximately every 7 ms until the drag ends. If the drag time is not an integer multiple of 7 ms, the last injection is placed directly at the end point coordinates.
 ```
 
 **Example**

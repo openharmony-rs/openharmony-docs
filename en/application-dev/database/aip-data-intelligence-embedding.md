@@ -1,12 +1,11 @@
 # Application Data Vectorization (ArkTS)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @my-2024; @cuile44; @pancodax-->
 <!--Designer: @fysun17; @AnruiWang; @xd_94-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b464bd8a2d25d9f977204373ed9c12c6bc63984e translatedAt=2026-07-27T08:15:21.461Z pushedAt=2026-07-27T08:30:36.500Z -->
+<!-- md-trans-meta sourceCommit=f10278f41af4fdd7115ef6b8827e0eaff1932642 translatedAt=2026-09-20T06:15:00.705Z pushedAt=2026-09-20T07:33:19.861Z -->
 
 ## When to Use
 
@@ -21,15 +20,12 @@ Since API version 15, application data vectorization is supported.
 To get started, it is helpful to understand the following concepts:
 
 ### Vectorization
-
 The process of vectorization uses embedding models to convert high-dimensional unstructured data (such as text and images) into low-dimensional continuous vector representations. This approach captures the semantic relationships with the data, translating abstract information into a format that can be analyzed and processed by computers. Embedding technology is widely used in fields such as natural language processing (semantic search), image recognition (feature extraction), and recommendation systems (user/item representation).
 
 ### Multi-Modal Embedding Model
-
 Embedding models are used to implement application data vectorization. The system supports multimodal embedding models, which can map different data modalities, such as text and images, into a unified vector space. These models support both single-modal semantic representation (text-to-text and image-to-image retrieval) and cross-modal capabilities (text-to-image and image-to-text retrieval).
 
 ### Text Segmentation
-
 To address length limitations when textual data is vectorized, you can use the APIs provided by the ArkData Intelligence Platform (AIP) to split the input text into smaller sections. This approach ensures efficient and effective data vectorization.
 
 ## Implementation Mechanism
@@ -42,30 +38,33 @@ Application data vectorization involves converting raw application data into vec
 
 ## Constraints
 
-- Considering the significant computing workload and resources of data vectorization processing, the APIs are only available to 2-in-1 device applications.
-
+- Text vectorization model:
+  - Before API version 26.0.0, the text vectorization model is available on PCs/2-in-1 devices.
+  - Starting from API version 26.0.0, the text vectorization model is available on PCs/2-in-1 devices, phones, and tablets.
+  - For phones and tablets, the text vectorization model is available only on devices with Kirin 9010s or later.
+- Image vectorization model: available only on PCs/2-in-1 devices.
 - You can use NPUs to accelerate the inference process of embedding models. NPUs are recommended because pure CPU computation falls far behind in latency and energy efficiency.
-
 - The model can process up to 512 characters of text per inference, supporting both Chinese and English.
-
 - The model can handle images below 20 MB in size in a single inference.
+- The generated vectors are valid only on the current device and cannot be used for cross-device retrieval.
 
 ## Available APIs
 
 The following table lists the APIs related to application data vectorization. For more APIs and their usage, see [ArkData Intelligence Platform](../reference/apis-arkdata/js-apis-data-intelligence.md).
 
-| API| Description| 
+| API| Description|
 | -------- | -------- |
-| getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt; | Obtains a text embedding model.| 
-| loadModel(): Promise&lt;void&gt; | Loads the text embedding model.| 
-| splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt; | Obtains text chunks.| 
-| getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt; | Obtains the embedding vector of the given text.| 
+| getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt; | Obtains a text embedding model.|
+| getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt; | Obtains the cloud-side embedding models supported by the current device. |
+| loadModel(): Promise&lt;void&gt; | Loads the text embedding model.|
+| splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt; | Obtains text chunks.|
+| getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt; | Obtains the embedding vector of the given text.|
 | getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt; | Obtains the embedding vector of a given batch of texts.|
-| releaseModel(): Promise&lt;void&gt; | Releases the text embedding model.| 
-| getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt; | Obtains an image embedding model.| 
-| loadModel(): Promise&lt;void&gt; | Loads the image embedding model.| 
-| getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt; | Obtains the embedding vector of the given image.| 
-| releaseModel(): Promise&lt;void&gt; | Releases the image embedding model.| 
+| releaseModel(): Promise&lt;void&gt; | Releases the text embedding model.|
+| getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt; | Obtains an image embedding model.|
+| loadModel(): Promise&lt;void&gt; | Loads the image embedding model.|
+| getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt; | Obtains the embedding vector of the given image.|
+| releaseModel(): Promise&lt;void&gt; | Releases the image embedding model.|
 
 ## How to Develop Text Vectorization
 
@@ -80,34 +79,67 @@ The following table lists the APIs related to application data vectorization. Fo
 
 2. Obtain a text embedding model.
 
-   Use the **getTextEmbeddingModel** method to obtain a text embedding model. The sample code is as follows:
+   - For PCs/2-in-1 devices: use the on-device embedding model. Configure the model version, whether to use NPU acceleration, and the model cache path. The sample code is as follows:
 
-   <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+     <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
 
-   ``` TypeScript
-   let textConfig: intelligence.ModelConfig = {
-     version: intelligence.ModelVersion.BASIC_MODEL,
-     isNpuAvailable: false,
-     cachePath: "/data"
-   }
-   let textEmbedding: intelligence.TextEmbedding;
-   let modelInfo:  intelligence.CloudModelInfo;
-   ```
+     ``` TypeScript
+     let textConfig: intelligence.ModelConfig = {
+       version: intelligence.ModelVersion.BASIC_MODEL,
+       isNpuAvailable: false,
+       cachePath: "/data"
+     }
+     let textEmbedding: intelligence.TextEmbedding;
+     let modelInfo:  intelligence.CloudModelInfo;
+     ```
 
-   <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+     <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
 
-   ``` TypeScript
-   intelligence.getTextEmbeddingModel(textConfig)
-     .then((data: intelligence.TextEmbedding) => {
-       console.info('Succeeded in getting TextModel');
-       textEmbedding = data;
-       // ...
-     })
-     .catch((err: BusinessError) => {
-       console.error('Failed to get TextModel and code is ' + err.code);
-       // ...
-     })
-   ```
+     ``` TypeScript
+     intelligence.getTextEmbeddingModel(textConfig)
+       .then((data: intelligence.TextEmbedding) => {
+         console.info('Succeeded in getting TextModel');
+         textEmbedding = data;
+         // ...
+       })
+       .catch((err: BusinessError) => {
+         console.error('Failed to get TextModel and code is ' + err.code);
+         // ...
+       })
+     ```
+
+   - For phones and tablets: use the cloud-side embedding model. Call the getSupportedCloudModel method to obtain the cloud-side model information and configure the network policy for downloading the model. The sample code is as follows:
+
+     <!-- @[aip_getSupportedCloudModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+
+     ``` TypeScript
+     intelligence.getSupportedCloudModel()
+       .then((info: Array<intelligence.CloudModelInfo>) => {
+         console.info('Succeeded in getting supported model');
+         if (info.length > 0) {
+           modelInfo = info[0];
+         }
+       })
+     ```
+
+     <!-- @[aip_getCloudTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+
+     ``` TypeScript
+     if (modelInfo !== undefined) {
+       textConfig.modelInfo = modelInfo;
+       textConfig.networkPolicy = intelligence.NetworkPolicy.WIFI_ONLY;
+     }
+     intelligence.getTextEmbeddingModel(textConfig)
+       .then((data: intelligence.TextEmbedding) => {
+         console.info('Succeeded in getting TextModel');
+         textEmbedding = data;
+         // ...
+       })
+       .catch((err: BusinessError) => {
+         console.error('Failed to get TextModel and code is ' + err.code);
+         // ...
+       })
+     ```
 
 3. Load the text embedding model.
 
@@ -129,7 +161,7 @@ The following table lists the APIs related to application data vectorization. Fo
 
 4. Split text. If the data length exceeds the limit, call **splitText()** to split the data into smaller text blocks and then vectorize them.
 
-    The sample code is as follows:
+   The sample code is as follows:
 
    <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
 
@@ -153,7 +185,7 @@ The following table lists the APIs related to application data vectorization. Fo
 
 5. Obtain the embedding vector of the given text. The given text can be a single piece of text or a collection of multiple text entries.
 
-    The sample code is as follows:
+   The sample code is as follows:
 
    <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
 
@@ -294,3 +326,4 @@ The following table lists the APIs related to application data vectorization. Fo
        // ...
      })
    ```
+

@@ -4,7 +4,7 @@
 <!--Owner: @qkfg-->
 <!--Designer: @qkfg-->
 <!--Tester: @caixincen-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
 ## 功能介绍
 
 wukong是系统自带的一种命令行工具，支持Ability的随机事件注入、控件注入、异常捕获、报告生成和对Ability数据遍历截图等特性。通过模拟用户行为，对系统或应用进行稳定性压力测试。wukong分为随机测试、专项测试和专注测试。
@@ -223,7 +223,7 @@ wukong部件架构图以及部件内子模块职责如下所述。
 - 指定页面压测
 
   ```bash
-  > 显示启动
+  > 显式启动
   > hdc_std shell
   $ wukong exec -b bundlename -e abilityname -U uri
 
@@ -369,7 +369,7 @@ FileTransfer finish, Size:76492, File count = 1, time:16ms rate:4780.75kB/s
 
     | 类型                            | 描述                               |
     | -------------------------------| ---------------------------------- |
-    | type                           | 事件或控件注入的类型，事件注入类型范围请参考[随机测试命令参数](#随机测试)，控件注入类型范围请参考<!--RP2-->[ArkTS组件](../reference/apis-arkui/Readme-CN.md)<!--RP2End-->。|
+    | type                           | 事件或控件注入的类型，事件注入类型范围请参考[随机测试命令参数](#随机测试)，控件注入类型范围包括ArkUI（方舟UI框架）下的ArkTS组件和ArkWeb（方舟Web）下的ArkTS组件。|
     | execTimes                      | 事件或者控件注入执行次数。|
     | proportion                     | 当前事件操作在事件注入执行总次数里的占比。|
     | inputedTimes                   | 遍历的控件类型个数。|

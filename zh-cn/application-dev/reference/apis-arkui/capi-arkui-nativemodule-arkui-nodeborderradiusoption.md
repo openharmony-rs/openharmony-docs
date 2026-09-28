@@ -1,4 +1,4 @@
-# ArkUI_NodeBorderRadiusOption
+# ArkUI_NodeBorderRadius
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

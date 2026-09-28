@@ -1,14 +1,22 @@
 # DRM Development (C/C++)
 
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=804e49693463f2a26dff2f7a605cb4a15d07f377 translatedAt=2026-09-14T09:56:58.507Z pushedAt=2026-09-15T13:38:38.729Z -->
+
 ## When to Use
 
 DRM Kit provides C/C++ APIs for comprehensive digital rights management, covering certificate management, license management, content authorization, and content decryption.
 
-Its implementation is built around two core classes: MediaKeySystem and MediaKeySession. MediaKeySystem handles system-level management of DRM certificates and licenses, as well as the lifecycle of MediaKeySession instances. MediaKeySession, in turn, is responsible for authorizing specific content and enabling its decryption through integration with AVCodec Kit for playback.
+Its implementation is built around two core classes: MediaKeySystem and MediaKeySession. MediaKeySystem handles system-level management of DRM certificates and licenses, as well as the lifecycle of MediaKeySession instances. MediaKeySession, in turn, is responsible for authorizing specific content and enabling its decryption through integration with Media Kit or AVCodec Kit for playback.
 
 ## How to Develop
 
-For details on the APIs, see [DRM API](../../reference/apis-drm-kit/capi-drm.md).
+For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.md).
 
 1. Import the DRM Kit module.
 
@@ -28,6 +36,7 @@ For details on the APIs, see [DRM API](../../reference/apis-drm-kit/capi-drm.md)
 3. Obtain the name and ID list of the DRM solutions supported by the device.
 
     ```c++
+    #include <cstring>
     uint32_t count = 3; // count specifies the number of DRM plugins supported by the device. Pass in the actual number.
     DRM_MediaKeySystemDescription descriptions[3];
     memset(descriptions, 0, sizeof(descriptions));
@@ -103,7 +112,7 @@ For details on the APIs, see [DRM API](../../reference/apis-drm-kit/capi-drm.md)
     /* 
       The application sends a DRM certificate request to the DRM service through a network request, obtains a response,
       and sets the response to the device. Pass in the actual data and length.
-    */
+     */
     unsigned char keySystemResponse[MAX_DRM_PROVISION_BUF_SIZE] = {0x00};
     ret = OH_MediaKeySystem_ProcessKeySystemResponse(mediaKeySystem, keySystemResponse, sizeof(keySystemResponse));
     if (ret != DRM_ERR_OK) {
@@ -188,7 +197,7 @@ For details on the APIs, see [DRM API](../../reference/apis-drm-kit/capi-drm.md)
     /*
       The application requests the DRM service through the network, obtains a media key response, and sends the response to OH_MediaKeySession_ProcessMediaKeyResponse.
       If the response is an offline media key response, the offline media key ID is returned. Set mediaKeyId based on the actual data and length.
-    */
+     */
     unsigned char mediaKeyId[128] = {0x00};
     int32_t mediaKeyIdLen = 128;
     // MAX_DRM_MEDIA_KEY_RESPONSE_BUF_SIZE specifies the maximum length of a media key response. Pass in the actual length.

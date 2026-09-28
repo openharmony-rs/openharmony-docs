@@ -6,10 +6,11 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=961242542935e30a09f51de31f7b66fd0e69a985 translatedAt=2026-09-21T02:27:36.489Z pushedAt=2026-09-22T01:29:30.375Z -->
 
 ## Overview
 
-Defines the APIs for debugging.
+Defines the debugging functions of the HiDebug module, providing capabilities such as CPU usage monitoring, memory information query, trace capture, stack backtracing, performance sampling, memory export listening, and maintenance and debugging information recording, helping developers perform application performance analysis, resource management, and problem diagnosis.
 
 **File to include**: <hidebug/hidebug.h>
 
@@ -39,11 +40,11 @@ Defines the APIs for debugging.
 | [HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()](#oh_hidebug_stopapptracecapture) | - | Stops application trace collection.|
 | [HiDebug_ErrorCode OH_HiDebug_RequestTrace(OH_HiDebug_RequestTraceConfig *config, OH_HiDebug_RequestTraceCallback callback)](#oh_hidebug_requesttrace) | - | Requests trace collection based on the configured collection settings.|
 | [HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)](#oh_hidebug_getgraphicsmemory) | - | Obtains the size of the GPU memory. Note that this API involves multiple cross-process communications and may take more than 1 second. Therefore, you are advised not to call this API in the main thread.|
-| [int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, void** pcArray, int size)](#oh_hidebug_backtracefromfp) | - | Performs stack back-tracing based on the given fp address. This function is async-signal-safe.|
+| [int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, void** pcArray, int size)](#oh_hidebug_backtracefromfp) | - | Performs stack backtracing based on the given fp address. This function is async-signal-safe.|
 | [typedef void (\*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame)](#oh_hidebug_symbolicaddresscallback) | OH_HiDebug_SymbolicAddressCallback | If the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API is successfully called, the parsed stack information is returned to the caller through this function.<br>Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.|
-| [HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, void* pc, void* arg, OH_HiDebug_SymbolicAddressCallback callback)](#oh_hidebug_symbolicaddress) | - | Obtains detailed symbol information based on the specified PC address. This function is not asyn-signal-safe.<br>Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.|
-| [HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)](#oh_hidebug_createbacktraceobject) | - | Creates an object for stack backtracing and parsing. This function is not asyn-signal-safe.<br>Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.|
-| [void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)](#oh_hidebug_destroybacktraceobject) | - | Destroys the object created by [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) to release the resources applied for during stack back-tracing and parsing. This function is not asyn-signal-safe.|
+| [HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, void* pc, void* arg, OH_HiDebug_SymbolicAddressCallback callback)](#oh_hidebug_symbolicaddress) | - | Obtains detailed symbol information based on the given pc address. This function is not async-signal-safe and cannot be used in an asynchronous signal handler.<br>**Note:** Because this API involves multiple I/O operations and takes a long time, it is recommended not to call it directly in the main thread. |
+| [HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)](#oh_hidebug_createbacktraceobject) | - | Creates an object for stack backtracing and parsing. This function is not async-signal-safe.<br>Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.|
+| [void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)](#oh_hidebug_destroybacktraceobject) | - | Destroys the object created by [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) to release the resources requested during stack backtracing and stack parsing. This function is not async-signal-safe. Because this API involves multiple I/O operations and takes a long time, it is recommended not to call it directly in the main thread.|
 | [HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatch *dispatchTable)](#oh_hidebug_setmallocdispatchtable) | - | Sets the **MallocDispatch** table in the basic C library to temporarily replace the original memory operation functions (such as **malloc**, **free**, **calloc**, **realloc**, **mmap**, and **munmap**) with the custom memory operation functions. The **MallocDispatch** table is a struct that encapsulates memory operation functions such as **malloc**, **calloc**, **realloc**, and **free** in the basic C library. **HiDebug_MallocDispatch** is only a part of the **MallocDispatch** struct.<br>Note: Do not directly call memory operation functions such as **malloc**, **free**, **calloc**, **realloc**, **mmap**, and **munmap** in the **libc** standard library in the custom memory operation functions. Otherwise, a deadlock occurs. Do not use hilog to print logs in the custom **malloc** method. Otherwise, a deadlock occurs.|
 | [HiDebug_MallocDispatch* OH_HiDebug_GetDefaultMallocDispatchTable(void)](#oh_hidebug_getdefaultmallocdispatchtable) | - | Obtains the default MallocDispatch table of the system C library. You can call [OH_HiDebug_RestoreMallocDispatchTable](capi-hidebug-h.md#oh_hidebug_restoremallocdispatchtable) to restore the table.|
 | [void OH_HiDebug_RestoreMallocDispatchTable(void)](#oh_hidebug_restoremallocdispatchtable) | - | Restores the MallocDispatch table of the system C library.|
@@ -134,7 +135,7 @@ Releases the **HiDebug_ThreadCpuUsagePtr**.
 
 | Name| Description|
 | -- | -- |
-| [HiDebug_ThreadCpuUsagePtr](capi-hidebug-hidebug-threadcpuusage.md) *threadCpuUsage | Pointer to the available CPU buffer of all threads of the application. For details, see [HiDebug_ThreadCpuUsagePtr](capi-hidebug-hidebug-threadcpuusage.md). The input parameter is obtained by **OH_HiDebug_GetAppThreadCpuUsage()**.|
+| [HiDebug_ThreadCpuUsagePtr](capi-hidebug-hidebug-threadcpuusage.md) *threadCpuUsage | Pointer to the buffer of available CPU usage of all threads in the application. See [HiDebug_ThreadCpuUsagePtr](capi-hidebug-hidebug-threadcpuusage.md). The passed-in parameter is obtained by **OH_HiDebug_GetAppThreadCpuUsage()**. After being passed in, this function releases the pointed-to thread CPU usage data structure, and the pointer cannot be used again after release.|
 
 ### OH_HiDebug_GetSystemMemInfo()
 
@@ -253,7 +254,7 @@ Stops application trace collection.
 
 | Type| Description|
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | **0** - The operation is successful.<br>         **11400104** - An internal system error occurs.<br>         **11400105** - No trace collection is running.|
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 0 - Success.<br>         11400104 - System internal error.<br>         11400105 - No trace is currently running. |
 
 ### OH_HiDebug_RequestTrace()
 
@@ -312,7 +313,7 @@ int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, v
 
 **Description**
 
-Performs stack back-tracing based on the given fp address. This function is async-signal-safe.
+Performs stack backtracing based on the given fp address. This function is async-signal-safe.
 
 **Since**: 20
 
@@ -349,7 +350,7 @@ If the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress
 | -- | -- |
 | void\* pc | PC address transferred to the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API for parsing.|
 | void\* arg | arg value of the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API.|
-| [const HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)\* frame | Pointer to [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md), which is obtained by parsing the PC address passed to the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API. What the pointer points to is valid only in the function scope.|
+| [const HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)\* frame | Pointer to the stack information [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md) obtained by resolving the PC address passed to the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API. The content pointed to by this pointer is valid only within the scope of this function. |
 
 ### OH_HiDebug_SymbolicAddress()
 
@@ -359,7 +360,7 @@ HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, vo
 
 **Description**
 
-Obtains detailed symbol information based on the specified PC address. This function is not asyn-signal-safe.
+Obtains detailed symbol information through the given PC address. This function is not async-signal-safe and cannot be used in an asynchronous signal handler.
 
 > **NOTE**
 >
@@ -390,7 +391,7 @@ HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)
 
 **Description**
 
-Creates an object for stack backtracing and parsing. This function is not asyn-signal-safe.
+Creates an object for stack backtracing and parsing. This function is not async-signal-safe.
 
 > **NOTE**
 >
@@ -412,7 +413,7 @@ void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)
 
 **Description**
 
-Destroys the object created by [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) to release the resources applied for during stack backtracing and parsing. This function is not asyn-signal-safe.
+Destroys the object created by [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) to release the resources applied for during stack backtracing and parsing. This function is not async-signal-safe.
 
 **Since**: 20
 
@@ -498,7 +499,7 @@ Obtains the detailed GPU memory usage of an application.
 
 | Name| Description|
 | -- | -- |
-| uint32_t interval | Interval that the cached GPU memory data exists, in seconds. If the duration exceeds the value of interval, the API obtains the latest data and updates the buffer. Otherwise, the API directly returns the cached data.<br> The value range of interval is [2, 3600]. If the passed-in interval is out of the range, **300** is used as the default value.|
+| uint32_t interval | When the cached GPU memory data has existed for longer than the set **interval** (in seconds), the API obtains the latest GPU memory data and updates the cache; otherwise, the API directly returns the cached value.<br> The value range of **interval** is [2, 3600]. If the passed interval is out of range, 300 is used as the default value. |
 | [HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md) *summary | Pointer to [HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md).|
 
 **Returns**
@@ -541,8 +542,8 @@ Performs Perf sampling on the specified threads and returns the sampling stack c
 
 | Name| Description|
 | -- | -- |
-| [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)* config |  Pointer to the [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md) struct.|
-| [OH_HiDebug_ThreadLiteSamplingCallback](capi-hidebug-h.md#oh_hidebug_threadlitesamplingcallback) stacksCallback | Callback used to return the sampling result when the sampling is complete.|
+| [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)* config |  Pointer to the Perf sampling configuration struct [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md). The configuration parameters determine the specific sampling behavior, such as the sampling frequency and target threads.|
+| [OH_HiDebug_ThreadLiteSamplingCallback](capi-hidebug-h.md#oh_hidebug_threadlitesamplingcallback) stacksCallback | Callback function invoked when sampling ends, used to return the sampling result. After sampling is complete, the system calls this function and passes the sampling data as a parameter. |
 
 **Returns**
 
@@ -567,7 +568,7 @@ Adds debugging information to the crash logs. This function is used together wit
 | Name| Description|
 | -- | -- |
 | [HiDebug_CrashObjType](capi-hidebug-type-h.md#hidebug_crashobjtype) type | Data type of the debugging information. For details, see [HiDebug_CrashObjType](capi-hidebug-type-h.md#hidebug_crashobjtype).|
-| void* addr | Address of the debugging information. The address must be valid when a crash occurs.|
+| void* addr | Address of the debugging information. The address must remain valid when a crash occurs. After it is set, if the program crashes, the system reads the debugging information pointed to by this address and records it in the crash log. |
 
 **Returns**
 
@@ -605,12 +606,13 @@ Asynchronously starts the resource profiler for the current process.<br>The call
 
 > **NOTE**
 >
-> 1. This API can be called for a maximum of 10 times every 24 hours.
-> 2. The target process for resource profiling can only be the process that calls this API.
-> 3. If the system CPU usage exceeds 70%, the available memory space is less than 15%, or the available storage space is less than 15%, the API call will fail and the corresponding error code will be returned.
-> 4. If this API conflicts with a command line tool or a system collection task, the API call will fail and the corresponding error code will be returned.
-> 5. If an application has multiple processes, this API can start a maximum of four processes at the same time.
-> 6. The collection result is saved in the application sandbox **/data/storage/el2/base/files/** directory. The file name is in the format of **Resource profiling type-Process name-Process ID-Timestamp.htrace**.
+> 1. The current interface can be called 10 times every 24 hours.
+> 2. The target process for resource collection supports only the process that calls the interface.
+> 3. When the system CPU usage rate exceeds 70%, or the available memory is less than 15%, or the available storage is less than 15%, the interface call fails and returns the corresponding error code.
+> 4. When the interface conflicts with a command-line tool or a system collection task, the call fails and returns the corresponding error code.
+> 5. If an application has multiple processes, this interface can start at most 4 of them simultaneously.
+> 6. The collection result is saved in the application sandbox directory /data/storage/el2/base/files/, with the file name "resource collection type-process name-process ID-timestamp.htrace".
+> 7. Since API version 26.0.0, this interface discards the call stack data of released memory as much as possible to reduce the collection file size and further lower the performance overhead during collection.
 
 **Since**: 24
 
@@ -618,9 +620,9 @@ Asynchronously starts the resource profiler for the current process.<br>The call
 
 | Name| Description|
 | -- | -- |
-| [OH_HiDebug_ResourceType](capi-hidebug-type-h.md#oh_hidebug_resourcetype) type | Resource profiling type.|
-| [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md)* config | Configuration parameters of the resource profiler.|
-| [OH_HiDebug_ProfilingCallback](capi-hidebug-type-h.md#oh_hidebug_profilingcallback) callback | Result callback function of resource profiling.|
+| [OH_HiDebug_ResourceType](capi-hidebug-type-h.md#oh_hidebug_resourcetype) type | Resource collection type, which determines the specific resource category to be collected (such as CPU, memory, and I/O). Different types correspond to different resource collection scenarios: CPU collection is used to analyze CPU performance issues, memory collection is used to analyze memory leaks and memory usage, and I/O collection is used to analyze I/O performance bottlenecks. Select an appropriate resource type based on the analysis requirements. |
+| [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md)* config | Resource collection configuration parameters. The configuration parameters determine the specific collection behavior, such as the sampling frequency and duration. |
+| [OH_HiDebug_ProfilingCallback](capi-hidebug-type-h.md#oh_hidebug_profilingcallback) callback | Resource collection callback result function. This callback function is called when collection terminates, passing the collection result and file path. |
 
 **Returns**
 

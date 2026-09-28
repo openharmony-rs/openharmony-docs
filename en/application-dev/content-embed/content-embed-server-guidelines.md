@@ -6,7 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:39:44.220Z pushedAt=2026-06-25T06:54:37.241Z -->
+<!-- md-trans-meta sourceCommit=f3efdb02e23121aaefae0a5dab0a37bc284fa9d3 translatedAt=2026-09-23T08:20:58.136Z pushedAt=2026-09-23T08:27:51.164Z -->
 
 ## When to Use
 
@@ -15,9 +15,7 @@ The [OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md) 
 An OE server application uses the APIs provided by [content_embed_extension.h](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md) to provide client applications with embedding and editing capabilities for documents in specific formats.
 
 ## Constraints
-
-Before using the APIs, check whether the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. For details about how to check system capabilities, see [canIUse()](../reference/common/init.md#caniuse). In addition, request the `ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION` permission. For details about how to configure the permission, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
-
+Before using the APIs, check whether the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. For details about how to check system capabilities, see [canIUse()](../reference/common/syscap-ndk-8h.md#caniuse). You must also declare the `ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION` permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
 ## Available APIs
 
@@ -73,15 +71,10 @@ Since API version 24, configure OE ExtensionAbility in the `extensionAbilities` 
 ```
 
 Configuration description:
-
 - `name`: Name of the Extension component.
-
 - `srcEntry`: Path of the entry library file of the Extension component.
-
 - `type`: Must be set to `"contentEmbed"`.
-
 - `exported`: Must be set to `true`, indicating that the component is exposed externally.
-
 - [metadata](../quick-start/module-configuration-file.md#metadata): The `metadata` field adds a data item whose `name` is `"content_embed_config"` and whose `resource` is the resource index of the OE Extension configuration file.
 
 You need to add a secondary JSON configuration file for configuring OE Extension information. For example, set `resource` to `"$profile:content_embed_config"` to point to the `resources/base/profile/content_embed_config.json` configuration file. The following is an example JSON file:
@@ -101,42 +94,28 @@ You need to add a secondary JSON configuration file for configuring OE Extension
 ```
 
 Configuration description:
-
 - `oeid`: System-recognizable identifier of an OE document, used to locate the OE server application that supports the OE document.
-
-- If the OE server application provides the same function on other operating systems, reuse the ID already used on those systems.
-
-- If this function of the OE server application is provided only on OpenHarmony, you are advised to use the built-in Terminal tool and run the `uuidgen` command to generate a new ID.
-
+  - If the OE server application provides the same function on other operating systems, reuse the ID already used on those systems.
+  - If this function of the OE server application is provided only on OpenHarmony, you are advised to use the built-in Terminal tool and run the `uuidgen` command to generate a new ID.
 - `file_exts`: Supported file extensions, such as `".doc"` and `".docx"`. Use `"|"` to separate multiple file name extensions.
-
 - `icon`: Display icon used for OE document queries. The value is the index of the icon resource file.
-
 - `name`: Display name used for OE document queries. Use a resource index for the name to support multiple languages.
-
 - `description`: Display description used for OE document queries. Use a resource index for the description to support multiple languages.
 
 ### Adding Dynamic Libraries
+Add the following link libraries to **src/main/cpp/CMakeLists.txt** of the Native project.
 
-Add the following libraries to `CMakeLists.txt`.
-
-```text
-# content embed
-libcontent_embed_ndk.so
-# hilog
-libhilog_ndk.z.so
-# ace
-libace_napi.z.so
-# piexlmap
-libpixelmap.so
-# ability
-libability_runtime.so
-# want
-libability_base_want.so
-# fileuri
-libohfileuri.so
-# libimage_source
-libimage_source.so
+```txt
+target_link_libraries(entry PUBLIC
+    libcontent_embed_ndk.so
+    libhilog_ndk.z.so
+    libace_napi.z.so
+    libpixelmap.so
+    libability_runtime.so
+    libability_base_want.so
+    libohfileuri.so
+    libimage_source.so
+)
 ```
 
 ### Including Header Files
@@ -222,9 +201,9 @@ static void NativeOnDestroy(ContentEmbed_ExtensionInstanceHandle instance)
 
 ### Implementing Callbacks for Server OE Object Attach and Detach Events
 
-When an OE client calls [OH_ContentEmbed_Proxy_StartWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_startwork) to bind a client OE object to a server OE object, the system triggers the `RegisterOnObjectAttachFunc` callback of the OE server. In this callback, the OE server must call the registration functions of the server OE object to respond to OE client requests.
+When an OE client calls [OH_ContentEmbed_Proxy_StartWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_startwork) to attach a client OE object to a server OE object, the system triggers the `RegisterOnObjectAttachFunc` callback of the OE server. In this callback, the OE server must call the registration functions of the server OE object to respond to OE client requests.
 
-When an OE client calls [OH_ContentEmbed_Proxy_StopWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_stopwork) to unbind the client OE object from the server OE object, the system triggers the `RegisterOnObjectDetachFunc` callback of the OE server. After this callback, the server OE object becomes invalid.
+When an OE client calls [OH_ContentEmbed_Proxy_StopWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_stopwork) to detach the client OE object from the server OE object, the system triggers the `RegisterOnObjectDetachFunc` callback of the OE server. After this callback, the server OE object becomes invalid.
 
 ```cpp
 static void RegisterOnObjectAttachFunc(ContentEmbed_ExtensionInstanceHandle instance, ContentEmbed_ObjectHandle object)
@@ -502,5 +481,3 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
     }
 }
 ```
-
-<!--no_check-->

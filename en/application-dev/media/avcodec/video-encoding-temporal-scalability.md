@@ -2,10 +2,11 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6dad6da34c3dfb17e3d881ff0d84d7a0117b3bdf translatedAt=2026-09-20T07:01:54.222Z pushedAt=2026-09-20T08:39:12.355Z -->
 
 ## Basic Concepts
 
@@ -30,9 +31,9 @@ A bitstream is organized by one or more Group of Pictures (GOPs). A GOP is a col
 
 A GOP can be further divided into one or more Temporal Group of Pictures (TGOPs), and each TGOP is composed by a base layer (BL) and one or more associated enhancement layers (ELs). For example, frame 0 to frame 7 in the foregoing four-layer temporally scalable bitstream form a TGOP.
 
-- BL: bottom layer (L0) in the GOP. In temporal scalability, this layer is encoded at the lowest frame rate.
+- Base layer (BL): bottom layer (L0) in the GOP. In temporal scalability, this layer is encoded at the lowest frame rate.
 
-- EL: layers above the BL. There are L1, L2, and L3 in ascending order. In temporal scalability, the lowest EL encodes, based on the BL, the frames at a higher frame rate; a higher EL encodes, based on the BL or a lower EL, the frames at a higher frame rate.
+- Enhancement layer (EL): layers above the BL. There are L1, L2, and L3 in ascending order. In temporal scalability, the lowest EL encodes, based on the BL, the frames at a higher frame rate; a higher EL encodes, based on the BL or a lower EL, the frames at a higher frame rate.
 
 ### How to Implement the Structure of a Temporally Scalable Bitstream
 
@@ -79,7 +80,7 @@ If your application does not involve dynamic adjustment of the temporal referenc
 
 ### Available APIs
 
-Global temporal scalability is suitable for encoding frames into a stable and simple temporal structure. Its initial configuration takes effect globally and cannot be dynamically modified. The configuration parameters are as follows:
+The global temporal scalability feature is suitable for low-latency real-time video communication scenarios. During encoder operation, you can switch between the scalable coding mode and the normal coding mode. After temporal layering is configured and takes effect on the encoder, the layering-related parameters cannot be dynamically modified. The development configuration parameters are as follows.
 
 | Parameter| Description                        |
 | -------- | ---------------------------- |
@@ -150,7 +151,70 @@ You can learn the basic encoding process in [Video Encoding](video-encoding.md).
     }
     ```
 
-3. (Optional) During output rotation, obtain the temporal layer information corresponding to the bitstream.
+3. (Optional) During operation, you can dynamically enable or disable the temporal scalability capability.
+
+    The sample code for dynamically enabling the temporal scalability capability is as follows:
+
+    ```c++
+    std::unique_lock<std::shared_mutex> lock(codecMutex);
+    // Reset the encoder videoEnc.
+    OH_AVErrCode resetRet = OH_VideoEncoder_Reset(videoEnc);
+    if (resetRet != AV_ERR_OK) {
+        // Handle the exception.
+    }
+    inQueue.Flush();
+    outQueue.Flush();
+    // Reconfigure the encoder parameters.
+    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
+    if (format == nullptr) {
+        // Handle the exception.
+    }
+    // Configure the Temporal Scalable Coding feature parameters.
+    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY, 1);
+    constexpr int32_t TGOP_SIZE = 3;
+    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_SIZE, TGOP_SIZE);
+    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_REFERENCE_MODE, ADJACENT_REFERENCE);
+    OH_AVErrCode configRet = OH_VideoEncoder_Configure(videoEnc, format.get());
+    if (configRet != AV_ERR_OK) {
+        // Handle the exception.
+    }
+    // The encoder is ready again.
+    OH_AVErrCode prepareRet = OH_VideoEncoder_Prepare(videoEnc);
+    if (prepareRet != AV_ERR_OK) {
+        // Handle the exception.
+    }
+    ```
+
+    The sample code for dynamically disabling the temporal scalability capability is as follows:
+
+    ```c++
+    std::unique_lock<std::shared_mutex> lock(codecMutex);
+    // Reset the encoder videoEnc.
+    OH_AVErrCode resetRet = OH_VideoEncoder_Reset(videoEnc);
+    if (resetRet != AV_ERR_OK) {
+        // Handle the exception.
+    }
+    inQueue.Flush();
+    outQueue.Flush();
+    // Reconfigure the encoder parameters.
+    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
+    if (format == nullptr) {
+        // Handle the exception.
+    }
+    // Configure the Temporal Scalable Coding feature parameters.
+    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY, 0);
+    OH_AVErrCode configRet = OH_VideoEncoder_Configure(videoEnc, format.get());
+    if (configRet != AV_ERR_OK) {
+        // Handle the exception.
+    }
+    // The encoder is ready again.
+    OH_AVErrCode prepareRet = OH_VideoEncoder_Prepare(videoEnc);
+    if (prepareRet != AV_ERR_OK) {
+        // Handle the exception.
+    }
+    ```
+
+4. (Optional) During output rotation, you can obtain the temporal layer information corresponding to the bitstream.
 
     You can obtain the temporal layer information based on the configured TGOP parameters and the number of encoded frames.
 
@@ -184,7 +248,32 @@ You can learn the basic encoding process in [Video Encoding](video-encoding.md).
     }
     ```
 
-4. (Optional) During output rotation, use the temporal layer information obtained for adaptive transmission or decoding.
+    Starting from API version 26.0.0, you can obtain temporal layer information through the OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID field, eliminating the need to calculate the temporal layer based on TGOP parameters and frame output information. A temporal layer number of 0 indicates the base layer, and 1 or above indicates an enhancement layer.
+
+    The sample code is as follows:
+
+    ``` C++
+    static int32_t GetTemporalLayerID(OH_AVBuffer *buffer)
+    {
+        int32_t layerID = -1;
+        OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
+        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID, &layerID);
+        return layerID;
+    }
+    
+    void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+    {
+        if (userData == nullptr) {
+            return;
+        }
+        // ...
+    
+        // Obtain the temporal layer information from AVBuffer.
+        int32_t layerID = GetTemporalLayerID(buffer);
+    }
+    ```
+
+5. (Optional) During output, use the temporal layer information obtained in step 4 to implement adaptive transmission or adaptive decoding based on the actual bandwidth or service scenario.
 
     Based on the temporally scalable bitstream and layer information, select a required layer for transmission, or carry the information to the peer for adaptive decoding.
 
@@ -257,13 +346,14 @@ This section describes only the steps that are different from the basic encoding
         // - Write the stream to encode.
         // - Notify the encoder of EOS.
         // - Write the frame parameter.
-        auto format = std::shared_ptr<OH_AVFormat>(OH_AVBuffer_GetParameter(buffer), OH_AVFormat_Destroy);
+        OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
         if (format == nullptr) {
             // Handle exceptions.
         }
-        OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR, 1);
-        OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR, 4);
-        OH_AVBuffer_SetParameter(buffer, format.get());
+        OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR, 1);
+        OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR, 4);
+        OH_AVBuffer_SetParameter(buffer, format);
+        OH_AVFormat_Destroy(format);
         // Notify the encoder that the buffer input is complete.
         OH_VideoEncoder_PushInputBuffer(codec, index);
     }
@@ -291,6 +381,9 @@ This section describes only the steps that are different from the basic encoding
     // 2.1 Implement the OH_VideoEncoder_OnNeedInputParameter callback function.
     static void OnNeedInputParameter(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)
     {
+        if (parameter == nullptr) {
+            // Exception handling.
+        }
         // The index of the input frame buffer is sent to InIndexQueue.
         // The input frame data (specified by avformat) is sent to InFormatQueue.
         // Perform data processing. For details, see:

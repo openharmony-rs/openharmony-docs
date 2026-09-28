@@ -3,9 +3,10 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=1a7fdda7cb0bdacc6b1c367c8fd0def17530cd88 translatedAt=2026-08-15T01:54:19.043Z pushedAt=2026-08-15T08:42:51.898Z -->
 
 ## Application Scenario
 
@@ -18,13 +19,16 @@ The pseudo-localization testing for UI mirroring aims to check whether the text 
    >  **NOTE**
    >
    >  The **setSystemLanguage** API is a system API and needs to be called by the system applications. Once the target locale is successfully set, non-system applications can then perform pseudo-localization testing.
-   <!--RP1-->
+
+   <!--Del-->
+
    ```ts
    import { i18n } from '@kit.LocalizationKit';
 
    i18n.System.setSystemLanguage('ar-XB');
    ```
-   <!--RP1End-->
+
+   <!--DelEnd-->
 
 2. Traverse the applications to be tested.
 

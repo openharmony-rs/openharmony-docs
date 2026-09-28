@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=0edaaef5de1186c959319c99afaf3d467527fe8c translatedAt=2026-09-01T02:26:52.511Z pushedAt=2026-09-01T13:52:56.861Z -->
 
 
 ## Overview
@@ -26,13 +27,13 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
 1. Import the required files.
 
    <!-- @[arkts_graphics_draw_import_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
-   
+
    ``` TypeScript
    import { UIContext, NodeController, FrameNode, RenderNode, DrawContext} from '@kit.ArkUI';
    ```
 
    <!-- @[arkts_graphics_draw_import_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
-   
+
    ``` TypeScript
    import { drawing } from '@kit.ArkGraphics2D';
    ```
@@ -40,7 +41,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
 2. Add a custom **RenderNode**.
 
    <!-- @[arkts_graphics_draw_direct_canvas_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
-   
+
    ``` TypeScript
    // Customize a RenderNode.
    class MyRenderNodeDirectDisplay extends RenderNode {
@@ -59,15 +60,16 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
          brush.setColor({red: 255, blue: 0, green: 0, alpha: 255});
          canvas.attachBrush(brush);
          canvas.drawRect({left: 0, right: 300, top: 0, bottom: 300});
+         canvas.detachBrush();
        }
      }
    }
    ```
 
 3. Add a custom [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md).
-   
+
    <!-- @[arkts_graphics_draw_direct_canvas_api_node_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
-   
+
    ``` TypeScript
    // Customize a NodeController.
    class MyNodeControllerDirectDisplay extends NodeController {
@@ -93,10 +95,10 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
    }
    ```
 
-4. Override the [draw()](../reference//apis-arkui/js-apis-arkui-renderNode.md#draw) function of the custom **RenderNode** to obtain the canvas for custom drawing operations.
-   
+4. Override the [draw()](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw) function of the custom **RenderNode** to obtain the canvas for custom drawing operations.
+
    <!-- @[arkts_graphics_draw_direct_canvas_api_rewrite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
-   
+
    ``` TypeScript
    async draw(context: DrawContext) {
      const canvas = context.canvas;
@@ -113,6 +115,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
        brush.setColor({red: 255, blue: 0, green: 0, alpha: 255});
        canvas.attachBrush(brush);
        canvas.drawRect({left: 0, right: 300, top: 0, bottom: 300});
+       canvas.detachBrush();
      }
    }
    ```
@@ -120,7 +123,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
 5. Display the custom **NodeController**.
 
    <!-- @[arkts_graphics_draw_direct_and_indirect_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
-   
+
    ``` TypeScript
    @Entry
    @Component
@@ -157,9 +160,9 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
 ## Obtaining and Displaying an Offscreen Canvas
 
 1. Import the required files.
-   
+
    <!-- @[arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
-   
+
    ``` TypeScript
    import { UIContext, NodeController, FrameNode, RenderNode, DrawContext} from '@kit.ArkUI';
    import { image } from '@kit.ImageKit';
@@ -173,14 +176,14 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
 
 4. Create a **PixelMap** in the **aboutToAppear()** function of **MyNodeController**.
 
-5. Override the [draw()](../reference//apis-arkui/js-apis-arkui-renderNode.md#draw) function of the custom **RenderNode** to obtain the offscreen canvas for drawing.
+5. Override the [draw()](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw) function of the custom **RenderNode** to obtain the offscreen canvas for drawing.
 
    1. Use the **PixelMap** created in Step 4 to construct the offscreen canvas.
    2. Perform custom drawing operations on the offscreen canvas.
    3. Pass the drawing result of the offscreen canvas to the **RenderNode**.
 
    <!-- @[arkts_graphics_draw_indirect_canvas_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
-   
+
    ``` TypeScript
    // Customize a RenderNode.
    export class MyRenderNodeIndirectDisplay extends RenderNode {
@@ -200,6 +203,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
          brush.setColor({ alpha: 255, red: 0, green: 0, blue: 255 });
          canvas_.attachBrush(brush);
          canvas_.drawRect({ left: 150, right: 575, top: 0, bottom: 600 });
+         canvas_.detachBrush();
    
          // Pass the drawing result of the offscreen canvas to the RenderNode.
          canvas.drawImage(this.pixelMap, 0, 0);
@@ -221,7 +225,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
      private rootNode: FrameNode | null = null;
      private myRenderNode = new MyRenderNodeIndirectDisplay();
    
-     // Create a PixeMap in aboutToAppear of MyNodeController.
+     // 4. Create a PixelMap in the aboutToAppear of MyNodeController.
      aboutToAppear(): void {
        let task = new taskpool.Task(createPixelMapAsync);
        taskpool.execute(task).then((pixel:Object)=>{
@@ -251,9 +255,9 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
    ```
 
 6. Display the custom **NodeController**.
-   
+
    <!-- @[arkts_graphics_draw_direct_and_indirect_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
-   
+
    ``` TypeScript
    @Entry
    @Component

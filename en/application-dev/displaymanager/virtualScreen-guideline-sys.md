@@ -1,10 +1,11 @@
 # Creating and Using a Virtual Screen (ArkTS) (for System Applications Only)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=1901db9be343b0a2f2f315e66f0588f9bda6dfc5 translatedAt=2026-09-14T09:16:08.923Z pushedAt=2026-09-15T13:11:12.726Z -->
 
 ## When to Use
 

@@ -5,6 +5,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=387418431118b0206a5f06ecae6bfd10ec6dc0f0 translatedAt=2026-09-21T02:44:35.197Z pushedAt=2026-09-22T01:29:30.409Z -->
 
 The **faultLogger** APIs can be used to query fault logs of an application cached on the system. The APIs use the application bundle name and the UID allocated by the system as the unique key value.
 
@@ -18,7 +19,7 @@ The number of application fault logs stored in the system is limited by the syst
 >
 > For details about how to use HiAppEvent to subscribe to the **APP_CRASH** event, see [Migrating Crash Events from the FaultLogger API](../../dfx/hiappevent-watcher-crash-events-arkts.md#migrating-crash-events-from-the-faultlogger-api).
 >
-> For details about how to use HiAppEvent to subscribe to the **APP_FREEZE** event, see [Migrating Application Freeze Events from the Faultlogger API](../../dfx/hiappevent-watcher-freeze-events-arkts.md#migrating-application-freeze-events-from-the-faultlogger-api).
+> For details about how to use HiAppEvent to subscribe to the **APP_FREEZE** event, see [Migrating Application Freeze Events from the Faultlogger API](../../dfx/hiappevent-watcher-freeze-events-arkts.md#migrating-app-freeze-events-from-the-faultlogger-api).
 
 ## Modules to Import
 
@@ -78,7 +79,7 @@ For details about the error codes, see [FaultLogger Error Codes](errorcode-fault
 | ID| Error Message|
 | --- | --- |
 | 401 | The parameter check failed, Parameter type error. |
-| 801 | The specified SystemCapability name was not found. |
+| 801 | Capability not supported. Possible causes: The specified SystemCapability name was not found. |
 | 10600001 | The service is not started or is faulty. |
 
 **Example**
@@ -140,7 +141,7 @@ For details about the error codes, see [FaultLogger Error Codes](errorcode-fault
 | ID| Error Message|
 | --- | --- |
 | 401 | The parameter check failed, Parameter type error. |
-| 801 | The specified SystemCapability name was not found. |
+| 801 | Capability not supported. Possible causes: The specified SystemCapability name was not found. |
 | 10600001 | The service is not started or is faulty. |
 
 **Example**

@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe;@lipengpeng97-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=69884e5262c53f0a947af1d2a8fa134d89b67ca7 translatedAt=2026-07-29T04:10:38.380Z pushedAt=2026-07-29T06:34:52.446Z -->
+<!-- md-trans-meta sourceCommit=08c5a12c1e83d2e6c0db1453ae58132aa5f8ed0a translatedAt=2026-09-01T02:19:26.273Z pushedAt=2026-09-01T12:51:56.023Z -->
 
 ## Overview
 
@@ -50,7 +50,7 @@ The following figure shows the detection principle.
 
 ### APP_INPUT_BLOCK User Input Response Timeout
 
-**Description**: This fault occurs when the tap event is not responded within 5 seconds.
+**Description**: This fault occurs when the tap event is not responded to within 5 seconds.
 
 > **NOTE**
 >
@@ -87,7 +87,7 @@ Since **API version 26.0.0**, you can configure the following environment variab
 
 **Detection principle**: Ability Manager Service (AMS), as the system service that coordinates Ability running and lifecycle scheduling, sends lifecycle switch instructions to the app process and waits for the app to return the result. If the task is not completed within the specified time, a fault is reported.
 
-Lifecycle switch timeout consists of two events: `LIFECYCLE_HALF_TIMEOUT` and `LIFECYCLE_TIMEOUT`. If the half-lifecycle threshold is exceeded during lifecycle switching without execution, a `LIFECYCLE_HALF_TIMEOUT` alarm event is reported. If the full lifecycle threshold is exceeded without execution, a `LIFECYCLE_TIMEOUT` deadlock event is reported. The two events are matched to generate an app not responding log. `LIFECYCLE_HALF_TIMEOUT` serves as the alarm event for `LIFECYCLE_TIMEOUT` and captures information such as `Binder`.
+Lifecycle switch timeout consists of two events: `LIFECYCLE_HALF_TIMEOUT` and `LIFECYCLE_TIMEOUT`. If the half-lifecycle threshold is exceeded during lifecycle switching without execution, a `LIFECYCLE_HALF_TIMEOUT` alarm event is reported. If the full lifecycle threshold is exceeded and the task has not been executed, a `LIFECYCLE_TIMEOUT` deadlock event is reported. The two events are matched to generate an app not responding log. `LIFECYCLE_HALF_TIMEOUT` serves as the alarm event for `LIFECYCLE_TIMEOUT` and captures information such as `Binder`.
 
 Different lifecycle timeouts have different timeout durations, as shown in the following table.
 
@@ -329,10 +329,9 @@ state=S, utime=0, stime=0, priority=0, nice=-20, clk=100
 ```
 
 <!--RP4--><!--RP4End-->
-
 In most cases, the stack information of `THREAD_BLOCK_6S`, `LIFECYCLE_TIMEOUT`, and `APP_INPUT_BLOCK` faults can help you locate the abnormal code.
 
-In other cases (for example, in the instant stack), the stack information cannot be obtained immediately due to the busy main thread. As a result, the abnormal code segment cannot be captured in a timely manner, and the stack top information is not as expected.
+In other cases (for example, in an instantaneous stack scenario), the stack information cannot be obtained immediately due to the busy main thread. As a result, the abnormal code segment cannot be captured in a timely manner, and the stack top information is not as expected.
 
 To solve this problem, enhanced AppFreeze logs can be obtained since API version 21. For details, see [Implementation Principles](#implementation-principles).
 
@@ -350,7 +349,7 @@ If the stack content of the fault process is missing, the following log informat
 >
 > When the system is heavily loaded (for example, high CPU load), the function name information may be lost if the call stack is obtained in low-overhead mode.
 >
-> Since API version 21, when the message "Failed to dump normal stacktrace" is displayed, the system uses the lightweight frame pointer backtracing mode. Stack backtracing may be interrupted in libraries that do not enable the frame pointer (when the **-fomit-frame-pointer** option is used during GCC compilation, the compilation product does not enable the frame pointer). In addition, the number of stack layers of a single thread may not exceed 50 due to lightweight restrictions.
+> Since API version 21, when the message "Failed to dump normal stacktrace" is displayed, the system uses the lightweight frame pointer backtracing mode. Stack backtracing may be interrupted at libraries that do not enable the frame pointer (when the **-fomit-frame-pointer** option is used during GCC compilation, the compilation product does not enable the frame pointer). In addition, the number of stack frames of a single thread may not exceed 50 due to lightweight restrictions.
 
 Since API version 23, information such as the thread state is added under the thread ID to determine whether the problem is caused by system freeze. **state** indicates the thread running state, **priority** and **nice** indicate the scheduling priority, and **stime** and **utime** indicate the running time. If the stack running time of `THREAD_BLOCK_3S` and `THREAD_BLOCK_6S` shows no change, it indicates that the process is not scheduled. After analyzing the service code and confirming that there is no blocking call, you can determine that the problem is a system scheduling issue. When thread state information fails to be obtained, none of the following fields are displayed. The thread state information in the fault log is in the following format:
 
@@ -553,7 +552,7 @@ The following table uses **two complete lifecycle switches** as an example to ex
    | - | JsAbilityStage::Create | Loads [AbilityStage](../application-models/abilitystage.md). | - | No, system-side load process. |
    | - | JsAbilityStage::OnCreate begin | The AbilityStage [onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate) lifecycle starts. | Time-consuming operations are executed in AbilityStage onCreate. | Yes, avoid executing time-consuming operations in AbilityStage onCreate. |
    | - | JsAbilityStage::OnCreate end | The AbilityStage onCreate lifecycle ends, and AbilityStage initialization is complete. The time can be calculated by comparing with begin. | AbilityStage onCreate takes too long. | Yes, optimize the AbilityStage onCreate logic. |
-   | - | JsAbilityStage::OnAboutToCreateAbility begin (InsightIntent Scenario) | AbilityStage is about to create an Ability ([onAboutToCreateAbility](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24) callback). | Time-consuming operations are executed in onAboutToCreateAbility. | Yes, avoid executing time-consuming operations in onAboutToCreateAbility. |
+   | - | JsAbilityStage::OnAboutToCreateAbility begin (InsightIntent Scenario) | AbilityStage is about to create an Ability callback). | Time-consuming operations are executed in onAboutToCreateAbility. | Yes, avoid executing time-consuming operations in onAboutToCreateAbility. |
    | - | JsAbilityStage::OnAboutToCreateAbility end (InsightIntent Scenario) | The onAboutToCreateAbility callback ends. The time can be calculated by comparing with begin. | onAboutToCreateAbility takes too long. | Yes, optimize the onAboutToCreateAbility logic. |
    | - | JsAbilityStage::OnAboutToCreateAbilityAsync begin (InsightIntent Scenario) | Asynchronously creates an Ability (onAboutToCreateAbilityAsync callback). | The asynchronous Promise is not resolved in time. | Yes, ensure that the Promise returned by onAboutToCreateAbilityAsync is resolved in time. |
    | - | JsAbilityStage::OnAboutToCreateAbilityAsync end (InsightIntent Scenario) | The onAboutToCreateAbilityAsync callback ends. | The asynchronous Promise is not resolved in time. | Yes, ensure that the Promise returned by onAboutToCreateAbilityAsync is resolved in time. |
@@ -629,9 +628,9 @@ Since API version 22, when an **APP_INPUT_BLOCK** fault occurs, the log will out
 
 Event detection timeout threshold: 8000 ms for the log version and 5000 ms for the nolog version. Since **API version 24**, the `APP_INPUT_BLOCK` detection threshold is 8000 ms regardless of the version.
 
-Previous events: **lastDispatchEvent** indicates the event dispatched last time; **lastProcessEvent** indicates the event processed last time; **lastMarkedEvent** indicates the event marked last time.
+The preceding event ID includes the following: `lastDispatchEvent` is the last dispatched event; `lastProcessEvent` is the last processed event; `lastMarkedEvent` is the last marked event. If system-side IPC communication fails (the EventHandler information is empty), the preceding event ID cannot be obtained and its value is 0.
 
-In the preceding example, the last dispatched event is **430**, the last processed event is **429**, and the last marked event is **428**, indicating that the event 430 has been dispatched and the processing times out for 8000 ms. This log can be used to determine the **APP_INPUT_BLOCK** event and help analyze the problem.
+In the preceding example, the last dispatched event is **430**, the last processed event is **429**, and the last marked event is **428**, indicating that the event 430 has been dispatched and the processing has timed out after 8000 ms. This log can be used to determine the **APP_INPUT_BLOCK** event and help analyze the problem.
 
 ## AppFreeze Enhanced Log Information (Sampling Stack)
 
@@ -645,7 +644,7 @@ Since API version 21, enhanced AppFreeze logs can be obtained. In these logs, th
 
 The process of generating enhanced AppFreeze logs is as follows:
 
-1. When `THREAD_BLOCK_3S` or `LIFECYCLE_HALF_TIMEOUT` occurs during app process running, the main thread call stack collection process is started, and some CPU information at the current moment is recorded.
+1. When `THREAD_BLOCK_3S` or `LIFECYCLE_HALF_TIMEOUT` occurs while the app process is running, the main thread call stack collection process is started, and some CPU information at the current moment is recorded.
 
 2. When `THREAD_BLOCK_6S`, `LIFECYCLE_TIMEOUT`, or `APP_INPUT_BLOCK` occurs during app process running, the main thread call stack collection process described above is stopped, and the CPU information within the period is calculated. Generally, 1 to 10 stack logs are captured.
 
@@ -682,34 +681,31 @@ You can read the fault file and enhanced log file generated by the application f
 
 **Method 2: hdc**
 
-Enable **Developer options** and run the `hdc file recv /data/log/faultlog/freeze_ext D:\` command to export fault logs to the local device. The fault log file name is in the format of **freeze-cpuinfo-ext-process name-process UID-millisecond-level timestamp**.
+Enable **Developer options** and run the `hdc file recv /data/log/faultlog/freeze_ext D:\` command to export fault logs to the local device. The fault log file name follows the format: **freeze-cpuinfo-ext-process name-process UID-millisecond timestamp**
 
 ### Log Specifications
 
 The enhanced log header contains the following fields:
-
 |Field|Description|Initial API Version|
 |---|---|---|
 | TimeStamp | Log generation time.| 21 |
 | Module name | Name of the faulty module.| 21 |
 
 The following table lists the fields of the total CPU time consumption information in enhanced logs.
-
 |Field|Description|Initial API Version|
 |---|---|---|
-| ProcessCpuTime | Process running time in a statistical period.| 21 |
-| DeviceRuntime | Running time of all CPUs on the device in a statistical period.| 21 |
+| ProcessCpuTime | Process running time within a statistical period.| 21 |
+| DeviceRuntime | Running time of all CPUs on the device within a statistical period.| 21 |
 | Tid | Thread ID.| 21 |
 | StartTime | Start time for statistics.| 21 |
 | EndTime | End time for statistics.| 21 |
 | StaticsDuration | Duration of statistics.| 21 |
-| CpuTime | Running time of the main thread in a statistical period.| 21 |
+| CpuTime | Running time of the main thread within a statistical period.| 21 |
 | SyncWaitTime | Waiting time of the main thread.| 21 |
-| OptimalCpuTime | Running time of the main thread with the optimal load in a statistical period (using the maximum computing power of the maximum number of cores).| 21 |
+| OptimalCpuTime | Running time of the main thread with the optimal load within a statistical period (using the highest computing power of the largest core).| 21 |
 | SupplyAvailableTime | Time that can be optimized by scheduling. If the value is small, the main thread is busy. In this case, you need to optimize the main thread tasks.| 21 |
 
 The main thread stack information fields in enhanced logs are as follows:
-
 |Field|Description|Initial API Version|
 |---|---|---|
 | SnapshotTime | Time when the main thread stack is captured.| 21 |
@@ -833,4 +829,67 @@ The clustering specifications for enhanced log information are consistent with t
 
 You can obtain clustering features for enhanced log information by referring to [AppFreeze Fault Information Clustering](#appfreeze-fault-information-clustering) and use these features for clustering enhanced log information.
 
-<!--no_check-->
+## Disabling AppFreeze Detection
+
+During development and debugging, you can disable AppFreeze detection by using the following commands to prevent timeout detection from affecting your development and debugging.
+
+### Environment Requirements
+
+Before using the disabling command, obtain the [hdc tool](hdc.md#environment-setup) and run `hdc shell` to enter the device shell.
+
+### Constraints
+
+- **App type restriction**: Only debug-type apps support disabling detection. Release-type apps do not support this feature.
+- **Execution timing restriction**: Run the disabling command after the app is started.
+
+### How to Use
+
+**Enter debug mode**
+
+```shell
+aa attach -b <bundleName>
+```
+
+Examples:
+
+```shell
+aa attach -b com.example.appfreeze
+```
+
+When the app successfully enters debug mode, the following is returned:
+
+```text
+attach app debug successfully.
+```
+
+When the given `<bundleName>` parameter is invalid or does not exist, the following content is returned. For more details, see [attach](../tools/aa-tool.md#attach).
+
+```text
+error: failed to attach app debug.
+```
+
+**Exit debug mode**
+
+After debugging is complete, run the `aa detach` command to exit debug mode and restore the AppFreeze detection capability, ensuring that fault detection is not affected during normal app running.
+
+```shell
+aa detach -b <bundleName>
+```
+
+Examples:
+
+```shell
+aa detach -b com.example.appfreeze
+```
+
+When the app exits debug mode, the following is returned:
+
+```text
+detach app debug successfully.
+```
+
+When the given `<bundleName>` parameter is invalid or does not exist, the following content is returned. For more details, see [detach](../tools/aa-tool.md#detach).
+
+```text
+error: failed to detach app debug.
+```

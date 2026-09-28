@@ -2,10 +2,11 @@
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
-<!--Owner: @qiiiiiiian-->
+<!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b694783163486a092c911bbc0cbe5fa1e69674a3 translatedAt=2026-09-09T03:03:36.028Z pushedAt=2026-09-09T04:02:49.906Z -->
 
 - ArkTS APIs<!--accessibility-arkts-->
   - [@ohos.accessibility (Accessibility)](js-apis-accessibility.md)

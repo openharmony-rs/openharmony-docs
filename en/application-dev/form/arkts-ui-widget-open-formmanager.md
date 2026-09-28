@@ -1,21 +1,25 @@
-# Adding Widgets to the Home Screen
+# Adding ArkTS Widgets to the Home Screen from Within an App
+
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=6d7419f1dd9729a9ceaeb24a3a1f1c514f7b60b3 translatedAt=2026-08-15T01:50:03.204Z pushedAt=2026-08-15T08:17:58.947Z -->
 
 Since API version 18, Form Kit provides the capability of adding ArkTS widgets to the home screen in an application, allowing users to conveniently view information or quickly access the application.
 
 ## How to Develop
+
 The following demonstrates how to add a widget to the home screen by tapping the **Add to home screen** button within the application. Users can navigate to the Widget Manager page, tap the button, and the widget will be added to the home screen automatically.
+
 1. [Create a widget](./arkts-ui-widget-creation.md).
 
 2. Add a button for opening the Widget Manager page in the application using the [openFormManager](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovideropenformmanager18) method.
 
    <!-- @[FormManagerDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormManagerDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
+
    ``` TypeScript
    // entry/src/main/ets/pages/Index.ets
    import { formProvider } from '@kit.FormKit';
@@ -63,6 +67,7 @@ The following demonstrates how to add a widget to the home screen by tapping the
    ```
 
    The resource file is as follows:
+
    ```json
    // entry/src/main/resources/base/element/string.json
    {
@@ -76,4 +81,5 @@ The following demonstrates how to add a widget to the home screen by tapping the
    ```
 
 3. Users can navigate to the Widget Manager page, tap **Add to home screen** or **Add to Assistant·TODAY**, and the widget will be added to the home screen or Assistant·TODAY. The following figure shows the effect.<br>
+
 ![WidgetPrinciple](figures/adding-widgets-in-applications.gif)

@@ -1,10 +1,11 @@
 # Working with Arrays Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:26:26.739Z pushedAt=2026-09-16T08:20:49.367Z -->
 
 ## Introduction
 
@@ -15,7 +16,7 @@ Node-API provides APIs for directly managing ArkTS arrays.
 Node-API can be used to create, access, modify, and traverse arrays. Before using Node-API, it's helpful if you understand the following concepts:
 
 - Array creation: You can use **napi_create_array** to create an array and pass it to the ArkTS layer.
-- Array-related operations: You can use the APIs provides by the Node-API module to obtain the length of an ArkTS array, retrieve the element at the specified index, and set the element value at the specified index.
+- Array-related operations: You can use the APIs provided by the Node-API module to obtain the length of an ArkTS array, retrieve the element at the specified index, and set the element value at the specified index.
 - **TypedArray**: A **TypedArray** object in ArkTS is an array-like view of an underlying binary data buffer. It can be understood as an array of elements of the specified type. There is no constructor for **TypedArray** objects, but they can be constructed by their child class constructors. The child classes of **TypedArray** include **Int8Array**, **Uint8Array**, **Uint8ClampedArray**, **Int16Array**, and **Int32Array**.
 - **DataView**: **DataView** is a flexible binary data access view in ArkTS. It provides methods for reading and writing multiple number types from an **ArrayBuffer**. Unlike **TypedArray**, **DataView** does not require data to be aligned at specific bytes. Therefore, it can process data structures with arbitrary byte offsets. DataView supports the following methods (each method has a **get** and **set** version): **Int8**, **Uint8**, **Int16**, **Uint16**, **Int32**, **Uint32**, **Float32**, and **Float64**.
 - **ArrayBuffer**: **ArrayBuffer** is a data struct used to represent a binary data buffer of fixed length. It cannot be read or written directly, but its content can be operated through **TypedArray** or **DataView**.
@@ -423,7 +424,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[3]: %{public}s
   testNapi.napiGetElement<number | string | null | Object>(arr, 3));
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[4]: %{public}s',
   JSON.stringify(testNapi.napiGetElement(arr, 4)));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[null]: %{public}s',
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[5]: %{public}s',
   testNapi.napiGetElement<number | string | null | Object>(arr, 5));
 ```
 
@@ -948,10 +949,10 @@ API declaration:
 
 index.d.ts
 
-<!-- @[napi_is_data_view_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_is_data_view_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
 
 ``` TypeScript
-export const isDataView: (date: DataView | string) => boolean | undefined; // Use napi_is_dataview to develop arrays.
+export const isDataView: (data: DataView | string) => boolean | undefined; // Use the Node-API to perform array-related development. napi_is_dataview
 ```
 
 ArkTS code:

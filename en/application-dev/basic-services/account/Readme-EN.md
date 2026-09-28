@@ -6,6 +6,8 @@
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
 <!--Del-->
+<!-- md-trans-meta sourceCommit=9c3c647d072b0519c6b6cf42cca216bb556b9e0f translatedAt=2026-09-09T02:58:11.136Z pushedAt=2026-09-09T03:19:38.297Z -->
+
 - [Account Management Overview (for System Applications Only)](account-overview-sys.md)
 - System Accounts (for System Applications Only)<!--os-account-->
   - [Managing System Accounts (for System Applications Only)](manage-os-account-sys.md)
@@ -18,5 +20,6 @@
 - Distributed Accounts (for System Applications Only)<!--distributed-account-->
   - [Managing Distributed Accounts (for System Applications Only)](manage-distributed-account-sys.md)
 <!--DelEnd-->
+- [System Account Introduction](os-account-introduction.md)
 - Application Accounts<!--application-account-->
   - [Managing Application Accounts](manage-application-account.md)

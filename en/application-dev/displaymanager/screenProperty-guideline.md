@@ -1,10 +1,11 @@
 # Using Display to Obtain Display Properties and Listen for Status Changes (ArkTS)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=1901db9be343b0a2f2f315e66f0588f9bda6dfc5 translatedAt=2026-09-14T09:15:39.581Z pushedAt=2026-09-15T13:10:51.056Z -->
 
 ## When to Use
 
@@ -63,7 +64,7 @@ try {
 1. After the display object is acquired, you can query the basic information about the display through its properties.
 
     <!-- @[get_display_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
-    
+
     ``` TypeScript
     let displayClass: display.Display | null = null;
     try {
@@ -86,7 +87,7 @@ try {
 2. To enhance UI layout design, you can use **getCutoutInfo()** to obtain information about unusable areas of the display, including punch hole, notch, and curved area of a waterfall display. You can also use **getAvailableArea()** to obtain the available area of the display.
 
     <!-- @[get_cutoutInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
-    
+
     ``` TypeScript
     let displayClass: display.Display | null = null;
     try {
@@ -114,7 +115,7 @@ try {
 3. Call **display.isCaptured()** to determine whether the device is engaged in activities such as screen capture, casting, or recording.
 
     <!-- @[get_display_captured](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
-    
+
     ``` TypeScript
     try {
       hilog.info(DOMAIN, 'DisplayTest', `The screen is captured or not : ${display.isCaptured()}`);
@@ -129,7 +130,7 @@ try {
 1. To listen for display changes, use **display.on('add'|'remove'|'change')** to subscribe to events such as the addition, removal, or alteration of displays. To unsubscribe from these events, call **display.off('add'|'remove'|'change')**.
 
     <!-- @[add_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
-    
+
     ``` TypeScript
     /**
      * The callback parameter used for subscription must be passed as an object.
@@ -158,7 +159,7 @@ try {
 2. To listen for screen capture, casting, or recording status changes, call **display.on('captureStatusChange')**. To end the listening, call **display.off('captureStatusChange')**.
 
     <!-- @[capture_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
-    
+
     ``` TypeScript
     let callback2: Callback<boolean> = (captureStatus: boolean) => {
       // For captureStatus, the value true means that the device starts screen capture, casting, or recording, and false means that the device stops screen capture, casting, or recording.
@@ -181,7 +182,7 @@ try {
 3. To listen for available area changes of the display, call **on('availableAreaChange')**. To end the listening, call **off('availableAreaChange')**.
 
     <!-- @[available_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
-    
+
     ``` TypeScript
     /**
      * The callback parameter used for subscription must be passed as an object.
@@ -210,7 +211,7 @@ try {
 1. Call **display.isFoldable()** to check whether the device is foldable.
 
     <!-- @[get_fold_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
-    
+
     ``` TypeScript
     let isFoldableDevice: boolean = false;
     try {
@@ -226,7 +227,7 @@ try {
 2. If the device is a foldable device, call **display.on('foldStatusChange')** to listen for folding state changes. To end the listening, call **display.off('foldStatusChange')**.
 
     <!-- @[fold_device_listen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
-    
+
     ``` TypeScript
     /**
      * The callback parameter used for subscription must be passed as an object.

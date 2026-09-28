@@ -5,10 +5,11 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=3ebabd84e8026ac3f14cc696973485dbda29e0f7 translatedAt=2026-09-15T11:15:24.913Z pushedAt=2026-09-16T07:50:15.698Z -->
 
 ## Overview
 
-Defines the APIs, data structs, and enums for accessing the UDMF.
+Defines the APIs, data structs, and enums for accessing the UDMF. If the parameter type is char*, the string must end with a null character ('\0').
 
 **File to include**: <database/udmf/udmf.h>
 
@@ -46,11 +47,16 @@ Defines the APIs, data structs, and enums for accessing the UDMF.
 | [Udmf_ProgressIndicator](#udmf_progressindicator) | Udmf_ProgressIndicator | Enumerates the progress indicator options. You can use the default progress indicator as required.|
 | [Udmf_Visibility](#udmf_visibility) | Udmf_Visibility | Enumerates data visibility level.|
 
+## Macros
+
+| Name | Description |
+| -- | -- |
+| UDMF_KEY_BUFFER_LEN (512)  | Minimum space length of the unique identifier of a unified data object.<br>**Since:** 12 |
+
 ### Functions
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [UDMF_KEY_BUFFER_LEN (512)](#udmf_key_buffer_len) | - | Defines minimum length of the buffer that holds the key (unique identifier) of a unified data object.|
 | [typedef void (\*OH_Udmf_DataProgressListener)(OH_Udmf_ProgressInfo* progressInfo, OH_UdmfData* data)](#oh_udmf_dataprogresslistener) | OH_Udmf_DataProgressListener | Defines the callback used to return the data retrieval progress information and data obtained.<br>A null pointer is returned if the progress is less than 100%. The data obtained is returned only when the progress reaches 100%.|
 | [OH_UdmfData* OH_UdmfData_Create()](#oh_udmfdata_create) | - | Creates an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance and a pointer to it. If this pointer is no longer required, use [OH_UdmfData_Destroy](capi-udmf-h.md#oh_udmfdata_destroy) to destroy it. Otherwise, memory leaks may occur.|
 | [void OH_UdmfData_Destroy(OH_UdmfData* pThis)](#oh_udmfdata_destroy) | - | Destroys an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance.|
@@ -110,8 +116,8 @@ Defines the APIs, data structs, and enums for accessing the UDMF.
 | [int OH_UdmfOptions_Reset(OH_UdmfOptions* pThis)](#oh_udmfoptions_reset) | - | Resets an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance to empty.|
 | [int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfData* unifiedData)](#oh_udmf_getunifieddata) | - | Obtains an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance from the UDMF database.|
 | [int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)](#oh_udmf_getunifieddatabyoptions) | - | Obtains an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance from the UDMF database by data channel type.|
-| [int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)](#oh_udmf_setunifieddata) | - | Sets an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database.|
-| [int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData *unifiedData, char *key, unsigned int keyLen)](#oh_udmf_setunifieddatabyoptions) | - | Sets an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database.|
+| [int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)](#oh_udmf_setunifieddata) | - | Writes a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md) to the UDMF database by specifying the data channel type. |
+| [int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData *unifiedData, char *key, unsigned int keyLen)](#oh_udmf_setunifieddatabyoptions) | - | Writes a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md) to the UDMF database by specifying the data operation options. |
 | [int OH_Udmf_UpdateUnifiedData(OH_UdmfOptions* options, OH_UdmfData* unifiedData)](#oh_udmf_updateunifieddata) | - | Updates an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database.|
 | [int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)](#oh_udmf_deleteunifieddata) | - | Deletes an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance from the UDMF database.|
 | [void OH_Udmf_DestroyDataArray(OH_UdmfData** dataArray, unsigned int dataSize)](#oh_udmf_destroydataarray) | - | Destroys the memory of the data array.|
@@ -126,17 +132,18 @@ Defines the APIs, data structs, and enums for accessing the UDMF.
 | [Udmf_Visibility OH_UdmfOptions_GetVisibility(OH_UdmfOptions* pThis)](#oh_udmfoptions_getvisibility) | - | Obtains the data visibility level from an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
 | [int OH_UdmfOptions_SetVisibility(OH_UdmfOptions* pThis, Udmf_Visibility visibility)](#oh_udmfoptions_setvisibility) | - | Sets the data visibility level in an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
 | [typedef OH_UdmfData* (\*OH_Udmf_DataLoadHandler)(OH_UdmfDataLoadInfo* acceptableInfo)](#oh_udmf_dataloadhandler) | OH_Udmf_DataLoadHandler | Defines the callback used to load data.|
-| [OH_UdmfDataLoadParams* OH_UdmfDataLoadParams_Create()](#oh_udmfdataloadparams_create) | - | Creates an [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) instance and a pointer to it.|
+| [OH_UdmfDataLoadParams* OH_UdmfDataLoadParams_Create()](#oh_udmfdataloadparams_create) | - | Creates a pointer to a data load parameter [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) instance. When the pointer is no longer needed, use [OH_UdmfDataLoadParams_Destroy](#oh_udmfdataloadparams_destroy) to destroy the instance; otherwise, memory leaks may occur. |
 | [void OH_UdmfDataLoadParams_Destroy(OH_UdmfDataLoadParams* pThis)](#oh_udmfdataloadparams_destroy) | - | Destroys an [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) instance.|
 | [void OH_UdmfDataLoadParams_SetLoadHandler(OH_UdmfDataLoadParams* params, const OH_Udmf_DataLoadHandler dataLoadHandler)](#oh_udmfdataloadparams_setloadhandler) | - | Sets the processing function for data loading in an [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) instance.|
 | [void OH_UdmfDataLoadParams_SetDataLoadInfo(OH_UdmfDataLoadParams* params, OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadparams_setdataloadinfo) | - | Sets data loading information in an [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) instance.|
-| [OH_UdmfDataLoadInfo* OH_UdmfDataLoadInfo_Create()](#oh_udmfdataloadinfo_create) | - | Creates an [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance.|
+| [OH_UdmfDataLoadInfo* OH_UdmfDataLoadInfo_Create()](#oh_udmfdataloadinfo_create) | - | Creates a pointer to a data load information [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance. When the pointer is no longer needed, use [OH_UdmfDataLoadInfo_Destroy](#oh_udmfdataloadinfo_destroy) to destroy the instance; otherwise, memory leaks may occur. |
 | [void OH_UdmfDataLoadInfo_Destroy(OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadinfo_destroy) | - | Destroys an [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance.|
 | [char** OH_UdmfDataLoadInfo_GetTypes(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int* count)](#oh_udmfdataloadinfo_gettypes) | - | Obtains the data types from an [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance.|
 | [void OH_UdmfDataLoadInfo_SetType(OH_UdmfDataLoadInfo* dataLoadInfo, const char* type)](#oh_udmfdataloadinfo_settype) | - | Sets the data type in an [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance.|
 | [int OH_UdmfDataLoadInfo_GetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadinfo_getrecordcount) | - | Obtains the number of records in an [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance.|
 | [void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int recordCount)](#oh_udmfdataloadinfo_setrecordcount) | - | Sets the number of records in an [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance.|
 | [OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int index)](#oh_udmf_getdataelementat) | - | Obtains the unified data object with the specified index from an [OH_UdmfData](capi-udmf-oh-udmfdata.md) array.|
+| [int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolicy)](#oh_udmfproperty_setauthpermission) | - | Sets permissions in [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md), which take effect on [OH_UdmfData](capi-udmf-oh-udmfdata.md). |
 
 ## Enum Description
 
@@ -193,7 +200,7 @@ Enumerates the options used to resolve file copy conflicts.
 
 | Name| Description|
 | -- | -- |
-| UDMF_OVERWRITE = 0 | Overwrites the file with the same name in the destination directory. This is the default value.|
+| UDMF_OVERWRITE = 0 | Overwrites the file with the same name in the destination directory. This is the default value. |
 | UDMF_SKIP = 1 | Skips the file if there is a file with the same name in the destination directory.|
 
 ### Udmf_ProgressIndicator
@@ -260,7 +267,7 @@ OH_UdmfDataLoadParams* OH_UdmfDataLoadParams_Create()
 
 **Description**
 
-Creates an [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) instance and a pointer to it.
+Creates an [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) instance and a pointer to it.<br>If this pointer is no longer required, use [OH_UdmfDataLoadParams_Destroy](capi-udmf-h.md#oh_udmfdataloadparams_destroy) to destroy it. Otherwise, memory leaks may occur.
 
 **Since**: 20
 
@@ -334,7 +341,7 @@ OH_UdmfDataLoadInfo* OH_UdmfDataLoadInfo_Create()
 
 **Description**
 
-Creates an [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance.
+Creates an [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance.<br>If this pointer is no longer required, use [OH_UdmfDataLoadInfo_Destroy](capi-udmf-h.md#oh_udmfdataloadinfo_destroy) to destroy it. Otherwise, memory leaks may occur.
 
 **Since**: 20
 
@@ -471,7 +478,7 @@ Defines the callback used to load data.
 
 | Type| Description|
 | -- | -- |
-| [OH_UdmfData](capi-udmf-oh-udmfdata.md)* (*OH_Udmf_DataLoadHandler) | Data to be loaded.|
+| [OH_UdmfData](capi-udmf-oh-udmfdata.md)* | Pointer to the data to be loaded. |
 
 ### OH_UdmfOptions_GetVisibility()
 
@@ -521,18 +528,6 @@ Sets the data visibility level in an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.m
 | Type| Description|
 | -- | -- |
 | int | Execution result. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br> Returns **UDMF_E_OK** if the operation is successful.<br> Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
-
-### UDMF_KEY_BUFFER_LEN()
-
-```c
-UDMF_KEY_BUFFER_LEN (512)
-```
-
-**Description**
-
-Defines minimum length of the buffer that holds the key (unique identifier) of a unified data object.
-
-**Since**: 12
 
 ### OH_Udmf_DataProgressListener()
 
@@ -623,7 +618,7 @@ Adds an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) to an [OH_UdmfData](capi-udm
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfData_HasType()
 
@@ -762,7 +757,7 @@ Destroys an [OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md) instance
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecordProvider_GetData()
 
@@ -788,7 +783,7 @@ Defines a callback function used to obtain data by type. This callback will be i
 
 | Type| Description|
 | -- | -- |
-| void* | Uniform data obtained.|
+| void* | Pointer to the data of the specified type obtained from the context. |
 
 ### OH_UdmfRecordProvider_SetData()
 
@@ -810,13 +805,13 @@ Sets a callback for an **OH_UdmfRecordProvider** instance to provide data.
 | [OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md)* provider | Pointer to the [OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md) instance.|
 | void* context | Pointer to the context, which is passed as the first parameter to [OH_UdmfRecordProvider_GetData](capi-udmf-h.md#oh_udmfrecordprovider_getdata).|
 | const [OH_UdmfRecordProvider_GetData](#oh_udmfrecordprovider_getdata) callback | Callback used to obtain data. For details, see [OH_UdmfRecordProvider_GetData](capi-udmf-h.md#oh_udmfrecordprovider_getdata).|
-| const [UdmfData_Finalize](#udmfdata_finalize) finalize | Optional callback used to release the context data when the **OH_UdmfRecordProvider** instance is destroyed. For details, see [UdmfData_Finalize](capi-udmf-h.md#udmfdata_finalize).|
+| const [UdmfData_Finalize](#udmfdata_finalize) finalize | Optional callback used to release the context data when the **OH_UdmfRecordProvider** instance is destroyed. If **nullptr** is passed, the release operation is not performed. You need to manage the lifecycle of the context data. For details, see [UdmfData_Finalize](capi-udmf-h.md#udmfdata_finalize). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int |Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_Create()
 
@@ -853,7 +848,7 @@ Destroys an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.
 
 | Name| Description|
 | -- | -- |
-| [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | Pointer to the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
+| [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | Pointer to the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance. |
 
 ### OH_UdmfRecord_AddGeneralEntry()
 
@@ -875,13 +870,13 @@ Adds customized general data to an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) i
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | Pointer to the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
 | const char* typeId | Pointer to the data type identifier, which is used to distinguish custom data types from system-defined types. It is recommended that the value start with 'ApplicationDefined'.|
 | unsigned char* entry | Pointer to the customized data to add.|
-| unsigned int count | Size of customized data to add. The data size cannot exceed 4 KB.|
+| unsigned int count | Size of customized data to add. The data size cannot exceed 4 KB. Otherwise, the error code **UDMF_E_INVALID_PARAM** is returned. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_AddPlainText()
 
@@ -907,7 +902,7 @@ Adds data of the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) type to an [OH_
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_AddHyperlink()
 
@@ -933,7 +928,7 @@ Adds data of the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) type to an [OH_
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_AddHtml()
 
@@ -959,7 +954,7 @@ Adds data of the [OH_UdsHtml](capi-udmf-oh-udshtml.md) type to an [OH_UdmfRecord
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_AddAppItem()
 
@@ -985,7 +980,7 @@ Adds data of the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) type to an [OH_Udmf
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_AddFileUri()
 
@@ -1011,7 +1006,7 @@ Adds data of the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) type to an [OH_Udmf
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_AddPixelMap()
 
@@ -1037,7 +1032,7 @@ Adds data of the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) type to an [OH_Ud
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_AddArrayBuffer()
 
@@ -1064,7 +1059,7 @@ Adds data of the [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) type to an 
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_AddContentForm()
 
@@ -1090,7 +1085,7 @@ Adds data of the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) type to an 
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_GetTypes()
 
@@ -1144,7 +1139,7 @@ Obtains the data of the specified type in an [OH_UdmfRecord](capi-udmf-oh-udmfre
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_GetPlainText()
 
@@ -1170,7 +1165,7 @@ Obtains [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) data from an [OH_UdmfRec
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_GetHyperlink()
 
@@ -1196,7 +1191,7 @@ Obtains [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) data from an [OH_UdmfRec
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_GetHtml()
 
@@ -1222,7 +1217,7 @@ Obtains [OH_UdsHtml](capi-udmf-oh-udshtml.md) data from an [OH_UdmfRecord](capi-
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_GetAppItem()
 
@@ -1248,7 +1243,7 @@ Obtains [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) data from an [OH_UdmfRecord]
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_SetProvider()
 
@@ -1276,7 +1271,7 @@ Sets the [OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md) in an [OH_U
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_GetFileUri()
 
@@ -1302,7 +1297,7 @@ Obtains [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) data from an [OH_UdmfRecord]
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_GetPixelMap()
 
@@ -1328,7 +1323,7 @@ Obtains [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) data from an [OH_UdmfRecor
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_GetArrayBuffer()
 
@@ -1355,7 +1350,7 @@ Obtains [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) data from an [OH_Udm
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfRecord_GetContentForm()
 
@@ -1381,7 +1376,7 @@ Obtains [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) data from an [OH_Udm
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfData_GetPrimaryPlainText()
 
@@ -1407,7 +1402,7 @@ Obtains the first [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) data from an [
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfData_GetPrimaryHtml()
 
@@ -1433,7 +1428,7 @@ Obtains the first [OH_UdsHtml](capi-udmf-oh-udshtml.md) data from an [OH_UdmfDat
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfData_GetRecordCount()
 
@@ -1458,7 +1453,7 @@ Obtains the number of data records contained in an [OH_UdmfData](capi-udmf-oh-ud
 
 | Type| Description|
 | -- | -- |
-| int | Number of the data records in an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance obtained.|
+| int | Number of the data records in an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance obtained. |
 
 ### OH_UdmfData_GetRecord()
 
@@ -1478,7 +1473,7 @@ Obtains the specified data record from an [OH_UdmfData](capi-udmf-oh-udmfdata.md
 | Name| Description|
 | -- | -- |
 | [OH_UdmfData](capi-udmf-oh-udmfdata.md)* data | Pointer to the [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance.|
-| unsigned int index | Subscript of the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance to be obtained in [OH_UdmfData](capi-udmf-oh-udmfdata.md).|
+| unsigned int index | Index of the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance to be obtained in [OH_UdmfData](capi-udmf-oh-udmfdata.md). The value range is [0, **recordCount-1**], where **0** indicates the index of the first data record, and **recordCount-1** indicates the index of the last data record. The value of **recordCount** can be obtained by calling [OH_UdmfData_GetRecordCount](#oh_udmfdata_getrecordcount). If the index is out of the valid range, **nullptr** is returned. |
 
 **Returns**
 
@@ -1707,7 +1702,7 @@ Sets the tag value for an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instan
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfProperty_SetShareOption()
 
@@ -1733,7 +1728,7 @@ Sets the [Udmf_ShareOption](capi-udmf-h.md#udmf_shareoption) for an [OH_UdmfProp
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfProperty_SetExtrasIntParam()
 
@@ -1752,7 +1747,7 @@ Sets the extra integer parameter for an [OH_UdmfProperty](capi-udmf-oh-udmfprope
 
 | Name| Description|
 | -- | -- |
-| [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)* pThis | Pointer to the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
+| [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)* pThis | Pointer to the [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance. |
 | const char* key | Pointer to the key of the parameter to set.|
 | int param | Parameter value to set.|
 
@@ -1760,7 +1755,7 @@ Sets the extra integer parameter for an [OH_UdmfProperty](capi-udmf-oh-udmfprope
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfProperty_SetExtrasStringParam()
 
@@ -1779,7 +1774,7 @@ Sets the extra string parameter for an [OH_UdmfProperty](capi-udmf-oh-udmfproper
 
 | Name| Description|
 | -- | -- |
-| [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)* pThis | Pointer to the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
+| [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)* pThis | Pointer to the [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance. |
 | const char* key | Pointer to the key of the parameter to set.|
 | const char* param | Parameter value to set.|
 
@@ -1787,7 +1782,7 @@ Sets the extra string parameter for an [OH_UdmfProperty](capi-udmf-oh-udmfproper
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfOptions_Create()
 
@@ -1849,7 +1844,7 @@ Obtains the key (unique identifier) from an [OH_UdmfOptions](capi-udmf-oh-udmfop
 
 | Type| Description|
 | -- | -- |
-| const char* | Returns a pointer to the unique identifier obtained if the operation is successful; returns **nullptr** otherwise.|
+| const char* | Returns a pointer to the unique identifier obtained if the operation is successful; returns **nullptr** otherwise. |
 
 ### OH_UdmfOptions_SetKey()
 
@@ -1875,7 +1870,7 @@ Sets the key (unique identifier) in an [OH_UdmfOptions](capi-udmf-oh-udmfoptions
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfOptions_GetIntention()
 
@@ -1926,7 +1921,7 @@ Sets the data channel content parameter in an [OH_UdmfOptions](capi-udmf-oh-udmf
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_UdmfOptions_Reset()
 
@@ -1951,7 +1946,7 @@ Resets an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance to empty.
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_Udmf_GetUnifiedData()
 
@@ -1978,7 +1973,7 @@ Obtains an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance from the UDMF databa
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_Udmf_GetUnifiedDataByOptions()
 
@@ -2005,7 +2000,7 @@ Obtains an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance from the UDMF databa
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_Udmf_SetUnifiedData()
 
@@ -2015,7 +2010,7 @@ int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, c
 
 **Description**
 
-Sets an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database.
+Writes a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md) to the UDMF database by specifying the data channel type.
 
 **Since**: 12
 
@@ -2033,7 +2028,7 @@ Sets an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database.
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_Udmf_SetUnifiedDataByOptions()
 
@@ -2043,7 +2038,7 @@ int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData *unifie
 
 **Description**
 
-Sets an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database.
+Writes a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md) to the UDMF database by specifying the data operation options.
 
 **Since**: 20
 
@@ -2053,15 +2048,15 @@ Sets an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database.
 | Name| Description|
 | -- | -- |
 | [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)* options | Pointer to the [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
-| [OH_UdmfData](capi-udmf-oh-udmfdata.md) *unifiedData | Pointer to the [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance.|
-| char *key | Pointer to the key that uniquely identifies the data in the database. The memory size must be greater than [UDMF_KEY_BUFFER_LEN](#udmf_key_buffer_len).|
+| [OH_UdmfData](capi-udmf-oh-udmfdata.md)* unifiedData | Pointer to the [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance of the unified data object. |
+| char* key | Pointer to the unique identifier of the data after the data is successfully set to the database. The memory size is not less than [UDMF_KEY_BUFFER_LEN](#macros). |
 | unsigned int keyLen | Length of the key.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_Udmf_UpdateUnifiedData()
 
@@ -2087,7 +2082,7 @@ Updates an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_Udmf_DeleteUnifiedData()
 
@@ -2114,7 +2109,7 @@ Deletes an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance from the UDMF databa
 
 | Type| Description|
 | -- | -- |
-| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory.|
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
 
 ### OH_Udmf_DestroyDataArray()
 
@@ -2206,7 +2201,7 @@ Creates an [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md) instance an
 
 | Type| Description|
 | -- | -- |
-| [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)* | Returns a pointer to the [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md) instance created if the operation is successful; returns **nullptr** otherwise.|
+| [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)* | Pointer to the [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md) instance object if the operation is successful; **nullptr** otherwise. |
 
 ### OH_UdmfGetDataParams_Destroy()
 
@@ -2330,4 +2325,29 @@ Obtains the unified data object with the specified index from an [OH_UdmfData](c
 
 | Type| Description|
 | -- | -- |
-| [OH_UdmfData*](capi-udmf-oh-udmfdata.md) | Returns a pointer to the [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance if the execution is successful; returns null if the input array is empty.|
+| [OH_UdmfData](capi-udmf-oh-udmfdata.md)* | Returns a pointer to the [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance if the execution is successful; returns null if the input array is empty. |
+
+### OH_UdmfProperty_SetAuthPermission()
+
+```c
+int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolicy)
+```
+
+**Description**
+
+Sets permissions in [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md), which take effect on [OH_UdmfData](capi-udmf-oh-udmfdata.md).
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)* pThis | Pointer to the [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.<br>Note: This authorization policy takes effect only in drag scenarios. |
+| uint32_t authPolicy | URI authorization policy in drag scenarios. The default value is **READ+WRITE+PERSIST**, which takes effect only for a single piece of data and has a low priority. For details about the policy, see [Udmf_AuthPermission](capi-uds-h.md#udmf_authpermission). |
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |

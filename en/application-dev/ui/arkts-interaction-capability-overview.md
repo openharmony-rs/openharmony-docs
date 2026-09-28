@@ -25,7 +25,7 @@ Pointer events include [touch events](../reference/apis-arkui/arkui-ts/ts-univer
 
 Non-pointer events lack specific location information and do not depend on a particular operation location. The dispatch target is the currently focused component.
 
-Non-pointer events include [key events](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md), [crown events](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md), and [focus axis events](../reference/apis-arkui/arkui-ts/ts-universal-events-focus_axis.md).
+Non-pointer events include [key events](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md), [crown events](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md), and [focus axis events](../reference/apis-arkui/arkui-ts/ts-universal-events-focus-axis.md).
 
 
 ### Additional Notes

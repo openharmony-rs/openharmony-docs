@@ -5,7 +5,7 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
 
 ## 概述
 
@@ -147,7 +147,7 @@ hdc shell testhelper get-timezone
 
 | 参数 | 必填 | 说明 |
 |-----|------|------|
-| timezone | 是 | 时区标识符，如`Asia/Shanghai`。取值参考[支持的系统时区](../reference/apis-basic-services-kit/js-apis-system-time.md#支持的系统时区)。|
+| timezone | 是 | 时区标识符，如`Asia/Shanghai`。取值参考<!--RP1-->[支持的系统时区](../reference/apis-basic-services-kit/js-apis-date-time.md#支持的系统时区)<!--RP1End-->。|
 
 **使用示例：**
 

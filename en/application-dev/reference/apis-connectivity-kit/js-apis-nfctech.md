@@ -2,7 +2,7 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
@@ -25,7 +25,7 @@ import { tag } from '@kit.ConnectivityKit';
 
 ## NfcATag
 
-Provides APIs to access NFC-A (ISO 14443-3A) properties and perform I/O operations on a tag. This class inherits from **[TagSession](js-apis-tagSession.md)**.
+The **NfcATag** module provides APIs to access NFC-A (ISO 14443-3A) properties and perform I/O operations on a tag. This class inherits from [TagSession](js-apis-tagSession.md).
 
 **TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](js-apis-tagSession.md).
 
@@ -484,7 +484,7 @@ console.info("ndef ndefRecords number: " + ndefRecords.length);
 
 ## NdefTag<sup>9+</sup>
 
-Provides APIs to access the tags in the NFC Data Exchange Format (NDEF). This class inherits from **TagSession**.
+The **NdefTag** module provides APIs to access the tags in the NFC Data Exchange Format (NDEF). This class inherits from [TagSession](js-apis-tagSession.md).
 
 **TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](js-apis-tagSession.md).
 
@@ -618,7 +618,7 @@ function nfcTechDemo(){
         ndefTag.readNdef().then((ndefmessage : tag.NdefMessage) => {
             console.info("ndef readNdef Promise ndefmessage: " + ndefmessage);
         }).catch((err : BusinessError)=> {
-            console.error("ndef readNdef Promise err Code: ${err.code}, message: ${err.message}");
+            console.error(`ndef readNdef Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
         console.error(`ndef readNdef Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
@@ -1294,7 +1294,7 @@ function nfcTechDemo() {
 
 writeSingleBlock(blockIndex: number, data: number[]): Promise\<void>
 
-Writes data to a block on this tag. This API uses a promise to return the result.
+Writes data to a block on this tag. The size of a block is 16 bytes. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -1362,7 +1362,7 @@ function nfcTechDemo() {
 
 writeSingleBlock(blockIndex: number, data: number[], callback: AsyncCallback\<void>): void
 
-Writes data to a block on this tag. This API uses an asynchronous callback to return the result.
+Writes data to a block on this tag. The size of a block is 16 bytes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -2114,7 +2114,7 @@ Obtains the index of the first block in a sector.
 
 | **Type**| **Description**                            |
 | ------------------ | --------------------------|
-| number | Index of the first block obtained.|
+| number | Index of the first block obtained. The sector indexes start from **0**.|
 
 **Error codes**
 
