@@ -5944,7 +5944,7 @@ Obtains the quaternion from a rotation vector. This API uses a promise to return
 
 | Type                              | Description        |
 | ---------------------------------- | ------------ |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the quaternion..|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the quaternion.|
 
 **Error codes**
 

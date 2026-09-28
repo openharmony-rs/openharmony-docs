@@ -1481,7 +1481,7 @@ Defines a response object of the callback function after the device orientation 
 
 | Name | Type  | Read-Only| Optional| Description                                                        |
 | ----- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| alpha | number | No  | No  | Rotation angle around the Z axis when the X/Y axis of the device coincides with the X/Y axis of the eart, in degrees. Value range: [0, 360]|
+| alpha | number | No  | No  | Rotation angle around the Z axis when the X/Y axis of the device coincides with the X/Y axis of the eartt, in degrees. Value range: [0, 360]|
 | beta  | number | No  | No  | Rotation angle around the X axis when the Y/Z axis of the device coincides with the Y/Z axis of the earth. in degrees. The value range is [-180, 180].|
 | gamma | number | No  | No  | Rotation angle around the Y axis when the X/Z axis of the device coincides with the X/Z axis of the earth. in degrees. The value range is [-90, 90].|
 
