@@ -10041,7 +10041,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/entry/src/main/ets/pages/StatemgmtV2PersistenceV2.ets",
 				"functions":[
 					{
-						"end_line":95,
+						"end_line":94,
 						"name":"DynInteropStaStatemgmtV2PersistenceV2",
 						"start_line":16
 					}
