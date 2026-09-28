@@ -39,7 +39,7 @@ ohos-window restore-window --windowId <id>
 
 | 参数名 | 类型 | 说明 |
 |------|------|------|
-| `--windowId` | integer | 必选，待恢复到前台的主窗口的windowId。必须是非负整数。 |
+| `--windowId` | integer | 必填，待恢复到前台的主窗口的windowId。必须是非负整数。 |
 
 ### 错误码
 
