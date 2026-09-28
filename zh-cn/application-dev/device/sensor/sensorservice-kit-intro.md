@@ -2,7 +2,7 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @LiuChao-->
+<!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -36,5 +36,7 @@ Sensor Service Kit（传感器服务）使应用程序能够从传感器获取�
 - 要使用振动的功能，设备必须具有对应的器件。
 - 针对马达，开发者需要请求相应的权限才能使用。
 - 多个振动器的控制：当存在多个可控振动设备时，应用需要通过 getVibratorInfoSync() 查询可用的马达列表，并在调用 startVibration 或 stopVibration 时，传入 deviceId 和 vibratorId 等参数来精确控制目标马达。
+
+<!--RP2--><!--RP2End-->
 
 <!--RP1--><!--RP1End-->

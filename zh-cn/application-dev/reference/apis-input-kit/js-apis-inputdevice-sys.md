@@ -30,7 +30,7 @@ setKeyboardRepeatDelay(delay: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -45,7 +45,7 @@ setKeyboardRepeatDelay(delay: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202 | SystemAPI permission error. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -87,7 +87,7 @@ setKeyboardRepeatDelay(delay: number): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -107,7 +107,7 @@ setKeyboardRepeatDelay(delay: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202 | SystemAPI permission error. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -128,7 +128,7 @@ struct Index {
             inputDevice.setKeyboardRepeatDelay(350).then(() => {
               console.info(`Succeeded in setting keyboard repeat delay.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -147,7 +147,7 @@ getKeyboardRepeatDelay(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -161,7 +161,7 @@ getKeyboardRepeatDelay(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -203,7 +203,7 @@ getKeyboardRepeatDelay(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -217,7 +217,7 @@ getKeyboardRepeatDelay(): Promise&lt;number&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -257,7 +257,7 @@ setKeyboardRepeatRate(rate: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -272,7 +272,7 @@ setKeyboardRepeatRate(rate: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -314,7 +314,7 @@ setKeyboardRepeatRate(rate: number): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -334,7 +334,7 @@ setKeyboardRepeatRate(rate: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -355,7 +355,7 @@ struct Index {
             inputDevice.setKeyboardRepeatRate(60).then(() => {
               console.info(`Succeeded in setting keyboard repeat rate.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -374,7 +374,7 @@ getKeyboardRepeatRate(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -388,7 +388,7 @@ getKeyboardRepeatRate(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -430,7 +430,7 @@ getKeyboardRepeatRate(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -444,7 +444,7 @@ getKeyboardRepeatRate(): Promise&lt;number&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -465,7 +465,7 @@ struct Index {
             inputDevice.getKeyboardRepeatRate().then((rate: number) => {
               console.info(`Succeeded in getting keyboard repeat rate.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -486,7 +486,7 @@ setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -508,9 +508,9 @@ setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. The application does not have the permission required to call the API. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-| 401      | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900001  | The specified device does not exist.                         |
 
 **示例**：
@@ -548,15 +548,15 @@ bindToDisplay(inputDeviceId: number, displayId: number): Promise&lt;void&gt;
 
 将输入设备绑定到显示器组。仅支持外接USB和蓝牙的鼠标、触摸板、键盘和游戏手柄。绑定后，输入设备将固定在指定显示器所在的显示器组上操作。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**需要权限：** ohos.permission.INPUT_DEVICE_CONTROLLER
+**需要权限**：ohos.permission.INPUT_DEVICE_CONTROLLER
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
+**系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统接口：** 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -577,8 +577,8 @@ bindToDisplay(inputDeviceId: number, displayId: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. The application does not have the required permission. |
-| 202      | Permission denied. Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 3800001  | Input service exception.                                      |
 | 3900001  | The specified input device does not exist.                          |
 | 3900004  | The specified display does not exist.                         |

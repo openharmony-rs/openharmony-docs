@@ -709,6 +709,9 @@ struct ChipExample2 {
 }
 ```
 
+
+![](figures/chip7.png)
+
 ### 示例8（symbol类型无障碍朗读）
 
 该示例代码实现Chip组件symbol类型后缀图标的无障碍朗读功能，点击后缀图标播报“音乐，按钮，新手提醒”。
@@ -837,6 +840,9 @@ struct ChipExample2 {
 }
 ```
 
+
+![](figures/chip8.png)
+
 ### 示例9（Chip组件无障碍朗读）
 
 示例展示Chip组件的无障碍属性设置，包括不同的accessibilitySelectedType类型和各种无障碍属性。
@@ -937,6 +943,9 @@ struct ChipAccessibilityExample {
 }
 ```
 
+
+![](figures/chip9.png)
+
 ### 示例10（设置系统材质样式）
 
 该示例通过配置backgroundSystemMaterial和activatedBackgroundSystemMaterial实现系统材质样式，启用自动反色功能适配标签文本颜色。
@@ -1002,4 +1011,6 @@ struct ChipMaterialExample {
 }
 ```
 
-![](figures/chip_material.png)
+该示例配图为高算力设备强档效果。
+
+![](figures/chip-material.png)

@@ -25,11 +25,11 @@ import { inputEventClient } from '@kit.InputKit';
 
 injectEvent({KeyEvent: KeyEvent}): void
 
-按键(包括单个按键和组合键)注入。
+按键（包括单个按键和组合键）注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -43,8 +43,8 @@ injectEvent({KeyEvent: KeyEvent}): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.<br/>适用版本：12+ |
-| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：12+  |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -91,11 +91,11 @@ struct Index {
 
 injectKeyEvent(keyEvent: KeyEventData): void
 
-按键(包括单个按键和组合键)事件注入。
+按键（包括单个按键和组合键）事件注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -109,8 +109,8 @@ injectKeyEvent(keyEvent: KeyEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.<br/>适用版本：12+ |
-| 202  | SystemAPI permission error.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：12+  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -170,9 +170,9 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 
 鼠标/触控板事件注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -186,15 +186,14 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.<br/>适用版本：12+ |
-| 202  | SystemAPI permission error.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：12+  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```js
-import { inputEventClient } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputEventClient, MouseEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -285,9 +284,9 @@ injectTouchEvent(touchEvent: TouchEventData): void
 
 触屏输入事件注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -301,15 +300,14 @@ injectTouchEvent(touchEvent: TouchEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.<br/>适用版本：12+ |
-| 202  | SystemAPI permission error.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：12+  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```js
-import { inputEventClient } from '@kit.InputKit';
-import { Touch, TouchEvent } from '@kit.InputKit';
+import { inputEventClient, Touch, TouchEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -391,9 +389,9 @@ permitInjection(result: boolean): void
 
 允许事件注入权限。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -407,8 +405,8 @@ permitInjection(result: boolean): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 202  | SystemAPI permission error.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -441,7 +439,7 @@ struct Index {
 
 按键注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
@@ -454,7 +452,7 @@ struct Index {
 
 按键注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
@@ -464,7 +462,7 @@ struct Index {
 
 鼠标注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
@@ -475,7 +473,7 @@ struct Index {
 
 触屏注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
@@ -486,7 +484,7 @@ struct Index {
 
 定义用户注入的按键事件信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |

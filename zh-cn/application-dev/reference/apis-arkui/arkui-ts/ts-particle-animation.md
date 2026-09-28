@@ -158,7 +158,7 @@ interface ParticleOptions<
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
 | emitter | [EmitterOptions](#emitteroptions)<[PARTICLE](#particletype)> | 否 | 否 | 粒子发射器配置。 |
-| color | [ParticleColorPropertyOptions](#particlecolorpropertyoptions)<COLOR_UPDATER> | 否 | 是 | 粒子颜色配置。<br>**说明**：<br>默认值：{ range:[Color.White,Color.White] }。图片粒子不支持设置颜色。|
+| color | [ParticleColorPropertyOptions](#particlecolorpropertyoptions)\<COLOR_UPDATER\> | 否 | 是 | 粒子颜色配置。<br>**说明**：<br>默认值：{ range:[Color.White,Color.White] }。图片粒子不支持设置颜色。|
 | opacity | [ParticlePropertyOptions](#particlepropertyoptions)\<number, OPACITY_UPDATER> | 否 | 是 | 粒子透明度配置。<br>默认值：{ range:[1.0,1.0] } |
 | scale | [ParticlePropertyOptions](#particlepropertyoptions)\<number, SCALE_UPDATER> | 否 | 是 | 粒子大小配置。<br>默认值：{ range:[1.0,1.0] } |
 | velocity | [VelocityOptions](#velocityoptions18) |否 | 是 | 粒子速度配置。<br>**说明**：<br>speed表示速度大小。angle表示速度的方向（单位：度），以元素几何中心为坐标原点，水平方向为X轴，正数表示顺时针方向旋转角度。<br>默认值：{ speed:[0.0,0.0],angle:[0.0,0.0] } |

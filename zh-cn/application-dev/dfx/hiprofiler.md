@@ -1264,7 +1264,7 @@ CONFIG
 ```shell
 $ hiprofiler_cmd \
   -c - \
-  -o /data/local/tmp/hiprofiler_data.htrace \
+  -o /data/local/tmp/hiprofiler_data.zip \
   -t 180 \
   -s \
   -k \

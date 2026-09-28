@@ -11,7 +11,7 @@
 
 声明管理进程访问控制的接口。
 
-**库：** ability_access_control.so
+**库：** libability_access_control.so
 
 **引用文件：** <accesstoken/ability_access_control.h>
 

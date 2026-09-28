@@ -1,12 +1,11 @@
 # \@Provider and \@Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:09:21.867Z pushedAt=2026-07-25T01:58:46.607Z -->
+<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-09-21T11:20:37.976Z pushedAt=2026-09-23T09:11:43.542Z -->
 
 [\@Provider](../../reference/apis-arkui/arkui-ts/ts-state-management-provider.md#provider) and [\@Consumer](../../reference/apis-arkui/arkui-ts/ts-state-management-consumer.md#consumer) are used for two-way synchronization of data across component levels, freeing you from the constraints of the component hierarchy.
 
@@ -35,30 +34,26 @@
 Data types decorated by \@Provider and \@Consumer must be the same.
 
 The following notes must be paid attention to when using \@Provider and \@Consumer:
-
 - \@Provider and \@Consumer strongly depend on the custom component levels. \@Consumer is initialized to different values because the parent component of the custom component is different.
-
 - Using \@Provider with \@Consumer is equivalent to bonding components together. From the perspective of independent component, usage of \@Provider and \@Consumer should be lessened.
 
 ## Capability Comparison: \@Provider and \@Consumer Vs. \@Provide and \@Consume
-
 In state management V1, [\@Provide and \@Consume](./arkts-provide-and-consume.md) are the decorators which provide two-way synchronization across component levels. This topic introduces \@Provider and \@Consumer decorators in state management V2. Although the names and features of the two pairs are similar, there are still some differences.
 
 If you are not familiar with \@Provide and \@Consume in state management V1, you can skip this section.
 
-| Capability| \@Provider and \@Consumer Decorators of V2                                            |\@Provide and \@Consume Decorators of V1|
+| Capability | V2 decorators \@Provider and \@Consumer                                             |V1 decorators \@Provide and \@Consume|
 | ------------------ | ----------------------------------------------------- |----------------------------------------------------- |
-| \@Consume(r)         |Local initialization is mandatory. The local default value will be used when \@Provider is not found.| Before API version 20, @Consume does not support local initialization. If the corresponding \@Provide cannot be found, an exception is thrown. From API version 20 onwards, @Consume supports setting the default value. If the default value is not set and the corresponding \@Provide cannot be found, an exception is thrown.|
-| Supported Type          | **function** is supported.| **function** is not supported.|
-| Observation capability          | Only the value change of itself can be observed. To observe the nesting scenario, use this decorator together with [\@Trace](arkts-new-observedV2-and-trace.md).| Changes at the first layer can be observed. To observe the nesting scenario, use this decorator together with [\@Observed and \@ObjectLink](arkts-observed-and-objectlink.md).|
-| alias and attribute name        | **alias** is the unique matching key. By default, the attribute name is **alias**.| If both the **alias** and attribute name are **key**, the former one is matched first. If no match is found, the attribute name can be matched.|
-| \@Provide(r) initialization from the parent component     | Not allowed.| Allowed.|
-| \@Provide(r) overloading support | Enabled by default. That is, \@Provider can have duplicate names and \@Consumer can search upwards for the nearest \@Provider.| Disabled by default. That is, \@Provide with duplicate names is not allowed in the component tree. If overloading is required, set **allowOverride**.|
+| \@Consume(r)         |Must be locally initialized. When no \@Provider is found, the local default value is used.| Before API version 20, @Consume does not allow local initialization. When the corresponding \@Provide is not found, an exception is thrown. Starting from API version 20, @Consume supports setting a default value. If no default value is set and the corresponding \@Provide is not found, an exception is thrown. |
+| Supported Types           | Supports function. | Does not support function. |
+| Observation capability           | Can only observe changes to the data itself. To observe nested scenarios, cooperate with [\@Trace](arkts-new-observedV2-and-trace.md). | Observes first-layer changes. To observe nested scenarios, cooperate with [\@Observed and \@ObjectLink](arkts-observed-and-objectlink.md). |
+| alias and property name         | alias is the unique matching key. When omitted, alias defaults to the property name. | Both alias and the property name serve as keys. alias is matched first; if no match is found, the property name can be matched.|
+| \@Provide(r) initialize from parent component      | Not allowed. | Allowed.|
+| \@Provide(r) supports overloading  | Enabled by default, meaning \@Provider can have duplicate names, and \@Consumer performs an upward lookup for the nearest \@Provider. | Disabled by default, meaning duplicate \@Provide names are not allowed on the component tree. To enable overloading, configure allowOverride.|
 
 ## Decorator Description
 
 ### Basic rules
-
 \@Provider syntax:
 
 `@Provider(aliasName?: string) varName : varType = initValue`
@@ -147,9 +142,7 @@ struct Child {
 ## Constraints
 
 1. \@Provider and \@Consumer are attribute decorators of custom components. They can decorate only attributes in custom components but not class attributes.
-
 2. \@Provider and \@Consumer are decorators of the state management V2, which can be used only in \@ComponentV2 but not in \@Component.
-
 3. \@Provider and \@Consumer support only local initialization.
 
 ## Use Cases
@@ -159,15 +152,10 @@ struct Child {
 **Establishing a Two-Way Binding**
 
 1. Initialize the **Parent** and **Child** custom components:
-
     - **@Consumer() str: string = 'world'** in the **Child** component searches upwards to find **@Provider() str: string = 'hello'** in the **Parent** component.
-
     - **@Consumer() str: string = 'world'** is initialized to the value of **@Provider**, that is, **'hello'**.
-
     - Both of them establish a two-way synchronization relationship.
-
 2. Click the button in Parent, change the str decorated by \@Provider, and notify the corresponding \@Consumer to refresh the UI.
-
 3. Click the button in Child, change the str decorated by \@Consumer, and notify the corresponding \@Provider to refresh the UI.
 
 <!-- @[Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/TwowayBinding.ets) --> 
@@ -216,17 +204,11 @@ struct Child {
 **Two-Way Binding Not Established**
 
 In the following example, \@Provider and \@Consumer fail to establish a two-way synchronization relationship because of different **aliasName** values.
-
 1. Initialize the **Parent** and **Child** custom components:
-
     - In **Child**, `@Consumer() str: string = 'world'` searches upward but does not find its data provider (@Provider).
-
     - `@Consumer() str: string = 'world'` uses the local default value 'world'.
-
     - Both of them fail to establish a two-way synchronization relationship.
-
 2. Click the button in the **Parent** component to change @Provider decorated **str1** and re-render only the **Button** component associated with @Provider.
-
 3. Click the button in Child to change the str decorated by \@Consumer. Only the Button component associated with \@Consumer is updated.
 
 <!-- @[No_Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/NoTwowayBinding.ets) --> 
@@ -720,7 +702,6 @@ struct Child {
 ### Decorating Complex Types by \@Provider and \@Consumer and Using together with \@Trace
 
 1. \@Provider and \@Consumer can only observe changes to the data itself. If you need to observe attribute changes of the decorated complex data type, you can use \@Trace together, or use [makeObserved](./arkts-new-makeObserved.md) to convert non-observable data into observable data.
-
 2. When decorating built-in types, such as Array, Map, Set, and Date, you can observe the changes of some APIs. The observation capability is the same as that of [\@Trace](./arkts-new-observedV2-and-trace.md#observing-changes).
 
 <!-- @[Decorative_Complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets) -->  
@@ -851,7 +832,6 @@ struct Child {
 In the preceding example:
 
 - \@Consumer in **Parent** searches upwards for **@Provider() val: number = 10** defined in **Index** and initializes it to **10**.
-
 - \@Consumer in **Child** is searched upwards. After **@Provider() val: number = 20** defined in **Parent** is found, \@Consumer stops and is initialized to **20**.
 
 ### Initializing \@Param by \@Provider and \@Consumer
@@ -927,9 +907,7 @@ struct Child {
 In the preceding example:
 
 - Two-way data binding is established between the variable val decorated by \@Provider in **Index** and the variable **val** decorated by \@Consumer in **Parent**. The variable **val2** decorated by \@Param in **Parent** receives data from the data source **val** in **Index** and synchronizes the changes. The variable **val** decorated by \@Param in **Child** receives data from the data source **val** in **Parent** and synchronizes the changes.
-
 - Click the button in **Parent** to trigger the change of **@Consumer() val**. The change is synchronized to **@Provider() val** in **Index** and **@Param val** in **Child**, and the corresponding UI is refreshed.
-
 - The change of **@Provider() val** in the **Index** is synchronized to **@Param val2** in the parent, which corresponds to UI update.
 
 ### Using \@Consumer to Establish Two-Way Synchronization with \@Provider in the Cross-BuilderNode Scenario
@@ -939,15 +917,10 @@ In the preceding example:
 > Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 The following provides an example to implement the following functions:
-
 1. BuilderNode constructs the component tree through a [global custom builder function](arkts-builder.md#global-custom-builder-function). The root [FrameNode](../../reference/apis-arkui/js-apis-arkui-frameNode.md) of the component tree can be obtained via [getFrameNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md#getframenode), and this node can be directly returned by [NodeController](../../reference/apis-arkui/js-apis-arkui-nodeController.md) and mounted under the [NodeContainer](../../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) node.
-
 2. When mounting to the custom component node tree, **BuilderNode** is mounted under the custom component via the **addBuilderNode** method. At this point, the \@Consumer under the **BuilderNode** searches upward for \@Provider; after finding the nearest \@Provider according to the key matching rules, it establishes a two-way synchronization relationship with the \@Provider. If no matched \@Provider is found, the default value of \@Consumer is used.
-
 3. After the two-way synchronization relationship is established, if the value of the \@Provider decorated variable differs from the default value of \@Consumer, the \@Monitor method of \@Consumer is called back, along with the [\@Monitor](./arkts-new-monitor.md) method of variables that have a synchronization relationship with \@Consumer. For example, \@Consumer notifies \@Param in its child component to trigger the \@Monitor method.
-
 4. After **BuilderNode** is unmounted from the component tree, \@Consumer attempts to find the corresponding \@Provider again. If it finds that the previously paired \@Provider can no longer be located after being unmounted from the component tree, it disconnects the two-way synchronization relationship with the \@Provider, and the variable decorated by \@Consumer is restored to its default value.
-
 5. When \@Consumer disconnects the connection with \@Provider and reverts to its default value, it determines whether the value of the variable decorated by \@Consumer has changed relative to the shift from the \@Provider value to the \@Consumer default value. If there is a change, it triggers a callback for the \@Monitor method of \@Consumer, as well as the \@Monitor methods of variables that have a synchronization relationship with this \@Consumer.
 
 <!-- @[Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/BuilderNode.ets) --> 
@@ -996,6 +969,7 @@ class TextNodeController extends NodeController {
   disposeNode(): void {
     if (this.rootNode && globalBuilderNode) {
       globalBuilderNode.dispose();
+      globalBuilderNode = null;
     }
   }
 }
@@ -1033,7 +1007,7 @@ struct RemoChildDisconnectProvider {
           this.controllerIndex.removeBuilderNode();
         })
 
-      // The child node TestRemove of BuilderNode is released. Subsequently, this child node is destroyed, which triggers the aboutToDisappear callback of the child node.
+      // The child node TestRemove of BuilderNode is released. Subsequently, this child node is destroyed, which triggers its aboutToDisappear callback.
       Button('dispose child')
         .width(300)
         .margin(10)
@@ -1091,9 +1065,6 @@ struct TestRemove {
 In the preceding example:
 
 - When **add child** is clicked, \@Consumer in `TestRemove` searches upwards for the nearest \@Provider in `RemoChildDisconnectProvider`, updates \@Consumer from the default value to the \@Provider value, and calls back the \@Monitor method of \@Consumer.
-
 - After \@Provider and \@Consumer are paired, a two-way synchronization relationship is established. When **change Provider** and **change cc** are clicked, the Text components bound to \@Provider and \@Consumer are refreshed, and the \@Monitor methods of \@Provider and \@Consumer are called back.
-
 - When **remove child** is clicked, the BuilderNode child node is unmounted from the component tree, the connection between \@Consumer in `TestRemove` and \@Provider in `RemoChildDisconnectProvider` is disconnected, \@Consumer in `TestRemove` is restored to the default value, and the \@Monitor method of \@Consumer is called back.
-
 - When **dispose child** is clicked, the child node `TestRemove` under BuilderNode is released. Subsequently, this child node is destroyed, and the **aboutToDisappear** callback is executed.

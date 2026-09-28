@@ -5,12 +5,13 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=ecdf029dccf124090b32e9e3826719b2cbec1cee translatedAt=2026-09-04T03:57:02.636Z pushedAt=2026-09-09T09:11:03.736Z -->
 
-As a part of the Unified Data Management Framework (UDMF), the **unifiedDataChannel** module provides unified data channels and standard data access interfaces for many-to-many data sharing across applications. It also provides definitions for uniform data types, such as text and image, to streamline data interaction between different applications and minimize the workload of data type adaptation.
+This module is a part of the Unified Data Management Framework (UDMF). It provides a standardized data channel for various many-to-many cross-application data sharing scenarios, and offers standardized data access and read APIs. It also provides standardized definitions for data types such as text and images, facilitating data exchange between different applications and reducing the workload of data type adaptation.
 
-**Design logic:** UDMF uses a unified data model to encapsulate different types of data into **UnifiedData** objects. It uses **Intention** to identify different data path types (such as **DATA_HUB** and **DRAG**) to implement cross-application data sharing. When data is written, a unique key is generated. When data is read, **key** or **intention** is used to query and obtain the data.
+**Design logic:** UDMF adopts a unified data model, encapsulating different types of data into UnifiedData objects. It identifies different data channel types (such as DATA_HUB and DRAG) through Intention to implement cross-application data sharing. A unique identifier key is generated when data is written, and data is queried by key or intention when read.
 
-Although the UDMF does not parse user data, you are advised not to transfer sensitive personal data or privacy data due to low-level security of storage path.
+When processing data, UDMF does not parse the content of user data, and the storage path has low security. Therefore, it is not recommended to transmit sensitive personal data or private data.
 
 > **NOTE**
 >
@@ -26,38 +27,38 @@ import { unifiedDataChannel } from '@kit.ArkData';
 
 ## ShareOptions<sup>12+</sup>
 
-Enumerates the options for using **UnifiedData** in a device.
+Enumerates the usage scope types supported by UDMF within a device.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name         | Value| Description               |
-|-------------|---|-------------------|
-| IN_APP       | 0 | **UnifiedData** can be used only in the same application of a device.|
-| CROSS_APP | 1 | **UnifiedData** can be used across applications of a device.|
+| Name       | Value | Description                                      |
+|------------|-------|--------------------------------------------------|
+| IN_APP     | 0     | Indicates that the data can be used within the same application on this device. |
+| CROSS_APP  | 1     | Indicates that the data can be used across applications on this device. |
 
 ## GetDelayData<sup>12+</sup>
 
 type GetDelayData = (type: string) => UnifiedData
 
-Defines a function used to obtain a deferred **UnifiedData** object. When the data receiver requests data of a specific type, the system triggers this callback. The data sender can dynamically generate data in the callback instead of preparing all data in advance. Currently, this API can be used only in the pasteboard scenario of the same device.
+A deferred wrapper for UnifiedData that supports deferred data retrieval. When the data receiver requests a specific type of data, the system triggers this callback, and the data sender can dynamically generate the data in the callback instead of preparing all data in advance. Currently, only the same-device clipboard scenario is supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Identifier of the deferred data type, which is used to distinguish different types of data. For details about the values, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). For example, **'general.plain-text'** indicates the plain text type.|
+| type | string | Yes | Identifier of the deferred data type, used to distinguish different types of data. For the values, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). For example, 'general.plain-text' indicates the plain text type. |
 
 **Return value**
 
-| Type                                    | Description                     |
+| Type                                     | Description                      |
 | ---------------------------------------- |-------------------------|
-| [UnifiedData](#unifieddata) | **UnifiedData** object that contains the corresponding type of data, which can be used for application data sharing and transmission.|
+| [UnifiedData](#unifieddata) | UnifiedData object that contains the data of the corresponding type and is returned when the deferred callback is triggered. It can be used for cross-application data sharing and transfer. |
 
 **Example**
 
@@ -88,78 +89,78 @@ let getDelayData: unifiedDataChannel.GetDelayData = ((type: string) => {
 
 type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer | object | null | undefined
 
-Enumerates the data field types allowed in a unified data record.
+Represents the data field types allowed for a unified data record.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| number | Number.|
-| string | String.|
-| boolean | Boolean.|
-| image.PixelMap | The value is of the [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) type.|
-| Want | [Want](../apis-ability-kit/js-apis-app-ability-want.md).|
-| ArrayBuffer | ArrayBuffer.|
-| object | Object.|
-| null | Null.|
-| undefined | Undefined.|
+| number | The number type. |
+| string | The string type. |
+| boolean | The boolean type. |
+| image.PixelMap | The [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) type. |
+| Want | The [Want](../apis-ability-kit/js-apis-app-ability-want.md) type. |
+| ArrayBuffer | The ArrayBuffer type. |
+| object | The object type. |
+| null | Null. |
+| undefined | Undefined. |
 
 ## UriPermission
 
-Defines the URI authorization policy in the drag scenario.
+URI authorization policy in drag-and-drop scenarios.
 
 >**NOTE**
 >
->This authorization policy takes effect only in drag scenarios.
+>This authorization policy takes effect only in drag-and-drop scenarios and does not take effect in other scenarios.
 
-**Implementation mechanism**: When data is dragged and transmitted, the system temporarily authorizes the target URI based on the **UriPermission** configuration. The authorization lifecycle is bound to the drag session. After the drag is complete, the temporary authorization is automatically cleaned up. When the receiver application accesses the URI, the system verifies the permission configuration to determine whether to allow the access. **PERSIST** converts the temporary authorization into a persistent authorization.
+**Implementation mechanism** During drag-and-drop data transfer, the system grants temporary authorization to the target URI based on the UriPermission configuration. The authorization lifecycle is bound to the drag-and-drop session, and the temporary authorization is automatically cleared after the drag-and-drop is complete. When the receiving application accesses the URI, the system verifies the permission configuration to determine whether access is allowed. The PERSIST permission converts the temporary authorization into persistent authorization.
 
-The **NONE**, **READ**, **WRITE**, and **PERSIST** policies are supported. They can be combined, and only the following combinations take effect:
-- **NONE**: No file permission is granted.
-- **READ**: Only one-time read permission is granted.
-- **WRITE**: Only one-time read and write permissions are granted. (Write permission includes read permission.)
-- **READ+WRITE**: One-time read and write permissions are granted, which is the same as the effect of using only **WRITE**.
-- **READ+PERSIST**: Persistent read permission is granted.
-- **WRITE+PERSIST**: Persistent read and write permissions are granted.
-- **READ+WRITE+PERSIST**: Persistent read and write permissions are granted.
+Four permission policies are supported: no authorization, read, write, and persist. They can be used in combination, and only the following combinations take effect:
+- NONE only: no file authorization is granted.
+- READ only: only one-time read-only authorization is granted.
+- WRITE only: one-time read and write authorization is granted (write authorization includes read authorization).
+- READ+WRITE: one-time read and write authorization is granted, with the same effect as using WRITE only.
+- READ+PERSIST: persistent read authorization is granted.
+- WRITE+PERSIST: grants persistent read and write authorization.
+- READ+WRITE+PERSIST: grants persistent read and write authorization.
 
-The rules for applying the drag authorization policies are as follows (in descending order of priority):
-- Single data level: The authorization policy parameters can be configured for the two unified data structures (UDSs) **FileUri** and **HTML** and the six unified data contents (UDCs) **File**, **Image**, **Video**, **Audio**, **Folder**, and **HTML**. The parameters take effect only for a single record at a time, and have the highest priority.
-- **UnifiedData** level: The authorization parameters provided in **UnifiedDataProperties** are valid for a single drag operation. If an authorization policy is configured for a piece of data, the configuration of the data is preferentially used. This level has the second highest priority.
-- Default level: If no authorization policy is configured for a single piece of data or **UnifiedDataProperties**, proxy authorization is performed based on the default drag logic. The default logic is as follows:
+Rules for applying the drag-and-drop authorization policy (in descending order of priority):
+- Single data level: The FileUri and HTML Unified Data Structures (UDS) and the File, Image, Video, Audio, Folder, and HTML Unified Data Content (UDC) structures support configuring authorization policy parameters, which take effect only for a single record at a time and have the highest priority.
+- UnifiedData level: The authorization parameters provided in UnifiedDataProperties take effect for a single drag-and-drop operation. If an authorization policy is configured for a piece of data, the configuration of that data takes precedence, with the next highest priority.
+- Default level: If no authorization policy is configured for either a single piece of data or UnifiedDataProperties, proxy authorization is performed according to the default drag-and-drop logic. The default logic is as follows:
 
-    - **FileUri** data (FileUri (UDS) or File, Image, Video, Audio, and Folder (UDCs)): By default, the **READ**, **WRITE**, and **PERSIST** permissions are granted in drag scenarios.
-    - HTML data: Read permission is granted only for URIs under the **img** tag in HTML text.
+    - FileUri data (FileUri UDS or the File, Image, Video, Audio, and Folder UDC types): In the drag-and-drop scenario, the default authorization is READ+WRITE+PERSIST (read + write + persistent authorization).
+    - HTML data: read authorization is granted only for the URIs under the img tag in the HTML text.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Value| Description|
+| Name | Value | Description |
 | ------------ | --- | ------------------------------------------- |
-| NONE | 0 | No permission granted.|
-| READ | 1 | Permission to read or view data.|
-| WRITE | 2 | Permission to modify data (including **READ**).|
-| PERSIST | 3 | Permission to persist files.|
+| NONE | 0 | No permission is granted. |
+| READ | 1 | Permission to read or view data. |
+| WRITE | 2 | Permission to modify data (including READ). |
+| PERSIST | 3 | Permission to persist files. |
 
 ## UnifiedDataProperties<sup>12+</sup>
 
-Defines the properties of the data records in the unified data object, including the timestamp, tag, pasting range, and additional data.
+Defines the properties of all data records in a unified data object, including the timestamp, tag, paste scope, and some additional data.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| extras | Record<string, object> | No| Yes| Object of the dictionary type used to set other properties. The default value is an empty dictionary object.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| tag | string | No| Yes| Customized tag. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| timestamp | Date | Yes| Yes| Timestamp when [UnifiedData](#unifieddata) is generated. The default value is January 1, 1970 (UTC).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| shareOptions | [ShareOptions](#shareoptions12) | No| Yes| Range, in which [UnifiedData](#unifieddata) can be used. The default value is **CROSS_APP**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| getDelayData | [GetDelayData](#getdelaydata12) | No| Yes| Callback for obtaining the deferred data. Currently, this API can be used only in the pasteboard scenario of the same device. This callback is triggered when a user reads data from the pasteboard. The default value is **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | No| Yes| URI authorization policy used in drag scenarios. The default value is **READ+WRITE+PERSIST**, which takes effect only for a single data operation and has a low priority. For details about the policy, see [UriPermission](#uripermission).<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| extras | Record<string, object> | No | Yes | A dictionary object used to set additional property data. This is an optional field, and the default value is an empty dictionary object.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| tag | string | No | Yes | User-defined tag. This is an optional field, and the default value is an empty string.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| timestamp | Date | Yes | Yes | Timestamp when the [UnifiedData](#unifieddata) is generated. The default value is January 1, 1970 (UTC).<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| shareOptions | [ShareOptions](#shareoptions12) | No | Yes | Indicates the usage scope of the [UnifiedData](#unifieddata) within a device. This is an optional field, and the default value is CROSS_APP.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| getDelayData | [GetDelayData](#getdelaydata12) | No | Yes | Callback for delayed data retrieval. Currently, this callback is supported only in the same-device clipboard scenario and is triggered when a user reads data from the clipboard. This is an optional field, and the default value is undefined.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | No | Yes | URI authorization policies for the drag-and-drop scenario. The default value is READ+WRITE+PERSIST. This field takes effect only for a single data operation and has a lower priority. For details about the policies, see [UriPermission](#uripermission).<br/>**Since:** 26.0.0<br/>**Atomic service API:** Since API version 26.0.0, this API is supported in atomic services. |
 
 **Example**
 
@@ -175,7 +176,7 @@ properties.extras = {
 };
 properties.tag = "This is a tag of properties";
 properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
-// Since API version 26.0.0, the URI authorization policy is supported.
+// Support the URI authorization policy since API version 26.0.0.
 properties.uriAuthorizationPolicies = [
   unifiedDataChannel.UriPermission.WRITE
 ];
@@ -201,25 +202,25 @@ properties.getDelayData = ((type: string) => {
 
 ## UnifiedData
 
-Provides APIs for encapsulating a set of data records.
+Represents the Unified Data Object of UDMF, which provides methods to encapsulate a group of data records.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ### Properties
 
-| Name| Type| Read-Only| Optional| Description                                                                                             |
+| Name | Type | Read-only | Optional | Description                                                                                              |
 | -------- | -------- | -------- | -------- |-------------------------------------------------------------------------------------------------|
-| properties<sup>12+</sup> | [UnifiedDataProperties](#unifieddataproperties12) | No| No| Properties of all the data records in a unified data object, including the timestamp, tag, application range, and additional data.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| properties<sup>12+</sup> | [UnifiedDataProperties](#unifieddataproperties12) | No | No | Properties of all data records in the current unified data object, including the timestamp, tag, paste scope, and some additional data.<br/>**Atomic service API:** This API is supported in atomic services since API version 12. |
 
 ### constructor<sup>12+</sup>
 
 constructor()
 
-Defines a constructor used to create a **UnifiedData** object.
+Creates a unified data object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Example**
 
@@ -231,23 +232,23 @@ let unifiedData = new unifiedDataChannel.UnifiedData();
 
 constructor(record: UnifiedRecord)
 
-Defines a constructor used to create a **UnifiedData** object with a data record. If the call is successful, the **UnifiedData** object containing the specified data record is returned.
+Creates a unified data object that contains a data record. After the call is successful, a UnifiedData object containing the specified data record is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name| Type                           | Mandatory| Description                                     |
+| Name | Type                            | Mandatory | Description                                      |
 | ------ | ------------------------------- | ---- |-----------------------------------------|
-| record | [UnifiedRecord](#unifiedrecord) | Yes  | Data record in the **UnifiedData** object. It is a **UnifiedRecord** object or its child class object.|
+| record | [UnifiedRecord](#unifiedrecord) | Yes   | Data record to add to the unified data object. The record is a UnifiedRecord object or an object of its subclass. |
 
-**Error codes**
+**Error Codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
@@ -268,23 +269,23 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 addRecord(record: UnifiedRecord): void
 
-Adds a data record to this **UnifiedRecord** object. If the call is successful, the specified data record is added to this **UnifiedRecord** object.
+Adds a data record to the current unified data object. After the call is successful, the specified data record is added to the current unified data object.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name| Type                           | Mandatory| Description                                         |
+| Name | Type                            | Mandatory | Description                                          |
 | ------ | ------------------------------- | ---- |---------------------------------------------|
-| record | [UnifiedRecord](#unifiedrecord) | Yes  | Data record in the **UnifiedData** object. It is a **UnifiedRecord** object or its child class object.|
+| record | [UnifiedRecord](#unifiedrecord) | Yes   | Data record to add to the unified data object. The record is a UnifiedRecord object or an object of its subclass.|
 
-**Error codes**
+**Error codes:**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
@@ -314,17 +315,17 @@ unifiedData.addRecord(link);
 
 getRecords(): Array\<UnifiedRecord\>
 
-Obtains all data records from this **UnifiedData** object. The data obtained is of the **UnifiedRecord** type. Before using the data, you need to use [getType](#gettype) to obtain the data type and convert the data type to a child class.
+Obtains all data records in the current unified data object. The data obtained through this API is of the UnifiedRecord type. You need to obtain the data type through [getType](#gettype) and then convert it to a subclass before use.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Return value**
 
-| Type                                    | Description                     |
+| Type                                     | Description                      |
 | ---------------------------------------- |-------------------------|
-| Array\<[UnifiedRecord](#unifiedrecord)\> | Array of all data records contained in this **UnifiedRecord** object. The type of each record can be obtained through **getType** and then converted into a specific subclass for reading and processing various types of data in the unified data.|
+| Array\<[UnifiedRecord](#unifiedrecord)\> | Array of all data records contained in the current unified data object. Each record can be converted to a specific subclass after its type is obtained through getType, for reading and processing various types of data in the unified data. |
 
 **Example**
 
@@ -365,31 +366,31 @@ for (let i = 0; i < records.length; i++) {
 
 hasType(type: string): boolean
 
-Checks whether this **UnifiedData** object contains the specified data type, including the data types added by using the [addEntry](#addentry15) function.
+Checks whether the current unified data object contains the specified data type. The check scope includes the data types added by using [addEntry](#addentry15).
 
-For file types, if the type set of **UnifiedData** includes **general.jpeg**, calling the **hasType** API to check for the **general.image** type will return **true**. This is because the **general.jpeg** type belongs to the **general.image** type.
+For file types, if the type set of the UnifiedData object contains "general.jpeg", the result is true when hasType is called to check whether the type "general.image" is included (the type "general.jpeg" belongs to the type "general.image").
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name| Type                           | Mandatory| Description                                         |
+| Name | Type                            | Mandatory | Description                                          |
 | ------ | ------------------------------- | ---- |---------------------------------------------|
-| type | string | Yes  | Data type to check. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
+| type | string | Yes   | Data type to query. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). |
 
 **Return value**
 
-| Type                                    | Description                     |
+| Type                                     | Description                      |
 | ---------------------------------------- |-------------------------|
-| boolean | Returns **true** if the specified data type exists; returns **false** otherwise.|
+| boolean | Returns true if the specified data type exists; returns false otherwise. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
@@ -422,17 +423,17 @@ let hasLink = unifiedData.hasType(uniformTypeDescriptor.UniformDataType.HYPERLIN
 
 getTypes(): Array\<string\>
 
-Obtains the types of all data records in this **UnifiedData** object.
+Obtains the types of all data records in the current unified data object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Return value**
 
-| Type                                    | Description                     |
+| Type                                     | Description                      |
 | ---------------------------------------- |-------------------------|
-| Array\<string\> | Array of [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype) types, indicating the data type set of the current record. The element values include **'general.plain-text'**, **'general.hyperlink'**, and **'openharmony.form'**.|
+| Array\<string\> | Array of [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype), which represents the set of data types of the current records. The element values include 'general.plain-text', 'general.hyperlink', 'openharmony.form', and so on. |
 
 **Example**
 
@@ -460,15 +461,15 @@ let types = unifiedData.getTypes();
 
 ## Summary
 
-Summarizes the data information of the **unifiedData** object, including the data type and size.
+Describes the data summary of a unified data object, including the data type and size.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| summary   | Record<string, number> | No| No| Dictionary type object, where the key indicates the data type (see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)), and the value indicates the total size (in bytes) of this type of records in the unified data object.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| totalSize | number | No| No| Total size of all the records in the **UnifiedData** object, in bytes.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| overview<sup>22+</sup>   | Record<string, number> | Yes| No| Mapping between all types of unified data objects and the size of data records of the types (in bytes). If the obtained unified data object is empty, the **overview** property is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| summary   | Record<string, number> | No | No | A dictionary object whose key indicates the data type (see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)) and whose value is the total size (in bytes) of the records of that type in the unified data object.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| totalSize | number | No | No | Total size (in bytes) of the records in the unified data object.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| overview<sup>22+</sup>   | Record<string, number> | Yes | No | Mapping between all data types in the unified data object and the sizes of the records of each type, where the data size is in bytes. When the obtained unified data object is empty, the value of this overview attribute is empty.<br/>**Atomic service API:** This API can be used in atomic services since API version 22. |
 
 **Example**
 
@@ -496,17 +497,17 @@ function parseSummary(summary: unifiedDataChannel.Summary) {
 
 ## UnifiedRecord
 
-An abstract definition of the data content supported by the UDMF. A **UnifiedRecord** object contains one or more data records, for example, a text record, an image record, or an HTML record. Since API version 15, different data formats of the same content can be added to a data record. For example, the same text can be stored in plain text, HTML, or hyperlink format. The data user can obtain the data in the required format by using the **getEntry** method.
+An abstract definition of the data content supported by UDMF, called a data record. A unified data object contains one or more data records, for example, a text record, an image record, and an HTML record. Since API version 15, different data formats of the same content can be added to a data record (for example, the same text can be stored in plain text, HTML, or hyperlink formats at the same time). Data consumers can obtain the corresponding format through the getEntry method based on their service requirements.
 
 ### constructor<sup>12+</sup>
 
 constructor()
 
-Defines a constructor used to create a **UnfiedRecord** object. If the call is successful, an empty **UnifiedRecord** object is returned.
+Creates a data record. After the call is successful, an empty UnifiedRecord object is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Example**
 
@@ -518,24 +519,24 @@ let unifiedRecord = new unifiedDataChannel.UnifiedRecord();
 
 constructor(type: string, value: ValueType)
 
-Defines a constructor used to create a data record with the specified type and value. If the call is successful, a **UnifiedRecord** object containing the specified type and value is returned.<br>If **value** is of the [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) type, **type** must be the value of **OPENHARMONY_PIXEL_MAP** in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).<br>If **value** is of the [Want](../apis-ability-kit/js-apis-app-ability-want.md) type, **type** must be the value of **OPENHARMONY_WANT** in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).
+Creates a data record of the specified type and value. After the call is successful, a UnifiedRecord object containing the specified type and value is returned.<br/>When the parameter **value** is of the [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) type, the parameter **type** must correspond to the value of OPENHARMONY_PIXEL_MAP in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).<br/>When the parameter **value** is of the [Want](../apis-ability-kit/js-apis-app-ability-want.md) type, the parameter **type** must correspond to the value of OPENHARMONY_WANT in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name| Type                           | Mandatory| Description                                     |
+| Name | Type                            | Mandatory | Description                                      |
 | ------ | ------------------------------- | ---- |-----------------------------------------|
-| type | string | Yes| Type of the data record to create, which is used to identify the specific type of the data record. For details about the value, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). For example, **'general.plain-text'** and **'general.hyperlink'**.|
-| value | [ValueType](#valuetype12) | Yes  | Value of the data record to create.|
+| type | string | Yes | Type of the data record to create, used to identify the specific type of the data record. For details about the values, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype), for example, 'general.plain-text' and 'general.hyperlink'. |
+| value | [ValueType](#valuetype12) | Yes   | Value of the data record to create. |
 
-**Error codes**
+**Error Codes:**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
@@ -578,17 +579,17 @@ let pixelMapRecord =
 
 getType(): string
 
-Obtains the type of this **UnfiedRecord**. The data obtained by [getRecords](#getrecords) from the **UnifiedData** object is a **UnifiedRecord** object. You need to use this API to obtain the specific type of the record, convert the **UnifiedRecord** object to its child class, and call the child class interfaces.
+Obtains the type of the current data record. Since the data obtained by calling [getRecords](#getrecords) from a unified data object is a UnifiedRecord object, you need to use this API to query the specific type of the record, and then convert the UnifiedRecord object to its subclass and call the subclass APIs.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Return value**
 
-| Type  | Description                                                  |
+| Type   | Description                                                   |
 | ------ |------------------------------------------------------|
-| string | Data type obtained. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
+| string | Specific data type corresponding to the current data record. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
 
 **Example**
 
@@ -614,17 +615,17 @@ if (records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
 
 getValue(): ValueType
 
-Obtains the value of this data record.
+Obtains the value of the current data record.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Return value**
 
-| Type  | Description                                                  |
+| Type   | Description                                                   |
 | ------ |------------------------------------------------------|
-| [ValueType](#valuetype12) | Value obtained.|
+| [ValueType](#valuetype12) | Value corresponding to the current data record. |
 
 **Example**
 
@@ -653,24 +654,24 @@ let hyperlinkValue = hyperlinkRecord.getValue();
 
 addEntry(type: string, value: ValueType): void
 
-Adds data of a specified data type and content to the current data record. You can use this API to add different data types and contents to the same data. After the API is successfully called, the specified data type and content are added to the current data record.
+Adds a data entry with the specified data type and content to the current data record. The data type and content added through this method are different representations of the same content. After the call is successful, the specified data type and content are added to the current data record.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name| Type                           | Mandatory| Description                                     |
+| Name | Type                            | Mandatory | Description                                      |
 | ------ | ------------------------------- | ---- |-----------------------------------------|
-| type | string | Yes  | Type of the data to add. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
-| value | [ValueType](#valuetype12) | Yes| Value of the data to add.|
+| type | string | Yes   | Data type to create. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). |
+| value | [ValueType](#valuetype12) | Yes | Value of the data to create. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
@@ -705,29 +706,29 @@ unifiedData.addRecord(record);
 
 getEntry(type: string): ValueType
 
-Obtains data of the specified type from the data record.
+Obtains the data content in a data record by data type.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name| Type                           | Mandatory| Description                                     |
+| Name | Type                            | Mandatory | Description                                      |
 | ------ | ------------------------------- | ---- |-----------------------------------------|
-| type | string | Yes| Type of the data to obtain. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
+| type | string | Yes | Type of the data to obtain. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). |
 
 **Return value**
 
-| Type  | Description                                                  |
+| Type   | Description                                                   |
 | ------ |------------------------------------------------------|
-| [ValueType](#valuetype12) | Value obtained.|
+| [ValueType](#valuetype12) | Value corresponding to the current data record. |
 
-**Error codes**
+**Error codes:**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
@@ -785,17 +786,17 @@ for (let i = 0; i < records.length; i++) {
 
 getEntries(): Record<string, ValueType>
 
-Obtains all the data in the current data record.
+Obtains the types and contents of all data in the current data record.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Return value**
 
-| Type  | Description                                                  |
+| Type   | Description                                                   |
 | ------ |------------------------------------------------------|
-| Record<string, [ValueType](#valuetype12)> | Values and types obtained.|
+| Record<string, [ValueType](#valuetype12)> | Types and contents corresponding to the current data record. |
 
 **Example**
 
@@ -850,17 +851,17 @@ for (let i = 0; i < records.length; i++) {
 
 getTypes(): Array\<string\>
 
-Obtains all the data types in the data record. This API can be called using the **UnifiedRecord** object to query all data types in the record, including the data types added using the [addEntry](#addentry15) function.
+Obtains the set of all data types in the data record. This API can be called through a UnifiedRecord data record object to query the set of all data types in the record, including the data types added by using the [addEntry](#addentry15) function.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Return value**
 
-| Type                                    | Description                     |
+| Type                                     | Description                      |
 | ---------------------------------------- |-------------------------|
-| Array\<string\> | Array of the [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype) types obtained. The element values include **'general.plain-text'**, **'general.hyperlink'**, **'general.html'**.|
+| Array\<string\> | Array of [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype) objects, indicating the data types corresponding to all data records in the current unified data object. The element values are such as 'general.plain-text', 'general.hyperlink', and 'general.html'. |
 
 **Example**
 
@@ -908,15 +909,15 @@ for (let i = 0; i < records.length; i++) {
 
 ## Text
 
-Represents the text data. It is a child class of [UnifiedRecord](#unifiedrecord) and a base class of text data. You are advised to use the child class of **Text**, for example, [PlainText](#plaintext), [Hyperlink](#hyperlink), and [HTML](#html), to describe data.
+Represents text data. It is a subclass of [UnifiedRecord](#unifiedrecord) and the base class of text data, used to describe text data. You are advised to use subclasses of Text, such as [PlainText](#plaintext), [Hyperlink](#hyperlink), and [HTML](#html), to describe data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| details | Record<string, string> | No| Yes| A dictionary type object, where both the key and value are of the string type and are used to describe the text content. For example, a data object with the following content can be created to describe a text file:<br>{<br>"title":"Title",<br>"content":"Content"<br>}<br> The default value is an empty dictionary object.|
+| details | Record<string, string> | No | Yes | A dictionary object whose keys and values are both strings, used to describe the text content. For example, you can create a data object whose details are<br/>{<br/>"title":"Title",<br/>"content":"Content"<br/>}<br/>to describe an article. This is an optional field, and the default value is an empty dictionary object. |
 
 **Example**
 
@@ -931,16 +932,16 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 ## PlainText
 
-Represents the plain text data. It is a child class of [Text](#text).
+A subclass of [Text](#text) that describes plain text data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| textContent | string | No| No| Plaintext content.               |
-| abstract    | string | No| Yes| Text abstract. This parameter is optional. The default value is an empty string.|
+| textContent | string | No | No | Plain text content.                |
+| abstract    | string | No | Yes | Plain text abstract. This is an optional field, and the default value is an empty string. |
 
 **Example**
 
@@ -952,16 +953,16 @@ text.abstract = 'This is abstract';
 
 ## Hyperlink
 
-Represents the hyperlink data. It is a child class of [Text](#text).
+A subclass of [Text](#text) that describes hyperlink data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| url         | string | No| No| URL.      |
-| description | string | No| Yes| Description of the linked content. This parameter is optional. The default value is an empty string.|
+| url         | string | No | No | URL of the link.       |
+| description | string | No | Yes | Description of the link content. This is an optional field, and the default value is an empty string. |
 
 **Example**
 
@@ -973,15 +974,15 @@ link.description = 'This is description';
 
 ## HTML
 
-Represents the HTML data. It is a child class of [Text](#text).
+The HTML type data, a subclass of [Text](#text), is used to describe HyperText Markup Language data.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| htmlContent  | string | No| No| Content in HTML format.<br>**Atomic service API**: This API can be used in atomic services since API version 11.            |
-| plainContent | string | No| Yes| Plaintext without HTML tags. This parameter is optional. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | No| Yes| URI authorization policy used in drag scenarios. The default value is **READ** (read-only authorization), which takes effect only in scenarios such as the **img** tag. This policy is used only for a single record and has the highest priority. For details, see [UriPermission](#uripermission).<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| htmlContent  | string | No | No | Content in HTML format.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services.             |
+| plainContent | string | No | Yes | Plain text content after HTML tags are removed. This is an optional field, and the default value is an empty string.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | No | Yes | URI authorization policy used in drag-and-drop scenarios. The default value is READ (read-only authorization), which takes effect only in scenarios such as the img tag. It applies only to a single record and has the highest priority. For details about the policies, see [UriPermission](#uripermission).<br/>**Since:** 26.0.0<br/>**Atomic service API:** Since API version 26.0.0, this API is supported in atomic services. |
 
 **Example**
 
@@ -989,7 +990,7 @@ Represents the HTML data. It is a child class of [Text](#text).
 let html = new unifiedDataChannel.HTML();
 html.htmlContent = '<div><p>Title</p></div>';
 html.plainContent = 'This is plainContent';
-// Since API version 26.0.0, the URI authorization policy is supported.
+// Support the URI authorization policy since API version 26.0.0.
 html.uriAuthorizationPolicies = [
   unifiedDataChannel.UriPermission.WRITE
 ];
@@ -997,21 +998,21 @@ html.uriAuthorizationPolicies = [
 
 ## File
 
-Represents the file data. It is a child class of [UnifiedRecord](#unifiedrecord) and a base class of the data of the file type. You are advised to use the child class of **File**, for example, [Image](#image), [Video](#video), and [Folder](#folder), to describe data.
+The File type data is a subclass of [UnifiedRecord](#unifiedrecord) and the base class of file type data. It is used to describe file type data. You are advised to use subclasses of File, such as [Image](#image), [Video](#video), and [Folder](#folder), to describe data.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| details | Record<string, string> | No| Yes| A dictionary type object, where both the key and value are of the string type and are used to describe file information. For example, a data object with the following content can be created to describe a file:<br>{<br>"name":"File name",<br>"type":"File type"<br>}<br> The default value is an empty dictionary object.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| uri     | string                    | No| No| URI of the local file or online file. The local file URI can be obtained using the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) function.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | No| Yes| URI authorization policy used in drag scenarios. The default value is **READ+WRITE+PERSIST**, which is the highest priority and applies only to a single record. For details about the policy, see [UriPermission](#uripermission).<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| details | Record<string, string> | No | Yes | A dictionary object whose keys and values are both of the string type. It is used to describe file-related information. For example, you can create a data object with the following details to describe a file:<br/>{<br/>"name":"file name",<br/>"type":"file type"<br/>}. This is an optional field, and the default value is an empty dictionary object.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| uri     | string                    | No | No | URI of a local file or a network file. The URI of a local file can be obtained by calling [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath).<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | No | Yes | URI authorization policy used in drag-and-drop scenarios. The default value is READ+WRITE+PERSIST (read + write + persistent authorization). It applies only to a single record and has the highest priority. For details about the policies, see [UriPermission](#uripermission).<br/>**Since:** 26.0.0<br/>**Atomic service API:** Since API version 26.0.0, this API is supported in atomic services. |
 
 **Example**
 
 ```ts
 import { unifiedDataChannel } from '@kit.ArkData';
-import { fileUri } from '@kit.CoreFileKit'
+import { fileUri } from '@kit.CoreFileKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -1026,7 +1027,7 @@ export default class EntryAbility extends UIAbility {
     };
     let filePath = pathDir + '/test.txt';
     file.uri = fileUri.getUriFromPath(filePath);
-    // Since API version 26.0.0, the URI authorization policy is supported.
+    // Starting from API version 26.0.0, the URI authorization policy is supported.
     file.uriAuthorizationPolicies = [
       unifiedDataChannel.UriPermission.WRITE
     ];
@@ -1036,21 +1037,21 @@ export default class EntryAbility extends UIAbility {
 
 ## Image
 
-Represents the image data. It is a child class of [File](#file) and is used to describe images.
+Represents image data. It is a subclass of [File](#file) and is used to describe an image file.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| imageUri | string | No| No| URI of the local image or online image. The local image URI can be obtained using the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) function.|
+| imageUri | string | No | No | URI of the local image data or network image. The URI of the local image data can be obtained by calling [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath). |
 
 **Example**
 
 ```ts
 import { unifiedDataChannel } from '@kit.ArkData';
-import { fileUri } from '@kit.CoreFileKit'
+import { fileUri } from '@kit.CoreFileKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -1067,21 +1068,21 @@ export default class EntryAbility extends UIAbility {
 
 ## Video
 
-Represents video data. It is a child class of [File](#file) and is used to describe a video file.
+Video data, a subclass of [File](#file), used to describe a video file.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| videoUri | string | No| No| URI of the local video or online video. The local video URI can be obtained using the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) function.|
+| videoUri | string | No | No | URI of the local video data or network video. The URI of the local video data can be obtained by calling [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath). |
 
 **Example**
 
 ```ts
 import { unifiedDataChannel } from '@kit.ArkData';
-import { fileUri } from '@kit.CoreFileKit'
+import { fileUri } from '@kit.CoreFileKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -1098,21 +1099,21 @@ export default class EntryAbility extends UIAbility {
 
 ## Audio
 
-Represents audio data. It is a child class of [File](#file) and is used to describe an audio file.
+Audio data, a subclass of [File](#file), used to describe an audio file.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| audioUri | string | No| No| URI of the local audio or online audio. The local audio URI can be obtained using the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) function.|
+| audioUri | string | No | No | URI of the local audio data or network audio data. The URI of the local audio data can be obtained by calling [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath). |
 
 **Example**
 
 ```ts
 import { unifiedDataChannel } from '@kit.ArkData';
-import { fileUri } from '@kit.CoreFileKit'
+import { fileUri } from '@kit.CoreFileKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -1129,21 +1130,21 @@ export default class EntryAbility extends UIAbility {
 
 ## Folder
 
-Represents the folder data. It is a child class of [File](#file) and is used to describe a folder.
+Folder type data, a subclass of [File](#file), used to describe a folder.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| folderUri | string | No| No| URI of the local folder or online folder. The local folder URI can be obtained using the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) function.|
+| folderUri | string | No | No | URI of a local folder or a network folder. The URI of a local folder can be obtained by [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath). |
 
 **Example**
 
 ```ts
 import { unifiedDataChannel } from '@kit.ArkData';
-import { fileUri } from '@kit.CoreFileKit'
+import { fileUri } from '@kit.CoreFileKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -1160,15 +1161,15 @@ export default class EntryAbility extends UIAbility {
 
 ## SystemDefinedRecord
 
-Represents specific data types defined by OpenHarmony. It is a child class of [UnifiedRecord](#unifiedrecord) and a base class of OpenHarmony-specific data types. You are advised to use the child class of **SystemDefinedRecord**, for example, [SystemDefinedForm](#systemdefinedform), [SystemDefinedAppItem](#systemdefinedappitem), and [SystemDefinedPixelMap](#systemdefinedpixelmap), to describe OpenHarmony-specific data.
+SystemDefinedRecord is a subclass of [UnifiedRecord](#unifiedrecord) and the base class of OpenHarmony system-specific data types. It is used to describe data types that circulate only within the OpenHarmony system. You are advised to use subclasses of SystemDefinedRecord, such as [SystemDefinedForm](#systemdefinedform), [SystemDefinedAppItem](#systemdefinedappitem), and [SystemDefinedPixelMap](#systemdefinedpixelmap), to describe data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| details | Record<string, number \| string \| Uint8Array> | No| Yes| A dictionary type object, where the key is of the string type, and the value can be a number, a string, or a Uint8Array. The default value is an empty dictionary object.|
+| details | Record<string, number \| string \| Uint8Array> | No | Yes | A dictionary object whose key is of the string type and whose value can be of the number, string, or Uint8Array (binary byte array) type. This is an optional field, and the default value is an empty dictionary object.|
 
 **Example**
 
@@ -1185,19 +1186,19 @@ let unifiedData = new unifiedDataChannel.UnifiedData(sdr);
 
 ## SystemDefinedForm
 
-Represents the service widget data defined by the system. It is a child class of [SystemDefinedRecord](#systemdefinedrecord).
+Represents the system-defined widget data, which is a subclass of [SystemDefinedRecord](#systemdefinedrecord).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| formId      | number | No| No| Service widget ID.         |
-| formName    | string | No| No| Widget name.         |
-| bundleName  | string | No| No| Name of the bundle to which the widget belongs.  |
-| abilityName | string | No| No| Ability name corresponding to the widget.|
-| module      | string | No| No| Name of the module to which the widget belongs.  |
+| formId      | number | No | No | Widget ID.          |
+| formName    | string | No | No | Widget name.          |
+| bundleName  | string | No | No | Name of the bundle to which the widget belongs.   |
+| abilityName | string | No | No | Name of the ability corresponding to the widget. |
+| module      | string | No | No | Name of the module to which the widget belongs.   |
 
 **Example**
 
@@ -1219,20 +1220,20 @@ let unifiedData = new unifiedDataChannel.UnifiedData(form);
 
 ## SystemDefinedAppItem
 
-Represents the data of the home screen icon defined by the system. It is a child class of [SystemDefinedRecord](#systemdefinedrecord).
+System-defined desktop icon data, which is a subclass of [SystemDefinedRecord](#systemdefinedrecord).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| appId       | string | No| No| ID of the application, for which the icon is used.     |
-| appName     | string | No| No| Name of the application, for which the icon is used.      |
-| appIconId   | string | No| No| Image ID of the icon.<br>       |
-| appLabelId  | string | No| No| Label ID corresponding to the icon name.  |
-| bundleName  | string | No| No| Bundle name corresponding to the icon.|
-| abilityName | string | No| No| Application ability name corresponding to the icon.|
+| appId       | string | No | No | Application ID corresponding to the icon.      |
+| appName     | string | No | No | Application name corresponding to the icon.       |
+| appIconId   | string | No | No | Image ID of the icon.<br/>        |
+| appLabelId  | string | No | No | Label ID corresponding to the icon name.   |
+| bundleName  | string | No | No | Bundle name of the application corresponding to the icon. |
+| abilityName | string | No | No | Ability name of the application corresponding to the icon. |
 
 **Example**
 
@@ -1255,15 +1256,15 @@ let unifiedData = new unifiedDataChannel.UnifiedData(appItem);
 
 ## SystemDefinedPixelMap
 
-Represents the image data type corresponding to [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) defined by the system. It is a child class of [SystemDefinedRecord](#systemdefinedrecord) and holds only binary data of **PixelMap**.
+An image data type corresponding to the system-defined [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) data type. It is a subclass of [SystemDefinedRecord](#systemdefinedrecord) and stores only the binary data of a PixelMap.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| rawData | Uint8Array | No| No| Binary data of the **PixelMap** object.|
+| rawData | Uint8Array | No | No | Binary data of the PixelMap object. |
 
 **Example**
 
@@ -1309,16 +1310,16 @@ image.createPixelMap(color, opts, (error, pixelMap) => {
 
 ## ApplicationDefinedRecord
 
-Represents the custom data type for applications only. It is a child class of [UnifiedRecord](#unifiedrecord) and a base class of custom data types of applications. Applications can extend custom data types based on this class.
+ApplicationDefinedRecord is a subclass of [UnifiedRecord](#unifiedrecord) and the base class of application-defined data types. It describes custom data types that circulate only within the application ecosystem. Applications can extend custom data types based on this class.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| applicationDefinedType | string     | No| No| Application's custom data type identifier, which must start with **ApplicationDefined**.|
-| rawData                | Uint8Array | No| No| Binary data of the custom data type.                     |
+| applicationDefinedType | string     | No | No | Identifier of the application-defined type. It must start with 'ApplicationDefined'. |
+| rawData                | Uint8Array | No | No | Binary data of the application-defined data type.                      |
 
 **Example**
 
@@ -1332,241 +1333,241 @@ let unifiedData = new unifiedDataChannel.UnifiedData(record);
 
 ## Intention
 
-Enumerates the data channel types supported by the UDMF. It is used to identify different service scenarios, to which the UDMF data channels apply.
+Enumerates the data channels supported by UDMF. It is mainly used to identify the different business scenarios targeted by various UDMF data channels.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name      | Value        | Description     |
+| Name       | Value         | Description      |
 |----------|-----------|---------|
-| DATA_HUB | 'DataHub' | Public data channel.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Use scenario**: This type is applicable to the scenario where UDMF is used to share data across applications in the public data sharing scenario.|
-| DRAG<sup>14+</sup> | 'Drag' | Channel in which data can be dragged and dropped.<br>**Use scenario**: This API is used to share data across applications in drag-and-drop scenarios.|
-| SYSTEM_SHARE<sup>20+</sup> | 'SystemShare' | Data channel of the system sharing type.<br>**Use scenario**: This API is used to share data across applications in system sharing scenarios.|
-| PICKER<sup>20+</sup> | 'Picker' | Data channel of the picker type.<br>**Use scenario**: This API is used to share data across applications in the scenarios where a picker is used.|
-| MENU<sup>20+</sup> | 'Menu' | Data channel of the menu type.<br>**Use scenario**: This API is used to share data across applications in the shortcut menu.|
+| DATA_HUB | 'DataHub' | Public data channel.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services.<br/>**Applicable scenario:** Suitable for cross-application data sharing using UDMF in public data sharing scenarios. |
+| DRAG<sup>14+</sup> | 'Drag' | Drag-and-drop data channel.<br/>**Applicable scenario:** Suitable for cross-application data sharing using UDMF in drag-and-drop scenarios. |
+| SYSTEM_SHARE<sup>20+</sup> | 'SystemShare' | System sharing data channel.<br/>**Applicable scenario:** Suitable for cross-application data sharing using UDMF in system sharing scenarios. |
+| PICKER<sup>20+</sup> | 'Picker' | Picker data channel.<br/>**Applicable scenario:** Suitable for cross-application data sharing using UDMF in picker scenarios. |
+| MENU<sup>20+</sup> | 'Menu' | Menu data channel.<br/>**Applicable scenario:** Suitable for cross-application data sharing using UDMF in right-click menu scenarios. |
 
-## Visibility<sup>20+</sup> 
+## Visibility<sup>20+</sup>
 
-Enumerates the data visibility levels.
+Enumerates the visibility levels of data.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name         | Value  | Description                         |
+| Name          | Value | Description                          |
 | ------------- | ---- |------------------------------|
-| ALL           | 0    | Visible to all applications.   |
-| OWN_PROCESS   | 1    | Visible only to the data provider. |
+| ALL           | 0    | Visibility level, visible to all applications.    |
+| OWN_PROCESS   | 1    | Visibility level, visible only to the data provider.  |
 
 ## Options
 
-Defines the data operation performed by the UDMF. It includes three optional parameters: **intention**, **key**, and **visibility**. The three parameters can be left unspecified. For details, see the parameter description of the specific API.
+The data operation APIs provided by UDMF include three optional parameters: intention, key, and visibility. If an API does not require these parameters, they can be left unspecified. For details, see the parameter description of the specific API.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name     | Type                   | Read-Only| Optional| Description                                                        |
+| Name      | Type                    | Read-only | Optional | Description                                                         |
 | --------- | ----------------------- | ---- | ----- | ------------------------------------------------------- |
-| intention | [Intention](#intention) | No| Yes| Type of the data path related to the data operation. The value is of the [Intention](#intention) enum type, including **DATA_HUB** and **DRAG**. If this parameter is not specified, no value is used by default. For details about whether this parameter is mandatory, see the parameter description of the specific API.<br>**Atomic service API**: This API can be used in atomic services since API version 11.             |
-| key | string | No| Yes| Unique identifier of the data object in the UDMF, which can be obtained from the value returned by [insertData](#unifieddatachannelinsertdata). If this parameter is not specified, no value is used by default. For details about whether this parameter is mandatory, see the parameter description of the specific API.<br>The key consists of **udmf:/**, **intention**, **bundleName**, and **groupId** with a (/) in between, for example, **udmf://DataHub/com.ohos.test/0123456789**.<br>**udmf:/** is fixed, **DataHub** is an enum of **intention**, **com.ohos.test** is the bundle name, and **0123456789** is a group ID randomly generated.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| visibility<sup>20+</sup> | [Visibility](#visibility20) | No| Yes| Visibility level of data. This parameter is available only for public data paths. The value is of the [Visibility](#visibility20) enum type. This parameter is effective only when specified during data writing. If unspecified, the default value **Visibility.ALL** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
+| intention | [Intention](#intention) | No | Yes | Data channel type related to the data operation. The value is an [Intention](#intention) enum, including DATA_HUB and DRAG. If not specified, the value is empty by default. For details about whether this parameter is mandatory, see the parameter description of the specific API.<br/>**Atomic service API:** This API is supported in atomic services since API version 11.              |
+| key | string | No | Yes | Unique identifier of the data object in UDMF. It can be obtained from the return value of [insertData](#unifieddatachannelinsertdata). If not specified, the value is empty by default. For details about whether this parameter is mandatory, see the parameter description of the specific API.<br>It consists of four parts: udmf:/, intention, bundleName, and groupId, which are connected by '/', for example, udmf://DataHub/com.ohos.test/0123456789.<br>Among them, udmf:/ is fixed, DataHub is the value of the corresponding enum, com.ohos.test is the bundle name, and 0123456789 is the randomly generated groupId.<br/>**Atomic service API:** This API is supported in atomic services since API version 11. |
+| visibility<sup>20+</sup> | [Visibility](#visibility20) | No | Yes | Visibility level of the data. It is available only for public data channels. The value is a [Visibility](#visibility20) enum. It takes effect only when specified during data writing. If not specified, the default value is Visibility.ALL.<br/>**Atomic service API:** This API is supported in atomic services since API version 20.  |
 
 ## FileConflictOptions<sup>15+</sup>
 
-Enumerates the options for resolving file copy conflicts.
+Enumerates the optional policies for file copy conflicts.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name     | Value  | Description            |
-| --------- | ---- |----------------|
-| OVERWRITE | 0    | Overwrite the file with the same name in the destination directory.|
-| SKIP      | 1    | Skip the file if there is a file with the same name in the destination directory.|
+| Name      | Value | Description             |
+| --------- | ----- |----------------|
+| OVERWRITE | 0    | Overwrites the file when a file with the same name exists in the destination path. |
+| SKIP      | 1    | Skips the file when a file with the same name exists in the destination path. |
 
 ## ProgressIndicator<sup>15+</sup>
 
-Enumerates the progress indicator options.
+Enumerates the progress indicator options, which determine whether to use the system default progress display.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name   | Value  | Description                                |
-| ------- | ---- |------------------------------------|
-| NONE    | 0    | Do not use the default progress indicator.                      |
-| DEFAULT | 1    | Use the default progress indicator. If data is obtained within 500 ms, the default progress bar is not started.|
+| Name    | Value | Description                                 |
+| ------- | ----- |------------------------------------|
+| NONE    | 0    | Does not use the system default progress display.                       |
+| DEFAULT | 1    | Uses the system default progress display. If data is obtained within 500 ms, the default progress bar will not be displayed. |
 
 ## ListenerStatus<sup>15+</sup>
 
-Enumerates the status codes returned when data is obtained from the UDMF.
+Enumerates the status codes returned when obtaining data from UDMF.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name   | Value  | Description                                          |
+| Name    | Value | Description                                           |
 | ------- |-----|----------------------------------------------|
-| FINISHED | 0   | The task is completed.                                      |
-| PROCESSING | 1   | The task is being processed.                                    |
-| CANCELED | 2   | The task is canceled.                                 |
-| INNER_ERROR  | 200 | An internal error occurs.                                  |
-| INVALID_PARAMETERS | 201 | [GetDataParams](#getdataparams15) contains invalid parameters.|
-| DATA_NOT_FOUND | 202 | No data is obtained.                                  |
-| SYNC_FAILED | 203 | Failed to sync data.                                |
-| COPY_FILE_FAILED | 204 | Failed to copy data.                              |
+| FINISHED | 0   | Finished.                                       |
+| PROCESSING | 1   | Processing.                                     |
+| CANCELED | 2   | Canceled.                                  |
+| INNER_ERROR  | 200 | An internal error occurred.                                   |
+| INVALID_PARAMETERS | 201 | [GetDataParams](#getdataparams15) contains invalid parameters. |
+| DATA_NOT_FOUND | 202 | No data is obtained.                                   |
+| SYNC_FAILED | 203 | An error occurred during synchronization.                                 |
+| COPY_FILE_FAILED | 204 | An error occurred during file copy.                               |
 
 ## ProgressInfo<sup>15+</sup>
 
-Represents the progress information.
+Defines the data for progress reporting.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name    | Type                                 | Read-Only| Optional| Description                                                            |
+| Name     | Type                                | Read-only | Optional | Description                                                             |
 | -------- |-------------------------------------| ---- | ---- |----------------------------------------------------------------|
-| progress | number                              | No  | No  | Progress of the drag task, in percentage. <br>The value is an integer ranging from -1 to 100. The value **-1** indicates a failure to obtain data, and the value **100** indicates data is obtained.|
-| status | [ListenerStatus](#listenerstatus15) | No  | No  | Status code of the drag task reported by the system.                                                 |
+| progress | number                              | No   | No   | Progress percentage of the drag-and-drop task reported by the system. The value is an integer in the range [-1, 100], where -1 indicates that data acquisition failed this time, and 100 indicates that data acquisition is complete. |
+| status | [ListenerStatus](#listenerstatus15) | No   | No   | Status code of the drag-and-drop task reported by the system.                                                  |
 
 ## DataProgressListener<sup>15+</sup>
 
 type DataProgressListener = (progressInfo: ProgressInfo, data: UnifiedData | null) => void
 
-Defines the callback used to return the data retrieval progress information and data obtained.
+Defines the listener callback used to obtain progress information and data.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name     | Type                           | Mandatory   | Description          |
+| Name      | Type                            | Mandatory    | Description           |
 |----------|-------------------------------|-------|--------------|
-| progressInfo | [ProgressInfo](#progressinfo15) | Yes| Progress information to report, which is used to receive the progress status and progress percentage of a drag task. The parameter contains two fields: **progress** (progress percentage, value range: [–1, 100]) and **status** (task status code). If the value of **progress** is –1, data fails to be obtained. If the value is **100**, data obtaining is complete.|
-| data        | [UnifiedData](#unifieddata)  \| null  |  Yes   | Data obtained when the progress reaches 100. If the progress does not reach 100, **null** is returned.|
+| progressInfo | [ProgressInfo](#progressinfo15) | Yes | Progress information reported for the drag-and-drop task, including the progress status and progress percentage. It contains two fields: progress (progress percentage, ranging from -1 to 100) and status (task status code). A progress value of -1 indicates a failure to obtain data, and 100 indicates that data obtaining is complete. |
+| data        | [UnifiedData](#unifieddata)  \| null  |  Yes    | Data obtained when the progress reaches 100. Returns null when the progress has not reached 100. |
 
 ## GetDataParams<sup>15+</sup>
 
-Represents the parameters for obtaining data from UDMF, including the destination directory, option for resolving file conflicts, and progress indicator type.
+Represents the parameters used to obtain data from UDMF, including the destination path, file conflict options, and progress bar type.
 
-For details, see [Obtaining Data Asynchronously Through Drag-and-Drop](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#example-3-obtaining-data-asynchronously-through-drag-and-drop).
+For details about how to use it, see [Example 3 Asynchronously Obtaining Data During Drag](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#example-3-asynchronously-obtaining-data-during-drag).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name                  | Type                                             | Read-Only| Optional| Description                                                                                                                                                |
+| Name                   | Type                                              | Read-only | Optional | Description                                                                                                                                                 |
 |----------------------|-------------------------------------------------| ---- | ---- |----------------------------------------------------------------------------------------------------------------------------------------------------|
-| progressIndicator    | [ProgressIndicator](#progressindicator15)       | No  | No  | Progress indicator options. You can use the default progress indicator as required.<br>**Atomic service API**: This API can be used in atomic services since API version 15.                                                                                                                        |
-| dataProgressListener | [DataProgressListener](#dataprogresslistener15) | No  | No  | Callback used to return the data retrieval progress and data obtained.<br>**Atomic service API**: This API can be used in atomic services since API version 15.                                                                                                                               |
-| destUri              | string                                          | No  | Yes  | Destination directory for the file copied. If file processing is not supported, leave this parameter unspecified, which is the default value of this parameter. If file processing is supported, pass in an existing directory. If complex file processing policies are involved or multipathing file storage is required, you are advised to leave this parameter unspecified and let the application handle file copying. If this parameter is not specified, the source URI is obtained. If this parameter is specified, the specified destination URI is obtained.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| fileConflictOptions  | [FileConflictOptions](#fileconflictoptions15)   | No  | Yes  | Option for resolving file copy conflicts. The default value is **OVERWRITE**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.                                                                                                                        |
-| acceptableInfo<sup>20+</sup>  | [DataLoadInfo](#dataloadinfo20)   | No  | Yes  | Capability of the receiver to receive data types and data records. In the lazy loading scenario, the sender can generate and return more appropriate data content based on this information. The default value is empty, indicating that the receiver does not have the data receiving capability.<br>**Atomic service API**: This API can be used in atomic services since API version 20.  |
+| progressIndicator    | [ProgressIndicator](#progressindicator15)       | No   | No   | Defines the progress bar indicator options, which determine whether to use the system default progress display.<br>**Atomic service API:** This API is supported in atomic services since API version 15.                                                                                                                         |
+| dataProgressListener | [DataProgressListener](#dataprogresslistener15) | No   | No   | Represents the progress and data listener used when obtaining unified data.<br>**Atomic service API:** This API is supported in atomic services since API version 15.                                                                                                                                |
+| destUri              | string                                          | No   | Yes   | Destination path for copying files. If file processing is not supported, this parameter does not need to be set and defaults to empty. If file processing is supported, it must be set to an existing directory. If the application involves complex file processing policies or needs to distinguish multi-path storage of files, it is recommended not to set this parameter and let the application complete the file copy processing on its own. When this parameter is not set, the obtained URI is the source path URI; when it is set, the obtained URI is the destination path URI.<br>**Atomic service API:** This API is supported in atomic services since API version 15.|
+| fileConflictOptions  | [FileConflictOptions](#fileconflictoptions15)   | No   | Yes   | Defines the options for file copy conflicts. The default value is OVERWRITE.<br>**Atomic service API:** This API is supported in atomic services since API version 15.                                                                                                                         |
+| acceptableInfo<sup>20+</sup>  | [DataLoadInfo](#dataloadinfo20)   | No   | Yes   | Defines the receiver's capability to accept data types and the number of data records. In lazy loading scenarios, the sender can generate and return more appropriate data content based on this information. It defaults to empty, indicating that the receiver's data acceptance capability is not provided.<br>**Atomic service API:** This API is supported in atomic services since API version 20.   |
 
 ## DataLoadInfo<sup>20+</sup>
 
-Defines type and quantity of the data to load.
+Describes the type and quantity of the data to be loaded.
 
-- Used by the **data sender** to define the data range that can be provided. This field is mandatory.
-- Used by the **data receiver** to define the expected data type and quantity. This field is optional.
+- Used on the **data sender** side to indicate the range of data that can actually be provided. This field must be set.
+- Used on the **data receiver** side to indicate the type and quantity of data expected to be loaded. This field can be set as needed.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name                  | Type                                             | Read-Only| Optional| Description                                                                                                                                                |
+| Name                   | Type                                              | Readable | Optional | Description                                                                                                                                                 |
 |----------------------|-------------------------------------------------| ---- |-----| -----------------------------------------------------------------------------------------------------------------------------------------------|
-| types    | Set\<string\>       | No| Yes| Data type set. The default value is an empty set.                                                                                                                        |
-| recordCount | number | No| Yes| Maximum number of data records, ranging from 0 to 2<sup>32</sup>-1. The default value is **0**. If the value is out of the range, the default value is used. If the value is a floating point number, only the integer part is used. If the value is used for drag and drop, it is displayed as the number of badges with a maximum value of **2<sup>31</sup>-1**. If the value exceeds the maximum, no badge is displayed. In addition, the priority of this parameter is lower than the **numberBadge** method in [DragPreviewOptions](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11-1).                           |
+| types    | Set\<string\>       | No | Yes | Set of data types. The default value is an empty set.                                                                                                                         |
+| recordCount | number | No | Yes | Maximum number of data records expected or that can be provided. The default value is **0**, and the value range is [0, 2<sup>32</sup>-1]. If the value exceeds the range, the default value is used. If the value is a floating-point number, only the integer part is used. When used for drag-and-drop, this value is displayed as the badge count, with a maximum of 2<sup>31</sup>-1. If the value exceeds this maximum, the badge is not displayed. When used as the badge count, its priority is lower than that of the numberBadge method in [DragPreviewOptions](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11-1).                            |
 
 ## DataLoadHandler<sup>20+</sup>
 
 type DataLoadHandler = (acceptableInfo?: DataLoadInfo) => UnifiedData | null
 
-Defines a handler for lazy data loading. The data sender can dynamically generate data based on the information passed by the data receiver to implement more flexible and precise data interaction policies.
+Defines the handler for delayed data loading. It allows the data sender to dynamically generate data based on the information passed in by the receiver, enabling more flexible and precise data interaction strategies.
 
-This API is a synchronous function and is applicable to simple service logic. If the service logic is complex and the execution time lasts for more than 3s, you are advised to use the asynchronous handler [DelayedDataLoadHandler](#delayeddataloadhandler22).
+This handler is a synchronous function and is suitable for simple business logic. If the business logic is complex or takes a long time to execute (more than 3 seconds), use the asynchronous handler [DelayedDataLoadHandler](#delayeddataloadhandler22) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name     | Type                           | Mandatory   | Description          |
+| Name      | Type                            | Mandatory    | Description           |
 |----------|-------------------------------|-------|--------------|
-| acceptableInfo | [DataLoadInfo](#dataloadinfo20) | No    | Data type and quantity to receive. The default value is empty.|
+| acceptableInfo | [DataLoadInfo](#dataloadinfo20) | No     | Data types and quantity that the data receiver can accept. The default value is empty. |
 
 **Return value**
 
-| Type                   | Description                               |
+| Type                    | Description                                |
 |-----------------------|-----------------------------------|
-| [UnifiedData](#unifieddata) \| null | When the lazy handler is triggered, a **UnifiedData** object generated based on the receiver information is returned for data transmission. If data cannot be generated or fails to be generated, **null** is returned.|
+| [UnifiedData](#unifieddata) \| null | UnifiedData object generated based on the receiver information when the delayed handler is triggered, used for data transfer. If the data cannot be generated or generation fails, null is returned. |
 
 ## DelayedDataLoadHandler<sup>22+</sup>
 
 type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<UnifiedData | null>
 
-Defines a handler for lazy data loading. The data sender can dynamically generate data based on the information passed by the data receiver to implement more flexible and precise data interaction policies.
+Defines the handler for delayed data loading. It allows the data sender to dynamically generate data based on the information passed in by the receiver, enabling a more flexible and precise data interaction strategy. The result is returned asynchronously through a promise.
 
-This API is an asynchronous function, which uses a promise to return the result. It does not block the main thread and can be used to process time-consuming tasks with complex service logic.
+This handler is an asynchronous function that does not block the main thread. It can handle complex business logic and execute long-running tasks.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name     | Type                           | Mandatory   | Description          |
+| Name      | Type                            | Mandatory    | Description           |
 |----------|-------------------------------|-------|--------------|
-| acceptableInfo | [DataLoadInfo](#dataloadinfo20) | No    | Data type and quantity to receive. The default value is empty.|
+| acceptableInfo | [DataLoadInfo](#dataloadinfo20) | No     | Data types and quantity that the data receiver can accept. The default value is empty. |
 
 **Return value**
 
-| Type                   | Description                               |
+| Type                    | Description                                |
 |-----------------------|-----------------------------------|
-| Promise&lt;[UnifiedData](#unifieddata) \| null&gt; | Promise used to return the result. The **resolve** method returns the **UnifiedData** object generated based on the recipient information or null. The **reject** method returns error information.|
+| Promise&lt;[UnifiedData](#unifieddata) \| null&gt; | Promise object. When resolved, it returns the UnifiedData object generated based on the receiver information, or null. When rejected, it returns the error information. |
 
 ## DataLoadParams<sup>20+</sup>
 
-Defines the data loading policy for the data sender in the lazy loading scenario.
+Describes the data loading policy of the sender in delayed loading scenarios.
 
-If both **loadHandler** and **delayedDataLoadHandler** are passed, **delayedDataLoadHandler** is preferentially used, and **loadHandler** does not take effect.
+When both loadHandler and delayedDataLoadHandler are passed in, delayedDataLoadHandler takes precedence and loadHandler does not take effect.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name                  | Type                                             | Read-Only| Optional| Description                                                                                                                                                |
+| Name                   | Type                                              | Read-only | Optional | Description                                                                                                                                                 |
 |----------------------|-------------------------------------------------| ---- |-----|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| loadHandler    | [DataLoadHandler](#dataloadhandler20)       | No| No| Processing function used for lazy data loading. This API is a synchronous function and is applicable to simple service logic. If the service logic is complex and the execution time lasts for more than 3s, you are advised to use [DelayedDataLoadHandler](#delayeddataloadhandler22).<br>**Atomic service API**: This API can be used in atomic services since API version 20.            |
-| delayedDataLoadHandler<sup>22+</sup> | [DelayedDataLoadHandler](#delayeddataloadhandler22) | No| Yes| Asynchronous handler used for lazy data loading. The default value is **undefined**. If this parameter is not specified, only **loadHandler** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| dataLoadInfo | [DataLoadInfo](#dataloadinfo20) | No| No| Data type and quantity that can be generated by the sender.<br>**Atomic service API**: This API can be used in atomic services since API version 20.             |
+| loadHandler    | [DataLoadHandler](#dataloadhandler20)       | No | No| Handler used to load data in a delayed manner. This handler is a synchronous function and is suitable for processing simple service logic. If the function involves complex service logic and takes a long time to execute (more than 3s), you are advised to use [DelayedDataLoadHandler](#delayeddataloadhandler22).<br/>**Atomic service API:** This API is supported in atomic services since API version 20.             |
+| delayedDataLoadHandler<sup>22+</sup> | [DelayedDataLoadHandler](#delayeddataloadhandler22) | No | Yes| Asynchronous handler used to load data in a delayed manner. The default value is undefined. If this parameter is not set, only loadHandler is used.<br/>**Atomic service API:** This API is supported in atomic services since API version 22.|
+| dataLoadInfo | [DataLoadInfo](#dataloadinfo20) | No | No| Describes the data types and quantities that the current sender can generate.<br/>**Atomic service API:** This API is supported in atomic services since API version 20.              |
 
 ## unifiedDataChannel.insertData
 
 insertData(options: Options, data: UnifiedData, callback: AsyncCallback&lt;string&gt;): void
 
-Inserts data to the UDMF public data channel. This API uses an asynchronous callback to return the unique identifier of the data inserted.
+Writes data to the public data channel of the UDMF and generates a unique identifier for the data. This API uses an asynchronous callback to return the result.
 
-**Implementation mechanism**: After receiving the **UnifiedData** object, the system verifies the data integrity and serializes the data for storage. The data is routed to the corresponding storage space based on the **intention** value, and a unique **key** is generated. The system manages the validity period of data in the public data path. The default policy is auto cleanup after the application exits.
+**Implementation mechanism** After receiving the UnifiedData object, the system verifies data integrity and serializes the data for storage. It routes the data to the corresponding storage space based on the intention value and generates a unique identifier key. The validity period of the data in the public data channel is managed by the system, and the default policy is to automatically clear the data after the application exits.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name     | Type                        | Mandatory| Description                          |
+| Name      | Type                         | Mandatory | Description                           |
 |----------|----------------------------|----|------------------------------|
-| options  | [Options](#options)        | Yes | Configuration for the data insertion operation. The **intention** field is mandatory (the DRAG channel is not supported). If it is not specified, error code 401 will be returned. The settings of other parameters do not affect the use of this API.       |
-| data | [UnifiedData](#unifieddata) | Yes| **UnifiedData** object to insert or update, which is used to store data records and their properties.|
-| callback | AsyncCallback&lt;string&gt; | Yes | Callback used to return the key (unique identifier) of the data inserted.|
+| options  | [Options](#options)        | Yes  | Configuration parameters. The **intention** field is mandatory and does not support **DRAG**. If it is not specified, error code 401 is returned. Whether other fields are specified does not affect the use of this API.        |
+| data | [UnifiedData](#unifieddata) | Yes | Unified data object to write or update, used to store data records and their attribute information. |
+| callback | AsyncCallback&lt;string&gt; | Yes  | Callback invoked to return the unique identifier key of the data written to the UDMF. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
@@ -1605,32 +1606,32 @@ try {
 
 insertData(options: Options, data: UnifiedData): Promise&lt;string&gt;
 
-Inserts data to the UDMF public data channel. This API uses a promise to return the unique identifier of the data inserted.
+Writes data to the public data channel of UDMF and generates a unique identifier for the data. This API uses a promise to return the result asynchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name    | Type                         | Mandatory| Description                   |
-|---------|-----------------------------|----|-----------------------|
-| options | [Options](#options)         | Yes | Configuration for the data insertion operation. The **intention** field is mandatory (the DRAG channel is not supported). If it is not specified, error code 401 will be returned. The settings of other parameters do not affect the use of this API.|
-| data    | [UnifiedData](#unifieddata) | Yes | Data to insert.                |
+| Name    | Type                         | Mandatory | Description                                                                                                                                                                                                 |
+|---------|------------------------------|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| options | [Options](#options)          | Yes       | Configuration options. The **intention** field is mandatory and does not support DRAG. If it is not specified, error code 401 is returned. Whether other fields are specified does not affect the use of this API. |
+| data    | [UnifiedData](#unifieddata)  | Yes       | Target data.                                                                                                                                                                                                |
 
 **Return value**
 
-| Type                   | Description                               |
-|-----------------------|-----------------------------------|
-| Promise&lt;string&gt; | Promise used to return the key of the data inserted.|
+| Type                   | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| Promise&lt;string&gt;  | Promise used to return the unique identifier key of the data written to UDMF. |
 
-**Error codes**
+**Error codes:**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| **Error Code ID** | **Error Message**                                                                                                                                                                                                 |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 401               | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                                                                  |
 
 **Example**
 
@@ -1665,25 +1666,25 @@ try {
 
 updateData(options: Options, data: UnifiedData, callback: AsyncCallback&lt;void&gt;): void
 
-Updates the data in the UDMF public data channel. This API uses an asynchronous callback to return the result.
+Updates the data in the public data channel that has been written to UDMF. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name     | Type                         | Mandatory| Description                                 |
+| Name      | Type                          | Mandatory | Description                                  |
 |----------|-----------------------------|----|-------------------------------------|
-| options  | [Options](#options)         | Yes | Configuration for the data update operation. The **key** field is mandatory. If it is not specified, error code 401 will be returned. Only the DATA_HUB channel of the **intention** parameter is supported. The settings of other parameters do not affect the use of this API.                    |
-| data     | [UnifiedData](#unifieddata) | Yes | Data to insert.                              |
-| callback | AsyncCallback&lt;void&gt;   | Yes | Callback used to return the result. If the data is updated successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
+| options  | [Options](#options)         | Yes  | Configuration parameters. The **key** field is mandatory. If it is not specified, error code 401 is returned. The **intention** parameter supports only DATA_HUB. Whether other fields are specified does not affect the use of this API.                     |
+| data     | [UnifiedData](#unifieddata) | Yes  | Target data.                               |
+| callback | AsyncCallback&lt;void&gt;   | Yes  | Callback used to return the result. If the data is updated successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
-**Error codes**
+**Error Codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
@@ -1743,30 +1744,30 @@ try {
 
 updateData(options: Options, data: UnifiedData): Promise&lt;void&gt;
 
-Updates the data in the UDMF public data channel. This API uses a promise to return the result.
+Updates the data in the public data channel that has been written to UDMF. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name    | Type                         | Mandatory| Description             |
+| Name    | Type                          | Mandatory | Description              |
 |---------|-----------------------------|----|-----------------|
-| options | [Options](#options)         | Yes | Configuration for the data update operation. The **key** field is mandatory. If it is not specified, error code 401 will be returned. Only the DATA_HUB channel of the **intention** parameter is supported. The settings of other parameters do not affect the use of this API.|
-| data    | [UnifiedData](#unifieddata) | Yes | Data to insert.          |
+| options | [Options](#options)         | Yes  | Configuration options. The **key** field is mandatory. If it is not specified, error code 401 is returned. The **intention** parameter supports only DATA_HUB. Other fields do not affect the use of this API. |
+| data    | [UnifiedData](#unifieddata) | Yes  | Target data.           |
 
 **Return value**
 
-| Type                 | Description                        |
+| Type                  | Description                         |
 |---------------------|----------------------------|
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
-**Error codes**
+**Error Codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
@@ -1829,20 +1830,20 @@ Queries data in the UDMF public data channel. This API uses an asynchronous call
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name     | Type                                                           | Mandatory| Description                                                                                                                                                              |
+| Name      | Type                                                            | Mandatory | Description                                                                                                                                                               |
 |----------|---------------------------------------------------------------|----|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| options  | [Options](#options)                                           | Yes | Configuration for the data query operation. Both the **key** and **intention** are optional (the DRAG channel of **intention** is not supported). The return value varies depending on the parameters passed in.                                                                                                                  |
-| callback | AsyncCallback&lt;Array&lt;[UnifiedData](#unifieddata)&gt;&gt; | Yes | Callback used to return the queried data.<br>If only the **key** is specified in **options**, the data corresponding to the key is returned.<br>If only the **intention** is specified in **options**, all data in the **intention** is returned.<br>If both **intention** and **key** are specified, the intersection of the two is returned, which is the result obtained when only **key** is specified. If there is no intersection between the specified **intention** and **key**, an error object is returned.|
+| options  | [Options](#options)                                           | Yes  | Configuration options. Both key and intention are optional, and intention does not support DRAG. Corresponding validation is performed based on the passed parameters to return different values.                                                                                                                   |
+| callback | AsyncCallback&lt;Array&lt;[UnifiedData](#unifieddata)&gt;&gt; | Yes  | Callback invoked to return all the queried data.<br>If key is specified in options, the data corresponding to the key is returned.<br>If intention is specified in options, all data under the intention is returned.<br>If both intention and key are specified, the intersection of the data queried by the two is returned, which is consistent with the result obtained when only key is specified in options. If there is no intersection, an error is reported. |
 
-**Error codes**
+**Error Codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
@@ -1884,31 +1885,31 @@ try {
 
 queryData(options: Options): Promise&lt;Array&lt;UnifiedData&gt;&gt;
 
-Queries data in the UDMF public data channel. This API uses a promise to return the result.
+Queries data in the UDMF public data channel. This API uses a promise to return the result asynchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name    | Type                 | Mandatory| Description                                           |
-|---------|---------------------|----|-----------------------------------------------|
-| options | [Options](#options) | Yes | Configuration for the data query operation. Both the **key** and **intention** are optional (the DRAG channel of **intention** is not supported). The return value varies depending on the parameters passed in.|
+| Name    | Type                | Mandatory | Description                                                                                                                                 |
+|---------|---------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| options | [Options](#options) | Yes       | Configuration parameters. Both key and intention are optional, and the intention parameter does not support DRAG. Corresponding verification is performed based on the passed parameters to return different values. |
 
 **Return value**
 
-| Type                                                     | Description                                                                                                                                 |
-|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Promise&lt;Array&lt;[UnifiedData](#unifieddata)&gt;&gt; | Promise used to return the result queried.<br>If only the **key** is specified in **options**, the data corresponding to the key is returned.<br>If only the **intention** is specified in **options**, all data in the **intention** is returned.<br>If both **intention** and **key** are specified, the intersection of the two is returned, which is the result obtained when only **key** is specified. If there is no intersection between the specified **intention** and **key**, an error object is returned.|
+| Type                                                      | Description                                                                                                                                                                                                                                                                                                                                 |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Promise&lt;Array&lt;[UnifiedData](#unifieddata)&gt;&gt; | Promise object used to return all the queried data.<br>If key is specified in options, the data corresponding to the key is returned.<br>If intention is specified in options, all data under the intention is returned.<br>If both intention and key are specified, the intersection of the two query results is returned, which is consistent with the result obtained when only key is specified in options. An error is reported if there is no intersection. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| **Error Code ID** | **Error Message**                                                                                                                                                                                                 |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 401               | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1946,24 +1947,24 @@ try {
 
 deleteData(options: Options, callback: AsyncCallback&lt;Array&lt;UnifiedData&gt;&gt;): void
 
-Deletes data from the UDMF public data channel. This API uses an asynchronous callback to return the result.
+Deletes data from the UDMF public data channel and returns the deleted data set. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name     | Type                                                           | Mandatory| Description                                                                                                                                                                                    |
+| Name      | Type                                                            | Mandatory | Description                                                                                                                                                                                     |
 |----------|---------------------------------------------------------------|----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| options  | [Options](#options)                                           | Yes | Configuration for the data deletion operation. Both the **key** and **intention** are optional (only the DATA_HUB channel of **intention** is supported). The return value varies depending on the parameters passed in.                                                                                                                                         |
-| callback | AsyncCallback&lt;Array&lt;[UnifiedData](#unifieddata)&gt;&gt; | Yes | Callback used to return the data deleted.<br>If only the **key** is specified in **options**, the data corresponding to the key deleted is returned.<br>If only the **intention** is specified in **options**, all data in the **intention** deleted is returned.<br>If both **intention** and **key** are specified, the intersection of the two deleted is returned. If there is no intersection between the two, an error object is returned.|
+| options  | [Options](#options)                                           | Yes  | Configuration parameters. Both key and intention are optional, and intention supports only DATA_HUB. The corresponding verification is performed based on the passed parameters to return different values.                                                                                                                                          |
+| callback | AsyncCallback&lt;Array&lt;[UnifiedData](#unifieddata)&gt;&gt; | Yes  | Callback invoked to return all the deleted data.<br>If key is specified in options, the data corresponding to the key is deleted and returned.<br>If intention is specified in options, all data under the intention is deleted and returned.<br>If both intention and key are specified, the intersection of the two is deleted and returned, which is consistent with the result when only key is specified in options; an error is reported if there is no intersection. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
@@ -2005,31 +2006,31 @@ try {
 
 deleteData(options: Options): Promise&lt;Array&lt;UnifiedData&gt;&gt;
 
-Deletes data from the UDMF public data channel. This API uses a promise to return the result.
+Deletes data from the UDMF public data channel and returns the deleted data set. This API uses a promise to return the result asynchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name    | Type                 | Mandatory| Description    |
-|---------|---------------------|----|--------|
-| options | [Options](#options) | Yes | Configuration for the data deletion operation. Both the **key** and **intention** are optional (only the DATA_HUB channel of **intention** is supported). The return value varies depending on the parameters passed in.|
+| Name    | Type                | Mandatory | Description                                                                                                                                                                                                                             |
+|---------|---------------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| options | [Options](#options) | Yes       | Configuration parameters. Both key and intention are optional, and intention supports only DATA_HUB. The parameters are verified based on the values passed in to return different results. |
 
 **Return value**
 
-| Type                                                     | Description                                                                                                                                                         |
-|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Promise&lt;Array&lt;[UnifiedData](#unifieddata)&gt;&gt; | Promise used to return the data deleted.<br>If only the **key** is specified in **options**, the data corresponding to the key deleted is returned.<br>If only the **intention** is specified in **options**, all data in the **intention** deleted is returned.<br>If both **intention** and **key** are specified, the intersection of the two deleted is returned. If there is no intersection between the two, an error object is returned.|
+| Type                                                      | Description                                                                                                                                                                                                                                                                                                                                                                                          |
+|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Promise&lt;Array&lt;[UnifiedData](#unifieddata)&gt;&gt; | Promise used to return all deleted data.<br>If key is specified in options, the data corresponding to key is deleted and returned.<br>If intention is specified in options, all data under intention is deleted and returned.<br>If both intention and key are specified, the intersection of the two data sets is deleted and returned, which is the same as the result when only key is specified in options. An error is reported if there is no intersection. |
 
-**Error codes**
+**Error Message**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| **Error Code ID** | **Error Message**                                                                                                                                                                                                 |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 401               | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2067,24 +2068,24 @@ try {
 
 setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 
-Sets the [ShareOptions](#shareoptions12) for the application data. Currently, only the drag-and-drop data channel is supported. If the API is successfully called, the usage scope of the drag-and-drop data channel is set to the specified **ShareOptions** value.
+Sets the usage scope of the data in the in-app drag-and-drop data channel, as defined by [ShareOptions](#shareoptions12). Currently, only the DRAG data channel supports this management setting. After the call succeeds, the usage scope of the data in the in-app drag-and-drop data channel is set to the specified ShareOptions value.
 
-**Required permissions**: ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
+**Required permissions:** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name     | Type                        | Mandatory| Description                          |
+| Name      | Type                         | Mandatory | Description                           |
 |----------|----------------------------|----|------------------------------|
-| intention | [Intention](#intention) | Yes | Type of the data channel. Currently, only the data channel of the **DRAG** type is supported.|
-| shareOptions | [ShareOptions](#shareoptions12) | Yes | Usage scope of the [UnifiedData](#unifieddata).|
+| intention | [Intention](#intention) | Yes  | Data channel type related to the data operation. Currently, only the DRAG data channel is supported. |
+| shareOptions | [ShareOptions](#shareoptions12) | Yes  | Usage scope of [UnifiedData](#unifieddata) within the device. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UDMF Error Codes](errorcode-udmf.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Unified Data Management Framework Error Codes](errorcode-udmf.md).
 
-| **ID**| **Error Message**                                                |
+| **Error Code ID** | **Error Message**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 201          | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION". |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -2108,23 +2109,23 @@ try {
 
 removeAppShareOptions(intention: Intention): void
 
-Removes the data control information set by [setAppShareOptions](#unifieddatachannelsetappshareoptions14). If the API is successfully called, the data control information set by **setAppShareOptions** is cleared, and the data of the drag-and-drop data channel is restored to the default usage scope.
+Clears the control information set by [setAppShareOptions](#unifieddatachannelsetappshareoptions14). After this API is called successfully, the control information set by setAppShareOptions is cleared, and the in-app drag-and-drop channel data is restored to the default usage scope.
 
-**Required permissions**: ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
+**Required permissions:** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name   | Type                   | Mandatory| Description                                                        |
-| --------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| intention | [Intention](#intention) | Yes  | Type of the data channel. Currently, only the data channel of the **DRAG** type is supported.|
+| Name      | Type                    | Mandatory | Description                                                         |
+| --------- | ----------------------- | --------- | ------------------------------------------------------------ |
+| intention | [Intention](#intention) | Yes       | Data channel type related to the data operation. Currently, only the DRAG data channel is supported. |
 
-**Error codes**
+**Error codes:**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                                                |
+| **Error Code ID** | **Error Message**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 201          | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION". |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -2147,31 +2148,31 @@ try {
 
 convertRecordsToEntries(data: UnifiedData): void
 
-Converts the provided data into a multi-style data structure, which is useful when the original data uses multiple records to represent different data formats of the same data.
+Converts the passed-in data into a multi-style data structure. If the original data uses multiple records to carry different data formats of the same data, you can use this API to convert the original data into a multi-style data structure.
 
-This API is used only when the following rules are met:
-1. The number of records in data is greater than 1;
-2. The value of **unifiedData.properties.tag** is **records_to_entries_data_format**.
+The conversion is performed and the passed-in data is converted into a multi-style data structure when the following rules are met:
+1. The number of records in the data is greater than 1.
+2. The value of the tag in the properties of the data is "records_to_entries_data_format".
 
- 
+Otherwise, no action is taken.
 
 **Atomic service API**: This API can be used in atomic services since API version 17.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
-| Name   | Type                   | Mandatory| Description                                                        |
+| Name    | Type                    | Mandatory | Description                                                         |
 | --------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| data    | [UnifiedData](#unifieddata) | Yes | **UnifiedData** object to be converted into a multi-style data structure.          |
+| data    | [UnifiedData](#unifieddata) | Yes  | Unified data object to be converted into a multi-style data structure.           |
 
-**Error codes**
+**Error code:**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                                                |
-| ------------ | ------------------------------------------------------------ |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| **Error Code ID** | **Error Message**                                                 |
+| ----------------- | ------------------------------------------------------------ |
+| 401               | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 

@@ -6,10 +6,11 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=520f9a32cdb2e9a005e54fc92b1c491413781b64 translatedAt=2026-09-15T12:44:09.420Z pushedAt=2026-09-17T02:10:30.439Z -->
 
 ## Overview
 
-The **transient_task_type.h** file declares the error codes and structs of a transient task.
+Defines the error codes and structs of a transient task.
 
 **File to include**: <transient_task/transient_task_type.h>
 
@@ -28,13 +29,13 @@ The **transient_task_type.h** file declares the error codes and structs of a tra
 | Name                                                                                      | typedef Keyword| Description|
 |------------------------------------------------------------------------------------------| -- | -- |
 | [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md)   | TransientTask_DelaySuspendInfo | A struct that describes the returned information about a transient task. The struct returns the ID and remaining time of the transient task.|
-| [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md) | TransientTask_TransientTaskInfo | A struct that describes all transient task information. The struct returns all transient task information, including the remaining quota of the current day.|
+| [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md) | TransientTask_TransientTaskInfo | A struct that describes all transient task information. The struct returns all transient task information, including the remaining quota of the current day. |
 
 ### Macros
 
 | Name| Description|
 | -------- | -------- |
-| TRANSIENT_TASK_MAX_NUM 3| Defines the maximum number of transient tasks at the same time.<br>**Since**: 20 |
+| TRANSIENT_TASK_MAX_NUM 3| Defines the maximum number of transient tasks at the same time. This macro is used to limit the number of transient tasks that an app can request at the same time. If the limit is exceeded, the request fails.<br/>**Since:** 20  |
 
 ### Enums
 
@@ -46,7 +47,7 @@ The **transient_task_type.h** file declares the error codes and structs of a tra
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void (\*TransientTask_Callback)(void)](#transienttask_callback) | TransientTask_Callback | Defines a callback for transient task timeout.|
+| [typedef void (\*TransientTask_Callback)(void)](#transienttask_callback) | TransientTask_Callback | Defines a callback for transient task timeout. When the requested transient task is about to time out, the system calls this callback to notify the app. |
 
 ## Enum Description
 
@@ -85,6 +86,8 @@ typedef void (*TransientTask_Callback)(void)
 
 **Description**
 
-Defines a callback for transient task timeout.
+Defines a callback for transient task timeout. When the requested transient task is about to time out, the system calls this callback to notify the app.
 
 **Since**: 13
+
+

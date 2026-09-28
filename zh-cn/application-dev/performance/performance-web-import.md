@@ -896,14 +896,15 @@ runJS.html作为应用前端页面：
 
 JSBridge优化方案适用于ArkWeb应用侧与前端网页通信场景，开发者可根据应用架构选择合适的业务通信机制：
 
-1.应用使用ArkTS语言开发，推荐使用ArkWeb在ArkTS提供的runJavaScriptExt接口实现应用侧至前端页面的通信，同时使用registerJavaScriptProxy实现前端页面至应用侧的通信。
+1. 应用使用ArkTS语言开发，推荐使用ArkWeb在ArkTS提供的runJavaScriptExt接口实现应用侧至前端页面的通信，同时使用registerJavaScriptProxy实现前端页面至应用侧的通信。
 
-2.应用使用ArkTS、C++语言混合开发，或本身应用结构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在NDK侧提供的OH_NativeArkWeb_RunJavaScript及OH_NativeArkWeb_RegisterJavaScriptProxy接口实现JSBridge功能。
+2. 应用使用ArkTS、C++语言混合开发，或本身应用结构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在NDK侧提供的OH_NativeArkWeb_RunJavaScript及OH_NativeArkWeb_RegisterJavaScriptProxy接口实现JSBridge功能。
 
-> 说明
-> 开发者需根据当前业务区分是否存在C++侧环境（较为显著标志点为当前应用是否使用了Node API技术进行开发，若是则该应用具备C++侧环境）。
-> 具备C++侧环境的应用开发，可使用ArkWeb提供的NDK侧JSBridge接口。
-> 不具备C++侧环境的应用开发，可使用ArkWeb侧JSBridge接口。
+   > **说明:**
+   >
+   > - 开发者需根据当前业务区分是否存在C++侧环境（较为显著标志点为当前应用是否使用了Node API技术进行开发，若是则该应用具备C++侧环境）。
+   > - 具备C++侧环境的应用开发，可使用ArkWeb提供的NDK侧JSBridge接口。
+   > - 不具备C++侧环境的应用开发，可使用ArkWeb侧JSBridge接口。
 
 
 ### 异步JSBridge调用

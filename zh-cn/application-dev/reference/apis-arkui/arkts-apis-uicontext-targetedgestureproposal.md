@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-带目标节点的智慧手势处理基类。
+带目标节点的智慧手势处理基类。继承自[BaseGestureHandlingProposal](arkts-apis-uicontext-basegesturehandlingproposal.md)。
 
 **起始版本：** 26.0.0
 

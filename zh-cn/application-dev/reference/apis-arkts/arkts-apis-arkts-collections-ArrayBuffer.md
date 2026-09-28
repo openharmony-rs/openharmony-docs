@@ -81,7 +81,7 @@ slice(begin: number, end?: number): ArrayBuffer
 
 | 类型         | 说明      |
 | ------------ | --------- |
-| ArrayBuffer | collections.ArrayBuffer |
+| ArrayBuffer | collections.ArrayBuffer，包含原ArkTS ArrayBuffer指定范围的内容的新的ArkTS ArrayBuffer对象 |
 
 **错误码：**
 

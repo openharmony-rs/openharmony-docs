@@ -75,8 +75,7 @@ onWorkStart(work: workScheduler.WorkInfo): void
 **示例：** 
 
 ```ts
-import { workScheduler } from '@kit.BackgroundTasksKit';
-import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
+import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
   onWorkStart(work: workScheduler.WorkInfo) {
@@ -104,8 +103,7 @@ onWorkStop(work: workScheduler.WorkInfo): void
 **示例：** 
 
 ```ts
-import { workScheduler } from '@kit.BackgroundTasksKit';
-import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
+import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
   onWorkStop(work: workScheduler.WorkInfo) {

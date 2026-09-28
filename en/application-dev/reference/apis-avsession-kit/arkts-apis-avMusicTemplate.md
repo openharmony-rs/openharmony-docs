@@ -5,8 +5,9 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=f4977260c807335c1e0a783b79728c13a0a94735 translatedAt=2026-09-01T12:38:51.536Z pushedAt=2026-09-07T04:39:43.414Z -->
 
-The audio template provides the data writing and receiving features. It allows the media application to access the audio template controller to display pages in a unified style and respond to the operation instructions from the audio template controller.
+The audio template provides data interaction capabilities. This method allows media apps to access the audio template controller, which displays pages in a unified manner and responds to operation instructions.
 
 This module provides the following features:
 

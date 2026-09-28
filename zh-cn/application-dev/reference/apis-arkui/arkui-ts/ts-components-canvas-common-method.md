@@ -1187,9 +1187,9 @@ roundRect(x: number, y: number, w: number, h: number, radii?: number | Array\<nu
 
 以下错误码的详细介绍请参见[Canvas组件错误码](../errorcode-canvas.md)。
 
-| 错误码ID | 错误信息 | 可能原因 |
-| -------- | -------- | -------- |
-| 103701   | Parameter error.| 1. The param radii is a list that has zero or more than four elements; 2. The param radii contains negative value. |
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 103701   | Parameter error. Possible causes: 1. The param radii is a list that has zero or more than four elements; 2. The param radii contains negative value. |
 
 **示例：**
 
@@ -2650,7 +2650,7 @@ setLineDash(segments: number[]): void
   ```
   ![Dotted-circle](figures/Dotted-circle.png)
 
-### transferFromImageBitmap
+## transferFromImageBitmap
 
 transferFromImageBitmap(bitmap: ImageBitmap): void
 

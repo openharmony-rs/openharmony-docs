@@ -37,7 +37,7 @@
 
 以跳过禁用的生物认证，订阅认证信息为例：
 
-<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 perceiveAndAdjustAuthentication() {
@@ -65,11 +65,9 @@ perceiveAndAdjustAuthentication() {
       try {
         Logger.info('userAuthInstance callback.');
         this.result[ResultIndex.PERCEIVE_ADJUST] = (`${authTipInfo.tipType}`);
-        // 认证完成后取消订阅
-        userAuthInstance.off('result');
       } catch (error) {
         const err: BusinessError = error as BusinessError;
-        Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+        Logger.error(`onAuthTip failed, code: ${err?.code}, Message: ${err?.message}`);
       }
     });
     // 开始认证

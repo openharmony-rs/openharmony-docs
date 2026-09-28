@@ -5,9 +5,9 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=af1c409994db2fe8f6b1e73fc3517a651a9626fe translatedAt=2026-09-03T04:19:21.272Z -->
+<!-- md-trans-meta sourceCommit=af1c409994db2fe8f6b1e73fc3517a651a9626fe translatedAt=2026-09-03T04:19:21.272Z pushedAt=2026-09-10T01:14:57.316Z -->
 
-A basic component used to mount custom nodes (such as [FrameNode](../js-apis-arkui-frameNode.md) or the root FrameNode obtained from [BuilderNode](../js-apis-arkui-builderNode.md)) and dynamically control the mounting and unmounting of nodes through [NodeController](../js-apis-arkui-nodeController.md). It is suitable for scenarios where custom nodes need to be dynamically inserted into and removed from the component tree to implement on-demand UI loading and node reuse, which improves page rendering efficiency and reduces node creation overhead. The component does not support appending child nodes. It accepts a [NodeController](../js-apis-arkui-nodeController.md) instance and must be used together with NodeController.
+**NodeContainer** is a basic component for mounting custom nodes (such as [FrameNode](../js-apis-arkui-frameNode.md) or the root FrameNode obtained from [BuilderNode](../js-apis-arkui-builderNode.md)) and dynamically controlling the mounting and unmounting of nodes through [NodeController](../js-apis-arkui-nodeController.md). It is suitable for scenarios where custom nodes need to be dynamically inserted into and removed from the component tree to implement on-demand UI loading and node reuse, which improves page rendering efficiency and reduces node creation overhead. The component does not support appending child nodes. It accepts a [NodeController](../js-apis-arkui-nodeController.md) instance and must be used together with **NodeController**.
 
 > **NOTE**
 >
@@ -15,13 +15,13 @@ A basic component used to mount custom nodes (such as [FrameNode](../js-apis-ark
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - This component supports mounting only custom nodes, that is, [FrameNode](../js-apis-arkui-frameNode.md) or the root FrameNode obtained from [BuilderNode](../js-apis-arkui-builderNode.md).
+> - This component supports mounting only custom nodes, that is, [FrameNodes](../js-apis-arkui-frameNode.md) or the root FrameNode obtained from a [BuilderNode](../js-apis-arkui-builderNode.md).
 >
 > - Mounting the proxy node of a system component obtained through a query is not supported. For details, see [isModifiable](../js-apis-arkui-frameNode.md#ismodifiable12).
 >
-> - [Dynamic attribute setting](./ts-universal-attributes-attribute-modifier.md) is not supported.
+> - This component does not work with the [attribute modifier](./ts-universal-attributes-attribute-modifier.md).
 >
-> - When the node tree under this component is built, the UI instance [UIContext](../arkts-apis-uicontext-uicontext.md) is used. When the instance is switched, the input parameter of the [makeNode](../js-apis-arkui-nodeController.md#makenode) callback of the bound [NodeController](../js-apis-arkui-nodeController.md) may be undefined due to instance mismatch. Therefore, this component does not support cross-instance node reuse.
+> - When the node tree under this component is built, the UI instance [UIContext](../arkts-apis-uicontext-uicontext.md) is used. When the instance is switched, the input parameter of the [makeNode](../js-apis-arkui-nodeController.md#makenode) callback of the bound [NodeController](../js-apis-arkui-nodeController.md) may be **undefined** due to instance mismatch. Therefore, this component does not support cross-instance node reuse.
 >
 > - When this component is not destroyed, it does not proactively trigger the unmounting of the mounted node.
 
@@ -43,14 +43,14 @@ NodeContainer(controller: import('../api/@ohos.arkui.node').NodeController)
 
 | Name    | Type                                                | Mandatory| Description                                                        |
 | ---------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| controller | import('../api/@ohos.arkui.node').[NodeController](../js-apis-arkui-nodeController.md) | Yes | NodeController is used to control the attaching and detaching of nodes in NodeContainer, reflecting the lifecycle of the NodeContainer container. |
+| controller | import('../api/@ohos.arkui.node').[NodeController](../js-apis-arkui-nodeController.md) | Yes | **NodeController** instance used to control the mounting and unmounting of nodes in **NodeContainer**. It represents the lifecycle of the **NodeContainer**. |
 ## Attributes
 
-[Universal attributes](./ts-component-general-attributes.md) are supported, but [dynamic attribute setting](./ts-universal-attributes-attribute-modifier.md) is not supported.
+The [universal attributes](./ts-component-general-attributes.md) are supported, but the [attribute modifier](./ts-universal-attributes-attribute-modifier.md) is not supported.
 
 ## Events
 
-[Universal events](./ts-component-general-events.md) are supported.
+The [universal events](./ts-component-general-events.md) are supported.
 
 ## Example
 

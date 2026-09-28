@@ -18,6 +18,12 @@ ContainerReader是容器断点组件，用于在动态场景下根据容器尺�
 
 **起始版本：** 26.0.0
 
+## 导入模块
+
+```ts
+import { ContainerReader } from '@kit.ArkUI';
+```
+
 ## 子组件
 
 可以包含子组件。

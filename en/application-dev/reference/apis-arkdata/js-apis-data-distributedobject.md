@@ -5,6 +5,7 @@
 <!--Designer: @lvcong_oh-->
 <!--Tester: @logic42; @hanjiawei-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=322f3406587b0e3e9fd2ec3098ccc13904d7d66a translatedAt=2026-09-04T03:36:31.956Z pushedAt=2026-09-09T09:11:03.720Z -->
 
 The **distributedDataObject** module provides basic data object management, including creating, querying, deleting, modifying, and subscribing to data objects, and distributed data object collaboration for the same application among multiple devices. Although this module does not parse user data, you are advised not to transfer sensitive personal data or privacy data due to low-level security of storage path.
 
@@ -38,7 +39,7 @@ Creates a distributed data object. The object properties support basic types (nu
 
 | Type| Description|
 | -------- | -------- |
-| [DataObject](#dataobject) | Distributed data object created.|
+| [DataObject](#dataobject9) | Created distributed data object. |
 
 **Error codes**
 
@@ -155,7 +156,7 @@ Represents the information about the joint asset in the RDB store to bind. Curre
   | Name      | Type                                                              | Read-Only| Optional| Description                                |
   | ---------- | ------------------------------------------------------------------ | ---- | ---- | ------------------------------------ |
   | storeName  | string                                                             | No  | No  | RDB store to which the target asset (asset to bind) belongs.  |
-  | tableName  | string                                                             | No  | No  | Table to which the target asset is located in the RDB store.  |
+  | tableName  | string                                                             | No  | No  | Table in which the target asset is located in the RDB store.  |
   | primaryKey | [commonType.ValuesBucket](js-apis-data-commonType.md#valuesbucket) | No  | No  | Primary key of the target asset in the RDB store.  |
   | field      | string                                                             | No  | No  | Column in which the target asset is located in the RDB store.  |
   | assetName  | string                                                             | No  | No  | Name of the target asset in the RDB store.|
@@ -164,7 +165,7 @@ Represents the information about the joint asset in the RDB store to bind. Curre
 
 type DataObserver = (sessionId: string, fields: Array&lt;string&gt;) => void
 
-Defines an observer for obtaining the data change of a distributed object.
+Defines the callback used to listen for data changes of a distributed data object.
 
 **System capability**: SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -179,7 +180,7 @@ Defines an observer for obtaining the data change of a distributed object.
 
 type StatusObserver = (sessionId: string, networkId: string, status: string) => void
 
-Defines an observer for obtaining the status change of a distributed object.
+Defines the callback used to listen for status changes of a distributed data object.
 
 **System capability**: SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -189,7 +190,7 @@ Defines an observer for obtaining the status change of a distributed object.
 | -------- | -------- | -------- | -------- |
 | sessionId | string | Yes| Session ID of the distributed data object, with a maximum length of 128 bytes. The value can contain only letters, digits, and underscores (_).|
 | networkId | string | Yes| Network ID of the peer device, with a maximum of 255 bytes. The value must be a non-empty string.|
-| status    | string | Yes| Status of the distributed object. The value can be **online**, **offline**, or **restore.**|
+| status    | string | Yes | Status of the distributed data object. Possible values are **'online'**, **'offline'**, and **'restore'**. |
 
 ## ProgressObserver<sup>20+</sup>
 
@@ -206,15 +207,17 @@ Defines an observer for obtaining the transfer progress.
 | sessionId | string | Yes| Session ID of the distributed data object, with a maximum length of 128 bytes. The value can contain only letters, digits, and underscores (_).|
 | progress    | number | Yes| Asset transfer progress. The value is an integer ranging from -1 to 100. The value **-1** indicates that the progress fails to be obtained, and the value **100** indicates that the transfer is complete.|
 
-## DataObject
+## DataObject<sup>9+</sup>
 
 Provides APIs for managing a distributed data object. Before using any API of this class, use [create()](#distributeddataobjectcreate9) to create a **DataObject** object.
+
+**System capability:** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
 ### setSessionId<sup>9+</sup>
 
 setSessionId(sessionId: string, callback: AsyncCallback&lt;void&gt;): void
 
-Sets a session ID. This API uses an asynchronous callback to return the result. For the devices in the collaboration state in a trusted network, data of the distributed objects with the same session ID can be automatically synced across devices.
+Sets a session ID. This API uses an asynchronous callback to return the result. When multiple devices in a trusted group network are in the collaborative state, data of the distributed data objects with the same session ID is automatically synchronized.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -224,8 +227,8 @@ Sets a session ID. This API uses an asynchronous callback to return the result. 
 
   | Name   | Type                     | Mandatory| Description                                                                                                          |
   | --------- | ------------------------- | ---- | -------------------------------------------------------------------------------------------------------------- |
-  | sessionId | string                    | Yes  | ID of a distributed data object on a trusted network. The value can contain only letters, digits, and underscores (_), and cannot exceed 128 bytes. If this parameter is set to **""** or **null**, the distributed data object exits the network.|
-  | callback  | AsyncCallback&lt;void&gt; | Yes  | Asynchronous callback invoked when the session ID is successfully set.                                                                                       |
+  | sessionId | string                    | Yes   | ID of the distributed data object in the trusted group network. The length cannot exceed 128 bytes, and it can contain only letters, digits, or underscores (_). An empty string ("") or null indicates exiting the trusted group network. |
+  | callback  | AsyncCallback&lt;void&gt; | Yes   | Callback invoked when the session is joined. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -254,19 +257,19 @@ g_object.setSessionId('', () => {
 
 setSessionId(callback: AsyncCallback&lt;void&gt;): void
 
-Exits all sessions. This API uses an asynchronous callback to return the result.
+Exits all sessions joined. This API uses an asynchronous callback to return the result.
 
 **Required permissions**:
 - API version 20 or later: N/A
 - API versions 9 to 19: **ohos.permission.DISTRIBUTED_DATASYNC**
- 
+
 **System capability**: SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
 **Parameters**
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;void&gt; | Yes| Callback invoked when the distributed data object exits all sessions.|
+  | callback | AsyncCallback&lt;void&gt; | Yes | Callback invoked when the session is exited. If the session is exited successfully, **err** is **undefined**; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -274,7 +277,7 @@ Exits all sessions. This API uses an asynchronous callback to return the result.
 
   | ID| Error Message|
   | -------- | -------- |
-  | 201      | Permission verification failed. <br> Applicable versions: 9-19|
+  | 201      | Permission verification failed. <br> Applicable version: 9-19|
   | 401      | Parameter error. Incorrect parameter types. |
   | 15400001 | Failed to create the in-memory database. |
 
@@ -295,7 +298,7 @@ g_object.setSessionId(() => {
 
 setSessionId(sessionId?: string): Promise&lt;void&gt;
 
-Sets a session ID or exits the distributed network. This API uses a promise to return the result. If this parameter is set to **""** or **null**, or left empty, the distributed data object exits the network. For the devices in the collaboration state in a trusted network, data of the distributed objects with the same session ID can be automatically synced across devices.
+Sets a session ID or exits the distributed network. This API uses a promise to return the result. If **""**, **null**, or no value is passed in, the distributed data object exits the distributed network. When multiple devices in a trusted group network are in the collaborative state, data of the distributed data objects with the same session ID is automatically synchronized.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -305,7 +308,7 @@ Sets a session ID or exits the distributed network. This API uses a promise to r
 
   | Name   | Type  | Mandatory| Description                                                                                                                        |
   | --------- | ------ | ---- | ---------------------------------------------------------------------------------------------------------------------------- |
-  | sessionId | string | No  | ID of a distributed data object on a trusted network. The value can contain only letters, digits, and underscores (_), and cannot exceed 128 bytes. If this parameter is set to **""** or **null**, or left empty, the distributed data object exits the network.|
+  | sessionId | string | No   | Identifier of the distributed data object in the trusted group network. The value cannot exceed 128 bytes and can contain only letters, digits, or underscores (_). An empty string, null, or no value indicates exiting the distributed group network. |
 
 **Return value**
 
@@ -402,7 +405,7 @@ Unsubscribes from data changes of this distributed data object.
 **Example**
 
 ```ts
-// Unregister the specified data change callback.
+// Delete the data change callback.
 g_object.off('change', (sessionId: string, fields: Array<string>) => {
     console.info('change' + sessionId);
     if (g_object != null && fields != null && fields != undefined) {
@@ -428,7 +431,7 @@ Subscribes to status changes of this distributed data object.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type. The value is **'status'**, which indicates the status change (online or offline) of the distributed object.|
-| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | Yes| Callback used to return the status change.<br>**sessionId** indicates the session ID of the distributed data object.<br>**networkId** identifies the device.<br>**status** indicates the object status, which can be online or offline.|
+| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline') => void | Yes | Callback invoked when the object goes online or offline.<br>**sessionId**: **sessionId** of the object whose change is identified; <br>**networkId**: network identifier of the peer device; <br>**status**: status indicating whether the object is 'online' or 'offline'. |
 
 **Error codes**
 
@@ -459,7 +462,7 @@ Unsubscribes from the status change of this distributed data object.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type. The value is **'status'**, which indicates the status change (online or offline) of the distributed object.|
-| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | No| Callback to unregister. If this parameter is not specified, this API unsubscribes from all callbacks for status changes of this distributed object.<br>**sessionId** indicates the session ID of the distributed data object.<br>**networkId** identifies the device.<br>**status** indicates the object status, which can be online or offline.|
+| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | No | Callback for the online/offline event to be deleted. If this parameter is not set, all online/offline callbacks of the object are deleted.<br>**sessionId**: **sessionId** of the object whose change is identified; <br>**networkId**: network identifier of the peer device; <br>**status**: status of the object, which is 'online' or 'offline'. |
 
 **Error codes**
 
@@ -472,7 +475,7 @@ Unsubscribes from the status change of this distributed data object.
 **Example**
 
 ```ts
-// Unregister the specified status change callback.
+// Delete the online/offline callback.
 g_object.off('status', (sessionId: string, networkId: string, status: 'online' | 'offline') => {
     console.info('status changed ' + sessionId + ' ' + status + ' ' + networkId);
 });
@@ -501,7 +504,7 @@ The saved data will be released in the following cases:
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | deviceId | string | Yes| ID of the device where the distributed data object is stored. The value **local** indicates a local device.|
-  | callback | AsyncCallback&lt;[SaveSuccessResponse](#savesuccessresponse9)&gt; | Yes| Callback used to return **SaveSuccessResponse**, which contains information such as session ID, version, and device ID.|
+  | callback | AsyncCallback&lt;[SaveSuccessResponse](#savesuccessresponse9)&gt; | Yes | Callback invoked when the save succeeds. If the save succeeds, **err** is **undefined** and **data** is **SaveSuccessResponse** (containing **sessionId**, **version**, **deviceId**, and other information); otherwise, data is an error object. |
 
 **Error codes**
 
@@ -583,7 +586,7 @@ g_object.save('local').then((callbackInfo: distributedDataObject.SaveSuccessResp
 
 revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void
 
-Revokes the data of this distributed data object saved. This API uses an asynchronous callback to return the result.
+Revokes the saved distributed data object. This API uses an asynchronous callback to return the result.
 
 If the object is saved on the local device, the data saved on all trusted devices will be deleted.
 
@@ -595,7 +598,7 @@ If the object is stored on another device, the data on the local device will be 
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[RevokeSaveSuccessResponse](#revokesavesuccessresponse9)&gt; | Yes| Callback used to return **RevokeSaveSuccessResponse**, which contains the session ID.|
+  | callback | AsyncCallback&lt;[RevokeSaveSuccessResponse](#revokesavesuccessresponse9)&gt; | Yes | Callback function. If the save is revoked successfully, **err** is **undefined** and **data** is **RevokeSaveSuccessResponse** (which contains the **sessionId** information); otherwise, it is an error object.|
 
 **Error codes**
 
@@ -614,6 +617,7 @@ g_object.setSessionId('123456');
 g_object.save('local', (err: BusinessError, result: distributedDataObject.SaveSuccessResponse) => {
     if (err) {
         console.error(`Failed to save. Code: ${err.code}, message: ${err.message}`);
+        return;
     }
     console.info('save callback');
     console.info('save sessionId: ' + result.sessionId);
@@ -635,7 +639,7 @@ g_object.revokeSave((err: BusinessError, result: distributedDataObject.RevokeSav
 
 revokeSave(): Promise&lt;RevokeSaveSuccessResponse&gt;
 
-Revokes the data of this distributed data object saved. This API uses a promise to return the result.
+Revokes the saved distributed data object. This API uses a promise to return the result.
 
 If the object is saved on the local device, the data saved on all trusted devices will be deleted.
 
@@ -683,9 +687,9 @@ g_object.revokeSave().then((result: distributedDataObject.RevokeSaveSuccessRespo
 
 bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback&lt;void&gt;): void
 
-Binds joint assets. Currently, only the binding between an asset in a distributed data object and an asset in an RDB store is supported. This API uses an asynchronous callback to return the result.
+Binds a single asset in a distributed data object to its corresponding database information. In the current version, only the binding between an asset in a distributed data object and a relational database is supported. This API uses an asynchronous callback to return the result.
 
-When an asset in a distributed object and an asset in an RDB store point to the same entity asset file, that is, the URIs of the two assets are the same, a conflict occurs. Such assets are called joint assets. To resolve the conflict, bind the joint assets. The binding is automatically released when the application exits the session.
+When an asset in a distributed data object and an asset in a relational database point to the same entity asset file, that is, the URIs of the two assets are the same, a conflict occurs. Such assets are called joint assets. To enable distributed data management to resolve the conflict of joint assets, the assets must be bound first. When the application exits the session, the binding relationship disappears.
 
 **System capability**: SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -693,9 +697,9 @@ When an asset in a distributed object and an asset in an RDB store point to the 
 
   | Name  | Type                     | Mandatory| Description                                                                              |
   | -------- | ------------------------- | ---- | ---------------------------------------------------------------------------------- |
-  | assetKey | string                    | Yes  | Key of the joint asset in the distributed data object.                                            |
+  | assetKey | string                    | Yes   | Key of the asset to be bound in the distributed data object.                                             |
   | bindInfo | [BindInfo](#bindinfo11)   | Yes  | Information about the joint asset in the RDB store, including the RDB store name, table name, primary key, column name, and asset name in the RDB store.|
-  | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                                                                |
+  | callback | AsyncCallback&lt;void&gt; | Yes   | Callback invoked when the database is bound successfully. The value of **err** is **undefined** if the binding succeeds; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -754,6 +758,7 @@ class EntryAbility extends UIAbility {
     g_object.bindAssetStore('attachment', bindInfo, (err: BusinessError) => {
       if (err) {
         console.error(`Failed to bind asset store. Code: ${err.code}, message: ${err.message}`);
+        return;
       }
       console.info('bindAssetStore success.');
     });
@@ -765,9 +770,9 @@ class EntryAbility extends UIAbility {
 
 bindAssetStore(assetKey: string, bindInfo: BindInfo): Promise&lt;void&gt;
 
-Binds joint assets. Currently, only the binding between an asset in a distributed data object and an asset in an RDB store is supported. This API uses a promise to return the result.
+Binds a single asset in a distributed data object to its corresponding database information. Currently, only the binding between an asset in a distributed data object and an asset in a relational database is supported. This API uses a promise to return the result.
 
-When an asset in a distributed object and an asset in an RDB store point to the same entity asset file, that is, the URIs of the two assets are the same, a conflict occurs. Such assets are called joint assets. To resolve the conflict, bind the joint assets. The binding is automatically released when the application exits the session.
+When an asset in a distributed data object and an asset in a relational database point to the same entity asset file, that is, the URIs of the two assets are the same, a conflict occurs. Such assets are called joint assets. To enable distributed data management to resolve the conflict of joint assets, the assets must be bound first. When the application exits the session, the binding relationship disappears.
 
 **System capability**: SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -775,7 +780,7 @@ When an asset in a distributed object and an asset in an RDB store point to the 
 
   | Name  | Type                   | Mandatory| Description                                                                              |
   | -------- | ----------------------- | ---- | ---------------------------------------------------------------------------------- |
-  | assetKey | string                  | Yes  | Key of the joint asset in the distributed data object.                                            |
+  | assetKey | string                  | Yes   | Key of the asset to be bound in the distributed data object.                                             |
   | bindInfo | [BindInfo](#bindinfo11) | Yes  | Information about the joint asset in the RDB store, including the RDB store name, table name, primary key, column name, and asset name in the RDB store.|
 
 **Return value**
@@ -860,11 +865,13 @@ Subscribes to data changes of this distributed data object.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type. The value is **'change'**, which indicates data changes.|
-| callback | [DataObserver](#dataobserver20) | Yes| Callback used to listen for data changes of a distributed object.|
+| callback | [DataObserver](#dataobserver20) | Yes | Callback for the data change event of the distributed data object. |
 
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
   console.info('change callback1 ' + sessionId);
   if (fields != null && fields != undefined) {
@@ -876,7 +883,8 @@ const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, 
 try {
   g_object.on('change', changeCallback1);
 } catch (error) {
-  console.error(`Failed to execute. Code: ${error.code}, message: ${error.message}`);
+  let err = error as BusinessError;
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -884,7 +892,7 @@ try {
 
 off(type: 'change', callback?: DataObserver): void
 
-Unsubscribes from data changes of this distributed object.
+When data change listening is no longer needed, use this API to remove the callback instance for data change listening of the distributed data object.
 
 **System capability**: SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -898,6 +906,8 @@ Unsubscribes from data changes of this distributed object.
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
   console.info('change callback1 ' + sessionId);
   if (fields != null && fields != undefined) {
@@ -926,7 +936,8 @@ try {
   g_object.on('change', changeCallback2);
   g_object.off('change');
 } catch (error) {
-  console.error(`Failed to execute. Code: ${error.code}, message: ${error.message}`);
+  let err = error as BusinessError;
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -934,7 +945,7 @@ try {
 
 on(type: 'status', callback: StatusObserver): void
 
-Subscribes to the status changes of this distributed object.
+Subscribes to status changes of this distributed data object.
 
 **System capability**: SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -942,19 +953,22 @@ Subscribes to the status changes of this distributed object.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type. The value is **'status'**, which indicates the status changes of a distributed object.|
-| callback | [StatusObserver](#statusobserver20) | Yes| Callback used to listen for status changes of a distributed object.|
+| type | string | Yes | Event type, which is fixed to 'status', indicating the status change event of the distributed data object. |
+| callback | [StatusObserver](#statusobserver20) | Yes | Callback for the status change event of the distributed data object. |
 
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const statusCallback1: distributedDataObject.StatusObserver = (sessionId: string, networkId: string, status: string) => {
   console.info('status callback ' + sessionId);
 }
 try {
   g_object.on('status', statusCallback1);
 } catch (error) {
-  console.error(`Failed to execute. Code: ${error.code}, message: ${error.message}`);
+  let err = error as BusinessError;
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -962,7 +976,7 @@ try {
 
 off(type: 'status', callback?: StatusObserver): void
 
-Unsubscribes from status changes of this distributed object.
+When status change listening of the distributed data object is no longer needed, use this API to remove the callback instance for status change listening of the distributed data object.
 
 **System capability**: SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -970,12 +984,14 @@ Unsubscribes from status changes of this distributed object.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type. The value is **'status'**, which indicates the status changes of a distributed object.|
+| type | string | Yes | Event type, fixed to 'status', indicating a status change event of the distributed data object. |
 | callback | [StatusObserver](#statusobserver20) | No| Callback to unregister. If this parameter is not specified, this API unsubscribes from all callbacks for status changes of this distributed object.|
 
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const statusCallback1: distributedDataObject.StatusObserver = (sessionId: string, networkId: string, status: string) => {
   console.info('status callback1' + sessionId);
 }
@@ -993,7 +1009,8 @@ try {
   g_object.on('status', statusCallback2);
   g_object.off('status');
 } catch (error) {
-  console.error(`Failed to execute. Code: ${error.code}, message: ${error.message}`);
+  let err = error as BusinessError;
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1015,6 +1032,8 @@ Subscribes to the asset transfer progress changes.
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const progressChangedCallback: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
   console.info('progressChanged callback' + sessionId);
   console.info('progressChanged callback' + progress);
@@ -1022,7 +1041,8 @@ const progressChangedCallback: distributedDataObject.ProgressObserver = (session
 try {
   g_object.on('progressChanged', progressChangedCallback);
 } catch (error) {
-  console.error(`Failed to execute. Code: ${error.code}, message: ${error.message}`);
+  let err = error as BusinessError;
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1044,6 +1064,8 @@ Unsubscribes from asset transfer progress changes. This API is used to delete th
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const progressChangedCallback1: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
   console.info('progressChanged callback1' + sessionId);
   console.info('progressChanged callback1' + progress);
@@ -1063,14 +1085,15 @@ try {
   // Unsubscribes from all asset transfer progress changes.
   g_object.off('progressChanged');
 } catch (error) {
-  console.error(`Failed to execute. Code: ${error.code}, message: ${error.message}`);
+  let err = error as BusinessError;
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 ### setAsset<sup>20+</sup>
 
 setAsset(assetKey: string, uri: string): Promise&lt;void&gt;
 
-Sets the property information about a single asset in a distributed object. This API must be called before the [setSessionId](#setsessionid9-2) API is called. This API uses a promise to return the result.
+Sets the property information about a single asset in a distributed data object. This API must be called before the [setSessionId](#setsessionid9-2) API is called. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1094,7 +1117,7 @@ The following table lists the exception scenarios.
 
   | Name  | Type                   | Mandatory| Description                                                                              |
   | -------- | ----------------------- | ---- | ---------------------------------------------------------------------------------- |
-  | assetKey | string                  | Yes  | Property name of the asset in the distributed object.<br>**Constraints**<br>(1) The corresponding **assetKey** file must exist and be of the [Asset](js-apis-data-commonType.md#asset) type. Otherwise, an asset setting error may occur.<br>(2) In the collaboration or continuation scenario, the corresponding **assetKey** file must exist and be of the asset type at both devices so that the asset can be synchronized to the peer device.                                            |
+  | assetKey | string                  | Yes   | Property name corresponding to the asset-type data in the distributed data object.<br/>**Usage constraints:** <br/>(1) The file corresponding to the provided assetKey must already exist and be of the asset type [Asset](js-apis-data-commonType.md#asset) before the asset can be set correctly. If the file corresponding to **assetKey** does not exist, or the file exists but is not of the asset type, the asset may be set incorrectly.<br/>(2) In collaboration or continuation scenarios, both ends must satisfy that the file corresponding to **assetKey** exists and is of the asset type before the set asset can be synchronized to the peer device.                                             |
   | uri      | string                  | Yes  | URI of the new asset to be set, indicating the distributed path for storing the asset. The value must correspond to an existing asset.|
 
 **Return value**
@@ -1160,7 +1183,7 @@ class EntryAbility extends UIAbility {
 
 setAssets(assetsKey: string, uris: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Sets the property information about multiple assets in a distributed object. This API must be called before the [setSessionId](#setsessionid9-2) API is called. This API uses a promise to return the result.
+Sets the property information about multiple assets in a distributed data object. This API must be called before the [setSessionId](#setsessionid9-2) API is called. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1185,7 +1208,7 @@ The following table lists the exception scenarios.
 
   | Name  | Type                   | Mandatory| Description                                                                              |
   | -------- | ----------------------- | ---- | ---------------------------------------------------------------------------------- |
-  | assetsKey | string                 | Yes  | Property name of the assets in the distributed object.<br>**Constraints**<br>(1) The corresponding **assetsKey** file must exist and be of the [Asset](js-apis-data-commonType.md#asset) type. Otherwise, an asset setting error may occur.<br>(2) In the collaboration or continuation scenario, the corresponding **assetsKey** file must exist and be of the asset type at both devices so that the asset array can be synchronized to the peer device.                                            |
+  | assetsKey | string                 | Yes   | Property name corresponding to the asset array type data in the distributed data object.<br/>**Usage constraints** <br/>(1) The file corresponding to the provided **assetsKey** must already exist and its type must be [Asset](js-apis-data-commonType.md#asset) before the asset can be set correctly. If the file corresponding to **assetsKey** does not exist, or the file exists but its type is not the asset type, the asset setting may fail.<br/>(2) In collaboration or continuation scenarios, both ends must satisfy that the file corresponding to **assetsKey** exists and is of the asset type before the set asset array can be synchronized to the peer device.                                             |
   | uris      | Array&lt;string&gt;    | Yes  | URIs of the new asset array to be set, indicating the distributed paths for storing each element of the asset. The number of elements in the array ranges from 1 to 50. The element URI must be the distributed path of an existing asset.|
 
 **Return value**
@@ -1303,7 +1326,7 @@ Provides APIs for managing a distributed data object. Before using any API of th
 
 setSessionId(sessionId?: string): boolean
 
-Sets a session ID. For the devices in the collaboration state in a trusted network, data of the distributed objects with the same session ID can be automatically synced across devices.
+Sets a session ID. When multiple devices in a trusted group network are in the collaborative state, data of the distributed data objects with the same session ID can be automatically synced across devices.
 
 > **NOTE**
 >
@@ -1323,7 +1346,7 @@ Sets a session ID. For the devices in the collaboration state in a trusted netwo
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | Returns **true** if the session ID is set successfully;<br>returns **false** otherwise. |
+  | boolean | **true** indicates that the **sessionId** is set successfully. <br>**false** indicates that the **sessionId** fails to be set. |
 
 **Example**
 
@@ -1430,7 +1453,7 @@ class SourceObject {
 
 let source: SourceObject = new SourceObject('jack', 18, false);
 let g_object: distributedDataObject.DistributedObject = distributedDataObject.createDistributedObject(source);
-// Unregister the specified data change callback.
+// Delete the data change callback.
 g_object.off('change', (sessionId: string, fields: Array<string>) => {
     console.info('change' + sessionId);
     if (fields != null && fields != undefined) {
@@ -1460,7 +1483,7 @@ Subscribes to status changes of this distributed data object.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type. The value is **'status'**, which indicates the status change (online or offline) of the distributed object.|
-| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | Yes| Callback used to return the status change.<br>**sessionId** indicates the session ID of the distributed data object.<br>**networkId** identifies the device.<br>**status** indicates the object status, which can be online or offline.|
+| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | Yes | Callback invoked when the object goes online or offline.<br>**sessionId**: **sessionId** of the object whose status changes; <br>**networkId**: network identifier of the peer device; <br>**status**: status of the object, which can be 'online' or 'offline'. |
 
 **Example**
 
@@ -1502,7 +1525,7 @@ Unsubscribes from the status change of this distributed data object.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type. The value is **'status'**, which indicates the status change (online or offline) of the distributed object.|
-| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | No| Callback to unregister. If this parameter is not specified, this API unsubscribes from all callbacks for status changes of this distributed object.<br>**sessionId** indicates the session ID of the distributed data object.<br>**networkId** identifies the device.<br>**status** indicates the object status, which can be online or offline.|
+| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | No | Callback for the online/offline event to be removed. If this parameter is not set, all online/offline callbacks of the object are removed.<br>**sessionId**: **sessionId** of the object whose status changes. <br>**networkId**: network identifier of the peer device. <br>**status**: status of the object, which can be 'online' or 'offline'. |
 
 
 **Example**
@@ -1522,7 +1545,7 @@ class SourceObject {
 
 let source: SourceObject = new SourceObject('jack', 18, false);
 let g_object: distributedDataObject.DistributedObject = distributedDataObject.createDistributedObject(source);
-// Unregister the specified status change callback.
+// Delete the online/offline callback.
 g_object.off('status', (sessionId: string, networkId: string, status: 'online' | 'offline') => {
     console.info('status changed ' + sessionId + ' ' + status + ' ' + networkId);
 });

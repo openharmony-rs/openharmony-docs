@@ -6,6 +6,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=26cd53432c3138bbfd0544959135ffafd85d0cf2 translatedAt=2026-09-01T12:37:05.230Z pushedAt=2026-09-07T03:24:33.524Z -->
 
 > **NOTE**
 >
@@ -32,7 +33,7 @@ Creates an audio template and returns the audio template instance.
 
 | Name    | Type                                                        | Mandatory| Description              |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------ |
-| accessType | [AVMusicTemplateType](arkts-apis-avMusicTemplate-e.md#avmusictemplatetype) | Yes  | Audio template enumeration type.|
+| accessType | [AVMusicTemplateType](arkts-apis-avMusicTemplate-e.md#avmusictemplatetype) | Required | Audio Template type. |
 
 **Return value**
 
@@ -56,21 +57,21 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
-  private static sInstance: TemplateManager;
+  private static instance: TemplateManager;
 
   private constructor() {
   }
 
   /**
-   * Obtain the template controller instance.
+   * Obtain a TemplateManager instance.
    *
-   * @returns Template controller instance.
+   * @returns TemplateManager instance.
    */
   public static getInstance(): TemplateManager {
-    if (!TemplateManager.sInstance) {
-      TemplateManager.sInstance = new TemplateManager();
+    if (!TemplateManager.instance) {
+      TemplateManager.instance = new TemplateManager();
     }
-    return TemplateManager.sInstance;
+    return TemplateManager.instance;
   };
 
   /**
@@ -78,8 +79,8 @@ export class TemplateManager {
    */
   public createTemplate() {
     if (this.template) {
-      console.warn('createTemplate: template not undefined');
-      return
+      console.warn('createTemplate: template already exists');
+      return;
     }
     try {
       this.template = avMusicTemplate.createAVMusicTemplate(avMusicTemplate.AVMusicTemplateType.DEFAULT);

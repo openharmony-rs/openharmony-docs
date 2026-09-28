@@ -1,4 +1,4 @@
-# Application Event Logging Error Codes
+# HiAppEvent Error Codes
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
@@ -6,6 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=a01666c456b1a316165fa9cf0813f377f536e857 translatedAt=2026-09-16T11:00:55.377Z pushedAt=2026-09-20T09:01:52.263Z -->
 
 > **NOTE**
 >
@@ -15,7 +16,7 @@
 
 **Error Message**
 
-Function disabled. Possible caused by the param disable in ConfigOption is true.
+Function disabled. Possibly caused by the param disable in ConfigOption is true.
 
 **Description**
 
@@ -87,7 +88,7 @@ Specify a valid event name.
 
 **Error Message**
 
-Invalid number of event parameters. Possible caused by the number of parameters is over 32.
+Invalid number of event parameters. Possibly caused by the number of parameters is over 32.
 
 **Description**
 
@@ -114,7 +115,7 @@ Invalid string length of the event parameter.
 
 **Possible Causes**
 
-- The length of the string of the event parameter value passed by the **write** API exceeds 8 × 1024.
+- The length of the string in the event parameter value passed by the **write** API exceeds 8*1024 characters.
 - The length of the custom event parameter value passed by the **setEventParam** API exceeds 1024 characters.
 
 **Solution**
@@ -228,7 +229,7 @@ Specify a valid filtering event domain name.
 
 **Error Message**
 
-Invalid row value. Possible caused by the row value is less than zero.
+Invalid row value. Possibly caused by the row value is less than zero.
 
 **Description**
 
@@ -246,7 +247,7 @@ Specify a valid event number.
 
 **Error Message**
 
-Invalid size value. Possible caused by the size value is less than zero.
+Invalid size value. Possibly caused by the size value is less than zero.
 
 **Description**
 
@@ -264,7 +265,7 @@ Specify a valid event size.
 
 **Error Message**
 
-Invalid timeout value. Possible caused by the timeout value is less than zero.
+Invalid timeout value. Possibly caused by the timeout value is less than zero.
 
 **Description**
 
@@ -282,7 +283,7 @@ Specify a valid timeout value.
 
 **Error Message**
 
-Invalid max storage quota value. Possible caused by incorrectly formatted.
+Invalid max storage quota value. Possibly caused by incorrectly formatted.
 
 **Description**
 
@@ -303,7 +304,7 @@ Specify a valid maximum storage quota.
 
 **Error Message**
 
-Invalid size value. Possible caused by the size value is less than or equal to zero.
+Invalid size value. Possibly caused by the size value is less than or equal to zero.
 
 **Description**
 

@@ -30,7 +30,7 @@ setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -45,7 +45,7 @@ setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Permission denied, non-system app called system api.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -88,7 +88,7 @@ setPointerSpeed(speed: number): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -108,7 +108,7 @@ setPointerSpeed(speed: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Permission denied, non-system app called system api.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -149,7 +149,7 @@ setPointerSpeedSync(speed: number): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -163,7 +163,7 @@ setPointerSpeedSync(speed: number): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -199,7 +199,7 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -213,7 +213,7 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -256,7 +256,7 @@ getPointerSpeed(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -270,7 +270,7 @@ getPointerSpeed(): Promise&lt;number&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 
 **示例**：
 
@@ -309,7 +309,7 @@ getPointerSpeedSync(): number
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -323,7 +323,7 @@ getPointerSpeedSync(): number
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -359,7 +359,7 @@ setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -374,7 +374,7 @@ setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -416,7 +416,7 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -436,7 +436,7 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -476,7 +476,7 @@ getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -490,7 +490,7 @@ getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -532,7 +532,7 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -546,7 +546,7 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -586,7 +586,7 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -601,7 +601,7 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -643,7 +643,7 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -663,7 +663,7 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -703,7 +703,7 @@ getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -717,7 +717,7 @@ getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -759,7 +759,7 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -773,7 +773,7 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -813,7 +813,7 @@ setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -828,7 +828,7 @@ setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -870,7 +870,7 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -890,7 +890,7 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -930,7 +930,7 @@ getMouseScrollRows(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -944,7 +944,7 @@ getMouseScrollRows(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -986,7 +986,7 @@ getMouseScrollRows(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -1000,7 +1000,7 @@ getMouseScrollRows(): Promise&lt;number&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1040,7 +1040,7 @@ setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1055,7 +1055,7 @@ setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1097,7 +1097,7 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1117,7 +1117,7 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1157,7 +1157,7 @@ getTouchpadScrollSwitch(callback: AsyncCallback\<boolean>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1171,7 +1171,7 @@ getTouchpadScrollSwitch(callback: AsyncCallback\<boolean>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1213,7 +1213,7 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -1227,7 +1227,7 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1267,7 +1267,7 @@ setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1282,7 +1282,7 @@ setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1324,7 +1324,7 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1344,7 +1344,7 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1376,116 +1376,6 @@ struct Index {
 }
 ```
 
-## pointer.getTouchpadScrollDirection<sup>10+</sup>
-
-getTouchpadScrollDirection(callback: AsyncCallback\<boolean>): void
-
-获取触控板滚轴方向，使用callback异步回调。
-
-**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
-
-**系统接口**: 此接口为系统接口。
-
-**参数**：
-
-| 参数名       | 类型                          | 必填   | 说明             |
-| -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板滚轴方向成功，err为undefined，state是true与手指滑动的方向一致；否则为错误对象。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID  | 错误信息             |
-| ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**示例**：
-
-```js
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 获取触控板滚动方向
-            pointer.getTouchpadScrollDirection((error: BusinessError, state: boolean) => {
-              if (error) {
-                console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-                return;
-              }
-              console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
-            });
-          } catch (error) {
-            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
-## pointer.getTouchpadScrollDirection<sup>10+</sup>
-
-getTouchpadScrollDirection(): Promise\<boolean>
-
-获取触控板滚轴方向，使用Promise异步回调。
-
-**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
-
-**系统接口**: 此接口为系统接口。
-
-**返回值**：
-
-| 类型                    | 说明                  |
-| --------------------- | ------------------- |
-| Promise\<boolean> | Promise对象。返回true表示触控板滚轴方向与手指滑动的方向一致；返回false表示触控板滚轴方向与手指滑动的方向相反。默认为true。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID  | 错误信息             |
-| ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**示例**：
-
-```js
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 获取触摸板滚动方向
-            pointer.getTouchpadScrollDirection().then((state: boolean) => {
-              console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
 ## pointer.setTouchpadTapSwitch<sup>10+</sup>
 
 setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
@@ -1494,7 +1384,7 @@ setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1509,7 +1399,7 @@ setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1551,7 +1441,7 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1571,7 +1461,7 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1611,7 +1501,7 @@ getTouchpadTapSwitch(callback: AsyncCallback\<boolean>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1624,7 +1514,7 @@ getTouchpadTapSwitch(callback: AsyncCallback\<boolean>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1666,7 +1556,7 @@ getTouchpadTapSwitch(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -1680,7 +1570,7 @@ getTouchpadTapSwitch(): Promise\<boolean>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1720,7 +1610,7 @@ setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1735,7 +1625,7 @@ setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1777,7 +1667,7 @@ setTouchpadPointerSpeed(speed: number): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1797,7 +1687,7 @@ setTouchpadPointerSpeed(speed: number): Promise\<void>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1837,7 +1727,7 @@ getTouchpadPointerSpeed(callback: AsyncCallback\<number>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1851,7 +1741,7 @@ getTouchpadPointerSpeed(callback: AsyncCallback\<number>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1893,7 +1783,7 @@ getTouchpadPointerSpeed(): Promise\<number>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -1907,7 +1797,7 @@ getTouchpadPointerSpeed(): Promise\<number>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1947,7 +1837,7 @@ setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1962,7 +1852,7 @@ setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2004,7 +1894,7 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2024,7 +1914,7 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2064,7 +1954,7 @@ getTouchpadPinchSwitch(callback: AsyncCallback\<boolean>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2078,7 +1968,7 @@ getTouchpadPinchSwitch(callback: AsyncCallback\<boolean>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2120,7 +2010,7 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -2134,7 +2024,7 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2174,7 +2064,7 @@ setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2189,7 +2079,7 @@ setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2231,7 +2121,7 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2251,7 +2141,7 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2291,7 +2181,7 @@ getTouchpadSwipeSwitch(callback: AsyncCallback\<boolean>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2305,7 +2195,7 @@ getTouchpadSwipeSwitch(callback: AsyncCallback\<boolean>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2347,7 +2237,7 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -2361,7 +2251,7 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2401,7 +2291,7 @@ setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>):
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2416,7 +2306,7 @@ setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>):
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2458,7 +2348,7 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2478,7 +2368,7 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2518,7 +2408,7 @@ getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2532,7 +2422,7 @@ getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2574,7 +2464,7 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -2588,7 +2478,7 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2628,7 +2518,7 @@ setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2643,7 +2533,7 @@ setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2685,7 +2575,7 @@ setPointerSize(size: number): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2705,7 +2595,7 @@ setPointerSize(size: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2745,7 +2635,7 @@ setPointerSizeSync(size: number): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2759,7 +2649,7 @@ setPointerSizeSync(size: number): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2796,7 +2686,7 @@ getPointerSize(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2810,7 +2700,7 @@ getPointerSize(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -2852,7 +2742,7 @@ getPointerSize(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -2866,7 +2756,7 @@ getPointerSize(): Promise&lt;number&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 
 **示例**：
@@ -2906,7 +2796,7 @@ getPointerSizeSync(): number
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -2920,7 +2810,7 @@ getPointerSizeSync(): number
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 
 **示例**：
@@ -2960,7 +2850,7 @@ setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2975,7 +2865,7 @@ setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -3021,7 +2911,7 @@ setPointerColor(color: number): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3041,7 +2931,7 @@ setPointerColor(color: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -3085,7 +2975,7 @@ setPointerColorSync(color: number): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3099,7 +2989,7 @@ setPointerColorSync(color: number): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -3136,7 +3026,7 @@ getPointerColor(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3150,7 +3040,7 @@ getPointerColor(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -3192,7 +3082,7 @@ getPointerColor(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -3206,7 +3096,7 @@ getPointerColor(): Promise&lt;number&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 
 **示例**：
@@ -3246,7 +3136,7 @@ getPointerColorSync(): number
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -3260,7 +3150,7 @@ getPointerColorSync(): number
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 
 **示例**：
@@ -3296,7 +3186,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3311,7 +3201,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -3353,7 +3243,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3373,7 +3263,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -3413,7 +3303,7 @@ getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3427,7 +3317,7 @@ getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -3469,7 +3359,7 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -3483,7 +3373,7 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例**：
 
@@ -3520,11 +3410,11 @@ setMouseScrollDirection(inverted: boolean): Promise\<void>
 
 设置鼠标滚轮滚动的方向，使用Promise异步回调。
 
-**需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
+**需要权限**：ohos.permission.INPUT_DEVICE_CONTROLLER
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3544,8 +3434,8 @@ setMouseScrollDirection(inverted: boolean): Promise\<void>
 
 | 错误码ID   | 错误信息                        |
 |---------|-----------------------------|
-| 201     | Permission denied.          |
-| 202     | SystemAPI permission error. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 3800001 | Input service exception.    |
 
 **示例**：
@@ -3583,11 +3473,11 @@ getMouseScrollDirection(): Promise\<boolean>
 
 获取鼠标滚轮滚动方向，使用Promise异步回调。
 
-**需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
+**需要权限**：ohos.permission.INPUT_DEVICE_CONTROLLER
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -3601,8 +3491,8 @@ getMouseScrollDirection(): Promise\<boolean>
 
 | 错误码ID   | 错误信息                                                                                                                                       |
 |---------| ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 201     | Permission denied.          |
-| 202     | SystemAPI permission error. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 3800001 | Input service exception.    |
 
 **示例**：

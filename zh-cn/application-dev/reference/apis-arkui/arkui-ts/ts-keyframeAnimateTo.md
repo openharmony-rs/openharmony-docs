@@ -89,7 +89,7 @@ struct KeyframeDemo {
         .scale({ x: this.myScale, y: this.myScale })
         .onClick(() => {
           if (!this.uiContext) {
-            console.info('no uiContext, keyframe failed');
+            console.error('no uiContext, keyframe failed');
             return;
           }
           this.myScale = 1;

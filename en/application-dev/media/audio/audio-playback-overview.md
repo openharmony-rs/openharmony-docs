@@ -1,26 +1,27 @@
 # Audio Playback Development
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4a6423166cec7f4a80883cd681b0b752ac39bc94 translatedAt=2026-09-18T02:28:36.866Z pushedAt=2026-09-18T08:21:33.579Z -->
 
 ## Selecting an Audio Playback Development Mode
 
 The system provides a variety of APIs for you to develop audio playback applications. You can select them based on the audio data formats, audio sources, audio usage scenarios, and even the programming language you use. Selecting a suitable class helps you reduce development workload and your application deliver a better effect.
 
-- [AudioRenderer](using-audiorenderer-for-playback.md): provides ArkTS and JS APIs to implement audio output. It supports only the PCM format and requires applications to continuously write audio data. The applications can perform data preprocessing, for example, setting the sampling rate and bit width of audio files, before audio input. This class can be used to develop more professional and diverse playback applications. To use this class, you must have basic audio processing knowledge.
+- [AudioRenderer](using-audiorenderer-for-playback.md): provides ArkTS/JS APIs for audio output. It supports only PCM format and requires the app to continuously write audio data to operate. The app can add data preprocessing before input, such as configuring the sampling rate and bit width of the audio stream. Developers are expected to have basic knowledge of audio processing. It is suitable for developing more professional and diverse media playback apps.
 
 - [AudioHaptic](using-audiohaptic-for-playback.md): provides ArkTS and JS APIs for audio playback with audio-haptic effect. It applies to scenarios where haptic feedback needs to be initiated synchronously during audio playback, for example, when there are incoming calls or messages or users are typing.
 
-- [Using OHAudio for Audio Playback](using-ohaudio-for-playback.md): provides a set of native APIs for audio output. These APIs are normalized in design and support both common and low-latency audio channels. They support the PCM format only. They are suitable for playback applications that implement audio output at the native layer.<!--Del-->
+- [OHAudio](using-ohaudio-for-playback.md): provides Native APIs for audio output. This API is designed with a normalized architecture and supports both standard audio paths and low-latency paths. It supports only PCM format and is suitable for scenarios where audio output is implemented at the native layer.<!--Del-->
 
 - [TonePlayer](using-toneplayer-for-playback-sys.md): provides ArkTS and JS APIs to implement the playback of dialing tones and ringback tones. It can be used to play the content selected from a fixed type range, without requiring the input of media assets or audio data. This class is applicable to specific scenarios where dialing tones and ringback tones are played. It is available only to system applications.<!--DelEnd-->
 
 In addition to the preceding classes, you can also use **AVPlayer** and **SoundPool** in Media Kit to implement audio playback.
 
-- [AVPlayer](../media/using-avplayer-for-playback.md): provides ArkTS and JS APIs to implement audio playback. It also supports parsing streaming media and local assets, decapsulating media assets, decoding audio, and outputting audio. It can play audio files in MP3 and M4A formats, but not in PCM format.
+- [AVPlayer](../media/using-avplayer-for-playback.md): provides ArkTS/JS APIs for audio playback. It integrates streaming media and local resource parsing, media resource demuxing, audio decoding, and audio output. It can be used to directly play audio files in formats such as MP3 and M4A, but does not support direct playback of PCM files.
 
 - [SoundPool](../media/using-soundpool-for-playback.md): provides ArkTS and JS APIs to implement short sound playback in low latency mode. It can be used to play short sound effects, such as camera shutter sound effect, key press sound effect, and game shooting sound effect.
 

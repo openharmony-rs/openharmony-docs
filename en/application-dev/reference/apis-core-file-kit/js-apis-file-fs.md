@@ -1,9 +1,9 @@
 # @ohos.file.fs (File Management)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 This module is the core module of Core File Kit. It provides APIs for basic file operations, such as creating, opening, reading, writing, copying, moving, deleting, and querying files and directories in the application sandbox.
@@ -28,21 +28,7 @@ import { fileIo } from '@kit.CoreFileKit';
 
 ## How to Use
 
-Before using the APIs provided by this module to perform operations on a file or directory, obtain the application sandbox path of the file or directory as follows:
-
-  ```ts
-  import { UIAbility } from '@kit.AbilityKit';
-  import { window } from '@kit.ArkUI';
-
-  export default class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage) {
-      let context = this.context;
-      let pathDir = context.filesDir;
-    }
-  }
-  ```
-
-For details about how to obtain the sandbox path and how to use the related APIs, see [Obtaining Application File Paths](../../application-models/application-context-stage.md#obtaining-application-file-paths).<br>A uniform resource identifier (URI) is a string pointing to a resource. For APIs that support only the sandbox path as the input parameter, you can construct a **fileUri** object and obtain the sandbox path property to convert the URI to the sandbox path, and then use the APIs. For details about the URI definition and how to convert a URI to a path, see [File URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md).
+Before using this module to perform operations on files or directories, you need to obtain the app sandbox path (**pathDir**). For details about how to obtain the sandbox path and use the API, see [Obtaining Application File Paths](../../application-models/application-context-stage.md#obtaining-application-file-paths).<br>A uniform resource identifier (URI) is a string pointing to a resource. For APIs that support only the sandbox path as the input parameter, you can construct a **fileUri** object and obtain the sandbox path property to convert the URI to the sandbox path, and then use the APIs. For details about the URI definition and how to convert a URI to a path, see [File URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md).
 
 ## fileIo.stat
 
@@ -320,7 +306,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     } else {
       console.info(`Succeeded in checking file, file does not exist.`);
     }
-  } catch(error) {
+  } catch (error) {
     let err: BusinessError = error as BusinessError;
     console.error(`Failed to accessSync. Code: ${err.code}, message: ${err.message}`);
   }
@@ -365,7 +351,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     } else {
       console.info(`Succeeded in checking file, file does not exist.`);
     }
-  } catch(error) {
+  } catch (error) {
     let err: BusinessError = error as BusinessError;
     console.error(`Failed to accessSync. Code: ${err.code}, message: ${err.message}`);
   }
@@ -529,7 +515,7 @@ try {
   }).catch((err: BusinessError)=>{
     console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
   })
-} catch(err) {
+} catch (err) {
   console.error(`Failed to copy.Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -577,7 +563,7 @@ try {
     }
     console.info("Succeeded in copying.");
   })
-} catch(err) {
+} catch (err) {
   console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -632,7 +618,7 @@ try {
     }
     console.info("Succeeded in copying.");
   })
-} catch(err) {
+} catch (err) {
   console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1080,7 +1066,7 @@ Triggers connection. If the peer device is abnormal, [onStatus](#onstatus12) in 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | networkId | string | Yes| Network ID of the device. The device network ID can be obtained from [DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) using the related [distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md) API.|
-| listeners | [DfsListeners](#fileiodfslisteners12) | Yes| Listeners for distributed file system status.|
+| listeners | [DfsListeners](#dfslisteners12) | Yes| Listeners for distributed file system status.|
 
 **Return value**
 
@@ -2604,10 +2590,10 @@ Represents the information obtained by the **ReaderIterator** object.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
-| Name| Type| Description|
-| ---- | ---- | ---- |
-| done | boolean | Whether the iteration is complete. The value **true** means the iteration is complete; the value **false** means the opposite.|
-| value | string | File text content read line by line.|
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| done | boolean | No| No| Whether the iteration is complete. The value **true** means the iteration is complete; the value **false** means the opposite.|
+| value | string | No| No| File text content read line by line.|
 
 ## fileIo.readText
 
@@ -3542,13 +3528,6 @@ You can configure the **recursion** parameter in **options** to recursively list
 
 For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
-| ID| Error Message|
-| ---- | ---- |
-| 13900002 | No such file or directory. |
-| 13900011 | Out of memory. |
-| 13900018 | Not a directory. |
-| 13900020 | Invalid argument. |
-
 **Example**
 
 ```ts
@@ -3606,13 +3585,6 @@ You can configure the **recursion** parameter in **options** to recursively list
 **Error codes**
 
 For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
-
-| ID| Error Message|
-| ---- | ---- |
-| 13900002 | No such file or directory. |
-| 13900011 | Out of memory. |
-| 13900018 | Not a directory. |
-| 13900020 | Invalid argument. |
 
 **Example**
 
@@ -3740,7 +3712,7 @@ Moves the source directory and its content to the destination path. You can set 
 | ---- | ---- | ---- | ---- |
 | src | string | Yes| Application sandbox path of the source directory.|
 | dest | string | Yes| Application sandbox path of the destination directory.|
-| mode | number | Yes| Move mode.<br><br>- **0**: Throw an exception if a directory conflict occurs.<br> An exception will be thrown if the destination directory contains a directory with the same name as the source directory.<br>- **1**: Throw an exception if a file conflict occurs.<br> An exception will be thrown if the destination directory contains a directory with the same name as the source directory, and a file with the same name exists in the conflict directory. All the non-conflicting files in the source directory will be moved to the destination directory, and the non-conflicting files in the destination directory will be retained.<br>- **2**: Forcibly overwrite the conflicting files in the destination directory.<br> When the destination directory contains a directory with the same name as the source directory, the files with the same names in the destination directory are overwritten forcibly; the files without conflicts in the destination directory are retained.<br>- **3**: Forcibly overwrite the conflicting directory.<br> The source directory is moved to the destination directory, and the content of the moved directory is the same as that of the source directory. If the destination directory contains a directory with the same name as the source directory, all original files in the directory will be deleted.|
+| mode | number | Yes| Move mode.<br><br>- **0**: Throw an exception if a directory conflict occurs.<br> An exception will be thrown if the destination directory contains a non-empty directory with the same name as the source directory.<br>- **1**: Throw an exception if a file conflict occurs.<br> An exception will be thrown if the destination directory contains a directory with the same name as the source directory, and a file with the same name exists in the conflict directory. All the non-conflicting files in the source directory will be moved to the destination directory, and the non-conflicting files in the destination directory will be retained.<br>- **2**: Forcibly overwrite the conflicting files in the destination directory.<br> When the destination directory contains a directory with the same name as the source directory, the files with the same names in the destination directory are overwritten forcibly; the files without conflicts in the destination directory are retained.<br>- **3**: Forcibly overwrite the conflicting directory.<br> The source directory is moved to the destination directory, and the content of the moved directory is the same as that of the source directory. If the destination directory contains a directory with the same name as the source directory, all original files in the directory will be deleted.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the directory is successfully moved, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -3781,7 +3753,7 @@ Moves the source directory and its content to the destination path. You can set 
 | ---- | ---- | ---- | ---- |
 | src | string | Yes| Application sandbox path of the source directory.|
 | dest | string | Yes| Application sandbox path of the destination directory.|
-| mode | number | Yes| Move mode.<br><br>- **0**: Throw an exception if a directory conflict occurs.<br> An exception will be thrown if the destination directory contains a directory with the same name as the source directory.<br>- **1**: Throw an exception if a file conflict occurs.<br> An exception will be thrown if the destination directory contains a directory with the same name as the source directory, and a file with the same name exists in the conflict directory. All the non-conflicting files in the source directory will be moved to the destination directory, and the non-conflicting files in the destination directory will be retained. The data attribute in the error returned provides information about the conflicting files in the Array\<[ConflictFiles](#conflictfiles10)> format.<br>- **2**: Forcibly overwrite the conflicting files in the destination directory.<br> When the destination directory contains a directory with the same name as the source directory, the files with the same names in the destination directory are overwritten forcibly; the files without conflicts in the destination directory are retained.<br>- **3**: Forcibly overwrite the conflicting directory.<br> The source directory is moved to the destination directory, and the content of the moved directory is the same as that of the source directory. If the destination directory contains a directory with the same name as the source directory, all original files in the directory will be deleted.|
+| mode | number | Yes| Move mode.<br><br>- **0**: Throw an exception if a directory conflict occurs.<br> An exception will be thrown if the destination directory contains a non-empty directory with the same name as the source directory.<br>- **1**: Throw an exception if a file conflict occurs.<br> An exception will be thrown if the destination directory contains a directory with the same name as the source directory, and a file with the same name exists in the conflict directory. All the non-conflicting files in the source directory will be moved to the destination directory, and the non-conflicting files in the destination directory will be retained. The data attribute in the error returned provides information about the conflicting files in the Array\<[ConflictFiles](#conflictfiles10)> format.<br>- **2**: Forcibly overwrite the conflicting files in the destination directory.<br> When the destination directory contains a directory with the same name as the source directory, the files with the same names in the destination directory are overwritten forcibly; the files without conflicts in the destination directory are retained.<br>- **3**: Forcibly overwrite the conflicting directory.<br> The source directory is moved to the destination directory, and the content of the moved directory is the same as that of the source directory. If the destination directory contains a directory with the same name as the source directory, all original files in the directory will be deleted.|
 | callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | Yes| Callback used to return the result. If the directory is successfully moved, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -3815,7 +3787,7 @@ moveDir(src: string, dest: string, callback: AsyncCallback\<void>): void
 
 Moves the source directory and its content to the destination path. This API uses an asynchronous callback to return the result.
 
-An exception will be thrown if a directory conflict occurs, that is, the destination directory contains a directory with the same name as the source directory.
+An exception will be thrown if a directory conflict occurs, An exception will be thrown if the destination directory contains a non-empty directory with the same name as the source directory.
 
 > **NOTE**
 >
@@ -3857,7 +3829,7 @@ moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 
 Moves the source directory and its content to the destination path. This API uses an asynchronous callback to return the result.
 
-An exception will be thrown if a directory conflict occurs, that is, the destination directory contains a directory with the same name as the source directory.
+An exception will be thrown if a directory conflict occurs, An exception will be thrown if the destination directory contains a non-empty directory with the same name as the source directory.
 
 > **NOTE**
 >
@@ -3916,7 +3888,7 @@ Moves the source directory and its content to the destination directory. This AP
 | ---- | ---- | ---- | ---- |
 | src | string | Yes| Application sandbox path of the source directory.|
 | dest | string | Yes| Application sandbox path of the destination directory.|
-| mode | number | No| Move mode. The default value is **0**.<br>- **0**: Throw an exception if a directory conflict occurs.<br> An exception will be thrown if the destination directory contains a directory with the same name as the source directory.<br>- **1**: Throw an exception if a file conflict occurs.<br> An exception will be thrown if the destination directory contains a directory with the same name as the source directory, and a file with the same name exists in the conflict directory. All the non-conflicting files in the source directory will be moved to the destination directory, and the non-conflicting files in the destination directory will be retained. The data attribute in the error returned provides information about the conflicting files in the Array\<[ConflictFiles](#conflictfiles10)> format.<br>- **2**: Forcibly overwrite the conflicting files in the destination directory.<br> When the destination directory contains a directory with the same name as the source directory, the files with the same names in the destination directory are overwritten forcibly; the files without conflicts in the destination directory are retained.<br>- **3**: Forcibly overwrite the conflicting directory.<br> The source directory is moved to the destination directory, and the content of the moved directory is the same as that of the source directory. If the destination directory contains a directory with the same name as the source directory, all original files in the directory will be deleted.|
+| mode | number | No| Move mode. The default value is **0**.<br>- **0**: Throw an exception if a directory conflict occurs.<br> An exception will be thrown if the destination directory contains a non-empty directory with the same name as the source directory.<br>- **1**: Throw an exception if a file conflict occurs.<br> An exception will be thrown if the destination directory contains a directory with the same name as the source directory, and a file with the same name exists in the conflict directory. All the non-conflicting files in the source directory will be moved to the destination directory, and the non-conflicting files in the destination directory will be retained. The data attribute in the error returned provides information about the conflicting files in the Array\<[ConflictFiles](#conflictfiles10)> format.<br>- **2**: Forcibly overwrite the conflicting files in the destination directory.<br> When the destination directory contains a directory with the same name as the source directory, the files with the same names in the destination directory are overwritten forcibly; the files without conflicts in the destination directory are retained.<br>- **3**: Forcibly overwrite the conflicting directory.<br> The source directory is moved to the destination directory, and the content of the moved directory is the same as that of the source directory. If the destination directory contains a directory with the same name as the source directory, all original files in the directory will be deleted.|
 
 **Error codes**
 
@@ -4308,7 +4280,7 @@ fileIo.closeSync(file);
 
 utimes(path: string, mtime: number): void
 
-Changes the time when the file was last modified.
+Last modification time of a file.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -4330,47 +4302,6 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   fileIo.writeSync(file.fd, 'test data');
   fileIo.closeSync(file);
   fileIo.utimes(filePath, new Date().getTime());
-  ```
-
-## fileIo.createRandomAccessFile<sup>10+</sup>
-
-createRandomAccessFile(file: string | File, mode?: number): Promise&lt;RandomAccessFile&gt;
-
-Creates a **RandomAccessFile** instance based on a file path or file object. This API uses a promise to return the result.
-
-**System capability**: SystemCapability.FileManagement.File.FileIO
-
-**Parameters**
-| Name| Type| Mandatory| Description|
-| ---- | ---- | ---- | ---- |
-| file | string \| [File](#file) | Yes| Application sandbox path of the file or an opened file object.|
-| mode | number | No| [OpenMode](#openmode) for creating the **RandomAccessFile** instance. This parameter is valid only when the application sandbox path of the file is passed in. One of the following options must be specified:<br>- **OpenMode.READ_ONLY(0o0)**: Create the file in read-only mode. This is the default value.<br>- **OpenMode.WRITE_ONLY(0o1)**: Create the file in write-only mode.<br>- **OpenMode.READ_WRITE(0o2)**: Create the file in read/write mode.<br>You can also specify the following options, separated by a bitwise OR operator (&#124;). By default, no additional options are given.<br>- **OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br>- **OpenMode.TRUNC(0o1000)**: If the **RandomAccessFile** object already exists and is created in write mode, truncate the file length to 0.<br>- **OpenMode.APPEND(0o2000)**: Create the file in append mode. New data will be added to the end of the **RandomAccessFile** object. <br>- **OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the opened file and in subsequent I/Os.<br>- **OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br>- **OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception.<br>- **OpenMode.SYNC(0o4010000)**: Create a **RandomAccessFile** instance in synchronous I/O mode.|
-
-**Return value**
-
-| Type| Description|
-| ---- | ---- |
-| Promise&lt;[RandomAccessFile](#randomaccessfile10)&gt; | Promise used to return the **RandomAccessFile** object.|
-
-**Error codes**
-
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
-
-**Example**
-
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  let filePath = pathDir + "/test.txt";
-  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-  fileIo.createRandomAccessFile(file).then((randomAccessFile: fileIo.RandomAccessFile) => {
-    console.info(`Succeeded in creating randomaccessfile, fd: ${randomAccessFile.fd}`);
-    randomAccessFile.close();
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to create randomaccessfile. Code: ${err.code}, message: ${err.message}`);
-  }).finally(() => {
-    fileIo.closeSync(file);
-  });
   ```
 
 ## fileIo.createRandomAccessFile<sup>10+</sup>
@@ -4446,7 +4377,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   });
   ```
 
-## fileIo.createRandomAccessFile<sup>12+</sup>
+## fileIo.createRandomAccessFile<sup>10+</sup>
 
 createRandomAccessFile(file: string | File, mode?: number, options?: RandomAccessFileOptions): Promise&lt;RandomAccessFile&gt;
 
@@ -4460,7 +4391,7 @@ Creates a **RandomAccessFile** instance based on a file path or file object. Thi
 | ---- | ---- | ---- | ---- |
 | file | string \| [File](#file) | Yes| Application sandbox path of the file or an opened file object.|
 | mode | number | No| [OpenMode](#openmode) for creating the **RandomAccessFile** instance. This parameter is valid only when the application sandbox path of the file is passed in. One of the following options must be specified:<br>- **OpenMode.READ_ONLY(0o0)**: Create the file in read-only mode. This is the default value.<br>- **OpenMode.WRITE_ONLY(0o1)**: Create the file in write-only mode.<br>- **OpenMode.READ_WRITE(0o2)**: Create the file in read/write mode.<br>You can also specify the following options, separated by a bitwise OR operator (&#124;). By default, no additional options are given.<br>- **OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br>- **OpenMode.TRUNC(0o1000)**: If the **RandomAccessFile** object already exists and is created in write mode, truncate the file length to 0.<br>- **OpenMode.APPEND(0o2000)**: Create the file in append mode. New data will be added to the end of the **RandomAccessFile** object. <br>- **OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the opened file and in subsequent I/Os.<br>- **OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br>- **OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception.<br>- **OpenMode.SYNC(0o4010000)**: Create a **RandomAccessFile** instance in synchronous I/O mode.|
-|options|[RandomAccessFileOptions](#randomaccessfileoptions12)|No|The options are as follows:<br>- **start** (number): start position to read data, in bytes. This parameter is optional. By default, data is read from the current position.<br>- **end** (number): end position to read data, in bytes. This parameter is optional. The default value is the end of the file.<br>This parameter takes effect only for file stream objects obtained by [getreadstream](#getreadstream12) and [getwritestream](#getwritestream12).|
+|options<sup>12+</sup>|[RandomAccessFileOptions](#randomaccessfileoptions12)|No|The options are as follows:<br>- **start** (number): start offset position of the file, in bytes. This parameter is optional. The default value is the current position of the file.<br>- **end** (number): end offset position of the file, in bytes. This parameter is optional. The default value is the end of the file.<br>This parameter takes effect only for file stream objects obtained by [getreadstream](#getreadstream12) and [getwritestream](#getwritestream12).|
 
 **Return value**
 
@@ -4489,40 +4420,6 @@ fileIo.createRandomAccessFile(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode
 
 ## fileIo.createRandomAccessFileSync<sup>10+</sup>
 
-createRandomAccessFileSync(file: string | File, mode?: number): RandomAccessFile
-
-Creates a **RandomAccessFile** instance based on a file path or file object.
-
-**System capability**: SystemCapability.FileManagement.File.FileIO
-
-**Parameters**
-
-| Name| Type| Mandatory| Description|
-| ---- | ---- | ---- | ---- |
-| file | string \| [File](#file) | Yes| Application sandbox path of the file or an opened file object.|
-| mode | number | No| [OpenMode](#openmode) for creating the **RandomAccessFile** instance. This parameter is valid only when the application sandbox path of the file is passed in. By default, the file is created in read-only mode.<br>- **OpenMode.READ_ONLY(0o0)**: Create the file in read-only mode.<br>- **OpenMode.WRITE_ONLY(0o1)**: Create the file in write-only mode.<br>- **OpenMode.READ_WRITE(0o2)**: Create the file in read/write mode.<br>You can also specify the following options, separated by a bitwise OR operator (&#124;). By default, no additional options are given.<br>- **OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br>- **OpenMode.TRUNC(0o1000)**: If the **RandomAccessFile** object already exists and is created in write mode, truncate the file length to 0.<br>- **OpenMode.APPEND(0o2000)**: Create the file in append mode. New data will be added to the end of the **RandomAccessFile** object. <br>- **OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the opened file and in subsequent I/Os.<br>- **OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br>- **OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception.<br>- **OpenMode.SYNC(0o4010000)**: Create a **RandomAccessFile** instance in synchronous I/O mode.|
-
-**Return value**
-
-| Type| Description|
-| ---- | ---- |
-| [RandomAccessFile](#randomaccessfile10) | **RandomAccessFile** instance created.|
-
-**Error codes**
-
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
-
-**Example**
-
-  ```ts
-  let filePath = pathDir + "/test.txt";
-  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-  let randomAccessFile = fileIo.createRandomAccessFileSync(file);
-  randomAccessFile.close();
-  ```
-
-## fileIo.createRandomAccessFileSync<sup>12+</sup>
-
 createRandomAccessFileSync(file: string | File, mode?: number, options?: RandomAccessFileOptions): RandomAccessFile
 
 Creates a **RandomAccessFile** instance based on a file path or file object.
@@ -4535,7 +4432,7 @@ Creates a **RandomAccessFile** instance based on a file path or file object.
 | ---- | ---- | ---- | ---- |
 | file | string \| [File](#file) | Yes| Application sandbox path of the file or an opened file object.|
 | mode | number | No| [OpenMode](#openmode) for creating the **RandomAccessFile** instance. This parameter is valid only when the application sandbox path of the file is passed in. One of the following options must be specified:<br>- **OpenMode.READ_ONLY(0o0)**: Create the file in read-only mode. This is the default value.<br>- **OpenMode.WRITE_ONLY(0o1)**: Create the file in write-only mode.<br>- **OpenMode.READ_WRITE(0o2)**: Create the file in read/write mode.<br>You can also specify the following options, separated by a bitwise OR operator (&#124;). By default, no additional options are given.<br>- **OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br>- **OpenMode.TRUNC(0o1000)**: If the **RandomAccessFile** object already exists and is created in write mode, truncate the file length to 0.<br>- **OpenMode.APPEND(0o2000)**: Create the file in append mode. New data will be added to the end of the **RandomAccessFile** object. <br>- **OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the opened file and in subsequent I/Os.<br>- **OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br>- **OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception.<br>- **OpenMode.SYNC(0o4010000)**: Create a **RandomAccessFile** instance in synchronous I/O mode.|
-|options|[RandomAccessFileOptions](#randomaccessfileoptions12)|No|The options are as follows:<br>- **start** (number): start position to read data, in bytes. This parameter is optional. By default, data is read from the current position.<br>- **end** (number): end position to read data, in bytes. This parameter is optional. The default value is the end of the file.<br>This parameter takes effect only for file stream objects obtained by [getreadstream](#getreadstream12) and [getwritestream](#getwritestream12).|
+|options<sup>12+</sup>|[RandomAccessFileOptions](#randomaccessfileoptions12)|No|The options are as follows:<br>- **start** (number): start offset position of the file, in bytes. This parameter is optional. The default value is the current position of the file.<br>- **end** (number): end offset position of the file, in bytes. This parameter is optional. The default value is the end of the file.<br>This parameter takes effect only for file stream objects obtained by [getreadstream](#getreadstream12) and [getwritestream](#getwritestream12).|
 
 **Return value**
 
@@ -4903,7 +4800,7 @@ You can call **finishWrite()** or **failWrite()** to write or roll back file con
 
 constructor(path: string)
 
-Creates an **AtomicFile** class for a file in a specified path.
+Creates an **AtomicFile** instance for a file in a specified path.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -5167,7 +5064,7 @@ try {
 
 delete(): void
 
-Deletes the **AtomicFile** class, including the original files and temporary files.
+Deletes the original files and temporary files of **AtomicFile**.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -5244,9 +5141,9 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   let watcher = fileIo.createWatcher(filePath, 0x2 | 0x10, (watchEvent: WatchEvent) => {
     if (watchEvent.event == 0x2) {
-      console.info(watchEvent.fileName + 'was modified');
+      console.info(watchEvent.fileName + ' was modified');
     } else if (watchEvent.event == 0x10) {
-      console.info(watchEvent.fileName + 'was closed');
+      console.info(watchEvent.fileName + ' was closed');
     }
   });
   watcher.start();
@@ -5259,7 +5156,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 (event: WatchEvent): void
 
-Defines a watch event listener. When the monitored file or directory changes, a callback is triggered.
+Defines a watch event listener API. When the monitored file or directory changes, a callback is triggered.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -5271,7 +5168,7 @@ Defines a watch event listener. When the monitored file or directory changes, a 
 
 ## WatchEvent<sup>10+</sup>
 
-Defines the event to observe.
+Event interface
 
 ### Properties
 
@@ -5399,13 +5296,17 @@ Defines the callback for listening for the copy progress.
 
 ## ProgressListener<sup>11+</sup>
 
+type ProgressListener = (progress: Progress) => void
+
 Listener used to observe the copy progress.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
-| Type| Description|
-| ---- | ---- |
-|(progress: [Progress](#progress11)) => void| Listener used to observe the copy progress.|
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| progress | [Progress](#progress11) | Yes| Listener used to observe the copy progress.|
 
 **Example**
 
@@ -7072,7 +6973,7 @@ console.info("Succeeded in unmap.");
 fileIo.closeSync(file);
 ```
 
-## fileIo.DfsListeners<sup>12+</sup>
+## DfsListeners<sup>12+</sup>
 
 Provides APIs for observing events. listening for the distributed file system status.
 
@@ -7714,10 +7615,10 @@ Defines conflicting file information used in **copyDir()** or **moveDir()**.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
-| Name| Type| Description|
-| ---- | ---- | ---- |
-| srcFile | string | Path of the source file.|
-| destFile | string | Path of the destination file.|
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| srcFile | string | No| No| Path of the source file.|
+| destFile | string | No| No| Path of the destination file.|
 
 ## Options<sup>11+</sup>
 
@@ -7725,9 +7626,9 @@ Defines the options used in **readLines()**.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
-| Name| Type| Description|
-| ---- | ---- | ---- |
-| encoding | string | File encoding format. It is optional.|
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| encoding | string | No| Yes| File encoding format. It is optional.|
 
 ## WhenceType<sup>11+</sup>
 
@@ -7749,8 +7650,8 @@ Enumerates the file locations.
 
 | Name| Value| Description|
 | ---- | ---- | ---- |
-| LOCAL | 1 | The file is stored in a local device.|
-| CLOUD | 2 | The file is stored in the cloud.|
+| LOCAL | 1 << 0 | The file is stored in a local device.|
+| CLOUD | 1 << 1 | The file is stored in the cloud.|
 
 ## AccessModeType<sup>12+</sup>
 
@@ -7787,7 +7688,7 @@ Defines the options used in **read()**.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| offset | number | No| Yes| Start position of the file to read (current **filePointer** plus **offset**), in bytes. This parameter is optional. By default, data is read from the **filePointer**.|
+| offset | number | No| Yes| Position to read data in the file, in bytes. This parameter is optional. By default, data is read from the current position.|
 | length | number | No| Yes| Length of the data to read, in bytes. This parameter is optional. The default value is the buffer length.|
 
 ## ReadTextOptions<sup>11+</sup>
@@ -7798,8 +7699,6 @@ Defines the options used in **readText()**. It inherits from [ReadOptions](#read
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| offset | number | No| Yes| Start position of the file to read, in bytes. This parameter is optional. By default, data is read from the current position.|
-| length | number | No| Yes| Length of the data to read, in bytes. This parameter is optional. The default value is the file length.|
 | encoding | string | No| Yes| Format of the data to be encoded. This parameter is valid only when the data type is string. The default value is **'utf-8'**, which is the only value supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## WriteOptions<sup>11+</sup>
@@ -7810,9 +7709,8 @@ Defines the options used in **write()**. It inherits from [Options](#options11).
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| offset | number | No| Yes| Start position of the file to write (current **filePointer** plus **offset**), in bytes. This parameter is optional. By default, data is written from the **filePointer**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| offset | number | No| Yes| Position to write data in the file, in bytes. This parameter is optional. By default, data is written from the current position.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | length | number | No| Yes| Length of the data to write, in bytes. This parameter is optional. The default value is the buffer length.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| encoding | string | No| Yes| Format of the data to be encoded. This parameter is valid only when the data type is string. The default value is **'utf-8'**, which is the only value supported.|
 
 ## ListFileExtOptions
 
@@ -7848,6 +7746,8 @@ Defines the options used in **listFile()**.
 
 Defines a readable stream. You need to use [fileIo.createReadStream](#fileiocreatereadstream12) to create a **ReadStream** instance, which is inherited from [stream.Readable](../apis-arkts/js-apis-stream.md#readable).
 
+**System capability**: SystemCapability.FileManagement.File.FileIO
+
 The data obtained by **ReadStream** is a decoded string. Currently, only the UTF-8 format is supported.
 
 | Name| Type| Read-Only| Optional| Description|
@@ -7858,7 +7758,6 @@ The data obtained by **ReadStream** is a decoded string. Currently, only the UTF
 ### seek<sup>12+</sup>
 
 seek(offset: number, whence?: WhenceType): number
-
 
 Adjusts the position of the readable stream offset pointer.
 
@@ -7926,7 +7825,7 @@ Defines a writeable stream. You need to use [fileIo.createWriteStream](#fileiocr
 
 ### seek<sup>12+</sup>
 
-seek(offset: number, whence?: WhenceType): number;
+seek(offset: number, whence?: WhenceType): number
 
 Adjusts the position of the writeable stream offset pointer.
 
@@ -7987,8 +7886,8 @@ Defines the options used in **createRandomAccessFile()**.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| start | number | No| Yes| Start position to read the data, in bytes. This parameter is optional. By default, data is read from the current position.|
-| end | number | No| Yes| End position to read the data, in bytes. This parameter is optional. The default value is the end of the file.|
+| start | number | No| Yes| Start offset position of the file, in bytes. This parameter is optional. The default value is the current position.|
+| end | number | No| Yes| End offset position of the file, in bytes. This parameter is optional. The default value is the end of the file.|
 
 ## ReadStreamOptions<sup>12+</sup>
 

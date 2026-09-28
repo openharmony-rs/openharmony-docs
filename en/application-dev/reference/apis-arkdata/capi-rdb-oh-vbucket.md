@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=17e4b320c8985512791b8b37fea849963e9ff387 translatedAt=2026-09-04T03:04:54.309Z pushedAt=2026-09-09T09:11:03.681Z -->
 
 ```c
 typedef struct {...} OH_VBucket
@@ -25,7 +26,7 @@ Defines a struct for the types of the key and value in a KV pair.
 | Name               | Description                          |
 | ------------------- | ------------------------------ |
 | int64_t id          | Unique identifier of the **OH_VBucket** struct.|
-| uint16_t capability | Number of the KV pairs in the struct.|
+| uint16_t capability | Capacity of the key-value pairs stored in the struct. |
 
 
 ### Member Functions
@@ -41,7 +42,7 @@ Defines a struct for the types of the key and value in a KV pair.
 | [int (*destroy)(OH_VBucket *bucket)](#destroy)               | Destroys an **OH_VBucket** object and reclaims the memory occupied.       |
 
 
-### Member Function Description
+## Member Function Description
 
 ### putText()
 
@@ -60,14 +61,14 @@ Puts a char* value into the **OH_VBucket** object in the given column.
 | Name            | Description                          |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | Pointer to the **OH_VBucket** instance.|
-| const char *field  | Pointer to the column name in the database table.              |
+| const char *field  | Column name in the database table, which must not be a null pointer.               |
 | const char *value  | Pointer to the value to put.  |
 
 **Returns**
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Result code.<br>Returns **RDB_OK** if the operation is successful.<br>Returns **RDB_E_INVALID_ARGS** if the parameter is invalid. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### putInt64()
 
@@ -86,14 +87,14 @@ Puts an int64_t value into the **OH_VBucket** object in the given column.
 | Name            | Description                          |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | Pointer to the **OH_VBucket** instance.|
-| const char *field  | Pointer to the column name in the database table.              |
+| const char *field  | Column name in the database table, which must not be a null pointer.               |
 | int64_t value      | Pointer to the value to put.  |
 
 **Returns**
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Result code.<br>Returns **RDB_OK** if the operation is successful.<br>Returns **RDB_E_INVALID_ARGS** if the parameter is invalid. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### putReal()
 
@@ -112,14 +113,14 @@ Puts a double value into the **OH_VBucket** object in the given column.
 | Name            | Description                          |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | Pointer to the **OH_VBucket** instance.|
-| const char *field  | Pointer to the column name in the database table.              |
+| const char *field  | Column name in the database table, which must not be a null pointer.               |
 | double value       | Pointer to the value to put.  |
 
 **Returns**
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Result code.<br>Returns **RDB_OK** if the operation is successful.<br>Returns **RDB_E_INVALID_ARGS** if the parameter is invalid. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### putBlob()
 
@@ -138,15 +139,15 @@ Puts a const uint8_t * value into the **OH_VBucket** object in the given column.
 | Name            | Description                          |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | Pointer to the **OH_VBucket** instance.|
-| const char *field  | Pointer to the column name in the database table.              |
+| const char *field  | Column name in the database table, which must not be a null pointer.               |
 | const uint8_t *value | Pointer to the value to put.|
-| uint32_t size      | Value length.             |
+| uint32_t size      | Byte length of value.              |
 
 **Returns**
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Result code.<br>**RDB_OK**: success.<br>**RDB_E_INVALID_ARGS**: invalid parameter. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### putNull()
 
@@ -165,13 +166,13 @@ Puts a null value into the **OH_VBucket** object in the given column.
 | Name            | Description                          |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | Pointer to the **OH_VBucket** instance.|
-| const char *field  | Pointer to the column name in the database table.              |
+| const char *field  | Column name in the database table, which must not be a null pointer.               |
 
 **Returns**
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Result code.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### clear()
 
@@ -181,7 +182,7 @@ int (*clear)(OH_VBucket *bucket)
 
 **Description**
 
-Clears the [OH_VBucket](capi-rdb-oh-vbucket.md) object.
+Clears the OH_VBucket object.
 
 **Since**: 10
 
@@ -195,7 +196,7 @@ Clears the [OH_VBucket](capi-rdb-oh-vbucket.md) object.
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Result code.<br>**RDB_OK**: success.<br>**RDB_E_INVALID_ARGS**: invalid parameter. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### destroy()
 
@@ -205,7 +206,7 @@ int (*destroy)(OH_VBucket *bucket)
 
 **Description**
 
-Destroys the [OH_VBucket](capi-rdb-oh-vbucket.md) object and reclaims the memory occupied by the object.
+Destroys the **OH_VBucket** object and reclaims the memory occupied by the object.
 
 **Since**: 10
 
@@ -219,4 +220,5 @@ Destroys the [OH_VBucket](capi-rdb-oh-vbucket.md) object and reclaims the memory
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Whether the operation is successful. If an error occurs, returns the corresponding error code.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
+

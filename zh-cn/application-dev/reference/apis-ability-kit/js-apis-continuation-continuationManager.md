@@ -10,7 +10,7 @@ continuationManager模块提供了流转/协同入口管理服务能力，包括
 
 > **说明：**
 > 
-> 本模块首批接口从API version 8开始支持，从API version 22开始废弃，建议使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)替代。
+> 本模块首批接口从API version 8开始支持，从API version 22开始废弃，建议使用[@ohos.distributedDeviceManager (设备管理)](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)替代。
 >
 > 本模块接口仅可在Stage模型下使用。
 
@@ -28,7 +28,7 @@ register(callback: AsyncCallback\<number>): void
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[ondevicestatechange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -64,7 +64,7 @@ register(options: ContinuationExtraParams, callback: AsyncCallback\<number>): vo
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -105,7 +105,7 @@ register(options?: ContinuationExtraParams): Promise\<number>
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -147,7 +147,7 @@ registerContinuation(callback: AsyncCallback\<number>): void
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -169,7 +169,7 @@ registerContinuation(callback: AsyncCallback\<number>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16600001 | The system ability works abnormally. |
 | 16600003 | The number of token registration times has reached the upper limit. |
@@ -202,7 +202,7 @@ registerContinuation(options: ContinuationExtraParams, callback: AsyncCallback\<
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -225,7 +225,7 @@ registerContinuation(options: ContinuationExtraParams, callback: AsyncCallback\<
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16600001 | The system ability works abnormally. |
 | 16600003 | The number of token registration times has reached the upper limit. |
@@ -262,7 +262,7 @@ registerContinuation(options?: ContinuationExtraParams): Promise\<number>
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -290,7 +290,7 @@ registerContinuation(options?: ContinuationExtraParams): Promise\<number>
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 16600001 | The system ability works abnormally. |
 | 16600003 | The number of token registration times has reached the upper limit. |
@@ -326,7 +326,7 @@ on(type: 'deviceConnect', callback: Callback\<ContinuationResult>): void
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -359,7 +359,7 @@ on(type: 'deviceDisconnect', callback: Callback\<string>): void
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -390,7 +390,7 @@ off(type: 'deviceConnect', callback?: Callback\<ContinuationResult>): void
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -423,7 +423,7 @@ off(type: 'deviceDisconnect', callback?: Callback\<string>): void
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -454,7 +454,7 @@ on(type: 'deviceSelected', token: number, callback: Callback\<Array\<Continuatio
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -478,7 +478,7 @@ on(type: 'deviceSelected', token: number, callback: Callback\<Array\<Continuatio
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16600001 | The system ability works abnormally. |
 | 16600002 | The specified token or callback is not registered. |
@@ -512,7 +512,7 @@ on(type: 'deviceUnselected', token: number, callback: Callback\<Array\<Continuat
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -536,7 +536,7 @@ on(type: 'deviceUnselected', token: number, callback: Callback\<Array\<Continuat
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16600001 | The system ability works abnormally. |
 | 16600002 | The specified token or callback is not registered. |
@@ -571,7 +571,7 @@ off(type: 'deviceSelected', token: number): void
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -594,7 +594,7 @@ off(type: 'deviceSelected', token: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16600001 | The system ability works abnormally. |
 | 16600002 | The specified token or callback is not registered. |
@@ -621,7 +621,7 @@ off(type: 'deviceUnselected', token: number): void
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -644,7 +644,7 @@ off(type: 'deviceUnselected', token: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16600001 | The system ability works abnormally. |
 | 16600002 | The specified token or callback is not registered. |
@@ -817,7 +817,7 @@ startContinuationDeviceManager(token: number, callback: AsyncCallback\<void>): v
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16600001 | The system ability works abnormally. |
 | 16600002 | The specified token or callback is not registered. |
@@ -873,7 +873,7 @@ startContinuationDeviceManager(token: number, options: ContinuationExtraParams, 
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16600001 | The system ability works abnormally. |
 | 16600002 | The specified token or callback is not registered. |
@@ -939,7 +939,7 @@ startContinuationDeviceManager(token: number, options?: ContinuationExtraParams)
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 16600001 | The system ability works abnormally. |
 | 16600002 | The specified token or callback is not registered. |
@@ -1083,7 +1083,7 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16600001 | The system ability works abnormally. |
 | 16600002 | The specified token or callback is not registered. |
@@ -1146,7 +1146,7 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16600001 | The system ability works abnormally. |
 | 16600002 | The specified token or callback is not registered. |
@@ -1181,7 +1181,7 @@ unregister(token: number, callback: AsyncCallback\<void>): void
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1217,7 +1217,7 @@ unregister(token: number): Promise\<void>
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1258,7 +1258,7 @@ unregisterContinuation(token: number, callback: AsyncCallback\<void>): void
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1281,7 +1281,7 @@ unregisterContinuation(token: number, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16600001 | The system ability works abnormally. |
 | 16600002 | The specified token or callback is not registered. |
@@ -1313,7 +1313,7 @@ unregisterContinuation(token: number): Promise\<void>
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1341,7 +1341,7 @@ unregisterContinuation(token: number): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16600001 | The system ability works abnormally. |
 | 16600002 | The specified token or callback is not registered. |

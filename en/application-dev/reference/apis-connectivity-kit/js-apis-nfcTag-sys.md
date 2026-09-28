@@ -1,11 +1,12 @@
-# @ohos.nfc.tag (standard NFC Tags) (System API)
+# @ohos.nfc.tag (Standard NFC Tags) (System API)
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=37e87e28b1f57566fffb557016c871f107cbe03a translatedAt=2026-09-15T03:03:44.232Z pushedAt=2026-09-17T01:01:22.061Z -->
 
 The **tag** module provides APIs for operating and managing NFC tags. The following tag read modes are available:<br><br>Background mode: The device reads the tag by using NFC without starting any application, and then searches for applications based on the tag type. If only one application is matched, the card reading page of that application will be started. If multiple applications are matched, an application selector will be started, asking the user to select an application.<br><br>Foreground mode: A foreground application has priority to read the NFC tag discovered.
 

@@ -6,9 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=279f58a08395cb7d60f140e1aaa1ae4b3733282e translatedAt=2026-06-11T08:16:21.253Z pushedAt=2026-06-11T12:37:24.979Z -->
-
-## Module Overview
+<!-- md-trans-meta sourceCommit=284c0ebfeb97c9dae2c6f9ea71899cbd675e1ca2 translatedAt=2026-09-03T12:25:57.107Z pushedAt=2026-09-05T10:47:30.922Z -->
 
 The **PermissionRequestResult** module defines the permission request result returned by [requestPermissionsFromUser](js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9).
 
@@ -27,6 +25,8 @@ import { PermissionRequestResult } from '@kit.AbilityKit';
 
 **System capability**: The system capability of the following items is SystemCapability.Security.AccessToken.
 
+**Model restriction:** This API can be used only in the stage model.
+
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | permissions | Array&lt;string&gt; | No | No | Array of permissions to be requested this time. **Atomic service API:** Starting from API version 11, this API supports use in atomic services. |
@@ -39,9 +39,9 @@ import { PermissionRequestResult } from '@kit.AbilityKit';
 PermissionRequestResult is the result object of a permission request. Developers need to first create an atManager instance, and then call the requestPermissionsFromUser method to request permissions. This method returns a PermissionRequestResult object, through which developers can determine the permission request result based on its properties. For details about the overall permission request process and atManager, see [@ohos.abilityAccessCtrl (Application Access Control)](js-apis-abilityAccessCtrl.md).
 
 **Example**
+
 For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 <!--code_no_check-->
-
 ```ts
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';

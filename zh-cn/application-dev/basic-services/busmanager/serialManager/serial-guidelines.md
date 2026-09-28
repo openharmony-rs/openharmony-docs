@@ -81,7 +81,7 @@
 ### 搭建环境
 
 - 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在6.1及以上。
-- 将public-SDK更新到API 26.0.0或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](../../../tools/openharmony_sdk_upgrade_assistant.md)<!--DelEnd-->。
+- 将public-SDK更新到API 26.0.0或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](../../../tools/openharmony-sdk-upgrade-assistant.md)<!--DelEnd-->。
 - 准备串口连接线缆，将OpenHarmony设备的串口端口与目标设备的串口正确连接。
 
 ## 开发指导

@@ -66,7 +66,7 @@
           console.info(`onData, data: ${data}.`);
         },
         onAuth: (handShakeData: string): void => {
-          console.info(`onData, data: ${handShakeData}.`);
+          console.info(`onAuth, handShakeData: ${handShakeData}.`);
         },
         onDisconnect: () => {
           console.info(`onDisconnect.`);
@@ -126,7 +126,7 @@
           console.info(`onData, data: ${data}.`);
         },
         onAuth: (handShakeData: string): void => {
-          console.info(`onData, data: ${handShakeData}.`);
+          console.info(`onAuth, handShakeData: ${handShakeData}.`);
         },
         onDisconnect: () => {
           console.info(`onDisconnect.`);
@@ -152,7 +152,7 @@
                 } catch (err) {
                   let code = (err as BusinessError).code;
                   let msg = (err as BusinessError).message;
-                  console.error(`connectAgentExtensionAbility failed, err code: ${code}, err msg: ${msg}.`);
+                  console.error(`disconnectAgentExtensionAbility failed, err code: ${code}, err msg: ${msg}.`);
                 }
               })
           }
@@ -180,7 +180,7 @@
           console.info(`onData, data: ${data}.`);
         },
         onAuth: (handShakeData: string): void => {
-          console.info(`onData, data: ${handShakeData}.`);
+          console.info(`onAuth, handShakeData: ${handShakeData}.`);
         },
         onDisconnect: () => {
           console.info(`onDisconnect.`);
@@ -254,7 +254,7 @@
           console.info(`onData, data: ${data}.`);
         },
         onAuth: (handShakeData: string): void => {
-          console.info(`onData, data: ${handShakeData}.`);
+          console.info(`onAuth, handShakeData: ${handShakeData}.`);
         },
         onDisconnect: () => {
           console.info(`onDisconnect.`);
@@ -286,7 +286,7 @@
                       } catch (err) {
                         let code = (err as BusinessError).code;
                         let msg = (err as BusinessError).message;
-                        console.error(`sendData failed, err code: ${code}, err msg: ${msg}.`);
+                        console.error(`authorize failed, err code: ${code}, err msg: ${msg}.`);
                       }
                     })
                     .catch((err: BusinessError) => {

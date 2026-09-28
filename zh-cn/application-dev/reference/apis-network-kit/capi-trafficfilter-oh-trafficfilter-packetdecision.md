@@ -15,7 +15,7 @@ typedef enum OH_TrafficFilter_PacketDecision {...} OH_TrafficFilter_PacketDecisi
 
 报文处理决策类型。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **相关模块：** [TrafficFilter](capi-trafficfilter.md)
 

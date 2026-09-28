@@ -5,6 +5,7 @@
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6b885b838ace79912222a91118f2a6346fb31954 translatedAt=2026-09-15T17:05:58.776Z pushedAt=2026-09-21T03:22:40.473Z -->
 
 ## Overview
 
@@ -26,7 +27,7 @@ The file declares the basic dependencies for OH_LowPowerAudioSink and OH_LowPowe
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md) | OH_AVSamplesBuffer | Describes the input data of the LowPowerAVSink. After receiving the DataNeeded callback, the application must pack data into an OH_AVSamplesBuffer instance and pass it to the corresponding lowpower_avsink.|
+| [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md) | OH_AVSamplesBuffer | Describes the input data of the LowPowerAVSink. After receiving the **DataNeeded** callback, the app must pack data into an **OH_AVSamplesBuffer** instance and pass it to the corresponding LowPowerAVSink. |
 
 ### Functions
 
@@ -34,7 +35,7 @@ The file declares the basic dependencies for OH_LowPowerAudioSink and OH_LowPowe
 | -- | -- |
 | [OH_AVErrCode OH_AVSamplesBuffer_AppendOneBuffer(OH_AVSamplesBuffer *samplesBuffer, OH_AVBuffer *avBuffer)](#oh_avsamplesbuffer_appendonebuffer) | Appends data from an OH_AVBuffer instance to an OH_AVSamplesBuffer instance.|
 | [int32_t OH_AVSamplesBuffer_GetRemainedCapacity(OH_AVSamplesBuffer *samplesBuffer)](#oh_avsamplesbuffer_getremainedcapacity) | Obtains the remaining capacity available in an OH_AVSamplesBuffer instance.|
-| [OH_LowPowerAVSink_Capability *OH_LowPowerAVSink_GetCapability()](#oh_lowpoweravsink_getcapability) | Obtains the capability of the low-power player. It mainly helps you find out what the low-power player can do, including the media formats and features it supports.<br> When you call this function, you can learn about the device's capabilities in audio and video processing. For example, you can find out which encoding and decoding formats are supported, as well as the range of bit rates that the device can handle.|
+| [OH_LowPowerAVSink_Capability *OH_LowPowerAVSink_GetCapability()](#oh_lowpoweravsink_getcapability) | Obtains the capability of the low-power player. It mainly helps you find out what the low-power player can do, including the media formats and features it supports.<br> When you call this function, you can learn about the device's capabilities in audio and video processing. For example, you can find out which encoding and decoding formats are supported, as well as the range of bit rates that the device can handle. |
 
 ## Function Description
 
@@ -61,7 +62,7 @@ Appends data from an OH_AVBuffer instance to an OH_AVSamplesBuffer instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_NO_MEMORY**: The framePacketBuffer does not have sufficient remaining capacity to append an OH_AVBuffer.<br> **AV_ERR_UNKNOWN**: An unknown error occurs.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_NO_MEMORY**: The **OH_AVSamplesBuffer** does not have sufficient remaining capacity to append an OH_AVBuffer.<br> **AV_ERR_UNKNOWN**: An unknown error occurs. |
 
 ### OH_AVSamplesBuffer_GetRemainedCapacity()
 
@@ -85,7 +86,7 @@ Obtains the remaining capacity available in an OH_AVSamplesBuffer instance.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Remaining capacity available in the OH_AVSamplesBuffer instance, in bytes. If **sampleBuffer** or data pointer is nullptr or invalid, **3** is returned.|
+| int32_t | Remaining capacity available in the **OH_AVSamplesBuffer** instance, in bytes. If **OH_AVSamplesBuffer** or data pointer is nullptr or invalid, **3** is returned. |
 
 ### OH_LowPowerAVSink_GetCapability()
 
@@ -103,4 +104,6 @@ Obtains the capability of the low-power player. It mainly helps you find out wha
 
 | Type| Description|
 | -- | -- |
-| OH_LowPowerAVSink_Capability * | **OH_LowPowerAVSink_Capability**: The low-power player is supported.<br> **nullptr**: The low-power player is not supported or the capability fails to be obtained.|
+| OH_LowPowerAVSink_Capability * | **OH_LowPowerAVSink_Capability**: The low-power player is supported.<br> **nullptr**: The low-power player is not supported or the capability fails to be obtained. |
+
+

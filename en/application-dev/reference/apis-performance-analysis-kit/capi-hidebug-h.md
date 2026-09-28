@@ -6,10 +6,11 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=84353019be74445db688505d629309aad08705e1 translatedAt=2026-09-16T10:32:12.489Z pushedAt=2026-09-20T09:01:52.237Z -->
 
 ## Overview
 
-Defines the APIs for debugging.
+Defines the debugging capabilities of the HiDebug module, providing CPU usage rate monitoring, memory information query, trace collection, stack backtrace, performance sampling, memory export listening, and debugging information recording, helping developers perform application performance analysis, resource management, and problem diagnosis.
 
 **File to include**: <hidebug/hidebug.h>
 
@@ -23,13 +24,19 @@ Defines the APIs for debugging.
 
 ## Summary
 
+### Structs
+
+| Name | typedef Keyword | Description |
+| -- | -- | -- |
+| [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) | OH_HiDebug_ProfilerOptions | Forward declaration of the resource collection configuration structure. |
+
 ### Functions
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [double OH_HiDebug_GetSystemCpuUsage()](#oh_hidebug_getsystemcpuusage) | - | Obtains the CPU usage of the system. Note that this API involves cross-process communication and takes a long time. Therefore, you are advised not to call this API in the main thread.|
 | [double OH_HiDebug_GetAppCpuUsage()](#oh_hidebug_getappcpuusage) | - | Obtains the CPU usage of an application. Note that this API involves cross-process communication and takes a long time. Therefore, you are advised not to call this API in the main thread.|
-| [HiDebug_ThreadCpuUsagePtr OH_HiDebug_GetAppThreadCpuUsage()](#oh_hidebug_getappthreadcpuusage) | - | Obtains the CPU usage of all threads of an application. Note that this API involves cross-process communication and takes a long time. Therefore, you are advised not to call this API in the main thread.|
+| [HiDebug_ThreadCpuUsagePtr OH_HiDebug_GetAppThreadCpuUsage()](#oh_hidebug_getappthreadcpuusage) | - | Obtains the CPU usage of all threads in an application. Note that this API involves cross-process communication and takes a long time. Therefore, you are advised not to call this API in the main thread.|
 | [void OH_HiDebug_FreeThreadCpuUsage(HiDebug_ThreadCpuUsagePtr *threadCpuUsage)](#oh_hidebug_freethreadcpuusage) | - | Releases the **HiDebug_ThreadCpuUsagePtr**.|
 | [void OH_HiDebug_GetSystemMemInfo(HiDebug_SystemMemInfo *systemMemInfo)](#oh_hidebug_getsystemmeminfo) | - | Obtains system memory information.|
 | [void OH_HiDebug_GetAppNativeMemInfo(HiDebug_NativeMemInfo *nativeMemInfo)](#oh_hidebug_getappnativememinfo) | - | Obtains the memory information of an application process. Note that this API needs to read the **/proc/{pid}/smaps_rollup** node information, which takes a long time. Therefore, you are advised not to call this API in the main thread.|
@@ -41,9 +48,9 @@ Defines the APIs for debugging.
 | [HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)](#oh_hidebug_getgraphicsmemory) | - | Obtains the size of the GPU memory. Note that this API involves multiple cross-process communications and may take more than 1 second. Therefore, you are advised not to call this API in the main thread.|
 | [int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, void** pcArray, int size)](#oh_hidebug_backtracefromfp) | - | Performs stack back-tracing based on the given fp address. This function is async-signal-safe.|
 | [typedef void (\*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame)](#oh_hidebug_symbolicaddresscallback) | OH_HiDebug_SymbolicAddressCallback | If the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API is successfully called, the parsed stack information is returned to the caller through this function.<br>Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.|
-| [HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, void* pc, void* arg, OH_HiDebug_SymbolicAddressCallback callback)](#oh_hidebug_symbolicaddress) | - | Obtains detailed symbol information based on the specified PC address. This function is not asyn-signal-safe.<br>Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.|
-| [HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)](#oh_hidebug_createbacktraceobject) | - | Creates an object for stack backtracing and parsing. This function is not asyn-signal-safe.<br>Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.|
-| [void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)](#oh_hidebug_destroybacktraceobject) | - | Destroys the object created by [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) to release the resources applied for during stack back-tracing and parsing. This function is not asyn-signal-safe.|
+| [HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, void* pc, void* arg, OH_HiDebug_SymbolicAddressCallback callback)](#oh_hidebug_symbolicaddress) | - | Obtains detailed symbol information based on the given pc address. This function is not async-signal-safe and cannot be used in an asynchronous signal handler.<br>**Note:** Because this API involves multiple I/O operations and takes a long time, it is recommended not to call it directly in the main thread. |
+| [HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)](#oh_hidebug_createbacktraceobject) | - | Creates an object for stack backtracing and parsing. This function is not async-signal-safe.<br>Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.|
+| [void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)](#oh_hidebug_destroybacktraceobject) | - | Destroys the object created by [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) to release the resources requested during stack backtrace and stack parsing. This function is not async-signal-safe. Because this API involves multiple I/O operations and takes a long time, it is recommended not to call it directly in the main thread.|
 | [HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatch *dispatchTable)](#oh_hidebug_setmallocdispatchtable) | - | Sets the **MallocDispatch** table in the basic C library to temporarily replace the original memory operation functions (such as **malloc**, **free**, **calloc**, **realloc**, **mmap**, and **munmap**) with the custom memory operation functions. The **MallocDispatch** table is a struct that encapsulates memory operation functions such as **malloc**, **calloc**, **realloc**, and **free** in the basic C library. **HiDebug_MallocDispatch** is only a part of the **MallocDispatch** struct.<br>Note: Do not directly call memory operation functions such as **malloc**, **free**, **calloc**, **realloc**, **mmap**, and **munmap** in the **libc** standard library in the custom memory operation functions. Otherwise, a deadlock occurs. Do not use hilog to print logs in the custom **malloc** method. Otherwise, a deadlock occurs.|
 | [HiDebug_MallocDispatch* OH_HiDebug_GetDefaultMallocDispatchTable(void)](#oh_hidebug_getdefaultmallocdispatchtable) | - | Obtains the default MallocDispatch table of the system C library. You can call [OH_HiDebug_RestoreMallocDispatchTable](capi-hidebug-h.md#oh_hidebug_restoremallocdispatchtable) to restore the table.|
 | [void OH_HiDebug_RestoreMallocDispatchTable(void)](#oh_hidebug_restoremallocdispatchtable) | - | Restores the MallocDispatch table of the system C library.|
@@ -61,6 +68,16 @@ Defines the APIs for debugging.
 | [void OH_HiDebug_PushAsyncContext(uint64_t ctx)](#oh_hidebug_pushasynccontext) | - | Pushes an **AsyncContext** into the running context stack. This API is an auxiliary API of the profiler.|
 | [void OH_HiDebug_PopAsyncContext(uint64_t ctx)](#oh_hidebug_popasynccontext) | - | Pops an **AsyncContext** from the running context stack. This API is an auxiliary API of the profiler.|
 | [void OH_HiDebug_ReleaseAsyncContext(uint64_t ctx)](#oh_hidebug_releaseasynccontext) | - | Releases an **AsyncContext** to the system. This API is an auxiliary API of the profiler.|
+| [OH_HiDebug_ProfilerOptions* OH_HiDebug_CreateProfilerOptions(void)](#oh_hidebug_createprofileroptions) | - | Creates a resource Profiler configuration object. |
+| [HiDebug_ErrorCode OH_HiDebug_DestroyProfilerOptions(OH_HiDebug_ProfilerOptions* opts)](#oh_hidebug_destroyprofileroptions) | - | Releases the configuration object created by [OH_HiDebug_CreateProfilerOptions](capi-hidebug-h.md#oh_hidebug_createprofileroptions). |
+| [HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncNestingDepth(OH_HiDebug_ProfilerOptions* opts, uint32_t depth)](#oh_hidebug_setmaxasyncnestingdepth) | - | Sets the maximum nesting depth of asynchronous calls (also known as the maximum nesting level). |
+| [HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncTaskStackDepth(OH_HiDebug_ProfilerOptions* opts, uint32_t depth)](#oh_hidebug_setmaxasynctaskstackdepth) | - | Sets the maximum stack depth of asynchronous task functions. |
+| [HiDebug_ErrorCode OH_HiDebug_SetSampleIntervalBytes(OH_HiDebug_ProfilerOptions* opts, uint32_t bytes)](#oh_hidebug_setsampleintervalbytes) | - | Sets the sampling interval, in bytes. |
+| [HiDebug_ErrorCode OH_HiDebug_SetStatisticsIntervalSec(OH_HiDebug_ProfilerOptions* opts, uint32_t seconds)](#oh_hidebug_setstatisticsintervalsec) | - | Sets the statistics interval, in seconds. |
+| [HiDebug_ErrorCode OH_HiDebug_SetMaxStackDepth(OH_HiDebug_ProfilerOptions* opts, uint32_t depth)](#oh_hidebug_setmaxstackdepth) | - | Sets the maximum stack depth. |
+| [HiDebug_ErrorCode OH_HiDebug_SetFilterSize(OH_HiDebug_ProfilerOptions* opts, uint32_t size)](#oh_hidebug_setfiltersize) | - | Sets the memory allocation filter size. |
+| [HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions* opts, uint32_t seconds)](#oh_hidebug_setmaxdurationsec) | - | Sets the maximum collection duration, in seconds. |
+| [HiDebug_ErrorCode OH_HiDebug_StartProfilerWithOptions(OH_HiDebug_ResourceType type, OH_HiDebug_ProfilerOptions* opts, OH_HiDebug_ProfilingCallback callback)](#oh_hidebug_startprofilerwithoptions) | - | Starts the resource allocation stack information collection for the current process based on the specified resource type and configuration. |
 
 ## Function Description
 
@@ -108,7 +125,7 @@ HiDebug_ThreadCpuUsagePtr OH_HiDebug_GetAppThreadCpuUsage()
 
 **Description**
 
-Obtains the CPU usage of all threads of an application. Note that this API involves cross-process communication and takes a long time. Therefore, you are advised not to call this API in the main thread.
+Obtains the CPU usage of all threads in an application. Note that this API involves cross-process communication and takes a long time. Therefore, you are advised not to call this API in the main thread.
 
 **Since**: 12
 
@@ -134,7 +151,7 @@ Releases the **HiDebug_ThreadCpuUsagePtr**.
 
 | Name| Description|
 | -- | -- |
-| [HiDebug_ThreadCpuUsagePtr](capi-hidebug-hidebug-threadcpuusage.md) *threadCpuUsage | Pointer to the available CPU buffer of all threads of the application. For details, see [HiDebug_ThreadCpuUsagePtr](capi-hidebug-hidebug-threadcpuusage.md). The input parameter is obtained by **OH_HiDebug_GetAppThreadCpuUsage()**.|
+| [HiDebug_ThreadCpuUsagePtr](capi-hidebug-hidebug-threadcpuusage.md) *threadCpuUsage | Pointer to the buffer of available CPU usage of all threads in the application. See [HiDebug_ThreadCpuUsagePtr](capi-hidebug-hidebug-threadcpuusage.md). The passed-in parameter is obtained by **OH_HiDebug_GetAppThreadCpuUsage()**. After being passed in, this function releases the pointed-to thread CPU usage data structure, and the pointer cannot be used again after release. |
 
 ### OH_HiDebug_GetSystemMemInfo()
 
@@ -253,7 +270,7 @@ Stops application trace collection.
 
 | Type| Description|
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | **0** - The operation is successful.<br>         **11400104** - An internal system error occurs.<br>         **11400105** - No trace collection is running.|
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 0 - Success.<br>         11400104 - System internal error.<br>         11400105 - No trace is currently running. |
 
 ### OH_HiDebug_RequestTrace()
 
@@ -349,7 +366,7 @@ If the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress
 | -- | -- |
 | void\* pc | PC address transferred to the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API for parsing.|
 | void\* arg | arg value of the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API.|
-| [const HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)\* frame | Pointer to [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md), which is obtained by parsing the PC address passed to the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API. What the pointer points to is valid only in the function scope.|
+| [const HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)\* frame | Pointer to the stack information [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md) obtained by resolving the PC address passed to the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API. The content pointed to by this pointer is valid only within the scope of this function. |
 
 ### OH_HiDebug_SymbolicAddress()
 
@@ -359,7 +376,7 @@ HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, vo
 
 **Description**
 
-Obtains detailed symbol information based on the specified PC address. This function is not asyn-signal-safe.
+Obtains detailed symbol information through the given PC address. This function is not async-signal-safe and cannot be used in an asynchronous signal handler.
 
 > **NOTE**
 >
@@ -390,7 +407,7 @@ HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)
 
 **Description**
 
-Creates an object for stack backtracing and parsing. This function is not asyn-signal-safe.
+Creates an object for stack backtracing and parsing. This function is not async-signal-safe.
 
 > **NOTE**
 >
@@ -412,7 +429,7 @@ void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)
 
 **Description**
 
-Destroys the object created by [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) to release the resources applied for during stack backtracing and parsing. This function is not asyn-signal-safe.
+Destroys the object created by [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) to release the resources applied for during stack backtracing and parsing. This function is not async-signal-safe.
 
 **Since**: 20
 
@@ -498,7 +515,7 @@ Obtains the detailed GPU memory usage of an application.
 
 | Name| Description|
 | -- | -- |
-| uint32_t interval | Interval that the cached GPU memory data exists, in seconds. If the duration exceeds the value of interval, the API obtains the latest data and updates the buffer. Otherwise, the API directly returns the cached data.<br> The value range of interval is [2, 3600]. If the passed-in interval is out of the range, **300** is used as the default value.|
+| uint32_t interval | When the cached video memory data has existed for longer than the set **interval** (in seconds), the API obtains the latest video memory data and updates the cache; otherwise, the API directly returns the cached value.<br> The value range of **interval** is [2, 3600]. If the passed interval is out of range, 300 is used as the default value. |
 | [HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md) *summary | Pointer to [HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md).|
 
 **Returns**
@@ -541,8 +558,8 @@ Performs Perf sampling on the specified threads and returns the sampling stack c
 
 | Name| Description|
 | -- | -- |
-| [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)* config |  Pointer to the [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md) struct.|
-| [OH_HiDebug_ThreadLiteSamplingCallback](capi-hidebug-h.md#oh_hidebug_threadlitesamplingcallback) stacksCallback | Callback used to return the sampling result when the sampling is complete.|
+| [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)* config | Pointer to the Perf sampling configuration struct [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md). The configuration parameters determine the specific sampling behavior, such as the sampling frequency and target threads. |
+| [OH_HiDebug_ThreadLiteSamplingCallback](capi-hidebug-h.md#oh_hidebug_threadlitesamplingcallback) stacksCallback | Callback function invoked when sampling ends, used to return the sampling result. After sampling is complete, the system calls this function and passes the sampling data as a parameter. |
 
 **Returns**
 
@@ -567,7 +584,7 @@ Adds debugging information to the crash logs. This function is used together wit
 | Name| Description|
 | -- | -- |
 | [HiDebug_CrashObjType](capi-hidebug-type-h.md#hidebug_crashobjtype) type | Data type of the debugging information. For details, see [HiDebug_CrashObjType](capi-hidebug-type-h.md#hidebug_crashobjtype).|
-| void* addr | Address of the debugging information. The address must be valid when a crash occurs.|
+| **void* addr** | Address of the debugging information. The address must remain valid when a crash occurs. After it is set, if the program crashes, the system reads the debugging information pointed to by this address and records it in the crash log. |
 
 **Returns**
 
@@ -603,14 +620,25 @@ HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDe
 
 Asynchronously starts the resource profiler for the current process.<br>The callback function is called only when the collection is stopped (including when the system automatically stops the collection). It carries the resource type and file path to be collected.<br>If the collection is abnormal, the file path is **NULL**.
 
-> **NOTE**
->
-> 1. This API can be called for a maximum of 10 times every 24 hours.
-> 2. The target process for resource profiling can only be the process that calls this API.
-> 3. If the system CPU usage exceeds 70%, the available memory space is less than 15%, or the available storage space is less than 15%, the API call will fail and the corresponding error code will be returned.
-> 4. If this API conflicts with a command line tool or a system collection task, the API call will fail and the corresponding error code will be returned.
-> 5. If an application has multiple processes, this API can start a maximum of four processes at the same time.
-> 6. The collection result is saved in the application sandbox **/data/storage/el2/base/files/** directory. The file name is in the format of **Resource profiling type-Process name-Process ID-Timestamp.htrace**.
+**Specifications and constraints:**
+
+1. Collection quota limits:<br>
+   - Application (exclusive to a single application): A maximum of 2 collections per day; at the same time, up to 2 processes within the application can collect in parallel.<br>
+   - Process (exclusive to a single process): Only 1 collection task can be started at the same time.<br>
+   The above quota limits apply only to non-debug applications; debug applications are not subject to these constraints.<br>
+2. System load circuit breaker mechanism:<br>
+   When the system triggers any of the following load protection conditions, the API collection request is rejected and the corresponding error code is returned:<br>
+   - CPU limit: The overall system CPU usage rate exceeds 70%.<br>
+   - Memory limit: The overall system available memory is less than 2 GB.<br>
+   - Storage limit: The overall system available storage space is below the storage threshold, which is the larger of 3% of the total system storage capacity and 15 GB.<br>
+3. Concurrency conflict constraints:<br>
+   - When API collection conflicts with a command-line tool or a system collection task, the API collection request is rejected and a corresponding error code is returned.<br>
+4. Collection result storage:<br>
+   - Storage path: The collected call stack log files are automatically saved in the application sandbox directory **/data/storage/el2/base/files/**.<br>
+   - File naming rule: "resource collection type-process name-process ID-timestamp.htrace".<br>
+5. Permission constraints:<br>
+   - The target process for resource collection supports only the process that calls the API itself; cross-process collection is not supported.<br>
+
 
 **Since**: 24
 
@@ -618,15 +646,15 @@ Asynchronously starts the resource profiler for the current process.<br>The call
 
 | Name| Description|
 | -- | -- |
-| [OH_HiDebug_ResourceType](capi-hidebug-type-h.md#oh_hidebug_resourcetype) type | Resource profiling type.|
-| [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md)* config | Configuration parameters of the resource profiler.|
-| [OH_HiDebug_ProfilingCallback](capi-hidebug-type-h.md#oh_hidebug_profilingcallback) callback | Result callback function of resource profiling.|
+| [OH_HiDebug_ResourceType](capi-hidebug-type-h.md#oh_hidebug_resourcetype) type | Resource collection type, which determines the specific resource category to be collected (such as CPU, memory, and I/O). Different types correspond to different resource collection scenarios: CPU collection is used to analyze CPU performance issues, memory collection is used to analyze memory leaks and memory usage, and I/O collection is used to analyze I/O performance bottlenecks. Select an appropriate resource type based on the analysis requirements. |
+| [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md)* config | Resource collection configuration parameters. The configuration parameters determine the specific collection behavior, such as the sampling frequency and duration. |
+| [OH_HiDebug_ProfilingCallback](capi-hidebug-type-h.md#oh_hidebug_profilingcallback) callback | Resource collection callback result function. This callback function is called when collection terminates, passing the collection result and file path. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code.<br>        **HIDEBUG_RES_PROF_SUCCESS**: Resource profiler started successfully.<br>        **HIDEBUG_RES_PROF_INVALID_ARG**: Invalid resource profiler argument.<br>        **HIDEBUG_RES_PROF_INVALID_MAX_DURATION**: Invalid maximum duration.<br>        **HIDEBUG_RES_PROF_INVALID_FILTER_SIZE**: Invalid filter size.<br>        **HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH**: Invalid maximum stack depth.<br>        **HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL**: Invalid statistics interval.<br>        **HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL**: Invalid sampling interval.<br>        **HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE**: Invalid resource type.<br>        **HIDEBUG_RES_PROF_PERMISSION_DENIED**: Insufficient resource profiling permission. The target process for resource profiling can only be the process that calls this API.<br>        **HIDEBUG_RES_PROF_ALREADY_STARTED**: Resource profiler already started.<br>        **HIDEBUG_RES_PROF_PROCESS_OVERLIMIT**: The number of resource profiling processes exceeds 4.<br>        **HIDEBUG_RES_PROF_CONFLICT**: Resource profiling conflicts with CLI tools or system profiling tasks.<br>        **HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED**: The daily quota for resource profiling exceeds 10 times.<br>        **HIDEBUG_RES_PROF_CPU_OVERLOADED**: The system CPU is overloaded, with the CPU usage exceeding 70%.<br>        **HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL**: The available memory space is less than 15%.<br>        **HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL**: The available storage space is less than 15%.<br>        **HIDEBUG_RES_PROF_FAILURE**: Failed to start resource profiler.|
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Return result code:<br>         **HIDEBUG_RES_PROF_SUCCESS**: Resource collection started successfully.<br>         **HIDEBUG_RES_PROF_INVALID_ARG**: Invalid resource collection parameter.<br>         **HIDEBUG_RES_PROF_INVALID_MAX_DURATION**: Invalid maximum duration parameter for resource collection.<br>         **HIDEBUG_RES_PROF_INVALID_FILTER_SIZE**: Invalid filter size parameter for resource collection.<br>         **HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH**: Invalid maximum stack depth parameter for resource collection.<br>         **HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL**: Invalid statistics interval parameter for resource collection.<br>         **HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL**: Invalid sample interval parameter for resource collection.<br>         **HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE**: Invalid resource type parameter for resource collection.<br>         **HIDEBUG_RES_PROF_PERMISSION_DENIED**: Insufficient permission for resource collection. The target process for resource collection can only be the process that calls the API.<br>         **HIDEBUG_RES_PROF_ALREADY_STARTED**: Resource collection has already been started.<br>         **HIDEBUG_RES_PROF_PROCESS_OVERLIMIT**: The number of parallel processes for resource collection exceeds the limit. A maximum of 4 different applications can collect resources in parallel on the entire device, and a maximum of 2 processes can collect resources in parallel within an application.<br>         **HIDEBUG_RES_PROF_CONFLICT**: Resource collection conflicts with command-line tools or system collection tasks.<br>         **HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED**: The daily quota for resource collection is exceeded. A maximum of 4 collections per day are allowed on the entire device, and a maximum of 2 collections per day are allowed per application.<br>         **HIDEBUG_RES_PROF_CPU_OVERLOADED**: The CPU usage rate of the entire device system exceeds 70%.<br>         **HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL**: The available memory of the entire device system is less than 2 GB.<br>         **HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL**: The available storage space of the entire device system is below the storage threshold, which is the larger of 3% of the total storage capacity and 15 GB.<br>         **HIDEBUG_RES_PROF_FAILURE**: Failed to start resource collection. |
 
 ### OH_HiDebug_StopProfiler()
 
@@ -797,3 +825,248 @@ Releases an **AsyncContext** to the system. This API is an auxiliary API of the 
 | Name| Description|
 | -- | -- |
 | uint64_t ctx | Asynchronous thread context obtained by [OH_HiDebug_AcquireAsyncContext()](#oh_hidebug_acquireasynccontext).|
+
+### OH_HiDebug_CreateProfilerOptions()
+
+```c
+OH_HiDebug_ProfilerOptions* OH_HiDebug_CreateProfilerOptions(void)
+```
+
+**Description**
+
+Creates a resource Profiler configuration object.
+
+**Since:** 26.0.1
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [OH_HiDebug_ProfilerOptions*](capi-hidebug-oh-hidebug-profileroptions.md) | Pointer to the **OH_HiDebug_ProfilerOptions** struct. Returns **NULL** if creation fails. |
+
+### OH_HiDebug_DestroyProfilerOptions()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_DestroyProfilerOptions(OH_HiDebug_ProfilerOptions* opts)
+```
+
+**Description**
+
+Releases the configuration object created by [OH_HiDebug_CreateProfilerOptions](capi-hidebug-h.md#oh_hidebug_createprofileroptions).
+
+**Since:** 26.0.1
+
+**Parameters:**
+
+| Name | Description |
+| -- | -- |
+| [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md)* opts | Pointer to the **OH_HiDebug_ProfilerOptions** struct, which cannot be NULL. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Return result code:<br>         **HIDEBUG_SUCCESS**: The operation is successful.<br>         **HIDEBUG_RES_PROF_INVALID_ARG**: **opts** is a null pointer. |
+
+### OH_HiDebug_SetMaxAsyncNestingDepth()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncNestingDepth(OH_HiDebug_ProfilerOptions* opts, uint32_t depth)
+```
+
+**Description**
+
+Sets the maximum nesting depth (also called the maximum nesting level) of asynchronous calls.
+
+**Since:** 26.0.1
+
+**Parameters:**
+
+| Name | Description |
+| -- | -- |
+| [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md)* opts | Pointer to the **OH_HiDebug_ProfilerOptions** struct, which cannot be NULL. |
+| uint32_t depth | Maximum allowed asynchronous nesting depth, ranging from 1 to 16. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Return result code:<br>         **HIDEBUG_SUCCESS**: The operation is successful.<br>         **HIDEBUG_RES_PROF_INVALID_ARG**: opts is a null pointer.<br>         **HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH**: The resource collection asynchronous nesting depth parameter is invalid.|
+
+### OH_HiDebug_SetMaxAsyncTaskStackDepth()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncTaskStackDepth(OH_HiDebug_ProfilerOptions* opts, uint32_t depth)
+```
+
+**Description**
+
+Sets the maximum stack depth of asynchronous task functions.
+
+**Since:** 26.0.1
+
+**Parameters:**
+
+| Name | Description |
+| -- | -- |
+| [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md)* opts | Pointer to the **OH_HiDebug_ProfilerOptions** struct, which cannot be NULL. |
+| uint32_t depth | Maximum stack depth of asynchronous tasks, ranging from 1 to 256. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Return result code:<br>         **HIDEBUG_SUCCESS**: The operation is successful.<br>         **HIDEBUG_RES_PROF_INVALID_ARG**: opts is a null pointer.<br>         **HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH**: The stack depth parameter of the asynchronous task for resource collection is invalid.|
+
+### OH_HiDebug_SetSampleIntervalBytes()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_SetSampleIntervalBytes(OH_HiDebug_ProfilerOptions* opts, uint32_t bytes)
+```
+
+**Description**
+
+Sets the sampling interval, in bytes.
+
+**Since:** 26.0.1
+
+**Parameters:**
+
+| Name | Description |
+| -- | -- |
+| [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md)* opts | Pointer to the **OH_HiDebug_ProfilerOptions** struct, which cannot be NULL. |
+| uint32_t bytes | Sampling interval, ranging from [384, 4294967295], in bytes. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Return result code:<br>         **HIDEBUG_SUCCESS**: The operation is successful.<br>         **HIDEBUG_RES_PROF_INVALID_ARG**: **opts** is a null pointer.<br>         **HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL**: The sampling interval parameter is invalid. |
+
+### OH_HiDebug_SetStatisticsIntervalSec()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_SetStatisticsIntervalSec(OH_HiDebug_ProfilerOptions* opts, uint32_t seconds)
+```
+
+**Description**
+
+Sets the statistics interval, in seconds.
+
+**Since:** 26.0.1
+
+**Parameters:**
+
+| Name | Description |
+| -- | -- |
+| [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md)* opts | Pointer to the **OH_HiDebug_ProfilerOptions** struct, which cannot be NULL. |
+| uint32_t seconds | Statistics interval, ranging from [1, 3600], in seconds. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Return result code:<br>         **HIDEBUG_SUCCESS**: The operation is successful.<br>         **HIDEBUG_RES_PROF_INVALID_ARG**: opts is a null pointer.<br>         **HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL**: The statistics interval parameter is invalid. |
+
+### OH_HiDebug_SetMaxStackDepth()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_SetMaxStackDepth(OH_HiDebug_ProfilerOptions* opts, uint32_t depth)
+```
+
+**Description**
+
+Sets the maximum stack depth.
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md)* opts | Pointer to the **OH_HiDebug_ProfilerOptions** struct, which cannot be NULL. |
+| uint32_t depth | Maximum stack depth, ranging from [1, 30]. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Return result code:<br>         **HIDEBUG_SUCCESS**: The operation succeeds.<br>         **HIDEBUG_RES_PROF_INVALID_ARG**: **opts** is a null pointer.<br>         **HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH**: The maximum stack depth parameter is invalid. |
+
+### OH_HiDebug_SetFilterSize()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_SetFilterSize(OH_HiDebug_ProfilerOptions* opts, uint32_t size)
+```
+
+**Description**
+
+Sets the memory allocation filter size.
+
+**Since:** 26.0.1
+
+**Parameters:**
+
+| Name | Description |
+| -- | -- |
+| [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md)* opts | Pointer to the **OH_HiDebug_ProfilerOptions** struct, which cannot be NULL. |
+| uint32_t size | Filter size threshold, ranging from 1 to 4294967295, in bytes. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Return result code:<br>         **HIDEBUG_SUCCESS**: The operation succeeds.<br>         **HIDEBUG_RES_PROF_INVALID_ARG**: **opts** is a null pointer.<br>         **HIDEBUG_RES_PROF_INVALID_FILTER_SIZE**: The filter size parameter is invalid. |
+
+### OH_HiDebug_SetMaxDurationSec()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions* opts, uint32_t seconds)
+```
+
+**Description**
+
+Sets the maximum collection duration, in seconds.
+
+**Since:** 26.0.1
+
+**Parameters:**
+
+| Name | Description |
+| -- | -- |
+| [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md)* opts | Pointer to the **OH_HiDebug_ProfilerOptions** struct, which cannot be **NULL**. |
+| uint32_t seconds | Maximum collection duration, ranging from [1, 3600], in seconds. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Return result code:<br>         **HIDEBUG_SUCCESS**: The operation is successful.<br>         **HIDEBUG_RES_PROF_INVALID_ARG**: opts is a null pointer.<br>         **HIDEBUG_RES_PROF_INVALID_MAX_DURATION**: The maximum duration parameter is invalid. |
+
+### OH_HiDebug_StartProfilerWithOptions()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_StartProfilerWithOptions(OH_HiDebug_ResourceType type, OH_HiDebug_ProfilerOptions* opts, OH_HiDebug_ProfilingCallback callback)
+```
+
+**Description**
+
+Starts the resource allocation stack information collection for the current process based on the specified resource type and configuration.
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_HiDebug_ResourceType](capi-hidebug-type-h.md#oh_hidebug_resourcetype) type | Resource collection type (**OH_HiDebug_ResourceType**). |
+| [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md)* opts | Pointer to the configured **OH_HiDebug_ProfilerOptions** struct. It cannot be NULL. |
+| [OH_HiDebug_ProfilingCallback](capi-hidebug-type-h.md#oh_hidebug_profilingcallback) callback | Callback function that receives the collection result. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Return result code:<br>         HIDEBUG_RES_PROF_SUCCESS: Resource collection started successfully.<br>         HIDEBUG_RES_PROF_INVALID_ARG: **opts** or **callback** is a null pointer.<br>         HIDEBUG_RES_PROF_INVALID_MAX_DURATION: The maximum collection duration parameter is invalid.<br>         HIDEBUG_RES_PROF_INVALID_FILTER_SIZE: The filter size parameter is invalid.<br>         HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH: The maximum stack depth parameter is invalid.<br>         HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL: The statistics interval parameter is invalid.<br>         HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL: The sampling interval parameter is invalid.<br>         HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH: The asynchronous nesting depth parameter for resource collection is invalid.<br>         HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH: The asynchronous task stack depth parameter for resource collection is invalid.<br>         HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE: The resource collection type parameter is invalid.<br>         HIDEBUG_RES_PROF_PERMISSION_DENIED: Insufficient permission for resource collection.<br>         HIDEBUG_RES_PROF_ALREADY_STARTED: Resource collection has already been started.<br>         HIDEBUG_RES_PROF_PROCESS_OVERLIMIT: The number of processes performing resource collection in parallel exceeds the limit. A maximum of 4 different applications can collect in parallel on the entire device, and a maximum of 2 processes can collect in parallel within an application.<br>         HIDEBUG_RES_PROF_CONFLICT: Resource collection conflicts with a command-line tool or a system collection task.<br>         HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED: The daily quota for resource collection is exceeded. A maximum of 4 collections are allowed per day on the entire device, and a maximum of 2 collections are allowed per day for an application.<br>         HIDEBUG_RES_PROF_CPU_OVERLOADED: The CPU usage rate of the entire device exceeds 70%.<br>         HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL: The available memory of the entire device is less than 2 GB.<br>         HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL: The available storage space of the entire device is below the storage threshold, which is the larger of 3% of the total storage capacity and 15 GB.<br>         HIDEBUG_RES_PROF_FAILURE: Failed to start resource collection. |
+
+

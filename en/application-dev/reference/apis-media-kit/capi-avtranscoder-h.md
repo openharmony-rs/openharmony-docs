@@ -1,8 +1,8 @@
 # avtranscoder.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -38,7 +38,7 @@ The file declares the native APIs provided by the AVTranscoder. You can use the 
 | [OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioBitrate(OH_AVTranscoder_Config *config, int32_t bitrate)](#oh_avtranscoderconfig_setdstaudiobitrate) | Sets the bit rate of the output audio for transcoding.<br> This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).|
 | [OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoBitrate(OH_AVTranscoder_Config *config, int32_t bitrate)](#oh_avtranscoderconfig_setdstvideobitrate) | Sets the bit rate of the output video for transcoding.<br> This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).|
 | [OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoResolution(OH_AVTranscoder_Config *config, int32_t width, int32_t height)](#oh_avtranscoderconfig_setdstvideoresolution) | Sets the resolution of the output video for transcoding, in px, where **width** is the width of the output video frame and **height** is the height of the output video frame.<br> This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).|
-| [OH_AVErrCode OH_AVTranscoderConfig_EnableBFrame(OH_AVTranscoder_Config *config, bool enabled)](#oh_avtranscoderconfig_enablebframe) | Enables B-frame encoding for the output video during transcoding.<br>For details about the constraints on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints).<br>If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.|
+| [OH_AVErrCode OH_AVTranscoderConfig_EnableBFrame(OH_AVTranscoder_Config *config, bool enabled)](#oh_avtranscoderconfig_enablebframe) | Sets whether to enable B-frame video encoding for the transcoded output video.<br>This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints).<br>If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.|
 | [OH_AVTranscoder *OH_AVTranscoder_Create(void)](#oh_avtranscoder_create) | Creates an AVTranscoder instance.|
 | [OH_AVErrCode OH_AVTranscoder_Prepare(OH_AVTranscoder *transcoder, OH_AVTranscoder_Config *config)](#oh_avtranscoder_prepare) | Sets the parameters for video transcoding and prepares for transcoding.<br> This function must be called before [OH_AVTranscoder_Start](#oh_avtranscoder_start). Upon a successful call to this function, the AVTranscoder enters the AVTRANSCODER_PREPARED state.|
 | [OH_AVErrCode OH_AVTranscoder_Start(OH_AVTranscoder *transcoder)](#oh_avtranscoder_start) | Starts transcoding.<br> This function must be called after a successful call to [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare). Upon a successful call to this function, the AVTranscoder enters the AVTRANSCODER_STARTED state.|
@@ -48,7 +48,7 @@ The file declares the native APIs provided by the AVTranscoder. You can use the 
 | [OH_AVErrCode OH_AVTranscoder_Release(OH_AVTranscoder *transcoder)](#oh_avtranscoder_release) | Releases an AVTranscoder instance.|
 | [OH_AVErrCode OH_AVTranscoder_SetStateCallback(OH_AVTranscoder *transcoder, OH_AVTranscoder_OnStateChange callback, void *userData)](#oh_avtranscoder_setstatecallback) | Registers a callback for transcoding state change events.<br> This callback is invoked when the state of the transcoding process changes.<br> An application can subscribe to only one transcoding state change event. When the application initiates multiple subscriptions to this event, the last subscription is applied.<br> The callback must be registered before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare) is called.|
 | [OH_AVErrCode OH_AVTranscoder_SetErrorCallback(OH_AVTranscoder *transcoder, OH_AVTranscoder_OnError callback, void *userData)](#oh_avtranscoder_seterrorcallback) | Registers a callback for transcoding error events.<br> This callback is invoked when an error occurs during the transcoding process.<br> If this event is reported, call [OH_AVTranscoder_Release](#oh_avtranscoder_release) to exit the transcoding.<br> An application can subscribe to only one transcoding error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.<br> The callback must be registered before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare) is called.|
-| [OH_AVErrCode OH_AVTranscoder_SetProgressUpdateCallback(OH_AVTranscoder *transcoder, OH_AVTranscoder_OnProgressUpdate callback, void *userData)](#oh_avtranscoder_setprogressupdatecallback) | Registers a callback for transcoding progress update events.<br> This callback is invoked when the progress of the transcoding process is updated.<br> An application can subscribe to only one transcoding error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.<br> The callback must be registered before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare) is called.|
+| [OH_AVErrCode OH_AVTranscoder_SetProgressUpdateCallback(OH_AVTranscoder *transcoder, OH_AVTranscoder_OnProgressUpdate callback, void *userData)](#oh_avtranscoder_setprogressupdatecallback) | Registers a callback for transcoding progress update events.<br> This callback is invoked when the progress of the transcoding process is updated.<br> An application can subscribe to only one transcoding progress update event. When the application initiates multiple subscriptions to this event, the last subscription is applied.<br> The callback must be registered before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare) is called.|
 
 ## Function Description
 
@@ -289,7 +289,7 @@ Sets the bit rate of the output video for transcoding.<br> This function must be
 | Name| Description|
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | Pointer to an OH_AVTranscoder_Config instance, which is created by running [OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create).|
-| int32_t bitrate | Bit rate of the output video, in bit/s. The default bit rate is set according to the resolution of the output video.<br> For the resolution range [240p, 480p], the default bit rate is 1 Mbit/s.<br> For the resolution range (480p, 720p], the default bit rate is 2 Mbit/s.<br> For the resolution range (240p, 1080p], the default bit rate is 4 Mbit/s.<br> For the resolution 1080p or above, the default bit rate is 8 Mbit/s.|
+| int32_t bitrate | Bit rate of the output video, in bit/s. The default bit rate is set according to the resolution of the output video.<br> For the resolution range [240p, 480p], the default bit rate is 1 Mbit/s.<br> For the resolution range (480p, 720p], the default bit rate is 2 Mbit/s.<br> For the resolution range (720p, 1080p], the default bit rate is 4 Mbit/s.<br> For the resolution 1080p or above, the default bit rate is 8 Mbit/s.|
 
 **Returns**
 
@@ -334,7 +334,7 @@ OH_AVErrCode OH_AVTranscoderConfig_EnableBFrame(OH_AVTranscoder_Config *config, 
 
 **Description**
 
-Enables B-frame encoding for the output video during transcoding.<br>For details about the constraints on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints).<br>If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.
+Sets whether to enable B-frame video encoding for the transcoded output video.<br>This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints).<br>If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -603,7 +603,7 @@ OH_AVErrCode OH_AVTranscoder_SetProgressUpdateCallback(OH_AVTranscoder *transcod
 
 **Description**
 
-Registers a callback for transcoding progress update events.<br> This callback is invoked when the progress of the transcoding process is updated.<br> An application can subscribe to only one transcoding error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.<br> The callback must be registered before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare) is called.
+Registers a callback for transcoding progress update events.<br> This callback is invoked when the progress of the transcoding process is updated.<br> An application can subscribe to only one transcoding progress update event. When the application initiates multiple subscriptions to this event, the last subscription is applied.<br> The callback must be registered before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare) is called.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 

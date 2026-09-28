@@ -1,4 +1,4 @@
-# \@BuilderParam装饰器：引用\@Builder函数
+# @BuilderParam装饰器：引用@Builder函数
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->

@@ -3,10 +3,10 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=df2388ac9ece670e2be6918a776640e250f776ef translatedAt=2026-06-25T02:36:55.163Z pushedAt=2026-06-25T07:44:32.936Z -->
+<!-- md-trans-meta sourceCommit=030245a0c30ceae973c7f3b19dff971eff9452f7 translatedAt=2026-09-14T01:42:09.047Z pushedAt=2026-09-14T09:04:43.126Z -->
 
 As the base class of the peripheral interconnection extension capability, **PartnerAgentExtensionAbility** provides the device discovery and device offline notification features. This class needs to be inherited by the application. The **type** attribute of [extensionabilities](../../quick-start/module-configuration-file.md#extensionabilities) in the module-level configuration file [module.json5](../../quick-start/module-configuration-file.md) must be set to **partnerAgent**.
 
@@ -14,13 +14,17 @@ As the base class of the peripheral interconnection extension capability, **Part
 >
 > - The initial APIs of this module are supported since API version 23. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The APIs of this module can be used only in the stage model.
+> - This capability allows you to call Bluetooth APIs to interact with devices, such as initiating pairing, establishing connections, and performing [GATT](../../connectivity/bluetooth/terminology.md#gatt) communication. For details, see [@ohos.bluetooth.connection](js-apis-bluetooth-connection.md) and [@ohos.bluetooth.ble](js-apis-bluetooth-ble.md).
+
+## Constraints
+
+To ensure system security and stability and prevent **PartnerAgentExtensionAbility** from abusing system resources, the system restricts its capabilities. Referencing certain modules is not supported. For details, please refer to the [Appendix](#appendix).
 
 ## Modules to Import
 
 ```ts
 import { PartnerAgentExtensionAbility, partnerAgent } from '@kit.ConnectivityKit';
 ```
-
 ## PartnerDeviceAddress
 
 type PartnerDeviceAddress = partnerAgent.PartnerDeviceAddress
@@ -33,7 +37,7 @@ Describes the device address information.
 
 | **Type**                 | **Description**                 |
 | ------------------- | ------------------- |
-| [partnerAgent.PartnerDeviceAddress](js-apis-fusionConnectivity-partnerAgent.md#partneragentpartnerdeviceaddress) | Address of the device to be interconnected.|
+| [partnerAgent.PartnerDeviceAddress](js-apis-fusionConnectivity-partnerAgent.md#partnerdeviceaddress) | Address of the device to be interconnected. |
 
 ## PartnerAgentExtensionAbilityDestroyReason
 
@@ -47,11 +51,10 @@ Describes the reason why **PartnerAgentExtensionAbility** is destroyed.
 
 | **Type**                 | **Description**                 |
 | ------------------- | ------------------- |
-| [partnerAgent.PartnerAgentExtensionAbilityDestroyReason](js-apis-fusionConnectivity-partnerAgent.md#partneragentpartneragentextensionabilitydestroyreason) | Reason why **PartnerAgentExtensionAbility** is destroyed.|
+| [partnerAgent.PartnerAgentExtensionAbilityDestroyReason](js-apis-fusionConnectivity-partnerAgent.md#partneragentextensionabilitydestroyreason) | Reason why **PartnerAgentExtensionAbility** is destroyed. |
 
 ## PartnerAgentExtensionAbility
-
-As the base class of the peripheral interconnection extension capability, **PartnerAgentExtensionAbility** provides the device discovery and device offline notification features. This class needs to be inherited by the application. It is inherited from [ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md).
+As the base class of the peripheral interconnection extension capability, **PartnerAgentExtensionAbility** provides the device discovery and device offline notification features. This capability is inherited from [ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md) and needs to be implemented by apps.
 
 ### Attribute
 
@@ -77,7 +80,7 @@ Called when the peripheral interconnection extension capability is destroyed.
 
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| reason | [PartnerAgentExtensionAbilityDestroyReason](js-apis-fusionConnectivity-partnerAgent.md#partneragentpartneragentextensionabilitydestroyreason) | Yes| Destruction reason.|
+| reason | [PartnerAgentExtensionAbilityDestroyReason](js-apis-fusionConnectivity-partnerAgent.md#partneragentextensionabilitydestroyreason) | Mandatory | Reason for destroying the peripheral interconnection extension capability. Different enumerated values indicate different destruction scenarios. Your app can execute the corresponding resource release or status saving logic based on the destruction reason. |
 
 **Example**
 
@@ -103,7 +106,7 @@ Called when a registered device is discovered.
 
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| deviceAddress | [PartnerDeviceAddress](js-apis-fusionConnectivity-partnerAgent.md#partneragentpartnerdeviceaddress) | Yes| Address information of the device registered by the application.<br>The application must be configured with the **bluetoothAddress** option of the **PartnerDeviceAddress** type.|
+| deviceAddress | [PartnerDeviceAddress](js-apis-fusionConnectivity-partnerAgent.md#partnerdeviceaddress) | Mandatory | Address information of the device registered by the app.<br>The app must be configured with the **bluetoothAddress** option of the **PartnerDeviceAddress** type. |
 
 **Example**
 
@@ -114,3 +117,27 @@ export default class PartnerAgentExtAbility extends PartnerAgentExtensionAbility
   }
 }
 ```
+
+## Appendix
+
+**PartnerAgentExtensionAbility** does not support referencing the following modules.
+| Kit | Module |
+| ------ | ------ |
+| Background Tasks Kit | [@ohos.backgroundTaskManager (Background Task Management)](../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md) |
+| Background Tasks Kit | [@ohos.resourceschedule.backgroundTaskManager (Background Task Management)](../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md) |
+| <!--DelRow-->Camera Kit | [@ohos.multimedia.camera (Camera Management) (System API)](../../reference/apis-camera-kit/js-apis-camera-sys.md) |
+| Camera Kit | [@ohos.multimedia.cameraPicker (Camera Picker)](../../reference/apis-camera-kit/js-apis-cameraPicker.md) |
+| Connectivity Kit | [@ohos.connectedTag (Active Tags)](../../reference/apis-connectivity-kit/js-apis-connectedTag.md) |
+| Connectivity Kit | [@ohos.nfc.cardEmulation (Standard NFC Card Emulation)](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md) |
+| Connectivity Kit | [@ohos.nfc.controller (Standard NFC)](../../reference/apis-connectivity-kit/js-apis-nfcController.md) |
+| Connectivity Kit | [@ohos.nfc.tag (Standard NFC Tags)](../../reference/apis-connectivity-kit/js-apis-nfcTag.md) |
+| Connectivity Kit | [tagSession (Standard NFC Tag Session)](../../reference/apis-connectivity-kit/js-apis-tagSession.md) |
+| Connectivity Kit | [@ohos.wifiext (WLAN Extension)](../../reference/apis-connectivity-kit/js-apis-wifiext.md) |
+| Connectivity Kit | [@ohos.wifiManager (WLAN)](../../reference/apis-connectivity-kit/js-apis-wifiManager.md) |
+| Connectivity Kit | [@ohos.wifiManagerExt (WLAN Extension)](../../reference/apis-connectivity-kit/js-apis-wifiManagerExt.md) |
+| Location Kit | [@ohos.geolocation (Geolocation)](../../reference/apis-location-kit/js-apis-geolocation.md) |
+| Location Kit | [@ohos.geoLocationManager (Geolocation Manager)](../../reference/apis-location-kit/js-apis-geoLocationManager.md) |
+| <!--DelRow-->Media Kit | [@ohos.multimedia.media (Media) (System API)](../../reference/apis-media-kit/js-apis-media-sys.md) |
+| Media Library Kit | [@ohos.multimedia.movingphotoview (MovingPhotoView Component)](../../reference/apis-media-library-kit/ohos-multimedia-movingphotoview.md) |
+| Telephony Kit | [@ohos.telephony.sim (SIM Management)](../../reference/apis-telephony-kit/js-apis-sim.md) |
+| Telephony Kit | [@ohos.telephony.sms (SMS)](../../reference/apis-telephony-kit/js-apis-sms.md) |

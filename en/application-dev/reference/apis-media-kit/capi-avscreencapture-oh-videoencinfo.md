@@ -1,12 +1,11 @@
 # OH_VideoEncInfo
-
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:06:45.368Z pushedAt=2026-06-23T06:12:23.718Z -->
+<!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=7cb32cf558e3c75482fc3404f1f7c011a4ecb00a translatedAt=2026-09-15T16:58:32.713Z pushedAt=2026-09-20T08:16:49.332Z -->
 
 ```c
 typedef struct OH_VideoEncInfo {...} OH_VideoEncInfo
@@ -14,7 +13,9 @@ typedef struct OH_VideoEncInfo {...} OH_VideoEncInfo
 
 ## Overview
 
-The struct describes the video encoding information.
+Describes the video encoding information.
+
+This struct is used to configure the video encoding parameters of screen capture, including the encoding format, bitrate, and frame rate. **videoCodec** specifies the encoding format (such as H.264 and H.265). **videoBitrate** affects the video definition and file size. **videoFrameRate** affects the video smoothness. Generally, these parameters are set before the screen capture API is called.
 
 **Since**: 10
 
@@ -28,6 +29,8 @@ The struct describes the video encoding information.
 
 | Name| Description|
 | -- | -- |
-| [OH_VideoCodecFormat](capi-native-avscreen-capture-base-h.md#oh_videocodecformat) videoCodec | Video encoding format.|
-| int32_t videoBitrate | Video capture bitrate. The unit is bits per second (bit/s). |
-| int32_t videoFrameRate | Video capture frame rate. The unit is frames per second (FPS). |
+| [OH_VideoCodecFormat](capi-native-avscreen-capture-base-h.md#oh_videocodecformat) videoCodec | Video encoding format. The encoding format affects the video compression efficiency and compatibility. For details about the formats, see [OH_VideoCodecFormat](capi-native-avscreen-capture-base-h.md#oh_videocodecformat). |
+| int32_t videoBitrate | Bitrate for video encoding, in bit/s. The value range depends on the encoding format and actual requirements. The default value is **10000000**. A larger value indicates better image quality but a larger file size. |
+| int32_t videoFrameRate | Frame rate for video encoding, in frames per second (FPS). The value ranges from 15 to 60. |
+
+

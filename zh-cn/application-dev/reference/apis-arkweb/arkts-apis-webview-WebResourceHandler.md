@@ -230,7 +230,7 @@ didFail(code: WebNetErrorList, completeIfNoResponse: boolean, customErrorCode: n
 
 通知ArkWeb内核，被拦截请求应返回失败，并携带自定义错误码。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

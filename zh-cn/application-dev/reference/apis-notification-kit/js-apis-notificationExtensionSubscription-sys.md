@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -12,7 +12,7 @@
 >
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本页面仅包含本模块的系统接口，其他公开接口参见[notificationExtensionSubscription](./js-apis-notificationExtensionSubscription.md)。
+> 本页面仅包含本模块的系统接口，其他公开接口参见[notificationExtensionSubscription](js-apis-notificationExtensionSubscription.md)。
 
 ## 导入模块
 
@@ -25,7 +25,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 
-获取所有具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限并且实现了[NotificationSubscriberExtensionAbility](./js-apis-notificationSubscriberExtensionAbility.md)的应用列表。使用Promise异步回调。
+获取所有具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限并且实现了[NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md)的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -37,7 +37,7 @@ getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<[BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise对象，返回所有具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限并且实现了[NotificationSubscriberExtensionAbility](./js-apis-notificationSubscriberExtensionAbility.md)的应用列表。        |
+| Promise\<[BundleOption[]](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise对象，返回所有具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限并且实现了[NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md)的应用列表。        |
 
 **错误码：**
 
@@ -76,7 +76,7 @@ getUserGrantedState(targetBundle: BundleOption): Promise\<boolean\>
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要查询的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
+| targetBundle    | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要查询的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
 
 **返回值：**
 
@@ -131,8 +131,8 @@ setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要设置的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码|
-| enable   | boolean | 是   | 表示应用的“允许获取本机通知”的开关状态，true表示启用，false表示未启用。 |
+| targetBundle    | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要设置的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码|
+| enabled   | boolean | 是   | 表示应用的“允许获取本机通知”的开关状态，true表示启用，false表示未启用。 |
 
 **返回值：**
 
@@ -157,7 +157,7 @@ setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void
 ```ts
 let targetBundle: notificationExtensionSubscription.BundleOption =
 {
-  // 应改为开发者需要查询的目标应用信息
+  // 应改为开发者需要设置的目标应用信息
   bundle: 'com.example.testnotification',
 };
 notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then(() => {
@@ -183,13 +183,13 @@ getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise\<BundleOption[
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要查询的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
+| targetBundle    | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要查询的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
 
 **返回值：**
 
 | 类型     | 说明        |
 | ------- |-----------|
-| Promise\<[BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise对象，返回指定应用中“已获取的本机通知”通知开关开启的应用列表。        |
+| Promise\<[BundleOption[]](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise对象，返回指定应用中“已获取的本机通知”通知开关开启的应用列表。        |
 
 **错误码：**
 
@@ -234,8 +234,8 @@ setUserGrantedBundleState(targetBundle: BundleOption, enabledBundles: BundleOpti
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要设置的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
-| enabledBundles    | [BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 被授权的应用信息列表。 |
+| targetBundle    | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要设置的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
+| enabledBundles    | [BundleOption[]](js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 被授权的应用信息列表。 |
 | enabled    | boolean       | 是   | 表示“已获取的本机通知”的应用授权状态是否启用，true表示已启用，false表示未启用。 |
 
 **返回值：**
@@ -274,57 +274,5 @@ notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enable
   console.info(`setUserGrantedBundleState successfully.`);
 }).catch((err: BusinessError) => {
   console.error(`setUserGrantedBundleState fail, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-
-## notificationExtensionSubscription.subscribeNotification
-
-subscribeNotification(priorityStrategy?: number): Promise\<void\>
-
-根据[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)过滤条件订阅通知。使用Promise异步回调。
-
-**起始版本**：26.0.0
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.Notification.Notification
-
-**需要权限**：ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
-
-**系统接口**：此接口为系统接口。
-
-**参数：**
-
-| 参数名               | 类型       | 必填 | 说明                 |
-| ------------------- | ---------- | ---- | -------------------- |
-| priorityStrategy    | number     | 否   | 优先通知过滤条件。默认为0。与[PriorityStrategyStatus](js-apis-notificationManager-sys.md#prioritystrategystatus23)的枚举进行按位或运算得到该参数。<br>订阅某条优先通知策略后，应用发布通知时，只返回符合对应策略的通知。<br>当订阅默认优先策略`STATUS_SYSTEM_DEFAULT`时,表示同时订阅优先规则`STATUS_SYSTEM_RULE`、智能识别`STATUS_INTELLIGENT`、用户自定义`STATUS_USER_DEFINED`和应用自定义`STATUS_APPLICATION_DEFINED`策略。<br>当`priorityStrategy`为0时，表示不过滤优先通知策略，可以收到应用发布的所有通知。|
-
-**返回值：**
-
-| 类型     | 说明        | 
-| ------- |-----------|
-| Promise\<void\> | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
-
-| 错误码ID | 错误信息                             |
-| -------- | ----------------------------------- |
-| 201      | Permission denied or current device not supported. |
-| 202      | Not system application to call the interface.      |
-| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist. |
-| 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.   |
-| 1600022  |  The application does not implement the NotificationSubscriberExtensionAbility.   |
-
-**示例：**
-
-```ts
-notificationExtensionSubscription.subscribeNotification(0).then(() => {
-  console.info(`subscribeNotification successfully.`);
-}).catch((err: BusinessError) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```

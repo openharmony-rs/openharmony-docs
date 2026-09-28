@@ -4,16 +4,17 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T11:48:34.600Z pushedAt=2026-09-05T10:47:30.698Z -->
 
-AutoFillType enumerates the types of elements to be automatically filled in.
+Enumerates the types of elements to be automatically filled in. This module defines multiple auto-fill types (such as address, name, phone number, email, bank card number, and ID card number), allowing applications to quickly identify and automatically fill in common information in user input scenarios, reducing the user's manual input workload and improving user experience.
 
 > **NOTE**
 > 
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
-> The APIs of this module can be used only in the stage model.
-> The APIs provided by this module are system APIs.
+> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> This page contains only the system APIs of this module. For details about other public APIs, see [AutoFillType](js-apis-inner-application-autoFillType.md).
 
 ## Modules to Import
 
@@ -27,12 +28,10 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**Model restriction:** This API can be used only in the stage model.
+
 | Name          | Value | Description                              |
 | -------------- | --- | --------------------------------- |
-| UNSPECIFIED      | 0   | Undefined type.                        |
-| PASSWORD      | 1   | Password.                    |
-| USER_NAME     | 2   | Username.                    |
-| NEW_PASSWORD     | 3   | New password.                    |
 | FULL_STREET_ADDRESS<sup>12+</sup>        | 4    | Detailed address with street information.|
 | HOUSE_NUMBER<sup>12+</sup>               | 5    | House number.|
 | DISTRICT_ADDRESS<sup>12+</sup>           | 6    | District.|

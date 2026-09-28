@@ -2,10 +2,11 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=37e87e28b1f57566fffb557016c871f107cbe03a translatedAt=2026-09-08T07:24:52.870Z pushedAt=2026-09-08T11:08:39.264Z -->
 
 The **tag** module provides APIs for operating and managing NFC tags. The following tag read modes are available:
 <br>Background mode: The device reads the tag by using NFC without starting any application, and then searches for applications based on the tag type. If only one application is matched, the card reading page of that application will be started. If multiple applications are matched, an application selector will be started, asking the user to select an application. Background mode does not involve tag-related APIs. For details, see [nfc-tag Read/Write Development](../../connectivity/nfc/nfc-tag-access-guide.md#accessing-an-nfc-tag-without-starting-an-application).
@@ -13,9 +14,9 @@ The **tag** module provides APIs for operating and managing NFC tags. The follow
 
 > **NOTE**
 >
->1. The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->2. Since API version 26.0.0, it is more accurate to determine whether a device supports NFC by calling both [canIUse("SystemCapability.Communication.NFC.Tag")](../common/init.md#caniuse) and [nfcController.isNfcSupported](js-apis-nfcController.md#nfccontrollerisnfcsupported). If the device does not support NFC, the application stability may be affected. For details, see [NFC Tag Read/Write Development](../../connectivity/nfc/nfc-tag-access-guide.md).
->3. If an error is reported while importing the tag module editor, the capabilities of a specific device model may exceed the capability set defined for the default device. To use these capabilities, configure a custom SysCap by following instructions in [SystemCapability](https://developer.huawei.com/consumer/en/doc/harmonyos-references/syscap).
+>1. The initial APIs of this module are supported since API version 7. New APIs will be marked with a superscript to indicate their earliest API version.
+>2. For API versions earlier than 26.0.0, use [canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap__ndk_8h.md#caniuse) and [nfcController.isNfcAvailable](js-apis-nfcController.md#nfccontrollerisnfcsupported) to check whether the device supports NFC. Since API version 26.0.0, it is more accurate to determine whether a device supports NFC by calling both [canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap__ndk_8h.md#caniuse) and [nfcController.isNfcSupported](js-apis-nfcController.md#nfccontrollerisnfcsupported). If the device does not support NFC, the application stability may be affected. For details, see [NFC Tag Read/Write Development](../../connectivity/nfc/nfc-tag-access-guide.md).
+>3. If an error is reported when importing the **tag** module, the capability may exceed the capability set defined by the default device in the project on a specific device model. To use this capability, configure a custom SysCap. For details, see [SysCap development guide](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap).
 
 ## **Modules to Import**
 
@@ -23,7 +24,7 @@ The **tag** module provides APIs for operating and managing NFC tags. The follow
 import { tag } from '@kit.ConnectivityKit';
 ```
 
-## **tag.TagInfo**
+## **Example of tag.TagInfo**
 
 Before a card with tags is read or written, **[TagInfo](#taginfo)** must be obtained to determine the tag technologies supported by the card. In this way, the application can invoke the correct API to communicate with the card.
 ```js
@@ -548,7 +549,7 @@ Registers a listener for the NFC tag read event so that the tag can be preferent
 | Name      | Type    | Mandatory| Description                                                   |
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | Yes  | Information about the tag reading page of the application. It cannot be empty and must contain at least **bundleName** and **abilityName**.         |
-| discTech         |  number[]   | Yes  | NFC tag technologies supported by the foreground application. It cannot be empty. At least one NFC tag technology must be specified. Each number indicates the constant value of an NFC tag technology. The tag technologies are polled based on the specified value, which contains one or more of [NFC_A](#constants), [NFC_B](#constants), [NFC_F](#constants), and [NFC_V](#constants) only.|
+| discTech         |  number[]   | Yes   | NFC tag technologies supported by the foreground application. It cannot be empty. At least one NFC tag technology must be specified. Each number indicates the constant value of an NFC tag technology. The tag technologies are polled based on the specified value, which contains one or more of [NFC_A](#constants), [NFC_B](#constants), [NFC_F](#constants), and [NFC_V](#constants) only. |
 | callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | Yes  | Callback used to return the tag information read. It cannot be empty.|
 
 **Error codes**
@@ -675,7 +676,7 @@ Subscribes to the NFC tag read event to implement dispatch of the tag to a foreg
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | type    | string  | Yes  | Event type, which has a fixed value of **readerMode**.|
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | Yes  | Information about the tag reading page of the application. It cannot be empty and must contain at least **bundleName** and **abilityName**.         |
-| discTech         |  number[]   | Yes  | NFC tag technologies supported by the foreground application. It cannot be empty. At least one NFC tag technology must be specified. Each number indicates the constant value of an NFC tag technology. The tag technologies are polled based on the specified value, which contains one or more of [NFC_A](#constants), [NFC_B](#constants), [NFC_F](#constants), [NFC_V](#constants), and [SKIP_NDEF](#constants) only.|
+| discTech         |  number[]   | Yes   | NFC tag technologies supported by the foreground application. It cannot be empty. At least one NFC tag technology must be specified. Each number indicates the constant value of an NFC tag technology. The tag technologies are polled based on the specified value, which contains one or more of [NFC_A](#constants), [NFC_B](#constants), [NFC_F](#constants), [NFC_V](#constants), and [SKIP_NDEF](#constants) only. |
 | callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | Yes  | Callback used to return the tag information read. It cannot be empty.|
 
 **Error codes**
@@ -809,7 +810,7 @@ Subscribes to the NFC tag read event so that the tag can be preferentially dispa
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | type    | string  | Yes  | Event type, which has a fixed value of **readerModeWithInterval**.|
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | Yes  | Information about the tag reading page of the application. It must contain at least **bundleName** and **abilityName**.         |
-| discTech         |  number[]   | Yes  | NFC tag technologies supported by the foreground application. At least one NFC tag technology must be specified. Each number indicates the constant value of an NFC tag technology. The tag technologies are polled based on the specified value, which contains one or more of [NFC_A](#constants), [NFC_B](#constants), [NFC_F](#constants), [NFC_V](#constants), and [SKIP_NDEF](#constants) only.|
+| discTech         |  number[]   | Yes   | NFC tag technologies supported by the foreground application. At least one NFC tag technology must be specified. Each number indicates the constant value of an NFC tag technology. The tag technologies are polled based on the specified value, which contains one or more of [NFC_A](#constants), [NFC_B](#constants), [NFC_F](#constants), [NFC_V](#constants), and [SKIP_NDEF](#constants) only. |
 | callback | Callback&lt;[TagInfo](#taginfo)&gt; | Yes  | Callback used to listen for the card reader mode, which returns the tag information read.|
 | interval | number | Yes| Interval for checking whether a card is present, in milliseconds. The recommended value range is 100 to 2000. If a negative value is passed, the value does not take effect. The system uses the default interval (150 ms).|
 
@@ -1351,7 +1352,7 @@ Enumerates the tag technology types.
 | MIFARE_CLASSIC               |  number | 8      | MIFARE Classic.<br>**Atomic service API**: This API can be used in atomic services since API version 12.       |
 | MIFARE_ULTRALIGHT            |  number | 9      | MIFARE Ultralight.<br>**Atomic service API**: This API can be used in atomic services since API version 12.     |
 | NFC_BARCODE<sup>18+</sup>    |  number | 10     | BARCODE technology.<br>**Atomic service API**: This API can be used in atomic services since API version 18.              |
-| SKIP_NDEF                    | number |     11  | Method used to skip the NDEF check.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| SKIP_NDEF                    | number |     11  | Method used to skip the NDEF check.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API is supported in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model.|
 | RTD_TEXT<sup>9+</sup>        | number[] | [0x54] | NDEF record of the text type. For details, see **NFCForum-TS-NDEF_1.0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | RTD_URI<sup>9+</sup>         | number[] | [0x55] | NDEF record of the URI type. For details, see **NFCForum-TS-NDEF_1.0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 

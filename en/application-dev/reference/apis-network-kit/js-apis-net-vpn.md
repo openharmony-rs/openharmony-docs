@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:51:23.943Z pushedAt=2026-06-26T03:00:41.300Z -->
+<!-- md-trans-meta sourceCommit=279e00089360698512424a536e411f6ff97b4833 translatedAt=2026-09-23T02:32:42.316Z pushedAt=2026-09-24T06:00:14.214Z -->
 
 This module is the built-in VPN function provided by the OS. It allows users to set up VPN connections through the network settings of the OS. Generally, this module provides only limited functions and is subject to strict restrictions.
 
@@ -25,7 +25,7 @@ import { vpn } from '@kit.NetworkKit';
 
 type LinkAddress = connection.LinkAddress
 
-Defines the network link address information.
+Represents the network link information.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -37,7 +37,7 @@ Defines the network link address information.
 
 type RouteInfo = connection.RouteInfo
 
-Defines the network route information.
+Represents the network route information.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 

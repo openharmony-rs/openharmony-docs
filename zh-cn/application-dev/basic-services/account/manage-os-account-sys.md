@@ -76,7 +76,7 @@
    ```ts
     accountManager.queryAllCreatedOsAccounts((err: BusinessError, accountArr: osAccount.OsAccountInfo[])=>{
       if (err) {
-        console.info(`queryAllCreatedOsAccounts code is ${err.code}, message is ${err.message}`);
+        console.error(`queryAllCreatedOsAccounts code is ${err.code}, message is ${err.message}`);
       } else {
         console.info('queryAllCreatedOsAccounts accountArr:' + JSON.stringify(accountArr));
       }

@@ -1,4 +1,4 @@
-# ArkUI_ImmersiveMaterial\*
+# ArkUI_ImmersiveMaterial*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->

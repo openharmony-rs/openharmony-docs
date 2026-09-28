@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=76caeef80126e754bb89b8cf8b2b7380f3d3d3a7 translatedAt=2026-08-20T12:24:50.886Z pushedAt=2026-08-23T06:51:51.163Z -->
+<!-- md-trans-meta sourceCommit=4a27fe9fcb9698d710b4ee8875dc73cdcfac03c3 translatedAt=2026-09-14T01:43:29.361Z pushedAt=2026-09-14T11:30:13.657Z -->
 
 ## Overview
 
@@ -69,8 +69,9 @@ Defines the type of SM2 ciphertext specification items.
 | -- | -- |
 | CRYPTO_SM2_CIPHERTEXT_C1_X = 0 | Public key x, also called C1x.|
 | CRYPTO_SM2_CIPHERTEXT_C1_Y = 1 | Public key y, also called C1y.|
-| CRYPTO_SM2_CIPHERTEXT_C2 = 2 | Hash value, also called C2.|
-| CRYPTO_SM2_CIPHERTEXT_C3 = 3 | Ciphertext data, also called C3.|
+| CRYPTO_SM2_CIPHERTEXT_C2 = 2 | Ciphertext data, also called C2. |
+| CRYPTO_SM2_CIPHERTEXT_C3 = 3 |Message digest (hash value), also called C3. |
+
 
 ## Function Description
 
@@ -105,6 +106,7 @@ Note: The created resource must be destroyed by calling [OH_CryptoAsymCipher_Des
 
 [OH_CryptoAsymCipher_Init](capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_init) for initializing the asymmetric cipher context.
 
+
 ### OH_CryptoAsymCipher_Init()
 
 ```c
@@ -134,6 +136,7 @@ Initializes the asymmetric cipher context using the given cipher mode and key.
 **Reference**
 
 [OH_CryptoAsymCipher_Final](capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_final) for finalizing the cipher operation.
+
 
 ### OH_CryptoAsymCipher_Final()
 
@@ -214,6 +217,7 @@ Note: The created resource must be destroyed by calling [OH_CryptoSm2CiphertextS
 
 [OH_CryptoSm2CiphertextSpec_SetItem](capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_setitem) for setting a specified item in SM2 ciphertext specifications.
 
+
 ### OH_CryptoSm2CiphertextSpec_GetItem()
 
 ```c
@@ -272,6 +276,7 @@ Sets a specified item in the SM2 ciphertext specifications.
 
 [OH_CryptoSm2CiphertextSpec_Encode](capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_encode) for encoding SM2 ciphertext specifications into DER ciphertext.
 
+
 ### OH_CryptoSm2CiphertextSpec_Encode()
 
 ```c
@@ -316,3 +321,5 @@ Destroys SM2 ciphertext specifications.
 | Name| Description|
 | -- | -- |
 | [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md) *spec | Input parameter, indicating a pointer to the SM2 ciphertext specifications. |
+
+

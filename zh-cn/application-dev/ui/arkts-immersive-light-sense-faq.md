@@ -21,7 +21,11 @@
 
 **可能原因**
 
-沉浸光感开启后，弹窗类组件以及Slider、Toggle在页面内全部区域可生效；其余组件的生效区域为：Navigation/NavDestination标题栏，或横向Tab中barPosition为BarPosition.End的底部TabBar中。弹窗类组件和接口包括：[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)、[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[ActionSheet](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md)、[CustomDialog](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)、[DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md)、[TimePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md)、[TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)、[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)、[ArkUI_NativeDialog](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/js-apis-promptAction.md)、[Popup控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[Tips控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md)、[菜单控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md)、[半模态转场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)、[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)气泡弹窗、Select下拉菜单的[menuSystemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menusystemmaterial)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单。
+沉浸光感开启后，
+- 指定弹窗类组件（[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[ActionSheet](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md)、[CustomDialog](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)、[DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md)、[TimePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md)、[TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)、[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)、[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)弹窗、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单）的沉浸光感效果可在全页面生效。
+- 指定弹窗类接口（[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)、[ArkUI_NativeDialog](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/js-apis-promptAction.md)、[Popup控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[Tips控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md)、[菜单控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md)、[半模态转场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)）的沉浸光感效果可在全页面生效。
+- [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)、[Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md)的沉浸光感效果可在全页面生效。
+- 其他组件仅在Navigation/NavDestination标题栏或横向Tabs中barPosition为BarPosition.End的底部TabBar中生效。在其他区域中设置沉浸光感效果不生效。
 
 **解决措施**
 
@@ -169,6 +173,44 @@ Column() {
 .systemMaterial(new uiMaterial.ImmersiveMaterial({
   style: uiMaterial.ImmersiveStyle.THIN,
 }))
+```
+
+### 自定义弹出框CustomDialog没有生效沉浸式系统材质效果
+
+**问题现象**
+
+- 通过[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)、[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)创建的自定义弹出框，传入systemMaterial属性后没有生效沉浸式系统材质效果。
+- CustomDialog设置[customStyle](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)为true时弹出框没有生效沉浸式系统材质效果。
+
+**可能原因**
+
+如果使用openCustomDialog、openCustomDialogWithController创建自定义弹出框，或设置弹出框的customStyle属性为true时，弹出框的背板由开发者自定义，当前暂不支持对此场景适配沉浸式系统材质。
+
+**解决措施**
+
+不支持在自定义弹出框背板中适配沉浸式系统材质。
+
+若开发者有诉求，建议使用其他类似接口，如[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)。
+
+**代码示例**
+
+以下代码展示了使用[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)接口创建自定义弹出框，并生效沉浸式系统材质效果。
+
+<!-- @[open_custom_dialog_with_system_material_set_material](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/openCustomDialogWithSystemMaterial.ets) -->
+
+```ts
+Button('Click Me')
+  .fontSize(30)
+  .onClick(() => {
+    this.getUIContext()
+      .getPromptAction()
+      .openCustomDialog({
+        builder: () => {
+          this.customDialogComponent()
+        },
+        systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK })
+      })
+  })
 ```
 
 ## 设置沉浸式系统材质后组件边框呈现出周围背景的颜色
@@ -341,6 +383,10 @@ Column() {
 
   ![materialDrawingInstructions](figures/material-drawing-instruction-2.jpg)
 
+- Progress组件可视区域为胶囊形，材质渲染区域为100\*40的矩形。
+
+  ![materialDrawingInstructions](figures/material-drawing-instruction-4.jpg)
+
 **可能原因**
 
 材质渲染区域由组件布局区域决定，而组件可视区域为实际呈现内容的区域，可能不等于布局区域，导致两者不一致。
@@ -376,6 +422,32 @@ Row() {
   Text("hello")
     .width(100)
     .height(40)
+    .systemMaterial(new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      interactive: true
+    }))
+}
+
+Row() {
+  Text('Progress组件：')
+    .fontColor(Color.Black)
+  Progress({value: 40, type: ProgressType.Capsule})
+    .width(100)
+    .height(40)
+    .systemMaterial(new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      interactive: true
+    }))
+}
+
+// 材质渲染区域与组件可视区域一致示例
+Row() {
+  Text('Progress组件：')
+    .fontColor(Color.Black)
+  Progress({value: 40, type: ProgressType.Capsule})
+    .width(100)
+    .height(40)
+    .borderRadius(20) // 设置borderRadius属性使材质渲染区域与组件可视区域一致
     .systemMaterial(new uiMaterial.ImmersiveMaterial({
       style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
       interactive: true

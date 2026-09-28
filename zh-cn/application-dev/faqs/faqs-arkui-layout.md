@@ -4,7 +4,7 @@
 <!--Owner: @fenglinbailu; @yangcan18; @guozejun-->
 <!--Designer: @fenglinbailu; @yangcan18; @guozejun-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 ## 使用position之后height不生效(API 9)
@@ -60,9 +60,9 @@
 
 **解决措施**
 
-1、如果做页面展示，可通过Text嵌套ImageSpan或者容器组件如Row、Column下嵌套Text&Image组件，推荐前者；
+1. 如果做页面展示，可通过Text嵌套ImageSpan或者容器组件如Row、Column下嵌套Text&Image组件，推荐前者；
 
-2、如果要进行编辑，可使用RichEditor控件。
+2. 如果要进行编辑，可使用RichEditor控件。
 
 **参考链接**
 

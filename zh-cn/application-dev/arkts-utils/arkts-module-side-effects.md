@@ -1,14 +1,14 @@
 # 模块加载副作用及优化
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @shilei123-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @shilei123; @li-jiangfeng-->
+<!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
 ## 概述
 
-当使用[ArkTS模块化](module-principle.md)时，模块的加载和执行可能会引发**副作用**。副作用是指在模块导入时除了导出功能或对象之外，额外的行为或状态变化，**这些行为可能影响程序的其他部分，并导致产生非预期的顶层代码执行、全局状态变化、原型链修改、导入内容未定义等问题**。
+当使用[ArkTS模块化](module-principle.md)时，模块的加载和执行可能会引发**副作用**。副作用是指在模块导入时除了导出功能或对象之外，额外的行为或状态变化，**这些行为可能影响程序的其他部分，并导致非预期的顶层代码执行、全局状态变化、原型链修改、导入内容未定义等问题**。
 
 ## ArkTS模块化导致副作用的场景及优化方式
 

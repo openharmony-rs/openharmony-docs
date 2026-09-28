@@ -22,7 +22,7 @@ LLDB调试器具备以下功能特点：
 - **插件扩展性**：支持插件扩展，方便开发者根据需求进行定制。
 
 ## 工具获取路径
-通过OpenHarmony的SDK获取，获取路径：http://ci.openharmony.cn/workbench/cicd/dailybuild
+通过OpenHarmony的SDK获取，获取路径：[每日构建](http://ci.openharmony.cn/workbench/cicd/dailybuild)。
 
 lldb工具在SDK中的路径为`\ohos-sdk\[system]\native\llvm`，其中system可选windows/linux/darwin。
 

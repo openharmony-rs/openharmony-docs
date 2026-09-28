@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:49:35.601Z pushedAt=2026-06-26T03:00:41.275Z -->
+<!-- md-trans-meta sourceCommit=108aa11c2ceb50c68f8417aa3c60f1dcb55dabdd translatedAt=2026-09-23T01:15:32.465Z pushedAt=2026-09-24T06:00:14.097Z -->
 
 ## Overview
 
@@ -50,10 +50,12 @@ Provides the C APIs of the network connection module for network management.
 | [int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetConn_NetConnCallback *netConnCallback,uint32_t timeout, uint32_t *callbackId)](#oh_netconn_registernetconncallback) | Registers a callback for network status changes.|
 | [int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netConnCallback, uint32_t *callbackId)](#oh_netconn_registerdefaultnetconncallback) | Registers a callback for status changes of the default network.|
 | [int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)](#oh_netconn_unregisternetconncallback) | Unregisters the callback for network status changes.|
+| [int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxyRefreshCallback callback, void *userContext)](#oh_netconn_refreshglobalhttpproxywithcallback) | Requests re-authentication of the global HTTP proxy. Calling this API triggers an asynchronous re-authentication request, and a callback is triggered once after the authentication is complete to notify the authentication result.<br> A return value of 0 indicates that the request has been accepted, not that the re-authentication has succeeded. The authentication result is finally notified through the callback. If a non-zero value is returned, the callback will not be triggered. |
 | [NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)](#oh_netconn_setpacurl) | Sets the URL of the system-level proxy auto-config (PAC) script.|
 | [NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)](#oh_netconn_getpacurl) | Obtains the URL of the system-level PAC script.|
 | [int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn_ProbeResultInfo *probeResultInfo)](#oh_netconn_queryproberesult) | Queries network probe results.|
 | [int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *option,NetConn_TraceRouteInfo *traceRouteInfo)](#oh_netconn_querytraceroute) | Queries network trace route information.|
+
 
 ## Function Description
 
@@ -72,6 +74,7 @@ Checks whether a default activated data network is available.
 **Required permissions**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 11
+
 
 **Parameters**
 
@@ -101,6 +104,7 @@ Obtains the default activated data network.
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name| Description|
@@ -129,6 +133,7 @@ Checks whether metering is enabled for the default data network.
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name| Description|
@@ -156,6 +161,7 @@ Obtains the link information of a data network.
 **Required permissions**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 11
+
 
 **Parameters**
 
@@ -186,6 +192,7 @@ Obtains the capabilities of a data network.
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name                                                                    | Description|
@@ -197,7 +204,7 @@ Obtains the capabilities of a data network.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **0**: Success. **201**: Missing permissions.<br>         **401**: Parameter error. **2100002**: Service connection failure.<br>         **2100003**: Internal error.|
+| int32_t | 0 - Success. 201 - Missing Permission.<br>         401 - Parameter Error. 2100002 - Connection Failure.<br>         2100003 - Internal Error. |
 
 ### OH_NetConn_GetDefaultHttpProxy()
 
@@ -213,6 +220,7 @@ Obtains the default network proxy.
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name| Description|
@@ -221,9 +229,9 @@ Obtains the default network proxy.
 
 **Returns**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| int32_t | **0**: Success. **201**: Missing permissions.<br>         **401**: Parameter error. **2100002**: Service connection failure.<br>         **2100003**: Internal error.|
+| int32_t | 0 - success. 201 - insufficient permission.<br>         401 - parameter error. 2100002 - unable to connect to the service.<br>         2100003 - internal error. |
 
 ### OH_NetConn_GetAddrInfo()
 
@@ -240,6 +248,7 @@ Obtains the DNS result based on the specified **netId**.
 **Required permission**: ohos.permission.INTERNET
 
 **Since**: 11
+
 
 **Parameters**
 
@@ -273,6 +282,7 @@ Releases the DNS query result.
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name| Description|
@@ -300,6 +310,7 @@ Obtains all activated data networks.
 **Required permissions**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 11
+
 
 **Parameters**
 
@@ -330,6 +341,7 @@ Registers a custom DNS resolver.
 **Deprecated from**: 13
 
 **Substitute**: OH_NetConn_RegisterDnsResolver
+
 
 **Parameters**
 
@@ -383,6 +395,11 @@ It is recommended to use the [OH_NetConn_RegisterCustomDnsResolver](#oh_netconn_
 
 **Since**: 13
 
+**Deprecated since**: 26.0.0
+
+**Substitutes:** OH_NetConn_RegisterCustomDnsResolver
+
+
 **Parameters**
 
 | Name| Description|
@@ -408,6 +425,10 @@ Unregisters a custom DNS resolver.
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 13
+
+**Deprecated since**: 26.0.0
+
+**Substitutes:** OH_NetConn_UnregisterCustomDnsResolver
 
 **Returns**
 
@@ -483,6 +504,7 @@ Binds a socket to the specified network.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -510,6 +532,7 @@ Sets an HTTP proxy for the current application.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -536,12 +559,13 @@ Registers a callback for HTTP proxy changes of the application.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_NetConn_AppHttpProxyChange](capi-net-connection-type-h.md#oh_netconn_apphttpproxychange) appHttpProxyChange | Callback to register.|
-| uint32_t *callbackId | ID of the registered callback.|
+| uint32_t *callbackId | ID generated after callback registration, associated with the registered callback. |
 
 **Returns**
 
@@ -563,11 +587,39 @@ Unregisters the callback for HTTP proxy changes of the application.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | uint32_t callbackId | ID of the callback to unregister.|
+
+### OH_NetConn_RefreshGlobalHttpProxyWithCallback()
+
+```c
+int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxyRefreshCallback callback, void *userContext)
+```
+
+**Description**
+
+Requests re-authentication of the global HTTP proxy. Calling this API triggers an asynchronous re-authentication request. After the authentication is complete, a callback is triggered once to notify the authentication result.<br> A return value of 0 indicates that the request has been accepted, not that the re-authentication has succeeded. The final authentication result is notified through the callback. If a non-zero value is returned, the callback will not be triggered.<br>
+
+**Required permissions:** ohos.permission.INTERNET
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_NetConn_GlobalHttpProxyRefreshCallback](capi-net-connection-type-h.md#oh_netconn_globalhttpproxyrefreshcallback) callback | Callback invoked to return the re-authentication result. If this parameter is NULL, the API returns 401. |
+| void *userContext | User-defined data, which is returned to the caller through the callback. The system does not access, copy, or release this data. It can be set to NULL. |
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| int32_t | Result code.<br>     0 - Success.<br>     201 - Missing permission.<br>     401 - Parameter error. |
 
 ### OH_NetConn_RegisterNetConnCallback()
 
@@ -585,12 +637,13 @@ Registers a callback for network status changes.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| netSpecifier | Network feature set.|
-| callback | Registered callbacks.|
+| [NetConn_NetSpecifier](capi-netconnection-netconn-netspecifier.md) *netSpecifier | Network specifier. |
+| [NetConn_NetConnCallback](capi-netconnection-netconn-netconncallback.md) *callback | Registered callback function set. |
 | uint32_t timeout | Timeout duration, in milliseconds. The value **0** indicates infinite waiting.|
 | uint32_t *callbackId | Callback IDs.|
 
@@ -616,11 +669,12 @@ Registers a callback for status changes of the default network.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| callback | Registered callbacks.|
+| [NetConn_NetConnCallback](capi-netconnection-netconn-netconncallback.md) *callback | Set of registered callback functions. |
 | uint32_t *callbackId | Callback IDs.|
 
 **Returns**
@@ -644,6 +698,7 @@ Unregisters the callback for network status changes.
 **Required permissions**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -671,6 +726,7 @@ Sets the URL of the system-level Proxy Auto Config (PAC) script, for example, **
 
 **Since**: 15
 
+
 **Parameters**
 
 | Name| Description|
@@ -695,6 +751,7 @@ Obtains the URL of the system-level PAC script.
 
 **Since**: 15
 
+
 **Parameters**
 
 | Name| Description|
@@ -715,7 +772,7 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 
 **Description**
 
-Queries network probe results. If an exception (for example, network disconnection) occurs and the request fails to be sent, the API immediately returns the result without performing subsequent detection. This API involves network operations. Do not call it in the main process. Otherwise, the UI may freeze.
+Queries network probe results. If an exception (for example, network disconnection) occurs and the request fails to be sent, the API immediately returns the result without performing subsequent probe. This API involves network operations. Do not call it in the main process. Otherwise, the UI may freeze.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -723,12 +780,13 @@ Queries network probe results. If an exception (for example, network disconnecti
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| char *destination | Target domain name or IP address to be detected. For a domain name, the domain name is resolved to the target IP address before the detection, and then the detection is initiated. The domain name resolution time is not included in the probe duration indicated by duration.|
-| int32_t duration | Probe duration. in seconds. The detection interval is 1 second. Therefore, you can use this field to control the number of detections.|
+| char *destination | Target domain name or IP address to be detected. For a domain name, the domain name is resolved to the target IP address before the probe, and then the probe is initiated. The domain name resolution time is not included in the probe duration indicated by duration.|
+| int32_t duration | Probe duration. in seconds. The probe interval is 1 second. Therefore, you can use this field to control the number of probes.|
 | [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) *probeResultInfo | Packet loss rate and round-trip time (RTT).|
 
 **Returns**
@@ -754,6 +812,7 @@ Queries network trace route information.
 **Required permissions**: ohos.permission.INTERNET, ohos.permission.LOCATION, and ohos.permission.ACCESS_NET_TRACE_INFO
 
 **Since**: 20
+
 
 **Parameters**
 

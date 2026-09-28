@@ -1,57 +1,49 @@
 # Audio Format Conversion (C/C++)
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xxngwang-->
 <!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:16:35.098Z pushedAt=2026-07-21T12:10:01.443Z -->
+<!-- md-trans-meta sourceCommit=efdc6a6056235cd3aa9a7162f9e2331d94abb117 translatedAt=2026-09-18T03:07:14.530Z pushedAt=2026-09-18T10:02:40.380Z -->
 
-Starting from API version 26.0.0, [AudioConverter](../../reference/apis-audio-kit/capi-audioconverter.md) provides Pulse Code Modulation (PCM) audio format conversion capabilities. In scenarios such as pure audio transcoding, you can use format conversion APIs to convert the format of PCM audio data, including sample rate, channel layout, and sample format (bit depth).
+Starting from API version 26.0.0, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) provides Pulse Code Modulation (PCM) audio format conversion capabilities. In scenarios such as pure audio transcoding, you can use the format conversion APIs to convert PCM audio data from one format to another, including conversion of sample rate, channel layout, and sample format (bit depth).
 
 ## How to Develop
 
-To use the PCM audio format conversion capabilities provided by [AudioConverter](../../reference/apis-audio-kit/capi-audioconverter.md), you need to add the corresponding header file.
+To use the PCM audio format conversion capability provided by [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md), include the corresponding header file.
 
 ### Linking the Dynamic Library in the CMake Script
 
 ``` cmake
 target_link_libraries(sample PUBLIC libohaudiosuite.so)
 ```
-
 ### Including the Header File
-
 Include the header file &lt;[native_audio_converter.h](../../reference/apis-audio-kit/capi-native-audio-converter-h.md)&gt; to use audio format conversion APIs.
 
-```cpp
+<!-- @[format_conversion_header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
+
+``` C++
 #include <ohaudiosuite/native_audio_converter.h>
 ```
-
 For return values of these APIs, see [OH_AudioConverter_Result](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_result).
 
-For detailed API descriptions, see [AudioConverter](../../reference/apis-audio-kit/capi-audioconverter.md).
+For details on the APIs, see [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md).
 
 **Features**
 
 The core capabilities provided by the format converter are as follows:
 
 - Sample rate conversion: Supports mutual conversion between 14 standard sample rates, including common rates from 8000 Hz to 192000 Hz.
-
 - Channel layout conversion: Supports conversion between 32 channel layouts, covering various audio configurations from 1 to 8 channels, such as stereo to mono, 5.1 surround to 7.1 surround, and more.
-
 - Sample format conversion: Supports mutual conversion between five PCM sample formats, including 8-bit unsigned, 16/24/32-bit signed, and 32-bit float formats.
 
 **Constraints**
 
 - Only PCM audio data is supported for conversion.
-
 - Callback data size limit: A single callback can return a maximum of 400 KB of data. Data exceeding this limit must be returned in multiple callbacks.
-
 - Output buffer capacity: The output buffer must be able to hold at least one complete audio frame (sample rate × number of channels × sample format byte size).
-
 - End-of-stream handling: When the input callback function returns `AUDIOCONVERTER_INPUT_DATA_FINISHED`, indicating that all input data has been provided, you must continue calling [OH_AudioConverter_Process()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_process) until `outputSize` reaches 0 to ensure that all buffered converted data is output.
-
 - Data pointer validity: The data pointer returned by the callback function must remain valid until [OH_AudioConverter_Process()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_process) returns. Do not release it immediately after the callback returns.
 
 **Data Processing Flow**
@@ -59,45 +51,29 @@ The core capabilities provided by the format converter are as follows:
 The format converter uses a stream-based data processing model. The complete data processing flow is as follows:
 
 1. Initialization phase:
-
    - Call [OH_AudioConverter_Create()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_create) to create a converter instance.
-
    - Call [OH_AudioConverter_SetInputCallback()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_setinputcallback) to set the input data callback function.
 
 2. Data input phase:
-
    - The converter internally maintains an input data buffer.
-
    - When the buffered data is insufficient, the converter automatically invokes the callback function to request more data.
-
    - The callback function returns data based on the current state:
-
      - `AUDIOCONVERTER_INPUT_HAVE_DATA`: Data is available. Returns the size of the data provided this time (must be greater than 0).
-
      - `AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA`: No data is available at the moment. Returns 0, and the converter stops the current processing.
-
      - `AUDIOCONVERTER_INPUT_DATA_FINISHED`: The data stream ends. Returns 0, and the converter continues processing the buffered data.
 
 3. Data conversion phase:
-
    - The converter calculates the required amount of input data based on the input and output formats.
-
    - The converter performs operations such as resampling, channel conversion, and format conversion on the input data.
-
    - The converted data is stored in the output buffer.
 
 4. Data output phase:
-
    - Call [OH_AudioConverter_Process()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_process) to obtain the converted data.
-
    - The `outputSize` returned by each call indicates the actual size of the output data.
-
    - Call [OH_AudioConverter_Process()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_process) in a loop to perform format conversion until `outputSize` is 0 and the input callback function returns the `AUDIOCONVERTER_INPUT_DATA_FINISHED` status, ensuring that all buffered conversion data is output.
 
 5. Cleanup phase:
-
    - Call [OH_AudioConverter_Destroy()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_destroy) to destroy the converter instance.
-
    - Release all related resources.
 
 **Supported Audio Formats**
@@ -107,7 +83,6 @@ The format conversion APIs support the following PCM audio formats:
 - Sample rate: [SAMPLE_RATE_8000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_11025](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_12000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_16000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_22050](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_24000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_32000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_44100](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_48000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_64000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_88200](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_96000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_176400](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_192000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)
 
 - Channel layout: [CH_LAYOUT_MONO](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_STEREO](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_STEREO_DOWNMIX](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_2POINT1](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_3POINT0](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_SURROUND](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_3POINT1](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_4POINT0](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_QUAD_SIDE](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_QUAD](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_2POINT0POINT2](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_4POINT1](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_5POINT0](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_5POINT0_BACK](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_2POINT1POINT2](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_3POINT0POINT2](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_5POINT1](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_5POINT1_BACK](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_6POINT0](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_3POINT1POINT2](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_6POINT0_FRONT](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_HEXAGONAL](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_6POINT1](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_6POINT1_BACK](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_6POINT1_FRONT](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_7POINT0](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_7POINT0_FRONT](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_7POINT1](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_OCTAGONAL](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_5POINT1POINT2](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_7POINT1_WIDE](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_7POINT1_WIDE_BACK](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)
-
 - Sample format: [AUDIO_SAMPLE_U8](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat), [AUDIO_SAMPLE_S16LE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat), [AUDIO_SAMPLE_S24LE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat), [AUDIO_SAMPLE_S32LE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat), [AUDIO_SAMPLE_F32LE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)
 
 ### Creating a Format Converter
@@ -248,9 +223,7 @@ The format conversion APIs support the following PCM audio formats:
    ```
 
 <!--RP1-->
-
 ## Samples
 
 - [AudioSuiteSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
-
 <!--RP1End-->

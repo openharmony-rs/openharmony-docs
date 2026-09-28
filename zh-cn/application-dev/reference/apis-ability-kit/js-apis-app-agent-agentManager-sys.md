@@ -39,7 +39,7 @@ getAllAgentCards(): Promise\<Array\<AgentCard>>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise<Array<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard-1)>> | Promise对象，返回设备上所有的AgentCard数组。 |
+| Promise<Array<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard)>> | Promise对象，返回设备上所有的AgentCard数组。 |
 
 **错误码：**
 
@@ -90,7 +90,7 @@ getAgentCardsByBundleName(bundleName: string): Promise\<Array\<AgentCard>>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise<Array<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard-1)>> | Promise对象，返回指定bundleName内的所有AgentCard数组。 |
+| Promise<Array<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard)>> | Promise对象，返回指定bundleName内的所有AgentCard数组。 |
 
 **错误码：**
 
@@ -145,7 +145,7 @@ getAgentCardByAgentId(bundleName: string, agentId: string): Promise\<AgentCard>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard-1)> | Promise对象，返回指定的AgentCard。 |
+| Promise<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard)> | Promise对象，返回指定的AgentCard。 |
 
 **错误码：**
 
@@ -191,6 +191,8 @@ connectAgentExtensionAbility(want: Want, agentId: string, callback: AgentExtensi
 > - 同一个AgentExtensionAbility中，最多只能同时运行100个LOW_CODE类型的Agent，否则会报35600003错误码。
 >
 > - 同一个AgentExtensionAbility中，不允许重复连接同一个LOW_CODE类型的Agent。
+>
+> - 该接口不支持应用分身。
 
 **系统接口**：此接口为系统接口。
 
@@ -317,7 +319,7 @@ registerAgentCard(agentCard: AgentCard): Promise\<void>
 
 | 参数名    | 类型                                              | 必填 | 说明           |
 | --------- | ------------------------------------------------- | ---- | ------------ |
-| agentCard | [AgentCard](./js-apis-inner-application-AgentCard.md#agentcard-1) | 是   | 要注册的AgentCard信息。 |
+| agentCard | [AgentCard](./js-apis-inner-application-AgentCard.md#agentcard) | 是 | 要注册的AgentCard信息。 |
 
 **返回值：**
 
@@ -403,7 +405,7 @@ updateAgentCard(agentCard: AgentCard): Promise\<void>
 
 | 参数名    | 类型                                              | 必填 | 说明           |
 | --------- | ------------------------------------------------- | ---- | ------------ |
-| agentCard | [AgentCard](./js-apis-inner-application-AgentCard.md#agentcard-1) | 是   | 要更新的AgentCard信息。 |
+| agentCard | [AgentCard](./js-apis-inner-application-AgentCard.md#agentcard) | 是 | 要更新的AgentCard信息。 |
 
 **返回值：**
 

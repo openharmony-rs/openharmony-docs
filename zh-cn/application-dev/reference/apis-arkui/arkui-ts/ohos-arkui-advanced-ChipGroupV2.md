@@ -609,7 +609,7 @@ struct Index {
 }
 ```
 
-![](figures/chipgroupv2_1.png)
+![](figures/chipgroupv2-1.png)
 
 ### 示例2（ChipGroupV2设置最右侧自定义组件）
 
@@ -707,7 +707,7 @@ struct Index {
 }
 ```
 
-![](figures/chipgroupv2_2.png)
+![](figures/chipgroupv2-2.png)
 
 ### 示例3（设置Symbol类型图标）
 
@@ -809,7 +809,7 @@ struct Index {
 }
 ```
 
-![](figures/chipgroupv2_3.png)
+![](figures/chipgroupv2-3.png)
 
 ### 示例4（监听ChipGroupV2内对象类型属性的内部属性变化）
 
@@ -887,3 +887,94 @@ struct Index {
 ```
 
 ![chipgroupv2-sample4](figures/chipgroupv2-make-observed.gif)
+
+### 示例5（设置系统材质样式）
+
+该示例通过设置[ChipGroupV2ItemStyle](#chipgroupv2itemstyle)的backgroundSystemMaterial属性，实现了[ChipGroupV2](#chipgroupv2-1)的系统材质样式效果，包括沉浸式材质和自动反色功能。组件需放置在Navigation的标题栏中，沉浸光感效果才会生效。
+
+从API版本26.0.0开始，[ChipGroupV2ItemStyle](#chipgroupv2itemstyle)新增backgroundSystemMaterial属性。
+
+```ts
+import {
+  ChipGroupV2,
+  ChipGroupV2Items,
+  ChipGroupV2ItemStyle,
+  ChipGroupV2Space,
+  ChipGroupV2Padding,
+  LengthMetrics,
+  UIUtils,
+  uiMaterial,
+  ColorMetrics
+} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local items: ChipGroupV2Items = new ChipGroupV2Items([
+    {
+      label: { text: '操作块1' }
+    },
+    {
+      label: { text: '操作块2' }
+    },
+    {
+      label: { text: '操作块3' }
+    },
+    {
+      label: { text: '操作块4' }
+    },
+    {
+      label: { text: '操作块5' }
+    }
+  ]);
+  @Local chipGroupSpace: ChipGroupV2Space = new ChipGroupV2Space({ itemSpace: 8 });
+  @Local chipGroupPadding: ChipGroupV2Padding = new ChipGroupV2Padding({ top: 10, bottom: 10 });
+  @Local itemStyle: ChipGroupV2ItemStyle = new ChipGroupV2ItemStyle({
+    backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      colorInvert: true
+    }),
+  });
+  @Local selectedIndexes: number[] = [];
+
+  @Builder
+  NavigationTitle() {
+    Column({ space: 10 }) {
+      ChipGroupV2({
+        items: this.items,
+        $items: (items: ChipGroupV2Items) => { this.items = items; },
+        itemStyle: this.itemStyle,
+        chipGroupSpace: this.chipGroupSpace,
+        chipGroupPadding: this.chipGroupPadding,
+        selectedIndexes: this.selectedIndexes,
+        $selectedIndexes: (indexes: number[]) => { this.selectedIndexes = indexes; },
+      })
+    }
+    .linearGradient({
+      angle: 90, // 渐变角度，90度是从左到右。
+      colors: [
+        ['#FF9A9E', 0.0], // 起始颜色及位置（0.0表示起点）。
+        ['#FECFEF', 0.5], // 中间颜色及位置。
+        ['#3B324C', 1.0] // 结束颜色及位置（1.0表示终点）。
+      ]
+    })
+    .padding(12)
+    .width('100%')
+  }
+
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
+  }
+
+}
+```
+
+该示例配图为高算力设备强档效果。
+
+![](figures/chipgroupv2-5.png)

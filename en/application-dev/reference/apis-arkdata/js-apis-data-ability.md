@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=322f3406587b0e3e9fd2ec3098ccc13904d7d66a translatedAt=2026-09-04T03:23:51.795Z pushedAt=2026-09-09T09:11:03.704Z -->
 
 The **DataAbility** module provides APIs to create predicates for querying data from relational database (RDB) stores.
 
@@ -31,32 +32,34 @@ Creates an **RdbPredicates** object with a table name and **DataAbilityPredicate
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| name | string | Yes| Name of a database table.|
+| name | string | Yes | Name of the database table. It cannot be an empty string. |
 | dataAbilityPredicates | [DataAbilityPredicates](#dataabilitypredicates) | Yes| **DataAbilityPredicates** object.  |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| rdb.[RdbPredicates](js-apis-data-rdb.md#rdbpredicates) | **RdbPredicates** object created.|
+| rdb.[RdbPredicates](js-apis-data-rdb.md#rdbpredicates) | **RdbPredicates** object that matches the specified field. |
 
 **Example**
 
   ```js
-  let dataAbilityPredicates = new dataAbility.DataAbilityPredicates()
-  dataAbilityPredicates.equalTo("NAME", "Rose")
+  let dataAbilityPredicates = new dataAbility.DataAbilityPredicates();
+  dataAbilityPredicates.equalTo("NAME", "Rose");
   // EMPLOYEE is a table created in an RDB store.
-  let predicates = dataAbility.createRdbPredicates("EMPLOYEE", dataAbilityPredicates)
+  let predicates = dataAbility.createRdbPredicates("EMPLOYEE", dataAbilityPredicates);
   ```
 
 ## DataAbilityPredicates
 
 Provides APIs for creating diverse query conditions.
 
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
+
 **Initialization**
 
   ```js
-  let dataAbilityPredicates = new dataAbility.DataAbilityPredicates()
+  let dataAbilityPredicates = new dataAbility.DataAbilityPredicates();
   ```
 
 ### equalTo
@@ -65,7 +68,7 @@ equalTo(field: string, value: ValueType): DataAbilityPredicates
 
 Creates a **DataAbilityPredicates** object to search for the records in the specified column that are equal to the given value.
 
-This API is similar to the SQL equal to (=) operator.
+This API is similar to the "=" operator in an SQL statement.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -73,7 +76,7 @@ This API is similar to the SQL equal to (=) operator.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table, which cannot be an empty string. |
 | value | [ValueType](#valuetype) | Yes| Value to match.|
 
 **Return value**
@@ -85,7 +88,7 @@ This API is similar to the SQL equal to (=) operator.
 **Example**
 
   ```js
-  dataAbilityPredicates.equalTo("NAME", "lisi")
+  dataAbilityPredicates.equalTo("NAME", "lisi");
   ```
 
 ### notEqualTo
@@ -94,7 +97,7 @@ notEqualTo(field: string, value: ValueType): DataAbilityPredicates
 
 Creates a **DataAbilityPredicates** object to search for the records in the specified column that are not equal to the given value.
 
-This API is similar to the SQL not equal (!=) operator.
+This API is similar to the "!=" operator in an SQL statement.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -102,7 +105,7 @@ This API is similar to the SQL not equal (!=) operator.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. It cannot be an empty string. |
 | value | [ValueType](#valuetype) | Yes| Value to match.|
 
 **Return value**
@@ -114,14 +117,14 @@ This API is similar to the SQL not equal (!=) operator.
 **Example**
 
   ```js
-  dataAbilityPredicates.notEqualTo("NAME", "lisi")
+  dataAbilityPredicates.notEqualTo("NAME", "lisi");
   ```
 
 ### beginWrap
 
 beginWrap(): DataAbilityPredicates
 
-Creates a **DataAbilityPredicates** object to add a left parenthesis. This API is similar to "(" in an SQL statement and must be used with **endWrap**.
+Adds a left parenthesis to the predicate. This API is similar to "(" in an SQL statement and must be used with [endWrap](#endwrap).
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -129,7 +132,7 @@ Creates a **DataAbilityPredicates** object to add a left parenthesis. This API i
 
 | Type| Description|
 | -------- | -------- |
-| [DataAbilityPredicates](#dataabilitypredicates) | **DataAbilityPredicates** object with a left parenthesis.|
+| [DataAbilityPredicates](#dataabilitypredicates) | Predicate with a left parenthesis. |
 
 **Example**
 
@@ -139,14 +142,14 @@ Creates a **DataAbilityPredicates** object to add a left parenthesis. This API i
       .equalTo("AGE", 18)
       .or()
       .equalTo("SALARY", 200.5)
-      .endWrap()
+      .endWrap();
   ```
 
 ### endWrap
 
 endWrap(): DataAbilityPredicates
 
-Creates a **DataAbilityPredicates** object to add a right parenthesis. This API is similar to ")" in an SQL statement and must be used with **beginWrap**.
+Adds a right parenthesis to the predicate. This API is similar to ")" in an SQL statement and must be used with [beginWrap](#beginwrap).
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -154,7 +157,7 @@ Creates a **DataAbilityPredicates** object to add a right parenthesis. This API 
 
 | Type| Description|
 | -------- | -------- |
-| [DataAbilityPredicates](#dataabilitypredicates) | **DataAbilityPredicates** object with a right parenthesis.|
+| [DataAbilityPredicates](#dataabilitypredicates) | Returns a predicate with a right parenthesis. |
 
 **Example**
 
@@ -164,16 +167,16 @@ Creates a **DataAbilityPredicates** object to add a right parenthesis. This API 
       .equalTo("AGE", 18)
       .or()
       .equalTo("SALARY", 200.5)
-      .endWrap()
+      .endWrap();
   ```
 
 ### or
 
 or(): DataAbilityPredicates
 
-Creates a **DataAbilityPredicates** object to add the OR condition.
+Adds the logical OR condition to the predicate.
 
-This API is similar to the SQL **or** operator.
+This API is similar to the "or" operator in an SQL statement.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -181,21 +184,21 @@ This API is similar to the SQL **or** operator.
 
 | Type| Description|
 | -------- | -------- |
-| [DataAbilityPredicates](#dataabilitypredicates) | **DataAbilityPredicates** object with the OR condition.|
+| [DataAbilityPredicates](#dataabilitypredicates) | Predicate with logical OR. |
 
 **Example**
 
   ```js
   dataAbilityPredicates.equalTo("NAME", "Lisa")
       .or()
-      .equalTo("NAME", "Rose")
+      .equalTo("NAME", "Rose");
   ```
 
 ### and
 
 and(): DataAbilityPredicates
 
-Creates a **DataAbilityPredicates** object to add the AND condition.
+Adds the logical AND condition to the predicate.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -203,21 +206,21 @@ Creates a **DataAbilityPredicates** object to add the AND condition.
 
 | Type| Description|
 | -------- | -------- |
-| [DataAbilityPredicates](#dataabilitypredicates) | **DataAbilityPredicates** object with the AND condition.|
+| [DataAbilityPredicates](#dataabilitypredicates) | Predicate with logical AND. |
 
 **Example**
 
   ```js
   dataAbilityPredicates.equalTo("NAME", "Lisa")
       .and()
-      .equalTo("SALARY", 200.5)
+      .equalTo("SALARY", 200.5);
   ```
 
 ### contains
 
 contains(field: string, value: string): DataAbilityPredicates
 
-Creates a **DataAbilityPredicates** object to search for the records in the specified column that contain the given value.
+Configures a predicate to match fields whose data type is string and whose value contains the specified string.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -225,8 +228,8 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
-| value | string | Yes| Value to match.|
+| field | string | Yes | Column name in the database table. It cannot be an empty string. |
+| value | string | Yes | String to match against the predicate. |
 
 **Return value**
 
@@ -237,7 +240,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 **Example**
 
   ```js
-  dataAbilityPredicates.contains("NAME", "os")
+  dataAbilityPredicates.contains("NAME", "os");
   ```
 
 ### beginsWith
@@ -246,7 +249,7 @@ beginsWith(field: string, value: string): DataAbilityPredicates
 
 Creates a **DataAbilityPredicates** object to search for the records in the specified column that begin with the given value.
 
-This API is similar to the percent sign (%) in SQL statements.
+This API is similar to "value%" in an SQL statement.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -254,7 +257,7 @@ This API is similar to the percent sign (%) in SQL statements.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. It cannot be an empty string. |
 | value | string | Yes| Value to match.|
 
 **Return value**
@@ -266,7 +269,7 @@ This API is similar to the percent sign (%) in SQL statements.
 **Example**
 
   ```js
-  dataAbilityPredicates.beginsWith("NAME", "os")
+  dataAbilityPredicates.beginsWith("NAME", "os");
   ```
 
 ### endsWith
@@ -275,7 +278,7 @@ endsWith(field: string, value: string): DataAbilityPredicates
 
 Creates a **DataAbilityPredicates** object to search for the records in the specified column that end with the given value.
 
-This API is similar to the percent sign (%) in SQL statements.
+This API is similar to "%value" in an SQL statement.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -283,7 +286,7 @@ This API is similar to the percent sign (%) in SQL statements.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. It cannot be an empty string. |
 | value | string | Yes| Value to match.|
 
 **Return value**
@@ -294,8 +297,8 @@ This API is similar to the percent sign (%) in SQL statements.
 
 **Example**
 
-  ```
-  dataAbilityPredicates.endsWith("NAME", "se")
+  ```js
+  dataAbilityPredicates.endsWith("NAME", "se");
   ```
 
 ### isNull
@@ -310,7 +313,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. It cannot be an empty string. |
 
 **Return value**
 
@@ -321,7 +324,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 **Example**
 
   ```js
-  dataAbilityPredicates.isNull("NAME")
+  dataAbilityPredicates.isNull("NAME");
   ```
 
 ### isNotNull
@@ -336,7 +339,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. Cannot be an empty string. |
 
 **Return value**
 
@@ -347,7 +350,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 **Example**
 
   ```js
-  dataAbilityPredicates.isNotNull("NAME")
+  dataAbilityPredicates.isNotNull("NAME");
   ```
 
 ### like
@@ -364,7 +367,7 @@ This API is similar to the SQL **like** statement.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. Cannot be an empty string. |
 | value | string | Yes| Value to match.|
 
 **Return value**
@@ -376,7 +379,7 @@ This API is similar to the SQL **like** statement.
 **Example**
 
   ```js
-  dataAbilityPredicates.like("NAME", "%os%")
+  dataAbilityPredicates.like("NAME", "%os%");
   ```
 
 ### glob
@@ -391,7 +394,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. It cannot be an empty string. |
 | value | string | Yes| Value to match.|
 
 **Return value**
@@ -403,13 +406,13 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 **Example**
 
   ```js
-  dataAbilityPredicates.glob("NAME", "?h*g")
+  dataAbilityPredicates.glob("NAME", "?h*g");
 
-  // Only the records whose value is "Lisa" in the "name" column are matched.
-  dataAbilityPredicates.glob("NAME", "Lisa")
+  // Only matches the "NAME" field with the value "Lisa".
+  dataAbilityPredicates.glob("NAME", "Lisa");
 
-  // Only the records whose value is "lisa" in the "name" column are matched.
-  dataAbilityPredicates.glob("NAME", "lisa")
+  // Only matches the "NAME" field with the value "lisa".
+  dataAbilityPredicates.glob("NAME", "lisa");
   ```
 
 ### between
@@ -424,7 +427,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. It cannot be an empty string. |
 | low | [ValueType](#valuetype) | Yes| Minimum value to match.|
 | high | [ValueType](#valuetype) | Yes| Maximum value to match.|
 
@@ -437,7 +440,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 **Example**
 
   ```js
-  dataAbilityPredicates.between("AGE", 10, 50)
+  dataAbilityPredicates.between("AGE", 10, 50);
   ```
 
 ### notBetween
@@ -452,7 +455,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. It cannot be an empty string. |
 | low | [ValueType](#valuetype) | Yes| Minimum value to match.|
 | high | [ValueType](#valuetype) | Yes| Maximum value to match.|
 
@@ -465,7 +468,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 **Example**
 
   ```js
-  dataAbilityPredicates.notBetween("AGE", 10, 50)
+  dataAbilityPredicates.notBetween("AGE", 10, 50);
   ```
 
 ### greaterThan
@@ -480,7 +483,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table, which cannot be an empty string. |
 | value | [ValueType](#valuetype) | Yes| Value to match.|
 
 **Return value**
@@ -492,7 +495,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 **Example**
 
   ```js
-  dataAbilityPredicates.greaterThan("AGE", 18)
+  dataAbilityPredicates.greaterThan("AGE", 18);
   ```
 
 ### lessThan
@@ -507,7 +510,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. It cannot be an empty string. |
 | value | [ValueType](#valuetype) | Yes| Value to match.|
 
 **Return value**
@@ -519,7 +522,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 **Example**
 
   ```js
-  dataAbilityPredicates.lessThan("AGE", 20)
+  dataAbilityPredicates.lessThan("AGE", 20);
   ```
 
 ### greaterThanOrEqualTo
@@ -534,7 +537,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. It cannot be an empty string. |
 | value | [ValueType](#valuetype) | Yes| Value to match.|
 
 **Return value**
@@ -546,7 +549,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 **Example**
 
   ```js
-  dataAbilityPredicates.greaterThanOrEqualTo("AGE", 18)
+  dataAbilityPredicates.greaterThanOrEqualTo("AGE", 18);
   ```
 
 ### lessThanOrEqualTo
@@ -561,7 +564,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table, which cannot be an empty string. |
 | value | [ValueType](#valuetype) | Yes| Value to match.|
 
 **Return value**
@@ -573,7 +576,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 **Example**
 
   ```js
-  dataAbilityPredicates.lessThanOrEqualTo("AGE", 20)
+  dataAbilityPredicates.lessThanOrEqualTo("AGE", 20);
   ```
 
 ### orderByAsc
@@ -588,7 +591,7 @@ Creates a **DataAbilityPredicates** object to sort the records in the specified 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. It cannot be an empty string. |
 
 **Return value**
 
@@ -599,8 +602,8 @@ Creates a **DataAbilityPredicates** object to sort the records in the specified 
 **Example**
 
   ```js
-  // Sort data by name first; for the records with the same name, sort them by age; for the records with the same name and age, sort them by salary in ascending order.
-  dataAbilityPredicates.orderByAsc("NAME").orderByAsc("AGE").orderByAsc("SALARY")
+  // Sort by the "NAME" field first, then by the "AGE" field when the values are the same, and finally by "SALARY".
+  dataAbilityPredicates.orderByAsc("NAME").orderByAsc("AGE").orderByAsc("SALARY");
   ```
 
 ### orderByDesc
@@ -615,7 +618,7 @@ Creates a **DataAbilityPredicates** object to sort the records in the specified 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. It cannot be an empty string. |
 
 **Return value**
 
@@ -626,8 +629,8 @@ Creates a **DataAbilityPredicates** object to sort the records in the specified 
 **Example**
 
   ```js
-  // Sort the data by age first. For the data records with the same age, sort them by salary.
-  dataAbilityPredicates.orderByDesc("AGE").orderByDesc("SALARY")
+  // Sort by "AGE" first, and by "SALARY" when the values are the same.
+  dataAbilityPredicates.orderByDesc("AGE").orderByDesc("SALARY");
   ```
 
 ### distinct
@@ -647,7 +650,7 @@ Creates a **DataAbilityPredicates** object to filter out duplicate records.
 **Example**
 
   ```js
-  dataAbilityPredicates.equalTo("NAME", "Rose").distinct()
+  dataAbilityPredicates.equalTo("NAME", "Rose").distinct();
   ```
 
 ### limitAs
@@ -673,14 +676,14 @@ Creates a **DataAbilityPredicates** object to limit the number of records.
 **Example**
 
   ```js
-  dataAbilityPredicates.equalTo("NAME", "Rose").limitAs(3)
+  dataAbilityPredicates.equalTo("NAME", "Rose").limitAs(3);
   ```
 
 ### offsetAs
 
 offsetAs(rowOffset: number): DataAbilityPredicates
 
-Creates a **DataAbilityPredicates** object to set the start position of the query result. This API must be used together with **limitAs**. Otherwise, no result will be returned. To query all rows after the specified offset, pass in **-1** in **limitAs**.
+Creates a **DataAbilityPredicates** object to set the start position of the query result. This API must be used together with [limitAs](#limitas) to specify the number of results. Otherwise, no result will be returned. To query all rows after the specified offset, pass -1 to [limitAs](#limitas).
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -688,10 +691,9 @@ Creates a **DataAbilityPredicates** object to set the start position of the quer
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| rowOffset | number | Yes| Start position. The value should be a positive integer. If a value less than or equal to **0** is specified, the query result is returned from the first element.|
+| rowOffset | number | Yes | Start position of the returned result. If a positive integer is passed in, the result is returned from the specified position. If the value passed in is less than or equal to 0, the query result is returned from the first element. |
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
 | [DataAbilityPredicates](#dataabilitypredicates) | **DataAbilityPredicates** object created.|
@@ -700,9 +702,8 @@ Creates a **DataAbilityPredicates** object to set the start position of the quer
 
   ```js
   // Display the three data records following the first three records.
-  dataAbilityPredicates.equalTo("NAME", "Rose").offsetAs(3).limitAs(3)
+  dataAbilityPredicates.equalTo("NAME", "Rose").offsetAs(3).limitAs(3);
   ```
-
 
 ### groupBy
 
@@ -727,7 +728,7 @@ Creates a **DataAbilityPredicates** object to group the query results based on t
 **Example**
 
   ```js
-  dataAbilityPredicates.groupBy(["AGE", "NAME"])
+  dataAbilityPredicates.groupBy(["AGE", "NAME"]);
   ```
 
 ### indexedBy
@@ -742,7 +743,7 @@ Creates a **DataAbilityPredicates** object to specify the index column. Before c
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Name of the index.|
+| field | string | Yes | Name of the index to create. |
 
 **Return value**
 
@@ -767,7 +768,7 @@ export default class EntryAbility extends UIAbility {
         name: 'RdbTest.db', // Database file name.
         securityLevel: relationalStore.SecurityLevel.S3,
       };
-      // Table structure: EMPLOYEE (NAME, AGE, SALARY, CODES)
+      // Table structure: EMPLOYEE (ID, NAME, AGE, SALARY, CODES)
       const SQL_CREATE_TABLE =
         'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)'; // SQL statement for creating a data table.
       store = await relationalStore.getRdbStore(context, STORE_CONFIG);
@@ -783,14 +784,14 @@ export default class EntryAbility extends UIAbility {
     }
 
     // Create an index.
-    const SQL_CREATE_INDEX = 'CREATE INDEX SALARY_INDEX ON EMPLOYEE(SALARY)'
+    const SQL_CREATE_INDEX = 'CREATE INDEX SALARY_INDEX ON EMPLOYEE(SALARY)';
     await store.executeSql(SQL_CREATE_INDEX);
     // ...
 
-    let dataAbilityPredicates = new dataAbility.DataAbilityPredicates()
-    dataAbilityPredicates.indexedBy("SALARY_INDEX")
+    let dataAbilityPredicates = new dataAbility.DataAbilityPredicates();
+    dataAbilityPredicates.indexedBy("SALARY_INDEX");
 
-    //  ...
+    // ...
   }
 }
 ```
@@ -807,7 +808,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. Cannot be an empty string. |
 | value | Array&lt;[ValueType](#valuetype)&gt; | Yes| Array of **ValueType**s to match.|
 
 
@@ -820,7 +821,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 **Example**
 
   ```js
-  dataAbilityPredicates.in("AGE", [18, 20])
+  dataAbilityPredicates.in("AGE", [18, 20]);
   ```
 
 ### notIn
@@ -835,7 +836,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| field | string | Yes| Column name in the table.|
+| field | string | Yes | Column name in the database table. It cannot be an empty string. |
 | value | Array&lt;[ValueType](#valuetype)&gt; | Yes| Array of **ValueType**s to match.|
 
 **Return value**
@@ -847,7 +848,7 @@ Creates a **DataAbilityPredicates** object to search for the records in the spec
 **Example**
 
   ```js
-  dataAbilityPredicates.notIn("NAME", ["Lisa", "Rose"])
+  dataAbilityPredicates.notIn("NAME", ["Lisa", "Rose"]);
   ```
 
 ## ValueType
@@ -861,5 +862,5 @@ Defines the value types.
 | Type   | Description                |
 | ------- | -------------------- |
 | number  | The value is a number.  |
-| string  | The value is a string.  |
-| boolean | The value is of Boolean type.|
+| string  | The value is a string.   |
+| boolean | The value is a boolean.|

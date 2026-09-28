@@ -12,7 +12,7 @@
 >
 > 弹出框的弹出、更新与关闭请通过UIContext中的[getDialogPresenter()](arkts-apis-uicontext-uicontext.md#getdialogpresenter)方法获取到[DialogPresenter](arkts-apis-uicontext-dialogpresenter.md)对象后调用。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 ## 导入模块
 
@@ -24,7 +24,7 @@ import { dialog } from '@kit.ArkUI';
 
 在Dialog中定义文本样式属性，可作为消息内容的文字样式。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +38,7 @@ import { dialog } from '@kit.ArkUI';
 
 固定样式弹出框的按钮配置。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -58,7 +58,7 @@ import { dialog } from '@kit.ArkUI';
 
 弹出框列表配置项，用于ActionSheet样式的弹出框。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -67,14 +67,14 @@ import { dialog } from '@kit.ArkUI';
 | 名称   | 类型                                                | 只读 | 可选 | 说明                       |
 | ------ | --------------------------------------------------- | ---- | ---- | -------------------------- |
 | title  | [ResourceStr](arkui-ts/ts-types.md#resourcestr)     | 否   | 否   | 标题内容。                 |
-| icon   | [ResourceStr](arkui-ts/ts-types.md#resourcestr)     | 否   | 是   | 图标内容。 <br/>默认值：空     |
+| icon   | [ResourceStr](arkui-ts/ts-types.md#resourcestr)     | 否   | 是   | 图标内容。<br/>默认值：空 |
 | action | [VoidCallback](arkui-ts/ts-types.md#voidcallback12) | 否   | 否   | 单击选项时执行的回调。     |
 
 ## DialogBaseOptions
 
 所有弹出框共享的基本选项，定义弹出框的背景、边框、对齐、蒙层、避让等通用属性。[DialogStyleOptions](#dialogstyleoptions)与[DialogCustomOptions](#dialogcustomoptions)均继承自本接口。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,7 +86,7 @@ import { dialog } from '@kit.ArkUI';
 | width                   | [Dimension](arkui-ts/ts-types.md#dimension10)                | 否   | 是   | 弹出框的宽度。<br/>默认值：根据内容自适应。                                               |
 | height                  | [Dimension](arkui-ts/ts-types.md#dimension10)                | 否   | 是   | 弹出框的高度。<br/>默认值：根据内容自适应。                                               |
 | backgroundColor         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)          | 否   | 是   | 弹出框的背景颜色。<br/>默认值：Color.Transparent<br/>**说明：** 当backgroundColor设置为非透明色时，backgroundBlurStyle必须设置为BlurStyle.NONE。 |
-| backgroundBlurStyle     | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9) | 否   | 是   | 弹出框的背景模糊样式。<br/>默认值：BlurStyle.NONE<br/>**说明：** 设置为BlurStyle.NONE即可关闭背景模糊。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。当设置系统材质systemMaterial时，backgroundBlurStyle不生效。 |
+| backgroundBlurStyle     | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9) | 否   | 是   | 弹出框的背景模糊样式。<br/>默认值：BlurStyle.COMPONENT_ULTRA_THICK<br/>**说明：** 设置为BlurStyle.NONE即可关闭背景模糊。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。当设置系统材质systemMaterial时，backgroundBlurStyle不生效。 |
 | backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](arkui-ts/ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否   | 是   | 带选项的背景模糊样式。默认值与BackgroundBlurStyleOptions类型说明中的默认值一致。 |
 | backgroundEffect        | [BackgroundEffectOptions](arkui-ts/ts-universal-attributes-background.md#backgroundeffectoptions11) | 否   | 是   | 带选项的背景效果。默认值与BackgroundEffectOptions类型说明中的默认值一致。|
 | borderRadius            | [Dimension](arkui-ts/ts-types.md#dimension10)&nbsp;\|&nbsp;[BorderRadiuses](arkui-ts/ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](arkui-ts/ts-types.md#localizedborderradiuses12) | 否   | 是   | 背景的边框圆角半径。<br>默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' } |
@@ -95,7 +95,7 @@ import { dialog } from '@kit.ArkUI';
 | borderStyle             | [BorderStyle](arkui-ts/ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](arkui-ts/ts-types.md#edgestyles9) | 否   | 是   | 弹出框边框样式。<br/>默认值：BorderStyle.Solid               |
 | shadow                  | [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | 否   | 是   | 弹出框的阴影。<br/>当设备为PC/2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。 |
 | alignment               | [DialogBaseAlignment](#dialogbasealignment)                  | 否   | 是   | 弹出框的对齐模式。<br/>默认值：DialogBaseAlignment.DEFAULT                                           |
-| offset                  | [Offset](arkui-ts/ts-types.md#offset)                        | 否   | 是   | 弹出框相对于对齐位置的偏移。 <br/>默认值：{ dx: 0, dy: 0 }         |
+| offset                  | [Offset](arkui-ts/ts-types.md#offset)                        | 否   | 是   | 弹出框相对于对齐位置的偏移。<br/>默认值：{ dx: 0, dy: 0 } |
 | maskRect                | [Rectangle](arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) | 否   | 是   | 弹出框的蒙层区域。<br>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } |
 | maskColor               | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)          | 否   | 是   | 弹出框的蒙层颜色。<br/>默认值：跟随系统主题的默认蒙层颜色。                                           |
 | isModal                 | boolean                                                      | 否   | 是   | 弹出框是否为模态。值为true表示为模态且有蒙层，值为false表示为非模态且无蒙层。<br/>默认值：true |
@@ -106,7 +106,7 @@ import { dialog } from '@kit.ArkUI';
 | dialogTransition        | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是   | 用于打开/关闭弹出框内容区域的弹出框过渡动效参数。<br/>默认值：系统默认过渡动效。            |
 | maskTransition          | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是   | 用于打开/关闭遮罩的蒙层过渡动效参数。<br/>默认值：系统默认蒙层过渡动效。                       |
 | keyboardAvoidMode       | [KeyboardAvoidMode](arkui-ts/ts-universal-attributes-popup.md#keyboardavoidmode12枚举说明) | 否   | 是   | 键盘避让模式。<br/>默认值：KeyboardAvoidMode.DEFAULT         |
-| keyboardAvoidDistance   | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 弹出框与系统键盘之间的距离。<br/>默认值：系统默认避让距离。                                 |
+| keyboardAvoidDistance   | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 弹出框与系统键盘之间的距离。<br/>默认值：系统默认避让距离。 |
 | onWillAppear            | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 是   | 弹出框打开动画开始前的回调函数。                             |
 | onDidAppear             | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 是   | 弹出框出现时的回调函数。                                     |
 | onWillDisappear         | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 是   | 弹出框关闭动画开始前的回调函数。                             |
@@ -124,7 +124,7 @@ import { dialog } from '@kit.ArkUI';
 
 弹出框的消息内容与文字样式，继承自[DialogTextStyleOptions](#dialogtextstyleoptions)。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -138,7 +138,7 @@ import { dialog } from '@kit.ArkUI';
 
 固定样式弹出框的选项，继承自[DialogBaseOptions](#dialogbaseoptions)。具体用法可参考DialogPresenter的[present](arkts-apis-uicontext-dialogpresenter.md#present)接口示例。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -160,7 +160,7 @@ import { dialog } from '@kit.ArkUI';
 
 弹出框的内容由[DialogPresenter.present](arkts-apis-uicontext-dialogpresenter.md#present)方法的第一个参数提供，不在此选项对象中。具体用法可参考DialogPresenter的[present](arkts-apis-uicontext-dialogpresenter.md#present)接口示例。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -180,7 +180,7 @@ constructor()
 
 控制器的构造函数。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -192,7 +192,7 @@ close(): void
 
 关闭相应的弹出框。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -204,7 +204,7 @@ getState(): DialogState
 
 获取弹出框的状态。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -284,7 +284,7 @@ struct Index {
 
 对话的响应结果。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -298,7 +298,7 @@ struct Index {
 
 提供关闭弹出框操作的信息与关闭接口。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -313,7 +313,7 @@ struct Index {
 
 弹出框的对齐方式。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -336,7 +336,7 @@ struct Index {
 
 弹出框中按钮的排列方式。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -352,7 +352,7 @@ struct Index {
 
 Dialog状态的枚举。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -5,6 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4b1c0990e7305766fe10024f567b18e463a94205 translatedAt=2026-09-04T02:36:47.685Z pushedAt=2026-09-09T09:11:03.626Z -->
 
 > **NOTE**
 > 
@@ -231,8 +232,8 @@ export default class EntryAbility extends UIAbility {
       console.info("CREATE VIRTUAL TABLE OK");
       await rdbStore.executeSql("INSERT INTO pages(keywords, title, body) VALUES('Song', 'xxx', 'Today is Sunday');");
       console.info("INSERT VIRTUAL TABLE OK, body is 'Today is Sunday'");
-      await rdbStore.executeSql("INSERT INTO pages(keywords, title, body) VALUES('Song', 'xxx', 'Tomorrow is Monday');");
-      console.info("INSERT VIRTUAL TABLE OK, body is 'Tomorrow is Monday'");
+      await rdbStore.executeSql("INSERT INTO pages(keywords, title, body) VALUES('Song', 'xxx', 'I love Beijing Tiananmen, the sun rises over Tiananmen');"ananmen, the sun rises over Tiananmen');");
+      console.info("INSERT VIRTUAL TABLE OK, body is 'I love Beijing Tiananmen, the sun rises over Tiananmen'"ananmen, the sun rises over Tiananmen'");
       let resultSet = await rdbStore.querySql("select * from pages where body match 'Monday';");
       while (resultSet.goToNextRow()) {
         console.info(`query result success, match body:${resultSet.getString(resultSet.getColumnIndex("body"))}`);

@@ -110,7 +110,7 @@ struct DirectionKey {
 
 ## 处理操纵杆输入
 
-游戏手柄的操纵杆输入会触发焦点轴事件，开发者可以为获焦的组件绑定[onFocusAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-focus_axis.md#onfocusaxisevent)接口回调，处理相应的事件逻辑。示例如下：
+游戏手柄的操纵杆输入会触发焦点轴事件，开发者可以为获焦的组件绑定[onFocusAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-focus-axis.md#onfocusaxisevent)接口回调，处理相应的事件逻辑。示例如下：
 <!-- @[gamepad_joystick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/Joystick.ets) -->
 
 ``` TypeScript
@@ -163,13 +163,13 @@ struct GamepadSample {
             let absX = event.axisMap.get(AxisModel.ABS_X);
             let absY = event.axisMap.get(AxisModel.ABS_Y);
             let absZ = event.axisMap.get(AxisModel.ABS_Z);
-            let absRz = event.axisMap.get(AxisModel.ABS_RZ);
+            let absRZ = event.axisMap.get(AxisModel.ABS_RZ);
             let absGas = event.axisMap.get(AxisModel.ABS_GAS);
             let absBrake = event.axisMap.get(AxisModel.ABS_BRAKE);
             let absHat0X = event.axisMap.get(AxisModel.ABS_HAT0X);
             let absHat0Y = event.axisMap.get(AxisModel.ABS_HAT0Y);
             this.axisValue =
-              'absX: ' + absX + '\nabsY: ' + absY + '\nabsZ: ' + absZ + '\nabsRz: ' + absRz + '\nabsGas: ' + absGas +
+              'absX: ' + absX + '\nabsY: ' + absY + '\nabsZ: ' + absZ + '\nabsRZ: ' + absRZ + '\nabsGas: ' + absGas +
                 '\nabsBrake: ' + absBrake + '\nabsHat0X: ' + absHat0X + '\nabsHat0Y: ' + absHat0Y;
           })
           .onKeyEvent((event: KeyEvent) => {

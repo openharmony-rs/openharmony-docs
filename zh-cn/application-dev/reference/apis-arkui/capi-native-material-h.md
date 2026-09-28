@@ -11,7 +11,7 @@
 
 提供ArkUI（方舟UI框架）在Native侧的沉浸式材质类型和API声明，用于实现半透明模糊背景、光感交互反馈等沉浸式UI效果。
 
-**引用文件：** `<arkui/native_material.h>`
+**引用文件：** <arkui/native_material.h>
 
 **库：** libace_ndk.z.so
 

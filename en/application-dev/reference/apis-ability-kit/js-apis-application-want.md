@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=aee2f7468d1b3b04e493c7068f7ee7eaa8e0ca32 translatedAt=2026-09-03T11:02:48.383Z pushedAt=2026-09-05T10:47:30.516Z -->
 
 Want is a carrier for information transfer between objects (application components). Want can be used as a parameter of **startAbility** to specify a startup target and information that needs to be carried during startup, for example, **bundleName** and **abilityName**, which respectively indicate the bundle name of the target ability and the ability name in the bundle. When ability A needs to start ability B and transfer some data to ability B, it can use Want a carrier to transfer the data.
 
@@ -27,12 +28,12 @@ import Want from '@ohos.application.Want';
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
 | deviceId    | string               | No  | Yes  | ID of the device running the ability. If this field is unspecified, the local device is used.                               |
 | bundleName   | string               | No  | Yes  | Bundle name.|
-| abilityName  | string               | No  | Yes  | Name of the ability. If both **bundleName** and **abilityName** are specified in a Want object, the Want object can match a specific ability. The value of **abilityName** must be unique in an application.|
+| abilityName  | string               | No   | Yes   | Indicates the name of the Ability to start. If both bundleName and abilityName are specified in a Want, the Want can directly match the specified Ability. For more precise matching, the moduleName field can also be used. The abilityName must be unique within an application. |
 | uri          | string               | No  | Yes  | URI information to match. If **Uri** is specified in a Want object, the Want object will match the specified URI information, including **scheme**, **schemeSpecificPart**, **authority**, and **path**.|
 | type         | string               | No  | Yes  | MIME type, that is, the type of the file to open, for example, **'text/xml'** and **'image/*'**. For details about the MIME type definition, see https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com.  |
 | flags        | number               | No  | Yes  | How the Want object will be handled. By default, numbers are passed in. For details, see [flags](js-apis-ability-wantConstant.md#flags).|
 | action      | string               | No  | Yes  | Action to take, such as viewing and sharing application details. In implicit Want, you can define this property and use it together with **uri** or **parameters** to specify the operation to be performed on the data. For details, see [action](js-apis-ability-wantConstant.md#action). For details about the definition and matching rules of implicit Want, see [Matching Rules of Explicit Want and Implicit Want](../../application-models/explicit-implicit-want-mappings.md).                          |
-| parameters   | { [key: string]: any } | No  | Yes  | Want parameters in the form of custom key-value (KV) pairs. By default, the following keys are carried:<br>**ohos.aafwk.param.callerPid**: PID of the caller.<br>**ohos.aafwk.param.callerToken**: token of the caller.<br>**ohos.aafwk.param.callerUid**: UID in [bundleInfo](js-apis-bundle-BundleInfo.md#bundleinfodeprecated), that is, the application UID in the bundle information.<br>- **component.startup.newRules**: whether to enable the new control rule.<br>- **moduleName**: module name of the caller. No matter what this field is set to, the correct module name will be sent to the peer.<br>- **ohos.dlp.params.sandbox**: available only for DLP files.                                      |
+| parameters   | { [key: string]: any } | No   | Yes   | Indicates the WantParams description, which consists of key-value pairs determined by the developer. By default, the following keys are carried:<br>ohos.aafwk.param.callerPid indicates the PID of the caller.<br>ohos.aafwk.param.callerToken indicates the token of the caller.<br>ohos.aafwk.param.callerUid indicates the UID in [bundleInfo](js-apis-bundle-BundleInfo.md#bundleinfodeprecated), that is, the UID of the application in the application package.<br />- component.startup.newRules: indicates whether to enable the new control rules.<br />- moduleName: indicates the module name of the caller. Even if this field is defined as another string, it will be modified to the correct value when passed to the other end.<br />- ohos.dlp.params.sandbox: indicates that it exists only for DLP files.                                       |
 | entities    | Array\<string>       | No  | Yes  | Additional category information (such as browser and video player) of the ability. It is a supplement to the **action** field for implicit Want. and is used to filter ability types. For details, see [entity](js-apis-ability-wantConstant.md#entity).                                   |
 
 **Example**
@@ -50,28 +51,30 @@ import Want from '@ohos.application.Want';
     'bundleName': 'com.example.myapplication',
     'abilityName': 'EntryAbility',
     };
-    class MyAbility extends UIAbility{
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam){
-        this.context.startAbility(want, (error: BusinessError) => {
-        // Start an ability explicitly. The bundleName, abilityName, and moduleName parameters work together to uniquely identify an ability.
-        console.error(`error.code = ${error.code}`);
-        });
-    }
+    class MyAbility extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+          this.context.startAbility(want, (error: BusinessError) => {
+            // Explicitly launch the ability. The ability can be uniquely identified by bundleName, abilityName, and moduleName.
+            if (error) {
+              console.error(`StartAbility failed, error code: ${error.code}, error msg: ${error.message}.`);
+            }
+          });
+        }
     }
     ```
 
-- Data is transferred through user-defined fields. The following data types are supported (called in a UIAbility object, where context in the example is the context object of the UIAbility):
+- Passes data through custom fields. The following are the currently supported types (called in a UIAbility object, where context in the example is the context object of the UIAbility).
 
     * String
         ```ts
         import Want from '@ohos.application.Want';
 
         let want: Want = {
-            bundleName: 'com.example.myapplication',
-            abilityName: 'EntryAbility',
-            parameters: {
-                keyForString: 'str',
-            },
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility',
+          parameters: {
+            keyForString: 'str',
+          },
         };
         ```
     * Number
@@ -79,12 +82,12 @@ import Want from '@ohos.application.Want';
         import Want from '@ohos.application.Want';
 
         let want: Want = {
-            bundleName: 'com.example.myapplication',
-            abilityName: 'EntryAbility',
-            parameters: {
-                keyForInt: 100,
-                keyForDouble: 99.99,
-            },
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility',
+          parameters: {
+            keyForInt: 100,
+            keyForDouble: 99.99,
+          },
         };
         ```
     * Boolean
@@ -92,11 +95,11 @@ import Want from '@ohos.application.Want';
         import Want from '@ohos.application.Want';
 
         let want: Want = {
-            bundleName: 'com.example.myapplication',
-            abilityName: 'EntryAbility',
-            parameters: {
-                keyForBool: true,
-            },
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility',
+          parameters: {
+            keyForBool: true,
+          },
         };
         ```
     * Object
@@ -104,16 +107,16 @@ import Want from '@ohos.application.Want';
         import Want from '@ohos.application.Want';
 
         let want: Want = {
-            bundleName: 'com.example.myapplication',
-            abilityName: 'EntryAbility',
-            parameters: {
-                keyForObject: {
-                    keyForObjectString: 'str',
-                    keyForObjectInt: -200,
-                    keyForObjectDouble: 35.5,
-                    keyForObjectBool: false,
-                },
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility',
+          parameters: {
+            keyForObject: {
+              keyForObjectString: 'str',
+              keyForObjectInt: -200,
+              keyForObjectDouble: 35.5,
+              keyForObjectBool: false,
             },
+          },
         };
         ```
     * Array
@@ -121,46 +124,47 @@ import Want from '@ohos.application.Want';
         import Want from '@ohos.application.Want';
 
         let want: Want = {
-            bundleName: 'com.example.myapplication',
-            abilityName: 'EntryAbility',
-            parameters: {
-                keyForArrayString: ['str1', 'str2', 'str3'],
-                keyForArrayInt: [100, 200, 300, 400],
-                keyForArrayDouble: [0.1, 0.2],
-                keyForArrayObject: [{obj1: 'aaa'}, {obj2: 100}],
-            },
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility',
+          parameters: {
+            keyForArrayString: ['str1', 'str2', 'str3'],
+            keyForArrayInt: [100, 200, 300, 400],
+            keyForArrayDouble: [0.1, 0.2],
+            keyForArrayObject: [{obj1: 'aaa'}, {obj2: 100}],
+          },
         };
         ```
     * File descriptor (FD)
         ```ts
-        import fs from '@ohos.file.fs';
+        import fileIo from '@ohos.file.fs';
         import Want from '@ohos.application.Want';
         import { BusinessError } from '@ohos.base';
         import AbilityConstant from '@ohos.app.ability.AbilityConstant';
         import UIAbility from '@ohos.app.ability.UIAbility';
 
-
         let fd: number = 0;
         try {
-        fd = fs.openSync('/data/storage/el2/base/haps/pic.png').fd;
-        } catch(e) {
-        console.error(`openSync fail: ${JSON.stringify(e)}`);
+          fd = fileIo.openSync('/data/storage/el2/base/haps/pic.png').fd;
+        } catch (e) {
+          console.error(`OpenSync failed, error code: ${e.code}, error msg: ${e.message}.`);
         }
         let want: Want = {
-        deviceId: '', // An empty deviceId indicates the local device.
-        bundleName: 'com.example.myapplication',
-        abilityName: 'EntryAbility',
-        parameters: {
-            'keyFd':{'type':'FD', 'value':fd}
-        }
+          deviceId: '', // An empty deviceId indicates the local device.
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility',
+          parameters: {
+            'keyFd': { 'type': 'FD', 'value': fd }
+          }
         };
 
-        class MyAbility extends UIAbility{
-        onCreate(want: Want, launchParam: AbilityConstant.LaunchParam){
+        class MyAbility extends UIAbility {
+          onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
             this.context.startAbility(want, (error: BusinessError) => {
-            // Start an ability explicitly. The bundleName, abilityName, and moduleName parameters work together to uniquely identify an ability.
-            console.error(`error.code = ${error.code}`);
+              // Launch the ability explicitly. An ability can be uniquely identified by bundleName, abilityName, and moduleName.
+              if (error) {
+                console.error(`StartAbility failed, error code: ${error.code}, error msg: ${error.message}.`);
+              }
             });
-        }
+          }
         }
         ```

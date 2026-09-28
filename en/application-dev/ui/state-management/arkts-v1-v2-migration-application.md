@@ -1,14 +1,14 @@
 # Migration for In-Application State Variables
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=5cbda8a742fe4c75db3800c28ccfc8ffcd9cebc0 translatedAt=2026-06-30T03:37:57.348Z pushedAt=2026-06-30T04:36:46.447Z -->
+<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-09-21T11:45:11.816Z pushedAt=2026-09-23T09:33:39.458Z -->
 
 This guide provides migration instructions for in-application state variables.
+
 
 | V1 Decorator Name/Scenario| Migration Solution|
 | -------- | -------- |
@@ -18,6 +18,7 @@ This guide provides migration instructions for in-application state variables.
 | [PersistentStorage](./arkts-persiststorage.md) | [PersistenceV2](./arkts-new-persistencev2.md) |
 | Legacy migration scenarios| \@ObservedV2, \@Trace, [\@Monitor](./arkts-new-monitor.md)|
 
+
 ## LocalStorage->\@ObservedV2/\@Trace
 
 **Migration Rules**
@@ -25,6 +26,7 @@ This guide provides migration instructions for in-application state variables.
 LocalStorage is used to share state variables across pages. However, these variables are tightly coupled with the view layer in state management V1, requiring framework-level support for sharing.
 
 In state management V2, observation capabilities are embedded directly into the data itself, decoupling state from the view layer. As a result, LocalStorage-style functionality is no longer needed. Instead, you can create state instances using the \@ObservedV2 and \@Trace decorators, and then import or export these instances to enable cross-page state sharing.
+
 
 ### Basic Scenarios
 
@@ -139,7 +141,6 @@ When using **Navigation**, create a **src/main/resources/base/profile/route_map.
 V2:
 
 - Declare the \@ObservedV2 decorated **MyStorage** class and import it to the page to use.
-
 - Declare the \@Trace decorated properties as observable data shared between pages.
 
 <!-- @[Internal_@ObservedV2_@Trace_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/storage.ets) --> 
@@ -243,9 +244,7 @@ When using **Navigation**, create a **src/main/resources/base/profile/route_map.
 The following example demonstrates \@LocalStorageProp behavior, where local modifications do not synchronize back to LocalStorage:
 
 - In **Page1**, changes to the **count** variable decorated with \@LocalStorageProp remain local to the component and do not synchronize back to LocalStorage.
-
 - Clicking **push to Page2** navigates to **Page2**, where the **Text** component displays the original value **47** from LocalStorage. This is because **count** modified on **Page1** is not synced to LocalStorage.
-
 - Clicking **change Storage Count** updates the value of **count** via **setOrCreate** of LocalStorage and triggers notifications to all bound variables.
 
 <!-- @[Internal_@Trace_setOrCreate_V1_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV1/Page1.ets) -->
@@ -325,7 +324,6 @@ struct Page2 {
 In V2, you can use \@Local and \@Monitor to achieve the similar effect.
 
 - The **count** variable decorated with \@Local is local to the component. Changes to it will not synchronize back to **storage**.
-
 - \@Monitor listens for changes of **storage.count**. When **storage.count** changes, the \@Local value is updated in the callback of \@Monitor.
 
 <!-- @[Internal_@ObservedV2_@Trace_V2_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV2/Page1.ets) -->
@@ -418,6 +416,7 @@ struct Page2 {
   }
 }
 ```
+
 
 ### Scenario Where a Custom Component Receives a LocalStorage Instance
 
@@ -767,11 +766,10 @@ struct NavigationContentMsgStack {
 }
 ```
 
+
 ### LocalStorage Migration in Multi-instance Scenarios
 
-To share data between different abilities, LocalStorage supports data access across abilities.
-
-For this scenario, V2 can combine \@ObservedV2 and \@Trace to create an observable global singleton object, which defines a Map type to store data from different ability pages, achieving data sharing between different abilities. For details about how to start an ability, see [Specified](../../application-models/uiability-launch-type.md#specified).
+LocalStorage supports state sharing across pages within a single UIAbility. For this scenario, V2 can combine @ObservedV2 and @Trace to create an observable global singleton object, define a Map type to store data from different ability pages, and access the corresponding data through different key values, thereby achieving data sharing within the UIAbility. To start an ability, see [specified launch mode](../../application-models/uiability-launch-type.md#specified).
 
 **Home screen**
 
@@ -865,10 +863,11 @@ export default class PDFData {
 }
 ```
 
+
 <!-- @[Internal_localStorage_multi_instance_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PdfEntryAbility.ets) -->
 
 ``` TypeScript
-import { UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import PDFData from './model/PDFData';
 
@@ -882,6 +881,7 @@ export default class PDFAbility extends UIAbility {
   }
 }
 ```
+
 
 <!-- @[Internal_localStorage_multi_instance_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PDF.ets) -->
 
@@ -914,9 +914,10 @@ struct PDF {
 }
 ```
 
+
 ## AppStorage->AppStorageV2
 
-The modification of creating global \@ObservedV2 and \@Trace decorated instances in the previous section is not suitable for cross-Ability data sharing. AppStorageV2 can be used instead.
+In the previous section, although you can create global @ObservedV2 and @Trace decorated singleton objects to achieve cross-ability data sharing, AppStorageV2 provides a more standard and convenient cross-ability sharing solution. It is recommended to use AppStorageV2 instead.
 
 V1:
 
@@ -1242,6 +1243,7 @@ struct Index1 {
 }
 ```
 
+
 ## Environment -> Direct API Calls to Obtain System Environment Variables
 
 In V1, you can obtain environment variables through **Environment**. However, the result obtained by **Environment** cannot be directly used. It must be combined with AppStorage to obtain the corresponding environment variable values.
@@ -1345,6 +1347,7 @@ struct Index {
 }
 ```
 
+
 ## PersistentStorage->PersistenceV2
 
 In V1, **PersistentStorage** provides UI data persistence. In V2, this functionality is replaced by the more convenient **PersistenceV2** API.
@@ -1411,7 +1414,6 @@ V2:
 In this example:
 
 - Persisted data is migrated from PersistentStorage to PersistenceV2 (V2). In V2, properties decorated with \@Trace are automatically persisted, while non-\@Trace decorated properties require manual **save** calls for persistence.
-
 - The **move** function and the components to display are placed in the same .ets file in this example. You can define your own **move** functions and place them in appropriate locations for unified migration operations.
 
 <!-- @[Internal_Persistent_Storage_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalPersistentStorageV2.ets) -->

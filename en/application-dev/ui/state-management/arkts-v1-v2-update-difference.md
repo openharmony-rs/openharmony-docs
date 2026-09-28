@@ -1,23 +1,19 @@
 # Differences Between State Management V1 and V2 Update Mechanisms
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->
 <!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=5cbda8a742fe4c75db3800c28ccfc8ffcd9cebc0 translatedAt=2026-06-30T03:38:24.026Z pushedAt=2026-07-01T02:20:46.333Z -->
+<!-- md-trans-meta sourceCommit=59c43aed2026bf661a322032daecc86d61224e0f translatedAt=2026-09-21T11:52:28.106Z pushedAt=2026-09-23T09:56:19.943Z -->
 
 ## Background of the Evolution from V1 State Management to V2 State Management
 
 State Management V1 uses proxies to observe data. When creating state variables, a data proxy observer is created simultaneously. This observer can detect changes in the proxy but cannot accurately observe changes in the actual data. V1 state management has the following limitations:
 
 - State variables cannot exist independently of the UI. When the same data is proxied by multiple views, the change in one view cannot be synchronized to other views.
-
 - Only changes to top-level object properties can be detected; deep observation and listening are unavailable.
-
 - Redundant updates occur when modifying properties in an object.
-
 - Decorator usage is restrictive. The input and output of state variables are not specified in components, complicating componentization design.
 
 For the preceding reasons, the state management V2 enhances the data observation capability, enabling the data itself to be observable. When data is changed, the corresponding view is updated. Compared with state management V1, state management V2 offers the following advantages:
@@ -33,9 +29,7 @@ For the preceding reasons, the state management V2 enhances the data observation
 ## State Variable Changes Automatically Triggering UI Updates
 
 When the state management framework detects a state change, it triggers a UI update. The state variable changes include the changes of observed object properties or observed array (or other built-in types) items.
-
 - For V1, it has a top-level observation capability and can observe changes to object properties and data items.
-
 - For V2, it has the capability of in-depth observation and can observe the changes of nested object properties or array items.
 
 The following uses an example to describe the differences between V1 and V2 when the state variable is modified in [@Component](./arkts-create-custom-components.md#component) or [@ComponentV2](./arkts-create-custom-components.md#componentv2) and UI refresh is triggered.
@@ -96,7 +90,7 @@ Button('Change state variable')
     // For V1, only top-level changes can be observed. Even if this.obsObjA.obsObjB.propB is decorated by the V1 decorator (@Track), the text in line 4 is not updated.
     // For V2, the text in line 4 can be updated as long as this.obsObjA.obsObjB.propB is decorated by the V2 decorator (@Trace).
     this.obsObjA.obsObjB.propB = 'propB3';
-    // this.arr is decorated by the V1 or V2 decorator. Assigning a value to this variable (whether it is a variable decorated with a V1 decorator or a V2 decorator) will trigger the update of Text in lines 5 and 6.
+    // this.arr is decorated by a V1 or V2 decorator. Assigning a value to this variable, whether it is a V1 decorator variable or a V2 decorator variable, triggers the update of the Text components on lines 5, 6, and 7.
     this.arr[0] = new ObsObjC('propC3');
     // For V1, this.arr is decorated by the V1 decorator. Because V1 can only observe top-level changes and the property assignment of the array item is the modification of the second level, the Text in line 7 is not updated.
     // For V2, this.arr is decorated by the V2 decorator, and propC is decorated by the V2 decorator (@Trace). Assigning a value to this variable will update the Text in line 7.
@@ -109,7 +103,6 @@ Button('Change state variable')
 For details about the differences between @Watch of V1 and @Monitor of V2, see [Comparing @Monitor with @Watch](./arkts-new-monitor.md#comparing-monitor-with-watch). The following uses an example to describe the differences.
 
 ### @Watch Synchronous Execution
-
 Assignment to V1-decorated variables, as well as changes to object properties or array (Map, Set) items, will trigger the synchronous execution of @Watch. If the state variable is modified for multiple times, the @Watch function is executed for multiple times.
 
 ```typescript
@@ -126,11 +119,9 @@ Button('Change state variable')
     console.info('2'); // Execution order: 4
   })
 ```
-
 In the above code, when assigning a value to **this.obsObjA.propA**, the execution sequence is as follows: print the log '1', assign a value to the state variable, print the log 'obsObjA.propA change callback', and finally print the log '2'.
 
 ### @Monitor Asynchronous Execution
-
 Assignment to V2-decorated variables, as well as changes of object properties or array (Map and Set) items, will trigger asynchronous execution of @Monitor. If the state variable is modified multiple times, the @Monitor function is executed only once.
 
 ```typescript
@@ -147,12 +138,12 @@ Button('Change state variable')
     console.info('2'); // Execution order: 3
   })
 ```
+In the preceding code, the @Monitor function is executed only after the current event logic is executed, for example, after **onClick** is executed. When assigning a value to **this.obsObjA.propA**, the execution sequence is as follows: print log '1', assign a value to the state variable, print log '2', execute **onChange** of @Monitor, and print 'obsObjA.propA'.
 
-In the preceding code, the @Monitor function is executed only after the current event logic is executed, for example, after **onClick** is executed. When assigning a value to **this.obsObjA.propA**, the execution sequence is as follows: print log '1', assign a value to the state variable, print log '2', execute **onChange** of @Monitor, and print'obsObjA.propA'.
 
 ## Differences Between V1 and V2 State Variable Updates
 
-The following figure shows the flowchart of V1 component and V2 state variable update differences. Compared with V1 state management, V2 state management asynchronously marks components dirty when state variables change.
+The following figure shows the flowchart of V1 and V2 component state variable update differences. Compared with V1 state management, V2 state management asynchronously marks components dirty when state variables change.
 
 ![v1v2updatedifference](figures/v1v2update.png)
 

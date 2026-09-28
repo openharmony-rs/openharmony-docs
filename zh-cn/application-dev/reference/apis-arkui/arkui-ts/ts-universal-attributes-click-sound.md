@@ -18,7 +18,7 @@
 
 enableClickSoundEffect(enabled: boolean | undefined): T
 
-设置组件是否启用默认点击音效，适用于需要控制组件点击反馈音效或自定义点击发音的场景。是否能够发音还依赖设备声音相关的设置，如静音模式下不会播放音效。禁用默认点击音效后，开发者可以在onClick回调中调用音频相关接口自定义发音。
+设置组件是否启用默认点击音效，适用于需要控制组件点击反馈音效或自定义播放点击音效的场景。是否能够播放音效还依赖设备声音相关的设置，如静音模式下不会播放音效。禁用默认点击音效后，开发者可以在onClick回调中调用音频相关接口自定义播放音效。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,9 +43,9 @@ enableClickSoundEffect(enabled: boolean | undefined): T
 ## 示例
 ### 示例1（禁用默认点击音效）
 
-该示例通过配置enableClickSoundEffect属性，实现组件禁用默认点击音效，开发者可以在onClick回调中调用音频相关接口自定义发音。自定义发音可参考[SoundPool播放短音频指南](../../../media/media/using-soundpool-for-playback.md)。
+该示例通过配置enableClickSoundEffect属性，实现组件禁用默认点击音效，开发者可以在onClick回调中调用音频相关接口自定义播放音效。自定义播放音效可参考[SoundPool播放短音频指南](../../../media/media/using-soundpool-for-playback.md)。
 
-从API version 24开始，新增[enableClickSoundEffect](#enableclicksoundeffect)属性。
+从API version 24开始，新增[enableClickSoundEffect](#enableclicksoundeffect)接口。
 ```ts
 @Entry
 @Component
@@ -58,7 +58,7 @@ struct Index {
         .width('200')
         .enableClickSoundEffect(false)
         .onClick(() => {
-          // 此处自定义发音，参考SoundPool播放短音频指南。
+          // 此处自定义播放点击音效，参考SoundPool播放短音频指南。
         })
     }
     .width('100%')

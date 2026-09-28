@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=cb7e311b492f6d37e7deede89bf01986e08a66fc translatedAt=2026-09-14T01:45:46.179Z pushedAt=2026-09-14T11:47:33.921Z -->
 
 ## Overview
 
@@ -210,7 +211,7 @@ Defines the signature verification message data.
 
 | Type| Description|
 | -- | -- |
-| bool | Returns a boolean value, indicating the signature verification result. The value **true** indicates that the signature verification is successful, and **false** indicates the opposite. Possible causes: The public key is incorrect, the signature data is damaged, the digest algorithm does not match,<br>     The padding mode does not match, or the data does not match the original signing data.|
+| bool | Returns a boolean value, indicating the signature verification result. The value **true** indicates that the signature verification is successful, and **false** indicates the opposite. Possible causes: The public key is incorrect, the signature data is damaged, the digest algorithm does not match, the padding mode does not match, or the data does not match the original signing data. |
 
 ### OH_CryptoVerify_Recover()
 
@@ -288,7 +289,7 @@ Sets parameters of a signature verification context.
 
 | Type| Description|
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | **CRYPTO_SUCCESS**: The operation is successful.<br>**CRYPTO_INVALID_PARAMS**: **ctx** or **value** is null, or **data** in **value** is null.<br>            The value of **len** in **value** does not match the expected value of **type**, or **type** is not a valid **CryptoSignature_ParamType**.<br>**CRYPTO_NOT_SUPPORTED**: The operation or algorithm is not supported.<br>**CRYPTO_MEMORY_ERROR**: The memory operation fails.<br>**CRYPTO_OPERTION_ERROR**: The parameter fails to be set.|
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | **CRYPTO_SUCCESS**: The operation is successful.<br>**CRYPTO_INVALID_PARAMS**: **ctx** or **value** is null, **data** in **value** is null, **len** in **value** does not match the expected size of **type**, or **type** is not a valid **CryptoSignature_ParamType**.<br>**CRYPTO_NOT_SUPPORTED**: The operation or algorithm is not supported.<br>**CRYPTO_MEMORY_ERROR**: The memory operation fails.<br>**CRYPTO_OPERTION_ERROR**: The parameter fails to be set. |
 
 ### OH_CryptoVerify_GetParam()
 
@@ -691,3 +692,5 @@ Destroys ECC signing specifications.
 | Name| Description|
 | -- | -- |
 | [OH_CryptoEccSignatureSpec](capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) *spec | Input parameter, indicating a pointer to the ECC signing specifications.|
+
+

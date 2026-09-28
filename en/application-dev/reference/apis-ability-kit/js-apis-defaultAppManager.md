@@ -5,6 +5,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=2aa1ad5a5bb3709f4f72efb668aab78b132a4372 translatedAt=2026-09-03T11:20:41.785Z pushedAt=2026-09-05T10:47:30.602Z -->
 
 The module provides APIs to query whether the current application is the default application of a specific type.
 
@@ -26,15 +27,15 @@ Enumerates the default application types.
 
 | Name  | Value| Description                                  |
 | -------- | -------------------------------------- | -------------------------------------- |
-| BROWSER  | Web Browser | Default browser.                           |
-| IMAGE    | Image Gallery | Default image viewer.                        |
-| AUDIO    | Audio Player | Default audio player.                        |
-| VIDEO    | Video Player | Default video player.                        |
-| PDF      | PDF Viewer | Default PDF reader.                     |
-| WORD     | Word Viewer | Default Word viewer.                    |
-| EXCEL    | Excel Viewer | Default Excel viewer.                   |
-| PPT      | PPT Viewer | Default PowerPoint viewer.                     |
-| EMAIL<sup>12+</sup>    | Email | Default email.                     |
+| BROWSER  | "Web Browser" | Default browser.                            |
+| IMAGE    | "Image Gallery" | Default image viewer.                         |
+| AUDIO    | "Audio Player" | Default audio player.                         |
+| VIDEO    | "Video Player" | Default video player.                         |
+| PDF      | "PDF Viewer" | Default PDF viewer.                      |
+| WORD     | "Word Viewer" | Default Word viewer.                     |
+| EXCEL    | "Excel Viewer" | Default Excel viewer.                    |
+| PPT      | "PPT Viewer" | Default PPT viewer.                      |
+| EMAIL<sup>12+</sup>    | "Email" | Default email.                      |
 
 ## defaultAppManager.isDefaultApplication
 

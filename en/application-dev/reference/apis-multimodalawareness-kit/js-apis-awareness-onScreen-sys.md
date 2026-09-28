@@ -1,14 +1,13 @@
 # @ohos.multimodalAwareness.onScreen (Onscreen Awareness) (System API)
-
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @wyxpku-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=d18790e6ef1247c1fd8194f3838e7698bf6e9bf2 translatedAt=2026-06-24T06:30:45.853Z pushedAt=2026-06-25T01:35:11.442Z -->
+<!-- md-trans-meta sourceCommit=417f502e638a0076ecc77fba99d31577589d7d54 translatedAt=2026-09-14T02:10:30.510Z pushedAt=2026-09-14T10:03:33.580Z -->
 
-This module provides the onscreen awareness capability.
+This module provides the capability of apperceiving on-screen content, including obtaining page content, links, screenshots, and other information, identifying application scenarios such as reading and short video, providing entity information such as article titles and body text, as well as interaction information such as clicks and scrolling.
 
 > **NOTE**
 >
@@ -23,272 +22,280 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 ## Scenario
 
-Enumerates the scenarios of the onscreen content.
+Enumerates the scenario types of on-screen content.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-| Name               | Value  | Description                  |
+| Name | Value | Description |
 | ------------------- | ---- | ---------------------- |
-| UNKNOWN | 0    | Unknown scenario.|
-| ARTICLE | 1    | Article scenario.|
+| UNKNOWN | 0 | The scenario of the on-screen content is unknown. |
+| ARTICLE | 1 | The on-screen content is in an article scenario. |
 
 ## EventType
 
-Enumerates the control event types.
+Enumerates the types of control events.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**System API**: This is a system API.
+**System API**: This API is a system API.
 
-| Name               | Value  | Description                  |
+| Name                | Value   | Description                   |
 | ------------------- | ---- | ---------------------- |
-| SCROLL_TO_HOOK  | 1    | Scrolling to the hook.|
+| SCROLL_TO_HOOK  | 1    | Indicates the event of scrolling to the hook point. |
 
 ## Paragraph
 
-Defines the paragraph information.
+Paragraph information.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-| Name| Type  | Read-Only| Optional| Description                                    |
+| Name | Type | Read Only | Optional | Description |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| hookId   | number | No  | Yes  | Hook ID of the paragraph, which is the identifier of each main paragraph.|
-| chapterId   | number | No  | Yes  | Chapter ID of the paragraph, which is the identifier of each subchapter.|
-| title    | string | No  | Yes  | Title of the paragraph.|
-| text    | string | No  | Yes  | Content of the paragraph.|
+| hookId   | number | No   | Yes   | Hook ID corresponding to the paragraph, which identifies each main paragraph. |
+| chapterId   | number | No   | Yes   | Chapter ID corresponding to the paragraph, which identifies each subchapter. |
+| title    | string | No   | Yes   | Title corresponding to the paragraph. |
+| text    | string | No   | Yes   | Content corresponding to the paragraph. |
 
 ## ContentOptions
 
-Defines the options for obtaining the onscreen content.
+Options for obtaining on-screen content.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**System API**: This is a system API.
+**System API:** This API is a system API.
 
-| Name| Type  | Read-Only| Optional| Description                                    |
+| Name | Type | Read Only | Optional | Description |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| windowId   | number | No  | Yes  | ID of the window whose content needs to be obtained. If this parameter is not set or is set to **undefined**, the content of the full-screen window is obtained by default.|
-| contentUnderstand   | boolean | No  | Yes  | Whether content understanding is required. The default value is **False**.|
-| pageLink    | boolean | No  | Yes  | Whether to obtain the page link. The default value is **False**.|
-| textOnly    | boolean | No  | Yes  | Whether to obtain only the text and divide the text into paragraphs. The default value is **False**.|
+| windowId   | number | No  | Yes  | Window ID of the content to be obtained. If not assigned or assigned **undefined**, the full-screen window is obtained by default. |
+| contentUnderstand   | boolean | No  | Yes  | Whether to perform content understanding. The value **true** means yes, and **false** means no. The default value is **false**. |
+| pageLink    | boolean | No  | Yes  | Whether to obtain the revisit link. The value **true** means to obtain it, and **false** means not to obtain it. The default value is **false**. |
+| textOnly    | boolean | No  | Yes  | Whether to obtain only text and divide it into paragraphs. The value **true** means yes, and **false** means no. The default value is **false**. |
 
 ## PageContent
 
-Defines the onscreen content.
+On-Screen Content.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API**: This is a system API.
 
-| Name| Type  | Read-Only| Optional| Description                                    |
+| Name | Type | Read Only | Optional | Description |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| windowId   | number | No  | No  | Window ID of the onscreen content.|
-| sessionId   | number | No  | No  | Session ID, which identifies the call action.|
-| bundleName    | string | No  | No  | Bundle name of the onscreen content.|
-| scenario    | [Scenario](#scenario) | No  | Yes  | Scenario of the onscreen content. This parameter is available only when **options.contentUnderstand** is set to **True**.|
-| title    | string | No  | Yes  | Title of the onscreen content. This parameter is available only when **options.contentUnderstand** is set to **True**.|
-| content    | string | No  | Yes  | Body of the onscreen content. This parameter is available only when **options.contentUnderstand** is set to **True**.|
-| pageLink    | string | No  | Yes  | Page link of the onscreen content. This parameter is available only when **options.pageLink** is set to **True**.|
-| paragraphs    | [Paragraph](#paragraph)[] | No  | Yes  | Paragraph information of the onscreen content. This parameter is available only when **options.textOnly** is set to **True**.|
+| windowId   | number | No   | No   | Window ID of the obtained on-screen content. |
+| sessionId   | number | No   | No   | Session ID of this API call, which identifies the current call action. |
+| bundleName    | string | No   | No   | Bundle name of the obtained on-screen content. |
+| scenario    | [Scenario](#scenario) | No   | Yes   | Scenario of the obtained on-screen content. This attribute is obtained only when **options.contentUnderstand** is **true**. |
+| title    | string | No   | Yes   | Title of the obtained on-screen content. This attribute is obtained only when **options.contentUnderstand** is **true**. |
+| content    | string | No   | Yes   | Body of the obtained on-screen content. This attribute is obtained only when **options.contentUnderstand** is **true**. |
+| pageLink    | string | No   | Yes   | Revisit link of the obtained on-screen content. This attribute is obtained only when **options.pageLink** is **true**. |
+| paragraphs    | [Paragraph](#paragraph)[] | No   | Yes   | Obtained text paragraph information. This attribute is obtained only when **options.textOnly** is **true**. |
 
 ## ControlEvent
 
-Defines a control event.
+Control Event.
 
 **System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API**: This is a system API.
 
-| Name| Type  | Read-Only| Optional| Description                                    |
+| Name | Type | Read Only | Optional | Description |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| windowId   | number | No  | No  | ID of the window to be operated.|
-| sessionId   | number | No  | No  | ID of the session to be operated. The hook ID and the session ID can be obtained from [PageContent](#pagecontent) of a session.|
-| eventType    | [EventType](#eventtype) | No  | No  | Control event type.|
-| hookId    | number | No  | Yes  | Hook ID corresponding to the control event. The hook ID and the session ID can be obtained from [PageContent](#pagecontent) of a session.|
+| windowId   | number | No  | No  | Window ID of the window to be operated by the control event. |
+| sessionId   | number | No  | No  | Session ID to be operated by the control event. Both the hook ID to be operated by the control event and the session ID corresponding to this session are provided by the [PageContent](#pagecontent) obtained in a session. |
+| eventType    | [EventType](#eventtype) | No  | No  | Type of the control event. |
+| hookId    | number | No  | Yes  | Hook ID corresponding to the control event. Both the hook ID to be operated by the control event and the session ID corresponding to this session are provided by the [PageContent](#pagecontent) obtained in a session. |
 
 ## OnscreenAwarenessCap<sup>23+</sup>
 
-Defines onscreen awareness capabilities (including but not limited to awareness in a reading scenario and OCR).
+On-screen awareness capabilities (including but not limited to reading scenario awareness, OCR recognition, and other functions).
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-| Name| Type  | Read-Only| Optional| Description                                    |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name | Type   | Read Only | Optional | Description                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| capList   | string[] | No   | Yes   | Capability set, including capabilities such as page content, page links, and text selection. For details about specific capability items, see the table below.|
-| groupId | string | No | Yes | Service group ID. For details about specific group IDs, see the table below.|
+| capList   | string[] | No   | Yes   | Represents the capability set, including page content, page link, text selection, and other capabilities. For details about the specific capability items, see the following table.|
+| groupId | string | No | Yes | Business group ID. For details about the specific group IDs, see the following table.|
 
-Parameter restrictions:<br>
-You can use the on-screen awareness feature through **capList** or **groupId**.
-
-* Logical relationship: **capList** and **groupId** are mutually supplementary and mandatory. At least one of them must be provided and cannot be empty.<br>
-
-* Verification rule: When the API is called, the system checks **capList** and **groupId** separately.<br>
-
-* Capability list: Use the on-screen awareness feature by **capList** or **groupId**. The definitions are as follows.
-
-  * Capabilities supported by capList<br>
-
-    The following are capabilities preset for specific service scenarios, which can be activated via single subscription or trigger.
-
-|Capability|**Function**|
-| ---- | ------ |
-    |Article|Obtains awareness information for the reading scenario.|
-    |ShortVideo|Obtains awareness information for the short video scenario.|
-    |Todo|Obtains awareness information for the to-do scenario.|
-    |Activity|Obtains awareness information for the basic service.|
-    |UiImage|Obtains sub-image information within a page.|
+Parameter constraint description:<br>
+Users can use the on-screen awareness feature through capability items (**capList**) or group IDs (**groupId**).
+* Logical relationship: **capList** and **groupId** are complementary required items. At least one of them must be provided and must not be empty.<br>
+* Validation rule: When the API is called, the system checks capList and groupId separately.<br>
+* Capability list: Use the on-screen awareness feature by capability item or group ID. The specific definitions are as follows.
+  * capList Supported Capability List<br>
+    Capabilities preset for specific business scenarios, which can be subscribed to or triggered individually, as follows:
+    |capList Capability List|Description|
+    | ---- | ------ |
+    |Article|Obtains the awareness information of the reading scenario.|
+    |ShortVideo|Obtains the awareness information of the short video scenario.|
+    |Todo|Obtains the awareness information of the to-do scenario.|
+    |Activity|Obtains the awareness information of basic services.|
+    |UiImage|Obtains the sub-image information within the page.|
     |JumpContext|Highlights and jumps to the specified context.|
-    |QuickSnap|Obtains single screenshot information.<br> **Usage specification**: This is only effective when used in the **capture** API with "QuickSnap" as the sole value in **capList**. Other APIs return error code 401.|
-    |UiTree|Obtains JSON tree information within a page.<br> **Since:** 26.0.0|
-    |InjectEvent|Injects an event.<br> **Since:** 26.0.0|
+    |QuickSnap|Obtains single screenshot information.<br> **Usage Specification**: Takes effect only when used with the **capture** API and when **capList** passes only "QuickSnap". Other APIs return error code 401.|
+    |UiTree|Obtains the JSON tree information within the page.<br> **Since:** 26.0.0|
+    |InjectEvent|Injects events.<br> **Since:** 26.0.0|
     |CollectStrategy|Obtains the screen collection strategy.<br> **Since:** 26.0.0|
+    |SmartAutoFill|Intelligently fills the content of the page input box.<br> **Since:** 26.0.0|
+    |SmartAutoFillSwitch|Subscribes to or unsubscribes from the smart fill switch status of page content.<br> **Usage Specification**: Only the smart fill application (com.huawei.hms.textautofill) is allowed to call this API. Calling by non-trustlisted applications returns error code 34000002.<br> **Since:** 26.0.0|
 
-  * Capabilities supported by groupId<br>
+  * groupId Capability List<br>
+    A set of capabilities preset for business scenarios. Business scenarios can be subscribed to in a unified manner, as follows:
 
-    The following is a set of capabilities preset for service scenarios, which can be used for unified subscription.
-
-|Capability|Sub-capability|**Function**|
-| ---- | ------ | ------|
-    |SmartEdge|Article|Obtains awareness information for the reading scenario.|
-    |SmartEdge|ShortVideo|Obtains awareness information for the short video scenario.|
-    |SmartEdge|Todo|Obtains awareness information for the to-do scenario.|
-    |SmartEdge|Activity|Obtains awareness information for the basic service scenario.|
-    |CeliaMemory|Article|Obtains awareness information for the reading scenario.|
+    |groupId Capability List|Corresponding Sub-Item Capability|Description|
+    | ---- | ------ | ------|
+    |SmartEdge|Article|Obtains the awareness information of the reading scenario.|
+    |SmartEdge|ShortVideo|Obtains the awareness information of the short video scenario.|
+    |SmartEdge|Todo|Obtains the awareness information of the to-do scenario.|
+    |SmartEdge|Activity|Obtains the awareness information of basic services.|
+    |CeliaMemory|Article|Obtains the awareness information of the reading scenario.|
+    |SmartBar|SmartAutoFill|Intelligently fills the content of the page input box.|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
 
-Defines the list of onscreen awareness parameters, which is used to obtain onscreen information in specific scenarios. For example, a window ID is provided to collect application UI content and links.
+On-Screen Awareness parameter list, used to obtain on-screen information in specific scenarios, such as providing a window ID to collect application interface content and links.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-| Name| Type  | Read-Only| Optional| Description                                    |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name | Type   | Read Only | Optional | Description                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| parameters   | Record&lt;string, Object&gt; | No  | Yes  | List of awareness parameters. The parameter result is a key-value data object.|
+| parameters   | Record&lt;string, Object&gt; | No   | Yes   | Awareness parameter list. The parameter result is a key-value data object. |
 
 ## CollectStrategy<sup>23+</sup>
 
-Defines a page information collection strategy.
+Page information collection strategy.
 
 **System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API**: This is a system API.
 
-| Name               | Value  | Description                  |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name                | Value   | Description                   |
 | ------------------- | ---- | ---------------------- |
 | ALLOW | 1 << 0    | The application supports collection. |
-| SPLIT_SCREEN | 1 << 1    | The application's split-screen collection strategy.|
-| UNSUPPORTED_APP | 1 << 2  | The application does not support automatic collection.|
-| PRIVATE_WINDOW | 1 << 3  | The application's privacy window.|
-| ANCO_APP | 1 << 4 | The application is a VM application, not a HarmonyOS application.|
-| ALLOW_USER_CHANGE | 1 << 5  | The application's collection strategy can be configured.|
-| BUSINESS_APP | 1 << 6 | The application data can be collected.|
-| FLOAT_SCREEN | 1 << 7  | Floating screen.|
-| PIP_SCREEN | 1 << 8 | Picture-in-picture mode.|
-| LAUNCHER | 1 << 9 | Desktop application.|
+| SPLIT_SCREEN | 1 << 1    | Collection strategy for the split-screen window of an application. |
+| UNSUPPORTED_APP | 1 << 2  | The application does not support automatic collection. |
+| PRIVATE_WINDOW | 1 << 3  | The privacy window of an application. |
+| ANCO_APP | 1 << 4 | A virtual machine application, not a HarmonyOS application. |
+| ALLOW_USER_CHANGE | 1 << 5  | The collection strategy of the application is configurable. |
+| BUSINESS_APP | 1 << 6 | The application data can be collected. |
+| FLOAT_SCREEN | 1 << 7  | Floating window. |
+| PIP_SCREEN | 1 << 8 | Picture-in-picture mode. |
+| LAUNCHER | 1 << 9 | Launcher application. |
 
 ## AwarenessItem<sup>23+</sup>
 
-Provides page information, which includes:
-
+Provides page information. Including:
 * Basic page information, such as page content, links, and screenshots.
-
 * Page entity information, such as the title and body of a page article.
+* Page interaction information, such as tap and scroll information.
 
-* Page interaction information, such as clicks and scrolling.
-
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API**: This is a system API.
 
-| Name| Type  | Read-Only| Optional| Description                                    |
-| ---- | ------ | ---- | ---- | ---------------------------------------- |
-| itemInfo   | Record<string, Object> | Yes  | No  | Entity information of the awareness result, including the content, links, screenshots, and other entity information.|
+**Model restriction:** This API can be used only in the stage model.
+
+| Name | Type | Read Only | Optional | Description |
+| ---- | ---- | ---- | ---- | ---- |
+| itemInfo | Record<string, Object> | Yes | No | Awareness result entity information, including content, links, screenshots, and other entity information. |
 
 ## EntityInfo<sup>23+</sup>
 
-Provides entity information perceived, including content, links, images, and other types of entities.
+Provides the apperceived entity information, including content, links, images, and other types of entities.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-| Name| Type  | Read-Only| Optional| Description                                    |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name | Type | Read Only | Optional | Description |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| entityName   | string | Yes  | No  | Name of the perceived entity, which is fixed.|
-| entityInfo   | Record<string, Object> | Yes  | No  | Entity information of the awareness result, including the content, links, images, and other entity information.|
+| entityName   | string | Yes  | No  | Name of the entity in the awareness result. Fixed content. |
+| entityInfo   | Record<string, Object> | Yes  | No  | Entity information in the awareness result, including content, links, images, and other entities.|
 
 ## OnscreenAwarenessInfo<sup>23+</sup>
 
-Returns the list of onscreen awareness information.
+List of information returned by on-screen awareness.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-| Name| Type  | Read-Only| Optional| Description                                    |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name | Type | Read Only | Optional | Description |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| resultCode  | number | Yes  | No  | Return code. The default value **0** indicates success.|
-| timestamp   | number | Yes  | No  | Timestamp for accessing a specified page.|
-| uid   | string | Yes   | Yes  | Application UID.|
-| bundleName  | string | Yes   | Yes  | Application bundle name.|
-| appName  | string | Yes   | Yes  | Application name.|
-| miniProgramId | string |Yes   | Yes  | Applet ID, for example, the ID of WeChat or Alipay.|
-| miniProgramName | string | Yes   | Yes | Name of a third-party mini program.|
-| appIndex   | number | Yes   | Yes  | Application index.|
-| pageId     | string | Yes  | Yes  | Application page ID.|
-| sampleId   | string | Yes   | Yes  | Collection record ID.|
-| collectStrategy   | number | Yes   | Yes  | Page collection policy, which is the bitwise OR operation combination of [CollectStrategy](#collectstrategy23).|
-| displayId   | number | Yes   | Yes  | Display ID.|
-| windowId    | number | Yes   | Yes  | Window ID.|
-| languageInfo | string | Yes | Yes| Page language information.|
-| pageTags | string[] | Yes | Yes| Page tag information.|
-| items  | [AwarenessItem](#awarenessitem23)[] | Yes   | Yes  | Data item information.|
-| entityInfo  | [EntityInfo](#entityinfo23)[] | Yes   | Yes  | Entity information.|
+| resultCode  | number | Yes | No | Result code. The default value **0** indicates success. |
+| timestamp   | number | Yes | No | Timestamp when entering a specific page, in ms. |
+| uid   | string | Yes | Yes | Application UID. |
+| bundleName  | string | Yes | Yes | Application package name. |
+| appName  | string | Yes | Yes | Application name. |
+| miniProgramId | string | Yes | Yes | Mini program ID, for example, the mini program ID of a third-party application such as WeChat or Alipay. |
+| miniProgramName | string | Yes | Yes | Mini program name, that is, the mini program name of a third-party application. |
+| appIndex   | number | Yes | Yes | Application index. |
+| pageId     | string | Yes | Yes | Application page ID. |
+| sampleId   | string | Yes | Yes | Collection record ID. |
+| collectStrategy   | number | Yes | Yes | Page collection strategy, which is a bitwise OR combination of [CollectStrategy](#collectstrategy23). |
+| displayId   | number | Yes | Yes | Screen ID. |
+| windowId    | number | Yes | Yes | Window ID. |
+| languageInfo | string | Yes | Yes | Page language information. |
+| pageTags | string[] | Yes | Yes | Page tag information. |
+| items  | [AwarenessItem](#awarenessitem23)[] | Yes | Yes | Data item information. |
+| entityInfo  | [EntityInfo](#entityinfo23)[] | Yes | Yes | Entity information. |
 
 ## ReadingScreenPermissionStatus<sup>23+</sup>
 
-Defines the authorization status for reading screen information.
+Permission status for reading screen information.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-| Name| Type  | Read-Only| Optional| Description                                    |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name | Type | Read Only | Optional | Description |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| readingState  | number | Yes   | No  | Whether screen reading is allowed.<br>**0**: no<br>**1**: yes|
-| readingCode   | number | Yes   | Yes  | If the screen information cannot be read, the corresponding status code will be returned.|
+| readingState  | number | Yes   | No   | Whether screen reading is allowed.<br>**0**: screen reading is not allowed.<br>**1**: screen reading is allowed. |
+| readingCode   | number | Yes   | Yes  | If the screen cannot be read, the corresponding status code is returned. For details, see [CollectStrategy](#collectstrategy23). |
+
 
 ## onScreen.getPageContent
 
 getPageContent(options?: [ContentOptions](#contentoptions)): Promise&lt;[PageContent](#pagecontent)&gt;
 
-Obtains the onscreen content when a window is displayed on the screen.
+Obtains the on-screen content when the window whose content is to be captured is on the desktop.
 
-**Required permissions**: ohos.permission.GET_SCREEN_CONTENT
+**Required permission:** ohos.permission.GET_SCREEN_CONTENT
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Parameters**
 
-| Name  | Type                            | Mandatory| Description                                                        |
+| Name | Type | Mandatory | Description |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| options | [ContentOptions](#contentoptions)   | No  | Options for obtaining the onscreen screen content. By default, the window ID is not specified, and other options are **False**.|
+| options | [ContentOptions](#contentoptions) | No | Options for obtaining the on-screen content. By default, no window ID is specified and all other options are set to **false**. |
 
 **Error codes**
 
 For details about the error codes, see [Onscreen Awareness Error Codes](errorcode-onScreen.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
 | 202      | Permission check failed. A non-system application uses the system API. |
@@ -313,10 +320,10 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
       onScreen.getPageContent(options).then((pageContent: onScreen.PageContent) => {
          console.info("get page content succeed, bundleName = " + pageContent.bundleName);
       }).catch((err: BusinessError) => {
-         console.error("get page content failed, errCode = " + err.code);
+         console.error(`get page content failed, Code: ${err.code}, message: ${err.message}`);
       });
    } catch (err) {
-      console.error('get page content failed, errCode = ' + err.code);
+      console.error(`get page content failed, Code: ${err.code}, message: ${err.message}`);
    }
    ```
 
@@ -324,25 +331,25 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
 
 sendControlEvent(event: [ControlEvent](#controlevent)): Promise&lt;void&gt;
 
-If the target window is displayed on the screen, you can use this API to send screen control events based on the paragraph information obtained via [onScreen.getPageContent](#onscreengetpagecontent).
+When the window to be controlled is on the desktop, call this API to send an on-screen control event based on the paragraph information returned by [onScreen.getPageContent](#onscreengetpagecontent).
 
-**Required permissions**: ohos.permission.SIMULATE_USER_INPUT.
+**Required permissions:** ohos.permission.SIMULATE_USER_INPUT
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name  | Type                            | Mandatory| Description                                                        |
-| -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| event | [ControlEvent](#controlevent)   | Yes  | Onscreen control event.|
+| Name  | Type                           | Mandatory | Description                                                  |
+| ----- | ------------------------------ | --------- | ------------------------------------------------------------ |
+| event | [ControlEvent](#controlevent) | Yes       | On-screen control event. |
 
 **Error codes**
 
 For details about the error codes, see [Onscreen Awareness Error Codes](errorcode-onScreen.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.SIMULATE_USER_INPUT. |
 | 202      | Permission check failed. A non-system application uses the system API. |
@@ -350,7 +357,7 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
 | 34000001 | Service exception. |
 | 34000005 | The target is not found. |
 
-**Example**
+**Example**:
 
    ```ts
    import { onScreen } from '@kit.MultimodalAwarenessKit';
@@ -373,18 +380,18 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
             };
          }
       }).catch((err: BusinessError) => {
-         console.error("get page content failed, errCode = " + err.code);
+         console.error(`get page content failed, Code: ${err.code}, message: ${err.message}`);
       });
    } catch (err) {
-      console.error('invoke failed, errCode = ' + err.code);
+      console.error(`invoke failed, Code: ${err.code}, message: ${err.message}`);
    }
    if (event != undefined) {
       try {
          onScreen.sendControlEvent(event).catch((err: BusinessError) => {
-            console.error("send control event failed, errCode =" + err.code);
+            console.error(`send control event failed, Code: ${err.code}, message: ${err.message}`);
          })
       } catch (err) {
-         console.error('invoke failed, errCode = ' + err.code);
+         console.error(`invoke failed, Code: ${err.code}, message: ${err.message}`);
       }
    }
    ```
@@ -393,34 +400,36 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
 
 subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwarenessInfo[]&gt;, options?: OnscreenAwarenessOptions): void
 
-Enables proactive awareness on screen content and subscribes to a screen awareness result.
+Enables proactive awareness of on-screen content and subscribes to the on-screen awareness result.
 
-**Required permissions**:
+**Required Permission**
 
-- API version 26+: ohos.permission.ONSCREEN_AWARENESS.
+- API version 26+: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS.
 - API version 23-24: ohos.permission.GET_SCREEN_CONTENT.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other devices, error code 801 is returned.
+**Device behavior differences:** This API can be properly called on Phone and Tablet devices. If it is called on other device types, error code 801 is returned.
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name  | Type                            | Mandatory| Description                                                        |
+| Name | Type | Mandatory | Description |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes  | Onscreen awareness capability list.|
-| options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No  | Onscreen awareness parameter list.|
-| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Yes | Callback used to return the on-screen awareness result. The returned awareness information list **OnscreenAwarenessInfo[]** can return up to 2 awareness information items at a time.|
+| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23) | Yes | On-screen awareness capability list. |
+| options | [OnscreenAwarenessOptions](#onscreenawarenessoptions23) | No | On-screen awareness parameter list. If not passed, the default parameter configuration is used. |
+| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Yes | Callback function used to return the screen awareness result. The returned awareness information list **OnscreenAwarenessInfo[]** returns at most two awareness information items at a time. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Onscreen Awareness Error Codes](errorcode-onScreen.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -429,7 +438,7 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
 **Example**
 
    ```ts
-   import onScreen from "@ohos.multimodalAwareness.onScreen";
+   import { onScreen } from '@kit.MultimodalAwarenessKit';
    let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
       groupId: 'SmartEdge',
    }
@@ -446,7 +455,7 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
          console.info(`subscribe resultCode: ${info[0].resultCode}`);
       }, onscreenAwarenessOptions);
    } catch (err) {
-      console.error('subscribe failed, errCode = ' + err.code);
+      console.error(`subscribe failed, Code: ${err.code}, message: ${err.message}`);
    }
    ```
 
@@ -454,31 +463,35 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
 
 unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwarenessInfo[]&gt;): void
 
-Disables proactive awareness on screen content and unsubscribes from a screen awareness result.
+Disables proactive on-screen content awareness and unsubscribes from the on-screen awareness result.
 
-**Required permissions**:
+**Required permissions:**
 
-- API version 26+: ohos.permission.ONSCREEN_AWARENESS.
+- API version 26+: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS.
 - API version 23-24: ohos.permission.GET_SCREEN_CONTENT.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other devices, error code 801 is returned.
+**Device behavior differences:** This API can be properly called on Phone and Tablet devices. If it is called on other device types, error code 801 is returned.
+
+**System API**: This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name  | Type                            | Mandatory| Description              |
+| Name   | Type                             | Mandatory | Description               |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
-| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes  | Onscreen awareness capability list.|
-| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | No | Callback to be unsubscribed. If not specified, all callbacks of this awareness capability are removed. The returned awareness information list **OnscreenAwarenessInfo[]** can contain up to 2 awareness information items at a time.|
+| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes   | On-Screen Awareness capability list. |
+| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | No   | Callback to be unsubscribed. If omitted, all callbacks of this awareness capability are removed. The returned awareness information list OnscreenAwarenessInfo[] returns at most 2 awareness information items at a time.|
 
-**Error codes**
+**Error Codes**
 
 For details about the error codes, see [Onscreen Awareness Error Codes](errorcode-onScreen.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: **ohos.permission.GET_SCREEN_CONTENT** or **ohos.permission.ONSCREEN_AWARENESS**. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -486,7 +499,7 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
 **Example**
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
    groupId: 'SmartEdge'
 }
@@ -496,7 +509,7 @@ try {
     console.info(`unsubscribe resultCode: ${info[0].resultCode}`);
   });
 } catch (err) {
-  console.error('unsubscribe failed, errCode = ' + err.code);
+  console.error(`unsubscribe failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -504,37 +517,41 @@ try {
 
 trigger(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo&gt;
 
-Proactively triggers screen content awareness and obtains the current screen awareness result.
+Actively triggers on-screen content awareness to obtain the current on-screen awareness result.
 
-**Required permissions**:
+**Required Permission:**
 
-- API version 26+: ohos.permission.ONSCREEN_AWARENESS.
-- API version 23-24: ohos.permission.GET_SCREEN_CONTENT.
+- API version 26+: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS.
+- API versions 23-24: ohos.permission.GET_SCREEN_CONTENT.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System Capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other devices, error code 801 is returned.
+**Device behavior differences:** This API can be properly called on Phone and Tablet devices. If it is called on other device types, error code 801 is returned.
+
+**System API**: This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name  | Type                            | Mandatory| Description                                                        |
+| Name   | Type                             | Mandatory | Description                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes   | On-screen awareness capability list. For the supported list, see [OnscreenAwarenessCap](#onscreenawarenesscap23). |
-| options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No  | Onscreen awareness parameter list.|
+| options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No   | On-screen awareness parameter list. If not passed, the default parameter configuration is used.|
 
-**Return value**
+**Returns**
 
-  | Type                          | Description        |
+  | Type                           | Description         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | Promise used to return the onscreen awareness result.|
+  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | Promise object used to return the screen awareness result. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Onscreen Awareness Error Codes](errorcode-onScreen.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -543,7 +560,7 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
 **Example**
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
     'UiImage'
@@ -560,7 +577,7 @@ try {
     await onScreen.trigger(onscreenAwarenessCap, onscreenAwarenessOptions);
   console.info(`trigger resultCode: ${info.resultCode}`);
 } catch (err) {
-  console.error('trigger failed, errCode = ' + err.code);
+  console.error(`trigger failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -568,54 +585,57 @@ try {
 
 capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
 
-Proactively triggers screen content awareness to obtain page information.
+Actively triggers on-screen content awareness to obtain page information.
 
-**Required permissions**:
+**Required Permission**
 
-- API version 26+: ohos.permission.ONSCREEN_AWARENESS.
+- API version 26+: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS.
 - API version 23-24: ohos.permission.GET_SCREEN_CONTENT.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**Device behavior differences**: This API is only supported on phones, tablets, and car devices (on car devices, **capList** must be **UiTree**). If it is called on other device types, error code 801 is returned.
+**Device Behavior Differences** This API works normally only on Phone, Tablet, and Car devices (on Car devices, capList must be UiTree). Calling it on other device types returns error code 801.
+
+**System API** This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name  | Type                            | Mandatory| Description                                                        |
+| Name   | Type                             | Mandatory | Description                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes  | Onscreen awareness capability list. For details, see the following supported capability list.|
-| options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No  | Onscreen awareness parameter list.|
+| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes   | On-screen awareness capability list. For details, see the supported capability list below.|
+| options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No   | On-screen awareness parameter list. If not passed, the default parameter configuration is used.|
 
-The following table lists the **capList** capabilities supported by the **capture** API.
-
-|Capability|**Description**|
+The capList capability list supported by the capture API is as follows:
+|capList Capability List|Description|
 | ---- | ------ |
-|UiImage|Obtains sub-image information within the page.|
-|QuickSnap|Obtains screenshot information.|
+|UiImage|Obtains the sub-image information in the page.|
+|QuickSnap|Obtains the screenshot information.|
 |UiTree|Obtains the page JSON tree information.<br> **Since:** 26.0.0|
 
-**Return value**
+**Returns**
 
-| Type                          | Description        |
-| ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Promise used to return the on-screen awareness result. The returned awareness information list **OnscreenAwarenessInfo[]** can contain up to 2 awareness information items at a time.|
+  | Type                           | Description         |
+  | ---------------------------- | ---------- |
+  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Promise object used to return the on-screen awareness result. The returned awareness information list OnscreenAwarenessInfo[] contains at most two awareness information items at a time.|
 
-**Error codes**
+**Error codes:**
 
 For details about the error codes, see [Onscreen Awareness Error Codes](errorcode-onScreen.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
 | 34000002 | The application or page is not supported. |
 
-**UiImage example**
+**UiImage Example:**
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
     'UiImage',
@@ -623,16 +643,16 @@ let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
 }
 try {
   let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.capture(onscreenAwarenessCap);
-  console.error(`capture resultCode: ${info[0].resultCode}`);
+  console.info(`capture resultCode: ${info[0].resultCode}`);
 } catch (err) {
-  console.info(`capture failed, error: ${err}`);
+  console.error(`capture failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
-**UiTree example**
+**UiTree Example:**
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
     'UiTree',
@@ -640,63 +660,66 @@ let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
 }
 try {
   let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.capture(onscreenAwarenessCap);
-  console.error(`capture resultCode: ${info[0].resultCode}`);
+  console.info(`capture resultCode: ${info[0].resultCode}`);
 } catch (err) {
-  console.info(`capture failed, error: ${err}`);
+  console.error(`capture failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
 ## onScreen.interact<sup>23+</sup>
 
 interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
 
-Actively triggers screen behavior interaction to recognize UI behaviors and provide UI feedback. For example, when the **capList** capability is **JumpContext**, tapping provides feedback information to precisely jump to a specified paragraph and highlight the text. When the **capList** capability is **InjectEvent**, tapping executes the corresponding tap event.
+Actively triggers on-screen behavior interaction to recognize interface behaviors and provide behavior feedback. For example, when the capList Capability List is JumpContext, a tap precisely jumps to the specified paragraph and highlights the text through the feedback information. When the capList Capability List is InjectEvent, a tap executes the corresponding click event.
 
-**Required permissions**:
+**Required Permission**
 
-- API version 26+: ohos.permission.ONSCREEN_AWARENESS.
+- API version 26+: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS.
 - API version 23-24: ohos.permission.GET_SCREEN_CONTENT.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**Device behavior differences**: This API is only supported on phones, tablets, and car devices (on car devices, **capList** must be InjectEvent). If it is called on other device types, error code 801 is returned.
+**Device Behavior Differences**: This API only supports Phone, Tablet, and Car devices (on Car devices, capList must be InjectEvent). Calling it on other device types returns error code 801.
+
+**System API**: This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name  | Type                            | Mandatory| Description                                                        |
+| Name   | Type                             | Mandatory | Description                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes  | Onscreen awareness capability list. For details, see the following supported capability list.|
-| options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No  | Onscreen awareness parameter list.|
+| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes   | On-screen awareness capability list. For details, see the supported capability list below.|
+| options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No   | On-screen awareness parameter list. If not passed, the default parameter configuration is used.|
 
-The following table lists the **capList** capabilities supported by the **interact** API.
-
-|Capability|**Description**|
+The capList capability list supported by the interact API is as follows:
+|capList Capability List|Description|
 | ---- | ------ |
 |JumpContext|Highlights and jumps to the specified context.|
-|InjectEvent|Injects an event. When **capList** is **InjectEvent**, the **options** field is mandatory, and its content must comply with the **InjectEvent** option specifications (for details, see the example). If **options** do not comply with the specifications, the injection operation will fail and error code 34000001 will be returned.<br> **Since:** 26.0.0|
+|InjectEvent|Injects an event. When the capList capability list is **InjectEvent**, the options field is mandatory, and its content must comply with the **InjectEvent** option specification (see the example for details). If options does not comply with the specification, the injection operation fails and error code 34000001 is returned.<br> **Since:** 26.0.0|
+|SmartAutoFill|Intelligently fills in the page input box content. When the capList capability list is **SmartAutoFill**, options must contain the **autoFillItems** array (see the example for details); otherwise, the fill operation fails and error code 34000001 is returned.<br> **Since:** 26.0.0|
 
-**Return value**
+**Returns**
 
-| Type                          | Description        |
-| ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Promise used to return the on-screen awareness result. The returned awareness information list **OnscreenAwarenessInfo[]** can contain up to 2 awareness information items at a time.|
+  | Type                           | Description         |
+  | ---------------------------- | ---------- |
+  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Promise object used to return the on-screen awareness result. The returned awareness information list OnscreenAwarenessInfo[] returns at most two awareness information items at a time.|
 
-**Error codes**
+**Error Codes**
 
 For details about the error codes, see [Onscreen Awareness Error Codes](errorcode-onScreen.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
 | 34000002 | The application or page is not supported. |
 
-**JumpContext example**
+**JumpContext Example**
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
     'JumpContext',
@@ -708,37 +731,37 @@ let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
     "JumpContext" : {
       "pageId":'156',
       "textCompIdList": ['235'],
-      "text": 'Article beginning'
+      "text": 'Beginning of the article'
     }
   }
 }
 
 try {
   let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.interact(onscreenAwarenessCap, onscreenAwarenessOptions);
-  console.error(`interact resultCode: ${info[0].resultCode}`);
+  console.info(`interact resultCode: ${info[0].resultCode}`);
 } catch (err) {
-  console.info(`interact failed, error: ${err}`);
+  console.error(`interact failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
-**InjectEvent example**
+**InjectEvent Example**
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
-    'InjectEvent',    // (Mandatory) Inject event capability: indicates that the current service needs to use event injection (such as key, tap, and back system event injection).
+    'InjectEvent',    // (Mandatory field) Inject event capability: indicates that the current service needs to use event injection (such as system event injection for key presses, clicks, and back operations).
   ]
 }
 
 let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
   parameters: {
-     // (Mandatory) Inject event command, used to inject key/operation events into the system.
+     // (Required field) Command for injecting an event, used to inject key/operation events into the system.
     "InjectEvent": {
-       // (injectEvent is mandatory, others are optional) Specific content of the injected event: JSON string format, including component type, action to execute, and parameters.
+       // (injectEvent is required, others are optional) Specific content of the injected event: JSON string format, including the component type, action to execute, and parameters.
       "injectEvent": '{"componentType":"","action":"back","params":{}}',
-      "compId": ["0"],    // (Optional) Target component ID array: specifies the component to which the event is injected.
-      "windowId": 0,      // (Optional) Window ID: specifies the target window for event injection. 0 indicates the currently active window.
+      "compId": ["0"],    // (Optional) Target component ID array: specifies the IDs of the components into which the event is injected.
+      "windowId": 0,      // (Optional) Window ID: specifies the target window for the injected event. 0 indicates the currently active window.
       "displayId": -1     // (Optional) Display device ID: -1 indicates using the default display device.
     }
   }
@@ -746,57 +769,140 @@ let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
 
 try {
   let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.interact(onscreenAwarenessCap, onscreenAwarenessOptions);
-  console.error(`interact resultCode: ${info[0].resultCode}`);
+  console.info(`interact resultCode: ${info[0].resultCode}`);
 } catch (err) {
-  console.info(`interact failed, error: ${err}`);
+  console.error(`interact failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
+**SmartAutoFill Example**
 
+When **capList** is **SmartAutoFill**, options must be passed and the **"SmartAutoFill"** object in parameters must contain the **autoFillItems** array; otherwise, the fill operation fails and error code 34000001 is returned. The fields of each element in the **autoFillItems** array are described as follows:
+
+| Field Name | Type | Mandatory | Description |
+| ---- | ------ | ---- | ---- |
+| frameworkType | number | No | UI framework type. **0**: **ARKUI** (default); **1**: **ARKWEB**. |
+| id | string | Yes | Input box component ID. When **frameworkType** is **0** (**ARKUI**), id is the component ID in numeric string form; when **frameworkType** is **1** (**ARKWEB**), id is the Web component ID. |
+| xpath | string | No | XPath path. Required when **frameworkType** is 1 (**ARKWEB**), used to locate the input box element in the Web page. |
+| contentType | string | No | Content type of the input box. |
+| clickPoints | object[] | No | List of click coordinates, used to specify the click position of the input box. |
+| existingValue | string | No | Content already existing in the input box. |
+| fillValue | string | No | Content to be filled. If not passed, the fill content is an empty string. |
+| mode | number | No | Fill mode. **0**: overwrite the existing content (**OVERWRITE**, default); **1**: insert content (**INSERT**). |
+
+The fields of each element in the **clickPoints** array are described as follows:
+
+| Field Name | Type | Mandatory | Description |
+| ---- | ------ | ---- | ---- |
+| displayX | number | No | X coordinate of the click position (absolute screen coordinate). |
+| displayY | number | No | Y coordinate of the click position (absolute screen coordinate). |
+
+The **autoFillItems** array supports a maximum of 50 elements.
+
+The **SmartAutoFill** object can also contain the following optional fields, which are used to specify the target window information for filling:
+
+| Field Name | Type | Mandatory | Description |
+| ---- | ------ | ---- | ---- |
+| pageInfo | object | No | Page information, used to specify the target window for filling. |
+
+The fields in the **pageInfo** object are described as follows:
+
+| Field Name | Type | Mandatory | Description |
+| ---- | ------ | ---- | ---- |
+| bundleName | string | No | Application package name. |
+| displayId | number | No | Display device ID. |
+| windowId | number | No | Window ID, which specifies the target window for filling. If this parameter is not passed or an invalid value (≤ 0) is passed, the system automatically obtains the main window ID of the current foreground application. |
+
+```ts
+import { onScreen } from '@kit.MultimodalAwarenessKit';
+
+let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
+  capList: [
+    'SmartAutoFill',
+  ]
+};
+
+let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
+  parameters: {
+    "SmartAutoFill": {
+      autoFillItems: [
+        {
+          frameworkType: 0,
+          id: "123",
+          contentType: "EMAIL_ADDRESS",
+          fillValue: "user@example.com",
+          mode: 0
+        },
+        {
+          frameworkType: 1,
+          id: "456",
+          xpath: "/html/body/div/form/input[1]",
+          contentType: "PHONE_NUMBER",
+          fillValue: "13800138000",
+          mode: 0
+        }
+      ],
+      pageInfo: {
+        windowId: 10
+      }
+    }
+  }
+};
+
+try {
+  let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.interact(onscreenAwarenessCap, onscreenAwarenessOptions);
+  console.info(`interact resultCode: ${info[0].resultCode}`);
+} catch (err) {
+  console.error(`interact failed, Code: ${err.code}, message: ${err.message}`);
+}
+```
 ## onScreen.apperceive<sup>23+</sup>
 
 apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
 
-Proactively triggers screen content awareness to obtain the screen content for snapshot analysis.
+Actively triggers on-screen content awareness to obtain the screen content for snapshot analysis.
 
-**Required permissions**:
+**Required permission:**
 
-- API version 26+: ohos.permission.ONSCREEN_AWARENESS.
+- API version 26+: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS.
 - API version 23-24: ohos.permission.GET_SCREEN_CONTENT.
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other devices, error code 801 is returned.
+**Device behavior differences:** This API can be properly called on Phone and Tablet devices. If it is called on other device types, error code 801 is returned.
+
+**System API**: This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name  | Type                            | Mandatory| Description                                                        |
+| Name   | Type                             | Mandatory | Description                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes  | Onscreen awareness capability list. For details, see the following supported capability list.|
-| options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No  | Onscreen awareness parameter list.|
+| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes   | On-screen awareness capability list. For details, see the supported capability list below.|
+| options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No   | On-screen awareness parameter list. If this parameter is not passed, the default parameter configuration is used.|
 
-The following table lists the **groupId** capabilities supported by the **apperceive** API.
-
-|groupId Capability|Sub-capability|**Function**|
+The groupId capability list supported by the apperceive API is as follows:
+|groupId Capability List|Corresponding Sub-Item Capability|Description|
 | ---- | ------ | ------|
-|SmartEdge|Article|Obtains awareness information for the reading scenario.|
-|SmartEdge|ShortVideo|Obtains awareness information for the short video scenario.|
-|SmartEdge|Todo|Obtains awareness information for the to-do scenario.|
-|SmartEdge|Activity|Obtains awareness information for the basic service.|
-|CeliaMemory|Article|Obtains awareness information for the reading scenario.|
+|SmartEdge|Article|Obtains the reading scenario awareness information.|
+|SmartEdge|ShortVideo|Obtains the short video scenario awareness information.|
+|SmartEdge|Todo|Obtains the to-do scenario awareness information.|
+|SmartEdge|Activity|Obtains the basic service awareness information.|
+|CeliaMemory|Article|Obtains the reading scenario awareness information.|
 
-**Return value**
+**Returns**
 
-| Type                          | Description        |
-| ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Promise used to return the on-screen awareness result. The returned awareness information list **OnscreenAwarenessInfo[]** can contain up to 2 awareness information items at a time.|
+  | Type                           | Description         |
+  | ---------------------------- | ---------- |
+  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Promise object used to return the on-screen awareness result. The returned awareness information list OnscreenAwarenessInfo[] contains at most two awareness information items at a time.|
 
-**Error codes**
+**Error Codes**
 
 For details about the error codes, see [Onscreen Awareness Error Codes](errorcode-onScreen.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -805,15 +911,15 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
 **Example**
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   groupId: 'SmartEdge'
 }
 try {
   let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.apperceive(onscreenAwarenessCap);
-  console.error(`apperceive resultCode: ${info[0].resultCode}`);
+  console.info(`apperceive resultCode: ${info[0].resultCode}`);
 } catch (err) {
-  console.info(`apperceive failed, error: ${err}`);
+  console.error(`apperceive failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -821,27 +927,29 @@ try {
 
 onReadingScreenPermissionListener(callback: Callback&lt;ReadingScreenPermissionStatus&gt;): void
 
-Enables the screen content access permission monitoring and returns the permission status in real time.
+Enables monitoring of the screen content access permission and returns the permission status in real time.
 
-**Required permissions**: ohos.permission.GET_SCREEN_CONTENT
+**Required permission:** ohos.permission.GET_SCREEN_CONTENT
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other devices, error code 801 is returned.
+**Device behavior differences:** This API can be properly called on Phone and Tablet devices. If it is called on other device types, error code 801 is returned.
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name  | Type                            | Mandatory| Description                                                        |
+| Name | Type | Mandatory | Description |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| callback | Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt; | Yes  | Callback used to return the status of the permission for reading screen information.|
+| callback | Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt; | Yes | Callback invoked to return the permission status of reading screen information. |
 
 **Error codes**
 
 For details about the error codes, see [Onscreen Awareness Error Codes](errorcode-onScreen.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
 | 202      | Permission check failed. A non-system application uses the system API. |
@@ -851,13 +959,13 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
 **Example**
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 try {
    onScreen.onReadingScreenPermissionListener((info: onScreen.ReadingScreenPermissionStatus) => {
       console.info(`onReadingScreenPermissionListener succeeded, readingState: ${info.readingState}`);
    });
 } catch (err) {
-   console.error('onReadingScreenPermissionListener failed, errCode = ' + err.code);
+   console.error(`onReadingScreenPermissionListener failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -865,25 +973,29 @@ try {
 
 offReadingScreenPermissionListener(callback?: Callback&lt;ReadingScreenPermissionStatus&gt;): void
 
-Disables the screen content access permission monitoring.
+Closes the monitoring of screen content access permission.
 
-**Required permissions**: ohos.permission.GET_SCREEN_CONTENT
+**Required permission:** ohos.permission.GET_SCREEN_CONTENT
 
-**System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other devices, error code 801 is returned.
+**Device behavior differences:** This API can be properly called on Phone and Tablet devices. If it is called on other device types, error code 801 is returned.
+
+**System API**: This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name  | Type                            | Mandatory| Description              |
+| Name | Type | Mandatory | Description |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
-| callback | Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt; | No   | Callback to be unsubscribed. The callback to unsubscribe must be the same as the callback passed in during subscription. If not specified, all callbacks currently listening for this event will be unregistered.|
+| callback | Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt; | No | Callback for the screen content access permission event. The callback to be unsubscribed from must be the same as the one passed in during subscription. If this parameter is not specified, all callbacks currently listening for this event are unsubscribed from. |
 
 **Error codes**
 
 For details about the error codes, see [Onscreen Awareness Error Codes](errorcode-onScreen.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
 | 202      | Permission check failed. A non-system application uses the system API. |
@@ -893,11 +1005,11 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
 **Example**
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 try {
   onScreen.offReadingScreenPermissionListener();
   console.info(`offReadingScreenPermissionListener succeeded.`);
 } catch (err) {
-  console.error('offReadingScreenPermissionListener failed, errCode = ' + err.code);
+  console.error(`offReadingScreenPermissionListener failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```

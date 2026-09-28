@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T11:55:59.052Z pushedAt=2026-09-05T10:47:30.784Z -->
 
-When starting a modal page, you can transfer custom data to the autofill service through [reloadInModal](js-apis-inner-application-autoFillExtensionContext-sys.md#reloadinmodal13) and obtain the data through [onFillRequest](js-apis-app-ability-autoFillExtensionAbility-sys.md#onfillrequest) of the service.
+When a modal page is pulled up, developers can pass custom data to the autofill service through the [reloadInModal](js-apis-inner-application-autoFillExtensionContext-sys.md#reloadinmodal13) API, and obtain the data through the [onFillRequest](js-apis-app-ability-autoFillExtensionAbility-sys.md#onfillrequest) API of the autofill service. This is applicable to scenarios where context information needs to be passed during the autofill process.
 
 > **NOTE**
 > 
@@ -15,7 +16,7 @@ When starting a modal page, you can transfer custom data to the autofill service
 > The APIs of this module can be used only in the stage model. 
 > The APIs provided by this module are system APIs.
 
-##  Properties
+## CustomData
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 

@@ -6,7 +6,7 @@
 <!--Designer: @JiDong-CS1-->
 <!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=b3b9565f7623db31a9a79d262270bc48838be44e translatedAt=2026-06-29T11:43:06.142Z pushedAt=2026-07-01T02:26:15.158Z -->
+<!-- md-trans-meta sourceCommit=3431803371bec3017462793ef1147ca38f9f12ab translatedAt=2026-09-03T12:28:57.213Z pushedAt=2026-09-05T10:47:30.934Z -->
 
 This module provides the capability of protecting app sensitive data under the lock screen, supporting requesting and releasing the permission to access app sensitive data under the lock screen, and querying the state of sensitive data keys. When the reference count of a sensitive data key reaches zero and the screen has been locked for the system-configured duration threshold, the key is destroyed, and no operations can be performed on the data. These keys can be restored only after the screen is unlocked. By calling the [acquireAccess](#screenlockfilemanageracquireaccess) API of this module, you can prevent the key from being destroyed after the screen has been locked for the system-configured duration threshold.
 
@@ -22,7 +22,6 @@ This module provides the capability of protecting app sensitive data under the l
 ```ts
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
-
 ## screenLockFileManager.acquireAccess
 
 acquireAccess(dataType: DataType): AccessStatus
@@ -57,7 +56,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed, usually returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameter is left unspecified. 2. Incorrect parameter types. |
 | 801 | The specified SystemCapability name was not found. |
 | 29300001 | Invalid DataType. |
 | 29300002 | The system ability works abnormally. |
@@ -118,7 +117,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed, usually returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameter is left unspecified. 2. Incorrect parameter types. |
 | 801      | The specified SystemCapability name was not found.           |
 | 29300001 | Invalid DataType.                                           |
 | 29300002 | The system ability works abnormally.                          |
@@ -177,7 +176,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed, usually returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameter is left unspecified. 2. Incorrect parameter types. |
 | 801      | The specified SystemCapability name was not found.           |
 | 29300001 | Invalid DataType.                                           |
 | 29300002 | The system ability works abnormally.                          |

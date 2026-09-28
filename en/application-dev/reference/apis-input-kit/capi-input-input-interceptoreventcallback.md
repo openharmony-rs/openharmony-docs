@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3ac9506947b9a687415be23e968a5dc9053205f5 translatedAt=2026-09-01T01:18:17.308Z pushedAt=2026-09-03T06:08:43.553Z -->
+<!-- md-trans-meta sourceCommit=98b59aab53480716b722fc4051586a4a2638d2bf translatedAt=2026-09-11T00:08:58.559Z pushedAt=2026-09-11T02:54:37.583Z -->
 
 ```c
 typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallback
@@ -14,7 +14,7 @@ typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallba
 
 ## Overview
 
-Defines the interceptor callback event structure, which is used to define the callback function types required for input event interception. Mouse interception events, touch input events, key events, and axis events are supported.
+Defines the interceptor callback event structure, which is used to define the callback types required for input event interception. Mouse interception events, touch input events, and axis events are supported.
 
 **Since**: 12
 
@@ -29,5 +29,5 @@ Defines the interceptor callback event structure, which is used to define the ca
 | Name| Description|
 | -- | -- |
 | [Input_MouseEventCallback](capi-oh-input-manager-h.md#input_mouseeventcallback) mouseCallback | Callback for mouse events. |
-| [Input_TouchEventCallback](capi-oh-input-manager-h.md#input_toucheventcallback) touchCallback | Callback for touchscreen input events. |
+| [Input_TouchEventCallback](capi-oh-input-manager-h.md#input_toucheventcallback) touchCallback | Callback for touch input events. |
 | [Input_AxisEventCallback](capi-oh-input-manager-h.md#input_axiseventcallback) axisCallback | Callback for axis events. |

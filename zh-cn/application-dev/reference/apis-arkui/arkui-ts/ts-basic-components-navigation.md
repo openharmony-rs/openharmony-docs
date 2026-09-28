@@ -811,12 +811,12 @@ Navigation导航控制器，以栈的数据结构管理Navigation中所有的子
 
 > **说明：**
 >
-> 1.连续调用多个导航控制器操作方法时，中间过程会被忽略，显示最终的栈操作结果。<br/>
+> 1. 连续调用多个导航控制器操作方法时，中间过程会被忽略，显示最终的栈操作结果。<br/>
 > 例如：在Page1页面先pop再push一个Page1，系统会认为操作前和操作后的结果一致而不进行任何操作，如果需要强行push一个Page1实例，可以设置[NavigationOption](#navigationoptions12)中的launchMode属性值为LaunchMode.NEW_INSTANCE模式。
 >
-> 2.不建议开发者通过监听页面生命周期的方式管理自己的导航控制器。
+> 2. 不建议开发者通过监听页面生命周期的方式管理自己的导航控制器。
 >
-> 3.在应用处于后台状态下，调用NavPathStack的栈操作方法，会在应用再次回到前台状态时触发刷新。
+> 3. 在应用处于后台状态下，调用NavPathStack的栈操作方法，会在应用再次回到前台状态时触发刷新。
 
 ### constructor<sup>10+</sup>
 
@@ -1656,11 +1656,15 @@ setPathStack(pathStack: Array\<NavPathInfo\>, animated?: boolean): void
 
 preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
 
-预加载info指定的NavDestination页面。预加载页面不会立即显示，而是被缓存。当后续调用[pushPath](#pushpath10)时，若参数匹配，将使用预加载的页面实例进行快速显示。使用Promise异步回调。
+预加载info指定的NavDestination页面。预加载页面不会立即显示，而是被缓存。当未加载页面的页面参数和页面名称，与预加载info相同时，将使用预加载的页面实例进行快速显示。
 
-**起始版本：** 26.1.0
+> **说明：**
+>
+> 使用该接口会立刻创建目标navDestination节点，并触发其所在自定义节点的[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)与[onDidBuild](ts-custom-component-lifecycle.md#ondidbuild12)生命周期。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1681,11 +1685,10 @@ preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001    | Internal error.|
 | 100005    | Builder function not registered. |
 | 100006    | NavDestination not found.|
@@ -2261,9 +2264,9 @@ Navigation分割线颜色及上下边距。
 
 预加载页面选项。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2286,8 +2289,8 @@ Navigation配置项。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | stackSizeLimit | number | 否 | 是 | Navigation路由栈的活跃页面节点数量限制。<br/>默认值：0，表示不限制路由栈大小。<br/>取值小于等于0时，不限制路由栈大小。<br/>取值大于0时，将活跃页面节点数量限制为指定值；超过限制后，系统会按照先入先出顺序自动销毁较早入栈的页面节点，页面的NavPathInfo完整保留在路由栈中，支持后续重新创建页面。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| recyclePagesOnLowMemory | boolean | 否 | 是 | 是否在收到低内存信号时回收不可见页面。<br/>默认值：false<br/>true：收到低内存信号时回收不可见的NavDestination页面实例，NavPathInfo会保留，页面后续可被重新创建。<br/>false：收到低内存信号时不回收不可见的NavDestination页面实例。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/> |
-| clearContentStackOnPrimaryNavigation | boolean | 否 | 是 | 是否开启Navigation左起右清栈能力。<br/>默认值：false。值为true时表示开启左起右清栈能力，值为false时表示关闭左起右清栈能力。<br/>**左起右清栈能力说明：**<br/>Navigation显示为split模式时，如果用户在主页侧（NavBar或者是主页NavDestination）的操作（比如点击页面中的按钮等）触发了页面跳转，那么Navigation页面栈中第一个新创建的页面之前的页面会被系统清除，只保留第一个新创建的页面及其之后的页面。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| recyclePagesOnLowMemory | boolean | 否 | 是 | 是否在收到低内存信号时回收不可见页面。<br/>默认值：false<br/>true：收到低内存信号时回收不可见的NavDestination页面实例，NavPathInfo会保留，页面后续可被重新创建。<br/>false：收到低内存信号时不回收不可见的NavDestination页面实例。<br/>**起始版本：** 26.0.1<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br/> |
+| clearContentStackOnPrimaryNavigation | boolean | 否 | 是 | 是否开启Navigation左起右清栈能力。<br/>默认值：false。值为true时表示开启左起右清栈能力，值为false时表示关闭左起右清栈能力。<br/>**左起右清栈能力说明：**<br/>Navigation显示为split模式时，如果用户在主页侧（NavBar或者是主页NavDestination）的操作（比如点击页面中的按钮等）触发了页面跳转，那么Navigation页面栈中第一个新创建的页面之前的页面会被系统清除，只保留第一个新创建的页面及其之后的页面。<br/>**起始版本：** 26.0.1<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ## MoreButtonOptions<sup>19+</sup>
 
@@ -3921,7 +3924,7 @@ struct PageOne {
         this.paramNum = (ctx?.pathInfo?.param as PageParam)?.num;
         this.stack = ctx.pathStack;
       } catch (err) {
-        console.error(`testTag onReady catch exception.Code:${err.Code}, message: ${err.message}`);
+        console.error(`testTag onReady catch exception.code:${err.code}, message: ${err.message}`);
       }
     })
   }
@@ -4040,7 +4043,7 @@ struct PageOneComponent {
         this.eventStr += '<onReady>';
         this.stack = ctx.pathStack;
       } catch (err) {
-        console.error(`testTag onReady catch exception.Code:${err.code}, message:${err.message}`);
+        console.error(`testTag onReady catch exception.code:${err.code}, message:${err.message}`);
       }
     })
   }
@@ -4108,7 +4111,7 @@ struct NavigationExample {
           Scroll(this.scrollerForScroll) {
             Column() {
               // $r('app.media.image_1')需要替换为开发者所需的资源文件
-              Image($r('app.media.image_1'))// 设置与标题栏高度一致，以便观察STACK效果
+              Image($r('app.media.image_1')) // 设置与标题栏高度一致，以便观察STACK效果
                 .height(138)
                 .width('100%')
               Button('BarStyle.STANDARD')
@@ -5888,6 +5891,8 @@ struct NavigationTitleMaterialDemo {
 }
 ```
 
+该示例配图为高算力设备强档效果：
+
 ![navigationTitleSystemMaterial.gif](figures/navigationTitleSystemMaterial.gif)
 
 
@@ -5895,7 +5900,7 @@ struct NavigationTitleMaterialDemo {
 
 该示例演示如何使用clearContentStackOnPrimaryNavigation属性，开启Navigation左起右清栈效果。
 
-从API版本26.1.0开始，[NavigationConfiguration](#navigationconfiguration)新增了clearContentStackOnPrimaryNavigation属性。
+从API版本26.0.1开始，[NavigationConfiguration](#navigationconfiguration)新增了clearContentStackOnPrimaryNavigation属性。
 
 ```ts
 // xxx.ets

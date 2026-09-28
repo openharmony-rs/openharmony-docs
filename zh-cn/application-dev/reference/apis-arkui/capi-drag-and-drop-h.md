@@ -74,7 +74,7 @@
 | [float OH_ArkUI_DragEvent_GetVelocityY(ArkUI_DragEvent* event)](#oh_arkui_dragevent_getvelocityy) | 获取当前拖拽的y轴方向拖动速度。 |
 | [float OH_ArkUI_DragEvent_GetVelocity(ArkUI_DragEvent* event)](#oh_arkui_dragevent_getvelocity) | 获取当前拖拽的主方向拖动速度。 |
 | [int32_t OH_ArkUI_DragEvent_GetModifierKeyStates(ArkUI_DragEvent* event, uint64_t* keys)](#oh_arkui_dragevent_getmodifierkeystates) | 获取修饰键按压状态。 |
-| [int32_t OH_ArkUI_DragEvent_StartDataLoading(ArkUI_DragEvent* event, OH_UdmfGetDataParams* options, char* key, unsigned int keyLen)](#oh_arkui_dragevent_startdataloading) | 使用指定的同步参数开始数据同步。 |
+| [int32_t OH_ArkUI_DragEvent_StartDataLoading(ArkUI_DragEvent* event, OH_UdmfGetDataParams* options, char* key, unsigned int keyLen)](#oh_arkui_dragevent_startdataloading) | 使用指定的参数异步加载拖拽数据。 |
 | [int32_t OH_ArkUI_CancelDataLoading(ArkUI_ContextHandle uiContext, const char* key)](#oh_arkui_canceldataloading) | 取消正在进行的数据同步。 |
 | [int32_t OH_ArkUI_DisableDropDataPrefetchOnNode(ArkUI_NodeHandle node, bool disabled)](#oh_arkui_disabledropdataprefetchonnode) | 设置是否在执行[NODE_ON_DROP](./capi-native-node-h.md#arkui_nodeeventtype)之前禁用数据预获取过程。系统将重试获取数据，直到达到最大时间限制（目前为2.4秒），这对跨设备的拖动操作非常有用，因为它有助于系统稳定通信。然而，对于[OH_ArkUI_DragEvent_StartDataLoading](#oh_arkui_dragevent_startdataloading)方法而言，这一特性显得多余。该方法采用异步机制获取数据，因此在NODE_ON_DROP中使用[OH_ArkUI_DragEvent_StartDataLoading](#oh_arkui_dragevent_startdataloading)时，为了避免在NODE_ON_DROP执行前意外获取数据，必须将此字段设置为true。 |
 | [int32_t OH_ArkUI_SetDragEventStrictReportWithNode(ArkUI_NodeHandle node, bool enabled)](#oh_arkui_setdrageventstrictreportwithnode) | 设置是否开启严格dragEvent上报。建议开启，默认不开启。不开启时，从父组件拖移进子组件时，父组件不会收到leave通知；开启后，前后组件发生变化时，上一个组件会收到leave通知，新组件会收到enter通知。该配置与具体的UI实例相关，需通过传入一个当前UI实例上的组件节点来关联。 |
@@ -106,7 +106,7 @@
 | [int32_t OH_ArkUI_DragAction_RegisterStatusListener(ArkUI_DragAction* dragAction, void* userData,void(\*listener)(ArkUI_DragAndDropInfo* dragAndDropInfo, void* userData))](#oh_arkui_dragaction_registerstatuslistener) | 注册拖拽状态监听回调，该回调可感知到拖拽已经发起或用户松手结束的状态，可通过该监听获取到落入方对数据的接收处理是否成功。 |
 | [ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDisplayId(ArkUI_DragEvent* event, int32_t* displayId)](#oh_arkui_dragevent_getdisplayid) | 获取当前拖拽事件发生时所在的屏幕ID，适用于多屏设备场景下需要判断拖拽操作发生在哪个屏幕的情况，如跨屏拖拽时根据屏幕ID进行差异化处理。不支持当eventType为NODE_ON_DRAG_END时获取。 |
 | [void OH_ArkUI_DragAction_UnregisterStatusListener(ArkUI_DragAction* dragAction)](#oh_arkui_dragaction_unregisterstatuslistener) | 解注册拖拽状态监听回调。 |
-| [ArkUI_DragStatus OH_ArkUI_DragAndDropInfo_GetDragStatus(ArkUI_DragAndDropInfo* dragAndDropInfo)](#oh_arkui_draganddropinfo_getdragstatus) | 获取[ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)发起拖拽的状态，获取异常时返回 ArkUI_DRAG_STATUS_UNKNOWN。 |
+| [ArkUI_DragStatus OH_ArkUI_DragAndDropInfo_GetDragStatus(ArkUI_DragAndDropInfo* dragAndDropInfo)](#oh_arkui_draganddropinfo_getdragstatus) | 获取[ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)发起拖拽的状态，获取异常时返回ARKUI_DRAG_STATUS_UNKNOWN。 |
 | [ArkUI_DragEvent* OH_ArkUI_DragAndDropInfo_GetDragEvent(ArkUI_DragAndDropInfo* dragAndDropInfo)](#oh_arkui_draganddropinfo_getdragevent) | 通过dragAndDropInfo获取到DragEvent，可通过DragEvent获取释放结果等。 |
 | [int32_t OH_ArkUI_StartDrag(ArkUI_DragAction* dragAction)](#oh_arkui_startdrag) | 通过构造的DragAction对象发起拖拽。 |
 | [int32_t OH_ArkUI_DragEvent_RequestDragEndPending(ArkUI_DragEvent* event, int32_t* requestIdentify)](#oh_arkui_dragevent_requestdragendpending) | 请求延迟处理拖拽结束事件，等待应用确认操作结果。应用需通过 [OH_ArkUI_NotifyDragResult](#oh_arkui_notifydragresult)接口将最终结果回传至系统，并在所有处理完成后调用 [OH_ArkUI_NotifyDragEndPendingDone](#oh_arkui_notifydragendpendingdone)。最大等待时间为2秒。 |
@@ -247,7 +247,7 @@ ArkUI_DragEvent* OH_ArkUI_NodeEvent_GetDragEvent(ArkUI_NodeEvent* nodeEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* | ArkUI_DragEvent 事件指针，当传入的 NodeEvent 无效或不是拖拽相关的事件时，则返回空。 |
+| [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* | ArkUI_DragEvent事件指针，当传入的NodeEvent无效或不是拖拽相关的事件时，则返回空。 |
 
 ### OH_ArkUI_NodeEvent_GetPreDragStatus()
 
@@ -273,7 +273,7 @@ ArkUI_PreDragStatus OH_ArkUI_NodeEvent_GetPreDragStatus(ArkUI_NodeEvent* nodeEve
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_PreDragStatus](#arkui_predragstatus) | ArkUI_PreDragStatus 拖拽发起前交互状态。 |
+| [ArkUI_PreDragStatus](#arkui_predragstatus) | ArkUI_PreDragStatus拖拽发起前交互状态。 |
 
 ### OH_ArkUI_DragEvent_DisableDefaultDropAnimation()
 
@@ -869,7 +869,7 @@ int32_t OH_ArkUI_DragEvent_StartDataLoading(ArkUI_DragEvent* event, OH_UdmfGetDa
 **描述：**
 
 
-使用指定的同步参数开始数据同步。在NODE_ON_DROP中使用该方法时，为了避免在NODE_ON_DROP执行前意外获取数据，需先通过[OH_ArkUI_DisableDropDataPrefetchOnNode](capi-drag-and-drop-h.md#oh_arkui_disabledropdataprefetchonnode)将数据预获取过程设置为禁用。
+使用指定的参数异步加载拖拽数据。在NODE_ON_DROP中使用该方法时，为了避免在NODE_ON_DROP执行前意外获取数据，需先通过[OH_ArkUI_DisableDropDataPrefetchOnNode](capi-drag-and-drop-h.md#oh_arkui_disabledropdataprefetchonnode)将数据预获取过程设置为禁用。
 
 **起始版本：** 15
 
@@ -1705,7 +1705,7 @@ ArkUI_DragStatus OH_ArkUI_DragAndDropInfo_GetDragStatus(ArkUI_DragAndDropInfo* d
 **描述：**
 
 
-获取[ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)发起拖拽的状态，获取异常时返回 ArkUI_DRAG_STATUS_UNKNOWN。
+获取[ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)发起拖拽的状态，获取异常时返回ARKUI_DRAG_STATUS_UNKNOWN。
 
 **起始版本：** 12
 
@@ -1720,7 +1720,7 @@ ArkUI_DragStatus OH_ArkUI_DragAndDropInfo_GetDragStatus(ArkUI_DragAndDropInfo* d
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_DragStatus](capi-drag-and-drop-h.md#arkui_dragstatus) | 拖拽状态，如果获取失败，返回默认值 ArkUI_DRAG_STATUS_UNKNOWN。 |
+| [ArkUI_DragStatus](capi-drag-and-drop-h.md#arkui_dragstatus) | 拖拽状态，如果获取失败，返回默认值ARKUI_DRAG_STATUS_UNKNOWN。 |
 
 ### OH_ArkUI_DragAndDropInfo_GetDragEvent()
 
@@ -2006,7 +2006,7 @@ ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDragSource(ArkUI_DragEvent* event, char *b
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* event | 指向<b>ArkUI_DragEvent</b>对象的指针。 |
-| char *bundleName | 用来接收拖起方包名的字符串数组，长度不应小于128个字符。 |
+| char *bundleName | 用来接收拖拽发起方包名的字符串数组，长度不应小于128个字符。 |
 | int32_t length | 用来显式指明传入的字符串数组长度，不应小于128个字符。 |
 
 **返回：**

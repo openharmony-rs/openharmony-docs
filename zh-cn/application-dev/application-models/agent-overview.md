@@ -36,7 +36,7 @@
 
 端侧智能体框架采用客户端-服务端架构，基于A2A协议通过Agent管理服务进行通信与协作，整体运行机制如下：
 
-- **能力注册**：开发者在[agent_config.json](./agent-extension-configuration.md)中配置[AgentCard](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)，描述智能体的名称、描述、技能列表、输入输出模式等信息。Agent管理服务负责管理这些注册信息。
+- **能力注册**：开发者在[agent_config.json](./agent-extension-configuration.md)中配置[AgentCard (Agent卡片)](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)，描述智能体的名称、描述、技能列表、输入输出模式等信息。Agent管理服务负责管理这些注册信息。
 
 - **连接建立**：系统应用（Agent客户端）<!--Del-->通过Agent管理服务的[connectAgentExtensionAbility()](../reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法，<!--DelEnd-->连接目标智能体（Agent服务端）的[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)组件，建立通信通道。
 

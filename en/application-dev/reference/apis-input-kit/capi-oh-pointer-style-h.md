@@ -6,11 +6,11 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c27e0e5f22d6b3cf08575f1a30584cd1902be584 translatedAt=2026-09-01T01:18:57.174Z pushedAt=2026-09-03T06:26:09.984Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T00:46:42.547Z pushedAt=2026-09-11T04:05:04.862Z -->
 
 ## Overview
 
-Defines the mouse pointer styles.
+Defines the mouse cursor styles.
 
 **File to include**: <multimodalinput/oh_pointer_style.h>
 
@@ -91,11 +91,11 @@ Enumerates the cursor styles.
 | LOADING = 42 | Loading|![Loading.png](./figures/Loading.png)|
 | RUNNING = 43 | Running in the background|![Running.png](./figures/Running.png)|
 | MIDDLE_BTN_EAST_WEST = 44   | Scrolling east-west|![MID_Btn_East_West.png](./figures/MID_Btn_East_West.png)|
-| RUNNING_LEFT = 45   | Running in the background (extension 1)|![Loading_Left.png](./figures/Loading_Left.png)|
-| RUNNING_RIGHT = 46   | Running in the background (extension 2)|![Loading_Right.png](./figures/Loading_Right.png)|
+| RUNNING_LEFT = 45   | Running in the background (extension 1) |![Loading_Left.png](./figures/Loading_Left.png)|
+| RUNNING_RIGHT = 46   | Running in the background (extension 2) |![Loading_Right.png](./figures/Loading_Right.png)|
 | AECH_DEVELOPER_DEFINED_ICON = 47   | Custom circular cursor|![Custom_Cursor_Circle.png](./figures/Custom_Cursor_Circle.png)|
 | SCREENRECORDER_CURSOR = 48   | Screen recording cursor |![ScreenRecorder_Cursor.png](./figures/ScreenRecorder_Cursor.png)|
 | LASER_CURSOR = 49   | Floating cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly.<br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to implement page up/down, for scenarios such as PPT presentations and air gesture operations.|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
 | LASER_CURSOR_DOT = 50   | Click cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly.<br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to implement page up/down, for scenarios such as PPT presentations and air gesture operations.|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
 | LASER_CURSOR_DOT_RED = 51   | Laser pointer cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly.<br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to implement page up/down, for scenarios such as PPT presentations and air gesture operations.|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
-| DEVELOPER_DEFINED_ICON = -100 | Custom pointer. You can use the [OH_Input_SetCustomCursor](./capi-oh-input-manager-h.md#oh_input_setcustomcursor) to set a custom pointer, but not the [OH_Input_SetPointerStyle](./capi-oh-input-manager-h.md#oh_input_setpointerstyle).|You can customize pointers as needed via API.|
+| DEVELOPER_DEFINED_ICON = -100 | Custom cursor. You can use the [OH_Input_SetCustomCursor](./capi-oh-input-manager-h.md#oh_input_setcustomcursor) to set a custom pointer, but not the [OH_Input_SetPointerStyle](./capi-oh-input-manager-h.md#oh_input_setpointerstyle).|You can customize pointers as needed via API.|

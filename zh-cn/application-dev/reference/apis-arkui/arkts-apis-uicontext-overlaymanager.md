@@ -89,18 +89,27 @@ struct OverlayExample {
   @State message: string = 'ComponentContent';
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
+  @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
 
   build() {
     Column({ space: 5 }) {
-      Button('打开浮层').onClick(() => {
+      Button('openOrderOverlay').onClick(() => {
         let componentContent = new ComponentContent(
           this.uiContext, wrapBuilder<[Params]>(builderText),
           new Params(this.message, { x: 0, y: 110 })
         );
+        this.contentArray.push(componentContent);
         this.overlayNode.openOrderOverlay(componentContent, {
           levelOrder: LevelOrder.clamp(100),
           levelMode: LevelMode.OVERLAY
         });
+      })
+      Button('close overlay').onClick(() => {
+        if (this.contentArray.length > 0) {
+          this.overlayNode.removeComponentContent(this.contentArray.pop());
+        } else {
+          console.info('arrayIndex有误');
+        }
       })
     }
     .width('100%')

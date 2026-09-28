@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=92fad92320c327a07cb31c689545113f874871a6 translatedAt=2026-06-26T06:35:19.826Z pushedAt=2026-06-29T02:15:43.563Z -->
+<!-- md-trans-meta sourceCommit=7ef9b5061ca4cac695cf7b193861ba482e2c784a translatedAt=2026-09-04T03:03:41.006Z pushedAt=2026-09-09T09:11:03.676Z -->
 
 ```c
 typedef struct {...} OH_VObject
@@ -35,7 +35,7 @@ Defines a struct for allowed data types.
 | ------------------------------------------------------------ | -------------------------------------------------------- |
 | [int (*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)](#putint64) | Converts a single parameter or an array of the int64 type into a value of the OH_VObject type. |
 | [int (*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)](#putdouble) | Converts a single parameter or an array of the double type into a value of the OH_VObject type.|
-| [int (*putText)(OH_VObject *valueObject, const char *value)](#puttext) | Converts a character array of the char * type to a value of the OH_VObject type.        |
+| [int (*putText)(OH_VObject *valueObject, const char *value)](#puttext) | Converts a string of the char * type to a value of the OH_VObject type. |
 | [int (*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)](#puttexts) | Converts a string array of the char * type to a value of the OH_VObject type.      |
 | [int (*destroy)(OH_VObject *valueObject)](#destroy)          | Destroys an **OH_VObject** object and reclaims the memory occupied.                    |
 
@@ -49,7 +49,7 @@ int (*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)
 
 **Description**
 
-Converts a single parameter or an array of the int64 type into a value of the OH_VObject type.
+Converts a single parameter or array of type int64_t to a value of type **OH_VObject**.
 
 **Since**: 10
 
@@ -101,7 +101,7 @@ int (*putText)(OH_VObject *valueObject, const char *value)
 
 **Description**
 
-Converts a character array of the char * type to a value of the OH_VObject type.
+Converts a string of type char * to a value of type **OH_VObject**.
 
 **Since**: 10
 
@@ -110,7 +110,7 @@ Converts a character array of the char * type to a value of the OH_VObject type.
 | Name                 | Description                          |
 | ----------------------- | ------------------------------ |
 | OH_VObject *valueObject | Pointer to the **OH_VObject** instance.|
-| const char *value       | Pointer to the character array to convert.            |
+| const char *value       | Pointer to the string parameter.             |
 
 **Returns**
 

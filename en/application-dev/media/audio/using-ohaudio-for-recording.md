@@ -1,4 +1,4 @@
-# Using OHAudio for Audio Recording (C/C++)
+# (Recommended) Using OHAudio for Audio Recording (C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->

@@ -21,7 +21,7 @@ import { serial } from '@kit.BasicServicesKit';
 
 getSerialPortList(): Promise&lt;SerialPort[]&gt;
 
-Obtains the serial port list. This API uses a promise to return the result, which is a list of [SerialPort](#serialport) objects. This API uses a promise to return the result. This API is used to identify available serial port devices in scenarios such as industrial device connection, Internet of Things (IoT) device management, and embedded system debugging.
+Obtains the serial port list. This API uses a promise to return the result, which is a list of [SerialPort](#serialport) objects. This API is used to identify available serial port devices in scenarios such as industrial device connection, Internet of Things (IoT) device management, and embedded system debugging.
 
 **Since:** 26.0.0
 

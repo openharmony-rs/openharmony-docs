@@ -5,6 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=035babdf3f51289660d863f607a1da5734433fd5 translatedAt=2026-09-04T03:02:53.276Z pushedAt=2026-09-09T09:11:03.674Z -->
 
 ```c
 typedef struct {...} OH_Predicates
@@ -75,8 +76,8 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                   | Description                                                        |
 | ------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates | Pointer to the **OH_Predicates** instance.                           |
-| const char *field         | Pointer to the column name in the database table.                                            |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject   | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
+| const char *field         | Column name in the database table. It must not be a null pointer.                                  |
+| OH_VObject *valueObject   | Pointer to the [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to match the predicate. |
 
 **Returns**
 
@@ -101,7 +102,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Column name in the RDB store table, which cannot be empty.                                          |
+| const char *field                             | Column name in the database table, which must not be a null pointer.                                           |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -223,7 +224,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                   | Description                             |
 | ------------------------- | --------------------------------- |
 | OH_Predicates *predicates | Pointer to the **OH_Predicates** instance.|
-| const char *field         | Column name in the RDB store table, which cannot be empty.               |
+| const char *field         | Column name in the database table. It must not be a null pointer.                |
 
 **Returns**
 
@@ -248,7 +249,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                   | Description                             |
 | ------------------------- | --------------------------------- |
 | OH_Predicates *predicates | Pointer to the **OH_Predicates** instance.|
-| const char *field         | Column name in the RDB store table, which cannot be empty.               |
+| const char *field         | Column name in the database table, which must not be a null pointer.                |
 
 **Returns**
 
@@ -273,7 +274,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Column name in the RDB store table, which cannot be empty.                                          |
+| const char *field                             | Column name in the database table, which must not be a null pointer.                                           |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -300,7 +301,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Column name in the RDB store table, which cannot be empty.                                          |
+| const char *field                             | Column name in the database table. It must not be a null pointer.                                           |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -326,7 +327,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Column name in the RDB store table, which cannot be empty.                                          |
+| const char *field                             | Column name in the database table, which must not be a null pointer.                                           |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -352,7 +353,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Column name in the RDB store table, which cannot be empty.                                          |
+| const char *field                             | Column name in the database table. It must not be a null pointer.                                           |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -378,7 +379,7 @@ Pointer to the function used to create a predicates object to search for the rec
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Column name in the RDB store table, which cannot be empty.                                          |
+| const char *field                             | Column name in the database table, which must not be a null pointer.                                           |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -404,7 +405,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Column name in the RDB store table, which cannot be empty.                                          |
+| const char *field                             | Column name in the database table, which must not be a null pointer.                                           |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -430,8 +431,8 @@ Pointer to the function used to create a predicates object to search for the rec
 | Name                   | Description                                                        |
 | ------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates | Pointer to the **OH_Predicates** instance.                           |
-| const char *field         | Column name in the RDB store table, which cannot be empty.                                          |
-| OH_VObject *valueObject   | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
+| const char *field         | Column name in the database table, which must not be a null pointer.                                           |
+| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject   | Pointer to the [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to match the predicate. |
 
 **Returns**
 
@@ -456,7 +457,7 @@ Pointer to the function used to create a predicates object to sort the values in
 | Name                               | Description                                          |
 | ------------------------------------- | ---------------------------------------------- |
 | OH_Predicates *predicates             | Pointer to the **OH_Predicates** instance.             |
-| const char *field                     | Column name in the RDB store table, which cannot be empty.                            |
+| const char *field                     | Column name in the database table, must not be a null pointer.                             |
 | [OH_OrderType](capi-oh-predicates-h.md#oh_ordertype) type | Order type.|
 
 **Returns**
@@ -556,7 +557,7 @@ Pointer to the function used to create a predicates object to group the results 
 | Name                   | Description                                                |
 | ------------------------- | ---------------------------------------------------- |
 | OH_Predicates *predicates | Pointer to the **OH_Predicates** instance.                   |
-| char const *const *fields | Names of columns to group. The value cannot be empty.                                |
+| char const *const *fields | Column name that grouping depends on. It must not be a null pointer.                                 |
 | int length                | Length of the **fields** array. This parameter is an input parameter.|
 
 **Returns**
@@ -582,7 +583,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Pointer to the column name in the RDB store table, which cannot be empty.                                      |
+| const char *field                             | Column name in the database table. It must not be a null pointer.                                       |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -608,7 +609,7 @@ Pointer to the function used to create a predicates object to search for the fie
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | Pointer to the **OH_Predicates** instance.                           |
-| const char *field                             | Pointer to the column name in the RDB store table, which cannot be empty.                                      |
+| const char *field                             | Column name in the database table, which must not be a null pointer.                                       |
 | [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | Pointer to an [OH_VObject](capi-rdb-oh-vobject.md) instance, indicating the value to be matched with the predicate.|
 
 **Returns**
@@ -664,3 +665,10 @@ Pointer to the function used to destroy an **OH_Predicates** object and reclaim 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
 | int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
+
+
+
+
+
+
+

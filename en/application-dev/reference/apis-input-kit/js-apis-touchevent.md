@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=9a1cb1c28d6db83260f62725623fc8e88729c2c6 translatedAt=2026-09-01T01:22:32.983Z pushedAt=2026-09-03T08:22:07.382Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:32:00.887Z pushedAt=2026-09-11T02:53:33.705Z -->
 
 The **touchEvent** module provides touch events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 

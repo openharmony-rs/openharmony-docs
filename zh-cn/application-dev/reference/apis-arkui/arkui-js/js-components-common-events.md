@@ -61,7 +61,7 @@
 | 属性             | 类型                     | 说明                                       |
 | -------------- | ---------------------- | ---------------------------------------- |
 | touches        | Array&lt;TouchInfo&gt; | 触摸事件时的属性集合，包含屏幕触摸点的信息数组。                 |
-| changedTouches | Array&lt;TouchInfo&gt; | 触摸事件时的属性集合，包括产生变化的屏幕触摸点的信息数组。数据格式和touches一样。该属性表示有变化的触摸点，如从无变有，位置变化，从有变无。例如用户手指刚接触屏幕时，touches数组中有数据，但changedTouches无数据。 |
+| changedTouches | Array&lt;TouchInfo&gt; | 触摸事件时的属性集合，包括产生变化的屏幕触摸点的信息数组。数据格式和touches一样。该属性表示有变化的触摸点，如从无变有、位置变化或从有变无。例如用户手指刚接触屏幕时，touches数组和changedTouches数组中均包含该触摸点的信息。 |
 
 **表3** TouchInfo
 
@@ -115,7 +115,7 @@
 <!-- xxx.hml -->
 <div>
   <div data-a="dataA" data-b="dataB" 
-    style="width: 100%; height: 50%; background-color: saddlebrown;"@touchstart='touchstartfunc'></div>
+    style="width: 100%; height: 50%; background-color: saddlebrown;" @touchstart="touchstartfunc"></div>
 </div>
 ```
 
@@ -157,14 +157,14 @@ setData(key: string, value: object): boolean
 ```js
 // setData的value参数，可以是基本数据类型。
 dragStart(e) {
-    var isSetOK = e.dataTransfer.setData('name', 1);
+    e.dataTransfer.setData('name', 1);
 },
 // setData的value参数，也可以是对象类型。
 dragStart(e) {
     var person = new Object();
     person.name = "tom";
     person.age = 21;
-    var isSetOK = e.dataTransfer.setData('person', person);
+    e.dataTransfer.setData('person', person);
 }
 ```
 ### getData<sup>9+</sup>
@@ -222,7 +222,7 @@ clearData(key?: string): boolean
 
 ```js
 dragEnd(e) {
-    var isSuccess = e.dataTransfer.clearData('name');
+    e.dataTransfer.clearData('name');
 }
 ```
 ### setDragImage<sup>9+</sup>
@@ -251,7 +251,7 @@ setDragImage(pixelMap: PixelMap, offsetX: number,offsetY: number): boolean
 import image from '@ohos.multimedia.image';
 
 export default {
-    // 生成96x96尺寸的PixelMap，创建颜色缓冲区并填充随机色值，配置PixelMap参数后生成实例
+    // 生成96x96尺寸的PixelMap，创建颜色缓冲区并按顺序填充颜色值，配置PixelMap参数后生成实例
     createPixelMap() {
         let color = new ArrayBuffer(4 * 96 * 96);
         var buffer = new Uint8Array(color);
@@ -272,7 +272,6 @@ export default {
         const promise = image.createPixelMap(color, opts);
         promise.then((data) => {
             console.error('-create pixelMap has info message:' + JSON.stringify(data));
-            this.pixelMap = data;
             this.pixelMapReader = data;
         })
     },

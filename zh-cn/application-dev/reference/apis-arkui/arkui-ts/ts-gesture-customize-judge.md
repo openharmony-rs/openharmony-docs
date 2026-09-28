@@ -44,7 +44,7 @@ onGestureJudgeBegin(callback: (gestureInfo: GestureInfo, event: BaseGestureEvent
 
 ### 示例1（自定义手势判定）
 
-该示例通过配置[onGestureJudgeBegin](#ongesturejudgebegin)实现了对长按、快滑、滑动、捏合和拖动手势的自定义判定。从API version 21开始，支持通过[BaseEvent](ts-universal-events-click.md#baseevent8)的axisPinch属性获取双指缩放比例。
+该示例通过配置[onGestureJudgeBegin](#ongesturejudgebegin)读取长按、快滑、滑动和捏合手势的事件信息，并拒绝拖动手势。从API version 21开始，支持通过[BaseEvent](ts-universal-events-click.md#baseevent8)的axisPinch属性获取双指缩放比例。
 
 ```ts
 // xxx.ets
@@ -140,7 +140,7 @@ struct Index {
 
 ### 示例2（自定义区域手势判定）
 
-该示例通过配置onGestureJudgeBegin，根据触发位置所在区域决定长按手势和拖动手势是否响应。
+该示例通过配置onGestureJudgeBegin，根据触发位置所在区域决定长按手势是否响应，并演示长按手势与拖动手势在上下区域的配合效果。
 
 ```ts
 // xxx.ets
@@ -167,7 +167,7 @@ struct Index {
             Stack().width('200').height('100').backgroundColor(Color.Blue)
           }.width('200vp').height('200vp')
 
-          // Stack的下半区是绑定了拖动手势的图像区域
+          // Stack中的Image区域绑定了拖动手势
           Image($r('sys.media.ohos_app_icon'))
             .draggable(true)
             .onDragStart(() => {
@@ -215,9 +215,9 @@ struct Index {
 ```
 ![gestures2](figures/gestures2.gif)
 
-### 示例3（实时监测参与手势的有效触点的数量及其简要信息）
+### 示例3（获取参与手势判定的有效触点数量及其简要信息）
 
-该示例通过配置onGestureJudgeBegin回调，读取fingerInfos实时检测参与手势的有效触点数量、各个触点ID及其坐标。
+该示例通过配置onGestureJudgeBegin回调，读取fingerInfos获取参与手势判定的有效触点数量、各个触点ID及其坐标。
 
 ```ts
 // xxx.ets

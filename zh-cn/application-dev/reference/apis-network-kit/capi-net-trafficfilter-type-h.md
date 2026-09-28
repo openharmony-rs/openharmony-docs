@@ -78,7 +78,7 @@
 | OH_TRAFFICFILTER_MIN_GROUP_ID        1 | 最小Group ID值。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_MAX_GROUP_ID        65535 | 最大Group ID值。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_IFNAMSIZ            32 | 网络接口名称最大长度。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_MAC_ADDRSTRLEN       18 | MAC地址字符串的最大长度（XX:XX:XX:XX:XX:XX格式）。<br>**起始版本：** 26.1.0 |
+| OH_TRAFFICFILTER_MAC_ADDRSTRLEN       18 | MAC地址字符串的最大长度（XX:XX:XX:XX:XX:XX格式）。<br>**起始版本：** 26.0.1 |
 | OH_TRAFFICFILTER_PROTO_ANY           0 | 协议类型常量：任意协议。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_PROTO_TCP           6 | 协议类型常量：TCP协议。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_PROTO_UDP           17 | 协议类型常量：UDP协议。<br>**起始版本：** 26.0.0 |
@@ -197,7 +197,7 @@ enum OH_TrafficFilter_PacketCopyMode
 
 报文复制模式枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -216,7 +216,7 @@ enum OH_TrafficFilter_PacketDecision
 
 报文处理决策类型。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 | 枚举项 | 描述 |
 | -- | -- |

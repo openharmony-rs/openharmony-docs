@@ -3,11 +3,12 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1275b89181ca8fc1862130ee865235369b412dd3 translatedAt=2026-09-15T02:47:25.706Z pushedAt=2026-09-16T07:46:03.721Z -->
 
-The **bluetooth.map** module provides APIs for exchanging messages between devices using the Bluetooth Message Access Profile (MAP).
+The **map** module provides the capability of accessing Bluetooth messages (such as SMS and email) on remote devices based on [Message Access Profile (MAP)](../../connectivity/bluetooth/terminology.md#map), and supports functions such as disconnecting the MAP service and setting and obtaining permissions to access messages. This module is applicable to scenarios where message data needs to be exchanged with a remote device via Bluetooth.
 
 > **NOTE**
 >
@@ -26,7 +27,7 @@ import { map } from '@kit.ConnectivityKit';
 
 disconnect(deviceId: string): void
 
-Disconnects the MAP service for a device.
+Disconnects the MAP service for a device. This method is applicable to scenarios such as switchover, connection recovery, and termination of Bluetooth message synchronization initiated by the user.
 
 **System API**: This is a system API.
 
@@ -71,7 +72,7 @@ try {
 
 setMessageAccessAuthorization(deviceId: string, authorization: AccessAuthorization): Promise&lt;void&gt;
 
-Sets the message access authorization for a device. This API uses a promise to return the result.
+Sets the message access authorization for a device. This API uses a promise to return the result. This API is applicable to scenarios where permissions to access messages are granted or revoked before Bluetooth message synchronization, for example, when the user manages permissions to read Bluetooth messages on vehicle-mounted devices or wearables.
 
 **System API**: This is a system API.
 
@@ -84,7 +85,7 @@ Sets the message access authorization for a device. This API uses a promise to r
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11) | Yes   | Message access authorization to set.|
+| authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11) | Yes | Authorization status of message access permissions, for example, **ACCESS_ALLOWED** or **ACCESS_DENIED**. For details about the enumerated values and their meanings, see [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11). |
 
 **Return value**
 
@@ -125,7 +126,7 @@ try {
 
 getMessageAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorization&gt;
 
-Obtains the message access authorization of a device. This API uses a promise to return the result.
+Obtains the message access authorization of a device. This API uses a promise to return the result. This API can be used to check whether the device has been granted permissions to read messages before Bluetooth message synchronization.
 
 **System API**: This is a system API.
 

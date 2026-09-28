@@ -5,7 +5,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:37:33.635Z pushedAt=2026-06-30T10:57:37.013Z -->
+<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:19:23.091Z pushedAt=2026-09-22T08:29:58.374Z -->
 
 The **Notification** module provides notification management capabilities, covering notifications, notification slots, notification subscription, notification enabled status, and notification badge status.
 
@@ -312,7 +312,7 @@ Subscribes to a notification with the subscription information specified. This A
 
 | Name      | Type                     | Mandatory| Description            |
 | ---------- | ------------------------- | ---- | ---------------- |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes  | Notification subscriber.    |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes   | [Notification subscription](../../notification/notification-glossary.md#notification-subscription) object.     |
 | info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | Yes  | Notification subscription information.|
 | callback   | AsyncCallback\<void\>     | Yes  | Callback used to return the result.|
 
@@ -358,7 +358,7 @@ Subscribes to notifications of all applications under this user. This API uses a
 
 | Name      | Type                  | Mandatory| Description            |
 | ---------- | ---------------------- | ---- | ---------------- |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | Yes  | Notification subscriber.    |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | Yes   | [Notification subscription](../../notification/notification-glossary.md#notification-subscription) object.     |
 | callback   | AsyncCallback\<void\>  | Yes  | Callback used to return the result.|
 
 **Example**
@@ -399,7 +399,7 @@ Subscribes to a notification with the subscription information specified. This A
 
 | Name      | Type                     | Mandatory| Description        |
 | ---------- | ------------------------- | ---- | ------------ |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes  | Notification subscriber.|
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes   | [Notification subscription](../../notification/notification-glossary.md#notification-subscription) object. |
 | info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | No  | Notification subscription information. This parameter is left empty by default.  |
 
 **Return value**
@@ -431,7 +431,7 @@ Notification.subscribe(subscriber).then(() => {
 
 unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): void
 
-Unsubscribes from a notification. This API uses an asynchronous callback to return the result.
+Unsubscribes from notifications. This API uses a callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -443,7 +443,7 @@ Unsubscribes from a notification. This API uses an asynchronous callback to retu
 
 | Name      | Type                  | Mandatory| Description                |
 | ---------- | ---------------------- | ---- | -------------------- |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | Yes  | Notification subscriber.        |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | Yes | [Notification subscription](../../notification/notification-glossary.md#notification-subscription) object. |
 | callback   | AsyncCallback\<void\>  | Yes  | Callback used to return the result.|
 
 **Example**
@@ -484,7 +484,7 @@ Unsubscribes from a notification. This API uses a promise to return the result.
 
 | Name      | Type                  | Mandatory| Description        |
 | ---------- | ---------------------- | ---- | ------------ |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | Yes  | Notification subscriber.|
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | Yes   | [Notification subscription](../../notification/notification-glossary.md#notification-subscription) object. |
 
 **Return value**
 
@@ -1144,7 +1144,7 @@ Removes a notification for a specified bundle. This API uses an asynchronous cal
 | --------------- |   ----------------------------------| ---- | -------------------- |
 | bundle          | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | Yes  | Bundle information of the application.          |
 | notificationKey | [NotificationKey](./js-apis-notification.md#notificationkeydeprecated) | Yes  | Notification key.            |
-| reason          | [RemoveReason](#removereason-deprecated)      | Yes  | Reason for deleting a notification.        |
+| reason          | [RemoveReason](#removereason)      | Yes   | Reason for notification deletion.         |
 | callback        | AsyncCallback\<void\>               | Yes  | Callback used to return the result.|
 
 **Example**
@@ -1188,7 +1188,7 @@ Removes a notification for a specified bundle. This API uses a promise to return
 | --------------- | --------------- | ---- | ---------- |
 | bundle          | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)    | Yes  | Bundle information of the application.|
 | notificationKey | [NotificationKey](./js-apis-notification.md#notificationkeydeprecated) | Yes  | Notification key.  |
-| reason          | [RemoveReason](#removereason-deprecated) | Yes  | Reason for deleting a notification.        |
+| reason          | [RemoveReason](#removereason) | Yes   | Reason for notification deletion.         |
 
 **Return value**
 
@@ -1233,7 +1233,7 @@ Removes a notification for a specified bundle. This API uses an asynchronous cal
 | Name    | Type                 | Mandatory| Description                |
 | -------- | --------------------- | ---- | -------------------- |
 | hashCode | string                | Yes  | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) object of [SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata) used in the [onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume) callback.|
-| reason   | [RemoveReason](#removereason-deprecated) | Yes  | Reason for deleting a notification.        |
+| reason   | [RemoveReason](#removereason) | Yes   | Reason for notification deletion.         |
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result.|
 
 **Example**
@@ -1271,7 +1271,7 @@ Removes a notification for a specified bundle. This API uses a promise to return
 | Name    | Type      | Mandatory| Description      |
 | -------- | ---------- | ---- | ---------- |
 | hashCode | string | Yes  | Unique notification ID.|
-| reason   | [RemoveReason](#removereason-deprecated) | Yes  | Reason for deleting a notification.        |
+| reason   | [RemoveReason](#removereason) | Yes   | Reason for notification deletion.         |
 
 **Return value**
 
@@ -1629,7 +1629,7 @@ Sets the DND time. This API uses an asynchronous callback to return the result.
 
 | Name    | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
-| date     | [DoNotDisturbDate](#donotdisturbdate8-deprecated)      | Yes  | DND time to set.        |
+| date     | [DoNotDisturbDate](#donotdisturbdate8)      | Yes   | Do not disturb date option.         |
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result.|
 
 **Example**
@@ -1670,7 +1670,7 @@ Sets the DND time. This API uses a promise to return the result.
 
 | Name| Type            | Mandatory| Description          |
 | ---- | ---------------- | ---- | -------------- |
-| date | [DoNotDisturbDate](#donotdisturbdate8-deprecated) | Yes  | DND time to set.|
+| date | [DoNotDisturbDate](#donotdisturbdate8) | Yes | Do not disturb date option. |
 
 **Return value**
 
@@ -1712,7 +1712,7 @@ Sets the DND time for a specified user. This API uses an asynchronous callback t
 
 | Name    | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
-| date     | [DoNotDisturbDate](#donotdisturbdate8-deprecated)      | Yes  | DND time to set.        |
+| date     | [DoNotDisturbDate](#donotdisturbdate8)      | Yes   | Do not disturb date option.         |
 | userId   | number                | Yes  | ID of the user for whom you want to set the DND time.|
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result.|
 
@@ -1755,7 +1755,7 @@ Sets the DND time for a specified user. This API uses a promise to return the re
 
 | Name  | Type            | Mandatory| Description          |
 | ------ | ---------------- | ---- | -------------- |
-| date   | [DoNotDisturbDate](#donotdisturbdate8-deprecated) | Yes  | DND time to set.|
+| date   | [DoNotDisturbDate](#donotdisturbdate8) | Yes   | Do not disturb date option. |
 | userId | number           | Yes  | ID of the user for whom you want to set the DND time.|
 
 **Return value**
@@ -1801,7 +1801,7 @@ Obtains the DND time. This API uses an asynchronous callback to return the resul
 
 | Name    | Type                             | Mandatory| Description                  |
 | -------- | --------------------------------- | ---- | ---------------------- |
-| callback | AsyncCallback\<[DoNotDisturbDate](#donotdisturbdate8-deprecated)\> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<[DoNotDisturbDate](#donotdisturbdate8)\> | Yes | Callback invoked to return the do not disturb date. |
 
 **Example**
 
@@ -1835,7 +1835,7 @@ Obtains the DND time. This API uses a promise to return the result.
 
 | Type                                             | Description                                     |
 | ------------------------------------------------- | ----------------------------------------- |
-| Promise\<[DoNotDisturbDate](#donotdisturbdate8-deprecated)\> | Promise used to return the result.|
+| Promise\<[DoNotDisturbDate](#donotdisturbdate8)\> | Promise used to return the queried do not disturb date. |
 
 **Example**
 
@@ -1866,7 +1866,7 @@ Obtains the DND time of a specified user. This API uses an asynchronous callback
 
 | Name    | Type                             | Mandatory| Description                  |
 | -------- | --------------------------------- | ---- | ---------------------- |
-| callback | AsyncCallback\<[DoNotDisturbDate](#donotdisturbdate8-deprecated)\> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<[DoNotDisturbDate](#donotdisturbdate8)\> | Yes | Callback invoked to return the do not disturb date. |
 | userId   | number                            | Yes  | User ID.|
 
 **Example**
@@ -1909,7 +1909,7 @@ Obtains the DND time of a specified user. This API uses a promise to return the 
 
 | Type                                             | Description                                     |
 | ------------------------------------------------- | ----------------------------------------- |
-| Promise\<[DoNotDisturbDate](#donotdisturbdate8-deprecated)\> | Promise used to return the result.|
+| Promise\<[DoNotDisturbDate](#donotdisturbdate8)\> | Promise used to return the queried do not disturb date. |
 
 **Example**
 
@@ -1994,7 +1994,7 @@ Notification.supportDoNotDisturbMode().then((data: boolean) => {
 
 enableDistributed(enable: boolean, callback: AsyncCallback\<void\>): void
 
-Sets whether this device supports distributed notifications. This API uses an asynchronous callback to return the result.
+Sets whether the device supports [distributed notifications](../../notification/notification-glossary.md#distributed-notification). This API uses a callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2031,7 +2031,7 @@ Notification.enableDistributed(enable, enabledNotificationCallback);
 
 enableDistributed(enable: boolean): Promise\<void>
 
-Sets whether this device supports distributed notifications. This API uses a promise to return the result.
+Sets whether the device supports [distributed notifications](../../notification/notification-glossary.md#distributed-notification). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2062,7 +2062,7 @@ Notification.enableDistributed(enable).then(() => {
 
 enableDistributedByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<void>): void
 
-Sets whether a specified application supports distributed notifications. This API uses an asynchronous callback to return the result.
+Sets whether the specified application supports [distributed notifications](../../notification/notification-glossary.md#distributed-notification). This API uses a callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2104,7 +2104,7 @@ Notification.enableDistributedByBundle(bundle, enable, enableDistributedByBundle
 
 enableDistributedByBundle(bundle: BundleOption, enable: boolean): Promise\<void>
 
-Sets whether a specified application supports distributed notifications. This API uses a promise to return the result.
+Sets whether the specified application supports [distributed notifications](../../notification/notification-glossary.md#distributed-notification). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2142,7 +2142,7 @@ Notification.enableDistributedByBundle(bundle, enable).then(() => {
 
 isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<boolean>): void
 
-Obtains whether an application supports distributed notifications based on the bundle. This API uses an asynchronous callback to return the result.
+Obtains whether the application supports [distributed notifications](../../notification/notification-glossary.md#distributed-notification) based on the application's bundle. This API uses a callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2181,7 +2181,7 @@ Notification.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCa
 
 isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
-Checks whether a specified application supports distributed notifications. This API uses an asynchronous callback to return the result.
+Queries whether the specified application supports [distributed notifications](../../notification/notification-glossary.md#distributed-notification). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2234,7 +2234,7 @@ Obtains the notification reminder type. This API uses an asynchronous callback t
 
 | Name  | Type                              | Mandatory| Description                      |
 | -------- | --------------------------------- | ---- | -------------------------- |
-| callback | AsyncCallback\<[DeviceRemindType](#deviceremindtype8-deprecated)\> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<[DeviceRemindType](#deviceremindtype8)\> | Yes | Callback invoked to return the [notification reminder mode](../../notification/notification-glossary.md#notification-reminder-mode). |
 
 **Example**
 
@@ -2268,7 +2268,7 @@ Obtains the notification reminder type. This API uses a promise to return the re
 
 | Type              | Description           |
 | ------------------ | --------------- |
-| Promise\<[DeviceRemindType](#deviceremindtype8-deprecated)\> | Promise used to return the result.|
+| Promise\<[DeviceRemindType](#deviceremindtype8)\> | Promise used to return the result of obtaining the [notification reminder mode](../../notification/notification-glossary.md#notification-reminder-mode). |
 
 **Example**
 
@@ -2282,7 +2282,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 });
 ```
 
-## DoNotDisturbDate<sup>8+</sup> <sup>deprecated</sup>
+## DoNotDisturbDate<sup>8+</sup>
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2297,7 +2297,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 | begin | Date                                   | Yes  | Yes  | DND start time.|
 | end   | Date                                   | Yes  | Yes  | DND end time.|
 
-## DoNotDisturbType<sup>8+</sup> <sup>deprecated</sup>
+## DoNotDisturbType<sup>8+</sup>
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2313,7 +2313,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 | TYPE_DAILY   | 2 | Daily DND at the specified time segment (only considering the hour and minute).|
 | TYPE_CLEARLY | 3 | DND at the specified time segment (considering the year, month, day, hour, and minute).    |
 
-## DeviceRemindType<sup>8+</sup> <sup>deprecated</sup>
+## DeviceRemindType<sup>8+</sup>
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2330,7 +2330,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 | ACTIVE_REMIND        | 3   | The device is in use.                |
 
 
-## SourceType<sup>8+</sup> <sup>deprecated</sup>
+## SourceType<sup>8+</sup>
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2345,7 +2345,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 | TYPE_CONTINUOUS      | 1   | Continuous notification.           |
 | TYPE_TIMER           | 2   | Timed notification.           |
 
-## RemoveReason <sup>deprecated</sup>
+## RemoveReason
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2358,3 +2358,4 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 | -------------------- | --- | -------------------- |
 | CLICK_REASON_REMOVE  | 1   | The notification is removed after a click on it.   |
 | CANCEL_REASON_REMOVE | 2   | The notification is removed by the user.        |
+<!--no_check-->

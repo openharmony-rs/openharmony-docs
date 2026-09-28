@@ -54,7 +54,7 @@ queryDevices(busType?: number): Array&lt;Readonly&lt;Device&gt;&gt;
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | The permission check failed.             |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 22900001 | ExternalDeviceManager service exception or busType parameter error. |
 
 **示例：**
@@ -104,7 +104,7 @@ bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&g
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | The permission check failed.             |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 26300001  | ExternalDeviceManager service exception. |
 | 26300002  | The driver service does not allow any client to bind. |
 
@@ -157,7 +157,7 @@ unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | The permission check failed.             |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 26300001 | ExternalDeviceManager service exception. |
 | 26300003 | There is no binding relationship. |
 
@@ -208,7 +208,7 @@ bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;, callback
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | The permission check failed.              |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 22900001 | ExternalDeviceManager service exception. |
 
@@ -268,7 +268,7 @@ bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;, ca
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | The permission check failed.             |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 22900001 | ExternalDeviceManager service exception. |
 
@@ -328,7 +328,7 @@ bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | The permission check failed.             |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 22900001 | ExternalDeviceManager service exception. |
 
@@ -387,7 +387,7 @@ bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): P
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | The permission check failed.             |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 22900001 | ExternalDeviceManager service exception. |
 
@@ -438,7 +438,7 @@ unbindDevice(deviceId: number, callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | The permission check failed.             |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 22900001 | ExternalDeviceManager service exception. |
 
@@ -487,7 +487,7 @@ unbindDevice(deviceId: number): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | The permission check failed.             |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 22900001 | ExternalDeviceManager service exception. |
 

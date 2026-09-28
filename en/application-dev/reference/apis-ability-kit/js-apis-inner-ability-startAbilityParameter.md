@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T11:30:47.176Z pushedAt=2026-09-05T10:47:30.634Z -->
 
-The module defines the parameters for starting an ability. The parameters can be used as input parameters in [startAbility](js-apis-ability-featureAbility.md#featureabilitystartability) to start the specified ability.
+StartAbilityParameter defines the parameters for starting an ability. It can be used as an input parameter of [startAbility](js-apis-ability-featureAbility.md#featureabilitystartability) to start the specified ability. Among them, **want** specifies the target to start, and **abilityStartSettings** configures special startup attributes such as the window mode, display ID, and abilityBounds.
 
 > **NOTE**
 > 
@@ -28,8 +29,8 @@ import ability from '@ohos.ability.ability';
 | Name              |   Type  | Read-Only | Optional  | Description                                |
 | ----------------- | -------- | ---- | ---- | -------------------------------------- |
 | want                | [Want](js-apis-app-ability-want.md)| No | No | Want information about the target ability.                    |
-| abilityStartSetting | { [key: string]: any } | No | Yes | Special attribute of the target ability. This attribute can be passed in the call.|
-| abilityStartSettings<sup>11+<sup> | Record\<string, Object> | No | Yes | Special attribute of the target ability. This attribute can be passed in the call. You are advised to use this attribute to replace **abilityStartSetting**. When this attribute is set, **abilityStartSetting** does not take effect.|
+| abilityStartSetting | { [key: string]: any } | No  | Yes  | Special attributes for starting an Ability, used to configure window display and other related parameters. If not configured, no special startup attributes are applied. Supports configuration items such as abilityBounds, windowMode, and displayId. |
+| abilityStartSettings<sup>11+</sup> | Record\<string, Object> | No  | Yes  | Special attributes for starting an Ability (such as abilityBounds, windowMode, and displayId). If not configured, no special startup attributes are applied. It is recommended to use this attribute instead of abilityStartSetting. After this attribute is set, abilityStartSetting no longer takes effect. |
 
 **Example**
 
@@ -55,6 +56,7 @@ let startAbilityParameter: ability.StartAbilityParameter = {
 };
 
 try {
+    // Start the specified ability.
     featureAbility.startAbility(startAbilityParameter, (error, data) => {
         if (error && error.code !== 0) {
             console.error(`startAbility fail, error: ${JSON.stringify(error)}`);

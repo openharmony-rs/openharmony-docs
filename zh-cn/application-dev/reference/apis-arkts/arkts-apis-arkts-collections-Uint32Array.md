@@ -404,7 +404,7 @@ toLocaleString(): string
 // 当前应用所在系统为法国地区
 let array = new collections.Uint32Array([1000, 2000, 3000]);
 let stringArray = array.toLocaleString();
-console.info(stringArray); // 预期输出：1,000, 2,000, 3,000
+console.info(stringArray); // 预期输出：1,000,2,000,3,000
 ```
 
 ## copyWithin
