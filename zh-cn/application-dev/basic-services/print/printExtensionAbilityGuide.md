@@ -29,13 +29,15 @@
 
 2. 打开MyPrintExtension.ets文件，导入模块。
     <!-- @[print_extension_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/PrintExtensionAbilityGuide/entry/src/main/ets/PrintExtensionAbility/MyPrintExtension.ets) -->
-    ```ts
+
+    ``` TypeScript
     import { PrintExtensionAbility } from '@kit.BasicServicesKit';
     ```
 
 3. 实现PrintExtensionAbility提供的接口。
     <!-- @[print_extension_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/PrintExtensionAbilityGuide/entry/src/main/ets/PrintExtensionAbility/MyPrintExtension.ets) -->
-    ```ts
+
+    ``` TypeScript
     import { PrintExtensionAbility } from '@kit.BasicServicesKit';
     import { Want } from '@kit.AbilityKit';
     // 创建打印扩展能力类，继承PrintExtensionAbility，并实现打印扩展功能。

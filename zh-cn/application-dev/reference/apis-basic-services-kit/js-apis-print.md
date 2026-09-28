@@ -1508,7 +1508,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | defaultDuplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 是 | 表示默认单双面模式。 |
 | defaultPrintQuality | [PrintQuality](#printquality14) | 否 | 是 | 表示默认打印质量。 |
 | defaultMediaType | string | 否 | 是 | 表示默认纸张类型。 |
-| defaultPageSizeId | string | 否 | 是 | 表示默认纸张尺寸的ID，其范围包含国际标准化组织定义的标准纸张尺寸（如ISO_A4）和系统中定义的非标准的纸张尺寸（如Custom.178x254mm，表示这种纸张尺寸为178毫米x 254毫米）。 |
+| defaultPageSizeId | string | 否 | 是 | 表示默认纸张尺寸的ID，其范围包含国际标准化组织定义的标准纸张尺寸（如ISO_A4）和系统中定义的非标准的纸张尺寸（如Custom.178x254mm，表示这种纸张尺寸为178毫米*254毫米）。 |
 | defaultOrientation | [PrintOrientationMode](#printorientationmode14) | 否 | 是 | 表示默认打印方向。 |
 | borderless | boolean | 否 | 是 | 表示是否无边距打印，true表示无边距，false表示有边距。默认值为false。 |
 | defaultColorMode<sup>24+</sup> | [PrintColorMode](#printcolormode11) | 否 | 是 | 表示默认色彩模式。默认值为黑白。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
