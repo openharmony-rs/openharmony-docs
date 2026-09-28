@@ -21,7 +21,7 @@
 
 2. 授权分布式数据同步权限。
 
-   分布式数据同步权限的授权方式为user_grant，因此需要调用requestPermissionsFromUser接口，以动态弹窗的方式向用户申请授权。示例中的context的获取方式请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
+   分布式数据同步权限的授权方式为user_grant，因此需要调用requestPermissionsFromUser（）接口，以动态弹窗的方式向用户申请授权。示例中的context的获取方式请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
    ArkTS-Dyn示例：
 
