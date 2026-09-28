@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -13,7 +13,7 @@ NotificationContent中定义通知的内容结构，提供多种通知类型的�
 > - 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前界面仅包含本模块的系统接口，其他公开接口参见[NotificationContent](./js-apis-inner-notification-notificationContent.md)。
+> 当前界面仅包含本模块的系统接口，其他公开接口参见[NotificationContent](js-apis-inner-notification-notificationContent.md)。
 
 ## NotificationContent
 
@@ -96,7 +96,7 @@ NotificationContent中定义通知的内容结构，提供多种通知类型的�
 
 | 名称                  |  类型                         | 只读 | 可选 | 说明                              |
 | --------------------- | ---------------------------- | ---- | ---- | -------------------------------- |
-| content<sup>12+</sup> | string                       |  否  |  是  | 胶囊的拓展文本。默认为空。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23                   |
+| content<sup>12+</sup> | string                       |  否  |  是  | 胶囊的扩展文本。默认为空。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23                   |
 | time<sup>18+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否  |  是  | 即时任务类实况胶囊展示时长。默认值为0。<br>单位：秒。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23   |
 | capsuleButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  否  |  是  | 即时任务类实况胶囊的按钮（最多支持2个）。默认为空。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23      |
 
@@ -193,4 +193,4 @@ type IconType = Resource | image.PixelMap
 
 | 名称           | 类型    | 只读 | 可选 | 说明                             |
 | -------------- | ------ | ---- | --- | -------------------------------- |
-| lineWantAgents<sup>20+</sup>       | Array<[WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  否  | 是  | 点击多行文本中某一行文本消息触发的wantAgent。不同行的文本分别对应于不同的wantAgent。该字段配置的行数不能大于[lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent)字段配置的行数。默认为空。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.NOTIFICATION_AGENT_CONTROLLER<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| lineWantAgents<sup>20+</sup>       | Array<[WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  否  | 是  | 点击多行文本中某一行文本消息触发的wantAgent。不同行的文本分别对应于不同的wantAgent。该字段配置的行数不能大于[lines](js-apis-inner-notification-notificationContent.md#notificationmultilinecontent)字段配置的行数。默认为空。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.NOTIFICATION_AGENT_CONTROLLER<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
