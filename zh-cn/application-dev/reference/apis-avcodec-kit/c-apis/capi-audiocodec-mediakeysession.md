@@ -1,4 +1,4 @@
-# MediaKeySession
+# MediaKeySession (AudioCodec)
 
 ```c
 typedef struct MediaKeySession MediaKeySession

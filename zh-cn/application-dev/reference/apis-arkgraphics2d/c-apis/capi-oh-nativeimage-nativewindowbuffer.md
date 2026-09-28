@@ -1,4 +1,4 @@
-# NativeWindowBuffer
+# NativeWindowBuffer (OH_NativeImage)
 
 ```c
 typedef struct NativeWindowBuffer OHNativeWindowBuffer

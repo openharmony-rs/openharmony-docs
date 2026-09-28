@@ -758,7 +758,7 @@
     <!--Del-->
     - [OperationType(系统接口)](arkts-ability-wantagent-operationtype-e-sys.md)<!--DelEnd-->
     - [WantAgentFlags](arkts-ability-wantagent-wantagentflags-e.md)
-  - [WantAgent](arkts-ability-wantagent-t.md)
+  - [type WantAgent](arkts-ability-wantagent-t.md)
 - [@ohos.app.ability.wantConstant(Want常量)](arkts-ability-app-ability-wantconstant.md)
   - [Flags](arkts-ability-wantconstant-flags-e.md)
   - [Params](arkts-ability-wantconstant-params-e.md)
@@ -1543,7 +1543,7 @@
     - [CompleteData](arkts-ability-wantagent-completedata-depr-i.md)
     - [OperationType](arkts-ability-wantagent-operationtype-depr-e.md)
     - [WantAgentFlags](arkts-ability-wantagent-wantagentflags-depr-e.md)
-  - [WantAgent](arkts-ability-wantagent-depr-t.md)
+  - [type WantAgent](arkts-ability-wantagent-depr-t.md)
 - [@system.package](arkts-ability-system-package.md)
   - [Package](arkts-ability-system-package-package-c.md)
   - [CheckPackageHasInstalledOptions](arkts-ability-system-package-checkpackagehasinstalledoptions-i.md)

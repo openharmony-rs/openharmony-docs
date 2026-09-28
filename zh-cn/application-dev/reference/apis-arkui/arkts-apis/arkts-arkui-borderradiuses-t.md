@@ -1,4 +1,4 @@
-# BorderRadiuses
+# type BorderRadiuses
 
 ```TypeScript
 export type BorderRadiuses = Corners<number>

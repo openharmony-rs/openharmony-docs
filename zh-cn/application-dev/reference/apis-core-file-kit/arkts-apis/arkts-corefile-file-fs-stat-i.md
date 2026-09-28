@@ -1,4 +1,4 @@
-# Stat
+# type Stat
 
 ```TypeScript
 declare interface Stat
