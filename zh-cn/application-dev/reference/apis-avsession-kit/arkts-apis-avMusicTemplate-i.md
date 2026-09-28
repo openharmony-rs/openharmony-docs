@@ -396,6 +396,51 @@
 | --------- | ------------------------------------------- | ---- | ---- | ---------------- |
 | musicInfo | [SearchPlayMusicInfo](#searchplaymusicinfo) | 否   | 是   | 搜播的音频信息。 |
 | videoInfo | [SearchPlayVideoInfo](#searchplayvideoinfo) | 否   | 是   | 搜播的视频信息。 |
+| karaokeInfo | [SearchPlayKaraokeInfo](#searchplaykaraokeinfo) | 否   | 是   | 搜播的K歌信息。<br>**起始版本：** 26.0.1 |
+ 
+## SearchPlayKaraokeInfo
+ 
+搜播的K歌信息的定义。
+ 
+**起始版本：** 26.0.1
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+ 
+| 名称          | 类型                                              | 只读 | 可选 | 说明             |
+| ------------- | ------------------------------------------------- | ---- | ---- | ---------------- |
+| songName      | string                                            | 否   | 是   | 歌曲名检索槽位。 |
+| artist        | string                                            | 否   | 是   | 歌手检索槽位。   |
+| albumName     | string                                            | 否   | 是   | 专辑名检索槽位。 |
+| billBoard     | string                                            | 否   | 是   | 榜单检索槽位。   |
+| scene         | string                                            | 否   | 是   | 场景检索槽位。   |
+| genre         | string                                            | 否   | 是   | 曲风检索槽位。   |
+| instrument    | string                                            | 否   | 是   | 乐器检索槽位。   |
+| language      | string                                            | 否   | 是   | 语种检索槽位。   |
+| decade        | string                                            | 否   | 是   | 年代检索槽位。   |
+| mood          | string                                            | 否   | 是   | 心情检索槽位。   |
+| gender        | string                                            | 否   | 是   | 性别检索槽位。   |
+| queryKeyWords | string                                            | 否   | 是   | 关键词检索槽位。 |
+| extra         | string                                            | 否   | 是   | K歌的额外信息。  |
+| items         | [SearchPlayKaraokeItem](#searchplaykaraokeitem)[] | 否   | 是   | K歌曲目列表。    |
+| displayName   | string                                            | 否   | 是   | K歌的显示名称。  |
+| description   | string                                            | 否   | 是   | 对K歌的描述。    |
+ 
+## SearchPlayKaraokeItem
+ 
+搜播的K歌项目的定义。
+ 
+**起始版本：** 26.0.1
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+ 
+| 名称       | 类型   | 只读 | 可选 | 说明               |
+| ---------- | ------ | ---- | ---- | ------------------ |
+| entityId   | string | 否   | 否   | K歌项目的唯一标识。 |
+| entityName | string | 否   | 是   | K歌项目的名称。     |
 
 ## SearchPlayMusicInfo
 
