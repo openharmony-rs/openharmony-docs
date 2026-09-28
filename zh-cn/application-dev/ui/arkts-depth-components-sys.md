@@ -120,7 +120,7 @@ DepthComponent通过背景资源与深度图重建三维场景，并借助透视
 
 子组件通过spatialEffect设置自身在三维空间中的位置，参与景深组件的三维变换，与背景产生遮挡、倾斜等空间交互。子组件空间效果由SpatialEffectParams定义，主要包括以下参数：
 
-- **[position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)**：子组件在三维空间中的位置。支持两种写法——数值写法表示子组件的深度信息（决定其距相机的远近层次；示例中取负值表示子组件位于相机前方，绝对值越大距相机越远）；结构体类型用四个角（左上、右上、左下、右下）来定位组件，可表现倾斜摆放的效果。此处“position”指子组件的摆放位置，与相机参数中的position含义不同，详见本节末尾说明。
+- **[position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)**：子组件在三维空间中的位置。支持两种写法——数值写法表示子组件的深度信息（决定其距相机的远近层次；如[仅设置深度实现文字遮挡效果](#仅设置深度实现文字遮挡效果)中取负值表示子组件位于相机前方，绝对值越大距相机越远）；结构体类型用四个角（左上、右上、左下、右下）来定位组件，可表现倾斜摆放的效果。此处“position”指子组件的摆放位置，与相机参数中的position含义不同，详见本节末尾说明。
 
 - **[occlusionWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)**：遮挡权重。控制子组件被背景遮挡的程度，取值范围[0, 1]，默认值0；0表示不被遮挡，1表示完全被遮挡。
 
