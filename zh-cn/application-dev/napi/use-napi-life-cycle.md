@@ -345,7 +345,7 @@ try {
     testNapi.createWeakReference();
     hilog.info(0x0000, 'testTag', 'reference test: %{public}s', testNapi.getWeakReferenceValue());
 } catch (error) {
-    hilog.error(0x0000, 'testTag', `调用错误：${error.message}`);
+    hilog.error(0x0000, 'testTag', `call error：${error.message}`);
 }
 ```
 
