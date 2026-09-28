@@ -43,7 +43,11 @@ ArkTS-Sta: getOsAccountDistributedInfoByLocalId(localId: int, callback: AsyncCal
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或（ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS与ohos.permission.GET_DISTRIBUTED_ACCOUNTS）
+**需要权限：**
+
+- API版本20+：ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或（ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS与ohos.permission.GET_DISTRIBUTED_ACCOUNTS）
+
+- API版本10-19：ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -122,7 +126,11 @@ ArkTS-Sta: getOsAccountDistributedInfoByLocalId(localId: int): Promise&lt;Distri
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或（ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS与ohos.permission.GET_DISTRIBUTED_ACCOUNTS）
+**需要权限：**
+
+- API版本20+：ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或（ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS与ohos.permission.GET_DISTRIBUTED_ACCOUNTS）
+
+- API版本10-19：ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **ArkTS-Dyn起始版本：** 10
 
