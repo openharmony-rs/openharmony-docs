@@ -25,7 +25,7 @@
 ## 使用示例
 
 Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md)，本文仅对接口对应C++及ArkTS相关代码进行展示。
-## napi_get_cb_info
+### napi_get_cb_info
 
 获取有关函数调用的详细信息。
 
@@ -137,7 +137,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{publ
   testNapi.getCbContext().toString());
 ```
 
-## napi_call_function
+### napi_call_function
 
 在C/C++侧对ArkTS函数进行调用。
 
@@ -224,7 +224,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d',
   testNapi.objCallFunction(person, person.age));
 ```
 
-## napi_create_function
+### napi_create_function
 
 将一个C/C++函数包装为可在ArkTS中调用的函数，并返回一个表示该函数的napi_value。
 
