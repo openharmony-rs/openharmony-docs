@@ -55,7 +55,7 @@ ArkTS-Sta: Slider(options?: SliderOptions, content_?: CustomBuilder)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| value | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined \| Bindable\<double\> | 否 | 是 | 当前进度值。取值为undefined时，按默认值处理。<br/>默认值：与属性min的取值一致。<br />从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>取值范围： [min, max]<br/>小于min时取min，大于max时取max。<br/>$$运算符为系统组件提供TS变量的引用，使得TS变量和slider组件的value值保持同步。详细使用示例请参考[示例7（设置滑动条的双向绑定）](#示例7设置滑动条的双向绑定)。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
+| value | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined \| Bindable\<double\> | 否 | 是 | 当前进度值。取值为undefined时，按默认值处理。<br/>默认值：与属性min的取值一致。<br />从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>取值范围： [min, max]<br/>小于min时取min，大于max时取max。<br/>$$运算符为系统组件提供TS变量的引用，使得TS变量和Slider组件的value值保持同步。详细使用示例请参考[示例7（设置滑动条的双向绑定）](#示例7设置滑动条的双向绑定)。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 | min | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 设置最小值。<br/>默认值：0 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 | max | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 设置最大值。<br/>默认值：100<br/>**说明：** <br/>min >= max异常情况，min取默认值0，max取默认值100。<br/>value不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 | step | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 设置Slider滑动步长。<br/>默认值：1<br/>取值范围：[0.01, max - min]<br/>**说明：** <br/>若设置的step值小于0或大于max值，则按默认值显示。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
@@ -69,11 +69,11 @@ ArkTS-Sta: Slider(options?: SliderOptions, content_?: CustomBuilder)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| OutSet | 滑块在滑轨上。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| InSet | 滑块在滑轨内。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| NONE<sup>12+</sup> | 无滑块 <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| 名称 | 值 | 说明 |
+| -------- | ----- | -------- |
+| OutSet | 0 | 滑块在滑轨上。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| InSet | 1 | 滑块在滑轨内。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| NONE<sup>12+</sup> | 2 | 无滑块 <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 >  **说明：**
 >

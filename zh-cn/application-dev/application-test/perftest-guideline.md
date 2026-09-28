@@ -5,7 +5,7 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
 
 ## 简介
 
@@ -494,7 +494,7 @@ perfTest.destroy();
             await driver.delayMs(3000);
             finish(true);
           };
-          let resetCode = async (finish: Callback<boolean>) => { // 复位环境，将列表划至顶部
+          let resetCode = async (finish: Callback<boolean>) => { // 复位环境，将列表滑至顶部
             await scroll.scrollToTop(40000);
             await driver.delayMs(1000);
             finish(true);

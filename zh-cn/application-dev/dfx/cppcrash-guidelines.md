@@ -440,9 +440,9 @@ ARM 64位系统支持抓取CPP和JS之间跨语言的调用栈，因此如果在
 
 空指针解引用通常有以下两个常见的场景：
 
-1.形如SIGSEGV(SEGV_MAPERR)\@0x00000000或cppcrash日志的Register中打印的r0，r1等传参寄存器的值为0，应首先考虑调用时是否传入了空指针。
+1. 形如SIGSEGV(SEGV_MAPERR)\@0x00000000或cppcrash日志的Register中打印的r0，r1等传参寄存器的值为0，应首先考虑调用时是否传入了空指针。
 
-2.形如SIGSEGV(SEGV_MAPERR)\@0x0000000c（小于一个内存页大小）或cppcrash日志Register中打印的r1等传参寄存器的值为一个很小的值时应考虑调用入参的结构体成员是否包含空指针。
+2. 形如SIGSEGV(SEGV_MAPERR)\@0x0000000c（小于一个内存页大小）或cppcrash日志Register中打印的r1等传参寄存器的值为一个很小的值时应考虑调用入参的结构体成员是否包含空指针。
 
 该场景会在日志中打印出提示信息，表明故障很有可能是因为空指针解引用导致。以下是一份DevEco Studio归档在FaultLog的进程崩溃日志的核心内容。
 
@@ -683,6 +683,35 @@ Tid:29192, Name:OS_FFRT_2_0                 <- 故障线程号，线程名
 ...
 ```
 <!--RP5End-->
+
+### Promise异步嵌套调用故障场景日志规格
+
+从API版本26.0.1开始，在ARM 64位系统下，当Promise异步嵌套调用过程中发生Cpp Crash时，异步栈跟踪维测功能还会打印提交该异步任务的线程栈，帮助定位由异步任务提交者造成的崩溃问题。Promise异步栈功能默认关闭，开启方法参见[Promise异步栈](jscrash-guidelines.md#promise异步栈)。
+
+在多层异步嵌套调用场景下，当前规格仅保留**发生故障的调用层**的提交者调用栈，而非完整的嵌套调用链。崩溃线程的调用栈与其提交线程的调用栈通过`SubmitterStacktrace`字符串分隔。
+
+以9级`async/await`嵌套调用为例，整个过程如下图所示：调用方发起调用后，每层异步函数执行至`await`处挂起，待其Promise决议后由运行时（事件循环）恢复执行，随后调用下一层异步函数，如此逐层嵌套，直至最深层multiAsync9。每层`await`都会产生一个新的Promise节点，运行时会逐层保存该层的提交者调用栈。multiAsync9恢复执行后调用`TriggerCppCrash()`触发Cpp Crash，日志中保留的正是该层的提交者调用栈。
+
+![Promise异步嵌套调用过程](figures/promise_async_nested_call.png)
+
+以下是一份DevEco Studio归档在FaultLog的进程崩溃日志的核心内容。
+
+```text
+...
+========SubmitterStacktrace========       <- 任务异常时打印任务提交者调用栈
+#00 pc 00000000005f40d0 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::AsyncStackTraceManager::SavePromiseNode(panda::ecmascript::JSHandle<panda::ecmascript::JSPromise> const&)+60)(dbd213472df8eda22fa2fc27e7353c09)
+#01 pc 0000000000289628 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::JSAsyncFunction::AsyncFunctionAwait(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::JSTaggedValue> const&, panda::ecmascript::JSHandle<panda::ecmascript::JSTaggedValue> const&)+1752)(dbd213472df8eda22fa2fc27e7353c09)
+#02 pc 0000000000288cb0 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::RuntimeStubs::AsyncFunctionAwaitUncaught(unsigned long, unsigned int, unsigned long)+116)(dbd213472df8eda22fa2fc27e7353c09)
+#03 pc 0000000000e85c58 /system/lib64/module/arkcompiler/stub.an(RTStub_CallRuntime+40)
+#04 pc 0000000000d55e8c /system/lib64/module/arkcompiler/stub.an(BCStub_HandleAsyncfunctionawaituncaughtV8StwCopy+64)
+#05 at multiAsync9 entry (entry/src/main/ets/pages/Index.ets:140:3)  <- 发生故障的调用帧
+#06 at multiAsync8 entry (entry/src/main/ets/pages/Index.ets:134:3)
+#07 pc 00000000004b0860 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::InterpreterAssembly::GeneratorReEnterInterpreter(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::GeneratorContext>)+164)(dbd213472df8eda22fa2fc27e7353c09)
+#08 pc 000000000027ff7c /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::EcmaInterpreter::GeneratorReEnterInterpreter(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::GeneratorContext>)+248)(dbd213472df8eda22fa2fc27e7353c09)
+#09 pc 000000000027fd3c /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::GeneratorHelper::Next(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::GeneratorContext> const&, panda::ecmascript::JSTaggedValue)+172)(dbd213472df8eda22fa2fc27e7353c09)
+#10 pc 000000000027fbdc /system/lib64/platformsdk/libark_jsruntime.so(dbd213472df8eda22fa2fc27e7353c09)
+...
+```
 
 ### 应用通过HiAppEvent设置崩溃日志配置参数场景日志规格
 
@@ -1016,7 +1045,7 @@ at onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 
 **编译选项开启方法**
 
-以Cmake为例，在CMakeList.txt中添加`set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")`。
+以CMake为例，在CMakeLists.txt中添加`set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")`。
 
 ### 应用发生SIGPIPE异常退出
 

@@ -8,7 +8,7 @@
 
 ## 简介
 
-JSVM-API中，装箱类型(Wrapper object)判断相关接口支持通过不同API快速判断object的装箱类型。
+JSVM-API中，装箱类型（Wrapper object）判断相关接口支持通过不同API快速判断object的装箱类型。
 
 ## 基本概念
 

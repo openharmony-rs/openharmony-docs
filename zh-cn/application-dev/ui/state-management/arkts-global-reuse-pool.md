@@ -32,7 +32,7 @@
 
 ## 基本概念
 
-**默认复用池**：使用[@Reusable](./arkts-create-custom-components.md#reusable)或[@ReusableV2](./arkts-create-custom-components.md#reusablev2)声明的复用组件，创建时会从父组件的复用池中的取出实例，销毁时会被父组件的复用池回收。这个是在未配置全局复用池时复用组件的默认行为，父组件中的复用池被称作默认复用池。
+**默认复用池**：使用[@Reusable](./arkts-create-custom-components.md#reusable)或[@ReusableV2](./arkts-create-custom-components.md#reusablev2)声明的复用组件，创建时会从父组件的复用池中取出实例，销毁时会被父组件的复用池回收。这个是在未配置全局复用池时复用组件的默认行为，父组件中的复用池被称作默认复用池。
 
 **全局复用池**：全局复用池是在任意自定义组件中声明的独立的复用池，该复用池能接纳所有该组件下的复用组件，不依赖父子组件关系，接纳复用组件类型需要单独配置。该新增复用池能力比默认复用池接纳组件的范围更广，不只局限于父子组件才能复用，所以命名为全局复用池。
 
@@ -120,7 +120,7 @@ struct ReusableComponent { // 复用组件
 
 ```ts
 'use static'
-import { Entry, ComponentV2, Local, Column, Button, Text, ReusableV2 } from '@kit.ArkUI';
+import { Entry, ComponentV2, Local, Column, Button, Text, ReusableV2, If } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -132,9 +132,9 @@ struct Index {
         .onClick(() => {
           this.componentSwitch = !this.componentSwitch;
         })
-      if (this.componentSwitch) { // 切换不同子组件
+      If(this.componentSwitch) { // 切换不同子组件
         ChildComponentA()
-      } else {
+      }.Else() {
         ChildComponentB()
       }
     }
@@ -242,7 +242,7 @@ struct ChildComponentB {
 
 ```ts
 'use static'
-import { Entry, ComponentV2, Column, Button, Text, ReusableV2, ReusePoolOwnership, Local } from '@kit.ArkUI';
+import { Entry, ComponentV2, Column, Button, Text, ReusableV2, ReusePoolOwnership, Local, If } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2({
@@ -257,9 +257,9 @@ struct Index {
         .onClick(() => {
           this.componentSwitch = !this.componentSwitch;
         })
-      if (this.componentSwitch) { // 切换不同子组件
+      If(this.componentSwitch) { // 切换不同子组件
         ChildComponentA()
-      } else {
+      }.Else() {
         ChildComponentB()
       }
     }
@@ -367,7 +367,7 @@ struct ReusableComponent { // 复用组件
 
 - `reusePool`和`poolAccepts`配置仅在@Component和@ComponentV2上支持。在[@CustomDialog](../arkts-common-components-custom-dialog.md)上不受支持。
 
-- 动态ArkTS中，@Component和@ComponentV2在配置`reusePool`和`poolAccepts`启用全局复用的同时，需要额外配置`freezeWhenInactive`参数，`freezeWhenInactive`参数的取值请参考[自定义组件冻结功能（V1）](./arkts-custom-components-freeze.md)或[自定义组件冻结功能（V2）](./arkts-custom-components-freezeV2.md)；静态ArkTS中，自定义组件默认支持冻结，@Component和@ComponentV2无需配置`freezeWhenInactive`参数。
+- 动态ArkTS中，@Component和@ComponentV2在配置`reusePool`和`poolAccepts`启用全局复用的同时，需要额外配置`freezeWhenInactive`参数，`freezeWhenInactive`参数的取值请参考[自定义组件冻结（V1）](./arkts-custom-components-freeze.md)或[自定义组件冻结（V2）](./arkts-custom-components-freezeV2.md)；静态ArkTS中，自定义组件默认支持冻结，@Component和@ComponentV2无需配置`freezeWhenInactive`参数。
 
 - `getReusableInfo`和`preRender`仅在全局复用池实例上可用。它们不能在默认复用池的自定义组件上使用。
 
@@ -484,7 +484,7 @@ struct CompA {
 ```typescript
 'use static'
 import { Entry, ComponentV2, Local, Column, Row, Button, Text, ReusableV2, Param, Require,
-         ReusePoolOwnership, ColumnOptions, RowOptions, Color } from '@kit.ArkUI';
+         ReusePoolOwnership, ColumnOptions, RowOptions, Color, If } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -526,9 +526,9 @@ struct Parent {
 
       Column({ space: 10 } as ColumnOptions) {
         // 使用if切换触发复用。
-        if (this.show[0]) CompA({ label: 'A1' })
-        if (this.show[1]) CompA({ label: 'A2' })
-        if (this.show[2]) CompA({ label: 'A3' })
+        If(this.show[0]) { CompA({ label: 'A1' }) }
+        If(this.show[1]) { CompA({ label: 'A2' }) }
+        If(this.show[2]) { CompA({ label: 'A3' }) }
       }
     }
     .width('100%')
@@ -727,7 +727,7 @@ struct Child {
 ```typescript
 'use static'
 import { Entry, ComponentV2, Local, Column, Row, Button, Text, ReusableV2, Param, Require,
-         Provider, Consumer, ReusePoolOwnership, ColumnOptions } from '@kit.ArkUI';
+         Provider, Consumer, ReusePoolOwnership, ColumnOptions, If } from '@kit.ArkUI';
 
 @ReusableV2
 @ComponentV2
@@ -780,11 +780,11 @@ struct Parent {
         })
 
       // 切换到可复用组件时，ReusableChild会进入当前组件的全局复用池中。
-      if (this.boolVal) {
+      If(this.boolVal) {
         Text('非可复用组件')
           .fontSize(24)
         Child()
-      } else {
+      }.Else() {
         Text('可复用组件')
           .fontSize(24)
         ReusableChild()
@@ -1039,7 +1039,7 @@ struct Index {
 ```typescript
 'use static'
 import { UIUtils, IReusableInfo, ReusableV2, ComponentV2, Consumer, Provider, Text, Entry,
-         Local, Column, Button, ColumnOptions } from '@kit.ArkUI';
+         Local, Column, Button, ColumnOptions, If } from '@kit.ArkUI';
 
 // 可复用全局子组件，使用@Consumer装饰器消费提供的数据
 @ReusableV2
@@ -1202,9 +1202,9 @@ struct Index {
         .width(150)
 
       // 根据boolVal状态显示不同的可复用组件
-      if (this.boolVal) {
+      If(this.boolVal) {
         GlobalChild()
-      } else {
+      }.Else() {
         LegacyComp()
       }
     }
@@ -1379,7 +1379,7 @@ struct PoolOwner {
 ```typescript
 'use static'
 import { UIUtils, IReusableInfo, ReusableV2, ComponentV2, Param, Text, Entry, Local,
-         Column, Button, ReusePoolOwnership, ColumnOptions } from '@kit.ArkUI';
+         Column, Button, ReusePoolOwnership, ColumnOptions, If } from '@kit.ArkUI';
 
 @ReusableV2
 @ComponentV2
@@ -1455,16 +1455,16 @@ struct PoolOwner {
         .onClick(() => this.printReusePool())
         .width(150)
 
-      if (this.showA) {
+      If(this.showA) {
         TestChild({ label: 'A' })
           .reuse({ reuseId: () => 'A' })
       }
-      if (this.showB) {
+      If(this.showB) {
         // TestChild B 使用reuseId B
         TestChild({ label: 'B' })
           .reuse({ reuseId: () => 'B' })
       }
-      if (this.showC) {
+      If(this.showC) {
         TestChild({ label: 'C' })
           .reuse({ reuseId: () => 'C' })
       }
@@ -1613,7 +1613,7 @@ struct ParentA {
 ```typescript
 'use static'
 import { ReusableV2, ComponentV2, Local, Column, Row, Button, Text, Entry, 
-         ReusePoolOwnership, ColumnOptions, Color, FontWeight } from '@kit.ArkUI';
+         ReusePoolOwnership, ColumnOptions, Color, FontWeight, If } from '@kit.ArkUI';
 @ReusableV2
 @ComponentV2
 struct ChildA {
@@ -1679,7 +1679,7 @@ struct EntryComp {
           this.showParent = !this.showParent;
         })
       // 切换if分支后，ParentA中的ChildA进入EntryComp的全局复用池
-      if (this.showParent) {
+      If(this.showParent) {
         ParentA()
       }
     }
@@ -1707,7 +1707,7 @@ struct ParentA {
           this.showChild = !this.showChild;
         })
       // 切换if分支后，ChildA进入EntryComp的全局复用池，ReusableLeaf节点跟随ChildA存入EntryComp复用池中。
-      if (this.showChild) {
+      If(this.showChild) {
         ChildA()
       }
     }
@@ -1829,7 +1829,7 @@ struct CompA {
 ```typescript
 'use static'
 import { UIUtils, ReusableV2, ComponentV2, Param, Require, Local, Column, Text, Entry,
-         ReusePoolOwnership, WrappedBuilder, Builder, IReusableInfo, ColumnOptions, Button } from '@kit.ArkUI';
+         ReusePoolOwnership, WrappedBuilder, Builder, IReusableInfo, ColumnOptions, Button, If } from '@kit.ArkUI';
 
 @ReusableV2
 @ComponentV2
@@ -1900,7 +1900,7 @@ struct CompA {
   @Require @Param showFullUI: boolean;
 
   build() {
-    if (this.showFullUI) {
+    If(this.showFullUI) {
       ReusableComponent()
     }
   }

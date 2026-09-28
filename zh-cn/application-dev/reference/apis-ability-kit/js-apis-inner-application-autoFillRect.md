@@ -1,4 +1,4 @@
-# AutoFillRect
+# AutoFillRect (自动填充矩形区域)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -14,6 +14,12 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **起始版本：** 26.0.0
+
+## 导入模块
+
+```ts
+import { autoFillManager } from '@kit.AbilityKit';
+```
 
 ## AutoFillRect
 

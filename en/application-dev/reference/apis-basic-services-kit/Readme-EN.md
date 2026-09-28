@@ -15,6 +15,9 @@
     - [@ohos.account.distributedAccount (Distributed Account Management) (System API)](js-apis-distributed-account-sys.md)
     - [@ohos.account.osAccount (System Account Management) (System API)](js-apis-osAccount-sys.md)
     <!--DelEnd-->
+
+    - [OS Account Constraints](appendix-osAccount-constraints.md)
+
   - Device Management<!--device-management-arkts-->
     - [@ohos.batteryInfo (Battery Information)](js-apis-battery-info.md)
     - [@ohos.deviceInfo (Device Information)](js-apis-device-info.md)

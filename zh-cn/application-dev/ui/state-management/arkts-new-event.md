@@ -46,12 +46,12 @@
 
   ```ts
   @ComponentV2
-  struct Index {
+  struct ComponentV2Example {
     @Event changeFactory: () => void = () => {}; // 正确用法
     @Event message: string = 'abcd'; // 错误用法，装饰非函数类型变量，@Event无作用
   }
   @Component
-  struct Index {
+  struct ComponentExample {
     @Event changeFactory: () => void = () => {}; // 错误用法，编译时报错
   }
   ```

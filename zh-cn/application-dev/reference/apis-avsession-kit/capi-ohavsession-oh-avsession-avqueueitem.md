@@ -1,13 +1,13 @@
 # OH_AVSession_AVQueueItem
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_AVSession_AVQueueItem
+typedef struct OH_AVSession_AVQueueItem {...} OH_AVSession_AVQueueItem
 ```
 
 ## 概述

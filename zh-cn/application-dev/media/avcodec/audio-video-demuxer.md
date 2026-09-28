@@ -2,7 +2,7 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @yangjunhui10; @hanzhengshi-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
@@ -34,7 +34,7 @@
 > **说明**
 >
 > - 调用解封装能力解析网络播放路径，需要[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
-> - 调用解封装能力解析本地文件，需要[向用户申请授权](../../security/AccessToken/request-user-authorization.md)：ohos.permission.READ_MEDIA。
+> - 如需获取媒体库资源的文件描述符（fd），可参考[使用Picker选择媒体库资源](../medialibrary/photoAccessHelper-photoviewpicker.md)文档。
 > - 如果使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法请参考[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
 
 ### 在 CMake 脚本中链接动态库
@@ -184,7 +184,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    DRM_MediaKeySystemInfo mediaKeySystemInfo;
    OH_AVDemuxer_GetMediaKeySystemInfo(demuxer, &mediaKeySystemInfo);
    ```
-   在获取、解析DRM信息后，需创建对应DRM解决方案的[MediaKeySystem、MediaKeySession](../drm/drm-c-dev-guide.md)，获取DRM许可证等。并根据需要设置音频解密配置(详见[音频解码开发指南开发步骤](audio-decoding.md#开发步骤)第4步)、设置视频解密配置（详见[视频解码开发指南开发步骤Surface模式](video-decoding.md#surface模式)第5步或[Buffer模式](video-decoding.md#buffer模式)第4步），实现DRM内容解密。
+   在获取、解析DRM信息后，需创建对应DRM解决方案的[MediaKeySystem、MediaKeySession](../drm/drm-c-dev-guide.md)，获取DRM许可证等。并根据需要设置音频解密配置(详见异步模式音频解码的[开发步骤](audio-decoding.md#开发步骤)第4步)、设置视频解密配置（详见异步模式视频解码的[Surface模式](video-decoding.md#surface模式)第5步或[Buffer模式](video-decoding.md#buffer模式)第4步），实现DRM内容解密。
 
 5. 获取文件信息。
 

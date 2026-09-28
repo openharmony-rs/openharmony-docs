@@ -837,9 +837,9 @@ function processData(s: string) {
 
 以下示例是一个简单的函数和它的语法语义说明：
 
-1.参数类型标注：`x: string, y: string`显式声明参数类型为字符串类型。
+1. 参数类型标注：`x: string, y: string`显式声明参数类型为字符串类型。
 
-2.返回值类型：`: string`指定函数返回值为字符串类型。
+2. 返回值类型：`: string`指定函数返回值为字符串类型。
 
 
 ``` TypeScript

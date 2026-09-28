@@ -285,13 +285,13 @@ NODE_IMAGE_FILL_COLOR = 4010
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 填充色数值，0xargb格式，形如 0xFFFF0000 表示红色。 |
+| .value[0].u32 | 填充色数值，0xARGB格式，形如 0xFFFF0000 表示红色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 填充色数值，0xargb格式。 |
+| .value[0].u32 | 填充色数值，0xARGB格式。 |
 
 ## NODE_IMAGE_RESIZABLE
 
@@ -332,6 +332,7 @@ NODE_IMAGE_SYNC_LOAD = 4012
 ```
 
 图源同步加载属性，支持属性设置，属性重置，属性获取接口。<br>
+[NODE_IMAGE_ALT](#node_image_alt)占位图始终为异步加载，syncLoad对其不生效。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 20

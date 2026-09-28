@@ -43,7 +43,7 @@ ArkTS-Sta: getOsAccountDistributedInfoByLocalId(localId: int, callback: AsyncCal
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或(ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS与ohos.permission.GET_DISTRIBUTED_ACCOUNTS)
+**需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或（ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS与ohos.permission.GET_DISTRIBUTED_ACCOUNTS）
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -122,7 +122,7 @@ ArkTS-Sta: getOsAccountDistributedInfoByLocalId(localId: int): Promise&lt;Distri
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或(ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS与ohos.permission.GET_DISTRIBUTED_ACCOUNTS)
+**需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或（ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS与ohos.permission.GET_DISTRIBUTED_ACCOUNTS）
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -228,6 +228,7 @@ ArkTS-Sta: setOsAccountDistributedInfoByLocalId(localId: int, distributedInfo: D
 | 12300002 | Invalid distributedInfo. |
 | 12300003 | Account identified by localId or by distributedInfo not found. |
 | 12300008 | Restricted OS account. |
+| 12300406 | The distributed account information has already been bound to a sub-profile of the target OS account.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -318,6 +319,7 @@ ArkTS-Sta: setOsAccountDistributedInfoByLocalId(localId: int, distributedInfo: D
 | 12300002 | Invalid distributedInfo. |
 | 12300003 | Account identified by localId or by distributedInfo not found. |
 | 12300008 | Restricted OS account. |
+| 12300406 | The distributed account information has already been bound to a sub-profile of the target OS account.<br>适用版本：26.0.0+ |
 
 **示例：**
 

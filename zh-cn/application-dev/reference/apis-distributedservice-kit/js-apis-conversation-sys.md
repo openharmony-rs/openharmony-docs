@@ -8,9 +8,9 @@
 
 分布式软总线conversation模块为应用提供跨设备交互能力，包括获取可信设备列表、发送和接收会话数据。通过本模块，应用可以获取同一账号下的可信设备，注册监听器以接收跨设备数据，并通过会话通道向指定设备发送数据。适用于需要跨设备协作和多设备数据传递的场景，可降低跨设备交互的开发复杂度。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 > **说明：**
 >
@@ -21,10 +21,9 @@
 ## 属性
 **系统能力：** SystemCapability.Communication.SoftBus.Core
 
-
 ## 导入模块
 
-```js
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 ```
 
@@ -41,6 +40,11 @@ getTrustedDevices(): DeviceNodeInfo[]
 **系统接口**：此接口为系统接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
 
 **返回值**：
 
@@ -61,7 +65,7 @@ getTrustedDevices(): DeviceNodeInfo[]
 
 **示例**：
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -91,6 +95,11 @@ postConversationData(deviceId:&nbsp;string,&nbsp;bundleName:&nbsp;string,&nbsp;a
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+
 **参数**：
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -111,14 +120,14 @@ postConversationData(deviceId:&nbsp;string,&nbsp;bundleName:&nbsp;string,&nbsp;a
 | 401      | Invalid parameter. The deviceId, bundleName, abilityName or msg is invalid or empty.|
 | 801      | Capability not supported.|
 | 2000001  | Internal error.|
-| 2004001  | Remote not supported.|
-| 2004002  | Duplicate calls, previous call still in progress.|
-| 2004003  | Send data failed.|
-| 2004004  | Wait remote ack timeout.|
+| 2004001  | Remote system version is too low.|
+| 2004002  | Failed to start ability on the remote side.|
+| 2004003  | Failed to send data.|
+| 2004004  | Timeout while waiting for acknowledgement from the remote side.|
 
 **示例**：
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -157,6 +166,10 @@ registerConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;str
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
 **参数**：
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -179,7 +192,7 @@ registerConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;str
 
 **示例**：
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -211,6 +224,10 @@ unregisterConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;s
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
 **参数**：
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -232,7 +249,7 @@ unregisterConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;s
 
 **示例**：
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -258,11 +275,15 @@ try {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
 | 名称                    | 类型       |只读   | 可选   | 说明                 |
 | ----------------- | ------ | ----  | ---- | ------------------ |
 | networkId          | string | 否    |否    | 设备的networkId，在分布式网络中唯一标识一台设备，用于发送数据时的设备寻址。与UDID互为替代，发送数据时可任选其一。     |
 | deviceName           | string | 否    |否   | 设备名称。 |
-| deviceTypeId            | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    |否    | 设备类型标识符，表示设备的类别，取值为整数，例如：0x0E-手机，0x11-平板，0x9C-电视，0x0C-PC等（具体数值以系统定义为准）。 |
+| deviceTypeId            | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    |否    | 设备类型标识符，表示设备的类别，取值为整数，例如：0x0E-手机、0x11-平板、0x9C-电视、0x0C-PC等（具体数值以系统定义为准）。 |
 | nearby            | boolean | 否    |否    | 设备是否在近场。true表示设备在近场，false表示设备不在近场。 |
 | udid            | string | 否    |否    | 设备的UDID，唯一标识一台设备，用于发送数据时的设备寻址。与networkId不同，UDID为设备的永久唯一标识，不随网络拓扑变化而改变，两者互为替代，发送数据时可任选其一。 |
 
@@ -277,6 +298,10 @@ type DataCallback = (deviceId: string, msg: ArrayBuffer) => void
 **系统接口**：此接口为系统接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **参数**：
 

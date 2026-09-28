@@ -153,7 +153,7 @@ module.json5配置文件包含以下标签。
 | compressNativeLibs | 在打包hap时，该标签标识libs库是否以压缩存储的方式打包到HAP。<br/>-&nbsp;true：libs库以压缩方式存储。<br/>-&nbsp;false：libs库以不压缩方式存储。 | 布尔值 | 该标签可缺省，在打包hap时缺省值为false。 |
 | extractNativeLibs | 标识应用安装时，libs库是否解压到应用安装目录。当compressNativeLibs和extractNativeLibs都配置为false时，应用以不解压libs库的方式进行安装；其他场景，应用以解压libs库的方式进行安装。<br/>**说明：**<br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为true。 |
 | libIsolation | 在libs目录下是否生成模块名称目录存储so，用于区分同一应用中不同HAP的.so文件，以防止.so文件冲突。<br/>-&nbsp;true：当前HAP的.so文件会储存在libs目录中以Module名命名的路径下。<br/>-&nbsp;false：当前HAP的.so文件会直接储存在libs目录中。 | 布尔值 | 该标签可缺省，缺省值为false。 |
-| [fileContextMenu](#filecontextmenu标签) | 标识当前HAP的右键菜单配置项，是一个profile文件资源。取值为长度不超过255字节的字符串。<br/>**说明：**<br/>仅在PC/2in1设备上生效。<br/>仅允许在entry类型模块中配置。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| [fileContextMenu](right-click-menu.md#声明右键菜单) | 标识当前HAP的右键菜单配置项，是一个profile文件资源。取值为长度不超过255字节的字符串。<br/>**说明：**<br/>仅在PC/2in1设备上生效。<br/>仅允许在entry类型模块中配置。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | querySchemes | 标识允许当前应用进行跳转查询的URL schemes，只允许entry类型模块配置，每个字符串取值不超过128字节。<br/>**说明：**<br/>从API version 21开始，最多允许配置200个URL scheme。API version 20及之前的版本，最多允许配置50个URL scheme。  | 字符串数组 | 该标签可缺省，缺省值为空。 |
 | [routerMap](#routermap标签) | 标识当前模块配置的路由表路径。取值为长度不超过255字节的字符串。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | [appEnvironments](#appenvironments标签) | 标识当前模块配置的应用环境变量，只允许entry和feature模块配置。 | 对象数组 | 该标签可缺省，缺省值为空。 |
@@ -294,8 +294,8 @@ abilities标签描述UIAbility组件的配置信息，标签值为数组类型�
 | srcEntry | 标识当前UIAbility的代码路径，取值为长度不超过127字节的字符串。 | 字符串 | 该标签不可缺省。 |
 | [launchType](../application-models/uiability-launch-type.md) | 标识当前UIAbility组件的启动模式，支持的取值如下：<br/>-&nbsp;multiton：多实例模式，每次启动创建一个新实例。<br/>-&nbsp;singleton：单实例模式，仅第一次启动创建新实例。<br/>-&nbsp;specified：指定实例模式，运行时由开发者决定是否创建新实例。<br/>-&nbsp;standard：multiton的曾用名，效果与多实例模式一致。<!--RP1--><!--RP1End--> | 字符串 | 该标签可缺省，该标签缺省为“singleton”。 |
 | description | 标识当前UIAbility组件的描述信息，开发者可以通过该标签描述当前组件的功能与作用，取值为长度不超过255字节的字符串。建议采用描述信息的资源索引，以支持多语言。 | 字符串 | 该标签可缺省，缺省值为空。 |
-| icon | 标识当前UIAbility组件的[图标](layered-image.md)，取值为图标资源文件的索引。 | 字符串 | 该标签可缺省，缺省值为空。 |
-| label | 标识当前UIAbility组件对用户显示的[名称](layered-image.md)，取值为字符串资源的索引，以支持多语言，长度不超过255字节的字符串。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| icon | 标识当前UIAbility组件的图标，取值为图标资源文件的索引，支持配置单层图标和分层图标，配置规则和示例请参考[配置应用图标和名称](layered-image.md)。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| label | 标识当前UIAbility组件对用户显示的名称，取值为字符串资源的索引，以支持多语言，长度不超过255字节的字符串，具体请参考[配置应用图标和名称](layered-image.md)。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | permissions | 标识当前UIAbility组件的权限信息。其他应用访问该UIAbility时，需要申请相应的权限。<br/>一个数组元素为一个权限名称，不超过255字节，取值请参考[应用权限列表](../security/AccessToken/app-permissions.md)。 | 字符串数组 | 该标签可缺省，缺省值为空。 |
 | [metadata](#metadata标签) |标识当前UIAbility组件的元信息，典型使用场景详见[窗口元数据配置中的metadata标签](../windowmanager/window-config-m.md#metadata标签)。 | 对象数组 | 该标签可缺省，缺省值为空。 |
 | exported | 标识当前UIAbility组件是否可以被其他应用拉起。<br/>-&nbsp;true：表示可以被其他应用拉起（入口UIAbility建议配置为true）。<br/>-&nbsp;false：只能由同应用或者具有ohos.permission.START_INVISIBLE_ABILITY权限（该权限仅系统应用支持申请）的应用拉起。<br/> 例如，配置为false时，桌面具备该权限，桌面图标、快捷方式或push通知消息可以拉起当前UIAbility组件，但aa命令行工具没有权限无法拉起。| 布尔值 | 该标签可缺省，缺省值为false。 |
@@ -324,7 +324,7 @@ abilities标签描述UIAbility组件的配置信息，标签值为数组类型�
 | preferMultiWindowOrientation | 标识当前UIAbility组件多窗布局方向：<br/>-&nbsp;default：缺省值，参数不配置默认值，建议其他应用类配置。<br/>-&nbsp;portrait：多窗布局方向为竖向，建议竖向游戏类应用配置。<br/>-&nbsp;landscape：多窗布局方向为横向，配置后支持横屏悬浮窗和上下分屏，建议横向游戏类应用配置。<br/>-&nbsp;landscape_auto：多窗布局动态可变为横向，需要配合API enableLandScapeMultiWindow/disableLandScapeMultiWindow使用，建议视频类应用配置。 | 字符串 | 该标签可缺省，缺省值为default。 |
 | continueType | 标识当前UIAbility组件的跨端迁移类型。 | 字符串数组 | 该标签可缺省，缺省值为当前组件的名称。 |
 | continueBundleName | 标识当前应用支持跨端迁移的其它应用名称列表。<br/>**说明：**<br/>不能配置为本应用包名，仅为了做异包名迁移使用。<br/>从API version 13开始，支持该标签。 | 字符串数组 | 该标签可缺省，缺省值为空。 |
-| process | 标识组件的进程名称。具体使用方式参考[进程模型定义](../application-models/process-model-stage.md#其他进程类型)中的"静态指定进程"。<br/>**说明：**<br/>1. 仅在[PC/2in1](./module-configuration-file.md#devicetypes标签)和[Tablet](./module-configuration-file.md#devicetypes标签)设备上生效。<br/>2. UIAbility组件和type为embeddedUI的ExtensionAbility组件标签一致时运行在同一个进程中。<br/>3. 从API version 14开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| process | 标识组件的进程名称。具体使用方式参考[独立进程配置](../application-models/process-model-overview.md#独立进程配置)中的"静态指定进程"。<br/>**说明：**<br/>1. 仅在[PC/2in1](./module-configuration-file.md#devicetypes标签)和[Tablet](./module-configuration-file.md#devicetypes标签)设备上生效。<br/>2. UIAbility组件和type为embeddedUI的ExtensionAbility组件标签一致时运行在同一个进程中。<br/>3. 从API version 14开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
 
 abilities示例：
 
@@ -501,7 +501,7 @@ skills示例：
 | exported | 标识当前ExtensionAbility组件是否可以被其他应用调用。<br/>-&nbsp;true：表示可以被其他应用调用。<br/>-&nbsp;false：表示不可以被其他应用调用，包括无法被aa工具命令拉起应用。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | extensionProcessMode | 标识当前ExtensionAbility组件的进程模型，根据ExtensionAbility的类型不同，支持的配置项有所区别。支持的取值范围如下，默认值为bundle。<br/>-&nbsp;instance：表示该ExtensionAbility每个实例都各自运行在单独进程。<br/>-&nbsp;type：表示该ExtensionAbility的所有实例都运行在同一独立进程，与其他name的ExtensionAbility组件实例运行在不同进程。<br/>-&nbsp;bundle：表示该ExtensionAbility的实例与同包名下相同extensionType的ExtensionAbility实例运行在同一进程。<!--Del--><br/>-&nbsp;callerInstance：表示该ExtensionAbility实例运行在单独进程，进程的隔离粒度为调用方。同一调用方拉起的ExtensionAbility的实例运行在同一进程，不同调用方拉起的ExtensionAbility的实例运行在不同进程。从API版本26.0.0开始，支持该标签。<!--DelEnd--><br/>对于UIExtensionAbility及其子类，支持instance、type、bundle三种进程模型。<br/>对于类型为appService的ExtensionAbility，支持type和bundle两种进程模型。<!--Del--><br/>对于类型为sysPicker/mediaControl的ExtensionAbility，支持bundle、type、instance、callerInstance四种进程模型。<!--DelEnd--><!--RP10--><!--RP10End--> | 字符串 | 该标签可缺省，缺省值为bundle。 |
 | dataGroupIds | 标识当前ExtensionAbility组件的dataGroupId集合。如果当前ExtensionAbility组件所在的应用在应用市场申请的证书里groupIds也申请了某个dataGroupId，那么当前ExtensionAbility组件可以和应用共享这一个dataGroupId生成的目录，所以ExtensionAbility组件的dataGroupId需要是应用的签名证书中groupIds标签里配置的才能生效。 且该标签仅在当前ExtensionAbility组件存在独立的沙箱目录时生效。<!--RP8--><!--RP8End--> | 字符串数组 | 该标签可缺省，缺省值为空。 |
-| process | 标识组件的进程名称，只有type为embeddedUI时可以配置该标签。具体使用方式参考[进程模型定义](../application-models/process-model-stage.md#其他进程类型)中的"静态指定进程"。<br/>**说明：**<br/>1. 仅在[PC/2in1](./module-configuration-file.md#devicetypes标签)和[Tablet](./module-configuration-file.md#devicetypes标签)设备上生效。<br/>2. UIAbility组件和ExtensionAbility组件标签一致时运行在同一个进程中。<br/>3. 从API version 14开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| process | 标识组件的进程名称，只有type为embeddedUI时可以配置该标签。具体使用方式参考[独立进程配置](../application-models/process-model-overview.md#独立进程配置)中的"静态指定进程"。<br/>**说明：**<br/>1. 仅在[PC/2in1](./module-configuration-file.md#devicetypes标签)和[Tablet](./module-configuration-file.md#devicetypes标签)设备上生效。<br/>2. UIAbility组件和ExtensionAbility组件标签一致时运行在同一个进程中。<br/>3. 从API version 14开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | isolationProcess | 标识ExtensionAbility组件能否运行在独立的进程中。<br/>-&nbsp;true：表示能运行在独立的进程中。<br/>-&nbsp;false：表示不能运行在独立的进程中。<br/>**说明：**<br/>仅当ExtensionAbility组件的type为"sys/commonUI"时该标签配置生效，且仅支持由系统应用配置type为"sys/commonUI"。<br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | skipAbilityStageLifecycle | 标识type为backup的ExtensionAbility组件是否跳过[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)生命周期回调。<br/>-&nbsp;true：跳过AbilityStage生命周期，不执行onCreate、onDestroy等回调。<br/>-&nbsp;false：不跳过AbilityStage生命周期，正常执行生命周期回调。<br/>**说明：**<br/>1. 该标签仅在ExtensionAbility的type为backup时配置生效。<br/>2. 从API version 26.0.0开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 
@@ -567,8 +567,8 @@ extensionAbilities示例：
 |backup|数据备份的ExtensionAbility。|
 |enterpriseAdmin|[企业设备管理](../mdm/mdm-kit-admin.md)的ExtensionAbility。企业设备管理应用必须拥有此类型的ExtensionAbility。|
 |window|该ExtensionAbility会在启动过程中创建一个window，为开发者提供界面开发。开发者开发出来的界面将通过UIExtensionComponent控件组合到其他应用的窗口中，三方应用配置不生效，当前配置仅在系统应用中有效。|
-|thumbnail|获取文件缩略图的ExtensionAbility，开发者可以对自定义文件类型的文件提供缩略。|
-|preview|该ExtensionAbility会将文件解析后在一个窗口中显示，开发者可以通过将此窗口组合到其他应用窗口中。|
+|thumbnail|获取文件缩略图的ExtensionAbility，开发者可以对自定义文件类型的文件提供缩略图。预留字段，暂不支持使用。|
+|preview|该ExtensionAbility会将文件解析后在一个窗口中显示，开发者可以通过将此窗口组合到其他应用窗口中。预留字段，暂不支持使用。|
 |print|打印框架的ExtensionAbility。|
 |push|推送的ExtensionAbility。|
 |driver|驱动框架的ExtensionAbility。应用配置了driver类型的ExtensionAbility后会被视为驱动应用，驱动应用在安装、卸载和恢复时不会区分用户，且创建新用户时也会安装设备上已有的驱动应用。例如，创建子用户时会默认安装主用户已有的驱动应用，在子用户上卸载驱动应用时，主用户上对应的驱动应用也会同时被卸载。|
@@ -833,7 +833,7 @@ wants标签示例：
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | policy | 标识条件属性的过滤规则。<br/>-&nbsp;exclude：表示需要排除的value属性。<br/>-&nbsp;include：表示需要包含的value属性。 | 字符串 | 该标签不可缺省。 |
-| value | 标识屏幕的像素密度（dpi&nbsp;:Dot&nbsp;Per&nbsp;Inch）。支持的取值如下：<br/>-&nbsp;sdpi：表示小规模的屏幕密度（Small-scale&nbsp;Dots&nbsp;per&nbsp;Inch），适用于dpi取值为(0,120]的设备。<br/>-&nbsp;mdpi：表示中规模的屏幕密度（Medium-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(120,160]的设备。<br/>-&nbsp;ldpi：表示大规模的屏幕密度（Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(160,240]的设备。<br/>-&nbsp;xldpi：表示大规模的屏幕密度（Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(240,320]的设备。<br/>-&nbsp;xxldpi：表示大规模的屏幕密度（Extra&nbsp;Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(320，480]的设备。<br/>-&nbsp;xxxldpi：表示大规模的屏幕密度（Extra&nbsp;Extra&nbsp;Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(480,&nbsp;640]的设备。 | 字符串数组 | 该标签不可缺省。 |
+| value | 标识屏幕的像素密度（dpi&nbsp;:Dot&nbsp;Per&nbsp;Inch）。支持的取值如下：<br/>-&nbsp;sdpi：表示小规模的屏幕密度（Small-scale&nbsp;Dots&nbsp;per&nbsp;Inch），适用于dpi取值为(0,120]的设备。<br/>-&nbsp;mdpi：表示中规模的屏幕密度（Medium-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(120,160]的设备。<br/>-&nbsp;ldpi：表示大规模的屏幕密度（Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(160,240]的设备。<br/>-&nbsp;xldpi：表示特大规模的屏幕密度（Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(240,320]的设备。<br/>-&nbsp;xxldpi：表示超大规模的屏幕密度（Extra&nbsp;Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(320，480]的设备。<br/>-&nbsp;xxxldpi：表示超特大规模的屏幕密度（Extra&nbsp;Extra&nbsp;Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(480,&nbsp;640]的设备。 | 字符串数组 | 该标签不可缺省。 |
 
 ### countryCode标签
 
@@ -1213,93 +1213,6 @@ hnpPackages示例：
   },
 }
 ```
-
-## fileContextMenu标签
-
-该标签标识当前HAP的右键菜单配置项，是一个profile文件资源，用于指定描述应用注册右键菜单配置文件。仅在PC/2in1设备上生效。仅允许在entry类型模块中配置。
-
-fileContextMenu标签示例
-
-<!-- @[module_fileContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    // ...
-    "fileContextMenu": "$profile:menu", // 资源配置，指向profile下面定义的配置文件menu.json
-    // ...
-  }
-}
-```
-
-在开发视图的resources/base/profile下面定义配置文件menu.json，其中文件名“menu.json”可自定义，需要和fileContextMenu标签指定的信息对应。配置文件中描述了当前应用注册的右键菜单的项目和响应行为。
-
-配置文件根节点名称为fileContextMenu，为对象数组，标识当前module注册右键菜单的数量。（单模块和单应用注册数量不能超过5个，配置超过数量当前只解析随机5个）
-
-**表25** fileContextMenu标签配置说明
-
-| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
-| -------- | -------- | -------- | -------- |
-| abilityName | 表示当前右键菜单对应的需要拉起的ability名称。 | 字符串 | 不可缺省。 |
-| menuItem | 右键菜单显示的信息。命名建议：<br/>原则一：[动作]+[应用名]，中文示例：用{App}打开、用{App} ({Plugin}插件) 打开；英文示例：Open with {App}、Open with {App} ({Plugin})。<br/>原则二：[动作]+[目的]，示例：压缩为{文件名}、压缩至{路径}、用{App}转换为{格式}。 | 资源id | 不可缺省。 |
-| menuHandler | 一个ability可以创建多个右键菜单， 该标签与右键菜单显示项一一对应，用于区分用户拉起的不同右键菜单项。开发者可自定义该标签取值，确保该标签在整个ability中唯一。在用户点击右键菜单拉起应用时，会作为参数传递给应用。 | 字符串 | 不可缺省。 |
-| menuContext | 定义展示该菜单项需要的上下文，可以支持多种情况，类型为数组。 | 对象数组 | 不可缺省。 |
-
-**表26** menuContext标签配置说明
-
-| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
-| -------- | -------- | -------- | -------- |
-| menuKind | 表示单击如下类型时会触发右键菜单。取值范围如下：<br/>-&nbsp;0：空白处<br/>-&nbsp;1：文件<br/>-&nbsp;2：文件夹<br/>-&nbsp;3：文件和文件夹 | 数值 | 不可缺省。 |
-| menuRule | 表示采用什么方式选择文件或文件夹时，会触发右键菜单。取值范围如下：<br/>-&nbsp;single：单选<br/>-&nbsp;multi：多选<br/>-&nbsp;both：单选或多选 | 字符串 | 仅当menuKind为1或2时，才会读取该标签，此时不可缺省。 |
-| fileSupportType | 表示当选中的文件列表里包含指定的文件类型时，显示右键菜单。<br/>当该标签取值为["*"]时，将会读取fileNotSupportType标签。<br/>当该标签取值为[]时，将不做任何处理。 | 字符串数组 | 仅当menuKind为1时，才会读取该标签，此时不可缺省。 |
-| fileNotSupportType | 表示当选中的文件列表里包含这些文件类型时，不显示该右键菜单。<br/>仅当menuKind为1、且fileSupportType为["*"]时，才会读取该标签。 | 字符串数组 | 可缺省，缺省值为空。 |
-
-resources/base/profile路径下的menu.json资源文件示例如下：
-```json
-{
-  "fileContextMenu": [
-    {
-      "abilityName": "EntryAbility",
-      "menuItem": "$string:module_desc",
-      "menuHandler": "openCompress",
-      "menuContext": [
-        {
-          "menuKind": 0
-        },
-        {
-          "menuKind": 1,
-          "menuRule": "both",
-          "fileSupportType": [
-            ".rar",
-            ".zip"
-          ],
-          "fileNotSupportType": [
-            ""
-          ]
-        },
-        {
-          "menuKind": 2,
-          "menuRule": "single"
-        },
-        {
-          "menuKind": 3
-        }
-      ]
-    }
-  ]
-}
-```
-
-**响应行为**
-
-应用进行右键扩展菜单注册后，在文件管理器通过右键操作拉起菜单，该菜单中会有“更多”选项。单击“更多”选项后，会出现注册后的menuItem列表，单击任意一个选项后，文件管理器默认通过startAbility的方式拉起三方应用，除了指定三方应用的包名和ability名之外，want中的parameter中，也会传入如下标签：
-
-**表27** want中parameter标签说明
-
-| 参数名 | 值 | 类型 |
-| -------- | -------- | -------- |
-| menuHandler | 对应注册配置文件中menuHandler的值。 | 字符串 |
-| uriList | 用户在具体文件上触发右键的uri值，如果空白处响应，此值为空，单个文件响应，数组长度1，多个文件响应则传入对应所有文件的uri值。 | 字符串数组 |
 
 ## startWindow标签
 

@@ -1022,7 +1022,7 @@ ArkTS-Sta: getGlobalDisplayY(): double
 | PREVIEW_LANDING_STARTED | 4 | 拖拽落回动效发起阶段。(落回动效发起时触发)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | PREVIEW_LANDING_FINISHED | 5 | 拖拽落回动效结束阶段。(落回动效结束时触发) <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | ACTION_CANCELED_BEFORE_DRAG | 6 | 拖拽浮起落位动效中断。(已满足READY_TO_TRIGGER_DRAG_ACTION状态后，未达到动效阶段，手指抬手时触发) <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| PREPARING_FOR_DRAG_DETECTION<sup>18+</sup>  | 7 | 拖拽准备完成，可发起拖拽阶段。(按下350ms时触发) <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23|
+| PREPARING_FOR_DRAG_DETECTION<sup>18+</sup>  | 7 | 拖拽准备完成，可发起拖拽阶段。（按下350ms时触发） <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23|
 
 ## UnifiedData<sup>10+</sup>
 
@@ -1568,7 +1568,7 @@ struct ImageExample {
                       // 类型匹配成功，记录数据Uri
                       let image = arr[0] as unifiedDataChannel.Image;
                       this.uri = image.imageUri;
-                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                      this.blockArr.splice(extraParams ? JSON.parse(extraParams).insertIndex : this.blockArr.length, 0, this.uri);
                     }
                   } else {
                     console.info('dragData arr is null');
@@ -2143,8 +2143,10 @@ struct VideoExample {
                 if (dragData != null) {
                   let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
                   if (arr.length > 0) {
-                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.VIDEO) {
-                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.FILE_URI) {
+                      let fileUri = arr[0].getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
+                      this.blockArr.splice(extraParams ? JSON.parse(extraParams).insertIndex : this.blockArr.length, 0, fileUri.oriUri);
+
                     }
                   } else {
                     console.info('dragData arr is null');
@@ -2155,7 +2157,7 @@ struct VideoExample {
                 console.info(`percentage: ${progress.progress}`);
               };
             let info: unifiedDataChannel.DataLoadInfo =
-              { types: new Set([uniformTypeDescriptor.UniformDataType.VIDEO]), recordCount: 100 }
+              { types: new Set([uniformTypeDescriptor.UniformDataType.FILE_URI]), recordCount: 1 }
             let options: DataSyncOptions = {
               destUri: destUri,
               fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,

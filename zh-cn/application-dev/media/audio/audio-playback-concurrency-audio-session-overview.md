@@ -76,10 +76,10 @@
 <!--Table: 6%; 30%; 30%; 17%; 17% -->
 | - | 应用A | 应用B | 打断效果 | 备注 |
 |--|-------|-------|---------|------|
-| 默认场景 | 启动音频录制 | 蜂窝通话、视频通话 | 通话和VoIP通话出于安全考虑，禁止录音 | - |
-| 方案一 | 使用[setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20)接口，设置录制静音打断 | 无需配置 | 应用B音频播放或录制时，应用A可以持续录制，录制为静音流 | - |
-| 方案二 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需配置 | 应用B打断A录制时，应用A录制静音数据，应用B动作完成后恢复有声数据 | 与方案一效果相当，推荐方案二 |
-| 方案三 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 无需配置 | 应用B打断A录制时，应用A录制暂停，应用B动作完成后，应用A收到RESUME事件恢复录制 | - |
+| 默认场景 | 启动音频录制。 | 蜂窝通话、视频通话 | 通话和VoIP通话出于安全考虑，禁止录音。 | - |
+| 方案一 | 使用接口[setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20)，设置录制静音打断。 | 无需配置 | 应用B音频播放或录制时，应用A可以持续录制，录制为静音流。 | - |
+| 方案二 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED。 | 无需配置 | 应用B打断A录制时，应用A录制静音数据，应用B动作完成后恢复有声数据。 | 与方案一效果相当，推荐方案二。 |
+| 方案三 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED。 | 无需配置 | 应用B打断A录制时，应用A录制暂停，应用B动作完成后，应用A收到RESUME事件恢复录制。 | 规格限制：录制必须在前台启动，启动后可退至后台运行。当录制被打断后收到RESUME事件时，须确保应用在前台才能恢复。若应用处于后台，恢复录制将失败。 |
 
 ### 场景3：通话过程中开启录制失败
 
@@ -113,5 +113,100 @@
 | 方案二 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | B抢占焦点后，A会继续静音播放，B完成提示播报后A恢复 | 复播会跳过静音期内容，对进度条敏感场景不建议使用 |
 | 方案三 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | TTS与音乐同时播放，互不影响 | - |
 
-## 同应用内不同音频流之间的焦点管理
-同应用内不同音频流默认使用相同的焦点策略，如需对各音频流进行差异化管理，应用需先将[焦点模式](./audio-playback-concurrency.md#焦点模式)设置为独立焦点模式，再分别为每条流设置对应的焦点策略。
+### 场景6：应用以静音状态播放音视频打断音乐，无法恢复
+
+应用希望在静音状态下播放音视频且不打断正在播放的音乐，但实际是应用在启动播放时会打断正在播放的音乐且一直无法恢复。
+
+<!--Table: 6%; 30%; 30%; 17%; 17% -->
+| - | 应用A | 应用B | 打断效果 | 备注 |
+|--|-------|-------|---------|------|
+| 默认场景 | 播放音乐 | 以静音状态开始播放音视频。 | 应用B启动时抢占焦点，应用A被打断无法恢复。 | - |
+| 方案一 | 无需适配 | 使用[setSilentModeAndMixWithOthers](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setsilentmodeandmixwithothers12)开启静音并发播放模式。 | 应用B以静音状态开始播放，静音状态期间不抢占焦点，不影响应用A。<br>应用B解除静音后按正常策略申请焦点。 | 适用于使用AudioRenderer播放音频的场景。 |
+| 方案二 | 无需适配 | 使用[setMediaMuted](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setmediamuted12)开启静音播放。 | 应用B以静音状态开始播放，静音状态期间不抢占焦点，不影响应用A。<br>应用B解除静音后按正常策略申请焦点。 | 适用于使用AVPlayer播放音频的场景。 |
+| 方案三 | 无需适配 | 使用[OH_AudioRenderer_SetSilentModeAndMixWithOthers](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setsilentmodeandmixwithothers)开启静音并发播放模式。 | 应用B以静音状态开始播放，静音状态期间不抢占焦点，不影响应用A。<br>应用B解除静音后按正常策略申请焦点。 | 适用于使用OHAudio播放音频的场景。 |
+
+### 场景7：直播被后启动应用打断，无法恢复
+
+应用A正在直播，打开应用B进行音频播放。默认焦点策略是停止（STOP），当应用A被应用B打断后，应用B停止播放时，应用A不能恢复播放。
+
+直播流为实时内容，没有进度条概念。使用静音方案（MUTE_WHEN_INTERRUPTED）时，静音期间直播流持续运行且连接不断开，恢复后直接播放当前实时内容，不会出现“跳过静音期内容”的问题，适合直播场景。
+
+<!--Table: 6%; 30%; 30%; 17%; 17% -->
+| - | 应用A | 应用B | 打断效果 | 备注 |
+|--|-------|-------|---------|------|
+| 默认场景 | 正在直播（MOVIE） | 播放媒体类音频（音乐/短视频） | 默认焦点策略是停止（STOP），应用B播放后应用A被打断，不恢复。 | - |
+| 方案一（推荐） | 使用音频渲染接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，其中参数AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED。 | 无需适配 | 应用B抢占焦点后，应用A会继续静音播放，应用B完成播放后应用A恢复有声。 | 直播为实时流，静音期间内容为当前实时内容，不存在进度跳过问题，推荐使用该方案。 |
+| 方案二 | 应用A提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS`。 | 无需适配 | 应用A提供设置开关，用户手动开启生效，应用B播放后与应用A同时播放。 | 开关参考系统音乐设置。 |
+
+### 场景8：输入法按键音打断音视频，无法恢复
+
+应用A正在播放音视频，用户使用应用B（输入法）在输入框中打字时，会播放按键音。当按键音使用媒体类流类型（MUSIC/MOVIE）时，与音视频之间的默认焦点策略为停止（STOP），音视频被打断后不会恢复。将按键音改为通知音类型（STREAM_USAGE_NOTIFICATION）并将并发模式设为`CONCURRENCY_MIX_WITH_OTHERS`，可实现按键音与音视频同时播放且互不影响，仅需应用B侧适配。
+
+<!--Table: 6%; 30%; 30%; 17%; 17% -->
+| - | 应用A | 应用B | 打断效果 | 备注 |
+|--|-------|-------|---------|------|
+| 默认场景 | 播放音视频（MOVIE/MUSIC） | 播放按键音（MUSIC/MOVIE） | 按键音抢占焦点，音视频停止且不恢复。 | 按键音与音视频同为媒体类流，默认策略为STOP。 |
+| 推荐方案 | 无需适配 | 按键音使用STREAM_USAGE_NOTIFICATION流类型播放，使用音频渲染接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)设置并发模式为`CONCURRENCY_MIX_WITH_OTHERS`。 | 按键音与音视频同时播放，互不影响，音视频音量不降低。 | 仅需应用B适配。NOTIFICATION默认对媒体类流为压低（DUCK），并发（MIX）策略优先级低于压低（DUCK），生效后音视频不被压低音量。 |
+
+推荐方案代码示例如下：
+
+<!-- @[keyboard_notification_mix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioKeyboardSoundSample/entry/src/main/ets/common/controllers/KeyboardSoundController.ets) -->
+
+``` TypeScript
+async init(): Promise<void> {
+  this.renderer = await audio.createAudioRenderer({
+    streamInfo: {
+      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+      channels: audio.AudioChannel.CHANNEL_2,
+      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+      encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+    },
+    rendererInfo: {
+      // 使用通知音类型，将默认焦点策略从STOP降为DUCK。
+      usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION,
+      rendererFlags: 0,
+    },
+  });
+  const r = this.renderer;
+  r.on('writeData', (buf: ArrayBuffer) => { this.fillAudioData(buf) });
+}
+
+async play(): Promise<void> {
+  if (!this.renderer) {
+    return;
+  }
+  const token = ++this.playToken;
+  if (this.isStarted) {
+    await this.renderer.stop();
+    this.isStarted = false;
+  }
+  // 设置MIX策略，优先级低于DUCK，实现完全并发。
+  this.renderer.setIndependentAudioSessionStrategy({
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+  }, audio.AudioSessionBehaviorFlags.DEFAULT_BEHAVIOR);
+  // 播放按键音。
+  await this.renderer.start();
+  this.isStarted = true;
+  await new Promise<void>((resolve: () => void) => {
+    setTimeout(resolve, AudioConstants.KEY_SOUND_DURATION_MS_NOTIFICATION);
+  });
+  if (token === this.playToken && this.isStarted) {
+    await this.renderer.stop();
+    this.isStarted = false;
+  }
+}
+```
+
+## 同应用内焦点管理场景概述
+
+同一应用内会存在同时创建多条音频流的现象，例如音乐播放器在播放背景音乐的同时重新播放一首音乐，短视频播放器在播放视频的同时背景音乐也在播放。
+
+系统提供了焦点模式（InterruptMode）来管控同应用内音频流之间的焦点决策行为，焦点模式的详细介绍及实践可参考[同应用内焦点管理](./audio-playback-concurrency.md#同应用内焦点管理)。
+
+**常见场景：同应用内音乐和视频冲突**
+
+| - | 流A | 流B | 适配方案 | 打断效果 |
+|--|-------|-------|-------------|---------|
+| 默认场景 | 播放音乐（MUSIC） | 播放视频（MOVIE） | 默认为SHARE_MODE模式，不触发焦点策略。 | 音乐A与视频B并发播放。 |
+| 方案一（推荐） | 播放音乐（MUSIC） | 播放视频（MOVIE） | 流A和流B均为SHARE_MODE模式，应用自行管控各流的行为。如图：![SHARE_MODE](figures/audio-focus-share-mode.png) | 音乐A被视频B打断，视频B暂停，音乐A恢复。 |
+| 方案二 | 播放音乐（MUSIC） | 播放视频（MOVIE） | 流A或流B其中一个或都为INDEPENDENT_MODE模式，两条流由系统进行焦点决策。 | 音乐A被视频B打断，视频B暂停，音乐A不恢复。 |

@@ -52,8 +52,6 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确识�
 
 部分多实例替代接口如下表所示，UIContext实例支持的全量接口以[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中描述为准。
 
-示例代码使用的接口中，[isAvailable](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#isavailable20)从API version 20开始生效，其余接口从API version 18开始生效。
-
 |               全局接口                |               替代接口                |            说明            |
 | :-----------------------------------: | :-----------------------------------: | :------------------------: |
 |            @ohos.animator             |            createAnimator             |      自定义动画控制器      |
@@ -63,7 +61,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确识�
 |         @ohos.arkui.inspector         |            getUIInspector             |        组件布局回调        |
 |         @ohos.arkui.observer          |             getUIObserver             |          无感监听          |
 |              @ohos.font               |                getFont                |         自定义字体         |
-|             @ohos.measure             |            getMeasureUtil             |          文本计算          |
+|             @ohos.measure             |            getMeasureUtils             |          文本计算          |
 |           @ohos.mediaquery            |             getMediaQuery             |          媒体查询          |
 |          @ohos.promptAction           |            getPromptAction            |            弹窗            |
 |             @ohos.router              |               getRouter               |          页面路由          |
@@ -75,8 +73,8 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确识�
 |           TextPickerDialog            |         showTextPickerDialog          |     文本滑动选择器弹窗     |
 |              ContextMenu              |       getContextMenuController        |          菜单控制          |
 | vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx | vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx |        像素单位转换        |
-|             focusControl              |            getFocusControl            |          焦点控制          |
-|             cursorControl             |           getCursorControl            |          光标控制          |
+|             focusControl              |            getFocusController            |          焦点控制          |
+|             cursorControl             |           getCursorController            |          光标控制          |
 |              getContext               |            getHostContext             | 获取当前的Ability的Context |
 |        LocalStorage.getShared         |         getSharedLocalStorage         |  获取Ability传递的Storage  |
 |               animateTo               |               animateTo               |          显式动画          |
@@ -84,7 +82,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确识�
 
 ## 常见UIContext接口替换全局接口的场景
 
-以下UIContext接口替换全局接口示例以[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)接口为例。
+以下UIContext接口替换全局接口示例以[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)接口为例。示例代码使用的接口中，[isAvailable](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#isavailable20)从API版本20开始生效，UIContext.resolveUIContext()、UIContext.getCallingScopeUIContext()、UIContext.getLastFocusedUIContext()、UIContext.getLastForegroundUIContext()、UIContext.getAllUIContexts()以及UIContext()构造函数从API版本22开始生效，其余接口从API版本15开始生效。
 
 ### 通过自定义组件获取UIContext
 

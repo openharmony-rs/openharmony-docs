@@ -87,7 +87,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 | EFX_FAX<sup>12+</sup>                         | 'com.js.efx-fax'                    | 电子传真文件类型，归属类型为FAX。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | XBITMAP_IMAGE<sup>12+</sup>                         | 'general.xbitmap-image'                    | X Window系统（X11）中使用的位图图像格式，归属类型为IMAGE。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | GIF<sup>12+</sup>                         | 'general.gif'                    | GIF图像类型，归属类型为IMAGE。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
-| TGA_IMAGE<sup>12+</sup>                         | 'com.truevision.tga-image'                    | 标签图形（TaggedGraphics）图像类型，归属类型为IMAGE。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
+| TGA_IMAGE<sup>12+</sup>                         | 'com.truevision.tga-image'                    | Truevision Graphics Adapter图像文件格式，归属类型为IMAGE。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | SGI_IMAGE<sup>12+</sup>                         | 'com.sgi.sgi-image'                    | 硅图（Silicon Graphics）图像类型，归属类型为IMAGE。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | OPENEXR_IMAGE<sup>12+</sup>                         | 'com.ilm.openexr-image'                    | 开放标准的高动态范围图像格式类型，归属类型为IMAGE。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | FLASHPIX_IMAGE<sup>12+</sup>                         | 'com.kodak.flashpix.image'                    | FlashPix 图像文件类型，归属类型为IMAGE。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
@@ -668,7 +668,7 @@ try {
   console.error(`getUniformDataTypeByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
-// 根据“.myts”，“general.plain-text”查不到预置数据类型则按返回根据入参信息生成的动态类型。
+// 根据“.myts”，“general.plain-text”查不到预置数据类型则返回根据入参信息生成的动态类型。
 try {
   let typeId = uniformTypeDescriptor.getUniformDataTypeByFilenameExtension('.myts', 'general.plain-text');
   if (typeId) {
@@ -729,7 +729,7 @@ try {
   console.error(`getUniformDataTypeByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
-// 根据“image/myimage”, “general.image”查不到预置数据类型则按返回根据入参信息生成的动态类型。
+// 根据“image/myimage”, “general.image”查不到预置数据类型则返回根据入参信息生成的动态类型。
 try {
   let typeId = uniformTypeDescriptor.getUniformDataTypeByMIMEType('image/myimage', 'general.image');
   if (typeId) {
@@ -795,7 +795,7 @@ try {
     console.error(`getUniformDataTypesByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
-// 根据“.myts”，“general.plain-text”查不到预置数据类型则按返回根据入参信息生成的动态类型列表。
+// 根据“.myts”，“general.plain-text”查不到预置数据类型则返回根据入参信息生成的动态类型列表。
 try {
     let flexTypeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension('.myts', 'general.plain-text');
     for (let flexTypeId of flexTypeIds) {
@@ -856,7 +856,7 @@ try {
   console.error(`getUniformDataTypesByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
-// 根据“image/myimage”, “general.image”查不到预置数据类型则按返回根据入参信息生成的动态类型列表。
+// 根据“image/myimage”, “general.image”查不到预置数据类型则返回根据入参信息生成的动态类型列表。
 try {
   let flexTypeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType('image/myimage', 'general.image');
   for (let flexTypeId of flexTypeIds) {

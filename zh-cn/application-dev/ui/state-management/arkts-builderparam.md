@@ -333,6 +333,10 @@ struct Parent {
 }
 ```
 
+**图4** 示例效果图
+
+![builderparam-demo3](figures/builderparam-demo3.png)
+
 **ArkTS-Sta:**
 <!-- @[BuilderParamSceneInit](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamSceneInit.ets) -->
 ``` TypeScript
@@ -392,10 +396,9 @@ struct Parent {
 }
 ```
 
-**图4** 示例效果图
+**图5** 示例效果图
 
-![builderparam-demo3](figures/builderparam-demo3.png)
-
+![builderparam-demo3](figures/builderparam-demo3-sta.png)
 
 ### 尾随闭包初始化组件
 
@@ -467,7 +470,7 @@ struct CustomContainerUser {
   }
 }
 ```
-**图5** 示例效果图
+**图6** 示例效果图
 
 ![builderparam-demo4](figures/builderparam-demo4.gif)
 
@@ -535,7 +538,7 @@ struct CustomContainerUser {
 }
 ```
 
-**图6** 示例效果图
+**图7** 示例效果图
 
 ![builderparam-demo5](figures/builderparam-demo5-2.png)
 
@@ -614,7 +617,7 @@ struct ParentPage {
 }
 ```
 
-**图7** 示例效果图
+**图8** 示例效果图
 
 ![trailing-closure-initializes-component](figures/trailing-closure-initializes-component.png)
 
@@ -696,7 +699,7 @@ struct ParentPage {
 }
 ```
 
-**图8** 示例效果图
+**图9** 示例效果图
 
 ![initializing-by-trailing-closure](figures/initializing-by-trailing-closure.png)
 
@@ -821,33 +824,7 @@ struct HelloWorldPage {
 }
 ```
 
-
-**router_map.json**
-这个文件位于项目的`resources/base/profile`目录下。
-``` TypeScript
-{
-  "routerMap": [
-    {
-      "name": "HelloWorldPage",
-      "buildFunction": "HelloWorldPageBuilder",
-      "pageSourceFile": "src/main/ets/pages/helloworld.ets"
-    }
-  ]
-}
-```
-**module.json5**
-这个文件位于应用模块的根目录下，例如`entry/src/main/module.json5`。
-
-``` TypeScript
-{
-  "module": {
-    "routerMap": "$profile:router_map",
-    ......
-  }
-}   
-```
-
-**图9** 示例效果图
+**图10** 示例效果图
 
 ![builderparam-demo7](figures/builderparam-demo7.gif)
 
@@ -973,7 +950,7 @@ struct ChildPageBuilderParam {
 }
 ```
 
-**图10** 示例效果图
+**图11** 示例效果图
 
 ![builderparam-demo7](figures/builderparam-demo7-2.gif)
 
@@ -1061,7 +1038,7 @@ struct ParentPage {
   }
 }
 ```
-**图11** 示例效果图
+**图12** 示例效果图
 
 ![builderparam-demo5](figures/builderparam-demo5.png)
 
@@ -1148,7 +1125,7 @@ struct ParentPage {
   }
 }
 ```
-**图12** 示例效果图
+**图13** 示例效果图
 
 ![initializing-by-builder](figures/initializing-by-builder.png)
 
@@ -1236,7 +1213,7 @@ struct ParentPage {
   }
 }
 ```
-**图13** 示例效果图
+**图14** 示例效果图
 
 ![builderparam-demo6](figures/builderparam-demo6.png)
 
@@ -1313,7 +1290,7 @@ struct ParentPage {
   }
 }
 ```
-**图14** 示例效果图
+**图15** 示例效果图
 
 ![using-BuilderParam-in-ComponentV2](figures/using-BuilderParam-in-ComponentV2.png)
 
@@ -1433,7 +1410,7 @@ struct ParentPage {
 }
 ```
 
-**图15** 示例效果图
+**图16** 示例效果图
 
 ![change-content-UI-refresh](figures/change-content-UI-refresh.gif)
 
@@ -1577,13 +1554,13 @@ struct ChildPage {
 }
 ```
 
-**图16** 示例效果图
+**图17** 示例效果图
 
 ![builderparam-combined-with-require](figures/builderparam-combined-with-require.png)
 
 ### @BuilderParam装饰器初始化的值必须为@Builder
 
-使用\@State装饰器装饰的变量，在初始化子组件的\@BuilderParam和`ChildBuilder`变量时，编译时会输出报错信息。
+使用\@State装饰器装饰的变量，在初始化子组件\@BuilderParam装饰的`childBuilder`变量时，编译时会输出报错信息。
 
 【反例】
 
@@ -1601,19 +1578,19 @@ struct CustomBuilderDemo {
 
   build() {
     Column() {
-      // @BuilderParam装饰的变量ChildBuilder接收@State装饰的变量，会出现编译和编辑报错
-      ChildPage({ ChildBuilder: this.message })
+      // @BuilderParam装饰的变量childBuilder接收@State装饰的变量，会出现编译和编辑报错
+      ChildPage({ childBuilder: this.message })
     }
   }
 }
 
 @Component
 struct ChildPage {
-  @BuilderParam ChildBuilder: () => void = globalBuilder;
+  @BuilderParam childBuilder: () => void = globalBuilder;
 
   build() {
     Column() {
-      this.ChildBuilder()
+      this.childBuilder()
     }
   }
 }
@@ -1721,6 +1698,6 @@ struct ChildPage {
   }
 }
 ```
-**图16** 示例效果图
+**图18** 示例效果图
 
 ![builderparam-combined-with-require](figures/builderparam-combined-with-require.png)

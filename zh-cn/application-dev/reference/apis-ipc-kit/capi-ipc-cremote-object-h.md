@@ -28,7 +28,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | ---- | ------------- | ---- |
-| [OH_IPC_MessageOption](capi-ohipcremoteobject-oh-ipc-messageoption.md) | - | IPC消息选项定义。 |
+| [OH_IPC_MessageOption](capi-ohipcremoteobject-oh-ipc-messageoption.md) | OH_IPC_MessageOption | IPC消息选项定义。 |
 | [OHIPCDeathRecipient](capi-ohipcremoteobject-ohipcdeathrecipient.md) | OHIPCDeathRecipient | 死亡通知对象。 |
 
 ### 枚举
@@ -216,7 +216,7 @@ IPC消息发送函数。
 | const [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) *proxy | proxy OHIPCRemoteProxy对象指针，不能为空。 |
 | uint32_t code | code 用户定义的IPC命令字，范围：[0x01, 0x00ffffff]。 |
 | const [OHIPCParcel](capi-ohipcparcel.md) *data | data 请求数据对象指针，不能为空。 |
-| [OHIPCParcel](capi-ohipcparcel.md) *reply | reply 回应数据对象指针，同步请求时，不能为空；异步请求时，可以为空。 |
+| [OHIPCParcel](capi-ohipcparcel.md) *reply | reply 响应数据对象指针，同步请求时，不能为空；异步请求时，可以为空。 |
 | const [OH_IPC_MessageOption](capi-ohipcremoteobject-oh-ipc-messageoption.md) *option | option消息选项指针，可以为空，为空时按同步处理。 |
 
 **返回：**

@@ -13,7 +13,7 @@ typedef struct OH_CryptoPrivKey OH_CryptoPrivKey
 
 ## 概述
 
-定义私钥结构体。
+私钥结构体，表示私钥。
 
 **起始版本：** 20
 

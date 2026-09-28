@@ -16,7 +16,7 @@
     - [@ohos.arkui.inspector (布局回调)](js-apis-arkui-inspector.md)
     - [@ohos.arkui.node (自定义节点)](js-apis-arkui-node.md)
     - [@ohos.arkui.observer (无感监听)](js-apis-arkui-observer.md)
-    - [@ohos.arkui.prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
+    - [@ohos.arkui.Prefetcher (内容预取)](js-apis-arkui-Prefetcher.md)
     - [@ohos.arkui.shape (形状)](js-apis-arkui-shape.md)
     - [@ohos.arkui.theme(主题换肤)](js-apis-arkui-theme.md)
     - @ohos.arkui.UIContext (UIContext)<!--js-apis-arkui-uicontext-->
@@ -44,6 +44,15 @@
       - [Class (PromptAction)](arkts-apis-uicontext-promptaction.md)
       - [Class (Router)](arkts-apis-uicontext-router.md)
       - [Class (SmartGestureController)](arkts-apis-uicontext-smartgesturecontroller.md)
+      - [Class (BaseGestureHandlingProposal)](arkts-apis-uicontext-basegesturehandlingproposal.md)
+      - [Class (TargetedGestureProposal)](arkts-apis-uicontext-targetedgestureproposal.md)
+      - [Class (ClickActionProposal)](arkts-apis-uicontext-clickactionproposal.md)
+      - [Class (SelectActionProposal)](arkts-apis-uicontext-selectactionproposal.md)
+      - [Class (NoneActionProposal)](arkts-apis-uicontext-noneactionproposal.md)
+      - [Class (BackPressActionProposal)](arkts-apis-uicontext-backpressactionproposal.md)
+      - [Class (PageSwitchActionProposal)](arkts-apis-uicontext-pageswitchactionproposal.md)
+      - [Class (ScrollActionProposal)](arkts-apis-uicontext-scrollactionproposal.md)
+      - [Class (GestureHandlingResolution)](arkts-apis-uicontext-gesturehandlingresolution.md)
       - [Class (SwiperDynamicSyncScene)](arkts-apis-uicontext-swiperdynamicsyncscene.md)
       - [Class (TextMenuController)](arkts-apis-uicontext-textmenucontroller.md)
       - [Class (UIContext)](arkts-apis-uicontext-uicontext.md)
@@ -150,7 +159,7 @@
       - [轴事件](arkui-ts/ts-universal-events-axis.md)
       - [按键事件](arkui-ts/ts-universal-events-key.md)
       - [表冠事件](arkui-ts/ts-universal-events-crown.md)
-      - [焦点轴事件](arkui-ts/ts-universal-events-focus_axis.md)
+      - [焦点轴事件](arkui-ts/ts-universal-events-focus-axis.md)
     - 交互响应事件<!--interaction-events-->
       - [点击事件](arkui-ts/ts-universal-events-click.md)
       - [拖拽事件](arkui-ts/ts-universal-events-drag-drop.md)
@@ -245,7 +254,7 @@
     - 动态属性与自定义<!--attribute-modifier-property-->
       - [动态属性设置](arkui-ts/ts-universal-attributes-attribute-modifier.md)
       - [动态手势设置](arkui-ts/ts-universal-attributes-gesture-modifier.md)
-      - [自定义绘制](arkui-ts/ts-universal-attributes-draw-modifier.md)
+      - [自定义绘制设置](arkui-ts/ts-universal-attributes-draw-modifier.md)
       - [自定义内容](arkui-ts/ts-universal-attributes-content-modifier.md)
       - [自定义属性设置](arkui-ts/ts-universal-attributes-custom-property.md)
       - [动态SymbolGlyphModifier属性设置](arkui-ts/ts-universal-attributes-attribute-symbolglyphmodifier.md)
@@ -650,7 +659,7 @@
         - [@Provide](arkui-ts/ts-state-management-provide-static.md)
         - [@State](arkui-ts/ts-state-management-state-static.md)
         - [@StorageLink](arkui-ts/ts-state-management-storagelink-static.md)
-        - [@StoragePropref](arkui-ts/ts-state-management-storagepropref-static.md)
+        - [@StoragePropRef](arkui-ts/ts-state-management-storagepropref-static.md)
         - [@SyncMonitor](arkui-ts/ts-state-management-syncmonitor-static.md)
         - [@Track](arkui-ts/ts-state-management-track-static.md)
         - [@Watch](arkui-ts/ts-state-management-watch-static.md)
@@ -692,7 +701,7 @@
   <!--DelEnd-->
   - 已停止维护的组件与接口<!--arkui-declarative-comp-dep-->
     <!--Del-->
-    - [AbilityComponent](arkui-ts/ts-container-ability-component-sys.md)
+    - [AbilityComponent (系统接口)](arkui-ts/ts-container-ability-component-sys.md)
     <!--DelEnd-->
     - [GridContainer](arkui-ts/ts-container-gridcontainer.md)
     - [Panel](arkui-ts/ts-container-panel.md)
@@ -749,6 +758,7 @@
     - [native_node_napi.h](capi-native-node-napi-h.md)
     - [native_render.h](capi-native-render-h.md)
     - [native_type.h](capi-native-type-h.md)
+    - [native_type_visual.h](capi-native-type-visual-h.md)
     - [native_xcomponent_key_event.h](capi-native-xcomponent-key-event-h.md)
     - [styled_string.h](capi-styled-string-h.md)
     - [custom_span.h](capi-custom-span-h.md)
@@ -792,6 +802,10 @@
     - [ArkUI_AnimatorEvent](capi-arkui-nativemodule-arkui-animatorevent.md)
     - [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md)
     - [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)
+    - [OH_ArkUI_PropertyAnimation*](capi-arkui-nativemodule-arkui-propertyanimation8h.md)
+    - [OH_ArkUI_KeyframeAnimation*](capi-arkui-nativemodule-arkui-keyframeanimation8h.md)
+    - [OH_ArkUI_PathAnimation*](capi-arkui-nativemodule-arkui-pathanimation8h.md)
+    - [OH_ArkUI_AnimationGroup*](capi-arkui-nativemodule-arkui-animationgroup8h.md)
     - [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md)
     - [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md)
     - [ArkUI_NativeDialogAPI_3](capi-arkui-nativemodule-arkui-nativedialogapi-3.md)
@@ -834,7 +848,7 @@
     - [OH_NativeXComponent_ExtraMouseEventInfo](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md)
     - [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)
     - [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)
-    - [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)
+    - [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)
     - [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)
     - [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)
     - [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)
@@ -988,6 +1002,7 @@
     - [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md)
     - [ArkUI_NativeGestureAPI_3](capi-arkui-nativemodule-arkui-nativegestureapi-3.md)
     - [ArkUI_ParallelGestureEvent](capi-arkui-nativemodule-arkui-parallelgestureevent.md)
+    - [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
     - [接口调用异常错误码](errorcode-internal.md)
@@ -1019,8 +1034,9 @@
     - [DrawableDescriptor错误码](errorcode-drawable-descriptor.md)
     - [环境变量错误码](errorcode-env.md)
     - [反色能力错误码](errorcode-force-dark.md)
+    - [动视效错误码](errorcode-animation.md)
   - 图形图像<!--arkui-graphics-images-arkts-errcode-->
     - [屏幕错误码](errorcode-display.md)
     - [窗口错误码](errorcode-window.md)
   - UI编译<!--arkui-compile-arkts-errcode-->
-    - [编译错误码](_ark_ui_compile.md)
+    - [编译错误码](errorcode-arkui-compile.md)

@@ -2,8 +2,8 @@
 
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -13,9 +13,9 @@ WebKeyboardController是ArkWeb提供的用于控制Web组件自定义键盘行�
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 本Class首批接口从API version 12开始支持。
+> - 本Class从API version 12开始支持。
 >
 > - 示例效果请以真机运行为准。
 
@@ -47,7 +47,7 @@ Web输入框中插入字符。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | -------- | ---- | --------------------- |
-| text | string | 是 | 在当前光标位置插入Web输入框的文本。若存在选中文本则替换为该文本；触发输入事件；光标移动到插入文本末尾。 |
+| text | string | 是 | 在Web输入框当前光标位置插入文本。若存在选中文本则替换为该文本；触发输入事件；光标移动到插入文本末尾。 |
 
 ## deleteForward<sup>12+</sup>
 

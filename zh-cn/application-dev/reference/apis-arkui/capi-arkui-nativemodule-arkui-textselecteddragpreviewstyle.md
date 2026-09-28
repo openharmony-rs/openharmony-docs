@@ -12,7 +12,7 @@ typedef struct ArkUI_SelectedDragPreviewStyle ArkUI_SelectedDragPreviewStyle
 
 ## 概述
 
-定义选中状态下文本拖拽预览样式。
+定义选中状态下文本拖拽预览样式，适用于需要在文本拖拽过程中展示选中状态预览效果的场景，可提升用户的拖拽交互体验。
 
 **起始版本：** 23
 

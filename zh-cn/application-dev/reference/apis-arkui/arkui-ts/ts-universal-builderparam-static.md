@@ -1,4 +1,4 @@
-# \@BuilderParam装饰器：引用\@Builder函数
+# @BuilderParam装饰器：引用@Builder函数
 
 \@BuilderParam用于装饰指向[@Builder](./ts-universal-builder-static.md)方法的变量。开发指南见[\@BuilderParam装饰器：引用\@Builder函数](../../../ui/state-management/arkts-builderparam.md)。
 

@@ -221,7 +221,7 @@ WebGL的全称为Web Graphics Library（网页图形库），主要用于交互�
 
    - 首先调用gl的成员函数createBuffer()得到缓冲对象并存储在顶点缓冲器。然后调用 bindBuffer() 函数绑定上下文。
 
-   - 创建一个Javascript数组去记录每一个正方形的每一个顶点。然后将其转化为WebGL浮点型类型的数组，并将其传到gl对象的bufferData()方法来建立对象的顶点。
+   - 创建一个JavaScript数组去记录每一个正方形的每一个顶点。然后将其转化为WebGL浮点型类型的数组，并将其传到gl对象的bufferData()方法来建立对象的顶点。
 
    ```js
    function initBuffers(gl) {

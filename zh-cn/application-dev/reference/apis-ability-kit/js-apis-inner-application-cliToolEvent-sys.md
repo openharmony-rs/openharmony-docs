@@ -1,4 +1,4 @@
-# CliToolEvent (系统接口)
+# CliToolEvent (CLI工具会话事件)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
@@ -37,8 +37,8 @@ CLI工具会话事件信息。
 
 | 名称          | 类型                              | 只读 | 可选 | 说明              |
 | ------------- | --------------------------------- | ---- | ---- | ----------------- |
-| toolEventType | [ToolEventType](#tooleventtype)   | 是   | 否   | CLI工具事件类型。 |
-| data          | string                            | 是   | 否   | CLI工具事件数据。 |
+| toolEventType | [ToolEventType](#tooleventtype)   | 否   | 否   | CLI工具事件类型。 |
+| data          | string                            | 否   | 否   | CLI工具事件数据。 |
 
 ## ToolEventType
 

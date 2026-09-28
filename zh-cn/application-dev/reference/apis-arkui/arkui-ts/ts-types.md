@@ -167,7 +167,7 @@ type ResourceStr = string | Resource
 
 ## Padding
 
-type Padding = { top: Length; right: Length; bottom: Length; left: Length; }
+type Padding = { top?: Length; right?: Length; bottom?: Length; left?: Length; }
 
 内边距类型，用于描述组件不同方向的内边距。
 
@@ -245,7 +245,7 @@ type LocalizedMargin = LocalizedPadding
 
 ## EdgeWidths<sup>9+</sup>
 
-type EdgeWidths = { top: Length; right: Length; bottom: Length; left: Length; }
+type EdgeWidths = { top?: Length; right?: Length; bottom?: Length; left?: Length; }
 
 边框宽度类型，用于描述组件边框不同方向的宽度。
 
@@ -313,7 +313,7 @@ type EdgeWidth = EdgeWidths
 
 ## BorderRadiuses<sup>9+</sup>
 
-type BorderRadiuses = { topLeft: Length; topRight: Length; bottomLeft: Length; bottomRight: Length; }
+type BorderRadiuses = { topLeft?: Length; topRight?: Length; bottomLeft?: Length; bottomRight?: Length; }
 
 圆角类型，用于描述组件边框圆角半径。
 
@@ -363,7 +363,7 @@ type BorderRadiuses = { topLeft: Length; topRight: Length; bottomLeft: Length; b
 
 ## EdgeColors<sup>9+</sup>
 
-type EdgeColors = { top: ResourceColor; right: ResourceColor; bottom: ResourceColor; left: ResourceColor; }
+type EdgeColors = { top?: ResourceColor; right?: ResourceColor; bottom?: ResourceColor; left?: ResourceColor; }
 
 边框颜色，用于描述组件边框四条边的颜色。
 
@@ -413,7 +413,7 @@ type EdgeColors = { top: ResourceColor; right: ResourceColor; bottom: ResourceCo
 
 ## EdgeStyles<sup>9+</sup>
 
-type EdgeStyles = { top: BorderStyle; right: BorderStyle; bottom: BorderStyle; left: BorderStyle; }
+type EdgeStyles = { top?: BorderStyle; right?: BorderStyle; bottom?: BorderStyle; left?: BorderStyle; }
 
 边框样式，用于描述组件边框四条边的样式。
 
@@ -1154,7 +1154,7 @@ type ResponsiveFillType = PresetFillType
 
 ## ItemFillPolicy<sup>22+</sup>
 
-定义一个适用于[WaterFlow](./ts-container-waterflow.md)、[Grid](./ts-container-grid.md)、[List](./ts-container-list.md)、[Swiper](./ts-container-swiper.md)和[LazyVWaterFlowLayout](./ts-container-lazyvwaterflowlayout.md)组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
+定义一个适用于[WaterFlow](./ts-container-waterflow.md)、[Grid](./ts-container-grid.md)、[List](./ts-container-list.md)、[Swiper](./ts-container-swiper.md)、[LazyVWaterFlowLayout](./ts-container-lazyvwaterflowlayout.md)和[LazyVGridLayout](./ts-container-lazyvgridlayout.md)组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持，LazyVGridLayout组件从API版本26.2.0开始支持。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 

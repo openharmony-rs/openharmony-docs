@@ -42,11 +42,15 @@ Runtime error.
 
 **可能原因**
 
-系统出现的不可预期的错误。
+1. 系统内部发生内存拷贝失败。
+2. 系统内部出现空指针，例如证书链校验器对象为空。
+3. 获取原生对象或转换参数失败，例如调用NAPI或ANI接口失败。
 
 **处理步骤**
 
-检查当前系统功能是否正常。
+1. 检查内存空间是否充足，清理内存后重试。
+2. 系统异常，请稍后重试或重启设备。
+3. 若以上检查均无法定位问题，请收集日志信息并联系华为技术支持。
 
 ## 19020003 参数检查失败
 
@@ -219,7 +223,7 @@ Maybe wrong password.
 
 **错误信息**
 
-The certificate is untrusted.
+Untrusted certificate.
 
 **错误描述**
 
@@ -273,7 +277,7 @@ Unsupported critical extension.
 
 **错误信息**
 
-Hostname mismatch.
+Hostname mismatch in the certificate.
 
 **错误描述**
 
@@ -291,7 +295,7 @@ Hostname mismatch.
 
 **错误信息**
 
-Email address mismatch.
+Email address mismatch in the certificate.
 
 **错误描述**
 
@@ -309,7 +313,7 @@ Email address mismatch.
 
 **错误信息**
 
-Key usage mismatch.
+Key usage mismatch in the certificate.
 
 **错误描述**
 
@@ -327,7 +331,7 @@ Key usage mismatch.
 
 **错误信息**
 
-CRL not found.
+Failed to obtain the certificate revocation list.
 
 **错误描述**
 
@@ -350,7 +354,7 @@ CRL not found.
 
 **错误信息**
 
-CRL not yet valid.
+The certificate revocation list has not taken effect.
 
 **错误描述**
 
@@ -370,7 +374,7 @@ CRL的生效时间晚于当前验证时间。
 
 **错误信息**
 
-CRL has expired.
+The certificate revocation list has expired.
 
 **错误描述**
 
@@ -390,7 +394,7 @@ CRL的失效时间早于当前验证时间。
 
 **错误信息**
 
-CRL signature verification failed.
+Failed to verify the signature of the certificate revocation list.
 
 **错误描述**
 
@@ -408,7 +412,7 @@ CRL的签名验证失败，可能是签名错误或颁发者证书不匹配。
 
 **错误信息**
 
-CRL issuer not found.
+Failed to find the issuer of the certificate revocation list.
 
 **错误描述**
 
@@ -426,7 +430,7 @@ CRL issuer not found.
 
 **错误信息**
 
-OCSP response not found.
+Failed to obtain the OCSP response.
 
 **错误描述**
 
@@ -449,7 +453,7 @@ OCSP response not found.
 
 **错误信息**
 
-OCSP response invalid.
+Invalid OCSP response.
 
 **错误描述**
 
@@ -467,7 +471,7 @@ OCSP响应数据格式错误、无法解析或已过期。
 
 **错误信息**
 
-OCSP signature verification failed.
+Failed to verify the OCSP signature. 
 
 **错误描述**
 
@@ -485,7 +489,7 @@ OCSP响应的签名验证失败，可能是签名错误或签名者证书不匹�
 
 **错误信息**
 
-OCSP certificate status unknown.
+Unknown OCSP certificate status.
 
 **错误描述**
 
@@ -503,7 +507,7 @@ OCSP服务器无法确定证书的状态。
 
 **错误信息**
 
-Network timeout.
+Network connection timed out.
 
 **错误描述**
 

@@ -54,7 +54,7 @@ ArkTS-Sta: setProcessPriority(pid: int, priority: ProcessPriority): Promise&lt;v
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 401      | Parameter error. Possible causes: priority is out of range. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -64,7 +64,7 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
 let childProcessPid = 33333;
 try {
-    await backgroundProcessManager.setProcessPriority(childProcessPid,
+    backgroundProcessManager.setProcessPriority(childProcessPid,
         backgroundProcessManager.ProcessPriority.PROCESS_INACTIVE);
 } catch (error) {
     console.error(`setProcessPriority failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -105,7 +105,7 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
 let childProcessPid = 33333;
 try {
-    await backgroundProcessManager.resetProcessPriority(childProcessPid); 
+    backgroundProcessManager.resetProcessPriority(childProcessPid); 
 } catch (error) {
     console.error(`resetProcessPriority failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
@@ -138,7 +138,7 @@ ArkTS-Sta: setPowerSaveMode(pid: int, powerSaveMode: PowerSaveMode): Promise&lt;
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。  |
+| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。<br>取值为正整数。  |
 | powerSaveMode | [PowerSaveMode](#powersavemode) | 是 | 能效模式。 |
 
 **返回值：**
@@ -153,8 +153,8 @@ ArkTS-Sta: setPowerSaveMode(pid: int, powerSaveMode: PowerSaveMode): Promise&lt;
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. PowerSaveMode status is out of range. |
 | 31800003      | Setup error, This setting is overridden by settings in Task Manager |
 | 31800004      | The setting failed due to system scheduling reasons. |
@@ -165,11 +165,15 @@ ArkTS-Sta: setPowerSaveMode(pid: int, powerSaveMode: PowerSaveMode): Promise&lt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
-let pid = 33333;
+let pid = 33333;  // 请开发者替换为实际的进程号
 try {
-    backgroundProcessManager.setPowerSaveMode(pid, backgroundProcessManager.PowerSaveMode.EFFICIENCY_MODE); 
+  backgroundProcessManager.setPowerSaveMode(pid, backgroundProcessManager.PowerSaveMode.EFFICIENCY_MODE).then(() => {
+    console.info('setPowerSaveMode promise');
+  }).catch((err: BusinessError) => {
+    console.error(`setPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`setPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`setPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -195,7 +199,7 @@ ArkTS-Sta: isPowerSaveMode(pid: int): Promise&lt;boolean&gt;
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。  |
+| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。<br>取值为正整数。  |
 
 **返回值：**
 
@@ -209,8 +213,8 @@ ArkTS-Sta: isPowerSaveMode(pid: int): Promise&lt;boolean&gt;
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types. |
 
 **示例：**
@@ -219,13 +223,15 @@ ArkTS-Sta: isPowerSaveMode(pid: int): Promise&lt;boolean&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
-let pid = 33333;
+let pid = 33333;  // 请开发者替换为实际的进程号
 try {
-    backgroundProcessManager.isPowerSaveMode(pid).then((result: boolean) => {
-        console.info("isPowerSaveMode: " + result.toString());
-    });
+  backgroundProcessManager.isPowerSaveMode(pid).then((result: boolean) => {
+    console.info(`isPowerSaveMode: ${result}`);
+  }).catch((err: BusinessError) => {
+    console.error(`isPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`isPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`isPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -251,7 +257,7 @@ ArkTS-Sta: getPowerSaveMode(pid: int): Promise&lt;PowerSaveMode&gt;
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。<br>取值范围：大于0的整数。  |
+| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。<br>取值为正整数。  |
 
 **返回值：**
 
@@ -265,8 +271,8 @@ ArkTS-Sta: getPowerSaveMode(pid: int): Promise&lt;PowerSaveMode&gt;
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types. |
 
 **示例：**
@@ -274,14 +280,16 @@ ArkTS-Sta: getPowerSaveMode(pid: int): Promise&lt;PowerSaveMode&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
-// 请开发者替换为实际的进程号
-let pid = 33333;
+
+let pid = 33333;  // 请开发者替换为实际的进程号
 try {
-    backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
-        console.info("getPowerSaveMode: " + result.toString());
-    });
+  backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
+    console.info(`getPowerSaveMode: ${result}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`getPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`getPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 

@@ -99,6 +99,7 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .focusable(true)
         .onFocus(() => {
           this.oneButtonColor = '#FFFFFF'
@@ -111,6 +112,7 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .focusable(true)
         .onFocus(() => {
           this.twoButtonColor = '#FFFFFF'
@@ -123,6 +125,7 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .focusable(true)
         .onFocus(() => {
           this.threeButtonColor = '#FFFFFF'

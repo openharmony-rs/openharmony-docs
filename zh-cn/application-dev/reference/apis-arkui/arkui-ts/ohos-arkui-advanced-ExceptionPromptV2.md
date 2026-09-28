@@ -282,7 +282,6 @@ struct Index01 {
 
 ArkTS-Dyn示例：
 ```ts
-import { promptAction } from '@kit.ArkUI';
 import { ExceptionPromptV2, MarginTypeV2, PromptOptionsV2 } from '@kit.ArkUI';
 
 @Entry
@@ -330,7 +329,7 @@ struct Index1 {
         .margin({ top: 420 })
         .zIndex(999)
         .onClick(() => {
-          promptAction.openCustomDialog({
+          this.getUIContext().getPromptAction().openCustomDialog({
             builder: () => {
               this.customDialogComponent()
             },

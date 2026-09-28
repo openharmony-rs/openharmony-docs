@@ -2,7 +2,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -15,4 +15,9 @@
 ## 约束与限制
 
 使用多模态融合感知，需要用户进行相关权限的申请。设备需要支持对应能力所需的传感器。
-<!--RP1--><!--RP1End-->
+
+<!--RP1-->
+### 模拟器支持情况
+ 
+本Kit不支持模拟器。
+<!--RP1End-->

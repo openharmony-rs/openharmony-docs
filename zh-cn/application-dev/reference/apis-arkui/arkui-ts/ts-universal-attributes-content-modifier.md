@@ -43,11 +43,11 @@ ArkTS-Sta: applyContent(): WrappedBuilder<CustomBuilderT\<T\>>
 
 **T参数支持范围:**
 
-ButtonConfiguration、CheckBoxConfiguration、CheckBoxGroupConfiguration、DataPanelConfiguration、TextClockConfiguration、TextTimerConfiguration、ToggleConfiguration、GaugeConfiguration、LoadingProgressConfiguration、MenuItemConfiguration、RadioConfiguration、ProgressConfiguration、RatingConfiguration、SliderConfiguration
+[ButtonConfiguration](ts-basic-components-button.md#buttonconfiguration12对象说明)、[CheckBoxConfiguration](ts-basic-components-checkbox.md#checkboxconfiguration12对象说明)、[CheckBoxGroupConfiguration](ts-basic-components-checkboxgroup.md#checkboxgroupconfiguration21对象说明)、[DataPanelConfiguration](ts-basic-components-datapanel.md#datapanelconfiguration12对象说明)、[TextClockConfiguration](ts-basic-components-textclock.md#textclockconfiguration12对象说明)、[TextTimerConfiguration](ts-basic-components-texttimer.md#texttimerconfiguration12对象说明)、[ToggleConfiguration](ts-basic-components-toggle.md#toggleconfiguration12对象说明)、[GaugeConfiguration](ts-basic-components-gauge.md#gaugeconfiguration12对象说明)、[LoadingProgressConfiguration](ts-basic-components-loadingprogress.md#loadingprogressconfiguration12对象说明)、[MenuItemConfiguration](ts-basic-components-select.md#menuitemconfiguration12对象说明)、[RadioConfiguration](ts-basic-components-radio.md#radioconfiguration12对象说明)、[ProgressConfiguration](ts-basic-components-progress.md#progressconfiguration12)、[RatingConfiguration](ts-basic-components-rating.md#ratingconfiguration12对象说明)、[SliderConfiguration](ts-basic-components-slider.md#sliderconfiguration12对象说明)
 
 **属性支持范围:**
 
-支持通用属性enabled，contentModifier。
+支持通用属性[enabled](ts-universal-attributes-enable.md#enabled)，[contentModifier](#contentmodifiert)。
 ## CommonConfiguration\<T\><sup>12+</sup>对象说明
 
 开发者需要自定义class实现ContentModifier接口。

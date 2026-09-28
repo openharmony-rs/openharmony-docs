@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -278,7 +278,7 @@ postMessageEventExt(message: WebMessageExt): void
 
 | 参数名  | 类型   | 必填 | 说明           |
 | ------- | ------ | ---- | :------------- |
-| message | [WebMessageExt](./arkts-apis-webview-WebMessageExt.md) | 是   | 要发送的消息。 |
+| message | [WebMessageExt](./arkts-apis-webview-WebMessageExt.md) | 是 | 要发送的消息。 |
 
 **错误码：**
 

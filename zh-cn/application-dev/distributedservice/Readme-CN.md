@@ -7,7 +7,7 @@
 <!--Adviser: @hu-zhiqiong-->
 
 - [Distributed Service Kit简介](distributedservice-kit-intro.md)
-- [分布式设备管理](devicemanager-guidelines.md)
+- [分布式设备管理开发指南](devicemanager-guidelines.md)
 - 应用跨设备连接管理<!--abilityconnect-distributed-->
   - [跨设备连接UIAbility开发指南](abilityconnectmanager-guidelines.md)
   <!--Del-->
@@ -17,5 +17,5 @@
   - [增强连接开发指导](linkEnhance_development-guide.md)
   <!--Del-->
 - 分布式软总线<!--distributed-softbus-->
-  - [跨设备唤醒与消息传输开发指导（仅对系统应用开放）](distributedSoftBus_conversation-guidelines-sys.md)
+  - [跨设备唤醒与消息传输开发指南（仅对系统应用开放）](distributedSoftBus_conversation-guidelines-sys.md)
   <!--DelEnd-->

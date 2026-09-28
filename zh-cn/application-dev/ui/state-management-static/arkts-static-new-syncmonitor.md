@@ -730,7 +730,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
   2. 打印`splice execute ...`；
   3. 执行`onArrChangedSync`, 打印日志'@SyncMonitor: arr: [0,100,101,102,5], m.dirty: [arr.1,arr.2,arr.3,arr.4,arr.length]'；
   4. 打印日志`shift execute ...`；
-  5. 执行`onArrChangedSync`， 打印日志'@SyncMonitor: arr: [100,101,102,5], m.dirty: [arr.0,arr.1,arr.2,arr.3,arr.4,arr.length]'；
+  5. 执行`onArrChangedSync`， 打印日志'@SyncMonitor: arr: [100,101,102,5], m.dirty: [arr.0,arr.1,arr.2,arr.3,arr.length]'；
   6. 打印`.. done`日志。
 
 ## 观察路径中的通配符

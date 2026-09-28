@@ -7,7 +7,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-VPN 管理模块，支持 VPN 的启动和停止功能。
+VPN管理模块，支持VPN的启动和停止功能。
 
 本模块是操作系统提供的内置VPN功能，允许用户通过系统的网络设置进行VPN连接，通常提供的功能较少，而且有比较严格的限制。
 
@@ -70,8 +70,7 @@ import { common } from '@kit.AbilityKit';
 struct Index {
   private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
   private VpnConnection: vpn.VpnConnection = vpn.createVpnConnection(this.context);
-  functiontest()
-  {
+  functiontest(): void {
     console.info("vpn createVpnConnection: " + JSON.stringify(this.VpnConnection));
   }
   build() {  }
@@ -80,13 +79,13 @@ struct Index {
 
 ## VpnConnection
 
-VPN 连接对象。在调用 VpnConnection 的方法前，需要先通过[vpn.createVpnConnection](#vpncreatevpnconnection)创建 VPN 连接对象。
+VPN连接对象。在调用VpnConnection的方法前，需要先通过[vpn.createVpnConnection](#vpncreatevpnconnection)创建VPN连接对象。
 
 ### setUp
 
 setUp(config: VpnConfig, callback: AsyncCallback\<number\>): void
 
-使用 config 创建一个 vpn 网络，使用 callback 方式作为异步方法。
+使用config创建一个VPN网络，使用callback方式作为异步方法。
 
 **系统接口**：此接口为系统接口。
 
@@ -99,7 +98,7 @@ setUp(config: VpnConfig, callback: AsyncCallback\<number\>): void
 | 参数名   | 类型                    | 必填 | 说明                                                                                               |
 | -------- | ----------------------- | ---- | -------------------------------------------------------------------------------------------------- |
 | config   | [VpnConfig](#vpnconfig) | 是   | 指定 VPN 网络的配置信息。                                                                          |
-| callback | AsyncCallback\<number\> | 是   | 回调函数，当成功启动 VPN 网络时，返回虚拟网卡的文件描述符 fd, error 为 undefined，否则为错误对象。 |
+| callback | AsyncCallback\<number\> | 是   | 回调函数，当成功启动VPN网络时，返回虚拟网卡的文件描述符fd，error为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -145,7 +144,10 @@ struct Index {
       dnsAddresses: ["114.114.114.114"]
     }
     this.VpnConnection.setUp(config, (error: BusinessError, data: number) => {
-      console.error(JSON.stringify(error));
+      if (error) {
+        console.error(JSON.stringify(error));
+        return;
+      };
       console.info("tunfd: " + JSON.stringify(data));
     });
   }
@@ -157,8 +159,12 @@ struct Index {
 
 setUp(config: VpnConfig): Promise\<number\>
 
-使用 config 创建一个 vpn 网络，使用 Promise 方式作为异步方法。
+使用config创建一个VPN网络，使用Promise方式作为异步方法。
 
+> **注意**：
+>
+> 同一用户同一时刻仅允许存在一个VPN连接，若已存在VPN连接将返回错误码2203002。VPN网络会持续保持，需调用destroy销毁。
+ 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.MANAGE_VPN
@@ -234,7 +240,7 @@ struct Index {
 
 protect(socketFd: number, callback: AsyncCallback\<void\>): void
 
-保护套接字不受 VPN 连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过 VPN 转发，使用 callback 方式作为异步方法。
+保护指定套接字，使该套接字的数据流量绕过VPN网络，直接经物理网络收发数据。使用callback方式作为异步方法。
 
 **系统接口**：此接口为系统接口。
 
@@ -310,7 +316,7 @@ struct Index {
 
 protect(socketFd: number): Promise\<void\>
 
-保护套接字不受 VPN 连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过 VPN 转发, 使用 Promise 方式作为异步方法。
+保护指定套接字，使该套接字的数据流量绕过VPN网络，直接经物理网络收发数据。使用Promise方式作为异步方法。
 
 **系统接口**：此接口为系统接口。
 
@@ -393,7 +399,7 @@ struct Index {
 
 destroy(callback: AsyncCallback\<void\>): void
 
-销毁启动的 VPN 网络，使用 callback 方式作为异步方法。
+销毁启动的VPN网络，使用callback方式作为异步方法。
 
 **系统接口**：此接口为系统接口。
 
@@ -448,7 +454,7 @@ struct Index {
 
 destroy(): Promise\<void\>
 
-销毁启动的 VPN 网络，使用 Promise 方式作为异步方法。
+销毁启动的VPN网络，使用Promise方式作为异步方法。
 
 **系统接口**：此接口为系统接口。
 
@@ -503,7 +509,7 @@ struct Index {
 
 ## VpnConfig
 
-VPN 配置参数。
+VPN配置参数。
 
 **系统接口**：此接口为系统接口。
 
@@ -511,15 +517,15 @@ VPN 配置参数。
 
 | 名称                | 类型                                                           | 只读 |可选| 说明                                |
 | ------------------- | -------------------------------------------------------------- | ---- | ---|----------------------------------- |
-| vpnId<sup>20+</sup>           | string | 否   |是| VPN唯一标识。            |
+| vpnId<sup>20+</sup>           | string | 否   |是| VPN唯一标识。不设置该参数时默认为空。            |
 | addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\> | 否   |否| VPN虚拟网卡的 IP 地址。            |
-| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>     | 否   |是 | VPN虚拟网卡的路由信息。            |
-| dnsAddresses        | Array\<string\>                                                | 否   |是 | DNS服务器地址信息。                |
-| searchDomains       | Array\<string\>                                                | 否   | 是| DNS 的搜索域列表。                  |
-| mtu                 | number                                                         | 否   |是 |最大传输单元MTU值(单位:字节)。     |
+| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>     | 否   |是 | VPN虚拟网卡的路由信息。不设置该参数时默认为空。            |
+| dnsAddresses        | Array\<string\>                                                | 否   |是 | DNS服务器地址信息。不设置该参数时默认为空。                |
+| searchDomains       | Array\<string\>                                                | 否   | 是| DNS 的搜索域列表。不设置该参数时默认为空。                  |
+| mtu                 | number                                                         | 否   |是 |最大传输单元MTU值(单位:字节)。不设置该参数时使用系统默认MTU值。     |
 | isIPv4Accepted      | boolean                                                        | 否   | 是| 是否支持IPv4。true表示支持IPv4，false表示不支持IPv4。默认值为true。      |
 | isIPv6Accepted      | boolean                                                        | 否   |是 |是否支持IPv6。true表示支持IPv6，false表示不支持IPv6。默认值为false。     |
 | isLegacy            | boolean                                                        | 否   |是 |是否支持内置VPN。true表示支持内置VPN，false表示不支持内置VPN。默认值为false。   |
 | isBlocking          | boolean                                                        | 否   |是 |是否阻塞模式。true表示是阻塞模式，false表示不是阻塞模式。默认值为false。       |
-| trustedApplications | Array\<string\>                                                | 否   |是 | string类型表示的包名可以接入VPN网络。  |
-| blockedApplications | Array\<string\>                                                | 否   |是 | string类型表示的包名不能接入VPN网络。  |
+| trustedApplications | Array\<string\>                                                | 否   |是 | string类型表示的包名可以接入VPN网络。不设置该参数时默认为空。  |
+| blockedApplications | Array\<string\>                                                | 否   |是 | string类型表示的包名不能接入VPN网络。不设置该参数时默认为空。  |

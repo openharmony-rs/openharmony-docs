@@ -1,8 +1,8 @@
 # Web组件对接软键盘
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @weixin_41848015-->
+<!--Owner: @xingyihang-->
+<!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 

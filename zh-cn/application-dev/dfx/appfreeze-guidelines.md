@@ -172,7 +172,7 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 **NOTE信息说明：**
 
 - **从API version 20开始**，系统支持输出提示信息：Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults。当整机资源告警（如整机低内存或热限频）时，系统会在NOTE中输出此信息，此时开发者可忽略应用冻屏故障。
-- **从API版本26.0.0开始**，系统支持输出提示信息：Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis。支持AppFreeze日志中关联[Resource Leak（资源泄漏）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)事件信息，若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因，此时开发者可以优先解决资源泄露问题。
+- **从API版本26.0.0开始**，系统支持输出提示信息：Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis。支持AppFreeze日志中关联[Resource Leak（资源泄漏）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)事件信息，若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因，此时开发者可以优先解决资源泄漏问题。
 - **从API版本26.0.0开始**，系统支持输出提示信息：Main thread is blocked by GC, which may be caused by high memory usage or system resource overload。
   - 如果[GC垃圾回收](../arkts-utils/gc-introduction.md)类型是Shared GC，系统不会输出此信息。
   - 如果在[GC垃圾回收](../arkts-utils/gc-introduction.md)期间，发生Appfreeze事件，并且GC垃圾回收类型是非Shared GC，系统会在NOTE中输出此信息，此时开发者可忽略应用冻屏故障。
@@ -637,7 +637,7 @@ DisplayPowerInfo:powerState:AWAKE
 
 事件检测超时阈值：log版本为8000毫秒，nolog版本为5000毫秒。从**API version 24**开始，APP_INPUT_BLOCK检测阈值不区分版本，均为8000毫秒。
 
-前置事件中包含：lastDispatchEvent为上次分发的事件；lastProcessEvent为上次处理的事件；lastMarkedEvent为上次标记的事件。
+前置事件id中包含：lastDispatchEvent为上次分发的事件；lastProcessEvent为上次处理的事件；lastMarkedEvent为上次标记的事件。如果系统侧IPC通信失败（EventHandler信息为空），则无法获取前置事件id，id值为0。
 
 在上述示例中，上次分发的事件是430，上次处理的事件是429，上次标记的事件是428，表明430事件已分发完毕，在处理环节，已超时8000毫秒。此日志可以用于APP_INPUT_BLOCK事件的简单定界，帮助问题分析。
 
@@ -804,6 +804,37 @@ SnapshotTime: 2021-01-01-20-05-58.549685
 .......
 ```
 
+**Promise异步嵌套调用场景日志规格**
+
+从API版本26.0.1开始，在ARM 64位系统下，当Promise异步嵌套调用过程中发生AppFreeze故障时，异步栈跟踪维测功能还会打印提交该异步任务的线程栈，帮助定位由异步任务提交者造成的卡死问题。Promise异步栈功能默认关闭，开启方法参见[Promise异步栈](jscrash-guidelines.md#promise异步栈)。
+
+在多层异步嵌套调用场景下，当前规格仅保留**发生故障的调用层**的提交者调用栈，而非完整的嵌套调用链。故障线程的调用栈与其提交线程的调用栈通过`SubmitterStacktrace`字符串分隔。
+
+以9级`async/await`嵌套调用为例，整个过程如下图所示：调用方发起调用后，每层异步函数执行至`await`处挂起，待其Promise决议后由运行时（事件循环）恢复执行，随后调用下一层异步函数，如此逐层嵌套，直至最深层multiAsync9。每层`await`都会产生一个新的Promise节点，运行时会逐层保存该层的提交者调用栈。multiAsync9恢复执行后调用`APPFREEZE()`触发主线程阻塞，日志中保留的正是该层的提交者调用栈。
+
+![Promise异步嵌套调用过程](figures/promise_async_nested_call.png)
+
+AppFreeze日志文件路径为`/data/log/faultlog/freeze_ext`，以下是一份AppFreeze故障日志中`SubmitterStacktrace`字段的核心内容。
+
+```text
+...
+========SubmitterStacktrace========       <- 任务异常时打印任务提交者调用栈
+#00 pc 00000000008513b8 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#01 pc 000000000038e950 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#02 pc 000000000038dabc /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#03 pc 0000000000e74e78 /system/lib64/module/arkcompiler/stub.an(RTStub_CallRuntime+40)
+#04 pc 0000000000d49c18 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleAsyncfunctionawaituncaughtV8StwCopy+64)
+#05 at multiAsync9 (entry|entry|1.0.0|src/main/ets/pages/Index.ts:111:5)  <- 发生故障的调用帧
+#06 at multiAsync8 (entry|entry|1.0.0|src/main/ets/pages/Index.ts:106:5)
+#07 pc 0000000000363568 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#08 pc 0000000000363204 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#09 pc 0000000000362b54 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#10 pc 0000000000362554 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+...
+```
+
+日志中JS帧的`.ts`路径为编译产物，需通过SourceMap映射还原到`.ets`源码位置，编译产物路径的解析方法详见[异常堆栈解析原理 sourcemap结构：key字段介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1145914292713)
+
 ## AppFreeze聚类
 
 ### 聚类简介
@@ -837,3 +868,68 @@ AppFreeze故障信息聚类方法同Cpp Crash一致，参考[CppCrash聚类](cpp
 增强日志信息聚类规格与AppFreeze故障信息提取堆栈聚类规格一致，该部分参与聚类主要是为了解决AppFreeze故障堆栈信息不足导致的无法聚类问题。
 
 开发者可参考[AppFreeze故障信息聚类](#appfreeze故障信息聚类)方法获取聚类特征，对增强日志信息进行聚类。
+
+## 屏蔽AppFreeze检测
+
+在开发调试阶段，开发者可以通过以下命令屏蔽AppFreeze检测，避免调试过程中的超时检测影响开发调试。
+
+### 环境要求
+
+在使用屏蔽指令前，开发者需要先获取[hdc工具](hdc.md#环境准备)，并通过`hdc shell`进入设备shell。
+
+### 约束与限制
+
+- **应用类型限制**：仅支持debug类型应用屏蔽检测，release类型应用不支持此功能。
+- **执行时机限制**：需在应用启动后执行屏蔽指令。
+
+### 使用方法
+
+**进入调试模式**
+
+```shell
+aa attach -b <bundleName>
+```
+
+例如：
+
+```shell
+aa attach -b com.example.appfreeze
+```
+
+当应用成功进入调试模式时，返回：
+
+```text
+attach app debug successfully.
+```
+
+当给定的`<bundleName>`参数不合法或者不存在时，返回如下内容，更多详细说明请参考：[进入调试模式命令（attach）](../tools/aa-tool.md#进入调试模式命令attach)：
+
+```text
+error: failed to attach app debug.
+```
+
+**退出调试模式**
+
+开发者在调试完成后，使用执行aa detach命令退出调试模式，恢复AppFreeze检测能力，确保应用正常运行时的故障检测不受影响。
+
+```shell
+aa detach -b <bundleName>
+```
+
+例如：
+
+```shell
+aa detach -b com.example.appfreeze
+```
+
+当应用退出调试模式时，返回：
+
+```text
+detach app debug successfully.
+```
+
+当给定的`<bundleName>`参数不合法或者不存在时，返回如下内容，更多详细说明请参考：[退出调试模式命令（detach）](../tools/aa-tool.md#退出调试模式命令detach)：
+
+```text
+error: failed to detach app debug.
+```

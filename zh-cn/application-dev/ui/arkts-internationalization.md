@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -47,7 +47,7 @@ ArkUI 如下能力已默认适配镜像：
 
 1. 界面布局、边框设置：关于方向类的通用属性，如果需要支持镜像能力，使用泛化的方向指示词 start/end入参类型替换 left/right、x/y等绝对方向指示词的入参类型，来表示自适应镜像能力。
 
-2. [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)组件只有限支持文本绘制的镜像能力。
+2. [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)组件只支持文本绘制的镜像能力。
 
 3. [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件不支持组件镜像能力。
 

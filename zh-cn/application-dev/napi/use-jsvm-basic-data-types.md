@@ -116,10 +116,8 @@ static JSVM_Value GetValueInt32(JSVM_Env env, JSVM_CallbackInfo info)
     // 将前端传过来的参数转为JSVM模块的int32类型
     JSVM_Status status = OH_JSVM_GetValueInt32(env, args[0], &result32);
     if (status != JSVM_OK) {
-        return nullptr;
-    }
-    if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM GetValueInt32 fail");
+        return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM GetValueInt32 success: %{public}d", result32);
     }

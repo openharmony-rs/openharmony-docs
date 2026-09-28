@@ -1,4 +1,4 @@
-# 气泡提示（Popup）
+# 气泡提示 (Popup)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
@@ -1069,7 +1069,7 @@ export struct SupportedAvoidAxisPopupExample {
     NavDestination() {
       RelativeContainer() {
         Column() {
-          Button(this.zone + this.arrayStr[this.index])
+          Button(this.zone + this.arrayStr[this.index]).margin(2)
             .onClick(() => {
               if (this.index < 2) {
                 this.index++
@@ -1078,12 +1078,12 @@ export struct SupportedAvoidAxisPopupExample {
               }
             })
 
-          Button(this.subwindowDisplay + (this.showInSubwindow ? this.subwindow : this.nonSubwindow))
+          Button(this.subwindowDisplay + (this.showInSubwindow ? this.subwindow : this.nonSubwindow)).margin(2)
             .onClick(() => {
               this.showInSubwindow = !this.showInSubwindow
             })
 
-          Button(this.hoverModeStart + this.enableHoverMode)
+          Button(this.hoverModeStart + this.enableHoverMode).margin(2)
             .onClick(() => {
               if (this.enableHoverMode === undefined) {
                 this.enableHoverMode = true
@@ -1179,7 +1179,7 @@ export struct SupportedAvoidAxisPopupExample {
     NavDestination() {
       RelativeContainer() {
         Column() {
-          Button(this.zone + this.arrayStr[this.index])
+          Button(this.zone + this.arrayStr[this.index]).margin(2)
             .onClick((): void => {
               if (this.index < 2) {
                 this.index++
@@ -1188,12 +1188,12 @@ export struct SupportedAvoidAxisPopupExample {
               }
             })
 
-          Button(this.subwindowDisplay + (this.showInSubwindow ? this.subwindow : this.nonSubwindow))
+          Button(this.subwindowDisplay + (this.showInSubwindow ? this.subwindow : this.nonSubwindow)).margin(2)
             .onClick((): void => {
               this.showInSubwindow = !this.showInSubwindow
             })
 
-          Button(this.hoverModeStart + this.enableHoverMode)
+          Button(this.hoverModeStart + this.enableHoverMode).margin(2)
             .onClick((): void => {
               if (this.enableHoverMode === undefined) {
                 this.enableHoverMode = true
@@ -1234,3 +1234,5 @@ export struct SupportedAvoidAxisPopupExample {
   }
 }
 ```
+
+![popupEnableHoverMode](figures/popupEnableHoverMode.gif)

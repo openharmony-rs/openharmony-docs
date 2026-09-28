@@ -2787,7 +2787,7 @@ Task properties include the task ID and task configuration.
 
 ### on('progress')<sup>10+</sup>
 
-on(event: 'progress', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+on(event: 'progress', callback: (progress: Progress) =&gt; void): void
 
 Subscribes to task progress changes. This API uses an asynchronous callback to return the result.
 
@@ -2871,7 +2871,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 ### on('completed')<sup>10+</sup>
 
-on(event: 'completed', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+on(event: 'completed', callback: (progress: Progress) =&gt; void): void
 
 Subscribes to task completion events. This API uses an asynchronous callback to return the result.
 
@@ -2955,7 +2955,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 ### on('failed')<sup>10+</sup>
 
-on(event: 'failed', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+on(event: 'failed', callback: (progress: Progress) =&gt; void): void
 
 Subscribes to task failure events. This API uses an asynchronous callback to return the result. You can call [request.agent.show](#requestagentshow10-1) to view the error cause.
 
@@ -3039,7 +3039,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 ### on('pause')<sup>11+</sup>
 
-on(event: 'pause', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+on(event: 'pause', callback: (progress: Progress) =&gt; void): void
 
 Subscribes to task pause events. This API uses an asynchronous callback to return the result.
 
@@ -3126,7 +3126,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ### on('resume')<sup>11+</sup>
 
-on(event: 'resume', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+on(event: 'resume', callback: (progress: Progress) =&gt; void): void
 
 Subscribes to task resume events. This API uses an asynchronous callback to return the result.
 
@@ -3218,7 +3218,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ### on('remove')<sup>11+</sup>
 
-on(event: 'remove', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+on(event: 'remove', callback: (progress: Progress) =&gt; void): void
 
 Subscribes to task removal events. This API uses an asynchronous callback to return the result.
 
@@ -3535,7 +3535,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 ### off('progress')<sup>10+</sup>
 
-off(event: 'progress', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+off(event: 'progress', callback?: (progress: Progress) =&gt; void): void
 
 Unsubscribes from task progress events.
 
@@ -3628,7 +3628,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 ### off('completed')<sup>10+</sup>
 
-off(event: 'completed', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+off(event: 'completed', callback?: (progress: Progress) =&gt; void): void
 
 Unsubscribes from task completion events.
 
@@ -3721,7 +3721,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 ### off('failed')<sup>10+</sup>
 
-off(event: 'failed', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+off(event: 'failed', callback?: (progress: Progress) =&gt; void): void
 
 Unsubscribes from task failure events.
 
@@ -3813,7 +3813,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 ### off('pause')<sup>11+</sup>
 
-off(event: 'pause', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+off(event: 'pause', callback?: (progress: Progress) =&gt; void): void
 
 Unsubscribes from the foreground task pause event.
 
@@ -3903,7 +3903,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ### off('resume')<sup>11+</sup>
 
-off(event: 'resume', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+off(event: 'resume', callback?: (progress: Progress) =&gt; void): void
 
 Unsubscribes from foreground task resume events.
 
@@ -3993,7 +3993,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ### off('remove')<sup>11+</sup>
 
-off(event: 'remove', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
+off(event: 'remove', callback?: (progress: Progress) =&gt; void): void
 
 Unsubscribes from the task removal event.
 

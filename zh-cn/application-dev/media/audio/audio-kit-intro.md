@@ -92,13 +92,15 @@ HAL通过统一的HDI接口对外提供服务，不同的音频硬件开发人�
 
   StreamUsage指音频流本身的用途类型，包括媒体、语音通信、语音播报、通知、铃声等。
 
+  播放流类型的设置请参考[选择合适的播放流类型](using-right-streamusage-for-playback.md)。
+
 - 录制场景
 
   音频流录制场景的信息，通过[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)进行描述。
 
   SourceType指音频流中录音源的类型，包括麦克风音频源、语音识别音频源、语音通话音频源等。
 
-可参考[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)进行设置。
+  录制流类型的设置请参考[选择合适的录制流类型](using-right-sourcetype-for-recording.md)。
 
 ## 支持的音频格式
 
@@ -106,7 +108,7 @@ audio模块下的接口支持PCM编码，包括AudioRenderer、AudioCapturer、T
 
 音频格式说明：
 
-- 支持的音频采样率（Hz）：8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200<sup>12+</sup>、96000，176400<sup>12+</sup>、192000<sup>12+</sup>具体参考枚举[AudioSamplingRate](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosamplingrate8)。
+- 支持的音频采样率（Hz）：8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200<sup>12+</sup>、96000、176400<sup>12+</sup>、192000<sup>12+</sup>具体参考枚举[AudioSamplingRate](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosamplingrate8)。
 
   不同设备支持的采样率规格会存在差异。
 

@@ -50,7 +50,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 2. 指定待解密的密文。
 
-3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)。
+3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)。
 
 4. 调用[OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession)初始化密钥会话，并获取会话的句柄handle。
 
@@ -60,7 +60,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 1. 指定密钥别名。
 
-2. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)。
+2. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)。
 
 3. 调用[OH_Huks_DeleteKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_deletekeyitem)删除密钥，具体请参考[密钥删除](huks-delete-key-ndk.md)。
 
@@ -113,7 +113,6 @@ OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_
     }
     return ret;
 }
-uint32_t OH_HUKS_TAG_KEY_ACCESS_GROUP = 5 << 28 | 523;
 static const uint32_t IV_SIZE = 16;
 static uint8_t IV[IV_SIZE] = { 0 };
 static OH_Crypto_ErrCode ret = genRandomNumber(IV_SIZE, IV);
@@ -278,7 +277,7 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        char tmpInData[] = "AES_ECB_INDATA_1";
+        char tmpInData[] = "AES_CBC_INDATA_1";
         struct OH_Huks_Blob inData = { (uint32_t)strlen(tmpInData), (uint8_t *)tmpInData };
         uint8_t cipher[AES_COMMON_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {AES_COMMON_SIZE, cipher};
@@ -656,7 +655,7 @@ napi_value X25519AgreeKey(napi_env env, napi_callback_info info)
 
 **密钥派生**
 
-1. 获取密钥别名，指定对应的属性参数HuksOptions，添加参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，用于派生群组密钥。
+1. 获取密钥别名，指定对应的属性参数HuksOptions，添加参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，用于派生群组密钥。
 
 2. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)。
 

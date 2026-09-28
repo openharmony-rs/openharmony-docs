@@ -13,7 +13,7 @@ typedef struct OH_CryptoSymCipherParams OH_CryptoSymCipherParams
 
 ## 概述
 
-定义对称加解密参数结构体。
+对称密钥加解密参数结构体，表示对称密钥加解密参数。
 
 **起始版本：** 12
 

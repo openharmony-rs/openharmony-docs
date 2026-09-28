@@ -9,9 +9,12 @@
 
 ## 概述
 
-提供调试功能。本模块函数可用于获取cpu usage、memory、heap、capture trace等。
+提供调试功能。本模块函数可用于获取CPU usage、memory、heap、capture trace等。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 12
+
 ## 文件汇总
 
 | 名称 | 描述 |

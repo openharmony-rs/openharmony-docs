@@ -166,3 +166,78 @@ getText(range?: TextRange): string
 | 名称                | 类型                                              | 只读 | 可选 | 说明                                                                                  |
 |--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
 | enabled              | boolean                                         | 否  | 是 | 输入框启用或禁用语音按钮。<br/>true表示启用语音按钮，false表示禁用语音按钮。<br/> 默认值：false|
+
+## 示例
+
+### 示例1（获取指定范围的文本内容）
+
+该示例主要演示如何通过[TextAreaController](ts-basic-components-textarea.md#textareacontroller8)控制器调用[getText](#gettext19)接口，获取输入框中指定范围内的文本内容。
+
+从API version 19开始，新增getText接口。
+ 
+```ts
+// xxx.ets
+@Entry
+@Component
+struct GetTextExample {
+  @State text: string = 'Hello World';
+  @State resultText: string = '';
+  controller: TextAreaController = new TextAreaController();
+ 
+  build() {
+    Column() {
+      TextArea({
+        text: this.text,
+        placeholder: '请输入文本内容',
+        controller: this.controller
+      })
+        .width(336)
+        .height(56)
+        .margin(20)
+        .fontSize(16)
+        .onChange((value: string) => {
+          this.text = value;
+        })
+ 
+      Text(`获取结果：${this.resultText}`)
+        .width('90%')
+        .fontSize(16)
+        .margin(10)
+ 
+      Button('获取全部文本')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          // 不指定range，默认获取全部文本内容
+          this.resultText = this.controller.getText();
+        })
+ 
+      Button('获取前5个字符')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          // 指定range为{ start: 0, end: 5 }，获取索引0到5之间的文本内容
+          this.resultText = this.controller.getText({ start: 0, end: 5 });
+        })
+ 
+      Button('获取第6到11个字符')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          // 指定range为{ start: 6, end: 11 }，获取索引6到11之间的文本内容
+          this.resultText = this.controller.getText({ start: 6, end: 11 });
+        })
+ 
+      Button('起始位置大于终止位置')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          // 起始位置大于终止位置时，返回终止位置和起始位置之间的文本内容
+          this.resultText = this.controller.getText({ start: 8, end: 3 });
+        })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
+![getTextDemo](figures/getTextDemo.gif)

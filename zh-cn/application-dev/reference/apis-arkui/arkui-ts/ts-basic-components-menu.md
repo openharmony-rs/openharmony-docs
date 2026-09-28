@@ -88,7 +88,7 @@ ArkTS-Sta: font(value: Font | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined | 是   | Menu中所有文本的字体样式。取值为undefined时，按默认值处理。<br/>默认值：<br/>{<br/>      size: 16,<br/>      family: 'HarmonyOS Sans',<br/>      weight: FontWeight.Medium,<br/>      style: FontStyle.Normal<br/>} |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined | 是   | Menu中所有文本的字体样式。取值为undefined时，按默认值处理。<br/>默认值：<br/>{<br/>      size: '16.0fp',<br/>      family: 'HarmonyOS Sans',<br/>      weight: FontWeight.Medium,<br/>      style: FontStyle.Normal<br/>} |
 ### fontColor<sup>10+</sup>
 
 ArkTS-Dyn: fontColor(value: ResourceColor)

@@ -8,7 +8,7 @@
 <!--Adviser: @fang-jinxu-->
 
 - ArkTS API<!--common-basic-arkts-->
-  - [Console (控制台)](js-apis-logs.md)
+  - [Class (Console)](js-apis-logs.md)
   - [loadNativeModule (同步动态加载系统库接口)](js-apis-common-load-native-module.md)
   - [SysCap (系统能力)](js-apis-syscap.md)
   - [Timer (定时器)](js-apis-timer.md)
@@ -17,7 +17,7 @@
     - [Init](init.md)
     - [JSVM](capi-jsvm.md)
   - 头文件<!--common-basic-headerfile-->
-    - [syscap_ndk.h](syscap__ndk_8h.md)
+    - [syscap_ndk.h](syscap-ndk-8h.md)
     - [jsvm.h](capi-jsvm-h.md)
     - [jsvm_types.h](capi-jsvm-types-h.md)
   - 结构体<!--common-basic-struct-->

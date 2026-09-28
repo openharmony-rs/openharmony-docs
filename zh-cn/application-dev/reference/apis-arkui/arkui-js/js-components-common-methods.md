@@ -1,8 +1,8 @@
 # 通用方法
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -22,10 +22,10 @@ animate( keyframes: Keyframes, options: Options)：void
 
 | 参数名       | 类型      | 必填   | 说明                                   |
 | --------- | --------- | ---- | ------------------------------------ |
-| keyframes | keyframes | 是    | 设置动画样式。                               |
+| keyframes | Keyframes | 是    | 设置动画样式。                               |
 | options   | Options   | 是    | 用于设置动画属性的对象列表。具体参数说明请参见表3 Options说明。 |
 
-  **表1** keyframes
+  **表1** Keyframes
 
 | 属性     | 类型                 | 说明                                     |
 | ------ | ------------------ | -------------------------------------- |
@@ -64,7 +64,7 @@ animate( keyframes: Keyframes, options: Options)：void
 | ease-out                                 | 动画速度先快后慢，cubic-bezier(0.0,&nbsp;0.0,&nbsp;0.58,&nbsp;1.0)。 |
 | ease-in-out                              | 动画先加速后减速，cubic-bezier(0.42,&nbsp;0.0,&nbsp;0.58,&nbsp;1.0)。 |
 | friction                                 | 阻尼曲线，cubic-bezier(0.2,&nbsp;0.0,&nbsp;0.2,&nbsp;1.0)。 |
-| extreme-deceleration                     | 急缓曲线，cubic-bezier(0.0,&nbsp;0.0,&nbsp;0.0,&nbsp;1.0)。 |
+| extreme-deceleration                     | 极缓曲线，cubic-bezier(0.0,&nbsp;0.0,&nbsp;0.0,&nbsp;1.0)。 |
 | sharp                                    | 锐利曲线，cubic-bezier(0.33,&nbsp;0.0,&nbsp;0.67,&nbsp;1.0)。 |
 | rhythm                                   | 节奏曲线，cubic-bezier(0.7,&nbsp;0.0,&nbsp;0.2,&nbsp;1.0)。 |
 | smooth                                   | 平滑曲线，cubic-bezier(0.4,&nbsp;0.0,&nbsp;0.4,&nbsp;1.0)。 |

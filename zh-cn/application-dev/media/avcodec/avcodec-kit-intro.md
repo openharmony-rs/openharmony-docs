@@ -2,7 +2,7 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran; @mr-chencxy-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee; @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
@@ -55,7 +55,7 @@ AVCodec Kit（Audio & Video Codec Kit，音视频编解码，封装，解封装�
   
   ![](figures/avcodec-vcodec-logic.png)
 
-  具体开发指导请参考[视频解码Surface模式](video-decoding.md#surface模式)、[视频编码Surface模式](video-encoding.md#surface模式)。
+  具体开发指导请参考异步模式视频解码[Surface模式](video-decoding.md#surface模式)、异步模式视频编码[Surface模式](video-encoding.md#surface模式)。
 
 - 音频编解码
 
@@ -67,7 +67,7 @@ AVCodec Kit（Audio & Video Codec Kit，音视频编解码，封装，解封装�
 
   ![](figures/avcodec-acodec-logic.png)
 
-  具体开发指导请参考[音频解码](audio-decoding.md)、[音频编码](audio-encoding.md)。
+  具体开发指导请参考[异步模式音频解码](audio-decoding.md)、[异步模式音频编码](audio-encoding.md)。
 
 - 文件封装与解封装
 

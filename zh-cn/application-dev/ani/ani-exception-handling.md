@@ -9,7 +9,7 @@
 native实现检测到业务错误时，可以构造ArkTS异常并抛回调用侧，由ArkTS侧按普通异常流程捕获。这个流程适合需要中断当前ArkTS调用链的错误场景。
 
 ## 抛出异常
-基类：`Error` Mangling：`C{std.core.Error}`
+基类：`Error` Mangling：`C{escompat.Error}`
 
 若要抛出自定义错误，需继承该基类。
 
@@ -20,24 +20,42 @@ native实现检测到业务错误时，可以构造ArkTS异常并抛回调用侧
 **示例：**
 
 ```cpp
-void ThrowError(ani_env *env)
-{
-    static constexpr std::string_view message = "This will show message!";
+// 1. 查找Error类及其构造函数。
+static constexpr std::string_view message = "This will show message!";
 
-    ani_class errCls;
-    const char* className = "std.core.Error";
-    env->FindClass(className, &errCls);
-    ani_method errCtor {};
-    env->Class_FindMethod(errCls, "<ctor>", "C{std.core.String}C{std.core.ErrorOptions}:", &errCtor);
+ani_class errCls;
+const char* className = "escompat.Error";
+ani_status status = env->FindClass(className, &errCls);
+if (status != ANI_OK) {
+    // handle error and return
+}
+ani_method errCtor {};
+status = env->Class_FindMethod(errCls, "<ctor>", "C{std.core.String}C{escompat.ErrorOptions}:", &errCtor);
+if (status != ANI_OK) {
+    // handle error and return
+}
 
-    ani_string resultString {};
-    env->String_NewUTF8(message.data(), message.size(), &resultString);
-    ani_ref undefinedRef {};
-    env->GetUndefined(&undefinedRef);
+// 2. 构造message字符串。
+ani_string resultString {};
+status = env->String_NewUTF8(message.data(), message.size(), &resultString);
+if (status != ANI_OK) {
+    // handle error and return
+}
 
-    ani_object errObj {};
-    env->Object_New(errCls, errCtor, &errObj, resultString, undefinedRef);
-    env->ThrowError(static_cast<ani_error>(errObj));
+// 3. 创建Error实例并抛出。ErrorOptions为可选参数，省略时需显式传入undefined。
+ani_ref undefinedRef {};
+status = env->GetUndefined(&undefinedRef);
+if (status != ANI_OK) {
+    // handle error and return
+}
+ani_object errObj {};
+status = env->Object_New(errCls, errCtor, &errObj, resultString, undefinedRef);
+if (status != ANI_OK) {
+    // handle error and return
+}
+status = env->ThrowError(static_cast<ani_error>(errObj));
+if (status != ANI_OK) {
+    // handle error and return
 }
 ```
 

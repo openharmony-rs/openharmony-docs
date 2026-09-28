@@ -194,7 +194,7 @@ getAbilityRunningInfos(callback: AsyncCallback\<Array\<AbilityRunningInfo>>): vo
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>>  | 是    | 回调函数。当获取UIAbility运行相关信息成功，err为undefined，data为获取到的UIAbility运行相关信息；否则为错误对象。可进行错误处理或其他自定义处理。      |
+| callback | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | 是 | 回调函数。当获取UIAbility运行相关信息成功，err为undefined，data为获取到的UIAbility运行相关信息；否则为错误对象。可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -883,7 +883,7 @@ onAbilityForegroundState(observer: AbilityForegroundStateObserver): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                             |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
-| observer | [AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 是   | Ability状态观测器，用于观测Ability的启动和退出。 |
+| observer | [AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 是 | Ability状态观测器，用于观测Ability的启动和退出。 |
 
 **错误码**：
 
@@ -1006,7 +1006,7 @@ offAbilityForegroundState(observer?: AbilityForegroundStateObserver): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| observer | [AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 否   | Ability状态观测器，用于观测Ability的启动和退出。如果未配置该参数，则取消当前应用注册的所有observer。如果配置了该参数，则取消该observer。 |
+| observer | [AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 否 | Ability状态观测器，用于观测Ability的启动和退出。如果未配置该参数，则取消当前应用注册的所有observer。如果配置了该参数，则取消该observer。 |
 
 **错误码**：
 
@@ -1075,7 +1075,7 @@ getForegroundUIAbilities(callback: AsyncCallback\<Array\<AbilityStateData>>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>>  | 是 |以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
+| callback | AsyncCallback\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 是 | 以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -1124,7 +1124,7 @@ getForegroundUIAbilities(): Promise\<Array\<AbilityStateData>>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 以Promise方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。|
+| Promise\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 以Promise方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -1285,7 +1285,11 @@ export default class EntryAbility extends UIAbility {
 
 setResidentProcessEnabled(bundleName: string, enable: boolean): Promise\<void>
 
-设置或移除指定包名的进程的常驻保活状态。根据enable参数启用或禁用进程的常驻保活机制。
+设置或移除指定包名的主应用进程的常驻保活状态。根据enable参数启用或禁用进程的常驻保活机制。
+
+> **说明：**
+>
+> 该接口不支持设置或移除分身应用（指定包名）的进程保活状态。
 
 **系统接口**：此接口为系统接口。
 
@@ -1925,7 +1929,7 @@ queryAtomicServiceStartupRule(context: Context, appId: string): Promise\<AtomicS
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | -------- | -------- | -------- |
-| context | [Context](js-apis-inner-application-context.md) | 是 | 嵌入式拉起EmbeddableUIAbility的调用方Context。<br>**说明**：目前仅支持[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。 |
+| context | [Context](js-apis-inner-application-context.md) | 是 | 嵌入式拉起EmbeddableUIAbility的调用方Context。<br>**说明**：目前仅支持[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)。 |
 | appId | string | 是 | 应用的唯一标识，由云端统一分配。 |
 
 **返回值：**
@@ -2038,7 +2042,7 @@ ArkTS-Sta: type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: int) => voi
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -2060,7 +2064,7 @@ ArkTS-Sta: type PreloadedUIExtensionAbilityLoadedFn = (preloadId: int) => void
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **ArkTS-Dyn起始版本：** 23
 

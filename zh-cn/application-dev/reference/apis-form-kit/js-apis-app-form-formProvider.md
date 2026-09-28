@@ -641,7 +641,7 @@ openFormEditAbility(abilityName: string, formId: string, isMainPage?: boolean): 
 
 | 错误码ID    | 错误信息 |
 |----------| -------- |
-| 801      | Capability not supported.function openFormEditAbility can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported.function openFormEditAbility cannot work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
@@ -1082,7 +1082,7 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501003 | The form cannot be operated by the current application. |
-| 16501011 | The form can not support this operation. |
+| 16501011 | The form cannot support this operation. |
 
 **示例：**
 
@@ -1194,7 +1194,7 @@ cancelOverflow(formId: string): Promise&lt;void&gt;
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501003 | The form cannot be operated by the current application. |
-| 16501011 | The form can not support this operation. |
+| 16501011 | The form cannot support this operation. |
 
 **示例：**
 
@@ -1272,7 +1272,7 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 |   Capability not supported.function getFormRect can not work correctly due to limited device capabilities. |
+| 801 |   Capability not supported.function getFormRect cannot work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
@@ -1494,7 +1494,7 @@ ArkTS-Sta: reloadForms(context: UIAbilityContext, moduleName: string, abilityNam
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------  |
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，用于校验应用身份。     |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，用于校验应用身份。 |
 | moduleName | string | 是   | 指定卡片的moduleName，需与[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的module名称一致。需与abilityName、formName配合使用，三者必须同时匹配才能定位到对应卡片。   |
 | abilityName | string | 是 | 指定卡片的abilityName，需与[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的ability名称一致。  |
 | formName | string | 是 | 指定卡片在[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的卡片名称。 |
@@ -1586,7 +1586,7 @@ ArkTS-Sta: reloadAllForms(context: UIAbilityContext): Promise&lt;int&gt;
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------  |
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，用于校验应用身份。     |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，用于校验应用身份。 |
 
 **返回值：**
 

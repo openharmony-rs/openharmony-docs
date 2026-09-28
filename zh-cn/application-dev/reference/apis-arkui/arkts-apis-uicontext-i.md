@@ -45,8 +45,8 @@ Router和NavDestination等页面信息，若无对应的Router或NavDestination�
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- |-------- | -------- |
-| routerPageInfo | observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo) | 否 |是 | Router信息。 |
-| navDestinationInfo | observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo) | 否 |是| NavDestination信息。 |
+| routerPageInfo | observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo) | 否 |是 | Router页面信息，包含当前Router页面的路由状态和页面信息。当页面为Router页面时，可通过此属性获取对应的Router页面信息；若当前页面不是Router页面，则该属性为undefined。若无对应的Router页面信息，则该属性为undefined。 |
+| navDestinationInfo | observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo) | 否 |是| NavDestination页面信息，包含当前NavDestination页面的导航状态和页面信息。当页面为NavDestination页面时，可通过此属性获取对应的NavDestination页面信息；若当前页面不是NavDestination页面，则该属性为undefined。若无对应的NavDestination页面信息，则该属性为undefined。 |
 
 ## OverlayManagerOptions<sup>15+</sup>
 
@@ -97,7 +97,7 @@ Router和NavDestination等页面信息，若无对应的Router或NavDestination�
 
 ## SwiperContentInfo<sup>22+</sup>
 
-Swiper组件的内容区信息。
+Swiper组件的内容区信息，包含Swiper组件标识、唯一标识符及当前显示状态的子组件信息，用于获取Swiper运行时的内容区状态。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -109,13 +109,13 @@ Swiper组件的内容区信息。
 
 | 名称      | 类型 | 只读  | 可选 | 说明                    |
 | --------- | ---- | ----- | ---- | ----------------------- |
-| id        | string  | 否 | 否 | Swiper组件的id。 |
+| id        | string  | 否 | 否 | Swiper组件通过通用属性id设置的标识符，由开发者指定。 |
 | uniqueId  | ArkTS-Dyn: number <br>ArkTS-Sta: int  | 否 | 否 | Swiper组件的唯一标识符。 |
 | swiperItemInfos   | Array\<[SwiperItemInfo](#swiperiteminfo22)\> | 否 | 否 | 当前处于显示状态的Swiper子组件的信息。 |
 
 ## SwiperItemInfo<sup>22+</sup>
 
-Swiper子组件的信息。
+Swiper子组件的信息，包含子组件的唯一标识符和索引，可通过SwiperContentInfo获取。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -128,4 +128,4 @@ Swiper子组件的信息。
 | 名称      | 类型 | 只读  | 可选 | 说明                    |
 | --------- | ---- | ----- | ---- | -----------------------|
 | uniqueId  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | Swiper子组件的唯一标识符。   |
-| index     | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | Swiper子组件在Swiper中的索引。 |
+| index     | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | Swiper子组件在Swiper中的索引，取值从0开始，最大值为Swiper子组件数量-1。 |

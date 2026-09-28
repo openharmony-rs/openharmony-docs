@@ -2,7 +2,7 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
@@ -219,13 +219,13 @@ picHeight = cropBottom - cropTop + 1
 
 在编码器Buffer模式下，编码器通过`OnNeedInputBuffer`回调提供可用的输入Buffer。开发者需要将原始图像数据拷贝到`OH_AVBuffer`中。当Buffer内存跨距大于配置宽高时，必须按行拷贝有效数据并跳过Padding区域，否则会导致画面错位。
 
-参考代码：视频编码开发指导-[Buffer模式](video-encoding.md#buffer模式)步骤3、视频编码开发指导-[Buffer模式](video-encoding.md#buffer模式)步骤8。
+参考代码：异步模式视频编码开发指导-[Buffer模式](video-encoding.md#buffer模式)步骤3、异步模式视频编码开发指导-[Buffer模式](video-encoding.md#buffer模式)步骤8。
 
 ### 场景二：从解码器输出Buffer读取数据
 
 在解码器Buffer模式下，读取数据时需根据有效图像尺寸和跨距按行读取，并结合裁剪信息跳过Padding及无效边缘。
 
-参考代码：视频解码开发指导-[Buffer模式](video-decoding.md#buffer模式)步骤3、视频解码开发指导-[Buffer模式](video-decoding.md#buffer模式)步骤11。
+参考代码：异步模式视频解码开发指导-[Buffer模式](video-decoding.md#buffer模式)步骤3、异步模式视频解码开发指导-[Buffer模式](video-decoding.md#buffer模式)步骤11。
 
 ### 场景三：Surface模式
 
@@ -316,12 +316,12 @@ Configure 配置参数：
 
 ### Q6：`OH_AVCapability_IsVideoSizeSupported`等能力查询接口中的宽高参数是指什么
 
-**回答**：这些接口中的宽高参数通常指的是码流参数集（如SPS）中定义的**编码帧宽高**，与`avcodec`接口中使用的各种宽高Key（如`OH_MD_KEY_WIDTH`、`OH_MD_KEY_VIDEO_PIC_WIDTH`等）均无直接对标关系。解码时，解码器会据读入的码流参数集中的**编码帧宽高**判断是否支持解码该分辨率。若此前查询的宽高与实际码流中的参数不一致，可能会出现实际是否能解码与查询的结果不一致的情况。
+**回答**：这些接口中的宽高参数通常指的是码流参数集（如SPS）中定义的**编码帧宽高**，与`avcodec`接口中使用的各种宽高Key（如`OH_MD_KEY_WIDTH`、`OH_MD_KEY_VIDEO_PIC_WIDTH`等）均无直接对标关系。解码时，解码器会根据读入的码流参数集中的**编码帧宽高**判断是否支持解码该分辨率。若此前查询的宽高与实际码流中的参数不一致，可能会出现实际是否能解码与查询的结果不一致的情况。
 
 ## 参考文档
 
-- [视频编码开发指导](video-encoding.md) —— Surface模式/Buffer模式完整流程。
-- [视频解码开发指导](video-decoding.md) —— Surface模式/Buffer模式完整流程。
-- [Codec Base API参考](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md) —— 所有键名定义。
-- [AVCodec Kit API Reference - VideoEncoder](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md) —— 编码器接口。
-- [AVCodec Kit API Reference - VideoDecoder](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md) —— 解码器接口。
+- [异步模式视频编码开发指导](video-encoding.md) —— Surface模式/Buffer模式完整流程。
+- [异步模式视频解码开发指导](video-decoding.md) —— Surface模式/Buffer模式完整流程。
+- [native_avcodec_base.h](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md) —— 所有键名定义。
+- [native_avcodec_videoencoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md) —— 编码器接口。
+- [native_avcodec_videodecoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md) —— 解码器接口。

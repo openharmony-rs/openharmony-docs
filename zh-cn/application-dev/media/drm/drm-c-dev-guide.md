@@ -1,10 +1,12 @@
 # 数字版权保护(C/C++)
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+
 ## 功能介绍
 
 开发者可以调用DRM Kit的C/C++接口实现DRM证书管理、DRM许可证管理、DRM节目授权、DRM节目解密等数字版权保护功能。
@@ -33,6 +35,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 3. 获取设备支持的DRM解决方案名称和唯一标识的列表。
 
     ```c++
+    #include <cstring>
     uint32_t count = 3; // count是当前设备实际支持的DRM插件的个数，用户根据实际情况设置。
     DRM_MediaKeySystemDescription descriptions[3];
     memset(descriptions, 0, sizeof(descriptions));

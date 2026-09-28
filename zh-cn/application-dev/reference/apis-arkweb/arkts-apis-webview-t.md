@@ -1,8 +1,8 @@
 # Types
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @hwt00888022; @aohui; @runlei-->
+<!--Designer: @dzichou; @yaomingliu; @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -39,7 +39,7 @@ type WebMessage = ArrayBuffer | string
 
 type OnProxyConfigChangeCallback = () => void
 
-回调函数，回调成功表示代理设置成功。
+回调函数，在代理配置发生改变时被调用，回调成功表示代理设置成功。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

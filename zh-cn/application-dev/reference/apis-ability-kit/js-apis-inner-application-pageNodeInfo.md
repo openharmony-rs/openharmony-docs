@@ -1,4 +1,4 @@
-# PageNodeInfo
+# PageNodeInfo (页面节点信息)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -15,6 +15,12 @@ PageNodeInfo用于描述自动填充场景下的页面节点信息，包含节�
 
 **起始版本：** 26.0.0
 
+## 导入模块
+
+```ts
+import { autoFillManager } from '@kit.AbilityKit';
+```
+
 ## PageNodeInfo
 
 **原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
@@ -30,8 +36,8 @@ PageNodeInfo用于描述自动填充场景下的页面节点信息，包含节�
 | 名称         | 类型                                                      | 只读 | 可选 | 说明            |
 | ------------ | --------------------------------------------------------- | ---- | ---- | -------------- |
 | id           | ArkTS-Dyn: number<br/>ArkTS-Sta: int                      | 否   | 否   | 页面节点的ID。 |
-| autoFillType | [AutoFillType](js-apis-inner-application-autoFillType.md) | 否   | 否   | 页面节点的自动填充类型。 |
+| autoFillType | [AutoFillType](js-apis-inner-application-autoFillType.md) | 否 | 否 | 页面节点的自动填充类型。 |
 | value        | string                                                    | 否   | 否   | 页面节点当前显示的值或用户输入的值。用于自动填充时将此值填充到对应节点。 |
 | placeholder  | string  | 否   | 是   | 页面节点的占位提示文本，通常显示在输入控件中用于提示用户期望输入的内容，可辅助自动填充服务识别填充类型。 |
-| rect         | [AutoFillRect](js-apis-inner-application-autoFillRect.md) | 否   | 否   | 当前节点的坐标和宽高信息。 |
+| rect | [AutoFillRect](js-apis-inner-application-autoFillRect.md) | 否 | 否 | 当前节点的坐标和宽高信息。 |
 | isFocus      | boolean                                                   | 否   | 否   | 当前节点是否获焦。true表示当前节点获焦，false表示当前节点未获焦。 |

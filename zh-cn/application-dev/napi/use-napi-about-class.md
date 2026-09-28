@@ -1,7 +1,7 @@
 # 使用Node-API进行class相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -40,7 +40,8 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 
 > **说明：**
 >
-> 参数constructor不是function类型则返回napi_function_expected。
+> - 参数constructor不是function类型则返回napi_function_expected。
+> - napi_new_instance执行后会触发微任务执行。
 
 cpp部分代码
 

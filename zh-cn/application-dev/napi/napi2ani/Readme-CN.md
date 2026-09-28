@@ -6,7 +6,7 @@
 <!--Tester: @m30041553-->
 <!--Adviser: @k1ngqaquuu-->
 
-  - [Node-API到ANI迁移背景](migration_background.md)
+  - [Node-API到ANI迁移背景](migration-background.md)
   - [Node-API模块解耦复用实践指导](decoupling.md)
-  - [Node-API到ANI迁移指南](napi2ani_guide.md)
+  - [Node-API到ANI迁移指南](napi2ani-guide.md)
   - [Node-API到Taihe迁移指南](napi2taihe.md)

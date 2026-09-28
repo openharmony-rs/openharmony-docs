@@ -1,4 +1,4 @@
-# 密钥派生介绍及算法规格
+# 密钥派生
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -81,4 +81,3 @@ X963KDF算法是一种基于HMAC的密钥派生函数（KDF），通常与椭圆
 | X963KDF | SHA3-256 | X963KDF\|SHA3-256 | 26.0.0+ |
 | X963KDF | SHA3-384 | X963KDF\|SHA3-384 | 26.0.0+ |
 | X963KDF | SHA3-512 | X963KDF\|SHA3-512 | 26.0.0+ |
-| X963KDF | SM3 | X963KDF\|SM3 | 22+ |

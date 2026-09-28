@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @hwt00888022; @aohui; @runlei-->
+<!--Designer: @dzichou; @yaomingliu; @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -49,7 +49,7 @@ Web组件使用HTTPDNS的模式。
 
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
-| OFF                                  | 0 |不使用HTTPDNS， 可以用于撤销之前使用的HTTPDNS配置。|
+| OFF                                  | 0 |不使用HTTPDNS，可以用于撤销之前使用的HTTPDNS配置。|
 | AUTO                                 | 1 |自动模式，用于解析的设定DNS服务器不可用时，可自动回落至系统DNS。|
 | SECURE_ONLY                          | 2 |强制使用设定的HTTPDNS服务器进行域名解析。|
 
@@ -143,7 +143,7 @@ Web组件使用HTTPDNS的模式。
 
 ## RenderProcessMode<sup>12+</sup>
 
-ArkWeb渲染子进程模式类型。
+ArkWeb渲染子进程模式类型，可根据应用对内存占用与渲染进程隔离的需求选择对应的模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -468,7 +468,7 @@ Web页面场景下，全局滚动条模式。
 | SUCCESS | 0 | 成功。<br>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 | ERR_UNKNOWN   | -1 | 未知错误，内部状态错误等。<br>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 | ERR_INVALID_PARAM   | -2 | 参数不合法。<br>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| ERR_CONTROLLER_NOT_INITED   | -3 | WebViewController未绑定组件。<br>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| ERR_CONTROLLER_NOT_INITED   | -3 | WebviewController未绑定组件。<br>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 | ERR_KEY_NOT_MATCH   | -4 | 未匹配到key值，对于[setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20)需与[getBlanklessInfoWithKey](./arkts-apis-webview-WebviewController.md#getblanklessinfowithkey20)配套使用并且key值一致，否则返回该错误码。<br>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 | ERR_SIGNIFICANT_CHANGE   | -5 | 当相似度较低时，系统会判定为跳变太大，[setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20)接口不会成功启用插帧。<br>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 | ERR_DURATION_OUT_OF_RANGE<sup>23+</sup>   | -6 | 在[BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23)设置的插帧持续时间超出范围。<br>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
@@ -516,7 +516,7 @@ ArkWeb内核版本，请参考[M114内核在OpenHarmony 6.0系统上的适配指
 
 ## SiteIsolationMode<sup>21+</sup>
 
-站点隔离机制将不同源的网站隔离在不同的渲染进程中，减少跨域攻击面。例如，PC上原有进程模型是每一个Tab对应一个Render进程，站点隔离打开后，让不同源的Iframe运行在独立的Render进程中。
+站点隔离机制将不同源的网站隔离在不同的渲染子进程中，减少跨域攻击面。例如，PC上原有进程模型是每一个Tab对应一个渲染子进程，站点隔离打开后，让不同源的Iframe运行在独立的渲染子进程中。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -526,7 +526,7 @@ ArkWeb内核版本，请参考[M114内核在OpenHarmony 6.0系统上的适配指
 
 | 名称 | 值 | 说明 |
 | ------------------------------- | - | ---------- |
-| PARTIAL | 0 | 部分站点隔离，即在同一个Render进程内加载新站点。 |
+| PARTIAL | 0 | 部分站点隔离，即在同一个渲染进程内加载新站点。 |
 | STRICT  | 1 | 严格站点隔离，跨站点的Iframe将切换到新的渲染进程。 |
 
 
@@ -582,3 +582,18 @@ Web软键盘自动控制模式。
 | TABLET | 'Tablet' |平板，字符串类型。|
 | WATCH        | 'Watch' |手表，字符串类型。|
 | XR        | 'XR' |VR+AR设备，字符串类型。|
+
+## ControllerAttachState<sup>20+</sup>
+
+WebviewController与Web组件的绑定状态。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 值 | 说明 |
+| ------------------------------- | - | ---------- |
+| UNATTACHED | 0 | 未绑定状态。 |
+| ATTACHED   | 1 | 已绑定状态。 |
