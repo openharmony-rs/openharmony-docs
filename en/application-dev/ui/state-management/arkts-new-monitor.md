@@ -1,14 +1,14 @@
 # \@Monitor Decorator: Listening for Value Changes of the State Variables
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:12:52.061Z pushedAt=2026-07-23T10:39:09.212Z -->
+<!-- md-trans-meta sourceCommit=c5048176f6262dc964719f060fa47f02cc8c53d5 translatedAt=2026-09-21T11:14:14.865Z pushedAt=2026-09-23T08:57:41.434Z -->
 
 To enhance the state management framework's capability of monitoring State Variable changes, you can use the [\@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#monitor) decorator to listen for State Variable changes.
+
 
 \@Monitor provides the capability of listening for state variables of V2. Before reading this topic, it is recommended to familiarize yourself with [\@ComponentV2](./arkts-create-custom-components.md#componentv2), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and [\@Local](./arkts-new-local.md).
 
@@ -29,29 +29,21 @@ The @Monitor decorator is used to listen for changes to state variables, enablin
 - The \@Monitor decorator can be used in custom components decorated by \@ComponentV2. But it cannot listen for the changes of the state variables that are not decorated by these decorators: [\@Local](arkts-new-local.md), [\@Param](arkts-new-param.md), [\@Provider](arkts-new-provider-and-consumer.md), [\@Consumer](arkts-new-provider-and-consumer.md) and [\@Computed](arkts-new-computed.md).
 
 - The \@Monitor decorator can be used in a class together with [\@ObservedV2 and \@Trace](arkts-new-observedV2-and-trace.md) decorators. But it cannot be used in a class that is not decorated by \@ObservedV2. \@Monitor cannot listen for the properties that are not decorated by \@Trace.
-
 - When the listened property changes, the callback defined by \@Monitor will be called. Strict equality (===) is used to determine whether a property is changed. If **false** is returned, the \@Monitor decorated callback is triggered. When a property is changed for multiple times in an event, the initial value will be compared with the final value to determine whether the property is changed.
-
 - A single \@Monitor decorator can listen for the changes of multiple properties at the same time. When these properties change together in an event, the \@Monitor callback method is triggered only once.
-
 - The \@Monitor decorator has deep listening capability and can listen for changes of specified items in nested classes, multi-dimensional arrays, and object arrays. To listen for changes to member properties of nested classes or object arrays, the class must be decorated with @ObservedV2 and the properties must be decorated with @Trace.
-
 - When \@Monitor observes an entire array, changes to individual array items are not observed. \@Monitor cannot listen for changes caused by calling APIs of built-in types (Array, Map, Date, and Set).
-
 - In the inheritance scenario, you can define \@Monitor for the same property in the parent and child components for listening. When the property changes, the \@Monitor callback defined in the parent and child components is called.
-
 - Similar to the [\@Watch](arkts-watch.md) decorator, you should define the callback functions by yourselves. The difference is that the \@Watch decorator uses the function name as a parameter, while the \@Monitor directly decorates the callback function. For details about the comparison between \@Monitor and \@Watch, see [Comparing \@Monitor with \@Watch](#comparing-monitor-with-watch).
 
 Since API version 26.0.0, you can configure [MonitorDecoratorOptions](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#monitordecoratoroptions) to obtain the following capability enhancements:
 
 - Supports setting the wildcard "*" in the listening path for fuzzy monitoring of internal object changes, including changes to any \@Trace property in \@ObservedV2, changes caused by API calls of built-in types (Array, Map, Date, Set), and more. For details, see [Listening for Paths with Wildcards](#listening-for-paths-with-wildcards).
-
 - Corrects some capabilities of \@Monitor. For details, see [Comparison of \@Monitor Before and After Using Configuration Options](#comparison-of-monitor-before-and-after-using-configuration-options).
 
 ## Limitations of the \@Watch decorator in State Management V1
 
 This V1 version cannot listen for the changes of an object, a single property in an array, or array items. It also cannot obtain the value before change.
-
 <!-- @[monitor_watch_decorator_limitations_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/WatchDecoratorLimitationsV1.ets) -->  
 
 ``` TypeScript
@@ -274,7 +266,6 @@ When the state variables listened by \@Monitor change, the callback is triggered
 When the properties listened by \@Monitor change, the callback is triggered.
 
 - The object property listened to by \@Monitor should be decorated by \@Trace. Otherwise, the property cannot be listened to. \@Monitor can listen for multiple properties at the same time. These properties are separated by commas (,).
-
   <!-- @[monitor_decorator_multi_watch_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorMultiWatchObservedV2.ets) --> 
 
   ``` TypeScript
@@ -351,7 +342,6 @@ When the properties listened by \@Monitor change, the callback is triggered.
   ![monitor-sync-3](./figures/monitor-sync-3.png)
 
 - \@Monitor can listen for the changes of deep properties which should be decorated by @Trace.
-
   <!-- @[monitor_decorator_object_trace_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceObservedV2.ets) --> 
 
   ``` TypeScript
@@ -395,7 +385,6 @@ When the properties listened by \@Monitor change, the callback is triggered.
   ![monitor-sync-4](./figures/monitor-sync-4.png)
 
 - In the inheritance class scenario, you can listen for the same property for multiple times in the inheritance chain.
-
   <!-- @[monitor_decorator_inheritance_support_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorInheritanceSupportObservedV2.ets) --> 
 
   ``` TypeScript
@@ -455,7 +444,6 @@ When the properties listened by \@Monitor change, the callback is triggered.
 \@Monitor also has some general listening capabilities.
 
 - \@Monitor can listen for items in arrays, including multi-dimensional arrays and object arrays. However, it cannot listen for changes caused by calling APIs of built-in types (Array, Map, Date, and Set). When \@Monitor listens for the entire array, it can only observe reassignment of the whole array. You can detect insertions or deletions by listening for the length change of the array. Currently, only periods (.) can be used to listen for deep properties and array items.
-
   <!-- @[monitor_decorator_array_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorArraySupport.ets) --> 
 
   ``` TypeScript
@@ -576,7 +564,6 @@ When the properties listened by \@Monitor change, the callback is triggered.
   The following code represents the behavior in the comment when you execute the instructions in the sequence of Step 1, Step 2 and Step 3.
 
   If you only execute the instruction of Step 2 or Step 3 to change the values of **name** or **age**, the **onNameChange** and **onAgeChange** methods are triggered.
-
   <!-- @[monitor_decorator_object_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectSupport.ets) --> 
 
   ``` TypeScript
@@ -648,7 +635,6 @@ When the properties listened by \@Monitor change, the callback is triggered.
   ![monitor-sync-7](./figures/monitor-sync-7.png)
 
 - If the property listened by \@Monitor is changed for multiple times in an event, the last change is used.
-
   <!-- @[monitor_decorator_last_write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorLastWrite.ets) --> 
 
   ``` TypeScript
@@ -706,9 +692,7 @@ Since API version 26.0.0, \@Monitor supports the wildcard capability. When the c
 The syntax rules for wildcard paths are as follows:
 
 - A wildcard can only appear at the end of a path.
-
 - A wildcard cannot appear at the beginning or in the middle of a path.
-
 - A path can contain at most one wildcard.
 
 Examples of valid wildcard paths:
@@ -1053,7 +1037,6 @@ onDateChange(m: IMonitor) {
 \@Monitor triggers the callback in the following cases:
 
 - `dateInstance` is assigned a new value.
-
 - Any Date API is called, including `setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, and `setUTCMilliseconds`. The \@Monitor callback is triggered even if these APIs do not actually change the Date value.
 
 The following is an example of listening for a Date object using wildcards.
@@ -1088,7 +1071,7 @@ struct MonitorWildcardDate {
         .width(300)
         .margin(10)
         .onClick(() => {
-          this.date.setTime(1000000);
+            this.date.setTime(1000);
         })
       // API call triggers onDateChanged
       Button(`Assign new Date`)
@@ -1125,7 +1108,6 @@ onMapChange(m: IMonitor) {
 \@Monitor triggers the callback in the following cases:
 
 - `mapInstance` is assigned a new value.
-
 - A Map API is called, such as `set`, `delete`, or `clear`. Unlike Array and Date, the callback is triggered only when a change actually occurs. This means that calling `clear` on an empty Map, calling `delete` on a non-existent Map key, and calling `set` without actually changing the value do not trigger the \@Monitor callback.
 
 Unlike Array, \@Monitor cannot listen for a specific key of a Map.
@@ -1248,7 +1230,6 @@ onSetChange(m: IMonitor) {
 \@Monitor triggers the callback in the following cases:
 
 - `setInstance` is assigned a new value.
-
 - A Set API is called, such as `add`, `delete`, or `clear`. Unlike Array and Date, the callback is triggered only when a change actually occurs. This means that calling `clear` on an empty Set, calling `delete` on a non-existent Set element, and calling `add` without actually adding a new element do not trigger the \@Monitor callback.
 
 Unlike Array, \@Monitor cannot listen for a specific element of a Set.
@@ -1336,7 +1317,6 @@ struct MonitorWildcardSet {
 Pay attention to the following constraints when using \@Monitor:
 
 - Do not listen for the same property for multiple times in a class. When a property in a class is listened for multiple times, only the last listening method takes effect.
-
   <!-- @[monitor_limitation_last_listener_wins](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorLimitationLastListenerWins.ets) --> 
 
   ``` TypeScript
@@ -1379,7 +1359,6 @@ Pay attention to the following constraints when using \@Monitor:
   ![monitor-sync-15](./figures/monitor-sync-15.png)
 
 - When @Monitor receives multiple path parameters, the system determines duplicate observation based on the full combination result of the parameters. Spaces are added between parameters during full combination to distinguish them. For example, the full combination of 'ab' and 'c' is 'ab c', while 'a' and 'bc' becomes 'a bc'. These results are not equal. In the following example, Monitor 1, Monitor 2, and Monitor 3 all observe the name attribute. The input parameters of Monitor 2 and Monitor 3 are the same (name position), so only Monitor 3 takes effect. When name changes, both onNameAgeChange and onNamePositionChangeDuplicate are triggered simultaneously. However, note that Monitor 2 and Monitor 3 implementations are still considered multiple @Monitor observations of the same attribute in the same class, which is not recommended.
-
   <!-- @[monitor_limitation_multiple_path_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorLimitationMultiplePathParams.ets) --> 
 
   ``` TypeScript
@@ -1583,7 +1562,7 @@ class Info {
 
 @ObservedV2
 class UIStyle {
-  public info: Info = new Info();
+  @Trace public info: Info = new Info();
   @Trace public color: Color = Color.Black;
   @Trace public fontSize: number = 45;
 
@@ -1732,15 +1711,10 @@ struct Index {
 In the preceding example, you can create and destroy a **Child** component to observe the effective and expiration time of the \@Monitor defined in the custom component. You are advised to follow the steps below:
 
 - When the **Index** component creates an instance of the **Info** class, the log outputs the message: **in constructor message change to initialized**. At this time, the \@Monitor of the **Index** component has not been initialized successfully, so \@Monitor cannot listen for the message change.
-
 - After the **Index** component is created and the page is loaded, click **change message in Index** button. \@Monitor now can listen for the change and the log outputs the message "Index message change from initialized to Index click to change Message".
-
 - Click the **show/hide Child** button to create a **Child** component. After this component initializes the \@Param decorated variables and \@Monitor, call the **aboutToAppear** callback of the **Child** component to change the message. In this case, the \@Monitor of the **Index** and **Child** components can listen for the change, and the logs outputs the messages "Index message change from Index click to change Message to Child aboutToAppear" and "Child message change from Index click to change Message to Child aboutToAppear."
-
 - Click **change message in Child** button to change the message. In this case, the \@Monitor of the **Index** and **Child** components can listen for the change, and the log outputs the messages "Index message change from Child aboutToAppear to Child click to change Message" and "Child message change from Child aboutToAppear to Child click to change Message."
-
 - Click the **show/hide Child** button to destroy the **Child** component and call the **aboutToDisappear** callback to change the message. In this case, the \@Monitor of the **Index** and **Child** components can listen for the change, and the log outputs the messages "Child aboutToDisappear, Index message change from Child click to change Message to Child aboutToDisappear", and "Child message change from Child click to change Message to Child aboutToDisappear."
-
 - Click **change message in Index** button to change the message. In this case, the **Child** component is destroyed, and the \@Monitor is deregistered. Only the \@Monitor of the **Index** component can listen for the changes and the log outputs the message "Index message change from Child aboutToDisappear to Index click to change Message."
 
 The preceding steps indicate that the \@Monitor defined in the **Child** component takes effect when the **Child** component is created and initialized, and becomes invalid when the **Child** component is destroyed.
@@ -1904,195 +1878,195 @@ The result is unstable when you use the garbage collection mechanism to cancel t
 
 1. Define \@Monitor in the custom component. When a custom component is destroyed, the state management framework cancels the listening of \@Monitor. Therefore, after the custom component calls **aboutToDisappear**, the \@Monitor callback will not be triggered even though the data of the custom component may not be released.
 
-<!-- @[monitor_problem_class_failure_time_set_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeSetComp.ets) -->   
+   <!-- @[monitor_problem_class_failure_time_set_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeSetComp.ets) --> 
 
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
+   ``` TypeScript
+   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-@ObservedV2
-class InfoWrapper {
-  public info?: Info;
+   @ObservedV2
+   class InfoWrapper {
+     public info?: Info;
 
-  constructor(info: Info) {
-    this.info = info;
-  }
-}
+     constructor(info: Info) {
+       this.info = info;
+     }
+   }
 
-@ObservedV2
-class Info {
-  @Trace public age: number;
+   @ObservedV2
+   class Info {
+     @Trace public age: number;
 
-  constructor(age: number) {
-    this.age = age;
-  }
-}
+     constructor(age: number) {
+       this.age = age;
+     }
+   }
 
-@ComponentV2
-struct Child {
-  @Param @Require infoWrapper: InfoWrapper;
+   @ComponentV2
+   struct Child {
+     @Param @Require infoWrapper: InfoWrapper;
 
-  @Monitor('infoWrapper.info.age')
-  onInfoAgeChange(monitor: IMonitor) {
-    hilog.info(0xFF00, 'testTag', '%{public}s',
-      `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
-  }
+     @Monitor('infoWrapper.info.age')
+     onInfoAgeChange(monitor: IMonitor) {
+       hilog.info(0xFF00, 'testTag', '%{public}s',
+         `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+     }
 
-  aboutToDisappear(): void {
-    hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
-  }
+     aboutToDisappear(): void {
+       hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
+     }
 
-  build() {
-    Column() {
-      Text(`${this.infoWrapper.info?.age}`)
-        .fontSize(20)
-        .margin(10)
-    }
-  }
-}
+     build() {
+       Column() {
+         Text(`${this.infoWrapper.info?.age}`)
+           .fontSize(20)
+           .margin(10)
+       }
+     }
+   }
 
-@Entry
-@ComponentV2
-struct Index {
-  dataArray: Info[] = [];
-  @Local showFlag: boolean = true;
+   @Entry
+   @ComponentV2
+   struct Index {
+     dataArray: Info[] = [];
+     @Local showFlag: boolean = true;
 
-  aboutToAppear(): void {
-    for (let i = 0; i < 5; i++) {
-      this.dataArray.push(new Info(i));
-    }
-  }
+     aboutToAppear(): void {
+       for (let i = 0; i < 5; i++) {
+         this.dataArray.push(new Info(i));
+       }
+     }
 
-  build() {
-    Column() {
-      // Tap the Button to toggle showFlag, triggering the creation/destruction of the Child component.
-      Button('change showFlag')
-        .onClick(() => {
-          this.showFlag = !this.showFlag;
-        })
-        .margin(10)
-      Button('change number')
-        .onClick(() => {
-          hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
-          this.dataArray.forEach((info: Info) => {
-            info.age += 100;
-          })
-        })
-        .margin(10)
-      if (this.showFlag) {
-        Column() {
-          Text('Children')
-            .fontSize(20)
-            .margin(10)
-          ForEach(this.dataArray, (info: Info) => {
-            Child({ infoWrapper: new InfoWrapper(info) })
-          })
-        }
-        .borderColor(Color.Red)
-        .borderWidth(2)
-      }
-    }
-    .width('100%')
-  }
-}
-```
+     build() {
+       Column() {
+         // Tap Button to toggle showFlag, triggering the creation/destruction of the Child component.
+         Button('change showFlag')
+           .onClick(() => {
+             this.showFlag = !this.showFlag;
+           })
+           .margin(10)
+         Button('change number')
+           .onClick(() => {
+             hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
+             this.dataArray.forEach((info: Info) => {
+               info.age += 100;
+             })
+           })
+           .margin(10)
+         if (this.showFlag) {
+           Column() {
+             Text('Children')
+               .fontSize(20)
+               .margin(10)
+             ForEach(this.dataArray, (info: Info) => {
+               Child({ infoWrapper: new InfoWrapper(info) })
+             })
+           }
+           .borderColor(Color.Red)
+           .borderWidth(2)
+         }
+       }
+       .width('100%')
+     }
+   }
+   ```
 
-![monitor-sync-22](./figures/monitor-sync-22.gif)
+   ![monitor-sync-22](./figures/monitor-sync-22.gif)
 
-2. Set the listened object to empty. When the custom component is about to be destroyed, the \@Monitor listened object is set empty. In this way, the \@Monitor cannot listen for the changes of the original object, so that the listening is cancelled.
+2. Set the listened object to empty. When the custom component is about to be destroyed, the \@Monitor listened object is set empty. In this way, the \@Monitor cannot listen for the changes to the original object, thus cancelling the @Monitor listening.
 
-<!-- @[monitor_problem_class_failure_time_empty_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeEmptyObject.ets) -->  
+   <!-- @[monitor_problem_class_failure_time_empty_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeEmptyObject.ets) -->  
 
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
+   ``` TypeScript
+   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-@ObservedV2
-class InfoWrapper {
-  public info?: Info;
+   @ObservedV2
+   class InfoWrapper {
+     public info?: Info;
 
-  constructor(info: Info) {
-    this.info = info;
-  }
+     constructor(info: Info) {
+       this.info = info;
+     }
 
-  @Monitor('info.age')
-  onInfoAgeChange(monitor: IMonitor) {
-    hilog.info(0xFF00, 'testTag', '%{public}s',
-      `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
-  }
-}
+     @Monitor('info.age')
+     onInfoAgeChange(monitor: IMonitor) {
+       hilog.info(0xFF00, 'testTag', '%{public}s',
+         `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+     }
+   }
 
-@ObservedV2
-class Info {
-  @Trace public age: number;
+   @ObservedV2
+   class Info {
+     @Trace public age: number;
 
-  constructor(age: number) {
-    this.age = age;
-  }
-}
+     constructor(age: number) {
+       this.age = age;
+     }
+   }
 
-@ComponentV2
-struct Child {
-  @Param @Require infoWrapper: InfoWrapper;
+   @ComponentV2
+   struct Child {
+     @Param @Require infoWrapper: InfoWrapper;
 
-  aboutToDisappear(): void {
-    hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
-    this.infoWrapper.info = undefined; // Disable the InfoWrapper from listening for info.age.
-  }
+     aboutToDisappear(): void {
+       hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
+       this.infoWrapper.info = undefined; // Disable InfoWrapper's listening on info.age.
+     }
 
-  build() {
-    Column() {
-      Text(`${this.infoWrapper.info?.age}`)
-        .fontSize(20)
-        .margin(10)
-    }
-  }
-}
+     build() {
+       Column() {
+         Text(`${this.infoWrapper.info?.age}`)
+           .fontSize(20)
+           .margin(10)
+       }
+     }
+   }
 
-@Entry
-@ComponentV2
-struct Index {
-  dataArray: Info[] = [];
-  @Local showFlag: boolean = true;
+   @Entry
+   @ComponentV2
+   struct Index {
+     dataArray: Info[] = [];
+     @Local showFlag: boolean = true;
 
-  aboutToAppear(): void {
-    for (let i = 0; i < 5; i++) {
-      this.dataArray.push(new Info(i));
-    }
-  }
+     aboutToAppear(): void {
+       for (let i = 0; i < 5; i++) {
+         this.dataArray.push(new Info(i));
+       }
+     }
 
-  build() {
-    Column() {
-      Button('change showFlag')
-        .onClick(() => {
-          this.showFlag = !this.showFlag;
-        })
-        .margin(10)
-      Button('change number')
-        .onClick(() => {
-          hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
-          this.dataArray.forEach((info: Info) => {
-            info.age += 100;
-          })
-        })
-        .margin(10)
-      if (this.showFlag) {
-        Column() {
-          Text('Children')
-            .fontSize(20)
-            .margin(10)
-          ForEach(this.dataArray, (info: Info) => {
-            Child({ infoWrapper: new InfoWrapper(info) })
-          })
-        }
-        .borderColor(Color.Red)
-        .borderWidth(2)
-      }
-    }
-    .width('100%')
-  }
-}
-```
+     build() {
+       Column() {
+         Button('change showFlag')
+           .onClick(() => {
+             this.showFlag = !this.showFlag;
+           })
+           .margin(10)
+         Button('change number')
+           .onClick(() => {
+             hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
+             this.dataArray.forEach((info: Info) => {
+               info.age += 100;
+             })
+           })
+           .margin(10)
+         if (this.showFlag) {
+           Column() {
+             Text('Children')
+               .fontSize(20)
+               .margin(10)
+             ForEach(this.dataArray, (info: Info) => {
+               Child({ infoWrapper: new InfoWrapper(info) })
+             })
+           }
+           .borderColor(Color.Red)
+           .borderWidth(2)
+         }
+       }
+       .width('100%')
+     }
+   }
+   ```
 
-![monitor-sync-23](./figures/monitor-sync-23.gif)
+   ![monitor-sync-23](./figures/monitor-sync-23.gif)
 
 ### Passing Correct Input Parameters to \@Monitor
 
@@ -2246,7 +2220,6 @@ It is recommended that you add the \@Computed decorator to myAge to make it a st
 [Correct Usage 2]
 
 Change **myAge** to a state variable:
-
 <!-- @[monitor_problem_param_positive_example_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamPositiveExample2.ets) --> 
 
 ``` TypeScript
@@ -2290,7 +2263,6 @@ struct Index {
 ![monitor-sync-26](./figures/monitor-sync-26.png)
 
 Alternatively, listen to the state variable itself.
-
 <!-- @[monitor_problem_param_state_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamStateVariables.ets) --> 
 
 ``` TypeScript
@@ -2328,10 +2300,9 @@ struct Index {
 ![monitor-sync-27](./figures/monitor-sync-27.png)
 
 ### Variables Cannot Be Observed During Accessibility Changes
-
 \@Monitor only saves values when variables are accessible. When a state variable becomes inaccessible, value changes aren't recorded. In the following example, clicking any of the three buttons does not trigger the onChange callback.
 
-Since API version 20, If you need to observe accessibility changes (from accessible to inaccessible or vice versa), use [addMonitor](./arkts-new-addMonitor-clearMonitor.md#listening-for-variable-accessibility-changes).
+Since API version 20, you can use `addMonitor` to [listen for variable accessibility changes](./arkts-new-addMonitor-clearMonitor.md#listening-for-variable-accessibility-changes).
 
 Since API version 26.0.0, \@Monitor with configuration options can properly handle the switching of variables between accessible and inaccessible states. In the following example, if `@Monitor('user.age')` is rewritten to the form with configuration options `@Monitor({}, 'user.age')`, clicking any of the three buttons triggers the `onChange` callback. The dirty array contains the path `user.age`, and the before and now values of the corresponding IMonitorValue reflect the states before and after the accessibility switch respectively (the actual value when the variable is accessible, and undefined when the variable is inaccessible).
 

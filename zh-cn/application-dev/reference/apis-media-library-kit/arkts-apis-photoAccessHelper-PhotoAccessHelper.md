@@ -46,11 +46,11 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied. <br> 适用版本：12+        |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> 适用版本：12+  |
 | 13900012     | Permission denied. <br> 适用版本：10-11         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs<br>2. The number of arguments is invalid.<br>3. The argument list is empty.<br>4. The object is not a valid instance.<br>5. PhotoAccessHelper object is not a valid instance obtained through the proper API.<br>6. The callback parameter type does not match, expected AsyncCallback.<br>7. Invalid fetchColumns: contains unknown column name. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The FetchOptions parameter is invalid, the predicates property is not a valid data predicates object.<br>2. The predicates in FetchOptions contain invalid content or operations, please check if the predicates are valid.<br>3. The fetchColumns in FetchOptions contain invalid column names, please refer to PhotoKeys for valid column names.<br>4. Database query failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please retry and check logs.<br>5. Query returned an empty result set. |
 
 **示例：**
 
@@ -119,7 +119,7 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.<br> 适用版本：20+         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br> 适用版本：20+   |
 | 13900012     | Permission denied. <br> 适用版本：10-19         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -184,8 +184,8 @@ getBurstAssets(burstKey: string, options: FetchOptions): Promise&lt;FetchResult&
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.         |
-| 14000011       | Internal system error.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to check predicates property.<br>2. Failed to get predicates property.<br>3. The object is not a valid instance.<br>4. The predicates parameter is invalid, not of predicates type.<br>5. Invalid predicate, please check the predicates in FetchOptions content or operation.<br>6. Failed to parse fetchColumns array.<br>7. Failed to create boolean result.<br>8. Sandbox query failed: internal error.<br>9. File operation failed.<br>10. Failed to parse arguments for getBurstAssets. |
 
 **示例：**
 
@@ -250,11 +250,11 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied. <br> 适用版本：11+        |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> 适用版本：11+    |
 | 13900012     | Permission denied. <br> 适用版本：10         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>2. The number of arguments is invalid.<br>3. The argument list is empty.<br>4. The object is not a valid instance.<br>5. PhotoAccessHelper object is not a valid instance obtained through the proper API.<br>6. The callback parameter type does not match, expected AsyncCallback.<br>7. Failed to get the photoType parameter, please check the parameter type.<br>8. The photoType parameter is not a valid number type.<br>9. Invalid file type, must be IMAGE or VIDEO.<br>10. Failed to parse the extension parameter, please check if it is a valid string.<br>11. Failed to get the options parameter type, please check if it is an object.<br>12. Failed to parse CreateOptions, please check the options parameter.<br>13. Server returned an invalid argument error.<br>14. Failed to get the photoType parameter. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The photoType parameter is not a valid PhotoType enum value, must be IMAGE or VIDEO.<br>2. The extension parameter is not a valid string, please check if it is a valid file extension.<br>3. The options parameter is invalid, please check if it is a valid CreateOptions object.<br>4. Failed to create the asset, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -309,11 +309,11 @@ createAsset(photoType: PhotoType, extension: string, callback: AsyncCallback&lt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied. <br> 适用版本：11+        |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> 适用版本：11+   |
 | 13900012     | Permission denied. <br> 适用版本：10         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs<br>2. The number of arguments is invalid.<br>3. The argument list is empty.<br>4. The object is not a valid instance.<br>5. PhotoAccessHelper object is not a valid instance obtained through the proper API.<br>6. The callback parameter type does not match, expected AsyncCallback.<br>7. Failed to get the photoType parameter, please check the parameter type.<br>8. The photoType parameter is not a valid number type.<br>9. Invalid file type, must be IMAGE or VIDEO.<br>10. Failed to parse the extension parameter, please check if it is a valid string.<br>11. Failed to get parameter type, please check the parameter.<br>12. Failed to get the photoType parameter.<br>13. Server returned an invalid argument error. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The photoType parameter is not a valid PhotoType enum value, must be IMAGE or VIDEO.<br>2. The extension parameter is not a valid string, please check if it is a valid file extension.<br>3. Failed to create the asset, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -371,11 +371,11 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied. <br> 适用版本：11+        |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> 适用版本：11+  |
 | 13900012     | Permission denied. <br> 适用版本：10         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. System internal error. Possible: 1. File system exception; 2. IPC timeout. Please retry and check logs<br>2. The number of arguments is invalid.<br>3. The argument list is empty.<br>4. The object is not a valid instance.<br>5. PhotoAccessHelper object is not a valid instance obtained through the proper API.<br>6. The callback parameter type does not match, expected AsyncCallback.<br>7. Failed to get the photoType parameter, please check the parameter type.<br>8. The photoType parameter is not a valid number type.<br>9. Invalid file type, must be IMAGE or VIDEO.<br>10. Failed to parse the extension parameter, please check if it is a valid string.<br>11. Failed to get the options parameter type, please check if it is an object.<br>12. Failed to parse CreateOptions, please check the options parameter.<br>13. Server returned an invalid argument error.<br>14. Failed to get the photoType parameter. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The photoType parameter is not a valid PhotoType enum value, must be IMAGE or VIDEO.<br>2. The extension parameter is not a valid string, please check if it is a valid file extension.<br>3. The options parameter is invalid, please check if it is a valid CreateOptions object.<br>4. Failed to create the asset, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -435,9 +435,9 @@ createPhotoAsset(photoType: PhotoType, extension: string, title?: string): Promi
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 23800151 | The scenario parameter verification fails.Possible causes: 1. The extension format is unsupported. 2. Title contains unsupported character, such as . .. \ / : * ? " ' ` < > \| { } [ ]. 3. The title is an empty string 4. The total length of title and extension is more than 255. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>Server returned an invalid argument error. |
 
 **示例：**
 
@@ -488,11 +488,11 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options: FetchOptions, callbac
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied. <br> 适用版本：12+        |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> 适用版本：12+ |
 | 13900012     | Permission denied. <br> 适用版本：10-11         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters is invalid, expected 0 to 4 parameters.<br>2. The callback parameter must be of type AsyncCallback.<br>3. The type parameter must be a number.<br>4. The type must be a valid AlbumType (USER, SYSTEM, SMART, or SOURCE).<br>5. The subtype parameter must be a number.<br>6. The subtype must be a valid AlbumSubtype.<br>7. The fetchColumns contain invalid column names. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The type parameter is not a valid number, must be a valid AlbumType enum value.<br>2. The subtype parameter is not a valid number, must be a valid AlbumSubtype enum value.<br>3. The FetchOptions parameter is invalid, the predicates contain invalid content or the fetchColumns contain unknown column names.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>5. The query result is empty, the IPC or database query returned no albums (not caused by permission or system app errors). |
 
 **示例：**
 
@@ -553,10 +553,10 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, callback: AsyncCallback&lt;Fet
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201     | Permission denied.  <br> 适用版本：12+       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.  <br> 适用版本：12+  |
 | 13900012     | Permission denied. <br> 适用版本：10-11         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters is invalid, expected 0 to 4 parameters.<br>2. The callback parameter must be of type AsyncCallback.<br>3. The type parameter must be a number.<br>4. The type must be a valid AlbumType (USER, SYSTEM, SMART, or SOURCE).<br>5. The subtype parameter must be a number.<br>6. The subtype must be a valid AlbumSubtype. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The type parameter is not a valid number, must be a valid AlbumType enum value.<br>2. The subtype parameter is not a valid number, must be a valid AlbumSubtype enum value.<br>3. The query result is empty, the IPC or database query returned no albums (not caused by permission or system app errors).<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -616,11 +616,11 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options?: FetchOptions): Promi
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied. <br> 适用版本：12+        |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> 适用版本：12+ |
 | 13900012     | Permission denied. <br> 适用版本：10-11         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters is invalid, expected 0 to 4 parameters.<br>2. The callback parameter must be of type AsyncCallback.<br>3. The type parameter must be a number.<br>4. The type must be a valid AlbumType (USER, SYSTEM, SMART, or SOURCE).<br>5. The subtype parameter must be a number.<br>6. The subtype must be a valid AlbumSubtype.<br>7. The fetchColumns contain invalid column names. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The type parameter is not a valid number, must be a valid AlbumType enum value.<br>2. The subtype parameter is not a valid number, must be a valid AlbumSubtype enum value.<br>3. The FetchOptions parameter is invalid, the predicates contain invalid content or the fetchColumns contain unknown column names.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>5. The query result is empty, the IPC or database query returned no albums (not caused by permission or system app errors). |
 
 **示例：**
 
@@ -677,9 +677,9 @@ registerChange(uri: string, forChildUris: boolean, callback: Callback&lt;ChangeD
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
-| 13900020     | Invalid argument.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters is invalid, expected 3 parameters.<br>2. The uri parameter must be a string.<br>3. The forChildUris parameter must be a boolean.<br>4. The callback parameter must be a function.<br>5. The uri string extraction failed.<br>6. The forChildUris boolean value extraction failed.<br>7. The callback is already registered for this uri, duplicate registration is not allowed.<br>8. The object is not a valid instance. |
 
 **示例：**
 
@@ -744,9 +744,9 @@ unRegisterChange(uri: string, callback?: Callback&lt;ChangeData&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
-| 13900020     | Invalid argument.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters is invalid, expected 1 or 2 parameters.<br>2. The uri parameter must be a string.<br>3. The uri string extraction failed.<br>4. The callback parameter must be a function.<br>5. The object is not a valid instance. |
 
 **示例：**
 
@@ -818,9 +818,9 @@ applyChanges(mediaChangeRequest: MediaChangeRequest): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011  | System inner fail.     |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The mediaChangeRequest parameter is not a valid MediaChangeRequest object.<br>2. Server returned an error during applyChanges, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>3. The resource change operation for the current request type is not supported. |
 
 **示例：**
 
@@ -848,9 +848,9 @@ release(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters exceeds the maximum limit.<br>2. The current object is invalid.<br>3. The PhotoAccessHelper object is not a valid object. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. PhotoAccessHelper has been released, no need to release again.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -891,9 +891,9 @@ release(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters exceeds the maximum limit.<br>2. The current object is invalid.<br>3. The PhotoAccessHelper object is not a valid object. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. PhotoAccessHelper has been released, no need to release again.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -917,11 +917,13 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 调用接口显示保存确认弹窗。如果用户同意保存，将返回一个已创建并授予保存权限的URI列表（此列表永久生效），应用可使用这些URI写入图片或视频。如果用户拒绝保存，将返回一个空列表。
 
-弹框需显示应用名称，但无法直接获取。因此，调用此接口时，请确保[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
+弹框需显示应用名称，但无法直接获取。因此，调用此接口时，开发者需确保[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
 
 > **说明：**
 >
-> 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
+> - 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
+> - 与showAssetsCreationDialogEx的区别：showAssetsCreationDialog使用PhotoCreationConfig配置；showAssetsCreationDialogEx使用CreationSetting配置。
+> - 与showSingleAssetCreationDialogEx的区别：showAssetsCreationDialog支持批量保存图片（最多100张），showSingleAssetCreationDialogEx仅支持单个资产保存。批量保存时使用本接口，单个资产保存时如需控制图片显示方式可使用showSingleAssetCreationDialogEx。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -948,14 +950,13 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 |  Internal system error. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Internal error in dialog, please retry.<br>2. Dialog result missing required parameters, system internal error.<br>3. Callback processing failed, system internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('ShowAssetsCreationDialogDemo.');
 
@@ -975,7 +976,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
     console.info('showAssetsCreationDialog success, data is ' + desFileUris);
   } catch (err) {
-    console.error('showAssetsCreationDialog failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showAssetsCreationDialog failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -988,9 +989,10 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 
 > **说明：**
 >
+> - 与showAssetsCreationDialog的区别：showAssetsCreationDialogEx使用CreationSetting配置，showAssetsCreationDialog使用PhotoCreationConfig配置。
 > - 用户同意后，返回已创建并授予保存权限的URI列表，该列表永久有效，支持写入图片/视频。用户拒绝时，返回空列表。
-> - 弹框需显示应用名称，名称和图标需在[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)的`abilities`标签中配置`label`和`icon`项。
-> - 当传入URI为沙箱路径时，可正常保存图片或视频，但不显示界面预览。
+> - 弹框需显示应用名称，开发者需在[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)的`abilities`标签中配置`label`和`icon`项。
+> - 当传入URI为沙箱路径时，可正常保存图片或视频，但无界面预览。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1024,8 +1026,6 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts 
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) { 
   console.info('ShowAssetsCreationDialogExDemo.'); 
 
@@ -1034,17 +1034,17 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let srcFileUris: Array<string> = [
       'file://fileUriDemo1' // 实际场景请使用真实的URI。
     ];
-    let photoCreationConfigs: Array<photoAccessHelper.CreationSetting> = [
+    let creationConfigs: Array<photoAccessHelper.CreationSetting> = [
       {
         title: 'test2', // 可选。
         fileNameExtension: 'jpg',
         photoType: photoAccessHelper.PhotoType.IMAGE
       }
     ];
-    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);
+    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, creationConfigs);
     console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);
   } catch (err) {
-    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showAssetsCreationDialogEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1057,8 +1057,9 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 
 > **说明：**
 >
+> - 与showAssetsCreationDialog的区别：showSingleAssetCreationDialogEx仅支持保存单个资产，showAssetsCreationDialog支持批量保存图片（最多100张）。如需保存单个资产且控制图片显示方式，可使用showSingleAssetCreationDialogEx。
 > - 如果用户同意保存，将返回一个已创建并授予保存权限的URI（此URI永久生效），应用可使用这个URI写入图片或视频。如果用户拒绝保存，将返回一个空字符串。
-> - 弹框需显示应用名称，但无法直接获取。因此，调用此接口时，请确保[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
+> - 弹框需显示应用名称，但无法直接获取。因此，调用此接口时，开发者需确保[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
 > - 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -1079,7 +1080,7 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>具体返回值情况如下：<br>- 返回-3006表示不允许出现非法字符。<br>- 返回-2004表示图片类型和后缀不符。<br>- 返回-203表示文件操作异常。 |
+| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。正常情况下返回可用的媒体库URI字符串，URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>具体返回值情况如下：<br>- 返回-3006表示不允许出现非法字符。<br>- 返回-2004表示图片类型和后缀不符。<br>- 返回-203表示文件操作异常。 |
 
 **错误码：**
 
@@ -1087,15 +1088,15 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800301 |Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Internal error in dialog, please retry.<br>2. Dialog result missing required parameters, system internal error.<br>3. Dialog operation failed, please retry.<br>4. Callback processing failed, system internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Internal error in dialog, please retry.<br>2. Dialog result missing required parameters, system internal error.<br>3. Callback processing failed, system internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('ShowSingleAssetCreationDialogExDemo.');
 
@@ -1111,7 +1112,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUri, photoCreationConfig, isImageFullyDisplayed);
     console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUri);
   } catch (err) {
-    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showSingleAssetCreationDialogEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1120,9 +1121,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Promise&lt;string&gt;
 
-接口提供给应用调用，支持首次调用后拉起保存确认弹框。在用户同意保存后返回已创建并授予保存权限的uri，支持应用使用uri写入图片/视频。
+应用调用该接口后，首次调用时弹出保存确认弹框。用户同意保存后，返回已创建并授予保存权限的URI，应用可使用该URI写入图片/视频。
 
 在用户"同意"后的5分钟之内，同一个应用再次调用接口，支持无需弹框确认自动返回已授权的uri给应用，支持应用保存图片/视频。退出应用会结束授权，再次进入需要重新弹出弹框进行确认授权。
+
+> **说明：**
+>
+> 与createAssetWithShortTermPermissionEx的区别：createAssetWithShortTermPermission使用PhotoCreationConfig配置；createAssetWithShortTermPermissionEx使用CreationSetting配置。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1132,13 +1137,13 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| photoCreationConfig | [PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12); | 是 | 保存图片/视频到媒体库的配置，包括保存的文件名等。<br>**注意：**<br>传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。 |
+| photoCreationConfig | [PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12) | 是 | 保存图片/视频到媒体库的配置，包括保存的文件名等。<br>**注意：**<br>传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。 |
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件uri。uri已对应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码。<br>返回-3006表示不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
+| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>返回-3006表示不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
 
 **错误码：**
 
@@ -1146,7 +1151,7 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 |  Internal system error |
 
@@ -1186,7 +1191,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
         fileIo.closeSync(srcFile);
         fileIo.closeSync(resultFile);
     } catch (err) {
-        console.error('createAssetWithShortTermPermission failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+        console.error(`createAssetWithShortTermPermission failed. Code: ${err.code}, message: ${err.message}`);
     }
     
 }
@@ -1200,6 +1205,7 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 
 > **说明：**
 >
+> - 与createAssetWithShortTermPermission的区别：createAssetWithShortTermPermissionEx使用CreationSetting配置，createAssetWithShortTermPermission使用PhotoCreationConfig配置。
 > - 用户同意保存后，接口将返回已创建并授予保存权限的URI，应用可使用该URI写入图片/视频。
 > - 在用户同意后的5分钟内，若同一应用再次调用此接口，系统将无需弹框确认，直接返回已授权的URI，供应用保存图片/视频。退出应用会结束授权，再次进入需要重新弹出弹框进行确认授权。
 
@@ -1227,7 +1233,7 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 14000011 |  Internal system error |
 
 ## requestPhotoUrisReadPermission<sup>14+</sup>
@@ -1235,6 +1241,10 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Array&lt;string&gt;&gt;
 
 <!--RP1--><!--RP1End-->调用接口给未授权的URI进行授权，返回已创建并授予保存权限的URI列表。
+
+> **说明：**
+>
+> 与requestPhotoUrisReadPermissionEx的区别：requestPhotoUrisReadPermission仅返回已授权的URI列表；requestPhotoUrisReadPermissionEx返回RequestReadPermissionResult，包含已授权URI列表和无效URI列表，便于开发者识别无效URI。从API版本23开始，优先使用requestPhotoUrisReadPermissionEx以获得更完整的授权结果。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -1259,15 +1269,13 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 |  Internal system error |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Internal error in dialog, please retry.<br>2. Dialog result missing required parameters, system internal error.<br>3. Dialog operation failed, please retry.<br>4. Callback processing failed, system internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('requestPhotoUrisReadPermissionDemo.');
 
@@ -1279,7 +1287,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let desFileUris: Array<string> = await phAccessHelper.requestPhotoUrisReadPermission(srcFileUris);
     console.info('requestPhotoUrisReadPermission success, data is ' + desFileUris);
   } catch (err) {
-    console.error('requestPhotoUrisReadPermission failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`requestPhotoUrisReadPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1302,13 +1310,13 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;R
 
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| srcFileUris | Array&lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的[媒体库uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>仅支持处理图片、视频uri，且最大数量限制为100个。|
+| srcFileUris | Array&lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的[媒体库URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>仅支持处理图片、视频URI，且最大数量限制为100个。|
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;RequestReadPermissionResult&gt; | Promise对象，返回已授权的uri列表和无效的uri列表。 |
+| Promise&lt;RequestReadPermissionResult&gt; | Promise对象，返回已授权的URI列表和无效的URI列表。 |
 
 **错误码：**
 
@@ -1316,14 +1324,13 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;R
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800301 |  Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 |  Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
@@ -1337,7 +1344,7 @@ console.info('requestPhotoUrisReadPermissionExDemo.');
     let requestReadPermissionResult: photoAccessHelper.RequestReadPermissionResult = await phAccessHelper.requestPhotoUrisReadPermissionEx(srcFileUris);
     console.info('requestPhotoUrisReadPermissionEx success, data is ' + requestReadPermissionResult);
   } catch (err) {
-    console.error('requestPhotoUrisReadPermissionEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`requestPhotoUrisReadPermissionEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1369,7 +1376,7 @@ getSupportedPhotoFormats(photoType: PhotoType): Promise&lt;Array&lt;string&gt;&g
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | Internal system error. It is recommended to retry and check the logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. invalid photoType.<br>2. Failed to create string.<br>3. Failed to set element. |
 
 **示例：**
 
@@ -1425,9 +1432,9 @@ on(type: 'photoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoChange'; 2. The same callback is registered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. Scenario parameter verification failed.<br>2. Invalid parameter. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -1483,9 +1490,9 @@ off(type: 'photoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoChange'; 2. The same callback is unregistered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -1544,9 +1551,9 @@ on(type: 'photoAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoAlbumChange'; 2. The same callback is registered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. Scenario parameter verification failed.<br>2. Invalid parameter. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -1602,9 +1609,9 @@ off(type: 'photoAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoAlbumChange'; 2. The same callback is unregistered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -1644,7 +1651,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 getPhotoPickerComponentDefaultAlbumName(): Promise&lt;string&gt;
 
-应用使用PhotoPickerComponent组件选择照片时，支持调用API获取组件默认显示相册的相册名字符串。跟随当前系统语言，支持返回当前语言的相册名。使用Promise异步回调。
+应用使用图片选择器组件选择照片时，支持调用API获取组件默认显示相册的相册名字符串。根据当前系统语言设置，返回对应语言的相册名。使用Promise异步回调。
 
 **原子化服务API**： 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1711,10 +1718,10 @@ createDeleteRequest(uriList: Array&lt;string&gt;, callback: AsyncCallback&lt;voi
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 13900012     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900012 | Permission denied. Possible causes:<br>1. Not have ohos.permission.WRITE_IMAGEVIDEO.<br>2. User deny. |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The context parameter is invalid, failed to convert to AbilityContext.<br>2. Failed to create the dialog, system internal error, please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The delete operation failed, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>2. The uriList parameter contains invalid URIs, please check if each URI is a valid file URI obtained from a valid query result.<br>3. The UI extension component reported an error, please retry. |
 
 **示例：**
 
@@ -1730,22 +1737,26 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | undefined = undefined;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (asset === undefined) {
       console.error('asset not exist');
       return;
     }
     phAccessHelper.createDeleteRequest([asset.uri], (err) => {
-      if (err === undefined) {
-        console.info('createDeleteRequest successfully');
-      } else {
+      if (err) {
         console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
+      } else {
+        console.info('createDeleteRequest successfully');
       }
     });
   } catch (err) {
     console.error(`fetch failed, error: ${err.code}, ${err.message}`);
+  } finally {
+    // 使用完毕后需要释放资源。
+    fetchResult?.close();
   }
 }
 ```
@@ -1774,7 +1785,7 @@ createDeleteRequest(uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;void&gt;| Promise对象，返回void。 |
+| Promise&lt;void&gt;|  Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1784,10 +1795,10 @@ createDeleteRequest(uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 13900012     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900012 | Permission denied. Possible causes:<br>1. Not have ohos.permission.WRITE_IMAGEVIDEO.<br>2. User deny. |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The context parameter is invalid, failed to convert to AbilityContext.<br>2. Failed to create the dialog, system internal error, please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The delete operation failed, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>2. The uriList parameter contains invalid URIs, please check if each URI is a valid file URI obtained from a valid query result.<br>3. The UI extension component reported an error, please retry. |
 
 **示例：**
 
@@ -1803,8 +1814,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | undefined = undefined;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (asset === undefined) {
       console.error('asset not exist');
@@ -1814,6 +1826,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('createDeleteRequest successfully');
   } catch (err) {
     console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
+  } finally {
+    // 使用完毕后需要释放资源。
+    fetchResult?.close();
   }
 }
 ```
@@ -1893,8 +1908,8 @@ getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151     | The lpath is invalid, such as null, undefined and empty. |
-| 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. The number of parameters is not 1.<br>2. The value is not a string or the string fails to be read.<br>3. The lpath is an empty string or its length exceeds the maximum limit <br>(255).<br>4. The lpath is not in the allowed list of MEDIA_DIRS (excluding /DCIM/Camera, /Pictures/Screenshots, and /Pictures/Screenrecords).<br>5. The IPC call returns a server error code. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, failed to create boolean value, please retry.<br>2. The IPC call returns a server error code.<br>3. Failed to initialize error Field / Failed to initialize data Field. |
 
 **示例：**
 
@@ -1939,9 +1954,9 @@ onSinglePhotoChange(asset: PhotoAsset, callback: Callback&lt;PhotoAssetChangeInf
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is registered repeatedly. 2. Asset has been removed. 3. The uri of the asset invalid.|
-| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. One or two parameters are required.<br>2. Invalid parameter.<br>3. The first parameter is not an object or the second parameter is not a function.<br>4. The object is not a valid instance to get asset object.<br>5. The PhotoAsset is not a valid PhotoAsset object.<br>6. Check whether it is a hidden or recycled album.<br>7. Check whether it is not a MEDIA_TYPE_IMAGE or MEDIA_TYPE_VIDEO.<br>8. Ordinary assets invalid.<br>9. Registration has reached the limit.<br>10. Failed to create a reference for the callback.<br>11. The listener for this resource has been registered with the same callback.<br>12. Failed to get photo asset from parameter.<br>13. Failed to get file asset instance.<br>14. Failed to get fileId from photo asset. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -2016,9 +2031,9 @@ offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChange
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is unregistered repeatedly. 2. The uri of the asset invalid. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. The object is not a valid instance.<br>2. The parameter type is invalid.<br>3. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -2100,9 +2115,9 @@ onSinglePhotoAlbumChange(album: Album, callback: Callback&lt;AlbumChangeInfos&gt
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is registered repeatedly. 2. Album has been removed. 3. The uri of the a invalid.|
-| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. One or two parameters are required.<br>2. Invalid parameter.<br>3. Album object is not a valid object.<br>4. The PhotoAsset is not a valid PhotoAsset object.<br>5. Check whether it is a hidden or recycled album.<br>6. Ordinary album invalid.<br>7. Failed to get URI from photo album.<br>8. Registration has reached the limit (>= 50).<br>9. Failed to create a reference for the callback.<br>10. The listener for this resource has been registered with the same callback. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -2175,9 +2190,9 @@ offSinglePhotoAlbumChange(album?: Album, callback?: Callback&lt;AlbumChangeInfos
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is unregistered repeatedly. 2. The uri of the album invalid. |
-| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. One or two parameters are required.<br>2. Invalid parameter.<br>3. The first parameter is not an object or the second parameter is not a function.<br>4. Object is not a valid object.<br>5. Album object is not a valid object.<br>6. Ordinary album invalid.<br>7. Failed to create callback reference.<br>8. No observer has ever been registered.<br>9. Observer list is empty. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -2263,8 +2278,8 @@ setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise\<vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151 | The capability is invalid. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. The number of parameters is invalid, expected 1 or 2 parameters.<br>2. The bundleName parameter must be a non-empty string.<br>3. The config parameter must be an object.<br>4. The supportedHighResolution attribute must be a boolean.<br>5. The supportedMimeType attribute must be an array of strings.<br>6. The supportedMimeType array contains unsupported MIME types, only image/jpeg and image/png are supported.<br>7. The supportedMimeTypes array size exceeds the limit (max 2 after deduplication).<br>8. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Parameter is not an array type.<br>2. Failed to get array length.<br>3. Server returned an invalid argument error. |
 
 **示例：**
 
@@ -2365,7 +2380,7 @@ onMediaLibraryAvailability(callback: Callback&lt;MediaLibraryAvailability&gt;): 
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 23800151 | Scenario-specific parameters are incorrect. Possible causes are as follows: 1. The input parameter is null or undefined. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -2429,7 +2444,7 @@ offMediaLibraryAvailability(callback?: Callback&lt;MediaLibraryAvailability&gt;)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**

@@ -33,7 +33,7 @@ gesture(gesture: GestureType, mask?: GestureMask): T
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
 | gesture  |  [GestureType](./ts-gesture-common.md#gesturetype) | 是   | 绑定的手势类型。 |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。当需要设置父组件优先识别手势时是否屏蔽子组件手势时传入该参数：GestureMask.Normal表示不屏蔽子组件手势，适用于父组件优先识别后仍允许子组件手势按默认规则参与识别的场景；GestureMask.IgnoreInternal表示屏蔽子组件手势，适用于希望父组件priorityGesture绑定的手势优先响应并忽略子组件手势的场景。不传入时默认值为GestureMask.Normal。 |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。当需要控制是否屏蔽子组件手势时传入该参数：GestureMask.Normal表示不屏蔽子组件手势，适用于父组件手势响应后仍允许子组件手势按默认规则参与识别的场景；GestureMask.IgnoreInternal表示屏蔽子组件手势，适用于希望父组件绑定的手势响应并忽略子组件手势的场景。不传入时默认值为GestureMask.Normal。 |
 
 **返回值：**
 
@@ -49,7 +49,7 @@ priorityGesture(gesture: GestureType, mask?: GestureMask): T
 
 1. 默认情况下，子组件优先识别通过gesture绑定的手势，当父组件配置priorityGesture时，父组件优先识别priorityGesture绑定的手势。
 
-2. 绑定长按手势时，设置的触发长按最短时间小于其他参与手势识别组件的组件会优先响应，并忽略priorityGesture设置。
+2. 绑定长按手势时，触发长按的最短时间较短的手势会优先响应，并忽略priorityGesture设置。
 
 > **说明：**
 >
@@ -63,7 +63,7 @@ priorityGesture(gesture: GestureType, mask?: GestureMask): T
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| gesture | [GestureType](./ts-gesture-common.md#gesturetype) | 是 | 绑定的手势对象。绑定长按手势时，设置触发长按的最短时间较小的组件会优先响应，并忽略priorityGesture设置。 |
+| gesture | [GestureType](./ts-gesture-common.md#gesturetype) | 是 | 绑定的手势对象。绑定长按手势时，触发长按的最短时间较短的手势会优先响应，并忽略priorityGesture设置。 |
 | mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
 
 **返回值：**

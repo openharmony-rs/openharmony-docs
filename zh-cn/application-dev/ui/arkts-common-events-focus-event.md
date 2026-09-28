@@ -779,7 +779,7 @@ export struct ScopeFocusExample {
           .margin(5)
           .onClick(() => {
             this.scopeFocusState = !this.scopeFocusState;
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Button1 onFocus');
+            hilog.info(DOMAIN, TAG, BUNDLE + 'Button1 onClick');
           })
         Button('Button2')
           .width(140)

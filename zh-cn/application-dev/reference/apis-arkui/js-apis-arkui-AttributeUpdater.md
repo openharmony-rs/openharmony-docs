@@ -222,6 +222,7 @@ import { AttributeUpdater } from '@kit.ArkUI';
 
 class MyTextModifier extends AttributeUpdater<TextAttribute, TextInterface> {
   initializeModifier(instance: TextAttribute): void {
+    // 空函数，仅演示使用方法。
   }
 }
 

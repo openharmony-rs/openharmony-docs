@@ -1,10 +1,10 @@
 # Interfaces (Others)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
 
 > **NOTE**
 >
@@ -83,14 +83,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
 
 function printfItemDescription(obj: media.MediaDescription, key: string) {
-  let property: Object = obj[key];
+  let property: Object | undefined = obj[key];
   console.info('audio key is ' + key); // Obtain the value of the key. For details about the keys, see MediaDescriptionKey.
   console.info('audio value is ' + property); // Obtain the value of the key. The value can be any type. For details about the types, see MediaDescriptionKey.
 }
 
 let avPlayer: media.AVPlayer | undefined = undefined;
 media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
-  if(player != null) {
+  if (player != null) {
     avPlayer = player;
     console.info(`Succeeded in creating AVPlayer`);
     avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
@@ -120,7 +120,7 @@ Defines the playback information in key-value pairs.
 
 ## WatermarkConfiguration
 
-Defines the configuration parameters for adding a watermark to video recording. The watermark position is calculated with the upper left corner of the video as the origin.
+Defines the configuration parameters for adding a watermark. The watermark position is calculated with the upper left corner of the video as the origin.
 
 **Since**: 26.0.0
 
@@ -148,16 +148,16 @@ The **audioSourceType** and **videoSourceType** parameters are used to distingui
 | audioSourceType | [AudioSourceType](arkts-apis-media-e.md#audiosourcetype9)     | No  | Yes  | Type of the audio source to record. This parameter is mandatory for audio recording.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | videoSourceType | [VideoSourceType](arkts-apis-media-e.md#videosourcetype9)     | No  | Yes  | Type of the video source to record. This parameter is mandatory for video recording.                  |
 | profile         | [AVRecorderProfile](#avrecorderprofile9) | No  | No  | Recording profile. This parameter is mandatory.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| url             | string                                   | No  | No  | Recording output URL: fd://xx (fd number).<br>![img](figures/image-url.png)<br>This parameter is mandatory.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| url             | string                                   | No  | No  | Recording output URL: fd://xx (fd number) ![img](figures/image-url.png) This parameter is mandatory.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 |fileGenerationMode<sup>12+</sup> | [FileGenerationMode](arkts-apis-media-e.md#filegenerationmode12)  | No  |  Yes  |  Mode for creating the file, which is used together with [on('photoAssetAvailable')](arkts-apis-media-AVRecorder.md#onphotoassetavailable12).|
-| rotation<sup>(deprecated)</sup>        | number                                   | No  | Yes  | Rotation angle of the recorded video. The value can be 0 (default), 90, 180, or 270 for MP4 videos.<br>This API is supported since API version 6 and deprecated since API version 12. You are advised to use **[AVMetadata](#avmetadata11).videoOrientation** instead.<br>If both parameters are set, **[AVMetadata](#avmetadata11).videoOrientation** is used.    |
+| rotation<sup>(deprecated)</sup>        | number                                   | No  | Yes  | Rotation angle of the video to record, in degrees. For MP4 videos, the value can be **0°** (default), **90°**, **180°**, or **270°**.<br>This API is supported since API version 6 and deprecated since API version 12. You are advised to use **[AVMetadata](#avmetadata11).videoOrientation** instead.<br>If both parameters are set, **[AVMetadata](#avmetadata11).videoOrientation** is used.    |
 | location<sup>(deprecated)</sup>        | [Location](#location)                    | No  | Yes  | Geographical location of the recorded video. By default, the geographical location information is not recorded.<br>This API is supported since API version 6 and deprecated since API version 12. You are advised to use **[AVMetadata](#avmetadata11).location** instead.<br>If both parameters are set, **[AVMetadata](#avmetadata11).location** is used.|
 | metadata<sup>12+</sup>        | [AVMetadata](#avmetadata11)              | No  | Yes  | Metadata. For details, see [AVMetadata](#avmetadata11).                 |
 | maxDuration<sup>18+</sup>        | number             | No  | Yes  | Maximum recording duration, in seconds. The value range is [1, 2^31-1]. If an invalid value is provided, it is reset to the maximum allowed duration. Once the recording reaches the specified duration, it stops automatically and notifies via the stateChange callback that the recording has stopped: [AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) = 'stopped', [StateChangeReason](arkts-apis-media-e.md#statechangereason9) = BACKGROUND.|
 
 ## AVRecorderProfile<sup>9+</sup>
 
-Describes the audio and video recording profile.
+Describes the audio and video recording configuration parameters.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -240,11 +240,12 @@ Describes the video transcoding parameters.
 | --------------- | ---------------------------------------- |---- | ---- | ------------------------------------------------------------ |
 | audioBitrate | number     | No| Yes| Bit rate of the output audio, in bit/s. The value range is [1, 500000]. The default value is 48 kbit/s.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 | audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | No| Yes | Encoding format of the output audio. Currently, only AAC is supported. The default value is **AAC**.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| audioCodecV2 | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | No| Yes | Encoding format of the output audio.<br>If the specified encoding format is not supported, the preparation fails. The default value is **AAC**.<br> **Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 | fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No| No  | Container format of the output video file. Currently, only MP4 is supported.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 | videoBitrate         | number | No|  Yes | Bit rate of the output video, in bit/s. The default bit rate depends on the resolution of the output video. The default bit rate is 1 Mbit/s for the resolution in the range [240p, 480P], 2 Mbit/s for the range (480P, 720P], 4 Mbit/s for the range (720P, 1080P], and 8 Mbit/s for 1080p or higher.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 | videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | No| Yes  | Encoding format of the output video. Currently, only AVC and HEVC are supported. If the source video is in HEVC format, the default value is **HEVC**. Otherwise, the default value is **AVC**.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
-| videoFrameWidth        | number | No|  Yes  | Width of the output video frame, in px. The value range is [240, 3840]. The default value is the width of the source video frame.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
-| videoFrameHeight        | number | No|  Yes  | Height of the output video frame, in px. The value range is [240, 2160]. The default value is the height of the source video frame.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoFrameWidth        | number | No|  Yes  | Width of the output video frame, in pixels. The minimum value is 240p, and the maximum value depends on the encoder capability of the device. The default value is the width of the source video frame.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoFrameHeight        | number | No|  Yes  | Height of the output video frame, in pixels. The minimum value is 240p, and the maximum value depends on the encoder capability of the device. The default value is the height of the source video frame.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 | enableBFrame<sup>20+</sup> | boolean | No|  Yes  | Whether B-frame encoding is enabled for transcoding. **true** if enabled, **false** otherwise.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 
 
@@ -417,7 +418,7 @@ Describes the playback strategy.
 | -------- | -------- | ---- | ---- | -------------------- |
 | preferredWidth| number | No  | Yes  | Preferred width, in px. The value is an integer greater than 0, for example, 1080.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | preferredHeight | number | No  | Yes  | Preferred height, in px. The value is an integer greater than 0, for example, 1920.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| preferredBufferDuration | number | No  | Yes  | Preferred buffer duration, in seconds. The value range is [1, 20].<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| preferredBufferDuration | number | No  | Yes  | Preferred buffer duration, in seconds. The value range is [1, 20]. If the value is out of the range, the value is automatically corrected to the border value or the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | preferredHdr | boolean | No  | Yes  | Whether HDR is preferred. **true** if preferred, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | enableSuperResolution<sup>18+</sup> | boolean | No  | Yes  | Whether to enable super resolution. **true** to enable, **false** otherwise. The default value is **false**.<br>If super resolution is disabled, super resolution APIs cannot be called. If super resolution is enabled, the default target resolution is 1920 × 1080, in px.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | showFirstFrameOnPrepare<sup>17+</sup> | boolean | No  | Yes  | Whether to show the first frame after **prepare** is called. **true** to show, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
@@ -471,8 +472,8 @@ Describes the information about a metric event.
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | event  | [AVMetricsEventType](arkts-apis-media-e.md#avmetricseventtype23) | No  | No  | Type of the metric event.<br>**Model restriction**: This API can be used only in the stage model.|
 | timeStamp | number | No  | No  | System time when an event occurs.|
-| playbackPosition | number | No  | No  | Playback position when an event occurs.|
-| details | Record\<string, Object> | No  | No  | Detailed information about an event. The information contained in an event varies according to the event type.<br>The information includes the stalling duration (**duration**: number) and the media type (**media**: [MediaType](arkts-apis-media-e.md#mediatype8)) of the stalling.<br>**Model restriction**: This API can be used only in the stage model.|
+| playbackPosition | number | No  | No  | Playback position when an event occurs. The unit is ms.|
+| details | Record\<string, Object> | No  | No  | Detailed information about an event. The information contained in an event varies according to the event type.<br>The jank event information includes the stalling duration (**duration**: number) and the media type (**media**: [MediaType](arkts-apis-media-e.md#mediatype8)) of the stalling.<br>The out-of-sync audio and video event information includes the out-of-sync type (video frames ahead of or behind audio frames) and the start and end time of the out-of-sync.<br>The loading rate change information includes the data download rates before and after the change.<br>Information about the data loading request includes the request phase (connection, request for the streaming media playlist, and request for streaming media data), request time, and network error code.<br>Information about playback content switch includes the resource parameters before and after the switch, such as the video resolution, video frame rate, audio sampling rate, and number of audio channels.<br>Information about playback discontinuity includes the discontinuity type (PTS jump or audio parameter change), PTS before and after the jump, and audio parameters before and after the change (audio sampling rate, number of audio channels, and audio bit depth).<br>Information about the audio status change event includes the status before and after the unfocus event occurs.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## VideoSize
 
@@ -533,8 +534,8 @@ Describes audio recording configurations.
 | format                              | [AudioOutputFormat](arkts-apis-media-e.md#audiooutputformatdeprecated)      | No  | Yes  | Audio output format. The default value is **MPEG_4**.<br>Note: This parameter is supported since API version 6 and deprecated since API version 8. You are advised to use **fileFormat** instead.|
 | location                            | [Location](#location)                        | No  | Yes  | Geographical location of the recorded audio.<br>Note: This parameter is supported since API version 6 and deprecated since API version 9. You are advised to use **location** in [AVMetadata](#avmetadata11) instead.|
 | uri                                 | string                                       | No  | No  | Audio output URI. Supported: fd://xx (fd number)<br>![](figures/image-url.png) <br>The file must be created by the caller and granted with proper permissions.<br>Note: This parameter is supported since API version 6 and deprecated since API version 9. You are advised to use **url** in [AVRecorderConfig](#avrecorderconfig9) instead.|
-| audioEncoderMime<sup>8+</sup>       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | No  | Yes  | Container encoding format.<br>Note: This parameter is supported since API version 8 and deprecated since API version 9. You are advised to use **audioCodec** in [AVRecorderProfile](#avrecorderprofile9) instead.|
-| fileFormat<sup>8+</sup>             | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No  | Yes  | Audio encoding format.<br>Note: This parameter is supported since API version 8 and deprecated since API version 9. You are advised to use **fileFormat** in [AVRecorderProfile](#avrecorderprofile9) instead.|
+| audioEncoderMime<sup>8+</sup>       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | No  | Yes  | Audio encoding format.<br>Note: This parameter is supported since API version 8 and deprecated since API version 9. You are advised to use **audioCodec** in [AVRecorderProfile](#avrecorderprofile9) instead.|
+| fileFormat<sup>8+</sup>             | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No  | Yes  | Container format of a file.<br>Note: This parameter is supported since API version 8 and deprecated since API version 9. You are advised to use **fileFormat** in [AVRecorderProfile](#avrecorderprofile9) instead.|
 
 ## AVTimedMetaData
 
@@ -544,7 +545,7 @@ Describes the information about time-based metadata.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |

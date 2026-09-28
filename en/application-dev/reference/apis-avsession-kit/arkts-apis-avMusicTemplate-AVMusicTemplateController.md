@@ -1445,7 +1445,7 @@ sendCustomCommand(command: string, args: string): Promise&lt;OperResult&gt;
 
 Sends a custom control command. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -188,7 +188,7 @@ Triggered when the hover status of the current device changes.<br>Typical usage:
 
 type OnHoverStatusChangeCallback = (param: HoverEventParam) => void
 
-Defines the current allback invoked when the hover state of the device changes.
+Defines the current callback invoked when the hover state of the device changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 

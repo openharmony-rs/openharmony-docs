@@ -368,7 +368,7 @@ NODE_CLIP_SHAPE = 24
    | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，path类型需设置为ARKUI_CLIP_TYPE_PATH。 |
    | .value[1].f32 | 路径宽度，单位为vp。 |
    | .value[2].f32 | 路径高度，单位为vp。 |
-   | .string | 路径绘制的命令字符串，格式遵循SVG path数据语法，如'M0 0 L100 100 Z'。 |
+   | .string | 路径绘制的命令字符串，格式遵循SVG path数据语法，如'M0,0 L100,100 Z'。 |
    | .object | 参数类型为[ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md)，路径绘制的命令，在仅传入.object参数时生效。 |
 
 **返回：**
@@ -489,7 +489,7 @@ NODE_CUSTOM_SHADOW = 29
 | .value[2]?.f32 | 阴影X轴偏移量，单位为px，默认值0.0。 |
 | .value[3]?.f32 | 阴影Y轴偏移量，单位为px，默认值0.0。 |
 | .value[4]?.i32 | 阴影类型，参数类型为[ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype)，默认值为ARKUI_SHADOW_TYPE_COLOR。 |
-| .value[5]?.u32 | 智能取色关闭（.value[1]为0）时表示阴影颜色，0xARGB格式，形如0xFFFF0000表示红色，不传入时默认值为0xFF000000（黑色）；智能取色开启（.value[1]为1）时表示颜色策略，取[ArkUI_ColorStrategy](capi-native-type-visual-h.md#arkui_colorstrategy)枚举值。 |
+| .value[5]?.u32 | 智能取色关闭（.value[1]为0）时表示阴影颜色，0xAARRGGBB格式，形如0xFFFF0000表示红色，不传入时默认值为0xFF000000（黑色）；智能取色开启（.value[1]为1）时表示颜色策略，取[ArkUI_ColorStrategy](capi-native-type-visual-h.md#arkui_colorstrategy)枚举值。 |
 | .value[6]?.u32 | 阴影是否内部填充，0表示不填充，1表示填充。 |
 
 **返回：**
@@ -501,7 +501,7 @@ NODE_CUSTOM_SHADOW = 29
 | .value[2].f32 | 阴影X轴偏移量，单位为px。 |
 | .value[3].f32 | 阴影Y轴偏移量，单位为px。 |
 | .value[4].i32 | 阴影类型，参数类型为[ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype)，默认值为ARKUI_SHADOW_TYPE_COLOR。枚举值包括：ARKUI_SHADOW_TYPE_COLOR（颜色阴影）、ARKUI_SHADOW_TYPE_BLUR（模糊阴影）。 |
-| .value[5].u32 | 阴影颜色，0xARGB格式，形如0xFFFF0000表示红色。 |
+| .value[5].u32 | 阴影颜色，0xAARRGGBB格式，形如0xFFFF0000表示红色。 |
 | .value[6].u32 | 阴影是否内部填充，0表示不填充，1表示填充。 |
 
 ## NODE_BACKGROUND_BLUR_STYLE
@@ -886,20 +886,20 @@ NODE_MASK = 45
 
 | 参数项 | 描述 |
 | -- | -- |
-| 1.rect类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_RECTANGLE；<br>.value[4].f32：矩形宽度，单位为vp；<br>.value[5].f32：矩形高度，单位为vp；<br>.value[6].f32：矩形圆角宽度，单位为vp；<br>.value[7].f32：矩形圆角高度，单位为vp；<br>.value[8]?.f32：矩形形状的左上圆角半径，单位为vp，默认值0；<br>.value[9]?.f32：矩形形状的左下圆角半径，单位为vp，默认值0；<br>.value[10]?.f32：矩形形状的右上圆角半径，单位为vp，默认值0；<br>.value[11]?.f32：矩形形状的右下圆角半径，单位为vp，默认值0。 |
-| 2.circle类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_CIRCLE；<br>.value[4].f32：圆形宽度，单位为vp；<br>.value[5].f32：圆形高度，单位为vp。 |
-| 3.ellipse类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_ELLIPSE；<br>.value[4].f32：椭圆形宽度，单位为vp；<br>.value[5].f32：椭圆形高度，单位为vp。 |
-| 4.path类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_PATH；<br>.value[4].f32：路径宽度，单位为vp；<br>.value[5].f32：路径高度，单位为vp；<br>.string：路径绘制的命令字符串，格式遵循SVG path数据语法，如'M0 0 L100 100 Z'。 |
+| 1.rect类型 | .value[0].u32：填充颜色，0xAARRGGBB类型；<br>.value[1].u32：描边颜色，0xAARRGGBB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_RECTANGLE；<br>.value[4].f32：矩形宽度，单位为vp；<br>.value[5].f32：矩形高度，单位为vp；<br>.value[6].f32：矩形圆角宽度，单位为vp；<br>.value[7].f32：矩形圆角高度，单位为vp；<br>.value[8]?.f32：矩形形状的左上圆角半径，单位为vp，默认值0；<br>.value[9]?.f32：矩形形状的左下圆角半径，单位为vp，默认值0；<br>.value[10]?.f32：矩形形状的右上圆角半径，单位为vp，默认值0；<br>.value[11]?.f32：矩形形状的右下圆角半径，单位为vp，默认值0。 |
+| 2.circle类型 | .value[0].u32：填充颜色，0xAARRGGBB类型；<br>.value[1].u32：描边颜色，0xAARRGGBB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_CIRCLE；<br>.value[4].f32：圆形宽度，单位为vp；<br>.value[5].f32：圆形高度，单位为vp。 |
+| 3.ellipse类型 | .value[0].u32：填充颜色，0xAARRGGBB类型；<br>.value[1].u32：描边颜色，0xAARRGGBB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_ELLIPSE；<br>.value[4].f32：椭圆形宽度，单位为vp；<br>.value[5].f32：椭圆形高度，单位为vp。 |
+| 4.path类型 | .value[0].u32：填充颜色，0xAARRGGBB类型；<br>.value[1].u32：描边颜色，0xAARRGGBB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_PATH；<br>.value[4].f32：路径宽度，单位为vp；<br>.value[5].f32：路径高度，单位为vp；<br>.string：路径绘制的命令字符串，格式遵循SVG path数据语法，如'M0,0 L100,100 Z'。 |
 | 5.progress类型 | .value[0].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_PROGRESS；<br>.value[1].f32：进度遮罩的当前值；<br>.value[2].f32：进度遮罩的最大值；<br>.value[3].u32：进度遮罩的颜色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| 1.rect类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：矩形宽度，单位为vp；<br>.value[5].f32：矩形高度，单位为vp；<br>.value[6].f32：矩形圆角宽度，单位为vp；<br>.value[7].f32：矩形圆角高度，单位为vp；<br>.value[8]?.f32：矩形形状的左上圆角半径，单位为vp；<br>.value[9]?.f32：矩形形状的左下圆角半径，单位为vp；<br>.value[10]?.f32：矩形形状的右上圆角半径，单位为vp；<br>.value[11]?.f32：矩形形状的右下圆角半径，单位为vp。 |
-| 2.circle类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：圆形宽度，单位为vp；<br>.value[5].f32：圆形高度，单位为vp。 |
-| 3.ellipse类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：椭圆形宽度，单位为vp；<br>.value[5].f32：椭圆形高度，单位为vp。 |
-| 4.path类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：路径宽度，单位为vp；<br>.value[5].f32：路径高度，单位为vp；<br>.string：路径绘制的命令字符串，格式遵循SVG path数据语法，如'M0,0 L100,100 Z'。 |
+| 1.rect类型 | .value[0].u32：填充颜色，0xAARRGGBB类型；<br>.value[1].u32：描边颜色，0xAARRGGBB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：矩形宽度，单位为vp；<br>.value[5].f32：矩形高度，单位为vp；<br>.value[6].f32：矩形圆角宽度，单位为vp；<br>.value[7].f32：矩形圆角高度，单位为vp；<br>.value[8]?.f32：矩形形状的左上圆角半径，单位为vp；<br>.value[9]?.f32：矩形形状的左下圆角半径，单位为vp；<br>.value[10]?.f32：矩形形状的右上圆角半径，单位为vp；<br>.value[11]?.f32：矩形形状的右下圆角半径，单位为vp。 |
+| 2.circle类型 | .value[0].u32：填充颜色，0xAARRGGBB类型；<br>.value[1].u32：描边颜色，0xAARRGGBB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：圆形宽度，单位为vp；<br>.value[5].f32：圆形高度，单位为vp。 |
+| 3.ellipse类型 | .value[0].u32：填充颜色，0xAARRGGBB类型；<br>.value[1].u32：描边颜色，0xAARRGGBB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：椭圆形宽度，单位为vp；<br>.value[5].f32：椭圆形高度，单位为vp。 |
+| 4.path类型 | .value[0].u32：填充颜色，0xAARRGGBB类型；<br>.value[1].u32：描边颜色，0xAARRGGBB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：路径宽度，单位为vp；<br>.value[5].f32：路径高度，单位为vp；<br>.string：路径绘制的命令字符串，格式遵循SVG path数据语法，如'M0,0 L100,100 Z'。 |
 | 5.progress类型 | .value[0].i32：遮罩类型；<br>.value[1].f32：进度遮罩的当前值；<br>.value[2].f32：进度遮罩的最大值；<br>.value[3].u32：进度遮罩的颜色。 |
 
 ## NODE_BLEND_MODE
@@ -1047,7 +1047,7 @@ NODE_FOREGROUND_COLOR = 53
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 颜色数值，0xargb类型。 |
+| .value[0].u32 | 颜色数值，0xAARRGGBB类型。 |
 
 ## NODE_OUTLINE_WIDTH
 
@@ -1144,20 +1144,20 @@ NODE_OUTLINE_COLOR = 78
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 统一设置四条边的边框颜色，使用0xargb表示，如0xFFFF11FF。仅传入.value[0]时生效。 |
-| .value[0].u32 | 设置上侧边框颜色，使用0xargb表示，如0xFFFF11FF。传入.value[0]至.value[3]四个值时生效。 |
-| .value[1].u32 | 设置右侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
-| .value[2].u32 | 设置下侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
-| .value[3].u32 | 设置左侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
+| .value[0].u32 | 统一设置四条边的边框颜色，使用0xAARRGGBB表示，如0xFFFF11FF。仅传入.value[0]时生效。 |
+| .value[0].u32 | 设置上侧边框颜色，使用0xAARRGGBB表示，如0xFFFF11FF。传入.value[0]至.value[3]四个值时生效。 |
+| .value[1].u32 | 设置右侧边框颜色，使用0xAARRGGBB表示，如0xFFFF11FF。 |
+| .value[2].u32 | 设置下侧边框颜色，使用0xAARRGGBB表示，如0xFFFF11FF。 |
+| .value[3].u32 | 设置左侧边框颜色，使用0xAARRGGBB表示，如0xFFFF11FF。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 设置上侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
-| .value[1].u32 | 设置右侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
-| .value[2].u32 | 设置下侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
-| .value[3].u32 | 设置左侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
+| .value[0].u32 | 设置上侧边框颜色，使用0xAARRGGBB表示，如0xFFFF11FF。 |
+| .value[1].u32 | 设置右侧边框颜色，使用0xAARRGGBB表示，如0xFFFF11FF。 |
+| .value[2].u32 | 设置下侧边框颜色，使用0xAARRGGBB表示，如0xFFFF11FF。 |
+| .value[3].u32 | 设置左侧边框颜色，使用0xAARRGGBB表示，如0xFFFF11FF。 |
 
 ## NODE_COLOR_BLEND
 
@@ -1175,13 +1175,13 @@ NODE_COLOR_BLEND = 81
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 叠加的颜色，使用0xargb表示，默认值为0x00000000。 |
+| .value[0].u32 | 叠加的颜色，使用0xAARRGGBB表示，默认值为0x00000000。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 叠加的颜色，使用0xargb表示，如0xFFFF11FF。 |
+| .value[0].u32 | 叠加的颜色，使用0xAARRGGBB表示，如0xFFFF11FF。 |
 
 ## NODE_FOREGROUND_BLUR_STYLE
 
@@ -1412,3 +1412,28 @@ NODE_SYSTEM_MATERIAL = 127
 | 类型 | 说明 |
 | -- | -- |
 | .object | 系统材质对象。参数类型为[ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md)。返回值中的ArkUI_ImmersiveMaterialHandle对象是指向静态成员的指针，因此无需也禁止通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy)释放返回对象。 |
+
+## NODE_TRANSFORM_3D
+
+```c
+NODE_TRANSFORM_3D = 128
+```
+
+定义3D变换属性，用于设置组件的3D变换矩阵。当涉及带透视效果的3D变换时，[NODE_TRANSFORM](#node_transform)的显示效果可能不正确，此时推荐使用此属性。支持属性设置，属性重置和属性获取接口。如果重置此属性，组件将恢复为单位矩阵（无变换）。
+
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0...15].f32 | 16个浮点数，表示4x4变换矩阵。数组长度必须为16。 |
+| .object | 指向[ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)对象的指针，表示4x4变换矩阵。使用.value或.object之一来设置矩阵，如果同时设置，.value优先。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0...15].f32 | 16个浮点数，表示当前3D变换矩阵。 |

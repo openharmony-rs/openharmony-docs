@@ -6,9 +6,9 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c27e0e5f22d6b3cf08575f1a30584cd1902be584 translatedAt=2026-09-01T01:21:06.712Z pushedAt=2026-09-03T08:43:16.221Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:00:37.918Z pushedAt=2026-09-11T06:56:20.890Z -->
 
-The **inputEventClient** module provides the capability of injecting key, mouse/touchpad, and touchscreen events.
+The **inputEventClient** module provides the capability of injecting key, mouse/touchpad, and touchscreen input events.
 
 > **NOTE**
 >
@@ -30,7 +30,7 @@ Injects keys (including single keys and combination keys).
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-Permission required: ohos.permission.INJECT_INPUT_EVENT
+**Permission required**: ohos.permission.INJECT_INPUT_EVENT
 
 **Parameters**
 
@@ -44,8 +44,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.<br/>Applicable version: 12+ |
-| 202  | Permission denied, non-system app called system api.<br/>Applicable version: 12+ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>Applicable version: 12+  |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Applicable version: 12+  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -96,7 +96,7 @@ Injects key events (for both single keys and combination keys).
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-Permission required: ohos.permission.INJECT_INPUT_EVENT
+**Permission required**: ohos.permission.INJECT_INPUT_EVENT
 
 **Parameters**
 
@@ -110,8 +110,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.<br/>Applicable version: 12+ |
-| 202  | SystemAPI permission error.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>Applicable version: 12+  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -165,7 +165,6 @@ struct Index {
   }
 }
 ```
-
 ## inputEventClient.injectMouseEvent<sup>11+</sup>
 
 injectMouseEvent(mouseEvent: MouseEventData): void
@@ -174,7 +173,7 @@ Injects a mouse/touchpad event.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-Permission required: ohos.permission.INJECT_INPUT_EVENT
+**Permission required**: ohos.permission.INJECT_INPUT_EVENT
 
 **Parameters**
 
@@ -188,15 +187,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.<br/>Applicable version: 12+ |
-| 202  | SystemAPI permission error.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>Applicable version: 12+  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputEventClient } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputEventClient, MouseEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -289,7 +287,7 @@ Injects a touch event.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-Permission required: ohos.permission.INJECT_INPUT_EVENT
+**Permission required**: ohos.permission.INJECT_INPUT_EVENT
 
 **Parameters**
 
@@ -303,15 +301,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.<br/>Applicable version: 12+ |
-| 202  | SystemAPI permission error.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>Applicable version: 12+  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputEventClient } from '@kit.InputKit';
-import { Touch, TouchEvent } from '@kit.InputKit';
+import { inputEventClient, Touch, TouchEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -395,7 +392,7 @@ Specifies whether to authorize event injection.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-Permission required: ohos.permission.INJECT_INPUT_EVENT
+**Permission required**: ohos.permission.INJECT_INPUT_EVENT
 
 **Parameters**
 
@@ -409,8 +406,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 202  | SystemAPI permission error.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -488,7 +485,7 @@ Defines the touch event data.
 
 Defines the key event information injected by the user.
 
-**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |

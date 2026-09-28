@@ -385,7 +385,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
     onConnect(elementName, remote: rpc.IRemoteObject): void {
       hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
       if (remote === null) {
-        hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
+        hilog.error(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
         return;
       }
       let serviceExtProxy: IdlServiceExtProxy = new IdlServiceExtProxy(remote);
@@ -401,7 +401,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
     },
     onFailed(code: number): void {
-      hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
+      hilog.error(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
     }
   };
   @Entry
@@ -501,7 +501,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
     onConnect(elementName, remote: rpc.IRemoteObject): void {
       hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
       if (remote === null) {
-        hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
+        hilog.error(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
         return;
       }
       let serviceExtProxy: IdlServiceExtProxy = new IdlServiceExtProxy(remote);
@@ -517,7 +517,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
     },
     onFailed(code: number): void {
-      hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
+      hilog.error(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
     }
   };
   ```
@@ -537,7 +537,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
     onConnect(elementName, remote): void {
       hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
       if (remote === null) {
-        hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
+        hilog.error(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
         return;
       }
       let option = new rpc.MessageOption();
@@ -568,7 +568,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
     },
     onFailed(code): void {
-      hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback');
+      hilog.error(DOMAIN_NUMBER, TAG, 'onFailed callback');
     }
   };
   // ...
@@ -606,7 +606,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
         hilog.info(DOMAIN_NUMBER, TAG, 'getBundleNameByUid: ' + callerBundleName);
         // 对客户端包名进行识别
         if (callerBundleName !== 'com.samples.stagemodelabilitydevelop') { // 识别不通过
-          hilog.info(DOMAIN_NUMBER, TAG, 'The caller bundle is not in trustlist, reject');
+          hilog.error(DOMAIN_NUMBER, TAG, 'The caller bundle is not in trustlist, reject');
           return;
         }
         // 识别通过，执行正常业务逻辑
@@ -653,7 +653,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
         hilog.info(DOMAIN_NUMBER, TAG, 'getBundleNameByUid: ' + callerBundleName);
         // 对客户端包名进行识别
         if (callerBundleName !== 'com.samples.stagemodelabilitydevelop') { // 识别不通过
-          hilog.info(DOMAIN_NUMBER, TAG, 'The caller bundle is not in trustlist, reject');
+          hilog.error(DOMAIN_NUMBER, TAG, 'The caller bundle is not in trustlist, reject');
           return;
         }
         // 识别通过，执行正常业务逻辑
@@ -666,7 +666,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       // 所校验的具体权限由开发者自行选择，此处ohos.permission.GET_BUNDLE_INFO_PRIVILEGED只作为示例
       let grantStatus = accessManager.verifyAccessTokenSync(callerTokenId, 'ohos.permission.GET_BUNDLE_INFO_PRIVILEGED');
       if (grantStatus === abilityAccessCtrl.GrantStatus.PERMISSION_DENIED) {
-        hilog.info(DOMAIN_NUMBER, TAG, 'PERMISSION_DENIED');
+        hilog.error(DOMAIN_NUMBER, TAG, 'PERMISSION_DENIED');
         callback(ERR_DENY, data); // 鉴权失败，返回错误
         return;
       }

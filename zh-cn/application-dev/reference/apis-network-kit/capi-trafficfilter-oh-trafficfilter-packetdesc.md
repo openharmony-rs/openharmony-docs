@@ -15,7 +15,7 @@ typedef struct OH_TrafficFilter_PacketDesc {...} OH_TrafficFilter_PacketDesc
 
 报文描述符。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **相关模块：** [TrafficFilter](capi-trafficfilter.md)
 

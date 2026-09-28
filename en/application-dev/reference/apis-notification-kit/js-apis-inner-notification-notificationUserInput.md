@@ -19,3 +19,4 @@ The **NotificationUserInput** module provides APIs for defining the notification
 | Name    | Type   | Read Only| Optional| Description                         |
 | -------- | ------ |----- | ---- | ----------------------------- |
 | inputKey | string | No  |  No | Key to identify the user input.|
+<!--no_check-->

@@ -6,9 +6,9 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:22:46.248Z pushedAt=2026-06-12T07:40:52.569Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T00:59:34.294Z pushedAt=2026-09-11T02:40:08.602Z -->
 
-The **inputEvent** module provides the basic events reported by the device.
+The **inputEvent** module provides the basic events reported by a device.
 
 > **NOTE**
 >
@@ -30,7 +30,7 @@ Represents an input event.
 
 | Name        | Type  | Read-Only  | Optional  | Description            |
 | ---------- | ------ | ---- | ---- | -------------- |
-| id         | number | No   | No   | Enumerates event IDs.|
+| id         | number | No   | No   | Event ID.|
 | deviceId   | number | No   | No   | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.   |
 | actionTime | number | No    | No    | Time when an input event is reported, in microseconds (μs) since the system starts.    |
 | screenId   | number | No   | No   | Target screen ID.        |

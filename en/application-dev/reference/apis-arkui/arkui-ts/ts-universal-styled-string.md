@@ -1375,7 +1375,7 @@ Describes the text background color style.
 
 | Name          | Type             | Read-Only  | Optional | Description    |
 | ------------ |---------------------| ---- | ---- | ------ |
-| textBackgroundStyle  |  [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11)  |  Yes  | No | Text background color of the styled string.<br>Default value:<br>**{<br> color: Color.Transparent,<br>  radius: 0<br>}** |
+| textBackgroundStyle  |  [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11)  |  Yes  | No | Text background color of the styled string.<br>Default value:<br>{<br> color: Color.Transparent,<br>  radius: 0<br>} |
 
 ### constructor<sup>14+</sup>
 

@@ -8,7 +8,7 @@
 
 本模块提供车辆感知的系统级能力，包括指向识别、肢体动作识别、车辆状态感知等功能。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 > **说明：**
 > 
@@ -24,7 +24,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 
 表示车辆感知支持的能力类型枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,7 +45,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 
 车辆感知通用结果信息接口。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -63,7 +63,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 
 车辆感知订阅配置选项接口。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -81,7 +81,7 @@ onCarAwareness(capability: Capability, callback: Callback<CarAwarenessInfo[]>, o
 
 开启车辆感知，订阅车辆感知结果；设备不支持该能力时抛出34000002错误码，可调用getAllCapabilityList查询设备可用能力，通过callback异步返回数据。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -133,7 +133,7 @@ offCarAwareness(capability: Capability, callback: Callback<CarAwarenessInfo[]>, 
 
 取消指定订阅类型的车辆感知。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -187,7 +187,7 @@ updateSpatialActionEnableStatus(event: number): void
 
 更新空间动作感知的启停状态。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -240,7 +240,7 @@ updateSpatialActionZone(zone: number): void
 
 更新空间动作感知的音区信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -293,7 +293,7 @@ getCarAwareness(capability: Capability, options?: CarAwarenessOptions): Promise<
 
 单次获取指定类型的车辆感知结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

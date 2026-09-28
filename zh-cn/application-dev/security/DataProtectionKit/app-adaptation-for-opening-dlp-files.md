@@ -726,7 +726,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     }
     
     function bufferToString(buffer: ArrayBuffer): string {
-      let textDecoder = new util.TextDecoder('utf-8', {
+      let textDecoder = util.TextDecoder.create('utf-8', {
         ignoreBOM: true
       });
       return textDecoder.decodeToString(new Uint8Array(buffer), {

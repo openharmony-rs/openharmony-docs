@@ -1,4 +1,4 @@
-# @ohos.enterprise.browser（浏览器管理）(系统接口)
+# @ohos.enterprise.browser (浏览器管理)(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->

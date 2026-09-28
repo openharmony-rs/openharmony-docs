@@ -23,9 +23,9 @@
   - [@ohos.resourceschedule.backgroundProcessManager (后台子进程管控)(系统接口)](js-apis-backgroundProcessManager-sys.md)
   <!--DelEnd-->
   - application<!--background-tasks-arkts-application-->
-    - [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)
+    - [WorkSchedulerExtensionContext (延迟任务调度回调上下文)](js-apis-WorkSchedulerExtensionContext.md)
     <!--Del-->
-    - [WorkSchedulerExtensionContext（系统接口）](js-apis-WorkSchedulerExtensionContext-sys.md)
+    - [WorkSchedulerExtensionContext (延迟任务调度回调上下文)(系统接口)](js-apis-WorkSchedulerExtensionContext-sys.md)
     <!--DelEnd-->
   - 已停止维护的接口<!--background-tasks-arkts-dep-->
     - [@ohos.backgroundTaskManager (后台任务管理)](js-apis-backgroundTaskManager.md)

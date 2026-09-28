@@ -43,8 +43,8 @@ injectEvent({KeyEvent: KeyEvent}): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.<br/>适用版本：12+ |
-| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：12+  |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -109,8 +109,8 @@ injectKeyEvent(keyEvent: KeyEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.<br/>适用版本：12+ |
-| 202  | SystemAPI permission error.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：12+  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -186,8 +186,8 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.<br/>适用版本：12+ |
-| 202  | SystemAPI permission error.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：12+  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -300,8 +300,8 @@ injectTouchEvent(touchEvent: TouchEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.<br/>适用版本：12+ |
-| 202  | SystemAPI permission error.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：12+  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -405,8 +405,8 @@ permitInjection(result: boolean): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 202  | SystemAPI permission error.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**

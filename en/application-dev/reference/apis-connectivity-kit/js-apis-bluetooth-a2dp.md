@@ -3,11 +3,12 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1275b89181ca8fc1862130ee865235369b412dd3 translatedAt=2026-09-15T02:15:09.098Z pushedAt=2026-09-15T03:36:19.333Z -->
 
-The **a2dp** module provides Bluetooth media audio capabilities based on the Advanced Audio Distribution Profile ([A2DP](../../connectivity/terminology.md#a2dp)), such as obtaining the media playback status and connection status.
+The **a2dp** module provides Bluetooth media audio capabilities based on the Advanced Audio Distribution Profile ([A2DP](../../connectivity/bluetooth/terminology.md#a2dp)), such as obtaining the media playback status and connection status.
 
 > **NOTE**
 >
@@ -37,7 +38,7 @@ type BaseProfile = baseProfile.BaseProfile
 
 createA2dpSrcProfile(): A2dpSourceProfile
 
-Creates a [A2DP source](../../connectivity/terminology.md#a2dp-source) instance. Through this instance, you can use the local device as the A2DP source device and implement functions such as obtaining the audio playback status based on the Bluetooth protocol between the local device and the other device.
+Creates an [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) instance. Through this instance, you can use the methods provided by the local device when it functions as the A2DP source device, such as obtaining the audio playback state based on the Bluetooth protocol between the local device and other devices.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -72,16 +73,16 @@ try {
 
 ## A2dpSourceProfile
 
-Represents the [A2DP source](../../connectivity/terminology.md#a2dp-source) role in A2DP.
+Represents the [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) role in A2DP.
 - The **A2dpSourceProfile** class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.
 - Before using the APIs of this class, you need to construct an **A2dpSourceProfile** instance by calling [createA2dpSrcProfile](#a2dpcreatea2dpsrcprofile).
-- The counterpart of the A2DP source role is the [A2DP sink](../../connectivity/terminology.md#a2dp-sink) role.
+- The counterpart of the A2DP source role is the [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) role.
 
 ### getPlayingState
 
 getPlayingState(deviceId: string): PlayingState
 
-Obtains the media audio playback status between the local and peer devices.
+Obtains the media audio playback status between the local and peer devices. For example, in a music player app, this API can be used to check whether Bluetooth audio is being played, so that the play/pause button status on the UI can be updated accordingly.
 
 - Starting from API version 21, this API can be used to obtain the media audio playback status by using the actual MAC address of the peer device.
 
@@ -93,7 +94,7 @@ Obtains the media audio playback status between the local and peer devices.
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, ***XX*:*XX*:*XX*:*XX*:*XX*:*XX***.|
+| deviceId | string | Yes   | Address of the peer device, for example, **XX:XX:XX:XX:XX:XX**.|
 
 **Return value**
 
@@ -152,8 +153,8 @@ Defines the codec used by the Bluetooth media audio.
 | codecBitsPerSample  | [CodecBitsPerSample](#codecbitspersample11)  | No   | No   | Bit depth of each sampling point. The default value is **CODEC_BITS_PER_SAMPLE_NONE**.|
 | codecChannelMode    | [CodecChannelMode](#codecchannelmode11) | No   | No   | Channel mode of the codec. The default value is **CODEC_CHANNEL_MODE_NONE**.|
 | codecSampleRate     | [CodecSampleRate](#codecsamplerate11) | No   | No   | Sampling rate of the codec. The default value is **CODEC_SAMPLE_RATE_NONE**.|
-| codecBitRate<sup>19+<sup/>     | [CodecBitRate](#codecbitrate19) | No   | Yes   | Bit rate of the codec. The default value is **CODEC_BIT_RATE_ABR**.|
-| codecFrameLength<sup>19+<sup/>     | [CodecFrameLength](#codecframelength19) | No   | Yes   |Frame length of the codec. The default value is **CODEC_FRAME_LENGTH_10MS**.|
+| codecBitRate<sup>19+</sup>     | [CodecBitRate](#codecbitrate19) | No    | Yes    | Bit rate of the codec. The default value is **CODEC_BIT_RATE_ABR**. |
+| codecFrameLength<sup>19+</sup>     | [CodecFrameLength](#codecframelength19) | No    | Yes    | Frame length of the codec. The default value is **CODEC_FRAME_LENGTH_10MS**. |
 
 ## CodecInfoList<sup>19+</sup>
 
@@ -231,7 +232,7 @@ Enumerates the sampling rates of the Bluetooth media audio codec. A sampling rat
 
 ## CodecBitRate<sup>19+</sup>
 
-Enumerates the bit rates of the Bluetooth media audio codec. A bit rate indicates the amount of audio data transmitted per unit time, in units of kbit/s. It affects the audio quality and file size.
+Enumerates the bit rates of the Bluetooth media audio codec. A bit rate indicates the amount of audio data transmitted per unit time, in units of kbit/s. The bit rate affects the audio quality and transmission bandwidth.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -245,13 +246,13 @@ Enumerates the bit rates of the Bluetooth media audio codec. A bit rate indicate
 | CODEC_BIT_RATE_480000  | 5 | 480kbps |
 | CODEC_BIT_RATE_640000  | 6 | 640kbps |
 | CODEC_BIT_RATE_960000  | 7 | 960kbps |
-| CODEC_BIT_RATE_ABR  | 8 | Adaptive bit rate (automatic adjustment of the bit rate based on network conditions).|
+| CODEC_BIT_RATE_ABR  | 8 | Adaptive bit rate (automatically adjusted based on Bluetooth link quality). |
 | CODEC_BIT_RATE_1500000<sup>21+</sup>  | 9 | 1500kbps |
 | CODEC_BIT_RATE_2300000<sup>21+</sup>  | 10 | 2300kbps |
 
 ## CodecFrameLength<sup>19+</sup>
 
-Enumerates frame lengths of the Bluetooth media audio codec. A frame length indicates the playback duration of an audio frame.
+Enumerates frame lengths of the Bluetooth media audio codec. A frame length indicates the playback duration of an audio frame, in ms. The frame length affects the audio transmission delay and efficiency.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 

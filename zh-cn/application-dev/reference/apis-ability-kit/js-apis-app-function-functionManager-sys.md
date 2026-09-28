@@ -36,7 +36,7 @@ Function调用的可选参数。包含Function调用时的应用上下文信息�
 
 | 名称       | 类型 | 必填 | 说明 |
 | ---------- | ---- | --- | ------------------ |
-| context | [Context](js-apis-inner-application-context.md) | 否 | 执行Function调用时的应用上下文信息。<br>**说明**：目前仅支持[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md) |
+| context | [Context](js-apis-inner-application-context.md) | 否 | 执行Function调用时的应用上下文信息。<br>**说明**：目前仅支持[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md) |
 
 ## InvokeResult
 

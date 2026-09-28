@@ -5,6 +5,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:37:59.787Z pushedAt=2026-09-22T08:29:58.392Z -->
 
 > **NOTE**
 > - The APIs of this module are no longer maintained since API version 7. You are advised to use [@ohos.notification (Notification)](js-apis-notification.md).
@@ -37,7 +38,7 @@ import notification from '@system.notification';
 | Name         | Type                                          | Mandatory| Description                       |
 | ------------- | ---------------------------------------------- | ---- | ------------------------- |
 | contentTitle  | string                                          | No  | Notification title.                 |
-| contentText   | string                                          | No  | Notification content.                 |
+| contentText   | string                                          | No   | [Notification content](../../notification/notification-glossary.md#notification-content).                  |
 | clickAction<sup>(deprecated)</sup>   | [ActionResult](#actionresult)                                    | No  | Action triggered when the notification is clicked.<br>This API is deprecated since API version 7.    |
 
 
@@ -53,7 +54,7 @@ Displays a notification.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | ShowNotificationOptions | No| Notification title.|
+| options | [ShowNotificationOptions](#shownotificationoptions) | No | Notification title. |
 
 **Example**
 ```ts
@@ -71,3 +72,4 @@ let notificationObj: notification = {
   }
 }
 ```
+<!--no_check-->

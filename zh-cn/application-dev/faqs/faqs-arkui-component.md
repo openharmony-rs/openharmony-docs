@@ -811,7 +811,7 @@ List组件设置layoutWeight(1)属性，将剩余空间全部分配给List组件
 
 **参考链接**
 
-[WaterFlow高性能开发指导](../performance/waterflow_optimization.md)
+[WaterFlow高性能开发指导](../performance/waterflow-optimization.md)
 
 ## customDialog中调用router.push启动新页面，会把customDialog关闭，怎么实现在不关闭弹窗的前提下启动新页面(API 10)
 

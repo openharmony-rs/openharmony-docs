@@ -81,7 +81,7 @@ import { fastbuffer } from '@kit.ArkTS';
 // 创建长度为5的FastBuffer对象，默认填充0
 let buf1 = fastbuffer.alloc(5);
 console.info(buf1.toString());
-// 输出结果：00000
+// 输出结果为空
 // 创建长度为5的FastBuffer对象，填充字符'a'
 let buf2 = fastbuffer.alloc(5, 'a');
 // 创建长度为11的FastBuffer对象，使用base64编码填充

@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -1159,7 +1159,7 @@ getListenerCount(eventId: string): number
 
 | 参数名  | 类型           | 必填 | 说明     |
 | ------- | -------------- | ---- | -------- |
-| eventId | string | 是   | 事件ID。<br>不可为空字符串，大小不超过10240字节，超出部分会被截断。。 |
+| eventId | string | 是   | 事件ID。<br>不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
 
 **返回值：**
 

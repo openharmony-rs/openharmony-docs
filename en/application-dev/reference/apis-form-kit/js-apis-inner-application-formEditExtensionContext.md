@@ -1,37 +1,42 @@
 # FormEditExtensionContext
+
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=2a2c17aef02dee6707c724274ac2637725c68be6 translatedAt=2026-09-15T01:57:07.715Z pushedAt=2026-09-15T07:29:51.690Z -->
 
-**FormEditExtensionContext**, which inherits from [UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md), is the context of [FormEditExtensionAbility](./js-apis-app-form-formEditExtensionAbility.md). It is used to manage the contextual environment for widget editing scenarios, supporting the launching of the widget provider's page and the associated application's UIAbility, and is suitable for scenarios where interaction with the widget provider is required during the widget editing process.
+FormEditExtensionContext is the context of [FormEditExtensionAbility](./js-apis-app-form-formEditExtensionAbility.md), and inherits from [UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md). It is used to manage the context environment in widget editing scenarios, supporting the launch of widget provider pages and the owning app's UIAbility. It is applicable to scenarios where interaction with the widget provider is required during the widget editing process.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 18. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 18. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module can be used only in the stage model.
+> - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
+
 ```ts
 import { FormEditExtensionAbility } from '@kit.FormKit';
 ```
 
 ## FormEditExtensionContext
 
-**FormEditExtensionContext** provides the capability of accessing specific **FormEditExtensionAbility** resources.
+Provides access to resources specific to FormEditExtensionAbility.
 
 ### startSecondPage
 
-startSecondPage(want: Want): Promise&lt;[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)&gt;
+startSecondPage(want: Want): Promise&lt;AbilityResult&gt;
 
 Starts the widget provider page to be edited. This API uses a promise to return the result.
 
 **Use cases**
-- When a user taps the edit button on the widget editing screen, the editing page of the widget provider needs to be opened.
-- When a user needs to modify the widget configuration or content, the widget provider app is started for editing.
+
+- When a user taps the edit button on the widget editing page, the widget provider's editing page needs to be opened.
+
+- When a user needs to modify widget configuration or content, the widget provider app needs to be launched for editing.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -41,17 +46,17 @@ Starts the widget provider page to be edited. This API uses a promise to return 
 
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------ | ---- | ------------------------------------- |
-| want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | Yes  | Information about the editing page to be started. It must contain the **bundleName** field, and **parameters** must contain **secPageAbilityName**.|
+| want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | Yes   | Information about the editing page to start. The bundleName field is mandatory, and parameters must contain secPageAbilityName.|
 
  **Return value**
 
 | Type| Description   |
 | ------ | ------ |
-| Promise&lt;[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)&gt;  |  Promise used to return the result code and data when the started page exits. |
+| Promise&lt;[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)&gt;  |  Promise used to return the result code and data when the started party exits.  |
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -90,11 +95,11 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
 }
 ```
 
-### startUIAbility<sup>23+</sup>
+### startUIAbility<sup>23+<sup>
 
 startUIAbility(want: Want): Promise&lt;void&gt;
 
-Starts UIAbility of the application to which a widget belongs. This API uses a promise to return the result. Note: This API must be called when the widget editing page is in the foreground. If the page is not in the foreground, error code 16501014 will be returned.
+Launches the UIAbility of the application to which the widget belongs. This API uses a promise to return the result. Note: This API must be called when the widget editing page is in the foreground. Otherwise, error code 16501014 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -104,17 +109,17 @@ Starts UIAbility of the application to which a widget belongs. This API uses a p
 
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------ | ---- | ------------------------------------- |
-| want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md#want)  | Yes  | Want information of the UIAbility to be started. It must contain the **abilityName** field.|
+| want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md#want)  | Yes   | Want information used to specify the UIAbility to start. The abilityName field must be included.|
 
 **Return value**
 
 | Type| Description   |
 | ------ | ------ |
-| Promise&lt;void&gt;   |  Promise that returns no value. |
+| Promise&lt;void&gt;   |  Promise that returns no value.  |
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md) and [Ability Error Codes](../apis-ability-kit/errorcode-ability.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |

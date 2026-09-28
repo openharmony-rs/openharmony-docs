@@ -9,9 +9,7 @@
 <!-- md-trans-meta sourceCommit=3ac9506947b9a687415be23e968a5dc9053205f5 translatedAt=2026-09-01T01:18:20.144Z pushedAt=2026-09-03T06:08:24.318Z -->
 
 ```c
-typedef struct Input_DeviceListener {
-    // ...
-} Input_DeviceListener
+typedef struct Input_DeviceListener {...} Input_DeviceListener
 ```
 
 ## Overview

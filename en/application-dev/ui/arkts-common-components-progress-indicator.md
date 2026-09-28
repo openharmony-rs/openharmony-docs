@@ -1,14 +1,14 @@
 # Progress Indicator (Progress)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=58aa1a9b8318e579a2b513b7ba023ee57b8ecdda translatedAt=2026-07-29T12:44:17.877Z pushedAt=2026-07-31T01:39:29.139Z -->
+<!-- md-trans-meta sourceCommit=3d2d7abc36899b5a97e744ff915db70172f830d6 translatedAt=2026-09-21T02:41:00.344Z pushedAt=2026-09-21T09:59:23.883Z -->
 
 The **Progress** component is used to provide an indicator that shows the progress of an operation. For details, see [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md).
+
 
 ## Creating a Progress Indicator
 
@@ -20,21 +20,26 @@ Progress(options: {value: number, total?: number, type?: ProgressType})
 
 In the API, **value** is used to set the current progress value, **total** is used to set the total progress length, and **type** is used to set the Progress style.
 
-```ts
+<!-- @[progress_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 Progress({ value: 24, total: 100, type: ProgressType.Linear }) // Create a linear progress indicator with a total progress of 100 and a current progress value of 24.
 ```
 
 ![create](figures/create.png)
 
+
 ## Setting the Progress Indicator Style
 
 Progress provides five types. You can set the progress indicator style through [ProgressType](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md#progresstype8). The ProgressType types include: ProgressType.Linear (linear style), ProgressType.Ring (ring style without scale), ProgressType.ScaleRing (ring style with scale), ProgressType.Eclipse (circular style), and ProgressType.Capsule (capsule style).
+
 
 - Linear style progress indicator (default type)
 
   > **NOTE**
   >
   > Since API version 9, when the component height is greater than its width, the progress indicator is displayed vertically in an adaptive manner. When the component height equals its width, it remains displayed horizontally.
+
 
   <!-- @[progress_style_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
 
@@ -45,7 +50,7 @@ Progress provides five types. You can set the progress indicator style through [
 
   ![progress-vertical](figures/progress-vertical.png)
 
-- Ring-style progress indicator without scale marks
+- Ring-style progress indicator without scale
 
   <!-- @[progress_style_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
 
@@ -55,7 +60,7 @@ Progress provides five types. You can set the progress indicator style through [
   // From left to right, ring progress indicator No. 2.
   Progress({ value: 40, total: 150, type: ProgressType.Ring }).width(100).height(100)
     .color(Color.Grey)    // The progress indicator foreground color is gray.
-    .style({ strokeWidth: 15})    // Set the strokeWidth to 15.0 vp.
+    .style({ strokeWidth: 15})    // Set strokeWidth of the progress indicator to 15 vp.
   ```
 
   ![progress_ring](figures/progress_ring.png)
@@ -70,10 +75,10 @@ Progress provides five types. You can set the progress indicator style through [
     .style({ scaleCount: 20, scaleWidth: 5 })    // Set the total scale count of the ring progress indicator with scale style to 20 and the scale width to 5 vp.
   Progress({ value: 20, total: 150, type: ProgressType.ScaleRing }).width(100).height(100)
     .backgroundColor(Color.Black)
-    .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 5 })    // Set the ring progress indicator with scale style to a width of 15, a total scale count of 20, and a scale width of 5 vp.
+    .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 5 })    // Set the width of the ring progress indicator with scale to 15 vp, total scale count to 20, and scale width to 5 vp.
   Progress({ value: 20, total: 150, type: ProgressType.ScaleRing }).width(100).height(100)
     .backgroundColor(Color.Black)
-    .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 3 })    // Set the ring progress indicator with scale style to a width of 15, a total scale count of 20, and a scale width of 3 vp.
+    .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 3 })    // Set the width of the ring progress indicator with scale to 15 vp, total scale count to 20, and scale width to 3 vp.
   ```
 
   ![progress_scalering](figures/progress_scalering.png)
@@ -92,13 +97,13 @@ Progress provides five types. You can set the progress indicator style through [
   ![progress_circle](figures/progress_circle.png)
 
 - Capsule style progress indicator
-
   > **NOTE**
   >
   > - The progress display at the rounded ends is consistent with the ProgressType.Eclipse style.
   > - The progress display in the middle section is a rectangular bar, similar to the ProgressType.Linear style.
   >
   > - When the component height is greater than the width, it automatically adapts to vertical display.
+
 
     <!-- @[progress_style_5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
 
@@ -107,6 +112,7 @@ Progress provides five types. You can set the progress indicator style through [
     Progress({ value: 20, total: 150, type: ProgressType.Capsule }).width(50).height(100).color(Color.Grey)
     Progress({ value: 50, total: 150, type: ProgressType.Capsule }).width(50).height(100).color(Color.Blue).backgroundColor(Color.Black)
     ```
+
 
   ![progress_capsule](figures/progress_capsule.png)
 
@@ -124,7 +130,7 @@ struct ProgressCase1 {
   build() {
     Column() {
       Column() {
-        Progress({value:0, total:100, type:ProgressType.Capsule}).width(200).height(50).value(this.progressValue)
+        Progress({value:this.progressValue, total:100, type:ProgressType.Capsule}).width(200).height(50)
         Row().width('100%').height(5)
         // Replace $r('app.string.progress_add') with the actual resource file. In this sample, the value of the resource file is "progress indicator+5".
         Button($r('app.string.progress_add'))

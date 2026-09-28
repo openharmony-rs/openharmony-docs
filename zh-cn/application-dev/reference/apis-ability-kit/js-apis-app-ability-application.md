@@ -38,7 +38,7 @@ import { application } from '@kit.AbilityKit';
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
 
-创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。使用Promise异步回调。
+创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)（新创建的上下文中的资源是独立的一份，不会随着入参上下文资源的变化而变化）。使用Promise异步回调。
 
 > **说明：**
 >
@@ -449,15 +449,15 @@ export default class MyAbilityStage extends AbilityStage{
 
 createModuleContextSync(context: Context, moduleName: string): Context
 
-创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。该接口为同步接口。
+创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)（新创建的上下文中的资源是独立的一份，不会随着入参上下文资源的变化而变化）。该接口为同步接口。
 
 > **说明：**
 >
 > 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContextSync接口创建多个Context实例，以免影响用户体验。
 
-**起始版本**： 26.1.0
+**起始版本**： 26.0.1
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

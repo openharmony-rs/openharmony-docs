@@ -926,7 +926,7 @@ OH_ArkUI_NativeModule_LineSpacingOptions* OH_ArkUI_NativeModule_LineSpacingOptio
 
 创建文本行间距选项对象。使用完毕后需要调用[OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](#oh_arkui_nativemodule_linespacingoptions_destroy)销毁对象。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **返回：**
 
@@ -944,7 +944,7 @@ void OH_ArkUI_NativeModule_LineSpacingOptions_Destroy(OH_ArkUI_NativeModule_Line
 
 销毁文本行间距选项对象。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -962,7 +962,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines(OH_
 
 设置文本行间距选项的onlyBetweenLines参数。当设置为true时，行间距仅在行之间应用，首行上方和尾行下方无额外的行间距。当设置为false时，首行上方和尾行下方也会存在行间距。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -987,7 +987,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines(con
 
 获取文本行间距选项的onlyBetweenLines参数。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

@@ -16,7 +16,7 @@
 >
 > 本文仅介绍当前模块的系统接口，其他公开接口参见[拖拽事件](ts-universal-events-drag-drop.md)。
 
-## DragEvent<sup>7+</sup>
+## DragEvent
 
 DragEvent用于表示拖拽事件信息，提供拖拽流程中的事件数据和拖拽动画配置能力，适用于在拖拽各阶段获取或设置拖拽行为。
 
@@ -135,8 +135,8 @@ interruptFollowHandMorphDropAnimation(): boolean
 // xxx.ets
 // 动画参数类
 class AnimationOption {
-  CubicCurveEnable: boolean = false;
-  SpringEnable: boolean = false;
+  cubicCurveEnable: boolean = false;
+  springEnable: boolean = false;
   dropAnimationCurve: number[] = [];
   dropPosition: number[] = [];
   dropSize: number[] = [];
@@ -198,8 +198,8 @@ struct FollowHandMorphDemo {
 
           // 构建动画参数
           let animationOption = new AnimationOption();
-          animationOption.CubicCurveEnable = false;
-          animationOption.SpringEnable = true;
+          animationOption.cubicCurveEnable = false;
+          animationOption.springEnable = true;
           animationOption.dropAnimationCurve = [0.416, 0.99, 0];
           animationOption.dropPosition = [830, 600];
           animationOption.dropSize = [100, 100];

@@ -146,7 +146,7 @@ getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
 
 ### 示例1（获取鼠标事件相关参数）
 
-该示例通过按钮设置了鼠标事件，通过鼠标点击按钮可以触发[onMouse](#onmouse)事件，获取鼠标事件相关参数。从API version 15开始，可以获取鼠标事件[MouseEvent](#mouseevent对象说明)的targetDisplayId、rawDeltaX、rawDeltaY、pressedButtons等参数。
+该示例通过按钮设置了鼠标事件，通过鼠标点击按钮可以触发[onMouse](#onmouse)事件，获取鼠标事件相关参数。从API version 15开始，可以获取鼠标事件[MouseEvent](#mouseevent对象说明)的rawDeltaX、rawDeltaY、pressedButtons等参数。
 
 鼠标滚轮的处理请参考[轴事件示例](ts-universal-events-axis.md#示例)。
 
@@ -223,11 +223,10 @@ struct MouseEventExample {
                 this.action = 'LEAVE_WINDOW';
                 break;
             }
-            // 拼接鼠标事件全量信息并展示
+            // 拼接鼠标事件相关信息并展示
             this.mouseText = 'onMouse:\nButton = ' + this.mouseBtn +
               '\nAction = ' + this.action + '\nXY=(' + event.x + ',' + event.y + ')' +
               '\nwindowXY=(' + event.windowX + ',' + event.windowY + ')' +
-              '\ntargetDisplayId = ' + event.targetDisplayId +
               '\nrawDeltaX = ' + event.rawDeltaX +
               '\nrawDeltaY = ' + event.rawDeltaY +
               '\nlength = ' + event.pressedButtons?.length;

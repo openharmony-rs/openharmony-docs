@@ -1,46 +1,48 @@
-# Implementing the Drag Functionality
+# Interacting with Web Pages Using the Drag-and-Drop Feature of the Web Component
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-09-21T02:09:25.631Z pushedAt=2026-09-21T12:00:18.602Z -->
 
-ArkWeb provides the functionality of dragging elements on web pages. Users can place an element by holding down the element and dragging it to another element. This functionality meets the HTML5 standard.
+The drag-and-drop feature of ArkWeb enables apps to drag and drop elements on web pages. You can press and hold a draggable element, drag it onto a droppable element, and then release it to complete the drop. The drag-and-drop feature of ArkWeb for web content complies with the H5 standard.
 
-## Dragging Web Page Content to Other Applications
+## Dragging Web Content to Other Apps
 
-The following table lists the data formats supported by ArkWeb. You set data in these formats based on the HTML5 standard to drag content to other applications.
+ArkWeb currently supports the following four data formats. After setting the drag data in these formats according to the H5 standard, you can drag the content to other apps.
 
-| Data Format     | Description    |
+| Data Format | Description |
 | ------------- | -------- |
-| text/plain    | Text    |
-| text/uri-list | Link    |
-| text/html     | HTML|
-| Files         | File    |
+| text/plain    | Text     |
+| text/uri-list | Link     |
+| text/html     | HTML format |
+| Files         | File     |
 
-## Listening for Drag Events
+## Drag Event Notifications
 
-The drag functionality of ArkWeb is different from that of ArkUI. ArkWeb is mainly used to drag web page content. Therefore, only some drag events can be listened for.
+ArkWeb drag differs from ArkUI component-level drag in that it mainly targets dragging of web content, and therefore supports only some drag event listening methods.
 
-| Method   | Description                                                 |
+| Listening Method    | Description                                                  |
 | ----------- | ----------------------------------------------------- |
-| [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)  | This method is not recommended. Calling it will affect the dragging behavior of **Web** components, resulting in unexpected dragging logic. For example, HTML dragging event listening cannot be triggered, preview images cannot be created, preview images are incorrect, or dragging data cannot be preset.|
-|  [onDragEnter](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter) | Called when an element is dragged to the web area.|
-| [onDragMove](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove)  | Called when an element is moved in the web area. |
-| [onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave) | Called when the dragged element leaves the web area.         |
-| [onDragEnd](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10) | Called when the dragging of an element ends.        |
+| [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)  | This method is not recommended, as it affects the drag behavior of the Web component and causes the drag logic to behave unexpectedly, for example, H5 drag event listeners cannot be triggered, the preview image cannot be created or is incorrect, and drag data cannot be preset.|
+|  [onDragEnter](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter) | The dragged element enters the Web region. |
+| [onDragMove](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove)  | The dragged element moves within the Web region.  |
+| [onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave) | The dragged element leaves the Web region.          |
+| [onDrop](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop15) | The dragged element is dropped into the Web region.        |
+| [onDragEnd](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10) | The drag of an element initiated by Web ends.         |
 
-## Implementing the Drag Logic on ArkTS
+## Implementing Drag-and-Drop Logic on the ArkTS Side
 
-In most cases, the drag functionality implemented in HTML5 can meet the requirements of an application. If necessary, refer to the following examples to read drag data on ArkTS.
-1. [Establishing a data channel between the application and the frontend Page](web-app-page-data-channel.md).
-2. In the **onDrop** method, implement simple logic, for example, temporarily storing some key data.
-3. To implement time-consuming tasks, add the application processing logic to the message receiving method on ArkTS.
+In most cases, the drag-and-drop functionality implemented on the H5 side meets your needs. If necessary, refer to the following example to implement operations such as reading drag data on the ArkTS side.
+1. [Establish a data channel between the app side and the frontend page](web-app-page-data-channel.md).
+2. In the onDrop method, implement simple logic, such as temporarily storing some key data.
+3. In the method that receives messages on the ArkTS side, add app processing logic, which can perform time-consuming tasks.
 
-The **onDrop** method on ArkTS is executed earlier than the event processing method (**droppable.addEventListener('drop')** in the HTML example) in HTML5. If page redirection is performed in the **onDrop** method, the **drop** method in HTML5 cannot be executed correctly, and the unexpected result is generated. Therefore, a bidirectional communication mechanism must be established to notify ArkTS to execute the corresponding service logic after the **drop** method in HTML5 is executed.
+Because the `onDrop` method on the ArkTS side is executed earlier than the drop event handler in H5 (the `droppable.addEventListener('drop')` in the H5 example), performing operations such as page navigation in the `onDrop` method will prevent the `drop` method in H5 from executing correctly and produce unexpected results. Therefore, you should establish a bidirectional communication mechanism so that, after the `drop` method in H5 finishes executing, it notifies the ArkTS side to execute the corresponding business logic, ensuring that the business logic runs as expected.
 
-<!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) -->
+<!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb'
@@ -59,17 +61,17 @@ struct DragDrop {
         src: $rawfile('drag.html'),
         controller: this.controller,
       }).onPageEnd((event) => {
-        //Register the message port.
+        // Register the communication port.
         this.ports = this.controller.createWebMessagePorts();
         this.ports[1].onMessageEvent((result: webview.WebMessage) => {
-          //Process the data received from HTML. You can record logs to confirm the message. The message format can be customized as long as it can be uniquely identified.
+          // Process the data received by ArkTS from HTML. You can first log the message to confirm it. The message format on both ends can be defined by yourself, as long as it can be uniquely identified.
           console.info('ETS receive Message: typeof (result) = ' + typeof (result) + ';' + result);
-          // Process the message after the message is received in result. You can perform time-consuming tasks.
+          // Add the processing logic after the message in result is received. Time-consuming tasks can be performed here.
         });
         console.info('ETS postMessage set h5port ');
-        //After the message port is registered, the front end sends a registration completion message to complete bidirectional port binding.
+        // After the communication port registration is complete, send a registration-complete message to the frontend to complete the bidirectional port binding.
         this.controller.postMessage('__init_port__', [this.ports[0]], '*');
-      })// Implement simple logic in onDrop, for example, temporarily storing some key data.
+      })// onDrop can perform simple logic, such as temporarily storing some key data.
         .onDrop((dragEvent: DragEvent) => {
           console.info('ETS onDrop!')
           let data: UnifiedData = dragEvent.getData();
@@ -80,7 +82,7 @@ struct DragDrop {
           if (!uriArr || uriArr.length <= 0) {
             return false;
           }
-          // Traverse records to obtain data for temporary storage or use other methods to temporarily store data.
+          // You can traverse records to obtain and temporarily store data, or store data in other ways.
           for (let i = 0; i < uriArr.length; ++i) {
             if (uriArr[i].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
               let plainText = uriArr[i] as unifiedDataChannel.PlainText;
@@ -97,14 +99,14 @@ struct DragDrop {
 }
 ```
 
-HTML example:
+H5 example:
 
 ```html
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>HTML5 Dragging Demo</title>
+    <title>H5 Drag and Drop Demo</title>
 </head>
 <style>
     body {
@@ -140,37 +142,37 @@ HTML example:
 </style>
 <body>
 
-<h2>HTML5 Dragging Demo</h2>
+<h2>H5 Drag and Drop Demo</h2>
 
 <div id="draggable" class="draggable" draggable="true">Draggable element</div>
 
-<div id="droppable" class="droppable">Please drag the element here</div>
+<div id="droppable" class="droppable">Drag the block here</div>
 
 <script>
     const draggable = document.getElementById('draggable');
     const droppable = document.getElementById('droppable');
 
-    // Listen for the drag start event.
+    // Drag start event.
     draggable.addEventListener('dragstart', function (e) {
       e.dataTransfer.setData('text/plain', this.id);
       this.style.opacity = '0.4';
     });
 
-    // Listen for the drag end event.
+    // Drag end event.
     draggable.addEventListener('dragend', function (e) {
       this.style.opacity = '1';
     });
 
-    // Listen for the event triggered when the element is dragged to the target area.
+    // Triggered when dragged into the target area.
     droppable.addEventListener('dragover', function (e) {
-      e.preventDefault(); // This method must be invoked. Otherwise, the drop event cannot be triggered.
+      e.preventDefault(); // Must be called; otherwise, the drop event cannot be triggered.
     });
 
-    // Listen for the drop event.
+    // Drop event.
     droppable.addEventListener('drop', function (e) {
       e.preventDefault();
       const data = e.dataTransfer.getData('text/plain');
-      // Transfer the element to ArkTS.
+      // Pass to ArkTS.
       PostMsgToArkTS(data);
       const draggableEl = document.getElementById(data);
       this.appendChild(draggableEl);
@@ -178,7 +180,7 @@ HTML example:
       this.textContent = "Dropped successfully!";
     });
 
-    // Set the scriptproxy port on JavaScript.
+    // Set the scriptproxy port on the JS side.
     var h5Port;
     window.addEventListener('message', function (event) {
     console.info("H5 receive settingPort message");
@@ -190,7 +192,7 @@ HTML example:
         }
     });
 
-    // Send data to ArkTS using scriptproxy.
+    // Implementation of sending data to the ArkTS side through scriptproxy.
     function PostMsgToArkTS(data) {
         console.info("H5 PostMsgToArkTS, h5Port " + h5Port);
         if (h5Port) {
@@ -207,12 +209,13 @@ HTML example:
 ![web-drag-drop](figures/web-dragdrop.gif)
 
 Log output:
+
 ![web-drag-log](figures/web-drag-log.png)
 
 ## FAQs
 
-### Why is the drag event set in HTML5 not triggered?
-Check whether the CSS resources are properly set. Some web pages set the CSS style only for devices with specific UAs. You can set a custom UA in the **Web** component to solve this problem. For example:
+### Why Are Drag Events Set in H5 Not Triggered
+Check whether the related CSS resources are configured correctly. Some web pages determine the User Agent (UA) and apply CSS styles only to specific device UAs. You can resolve this issue by setting a custom UA for the Web component, for example:
 
 <!-- @[SetUAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/SetUAPage.ets) -->
 
@@ -229,7 +232,7 @@ struct Index {
         src: 'example.com',
         controller: this.webController,
       }).onControllerAttached(() => {
-        // Set a custom UA.
+        // Specific UA.
         let customUA = 'android'
         this.webController.setCustomUserAgent(this.webController.getUserAgent() + customUA)
       })
@@ -238,24 +241,22 @@ struct Index {
 }
 ```
 
-### How do I disable the Web component drag functionality?
-By default, the **Web** component supports the drag functionality. If the drag functionality is not required, you can disable it by referring to the following example.
+### How to Disable the Drag Capability of the Web Component
+Without special configuration, the Web component supports drag and drop by default. If you do not need the drag capability, refer to the following example to disable it.
 
-The drag functionality can be disabled in any of the following ways:
+There are two main ways to disable drag and drop:
 
-1. On the web page side, use W3C, CSS, and JS for interception or disabling.
-2. On the application side, use the **runJavascriptExt** API of the **Web** component to inject JS for interception or disabling.
+1. On the web page side, intercept or disable it through W3C CSS and JS.
+2. On the app side, inject JS through the Web component's runJavaScriptExt API to intercept or disable it.
 
-HTML example 1:
-
-<!-- @[W3cForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/resources/rawfile/w3c-forbid.html) -->
+H5 example 1:
 
 ``` HTML
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Using the W3C Common Attributes or Methods</title>
+    <title>w3c generic attributes/methods to disable drag and drop</title>
 </head>
 <style>
     body {
@@ -277,27 +278,27 @@ HTML example 1:
 </style>
 <body>
 
-<h2>Use the W3C common attributes or methods to disable the drag functionality.</h2>
+<h2>w3c generic attributes/methods to disable drag and drop</h2>
 
-<!--1. Explicitly set the draggable attribute to false to disable the drag functionality of the element.-->
-<!--This setting takes effect only for the entire element node, such as img or div, and does not take effect for the selected text in the node.-->
-<div>Set the draggable attribute to disable the drag functionality.</div>
+<!--1. Disable drag and drop of an element by explicitly setting the draggable style to false.-->
+<!--This takes effect only for the drag and drop behavior of an entire element node such as img or div, not for the text selected within the node.-->
+<div>Disable drag and drop by setting draggable</div>
 <img class="normal" draggable="false" src="./any-pic.png"><br>
 
-<!--2. Reference a style class and set -webkit-user-drag to none to disable the drag functionality.-->
+<!--2. Disable drag and drop by referencing a style class in which -webkit-user-drag is set to none.-->
 <!--The effective scope is the same as that of method 1.-->
-<div>Set -webkit-user-drag to disable the drag functionality.</div>
+<div>-webkit-user-drag disables drag and drop</div>
 <img class="undraggable" src="./any-pic.png"><br>
 
-<!--3. Listen for the ondragstart event and set preventDefault to disable the drag functionality.-->
-<!--This setting takes effect for all content.-->
-<!--You can expand the listening range of the listener to disable drag in a larger area. For example, implementing listening on the window can disable drag of the entire Web component.-->
-<!--Because the setting takes effect subsequently, the drag operation is partially executed, impacting the menu function.-->
-<div>Set ondragstart to disable the drag functionality.</div>
+<!--3. Disable drag and drop by listening for the ondragstart event and calling preventDefault.-->
+<!--This applies to the drag behavior of any content.-->
+<!--You can expand the listener scope to disable drag and drop in a larger area. For example, listening on window disables drag and drop for the entire Web component.-->
+<!--Because the effective node is processed relatively late, part of the drag has actually already occurred, which affects the menu functionality.-->
+<div>ondragstart disables drag and drop</div>
 <div ondragstart="dragstartHandler(event)">
     <img class="normal" src="./any-pic.png">
     <p>
-        This text is used to verify the drag disabling effect of the ondragstart script on the selected text.
+        This text is used to verify the effect of the ondragstart script in disabling drag and drop of selected text.
     </p>
 </div>
 
@@ -316,14 +317,12 @@ HTML example 1:
 
 HTML example 2:
 
-<!-- @[RunJsForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/resources/rawfile/runJs-forbid.html) -->
-
 ``` HTML
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Using runJavascriptExt to Inject JS</title>
+    <title>runJavascriptExt injects JS to disable drag and drop</title>
 </head>
 <style>
     body {
@@ -338,12 +337,12 @@ HTML example 2:
 </style>
 <body>
 
-<h2>Use runJavascriptExt to inject JS for disabling the drag functionality.</h2>
+<h2>runJavascriptExt injects JS to disable drag and drop</h2>
 
 <div>
     <img class="normal" src="./any-pic.png">
     <p>
-        This text is used to verify the drag disabling effect of the JS injected by runJavascriptExt on the selected text.
+        This text is used to verify the effect of runJavascriptExt injecting JS to disable dragging of the selected text.
     </p>
 </div>
 
@@ -353,7 +352,7 @@ HTML example 2:
 
 ![runJs-forbid-drag](figures/runJs-forbid-drag.gif)
 
-ETS example:
+ArkTS example:
 
 <!-- @[ForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/ForbidDragPage.ets) -->
 
@@ -378,7 +377,7 @@ struct Index {
       Button('runJsForbidDrag')
         .onClick(() => {
           try {
-            // Use runJavaScriptExt to execute the script, which adds a dragstart event listener to disable the drag functionality.
+            // Use runJavaScriptExt to execute a script that adds a dragstart event listener to disable dragging.
             this.webViewController.runJavaScriptExt(
               'window.addEventListener(\'dragstart\', (ev) => {\n' +
                 'ev.preventDefault();\n' +

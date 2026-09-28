@@ -2,28 +2,29 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=85aa562299b7054dce3d0e6b2f6a7c9f2482e25f translatedAt=2026-09-16T11:04:26.280Z pushedAt=2026-09-20T09:01:52.266Z -->
 
 > **Note:**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 29800001 Failed to Obtain the System Service
+## 29800001 Wrong Thread Context
 
 **Error Message**
 
-Wrong thread context.The function can not be called from main thread.
+Wrong thread context. The function cannot be called from main thread.
 
 **Description**
 
-The API fails to be called from the thread.
+The API is called in the wrong thread.
 
 **Possible Causes**
 
-The API cannot be called from the main thread.
+The API service cannot be called from the main thread.
 
 **Solution**
 
@@ -109,7 +110,7 @@ Wrong timer id output param.
 
 **Description**
 
-The timer task ID is incorrect.
+Invalid timer ID value parameter.
 
 **Possible Causes**
 
@@ -119,4 +120,4 @@ The timer task ID is incorrect.
 **Solution**
 
 - Check the ID and ensure that it is a non-null integer pointer.
-- Retry the operation or reduce the number of HiCollie timer tasks in the process.
+- If the maximum limit is reached, reduce the calls to the hicollie detection mechanism elsewhere in the process and try again.
