@@ -12,7 +12,7 @@
 
 > **说明：**
 >
-> 本模块接口为系统接口。当前页面仅包含本模块的系统接口，其他公共接口参见[@ohos.app.cli.cliManager (CLI工具管理)](js-apis-app-cli-cliManager.md)。
+> 当前页面仅包含本模块的系统接口，其他公共接口参见[@ohos.app.cli.cliManager (CLI工具管理)](js-apis-app-cli-cliManager.md)。
 
 ## 导入模块
 
