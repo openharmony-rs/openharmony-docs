@@ -159,39 +159,6 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    }
    ```
    <!--RP3End-->
-   FLAC编码调用示例：
-
-   ```cpp
-   OH_AVErrCode ret;
-   // 配置音频采样率（必须）。
-   constexpr uint32_t DEFAULT_SAMPLERATE = 44100;
-   // 配置音频码率（必须）。
-   constexpr uint64_t DEFAULT_BITRATE = 261000;
-   // 配置音频声道数（必须）。
-   constexpr uint32_t DEFAULT_CHANNEL_COUNT = 2;
-   // 配置音频声道布局（必须）。
-   // 值为CH_LAYOUT_MONO、CH_LAYOUT_STEREO、CH_LAYOUT_SURROUND、CH_LAYOUT_QUAD、CH_LAYOUT_5POINT0、CH_LAYOUT_5POINT1、CH_LAYOUT_6POINT1或CH_LAYOUT_7POINT1其中一项。
-   constexpr OH_AudioChannelLayout CHANNEL_LAYOUT = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
-   // 配置音频位深（必须） FLAC只有SAMPLE_S16LE和SAMPLE_S32LE。
-   constexpr OH_BitsPerSample SAMPLE_FORMAT = OH_BitsPerSample::SAMPLE_S32LE;
-   // 配置音频compliance level（默认值0，取值范围[-2,2]）。
-   constexpr int32_t COMPLIANCE_LEVEL = 0;
-
-   OH_AVFormat *format = OH_AVFormat_Create();
-   // 写入format。
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNEL_COUNT);
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
-   OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, DEFAULT_BITRATE);
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_FORMAT); 
-   OH_AVFormat_SetLongValue(format, OH_MD_KEY_CHANNEL_LAYOUT, CHANNEL_LAYOUT);
-   OH_AVFormat_SetLongValue(format, OH_MD_KEY_COMPLIANCE_LEVEL, COMPLIANCE_LEVEL); 
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, 1); // 同步模式配置。
-   // 配置编码器。
-   ret = OH_AudioCodec_Configure(audioEnc_, format);
-   if (ret != AV_ERR_OK) {
-       // 异常处理。
-   }
-   ```
 
    除上述配置的参数外，还可以在Configure阶段配置以下可选参数：
 
