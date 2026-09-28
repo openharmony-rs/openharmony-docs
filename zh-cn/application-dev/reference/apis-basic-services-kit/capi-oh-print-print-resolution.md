@@ -12,7 +12,7 @@ typedef struct {...} Print_Resolution
 
 ## 概述
 
-Print_Resolution用于表示以 dpi 为单位的打印分辨率，可控制打印输出的精细度与质量。
+Print_Resolution用于表示以dpi为单位的打印分辨率，可控制打印输出的精细度与质量。
 
 **起始版本：** 12
 
@@ -26,8 +26,8 @@ Print_Resolution用于表示以 dpi 为单位的打印分辨率，可控制打�
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t [horizontalDpi](#horizontaldpi) | 水平分辨率，单位：dpi。 |
-| uint32_t [verticalDpi](#verticaldpi) | 垂直分辨率，单位：dpi。 |
+| uint32_t [horizontalDpi](#horizontaldpi) | 水平分辨率，单位为dpi。 |
+| uint32_t [verticalDpi](#verticaldpi) | 垂直分辨率，单位为dpi。 |
 
 
 ## 结构体成员变量说明

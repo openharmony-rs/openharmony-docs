@@ -7,7 +7,7 @@
 <!--Tester:@baozewei-->
 <!--Adviser: @fang-jinxu-->
 
-该模块为扫描框架的 js-api 接口文档，提供发现、添加、删除扫描仪以及获取已添加扫描仪列表的能力，同时支持监听扫描仪设备的添加和删除事件，适用于需要在应用内集成扫描仪设备管理并实时感知设备状态变化的场景。扫描框架通过发现模式发现扫描仪设备，添加设备后可通过事件监听设备的添加和删除状态，完成扫描任务后可删除设备，帮助开发者便捷地完成扫描仪的接入与生命周期管理。
+该模块为扫描框架的js-api接口文档，提供发现、添加、删除扫描仪以及获取已添加扫描仪列表的能力，同时支持监听扫描仪设备的添加和删除事件，适用于需要在应用内集成扫描仪设备管理并实时感知设备状态变化的场景。扫描框架通过发现模式发现扫描仪设备，添加设备后可通过事件监听设备的添加和删除状态，完成扫描任务后可删除设备，帮助开发者便捷地完成扫描仪的接入与生命周期管理。
 
 > **说明：**  
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -22,7 +22,7 @@ import { scan } from '@kit.BasicServicesKit';
 
 addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;void&gt;
 
-添加扫描仪（系统接口）。根据指定的发现模式发现并添加扫描仪设备，添加成功后将触发scanDeviceAdd事件通知。使用Promise异步回调。
+添加扫描仪（系统接口）。根据指定的发现模式发现并添加扫描仪设备，添加成功后将触发scanDeviceAdd事件通知，可通过on('scanDeviceAdd')监听设备添加事件。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -34,8 +34,8 @@ addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;vo
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| uniqueId | string | 是 | 扫描仪的唯一ID，可通过getAddedScanners()获取或从scan.on('scanDeviceAdd')事件回调中获得。 |
-| discoveryMode | [ScannerDiscoveryMode](./js-apis-scan.md#scannerdiscoverymode) | 是 | 扫描仪的发现模式，不同模式适用于不同的扫描仪发现场景。 |
+| uniqueId | string | 是 | 扫描仪的唯一ID，由调用方指定，用于标识待添加的扫描仪设备。 |
+| discoveryMode | [ScannerDiscoveryMode](./js-apis-scan.md#scannerdiscoverymode) | 是 | 扫描仪的发现模式。 |
 
 **返回值：**
 
