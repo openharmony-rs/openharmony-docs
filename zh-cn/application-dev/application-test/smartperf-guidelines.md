@@ -995,7 +995,7 @@ SmartPerf Device是一款基于系统开发的性能功耗测试工具，操作�
     | memFree                 | 整机空闲内存。         |单位：KB|
     | memTotal                | 整机总内存。           |单位：KB|
     | pss                     | 进程实际使用内存。      |单位：KB|
-    | childpss                | 子进程实际使用内存。      |单位：KB|
+    | childPss                | 子进程实际使用内存。      |单位：KB|
     | sharedClean             | 进程共享的未改写页面。      |单位：KB|
     | childSharedClean        | 子进程共享的未改写页面。      |单位：KB|
     | sharedDirty             | 进程共享的已改写页面。      |单位：KB|
