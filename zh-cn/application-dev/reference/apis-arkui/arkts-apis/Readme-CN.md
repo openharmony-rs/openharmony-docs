@@ -145,7 +145,6 @@
   - [ComposeTitleBarV2MenuItem](arkts-arkui-arkui-advanced-composetitlebarv2-composetitlebarv2menuitem-c.md)
   - [ComposeTitleBarV2](arkts-arkui-arkui-advanced-composetitlebarv2-composetitlebarv2-s.md)
   - [ComposeTitleBarV2MenuItemParams](arkts-arkui-arkui-advanced-composetitlebarv2-composetitlebarv2menuitemparams-i.md)
-  - [OnActionCallback](arkts-arkui-onactioncallback-t.md)
 - [@ohos.arkui.advanced.Counter](arkts-arkui-arkui-advanced-counter.md)
   - [CommonOptions](arkts-arkui-arkui-advanced-counter-commonoptions-c.md)
   - [CounterOptions](arkts-arkui-arkui-advanced-counter-counteroptions-c.md)
@@ -221,7 +220,6 @@
   - [EditableTitleV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlev2options-i.md)
   - [EditableTitleBarItemV2](arkts-arkui-editabletitlebaritemv2-t.md)
   - [EditableTitleBarItemV2Options](arkts-arkui-editabletitlebaritemv2options-t.md)
-  - [OnActionCallback](arkts-arkui-onactioncallback-t.md)
   - [EditableLeftIconTypeV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticontypev2-e.md)
 - [@ohos.arkui.advanced.ExceptionPrompt](arkts-arkui-arkui-advanced-exceptionprompt.md)
   - [ExceptionPrompt](arkts-arkui-arkui-advanced-exceptionprompt-exceptionprompt-s.md)
@@ -1335,7 +1333,6 @@
   - [AlertDialogParamWithButtons](arkts-arkui-alertdialogparamwithbuttons-i.md)
   - [AlertDialogParamWithConfirm](arkts-arkui-alertdialogparamwithconfirm-i.md)
   - [AlertDialogParamWithOptions](arkts-arkui-alertdialogparamwithoptions-i.md)
-  - [DismissDialogAction](arkts-arkui-dismissdialogaction-i.md)
   - [TextStyle](arkts-arkui-textstyle-i.md)
   - [LevelOrder](arkts-arkui-levelorder-t.md)
   - [DialogAlignment](arkts-arkui-dialogalignment-e.md)
@@ -1374,7 +1371,6 @@
   - [CustomDialogControllerOptions](arkts-arkui-customdialogcontrolleroptions-i.md)
   <!--Del-->
   - [CustomDialogControllerOptions(系统接口)](arkts-arkui-customdialogcontrolleroptions-i-sys.md)<!--DelEnd-->
-  - [DismissDialogAction](arkts-arkui-dismissdialogaction-i.md)
   - [PromptActionCommonState](arkts-arkui-promptactioncommonstate-t.md)
 - [enums(枚举值)](arkts-arkui-enums.md)
   - [Nullable](arkts-arkui-nullable-t.md)

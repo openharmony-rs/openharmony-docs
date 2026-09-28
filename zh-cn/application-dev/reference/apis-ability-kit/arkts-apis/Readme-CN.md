@@ -1567,7 +1567,6 @@
 - app<!--arkts-abilitykit-app-->
   - [appVersionInfo(AppVersionInfo)](arkts-ability-appversioninfo.md)
     - [AppVersionInfo](arkts-ability-appversioninfo-appversioninfo-depr-i.md)
-  - [context(FA模型的上下文基类)](arkts-ability-context.md)
     - [Context](arkts-ability-context-context-depr-i.md)
     - [PermissionOptions](arkts-ability-context-permissionoptions-depr-i.md)
     - [PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md)
@@ -1736,7 +1735,6 @@
     - [FunctionInfo(系统接口)](arkts-ability-functioninfo-i-sys.md)<!--DelEnd-->
   - [InteropAbilityMonitor](arkts-ability-interopabilitymonitor.md)
     - [InteropAbilityMonitor](arkts-ability-interopabilitymonitor-i.md)
-    - [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
   - [KioskStatus(Kiosk状态信息)](arkts-ability-kioskstatus.md)
     - [KioskStatus](arkts-ability-kioskstatus-i.md)
   - [LoopObserver](arkts-ability-loopobserver.md)
@@ -1841,11 +1839,8 @@
     <!--Del-->
     - [ViewData(系统接口)](arkts-ability-viewdata-i-sys.md)<!--DelEnd-->
 - bundle<!--arkts-abilitykit-bundle-->
-  - [abilityInfo](arkts-ability-abilityinfo.md)
     - [AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)
-  - [applicationInfo](arkts-ability-applicationinfo.md)
     - [ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)
-  - [bundleInfo](arkts-ability-bundleinfo.md)
     - [BundleInfo](arkts-ability-bundleinfo-bundleinfo-depr-i.md)
     - [ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-depr-i.md)
     - [UsedScene](arkts-ability-bundleinfo-usedscene-depr-i.md)
@@ -1863,25 +1858,16 @@
     - [BundleStatusCallback(系统接口)](arkts-ability-bundlestatuscallback-bundlestatuscallback-depr-i-sys.md)<!--DelEnd-->
   - [customizeData](arkts-ability-customizedata.md)
     - [CustomizeData](arkts-ability-customizedata-customizedata-depr-i.md)
-  - [elementName](arkts-ability-elementname.md)
     - [ElementName](arkts-ability-elementname-elementname-depr-i.md)
-  - [hapModuleInfo](arkts-ability-hapmoduleinfo.md)
     - [HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)
-  <!--Del-->
-  - [launcherAbilityInfo](arkts-ability-launcherabilityinfo.md)<!--DelEnd-->
     <!--Del-->
     - [LauncherAbilityInfo(系统接口)](arkts-ability-launcherabilityinfo-launcherabilityinfo-depr-i-sys.md)<!--DelEnd-->
   - [moduleInfo](arkts-ability-moduleinfo.md)
     - [ModuleInfo](arkts-ability-moduleinfo-moduleinfo-depr-i.md)
-  <!--Del-->
-  - [PermissionDef](arkts-ability-permissiondef.md)<!--DelEnd-->
     <!--Del-->
     - [PermissionDef(系统接口)](arkts-ability-permissiondef-depr-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [remoteAbilityInfo](arkts-ability-remoteabilityinfo.md)<!--DelEnd-->
     <!--Del-->
     - [RemoteAbilityInfo(系统接口)](arkts-ability-remoteabilityinfo-remoteabilityinfo-depr-i-sys.md)<!--DelEnd-->
-  - [shortcutInfo](arkts-ability-shortcutinfo.md)
     - [ShortcutInfo](arkts-ability-shortcutinfo-shortcutinfo-depr-i.md)
     <!--Del-->
     - [ShortcutWant(系统接口)](arkts-ability-shortcutinfo-shortcutwant-depr-i-sys.md)<!--DelEnd-->
