@@ -65,7 +65,7 @@ import { cloudExtension } from '@kit.ArkData';
 
 ## CloudAssets
 
-type CloudAssets = Array\<CloudAsset>
+type CloudAssets = Array&lt;CloudAsset&gt;
 
 表示[CloudAsset](#cloudasset)类型的数组。
 
