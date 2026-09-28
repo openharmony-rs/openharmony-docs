@@ -169,7 +169,7 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
 光照参数 light定义照射景深场景的光照，渲染时依据光照方向与场景几何计算各像素明暗、再与背景颜色合成，为场景补充明暗与色彩、增强立体真实感。其中2D图片背景本身无几何面，渲染时依据深度图为每个像素推算表面法线（深度梯度方向即表面朝向），再按光照方向计算该像素明暗（即浮雕式着色，依据法线方向产生明暗对比以模拟立体浮雕效果）；3D模型则使用模型自身法线参与计算。主要包括以下参数：
 
-- **[direction](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照方向。表示光的传播方向（从光源指向被照物）。示例 { x: 0, y: 0, z: -1 } 表示光朝-Z方向照射；被照亮的面是其法线朝+Z（迎着光源）的面，法线与光线方向相背的面背光。
+- **[direction](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照方向。表示光的传播方向（从光源指向被照物）。示例 { x: 0, y: 0, z: -1 } 表示光朝-Z方向照射；被照亮的面是其法线朝+Z（迎着光源）的面，法线朝-Z（与光线传播方向同向、背向光源）的面背光。
 
 - **[color](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照颜色。影响场景整体的色调。
 
