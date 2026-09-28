@@ -1435,7 +1435,7 @@ print.updateExtensionInfo(info).then(() => {
 
 ## print.queryAllPrintJobs<sup>(deprecated)</sup>
 
-> 从 API version 10开始支持，从 API version 11开始废弃。建议使用[queryPrintJobList](#printqueryprintjoblist11)替代。
+> 从API version 10开始支持，从API version 11开始废弃。建议使用[queryPrintJobList](#printqueryprintjoblist11)替代。
 
 queryAllPrintJobs(callback: AsyncCallback&lt;void&gt;): void
 
@@ -1479,7 +1479,7 @@ print.queryAllPrintJobs((error: BusinessError) => {
 
 ## print.queryAllPrintJobs<sup>(deprecated)</sup>
 
-> 从 API version 10开始支持，从 API version 11开始废弃。建议使用[queryPrintJobList](#printqueryprintjoblist11-1)替代。
+> 从API version 10开始支持，从API version 11开始废弃。建议使用[queryPrintJobList](#printqueryprintjoblist11-1)替代。
 
 queryAllPrintJobs(): Promise&lt;void&gt;
 
@@ -2228,7 +2228,7 @@ queryPrinterCapabilityByUri(printerUri: string, printerId: string): Promise&lt;[
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// printerUri 可通过 discoverUsbPrinters 接口返回的 PrinterInformation 获取
+// printerUri可通过discoverUsbPrinters接口返回的PrinterInformation获取
 let printerUri : string = 'testPrinterUri';
 let printerId : string = 'testPrinterId';
 print.queryPrinterCapabilityByUri(printerUri, printerId).then((capabilities: print.PrinterCapabilities) => {
@@ -2282,7 +2282,7 @@ addPrinterToCups(printerUri: string, printerName: string, printerMake: string): 
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// printerUri 可通过 discoverUsbPrinters 接口返回的 PrinterInformation 获取
+// printerUri可通过discoverUsbPrinters接口返回的PrinterInformation获取
 let printerUri : string = 'testPrinterUri';
 let printerName : string = 'testPrinterName';
 let printerMake : string = 'testPrinterMake';
