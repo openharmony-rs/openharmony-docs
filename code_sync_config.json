@@ -9038,7 +9038,7 @@
 						"start_line":249
 					},
 					{
-						"end_line":189,
+						"end_line":177,
 						"name":"serializeAndDeserialize_styledString",
 						"start_line":141
 					}
