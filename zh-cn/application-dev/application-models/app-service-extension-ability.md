@@ -601,32 +601,39 @@ class Stub extends rpc.RemoteObject {
     code: number,
     data: rpc.MessageSequence,
     reply: rpc.MessageSequence,
-    options: rpc.MessageOption): boolean | Promise<boolean> {
-    this.verifyClientIdentity().then((isValid: boolean) => {
-      if (isValid) {
-        hilog.info(DOMAIN_NUMBER, TAG, 'Client authentication PASSED');
-      } else {
+    options: rpc.MessageOption): boolean {
+    try {
+      let isValid: boolean = this.verifyClientIdentity();
+      if (!isValid) {
         hilog.error(DOMAIN_NUMBER, TAG, 'Client authentication FAILED');
+        // 返回false后，客户端sendMessageRequest会调用失败
+        return false;
       }
-    }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN_NUMBER, TAG, `Authentication error: ${err.code}, ${err.message}`);
-    });
-    return true;
+      hilog.info(DOMAIN_NUMBER, TAG, 'Client authentication PASSED');
+      // 校验通过后处理业务逻辑
+      // ...
+      return true;
+    } catch (err) {
+      const error: BusinessError = err as BusinessError;
+      hilog.error(DOMAIN_NUMBER, TAG, `Authentication error: ${error.code}, ${error.message}`);
+      // 校验异常时视为校验失败
+      return false;
+    }
   }
 
-  private async verifyClientIdentity(): Promise<boolean> {
+  private verifyClientIdentity(): boolean {
     try {
       const callerUid: number = rpc.IPCSkeleton.getCallingUid();
       hilog.info(DOMAIN_NUMBER, TAG, `Caller UID: ${callerUid}`);
 
-      const userId: number = await this.getUserIdByUid(callerUid);
+      const userId: number = this.getUserIdByUid(callerUid);
       hilog.info(DOMAIN_NUMBER, TAG, `User ID: ${userId}`);
 
-      const bundleName: string = await bundleManager.getBundleNameByUid(callerUid);
+      const bundleName: string = bundleManager.getBundleNameByUidSync(callerUid);
       hilog.info(DOMAIN_NUMBER, TAG, `Bundle Name: ${bundleName}`);
 
       const bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-      const bundleInfo: bundleManager.BundleInfo = await bundleManager.getBundleInfo(bundleName, bundleFlags, userId);
+      const bundleInfo: bundleManager.BundleInfo = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
 
       if (bundleInfo.signatureInfo && bundleInfo.signatureInfo.appIdentifier) {
         const appIdentifier: string = bundleInfo.signatureInfo.appIdentifier;
@@ -644,10 +651,10 @@ class Stub extends rpc.RemoteObject {
     }
   }
 
-  private async getUserIdByUid(uid: number): Promise<number> {
+  private getUserIdByUid(uid: number): number {
     try {
       const accountManager = osAccount.getAccountManager();
-      const userId: number = await accountManager.getOsAccountLocalIdForUid(uid);
+      const userId: number = accountManager.getOsAccountLocalIdForUidSync(uid);
       return userId;
     } catch (err) {
       if (err instanceof Error) {
