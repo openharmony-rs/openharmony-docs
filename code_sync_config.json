@@ -27913,7 +27913,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilitythree/MyAppServiceExtAbility.ets",
 				"functions":[
 					{
-						"end_line":107,
+						"end_line":106,
 						"name":"ability_app_service_five",
 						"start_line":16
 					}
