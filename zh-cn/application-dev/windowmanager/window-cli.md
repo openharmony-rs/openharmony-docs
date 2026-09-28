@@ -1,4 +1,4 @@
-# ohos-window CLI
+# ohos-window CLI命令工具
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @JUGaaab-->
