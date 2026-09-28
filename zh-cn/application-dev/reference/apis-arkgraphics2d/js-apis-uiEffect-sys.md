@@ -1654,7 +1654,7 @@ struct Index {
 
 glassMarbleEffect(material: GlassMarbleMaterialParam, marbleShell: GlassMarbleSphereParam | Mask, content?: GlassMarbleContentParam): VisualEffect
 
-为组件添加玻璃弹珠效果。玻璃弹珠效果将玻璃弹珠与材质参数以及可选的内容层进行合成，产生具有折射、色散、光晕、阴影和发光的真实玻璃质感视觉效果。
+为组件添加玻璃弹珠效果。玻璃弹珠效果是将玻璃弹珠与材质参数以及可选的内容层进行合成，产生具有折射、色散、光晕、阴影和发光的真实玻璃质感视觉效果。
 
 > **说明：**
 >
@@ -1672,9 +1672,9 @@ glassMarbleEffect(material: GlassMarbleMaterialParam, marbleShell: GlassMarbleSp
 
 | 参数名      | 类型                                                        | 必填 | 说明                                                                                                  |
 | ----------- | ----------------------------------------------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| material    | [GlassMarbleMaterialParam](#glassmarblematerialparam)       | 是   | 材质参数；控制背景色、透明度、反射贴图、阴影、焦散和形状缩放。                                          |
-| marbleShell | [GlassMarbleSphereParam](#glassmarblesphereparam) \| [Mask](#mask20) | 是   | 必选的形状参数；可以是球体几何参数（圆心和半径），也可以是预置的资源图遮罩。                              |
-| content     | [GlassMarbleContentParam](#glassmarblecontentparam)         | 否   | 可选的内容参数；包括内容遮罩、混合内容的着色颜色、缩放、饱和度和色散。不设置时，不混合附加内容。            |
+| material    | [GlassMarbleMaterialParam](#glassmarblematerialparam)       | 是   | 材质参数，控制背景色、透明度、反射贴图、阴影、焦散和形状缩放。                                          |
+| marbleShell | [GlassMarbleSphereParam](#glassmarblesphereparam) \| [Mask](#mask20) | 是   | 必选的形状参数，可以是球体几何参数（圆心和半径），也可以是预置的资源图遮罩。                              |
+| content     | [GlassMarbleContentParam](#glassmarblecontentparam)         | 否   | 可选的内容参数，包括内容遮罩、混合内容的着色颜色、缩放、饱和度和色散。不设置时，不混合附加内容。            |
 
 **返回值：**
 
@@ -2609,7 +2609,7 @@ struct Index {
 
 static createAtlasFrameMask(atlasInfo: drawing.AtlasImage): Mask
 
-创建用于精灵图集序列帧动画的图集帧遮罩。该遮罩携带用于驱动图集序列帧动画的图集帧参数。
+创建用于精灵图集（[Sprite Sheet](../../graphics/graphic-term.md#sprite-sheet精灵图集)）序列帧动画的图集帧遮罩。该遮罩携带用于驱动图集序列帧动画的图集帧参数。
 
 **起始版本：** 26.0.1
 
@@ -2623,7 +2623,7 @@ static createAtlasFrameMask(atlasInfo: drawing.AtlasImage): Mask
 
 | 参数名     | 类型                                                        | 必填 | 说明                       |
 | ---------- | ----------------------------------------------------------- | ---- | -------------------------- |
-| atlasInfo | [drawing.AtlasImage](arkts-apis-graphics-drawing-i.md#atlasimage) | 是   | 图集帧参数。 |
+| atlasInfo | [drawing.AtlasImage](js-apis-graphics-drawing-sys.md#atlasimage) | 是   | 图集帧参数。包含图集图片、行列数、单帧宽高、帧间距、帧索引和总帧数等信息，用于驱动精灵图序列帧动画。 |
 
 **返回值：**
 
@@ -2635,63 +2635,87 @@ static createAtlasFrameMask(atlasInfo: drawing.AtlasImage): Mask
 
 ```ts
 import { image } from '@kit.ImageKit';
-import { uiEffect } from '@kit.ArkGraphics2D';
-import { common } from '@kit.AbilityKit';
+import { uiEffect, drawing } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
-struct GlassMarbleEffectExample {
-  @State reflectionMap: image.PixelMap | null = null;
-  @State contentMask: image.PixelMap | null = null;
+struct AtlasFrameMaskDemo {
+  @State contentFrameState: drawing.AtlasImage | null = null;
 
-  aboutToAppear(): void {
-    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    context.resourceManager.getMediaContent($r('app.media.reflection').id).then((val: Uint8Array) => {
-      let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength);
-      let imageSource: image.ImageSource = image.createImageSource(buffer);
-      imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
-        this.reflectionMap = pixelMap;
-      });
-    });
-    context.resourceManager.getMediaContent($r('app.media.content_mask').id).then((val: Uint8Array) => {
-      let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength);
-      let imageSource: image.ImageSource = image.createImageSource(buffer);
-      imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
-        this.contentMask = pixelMap;
-      });
+  private contentAtlasMap: image.PixelMap | null = null;
+  private reflectionMap: image.PixelMap | null = null;
+
+  private async loadPixelMapFromRawfile(fileName: string): Promise<image.PixelMap | null> {
+    try {
+      const ctx = getContext(this);
+      const buf: Uint8Array = await ctx.resourceManager.getRawFileContent(fileName);
+      const src = image.createImageSource(buf.buffer);
+      const pm = await src.createPixelMap();
+      src.release();
+      return pm;
+    } catch (e) {
+      console.error(`AtlasFrameMaskDemo load failed: ${e}`);
+      return null;
+    }
+  }
+
+  private makeContentFrameParam(frame: number): drawing.AtlasImage {
+    return {
+      mode: drawing.AtlasInterpolationMode.NONE, rows: 17, cols: 18,
+      frameWidth: 80, frameHeight: 80, padding: 0,
+      frameIndex: frame, totalFrame: 300, atlasImage: this.contentAtlasMap!
+    };
+  }
+
+  private getEffect(): uiEffect.VisualEffect | undefined {
+    if (this.contentFrameState === null) return undefined;
+    const contentMask = uiEffect.Mask.createAtlasFrameMask(this.contentFrameState);
+    const material: uiEffect.GlassMarbleMaterialParam = {
+      averageBgColor: { red: 0.675, green: 0.718, blue: 0.808, alpha: 1.0 },
+      opacity: 1.0, shapeScale: 1.0, shadowOffset: 0.5,
+      shadowRadius: 1.0, shadowEdgeSoftness: 0.0, shadowOpacity: 0.15,
+      causticOffset: 0.5, causticRadius: 0.5, causticEdgeSoftness: 0.0, causticOpacity: 0.43,
+      reflectionMap: this.reflectionMap!
+    };
+    const sphereParam: uiEffect.GlassMarbleSphereParam = {
+      center: [0.5, 0.5],
+      radius: 0.5,
+    };
+    const contentParam: uiEffect.GlassMarbleContentParam = {
+      contentMask: contentMask,
+      contentTintColor: { red: 1.0, green: 0.75, blue: 0.5, alpha: 0.25 },
+      contentScale: 0.5, contentSaturation: 0.81, contentDispersion: 0.0
+    };
+    const effect = uiEffect.createEffect();
+    effect.glassMarbleEffect(material, sphereParam, contentParam);
+    return effect;
+  }
+
+  async aboutToAppear(): Promise<void> {
+    this.contentAtlasMap = await this.loadPixelMapFromRawfile('content_atlas.webp');
+    this.reflectionMap = await this.loadPixelMapFromRawfile('reflection.webp');
+    this.contentFrameState = this.makeContentFrameParam(0);
+
+    // 单次播放：0 → 299
+    animateTo({ duration: 4000, curve: Curve.Linear }, () => {
+      this.contentFrameState = this.makeContentFrameParam(299);
     });
   }
 
-  build() {
+  build(): void {
     Column() {
-      Image($r('app.media.bg'))
-        .width('100%')
-        .height('100%')
-        // 为组件添加玻璃弹珠效果。
-        .visualEffect(uiEffect.createEffect().glassMarbleEffect(
-          {
-            averageBgColor: { red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0 },
-            opacity: 0.8,
-            shadowOffset: 0.1,
-            shadowRadius: 0.5,
-            shadowEdgeSoftness: 0.5,
-            shadowOpacity: 0.5,
-            causticOffset: 0.0,
-            causticRadius: 0.5,
-            causticEdgeSoftness: 0.5,
-            causticOpacity: 0.5,
-            shapeScale: 0.9,
-            reflectionMap: this.reflectionMap!
-          },
-          { center: [0.5, 0.5], radius: 0.5 },
-          {
-            contentMask: uiEffect.Mask.createPixelMapMask(this.contentMask!),
-            contentTintColor: { red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5 },
-            contentScale: 0.8,
-            contentSaturation: 0.8,
-            contentDispersion: 0.2
-          }
-        ))
+      Stack() {
+        Column()
+          .width(300)
+          .height(300)
+          .backgroundColor('#ACB7CE')
+        Column()
+          .width(300)
+          .height(300)
+          .visualEffect(this.getEffect())
+      }
+      .width('100%')
+      .aspectRatio(1.0)
     }
     .width('100%')
     .height('100%')
@@ -2836,7 +2860,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 ## GlassMarbleMaterialParam
 
-玻璃弹珠的材质参数。控制材质属性（背景色、透明度、反射贴图、阴影、焦散）以及形状缩放。
+玻璃弹珠的材质参数。控制材质属性（背景色、透明度、阴影、焦散等）以及形状缩放。
 
 **起始版本：** 26.0.1
 
@@ -2848,22 +2872,22 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 | 名称                | 类型                                      | 只读 | 可选 | 说明                                                                                          |
 | ------------------- | ----------------------------------------- | ---- | ---- | --------------------------------------------------------------------------------------------- |
-| averageBgColor      | [Color](#color20)                         | 否   | 否   | 平均背景色，不使用alpha通道。                                                                  |
-| opacity             | number                                    | 否   | 否   | 玻璃效果的整体透明度。取值范围为[0, 1]；0表示完全透明，1表示完全不透明。超出范围的值将在内部被截断。 |
-| shadowOffset        | number                                    | 否   | 否   | 阴影的垂直偏移量，按形状半径归一化。取值范围为[-1, 1]；超出范围的值将在内部被截断。             |
-| shadowRadius        | number                                    | 否   | 否   | 阴影的半径，按形状半径归一化。取值范围为[0, 1]；超出范围的值将在内部被截断。                   |
-| shadowEdgeSoftness  | number                                    | 否   | 否   | 阴影的边缘柔和度。取值范围为[0, 1]；0产生硬边缘，1产生完全柔和的边缘。超出范围的值将在内部被截断。 |
-| shadowOpacity       | number                                    | 否   | 否   | 阴影的整体透明度。取值范围为[0, 1]；超出范围的值将在内部被截断。                               |
-| causticOffset       | number                                    | 否   | 否   | 焦散（聚焦光线）的垂直偏移量，按形状半径归一化。取值范围为[-1, 1]；超出范围的值将在内部被截断。 |
-| causticRadius       | number                                    | 否   | 否   | 焦散（聚焦光线）的半径，按形状半径归一化。取值范围为[0, 1]；超出范围的值将在内部被截断。       |
-| causticEdgeSoftness | number                                    | 否   | 否   | 焦散（聚焦光线）的边缘柔和度。取值范围为[0, 1]；0产生硬边缘，1产生完全柔和的边缘。超出范围的值将在内部被截断。 |
-| causticOpacity      | number                                    | 否   | 否   | 焦散（聚焦光线）的整体透明度。取值范围为[0, 1]；超出范围的值将在内部被截断。                   |
-| shapeScale          | number                                    | 否   | 否   | 应用于玻璃形状的缩放系数。取值范围为[0, 1]；超出范围的值将在内部被截断。                       |
-| reflectionMap       | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 否   | 用于玻璃表面环境反射的反射贴图。通过image模块创建为PixelMap实例。                              |
+| averageBgColor      | [Color](#color20)                         | 否   | 否   | 玻璃弹珠背景代表色，用于材质着色计算。不使用alpha通道。                                                                  |
+| opacity             | number                                    | 否   | 否   | 玻璃弹珠效果的整体透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明，超出范围的值将在内部被截断。 |
+| shadowOffset        | number                                    | 否   | 否   | 阴影的垂直偏移量，按形状半径归一化。取值范围为[-1, 1]，超出范围的值将在内部被截断。             |
+| shadowRadius        | number                                    | 否   | 否   | 阴影的半径，按形状半径归一化。取值范围为[0, 1]，超出范围的值将在内部被截断。                   |
+| shadowEdgeSoftness  | number                                    | 否   | 否   | 阴影的边缘柔和度。取值范围为[0, 1]，0产生硬边缘，1产生完全柔和的边缘，超出范围的值将在内部被截断。 |
+| shadowOpacity       | number                                    | 否   | 否   | 阴影的整体透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明，超出范围的值将在内部被截断。                               |
+| causticOffset       | number                                    | 否   | 否   | 焦散（聚焦光线）的垂直偏移量，按形状半径归一化。取值范围为[-1, 1]，超出范围的值将在内部被截断。 |
+| causticRadius       | number                                    | 否   | 否   | 焦散（聚焦光线）的半径，按形状半径归一化。取值范围为[0, 1]，超出范围的值将在内部被截断。       |
+| causticEdgeSoftness | number                                    | 否   | 否   | 焦散（聚焦光线）的边缘柔和度。取值范围为[0, 1]，0产生硬边缘，1产生完全柔和的边缘，超出范围的值将在内部被截断。 |
+| causticOpacity      | number                                    | 否   | 否   | 焦散（聚焦光线）的整体透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明，超出范围的值将在内部被截断。                   |
+| shapeScale          | number                                    | 否   | 否   | 应用于玻璃弹珠形状的缩放系数。取值范围为[0, 1]，0表示形状缩放为0（不可见），1表示形状保持原始大小，超出范围的值将在内部被截断。                       |
+| reflectionMap       | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 用于玻璃弹珠表面环境反射的反射贴图。不设置时，默认值为undefined，不应用反射效果。|
 
 ## GlassMarbleContentParam
 
-玻璃弹珠的内容参数。控制内容遮罩在玻璃形状内部的混合方式，包括内容遮罩本身、着色颜色、缩放、饱和度和色散。
+玻璃弹珠的内容参数。控制内容在玻璃弹珠内部的混合方式，包括内容遮罩本身、着色颜色、缩放和饱和度等。
 
 **起始版本：** 26.0.1
 
@@ -2875,11 +2899,11 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 | 名称              | 类型                | 只读 | 可选 | 说明                                                                                                    |
 | ----------------- | ------------------- | ---- | ---- | ------------------------------------------------------------------------------------------------------- |
-| contentMask       | [Mask](#mask20)     | 否   | 否   | 用于在玻璃形状内部混合附加内容的内容遮罩。提供时，将对内容遮罩进行采样并与玻璃材质合成。                    |
-| contentTintColor  | [Color](#color20)   | 否   | 否   | 应用于玻璃形状内部混合内容的着色颜色。alpha通道用作原始内容颜色与着色颜色之间的混合系数。                  |
-| contentScale      | number              | 否   | 否   | 应用于玻璃形状内部混合内容的缩放系数。取值范围为[0, 1]；超出范围的值将在内部被截断。                       |
-| contentSaturation | number              | 否   | 否   | 玻璃形状内部混合内容的饱和度。取值范围为[0, 1]；超出范围的值将在内部被截断。                               |
-| contentDispersion | number              | 否   | 否   | 玻璃形状内部混合内容的色散。控制内容边缘的颜色分离程度。取值范围为[0, 1]；超出范围的值将在内部被截断。     |
+| contentMask       | [Mask](#mask20)     | 否   | 否   | 用于在玻璃弹珠内部混合附加内容的内容遮罩。将该遮罩采样后与玻璃材质合成。                    |
+| contentTintColor  | [Color](#color20)   | 否   | 否   | 应用于玻璃弹珠内部混合内容的着色颜色。alpha通道用作原始内容颜色与着色颜色之间的混合系数。                  |
+| contentScale      | number              | 否   | 否   | 应用于玻璃弹珠内部混合内容的缩放系数。取值范围为[0, 1]，0表示内容缩放为0（不显示），1表示内容保持原始大小，超出范围的值将在内部被截断。                       |
+| contentSaturation | number              | 否   | 否   | 玻璃弹珠内部混合内容的饱和度。取值范围为[0, 1]，超出范围的值将在内部被截断。                               |
+| contentDispersion | number              | 否   | 否   | 玻璃弹珠内部混合内容的色散。控制内容边缘的颜色分离程度。取值范围为[0, 1]，超出范围的值将在内部被截断。     |
 
 ## GlassMarbleSphereParam
 
@@ -2896,4 +2920,4 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 | 名称   | 类型              | 只读 | 可选 | 说明                                                                                                  |
 | ------ | ----------------- | ---- | ---- | ----------------------------------------------------------------------------------------------------- |
 | center | [number, number]  | 否   | 否   | 球体形状的归一化圆心位置。[0, 0]表示组件边界的左上角，[1, 1]表示组件边界的右下角。超出[0, 1]范围的值将在内部被截断。 |
-| radius | number            | 否   | 否   | 球体形状的归一化半径。取值范围为[0, 1]；超出范围的值将在内部被截断。值为1表示球的直径等于组件宽度和高度的较小值。 |
+| radius | number            | 否   | 否   | 球体形状的归一化半径。取值范围为[0, 1]，超出范围的值将在内部被截断。值为0表示半径为0（不可见），值为1表示球的直径等于组件宽度和高度的较小值。 |
