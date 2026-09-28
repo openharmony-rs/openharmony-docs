@@ -57,6 +57,12 @@ import { AbilityConstant } from '@kit.AbilityKit';
 
 Ability启动原因，该类型为枚举，可配合UIAbility的[onCreate(want, launchParam)](js-apis-app-ability-uiAbility.md#oncreate)方法根据launchParam.launchReason的不同类型执行相应操作。
 
+> **说明：**
+>
+> - 如果应用在Ability创建之前退出，则无法获取记录信息。
+>
+> - 获取应用异常退出信息的方式可参见[App Killed](../../dfx/appkilled-guidelines.md)。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称                          | 值   | 说明                                                         |
@@ -390,7 +396,7 @@ export default class MyAbility extends UIAbility {
 
 ## ContinueState<sup>10+</sup>
 
-流转状态枚举值。用于表示当前应用任务流转的状态。可配合[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)的[setMissionContinueState](js-apis-inner-application-uiAbilityContext.md#setmissioncontinuestate10)方法进行设置。
+流转状态枚举值。用于表示当前应用任务流转的状态。可配合[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)的[setMissionContinueState](js-apis-inner-application-uiAbilityContext.md#setmissioncontinuestate10)方法进行设置。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 

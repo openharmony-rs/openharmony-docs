@@ -39,7 +39,7 @@ enable(isEnable: boolean): void
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数：**
 
@@ -69,7 +69,7 @@ watch(obj: object, msg: string): void
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数：**
 
@@ -101,7 +101,7 @@ check(): string
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **返回值：**
 
@@ -125,7 +125,7 @@ dump(filePath: string): Array&lt;string&gt;
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数：**
 
@@ -178,7 +178,7 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数：**
 
@@ -236,7 +236,7 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 
 **ArkTS-Dyn起始版本**：24
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数：**
 
@@ -309,7 +309,7 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 
 **ArkTS-Dyn起始版本**：24
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 | 名称 | 类型 | 只读 | 可选 | 说明 | 
 | ------- | ------- | ------- | ------- | ------- | 
@@ -331,7 +331,7 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 
 **ArkTS-Dyn起始版本**：24
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 | 名称 | 值 | 说明 |
 | ------- | ------- | ------- |

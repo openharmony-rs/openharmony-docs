@@ -19,7 +19,7 @@ NFQueue（Netfilter 框架里的一个“数据包排队通道”）配置结构
 
 二进制兼容规则（ABI，即应用程序二进制接口，保证新旧版本编译的代码能互相识别结构体布局）：系统通过[size](#成员变量)来确定哪些字段可以被安全读取。如果[size](#成员变量)小于当前接口所需的最小大小，接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。如果[size](#成员变量)大于系统已知的大小，多余的字段将被忽略。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **相关模块：** [TrafficFilter](capi-trafficfilter.md)
 

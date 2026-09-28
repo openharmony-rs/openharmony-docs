@@ -211,6 +211,12 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - 该导出接口允许code属性设置失败。
 
+### napi_throw
+
+**参数：**
+
+- error: OpenHarmony中仅支持Error对象。当传入非Error对象时，该导出接口返回napi_invalid_arg。
+
 ### napi_create_error
 
 **参数：**
@@ -251,6 +257,18 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - OpenHarmony中创建的错误类型为Error，标准库创建的错误类型为RangeError。
 
+### napi_reference_ref
+
+**返回：**
+
+- 当引用对应的对象已被垃圾回收（弱引用已回收）时，标准库中不增加引用计数并返回0，而OpenHarmony中仍会增加引用计数并返回非零值。
+
+### napi_reference_unref
+
+**返回：**
+
+- 当引用计数已经为0时，标准库中返回napi_generic_failure且不修改result，而OpenHarmony中返回napi_ok并将result写为0。
+
 ### napi_create_reference
 
 **参数：**
@@ -262,6 +280,38 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 **说明：**
 
 - 在OpenHarmony中，如果创建强引用时注册了napi_finalize回调函数，调用该接口的时候会触发该napi_finalize回调。
+
+### napi_create_string_latin1
+
+**参数：**
+
+- str: OpenHarmony中该参数为必填，即使length为0也不允许为nullptr。
+
+**返回：**
+
+- OpenHarmony中该导出接口按UTF-8编码解码输入数据。当输入包含0x80～0xFF范围的数据时，两端可能产生不同的字符串结果。
+
+- OpenHarmony中未校验显式length是否超过INT_MAX，标准库中当length不为NAPI_AUTO_LENGTH且超过INT_MAX时返回napi_invalid_arg。
+
+### napi_create_string_utf8
+
+**参数：**
+
+- str: OpenHarmony中该参数为必填，即使length为0也不允许为nullptr。
+
+**返回：**
+
+- OpenHarmony中未校验显式length是否超过INT_MAX，标准库中当length不为NAPI_AUTO_LENGTH且超过INT_MAX时返回napi_invalid_arg。
+
+### napi_create_string_utf16
+
+**参数：**
+
+- str: OpenHarmony中该参数为必填，即使length为0也不允许为nullptr。
+
+**返回：**
+
+- 当传入显式length时，OpenHarmony仍会通过扫描NUL终止符计算字符串长度，标准库中直接使用显式length，不要求输入缓冲区以NUL结尾。若传入恰好为length个UTF-16单元且末尾无NUL的缓冲区，可能导致越界读取。
 
 ### napi_create_symbol
 
@@ -313,6 +363,18 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - value: 该导出接口额外支持Sendable TypedArray（[Int8Array](../apis-arkts/arkts-apis-arkts-collections-Int8Array.md)、[Uint8Array](../apis-arkts/arkts-apis-arkts-collections-Uint8Array.md)、[Int16Array](../apis-arkts/arkts-apis-arkts-collections-Int16Array.md)、[Uint16Array](../apis-arkts/arkts-apis-arkts-collections-Uint16Array.md)、[Int32Array](../apis-arkts/arkts-apis-arkts-collections-Int32Array.md)、[Uint32Array](../apis-arkts/arkts-apis-arkts-collections-Uint32Array.md)、[Uint8ClampedArray](../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md)、[Float32Array](../apis-arkts/arkts-apis-arkts-collections-Float32Array.md)）类型。
 
+### napi_is_array
+
+**参数：**
+
+- value: 该导出接口额外支持array类型Sendable Array（SharedArray）。
+
+### napi_get_array_length
+
+**参数：**
+
+- value: 该导出接口额外支持array类型Sendable Array（SharedArray）。
+
 ### napi_get_property_names
 
 **返回：**
@@ -348,6 +410,10 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 **返回：**
 
 - 当参数object不是Object或Function对象时，该导出接口返回napi_object_expected。
+
+**说明：**
+
+- 该接口与napi_has_property行为一致，用于检查对象中是否存在指定的属性，避免访问不存在属性导致的异常。
 
 ### napi_set_named_property
 
@@ -413,6 +479,22 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - 当参数js_object不是Object或Function对象时，该导出接口返回napi_object_expected。
 
+### napi_create_function
+
+**参数：**
+
+- utf8name: 当该参数为nullptr时，OpenHarmony中会将函数名设置为"defaultName"，标准库中不设置函数名。
+
+**返回：**
+
+- OpenHarmony中该导出接口完全忽略length参数，使用NUL终止符截取utf8name。标准库中使用显式length，可包含嵌入NUL的函数名。若传入非NUL结尾的名称，可能导致越界读取。
+
+### napi_get_cb_info
+
+**返回：**
+
+- 当argv不为空而argc为空时，OpenHarmony中静默忽略并返回napi_ok。标准库中当argv不为空时要求argc也不为空，否则返回napi_invalid_arg。
+
 ### napi_call_function
 
 **返回：**
@@ -421,17 +503,27 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - 当参数func不是Function对象时，该导出接口返回napi_function_expected。
 
+**说明：**
+
+- 该函数执行后会触发微任务执行。
+
 ### napi_new_instance
 
 **返回：**
 
 - 当参数constructor不是Function对象时，该导出接口返回napi_function_expected。
 
+**说明：**
+
+- 该函数执行后会触发微任务执行。
+
 ### napi_define_class
 
 **返回：**
 
 - 当length不为NAPI_AUTO_LENGTH且大于INT_MAX时，该导出接口返回napi_object_expected。
+
+- OpenHarmony中使用min(length, strlen(utf8name))对名称进行截断，显式length范围内的嵌入NUL无法保留。标准库中使用显式length直接创建字符串，可保留嵌入NUL。
 
 ### napi_wrap
 
@@ -443,6 +535,8 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 **返回：**
 
 - 参数js_object不为Object或Function对象时，该导出接口返回napi_object_expected。
+
+- 当对同一个js_object重复调用napi_wrap时，OpenHarmony中后者会覆盖前者的包装，标准库中返回napi_invalid_arg。
 
 ### napi_unwrap
 
@@ -470,6 +564,8 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - 由于当前暂不支持async_hooks资源管理机制，入参async_resource暂时也不做处理。
 
+- complete: OpenHarmony中该参数为必填，为nullptr时返回napi_invalid_arg。
+
 ### napi_delete_async_work
 
 **参数：**
@@ -481,6 +577,10 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 **参数：**
 
 - 该导出接口暂时不支持async_hooks资源管理机制。
+
+**返回：**
+
+- 当底层任务入队失败时，OpenHarmony中仍返回napi_ok，并打印失败日志，execute和complete回调函数不会执行。标准库中入队失败时会终止进程。
 
 ### napi_cancel_async_work
 
@@ -495,6 +595,10 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 - OpenHarmony暂不支持async_hooks资源管理机制。目前未实现与async_hooks交互的内容，该接口调用后并不会有async_hooks的相关操作。
 
 ### napi_make_callback
+
+**参数：**
+
+- recv: OpenHarmony中要求该参数是Object对象，否则返回napi_object_expected。
 
 **说明：**
 
@@ -518,11 +622,21 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - promise的then方法的resolve或者reject回调中出现异常时，如果promise没有catch块，代码会继续执行不会崩溃；如果promise有catch块，则异常会被该catch块捕获。
 
+- 该函数执行后会触发微任务执行。
+
 ### napi_reject_deferred
 
 **说明：**
 
 - promise的then方法的resolve或者reject回调中出现异常时，如果promise没有catch块，代码会继续执行不会崩溃；如果promise有catch块，则异常会被该catch块捕获。
+
+- 该函数执行后会触发微任务执行。
+
+### napi_acquire_threadsafe_function
+
+**返回：**
+
+- 当线程安全函数处于关闭中（closing）状态时，标准库中返回napi_closing，而OpenHarmony中统一返回napi_generic_failure。
 
 ### napi_create_threadsafe_function
 
@@ -612,6 +726,8 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - OpenHarmony中，data为nullptr时返回napi_invalid_arg。
 
+- OpenHarmony中，result_data为必填参数，为nullptr时返回napi_invalid_arg。
+
 - 标准库中，进入或退出接口前若有异常将直接返回napi_pending_exception，OpenHarmony中没有对此做校验。
 
 ### napi_create_external_buffer
@@ -628,6 +744,10 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 ### napi_get_buffer_info
 
+**参数：**
+
+- OpenHarmony中data和length参数均不可为空，若任一为nullptr会导致进程崩溃。
+
 **返回：**
 
 - OpenHarmony会对value是否属于buffer进行判断，若不属于则返回napi_arraybuffer_expected。
@@ -637,6 +757,12 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 **返回：**
 
 - 当入参arraybuffer不为Object对象时，该导出接口返回napi_object_expected；当arraybuffer是Object对象但不为ArrayBuffer对象时，该导出接口返回napi_invalid_arg。
+
+### napi_is_detached_arraybuffer
+
+**返回：**
+
+- 当入参arraybuffer不为ArrayBuffer对象时，OpenHarmony中返回napi_invalid_arg且不写result。若调用方使用未初始化的result值，可能导致后续行为异常。
 
 ### napi_add_env_cleanup_hook
 
@@ -658,6 +784,12 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - OpenHarmony在result非空时创建强引用，标准库则创建弱引用。
 
+### napi_get_and_clear_last_exception
+
+**返回：**
+
+- 当没有待处理异常时，OpenHarmony中返回napi_ok但不修改result。若调用方使用未初始化的result值，可能导致后续行为异常。
+
 ### napi_fatal_exception
 
 **参数：**
@@ -678,9 +810,37 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 ### napi_create_arraybuffer
 
+**参数：**
+
+- data: OpenHarmony中该参数为必填，为nullptr时返回napi_invalid_arg。
+
 **返回：**
 
 - 当length数值过大时，标准库中会直接抛出异常并中断进程，OpenHarmony中会尝试分配内存，若分配失败则抛出异常并返回undefined。
+
+### napi_create_external_arraybuffer
+
+**参数：**
+
+- external_data: OpenHarmony中该参数为必填，为nullptr时返回napi_invalid_arg。
+
+- finalize_cb: OpenHarmony中该参数为必填，为nullptr时返回napi_invalid_arg。
+
+### napi_get_arraybuffer_info
+
+**参数：**
+
+- byte_length: OpenHarmony中该参数为必填，为nullptr时返回napi_invalid_arg。
+
+- data: OpenHarmony中该参数为可选，为nullptr时不写数据地址。
+
+- arraybuffer: 该导出接口额外识别SendableArrayBuffer。
+
+### napi_is_arraybuffer
+
+**参数：**
+
+- value: 该导出接口额外识别SendableArrayBuffer。
 
 ## 未从Node-API组件标准库中导出的符号列表
 

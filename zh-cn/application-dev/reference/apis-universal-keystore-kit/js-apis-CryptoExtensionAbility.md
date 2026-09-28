@@ -670,7 +670,7 @@ onImportCertificate(handle: string, params: HuksCryptoExtensionParam[], certInfo
 
 | 类型    | 说明   |
 | -------- | -----------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，表示导入证书成功。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 UKey不存在。<br>34800002 UKey驱动错误。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，表示导入证书成功。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800002 UKey驱动错误。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
 
 **示例：**
 
@@ -961,26 +961,26 @@ CryptoExtensionAbility不支持以下模块的引用。
 | Image Kit | [@ohos.multimedia.videoProcessingEngine (视频处理引擎)](../../reference/apis-image-kit/js-apis-videoProcessingEngine.md) |
 | Location Kit | [@ohos.geolocation (位置服务)](../../reference/apis-location-kit/js-apis-geolocation.md) |
 | Location Kit | [@ohos.geoLocationManager (位置服务)](../../reference/apis-location-kit/js-apis-geoLocationManager.md) |
-| MDM Kit | [@ohos.enterprise.accountManager（账号管理）](../../reference/apis-mdm-kit/js-apis-enterprise-accountManager.md) |
-| MDM Kit | [@ohos.enterprise.adminManager（admin权限管理）](../../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md) |
-| MDM Kit | [@ohos.enterprise.applicationManager（应用管理）](../../reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md) |
-| MDM Kit | [@ohos.enterprise.bluetoothManager（蓝牙管理）](../../reference/apis-mdm-kit/js-apis-enterprise-bluetoothManager.md) |
-| MDM Kit | [@ohos.enterprise.browser（浏览器管理）](../../reference/apis-mdm-kit/js-apis-enterprise-browser.md) |
-| MDM Kit | [@ohos.enterprise.bundleManager（包管理）](../../reference/apis-mdm-kit/js-apis-enterprise-bundleManager.md) |
-| MDM Kit | [@ohos.enterprise.common（Enterprise公共模块）](../../reference/apis-mdm-kit/js-apis-enterprise-common.md) |
-| MDM Kit | [@ohos.enterprise.dateTimeManager（系统时间管理）(系统接口)](../../reference/apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md) |
-| MDM Kit | [@ohos.enterprise.deviceControl（设备控制管理）](../../reference/apis-mdm-kit/js-apis-enterprise-deviceControl.md) |
-| MDM Kit | [@ohos.enterprise.deviceInfo（设备信息管理）](../../reference/apis-mdm-kit/js-apis-enterprise-deviceInfo.md) |
-| MDM Kit | [@ohos.enterprise.deviceSettings（设备设置管理）](../../reference/apis-mdm-kit/js-apis-enterprise-deviceSettings.md) |
-| MDM Kit | [@ohos.enterprise.EnterpriseAdminExtensionAbility（企业设备管理扩展能力）](../../reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md) |
-| MDM Kit | [@ohos.enterprise.locationManager（位置服务管理）](../../reference/apis-mdm-kit/js-apis-enterprise-locationManager.md) |
-| MDM Kit | [@ohos.enterprise.networkManager（网络管理）](../../reference/apis-mdm-kit/js-apis-enterprise-networkManager.md) |
-| MDM Kit | [@ohos.enterprise.restrictions（限制类策略）](../../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md) |
-| MDM Kit | [@ohos.enterprise.securityManager（安全管理）](../../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md) |
-| MDM Kit | [@ohos.enterprise.systemManager（系统管理）](../../reference/apis-mdm-kit/js-apis-enterprise-systemManager.md) |
-| MDM Kit | [@ohos.enterprise.telephonyManager（通话管理）](../../reference/apis-mdm-kit/js-apis-enterprise-telephonyManager.md) |
-| MDM Kit | [@ohos.enterprise.usbManager（USB管理）](../../reference/apis-mdm-kit/js-apis-enterprise-usbManager.md) |
-| MDM Kit | [@ohos.enterprise.wifiManager（Wi-Fi管理）](../../reference/apis-mdm-kit/js-apis-enterprise-wifiManager.md) |
+| MDM Kit | [@ohos.enterprise.accountManager (账号管理)](../../reference/apis-mdm-kit/js-apis-enterprise-accountManager.md) |
+| MDM Kit | [@ohos.enterprise.adminManager (admin权限管理)](../../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md) |
+| MDM Kit | [@ohos.enterprise.applicationManager (应用管理)](../../reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md) |
+| MDM Kit | [@ohos.enterprise.bluetoothManager (蓝牙管理)](../../reference/apis-mdm-kit/js-apis-enterprise-bluetoothManager.md) |
+| MDM Kit | [@ohos.enterprise.browser (浏览器管理)](../../reference/apis-mdm-kit/js-apis-enterprise-browser.md) |
+| MDM Kit | [@ohos.enterprise.bundleManager (包管理)](../../reference/apis-mdm-kit/js-apis-enterprise-bundleManager.md) |
+| MDM Kit | [@ohos.enterprise.common (Enterprise公共模块)](../../reference/apis-mdm-kit/js-apis-enterprise-common.md) |
+| MDM Kit | [@ohos.enterprise.dateTimeManager (系统时间管理)(系统接口)](../../reference/apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md) |
+| MDM Kit | [@ohos.enterprise.deviceControl (设备控制管理)](../../reference/apis-mdm-kit/js-apis-enterprise-deviceControl.md) |
+| MDM Kit | [@ohos.enterprise.deviceInfo (设备信息管理)](../../reference/apis-mdm-kit/js-apis-enterprise-deviceInfo.md) |
+| MDM Kit | [@ohos.enterprise.deviceSettings (设备设置管理)](../../reference/apis-mdm-kit/js-apis-enterprise-deviceSettings.md) |
+| MDM Kit | [@ohos.enterprise.EnterpriseAdminExtensionAbility (企业设备管理扩展能力)](../../reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md) |
+| MDM Kit | [@ohos.enterprise.locationManager (位置服务管理)](../../reference/apis-mdm-kit/js-apis-enterprise-locationManager.md) |
+| MDM Kit | [@ohos.enterprise.networkManager (网络管理)](../../reference/apis-mdm-kit/js-apis-enterprise-networkManager.md) |
+| MDM Kit | [@ohos.enterprise.restrictions (限制类策略)](../../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md) |
+| MDM Kit | [@ohos.enterprise.securityManager (安全管理)](../../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md) |
+| MDM Kit | [@ohos.enterprise.systemManager (系统管理)](../../reference/apis-mdm-kit/js-apis-enterprise-systemManager.md) |
+| MDM Kit | [@ohos.enterprise.telephonyManager (通话管理)](../../reference/apis-mdm-kit/js-apis-enterprise-telephonyManager.md) |
+| MDM Kit | [@ohos.enterprise.usbManager (USB管理)](../../reference/apis-mdm-kit/js-apis-enterprise-usbManager.md) |
+| MDM Kit | [@ohos.enterprise.wifiManager (Wi-Fi管理)](../../reference/apis-mdm-kit/js-apis-enterprise-wifiManager.md) |
 | Mechanic Kit | [@ohos.distributedHardware.mechanicManager (机械体控制模块)](../../reference/apis-mechanic-kit/js-apis-mechanicManager.md) |
 | Media Kit | [@ohos.multimedia.media (媒体服务)(系统接口)](../../reference/apis-media-kit/js-apis-media-sys.md) |
 | Media Library Kit | [@ohos.multimedia.movingphotoview (动态照片)](../../reference/apis-media-library-kit/ohos-multimedia-movingphotoview.md) |

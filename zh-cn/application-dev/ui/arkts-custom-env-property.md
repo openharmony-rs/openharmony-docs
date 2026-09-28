@@ -98,7 +98,7 @@ struct Index {
 
 - \@CustomEnv装饰的变量为只读属性，不允许开发者进行赋值操作，否则会有编译报错。
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<string>();
 
@@ -357,7 +357,7 @@ struct NearChild {
 
 <!-- @[CustomEnvUpdateValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvValUpdatePage.ets) -->
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 
 const customMsge = CustomEnvKey.create<string>();
 
@@ -404,7 +404,7 @@ struct UpdateChild {
 
 <!-- @[CustomEnvSupportWatch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportWatchPage.ets) -->
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const customWatch: CustomEnvKey<number> = CustomEnvKey.create<number>();
@@ -458,7 +458,7 @@ struct WatchChild {
 
 ![image](./figures/custom-env-16.png)
 
-当\@CustomEnv装饰的变量其内部属性的变化时，也会触发回调。
+当\@CustomEnv装饰的变量内部属性发生变化时，也会触发回调。
 
 <!-- @[CustomEnvDeepWatch]
 (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportDeepWatchPage.ets) -->
@@ -515,7 +515,7 @@ struct Child {
 
 <!-- @[CustomEnvSupportMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportMonitorPage.ets) -->
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const customMon = CustomEnvKey.create<number>();
@@ -579,7 +579,7 @@ struct MonitorChild {
 
 <!-- @[CustomEnvSupportFreezed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportComponentFreezePage.ets) -->
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const custom = CustomEnvKey.create<number>();

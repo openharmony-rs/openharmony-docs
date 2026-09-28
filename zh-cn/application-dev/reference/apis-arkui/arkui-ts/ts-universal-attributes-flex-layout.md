@@ -130,6 +130,10 @@ ArkTS-Sta: alignSelf(value: ItemAlign | undefined): this
 
 子组件在父容器交叉轴（与主轴垂直的方向）的对齐格式，设置后会覆盖父容器的alignItems设置。仅Flex、Column、Row、DynamicLayout和GridRow容器支持此属性。
 
+> **说明：**
+>
+> 当父容器为[Flex](ts-container-flex.md)时，alignSelf仅在父容器设置FlexWrap.NoWrap时生效；设置FlexWrap.Wrap或FlexWrap.WrapReverse时不生效。
+
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。

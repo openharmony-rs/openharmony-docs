@@ -140,7 +140,7 @@ FaultLogExtensionAbility回调。系统服务通知FaultLogExtensionAbility可�
 | ArkUI | [@ohos.window (窗口)](../apis-arkui/arkts-apis-window.md) |
 | Audio Kit | [@ohos.multimedia.audio (音频管理)](../apis-audio-kit/arkts-apis-audio.md) |
 | Background Tasks Kit | [@ohos.backgroundTaskManager (后台任务管理)](../apis-backgroundtasks-kit/js-apis-backgroundTaskManager.md) |
-| Background Tasks Kit | [@ohos.reminderAgent (后台代理提醒)](..//apis-backgroundtasks-kit/js-apis-reminderAgent.md) |
+| Background Tasks Kit | [@ohos.reminderAgent (后台代理提醒)](../apis-backgroundtasks-kit/js-apis-reminderAgent.md) |
 | Background Tasks Kit | [@ohos.reminderAgentManager (后台代理提醒)](../apis-backgroundtasks-kit/js-apis-reminderAgentManager.md) |
 | Background Tasks Kit | [@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md) |
 | Basic Services Kit | [@ohos.power (系统电源管理)](../apis-basic-services-kit/js-apis-power.md) |

@@ -61,7 +61,7 @@ registerTypeDescriptors(typeDescriptors: Array\<TypeDescriptor>): Promise\<void>
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
 | 201          | Permission verification failed. The application does not have the permission required to call the API. |
-| 202          | Permission denied, non-system app called the system api. |
+| 202          | Permission verification failed. A non-system application calls a system API. |
 | 20400002       | The format of one or more typeDescriptors are invalid. |
 | 20400003       | The content of one or more typeDescriptors violate rules. |
 
@@ -123,8 +123,8 @@ unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
 | 201          | Permission verification failed. The application does not have the permission required to call the API. |
-| 202          | Permission denied, non-system app called the system api. |
-| 20400004       |  One or more typeIds are invalid or do not exist. |
+| 202          | Permission verification failed. A non-system application calls a system API. |
+| 20400004       | One or more typeIds are invalid or do not exist. |
 
 **示例：**
 

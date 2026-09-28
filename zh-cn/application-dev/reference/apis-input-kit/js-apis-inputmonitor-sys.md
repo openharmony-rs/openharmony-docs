@@ -31,13 +31,13 @@ on(type: 'touch', receiver: TouchEventReceiver): void
 
 监听全局触屏输入事件，使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onTouch](#inputmonitorontouch23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 7
 
@@ -61,8 +61,7 @@ on(type: 'touch', receiver: TouchEventReceiver): void
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -155,13 +154,13 @@ on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 
 监听全局鼠标事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onMouse](#inputmonitoronmouse23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -185,8 +184,7 @@ on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -278,13 +276,13 @@ on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): v
 
 监听鼠标事件，当鼠标移动至指定矩形区域内时，触发回调任务。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onMouse](#inputmonitoronmouse23-1)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -309,8 +307,7 @@ on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): v
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
 import { display } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -433,13 +430,13 @@ off(type: 'touch', receiver?: TouchEventReceiver): void
 
 取消监听全局触屏输入事件，使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offTouch](#inputmonitorofftouch23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 7
 
@@ -463,8 +460,7 @@ off(type: 'touch', receiver?: TouchEventReceiver): void
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -495,8 +491,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -602,13 +597,13 @@ off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 
 取消监听全局鼠标事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offMouse](#inputmonitoroffmouse23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -632,8 +627,7 @@ off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -664,8 +658,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -769,7 +762,7 @@ type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 
 触屏输入事件的回调函数。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 7
 
@@ -793,13 +786,13 @@ on(type: 'pinch', receiver: Callback&lt;Pinch&gt;): void
 
 监听全局触控板的捏合事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onPinch](#inputmonitoronpinch23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -914,13 +907,13 @@ off(type: 'pinch', receiver?: Callback&lt;Pinch&gt;): void
 
 取消监听全局触控板的捏合事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offPinch](#inputmonitoroffpinch23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -944,8 +937,7 @@ off(type: 'pinch', receiver?: Callback&lt;Pinch&gt;): void
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -976,8 +968,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1080,13 +1071,13 @@ on(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void
 
 监听全局触控板的三指滑动事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onThreeFingersSwipe](#inputmonitoronthreefingersswipe23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1202,13 +1193,13 @@ off(type: 'threeFingersSwipe', receiver?: Callback&lt;ThreeFingersSwipe&gt;): vo
 
 取消监听全局触控板的三指滑动事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offThreeFingersSwipe](#inputmonitoroffthreefingersswipe23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1232,8 +1223,7 @@ off(type: 'threeFingersSwipe', receiver?: Callback&lt;ThreeFingersSwipe&gt;): vo
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1264,8 +1254,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1368,13 +1357,13 @@ on(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void
 
 监听全局触控板的四指滑动事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onFourFingersSwipe](#inputmonitoronfourfingersswipe23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1490,13 +1479,13 @@ off(type: 'fourFingersSwipe', receiver?: Callback&lt;FourFingersSwipe&gt;): void
 
 取消监听全局触控板的四指滑动事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offFourFingersSwipe](#inputmonitorofffourfingersswipe23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1520,8 +1509,7 @@ off(type: 'fourFingersSwipe', receiver?: Callback&lt;FourFingersSwipe&gt;): void
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FourFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1552,8 +1540,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FourFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1656,13 +1643,13 @@ on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void
 
 监听全局触控板的旋转事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onRotate](#inputmonitoronrotate23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1687,8 +1674,7 @@ on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Rotate } from '@kit.InputKit';
+import { inputMonitor, Rotate } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1782,13 +1768,13 @@ off(type: 'rotate', fingers: number, receiver?: Callback&lt;Rotate&gt;): void
 
 取消监听全局触控板的旋转事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offRotate](#inputmonitoroffrotate23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1813,8 +1799,7 @@ off(type: 'rotate', fingers: number, receiver?: Callback&lt;Rotate&gt;): void
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Rotate } from '@kit.InputKit';
+import { inputMonitor, Rotate } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1845,8 +1830,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Rotate } from '@kit.InputKit';
+import { inputMonitor, Rotate } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1979,13 +1963,13 @@ on(type: 'pinch', fingers: number, receiver: Callback&lt;Pinch&gt;): void
 
 监听全局触控板的捏合事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onPinch](#inputmonitoronpinch23-1)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -2010,8 +1994,7 @@ on(type: 'pinch', fingers: number, receiver: Callback&lt;Pinch&gt;): void
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -2105,13 +2088,13 @@ off(type: 'pinch', fingers: number, receiver?: Callback&lt;Pinch&gt;): void
 
 取消监听全局触控板的捏合事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offPinch](#inputmonitoroffpinch23-1)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -2136,8 +2119,7 @@ off(type: 'pinch', fingers: number, receiver?: Callback&lt;Pinch&gt;): void
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -2168,8 +2150,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -2302,13 +2283,13 @@ on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersTap&gt;): void
 
 监听全局触控板的三指轻点事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onThreeFingersTap](#inputmonitoronthreefingerstap23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -2424,13 +2405,13 @@ off(type: 'threeFingersTap', receiver?: Callback&lt;ThreeFingersTap&gt;): void
 
 取消监听全局触控板的三指轻点事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offThreeFingersTap](#inputmonitoroffthreefingerstap23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -2454,8 +2435,7 @@ off(type: 'threeFingersTap', receiver?: Callback&lt;ThreeFingersTap&gt;): void
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersTap } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -2486,8 +2466,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersTap } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -2590,13 +2569,13 @@ on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGesture
 
 监听触摸屏滑动手势事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onTouchscreenSwipe](#inputmonitorontouchscreenswipe23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -2621,8 +2600,7 @@ on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGesture
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -2717,13 +2695,13 @@ off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestu
 
 取消监听触摸屏滑动手势事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offTouchscreenSwipe](#inputmonitorofftouchscreenswipe23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -2748,8 +2726,7 @@ off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestu
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -2779,8 +2756,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -2884,13 +2860,13 @@ on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGesture
 
 监听触摸屏捏合手势事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onTouchscreenPinch](#inputmonitorontouchscreenpinch23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -2915,8 +2891,7 @@ on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGesture
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -3011,13 +2986,13 @@ off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestu
 
 取消监听触摸屏捏合手势事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offTouchscreenPinch](#inputmonitorofftouchscreenpinch23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -3042,8 +3017,7 @@ off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestu
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -3073,8 +3047,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -3178,13 +3151,13 @@ on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEven
 
 监听指定按键的按下抬起事件，支持监听META_LEFT键、META_RIGHT键、电源键、音量键。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyPressed](#inputmonitoronkeypressed23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -3305,13 +3278,13 @@ off(type: 'keyPressed', receiver?: Callback&lt;KeyEvent&gt;): void
 
 取消监听按键按下抬起事件。支持取消监听META_LEFT键、META_RIGHT键、电源键、音量键。需和inputMonitor.on('keyPressed')配套使用。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyPressed](#inputmonitoroffkeypressed23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -3469,9 +3442,9 @@ ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 查询最近的触屏输入事件，最多支持查询100条事件，从API版本26.0.0开始，最多支持查询60条事件，使用Promise异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -3481,7 +3454,7 @@ ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 | 参数名   | 类型                                                      | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| count     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                    | 是   | 需要查询的触屏输入事件数量，取值范围为[0, 100]的整数。小于0时取值为0、大于100时取值为100。从API版本26.0.0开始，大于60时取值为60。如果实际触屏输入事件只有30个，但该参数取值为50 ，则仅支持查询到30个触屏输入事件。 |
+| count     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                    | 是   | 需要查询的触屏输入事件数量，取值范围为[0, 100]的整数。小于0时取值为0、大于100时取值为100。从API版本26.0.0开始，大于60时取值为60。如果实际触屏输入事件只有30个，但该参数取值为50，则仅支持查询到30个触屏输入事件。 |
 
 **返回值：**
 
@@ -3558,13 +3531,13 @@ on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
 
 监听向内滑动事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onSwipeInward](#inputmonitoronswipeinward23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -3679,13 +3652,13 @@ off(type: 'swipeInward', receiver?: Callback&lt;SwipeInward&gt;): void
 
 取消监听向内滑动事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offSwipeInward](#inputmonitoroffswipeinward23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -3844,13 +3817,13 @@ on(type: 'fingerprint', receiver: Callback&lt;FingerprintEvent&gt;): void
 
 监听指纹手势输入事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onFingerprint](#inputmonitoronfingerprint23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -3965,13 +3938,13 @@ off(type: 'fingerprint', receiver?: Callback&lt;FingerprintEvent&gt;): void
 
 取消监听指纹手势输入事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限**：ohos.permission.INPUT_MONITORING
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offFingerprint](#inputmonitorofffingerprint23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+**系统能力**：SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -3995,8 +3968,7 @@ off(type: 'fingerprint', receiver?: Callback&lt;FingerprintEvent&gt;): void
 **示例：**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FingerprintEvent } from '@kit.InputKit';
+import { inputMonitor, FingerprintEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -4027,8 +3999,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FingerprintEvent } from '@kit.InputKit';
+import { inputMonitor, FingerprintEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry

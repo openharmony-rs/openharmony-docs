@@ -187,7 +187,11 @@ startAbilityByType接口中type字段为navigation，支持路线规划、导航
 2. 解析参数并做对应处理。
 
     ```ts
-    UIAbility.onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void
+    export default class EntryAbility extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // 实现初始化逻辑，解析参数
+      }
+    }
     ```
 
     在参数**want.uri**中会携带目标方配置的linkFeature对应的uri。

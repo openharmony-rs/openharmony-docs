@@ -188,13 +188,13 @@ resizable(value: ResizableOptions)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **参数：**
 
@@ -569,7 +569,7 @@ struct Index {
 
 该示例通过[resizable](#resizable)属性的slice选项，对ImageSpan图片不同方向进行拉伸。
 
-从API版本26.1.0开始，新增resizable属性。
+从API版本26.0.1开始，新增resizable属性。
 
 ```ts
 @Entry

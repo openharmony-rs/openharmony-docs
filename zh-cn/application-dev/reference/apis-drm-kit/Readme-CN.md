@@ -9,7 +9,7 @@
 
 - ArkTS API<!--drm-arkts-->
   - @ohos.multimedia.drm (数字版权保护)<!--js-apis-drm-->
-    - [@ohos.multimedia.drm](arkts-apis-drm.md)
+    - [模块描述](arkts-apis-drm.md)
     - [Functions](arkts-apis-drm-f.md)
     - [Interface (MediaKeySession)](arkts-apis-drm-MediaKeySession.md)
     - [Interface (MediaKeySystem)](arkts-apis-drm-MediaKeySystem.md)
@@ -27,7 +27,7 @@
     - [DRM_MediaKeyRequestInfo](capi-drm-drm-mediakeyrequestinfo.md)
     - [DRM_MediaKeyRequest](capi-drm-drm-mediakeyrequest.md)
     - [DRM_Statistics](capi-drm-drm-statistics.md)
-    - [DRM_OfflineMediaKeyIdArray](capi-drm-drm-offlinemediakeyidarray.md)
+    - [DRM_OfflineMediakeyIdArray](capi-drm-drm-offlinemediakeyidarray.md)
     - [DRM_KeysInfo](capi-drm-drm-keysinfo.md)
     - [DRM_MediaKeyStatus](capi-drm-drm-mediakeystatus.md)
     - [DRM_PsshInfo](capi-drm-drm-psshinfo.md)

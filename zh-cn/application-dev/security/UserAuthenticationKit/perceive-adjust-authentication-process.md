@@ -38,7 +38,7 @@
 以跳过禁用的生物认证，订阅认证信息为例：
 
 ArkTS-Dyn示例：
-<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 perceiveAndAdjustAuthentication() {
@@ -89,7 +89,7 @@ perceiveAndAdjustAuthentication() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets) -->     
+<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 perceiveAndAdjustAuthentication() {

@@ -225,7 +225,7 @@ bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDesc
 | 参数项 | 描述 |
 | -- | -- |
 | [const RawFile](capi-rawfile-rawfile.md) *rawFile | 输入参数。指向RawFile对象的指针，通过[OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile)获取。 |
-| descriptor | 输出参数。指向[RawFileDescriptor](capi-rawfile-rawfiledescriptor.md)对象的引用，用于返回文件描述符信息。使用完后须调用[OH_ResourceManager_ReleaseRawFileDescriptor](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor)释放文件描述符，防止文件描述符泄露。 |
+| descriptor | 输出参数。指向[RawFileDescriptor](capi-rawfile-rawfiledescriptor.md)对象的引用，用于返回文件描述符信息。使用完后须调用[OH_ResourceManager_ReleaseRawFileDescriptor](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor)释放文件描述符，防止文件描述符泄漏。 |
 
 **返回：**
 
@@ -250,7 +250,7 @@ bool OH_ResourceManager_GetRawFileDescriptorData(const RawFile *rawFile, RawFile
 | 参数项 | 描述 |
 | -- | -- |
 | [const RawFile](capi-rawfile-rawfile.md) *rawFile | 输入参数。指向RawFile对象的指针，通过[OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile)获取。 |
-| [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) *descriptor | 输出参数。指向RawFileDescriptor对象的指针，用于返回文件描述符信息。使用完后须调用[OH_ResourceManager_ReleaseRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptordata)释放文件描述符，防止文件描述符泄露。 |
+| [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) *descriptor | 输出参数。指向RawFileDescriptor对象的指针，用于返回文件描述符信息。使用完后须调用[OH_ResourceManager_ReleaseRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptordata)释放文件描述符，防止文件描述符泄漏。 |
 
 **返回：**
 
@@ -474,7 +474,7 @@ bool OH_ResourceManager_GetRawFileDescriptor64(const RawFile64 *rawFile, RawFile
 | 参数项 | 描述 |
 | -- | -- |
 | [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | 输入参数。指向RawFile64对象的指针，通过[OH_ResourceManager_OpenRawFile64](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile64)获取。 |
-| [RawFileDescriptor64](capi-rawfile-rawfiledescriptor64.md) *descriptor | 输出参数。指向RawFileDescriptor64对象的指针，用于返回文件描述符信息。使用完后须调用[OH_ResourceManager_ReleaseRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor64)释放文件描述符，防止文件描述符泄露。 |
+| [RawFileDescriptor64](capi-rawfile-rawfiledescriptor64.md) *descriptor | 输出参数。指向RawFileDescriptor64对象的指针，用于返回文件描述符信息。使用完后须调用[OH_ResourceManager_ReleaseRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor64)释放文件描述符，防止文件描述符泄漏。 |
 
 **返回：**
 

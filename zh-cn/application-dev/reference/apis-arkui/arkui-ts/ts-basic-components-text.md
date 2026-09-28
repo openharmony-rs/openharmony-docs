@@ -8,7 +8,7 @@
 
 Text组件用于显示文本内容，支持设置字体样式、文本对齐、行高、装饰线等属性，支持图文混排、文本选择、文本识别等功能，适用于需要展示文本信息的各类应用场景。
 
->  **说明：**
+> **说明：**
 >
 >  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
@@ -16,20 +16,20 @@ Text组件用于显示文本内容，支持设置字体样式、文本对齐、�
 >
 >  - 如需设置触摸文本组件外部时是否清除文本选中和手柄，可使用[setTextSelectionClearPolicy](../arkts-apis-uicontext-uicontext.md#settextselectionclearpolicy)接口。
 >
->  <!--RP3--><!--RP3End-->
+> <!--RP3--><!--RP3End-->
 
 
 ## 子组件
 
 可以包含[Span](ts-basic-components-span.md)、[ImageSpan](ts-basic-components-imagespan.md)、[SymbolSpan](ts-basic-components-symbolSpan.md)和[ContainerSpan](ts-basic-components-containerspan.md)子组件。
 
->  **说明：**
+> **说明：**
 >
->  使用[子组件](#子组件)实现[图文混排](../../../ui/arkts-text-image-layout.md)场景。
+> 使用[子组件](#子组件)实现[图文混排](../../../ui/arkts-text-image-layout.md)场景。
 
 ## 接口
 
-Text(content?: string | Resource , value?: TextOptions)
+Text(content?: string | Resource, value?: TextOptions)
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -45,8 +45,8 @@ Text(content?: string | Resource , value?: TextOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| content | string \| [Resource](ts-types.md#resource) | 否 | 文本内容。当需要直接显示文本内容时传入此参数。包含子组件[Span](ts-basic-components-span.md)或设置了[属性字符串](ts-universal-styled-string.md)时，该参数不生效。<br>默认值：' '<br>**说明：** <br>显示内容的优先级：属性字符串>Span>Text的文本内容。 |
-| value<sup>11+</sup> | [TextOptions](#textoptions11) | 否 | 文本组件初始化选项，用于配置文本控制器。当需要使用TextController的功能控制文本内容和选择时，传入此参数。<br>默认值：不设置时，不使用文本控制器。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| content | string \| [Resource](ts-types.md#resource) | 否 | 文本内容。当需要直接显示文本内容时传入此参数。包含子组件[Span](ts-basic-components-span.md)或设置了[属性字符串](ts-universal-styled-string.md)时，该参数不生效。<br/>默认值：' '<br/>**说明：** <br/>显示内容的优先级：属性字符串>Span>Text的文本内容。 |
+| value<sup>11+</sup> | [TextOptions](#textoptions11) | 否 | 文本组件初始化选项，用于配置文本控制器。当需要使用TextController的功能控制文本内容和选择时，传入此参数。<br/>默认值：不设置时，不使用文本控制器。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## 属性
 
@@ -79,6 +79,9 @@ Text(content?: string | Resource , value?: TextOptions)
 | fontVariations | 设置可变字体的属性。**起始版本：** 26.0.0 |
 | letterSpacing | 设置文本字符间距。 |
 | shaderStyle<sup>20+</sup> | 设置文本渐变或纯色效果。 |
+| strokeColor | 设置文本描边的颜色。<br>**起始版本：** 26.2.0 |
+| strokeJoinStyle | 设置文本描边的拐角样式。<br>**起始版本：** 26.2.0 |
+| strokeWidth | 设置文本描边的宽度。<br>**起始版本：** 26.2.0 |
 | textCase | 设置文本大小写。 |
 | textShadow<sup>10+</sup> | 设置文字阴影效果。 |
 
@@ -91,7 +94,7 @@ Text(content?: string | Resource , value?: TextOptions)
 | marqueeOptions<sup>18+</sup> | 设置文本跑马灯模式的配置项。 |
 | textOverflow | 设置文本超长时的显示方式。 |
 | wordBreak<sup>11+</sup> | 设置断行规则。 |
-| punctuationOverflow | 设置是否启用行尾标点符号悬挂。<br>**起始版本：** 26.0.0 |
+| punctuationOverflow | 设置是否启用行尾标点符号悬挂。<br/>**起始版本：** 26.0.0 |
 
 **行与段落**
 
@@ -108,7 +111,7 @@ Text(content?: string | Resource , value?: TextOptions)
 | minLines<sup>22+</sup> | 设置文本显示的最小行数。 |
 | optimizeTrailingSpace<sup>20+</sup> | 优化行尾空格。 |
 | textIndent<sup>10+</sup> | 设置首行文本缩进。 |
-| tailIndents | 设置文本尾部缩进。<br>**起始版本：** 26.0.0 |
+| tailIndents | 设置文本尾部缩进。<br/>**起始版本：** 26.0.0 |
 
 **字体自适应**
 
@@ -152,7 +155,7 @@ Text(content?: string | Resource , value?: TextOptions)
 |------|------|
 | contentTransition<sup>20+</sup> | 文本动效属性。 |
 | enableHapticFeedback<sup>13+</sup> | 设置是否开启触控反馈。 |
-| incrementalUpdatePolicy | 设置文本渲染的增量更新策略。<br>**起始版本：** 26.0.0 |
+| incrementalUpdatePolicy | 设置文本渲染的增量更新策略。<br/>**起始版本：** 26.0.0 |
 | privacySensitive<sup>12+</sup> | 设置是否支持卡片敏感隐私信息。 |
 
 以下是详细的接口说明：
@@ -223,9 +226,9 @@ bindSelectionMenu的长按响应时长为600ms，[bindContextMenu](ts-universal-
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 >
->  通过[editMenuOptions](#editmenuoptions12)设置文本选择菜单时，保留系统默认的风格，触发菜单弹出的条件不变。
+> 通过[editMenuOptions](#editmenuoptions12)设置文本选择菜单时，保留系统默认的风格，触发菜单弹出的条件不变。
 >
->  通过[bindSelectionMenu](#bindselectionmenu11)设置文本选择菜单时，风格由开发者定义，触发菜单弹出的条件由开发者定义。
+> 通过[bindSelectionMenu](#bindselectionmenu11)设置文本选择菜单时，风格由开发者定义，触发菜单弹出的条件由开发者定义。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -300,7 +303,7 @@ ArkTS-Dyn: copyOption(value: CopyOptions)
 
 ArkTS-Sta: copyOption(value: CopyOptions | undefined)
 
-设置组件是否支持文本可复制粘贴。未通过该接口设置时，默认值为CopyOptions.None，不支持文本可复制粘贴。
+设置组件是否支持文本复制粘贴。未通过该接口设置时，默认值为CopyOptions.None，不支持文本复制粘贴。
 
 多个属性的功能依赖copyOption的设置，包括[selection](#selection11)、[setTextSelection](#settextselection23)、[draggable](#draggable9)、[enableSelectedDataDetector](#enableselecteddatadetector22)、[textSelectable](#textselectable12)等，具体依赖条件请参考各属性说明。
 
@@ -318,7 +321,7 @@ ArkTS-Sta: copyOption(value: CopyOptions | undefined)
 
 - 若需要支持Ctrl+C复制，需同时设置[textSelectable](#textselectable12)为TextSelectableMode.SELECTABLE_FOCUSABLE。
 
-此时Text会监听onClick事件，手势事件为非冒泡事件，若需要点击Text组件区域响应父组件的点击手势事件，建议在父组件上使用[parallelGesture](ts-gesture-settings.md#parallelgesture)绑定手势识别，也可参考[示例7（设置文本识别）](#示例7设置文本识别)。
+此时Text会监听onClick事件，手势事件为非冒泡事件，若需要单击Text组件区域响应父组件的单击手势事件，建议在父组件上使用[parallelGesture](ts-gesture-settings.md#parallelgesture)绑定手势识别，也可参考[示例7（设置文本识别）](#示例7设置文本识别)。
 
 由于卡片没有长按事件，此场景下长按文本，不会弹出文本选择菜单。
 
@@ -370,13 +373,13 @@ ArkTS-Dyn: decoration(value: DecorationStyleInterface)
 
 ArkTS-Sta: decoration(value: DecorationStyleInterface | undefined)
 
-设置文本装饰线样式及其颜色。未通过该接口设置时，默认文本装饰线样式为：<br>{<br>&nbsp;type:&nbsp;TextDecorationType.None,<br>&nbsp;color:&nbsp;Color.Black,<br>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br>}
+设置文本装饰线样式及其颜色。未通过该接口设置时，默认文本装饰线样式为：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}
 
->  **说明：**
+> **说明：**
 >
->  当文字的下边缘轮廓与装饰线位置相交时，会触发下划线避让规则，下划线将在这些字符处避让文字。常见"gjyqp"等英文字符。
+> 当文字的下边缘轮廓与装饰线位置相交时，会触发下划线避让规则，下划线将在这些字符处避让文字。常见"gjyqp"等英文字符。
 >
->  当装饰线颜色设置为Color.Transparent时，装饰线会显示为每行第一个字的字体颜色。设置为透明色16进制值"#00FFFFFF"时，装饰线会显示为透明色。
+> 当装饰线颜色设置为Color.Transparent时，装饰线会显示为每行第一个字的字体颜色。设置为透明色16进制值"#00FFFFFF"时，装饰线会显示为透明色。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -404,7 +407,7 @@ ArkTS-Sta: draggable(value: boolean | undefined)
 
 不能和[onDragStart](ts-universal-events-drag-drop.md#ondragstart)事件同时使用。
 
-当draggable设置为true时，需配合[CopyOptions](ts-appendix-enums.md#copyoptions9)使用，设置copyOptions为CopyOptions.InApp或者CopyOptions.LocalDevice，支持对选中文本的拖拽及复制到输入框。
+当draggable设置为true时，需配合[CopyOptions](ts-appendix-enums.md#copyoptions9)使用，设置copyOption为CopyOptions.InApp或者CopyOptions.LocalDevice，支持对选中文本的拖拽及复制到输入框。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -426,15 +429,15 @@ ArkTS-Dyn: editMenuOptions(editMenu: EditMenuOptions)
 
 ArkTS-Sta: editMenuOptions(editMenu: EditMenuOptions | undefined)
 
-设置自定义菜单扩展项，允许用户设置扩展项的文本内容、图标、回调方法。
+设置自定义菜单扩展项，允许开发者设置扩展项的文本内容、图标、回调方法。
 
 调用[disableMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)或[disableSystemServiceMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)接口屏蔽文本选择菜单内的系统服务菜单项时，editMenuOptions接口内回调方法[onCreateMenu](./ts-text-common.md#oncreatemenu12)的入参列表中不包含被屏蔽的菜单选项。
 
->  **说明：**
+> **说明：**
 >
->  通过[editMenuOptions](#editmenuoptions12)设置文本选择菜单时，保留系统默认的风格，触发菜单弹出的条件不变。
+> 通过[editMenuOptions](#editmenuoptions12)设置文本选择菜单时，保留系统默认的风格，触发菜单弹出的条件不变。
 >
->  通过[bindSelectionMenu](#bindselectionmenu11)设置文本选择菜单时，风格由开发者定义，触发菜单弹出的条件由开发者定义。
+> 通过[bindSelectionMenu](#bindselectionmenu11)设置文本选择菜单时，风格由开发者定义，触发菜单弹出的条件由开发者定义。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -510,7 +513,7 @@ ArkTS-Dyn: enableDataDetector(enable: boolean)
 
 ArkTS-Sta: enableDataDetector(enable: boolean | undefined)
 
-设置是否进行文本特殊实体识别，可自动识别文本中的电话号码、网址、邮箱、地址、日期等实体信息，适用于聊天消息、评论内容、文章正文等需要智能识别和交互的场景。未通过该接口设置时，默认不进行文本特殊实体识别。当enableDataDetector设置为true时，识别特殊实体。
+设置是否进行文本实体识别，可自动识别文本中的电话号码、网址、邮箱、地址、日期等实体信息，适用于聊天消息、评论内容、文章正文等需要智能识别和交互的场景。未通过该接口设置时，默认不进行文本实体识别。当enableDataDetector设置为true时，识别特殊实体。
 
 所识别实体的样式如下，即字体颜色改为蓝色、并添加蓝色下划线。
 
@@ -544,7 +547,7 @@ decoration:{
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined | 是   | 是否可进行文本特殊实体识别。<br>true表示可识别，false表示不可识别。<br>取值为undefined时，按默认值处理。 |
+| enable  | ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined | 是   | 是否可进行文本实体识别。<br>true表示可识别，false表示不可识别。<br>取值为undefined时，按默认值处理。 |
 
 ### enableHapticFeedback<sup>13+</sup>
 
@@ -588,7 +591,7 @@ ArkTS-Sta: enableHapticFeedback(isEnabled: boolean | undefined)
 
 enableSelectedDataDetector(enable: boolean | undefined)
 
-设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。未通过该接口设置时，默认对选中文本进行实体识别。
+设置是否对选中文本进行实体识别。该接口需要设备底层具有文本识别能力，否则设置不会生效。未通过该接口设置时，默认对选中文本进行实体识别。
 
 启用后可识别选区中的邮件、电话、网址、日期、地址等，并在文本选择菜单中展示对应的AI菜单项。默认启用AI菜单功能。
 
@@ -596,7 +599,7 @@ AI菜单功能启用时，在组件中选中文本后，文本选择菜单能够
 
 AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体，才能展示对应的选项。该菜单项与[TextMenuItemId](ts-text-common.md#textmenuitemid12)中的askAI菜单项不同时出现。
 
-需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
+当[CopyOptions](ts-appendix-enums.md#copyoptions9)设置为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -612,7 +615,7 @@ AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体�
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | 是   | 是否对选中文本进行实体识别。<br>true：开启识别，false：关闭识别。默认值为：true。<br>取值为undefined时，按默认值处理。 |
+| enable  | boolean \| undefined | 是   | 是否对选中文本进行实体识别。<br/>true：开启识别，false：关闭识别。默认值：true。<br/>取值为undefined时，按默认值处理。 |
 
 ### font<sup>10+</sup>
 
@@ -739,17 +742,17 @@ ArkTS-Sta: fontFeature(value: string | undefined)
 
 例如，使用等宽数字的输入格式为："ss01" on。
 
->  **说明：**
+> **说明：**
 >
->  不支持Text内同时存在文本内容和Span或ImageSpan子组件。如果同时存在，只显示Span或ImageSpan内的内容。
+> 不支持Text内同时存在文本内容和Span或ImageSpan子组件。如果同时存在，只显示Span或ImageSpan内的内容。
 >
->  字体排版引擎会对开发者传入的宽度[width](ts-universal-attributes-size.md#width)进行向下取整，保证是整型像素后进行排版。如果向上取整，可能会出现文字右侧被截断。
+> 字体排版引擎会对开发者传入的宽度[width](ts-universal-attributes-size.md#width)进行向下取整，保证是整型像素后进行排版。如果向上取整，可能会出现文字右侧被截断。
 >
->  当多个Text组件在[Row](ts-container-row.md)容器内布局且没有设置具体的布局分配信息时，Text会以Row的最大尺寸进行布局。如果需要子组件主轴累加的尺寸不超过Row容器主轴的尺寸，可以设置[layoutWeight](ts-universal-attributes-size.md#layoutweight)或者是以[Flex](ts-universal-attributes-flex-layout.md)布局来约束子组件的主轴尺寸。
+> 当多个Text组件在[Row](ts-container-row.md)容器内布局且没有设置具体的布局分配信息时，Text会以Row的最大尺寸进行布局。如果需要子组件主轴累加的尺寸不超过Row容器主轴的尺寸，可以设置[layoutWeight](ts-universal-attributes-size.md#layoutweight)或者是以[Flex](ts-universal-attributes-flex-layout.md)布局来约束子组件的主轴尺寸。
 >
->  系统默认字体支持的liga连字：Th fb ff fb ffb ffh ffi ffk ffl fh fi fk fl rf rt rv rx ry。常导致Span、属性字符串的效果不符合预期，关闭liga连字特性可以规避。
+> 系统默认字体支持的liga连字：Th fb ff fb ffb ffh ffi ffk ffl fh fi fk fl rf rt rv rx ry。该连字特性常导致Span、属性字符串的效果不符合预期，关闭liga连字特性可以规避此问题。
 >
->  文字特性效果与使用的字体文件密切相关。例如，8标点挤压功能需要字体文件中字符支持"ss08"特性，否则无法压缩，在当前系统默认字体中右侧标点符号及感叹号、顿号、问号均不生效。
+> 文字特性效果与使用的字体文件密切相关。例如，标点挤压功能（对应"ss08"特性）需要字体文件中字符支持"ss08"特性，否则无法压缩，在当前系统默认字体中右侧标点符号及感叹号、顿号、问号均不生效。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -852,7 +855,7 @@ fontWeight(value: number | FontWeight | ResourceStr)
 <!--Table: 10%; 25%; 10%; 55%-->
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细。<br>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。传入超出取值范围或不符合间隔要求的值时取默认值。<br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细。<br/>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。传入超出取值范围或不符合间隔要求的值时取默认值。<br/>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
 
 ### fontWeight<sup>12+</sup>
 
@@ -880,7 +883,7 @@ fontWeight(weight: number | FontWeight | ResourceStr, options?: FontSettingOptio
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| weight  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 设置文本字重<br>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br>传入超出取值范围的值时取默认值。传入不符合间隔要求的值时，若设置fontWeightConfigs的enableVariableFontWeight为true，使用传入值；若设置为false，使用默认值。<br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。 |
+| weight  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 设置文本字重<br>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br>传入超出取值范围的值时取默认值。传入不符合间隔要求的值时，若设置options的enableVariableFontWeight为true，使用传入值；若设置为false，使用默认值。<br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。 |
 | options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12对象说明) | 否   | 字体设置选项。<br>默认值：[FontSettingOptions](ts-text-common.md#fontsettingoptions12对象说明)。 |
 
 ### fontWeight<sup>23+</sup>
@@ -903,8 +906,8 @@ fontWeight(weight: int | FontWeight | ResourceStr | undefined, options?: FontSet
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| weight  | int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;undefined | 是   | 设置文本字重<br>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br>传入超出取值范围的值时取默认值。传入不符合间隔要求的值时，若设置fontWeightConfigs的enableVariableFontWeight为true，使用传入值；若设置为false，使用默认值。<br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br>设置undefined时按默认值处理。 |
-| options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12对象说明)&nbsp;\|&nbsp;undefined | 否   | 设置字体配置项，用于启用可变字重调节功能。当需要使用可变字体的字重属性进行精细调节时传入此参数（设置enableVariableFontWeight为true）。不传入时使用默认字体配置（禁用可变字重调节，仅支持整百字重值）。<br>enableVariableFontWeight为false时禁用可变字重调节，weight取整百值时字重为weight，非整百值时字重为400；enableVariableFontWeight为true时启用可变字重调节，weight取任意整数时字重为weight。<br>设置undefined时按默认值处理。|
+| weight  | int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;undefined | 是   | 设置文本字重<br>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br>传入超出取值范围的值时取默认值。传入不符合间隔要求的值时，若设置options的enableVariableFontWeight为true，使用传入值；若设置为false，使用默认值。<br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br>设置undefined时按默认值处理。 |
+| options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12对象说明)&nbsp;\|&nbsp;undefined | 否   | 设置字体配置项，用于启用可变字重调节功能。当需要使用可变字体的字重属性进行精细调节时传入此参数（设置enableVariableFontWeight为true）。不传入时使用默认字体配置（禁用可变字重调节，仅支持整百字重值）。<br>enableVariableFontWeight为false时禁用可变字重调节，weight取整百值时实际字重为该参数值，非整百值时实际字重为400；enableVariableFontWeight为true时启用可变字重调节，weight取任意整数时实际字重为该参数值。<br>设置undefined时按默认值处理。|
 
 ### fontVariations
 
@@ -914,7 +917,7 @@ ArkTS-Sta: fontVariations(fontVariations: Array&lt;FontVariation&gt; | undefined
 
 设置可变字体的属性。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -938,7 +941,7 @@ ArkTS-Dyn: halfLeading(halfLeading: boolean)
 
 ArkTS-Sta: halfLeading(halfLeading: boolean | undefined)
 
-设置文本是否垂直居中。未通过该接口设置时，默认文本不平分至行的顶部与底部。
+设置文本是否垂直居中。未通过该接口设置时，默认不将行间距平分至行的顶部与底部。
 
 > **说明：**
 >
@@ -1014,7 +1017,7 @@ incrementalUpdatePolicy(policy: IncrementalUpdatePolicy | undefined)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| policy | [IncrementalUpdatePolicy](ts-text-common.md#incrementalupdatepolicy) \| undefined | 是   | 文本渲染的增量更新策略。<br>设置为undefined时，按IncrementalUpdatePolicy.NONE处理。 |
+| policy | [IncrementalUpdatePolicy](ts-text-common.md#incrementalupdatepolicy) \| undefined | 是   | 文本渲染的增量更新策略。<br/>设置为undefined时，按IncrementalUpdatePolicy.NONE处理。 |
 
 ### letterSpacing
 
@@ -1080,11 +1083,11 @@ ArkTS-Sta: lineHeight(value: double | string | Resource | undefined)
 
 当与[lineHeightMultiple](#lineheightmultiple22)同时设置且lineHeightMultiple使用有效值时，lineHeight的设置不生效，以lineHeightMultiple为准。
 
-设置值不大于0时，不限制文本行高，自适应字体大小，number类型时单位为fp。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
+设置值不大于0时，不限制文本行高，由系统根据字体大小自适应计算行高。number类型时单位为fp。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
->  **说明：**
->  
->  特殊字符字体高度远超出同行的其他字符高度时，文本框出现截断、遮挡、内容相对位置发生变化等不符合预期的显示异常，需要开发者调整组件高度、行高等属性，修改对应的页面布局。
+> **说明：**
+>
+> 特殊字符字体高度远超出同行的其他字符高度时，文本框出现截断、遮挡、内容相对位置发生变化等不符合预期的显示异常，需要开发者调整组件高度、行高等属性，修改对应的页面布局。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -1112,9 +1115,9 @@ ArkTS-Sta: lineHeightMultiple(value: double | undefined)
 
 设置行高为入参（value）与字高（fontHeight）的乘积。
 
->  **说明：**
->  
->  当lineHeightMultiple使用有效值和[lineHeight](ts-basic-components-text.md#lineheight)或[lineSpacing](ts-basic-components-text.md#linespacing12)同时设置时，仅lineHeightMultiple生效。lineHeightMultiple小于0时，lineHeightMultiple不生效，使用[lineHeight](ts-basic-components-text.md#lineheight)和[lineSpacing](ts-basic-components-text.md#linespacing12)设置行高和行间距。
+> **说明：**
+>
+> 当lineHeightMultiple使用有效值，且与[lineHeight](ts-basic-components-text.md#lineheight)或[lineSpacing](ts-basic-components-text.md#linespacing12)同时设置时，仅lineHeightMultiple生效。lineHeightMultiple小于0时，lineHeightMultiple不生效，使用[lineHeight](ts-basic-components-text.md#lineheight)和[lineSpacing](ts-basic-components-text.md#linespacing12)设置行高和行间距。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -1295,7 +1298,7 @@ maxLineHeight小于minLineHeight时，maxLineHeight按照minLineHeight属性的�
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | 是   | 文本的最大行高，不支持百分比。<br>设置的值不大于0时按0处理，设置为0时，最大行高不受限制。<br>取值为undefined时，不生效。|
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | 是   | 文本的最大行高，不支持百分比。<br>设置的值不大于0时，最大行高不受限制。<br>取值为undefined时，不生效。|
 
 ### selectedDragPreviewStyle<sup>23+</sup>
 
@@ -1317,7 +1320,7 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 | 参数名 | 类型                                             | 必填 | 说明                                                       |
 | ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| value  | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 文本拖拽时的背板样式。<br>设置为undefined时：背板颜色跟随主题，浅色模式显示白色，深色模式显示黑色。|
+| value  | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 文本拖拽时的背板样式。<br/>设置为undefined时：背板颜色跟随主题，浅色模式显示白色，深色模式显示黑色。|
 
 ### maxLines
 
@@ -1425,7 +1428,7 @@ minLineHeight(value: LengthMetrics | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | 是   | 文本的最小行高，不支持百分比。<br>设置的值不大于0时按0处理。<br>取值为undefined时，不生效。 |
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | 是   | 文本的最小行高，不支持百分比。<br/>设置的值不大于0时按0处理。<br/>取值为undefined时，不生效。 |
 
 ### minLines<sup>22+</sup>
 
@@ -1521,9 +1524,9 @@ ArkTS-Sta: optimizeTrailingSpace(optimize: boolean | undefined)
 
 * 纯空格文本时，修饰线、阴影、背景色跟随空格文本显示；
 
-* 行首空格不在优化范围内，行尾文本强制换行，每行行尾空格根据组件宽度优化行尾空格。
+* 行首空格不在优化范围内。文本强制换行时，根据组件宽度优化每行行尾空格。
 
-当纯空格文本设置优化行尾空格[optimizeTrailingSpace](#optimizetrailingspace20)为true时，不允许同时设置文本背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、空格装饰线[decoration](#decoration)和对齐[textAlign](#textalign)三个属性。
+当纯空格文本设置优化行尾空格[optimizeTrailingSpace](#optimizetrailingspace20)为true时，不允许同时设置文本背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、装饰线[decoration](#decoration)和对齐[textAlign](#textalign)三个属性。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1547,9 +1550,9 @@ ArkTS-Dyn: orphanCharOptimization(enabled: Optional\<boolean>)
 
 ArkTS-Sta: orphanCharOptimization(enabled: boolean | undefined)
 
-设置文本排版时是否使能孤字优化。不通过该接口设置，默认不使能孤字优化。
+设置文本排版时是否开启孤字优化。不通过该接口设置，默认不开启孤字优化。
 
-孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](#wordbreak11)为非BREAK_ALL并且待排版文本首个[TextStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)的[locale](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)为“zh-Hans”或“zh-Hant”时生效。
+孤字优化通过更高效地处理孤立字符（即段落最后一行的首个字符）来改善文本布局。开启后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](#wordbreak11)为非BREAK_ALL并且待排版文本首个[TextStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)的[locale](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)为“zh-Hans”或“zh-Hant”时生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -1565,7 +1568,7 @@ ArkTS-Sta: orphanCharOptimization(enabled: boolean | undefined)
 
 | 参数名           | 类型             | 必填 | 说明                                            |
 | ---------------- | ------- | ---- | ----------------------------------------------- |
-| enabled         |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br> ArkTS-Sta: boolean \| undefined | 是 | 段落最后一行是否使能孤字优化。<br>true表示使能孤字优化，false表示不使能孤字优化。<br>值为undefined或null时，不使能孤字优化。 |
+| enabled         |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br> ArkTS-Sta: boolean \| undefined | 是 | 段落最后一行是否开启孤字优化。<br>true表示开启孤字优化，false表示不开启孤字优化。<br>值为undefined或null时，不开启孤字优化。 |
 
 ### compressLeadingPunctuation<sup>23+</sup>
 
@@ -1621,7 +1624,7 @@ ArkTS-Sta: privacySensitive(supported: boolean | undefined)
 
 | 参数名    | 类型    | 必填 | 说明                                                         |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
-| supported | ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined | 是   | 是否支持卡片敏感隐私信息。<br>true表示支持卡片敏感隐私信息，隐私模式下文字将被遮罩为横杠"-"样式；false表示不支持卡片敏感隐私信息，隐私模式下文字正常显示。<br>**说明：** <br>设置为null则表示不敏感。<br>进入隐私模式需要卡片框架支持。隐私遮罩的类型可以通过[obscured](./ts-universal-attributes-obscured.md#obscured)配置。<br>取值为undefined时，按默认值处理。|
+| supported | ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined | 是   | 是否支持卡片敏感隐私信息。<br>true表示支持卡片敏感隐私信息，隐私模式下文字将被遮罩为横杠"-"样式；false表示不支持卡片敏感隐私信息，隐私模式下文字正常显示。<br>**说明：** <br>设置为null则表示不支持卡片敏感隐私信息，行为与false一致。<br>进入隐私模式需要卡片框架支持。隐私遮罩的类型可以通过[obscured](./ts-universal-attributes-obscured.md#obscured)配置。<br>取值为undefined时，按默认值处理。|
 
 ### punctuationOverflow
 
@@ -1653,7 +1656,7 @@ ArkTS-Dyn: selectedBackgroundColor(color: ResourceColor)
 
 ArkTS-Sta: selectedBackgroundColor(color: ResourceColor | undefined)
 
-设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。未通过该接口设置时，默认文本选中高亮颜色为'#007DFF'（蓝色）。
+设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，系统默认应用20%不透明度。未通过该接口设置时，默认文本选中高亮颜色为'#007DFF'（蓝色）。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -1733,6 +1736,80 @@ ArkTS-Sta: shaderStyle(shader: ShaderStyle | undefined)
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
 | shader | ArkTS-Dyn: [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20)<br>ArkTS-Sta: [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined | 是 | 径向渐变或线性渐变或纯色。<br>根据传入的参数区分处理径向渐变[RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)或线性渐变[LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)或纯色[ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)，最终设置到Text文本上显示为渐变色效果。<br>**说明：** <br>当设置为径向渐变[RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)时，若[RadialGradientOptions](./ts-universal-attributes-gradient-color.md#radialgradientoptions18对象说明)的center参数设置到组件范围外时，可将repeating参数设置为true，此时渐变效果会更明显。<br>值为undefined时，无渐变效果。 |
 
+### strokeColor
+
+ArkTS-Dyn: strokeColor(color: Optional\<ResourceColor>)
+
+ArkTS-Sta: strokeColor(color: ResourceColor | undefined)
+
+设置文本描边的颜色。未通过该接口设置时，默认为字体颜色。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**参数：**
+
+| 参数名 | 类型                                       | 必填 | 说明       |
+| ------ | ------------------------------------------ | ---- | ---------- |
+| color  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)><br>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 描边颜色。设置异常值时取字体颜色。需配合[strokeWidth](#strokewidth)设置描边宽度后生效。<br>取值为undefined时，按默认值处理。 |
+
+### strokeJoinStyle
+
+strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle \| undefined)
+
+设置文本描边的拐角样式。未通过该接口设置时，默认值为StrokeJoinStyle.MITER_JOIN，文本拐角处表现为尖角。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**参数：**
+
+| 参数名 | 类型             | 必填 | 说明                                            |
+| ------ | ------- | ---- | ----------------------------------------------- |
+| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) \| undefined | 是 | 设置文本描边的拐角样式，仅在使用[strokeWidth](#strokewidth)设置文本描边时生效。<br>值为undefined时，按照[StrokeJoinStyle](ts-text-common.md#strokejoinstyle).MITER_JOIN处理，文本拐角处表现为尖角。 |
+
+### strokeWidth
+
+ArkTS-Dyn: strokeWidth(width: Optional\<LengthMetrics>)
+
+ArkTS-Sta: strokeWidth(width: LengthMetrics | undefined)
+
+设置文本描边的宽度。未通过该接口设置时，默认值为0，无描边效果。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明             |
+| ------ | ------------------------------------------------------------ | ---- | ---------------- |
+| width  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)><br>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 文本描边的宽度。默认值为0，无描边效果。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。<br>取值为undefined时，按默认值处理。 |
+
 ### textAlign
 
 ArkTS-Dyn: textAlign(value: TextAlign)
@@ -1755,9 +1832,9 @@ ArkTS-Sta: textAlign(value: TextAlign | undefined)
 
 当textAlign属性设置为TextAlign.JUSTIFY时，需要根据文本内容设置[wordBreak](#wordbreak11)属性，且最后一行文本水平对齐首部，不参与两端对齐。
 
->  **说明：**  
+> **说明：**  
 >
->  textAlign只能调整文本整体的布局，不影响字符的显示顺序。若需要调整字符的显示顺序，请参考[镜像状态字符对齐](../../../ui/arkts-internationalization.md#镜像状态字符对齐)。
+> textAlign只能调整文本整体的布局，不影响字符的显示顺序。若需要调整字符的显示顺序，请参考[镜像状态字符对齐](../../../ui/arkts-internationalization.md#镜像状态字符对齐)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -1847,7 +1924,7 @@ ArkTS-Sta: textDirection(direction: TextDirection | undefined)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| direction  | [TextDirection](ts-text-common.md#textdirection22) \| undefined | 是   | 文本排版方向。<br>设置为undefined时，按照TextDirection.DEFAULT处理，表现为文本排版方向遵循组件布局方向。 |
+| direction  | [TextDirection](ts-text-common.md#textdirection22) \| undefined | 是   | 文本排版方向。<br/>设置为undefined时，按照TextDirection.DEFAULT处理，表现为文本排版方向遵循组件布局方向。 |
 
 ### textIndent<sup>10+</sup>
 
@@ -2016,7 +2093,7 @@ ArkTS-Sta: textVerticalAlign(textVerticalAlign: TextVerticalAlign | undefined)
 > **说明：**
 >
 > - 与[halfLeading](#halfleading12)同时配置时，halfLeading不生效。
-> - 一个段落下使用同一字号必须同时设置行高[lineHeight](#lineheight)或者同一个段落不同字号文本混排时才有效果差异，否则设置了该属性任意枚举值和未设置该属性都是一样的排版效果。属性字符串[TextStyle](ts-universal-styled-string.md#textstyle)中的SuperscriptStyle上下角标样式仅在[TextVerticalAlign](ts-text-common.md#textverticalalign20)属性值为TextVerticalAlign.BASELINE时生效，其余垂直对齐方式下上下角标文本和普通文本表现一致，无上下角标效果。
+> - 同一段落中使用同一字号时，需同时设置行高[lineHeight](#lineheight)才会产生垂直对齐效果差异；或同一段落中不同字号文本混排时也会产生效果差异。否则，设置该属性的任意枚举值与不设置该属性的排版效果相同。属性字符串[TextStyle](ts-universal-styled-string.md#textstyle)中的SuperscriptStyle上下角标样式仅在[TextVerticalAlign](ts-text-common.md#textverticalalign20)属性值为TextVerticalAlign.BASELINE时生效，其余垂直对齐方式下上下角标文本和普通文本表现一致，无上下角标效果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2077,13 +2154,13 @@ WordBreak.BREAK_ALL与{overflow:&nbsp;TextOverflow.Ellipsis}、maxLines组合使
 | MIXED | 2 | Span为图文混合类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>  **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
 | DEFAULT<sup>15+</sup> | 3 | 注册此类型菜单但未注册TEXT、IMAGE、MIXED菜单时，文字类型、图片类型、图文混合类型都会触发并显示此类型对应的菜单。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br>  **ArkTS-Dyn起始版本：** 15 <br> **ArkTS-Sta起始版本：** 23 |
 
->  **说明：**
+> **说明：**
 >
->  菜单类型的匹配顺序如下。例如，用户长按文本时，根据以下规则查找：
->  1. 查找是否注册了TextSpanType.TEXT、TextResponseType.LONG_PRESS菜单
->  2. 查找是否注册了TextSpanType.TEXT、TextResponseType.DEFAULT菜单
->  3. 查找是否注册了TextSpanType.DEFAULT、TextResponseType.LONG_PRESS菜单
->  4. 查找是否注册了TextSpanType.DEFAULT、TextResponseType.DEFAULT菜单
+> 菜单类型的匹配顺序如下。例如，用户长按文本时，根据以下规则查找：
+> 1. 查找是否注册了TextSpanType.TEXT、TextResponseType.LONG_PRESS菜单
+> 2. 查找是否注册了TextSpanType.TEXT、TextResponseType.DEFAULT菜单
+> 3. 查找是否注册了TextSpanType.DEFAULT、TextResponseType.LONG_PRESS菜单
+> 4. 查找是否注册了TextSpanType.DEFAULT、TextResponseType.DEFAULT菜单
 
 ## TextResponseType<sup>11+</sup>枚举说明
 
@@ -2100,13 +2177,13 @@ WordBreak.BREAK_ALL与{overflow:&nbsp;TextOverflow.Ellipsis}、maxLines组合使
 | SELECT | 2 | 通过鼠标选中触发菜单弹出。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>  **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
 | DEFAULT<sup>15+</sup> | 3 | 注册此类型的菜单，但未注册RIGHT_CLICK、LONG_PRESS、SELECT时，右键、长按、鼠标、[selection](#selection11)选中均会触发并显示此类型对应的菜单。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br>  **ArkTS-Dyn起始版本：** 15 <br> **ArkTS-Sta起始版本：** 23 |
 
->  **说明：**
+> **说明：**
 >
->  菜单类型的匹配顺序如下。例如，用户长按文本时，根据以下规则查找：
->  1. 查找是否注册了TextSpanType.TEXT、TextResponseType.LONG_PRESS菜单
->  2. 查找是否注册了TextSpanType.TEXT、TextResponseType.DEFAULT菜单
->  3. 查找是否注册了TextSpanType.DEFAULT、TextResponseType.LONG_PRESS菜单
->  4. 查找是否注册了TextSpanType.DEFAULT、TextResponseType.DEFAULT菜单
+> 菜单类型的匹配顺序如下。例如，用户长按文本时，根据以下规则查找：
+> 1. 查找是否注册了TextSpanType.TEXT、TextResponseType.LONG_PRESS菜单
+> 2. 查找是否注册了TextSpanType.TEXT、TextResponseType.DEFAULT菜单
+> 3. 查找是否注册了TextSpanType.DEFAULT、TextResponseType.LONG_PRESS菜单
+> 4. 查找是否注册了TextSpanType.DEFAULT、TextResponseType.DEFAULT菜单
 
 ## TextOverflowOptions<sup>18+</sup>对象说明
 
@@ -2130,7 +2207,7 @@ WordBreak.BREAK_ALL与{overflow:&nbsp;TextOverflow.Ellipsis}、maxLines组合使
 
 | 名称 | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- |---- | ------------------------------------------------------------ |
-| overflow<sup>7+</sup>  | ArkTS-Dyn: [TextOverflow](ts-appendix-enums.md#textoverflow) <br>ArkTS-Sta: [TextOverflow](ts-appendix-enums.md#textoverflow) \| undefined | 否 | 否  | 文本超长时的显示方式。<br>默认值：TextOverflow.Clip <br>取值undefined时，按默认值处理。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| overflow<sup>7+</sup> | ArkTS-Dyn: [TextOverflow](ts-appendix-enums.md#textoverflow) <br>ArkTS-Sta: [TextOverflow](ts-appendix-enums.md#textoverflow) \| undefined | 否 | 否  | 文本超长时的显示方式。<br>默认值：TextOverflow.Clip <br>取值undefined时，按默认值处理。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
 
 ## 事件
 
@@ -2142,7 +2219,7 @@ ArkTS-Dyn: onCopy(callback:(value:&nbsp;string)&nbsp;=&gt;&nbsp;void)
 
 ArkTS-Sta: onCopy(callback:((value:&nbsp;string)&nbsp;=&gt;&nbsp;void) | undefined)
 
-长按文本内部区域弹出剪贴板后，点击剪贴板复制按钮，触发该回调。目前只有文本可以复制。
+长按文本内部区域弹出剪贴板后，单击剪贴板复制按钮，触发该回调。目前只有文本可以复制。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2306,18 +2383,18 @@ setStyledString(value: StyledString): void
 
 | 参数名   | 类型   | 必填   | 说明                |
 | ----- | ------ | ---- | ------------------- |
-| value | [StyledString](ts-universal-styled-string.md#styledstring) | 是    | 属性字符串。<br>**说明：** <br>StyledString的子类[MutableStyledString](ts-universal-styled-string.md#mutablestyledstring)也可以作为入参值。 |
+| value | [StyledString](ts-universal-styled-string.md#styledstring) | 是    | 属性字符串。<br/>**说明：** <br/>StyledString的子类[MutableStyledString](ts-universal-styled-string.md#mutablestyledstring)也可以作为入参值。 |
 
->  **说明：**    
->  多次调用setStyledString，会用新的入参覆盖已绑定的属性字符串，而不是叠加新的入参。
+> **说明：**    
+> 多次调用setStyledString，会用新的入参覆盖已绑定的属性字符串，而不是叠加新的入参。
 > 
->  属性字符串通过controller绑定时，需要等待布局完成后，绑定生效。当[measure](../js-apis-arkui-frameNode.md#measure12)和setStyledString同时使用，开发者需要通过[@ohos.arkui.inspector (布局回调)](../js-apis-arkui-inspector.md)判断布局完成，再绑定属性字符串。
+> 属性字符串通过controller绑定时，需要等待布局完成后，绑定生效。当[measure](../js-apis-arkui-frameNode.md#measure12)和setStyledString同时使用，开发者需要通过[@ohos.arkui.inspector (布局回调)](../js-apis-arkui-inspector.md)判断布局完成，再绑定属性字符串。
 >
->  在API version 14及以下版本，开发者调用TextController的setStyledString接口设置属性字符串，如果调用时TextController还未绑定对应的Text，则此次设置无效。
+> 在API version 14及以下版本，开发者调用TextController的setStyledString接口设置属性字符串，如果调用时TextController还未绑定对应的Text，则此次设置无效。
 >
->  从API version 15开始，TextController会保存设置的属性字符串。当TextController已经和Text绑定，则Text会自动设置属性字符串，显示对应的样式。
->  
->  这一区别体现在[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)中设置属性字符串，API 14及以下版本不生效，API 15及以上版本生效，推荐用法请参考[创建并应用StyledString和MutableStyledString](../../../ui/arkts-styled-string.md#创建并应用styledstring和mutablestyledstring)。
+> 从API version 15开始，TextController会保存设置的属性字符串。当TextController已经和Text绑定，则Text会自动设置属性字符串，显示对应的样式。
+>
+> 这一区别体现在[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)中设置属性字符串，API 14及以下版本不生效，API 15及以上版本生效，推荐用法请参考[创建并应用StyledString和MutableStyledString](../../../ui/arkts-styled-string.md#创建并应用styledstring和mutablestyledstring)。
 
 
 
@@ -2353,7 +2430,7 @@ ArkTS-Sta: setTextSelection(selectionStart:&nbsp;int | undefined, selectionEnd:&
 
 设置文本选择区域并高亮显示。
 
->  **说明：**
+> **说明：**
 > 
 > 当[copyOption](#copyoption9)设置为CopyOptions.None时，设置setTextSelection不生效。
 > 
@@ -2361,7 +2438,7 @@ ArkTS-Sta: setTextSelection(selectionStart:&nbsp;int | undefined, selectionEnd:&
 > 
 > 当selectionStart大于等于selectionEnd时不选中。可选范围为[0, textSize]，其中textSize为文本内容最大字符数，入参小于0时处理为0，大于textSize时处理为textSize。
 > 
-> 当selectionStart或selectionEnd位于截断的不可见区域时，文本不选中。clip设置为false时，超出父组件的文本选中区域生效。
+> 当selectionStart或selectionEnd位于截断的不可见区域时，文本不选中。clip设置为false时，超出父组件范围的文本也可被选中。
 >
 > 如果设备为PC/2in1，即使options被赋值为MenuPolicy.SHOW，调用setTextSelection也不弹出菜单。
 >
@@ -2396,7 +2473,7 @@ Marquee初始化参数。
 | 名称                | 类型                                              | 只读 | 可选 | 说明                                                                                  |
 |--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
 | start              | boolean                                         | 否  | 否 | 控制跑马灯进入播放状态。<br>true表示播放，false表示不播放。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23  |
-| step               | ArkTS-Dyn: number <br> ArkTS-Sta: double                                        | 否  | 是 | 滚动动画文本滚动步长。<br>单位：vp<br>取值范围：(0, 文本宽度]。设置小于等于0的值时按默认值处理。<br>默认值：4.0vp <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23     |
+| step               | ArkTS-Dyn: number <br> ArkTS-Sta: double                                        | 否  | 是 | 跑马灯文本滚动步长。<br>单位：vp<br>取值范围：(0, 文本宽度]。设置小于等于0的值时按默认值处理。<br>默认值：4.0vp <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23     |
 | spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 两轮跑马灯之间的间距。单位：vp。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br>默认值：48.0vp <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23  |
 | loop               | ArkTS-Dyn: number <br> ArkTS-Sta: int                                        | 否  | 是 | 设置重复滚动的次数，小于等于零时无限循环。<br>默认值：-1  <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23      |
 | fromStart          | boolean                                         | 否  | 是 | 设置文本从头开始滚动或反向滚动。<br>true表示从头开始滚动，false表示反向滚动。<br>默认值：true <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23                                                  |
@@ -2467,6 +2544,7 @@ Marquee状态回调的返回值。
 
 ### 示例1（设置文本布局）
 该示例通过[textAlign](#textalign)、[lineHeight](#lineheight)、[baselineOffset](#baselineoffset)、[halfLeading](#halfleading12)（从API version 12开始）属性展示了文本布局的效果。
+
 ```ts
 // xxx.ets
 @Extend(Text)
@@ -2738,11 +2816,11 @@ struct TextExample3 {
         })
         .onMarqueeStateChange((state: MarqueeState) => {
           if (state == MarqueeState.START) {
-            // "收到状态: START";
+            console.info('收到状态: START');
           } else if (state == MarqueeState.BOUNCE) {
-            // "收到状态: BOUNCE";
+            console.info('收到状态: BOUNCE');
           } else if (state == MarqueeState.FINISH) {
-            // "收到状态: FINISH";
+            console.info('收到状态: FINISH');
           }
         })
 
@@ -2999,7 +3077,7 @@ struct TextExample7 {
       }
       .width('100%')
       // 使用parallelGesture中的TapGesture替代onClick属性，达到非冒泡事件类似冒泡
-      // 的效果，点击Text组件区域Column上的点击事件正常响应
+      // 的效果，单击Text组件区域Column上的单击事件正常响应
       .parallelGesture(TapGesture().onAction((event: GestureEvent) => {
         console.info('test column onClick timestamp:' + event.timestamp);
       }), GestureMask.Normal)
@@ -3575,7 +3653,7 @@ struct TextExample14 {
         // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
         ImageSpan($r('app.media.startIcon'))
           .width(30).height(30)
-          .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)// 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
+          .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH) // 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
         Span('World')
       }
       .textVerticalAlign(TextVerticalAlign.CENTER)
@@ -3593,7 +3671,7 @@ struct TextExample14 {
 
 从API version 20开始，该示例通过[contentTransition](#contenttransition20)属性展示了数字翻牌效果。
 
-``` ts
+```ts
 // xxx.ets
 @Entry
 @Component
@@ -3951,7 +4029,7 @@ struct TextTest {
 
 从API version 23开始，新增textDirection接口。
 
-``` ts
+```ts
 // xxx.ets
 @Entry
 @Component
@@ -4225,7 +4303,7 @@ struct TextExample {
           // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
           ImageSpan($r('app.media.startIcon'))
             .width(30).height(30)
-            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)// 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
+            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH) // 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
           Span('World')
         }
         .textVerticalAlign(TextVerticalAlign.CENTER)
@@ -4268,7 +4346,7 @@ struct TextExample {
           // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
           ImageSpan($r('app.media.startIcon'))
             .width(30).height(30)
-            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)// 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
+            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH) // 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
           Span('World')
         }
         .textVerticalAlign(TextVerticalAlign.CENTER)
@@ -4790,3 +4868,82 @@ struct Utf16GlyphHighlightPage {
 该效果图会因设备尺寸差异有显示区别，仅供参考。
 
 ![textUtf16GlyphHighlight](figures/textUtf16GlyphHighlight.gif)
+
+### 示例35（设置文本描边）
+
+该示例通过[strokeWidth](#strokewidth)、[strokeColor](#strokecolor)和[strokeJoinStyle](#strokejoinstyle)属性为Text设置文本描边样式，分别展示描边宽度、描边颜色和描边拐角样式的效果，并演示了将描边宽度设为负值时显示实心字的效果。
+
+从API版本26.2.0开始，新增[strokeColor](#strokecolor)、[strokeWidth](#strokewidth)和[strokeJoinStyle](#strokejoinstyle)属性。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextStrokeExample {
+  build() {
+    Column() {
+      Text('Text without stroke')
+        .height(60)
+        .fontSize(30)
+      Text('Text with stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(-3.0))
+        .strokeColor('rgb(39,135,217)')
+      Text('Text with stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(3.0))
+        .strokeColor('rgb(39,135,217)')
+      Text('Text with ROUND_JOIN stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(3.0))
+        .strokeJoinStyle(StrokeJoinStyle.ROUND_JOIN)
+        .strokeColor('rgb(39,135,217)')
+    }
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Column, Component, Text, LengthMetrics, StrokeJoinStyle } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextStrokeExample {
+  build() {
+    Column() {
+      Text('Text without stroke')
+        .height(60)
+        .fontSize(30)
+      Text('Text with stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(-3.0))
+        .strokeColor('rgb(39,135,217)')
+      Text('Text with stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(3.0))
+        .strokeColor('rgb(39,135,217)')
+      Text('Text with ROUND_JOIN stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(3.0))
+        .strokeJoinStyle(StrokeJoinStyle.ROUND_JOIN)
+        .strokeColor('rgb(39,135,217)')
+    }
+    .width('100%')
+  }
+}
+```
+
+![textStroke](figures/textStroke.png)

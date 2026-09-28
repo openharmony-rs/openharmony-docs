@@ -323,7 +323,7 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -865,7 +865,7 @@ readPixelsSync(area: PositionArea): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -1495,7 +1495,7 @@ writePixelsSync(area: PositionArea): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -1880,7 +1880,7 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -2039,7 +2039,7 @@ getImageInfoSync(): ImageInfo
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -2522,7 +2522,7 @@ ArkTS-Sta: opacitySync(rate: double): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -2835,7 +2835,7 @@ createAlphaPixelmapSync(): PixelMap
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -3211,7 +3211,7 @@ ArkTS-Sta: scaleSync(x: double, y: double): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -3292,7 +3292,7 @@ ArkTS-Sta: scale(x: double, y: double, level: AntiAliasingLevel): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -3362,7 +3362,7 @@ ArkTS-Sta: scaleSync(x: double, y: double, level: AntiAliasingLevel): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -3438,7 +3438,7 @@ ArkTS-Sta: createScaledPixelMap(x: double, y: double, level?: AntiAliasingLevel)
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -3511,7 +3511,7 @@ ArkTS-Sta: createScaledPixelMapSync(x: double, y: double, level?: AntiAliasingLe
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -3759,7 +3759,7 @@ clone(): Promise\<PixelMap>
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 501 | Resource unavailable. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
 | 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
@@ -3821,7 +3821,7 @@ cloneSync(): PixelMap
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 501 | Resource unavailable. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
 | 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
@@ -4195,7 +4195,7 @@ ArkTS-Sta: translateSync(x: double, y: double): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -4566,7 +4566,7 @@ ArkTS-Sta: rotateSync(angle: double): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -4897,7 +4897,7 @@ flipSync(horizontal: boolean, vertical: boolean): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -5254,7 +5254,7 @@ cropSync(region: Region): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -5657,7 +5657,7 @@ getMetadata(key: HdrMetadataKey): HdrMetadataValue
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.          |
-| 501 | Resource unavailable.          |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | 62980173 | The DMA memory does not exist.          |
 | 62980302 | Memory copy failed. Possibly caused by invalid metadata value.          |
 
@@ -5752,7 +5752,7 @@ setMetadata(key: HdrMetadataKey, value: HdrMetadataValue): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 401|  Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 501 | Resource unavailable.          |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | 62980173 | The DMA memory does not exist.          |
 | 62980302 | Memory copy failed. Possibly caused by invalid metadata value.         |
 
@@ -5828,7 +5828,7 @@ setTransferDetached(detached: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -6264,7 +6264,7 @@ setMemoryNameSync(name: string): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 401 | Parameter error. Possible causes: 1.The length of the input parameter is too long. 2.Parameter verification failed. |
-| 501 | Resource unavailable. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | 62980286 | Memory format not supported. |
 
 **示例：**

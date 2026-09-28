@@ -68,19 +68,25 @@ export default class EntryAbility extends UIAbility {
   }
 
   private async omaTest() {
-    // 创建安全单元service，用于访问安全单元
-    await omapi.createService().then((data) => {
-      if (data == undefined || !data.isConnected()) {
-        hilog.error(0x0000, 'testTag', 'secure element service disconnected.');
+    try {
+      // 创建安全单元service，用于访问安全单元
+      await omapi.createService().then((data) => {
+        if (data == undefined || !data.isConnected()) {
+          hilog.error(0x0000, 'testTag', 'secure element service disconnected.');
+          return;
+        }
+        seService = data;
+        hilog.info(0x0000, 'testTag', 'secure element service connected.');
+      }).catch((error: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
+        return;
+      });
+    } catch (error) {
+      if (error as BusinessError) {
+        hilog.error(0x0000, 'testTag', 'omapi on error %{public}s', JSON.stringify(error));
         return;
       }
-      seService = data;
-      hilog.info(0x0000, 'testTag', 'secure element service connected.');
-    }).catch((error: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
-      return;
-    });
-
+    }
     // 获取设备上所有支持的readers，即所有的安全单元列表
     try {
       seReaders = seService.getReaders();
@@ -132,6 +138,7 @@ export default class EntryAbility extends UIAbility {
 
     if (seChannel == undefined) {
       hilog.error(0x0000, 'testTag', 'seChannel invalid.');
+      seSession.close();
       seService.shutdown();
       return;
     }
@@ -151,7 +158,8 @@ export default class EntryAbility extends UIAbility {
     } catch (exception) {
       hilog.error(0x0000, 'testTag', 'seChannel.close() exception = %{public}s.', JSON.stringify(exception));
     }
-
+    // 关闭seSession，也将关闭此Session打开的所有Channel
+    seSession.close();
     // 关闭服务资源，关闭应用程序和安全单元服务的绑定关系
     seService.shutdown();
   }

@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-智慧手势选中动作处理。当通过[registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor)接口动态自定义智慧手势行为时，设置返回值[Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md)的selectedProposal为该类型对象，会使目标组件被选中。
+智慧手势选中动作处理。继承自[TargetedGestureProposal](arkts-apis-uicontext-targetedgestureproposal.md)。当通过[registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor)接口动态自定义智慧手势行为时，设置返回值[Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md)的selectedProposal为该类型对象，会使目标组件被选中。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 

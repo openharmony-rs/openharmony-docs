@@ -18,7 +18,7 @@ WithTheme组件用于设置应用局部页面自定义主题风格，可设置�
 >
 > - WithTheme支持的系统组件如下：[TextInput](./ts-basic-components-textinput.md)、[Search](./ts-basic-components-search.md)、[Button](./ts-basic-components-button.md)、[Badge](./ts-container-badge.md)、[Swiper](./ts-container-swiper.md)、[Text](./ts-basic-components-text.md)、[Select](./ts-basic-components-select.md)、[Menu](./ts-basic-components-menu.md)、[TimePicker](./ts-basic-components-timepicker.md)、[DatePicker](./ts-basic-components-datepicker.md)、[TextPicker](./ts-basic-components-textpicker.md)、[Checkbox](./ts-basic-components-checkbox.md)、[CheckboxGroup](./ts-basic-components-checkboxgroup.md)、[Radio](./ts-basic-components-radio.md)、[Slider](./ts-basic-components-slider.md)、[Progress](./ts-basic-components-progress.md)、[QRCode](./ts-basic-components-qrcode.md)、[Toggle](./ts-basic-components-toggle.md)、[TextClock](./ts-basic-components-textclock.md)、[PatternLock](./ts-basic-components-patternlock.md)、[Divider](./ts-basic-components-divider.md)。从API版本26.0.0开始，新增[CalendarPicker](./ts-basic-components-calendarpicker.md)、[UIPickerComponent](./ts-container-ui-picker-component.md)、[TextArea](./ts-basic-components-textarea.md)、[属性字符串](./ts-universal-styled-string.md)、[Gauge](./ts-basic-components-gauge.md)、[DataPanel](./ts-basic-components-datapanel.md)、[RichEditor](./ts-basic-components-richeditor.md)、[MenuItem](./ts-basic-components-menuitem.md)、[MenuItemGroup](./ts-basic-components-menuitemgroup.md)、[Image](./ts-basic-components-image.md)、[ImageAnimator](./ts-basic-components-imageanimator.md)、[Counter](./ts-container-counter.md)、[bindSheet](./ts-universal-attributes-sheet-transition.md#bindsheet)、[LoadingProgress](./ts-basic-components-loadingprogress.md)。
 >
-> - WithTheme相关使用指导请参考[设置应用内主题换肤](../../../ui/theme_skinning.md)。
+> - WithTheme相关使用指导请参考[设置应用内主题换肤](../../../ui/theme-skinning.md)。
 
 ## 子组件
 
@@ -66,7 +66,7 @@ WithTheme(options: WithThemeOptions)
 
 | 名称        | 类型                               | 只读  | 可选 | 说明                |
 |------------------------|---------------------------------------------------------| ---- | ---- |------------------------------------------------------------------|
-| theme     | [CustomTheme](#customtheme)    | 否 | 是  | 用于设置WithTheme作用域内组件的自定义主题配色。<br/>默认值：undefined，默认配色跟随系统[token默认样式](../../../ui/theme_skinning.md#系统缺省token色值)。 |
+| theme     | [CustomTheme](#customtheme)    | 否 | 是  | 用于设置WithTheme作用域内组件的自定义主题配色。<br/>默认值：undefined，默认配色跟随系统[token默认样式](../../../ui/theme-skinning.md#系统缺省token色值)。 |
 | colorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明) | 否 | 是  | 用于指定WithTheme作用域内组件配色的深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM |
 
 ## CustomTheme

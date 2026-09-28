@@ -975,7 +975,7 @@ ArkTS-Sta: fontFeature(value: string | undefined)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| value  | ArkTS-Dyn: string<br>ArkTS-Sta: string \| undefined | 是   | 文字特性效果，用于设置文字的特殊显示效果，如数字等宽等。格式为：normal \| <feature-tag-value>。<br>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: string<br>ArkTS-Sta: string \| undefined | 是   | 文字特性效果，用于设置文字的特殊显示效果，如数字等宽等。格式为：normal \| \<feature-tag-value\>。<br>取值为undefined时，按默认值处理。 |
 
 Font Feature当前支持的属性参见[fontFeature](ts-basic-components-text.md#fontfeature12)属性列表。
 
@@ -1693,7 +1693,7 @@ strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
 
 | 参数名           | 类型             | 必填 | 说明                                            |
 | ---------------- | ------- | ---- | ----------------------------------------------- |
-| strokeJoinStyle         | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) \| undefined | 是 | 文本描边拐角样式。<br>值为undefined时，按照StrokeJoinStyle.MITER_JOIN处理，请参考[StrokeJoinStyle](ts-text-common.md#strokejoinstyle)，文本拐角处表现为锐角。 |
+| strokeJoinStyle         | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) \| undefined | 是 | 文本描边拐角样式。<br>值为undefined时，按照StrokeJoinStyle.MITER_JOIN处理，请参考[StrokeJoinStyle](ts-text-common.md#strokejoinstyle)，文本拐角处表现为尖角。 |
 
 ### shaderStyle
 
@@ -2852,7 +2852,7 @@ struct TextAreaExample {
       .width('100%')
       .padding({ bottom: 50 })
 
-      TextArea({ controller: this.controller, text: this.inputValue })// 绑定自定义键盘
+      TextArea({ controller: this.controller, text: this.inputValue }) // 绑定自定义键盘
         .height(100)
         .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
         .margin(10)
@@ -3300,7 +3300,7 @@ struct TextAreaExample {
         .maxFontScale(2)
         .enablePreviewText(true)
         .enableHapticFeedback(true)
-        .stopBackPress(false)// 返回键交给其他组件处理
+        .stopBackPress(false) // 返回键交给其他组件处理
         .width(336)
         .height(56)
         .margin(20)
@@ -3414,7 +3414,7 @@ struct TextAreaExample {
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
           text: '通过minFontScale、maxFontScale调整文本显示的最大和最小字体缩放倍数。'
         })
-          .minFontScale(this.minFontScale)// 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
+          .minFontScale(this.minFontScale) // 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
           .maxFontScale(this.maxFontScale) // 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
       }.width('100%')
       // 以下按钮只用做字体大小倍数调整，不在示例图中呈现

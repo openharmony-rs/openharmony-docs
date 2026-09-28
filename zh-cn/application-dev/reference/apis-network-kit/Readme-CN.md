@@ -35,10 +35,10 @@
   <!--DelEnd-->
 - C API<!--network-c-->
   - 模块<!--network-module-->
-    - [TrafficFilter](capi-trafficfilter.md)
     - [NetConnection](capi-netconnection.md)
     - [Netstack](capi-netstack.md)
     - [NetEthernet](capi-netethernet.md)
+    - [TrafficFilter](capi-trafficfilter.md)
   - 头文件<!--network-headerfile-->
     - [net_connection.h](capi-net-connection-h.md)
     - [net_connection_type.h](capi-net-connection-type-h.md)
@@ -127,7 +127,7 @@
 - 错误码<!--network-arkts-errcode-->
   - [HTTP错误码](errorcode-net-http.md)
   - [Socket错误码](errorcode-net-socket.md)
-  - [webSocket错误码](errorcode-net-webSocket.md)
+  - [WebSocket错误码](errorcode-net-webSocket.md)
   - [网络连接管理错误码](errorcode-net-connection.md)
   - [以太网连接错误码](errorcode-net-ethernet.md)
   - [扩展认证错误码](errorcode-net-eap.md)

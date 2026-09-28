@@ -634,7 +634,7 @@ struct MyActiveSample {
     return 1 + 2 + 3; // 错误用法，生命周期装饰器装饰get方法不生效
   }
   ```
-- 当自定义组件没有使用生命周期装饰器，且没有注册监听，使用[getCurrentState](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#getcurrentstate)查询自定义组件当前生命周期状态时，返回值永远为[CustomComponentLifecycleState.INIT](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate)。
+- 当自定义组件没有使用生命周期装饰器，且没有注册监听，使用[getCurrentState](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#getcurrentstate)查询自定义组件当前生命周期状态时，返回值永远为[CustomComponentLifecycleState.INIT](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate)。当自定义组件没有使用生命周期装饰器时，自定义组件注册监听成功时才开启状态机且当前生命周期状态为INIT。
 
 - 自定义组件创建后默认为激活状态，不会触发`@ComponentActive`装饰的函数。
 
@@ -1056,7 +1056,7 @@ MyObserver aboutToRecycle
 MyObserver aboutToReuse
 ```
 
-可以在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于Appeared状态，所以无法监听组件的aboutToAppear。
+不建议在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于BUILT状态，所以无法监听组件的aboutToAppear和onDidBuild。
 
 ``` TypeScript
 Column() {

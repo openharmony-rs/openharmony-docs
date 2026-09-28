@@ -35,7 +35,7 @@ JS文件用来定义HML页面的业务逻辑，支持ECMA规范的JavaScript语�
 
 - 模块声明
 
-  使用import方法引入功能模块：
+  使用import声明引入功能模块：
 
 
   ``` ts
@@ -44,7 +44,7 @@ JS文件用来定义HML页面的业务逻辑，支持ECMA规范的JavaScript语�
 
 - 代码引用
 
-  使用import方法导入js代码：
+  使用import声明导入JavaScript模块：
 
 
   ``` ts

@@ -194,7 +194,7 @@ activate(isActive: boolean, autoInactive?: boolean): void
 **示例：** 
 
 ```ts
-// 该示例表示在页面加载完成时进入焦点激活态，可按方向键在button间走焦
+// 该示例表示在组件即将出现时进入焦点激活态，可按方向键在button间走焦
 @Entry
 @Component
 struct ActivateExample {
@@ -396,7 +396,7 @@ setKeyProcessingMode(mode: KeyProcessingMode): void
 
 ```ts
 
-// 该示例演示了在页面加载完成后设置走焦类型的实现方式。
+// 该示例演示了在组件即将出现时设置走焦类型的实现方式。
 @Entry
 @Component
 struct Index {

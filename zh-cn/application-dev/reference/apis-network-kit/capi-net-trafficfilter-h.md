@@ -193,7 +193,7 @@ int32_t OH_TrafficFilter_CreatePacketController(
 
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -222,7 +222,7 @@ int32_t OH_TrafficFilter_DestroyPacketController(OH_TrafficFilter_PacketControll
 
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -252,7 +252,7 @@ int32_t OH_TrafficFilter_RegisterPacketCallback(
 
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -280,7 +280,7 @@ int32_t OH_TrafficFilter_UnregisterPacketCallback(OH_TrafficFilter_PacketControl
 
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -309,7 +309,7 @@ int32_t OH_TrafficFilter_AddPacketRule(
 
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -336,7 +336,7 @@ int32_t OH_TrafficFilter_ClearPacketRule(OH_TrafficFilter_PacketController* cont
 
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

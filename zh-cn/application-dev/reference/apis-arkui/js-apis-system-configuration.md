@@ -24,7 +24,7 @@ import Configuration from '@system.configuration';
 
 static getLocale(): LocaleResponse
 
-获取应用当前的语言和地区。默认与系统的语言和地区同步。
+获取应用当前的语言、地区和文字布局方向。默认与系统的语言、地区和文字布局方向同步。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -47,7 +47,7 @@ ArkTS示例：
   }
   ```
 
-JS示例：
+HML示例：
 ```xml
 <!-- xxx.hml -->
 <div class="container">
@@ -114,11 +114,6 @@ JS示例：
     width: 100%;
     height: 35px;
 }
-.label {
-    font-size: 24px;
-    height: 40px;
-    color: #aaaaaa;
-}
 .value {
     font-size: 24px;
     height: 40px;
@@ -151,7 +146,7 @@ export default {
             console.info('language: ' + localeInfo.language);
             console.info('countryOrRegion: ' + localeInfo.countryOrRegion);
             console.info('dir: ' + localeInfo.dir);
-            
+
             this.language = localeInfo.language || 'Unknown';
             this.countryOrRegion = localeInfo.countryOrRegion || 'Unknown';
             this.dir = localeInfo.dir || 'Unknown';

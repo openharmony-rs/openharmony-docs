@@ -1,9 +1,9 @@
 # 应用间配置共享 (ArkTS)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
-<!--Tester: @chenwan188; @logic42-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ## 场景介绍

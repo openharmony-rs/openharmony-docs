@@ -34,7 +34,7 @@ LightWeightMap和[HashMap](js-apis-hashmap.md)都是用来存储键值对的容�
 
 这是因为，当key为number类型且值大于INT32_MAX或小于INT32_MIN时，存储结构会发生改变。
 
-例如在以下示例针对key的计算中，1758783600000大于INT32_MAX，此时会通过TaggedDouble存储；1758783600小于INT32_MIN，此时会通过TaggedInt存储。由于以上存储方式的差异，当对其进行hash算法即会计算出不同的hash值，从而导致映射结果不同，产生与预期不一致的现象。
+例如在以下示例针对key的计算中，1758783600000大于INT32_MAX，此时会通过TaggedDouble存储；1758783600小于INT32_MAX，大于INT32_MIN，此时会通过TaggedInt存储。由于以上存储方式的差异，当对其进行hash算法即会计算出不同的hash值，从而导致映射结果不同，产生与预期不一致的现象。
 
 ```ts
 let lightWeightMap = new LightWeightMap<number, number>();

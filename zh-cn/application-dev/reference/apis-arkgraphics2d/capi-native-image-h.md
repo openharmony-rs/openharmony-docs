@@ -9,8 +9,8 @@
 
 定义获取和使用NativeImage的相关函数。NativeImage模块提供了Surface和OpenGL ES纹理之间的桥接能力，支持生产端-消费端的buffer流转机制。开发者可以通过OH_NativeImage将Surface的内容绑定到OpenGL ES纹理进行渲染，或作为消费端获取buffer进行处理。
 
-<!--RP1-->
-相关示例：[NDKNativeImage](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)<!--RP1End-->
+<!--Del-->
+相关示例：[NDKNativeImage](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)<!--DelEnd-->
 
 **引用文件：** <native_image/native_image.h>
 

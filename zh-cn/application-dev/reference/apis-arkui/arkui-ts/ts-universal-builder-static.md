@@ -1,4 +1,4 @@
-# \@Builder装饰器：自定义构建函数
+# @Builder装饰器：自定义构建函数
 
 \@Builder装饰的函数也称为“自定义构建函数”。开发指南见[\@Builder装饰器：自定义构建函数](../../../ui/state-management/arkts-builder.md)。
 

@@ -10,7 +10,7 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
 
 ## compatibility_info
  - 类型：object
- - 说明：用于向引擎声明shader版本兼容性信息。统一使用如下字段：
+ - 说明：用于向引擎声明Shader版本兼容性信息。统一使用如下字段：
    ```json
    "compatibility_info": { "version": "22.00", "type": "shader" }
    ```
@@ -18,7 +18,7 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
 
 ## vert
  - 类型：string
- - 说明：指定使用该shader的DrawCall中使用的vertex shader文件。
+ - 说明：指定使用该Shader的DrawCall中使用的vertex shader文件。
  - 默认值：
    ```json
    "vert": "3dshaders://shader/core3d_dm_fw.vert.spv"
@@ -31,7 +31,7 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
 
 ## frag
  - 类型：string
- - 说明：指定使用该shader的DrawCall中使用的fragment shader文件。
+ - 说明：指定使用该Shader的DrawCall中使用的fragment shader文件。
  - 默认值：
    ```json
    "frag": "3dshaders://shader/core3d_dm_fw.frag.spv"
@@ -100,7 +100,7 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
       | "always" | 总是通过深度测试，像素总是被绘制。 |
 
 ### colorBlendState
-用于指定本次渲染中渲染源与渲染目标的混合状态属性。包括colorAttachments，用于指定本次渲染中颜色附件的混合状态属性。colorAttachments具体包括如下几项：
+用于指定本次渲染中渲染源与渲染目标的混合状态属性，通过colorAttachments指定颜色附件的混合方式，colorAttachments具体包括如下几项：
    - enableBlend：渲染源与渲染目标的混合是否开启，true表示开启混合，false表示关闭混合。若开启则渲染源与渲染目标以指定方式混合，若不开启则不进行混合。
    - colorWriteMask：指定渲染颜色附件中通道掩码，若指定了通道掩码则该通道将被计算混合，若不指定则不计算混合，可取值有r_bit、g_bit、b_bit、a_bit，各个通道可以用|符号取并集，可取值及含义见下表。
      | 可取值 | 说明 |
@@ -110,7 +110,7 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
      | "b_bit"  | 蓝色通道允许写入或参与混合。 |
      | "a_bit"  | 透明通道允许写入或参与混合。 |
 
-   - srcColorBlendFactor: 指定渲染源颜色通道的混合因子，可取值及含义见下表。
+   - srcColorBlendFactor：指定渲染源颜色通道的混合因子，可取值及含义见下表。
      | 可取值 | 因子 | 结果 | 应用场景 |
      | :----: | :----: | :----: | :----: |
      | "zero" | 0 | 源颜色×0=0 | 不显示新颜色，只保留背景。 |
@@ -229,7 +229,7 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
 
 ### customProperties
 用于指定渲染中传入的自定义属性。包括data数组，用于指定渲染中传入的自定义数据。data数组中的对象包含以下属性：
-   - name：用于指定渲染中传入的自定义数据名称与自定义渲染中的数据名对应。
+   - name：用于指定自定义数据的名称，该名称需与自定义着色器中引用的数据名保持一致。
    - displayName：用于指定3D编辑器中显示的名称。
    - type：用于指定数据类型，可取值及含义见下表。
      | 可取值 | 说明 |

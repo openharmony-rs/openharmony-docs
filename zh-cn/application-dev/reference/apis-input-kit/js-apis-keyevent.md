@@ -25,9 +25,9 @@ import { Action, Key, KeyEvent } from '@kit.InputKit';
 
 按键事件类型。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 **ArkTS-Dyn起始版本**：9
 
@@ -43,9 +43,9 @@ import { Action, Key, KeyEvent } from '@kit.InputKit';
 
 按键。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 **ArkTS-Dyn起始版本**：9
 
@@ -61,9 +61,9 @@ import { Action, Key, KeyEvent } from '@kit.InputKit';
 
 按键事件。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 **ArkTS-Dyn起始版本**：9
 

@@ -110,7 +110,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 | 名称 | 类型 | 只读 | 可选 | 说明                       |
 | ---- | ---- | ---- | --- | -------------------------- |
@@ -256,9 +256,9 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 | 名称                   | 值   | 说明                           |
 | ---------------------- | ---- | ------------------------------ |
-| COMPATIBILITY     | compatibility    | 支持消除兼容性告警。当调用API的起始版本高于工程设置的兼容SDK版本时（build-profile.json5中指定的compatibleSdkVersion）产生的告警。建议在已做版本判断或兼容性处理时使用，避免盲目抑制告警导致低版本设备运行异常。<br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 26.1.0 |
-| PERMISSION     | permission    | 支持消除权限告警。当调用需要权限的API但未在配置文件中声明相应权限时产生的告警。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.1.0 |
+| COMPATIBILITY     | compatibility    | 支持消除兼容性告警。当调用API的起始版本高于工程设置的兼容SDK版本时（build-profile.json5中指定的compatibleSdkVersion）产生的告警。建议在已做版本判断或兼容性处理时使用，避免盲目抑制告警导致低版本设备运行异常。<br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 26.0.1 |
+| PERMISSION     | permission    | 支持消除权限告警。当调用需要权限的API但未在配置文件中声明相应权限时产生的告警。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.1 |

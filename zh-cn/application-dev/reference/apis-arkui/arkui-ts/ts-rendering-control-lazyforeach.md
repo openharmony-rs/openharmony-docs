@@ -189,11 +189,11 @@ onDataReloaded(reuseImmediately: boolean): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -497,7 +497,7 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 | 名称 | 类型                     | 只读 | 可选 | 说明             |
 | ------ | ------------------------ | ---- | ---- | ---------------- |
 | type   | [DataOperationType](#dataoperationtype12).RELOAD | 否 | 否   | 数据全部重载类型。 |
-| reuseImmediately   | boolean | 否 | 是   | 是否允许在更新过程中复用旧的子组件。<br/>true：允许在更新过程中复用旧的子组件。<br/>false：不允许在更新过程中复用旧的子组件。<br/>默认值：false<br/>当值为undefined或null时，取默认值。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 | 
+| reuseImmediately   | boolean | 否 | 是   | 是否允许在更新过程中复用旧的子组件。<br/>true：允许在更新过程中复用旧的子组件。<br/>false：不允许在更新过程中复用旧的子组件。<br/>默认值：false<br/>当值为undefined或null时，取默认值。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 26.0.1<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 | 
 
 ### DataOperationType<sup>12+</sup>
 

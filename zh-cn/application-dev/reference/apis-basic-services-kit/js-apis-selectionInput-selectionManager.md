@@ -315,7 +315,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
 
 **示例：**
@@ -444,7 +444,7 @@ destroyPanel(panel: Panel): Promise\<void>
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 
 **示例：**
 
@@ -638,7 +638,7 @@ setUiContent(path: string): Promise\<void>
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
@@ -703,7 +703,7 @@ show(): Promise\<void>
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
@@ -760,7 +760,7 @@ hide(): Promise\<void>
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
@@ -817,7 +817,7 @@ startMoving(): Promise\<void>
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
@@ -910,7 +910,7 @@ moveTo(x: number, y: number): Promise\<void>
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
@@ -966,7 +966,7 @@ ArkTS-Sta: moveToGlobalDisplay(x: int, y: int): Promise\<void>
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**

@@ -26,10 +26,14 @@ struct OhosImageSourceUpdateData {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t* buffer = nullptr | 图像源更新数据缓冲区。 |
-| size_t bufferSize = 0 | 图像源更新数据缓冲区大小。 |
-| uint32_t offset = 0 | 图像源更新数据缓冲区的开端。 |
-| uint32_t updateLength = 0 | 图像源更新数据缓冲区的更新数据长度。 |
-| int8_t isCompleted = 0 | 图像源更新数据在此节中完成。 |
-
+| uint8_t* buffer = nullptr | 图像源更新数据缓冲区。仅适用于C++编译环境。 |
+| size_t bufferSize = 0 | 图像源更新数据缓冲区大小。仅适用于C++编译环境。 |
+| uint32_t offset = 0 | 图像源更新数据缓冲区的开端。仅适用于C++编译环境。 |
+| uint32_t updateLength = 0 | 图像源更新数据缓冲区的更新数据长度。仅适用于C++编译环境。 |
+| int8_t isCompleted = 0 | 图像源更新数据在此节中完成。仅适用于C++编译环境。 |
+| uint8_t* buffer | 图像源更新数据缓冲区。仅适用于C编译环境。 |
+| size_t bufferSize | 图像源更新数据缓冲区大小。仅适用于C编译环境。 |
+| uint32_t offset | 图像源更新数据缓冲区的开端。仅适用于C编译环境。 |
+| uint32_t updateLength | 图像源更新数据缓冲区的更新数据长度。仅适用于C编译环境。 |
+| int8_t isCompleted | 图像源更新数据在此节中完成。仅适用于C编译环境。 |
 

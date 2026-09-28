@@ -24,6 +24,8 @@ create(): DisplaySync
 
 创建DisplaySync对象，通过此对象设置UI自绘制内容帧率。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -44,6 +46,8 @@ let backDisplaySync: displaySync.DisplaySync = displaySync.create();
 ## IntervalInfo
 
 开发者可以从订阅函数中获取帧绘制的时间戳信息，包含当前帧到达的时间timestamp和下一帧预期到达的时间targetTimestamp。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,6 +71,8 @@ let backDisplaySync: displaySync.DisplaySync = displaySync.create();
 setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange) : void
 
 设置期望的帧率范围。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,6 +116,8 @@ on(type: 'frame', callback: Callback\<IntervalInfo\>): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onFrame](#onframe23)。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -177,6 +185,8 @@ off(type: 'frame', callback\?: Callback\<IntervalInfo\>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offFrame](#offframe23)。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -240,6 +250,8 @@ backDisplaySync?.offFrame(callback)
 start(): void
 
 开始每帧回调。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -308,6 +320,8 @@ stop(): void
 
 停止每帧回调。
 
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

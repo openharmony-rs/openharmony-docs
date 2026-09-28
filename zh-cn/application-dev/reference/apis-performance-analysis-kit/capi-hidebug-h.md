@@ -835,7 +835,7 @@ OH_HiDebug_ProfilerOptions* OH_HiDebug_CreateProfilerOptions(void)
 
 创建资源Profiler配置对象。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **返回：**
 
@@ -853,7 +853,7 @@ HiDebug_ErrorCode OH_HiDebug_DestroyProfilerOptions(OH_HiDebug_ProfilerOptions* 
 
 释放通过[OH_HiDebug_CreateProfilerOptions](capi-hidebug-h.md#oh_hidebug_createprofileroptions)创建的配置对象。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -877,7 +877,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncNestingDepth(OH_HiDebug_ProfilerOptions*
 
 设置异步调用的最大嵌套深度（也称为最大嵌套层数）。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -902,7 +902,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncTaskStackDepth(OH_HiDebug_ProfilerOption
 
 设置异步任务函数的最大回栈深度。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -927,7 +927,7 @@ HiDebug_ErrorCode OH_HiDebug_SetSampleIntervalBytes(OH_HiDebug_ProfilerOptions* 
 
 设置采样间隔，单位为Byte。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -952,7 +952,7 @@ HiDebug_ErrorCode OH_HiDebug_SetStatisticsIntervalSec(OH_HiDebug_ProfilerOptions
 
 设置统计间隔，单位为s。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -977,7 +977,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxStackDepth(OH_HiDebug_ProfilerOptions* opts, 
 
 设置最大回栈深度。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1002,7 +1002,7 @@ HiDebug_ErrorCode OH_HiDebug_SetFilterSize(OH_HiDebug_ProfilerOptions* opts, uin
 
 设置内存分配过滤大小。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1027,7 +1027,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions* opts,
 
 设置最大采集时长，单位为s。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1052,7 +1052,7 @@ HiDebug_ErrorCode OH_HiDebug_StartProfilerWithOptions(OH_HiDebug_ResourceType ty
 
 按指定资源类型和配置开启当前进程资源分配栈信息采集功能。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

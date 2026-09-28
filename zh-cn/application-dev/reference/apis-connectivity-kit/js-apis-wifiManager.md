@@ -3135,10 +3135,10 @@ off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
       console.info("Receive power state change event: " + result);
   }
   
-  // Register event
+  // 注册事件
   wifiManager.on("wifiStateChange", recvPowerNotifyFunc);
   
-  // Unregister event
+  // 注销事件
   wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
 ```
 
@@ -3287,10 +3287,10 @@ off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
       console.info("Receive wifi connection change event: " + result);
   }
   
-  // Register event
+  // 注册事件
   wifiManager.on("wifiConnectionChange", recvWifiConnectionChangeFunc);
   
-  // Unregister event
+  // 注销事件
   wifiManager.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
 ```
 
@@ -3439,10 +3439,10 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
       console.info("Receive Wifi scan state change event: " + result);
   }
   
-  // Register event
+  // 注册事件
   wifiManager.on("wifiScanStateChange", recvWifiScanStateChangeFunc);
   
-  // Unregister event
+  // 注销事件
   wifiManager.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
 ```
 
@@ -3619,10 +3619,10 @@ off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
       console.info("Receive wifi rssi change event: " + result);
   }
   
-  // Register event
+  // 注册事件
   wifiManager.on("wifiRssiChange", recvWifiRssiChangeFunc);
   
-  // Unregister event
+  // 注销事件
   wifiManager.off("wifiRssiChange", recvWifiRssiChangeFunc);
 ```
 
@@ -3776,10 +3776,10 @@ off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
       console.info("Receive hotspot state change event: " + result);
   }
   
-  // Register event
+  // 注册事件
   wifiManager.on("hotspotStateChange", recvHotspotStateChangeFunc);
   
-  // Unregister event
+  // 注销事件
   wifiManager.off("hotspotStateChange", recvHotspotStateChangeFunc);
 ```
 
@@ -3925,10 +3925,10 @@ off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
       console.info("Receive p2p state change event: " + result);
   }
   
-  // Register event
+  // 注册事件
   wifiManager.on("p2pStateChange", recvP2pStateChangeFunc);
   
-  // Unregister event
+  // 注销事件
   wifiManager.off("p2pStateChange", recvP2pStateChangeFunc);
 ```
 
@@ -4034,10 +4034,10 @@ off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): 
       console.info("Receive p2p connection change event: " + result);
   }
   
-  // Register event
+  // 注册事件
   wifiManager.on("p2pConnectionChange", recvP2pConnectionChangeFunc);
   
-  // Unregister event
+  // 注销事件
   wifiManager.off("p2pConnectionChange", recvP2pConnectionChangeFunc);
 ```
 
@@ -4201,10 +4201,10 @@ off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
       console.info("Receive p2p device change event: " + result);
   }
   
-  // Register event
+  // 注册事件
   wifiManager.on("p2pDeviceChange", recvP2pDeviceChangeFunc);
   
-  // Unregister event
+  // 注销事件
   wifiManager.off("p2pDeviceChange", recvP2pDeviceChangeFunc);
 ```
 
@@ -4337,10 +4337,10 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
       console.info("Receive p2p peer device change event: " + result);
   }
   
-  // Register event
+  // 注册事件
   wifiManager.on("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
   
-  // Unregister event
+  // 注销事件
   wifiManager.off("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
 ```
 
@@ -4473,10 +4473,10 @@ off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
       console.info("Receive p2p persistent group change event: " + result);
   }
   
-  // Register event
+  // 注册事件
   wifiManager.on("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
   
-  // Unregister event
+  // 注销事件
   wifiManager.off("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
 ```
 
@@ -4620,10 +4620,10 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
       console.info("Receive p2p discovery change event: " + result);
   }
   
-  // Register event
+  // 注册事件
   wifiManager.on("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
   
-  // Unregister event
+  // 注销事件
   wifiManager.off("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
 ```
 
@@ -4682,3 +4682,233 @@ isWlanSupported(): boolean
   | **错误码ID** | **错误信息** |
   | -------- | -------- |
   | 2401000  | Operation failed. |
+
+## P2pServiceProtocolType
+
+枚举，P2P服务协议类型。
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| SERVICE_TYPE_ALL | 0 | 所有服务协议类型。 |
+| SERVICE_TYPE_BONJOUR | 1 | Bonjour（DNS-SD）服务发现协议。 |
+| SERVICE_TYPE_UP_NP | 2 | UPnP服务发现协议。 |
+| SERVICE_TYPE_WS_DISCOVERY | 3 | WS-Discovery服务发现协议。 |
+| SERVICE_TYPE_VENDOR_SPECIFIC | 255 | 厂商自定义协议。 |
+
+## WifiP2pServiceInfo
+
+表示P2P服务信息。
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| serviceName | string | 否 | 否 | 服务名称。 |
+| protocolType | [P2pServiceProtocolType](#p2pserviceprotocoltype) | 否 | 否 | 服务协议类型。 |
+| queryList | Array&lt;string&gt; | 否 | 否 | Wi-Fi协议栈进程（wpa_supplicant）使用的查询字符串列表，单条数据记录的最大大小为1024字节。 |
+
+## wifiManager.addDnsSdLocalP2pService
+
+addDnsSdLocalP2pService(instanceName: string, serviceType: string, txtRecord: Map&lt;string, string&gt;, serviceName: string): void
+
+添加并注册一个DNS-SD（DNS Service Discovery，基于DNS的服务发现）本地P2P服务描述，供对端进行服务发现。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| instanceName | string | 是 | 实例名，用于对端服务发现，最大长度为63字符。 |
+| serviceType | string | 是 | 服务类型，用于对端服务发现，最大长度为63字符。不能为空字符串，可自定义，推荐格式为"_&lt;ServiceName&gt;._&lt;Protocol&gt;"，例如"_http._tcp"。 |
+| txtRecord | Map&lt;string, string&gt; | 是 | 包含键值对的TXT记录。键不能包含等号（=），单条记录长度（key.length + value.length）必须小于255字节。建议所有键和值序列化后的总大小保持在200–400字节以内，超出单个mDNS数据包的限制会导致数据无法正确广播或被对端忽略。键值对数量无限制。定义格式见[draft-cheshire-dnsext-dns-sd-11.txt](http://files.dns-sd.org/draft-cheshire-dnsext-dns-sd.txt)。 |
+| serviceName | string | 是 | 用于标识本地服务对象的服务名称，最大长度为63字符。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+  let txtRecord: Map<string, string> = new Map();
+  txtRecord.set("name", "xxx");
+  wifiManager.addDnsSdLocalP2pService("instanceName", "_http._tcp", txtRecord, "serviceName");
+} catch (error) {
+  console.error("failed: " + JSON.stringify(error));
+}
+```
+
+## wifiManager.addUpnpLocalP2pService
+
+addUpnpLocalP2pService(uuid: string, device: string, services: Array&lt;string&gt;, serviceName: string): void
+
+添加并注册一个UPnP（Universal Plug and Play，通用即插即用）本地P2P服务描述，供对端进行服务发现。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| uuid | string | 是 | 该UUID的字符串表示形式，格式参见[RFC 4122](http://www.ietf.org/rfc/rfc4122.txt)。标准固定长度为36个字符，不允许包含空格，例如"6859dede-8574-59ab-9332-123456789012"。 |
+| device | string | 是 | UPnP设备类型，字符串表示形式，格式参见[UPnP Device Architecture 1.1](http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf)。长度取决于标准定义，不允许包含空格，通常为几十个字符，建议保持在255字节以内，例如"urn:schemas-upnp-org:device:MediaServer:1"。 |
+| services | Array&lt;string&gt; | 是 | UPnP服务类型列表，字符串表示形式，格式参见[UPnP Device Architecture 1.1](http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf)。每个服务的长度不得超过512字节，建议Array中的元素数量不宜过多，例如"urn:schemas-upnp-org:service:ContentDirectory:1"。 |
+| serviceName | string | 是 | 用于标识本地服务对象的服务名称，最大长度为63字符。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+  let uuid = "6859dede-8574-59ab-9332-123456789012";
+  let device = "urn:schemas-upnp-org:device:MediaServer:1";
+  let services = ["urn:schemas-upnp-org:service:ContentDirectory:1"];
+  wifiManager.addUpnpLocalP2pService(uuid, device, services, "serviceName");
+} catch (error) {
+  console.error("failed: " + JSON.stringify(error));
+}
+```
+
+## wifiManager.removeLocalP2pService
+
+removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
+
+移除通过[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)或[addUpnpLocalP2pService](#wifimanageraddupnplocalp2pservice)添加的已注册本地服务。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| srvInfo | [WifiP2pServiceInfo](#wifip2pserviceinfo) | 是 | 与已注册服务一致的服务描述。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+  wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) => {
+    data.forEach((item: wifiManager.WifiP2pServiceInfo) => {
+      if (item.serviceName === "serviceName") {
+        wifiManager.removeLocalP2pService(item);
+      }
+    });
+  }).catch((error: BusinessError) => {
+    console.error("failed: " + JSON.stringify(error));
+  });
+```
+
+## wifiManager.getLocalP2pServices
+
+getLocalP2pServices(): Promise&lt;Array&lt;WifiP2pServiceInfo&gt;&gt;
+
+查询本地P2P服务，使用Promise异步回调。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;Array&lt;[WifiP2pServiceInfo](#wifip2pserviceinfo)&gt;&gt; | Promise对象。用于返回已注册的本地P2P服务列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) => {
+  console.info("get local P2P services: " + JSON.stringify(data));
+}).catch((error: BusinessError) => {
+  console.error("failed: " + JSON.stringify(error));
+});
+```

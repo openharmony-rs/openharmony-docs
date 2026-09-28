@@ -998,7 +998,7 @@ try {
 
 ## 支持的系统时区
 
-支持的系统时区及各时区与0时区相比的偏移量（单位：h）可见下表。
+支持的系统时区及各时区与0时区相比的标准时间偏移量（单位：h）可见下表。
 
 | 时区                           | 偏移量         |
 | ------------------------------ | --------------------- |
@@ -1010,12 +1010,12 @@ try {
 | Africa/Kinshasa                | 1                     |
 | America/Santiago               | -4                    |
 | Asia/Shanghai                  | 8                     |
-| Asia/Nicosia                   | 3                     |
+| Asia/Nicosia                   | 2                     |
 | Europe/Berlin                  | 2                     |
 | America/Guayaquil              | -5                    |
 | Europe/Madrid                  | 2                     |
 | Pacific/Pohnpei                | 11                    |
-| America/Godthab                | -1                    |
+| America/Godthab                | -2                    |
 | Asia/Jakarta                   | 7                     |
 | Pacific/Tarawa                 | 12                    |
 | Asia/Almaty                    | 6                     |
@@ -1026,10 +1026,10 @@ try {
 | Pacific/Auckland               | 12                    |
 | Pacific/Tahiti                 | -10                   |
 | Pacific/Port_Moresby           | 10                    |
-| Asia/Gaza                      | 3                     |
-| Europe/Lisbon                  | 1                     |
+| Asia/Gaza                      | 2                     |
+| Europe/Lisbon                  | 0                     |
 | Europe/Moscow                  | 3                     |
-| Europe/Kiev                    | 3                     |
+| Europe/Kiev                    | 2                     |
 | Pacific/Wake                   | 12                    |
-| America/New_York               | -4                    |
+| America/New_York               | -5                    |
 | Asia/Tashkent                  | 5                     |

@@ -42,7 +42,7 @@ ArkTS-Sta: onAreaChange(event: ((oldValue: Area, newValue: Area) => void) | unde
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| event | ArkTS-Dyn: (oldValue: [Area](ts-types.md#area8), newValue: [Area](ts-types.md#area8)) => void<br/>ArkTS-Sta: ((oldValue: [Area](ts-types.md#area8), newValue: [Area](ts-types.md#area8)) => void) \| undefined  | 是   | 组件区域变化时触发的回调，oldValue为目标元素变化之前的宽高以及目标元素相对父元素和页面左上角的坐标位置。newValue为目标元素变化之后的宽高以及目标元素相对父元素和页面左上角的坐标位置。 |
+| event | ArkTS-Dyn: (oldValue: [Area](ts-types.md#area8), newValue: [Area](ts-types.md#area8)) => void<br/>ArkTS-Sta: ((oldValue: [Area](ts-types.md#area8), newValue: [Area](ts-types.md#area8)) => void) \| undefined  | 是   | 组件区域变化时触发的回调，oldValue为目标元素变化之前的宽高、相对于父元素的坐标，以及目标元素左上角在当前窗口坐标系中的位置坐标。newValue为目标元素变化之后的宽高、相对于父元素的坐标，以及目标元素左上角在当前窗口坐标系中的位置坐标。 |
 
 **返回值：**
 
@@ -160,7 +160,7 @@ struct AreaExample {
 
 ### 示例2（使用onAreaChange自定义间隔监听区域变化）
 
-该示例通过设置[expectedUpdateInterval](#areachangeoptions)，当Text布局变化时可以触发[onAreaChange](#onareachange-1)事件，达到间隔回调的效果。
+该示例通过设置[expectedUpdateInterval](#areachangeoptions)为非默认值，当Text布局变化时可以触发[onAreaChange](#onareachange-1)事件，达到自定义间隔回调的效果。
 
 从API版本26.0.0开始，新增[onAreaChange](#onareachange-1)、[AreaChangeCallback](#areachangecallback)和[AreaChangeOptions](#areachangeoptions)。
 

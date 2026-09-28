@@ -5791,9 +5791,9 @@ registerFormHostService(service: formInfo.FormHostServiceInfo): Promise&lt;strin
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **参数：**
 
@@ -5879,9 +5879,9 @@ unregisterFormHostService(serviceId: string): Promise&lt;void&gt;
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **参数：**
 

@@ -31,7 +31,7 @@ I/O密集型任务的性能关键在于I/O操作的速度和效率，而非CPU�
    <!-- @[define_concurrent_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/IoIntensiveTaskDevelopment.ets) -->
    
    ``` TypeScript
-   import { write } from './write'
+   import { write } from './write';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { taskpool } from '@kit.ArkTS';
    import { common } from '@kit.AbilityKit';
@@ -49,7 +49,7 @@ I/O密集型任务的性能关键在于I/O操作的速度和效率，而非CPU�
        const writePromise = write('Hello World!', fileList[i]).then(() => {
          console.info(`Succeeded in writing the file. FileList: ${fileList[i]}`);
        }).catch((err: BusinessError) => {
-         console.error(`Failed to write the file. Code is ${err.code}, message is ${err.message}`)
+         console.error(`Failed to write the file. Code is ${err.code}, message is ${err.message}`);
          return false;
        });
        writePromises.push(writePromise);
@@ -91,7 +91,7 @@ I/O密集型任务的性能关键在于I/O操作的速度和效率，而非CPU�
                }).catch((e: BusinessError) => {
                  this.message = 'failed';
                  console.error('concurrentTest is failed.');
-               })
+               });
              })
          }
          .width('100%')

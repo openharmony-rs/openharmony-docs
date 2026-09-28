@@ -6,7 +6,7 @@
 
 除了普通对象，ArkTS还支持在线程间传递ArrayBuffer对象。这是一种[可转移对象](../arkts-utils/transferabled-object.md)，传递时不需要进行拷贝，所以不会出现同一份数据占用两份内存的情况。本篇文章将通过示例代码，对比两种数据对象在线程间传递时的性能数据，同时给出优化建议，使开发者可以更好地实现线程间大数据的传输。
 
-关于多线程的使用和原理，可参考[OpenHarmony多线程能力场景化示例实践](multi_thread_capability.md)，本文将不再详细讲述。
+关于多线程的使用和原理，可参考[OpenHarmony多线程能力场景化示例实践](multi-thread-capability.md)，本文将不再详细讲述。
 
 ## 场景示例
 

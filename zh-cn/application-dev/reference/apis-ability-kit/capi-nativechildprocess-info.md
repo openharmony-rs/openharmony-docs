@@ -15,7 +15,7 @@ typedef struct OH_AbilityRuntime_ChildProcessInfo *OH_AbilityRuntime_ChildProces
 
 指向子进程信息的句柄，包含子进程的PID、对应父进程的PID、进程名信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **相关模块：** [ChildProcess](capi-childprocess.md)
 

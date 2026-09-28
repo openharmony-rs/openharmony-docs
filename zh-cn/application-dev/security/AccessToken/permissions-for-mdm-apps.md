@@ -903,7 +903,7 @@ MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)�
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.ENTERPRISE_ENCRYPT_BLOCK_DEVICE
 
@@ -920,4 +920,4 @@ MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)�
 
 **支持设备**：PC/2in1
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1

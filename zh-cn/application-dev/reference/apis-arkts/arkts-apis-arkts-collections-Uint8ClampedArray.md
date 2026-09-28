@@ -867,7 +867,7 @@ map(callbackFn: TypedArrayMapCallback\<number, Uint8ClampedArray>): Uint8Clamped
 
 ```ts
 let array: collections.Uint8ClampedArray = collections.Uint8ClampedArray.from([25, 36, 49]);
-const mapped: collections.Uint8ClampedArray = array.map(Math.sqrt); // Uint8ClampedArray [5, 6 ,7]
+const mapped: collections.Uint8ClampedArray = array.map(Math.sqrt); // Uint8ClampedArray [5, 6, 7]
 ```
 
 ## reduce

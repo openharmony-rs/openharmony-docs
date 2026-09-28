@@ -749,7 +749,7 @@ void OH_ArkWebHttpBodyStream_AsyncRead(const ArkWeb_HttpBodyStream* httpBodyStre
 | 参数项 | 描述 |
 | -- | -- |
 | const [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
-| uint8_t* buffer | 接收数据的缓冲区。 |
+| uint8_t* buffer | 接收数据的缓冲区。buffer的大小必须大于或等于bufLen。 |
 | int bufLen | 要读取的字节数。 |
 
 ### OH_ArkWebHttpBodyStream_GetSize()

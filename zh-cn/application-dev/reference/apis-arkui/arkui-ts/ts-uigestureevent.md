@@ -73,7 +73,7 @@ ArkTS-Sta: addParallelGesture(gesture: GestureHandler, mask?: GestureMask): void
 
 removeGestureByTag(tag: string): void
 
-移除该组件上通过modifier绑定的设置为指定标志的手势。
+移除该组件上通过modifier绑定且设置了指定标志的手势。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

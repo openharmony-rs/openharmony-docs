@@ -6,7 +6,7 @@
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供系统应用对于快捷方式的增加、删除，以及查询能力，包括[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)信息的增加、删除以及查询等。
+本模块提供系统应用对于快捷方式的增加、删除，以及查询能力，包括[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)信息的增加、删除以及查询等。
 
 > **说明：**
 >
@@ -45,7 +45,7 @@ ArkTS-Sta: addDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): Prom
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | 是   | 快捷方式信息。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md) | 是   | 快捷方式信息。 |
 | userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户ID。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
 
 **返回值：**
@@ -169,7 +169,7 @@ ArkTS-Sta: deleteDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): P
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | 是   | 快捷方式信息。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md) | 是   | 快捷方式信息。 |
 | userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户ID。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
 
 **返回值：**
@@ -275,9 +275,9 @@ updateDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<
 
 更新指定用户的快捷方式信息。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -295,7 +295,7 @@ updateDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | 是   | 快捷方式信息。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md) | 是   | 快捷方式信息。 |
 | userId     | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是   | 用户ID。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。|
 
 **返回值：**
@@ -381,7 +381,7 @@ ArkTS-Sta: getAllDesktopShortcutInfo(userId: int): Promise<Array\<ShortcutInfo>>
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>> | Promise对象，返回应用配置文件中定义的快捷方式信息。 |
+| Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)>> | Promise对象，返回应用配置文件中定义的快捷方式信息。 |
 
 **错误码：**
 
@@ -474,7 +474,7 @@ ArkTS-Sta: addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: i
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-|  shortcutInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>    |   是  |  待添加的动态快捷方式信息。通过本接口提交时，会做如下校验：</br> 1.ShortcutInfo中的sourceType字段会被设置为2。</br> 2.ShortcutInfo中的moduleName字段在对应的应用中不存在时，会抛出17700002错误码。</br> 3.ShortcutInfo中的hostAbility字段被设置为非空的字符串时，会校验对应的ability是否存在，不存在时，会抛出17700003错误码。  |
+|  shortcutInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)>    |   是  |  待添加的动态快捷方式信息。通过本接口提交时，会做如下校验：</br> 1.ShortcutInfo中的sourceType字段会被设置为2。</br> 2.ShortcutInfo中的moduleName字段在对应的应用中不存在时，会抛出17700002错误码。</br> 3.ShortcutInfo中的hostAbility字段被设置为非空的字符串时，会校验对应的ability是否存在，不存在时，会抛出17700003错误码。  |
 | userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 动态快捷方式所属的用户ID。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户，取值范围：大于等于0。|
 
 **返回值：**
@@ -628,7 +628,7 @@ setShortcutsEnabled(shortcutsInfo: Array\<ShortcutInfo>, isEnabled: boolean): Pr
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-|  shortcutsInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>    |   是  |  待启用或禁用的静态快捷方式。<br>**说明：**<br>本接口不区分主应用和分身应用，且仅对静态快捷方式生效，所以ShortcutInfo中的appIndex和sourceType设置不生效。  |
+|  shortcutsInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)>    |   是  |  待启用或禁用的静态快捷方式。<br>**说明：**<br>本接口不区分主应用和分身应用，且仅对静态快捷方式生效，所以ShortcutInfo中的appIndex和sourceType设置不生效。  |
 | isEnabled    | boolean| 是   | 快捷方式是否启用。true：快捷方式启用；false：快捷方式禁用。 |
 
 **返回值：**
@@ -726,7 +726,7 @@ ArkTS-Sta: getShortcutInfoByAbility(bundleName: string, moduleName: string, abil
 
 | 类型                   | 说明                                            |
 | ---------------------- | ----------------------------------------------- |
-| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)\> | Array形式返回指定用户下指定UIAbility的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)。 |
+| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\> | Array形式返回指定用户下指定UIAbility的[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)。 |
 
 **错误码：**
 

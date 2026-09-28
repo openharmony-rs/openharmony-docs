@@ -8,7 +8,7 @@
 
 作为[Text](ts-basic-components-text.md)、[ContainerSpan](ts-basic-components-containerspan.md)组件的子组件，用于显示行内文本，支持对文本的字体、颜色、大小等样式进行细粒度设置。适用于在同一行文本中混合显示不同样式的场景，如不同字体颜色的文本、添加装饰线或阴影效果等。
 
->  **说明：**
+> **说明：**
 >
 > - 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -77,11 +77,11 @@ ArkTS-Sta: decoration(value: DecorationStyleInterface | undefined)
 | ------ | -------- | ---- | -------------- |
 | value  | ArkTS-Dyn: [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface)<br>ArkTS-Sta: [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) \| undefined | 是   | 文本装饰线样式对象。<br>**说明：** <br>style参数不支持卡片能力。<br>取值undefined时，按默认值处理。 |
 
->  **说明：**
+> **说明：**
 >
->  当文字的下边缘轮廓与装饰线位置相交时，会触发下划线避让规则，下划线将在这些字符处避让文字。常见“gjyqp”等英文字符。
+> 当文字的下边缘轮廓与装饰线位置相交时，会触发下划线避让规则，下划线将在这些字符处避让文字。常见“gjyqp”等英文字符。
 >
->  当文本装饰线的颜色设置为Color.Transparent时，装饰线颜色设置为跟随每行第一个字的字体颜色。当文本装饰线的颜色设置为透明色16进制对应值“#00FFFFFF”时，装饰线颜色设置为透明色。
+> 当文本装饰线的颜色设置为Color.Transparent时，装饰线颜色将跟随每行第一个字的字体颜色。当文本装饰线的颜色设置为透明色16进制对应值“#00FFFFFF”时，装饰线颜色设置为透明色。
 
 ### letterSpacing
 
@@ -89,7 +89,7 @@ ArkTS-Dyn: letterSpacing(value: number | ResourceStr)
 
 ArkTS-Sta: letterSpacing(value: double | string | undefined)
 
-设置文本字符间距。取值小于0，字符聚集重叠，取值大于0且随着数值变大，字符间距越来越大，稀疏分布。适用于标题排版、标签文字等需要调整字符紧凑度或稀疏度的场景。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
+设置文本字符间距。未通过该接口设置时，文本字符间距默认为0。取值小于0，字符聚集重叠，取值大于0且随着数值变大，字符间距越来越大，文本呈稀疏分布。适用于标题排版、标签文字等需要调整字符紧凑度或稀疏度的场景。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -297,7 +297,7 @@ ArkTS-Dyn: fontFamily(value: string | Resource)
 
 ArkTS-Sta: fontFamily(value: string | Resource | undefined)
 
-设置字体列表。未通过该接口设置时，默认字体为'HarmonyOS Sans'。
+设置字体族。未通过该接口设置时，默认字体为'HarmonyOS Sans'。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -313,7 +313,7 @@ ArkTS-Sta: fontFamily(value: string | Resource | undefined)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br>ArkTS-Sta: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体列表。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。<br>取值为undefined时，按默认值处理。|
+| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br>ArkTS-Sta: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体族。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。<br>取值为undefined时，按默认值处理。|
 
 > **说明：**
 >
@@ -453,7 +453,7 @@ ArkTS-Sta: fontVariations(fontVariations: Array&lt;FontVariation&gt; | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -548,9 +548,9 @@ debugLine(sourceLine: string, moduleName?: string)
 
 通用事件支持[点击事件onClick](ts-universal-events-click.md#onclick)、[悬浮事件onHover](ts-universal-events-hover.md#onhover)。
 
->  **说明：**
+> **说明：**
 >
->  由于Span组件无尺寸信息，因此点击事件返回的ClickEvent对象的target属性无效。
+> 由于Span组件无尺寸信息，因此点击事件返回的ClickEvent对象的target属性无效。
 
 ### onClick<sup>23+</sup>
 
@@ -664,7 +664,7 @@ ArkTS-Dyn: baselineOffset(value: LengthMetrics): T
 
 ArkTS-Sta: baselineOffset(value: LengthMetrics | undefined): this
 
-设置Span基线的偏移量，适用于上下标排版、混合字号文本对齐微调等场景。此属性与父组件的baselineOffset是共存的。未通过该接口设置时，默认偏移量为0。
+设置Span基线的偏移量，适用于上下标排版、混合字号文本对齐微调等场景。此属性与父组件的baselineOffset属性同时生效，互不影响。未通过该接口设置时，默认偏移量为0。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -689,6 +689,8 @@ ArkTS-Sta: baselineOffset(value: LengthMetrics | undefined): this
 | ArkTS-Dyn: T<br>ArkTS-Sta: this | 返回当前Span的属性对象，用于链式调用。 |
 
 ## TextBackgroundStyle<sup>11+</sup>对象说明
+
+定义Span的背景样式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -730,7 +732,7 @@ struct SpanExample {
           .fontFamily('HarmonyOS Sans')
       }.margin({ top: 12 })
 
-      // 文本横线添加
+      // 文本装饰线设置
       Text('Text Decoration').fontSize(9).fontColor(0xCCCCCC).margin({ top: 12 })
       Text() {
         Span('I am Underline-WAVY-span')
@@ -883,7 +885,7 @@ struct SpanExample {
 
 从API version 11开始，该示例通过[textShadow](#textshadow11)属性展示了文本设置阴影的效果。
 
-``` ts
+```ts
 // xxx.ets
 @Entry
 @Component
@@ -936,7 +938,7 @@ struct SpanExample {
 
 从API version 11开始，该示例通过[textBackgroundStyle](#textbackgroundstyle11)属性展示了文本设置背景样式的效果。
 
-``` ts
+```ts
 // xxx.ets
 @Component
 @Entry

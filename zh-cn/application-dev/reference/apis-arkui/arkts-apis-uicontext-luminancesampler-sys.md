@@ -93,8 +93,7 @@ offBackgroundLuminanceChange(samplingCallback?: Callback&lt;number&gt;): void
 从API version 23开始，新增支持[setBackgroundLuminanceSamplingConfigs](#setbackgroundluminancesamplingconfigs)、[onBackgroundLuminanceChange](#onbackgroundluminancechange)、[offBackgroundLuminanceChange](#offbackgroundluminancechange)接口，该示例通过调用这三个接口，展示了获取对应组件的取色器，并通过取色器给组件设置取色参数和取色回调，通过取色回调实现自定义的根据背景色反色效果。
 
 ```ts
-import { LengthMetrics } from '@kit.ArkUI';
-import { Edges } from '@ohos.arkui.node';
+import { LengthMetrics, Edges } from '@kit.ArkUI';
 
 @Entry
 @Component

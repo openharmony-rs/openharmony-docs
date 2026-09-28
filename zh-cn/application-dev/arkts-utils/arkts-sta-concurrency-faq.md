@@ -322,6 +322,119 @@ async function submitSnapshot(): Promise<void> {
 
 相关实践可参考[Native资源显式移交场景 (ArkTS-Sta)](arkts-sta-native-resource-transfer.md)和[Native共享资源多线程操作场景 (ArkTS-Sta)](arkts-sta-native-shared-resource.md)。
 
+## 如何通过日志和Trace定位并发问题
+
+ArkTS-Sta并发组件内置了日志和Trace能力，开发者无需自行埋点即可观测任务执行流程。日志通过`hdc shell hilog`查看，Trace通过SmartPerf抓取。
+
+### TaskPool 日志
+
+开启DEBUG级别日志后，通过`hilog | grep "Sta TaskPool"`过滤：
+
+```bash
+hdc shell hilog -b D
+hdc shell hilog | grep "Sta TaskPool"
+```
+
+TaskPool所有log名称以`Sta`前缀开头，用于区分ArkTS-Sta和ArkTS-Dyn。添加了以下日志：
+
+| 日志关键词 | 含义 | 级别 |
+|---|---|---|
+| `Sta TaskPool:Perform:name:{taskName}, taskID:{taskId}, priority:{priority}` | 任务开始执行 | DEBUG |
+| `Sta TaskPool:Enqueue:taskID:{taskId}, priority:{priority}` | 任务入队 | DEBUG |
+| `Sta TaskPool:OnEnqueueCallback:taskID:{taskId}, priority:{priority}` | onEnqueued回调执行 | DEBUG |
+| `Sta TaskPool:OnStartCallback:taskID:{taskId}, priority:{priority}` | onStart回调执行 | DEBUG |
+| `Sta TaskPool:OnSuccessCallback:taskID:{taskId}, priority:{priority}` | onSuccess回调执行（非 group） | DEBUG |
+| `Sta TaskPool:OnSuccessCallback:groupID:{groupId}` | onSuccess 回调执行（group） | DEBUG |
+| `Sta TaskPool:OnFailCallback:taskID:{taskId}, priority:{priority}` | onFail回调执行 | DEBUG |
+| `Sta TaskPool:OnReceiveDataCallback:workerId:{workerId}` | sendData回调执行 | DEBUG |
+| `Sta TaskPool:Expand:name:{workerName}` | TaskPool worker扩容，附带 workerCount、idleWorkers、runningWorkers、queueSnap、targetNum、workersLimit | DEBUG |
+| `Sta TaskPool:Shrink:name:{workerName}` | TaskPool worker收缩，附带 workerCount、runningWorkers、waitingTasks、targetNum、retireRequests | DEBUG |
+| `Sta TaskPool:ExecuteDelayed:taskID:{taskId}, priority:{priority}, delayTime:{delayTime}` | 延时任务触发 | DEBUG |
+| `Sta TaskPool:CancelTask:taskID:{taskId}` | 任务取消 | INFO |
+| `Sta TaskPool:CancelGroup:groupID:{groupId}` | 任务组取消 | INFO |
+| `Sta TaskPool:TimeoutGroup:groupID:{groupId}` | 任务组超时 | INFO |
+| `Sta TaskPool:Init` | TaskPool初始化 | DEBUG |
+| `Sta TaskPool:TaskGroup:Constructor:name:{name}` | TaskGroup构造 | DEBUG |
+| `Sta TaskPool:TaskGroup:AddTask:groupID:{groupId}, taskID:{taskId}` | TaskGroup添加任务 | DEBUG |
+| `Sta TaskPool:SeqRunner:Constructor:name:{name}` | SequenceRunner构造 | INFO |
+| `Sta TaskPool:SeqRunner:Execute:seqRunnerId:{id}, taskID:{taskId}` | SequenceRunner执行任务 | DEBUG |
+| `Sta TaskPool:SeqRunner:EnqueueWaiting:seqRunnerId:{id}, taskID:{taskId}` | SequenceRunner任务进入等待队列 | DEBUG |
+| `Sta TaskPool:SeqRunner:Dequeue:seqRunnerId:{id}, taskID:{taskId}` | SequenceRunner任务正常出队列 | DEBUG |
+| `Sta TaskPool:SeqRunner:DequeueCanceled:seqRunnerId:{id}, taskID:{taskId}` | SequenceRunner任务取消出队列 | DEBUG |
+| `Sta TaskPool:AsyncRunner:Constructor:name:{name}, runningCapacity:{rcap}, waitingCapacity:{wcap}` | AsyncRunner构造 | INFO |
+| `Sta TaskPool:AsyncRunner:Execute:asyncRunnerId:{id}, taskID:{taskId}` | AsyncRunner执行任务 | DEBUG |
+| `Sta TaskPool:AsyncRunner:EnqueueWaiting:asyncRunnerId:{id}, taskID:{taskId}` | AsyncRunner任务进入等待队列 | DEBUG |
+| `Sta TaskPool:AsyncRunner:Dequeue:asyncRunnerId:{id}, taskID:{taskId}` | AsyncRunner任务正常出队列 | DEBUG |
+| `Sta TaskPool:AsyncRunner:DequeueCanceled:asyncRunnerId:{id}, taskID:{taskId}` | AsyncRunner任务取消出队列 | DEBUG |
+| `Sta Task::AddDependency:taskID:{taskId}, depCount:{count}` | 添加依赖 | DEBUG |
+| `Sta Task::RemoveDependency:taskID:{taskId}, depCount:{count}` | 移除依赖 | DEBUG |
+
+### TaskPool Trace
+
+TaskPool所有trace名称以`Sta`前缀开头，用于区分ArkTS-Sta和ArkTS-Dyn。通过SmartPerf抓取Trace后，可看到以下Trace区间：
+
+| Trace 名称 | 含义 |
+|---|---|
+| `Sta TaskPool:Perform:name:{taskName}, taskID:{taskId}, priority:{priority}` | 任务执行全过程 |
+| `Sta TaskPool:Enqueue:taskID:{taskId}, priority:{priority}` | 任务入队过程 |
+| `Sta TaskPool:OnEnqueueCallback:taskID:{taskId}, priority:{priority}` | onEnqueued回调执行 |
+| `Sta TaskPool:OnStartCallback:taskID:{taskId}, priority:{priority}` | onStart回调执行 |
+| `Sta TaskPool:OnSuccessCallback:taskID:{taskId}, priority:{priority}` | onSuccess回调执行（非 group） |
+| `Sta TaskPool:OnSuccessCallback:groupID:{groupId}` | onSuccess回调执行（group） |
+| `Sta TaskPool:OnFailCallback:taskID:{taskId}, priority:{priority}` | onFail回调执行 |
+| `Sta TaskPool:OnReceiveDataCallback:workerId:{workerId}` | sendData回调执行 |
+| `Sta TaskPool:FuncPerform` | 函数式任务`execute(func, ...args)`执行 |
+| `Sta TaskPool:Expand:name:{workerName}` | TaskPool worker扩容 |
+| `Sta TaskPool:Shrink:name:{workerName}` | TaskPool worker收缩 |
+| `Sta TaskPool:ExecuteDelayed:taskID:{taskId}, priority:{priority}, delayTime:{delayTime}` | 延时任务执行 |
+| `Sta Task::AddDependency:taskID:{taskId}, depCount:{count}` | 添加依赖 |
+| `Sta Task::RemoveDependency:taskID:{taskId}, depCount:{count}` | 移除依赖 |
+| `Sta TaskPool:CancelTask:taskID:{taskId}` | 任务取消 |
+| `Sta TaskPool:CancelGroup:groupID:{groupId}` | 任务组取消 |
+| `Sta TaskPool:TimeoutGroup:groupID:{groupId}` | 任务组超时 |
+| `Sta TaskPool:Init` | TaskPool 初始化 |
+
+### EAWorker 日志
+
+通过`hilog | grep "EAWorker"` 过滤：
+
+| 日志关键词 | 含义 | 级别 |
+|---|---|---|
+| `EAWorker:Start:name:{workerName}` | EAWorker 启动 | DEBUG |
+| `EAWorker:run:name:{workerName}, workerId:{workerId}` | EAWorker执行任务 | DEBUG |
+| `EAWorker:join:workerName:{workerName}, workerId:{workerId}` | EAWorker终止 | DEBUG |
+| `EAWorker:postTask:name:{workerName}` | postTask提交任务 | DEBUG |
+| `EAWorker:postTask:main` | postTask提交到主线程 | DEBUG |
+
+### EAWorker Trace
+
+| Trace 名称 | 含义 |
+|---|---|
+| `EAWorker:Start:name:{workerName}` | EAWorker启动过程 |
+| `EAWorker:run:name:{workerName}, workerId:{workerId}` | EAWorker任务执行过程 |
+| `EAWorker:Terminate:name:{workerName}, workerId:{workerId}` | EAWorker终止过程 |
+| `EAWorker:postToMain` | postToMain 任务执行过程 |
+
+### 常见定位场景
+
+**任务提交但未执行：**
+
+1. 搜索 `Sta TaskPool:Enqueue` 确认任务是否入队。
+2. 搜索 `Sta TaskPool:Perform` 确认任务是否被worker取出执行。
+3. 如果有 Enqueue 但没有 Perform，可能是worker数已满或worker被长任务阻塞，检查 `Sta TaskPool:Expand` 日志确认是否触发了扩容。
+
+**任务执行慢：**
+
+1. 在 Trace 中查看 `Sta TaskPool:Perform` 区间持续时间。
+2. 如果 Perform 持续时间长，说明任务函数本身耗时多。
+3. 如果 Perform 持续时间短但整体响应慢，检查 Enqueue 到 Perform 之间的间隔，可能是队列积压。
+
+**TaskPool 不扩容：**
+
+1. 搜索 `Sta TaskPool:Expand` 查看扩容日志，包含 `workerCount`、`idleWorkers`、`queueSnap`、`targetNum`、`workersLimit`。
+2. 如果 `idleWorkers >= targetNum`，说明空闲worker足够，不需要扩容。
+3. 如果 `workerCount >= workersLimit`，说明已达到worker数上限。
+
 ## 静态并发问题排查建议
 
 - 所有taskpool.execute、EAWorker.run、SequenceRunner.execute和AsyncRunner.execute调用都建议注册catch或使用try/catch处理异常。

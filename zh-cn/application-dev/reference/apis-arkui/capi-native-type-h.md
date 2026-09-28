@@ -1758,7 +1758,7 @@ enum ArkUI_ItemAlignment
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ITEM_ALIGNMENT_AUTO = 0 | 使用[Flex](..//apis-arkui/arkui-ts/ts-container-flex.md)容器中默认配置，该值为默认值。 |
+| ARKUI_ITEM_ALIGNMENT_AUTO = 0 | 使用[Flex](../apis-arkui/arkui-ts/ts-container-flex.md)容器中默认配置，该值为默认值。 |
 | ARKUI_ITEM_ALIGNMENT_START = 1 | 元素在Flex容器中，交叉轴方向首部对齐。 |
 | ARKUI_ITEM_ALIGNMENT_CENTER = 2 | 元素在Flex容器中，交叉轴方向居中对齐。 |
 | ARKUI_ITEM_ALIGNMENT_END = 3 | 元素在Flex容器中，交叉轴方向底部对齐。 |
@@ -1802,7 +1802,7 @@ enum ArkUI_FlexAlignment
 | ARKUI_FLEX_ALIGNMENT_START = 1 | 主轴方向首端对齐，该值为默认值。 |
 | ARKUI_FLEX_ALIGNMENT_CENTER = 2 | 主轴方向中心对齐。 |
 | ARKUI_FLEX_ALIGNMENT_END = 3 | 主轴方向尾部对齐。 |
-| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | [Flex](..//apis-arkui/arkui-ts/ts-container-flex.md)主轴方向均匀分配弹性元素，相邻元素之间距离相同，第一个元素行首对齐，最后的元素行尾对齐。 |
+| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | [Flex](../apis-arkui/arkui-ts/ts-container-flex.md)主轴方向均匀分配弹性元素，相邻元素之间距离相同，第一个元素行首对齐，最后的元素行尾对齐。 |
 | ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同，第一个元素到行首的距离时相邻元素间距离的一半。 |
 | ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY = 8 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离、第一个元素到行首的距离和最后的元素到行尾的距离均相等。 |
 
@@ -1815,7 +1815,7 @@ enum ArkUI_FlexDirection
 **描述：**
 
 
-定义[Flex](..//apis-arkui/arkui-ts/ts-container-flex.md)容器的主轴方向。
+定义[Flex](../apis-arkui/arkui-ts/ts-container-flex.md)容器的主轴方向。
 
 **起始版本：** 12
 
@@ -2096,7 +2096,7 @@ enum ArkUI_BarrierDirection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_BARRIER_DIRECTION_START = 0 | 屏障在其所有[referencedId](..//apis-arkui/arkui-ts/ts-container-relativecontainer.md#barrierstyle12对象说明)的最左侧，该值为默认值。 |
+| ARKUI_BARRIER_DIRECTION_START = 0 | 屏障在其所有[referencedId](../apis-arkui/arkui-ts/ts-container-relativecontainer.md#barrierstyle12对象说明)的最左侧，该值为默认值。 |
 | ARKUI_BARRIER_DIRECTION_END = 1 | 屏障在其所有referencedId的最右侧。 |
 | ARKUI_BARRIER_DIRECTION_TOP = 2 | 屏障在其所有referencedId的最上方。 |
 | ARKUI_BARRIER_DIRECTION_BOTTOM = 3 | 屏障在其所有referencedId的最下方。 |
@@ -2345,6 +2345,11 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED = 106208 |  节点无法被接纳为附属节点。错误码的详细介绍请参见[106208 节点无法被接纳为附属节点](../apis-arkui/errorcode-adopt.md#106208-节点无法被接纳为附属节点)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO = 106209 |  节点无法接纳其他节点。错误码的详细介绍请参见[106209 节点无法接纳其他节点](../apis-arkui/errorcode-adopt.md#106209-节点无法接纳其他节点)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 |  节点不是被目标节点接纳的附属节点。错误码的详细介绍请参见[106210 节点不是被目标节点接纳的附属节点](../apis-arkui/errorcode-adopt.md#106210-节点不是被目标节点接纳的附属节点)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND = 106211 | 无法获取属性，因为之前未设置该属性。错误码的详细介绍请参见[106211 无法获取属性](errorcode-animation.md#106211-无法获取属性)。<br>**起始版本：** 26.0.1 |
+| ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID = 106212 | 子动画参数无效。错误码的详细介绍请参见[106212 子动画参数无效](errorcode-animation.md#106212-子动画参数无效)。<br>**起始版本：** 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND = 106213 | 在[ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md)上未找到指定的动画组。错误码的详细介绍请参见[106213 在UIContext上未找到指定的动画组](errorcode-animation.md#106213-在uicontext上未找到指定的动画组)。<br>**起始版本：** 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL = 106214 | 检测到同一线程上对动画组接口的重入调用。错误码的详细介绍请参见[106214 检测到同一线程上对动画组接口的重入调用](errorcode-animation.md#106214-检测到同一线程上对动画组接口的重入调用)。<br>**起始版本：** 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE = 106215 | 动画组未处于操作所需的状态。错误码的详细介绍请参见[106215 动画组未处于操作所需的状态](errorcode-animation.md#106215-动画组未处于操作所需的状态)。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  当前节点不是自定义节点。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  当前节点已存在子节点。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  当前渲染节点存在父节点。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
@@ -2598,7 +2603,7 @@ enum ArkUI_UIState
 | UI_STATE_FOCUSED = 1 << 1 | 获焦状态。 |
 | UI_STATE_DISABLED = 1 << 2 | 禁用状态。 |
 | UI_STATE_SELECTED = 1 << 3 | 选中状态，此状态仅由某些特定类型的组件支持，分别是Checkbox、Radio、Toggle、List、Grid和MenuItem。 |
-| UI_STATE_HOVERED = 1 << 4 | 悬浮状态。 |
+| UI_STATE_HOVERED = 1 << 4 | 悬停状态。<br/>**起始版本：** 26.0.0 |
 
 ### ArkUI_FocusWrapMode
 
@@ -3789,7 +3794,7 @@ ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 **描述：**
 
 
-创建[RelativeContainer](..//apis-arkui/arkui-ts/ts-container-relativecontainer.md)容器内的辅助线信息。
+创建[RelativeContainer](../apis-arkui/arkui-ts/ts-container-relativecontainer.md)容器内的辅助线信息。
 
 **起始版本：** 12
 

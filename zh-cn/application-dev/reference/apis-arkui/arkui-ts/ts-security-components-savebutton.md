@@ -295,6 +295,11 @@ ArkTS-Sta: iconSize(size: Dimension | SizeOptions | undefined)
 
 设置保存控件的图标尺寸。
 
+> **说明：**
+>
+> 在API版本10时，开发者可通过安全控件通用属性[iconSize](ts-securitycomponent-attributes.md#iconsize)设置图标尺寸，此时size类型仅支持Dimension。<br/>
+> 从API版本20开始，开发者可以通过本接口设置图标尺寸，size类型增加支持SizeOptions。
+
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23

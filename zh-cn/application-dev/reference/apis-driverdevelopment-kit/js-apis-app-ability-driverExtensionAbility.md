@@ -1,4 +1,4 @@
-# @ohos.app.ability.DriverExtensionAbility (驱动程序扩展能力)
+# @ohos.app.ability.DriverExtensionAbility (驱动扩展能力)
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
@@ -36,7 +36,7 @@ DriverExtensionAbility类，包含驱动扩展的上下文环境定义。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context | [DriverExtensionContext](js-apis-inner-application-driverExtensionContext.md)  | 否 | 否 | DriverExtension的上下文环境，继承自ExtensionContext。 |
+| context | [DriverExtensionContext (定义驱动扩展的上下文)](js-apis-inner-application-driverExtensionContext.md)  | 否 | 否 | DriverExtension的上下文环境，继承自ExtensionContext。 |
 
 ### onInit
 
@@ -254,7 +254,7 @@ DriverExtensionAbility的上下文环境。
 
 | 类型 | 说明 |
 | -------- | -------- |
-| _DriverExtensionContext | DriverExtensionAbility的上下文环境，继承自ExtensionContext，其具体使用方法可参考[DriverExtensionContext](js-apis-inner-application-driverExtensionContext.md)。|
+| _DriverExtensionContext (定义驱动扩展的上下文)| DriverExtensionAbility的上下文环境，继承自ExtensionContext，其具体使用方法可参考[DriverExtensionContext](js-apis-inner-application-driverExtensionContext.md)。|
 
 ## 附录
 
@@ -334,9 +334,9 @@ DriverExtensionAbility不支持以下模块的引用。
 |<!--DelRow-->Input Kit（多模输入服务）| [@ohos.multimodalInput.inputMonitor (输入监听)(系统接口)](../apis-input-kit/js-apis-inputmonitor-sys.md)  |
 | Location Kit | [@ohos.geolocation (位置服务)](../apis-location-kit/js-apis-geolocation.md)  |
 | Location Kit | [@ohos.geoLocationManager (位置服务)](../apis-location-kit/js-apis-geoLocationManager.md)  |
-| MDM Kit（企业设备管理服务）| [@ohos.enterprise.adminManager（admin权限管理）](../apis-mdm-kit/js-apis-enterprise-adminManager.md)  |
-|<!--DelRow-->MDM Kit（企业设备管理服务） | [@ohos.enterprise.dateTimeManager（系统时间管理）(系统接口)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md)  |
-| MDM Kit（企业设备管理服务） | [@ohos.enterprise.deviceInfo（设备信息管理）](../apis-mdm-kit/js-apis-enterprise-deviceInfo.md)  |
+| MDM Kit（企业设备管理服务）| [@ohos.enterprise.adminManager (admin权限管理)](../apis-mdm-kit/js-apis-enterprise-adminManager.md)  |
+|<!--DelRow-->MDM Kit（企业设备管理服务） | [@ohos.enterprise.dateTimeManager (系统时间管理)(系统接口)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md)  |
+| MDM Kit（企业设备管理服务） | [@ohos.enterprise.deviceInfo (设备信息管理)](../apis-mdm-kit/js-apis-enterprise-deviceInfo.md)  |
 |<!--DelRow-->Media Kit（媒体服务）| [@ohos.multimedia.media (媒体服务)(系统接口)](../apis-media-kit/js-apis-media-sys.md)  |
 | MultimediaKit | @ohos.multimedia.mediaLibrary (媒体库管理) |
 | Network Kit（网络服务）| [@ohos.net.connection (网络连接管理)](../apis-network-kit/js-apis-net-connection.md)  |
@@ -354,7 +354,7 @@ DriverExtensionAbility不支持以下模块的引用。
 | Sensor Service Kit（传感器服务）| [@ohos.vibrator (振动)](../apis-sensor-service-kit/js-apis-vibrator.md)  |
 | Telephony Kit（蜂窝通信服务）| [@ohos.telephony.call (拨打电话)](../apis-telephony-kit/js-apis-call.md)  |
 | Telephony Kit（蜂窝通信服务） | [@ohos.telephony.data (蜂窝数据)](../apis-telephony-kit/js-apis-telephony-data.md)  |
-| Telephony Kit（蜂窝通信服务） | [@ohos.telephony.observer (observer)](../apis-telephony-kit/js-apis-observer.md)  |
+| Telephony Kit（蜂窝通信服务） | [@ohos.telephony.observer (电话服务状态监听)](../apis-telephony-kit/js-apis-observer.md)  |
 | Telephony Kit（蜂窝通信服务） | [@ohos.telephony.radio (网络搜索)](../apis-telephony-kit/js-apis-radio.md)  |
 | Telephony Kit（蜂窝通信服务） | [@ohos.telephony.sim (SIM卡管理)](../apis-telephony-kit/js-apis-sim.md)  |
 | Telephony Kit（蜂窝通信服务） | [@ohos.telephony.sms (短信服务)](../apis-telephony-kit/js-apis-sms.md)  |

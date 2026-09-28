@@ -503,8 +503,8 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 600101  | Session service exception. |
-| 600103  | The session controller does not exist. |
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
 
 **示例：**
 
@@ -538,8 +538,8 @@ getOutputDevice(callback: AsyncCallback\<OutputDeviceInfo>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 600101  | Session service exception. |
-| 600103  | The session controller does not exist. |
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
 
 **示例：**
 
@@ -580,11 +580,11 @@ sendAVKeyEvent(event: KeyEvent): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 600101  | Session service exception. |
-| 600102  | The session does not exist. |
-| 600103  | The session controller does not exist. |
-| 600105  | Invalid session command. |
-| 600106  | The session is not activated. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600105  | Invalid session command. |
+| 6600106  | The session is not activated. |
 
 **返回值：**
 
@@ -631,11 +631,11 @@ sendAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 600101  | Session service exception. |
-| 600102  | The session does not exist. |
-| 600103  | The session controller does not exist. |
-| 600105  | Invalid session command. |
-| 600106  | The session is not activated. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600105  | Invalid session command. |
+| 6600106  | The session is not activated. |
 
 **示例：**
 

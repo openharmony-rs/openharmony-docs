@@ -37,7 +37,7 @@ typedef struct {...} ArkUI_NativeGestureAPI_1
 | [ArkUI_GestureRecognizer* (\*createLongPressGesture)(int32_t fingersNum, bool repeatResult, int32_t durationNum)](#createlongpressgesture) | 创建长按手势。1. 用于触发长按手势事件，触发长按手势的最少手指数为1，最短长按时间为500毫秒。<br>        2. 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。<br>           长按手势与拖拽会出现冲突，事件优先级如下：<br>           长按触发时间 < 500ms，长按事件优先拖拽事件响应。<br>           长按触发时间 >= 500ms，拖拽事件优先长按事件响应。<br>        3. 手指按下后若发生超过15px的移动，则判定当前长按手势识别失败。<br> |
 | [ArkUI_GestureRecognizer* (\*createPanGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double distanceNum)](#createpangesture) | 创建滑动手势。1. 当滑动的最小距离超过设定的最小值时触发滑动手势事件。<br>        2. Tabs组件滑动与该滑动手势事件同时存在时，可将distanceNum值设为1，使拖动更灵敏，避免造成事件错乱。<br> |
 | [ArkUI_GestureRecognizer* (\*createPinchGesture)(int32_t fingersNum, double distanceNum)](#createpinchgesture) | 创建捏合手势。1. 触发捏合手势的最少手指为2指，最大为5指，最小识别距离为distanceNum 像素点。<br>        2. 触发手势手指可以多于fingersNum数目，但只有先落下的与fingersNum相同数目的手指参与手势计算。<br> |
-| [ArkUI_GestureRecognizer* (\*createRotationGesture)(int32_t fingersNum, double angleNum)](#createrotationgesture) | 创建旋转手势。1. 触发旋转手势的最少手指为2指，最大为5指，最小改变度数为1度。<br>        2. 触发手势手指可以多于fingersNum数目，但只有先落下的两指参与手势计算。<br> |
+| [ArkUI_GestureRecognizer* (\*createRotationGesture)(int32_t fingersNum, double angleNum)](#createrotationgesture) | 创建旋转手势。1. 触发旋转手势的最少手指为2指，最大为5指，最小改变度数为1度。<br>        2. 触发手势手指可以多于fingersNum数目，但只有先落下的与fingersNum相同数目的手指参与手势计算。<br> |
 | [ArkUI_GestureRecognizer* (\*createSwipeGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double speedNum)](#createswipegesture) | 创建快滑手势。1. 用于触发快滑事件，滑动速度大于speedNum px/s时可识别成功。<br> |
 | [ArkUI_GestureRecognizer* (\*createGroupGesture)(ArkUI_GroupGestureMode gestureMode)](#creategroupgesture) | 创建手势组。 |
 | [void (\*dispose)(ArkUI_GestureRecognizer* recognizer)](#dispose) | 销毁手势，释放资源。 |
@@ -90,7 +90,7 @@ ArkUI_GestureRecognizer* (*createLongPressGesture)(int32_t fingersNum, bool repe
 **描述：**
 
 创建长按手势。
-1. 用于触发长按手势事件，触发长按手势的最少手指数为1，最短长按时间为500毫秒。
+1. 用于触发长按手势事件，触发长按手势的最少手指数为1，长按时间由durationNum指定；当durationNum小于等于0时，按照默认值500毫秒处理。
 2. 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。
    
    长按手势与拖拽会出现冲突，事件优先级如下：
@@ -175,7 +175,7 @@ ArkUI_GestureRecognizer* (*createRotationGesture)(int32_t fingersNum, double ang
 
 创建旋转手势。
 1. 触发旋转手势的最少手指为2指，最大为5指，最小改变度数为1度。
-2. 触发手势手指可以多于fingersNum数目，但只有先落下的两指参与手势计算。
+2. 触发手势手指可以多于fingersNum数目，但只有先落下的与fingersNum相同数目的手指参与手势计算。
 
 **参数：**
 
@@ -312,7 +312,7 @@ int32_t (*setGestureEventTarget)(ArkUI_GestureRecognizer* recognizer, ArkUI_Gest
 **描述：**
 
 
-创建手势关联回调方法。
+设置手势关联回调方法。
 
 **参数：**
 

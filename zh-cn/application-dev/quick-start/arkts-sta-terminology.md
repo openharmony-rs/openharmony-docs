@@ -36,6 +36,12 @@ ArkTS-Sta使用静态类型模式运行，其创建的对象具备天然的并�
 ### Interop; 互操作能力
 即Interoperability，特指ArkTS-Sta静态类型语言与ArkTS-Dyn动态类型语言之间的双向交互能力。
 
+### Interop Closure; 互操作闭包
+从互操作入口出发，沿依赖解析图可达的同类别依赖（含入口自身）的集合，同类别指同为ArkTS-Sta源码或同为ArkTS-Dyn源码。互操作声明文件生成工具Declgen以互操作闭包为生成范围，为闭包内的每个文件生成对应的互操作声明文件。
+
+### Interop Entry; 互操作入口
+被另一动静态类别的ArkTS源码文件引用的文件，如被ArkTS-Sta源码引用的ArkTS-Dyn源码。互操作入口须在`interop-config.json5`配置文件中显式配置，Declgen从互操作入口出发计算互操作闭包。
+
 ## N
 ### NAPI; Node接口
 Node-API，即ArkTS-Dyn与C++跨语言交互接口。为ArkTS动态类型语言与C++代码提供稳定、双向的跨语言交互能力。

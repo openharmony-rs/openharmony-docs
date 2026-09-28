@@ -392,11 +392,10 @@ let myParagraphStyle: text.ParagraphStyle = {
 ### 示例一（装饰线、字体特征）
 
    ArkTS-Dyn示例：
-   <!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) -->
+   <!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) --> 
    
    ``` TypeScript
-   import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-   import { UIContext } from '@kit.ArkUI'
+   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
    import { text } from '@kit.ArkGraphics2D'
    
    // 创建一个MyRenderNode类，并绘制文本。
@@ -546,8 +545,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    ``` TypeScript
    import { Entry, Text, Column, Component, Button, Row, Resource, $r, NodeContainer, Image } from '@ohos.arkui.component'
    import { State } from '@ohos.arkui.stateManagement'
-   import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-   import { UIContext } from '@kit.ArkUI'
+   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
    import { text } from '@kit.ArkGraphics2D'
    
    // 创建一个MyRenderNode类，并绘制文本。
@@ -703,14 +701,11 @@ let myParagraphStyle: text.ParagraphStyle = {
 这里以可变字体、文本阴影、占位符三个特性为例，呈现多样式文本的绘制与显示。
 
    ArkTS-Dyn示例：
-   <!-- @[arkts_complex_style_example2_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets) --> 
+   <!-- @[arkts_complex_style_example2_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets) -->
    
    ``` TypeScript
-   import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-   import { UIContext } from '@kit.ArkUI'
-   import { drawing } from '@kit.ArkGraphics2D'
-   import { text } from '@kit.ArkGraphics2D'
-   import { common2D } from '@kit.ArkGraphics2D'
+   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+   import { drawing, text, common2D } from '@kit.ArkGraphics2D'
    
    // 创建一个MyRenderNode类，并绘制文本。
    class MyRenderNode extends RenderNode {
@@ -874,11 +869,8 @@ let myParagraphStyle: text.ParagraphStyle = {
    ``` TypeScript
    import { Entry, Text, Column, Component, Button, Row, Resource, $r, NodeContainer, Image } from '@ohos.arkui.component'
    import { State } from '@ohos.arkui.stateManagement'
-   import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-   import { UIContext } from '@kit.ArkUI'
-   import { drawing } from '@kit.ArkGraphics2D'
-   import { text } from '@kit.ArkGraphics2D'
-   import { common2D } from '@kit.ArkGraphics2D'
+   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+   import { drawing, text, common2D } from '@kit.ArkGraphics2D'
    
    // 创建一个MyRenderNode类，并绘制文本。
    class MyRenderNode extends RenderNode {

@@ -16,7 +16,7 @@
 
 ## 组件复用时避免在aboutToReuse中执行耗时操作
 
-这里以[Grid懒加载组件复用场景](./grid_optimization.md#场景示例)为例，在aboutToReuse中加入测试日志，观察在滑动Grid时aboutToReuse的调用情况。
+这里以[Grid懒加载组件复用场景](./grid-optimization.md#场景示例)为例，在aboutToReuse中加入测试日志，观察在滑动Grid时aboutToReuse的调用情况。
 ```ts
 aboutToReuse(params: Record<string, number>) {
   this.item = params.item;

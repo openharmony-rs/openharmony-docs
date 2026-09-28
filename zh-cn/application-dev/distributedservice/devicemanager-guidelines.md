@@ -142,7 +142,7 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
      logger.info('[DeviceManager.RemoteDeviceModel] deviceManager.createDeviceManager begin');
      try {
        let dmInstance = distributedDeviceManager.createDeviceManager('com.samples.devicemanager');
-       this.deviceManager = dmInstance;
+       this.deviceManager = dmInstance
        // ...
        logger.info(`[DeviceManager.RemoteDeviceModel] createDeviceManager callback returned,
        value= ${JSON.stringify(this.deviceManager)}`);
@@ -463,7 +463,7 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
        this.trustedDeviceList = this.deviceManager.getAvailableDeviceListSync();
        // ...
      } catch (error) {
-       logger.error('[DeviceManager.RemoteDeviceModel] getTrustedDeviceList error: ${error}' + error.toString());
+       logger.error(`[DeviceManager.RemoteDeviceModel] getTrustedDeviceList error: ${error}`);
        this.showErrMsg('getTrustedDeviceList failed');
      }
    }

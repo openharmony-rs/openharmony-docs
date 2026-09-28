@@ -1,4 +1,4 @@
-# 空间渲染(C/C++)
+# 空间音频渲染(C/C++)
  <!--Kit: Audio Kit-->
  <!--Subsystem: Multimedia-->
  <!--Owner: @xxngwang-->

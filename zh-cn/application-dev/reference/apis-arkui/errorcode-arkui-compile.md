@@ -18,7 +18,7 @@
 @Watch回调函数未定义。
 
 **可能原因**<br>
-在struct内定义了@Watch装饰器装饰的变量,但没有定义对应的@Watch回调函数。
+在struct内定义了@Watch装饰器装饰的变量，但没有定义对应的@Watch回调函数。
 
 **处理步骤**<br>
 在struct内定义对应名称的监听函数即可。
@@ -73,7 +73,7 @@ The \'xxx\' property cannot be specified a default value.
 定义有@Consume、@Link、@ObjectLink等装饰器装饰的变量时进行初始化导致报错。
 
 **处理步骤**<br>
-在@Consume、@Link、@ObjectLink等装饰器装饰的变量定义时不要初始化,参照装饰器正确赋值规则。
+在@Consume、@Link、@ObjectLink等装饰器装饰的变量定义时不要初始化，参照装饰器正确赋值规则。
 
 ## 10905305 变量类型校验异常
 **错误信息**<br>
@@ -1445,7 +1445,7 @@ reuseId属性不能用于@ReusableV2装饰的@ComponentV2自定义组件。
 The V1 decorator \'xxx\' cannot be applied to a Function-type variable \'yyy\'.
 
 **错误描述**<br>
-ArkUI状态管理V1装饰器不能用于Function类型或者() => void类型的变量，会导致运行时出现错误；从API version 23开始，该问题提前至编译期拦截，避免潜在运行时异常。ArkUI状态管理V1装饰器包括：[\@State](../../../application-dev/ui/state-management/arkts-state.md), [\@Prop](../../../application-dev/ui/state-management//arkts-prop.md), [\@Link](../../../application-dev/ui/state-management/arkts-link.md), [\@Provide](../../../application-dev/ui/state-management//arkts-provide-and-consume.md), [\@Consume](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink), [\@StorageProp](../../../application-dev/ui/state-management/arkts-appstorage.md#storageprop), [\@LocalStorageLink](../../../application-dev/ui/state-management/arkts-localstorage.md#localstoragelink), [\@LocalStorageProp](../../../application-dev/ui/state-management/arkts-localstorage.md#localstorageprop), [\@ObjectLink](../../../application-dev/ui/state-management/arkts-observed-and-objectlink.md)。
+ArkUI状态管理V1装饰器不能用于Function类型或者() => void类型的变量，会导致运行时出现错误；从API version 23开始，该问题提前至编译期拦截，避免潜在运行时异常。ArkUI状态管理V1装饰器包括：[\@State](../../../application-dev/ui/state-management/arkts-state.md), [\@Prop](../../../application-dev/ui/state-management/arkts-prop.md), [\@Link](../../../application-dev/ui/state-management/arkts-link.md), [\@Provide](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@Consume](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink), [\@StorageProp](../../../application-dev/ui/state-management/arkts-appstorage.md#storageprop), [\@LocalStorageLink](../../../application-dev/ui/state-management/arkts-localstorage.md#localstoragelink), [\@LocalStorageProp](../../../application-dev/ui/state-management/arkts-localstorage.md#localstorageprop), [\@ObjectLink](../../../application-dev/ui/state-management/arkts-observed-and-objectlink.md)。
 
 **可能原因**<br>
 开发者在Function类型或者() => void类型的变量上使用了V1装饰器。

@@ -232,7 +232,7 @@ struct BlockDescendants {
 @Entry
 @Component
 struct Index {
-  @State @Watch('onModeChange') mode: number = HitTestMode.None;
+  @State @Watch('onModeChange') mode: HitTestMode = HitTestMode.None;
   @State modeStr: string = 'None';
 
   onModeChange() {
