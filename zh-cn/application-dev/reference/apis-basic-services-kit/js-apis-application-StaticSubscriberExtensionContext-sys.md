@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -54,7 +54,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                                | 必填 | 说明                       |
 | -------- | ----------------------------------- | ---- | -------------------------- |
-| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 启动Ability的want信息。    |
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 启动Ability的want信息。目标Ability需与静态订阅同属一个应用。    |
 | callback | AsyncCallback&lt;void&gt;           | 是   | 回调函数，用于接收启动结果。 |
 
 **错误码：**
@@ -135,13 +135,13 @@ startAbility(want: Want): Promise&lt;void&gt;
 
 | 参数名 | 类型                                | 必填 | 说明                    |
 | ------ | ----------------------------------- | ---- | ----------------------- |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 启动Ability的want信息。 |
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 启动Ability的want信息。目标Ability需与静态订阅同属一个应用。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise形式返回启动结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

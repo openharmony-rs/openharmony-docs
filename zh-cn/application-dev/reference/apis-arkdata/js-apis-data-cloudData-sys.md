@@ -1585,7 +1585,7 @@ static cloudSyncEx(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConf
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
-| 14800001 | Invalid arguments. Possible causes: Empty conditions. |
+| 14800001 | Invalid arguments. Possible causes: 1. Empty conditions. |
 
 **示例：**
 

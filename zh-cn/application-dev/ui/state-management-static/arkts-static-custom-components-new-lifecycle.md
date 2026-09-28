@@ -379,7 +379,7 @@ struct GrandChild {
    GrandChild myBuilt
    ```
 
-- 点击Button按钮，更改showChild为false，回收Child组件和GrandChild组件，执行Child和GrandChild的myRecycle函数。
+- 点击Button按钮，更改switchReuse为false，回收Child组件和GrandChild组件，执行Child和GrandChild的myRecycle函数。
 
    ```text
    Child myRecycle
@@ -784,7 +784,7 @@ aboutToAppear是自定义组件build之前执行，aboutToDisappear是自定义�
 'use static'
 
 import { SwiperExample } from './SwiperPage';
-import { Entry, Component, State, RelativeContainer, Text, Button } from '@kit.ArkUI';
+import { Entry, Component, State, Column, Text, Button } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -794,7 +794,7 @@ struct Index {
   @State currentTabIndex: number = 0;
 
   build() {
-    RelativeContainer() {
+    Column() {
       Text('start')
         .fontSize(50)
         .fontColor('#000')
@@ -849,7 +849,7 @@ export struct SwiperPage {
     hilog.info(0x0000, 'testTag', 'SwiperPage myDisappear %{public}s', this.name);
   }
 
-  build() {
+  build(): void {
     Text(this.name.toString())
       .width('90%')
       .height(160)
@@ -861,7 +861,7 @@ export struct SwiperPage {
 }
 
 // 用于Swiper里数据迭代的数据源
-class MyDataSource implements IDataSource<string> {
+export class MyDataSource implements IDataSource<string> {
   list: string[] = [];
   constructor(list: string[]) {
     this.list = list;
@@ -890,7 +890,7 @@ export struct SwiperExample {
     this.data = new MyDataSource(this.list);
   }
 
-  build() {
+  build(): void {
     Column() {
       Swiper(this.swiperController) {
         ForEach(this.data.list, (item: string) => {

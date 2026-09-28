@@ -94,3 +94,19 @@ import { bundleManager } from '@kit.AbilityKit';
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | mode | [AppClonePreferenceMode](js-apis-bundleManager-sys.md#appclonepreferencemode)         | 否   | 否   | 表示应用分身偏好设置的模式。 |
 | appIndex | ArkTS-Dyn: number<br> ArkTS-Sta: int         | 否   | 是   | 表示应用分身索引。<br>当mode取值为AppClonePreferenceMode.CLONE_APP时为必填参数，用于指定具体的分身应用，取值范围为1~5的整数（系统最多支持5个分身）。   |
+
+## SignatureInfo
+
+描述应用包的签名信息，可标识应用来源、确保应用完整性，并用于应用安全校验与识别。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+| 名称      | 类型           | 只读 | 可选 | 说明                        |
+| --------- | -------------- | ---- | ---- | --------------------------- |
+|validity| [Validity](js-apis-bundleManager-AppProvisionInfo-sys.md#validity) | 是   | 是   | 签名证书文件的有效期。<br/>**模型约束：** 此接口仅可在Stage模型下使用。            |

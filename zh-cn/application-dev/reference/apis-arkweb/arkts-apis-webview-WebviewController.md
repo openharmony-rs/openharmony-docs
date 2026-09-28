@@ -3483,6 +3483,12 @@ ArkTS-Sta: zoom(factor: double): void
 
 调整当前网页的缩放比例，[zoomAccess](arkts-basic-components-web-attributes.md#zoomaccess)需为true。
 
+> **说明：**
+>
+> 入参超出取值范围时，本次调用不生效，网页缩放比例保持不变。
+>
+> 当网页缩放比例已达到最大值或最小值时，继续同向缩放的调用同样不生效。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 9
@@ -3493,7 +3499,7 @@ ArkTS-Sta: zoom(factor: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| factor | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 基于当前网页所需调整的相对缩放比例，入参要求大于0，当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。<br>取值范围：(0，100]。 |
+| factor | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 缩放倍数，与当前网页缩放比例相乘得到新的缩放比例。入参为1时缩放比例保持不变，入参小于1为缩小，入参大于1为放大。<br>取值范围：(0，100]。 |
 
 **错误码：**
 
