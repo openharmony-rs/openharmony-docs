@@ -55,7 +55,11 @@ I/O密集型任务的性能关键在于I/O操作的速度和效率，而非CPU�
        writePromises.push(writePromise);
      }
      try {
-       await Promise.all(writePromises);
+       const results: (boolean | void)[] = await Promise.all(writePromises);
+       // 检查是否有写入失败的结果
+       if (results.includes(false)) {
+         return false;
+       }
        return true;
      } catch (error) {
        return false;
