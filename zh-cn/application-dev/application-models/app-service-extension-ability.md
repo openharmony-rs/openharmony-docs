@@ -1051,7 +1051,7 @@ export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
 <!--Del-->
 **通过callerUid识别客户端应用**
 
-通过调用[getCallingUid()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallinguid)接口获取客户端的uid，再调用[getBundleNameByUid()](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14)接口获取uid对应的bundleName，从而识别客户端身份。此处需要注意的是[getBundleNameByUid()](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14)是一个异步接口，因此onRemoteMessageRequest需要返回Promise\<boolean\>对象：IPC框架会等待异步校验完成后再向客户端回包，校验不通过时返回false，客户端的sendMessageRequest将调用失败。示例代码如下：
+通过调用[getCallingUid()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallinguid)接口获取客户端的uid，再调用[getBundleNameByUidSync()](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundlenamebyuidsync14)接口获取uid对应的bundleName，从而识别客户端身份。示例代码如下：
 
 ArkTS-Dyn示例：
 <!-- @[ability_app_service_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilitythree/MyAppServiceExtAbility.ets) -->
@@ -1068,44 +1068,43 @@ const DOMAIN_NUMBER: number = 0xFF00;
 class Stub extends rpc.RemoteObject {
   private validAppIdentifier: string = 'your_valid_app_identifier_here';
 
-  async onRemoteMessageRequest(
+  onRemoteMessageRequest(
     code: number,
     data: rpc.MessageSequence,
     reply: rpc.MessageSequence,
-    options: rpc.MessageOption): Promise<boolean> {
-    let isValid: boolean = false;
+    options: rpc.MessageOption): boolean {
     try {
-      isValid = await this.verifyClientIdentity();
+      let isValid: boolean = this.verifyClientIdentity();
+      if (!isValid) {
+        hilog.error(DOMAIN_NUMBER, TAG, 'Client authentication FAILED');
+        // 返回false后，客户端sendMessageRequest会调用失败
+        return false;
+      }
+      hilog.info(DOMAIN_NUMBER, TAG, 'Client authentication PASSED');
+      // 校验通过后处理业务逻辑
+      // ...
+      return true;
     } catch (err) {
       const error: BusinessError = err as BusinessError;
       hilog.error(DOMAIN_NUMBER, TAG, `Authentication error: ${error.code}, ${error.message}`);
       // 校验异常时视为校验失败
       return false;
     }
-    if (!isValid) {
-      hilog.error(DOMAIN_NUMBER, TAG, 'Client authentication FAILED');
-      // 返回false后，客户端sendMessageRequest会调用失败
-      return false;
-    }
-    hilog.info(DOMAIN_NUMBER, TAG, 'Client authentication PASSED');
-    // 校验通过后处理业务逻辑
-    // ...
-    return true;
   }
 
-  private async verifyClientIdentity(): Promise<boolean> {
+  private verifyClientIdentity(): boolean {
     try {
       const callerUid: number = rpc.IPCSkeleton.getCallingUid();
       hilog.info(DOMAIN_NUMBER, TAG, `Caller UID: ${callerUid}`);
 
-      const userId: number = await this.getUserIdByUid(callerUid);
+      const userId: number = this.getUserIdByUid(callerUid);
       hilog.info(DOMAIN_NUMBER, TAG, `User ID: ${userId}`);
 
-      const bundleName: string = await bundleManager.getBundleNameByUid(callerUid);
+      const bundleName: string = bundleManager.getBundleNameByUidSync(callerUid);
       hilog.info(DOMAIN_NUMBER, TAG, `Bundle Name: ${bundleName}`);
 
       const bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-      const bundleInfo: bundleManager.BundleInfo = await bundleManager.getBundleInfo(bundleName, bundleFlags, userId);
+      const bundleInfo: bundleManager.BundleInfo = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
 
       if (bundleInfo.signatureInfo && bundleInfo.signatureInfo.appIdentifier) {
         const appIdentifier: string = bundleInfo.signatureInfo.appIdentifier;
@@ -1123,10 +1122,10 @@ class Stub extends rpc.RemoteObject {
     }
   }
 
-  private async getUserIdByUid(uid: number): Promise<number> {
+  private getUserIdByUid(uid: number): number {
     try {
       const accountManager = osAccount.getAccountManager();
-      const userId: number = await accountManager.getOsAccountLocalIdForUid(uid);
+      const userId: number = accountManager.getOsAccountLocalIdForUidSync(uid);
       return userId;
     } catch (err) {
       if (err instanceof Error) {
@@ -1170,44 +1169,43 @@ class Stub extends rpc.RemoteObject {
 
   private validAppIdentifier: string = 'your_valid_app_identifier_here';
 
-  async onRemoteMessageRequest(
+  onRemoteMessageRequest(
     code: int,
     data: rpc.MessageSequence,
     reply: rpc.MessageSequence,
-    options: rpc.MessageOption): Promise<boolean> {
-    let isValid: boolean = false;
+    options: rpc.MessageOption): boolean {
     try {
-      isValid = await this.verifyClientIdentity();
+      let isValid: boolean = this.verifyClientIdentity();
+      if (!isValid) {
+        hilog.error(DOMAIN_NUMBER, TAG, 'Client authentication FAILED');
+        // 返回false后，客户端sendMessageRequest会调用失败
+        return false;
+      }
+      hilog.info(DOMAIN_NUMBER, TAG, 'Client authentication PASSED');
+      // 校验通过后处理业务逻辑
+      // ...
+      return true;
     } catch (err) {
       const error: BusinessError = err as BusinessError;
       hilog.error(DOMAIN_NUMBER, TAG, `Authentication error: ${error.code}, ${error.message}`);
       // 校验异常时视为校验失败
       return false;
     }
-    if (!isValid) {
-      hilog.error(DOMAIN_NUMBER, TAG, 'Client authentication FAILED');
-      // 返回false后，客户端sendMessageRequest会调用失败
-      return false;
-    }
-    hilog.info(DOMAIN_NUMBER, TAG, 'Client authentication PASSED');
-    // 校验通过后处理业务逻辑
-    // ...
-    return true;
   }
 
-  private async verifyClientIdentity(): Promise<boolean> {
+  private verifyClientIdentity(): boolean {
     try {
       const callerUid: int = rpc.IPCSkeleton.getCallingUid();
       hilog.info(DOMAIN_NUMBER, TAG, `Caller UID: ${callerUid}`);
 
-      const userId: int = await this.getUserIdByUid(callerUid);
+      const userId: int = this.getUserIdByUid(callerUid);
       hilog.info(DOMAIN_NUMBER, TAG, `User ID: ${userId}`);
 
-      const bundleName: string = await bundleManager.getBundleNameByUid(callerUid);
+      const bundleName: string = bundleManager.getBundleNameByUidSync(callerUid);
       hilog.info(DOMAIN_NUMBER, TAG, `Bundle Name: ${bundleName}`);
 
       const bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-      const bundleInfo: bundleManager.BundleInfo = await bundleManager.getBundleInfo(bundleName, bundleFlags, userId);
+      const bundleInfo: bundleManager.BundleInfo = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
 
       if (bundleInfo.signatureInfo && bundleInfo.signatureInfo!.appIdentifier) {
         const appIdentifier: string = bundleInfo.signatureInfo!.appIdentifier;
@@ -1225,10 +1223,10 @@ class Stub extends rpc.RemoteObject {
     }
   }
 
-  private async getUserIdByUid(uid: int): Promise<int> {
+  private getUserIdByUid(uid: int): int {
     try {
       const accountManager = osAccount.getAccountManager();
-      const userId: int = await accountManager.getOsAccountLocalIdForUid(uid);
+      const userId: int = accountManager.getOsAccountLocalIdForUidSync(uid);
       return userId;
     } catch (err) {
       if (err instanceof Error) {
