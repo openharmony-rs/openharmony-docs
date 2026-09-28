@@ -5127,7 +5127,7 @@ VoIP通话信息。
 | CALL_STATUS_ACTIVE        | 0    | 激活呼叫状态。   |
 | CALL_STATUS_HOLDING       | 1    | 保持呼叫状态。   |
 | CALL_STATUS_DIALING       | 2    | 呼叫状态拨号。   |
-| CALL_STATUS_ALERTING      | 3    | 电话报警状态。   |
+| CALL_STATUS_ALERTING      | 3    | 电话振铃状态。   |
 | CALL_STATUS_INCOMING      | 4    | 呼叫传入状态。   |
 | CALL_STATUS_WAITING       | 5    | 呼叫等待状态。   |
 | CALL_STATUS_DISCONNECTED  | 6    | 呼叫状态已断开。 |

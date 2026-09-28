@@ -92,9 +92,10 @@ startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
     "startWindowIcon": "$media:icon",
     "startWindowBackground": "$color:white",
     "exported": true,
-    "permissions": [
-      "ohos.permission.START_UI_ABILITY"
-    ]
+    // 标识当前Ability组件的权限信息。其他应用访问该Ability时，需要申请相应的权限。
+    // "permissions": [
+    //   "ohos.permission.EXAMPLE_PERMISSION"
+    // ]
   }
 ]
 ```
@@ -103,9 +104,10 @@ startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
 
 ```json5
 "requestPermissions": [
-  {
-    "name": "ohos.permission.START_UI_ABILITY"
-  },
+  // 启动其他应用的组件时，需申请该组件所标识的权限。
+  // {
+  //   "name": "ohos.permission.EXAMPLE_PERMISSION"
+  // },
   {
     "name": "ohos.permission.ENTERPRISE_START_ABILITIES"
   }

@@ -6,10 +6,13 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=35a82de8b61addbada7fddc3818e08537740ccbc translatedAt=2026-09-16T10:13:53.939Z pushedAt=2026-09-20T09:01:52.229Z -->
 
 ## Overview
 
 Provides APIs for implementing the application event logging functionality. This functionality allows your application to record fault events, statistics events, security events, and user behavior events reported during system running. Based on the event information, you can analyze the operating status of your application.
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 8
 ## Files

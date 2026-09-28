@@ -8,7 +8,7 @@
 
 本模块提供车辆感知能力，包括隔空手势交互、实时天气识别、补能状态识别等功能。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 ## 导入模块
 
@@ -20,7 +20,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 
 表示车辆感知支持的能力类型枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -41,7 +41,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 
 隔空手势感知的结果信息接口。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,7 +60,7 @@ onSpatialMotion(callback: Callback\<SpatialMotionInfo\>): void
 
 开启隔空手势感知，订阅隔空手势感知结果；设备不支持该能力时抛出34000002错误码，可调用 getAllCapabilityList查询设备可用能力，通过callback异步返回数据。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -111,7 +111,7 @@ offSpatialMotion(callback?: Callback\<SpatialMotionInfo\>): void
 
 关闭隔空手势感知，取消订阅隔空手势结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -170,7 +170,7 @@ try {
 
 实时天气感知的结果信息接口。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -187,7 +187,7 @@ onRealTimeWeather(callback: Callback\<RealTimeWeatherInfo\>): void
 
 开启实时天气感知，订阅实时天气感知结果；设备不支持该能力时抛出34000002错误码，可调用getAllCapabilityList查询设备可用能力，通过callback异步返回数据。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -237,7 +237,7 @@ offRealTimeWeather(callback?: Callback\<RealTimeWeatherInfo\>): void
 
 关闭实时天气感知，取消订阅实时天气结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -283,11 +283,11 @@ try {
 
 补能识别的结果信息接口。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务 API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务 API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
@@ -302,11 +302,11 @@ onRefueling(callback: Callback\<RefuelingInfo\>): void
 
 开启补能感知，订阅补能状态感知结果；设备不支持该能力时抛出34000002错误码，可调用 getAllCapabilityList查询设备可用能力，通过callback异步返回数据。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务 API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务 API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.vehicle.MMA_ENERGYREFILL
 
@@ -354,11 +354,11 @@ offRefueling(callback?: Callback\<RefuelingInfo\>): void
 
 关闭补能识别感知，取消订阅加油状态结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务 API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务 API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.vehicle.MMA_ENERGYREFILL
 
@@ -404,7 +404,7 @@ getAllCapabilityList(): Promise<Capability[]>
 
 获取当前设备支持的所有车辆感知能力列表。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

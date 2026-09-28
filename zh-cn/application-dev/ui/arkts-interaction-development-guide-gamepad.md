@@ -163,13 +163,13 @@ struct GamepadSample {
             let absX = event.axisMap.get(AxisModel.ABS_X);
             let absY = event.axisMap.get(AxisModel.ABS_Y);
             let absZ = event.axisMap.get(AxisModel.ABS_Z);
-            let absRz = event.axisMap.get(AxisModel.ABS_RZ);
+            let absRZ = event.axisMap.get(AxisModel.ABS_RZ);
             let absGas = event.axisMap.get(AxisModel.ABS_GAS);
             let absBrake = event.axisMap.get(AxisModel.ABS_BRAKE);
             let absHat0X = event.axisMap.get(AxisModel.ABS_HAT0X);
             let absHat0Y = event.axisMap.get(AxisModel.ABS_HAT0Y);
             this.axisValue =
-              'absX: ' + absX + '\nabsY: ' + absY + '\nabsZ: ' + absZ + '\nabsRz: ' + absRz + '\nabsGas: ' + absGas +
+              'absX: ' + absX + '\nabsY: ' + absY + '\nabsZ: ' + absZ + '\nabsRZ: ' + absRZ + '\nabsGas: ' + absGas +
                 '\nabsBrake: ' + absBrake + '\nabsHat0X: ' + absHat0X + '\nabsHat0Y: ' + absHat0Y;
           })
           .onKeyEvent((event: KeyEvent) => {

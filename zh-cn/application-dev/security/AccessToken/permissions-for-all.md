@@ -793,7 +793,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.DCAS_RUN_MODEL
 
@@ -821,7 +821,7 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
 
@@ -835,7 +835,7 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet | Car | TV | Wearable
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
 
@@ -849,4 +849,18 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet | Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
+
+## ohos.permission.GET_STORAGE_VOLUME_INFO
+
+允许应用查询存储设备基础属性信息。
+
+获取该权限后，应用可查询外置存储设备的物理磁盘信息（如磁盘ID、设备类型、厂商ID、产品ID等）和卷信息（如卷ID、挂载状态、容量、挂载路径、文件系统类型等），以及本地系统盘和数据盘的硬件信息（如物理路径、型号、品牌、介质类型、运行状态、容量等）。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car | TV
+
+**起始版本**：26.0.1

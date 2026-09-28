@@ -631,7 +631,7 @@ getRemoteMetadata(deviceId: string, bundleName: string): Promise\<Array\<[Module
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

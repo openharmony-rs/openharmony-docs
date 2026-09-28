@@ -69,7 +69,7 @@ DevEco Studio是进行USB设备驱动开发的必备工具，开发者可以使�
 
 **SDK版本配置**
 
-OH_UsbManager提供的C接口，所需SDK版本为API 26.1.0及以上才可使用。
+OH_UsbManager提供的C接口，所需SDK版本为API 26.0.1及以上才可使用。
 
 **HDC配置**
 
@@ -82,7 +82,7 @@ HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命
 ### 搭建环境
 
 1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
-2. 将public-SDK更新到API 26.1.0或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](../../../../faqs/full-sdk-switch-guide.md)<!--DelEnd-->。
+2. 将public-SDK更新到API 26.0.1或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](../../../../faqs/full-sdk-switch-guide.md)<!--DelEnd-->。
 3. PC安装HDC工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互。
 4. 用USB线缆将搭载OpenHarmony的设备连接到PC。
 
@@ -96,7 +96,7 @@ HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命
 
 ### 约束与限制
 
-- OH_UsbManager C接口所需SDK版本为API 26.1.0及以上。
+- OH_UsbManager C接口所需SDK版本为API 26.0.1及以上。
 
 - 当前设备必须作为USB Host模式，所连接的设备为Device模式，方可通过`OH_UsbManager_GetUsbDeviceList`获取到设备列表。
 
@@ -176,7 +176,7 @@ libohusb_manager.so
 
 使用完毕后必须调用`OH_UsbManager_FreeUsbDeviceList`释放设备数组。
 
-<!-- @[CApiGetUsbDeviceList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[CApiGetUsbDeviceList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 OH_UsbManager_UsbDevice *devices = nullptr;
@@ -188,7 +188,7 @@ if (code != OH_USBMANAGER_SUCCESS) {
 }
 ```
 
-<!-- @[CApiFreeUsbDeviceList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[CApiFreeUsbDeviceList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 OH_UsbManager_UsbDevice *devices = nullptr;
@@ -213,7 +213,7 @@ bool freed = false;
 
 若无权限，调用`OH_UsbManager_RequestPermission`异步请求权限。该函数会立即返回，请求结果通过`OH_UsbManager_PermissionCallback`回调通知。仅在授权成功后才可进行设备连接操作。
 
-<!-- @[CApiHasPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[CApiHasPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 std::string deviceName;
@@ -228,7 +228,7 @@ if (code != OH_USBMANAGER_SUCCESS) {
 }
 ```
 
-<!-- @[CApiRequestPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[CApiRequestPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 RequestPermissionContext *context = static_cast<RequestPermissionContext *>(data);
@@ -248,7 +248,7 @@ if (code != OH_USBMANAGER_SUCCESS) {
 
 连接成功后，可调用`OH_UsbManager_GetFileDescriptor`获取设备管道的文件描述符（fd），该fd可用于基于ioctl的底层USB传输操作。
 
-<!-- @[CApiConnectDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[CApiConnectDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 uint32_t busNum = 0;
@@ -267,7 +267,7 @@ if (code != OH_USBMANAGER_SUCCESS) {
 }
 ```
 
-<!-- @[CApiGetFileDescriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[CApiGetFileDescriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 (void)info;
@@ -307,7 +307,7 @@ if (code != OH_USBMANAGER_SUCCESS) {
 
 > **重要：**<br>资源释放顺序为先关闭管道，再释放设备数组。确保异常退出路径上也执行释放操作，避免资源泄漏。
 
-<!-- @[CApiClosePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[CApiClosePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 (void)info;

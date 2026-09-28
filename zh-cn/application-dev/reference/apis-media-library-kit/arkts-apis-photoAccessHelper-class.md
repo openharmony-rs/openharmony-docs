@@ -33,8 +33,8 @@
 | MIMEType    | [PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)   | 否 | 是   | 可选择的媒体文件类型，若无此参数，则默认为图片和视频类型。<br>**注意：**<br>当配置参数[BaseSelectOptions](#baseselectoptions).mimeTypeFilter、[BaseSelectOptions](#baseselectoptions).combinedMediaTypeFilter、[BaseSelectOptions](#baseselectoptions).photoViewMimeTypeFileSizeFilters或[BaseSelectOptions](#baseselectoptions).assetFilter时，此参数配置将自动失效。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | maxSelectNumber      | number | 否   | 是 | 选择媒体文件数量的最大值，单位：个。取值范围[1, 500]，若不设置则默认为50。此参数会限制[BaseSelectOptions](#baseselectoptions).preselectedUris数组长度以及[PhotoSelectOptions](#photoselectoptions).maxPhotoSelectNumber和[PhotoSelectOptions](#photoselectoptions).maxVideoSelectNumber的取值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | isPhotoTakingSupported<sup>11+</sup> | boolean  | 否   | 是 | 是否支持拍照，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| isSearchSupported<sup>11+</sup> | boolean  | 否   | 是 | 是否支持搜索，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| recommendationOptions<sup>11+</sup>       | [RecommendationOptions](#recommendationoptions11)   | 否   | 是 | 图片推荐相关配置参数。若需要根据图片数据分析结果推荐相应图片，则配置此参数；若不配置，则不会显示推荐图片。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| isSearchSupported<sup>11+</sup> | boolean  | 否   | 是 | 是否支持搜索，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 从API版本26.0.1开始，select方法支持Car设备，但isSearchSupported属性不支持Car设备，所以在Car设备上配置本属性不会生效。     |
+| recommendationOptions<sup>11+</sup>       | [RecommendationOptions](#recommendationoptions11)   | 否   | 是 | 图片推荐相关配置参数。若需要根据图片数据分析结果推荐相应图片，则配置此参数；若不配置，则不会显示推荐图片。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 从API版本26.0.1开始，select方法支持Car设备，但recommendationOptions属性不支持Car设备，所以在Car设备上配置本属性不会生效。   |
 | preselectedUris<sup>11+</sup> | Array&lt;string&gt;  | 否   | 是 | 预选择图片的URI列表。数组长度受[BaseSelectOptions](#baseselectoptions).maxSelectNumber、[BaseSelectOptions](#photoselectoptions).maxPhotoSelectNumber和[BaseSelectOptions](#photoselectoptions).maxVideoSelectNumber共同限制，取值范围[0, 500]，默认50，否则超出部分不生效。若不配置，则默认不预选择任何图片。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | isPreviewForSingleSelectionSupported<sup>12+</sup> | boolean  | 否   | 是 | 单选模式下是否需要进入大图预览，true表示需要，false表示不需要，默认为true。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | singleSelectionMode<sup>18+</sup> | [SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18) | 否   | 是 | 单选模式类型。默认为大图预览模式（SingleSelectionMode.BROWSER_MODE）。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -60,7 +60,7 @@
 
 | 名称                    | 类型                | 只读 | 可选 | 说明                          |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| isEditSupported<sup>11+</sup>       | boolean | 否   | 是 | 是否支持编辑照片，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
+| isEditSupported<sup>11+</sup>       | boolean | 否   | 是 | 是否支持编辑照片，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 从API版本26.0.1开始，select方法支持Car设备，但isEditSupported属性不支持Car设备，所以在Car设备上配置本属性不会生效。     |
 | isOriginalSupported<sup>12+</sup>       | boolean | 否   | 是 | 是否显示选择原图按钮，true表示显示，false表示不显示，默认为false。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | subWindowName<sup>12+</sup>       | string | 否   | 是 | 子窗口名称。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | completeButtonText<sup>14+</sup>       | [CompleteButtonText](arkts-apis-photoAccessHelper-e.md#completebuttontext14) | 否   | 是 | 完成按钮显示的内容。不配置该参数时，使用系统默认按钮文本。<br>完成按钮指在界面右下方，用户点击表示图片选择已完成的按钮。 <br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。     |
@@ -71,7 +71,7 @@
 | isReturnToPhotoBrowserEnabled<sup>23+</sup>       | boolean | 否   | 是 | 在单选模式下，拍完照是否能自动跳转到大图预览模式，true表示支持，false表示不支持，默认为false。<br>**注意：**<br> 该参数设为true，且同时满足以下条件时生效。<br>1. [BaseSelectOptions](#baseselectoptions).SingleSelectionMode为BROWSER_MODE（大图预览模式）或者BROWSER_AND_SELECT_MODE（兼容模式）。<br>2.[BaseSelectOptions](#baseselectoptions).isPreviewForSingleSelectionSupported参数为true。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。     |
 | isSelectionNumberVisible        | boolean | 否   | 是 | 是否支持选择序号。true表示支持，false表示不支持，默认值为false。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0     |
 | isSelectionOrderAdjustable       | boolean | 否   | 是 | 是否支持调整选择顺序。true表示支持，false表示不支持，默认值为false。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0     |
-| pickerColorMode        | [PickerColorMode](arkts-apis-photoAccessHelper-e.md#pickercolormode)  | 否   | 是 | 设置图片选择器的颜色模式，实现图片选择器拉起的界面内所有内容的深色/浅色显示效果。<br>默认值为AUTO：颜色跟随系统。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。  |
+| pickerColorMode        | [PickerColorMode](arkts-apis-photoAccessHelper-e.md#pickercolormode)  | 否   | 是 | 设置图片选择器的颜色模式，实现图片选择器拉起的界面内所有内容的深色/浅色显示效果。<br>默认值为AUTO：颜色跟随系统。<br>**起始版本：** 26.0.1 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。  |
 
 ## PhotoSelectResult
 
@@ -214,7 +214,7 @@
 | 名称                    | 类型                | 只读 | 可选 | 说明                          |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
 | operationType    | [OperationType](arkts-apis-photoAccessHelper-e.md#operationtype22)   | 否 | 否   | 各类谓词的枚举。包含条件谓词（需要配置field和value，如等于、大于、包含等）和非条件谓词（不需要配置field和value，如and、or、beginWrap、endWrap等）。 |
-| field    | [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)   | 否 | 是   | 数据表中的列名。不配置时默认为空。<br>当前仅支持如下关键字段：URI、PHOTO_TYPE、DISPLAY_NAME、SIZE、DURATION、WIDTH、HEIGHT、ORIENTATION、FAVORITE、TITLE、POSITION、PHOTO_SUBTYPE、DYNAMIC_RANGE_TYPE、COVER_POSITION、BURST_KEY、LCD_SIZE、THM_SIZE、DETAIL_TIME、MEDIA_SUFFIX、OWNER_ALBUM_ID、ASPECT_RATIO、DATE_TAKEN_MS<sup>24+</sup><br>通过[select](arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)接口配置此参数时，输入非法字段会抛出错误码[401 参数检查失败](../errorcode-universal.md#401-参数检查失败)；通过[PhotoPickerComponent (PhotoPicker组件)](ohos-file-PhotoPickerComponent.md)配置此参数时，输入非法字段无onPickerControllerReady回调。<br>当使用条件谓词时，需要配置此参数指定匹配值；非条件谓词不需要配置此参数。非条件谓词如and、or、beginWrap、endWrap等。 |
+| field    | [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)   | 否 | 是   | 数据表中的列名。不配置时默认为空。<br>当前仅支持如下关键字段：URI、PHOTO_TYPE、DISPLAY_NAME、SIZE、DURATION、WIDTH、HEIGHT、ORIENTATION、FAVORITE、TITLE、POSITION、PHOTO_SUBTYPE、DYNAMIC_RANGE_TYPE、COVER_POSITION、BURST_KEY、LCD_SIZE、THM_SIZE、DETAIL_TIME、MEDIA_SUFFIX、OWNER_ALBUM_ID、ASPECT_RATIO、DATE_TAKEN_MS<sup>24+</sup><br>通过[select](arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)接口配置此参数时，输入非法字段会抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)；通过[PhotoPickerComponent (PhotoPicker组件)](ohos-file-PhotoPickerComponent.md)配置此参数时，输入非法字段无onPickerControllerReady回调。<br>当使用条件谓词时，需要配置此参数指定匹配值；非条件谓词不需要配置此参数。非条件谓词如and、or、beginWrap、endWrap等。 |
 | value    | Array<[OperationValueType](arkts-apis-photoAccessHelper-t.md#operationvaluetype22)>   | 否 | 是   |  不同谓词所需匹配的值。<br>当使用条件谓词时，需要配置此参数指定匹配值；非条件谓词不需要配置此参数。非条件谓词如and、or、beginWrap、endWrap等。<br>限制最大长度为10，超出则取前10个值。 |
  
 ## RequestReadPermissionResult<sup>23+</sup>

@@ -146,7 +146,7 @@ Sets the style of the selected item indicator. Use a background indicator when t
 
 | Name | Type                                                         | Mandatory | Description                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle)> | Yes   | Style of the selected item indicator.<br>Default value:<br>**{<br>type: PickerIndicatorType.BACKGROUND,<br>borderRadius: {<br>value:12,<br>unit:LengthUnit.vp<br>},<br>backgroundColor: 'sys.color.comp_background_tertiary'<br>}**<br>When the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle)> | Yes   | Style of the selected item indicator.<br>Default value:<br>{<br>type: PickerIndicatorType.BACKGROUND,<br>borderRadius: {<br>value:12,<br>unit:LengthUnit.vp<br>},<br>backgroundColor: 'sys.color.comp_background_tertiary'<br>}<br>When the value of **style** is **undefined**, the default value is used.|
 
 ### itemHeight
 

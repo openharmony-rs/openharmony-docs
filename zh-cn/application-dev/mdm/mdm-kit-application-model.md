@@ -72,7 +72,7 @@ MDM应用的Admin组件需经企业授权方可生效。具体而言，企业需
 
 ### 管控接口权限校验机制
 
-MDM管控接口使用[ACL授权](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)进行访问权限校验，同时会校验Admin组件的激活状态与激活类型。MDM应用调用MDM管控接口时须同时具备上述三个条件，否则调用会报错[9200001](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器)、[201](../reference/errorcode-universal.md#201-权限校验失败)或[9200002](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够)。
+MDM管控接口使用[ACL授权](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)进行访问权限校验，同时会校验Admin组件的激活状态与激活类型。MDM应用调用MDM管控接口时须同时具备上述三个条件，否则调用会报错[9200001](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器)、[201](../reference/errorcode-universal.md#201-api权限校验失败)或[9200002](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够)。
 
 **图6** EDM服务校验逻辑
 

@@ -209,7 +209,7 @@ NearLink standard UUID not allowed.
 
 将接口参数中的标准服务UUID更换为自定义服务UUID，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
 
-标准服务UUID由星闪联盟官方定义的基础标识（37BEA880-FC70-11EA-B720-000000000000）与16比特通用唯一标识组成。自定义服务UUID的前112比特需要避免和基础标识一致。
+标准服务UUID由星闪联盟官方定义的基础标识（Base UUID，37BEA880-FC70-11EA-B720-000000000000）的前112比特与16比特标准标识拼接而成。自定义服务UUID不能以基础标识的前112比特为前缀。
 
 
 ## 36100050 不支持合作设备集合管理功能

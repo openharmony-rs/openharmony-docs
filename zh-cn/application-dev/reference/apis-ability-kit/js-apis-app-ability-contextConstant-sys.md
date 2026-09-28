@@ -36,7 +36,7 @@ import { contextConstant } from '@kit.AbilityKit';
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
 | SERVICE_EXTENSION_CONTEXT | 5 | [ServiceExtensionContext](js-apis-inner-application-serviceExtensionContext-sys.md)类型。     |
 | UI_SERVICE_EXTENSION_CONTEXT | 6 | [UIServiceExtensionContext](js-apis-inner-application-uiserviceExtensionContext-sys.md)类型。     |
-| AUTO_FILL_EXTENSION_CONTEXT | 7 | [AutoFillExtensionContext](js-apis-inner-application-autoFillExtensionContext-sys.md)类型。     |
+| AUTO_FILL_EXTENSION_CONTEXT | 7 | [AutoFillExtensionContext (自动填充扩展上下文)](js-apis-inner-application-autoFillExtensionContext-sys.md)类型。     |
 
 **示例：**
 

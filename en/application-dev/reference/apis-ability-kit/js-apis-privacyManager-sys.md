@@ -438,7 +438,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_RECORD_TOGGLE". |
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus).<br>Applicable version: 26.1.0+ |
+| 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus).<br>Applicable version: 26.0.1+ |
 | 12100007 | Service exception. |
 | 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query all applications under the user. |
 
@@ -462,7 +462,7 @@ setPermissionUsedRecordToggleStatus(status: boolean, subProfileId: number): Prom
 
 Sets whether to record the permission usage of a specified sub-profile. This API applies to the scenario where a system application needs to independently control the permission usage record of a sub-profile. After the call succeeds, the system updates the switch status of the sub-profile based on `status`. When `status` is set to `false`, [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) does not generate a permission usage record for the sub-profile and deletes its historical permission usage records. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 
@@ -539,7 +539,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
 | 202 | Not system app. Interface caller is not a system app. |
-| 12100004 | This API must be used together with [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18).<br>Applicable version: 26.1.0+ |
+| 12100004 | This API must be used together with [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18).<br>Applicable version: 26.0.1+ |
 | 12100007 | Service exception. |
 
 **Example**
@@ -567,7 +567,7 @@ getPermissionUsedRecordToggleStatus(subProfileId: number): Promise&lt;boolean&gt
 
 Obtains the permission usage record toggle status of the specified sub-profile. This API is applicable to scenarios where a system application displays or verifies the permission usage record toggle configuration by sub-profile. After the call succeeds, the Promise returns the current toggle status of the sub-profile: `true` indicates that recording is enabled, and `false` indicates that recording is disabled. This API uses a promise to return the result asynchronously.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 

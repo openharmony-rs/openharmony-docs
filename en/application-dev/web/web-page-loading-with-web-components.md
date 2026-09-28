@@ -2,9 +2,10 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-09-21T02:23:18.638Z pushedAt=2026-09-21T13:42:01.269Z -->
 
 
 Page loading is a basic capability of the **Web** component. Depending on the data source, page loading falls into three types: loading of network pages, loading of local pages, and loading of HTML rich text data.
@@ -22,7 +23,7 @@ To obtain network resources during page loading, configure the network access pe
 
 ## Loading Network Pages
 
-You can specify the default network page to be loaded when creating a **Web** component. After the default network page is loaded, call [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) if you want to change the network page displayed by the **Web** component. The value of the first parameter **src** of the [Web component](../reference/apis-arkweb/arkts-basic-components-web.md) cannot be dynamically changed through a state variable (for example, @State). To change the value, call [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl).
+You can specify the default network page to load when creating a Web component. After the default page is loaded, to change the network page displayed by the Web component, call the [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to load the specified web page. The first parameter variable `src` of the [Web component](../reference/apis-arkweb/arkts-basic-components-web.md) cannot be dynamically changed through a state variable (for example, [@State](../ui/state-management/arkts-state.md)). To change the address, call [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) to reload the page.
 
 
 In the following example, after the **www.\example.com** page is loaded by the **Web** component, **loadUrl** is called to change the displayed page to **www\.example1.com**.
@@ -74,14 +75,14 @@ To reference a local CSS file when loading a local HTML file, perform the follow
 
 - Local page file in the application's resources/rawfile directory:
 
-    **Figure 1** Path of local page files 
+    **Figure 1** Path of local page files
 
     ![resource-path](figures/resource-path.png)
 
 
 - Application code:
   <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingLocalPages.ets) -->
-  
+
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -138,7 +139,7 @@ Example of loading local page files in the sandbox:
 
 1. Obtain the sandbox path through the constructed singleton object **GlobalContext**. You need to enable the [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) permission of the file system in the application.
    <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/GlobalContext.ets) -->
-   
+
    ``` TypeScript
    export class GlobalContext {
      private constructor() {}
@@ -162,9 +163,9 @@ Example of loading local page files in the sandbox:
    }
    ```
    <!-- -->
-   
+
    <!-- @[load_local_page_file_in_sandbox_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadLocalPageFileInSandboxPath_one.ets) -->
-   
+
    ``` TypeScript
    import { webview } from '@kit.ArkWeb';
    import { GlobalContext } from './GlobalContext';

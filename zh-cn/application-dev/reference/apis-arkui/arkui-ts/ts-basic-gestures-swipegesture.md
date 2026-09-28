@@ -110,7 +110,7 @@ struct SwipeGestureExample {
       .height(200)
       .margin(100)
       .rotate({ angle: this.rotateAngle })
-      // 单指竖直方向快滑时触发该事件
+      // 手指数量达到配置值且沿竖直方向快滑时触发该事件
       .gesture(
       SwipeGesture({ direction: SwipeDirection.Vertical })
         .onAction((event: GestureEvent) => {

@@ -858,8 +858,8 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
 | 错误码ID    | 错误信息                                                                                                              |
 |----------|-------------------------------------------------------------------------------------------------------------------|
-| 201      | User permission verify failed.            |
-| 202      | The caller is not a system application.                                    |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.            |
+| 202      | Permission verification failed. A non-system application calls a system API.                                    |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed; |
 | 11600101 | Failed to execute the function.                                                                        |
 
@@ -979,7 +979,7 @@ getOsTypeByNetworkId(networkId: string): number
 
 **系统接口**：此接口为系统接口。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **参数：**
 

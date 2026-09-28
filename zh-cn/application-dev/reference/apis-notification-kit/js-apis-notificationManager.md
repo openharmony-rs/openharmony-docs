@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -54,7 +54,7 @@ publish(request: NotificationRequest, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -126,7 +126,7 @@ publish(request: NotificationRequest): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -429,14 +429,14 @@ addSlot(type: SlotType, callback: AsyncCallback\<void\>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // addSlot回调
-let addSlotCallBack = (err: BusinessError): void => {
+let addSlotCallback = (err: BusinessError): void => {
   if (err) {
     console.error(`Failed to add slot. Code is ${err.code}, message is ${err.message}`);
   } else {
     console.info(`Succeeded in adding slot.`);
   }
 }
-notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, addSlotCallBack);
+notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, addSlotCallback);
 ```
 
 ## notificationManager.addSlot
@@ -634,7 +634,7 @@ getSlots(): Promise\<Array\<NotificationSlot>>
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\>\> | Promise对象，返回通知渠道对象。 |
+| Promise\<Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\>\> | Promise对象，返回通知渠道对象数组。 |
 
 **错误码：**
 
@@ -847,7 +847,7 @@ isNotificationEnabled(callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- |
@@ -880,7 +880,7 @@ isNotificationEnabled(): Promise\<boolean\>
 
 查询当前应用[通知授权](../../notification/notification-glossary.md#notification-authorization通知授权)状态。使用Promise异步回调。
 
-用于在发布通知前检查当前应用是否被允许发送通知，避免在通知使能关闭时发布导致失败。
+用于在发布通知前检查当前应用是否被允许发送通知，避免在通知授权关闭时发布导致失败。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -920,7 +920,7 @@ isNotificationEnabledSync(): boolean
 
 同步查询当前应用[通知授权](../../notification/notification-glossary.md#notification-authorization通知授权)状态。
 
-用于在发布通知前快速检查当前应用是否被允许发送通知。此接口为同步接口，调用后立即返回结果，适用于需要在同步代码流程中获取使能状态的场景。
+用于在发布通知前快速检查当前应用是否被允许发送通知。此接口为同步接口，调用后立即返回结果，适用于需要在同步代码流程中获取通知授权状态的场景。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -928,7 +928,7 @@ isNotificationEnabledSync(): boolean
 
 | 类型                                                        | 说明                                                     |
 | ----------------------------------------------------------- |--------------------------------------------------------- |
-| boolean | 返回查询通知使能状态的结果。返回true，表示允许发布通知；返回false，表示禁止发布通知。 |
+| boolean | 返回查询通知授权状态的结果。返回true，表示允许发布通知；返回false，表示禁止发布通知。 |
 
 **错误码：**
 
@@ -1140,7 +1140,7 @@ getActiveNotificationCount(): Promise\<number\>
 
 | 类型              | 说明                                        |
 | ----------------- | ------------------------------------------- |
-| Promise\<number\> | Promise对象，返回当前应用未删除通知数。 |
+| Promise\<number\> | Promise对象，返回当前应用在通知中心的存量通知数量。 |
 
 **错误码：**
 
@@ -1220,7 +1220,7 @@ getActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 | 类型                                                         | 说明                                    |
 | ------------------------------------------------------------ | --------------------------------------- |
-| Promise\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)\>\> | Promise对象，返回当前应用的通知列表。 |
+| Promise\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)\>\> | Promise对象，返回当前应用未删除的通知列表，包含每条通知的详细信息。 |
 
 **错误码：**
 
@@ -1306,7 +1306,7 @@ cancelGroup(groupName: string, callback: AsyncCallback\<void\>): void
 
 | 参数名      | 类型                  | 必填 | 说明                         |
 | --------- | --------------------- | ---- | ---------------------------- |
-| groupName | string                | 是   | 通知组名称，此名称需要在发布通知时通过[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)对象指定。 |
+| groupName | string                | 是   | 通知组名称，此名称需要在发布通知时通过[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)对象指定。<br>大小不超过202字节，超出部分会被截断。 |
 | callback  | AsyncCallback\<void\> | 是   | 回调函数。当取消当前应用指定组下的通知成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1350,7 +1350,7 @@ cancelGroup(groupName: string): Promise\<void\>
 
 | 参数名      | 类型   | 必填 | 说明           |
 | --------- | ------ | ---- | -------------- |
-| groupName | string | 是   | 通知组名称，此名称需要在发布通知时通过[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)对象指定。 |
+| groupName | string | 是   | 通知组名称，此名称需要在发布通知时通过[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)对象指定。<br>大小不超过202字节，超出部分会被截断。 |
 
 **返回值：**
 
@@ -1428,7 +1428,7 @@ notificationManager.isSupportTemplate(templateName, isSupportTemplateCallback);
 
 isSupportTemplate(templateName: string): Promise\<boolean\>
 
-在使用[NotificationTemplate](./js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用Promise异步回调。
+在使用[NotificationTemplate](js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1487,7 +1487,7 @@ requestEnableNotification(context: UIAbilityContext, callback: AsyncCallback\<vo
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知弹窗绑定Ability的上下文。 |
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 通知弹窗绑定Ability的上下文。 |
 | callback | AsyncCallback\<void\> | 是   | 回调函数。当应用通过弹窗获取用户授权成功，err为undefined，否则为错误对象。     |
 
 **错误码：**
@@ -1552,7 +1552,7 @@ requestEnableNotification(context: UIAbilityContext): Promise\<void\>
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知弹窗绑定的Ability上下文。 |
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 通知弹窗绑定的Ability上下文。 |
 
 **返回值：**
 
@@ -1604,7 +1604,7 @@ class MyAbility extends UIAbility {
 
 requestEnableNotification(callback: AsyncCallback\<void\>): void
 
-当前应用请求通知使能。使用callback异步回调。
+当前应用请求通知授权。使用callback异步回调。
 
 > **说明：**
 >
@@ -1616,7 +1616,7 @@ requestEnableNotification(callback: AsyncCallback\<void\>): void
 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| callback | AsyncCallback\<void\> | 是   | 回调函数。当应用请求通知使能成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void\> | 是   | 回调函数。当应用请求通知授权成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1650,7 +1650,7 @@ notificationManager.requestEnableNotification(requestEnableNotificationCallback)
 
 requestEnableNotification(): Promise\<void\>
 
-当前应用请求通知使能。使用Promise异步回调。
+当前应用请求通知授权。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1782,7 +1782,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 
 拉起应用的[通知设置](../../notification/notification-glossary.md#notification-setting通知设置)界面，该页面以半模态形式呈现，可用于设置通知开关、[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)等。使用Promise异步回调。
 
-适用于用户需要手动修改通知设置的场景，如用户拒绝授权后二次申请，或需要修改通知提醒方式（振动、响铃等）。当[requestEnableNotification](#notificationmanagerrequestenablenotification10)弹窗被用户拒绝后，开发者可调用此接口引导用户前往通知设置页面手动开启。
+适用于用户需要手动修改通知设置的场景，如用户拒绝授权后二次申请，或需要修改通知提醒方式（振动、铃声等）。当[requestEnableNotification](#notificationmanagerrequestenablenotification10)弹窗被用户拒绝后，开发者可调用此接口引导用户前往通知设置页面手动开启。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1792,7 +1792,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知设置页面绑定Ability的上下文。 |
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 通知设置页面绑定Ability的上下文。 |
 
 **返回值：**
 
@@ -1856,7 +1856,7 @@ openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<Notifica
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知设置页面绑定Ability的上下文。 |
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 通知设置页面绑定Ability的上下文。 |
 
 **返回值：**
 
@@ -2040,11 +2040,11 @@ notificationManager.isGeofenceEnabled().then((data: boolean) => {
 | 名称             | 类型     | 只读 | 可选 | 说明                                         |
 | ---------------- | ------- | ---- | ---- | ------------------------------------------- |
 | vibrationEnabled | boolean | 否   |  否  | 表示是否开启振动。<br/> - true：开启。<br/> - false：关闭。 |
-| soundEnabled     | boolean | 否   |  否  | 表示是否开启响铃。<br/> - true：开启。<br/> - false：关闭。 |
+| soundEnabled     | boolean | 否   |  否  | 表示是否开启铃声。<br/> - true：开启。<br/> - false：关闭。 |
 | lockScreenEnabled     | boolean | 否   |  是  | 表示是否开启锁屏通知。<br/>**模型约束**: 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
 | bannerEnabled     | boolean | 否   |  是  | 表示是否开启横幅通知。<br/>**模型约束**: 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
 | badgeNumberEnabled     | boolean | 否   |  是  | 表示是否开启[通知角标](../../notification/notification-glossary.md#notification-badge通知角标)数字展示。<br/>**模型约束**: 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
-| notificationEnabled     | boolean | 否   |  是  | 表示应用通知使能状态。<br/>**模型约束**: 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
+| notificationEnabled     | boolean | 否   |  是  | 表示应用通知授权状态。<br/>**模型约束**: 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
 
 ## PriorityNotificationType<sup>23+</sup>
 

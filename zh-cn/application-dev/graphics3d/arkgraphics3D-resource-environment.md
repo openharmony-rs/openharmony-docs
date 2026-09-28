@@ -6,9 +6,9 @@
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-环境（Environment）：环境是3D场景背景的一种描述，可以基于图片进行创建。通过将一张图片进行正方体或者球体的映射处理，将图片贴在正方体或者球体上，在3D场景中模拟真实的环境。
+环境（Environment）：用于定义3D场景背景，可基于图片创建。它将环境贴图映射到立方体或球体表面（如等距柱状投影），以模拟真实环境背景；同时提供基于图像的光照（Image-Based Lighting，IBL），通过间接漫反射等方式影响物体环境光照，使物体更自然地融入场景，提升渲染真实感。
 
-ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
+ArkGraphics 3D支持开发者创建环境资源，用于定义3D场景背景。
 
 ## 开发步骤
 1. 导入相关模块。
@@ -101,7 +101,7 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
              envEntity.indirectDiffuseFactor.w = 1;
              resolve(envEntity);
            }).catch((err: string) => {
-             console.error('Environment mapping material create failed: ' + err + '.');
+             console.error('Environment create failed: ' + err + '.');
              reject(err);
            });
          }).catch((err: string) => {
@@ -125,7 +125,7 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
    Button('Add to Environment')
      // ...
      .onClick(async (): Promise<void> => {
-       console.info('Start to replace with a material of image');
+       console.info('Start to add environment to scene');
    
        if (!this.scene || !this.cam) {
          return;

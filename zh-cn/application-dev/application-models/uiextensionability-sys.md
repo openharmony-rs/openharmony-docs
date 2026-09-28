@@ -512,7 +512,7 @@ UIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-kit/js-ap
       }
     }
     ```
-## 开发UIExtensionAbility使用方
+### 开发UIExtensionAbility使用方
 
 开发者可以在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的页面中通过[UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)容器加载自己应用内的[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
 

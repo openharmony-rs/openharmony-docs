@@ -50,6 +50,7 @@
 | [int32_t OH_NativeBuffer_Unmap(OH_NativeBuffer *buffer)](#oh_nativebuffer_unmap) | 将OH_NativeBuffer对应的ION内存从进程空间移除。<br>本接口为非线程安全类型接口。 |
 | [uint32_t OH_NativeBuffer_GetSeqNum(OH_NativeBuffer *buffer)](#oh_nativebuffer_getseqnum) | 获取OH_NativeBuffer的序列号。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_SetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace colorSpace)](#oh_nativebuffer_setcolorspace) | 为OH_NativeBuffer设置颜色空间属性。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeBuffer_SetDmaBufferName(OH_NativeBuffer *buffer, const char *name)](#oh_nativebuffer_setdmabuffername) | 设置OH_NativeBuffer对应的DMA buffer名称，用于在内存泄漏排查中定位buffer的来源。<br>DMA buffer（Direct Memory Access buffer，直接内存访问缓冲区）是允许多进程、多硬件之间共享访问的内存；OH_NativeBuffer对应的图形缓冲区底层基于内核DMA-BUF机制分配。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_MapPlanes(OH_NativeBuffer *buffer, void **virAddr, OH_NativeBuffer_Planes *outPlanes)](#oh_nativebuffer_mapplanes) | 将OH_NativeBuffer对应的多通道ION内存映射到进程空间。<br>需注意调用该接口的[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)的usage必须带有[NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage)属性，否则可能导致稳定性问题。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_FromNativeWindowBuffer(OHNativeWindowBuffer *nativeWindowBuffer, OH_NativeBuffer **buffer)](#oh_nativebuffer_fromnativewindowbuffer) | 将OHNativeWindowBuffer实例转换为OH_NativeBuffer实例。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_GetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace *colorSpace)](#oh_nativebuffer_getcolorspace) | 获取OH_NativeBuffer颜色空间属性。<br>本接口为非线程安全类型接口。 |
@@ -332,6 +333,34 @@ int32_t OH_NativeBuffer_SetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_C
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 返回值为0表示执行成功，其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
+
+### OH_NativeBuffer_SetDmaBufferName()
+
+```c
+int32_t OH_NativeBuffer_SetDmaBufferName(OH_NativeBuffer *buffer, const char *name)
+```
+
+**描述**
+
+设置OH_NativeBuffer对应的DMA buffer名称，用于在内存泄漏排查中定位buffer的来源。<br>DMA buffer（Direct Memory Access buffer，直接内存访问缓冲区）是允许多进程、多硬件之间共享访问的内存；OH_NativeBuffer对应的图形缓冲区底层基于内核DMA-BUF机制分配。<br>本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
+**起始版本：** 26.0.1
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) *buffer | 一个指向OH_NativeBuffer的结构体实例的指针。 |
+| const char *name | 传入的DMA buffer的名称字符串，必须以字母开头，仅包含字母与数字，且长度不超过64字节。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>buffer为空指针或name非法时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeBuffer_MapPlanes()
 

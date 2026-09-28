@@ -232,6 +232,11 @@ iconSize(size: Dimension | SizeOptions)
 
 设置保存控件的图标尺寸。
 
+> **说明：**
+>
+> 在API版本10时，开发者可通过安全控件通用属性[iconSize](ts-securitycomponent-attributes.md#iconsize)设置图标尺寸，此时size类型仅支持Dimension。<br/>
+> 从API版本20开始，开发者可以通过本接口设置图标尺寸，size类型增加支持SizeOptions。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。

@@ -42,7 +42,7 @@
 
    ```ts
    import { certificateManagerDialog, certificateManager } from '@kit.DeviceCertificateKit';
-   import { BusinessError } from '@kit.BasicservicesKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    import { UIContext } from '@kit.ArkUI';
 

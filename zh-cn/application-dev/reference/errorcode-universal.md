@@ -7,7 +7,7 @@
 <!--Tester: @RayShih-->
 <!--Adviser: @zengyawen-->
 
-## 201 权限校验失败
+## 201 API权限校验失败
 
 **错误信息**
 
@@ -19,13 +19,21 @@ Permission verification failed. The application does not have the permission req
 
 **可能原因**
 
-该错误码表示权限校验失败，通常为没有权限，却调用了需要权限的API。
+1. 应用配置文件未声明对应权限。
+
+2. 敏感权限未完成动态申请，用户未授予权限。
+
+3. 应用身份不满足接口的权限调用约束。
 
 **处理步骤**
 
-请检查是否有调用API的权限。
+1. 在配置文件中补充接口依赖的权限。具体请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 
-## 202 系统API权限校验失败
+2. 针对敏感权限增加动态申请逻辑。具体请参考[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
+
+3. 确保调用方应用身份符合接口权限要求。
+
+## 202 非系统应用调用系统 API
 
 **错误信息**
 
@@ -62,7 +70,7 @@ This function is prohibited by enterprise management policies.
 请使用[getDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicydeprecated)接口检查该系统功能是否被禁用，并使用[setDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口解除禁用状态。
 
 <!--Del-->
-## 204 用户访问控制策略拒绝此访问
+## 204 用户访问控制策略拦截，访问被拒绝
 
 **错误信息**
 
@@ -72,9 +80,7 @@ Access denied due to user access control policy. Possible causes:
 
 **错误描述**
 
-由于用户访问控制策略拦截，访问被拒绝。可能原因有：
-1. 该操作未获取所需的特权。
-2. 该操作受到系统账号约束的限制。
+由于用户访问控制策略拦截，访问被拒绝。
 
 **可能原因**
 
@@ -88,7 +94,7 @@ Access denied due to user access control policy. Possible causes:
 3. 若目标操作受特权管控，则通过[acquireAuthorization](./apis-basic-services-kit/js-apis-osAccount-sys.md#acquireauthorization24)接口申请目标特权，若申请成功则继续执行目标操作，否则停止操作。
 <!--DelEnd-->
 
-## 401 参数检查失败
+## 401 函数参数数量或参数类型不匹配
 
 **错误信息**
 
@@ -120,22 +126,60 @@ Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 
 
 请检查必选参数是否传入，或者传入的参数类型是否错误。对于参数校验失败，阅读参数规格约束，按照可能原因进行排查。
 
-## 801 该设备不支持此API
+## 501 资源被其他线程占用，访问被拒绝 
 
 **错误信息**
 
-Capability not supported. Failed to call the API due to limited device capabilities.
+Access denied because the resource is occupied by another thread.
 
 **错误描述**
 
-该设备不支持此API，因此无法正常调用。
+资源已被其他线程占用锁定，本次访问请求被拒绝。
 
 **可能原因**
 
-可能出现该错误码的场景为：该设备已支持该API所属的Syscap，但是并不支持此API。
+当前资源正在被其他线程使用，无法完成操作。
 
 **处理步骤**
 
-应避免在该设备上使用此API，或在代码中通过判断来规避异常场景下应用在不同设备上运行所产生的影响。
+确保同一组件/资源只在一个线程中使用。
+
+## 801 API功能在部分设备不支持
+
+**错误信息**
+
+Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.
+
+**错误描述**
+
+功能不支持。
+
+**可能原因**
+
+可能出现该错误码的场景为：硬件不支持或依赖的业务特性不支持。
+
+**处理步骤**
+
+1. 应避免在该设备上使用此API。
+
+2. 若该API有前置的isxxxsupported接口，先调用isxxxsupported判断是否支持该API功能，再调用此API。
+
+## 803 服务在当前国家或地区不可用
+
+**错误信息**
+
+The service is unavailable in the current country or region.
+
+**错误描述**
+
+服务在当前国家或地区不可用。
+
+**可能原因**
+
+服务在当前国家未开放。
+
+**处理步骤**
+
+应用应捕获错误，对服务提供的功能进行隔离，避免影响用户体验。可以进一步查询开发者资料获取Kit支持的国家和地区信息。
 
 <!--RP1--><!--RP1End-->

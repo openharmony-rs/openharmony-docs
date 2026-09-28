@@ -1333,7 +1333,7 @@ type Nullable\<T> = T \| undefined
 
 | 名称            | 值   | 说明                                                         |
 | --------------- | ---- | ------------------------------------------------------------ |
-| BREAKPOINT_DEFAULT         | 0    | 针对List和Swiper组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对Grid、WaterFlow和LazyVWaterFlowLayout组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。                                       |
+| BREAKPOINT_DEFAULT         | 0    | 针对List和Swiper组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对Grid、WaterFlow、LazyVWaterFlowLayout和LazyVGridLayout组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。LazyVWaterFlowLayout组件从API版本26.0.0开始支持，LazyVGridLayout组件从API版本26.2.0开始支持。<br> LazyVWaterFlowLayout和LazyVGridLayout使用内容区宽度判断断点，内容区宽度为组件宽度减去左右内边距（padding）及占用布局的左右边框宽度后的可用宽度。 |
 | BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。 |
 | BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。 |
 

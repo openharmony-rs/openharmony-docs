@@ -5,10 +5,11 @@
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7ad1c90a6f0725a10b9d0139373b5bca022b08ee translatedAt=2026-09-21T02:37:09.976Z pushedAt=2026-09-21T09:06:42.256Z -->
 
 This topic addresses common issues related to dynamic attribute setting.
 
-## JS Crash Occurs When AttributeModifier Is Used to Set Dynamic Attributes for a Component
+## Using AttributeModifier to Set Component Dynamic Attributes Causes JS Crash
 
 **Symptom**
 
@@ -24,7 +25,7 @@ Go to the error log as prompted, view the error cause, and rectify the fault. Fo
 
 **Code Example**
 
-In this example, a button is bound to **AttributeModifier** to demonstrate the scenario where an exception is thrown when an unsupported attribute is set. After the code is executed, a JS crash error is reported. In this example, deleting the code related to **reuseId** will allow the application to run normally.
+This example binds **AttributeModifier** to a **Button** to demonstrate a scenario where **AttributeModifier** throws an exception when setting an unsupported attribute. After running the sample code, a JS Crash error occurs. Refer to the animation below to jump to the specific error scenario. In this example, deleting the **reuseId**-related code allows it to run normally.
 
 ```ts
 // xxx.ets

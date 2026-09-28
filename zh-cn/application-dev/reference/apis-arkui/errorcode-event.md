@@ -94,7 +94,7 @@ The input event pointer is not a cloned event pointer.
 
 **可能原因**
 
-调用克隆事件接口时，必须传入通过克隆事件接口生成的克隆事件指针。
+调用克隆事件分发接口时，必须传入通过克隆事件接口生成的克隆事件指针。
 
 **处理步骤**
 

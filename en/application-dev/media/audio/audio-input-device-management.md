@@ -2,50 +2,58 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=95c06ec106bca4ef3b4b8302be17a41d4d2cd428 translatedAt=2026-09-18T01:50:04.588Z pushedAt=2026-09-18T06:44:17.349Z -->
 
-You can use APIs to manage audio input devices, including querying audio input device information and listening for device connection status changes. For details about the APIs, see [AudioRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md).
+You can use APIs to manage audio input devices, including querying audio input device information and listening for device connection state changes. For details about the APIs, see [AudioRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md).
 
-The examples in each of the following steps are code snippets. You can click the link at the bottom right of the sample code to obtain the [complete sample codes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS).
+The following examples are code snippets. You can get the [complete sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample) via the link at the bottom right of the sample code.
 
 ## Creating an AudioRoutingManager Instance
 
 Before using AudioRoutingManager to manage audio devices, import the audio module and create an AudioManager instance.
 
-<!-- @[getRoutingManager_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
+<!-- @[getRoutingManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit'; // Import the audio module.
+import { audio } from '@kit.AudioKit';
+// ...
 
-let audioManager = audio.getAudioManager(); // Create an AudioManager instance.
-let audioRoutingManager = audioManager.getRoutingManager(); // Call an API of AudioManager to create an AudioRoutingManager instance.
+let audioManager = audio.getAudioManager();
+let audioRoutingManager = audioManager.getRoutingManager();
 ```
 
 ## Supported Audio Input Device Types
 
 The table below lists the supported audio input devices.
 
-| Name| Value| Description| 
+| Name | Value | Description | 
 | -------- | -------- | -------- |
-| WIRED_HEADSET | 3 | Wired headset with a microphone.| 
-| BLUETOOTH_SCO | 7 | Bluetooth device using Synchronous Connection Oriented (SCO) links.| 
-| MIC | 15 | Microphone.| 
-| USB_HEADSET | 22 | USB Type-C headset.| 
+| WIRED_HEADSET | 3 | Wired headset with a microphone. | 
+| BLUETOOTH_SCO | 7 | Bluetooth device SCO (Synchronous Connection Oriented) connection. | 
+| MIC | 15 | Microphone. | 
+| USB_HEADSET | 22 | USB headset with a microphone. | 
+| NEARLINK | 31 | NearLink device. |
 
 ## Obtaining Input Device Information
 
-Use **getDevices()** to obtain information about all the input devices.
+Use the [getDevices](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevices9) method to obtain information about all current input devices.
 
-<!-- @[getDevices_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
+<!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit'; // Import the audio module.
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // ...
-  audioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG).then((data: audio.AudioDeviceDescriptors) => {
-    console.info('Promise returned to indicate that the device list is obtained.');
 
+  audioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG).then((audioDeviceDescriptors: audio.
+    AudioDeviceDescriptors) => {
+    console.info(`Succeeded in getting devices. AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}`);
+    // ...
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get devices. Code: ${err.code}, message: ${err.message}`);
     // ...
   });
 ```
@@ -54,24 +62,27 @@ import { audio } from '@kit.AudioKit'; // Import the audio module.
 
 Set a listener to listen for changes of the device connection state. When a device is connected or disconnected, a callback is triggered.
 
-<!-- @[listen_InputStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
+<!-- @[onDeviceChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->  
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit'; // Import the audio module.
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // ...
-  // Listen for connection state changes of audio devices.
-  audioRoutingManager.on('deviceChange', audio.DeviceFlag.INPUT_DEVICES_FLAG,
-    (deviceChanged: audio.DeviceChangeAction) => {
-    console.info('device change type: ' + deviceChanged.type); // Device connection state change. The value 0 means that the device is connected and 1 means that the device is disconnected.
-    console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-    console.info('device change descriptor: ' + deviceChanged.deviceDescriptors[0].deviceRole); // Device role.
-    console.info('device change descriptor: ' + deviceChanged.deviceDescriptors[0].deviceType); // Device type.
 
+let deviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
+  console.info(`Succeeded in using on function. DeviceChangeAction: ${JSON.stringify(deviceChanged)}`);
+  // ...
+}
+// ...
+
+  try {
+    // Listen for audio device state changes.
+    audioRoutingManager.on('deviceChange', audio.DeviceFlag.INPUT_DEVICES_FLAG, deviceChangeCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to use on function. Code: ${error.code}, message: ${error.message}`);
     // ...
-  // Cancel the listener for the connection state changes of audio devices.
-  audioRoutingManager.off('deviceChange', (deviceChanged: audio.DeviceChangeAction) => {
-    console.info('Should be no callback.');
-  });
+  }
 ```
 
 <!--Del-->

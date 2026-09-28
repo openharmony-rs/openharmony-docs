@@ -13,7 +13,7 @@ To meet the requirements of flexibly configuring and managing dialog boxes in ap
 >
 > To show, update, and close a dialog box, obtain the [DialogPresenter](arkts-apis-uicontext-dialogpresenter.md) object through the [getDialogPresenter()](arkts-apis-uicontext-uicontext.md#getdialogpresenter) API in UIContext, and then call the related API.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## Modules to Import
 
@@ -25,7 +25,7 @@ import { dialog } from '@kit.ArkUI';
 
 Defines text style options in a dialog box, which can be used as the text style of the message content.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -39,7 +39,7 @@ Defines text style options in a dialog box, which can be used as the text style 
 
 Defines the button configuration of a fixed-style dialog box.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -59,7 +59,7 @@ Defines the button configuration of a fixed-style dialog box.
 
 Defines the configuration item of a dialog box in the **ActionSheet** style.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -75,7 +75,7 @@ Defines the configuration item of a dialog box in the **ActionSheet** style.
 
 Provides basic options shared by all dialog boxes, defining common attributes such as the background, border, alignment, mask, and avoidance of a dialog box. Both [DialogStyleOptions](#dialogstyleoptions) and [DialogCustomOptions](#dialogcustomoptions) are inherited from this API.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -125,7 +125,7 @@ Provides basic options shared by all dialog boxes, defining common attributes su
 
 Defines the message content and text style of the dialog box. This API is inherited from [DialogTextStyleOptions](#dialogtextstyleoptions).
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -139,7 +139,7 @@ Defines the message content and text style of the dialog box. This API is inheri
 
 Defines the options for a dialog box with a fixed style. This API is inherited from [DialogBaseOptions](#dialogbaseoptions). For specific usage, see the [present](arkts-apis-uicontext-dialogpresenter.md#present) API example of **DialogPresenter**.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -161,7 +161,7 @@ Defines the options for a custom-style dialog box. This API is inherited from [D
 
 The content of the dialog box is provided by the first parameter of the [DialogPresenter.present](arkts-apis-uicontext-dialogpresenter.md#present) API, not in this option object. For specific usage, see the [present](arkts-apis-uicontext-dialogpresenter.md#present) API example of **DialogPresenter**.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -181,7 +181,7 @@ constructor()
 
 A constructor of the controller.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -193,7 +193,7 @@ close(): void
 
 Closes the corresponding dialog box.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -205,7 +205,7 @@ getState(): DialogState
 
 Obtains the state of the dialog box.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -285,7 +285,7 @@ struct Index {
 
 Provides the response result of the dialog box.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -299,7 +299,7 @@ Provides the response result of the dialog box.
 
 Provides the information and API for dismissing a dialog box.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -314,7 +314,7 @@ Provides the information and API for dismissing a dialog box.
 
 Defines the alignment mode of the dialog box.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -337,7 +337,7 @@ Defines the alignment mode of the dialog box.
 
 Defines the arrangement of buttons in a dialog box.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -353,7 +353,7 @@ Defines the arrangement of buttons in a dialog box.
 
 Enumerates the states of a dialog box.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 

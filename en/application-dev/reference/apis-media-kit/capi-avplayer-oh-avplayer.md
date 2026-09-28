@@ -5,7 +5,7 @@
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:05:02.942Z pushedAt=2026-06-23T06:12:23.685Z -->
+<!-- md-trans-meta sourceCommit=b6dc5e5e7cc5cdd98e4b0593ece2e6c9d236388c translatedAt=2026-09-15T16:12:57.508Z pushedAt=2026-09-22T04:55:40.677Z -->
 
 ```c
 typedef struct OH_AVPlayer OH_AVPlayer
@@ -13,10 +13,11 @@ typedef struct OH_AVPlayer OH_AVPlayer
 
 ## Overview
 
-The struct initializes an AVPlayer.
+Defines the **OH_AVPlayer** struct.
 
 **Since**: 11
 
 **Related module**: [AVPlayer](capi-avplayer.md)
 
 **Header file**: [avplayer_base.h](capi-avplayer-base-h.md)
+

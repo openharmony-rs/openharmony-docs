@@ -3744,7 +3744,7 @@ Registers the service information of the widget host. After the registration is 
 
 **System API**: This is a system API.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -3805,7 +3805,7 @@ Deregisters the service information of the widget host. After the deregistration
 
 **System API**: This is a system API.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 

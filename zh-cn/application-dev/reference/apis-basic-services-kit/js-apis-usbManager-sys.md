@@ -351,26 +351,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let deviceName: string = '1-1';
 // 定义tokenId变量
 let tokenId: string = '';
-  // 为指定应用添加USB设备访问权限
-try {
-  // 获取bundle信息标志
-  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
-  // 异步获取当前应用的bundle信息
-  bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {
-    console.info('testTag', 'getBundleInfoForSelf successfully. Data:', JSON.stringify(bundleInfo));
-    // 获取应用的accessTokenId
-    let token = bundleInfo.appInfo.accessTokenId;
-    tokenId = token.toString();
-    // 添加设备访问权限
-    if (usbManager.addDeviceAccessRight(tokenId, deviceName)) {
-      console.info(`Succeed in adding right`);
-    }
-  }).catch((err : BusinessError) => {
-    console.error(`testTag getBundleInfoForSelf failed. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (err) {
-  console.error(`testTag failed. Code: ${err.code}, message: ${err.message}`);
-}
+// 获取bundle信息标志
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
+// 异步获取当前应用的bundle信息
+bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {
+  console.info('testTag', 'getBundleInfoForSelf successfully. Data:', JSON.stringify(bundleInfo));
+  // 获取应用的accessTokenId
+  let token = bundleInfo.appInfo.accessTokenId;
+  tokenId = token.toString();
+  // 添加设备访问权限
+  if (usbManager.addDeviceAccessRight(tokenId, deviceName)) {
+    console.info(`Succeed in adding right`);
+  }
+}).catch((err : BusinessError) => {
+  console.error(`testTag getBundleInfoForSelf failed. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## getFunctionsFromString<sup>12+</sup>

@@ -6,14 +6,13 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:51:18.917Z pushedAt=2026-06-26T03:00:41.294Z -->
+<!-- md-trans-meta sourceCommit=bac79598be29c0df17ac1aeead12113553c4aa15 translatedAt=2026-09-23T01:56:51.144Z pushedAt=2026-09-24T06:00:14.184Z -->
 
 The **http** module provides APIs for implementing HTTP data request capabilities. An application can initiate a data request over HTTP. Common HTTP methods include **GET**, **POST**, **OPTIONS**, **HEAD**, **PUT**, **DELETE**, **PATCH**, **TRACE**, and **CONNECT**.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
 ## Modules to Import
 
 ```ts
@@ -27,7 +26,6 @@ import { http } from '@kit.NetworkKit';
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
-
 ```ts
 // Import modules.
 import { http, connection } from '@kit.NetworkKit';
@@ -173,7 +171,7 @@ Creates an HTTP request. You can use this API to initiate or destroy an HTTP req
 
 | Type       | Description                                                        |
 | :---------- | :----------------------------------------------------------- |
-| HttpRequest | An **HttpRequest** object, which contains the **request**, **requestInStream**, **requestSync**, **enableAutoCookie**, **destroy**, **on**, and **off** methods.|
+| [HttpRequest](#httprequest) | **HttpRequest** object that includes the **request**, **requestInStream**, **requestSync**, **enableAutoCookie**, **destroy**, **on**, and **off** methods. |
 
 **Example**
 
@@ -191,7 +189,7 @@ Defines an HTTP request task. Before invoking APIs provided by **HttpRequest**, 
 
 request(url: string, callback: AsyncCallback\<HttpResponse\>): void
 
-Initiates an HTTP request to a given URL. This API uses an asynchronous callback to return the result. 
+Initiates an HTTP network request to a given URL. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -214,8 +212,8 @@ Initiates an HTTP request to a given URL. This API uses an asynchronous callback
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
-The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
+HTTP error code mapping: 2300000 + curl error code. For more common error codes, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
 | ID  | Error Message                                                        |
 |---------|----------------------------------------------------------------|
@@ -249,9 +247,11 @@ The HTTP error code mapping is in the format of 2300000 + Curl error code. For m
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>Applicable versions: 26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>Applicable versions: 18+              |
+| 2300998 | It is not allowed to access this domain. <br>Applicable versions: 12+      |
 | 2300999 | Internal error.                                                 |
+
 
 **Example**
 
@@ -276,7 +276,7 @@ httpRequest.request("EXAMPLE_URL", (err: Error, data: http.HttpResponse) => {
 
 request(url: string, options: HttpRequestOptions, callback: AsyncCallback\<HttpResponse\>):void
 
-Initiates an HTTP request containing specified options to a given URL. This API uses an asynchronous callback to return the result.
+Initiates an HTTP network request to a given URL with the specified options. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -300,8 +300,8 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
-The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
+HTTP error code mapping: 2300000 + curl error code. For more common error codes, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
 | ID  | Error Message                                                        |
 |---------|----------------------------------------------------------------|
@@ -335,8 +335,9 @@ The HTTP error code mapping is in the format of 2300000 + Curl error code. For m
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>Applicable versions: 26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>Applicable versions: 18+              |
+| 2300998 | It is not allowed to access this domain. <br>Applicable versions: 12+      |
 | 2300999 | Internal error.                                                 |
 
 **Example**
@@ -385,9 +386,9 @@ httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse
 
 ### request
 
-request(url: string, options? : HttpRequestOptions): Promise\<HttpResponse\>
+request(url: string, options?: HttpRequestOptions): Promise\<HttpResponse\>
 
-Initiates an HTTP request containing specified options to a given URL. This API uses a promise to return the result. 
+Initiates an HTTP network request to a given URL. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -416,8 +417,8 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
-The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
+HTTP error code mapping: 2300000 + curl error code. For more common error codes, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
 | ID  | Error Message                                                        |
 |---------|----------------------------------------------------------------|
@@ -451,8 +452,9 @@ The HTTP error code mapping is in the format of 2300000 + Curl error code. For m
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>Applicable versions: 26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>Applicable versions: 18+              |
+| 2300998 | It is not allowed to access this domain. <br>Applicable versions: 12+      |
 | 2300999 | Internal error.                                                 |
 
 **Example**
@@ -511,7 +513,7 @@ httpRequest.destroy();
 
 requestInStream(url: string, callback: AsyncCallback\<number\>): void
 
-Initiates an HTTP request containing specified options to a given URL. This API uses an asynchronous callback to return the result, which is a streaming response.
+Initiates an HTTP network request to a given URL and returns a streaming response. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -528,8 +530,8 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
-The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
+HTTP error code mapping: 2300000 + curl error code. For more common error codes, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
 | ID  | Error Message                                                        |
 |---------|----------------------------------------------------------------|
@@ -563,8 +565,9 @@ The HTTP error code mapping is in the format of 2300000 + Curl error code. For m
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>Applicable versions: 26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>Applicable versions: 18+              |
+| 2300998 | It is not allowed to access this domain. <br>Applicable versions: 12+      |
 | 2300999 | Internal error.                                                 |
 
 **Example**
@@ -587,7 +590,7 @@ httpRequest.requestInStream("EXAMPLE_URL", (err: BusinessError, data: number) =>
 
 requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallback\<number\>): void
 
-Initiates an HTTP request containing specified options to a given URL. This API uses an asynchronous callback to return the result, which is a streaming response.
+Initiates an HTTP network request to a given URL with the specified options and returns a streaming response. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -605,8 +608,8 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
-The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
+HTTP error code mapping: 2300000 + curl error code. For more common error codes, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html)
 
 | ID  | Error Message                                                        |
 |---------|----------------------------------------------------------------|
@@ -640,8 +643,9 @@ The HTTP error code mapping is in the format of 2300000 + Curl error code. For m
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>Applicable versions: 26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>Applicable versions: 18+ |
+| 2300998 | It is not allowed to access this domain. <br>Applicable versions: 12+ |
 | 2300999 | Internal error.                                                 |
 
 **Example**
@@ -684,9 +688,9 @@ httpRequest.requestInStream("EXAMPLE_URL", options, (err: BusinessError<void> , 
 
 ### requestInStream<sup>10+</sup>
 
-requestInStream(url: string, options? : HttpRequestOptions): Promise\<number\>
+requestInStream(url: string, options?: HttpRequestOptions): Promise\<number\>
 
-Initiates an HTTP request containing specified options to a given URL. This API uses a promise to return the result, which is a streaming response.
+Initiates an HTTP network request to a given URL and returns a streaming response. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -705,12 +709,12 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 | Type                                  | Description                             |
 | :------------------------------------- | :-------------------------------- |
-| Promise\<number\> | Promise used to return the result of initiating the request. For details, see [ResponseCode](#responsecode). |
+| Promise\<number\> | Promise object that returns the result of initiating the request. For details, see [ResponseCode](#responsecode). |
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
-The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
+HTTP error code mapping: 2300000 + curl error code. For more common error codes, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html)
 
 | ID  | Error Message                                                        |
 |---------|----------------------------------------------------------------|
@@ -744,8 +748,9 @@ The HTTP error code mapping is in the format of 2300000 + Curl error code. For m
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>Applicable versions: 26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>Applicable versions: 18+              |
+| 2300998 | It is not allowed to access this domain. <br>Applicable versions: 12+      |
 | 2300999 | Internal error.                                                 |
 
 **Example**
@@ -788,7 +793,7 @@ Initiates an HTTP network request based on the URL and related configuration opt
  >(3) If the URL contains non-English characters, call **encodeURL(url)** to encode the URL before initiating an HTTP request.<br>
  >(4) This API is synchronous and blocks the current thread until an HTTP response or error code is returned.
 
- **Since**: 26.0.0
+**Since:** 26.0.0
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -811,8 +816,8 @@ Initiates an HTTP network request based on the URL and related configuration opt
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
-The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
+HTTP error code mapping: 2300000 + curl error code. For more common error codes, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
 | ID  | Error Message                                                        |
 |---------|----------------------------------------------------------------|
@@ -845,6 +850,7 @@ The HTTP error code mapping is in the format of 2300000 + Curl error code. For m
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
+| 2300996 | The request was intercepted by the HTTP global interceptor.    |
 | 2300997 | Cleartext traffic not permitted.                               |
 | 2300998 | It is not allowed to access this domain.                       |
 | 2300999 | Internal error.                                                 |
@@ -1063,7 +1069,7 @@ httpRequest.off("headersReceive");
 
 once(type: "headersReceive", callback: Callback\<Object\>): void
 
-Registers a one-time observer for HTTP Response Header events. Once triggered, the observer will be removed. This API uses an asynchronous callback to return the result.
+Subscribes to the HTTP Response Header event, which triggers only once. After it is triggered, the subscriber is removed. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -1326,7 +1332,6 @@ Defines the options for initiating an HTTP request.
 **System capability**: SystemCapability.Communication.NetStack
 
 <!--Table: 12%; 14%; 8%; 8%; 58%-->
-
 | Name        | Type                                         | Read Only| Optional| Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | -------------- | --------------------------------------------- | ---- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | method         | [RequestMethod](#requestmethod)               | No | Yes | Request method. The default value is **GET**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -1336,10 +1341,10 @@ Defines the options for initiating an HTTP request.
 | expectDataType<sup>9+</sup>  | [HttpDataType](#httpdatatype9)  | No | Yes | Type of the returned data. This parameter is not used by default. If this parameter is set, the system returns the specified type of data preferentially. If the specified type is **Object**, the value can contain a maximum of 65536 characters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | usingCache<sup>9+</sup>      | boolean                         | No | Yes | Whether to use the cache. The value **true** indicates that the cache is preferentially read when a request is initiated, and the value **false** indicates that the cache is not used. The default value is **true**. The cache function takes effect when the process is started. The new cached data will replace the existing cached data.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | priority<sup>9+</sup>        | number                          | No  | Yes  | Priority of HTTP/HTTPS requests. A larger value indicates a higher priority. The value range is [1,1000], and the default value is **1**. If the value is out of range, the default value will be used.<br>**Atomic service API:** This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| header                       | Object                          | No | Yes | HTTP request header. If the request method is POST, PUT, DELETE, or null, the default value is {'content-Type': 'application/json'}. Otherwise, the default value is {'content-Type': 'application/x-www-form-urlencoded'}.<br>If the header contains fields of numeric type, the maximum value must be an int64 integer.<br>The header field supports the JSON format (as shown in [Example](js-apis-http.md#example)) and the Record<string, string> format.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| readTimeout                  | number                          | No | Yes | Read timeout duration. The default value is **60000**, in ms. The input value must be an uint32_t integer.<br>The value **0** indicates no timeout.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| connectTimeout               | number                          | No | Yes | Connection timeout interval. The default value is **60000**, in ms. The input value must be an uint32_t integer.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| usingProtocol<sup>9+</sup>   | [HttpProtocol](#httpprotocol9)  | No  | Yes  | Protocol version used for the HTTP request. If this parameter is not specified, the system automatically negotiates the most suitable protocol version. If HTTP3 is specified, due to the security restrictions of the HTTP3 protocol, the TLS version must be set to 1.3 through [TlsConfig](js-apis-http.md#tlsconfig18) and the target domain name must support the HTTP3 protocol to enable HTTP3. Otherwise, the protocol will be downgraded through negotiation.<br>**Atomic service API:** This API can be used in atomic services since API version 11.|
+| header                       | Object                          | No  | Yes  | HTTP request header field. When the request method is "POST", "PUT", "DELETE", or "", the default is {'content-Type': 'application/json'}; otherwise, the default is {'content-Type': 'application/x-www-form-urlencoded'}.<br/>If header contains a field of the number type, the maximum supported value is an int64 integer.<br/>The header field supports JSON format input as shown in [Example](#example) and Record<string, string> format input.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| readTimeout                  | number                          | No  | Yes  | Read timeout, in milliseconds (ms), with a default value of 60000 ms. The value passed in must be an integer within the uint32_t range.<br/>Setting it to 0 means no timeout occurs. <br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| connectTimeout               | number                          | No | Yes | Connection timeout interval. The default value is **60000**, in ms. The input value must be a uint32_t integer.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| usingProtocol<sup>9+</sup>   | [HttpProtocol](#httpprotocol9)  | No  | Yes  | Protocol version used by the HTTP request. If not specified, the system automatically negotiates the most suitable protocol version. If HTTP3 is specified, due to the security restrictions of the HTTP3 protocol, TLS version 1.3 must be specified through [TlsConfig](#tlsconfig18) and the target domain must support the HTTP3 protocol to enable HTTP3; otherwise, a downgrade is negotiated.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services.|
 | usingProxy<sup>10+</sup>     | boolean \| [HttpProxy](js-apis-net-connection.md#httpproxy10)               | No  | Yes  | HTTP proxy configuration. If this parameter is not configured, the system proxy is used by default.<br />- When **usingProxy** is of the boolean type and set to **true**, the default network proxy is used. When set to **false**, no proxy is used.<br />- When **usingProxy** is of the HttpProxy type, the specified network proxy is used. Since API version 22, HttpProxy supports specifying the **username** and **password** fields.<br>- Since API version 26.0.0, when **usingSocks5Proxy** is correctly configured, the **usingProxy** parameter does not take effect.<br>**Atomic service API:** This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | caPath<sup>10+</sup>     | string               | No  | Yes  | If this parameter is set and the certificate is valid, the system uses the user-specified CA certificate and the system-preset CA certificate. Otherwise, only the system-preset CA certificate is used. The CA certificate path is a sandbox mapping path (you can obtain the application sandbox path through the capabilities provided by [UIAbilityContext](../apis-ability-kit/js-apis-app-ability-common.md#uiabilitycontext)). Currently, only text-format certificates with the .pem extension are supported.<br> System-preset CA certificate location: **/etc/ssl/certs/cacert.pem**.<br>**Atomic service API:** This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                               |
 | caData<sup>20+</sup>     | string               | No | Yes | CA certificate data. If this parameter is set and the certificate is valid, the system uses the specified CA certificate and the preset CA certificate. Otherwise, the system uses only the preset CA certificate. If both **caPath** and **caData** are set, **caData** is ignored by the system. Currently, only certificates in **.pem** format are supported. The maximum length is 8000 bytes. Only one certificate can be specified. A certificate chain is not allowed.<br>The preset CA certificate is available at **/etc/ssl/certs/cacert.pem**. This path is the sandbox mapping path, which can be obtained by using **UIAbilityContext** APIs.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
@@ -1466,16 +1471,16 @@ Defines the performance timing (unit: ms).
 
 | Name  | Type                                          | Read Only| Optional|Description                   |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| dnsTiming  | number | No  | No  | Duration from the time when the [request](#request) is sent to the time when the DNS resolution is complete.|
-| tcpTiming  | number | No  | No  | Duration from the time when the [request](#request) is sent to the time when the TCP connection is complete.|
-| tlsTiming  | number | No  | No  | Duration from the time when the [request](#request) is sent to the time when the TLS connection is complete.|
-| firstSendTiming  | number | No  | No  | Duration from the time when the [request](#request) is sent to the time when the first byte is sent.|
-| firstReceiveTiming  | number | No  | No  | Duration from the time when the [request](#request) is sent to the time when the first byte is received.|
-| totalFinishTiming  | number | No  | No | Duration from the time when the [request](#request) is sent to the time when the request is complete.|
-| redirectTiming  | number | No  | No | Duration from the time when the [request](#request) is sent to the time when all redirection steps are complete.|
-| responseHeaderTiming  | number | No  | No  | Duration from the time when the [request](#request) is sent to the time when the header resolution is complete.|
-| responseBodyTiming  | number | No  | No  | Duration from the time when the [request](#request) is sent to the time when the body resolution is complete.|
-| totalTiming  | number | No  | No  | Duration from the time when the [request](#request) is sent to the time when a callback is returned to the application.|
+| dnsTiming  | number | No   | No   | Time elapsed from [request](#request) to DNS resolution completion. Unit: millisecond (ms). |
+| tcpTiming  | number | No   | No   | Time elapsed from [request](#request) to TCP connection completion. Unit: millisecond (ms). |
+| tlsTiming  | number | No   | No   | Time elapsed from [request](#request) to TLS connection completion. Unit: millisecond (ms). |
+| firstSendTiming  | number | No   | No   | Time elapsed from [request](#request) to the start of sending the first byte. Unit: millisecond (ms). |
+| firstReceiveTiming  | number | No   | No   | Time elapsed from [request](#request) to receiving the first byte. Unit: millisecond (ms). |
+| totalFinishTiming  | number | No   | No  | Time elapsed from [request](#request) to request completion. Unit: millisecond (ms). |
+| redirectTiming  | number | No   | No  | Time elapsed from [request](#request) to completion of all redirect steps. Unit: millisecond (ms). |
+| responseHeaderTiming  | number | No   | No   | Time elapsed from [request](#request) to header parsing completion. Unit: millisecond (ms). |
+| responseBodyTiming  | number | No   | No   | Time elapsed from [request](#request) to body parsing completion. Unit: millisecond (ms). |
+| totalTiming  | number | No   | No   | Time elapsed from [request](#request) callback to the application. Unit: millisecond (ms). |
 
 ## ConnectionExtraInfo<sup>24+</sup>
 
@@ -1483,7 +1488,7 @@ Defines the detailed information about the HTTP request interaction.
 
 **System capability**: SystemCapability.Communication.NetStack
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 | Name               | Type                         | Read Only| Optional| Description                                                        |
 | ------------------- | ----------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -1615,7 +1620,7 @@ When using these keywords, ensure that the response header is correctly configur
 
 flush(callback: AsyncCallback\<void\>): void
 
-Flushes data in the cache to the file system so that the cached data can be accessed in the next HTTP request. This API uses an asynchronous callback to return the result. Cached data includes the response header (header), response body (result), cookies, request time (requestTime), and response time (responseTime).
+Writes the data in the cache to the file system so that all cached data can be accessed in the next HTTP request. This API uses an asynchronous callback to return the result. The cached data includes the response header, response body (**result**), cookies, request time (**requestTime**), and response time (**responseTime**).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1656,7 +1661,7 @@ httpRequest.request("EXAMPLE_URL", (err: BusinessError, data: http.HttpResponse)
 
 flush(): Promise\<void\>
 
-Flushes data in the cache to the file system so that the cached data can be accessed in the next HTTP request. This API uses a promise to return the result.
+Writes the data in the cache to the file system so that all cached data can be accessed in the next HTTP request. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1680,7 +1685,7 @@ let promise = httpRequest.request("EXAMPLE_URL");
 
 promise.then((data: http.HttpResponse) => {
   httpResponseCache.flush().then(() => {
-    console.error('flush success');
+    console.info('flush success');
   }).catch((err: BusinessError) => {
     console.error('flush fail');
   });
@@ -1828,7 +1833,7 @@ Defines the network proxy configuration.
 
 |       Type      |            Description            |
 | ---------------- | --------------------------- |
-| connection.HttpProxy | Network proxy configuration.    |
+| [connection.HttpProxy](js-apis-net-connection.md#httpproxy10) | Network proxy configuration information. |
 
 ## Socks5Proxy
 
@@ -1904,8 +1909,8 @@ Represents the credential used for server identity verification in a session, in
 
 |  Name |  Type |  Read Only | Optional |Description    |
 | ------------------  |---- |-- | -- |----------- |
-| username       | string | No|No|User name used for verification. The default value is **''**.|
-| password        | string |  No |No|Password used for verification. The default value is **''**.|
+| username       | string | No | No | Username used for authentication. The default value is ''. |
+| password        | string |  No  | No | Password used for authentication. The default value is ''. |
 
 ## ServerAuthentication<sup>18+</sup>
 
@@ -1919,6 +1924,7 @@ Defines HTTP server identity verification information.
 | ------------------  |-------------------------------------------------|-------- |------------ |---------------|
 | credential          | [Credential](#credential18)                     | No     | No        |Server credential. The default value is **undefined**.    |
 | authenticationType  | [AuthenticationType](#authenticationtype18)     | No     | Yes       | Server identity verification type. If the type is not set, negotiation with the server is required.    |
+
 
 ## TlsConfig<sup>18+</sup>
 
@@ -1966,7 +1972,7 @@ Defines the TLS configuration.
 
 ## RemoteValidation<sup>18+</sup>
 
-type RemoteValidation = 'system' | 'skip'
+type RemoteValidation = 'system' | 'skip' | ValidationCallback
 
 Enumerates the identity verification modes of the remote server.
 
@@ -1978,6 +1984,64 @@ Enumerates the identity verification modes of the remote server.
 |-------------------------------|------------------------------------------------------------------------------------|
 | 'system'  | Use of the system CA. This field is defaulted to **system** when the value is not set.|
 | 'skip'   | Skipping of CA verification. This field has a fixed value of **skip**.|
+| [ValidationCallback](#validationcallback) | Indicates that a custom verification method is used to verify the identity of the remote server.<br/>**Since:** 26.0.0<br/>**Model restriction:** This API can be used only in the stage model. |
+
+## X509Cert
+
+type X509Cert = cert.X509Cert
+
+X509 certificate object.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+|       Type       |            Description             |
+| ---------------- | --------------------------- |
+| [cert.X509Cert](../apis-device-certificate-kit/js-apis-cert.md#x509cert) | X509 certificate object.     |
+
+## ValidationContext
+
+Certificate context information used when verifying the identity of the remote server, which is passed in as a parameter of [ValidationCallback](#validationcallback).
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Communication.NetStack
+
+| Name   | Type                                           | Read-Only | Optional | Description                    |
+| -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
+| pemCerts        | string[] | No   | No  | Raw certificate data in PEM format.   |
+| x509Certs | [X509Cert](#x509cert)[] | No   | No | X.509 certificate chain. |
+| host        | string | No   | No  | Target host name of this request.   |
+| ip | string | No   | No | IP address actually connected for this request. |
+
+## ValidationCallback
+
+type ValidationCallback = (context: ValidationContext) => boolean | Promise\<boolean\>
+
+Defines a custom callback for remote server identity verification. Developers can use this callback to implement custom certificate verification logic, supporting synchronous or asynchronous return of the verification result.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Communication.NetStack
+
+**Parameters**
+
+| Name | Type    | Mandatory | Description                            |
+| ---------------- | -------------------  | ------ | --------------------------------------------- |
+| context | [ValidationContext](#validationcontext) | Yes | Certificate verification context, which contains information such as the certificate chain, host name, and IP address.             |
+
+**Return value**
+
+| Type | Description                                   |
+| ------ | -------------------------------------- |
+| boolean \| Promise\<boolean\> | Returns a boolean value indicating whether the verification succeeds. The value **true** indicates that the verification succeeds, and **false** indicates that the verification fails. A Promise object is also supported for asynchronous verification scenarios.   |
 
 ## AuthenticationType<sup>18+</sup>
 
@@ -2142,7 +2206,7 @@ Defines the secure communications protocol.
 | Type  | Description                                  |
 | ------ | -------------------------------------- |
 | 'TLS' | TLS protocol. The value is fixed to **TLS**.  |
-| 'TLCP' | TLCP protocol. The value is fixed to **TLCP**.<br>**NOTE**<br>(1) The certificate supports the following string specifications:<br> - UTF8String (English character set)<br> - PrintableString<br>  - IA5String<br>Supported since API Version 22:<br> - TeletexString<br>(2) The certificate supports the following extended specifications:<br> - BasicConstraints (OID 2.5.29.19)<br> - KeyUsage (OID2.5.29.15)<br> - SubjectKeyIdentifier (OID2.5.29.14)<br> - AuthorityKeyIdentifier (OID2.5.29.35)<br>Supported since API Version 22:<br> - SubjectAltName (OID 2.5.29.17)<br> - ExtendedKeyUsage (OID 2.5.29.37)<br>|
+| 'TLCP' | Indicates the use of the TLCP secure communication protocol. The value is fixed to the string 'TLCP'.<br>**Note**:<br>(1) Certificate string specifications supported:<br> - UTF8String (English character set)<br> - PrintableString<br>  - IA5String<br>Supported since API version 22:<br> - TeletexString<br>(2) Certificate extension specifications supported:<br> - BasicConstraints (OID 2.5.29.19)<br> - KeyUsage (OID2.5.29.15)<br> - SubjectKeyIdentifier (OID2.5.29.14)<br> - AuthorityKeyIdentifier (OID2.5.29.35)<br>Supported since API version 22:<br> - SubjectAltName (OID 2.5.29.17)<br> - ExtendedKeyUsage (OID 2.5.29.37)<br/> |
 
 ## InterceptorType<sup>22+</sup>
 
@@ -2203,6 +2267,7 @@ Defines the HTTP interceptor API, which is used to define the interception proce
 | Name  | Type|Read Only|Optional|Description                     |
 | --   | -- |-- |-- |--                      |
 | interceptorType   | [InterceptorType](#interceptortype22)|No|No|Interceptor type, which defines when the interceptor is called.                     |
+
 
 ### interceptorHandle<sup>22+</sup>
 
@@ -2292,7 +2357,7 @@ Adds an interceptor to the HTTP client.
 **Error codes**
 
 For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
-The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html)
 
 | ID   | Error Message                                              |
 | ------      | --------------------------------------                |
@@ -2426,7 +2491,7 @@ Adds an interceptor chain to the target HTTP request. Each HTTP request instance
 **Error codes**
 
 For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
-The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html)
 
 | ID   | Error Message                                              |
 | ------      | --------------------------------------                |
@@ -2497,7 +2562,6 @@ httpRequest.request("EXAMPLE_URL", {
   httpRequest.destroy();
 });
 ```
-
 ## PathPreference<sup>23+</sup>
 
 type PathPreference = 'auto' | 'primaryCellular' | 'secondaryCellular'
@@ -2511,8 +2575,10 @@ Enumerates the types of networks specified in an HTTP request.
 
 **System capability**: SystemCapability.Communication.NetStack
 
+
 | Type  | Description                                  |
 | ------ | -------------------------------------- |
 | 'auto' |Specifies the default network connection in an HTTP request.|
 | 'primaryCellular' |Specifies the default cellular network connection in an HTTP request when the cellular network is activated.|
 | 'secondaryCellular' |Specifies the cellular network connection of the secondary SIM card in an HTTP request when dual cellular networks are activated.|
+

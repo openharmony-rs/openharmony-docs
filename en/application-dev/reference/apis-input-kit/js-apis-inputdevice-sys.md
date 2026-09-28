@@ -549,7 +549,7 @@ bindToDisplay(inputDeviceId: number, displayId: number): Promise&lt;void&gt;
 
 Binds an input device to a display group. Only external USB and Bluetooth mice, touchpads, keyboards, and gamepads are supported. After binding, the input device operates only on the display group where the specified display resides. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction**: This API can be used only in the stage model.
 

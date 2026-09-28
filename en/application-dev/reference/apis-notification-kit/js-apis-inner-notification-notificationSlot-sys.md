@@ -5,8 +5,9 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:10:57.193Z pushedAt=2026-09-22T08:29:58.363Z -->
 
-The **NotificationSlot** module provides APIs for defining the notification slots. The notification reminder modes vary according to notification slots.
+Describes the [notification slot](../../notification/notification-glossary.md#notification-slot). Different notification channels have different [notification reminder modes](../../notification/notification-glossary.md#notification-reminder-mode).
 
 > **NOTE**
 >
@@ -22,3 +23,4 @@ The **NotificationSlot** module provides APIs for defining the notification slot
 | -------------------- | ------------------- | ---- |-----|------------------------|
 | reminderMode<sup>11+</sup> | number               | Yes| Yes | Reminder mode of the notification.<br>**System API**: This is a system API.<br>- Bit 0: sound alert. The value **0** means to enable the feature, and **1** means the opposite.<br>- Bit 1: locking the screen. The value **0** means to enable the feature, and **1** means the opposite.<br>- Bit 2: banner. The value **0** means to enable the feature, and **1** means the opposite.<br>- BIt 3: turning on the screen. The value **0** means to enable the feature, and **1** means the opposite.<br>- Bit 4: vibration. The value **0** means to enable the feature, and **1** means the opposite.<br>- Bit 5: notification icon in the status bar. The value **0** means to enable the feature, and **1** means the opposite.   |
 | authorizedStatus<sup>12+</sup> | number               | Yes| Yes | Authorization status.<br>**System API**: This is a system API.<br>- **0**: means the feature is authorized.<br>- **1**: means the feature is to be authorized.   |
+<!--no_check-->

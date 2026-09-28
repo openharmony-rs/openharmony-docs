@@ -55,6 +55,8 @@ enum ArkUI_NavDestinationState
 | ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5 | NavDestination组件隐藏之前。 |
 | ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6 | NavDestination挂载到组件树之前。 |
 | ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7 | NavDestination从组件树上卸载之前。 |
+| ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8 | NavDestination组件处于激活态。<br>**起始版本：** 26.2.0 |
+| ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9 | NavDestination组件处于非激活态。<br>**起始版本：** 26.2.0 |
 | ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100 | NavDestination组件接收到返回操作时触发，例如用户点击返回键或调用返回导航接口。 |
 
 ### ArkUI_RouterPageState

@@ -1043,7 +1043,7 @@ getTouchpadScrollDirection(callback: AsyncCallback\<boolean>): void
 
 获取触控板滚轴方向，使用callback异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1098,7 +1098,7 @@ getTouchpadScrollDirection(): Promise\<boolean>
 
 获取触控板滚轴方向，使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 

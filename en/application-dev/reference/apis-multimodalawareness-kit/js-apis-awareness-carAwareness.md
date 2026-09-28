@@ -9,7 +9,7 @@
 
 This module provides car awareness capabilities, including air gesture interaction, real-time weather recognition, and refueling status recognition.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 ## Modules to Import
 
@@ -21,7 +21,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 
 Enumerates the capability types supported by car awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -42,7 +42,7 @@ Enumerates the capability types supported by car awareness.
 
 Defines the result information API for air gesture awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -61,7 +61,7 @@ onSpatialMotion(callback: Callback\<SpatialMotionInfo\>): void
 
 Enables air gesture awareness and subscribes to air gesture awareness results. If the device does not support this capability, error code 34000002 is thrown. You can call **getAllCapabilityList** to query the available capabilities of the device. The data is returned asynchronously through the callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -112,7 +112,7 @@ offSpatialMotion(callback?: Callback\<SpatialMotionInfo\>): void
 
 Closes air gesture awareness and unsubscribes from air gesture results.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -171,7 +171,7 @@ try {
 
 Defines the result information of real-time weather awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -188,7 +188,7 @@ onRealTimeWeather(callback: Callback\<RealTimeWeatherInfo\>): void
 
 Enables real-time weather awareness and subscribes to real-time weather awareness results. If the device does not support this capability, error code 34000002 is thrown. You can call **getAllCapabilityList** to query the available capabilities of the device. The data is returned asynchronously through the callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -238,7 +238,7 @@ offRealTimeWeather(callback?: Callback\<RealTimeWeatherInfo\>): void
 
 Closes real-time weather awareness and unsubscribes from real-time weather results.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -284,11 +284,11 @@ try {
 
 Defines the result information API for refueling recognition.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
@@ -303,11 +303,11 @@ onRefueling(callback: Callback\<RefuelingInfo\>): void
 
 Enables refueling awareness and subscribes to the refueling status awareness result. If the device does not support this capability, error code 34000002 is thrown. You can call getAllCapabilityList to query the available capabilities of the device. The data is returned asynchronously through the callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Required permission:** ohos.permission.vehicle.MMA_ENERGYREFILL
 
@@ -355,11 +355,11 @@ offRefueling(callback?: Callback\<RefuelingInfo\>): void
 
 Closes refueling awareness and unsubscribes from the refueling status result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Required permission:** ohos.permission.vehicle.MMA_ENERGYREFILL
 
@@ -405,7 +405,7 @@ getAllCapabilityList(): Promise&lt;Capability[]&gt;
 
 Obtains the list of all car awareness capabilities supported by the current device.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

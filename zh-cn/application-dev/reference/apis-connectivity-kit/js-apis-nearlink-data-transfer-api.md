@@ -1,4 +1,4 @@
-# @ohos.nearlink.dataTransfer (星闪数传能力)
+# @ohos.nearlink.dataTransfer (星闪数据传输能力)
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->

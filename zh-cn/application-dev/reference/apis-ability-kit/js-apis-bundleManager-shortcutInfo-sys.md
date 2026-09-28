@@ -12,7 +12,7 @@
 >
 > 当前页面仅包含本模块的系统接口参数，其他公共参数定义可参考[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 ## 导入模块
 
@@ -28,7 +28,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 **系统接口：** 此接口为系统接口。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

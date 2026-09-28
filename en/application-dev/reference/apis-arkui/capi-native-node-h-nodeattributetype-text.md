@@ -587,14 +587,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Line spacing, in fp. Value range: [0, +∞). If a negative value is passed, the setting does not take effect. |
-| ?.object | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object, used to set line spacing options. This parameter is optional. It is supported since API version 26.1.0. Use [OH_ArkUI_NativeModule_LineSpacingOptions_Create](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_create) to create the object and [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy it. |
+| ?.object | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object, used to set line spacing options. This parameter is optional. It is supported since API version 26.0.1. Use [OH_ArkUI_NativeModule_LineSpacingOptions_Create](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_create) to create the object and [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy it. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | .value[0].f32 | Line spacing, in fp. |
-| .object | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object, used to obtain the line spacing options. This parameter is supported since API version 26.1.0. |
+| .object | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object, used to obtain the line spacing options. This parameter is supported since API version 26.0.1. |
 
 ## NODE_FONT_FEATURE
 

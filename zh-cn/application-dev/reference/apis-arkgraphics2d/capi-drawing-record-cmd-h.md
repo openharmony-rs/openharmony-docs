@@ -151,7 +151,7 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsGetHeight(const OH_Drawing_RecordC
 
 获取录制画布的高度。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -176,7 +176,7 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsGetWidth(const OH_Drawing_RecordCm
 
 获取录制画布的宽度。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

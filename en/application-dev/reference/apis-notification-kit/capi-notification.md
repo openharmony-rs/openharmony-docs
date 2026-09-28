@@ -19,3 +19,4 @@ The **Notification** module provides the notification services for applications,
 | Name| Description|
 | -- | -- |
 | [notification.h](capi-notification-h.md) | Defines APIs for notification services.|
+<!--no_check-->

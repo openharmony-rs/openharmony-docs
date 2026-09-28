@@ -19,6 +19,7 @@ SharedArrayBuffer内部包含一块Native内存，其JS对象壳被分配在虚�
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Concurrent
 function transferAtomics(arg1: Int32Array) {

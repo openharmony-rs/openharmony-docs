@@ -6,23 +6,18 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:52:47.455Z pushedAt=2026-06-26T03:00:41.308Z -->
+<!-- md-trans-meta sourceCommit=108aa11c2ceb50c68f8417aa3c60f1dcb55dabdd translatedAt=2026-09-23T02:29:11.803Z pushedAt=2026-09-24T06:00:14.210Z -->
 
 The Traffic Management module provides the capability to obtain device network traffic data. This module supports querying packet traffic usage from multiple dimensions, for example:
-
 - Obtaining the uplink/downlink traffic data of a specified NIC.
-
 - Obtaining the total traffic data of all NICs, facilitating the viewing of overall device network usage.
-
 - Obtaining the traffic data of a specified application based on the application UID, helping you monitor the network resource consumption of applications.
-
 - Obtaining traffic statistics for a specified socket, providing a data foundation for fine-grained network performance analysis.
-
 - Obtaining the historical traffic usage of an application within a specified time period, facilitating the analysis of long-term network usage trends of the application.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -43,7 +38,7 @@ Obtains the total downlink traffic of the specified NIC from the last startup to
 | Name  | Type                  | Mandatory| Description                                                                                                                   |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
 | nic      | string                 | Yes  | NIC name.                                                                                                     |
-| callback | AsyncCallback\<number> | Yes | Callback used to return the result. If the traffic data is successfully obtained, **error** is **undefined**; otherwise, it is an error object. |
+| callback | AsyncCallback\<number> | Yes | Callback function. When the traffic data is obtained successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -88,10 +83,9 @@ Obtains the total downlink traffic (in bytes) of the specified NIC from the last
 | nic    | string | Yes  | NIC name.|
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
-| Promise\<number> | Promise used to return the total downlink traffic (in bytes) of the specified NIC from the last startup to the current moment. |
+| Promise\<number> | Promise object used to return the total downlink traffic of the specified network card from the last boot to the time of interface call (unit: bytes). |
 
 **Error codes**
 
@@ -132,7 +126,7 @@ Obtains the total uplink traffic (in bytes) of the specified NIC from the last s
 | Name  | Type                  | Mandatory| Description                                                                                                                   |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
 | nic      | string                 | Yes  | NIC name.                                                                                                     |
-| callback | AsyncCallback\<number> | Yes | Callback used to return the result. If the traffic data is successfully obtained, **error** is **undefined**; otherwise, it is an error object. |
+| callback | AsyncCallback\<number> | Yes | Callback function. When traffic data is obtained successfully, **err** is **undefined**; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -177,10 +171,9 @@ Obtains the total uplink traffic (in bytes) of the specified NIC from the last s
 | nic    | string | Yes  | NIC name.|
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
-| Promise\<number> | Promise used to return the total uplink traffic (in bytes) of the specified NIC from the last startup to the time when the API is called. |
+| Promise\<number> | Promise object used to return the total uplink traffic of the specified network card from the last boot to the time of interface call (in bytes). |
 
 **Error codes**
 
@@ -224,7 +217,7 @@ Obtains the total downlink traffic (in bytes) of the NIC corresponding to the cu
 
 | Name  | Type                  | Mandatory| Description                                                                                                                   |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
-| callback | AsyncCallback\<number> | Yes | Callback used to return the result. If the traffic data is successfully obtained, **error** is **undefined**; otherwise, it is an error object. |
+| callback | AsyncCallback\<number> | Yes | Callback function. When traffic data is successfully obtained, **err** is **undefined**; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -266,10 +259,9 @@ Obtains the total downlink traffic (in bytes) of the NIC corresponding to the cu
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
-| Promise\<number> | Promise used to return the total downlink traffic (in bytes) of the specified NIC from the last startup to the time when the API is called. |
+| Promise\<number> | Promise used to return the total downlink traffic of the specified network card from the last boot to the time of interface call (in bytes). |
 
 **Error codes**
 
@@ -311,7 +303,7 @@ Obtains the total uplink traffic (in bytes) of the NIC corresponding to the curr
 
 | Name  | Type                  | Mandatory| Description                                                                                                                   |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
-| callback | AsyncCallback\<number> | Yes | Callback used to return the result. If the traffic data is successfully obtained, **error** is **undefined**; otherwise, it is an error object. |
+| callback | AsyncCallback\<number> | Yes | Callback function. When traffic data is obtained successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -353,10 +345,9 @@ Obtains the total uplink traffic (in bytes) of the NIC corresponding to the curr
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
-| Promise\<number> | Promise used to return the total uplink traffic (in bytes) consumed on the cellular network since the last startup to the current moment. |
+| Promise\<number> | Promise object that returns the total uplink traffic consumed on the cellular network from the last boot to now (in bytes). |
 
 **Error codes**
 
@@ -386,7 +377,7 @@ statistics.getCellularTxBytes().then((stats: number) => {
 
 getAllRxBytes(callback: AsyncCallback\<number>): void
 
-Obtains the total downlink traffic (in bytes) of all NICs from the last startup to the time when this API is called. This API uses an asynchronous callback to return the result.
+Obtains the total downlink traffic of all network cards from the last boot to the time of interface call (in bytes). This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -396,7 +387,7 @@ Obtains the total downlink traffic (in bytes) of all NICs from the last startup 
 
 | Name  | Type                  | Mandatory| Description                                                                                                                         |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------- |
-| callback | AsyncCallback\<number> | Yes | Callback used to return the result. If the traffic data is successfully obtained, **error** is **undefined**; otherwise, it is an error object. |
+| callback | AsyncCallback\<number> | Yes | Callback function. When traffic data is successfully obtained, **err** is **undefined**; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -435,10 +426,9 @@ Obtains the total downlink traffic (in bytes) of all NICs from the last startup 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
-| Promise\<number> | Promise used to return the total downlink traffic (in bytes) of all NICs from the last startup to the current moment. |
+| Promise\<number> | Promise object used to return the total downlink traffic of all network cards from the last boot to the present (in bytes). |
 
 **Error codes**
 
@@ -477,7 +467,7 @@ Obtains the total uplink traffic of all NICs (in bytes) from the last startup to
 
 | Name  | Type                  | Mandatory| Description                                                                                                                         |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------- |
-| callback | AsyncCallback\<number> | Yes | Callback used to return the result. If the traffic data is successfully obtained, **error** is **undefined**; otherwise, it is an error object. |
+| callback | AsyncCallback\<number> | Yes | Callback function. When traffic data is obtained successfully, **err** is **undefined**; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -516,10 +506,9 @@ Obtains the total uplink traffic (in bytes) of all NICs from the last startup to
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
-| Promise\<number> | Promise used to return the real-time uplink traffic (in bytes) of all NICs. |
+| Promise\<number> | Promise object that returns the real-time uplink traffic of all network cards (in bytes). |
 
 **Error codes**
 
@@ -554,9 +543,8 @@ Obtains the total downlink traffic (in bytes) of the specified application from 
 
 **Required permissions**
 
+- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of an application other than your own)
 - API versions earlier than API version 26.0.0: N/A
-
-- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -565,7 +553,7 @@ Obtains the total downlink traffic (in bytes) of the specified application from 
 | Name  | Type                  | Mandatory| Description                                                                                                                   |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
 | uid      | number                 | Yes  | Application UID.                                                                                                   |
-| callback | AsyncCallback\<number> | Yes | Callback used to return the result. If the traffic data is successfully obtained, **error** is **undefined**; otherwise, it is an error object. |
+| callback | AsyncCallback\<number> | Yes | Callback function. When traffic data is obtained successfully, **err** is **undefined**; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -573,6 +561,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 
 | ID| Error Message                                    |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>Applicable versions: 26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -605,13 +594,12 @@ Obtains the total downlink traffic (in bytes) of the specified application from 
 >
 > If the application has not generated any traffic consumption after the restart, error code 2103005 will be thrown.<br>
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Required permissions**
 
+- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of an application other than your own)
 - API versions earlier than API version 26.0.0: N/A
 
-- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
+**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Parameters**
 
@@ -620,10 +608,9 @@ Obtains the total downlink traffic (in bytes) of the specified application from 
 | uid    | number | Yes  | Application UID.|
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
-| Promise\<number> | Promise used to return the total downlink traffic (in bytes) of the specified application from the last startup to the current moment. |
+| Promise\<number> | Promise object that returns the total downlink traffic of the specified application from the last boot to the present (in bytes). |
 
 **Error codes**
 
@@ -631,6 +618,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 
 | ID| Error Message                                    |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>Applicable versions: 26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -658,20 +646,19 @@ Obtains the total uplink traffic (in bytes) of the specified application from th
 >
 > If the application has not generated any traffic consumption after the restart, error code 2103005 will be thrown.<br>
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Required permissions**
 
+- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of an application other than your own)
 - API versions earlier than API version 26.0.0: N/A
 
-- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
+**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Parameters**
 
 | Name  | Type                  | Mandatory| Description                                                                                                                   |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
 | uid      | number                 | Yes  | Application UID.                                                                                                   |
-| callback | AsyncCallback\<number> | Yes | Callback used to return the result. If the application's real-time uplink traffic is successfully obtained, **error** is **undefined** and **stats** is the obtained application uplink traffic (in bytes). Otherwise, it is an error object. |
+| callback | AsyncCallback\<number> | Yes | Callback function. When the real-time uplink traffic of the application is obtained successfully, err is undefined and stats is the obtained uplink traffic of the application (in bytes); otherwise, it is an error object. |
 
 **Error codes**
 
@@ -679,6 +666,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 
 | ID| Error Message                                    |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>Applicable versions: 26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -711,13 +699,12 @@ Obtains the total uplink traffic of the specified application from the last star
 >
 > If the application has not generated any traffic consumption after the restart, error code 2103005 will be thrown.<br>
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Required permissions**
 
+- API version 26.0.0 and later: **ohos.permission.GET_NETWORK_STATS** (required only when the **uid** value differs from the **uid** of the interface caller, that is, when querying traffic data of an application other than the caller itself)
 - API versions earlier than API version 26.0.0: N/A
 
-- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
+**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Parameters**
 
@@ -726,10 +713,9 @@ Obtains the total uplink traffic of the specified application from the last star
 | uid    | number | Yes  | Application UID.|
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
-| Promise\<number> | Promise used to return the total uplink traffic (in bytes) of the specified application from the last startup to the time when the API is called. |
+| Promise\<number> | Promise object that returns the total uplink traffic of the specified application from the last boot to the time of interface call (in bytes). |
 
 **Error codes**
 
@@ -737,6 +723,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 
 | ID| Error Message                                    |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>Applicable versions: 26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -753,6 +740,7 @@ statistics.getUidTxBytes(uid).then((stats: number) => {
   console.info(JSON.stringify(stats));
 });
 ```
+
 
 ## statistics.getSockfdRxBytes<sup>11+</sup>
 
@@ -771,7 +759,7 @@ Obtains the downlink traffic (in bytes) of the specified socket. This API uses a
 | Name  | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | sockfd   | number                 | Yes  | File description (FD) of the socket to query.                     |
-| callback | AsyncCallback\<number> | Yes  | Callback used to return the result. If the downlink traffic of the socket is obtained successfully, **error** is **undefined**; otherwise, it is an error object. |
+| callback | AsyncCallback\<number> | Yes | Callback function. When the downlink traffic of the Socket is obtained successfully, err is undefined; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -822,7 +810,7 @@ Obtains the downlink traffic (in bytes) of the specified socket. This API uses a
 
 | Type            | Description                                                        |
 | ---------------- | ------------------------------------------------------------ |
-| Promise\<number> | Promise used to return the downlink traffic (in bytes) of the socket. |
+| Promise\<number> | Promise object that returns the downlink traffic of the socket (in bytes). |
 
 **Error codes**
 
@@ -866,7 +854,7 @@ Obtains the uplink traffic of the specified socket (in bytes). This API uses an 
 | Name  | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | sockfd   | number                 | Yes  | FD of the socket to query.                     |
-| callback | AsyncCallback\<number> | Yes  | Callback used to return the result. If the uplink traffic of the socket is obtained successfully, **error** is **undefined**; otherwise, it is an error object. |
+| callback | AsyncCallback\<number> | Yes | Callback function. If the uplink traffic of the Socket is obtained successfully, err is undefined; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -917,7 +905,7 @@ Obtains the uplink traffic (in bytes) of the specified socket. This API uses a p
 
 | Type            | Description                                                        |
 | ---------------- | ------------------------------------------------------------ |
-| Promise\<number> | Promise used to return the uplink traffic (in bytes) of the socket. |
+| Promise\<number> | Promise object used to return the uplink traffic of the socket (in bytes). |
 
 **Error codes**
 

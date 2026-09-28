@@ -1,10 +1,11 @@
-# System Common Events (Deprecated)
+# System Common Event Definitions
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=f1df35e744e8be0a80ac7cb20765106cc0424535 translatedAt=2026-09-23T02:04:43.619Z pushedAt=2026-09-23T10:54:45.123Z -->
 
 This document provides indexes for predefined system common events.
 
@@ -219,7 +220,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
   - Required permissions: none
 
 
-* **COMMON_EVENT_BUNDLE_REMOVED<sup>(deprecated)</sup>** (reserved, not supported yet) indicates that an installed bundle has been uninstalled from the device with the application data retained. 
+* **COMMON_EVENT_BUNDLE_REMOVED<sup>(deprecated)</sup>** (reserved, not supported yet) indicates that an installed bundle has been uninstalled from the device with the application data retained.
 
   > **NOTE**
   >
@@ -1402,3 +1403,4 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
   > **NOTE**
   >
   > This type is supported since API version 8 and deprecated since API version 9. You are advised to use [COMMON_EVENT_SPLIT_SCREEN](commonEventManager-definitions.md#common_event_split_screen) instead.
+<!--no_check-->

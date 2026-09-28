@@ -49,7 +49,7 @@ OH_Drawing_FontCollection* OH_Drawing_CreateFontCollection(void)
 
 **起始版本：** 8
 
-**废弃版本：** 26.1.0
+**废弃版本：** 26.0.1
 
 **替代接口：** [OH_Drawing_CreateSharedFontCollection()](#oh_drawing_createsharedfontcollection)
 

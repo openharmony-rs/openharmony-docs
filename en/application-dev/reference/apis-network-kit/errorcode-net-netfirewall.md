@@ -1,12 +1,13 @@
 # Firewall Error Codes
 
+<!-- md-trans-meta sourceCommit=7b8b9d8ce742c4a1126ab4e1f2ad4f9170b54175 translatedAt=2026-09-23T01:47:52.684Z pushedAt=2026-09-24T06:00:14.174Z -->
+
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:49:55.311Z pushedAt=2026-06-26T03:00:41.281Z -->
 
 > **NOTE**
 >
@@ -28,7 +29,7 @@ The entered user ID does not exist.
 
 **Solution**
 
-Check whether the user ID exists in the system.
+Check whether the system has created the user with the specified **userid**.
 
 ## 29400001 Number of Firewall Rules Exceeds the Maximum
 
@@ -42,7 +43,7 @@ The number of firewall rules exceeds the maximum.
 
 **Possible Causes**
 
-1. The number of firewall rules of a single **userid** exceeds 1000.
+1. The number of firewall rules of a single **userid** exceeds 1000;
 
 2. The number of firewall rules of all **userid**s exceeds 2000.
 
@@ -104,7 +105,7 @@ The number of domain name rules in the firewall rule of the **domain** type exce
 
 **Solution**
 
-Check whether the number of **NetFirewallDomainParams** in the added domain rule is greater than 100.
+Check whether the number of **NetFirewallDomainParams** in the added domain rule is greater than 100, and check whether the total number of **NetFirewallDomainParams** in all domain rules of the current user is greater than 1000.
 
 ## 29400005 Number of Fuzzy Domain Name Rules Exceeds the Maximum
 

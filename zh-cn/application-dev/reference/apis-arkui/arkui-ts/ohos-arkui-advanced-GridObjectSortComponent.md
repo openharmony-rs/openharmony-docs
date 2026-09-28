@@ -167,11 +167,11 @@ struct Index {
           select: Array<GridObjectSortComponentItem>,
           unselect: Array<GridObjectSortComponentItem>
         ) => {
-          // save ToDo
+          // 实现保存数据的逻辑
         },
         // 取消保存数据的回调。
         onCancel: () =>{
-          // cancel ToDo
+          // 实现取消编辑的逻辑
         }
       })
     }

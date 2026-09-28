@@ -294,7 +294,7 @@ Since API version 10, this API supports the calc calculation feature.
 
 | Name  | Type                                      | Mandatory  | Description                                      |
 | ----- | ---------------------------------------- | ---- | ---------------------------------------- |
-| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | Yes | Constraint size. The priority of **constraintSize** is higher than that of [width](#width) and [height](#height). For the value result, refer to the impact of the **constraintSize** value on width and height.<br>Default value:<br>**{<br>minWidth:&nbsp;0,<br>maxWidth:&nbsp;Infinity,<br>minHeight:&nbsp;0,<br>maxHeight:&nbsp;Infinity<br>}**<br>Abnormal value: For a string starting with a number, only the numeric part is parsed; for a string not starting with a number, it is parsed as 0. For other abnormal values, the **constraintSize** attribute is restored to the default behavior when it is not configured.<br>Unit: vp|
+| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | Yes | Constraint size. The priority of **constraintSize** is higher than that of [width](#width) and [height](#height). For the value result, refer to the impact of the **constraintSize** value on width and height.<br>Default value:<br>{<br>minWidth:&nbsp;0,<br>maxWidth:&nbsp;Infinity,<br>minHeight:&nbsp;0,<br>maxHeight:&nbsp;Infinity<br>}<br>Abnormal value: For a string starting with a number, only the numeric part is parsed; for a string not starting with a number, it is parsed as 0. For other abnormal values, the **constraintSize** attribute is restored to the default behavior when it is not configured.<br>Unit: vp|
 
 **Return value**
 

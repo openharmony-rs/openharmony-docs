@@ -131,9 +131,9 @@ resizable(value: ResizableOptions)
 
 当组件的参数类型为动图、[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)和SVG时设置该属性不生效。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -492,7 +492,7 @@ struct Index {
 
 该示例通过[resizable](#resizable)属性的slice选项，对ImageSpan图片不同方向进行拉伸。
 
-从API版本26.1.0开始，新增resizable属性。
+从API版本26.0.1开始，新增resizable属性。
 
 ```ts
 @Entry

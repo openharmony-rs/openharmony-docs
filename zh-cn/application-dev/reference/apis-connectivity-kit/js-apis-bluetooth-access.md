@@ -538,7 +538,7 @@ convertUuid(uuid: string): string
 - 若输入16bit的UUID，例如“1801”，将输出“00001801-0000-1000-8000-00805f9b34fb”。
 - 若输入32bit的UUID，例如“12341801”，将输出“12341801-0000-1000-8000-00805f9b34fb”。
 - 若输入128bit的UUID，例如“11112222-3333-4444-5555-666677778888”，将直接输出该UUID。
-- 若输入不符合以上格式的UUID或包含非16进制范围内的字符，将返回[401](../errorcode-universal.md#401-参数检查失败)错误码。
+- 若输入不符合以上格式的UUID或包含非16进制范围内的字符，将返回[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)错误码。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 

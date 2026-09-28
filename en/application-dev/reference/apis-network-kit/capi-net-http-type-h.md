@@ -5,6 +5,8 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=108aa11c2ceb50c68f8417aa3c60f1dcb55dabdd translatedAt=2026-09-23T01:17:41.248Z pushedAt=2026-09-24T06:00:14.099Z -->
+
 ## Overview
 
 Defines the data structures for the C APIs of the HTTP request module.
@@ -87,44 +89,43 @@ enum Http_ErrCode
 
 Enumerates the error codes of an HTTP request.
 
-**Since**: 20
-
 | Enum| Description|
 | -- | -- |
-| OH_HTTP_RESULT_OK = 0 | Request succeeded.|
-| OH_HTTP_PARAMETER_ERROR = 401 | Invalid parameter.|
-| OH_HTTP_PERMISSION_DENIED = 201 | Permission denied.|
-| OH_HTTP_NETSTACK_E_BASE = 2300000 | Base error code offset.|
-| OH_HTTP_UNSUPPORTED_PROTOCOL = (OH_HTTP_NETSTACK_E_BASE + 1) | Unsupported protocol.|
-| OH_HTTP_INVALID_URL = (OH_HTTP_NETSTACK_E_BASE + 3) | Incorrect URL format.|
-| OH_HTTP_RESOLVE_PROXY_FAILED = (OH_HTTP_NETSTACK_E_BASE + 5) | Failed to resolve the domain name of the proxy server.|
-| OH_HTTP_RESOLVE_HOST_FAILED = (OH_HTTP_NETSTACK_E_BASE + 6) | Failed to resolve the domain name.|
-| OH_HTTP_CONNECT_SERVER_FAILED = (OH_HTTP_NETSTACK_E_BASE + 7) | Failed to connect to the server.|
-| OH_HTTP_INVALID_SERVER_RESPONSE = (OH_HTTP_NETSTACK_E_BASE + 8) | Invalid data returned by the server.|
-| OH_HTTP_ACCESS_REMOTE_DENIED = (OH_HTTP_NETSTACK_E_BASE + 9) | Access to remote resources denied.|
-| OH_HTTP_HTTP2_FRAMING_ERROR = (OH_HTTP_NETSTACK_E_BASE + 16) | Error detected at the HTTP2 framework layer.|
-| OH_HTTP_TRANSFER_PARTIAL_FILE = (OH_HTTP_NETSTACK_E_BASE + 18) | Files partially transferred.|
-| OH_HTTP_WRITE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 23) | Failed to write the received data to the disk or application.|
-| OH_HTTP_UPLOAD_FAILED = (OH_HTTP_NETSTACK_E_BASE + 25) | Failed to upload data.|
-| OH_HTTP_OPEN_LOCAL_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 26) | Failed to open or read the local data in the file or application.|
-| OH_HTTP_OUT_OF_MEMORY = (OH_HTTP_NETSTACK_E_BASE + 27) | Insufficient memory.|
-| OH_HTTP_OPERATION_TIMEOUT = (OH_HTTP_NETSTACK_E_BASE + 28) | Operation timeout.|
-| OH_HTTP_TOO_MANY_REDIRECTIONS = (OH_HTTP_NETSTACK_E_BASE + 47) | Number of redirections reaching the maximum.|
-| OH_HTTP_SERVER_RETURNED_NOTHING = (OH_HTTP_NETSTACK_E_BASE + 52) | No content (header or data) returned by the server.|
-| OH_HTTP_SEND_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 55) | Failed to send data via Bluetooth.|
-| OH_HTTP_RECEIVE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 56) | Failed to receive data.|
-| OH_HTTP_SSL_CERTIFICATE_ERROR = (OH_HTTP_NETSTACK_E_BASE + 58) | Invalid local SSL certificate.|
-| OH_HTTP_SSL_CIPHER_USED_ERROR = (OH_HTTP_NETSTACK_E_BASE + 59) | Specified cipher suite unavailable.|
-| OH_HTTP_INVALID_SSL_PEER_CERT = (OH_HTTP_NETSTACK_E_BASE + 60) | Invalid SSL peer certificate or SSH remote key.|
-| OH_HTTP_INVALID_ENCODING_FORMAT = (OH_HTTP_NETSTACK_E_BASE + 61) | Invalid HTTP encoding format.|
-| OH_HTTP_FILE_TOO_LARGE = (OH_HTTP_NETSTACK_E_BASE + 63) | Maximum file size exceeded.|
-| OH_HTTP_REMOTE_DISK_FULL = (OH_HTTP_NETSTACK_E_BASE + 70) | Remote disk fully occupied.|
-| OH_HTTP_REMOTE_FILE_EXISTS = (OH_HTTP_NETSTACK_E_BASE + 73) | Remote file already exists.|
-| OH_HTTP_SSL_CA_NOT_EXIST = (OH_HTTP_NETSTACK_E_BASE + 77) | SSL CA certificate inexistent or inaccessible.|
-| OH_HTTP_REMOTE_FILE_NOT_FOUND = (OH_HTTP_NETSTACK_E_BASE + 78) | Remote file not found.|
-| OH_HTTP_AUTHENTICATION_ERROR = (OH_HTTP_NETSTACK_E_BASE + 94) | Identity authentication error.|
-| OH_HTTP_ACCESS_DOMAIN_NOT_ALLOWED = (OH_HTTP_NETSTACK_E_BASE + 998) | Access to the domain denied.|
-| OH_HTTP_UNKNOWN_ERROR = (OH_HTTP_NETSTACK_E_BASE + 999) | Unknown error.|
+| OH_HTTP_RESULT_OK = 0 | The request succeeded.<br>**Since:** 20 |
+| OH_HTTP_PARAMETER_ERROR = 401 | Invalid parameter.<br>**Since:** 20 |
+| OH_HTTP_PERMISSION_DENIED = 201 | Permission verification failed.<br>**Since:** 20 |
+| OH_HTTP_NETSTACK_E_BASE = 2300000 | Base error code offset.<br>**Since:** 20 |
+| OH_HTTP_UNSUPPORTED_PROTOCOL = (OH_HTTP_NETSTACK_E_BASE + 1) | Unsupported protocol.<br>**Since:** 20 |
+| OH_HTTP_INVALID_URL = (OH_HTTP_NETSTACK_E_BASE + 3) | Invalid URL format.<br>**Since:** 20 |
+| OH_HTTP_RESOLVE_PROXY_FAILED = (OH_HTTP_NETSTACK_E_BASE + 5) | Failed to resolve the proxy server domain name.<br>**Since:** 20 |
+| OH_HTTP_RESOLVE_HOST_FAILED = (OH_HTTP_NETSTACK_E_BASE + 6) | Failed to resolve the domain name.<br>**Since:** 20 |
+| OH_HTTP_CONNECT_SERVER_FAILED = (OH_HTTP_NETSTACK_E_BASE + 7) | Failed to connect to the server.<br>**Since:** 20 |
+| OH_HTTP_INVALID_SERVER_RESPONSE = (OH_HTTP_NETSTACK_E_BASE + 8) | The server returned invalid data.<br>**Since:** 20 |
+| OH_HTTP_ACCESS_REMOTE_DENIED = (OH_HTTP_NETSTACK_E_BASE + 9) | Access to the remote resource is denied.<br>**Since:** 20 |
+| OH_HTTP_HTTP2_FRAMING_ERROR = (OH_HTTP_NETSTACK_E_BASE + 16) | An error occurred in the HTTP/2 framing layer.<br>**Since:** 20 |
+| OH_HTTP_TRANSFER_PARTIAL_FILE = (OH_HTTP_NETSTACK_E_BASE + 18) | Part of the file was transferred.<br>**Since:** 20 |
+| OH_HTTP_WRITE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 23) | Failed to write the received data to the disk or application.<br>**Since:** 20 |
+| OH_HTTP_UPLOAD_FAILED = (OH_HTTP_NETSTACK_E_BASE + 25) | Upload failed.<br>**Since:** 20 |
+| OH_HTTP_OPEN_LOCAL_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 26) | Failed to open or read local data from the file or application.<br>**Since:** 20 |
+| OH_HTTP_OUT_OF_MEMORY = (OH_HTTP_NETSTACK_E_BASE + 27) | Insufficient memory.<br>**Since:** 20 |
+| OH_HTTP_OPERATION_TIMEOUT = (OH_HTTP_NETSTACK_E_BASE + 28) | Operation timed out.<br>**Since:** 20 |
+| OH_HTTP_TOO_MANY_REDIRECTIONS = (OH_HTTP_NETSTACK_E_BASE + 47) | The number of redirections has reached the maximum allowed.<br>**Since:** 20 |
+| OH_HTTP_SERVER_RETURNED_NOTHING = (OH_HTTP_NETSTACK_E_BASE + 52) | The server returned nothing (no header or data).<br>**Since:** 20 |
+| OH_HTTP_SEND_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 55) | Failed to send data.<br>**Since:** 20 |
+| OH_HTTP_RECEIVE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 56) | Failed to receive data.<br>**Since:** 20 |
+| OH_HTTP_SSL_CERTIFICATE_ERROR = (OH_HTTP_NETSTACK_E_BASE + 58) | Local SSL certificate error.<br>**Since:** 20 |
+| OH_HTTP_SSL_CIPHER_USED_ERROR = (OH_HTTP_NETSTACK_E_BASE + 59) | The specified cipher suite is unavailable.<br>**Since:** 20 |
+| OH_HTTP_INVALID_SSL_PEER_CERT = (OH_HTTP_NETSTACK_E_BASE + 60) | Invalid SSL peer certificate or SSH remote key.<br>**Since:** 20 |
+| OH_HTTP_INVALID_ENCODING_FORMAT = (OH_HTTP_NETSTACK_E_BASE + 61) | Invalid HTTP encoding format.<br>**Since:** 20 |
+| OH_HTTP_FILE_TOO_LARGE = (OH_HTTP_NETSTACK_E_BASE + 63) | The maximum file size is exceeded.<br>**Since:** 20 |
+| OH_HTTP_REMOTE_DISK_FULL = (OH_HTTP_NETSTACK_E_BASE + 70) | The remote disk is full.<br>**Since:** 20 |
+| OH_HTTP_REMOTE_FILE_EXISTS = (OH_HTTP_NETSTACK_E_BASE + 73) | The remote file already exists.<br>**Since:** 20 |
+| OH_HTTP_SSL_CA_NOT_EXIST = (OH_HTTP_NETSTACK_E_BASE + 77) | The SSL CA certificate does not exist or is inaccessible.<br>**Since:** 20 |
+| OH_HTTP_REMOTE_FILE_NOT_FOUND = (OH_HTTP_NETSTACK_E_BASE + 78) | The remote file was not found.<br>**Since:** 20 |
+| OH_HTTP_AUTHENTICATION_ERROR = (OH_HTTP_NETSTACK_E_BASE + 94) | Authentication error.<br>**Since:** 20 |
+| OH_HTTP_REQUEST_INTERCEPTED = (OH_HTTP_NETSTACK_E_BASE + 996) | The request was intercepted by the HTTP global interceptor.<br>**Since:** 26.0.0 |
+| OH_HTTP_ACCESS_DOMAIN_NOT_ALLOWED = (OH_HTTP_NETSTACK_E_BASE + 998) | Access to the domain is not allowed.<br>**Since:** 20 |
+| OH_HTTP_UNKNOWN_ERROR = (OH_HTTP_NETSTACK_E_BASE + 999) | Unknown error.<br>**Since:** 20 |
 
 ### Http_ResponseCode
 
@@ -343,3 +344,5 @@ typedef void (*Http_OnVoidCallback)(void)
 Callback invoked when a DataEnd or Cancel event is received.
 
 **Since**: 20
+
+
