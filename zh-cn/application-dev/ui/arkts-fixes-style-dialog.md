@@ -80,6 +80,7 @@ export struct ShowActionMenuExample {
                     console.error('showActionMenu error: ' + err);
                   })
               } catch (error) {
+                console.error('showActionMenu catch error: ' + error);
               }
             })
         }.width('100%')
