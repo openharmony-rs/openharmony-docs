@@ -837,6 +837,20 @@ With this permission, an application can call APIs to request local account auth
 
 **Since**: 26.0.1
 
+## ohos.permission.kernel.USB_CAPTURE
+
+Allows an application to capture USB data packets.
+
+With this permission, the application can capture USB packets only after being authenticated by the user.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
 ## ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
 
 Allows an application to identify whether the current user is the device owner.
