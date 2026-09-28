@@ -131,14 +131,7 @@
   - [AccessibilityVirtualNode(系统接口)](arkts-accessibility-accessibilityvirtualnode-t-sys.md)<!--DelEnd-->
   - [ElementAttributeKeys](arkts-accessibility-elementattributekeys-t.md)
   - [ElementAttributeValues](arkts-accessibility-elementattributevalues-t.md)
-  <!--Del-->
-  - [FocusCondition(系统接口)](arkts-accessibility-focuscondition-t-sys.md)<!--DelEnd-->
-  - [FocusDirection](arkts-accessibility-focusdirection-t.md)
-  <!--Del-->
   - [FocusMoveResult(系统接口)](arkts-accessibility-focusmoveresult-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [FocusRule(系统接口)](arkts-accessibility-focusrule-t-sys.md)<!--DelEnd-->
-  - [FocusType](arkts-accessibility-focustype-t.md)
   - [GestureType](arkts-accessibility-gesturetype-t.md)
   - [PageUpdateType](arkts-accessibility-pageupdatetype-t.md)
   <!--Del-->
@@ -147,7 +140,6 @@
   - [TouchGuideType](arkts-accessibility-touchguidetype-t.md)
   <!--Del-->
   - [TouchPosition(系统接口)](arkts-accessibility-touchposition-t-sys.md)<!--DelEnd-->
-  - [WindowType](arkts-accessibility-windowtype-t.md)
 - application<!--arkts-accessibilitykit-application-->
   - [AccessibilityExtensionContext(辅助功能扩展上下文)](arkts-accessibility-accessibilityextensioncontext.md)
     - [AccessibilityExtensionContext](arkts-accessibility-accessibilityextensioncontext-c.md)

@@ -12,9 +12,6 @@
     - HdiUsbfnMtp
         - [IUsbfnMtpInterface.idl](_i_usbfn_mtp_interface_8idl.md)
         - [UsbfnMtpTypes.idl](_usbfn_mtp_types_8idl.md)
-    - HdiUsb
-        - [IUsbInterface.idl](_i_usb_interface_8idl_v11.md)
-        - [UsbTypes.idl](_usb_types_8idl_v11.md)
     - USB (V1_0)
         - [IUsbdBulkCallback.idl](_i_usbd_bulk_callback_8idl_v10.md)
         - [IUsbdSubscriber.idl](_i_usbd_subscriber_8idl_v10.md)
@@ -44,9 +41,6 @@
     - HdiUsbfnMtp
         - [IUsbfnMtpInterface](interface_i_usbfn_mtp_interface.md)
         - [UsbFnMtpFileSlice](_usb_fn_mtp_file_slice.md)
-    - HdiUsb
-        - [IUsbInterface](interface_i_usb_interface_v11.md)
-        - [UsbCtrlTransferParams](_usb_ctrl_transfer_params_v11.md)
     - USB (V1_0)
         - [IUsbdBulkCallback](interface_i_usbd_bulk_callback_v10.md)
         - [IUsbdSubscriber](interface_i_usbd_subscriber_v10.md)
