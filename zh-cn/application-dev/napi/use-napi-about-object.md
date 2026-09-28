@@ -564,6 +564,8 @@ export const setTypeTagToObject: (obj: Object, index: number) => boolean | undef
 export const checkObjectTypeTag: (obj: Object, index: number) => boolean; // napi_check_object_type_tag
 ```
 
+ArkTS侧示例代码
+
 <!-- @[ark_napi_type_tag_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
