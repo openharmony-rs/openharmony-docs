@@ -131,6 +131,7 @@
   - [AccessibilityVirtualNode(系统接口)](arkts-accessibility-accessibilityvirtualnode-t-sys.md)<!--DelEnd-->
   - [ElementAttributeKeys](arkts-accessibility-elementattributekeys-t.md)
   - [ElementAttributeValues](arkts-accessibility-elementattributevalues-t.md)
+  <!--Del-->
   - [FocusMoveResult(系统接口)](arkts-accessibility-focusmoveresult-t-sys.md)<!--DelEnd-->
   - [GestureType](arkts-accessibility-gesturetype-t.md)
   - [PageUpdateType](arkts-accessibility-pageupdatetype-t.md)

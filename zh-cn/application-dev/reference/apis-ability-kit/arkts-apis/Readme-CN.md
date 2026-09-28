@@ -1567,6 +1567,9 @@
 - app<!--arkts-abilitykit-app-->
   - [appVersionInfo(AppVersionInfo)](arkts-ability-appversioninfo.md)
     - [AppVersionInfo](arkts-ability-appversioninfo-appversioninfo-depr-i.md)
+    - [Context](arkts-ability-context-context-depr-i.md)
+    - [PermissionOptions](arkts-ability-context-permissionoptions-depr-i.md)
+    - [PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md)
   - [processInfo](arkts-ability-processinfo.md)
     - [ProcessInfo](arkts-ability-processinfo-processinfo-depr-i.md)
 - application<!--arkts-abilitykit-application-->
@@ -1836,6 +1839,12 @@
     <!--Del-->
     - [ViewData(系统接口)](arkts-ability-viewdata-i-sys.md)<!--DelEnd-->
 - bundle<!--arkts-abilitykit-bundle-->
+    - [AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)
+    - [ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)
+    - [BundleInfo](arkts-ability-bundleinfo-bundleinfo-depr-i.md)
+    - [ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-depr-i.md)
+    - [UsedScene](arkts-ability-bundleinfo-usedscene-depr-i.md)
+  <!--Del-->
   - [bundleInstaller](arkts-ability-bundleinstaller.md)<!--DelEnd-->
     <!--Del-->
     - [BundleInstaller(系统接口)](arkts-ability-bundleinstaller-bundleinstaller-depr-i-sys.md)<!--DelEnd-->
@@ -1849,8 +1858,19 @@
     - [BundleStatusCallback(系统接口)](arkts-ability-bundlestatuscallback-bundlestatuscallback-depr-i-sys.md)<!--DelEnd-->
   - [customizeData](arkts-ability-customizedata.md)
     - [CustomizeData](arkts-ability-customizedata-customizedata-depr-i.md)
+    - [ElementName](arkts-ability-elementname-elementname-depr-i.md)
+    - [HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)
+    <!--Del-->
+    - [LauncherAbilityInfo(系统接口)](arkts-ability-launcherabilityinfo-launcherabilityinfo-depr-i-sys.md)<!--DelEnd-->
   - [moduleInfo](arkts-ability-moduleinfo.md)
     - [ModuleInfo](arkts-ability-moduleinfo-moduleinfo-depr-i.md)
+    <!--Del-->
+    - [PermissionDef(系统接口)](arkts-ability-permissiondef-depr-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [RemoteAbilityInfo(系统接口)](arkts-ability-remoteabilityinfo-remoteabilityinfo-depr-i-sys.md)<!--DelEnd-->
+    - [ShortcutInfo](arkts-ability-shortcutinfo-shortcutinfo-depr-i.md)
+    <!--Del-->
+    - [ShortcutWant(系统接口)](arkts-ability-shortcutinfo-shortcutwant-depr-i-sys.md)<!--DelEnd-->
 - bundleManager<!--arkts-abilitykit-bundlemanager-->
   - [AbilityInfo](arkts-ability-abilityinfo.md)
     - [AbilityInfo](arkts-ability-abilityinfo-i.md)

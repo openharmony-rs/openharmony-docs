@@ -3,6 +3,7 @@
 - [@ohos.bluetooth(蓝牙)](arkts-connectivity-bluetooth.md)
   - [bluetooth](arkts-connectivity-bluetooth-n.md)
     - [BLE](arkts-connectivity-bluetooth-ble-n.md)
+    <!--Del-->
     - [cancelPairedDevice(系统接口)](arkts-connectivity-bluetooth-cancelpaireddevice-f-sys.md)<!--DelEnd-->
     - [disableBluetooth](arkts-connectivity-bluetooth-disablebluetooth-f.md)
     - [enableBluetooth](arkts-connectivity-bluetooth-enablebluetooth-f.md)
@@ -424,6 +425,7 @@
 - [@ohos.bluetoothManager(蓝牙)](arkts-connectivity-bluetoothmanager.md)
   - [bluetoothManager](arkts-connectivity-bluetoothmanager-n.md)
     - [BLE](arkts-connectivity-bluetoothmanager-ble-n.md)
+    <!--Del-->
     - [cancelPairedDevice(系统接口)](arkts-connectivity-bluetoothmanager-cancelpaireddevice-f-sys.md)<!--DelEnd-->
     - [disableBluetooth](arkts-connectivity-bluetoothmanager-disablebluetooth-f.md)
     - [enableBluetooth](arkts-connectivity-bluetoothmanager-enablebluetooth-f.md)
