@@ -248,41 +248,6 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    }
    ```
    <!--RP4End-->
-   例FLAC调用流程：
-
-   ```cpp
-   int32_t ret;
-   // 配置音频采样率（必须）。
-   constexpr uint32_t DEFAULT_SAMPLERATE = 44100;
-   // 配置音频码率（必须）。
-   constexpr uint64_t DEFAULT_BITRATE = 261000;
-   // 配置音频声道数（必须）。
-   constexpr uint32_t DEFAULT_CHANNEL_COUNT = 2;
-   // 配置音频声道布局（必须）。
-   // 值为CH_LAYOUT_MONO、CH_LAYOUT_STEREO、CH_LAYOUT_SURROUND、CH_LAYOUT_QUAD、CH_LAYOUT_5POINT0、CH_LAYOUT_5POINT1、CH_LAYOUT_6POINT1或CH_LAYOUT_7POINT1其中一项。
-   constexpr OH_AudioChannelLayout CHANNEL_LAYOUT = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
-   // 配置音频位深（必须） flac只有SAMPLE_S16LE和SAMPLE_S32LE。
-   constexpr OH_BitsPerSample SAMPLE_FORMAT = OH_BitsPerSample::SAMPLE_S32LE;
-   // 配置音频compliance level (默认值0，取值范围-2~2)。
-   constexpr int32_t COMPLIANCE_LEVEL = 0;
-
-   OH_AVFormat *format = OH_AVFormat_Create();
-   // 写入format。
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNEL_COUNT);
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
-   OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, DEFAULT_BITRATE);
-   // 配置音频精度。API version 20前，FLAC编码必须设置此参数，设置为1即可；未设置此参数配置FLAC编码器时，调用OH_AudioCodec_Configure会返回错误码AV_ERR_INVALID_VAL。该值无实际作   用，不会影响编码结果。从API version 20开始，无需设置此参数。
-   // constexpr int32_t BITS_PER_CODED_SAMPLE = 1;
-   // OH_AVFormat_SetIntValue(format, OH_MD_KEY_BITS_PER_CODED_SAMPLE, BITS_PER_CODED_SAMPLE);
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_FORMAT); 
-   OH_AVFormat_SetLongValue(format, OH_MD_KEY_CHANNEL_LAYOUT, CHANNEL_LAYOUT);
-   OH_AVFormat_SetLongValue(format, OH_MD_KEY_COMPLIANCE_LEVEL, COMPLIANCE_LEVEL); 
-   // 配置编码器。
-   ret = OH_AudioCodec_Configure(audioEnc_, format);
-   if (ret != AV_ERR_OK) {
-       // 异常处理。
-   }
-   ```
 
    <!--RP1--><!--RP1End-->
 
