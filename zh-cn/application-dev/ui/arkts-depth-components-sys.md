@@ -16,7 +16,7 @@
 
 | 能力层 | 组件中的体现 | 说明 |
 | -------- | -------- | -------- |
-| 背景资源 | [background](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#接口) | 作为景深场景底图的静态图片或3D模型。静态图片支持常见图片格式（如jpg/png/webp等），通过PixelMap或ResourceStr加载；3D模型仅支持glTF和glb格式。图片资源引用方式请参考[加载图片资源](arkts-graphics-display.md#加载图片资源)。 |
+| 背景资源 | [background](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#接口) | 作为景深场景底图的静态图片或3D模型。静态图片支持常见图片格式（如jpg/png/webp等），通过PixelMap或ResourceStr加载；3D模型仅支持glTF和glb格式，且仅支持通过ResourceStr加载。图片资源引用方式请参考[加载图片资源](arkts-graphics-display.md#加载图片资源)。 |
 | 深度图 | [depthMap](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthmap) | 一张黑白的灰度图像，用每个像素的明暗描述背景中该位置距相机的远近——越白越近、越黑越远；背景为静态图片时需设置且需与背景图分辨率一致，背景为3D模型时由模型自带、无需设置。 |
 | 相机 | [camera](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#camera) | 配置观察景深场景的虚拟相机，决定从哪个位置与角度拍摄三维场景。 |
 | 光照 | [light](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#light) | 定义照射景深场景的光照，为场景补充明暗与色彩，增强立体真实感。 |
@@ -80,7 +80,7 @@ DepthComponent通过背景资源与深度图重建三维场景，并借助透视
 
 - **[position](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：相机自身的位置。决定“从哪个位置观察场景”，移动相机会改变看到的远近与角度。注意“position”在相机参数与空间效果中含义不同，详见[映射子组件空间](#映射子组件空间)末尾说明。
 
-- **[quaternion](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：相机的旋转（朝向），用四元数按(x, y, z, w)表示。决定“朝哪个方向看”。四元数是一种描述三维旋转的方式，相比直接用角度更平滑，可避免欧拉角旋转中的万向锁（两个旋转轴重合导致丢失一个旋转自由度）问题。其中(0, 0, 0, 1)为单位四元数，表示无旋转，相机保持默认朝向（示例中子组件位于相机前方、即-Z方向，故默认看向-Z）；需要改变朝向时，绕Y轴旋转可左右改变看向、绕X轴旋转可俯仰、绕Z轴旋转可滚转，按(x, y, z, w) = (轴·sin(θ/2), cos(θ/2))由旋转轴与角度换算。常用朝向可直接套用示例值，无需手动推导。
+- **[quaternion](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：相机的旋转（朝向），用四元数按(x, y, z, w)表示。决定“朝哪个方向看”。四元数是一种描述三维旋转的方式，相比直接用角度更平滑，可避免欧拉角旋转中的万向锁（两个旋转轴重合导致丢失一个旋转自由度）问题。其中(0, 0, 0, 1)为单位四元数，表示无旋转，相机保持默认朝向（示例中子组件位于相机前方、即-Z方向，故默认看向-Z）。需要改变朝向时，绕Y轴旋转可左右调整朝向、绕X轴旋转可俯仰、绕Z轴旋转可滚转，按(x, y, z, w) = (轴·sin(θ/2), cos(θ/2))由旋转轴与角度换算。常用朝向可直接套用示例值，无需手动推导。
 
 - **[yFov](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：垂直视场角（弧度）。即相机的视野范围，类似镜头能拍到多宽的画面，值越大视野越广。组件只提供垂直视场角yFov，水平视场角由yFov与组件宽高比自动导出（yFov固定时，宽高比越大水平视野越广），无需也无法单独设置水平视场角。
 
@@ -167,13 +167,13 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
 ### 计算光照
 
-光照参数 light定义照射景深场景的光照，渲染时依据光照方向与场景几何计算各像素明暗、再与背景颜色合成，为场景补充明暗与色彩、增强立体真实感，主要包括以下参数：其中2D图片背景本身无几何面，渲染时依据深度图为每个像素推算表面法线（深度梯度方向即表面朝向），再按光照方向计算该像素明暗（浮雕式着色）；3D模型则使用模型自身法线参与计算。
+光照参数 light定义照射景深场景的光照，渲染时依据光照方向与场景几何计算各像素明暗、再与背景颜色合成，为场景补充明暗与色彩、增强立体真实感。其中2D图片背景本身无几何面，渲染时依据深度图为每个像素推算表面法线（深度梯度方向即表面朝向），再按光照方向计算该像素明暗（即浮雕式着色，依据法线方向产生明暗对比以模拟立体浮雕效果）；3D模型则使用模型自身法线参与计算。主要包括以下参数：
 
 - **[direction](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照方向。表示光的传播方向（从光源指向被照物）。示例 { x: 0, y: 0, z: -1 } 表示光朝-Z方向照射；被照亮的面是其法线朝+Z（迎着光源）的面，法线与光线方向相背的面背光。
 
 - **[color](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照颜色。影响场景整体的色调。
 
-- **[intensity](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照强度。取值范围[0, +∞)，建议[0, 1]；设置为0时无光照。超出1时光照过强，画面可能过曝或过亮、效果不佳，不建议超出（非渲染异常）。
+- **[intensity](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照强度。取值范围[0, +∞)，建议[0, 1]；设置为0时无光照。超出1时光照过强，画面可能过曝或过亮、效果不佳，不建议超出该范围（非渲染异常）。
 
 各参数的作用可参考下图：
 
@@ -191,7 +191,7 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
    原因是：静态图片是一张已经拍摄完成的固定平面画面，没有真实立体结构。例如，当观察者左右移动头部时，墙上的一幅照片依旧是那幅照片，相机怎么调整它都不变。而子组件是在三维空间中独立渲染的立体元素，相机动了相当于"换个角度观察它们"，其投影大小、屏幕位置与遮挡关系都会随之改变，从而呈现立体感。对比之下，3D模型背景本身也是真实立体结构，相机会同时影响背景与子组件；若希望背景也随相机移动产生空间变化，应改用3D模型背景。
 
-5. 相机的zNear和zFar必须为正数，且zNear应小于zFar。取0或负数时违反“必须为正数”，参数无效；当zNear大于或等于zFar时，可视范围为空，画面不渲染。
+5. 相机的zNear和zFar必须为正数，且zNear应小于zFar。取0或负数时不满足“必须为正数”的要求，参数无效；当zNear大于或等于zFar时，可视范围为空，画面不渲染。
 
 6. 构造参数选项（[DepthComponentOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcomponentoptions)）中的render3DScale为3D渲染窗口的缩放比例，同时作用于宽度和高度，取值范围为(0.0, 1.0]，默认值1.0，超出该范围的值无效（继承之前的取值，未设置过时取默认值）。
 
@@ -209,17 +209,17 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
 设置后看不到效果时，可按以下顺序排查：
 
-- 背景资源是否加载成功：检查 `onError`/`onComplete` 回调，确认 `error.code` 为 0；加载失败时背景为空，自然看不到效果。
+- 背景资源是否加载成功：检查是否触发 `onComplete` 回调（加载成功）或 `onError` 回调（加载失败）以确认背景资源加载状态；加载失败时背景为空，无法看到效果。
 - 深度图是否设置（2D图片背景）：2D背景必须设置深度图，且分辨率需与背景图完全一致，否则立体层次无法重建。
 - zNear/zFar 是否合法：两者必须均为正数且 zNear < zFar，否则可视范围为空、画面不渲染。
-- 相机朝向是否对准场景：确认 position、quaternion 使子组件落在 [zNear, zFar] 范围内且在视野中；示例中子组件 z 取负值（位于相机前方）。
+- 相机朝向是否对准场景：确认 position、quaternion 使子组件距相机的距离落在 [zNear, zFar] 范围内且在视野中；示例中子组件 z 取负值（位于相机 -Z 方向前方，距相机 |z|）。
 - 子组件是否设置了空间效果：未设置 spatialEffect 的子组件仍贴在背景平面上，不产生前后遮挡与倾斜。
 - occlusionWeight 是否过大：取 1 时近处背景会完全遮挡子组件相应部分，初次验证可先设较小值（如 0.2）。
 - 子组件 position 是否落在可视范围内：四角坐标偏离视野或被深度更近的背景完全遮挡时，子组件可能不可见。
 
 ### 参数调优建议
 
-无图形学背景的开发者可先套用场景示例中的参数值，再按下表逐项调整、每次只改一个参数以感知变化：
+无图形学背景的开发者可先套用场景示例中的参数值，再按下表逐项调整、每次仅修改一个参数以感知变化：
 
 | 参数 | 调大 | 调小 | 建议 |
 | -------- | -------- | -------- | -------- |
@@ -229,7 +229,7 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 | zFar | 远处物体更易保留 | 远处物体被裁掉 | 须为正数且 > zNear |
 | 子组件四角 Z 差异 | 倾斜更明显 | 趋于平整 | 统一 Z 为平整 |
 | occlusionWeight | 被背景遮挡更多 | 被背景遮挡更少 | 0~1 渐变调节 |
-| light intensity | 更亮 | 更暗（0 为无光照） | 建议不超 1 |
+| light intensity | 更亮 | 更暗（0 为无光照） | 建议不超过1 |
 
 光照方向 direction 改变受光面与背光面的分布，朝向需要照亮的区域即可；示例取 { x: 0, y: 0, z: -1 }（光朝 -Z 照射）。
 
