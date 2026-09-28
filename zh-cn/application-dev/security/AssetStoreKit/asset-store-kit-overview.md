@@ -82,7 +82,7 @@ ASSET数据存储结构如下图所示：
 
   - ASSET不支持沙箱应用、应用分身存储或访问群组数据。
 
-  - [IS_PERSISTENT](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)属性设置为True的关键资产，不允许设置为群组共享。
+  - [IS_PERSISTENT](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)属性设置为true的关键资产，不允许设置为群组共享。
 
 ## 数据生命周期
 
