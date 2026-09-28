@@ -1813,7 +1813,7 @@
     - [Vector2T](arkts-arkui-graphics-vector2t-i.md)
     - [Vector3](arkts-arkui-graphics-vector3-i.md)
     - [Vector4](arkts-arkui-graphics-vector4-i.md)
-    - [BorderRadiuses](arkts-arkui-borderradiuses-t.md)
+    - [type BorderRadiuses](arkts-arkui-borderradiuses-t.md)
     - [CornerRadius](arkts-arkui-cornerradius-t.md)
     - [Matrix4](arkts-arkui-matrix4-t.md)
     - [Offset](arkts-arkui-offset-t.md)

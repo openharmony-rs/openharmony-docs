@@ -1,9 +1,9 @@
 # Sensor HDI 参考
 
 - 模块
-    - [HdiSensor](_sensor_convert_hdi_sensor_v10.md)
-    - [HdiSensor](_sensor_hdi_sensor_v31.md)
-    - [HdiSensor](_sensor_hdi_sensor_v30.md)
+    - [HdiSensor (Convert V1_0)](_sensor_convert_hdi_sensor_v10.md)
+    - [HdiSensor (V3_1)](_sensor_hdi_sensor_v31.md)
+    - [HdiSensor (V3_0)](_sensor_hdi_sensor_v30.md)
     - [HdiSensor (V2_0)](_hdi_sensor_v20.md)
     - [HdiSensor (V1_1)](_hdi_sensor_v11.md)
     - [HdiSensor (V1_0)](_hdi_sensor_v10.md)

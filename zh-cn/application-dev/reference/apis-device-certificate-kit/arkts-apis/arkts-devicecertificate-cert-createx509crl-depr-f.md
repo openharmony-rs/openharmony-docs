@@ -1,4 +1,4 @@
-# createX509Crl
+# deprecated createX509Crl
 
 ## 导入模块
 
