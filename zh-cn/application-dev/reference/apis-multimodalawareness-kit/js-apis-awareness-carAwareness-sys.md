@@ -38,7 +38,6 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 | REALTIME_WEATHER | 'RealTimeWeather' | 实时天气感知能力，支持识别车辆当前所处环境的天气状态。 |
 | REFUELING | 'Refueling' | 补能识别能力，支持识别车辆加油的开始与结束状态。 |
 | CAR_STATUS | 'CarStatus' | 车辆状态感知能力，支持获取车辆相关状态信息。<br>**系统接口：** 此枚举成员为系统接口。 |
-| CAR_CFG | 'CarCfg' | 车辆配置感知能力，支持获取车辆配置相关信息。<br>**系统接口：** 此枚举成员为系统接口。 |
 | HABIT_RECOMMENDATION | 'HabitRecommendation' | 习惯推荐感知能力，支持基于用户习惯生成推荐。<br>**系统接口：** 此枚举成员为系统接口。 |
 
 ## CarAwarenessInfo
@@ -55,9 +54,9 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| timestamp | number | 是 | 否 | 识别结果的时间戳。<br>单位：毫秒。 |
-| capability | [Capability](#capability) | 是 | 否 | 对应的感知能力类型。 |
-| awarenessEvent | Record\<string, Object\> | 是 | 是 | 感知结果数据键值对，不同能力返回不同字段。<br>- SPATIAL_POINT：包含 object、zone、value、errorCode 等字段<br>- SPATIAL_GESTURE：包含 action 字段 |
+| timestamp | number | 否 | 否 | 识别结果的时间戳。<br>单位：ms。 |
+| capability | [Capability](#capability) | 否 | 否 | 对应的感知能力类型。 |
+| awarenessEvent | Record\<string, Object\> | 否 | 是 | 感知结果数据键值对，不同能力返回不同字段。 |
 
 ## CarAwarenessOptions
 
@@ -73,13 +72,13 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| parameters | Record\<string, Object\> | 是 | 是 | 自定义感知参数键值对，用于传入特定能力的配置项。 |
+| parameters | Record\<string, Object\> | 否 | 是 | 自定义感知参数键值对，用于传入特定能力的配置项。 |
 
 ## carAwareness.onCarAwareness
 
 onCarAwareness(capability: Capability, callback: Callback<CarAwarenessInfo[]>, options?: CarAwarenessOptions): void
 
-开启车辆感知，订阅车辆感知结果；设备不支持该能力时抛出34000002错误码，可调用getAllCapabilityList查询设备可用能力，通过callback异步返回数据。
+订阅车辆感知结果。设备不支持该能力时抛出34000002错误码，可调用getAllCapabilityList查询设备可用能力。通过callback异步返回数据。
 
 **起始版本：** 26.0.1
 
@@ -93,7 +92,7 @@ onCarAwareness(capability: Capability, callback: Callback<CarAwarenessInfo[]>, o
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| capability | [Capability](#capability) | 是 | 指定订阅的感知能力类型。<br/>**注意**：该参数不能传入 `SpatialMotion`、`RealTimeWeather` 和 `Refueling`，否则会抛出34000002错误码。 |
+| capability | [Capability](#capability) | 是 | 指定订阅的感知能力类型。 |
 | callback | Callback\<CarAwarenessInfo[]\> | 是 | 回调函数，用于返回感知结果数据数组。 |
 | options | [CarAwarenessOptions](#carawarenessoptions) | 否 | 感知能力的可选配置项。 |
 
@@ -131,7 +130,7 @@ try {
 
 offCarAwareness(capability: Capability, callback: Callback<CarAwarenessInfo[]>, options?: CarAwarenessOptions): void
 
-取消指定订阅类型的车辆感知。
+取消订阅指定类型的车辆感知结果。
 
 **起始版本：** 26.0.1
 
