@@ -46530,5 +46530,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ipc/ipc-capi-development-guideline.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":19,
+						"name":"child_process_include",
+						"start_line":17
+					}
+				]
+			}
+		]
 	}
 ]
