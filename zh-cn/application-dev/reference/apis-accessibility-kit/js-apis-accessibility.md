@@ -2818,7 +2818,6 @@ struct Index {
 }
 ```
 
-
 ## UIAccessibilityElement
 
 无障碍聚焦节点元素信息。
@@ -2900,7 +2899,6 @@ getFocusedUIAccessibilityElement(): Promise<UIAccessibilityElement | undefined>
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-
 **返回值：**
 | 类型                                  | 说明                     |
 | ----------------------------------- | ---------------------- |
@@ -2922,7 +2920,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 accessibility.getFocusedUIAccessibilityElement().then((data: UIAccessibilityElement) => {
   console.info(`succeeded in getting focused accessibility elementInfo, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to call offFocusedUIAccessibilityElementChanged. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to call getFocusedUIAccessibilityElement. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2974,7 +2972,6 @@ struct Index {
       console.error(`Failed to call onFocusedUIAccessibilityElementChanged. Code: ${err.code}, message: ${err.message}`);
     }
   }
-
 
 build() {
     RelativeContainer() {
