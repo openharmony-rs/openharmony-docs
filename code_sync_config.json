@@ -37496,12 +37496,12 @@
 						"start_line":19
 					},
 					{
-						"end_line":680,
+						"end_line":681,
 						"name":"deactivate_audio_session_v1",
 						"start_line":31
 					},
 					{
-						"end_line":681,
+						"end_line":682,
 						"name":"audio_session_v1",
 						"start_line":20
 					},
@@ -37511,17 +37511,17 @@
 						"start_line":21
 					},
 					{
-						"end_line":590,
+						"end_line":591,
 						"name":"on_audio_session_state_changed",
 						"start_line":22
 					},
 					{
-						"end_line":682,
+						"end_line":683,
 						"name":"deactivate_audio_session_v2",
 						"start_line":32
 					},
 					{
-						"end_line":683,
+						"end_line":684,
 						"name":"audio_session_v2",
 						"start_line":23
 					},
@@ -37531,7 +37531,7 @@
 						"start_line":24
 					},
 					{
-						"end_line":625,
+						"end_line":626,
 						"name":"set_session_behavior",
 						"start_line":26
 					},
@@ -37936,9 +37936,9 @@
 						"start_line":125
 					},
 					{
-						"end_line":163,
+						"end_line":220,
 						"name":"cdeactive_audiosession",
-						"start_line":147
+						"start_line":204
 					},
 					{
 						"end_line":66,
@@ -58549,7 +58549,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":740,
+						"end_line":741,
 						"name":"print_session_info",
 						"start_line":27
 					}
