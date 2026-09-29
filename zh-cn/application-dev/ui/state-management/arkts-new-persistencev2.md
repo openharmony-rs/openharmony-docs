@@ -465,6 +465,8 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
     })!;
     ```
 
+16、 不支持对持久化数据类的类名和属性名进行混淆，否则会导致已有数据无法读取或反序列化失败。应用需关闭混淆，或通过混淆配置保留相关类名和属性名，具体请参考[源码混淆保留选项](../../arkts-utils/source-obfuscation-keep-options.md#保留选项汇总)和[字节码混淆保留选项](../../arkts-utils/bytecode-obfuscation.md#已有保留选项汇总)。
+
 ## globalConnect支持的类型
 
 ### globalConnect顶层持久化数据类型及非顶层数据类型
