@@ -179,7 +179,7 @@ try {
     testNapi.createBigintWords());
   // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API NapiGetValueBigint: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API NapiCreateValueBigint: %{public}s', error.message);
   // ...
 }
 ```
