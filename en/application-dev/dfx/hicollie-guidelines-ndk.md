@@ -11,7 +11,7 @@
 
 [Application freeze (AppFreeze)](appfreeze-guidelines.md) means that an application does not respond to user operations (for example, clicking) for a specified period of time. This topic describes the capabilities provided by the HiCollie module for detecting service thread stuck and jank events and reporting stuck events.
 
-## Availability APIs
+## Available APIs
 
 | API| Description|
 | -------- | -------- |
