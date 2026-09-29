@@ -129,6 +129,23 @@ import { bundleManager } from '@kit.AbilityKit';
 | MAIN_APP          | 1   | 默认使用主应用。 |
 | CLONE_APP         | 2   | 默认使用分身应用。 |
 
+## ApplicationReservedFlag
+
+应用保留标志位枚举，每一位标识相关的应用信息。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| --------------- | --- | --- |
+| ENCRYPTED_APPLICATION | 0x00000001 | 表示该应用为加密应用。 |
+| ENCRYPTED_KEY_EXISTED | 0x00000002 | 表示该应用的加密密钥存在。 |
+
 ## DeviceModeDistributionPolicy
 
 设备模式分发策略枚举，用于指定应用程序如何分发到设备上。
@@ -152,6 +169,23 @@ import { bundleManager } from '@kit.AbilityKit';
 | PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE | 6 | 应用程序在不同模式之间部分兼容，具有不同的包体。 |
 | FULL_COMPATIBLE_IDENTICAL_PACKAGE | 7 | 应用程序在不同模式之间完全兼容，具有相同的包体。 |
 | FULL_COMPATIBLE_DIFFERENT_PACKAGE | 8 | 应用程序在不同模式之间完全兼容，具有不同的包体。 |
+
+## AppSandboxPolicy
+
+双模式（2in1/平板）场景下的应用沙箱策略。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| --------------- | --- | --- |
+| SHARED_SANDBOX | 0 | 应用在不同模式中共享沙箱（默认）。 |
+| ISOLATED_SANDBOX | 1 | 应用在不同模式中隔离沙箱，各自有独立的沙箱。 |
 
 ## bundleManager.getApplicationInfo
 
@@ -6591,6 +6625,65 @@ try {
 }
 ```
 
+## bundleManager.getBundleExtensionPolicyInfo
+
+getBundleExtensionPolicyInfo(bundleName: string, userId: number): BundleExtensionPolicyInfo
+
+获取指定应用的包扩展策略信息。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED，查询当前用户包扩展策略信息。 或 (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，可以查跨用户包扩展策略信息。)
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ---------- | ------ | ---- | ---------------------------|
+| bundleName | string | 是   | 表示要查询的应用Bundle名称。 |
+| userId | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。该值应为整数。<br>当传参null、undefined时，默认为当前用户。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| [BundleExtensionPolicyInfo](#bundleextensionpolicyinfo) | 应用的包扩展策略信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied. Non-system APP calling system API. |
+| 17700001 | The specified bundleName is not found. |
+| 17700004 | The specified user ID is not found. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = 'com.example.myapplication';
+let userId = 100;
+
+try {
+  let info: bundleManager.BundleExtensionPolicyInfo = bundleManager.getBundleExtensionPolicyInfo(bundleName, userId);
+  hilog.info(0x0000, 'testTag', 'getBundleExtensionPolicyInfo successfully: %{public}s', JSON.stringify(info));
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleExtensionPolicyInfo failed: %{public}s', message);
+}
+```
+
 ## PermissionDef
 
 type PermissionDef = _PermissionDef
@@ -6749,3 +6842,21 @@ type AppClonePreference = _BundleInfo.AppClonePreference
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_AppClonePreference](js-apis-bundleManager-BundleInfo-sys.md#appclonepreference) |应用分身偏好设置，用于配置应用启动时主应用和分身应用的选择策略。通过[bundleManager.getAppClonePreference](#bundlemanagergetappclonepreference)查询当前偏好设置，通过[bundleManager.setAppClonePreference](#bundlemanagersetappclonepreference)设置新的偏好。其mode字段决定启动时的选择行为，appIndex字段在mode取值为CLONE_APP时用于指定具体的分身索引。|
+
+## BundleExtensionPolicyInfo
+
+type BundleExtensionPolicyInfo = _BundleInfo.BundleExtensionPolicyInfo
+
+应用包扩展策略信息。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 类型                                                         | 说明           |
+| ------------------------------------------------------------ | -------------- |
+| [_BundleInfo.BundleExtensionPolicyInfo](js-apis-bundleManager-BundleInfo-sys.md#bundleextensionpolicyinfo) |应用包扩展策略信息，包含应用包名、应用分身索引、设备模式分发策略和应用沙箱策略。通过[bundleManager.getBundleExtensionPolicyInfo](#bundlemanagergetbundleextensionpolicyinfo)获取。|
