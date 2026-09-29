@@ -3,7 +3,7 @@
 <!--Subsystem: Test-->
 <!--Owner: @zhzhchuai-->
 <!--Designer: @zhzhchuai-->
-<!--Tester: @test-sdd-tse-->
+<!--Tester: @laonie666-->
 <!--Adviser: @chen8281-->
 
 ## 工具简介
