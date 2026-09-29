@@ -442,7 +442,7 @@
 
    @Concurrent
    function nativeCall(input : string): void {
-     console.info('Taskpool thread received:%s', input);
+     console.info('Taskpool thread received:', input);
      nativeModule.startWithCallback('Taskpool', (result: string) => {
        console.info('[Taskpool] Got from native:', result);
      });
